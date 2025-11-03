@@ -790,3 +790,28 @@ Web屏幕捕获的配置。
 | 名称          | 类型                                      | 必填   | 说明         |
 | ----------- | --------------------------------------- | ---- | ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 是    | Web屏幕捕获模式。 |
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型                                  | 只读 | 可选   | 说明                    |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
+| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。             |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
+
+## NativeEmbedParamItem<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | 否    | 否    | param元素的状态变化类型。 |
+| id                | string                              | 否    | 否 | param元素的id信息。             |
+| name              | string                              | 否    | 是 | param元素的参数名称。           |
+| value             | string                              | 否    | 是 | param元素的参数值。          |
