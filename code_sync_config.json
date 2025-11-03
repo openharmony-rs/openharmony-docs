@@ -5733,13 +5733,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5",
-				"functions":[
-					{
-						"end_line":51,
-						"name":"dlp_configurationModule",
-						"start_line":39
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
