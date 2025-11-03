@@ -756,6 +756,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   struct MyComponent {
     navDesInfo: uiObserver.NavDestinationInfo | undefined;
     context = this.getUIContext().getHostContext();
+  
     aboutToAppear() {
       this.navDesInfo = this.queryNavDestinationInfo();
     }
