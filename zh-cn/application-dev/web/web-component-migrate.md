@@ -26,6 +26,8 @@ import { createNWeb, defaultUrl } from '../pages/common';
 
 // ···
 
+// ...
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
