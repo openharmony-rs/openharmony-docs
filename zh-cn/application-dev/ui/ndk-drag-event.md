@@ -435,6 +435,29 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    DragAction主动发起拖拽需通过事件触发，在NODE_ON_TOUCH_INTERCEPT事件中执行发起拖拽所需的操作，通过[targetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeevent_gettargetid)区分不同按钮触发的事件。
 
    <!-- @[on_touchIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
+   
+   ``` C
+   nodeAPI->addNodeEventReceiver(dragButton, [](ArkUI_NodeEvent *event) {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "RegisterNodeEventForthReceiver called");
+       auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+       auto preDragStatus = OH_ArkUI_NodeEvent_GetPreDragStatus(event);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "eventType = %{public}d, preDragStatus = %{public}d", eventType, preDragStatus);
+   
+       auto *dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
+       switch (eventType) {
+           case NODE_ON_TOUCH_INTERCEPT: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
+               // ···
+               break;
+           }
+           default: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "UNKOWN EventReceiver");
+               break;
+           }
+       }
+   });
+   ```
 3. 起拖阶段设置。
 
    在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[dragPreviewOption](../reference/apis-arkui/capi-drag-and-drop-h.md#函数)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
