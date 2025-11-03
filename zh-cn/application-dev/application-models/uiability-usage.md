@@ -72,7 +72,7 @@ export default class EntryAbility extends UIAbility {
 
   @Entry
   @Component
-  struct Page_EventHub {
+  struct EventHubPage {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
     startAbilityTest(): void {
@@ -101,7 +101,7 @@ export default class EntryAbility extends UIAbility {
 
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct BasicUsage {
     // [StartExclude terminateSelf]
     startAbilityTest(): void {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -133,7 +133,7 @@ export default class EntryAbility extends UIAbility {
   
   @Entry
   @Component
-  struct Page_UIAbilityComponentsBasicUsage {
+  struct BasicUsage {
   // ···
   
     // 页面展示
