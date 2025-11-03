@@ -104,239 +104,113 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
   适用场景：玻璃、水面、塑料等非金属材质的高光表现，增强材质的镜面反射效果。
 
+## 创建Shader材质并设置属性
+在需要自定义渲染逻辑或实现特殊视觉效果时，可以通过MaterialType.SHADER类型创建Shader材质。Shader材质支持绑定自定义的.shader文件，开发者可以在其中编写自定义的渲染计算逻辑，灵活控制模型的外观表现，实现如描边、高光、发光等个性化视觉效果。以下示例展示了Shader材质的创建与使用流程，包括场景加载、Shader资源创建与绑定，以及将Shader材质应用到目标几何体节点的过程。
 
-## 开发步骤
-  1. 获取资源工厂。
+  1. 导入相关模块。
 
-     使用场景对象Scene或其他接口，获取资源工厂SceneResourceFactory实例，用于创建材质资源。
+     在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建Shader材质及绑定Shader资源。
 
-       ```ts
-     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-     let scenePromise: Promise<Scene> = Scene.load($rawfile("gltf/ExampleModel.glb"));
-     scenePromise.then(async (scene: Scene) => {
-     if (!scene.root) {
-         return;
-     }
-     let rf: SceneResourceFactory = scene.getResourceFactory();
-     // 后续操作可基于rf进行
-     });
-       ```
+     <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
 
-  2. 创建材质并指定材质类型。
+  2. 加载场景并设置渲染参数。
 
-     调用createMaterial()接口，指定材质类型（如MaterialType.METALLIC_ROUGHNESS或MaterialType.SHADER），异步创建材质对象。
+     调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
 
-     - 可创建基于Shader的材质，当开发者需要自定义渲染效果时，可通过自定义Shader实现。示例代码如下：
+     <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-       ```ts
-       let shaderMaterialPromise = await rf.createMaterial({ name: "shaderMat" }, MaterialType.SHADER);
-       let shaderMat = shaderMaterialPromise as ShaderMaterial;
-       // 绑定自定义Shader代码示例（创建shader资源，路径和文件名可根据项目实际资源自定义）
-       let shader = await rf.createShader({ name: "MyShader", uri: $rawfile("shaders/my_shader.shader") });
-       shaderMat.colorShader = shader;
-       ```
+  3. 初始化相机。
 
-     - 也可创建基于PBR的材质，当开发者需要快速构建真实感渲染效果时，可使用预设的参数快速实现。示例代码如下：
+     创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
 
-       ```ts
-       let pbrMaterialPromise = await rf.createMaterial({ name: "pbrMat" }, MaterialType.METALLIC_ROUGHNESS);
-       let pbrMat = pbrMaterialPromise as MetallicRoughnessMaterial;
-       // 设置基础颜色贴图和因子
-       // 加载图片资源，路径和文件名可根据项目实际资源自定义，但PBR材质贴图类型必须与材质属性匹配
-       let baseColorImage = await rf.createImage({ name: "baseColorTex", uri: $rawfile("textures/baseColor.png") });
-       pbrMat.baseColor.image = baseColorImage;
-       pbrMat.baseColor.factor = { x: 1, y: 1, z: 1, w: 1 };
-       ```
+     <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-  3. 设置材质属性。
+  4. 获取几何体节点。
 
-     - 设置材质通用属性。示例代码如下：
+     通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
 
-       ```ts
-       material.shadowReceiver = true;  // 启用阴影接收
-       material.cullMode = CullMode.BACK;  // 剔除背面
-       material.blend = { enabled: true };  // 启用透明混合
-       material.alphaCutoff = 0.5;  // 透明裁剪阈值
-       material.renderSort = { renderSortLayer: 32, renderSortLayerOrder: 1 };  // 渲染排序
-       ```
+     <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-     - 当创建的材质类型为PBR材质时，还可以设置PBR材质属性。示例代码如下：
+  5. 创建Shader材质（空白）。
 
-       不同属性的贴图内容通常不同，需分别创建；如多个材质共用相同贴图，可复用同一个Image实例以节省内存。所有材质属性中的factor各分量取值范围均为[0, 1]。
+     调用SceneResourceFactory.createMaterial()创建Shader类型的空白材质，为后续绑定自定义Shader做准备。
 
-       ```ts
-       // 图片路径和文件名可根据项目实际资源自定义，但PBR材质贴图类型必须与材质属性匹配
-       // 设置基础颜色贴图和颜色因子（支持透明通道）
-       let baseColorImage = await rf.createImage({ name: "baseColorTex", uri: $rawfile("textures/baseColor.png") });
-       pbrMat.baseColor.image = baseColorImage;
-       pbrMat.baseColor.factor = { x: 1, y: 1, z: 1, w: 1 }; // xyz分量控制颜色，w为透明度（0~1）
-       // 设置法线贴图（控制细节凹凸感）
-       let normalImage = await rf.createImage({ name: "normalTex", uri: $rawfile("textures/normal.png") });
-       pbrMat.normal.image = normalImage;
-       pbrMat.normal.factor.x = 0.6; // x分量：法线强度（0~1）
-       // 设置金属度、粗糙度和反射率属性（可共享一张贴图），通常使用y, z, w分量分别控制
-       let metallicRoughnessImage = await rf.createImage({ name: "materialTex", uri: $rawfile("textures/material_texture.png") });
-       pbrMat.material.image = metallicRoughnessImage;
-       pbrMat.material.factor.y = 1.0;  // y 分量：粗糙度（Roughness, 0~1），0表示光滑，1表示粗糙
-       pbrMat.material.factor.z = 0.5;  // z 分量：金属度（Metallic, 0~1），0表示非金属，1表示金属
-       pbrMat.material.factor.w = 0.5;  // w 分量：反射率（Specular, 0~1）
-       // 设置环境光遮蔽贴图，常用x分量控制遮蔽强度
-       let ambientOcclusionImage = await rf.createImage({ name: "ambientOcclusionTex", uri: $rawfile("textures/ambientOcclusion.png") });
-       pbrMat.ambientOcclusion.image = ambientOcclusionImage;
-       pbrMat.ambientOcclusion.factor.x = 1.0; // 遮蔽强度（0~1）
-       // 设置自发光贴图和颜色因子（用于夜光效果）
-       let emissiveImage = await rf.createImage({ name: "emissiveTex", uri: $rawfile("textures/emissive.png") });
-       pbrMat.emissive.image = emissiveImage;
-       pbrMat.emissive.factor = { x: 1.0, y: 1.0, z: 0.8, w: 1 }; // xyz分量控制发光颜色，w为强度（0~1）
-       // 设置clearCoat强度与粗糙度
-       pbrMat.clearCoat.factor.x = 1.0; // x分量：clearCoat强度（0~1）
-       pbrMat.clearCoatRoughness.factor.y = 0.5; // y分量：clearCoat粗糙度（0~1）
-       // 设置clearCoat法线贴图,常用x，y，z控制方向
-       let clearCoatNormalImage = await rf.createImage({ name: "clearCoatNormalTex", uri: $rawfile("textures/clearCoatNormal.png") });
-       pbrMat.clearCoatNormal.image = clearCoatNormalImage;
-       pbrMat.clearCoatNormal.factor.x = 1.0;
-       pbrMat.clearCoatNormal.factor.y = 1.0;
-       pbrMat.clearCoatNormal.factor.z = 1.0;
-       // 更多PBR属性可按需设置，如sheen、specular等。
-       // sheen：控制光泽强度
-       // pbrMat.sheen.factor = { x: 1.0, y: 0.5, z: 0.3, w: 1.0 }; // xyz控制光泽的颜色，w为强度（0~1）
+     <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-       // specular：控制高光
-       // pbrMat.specular.factor = { x: 1.0, y: 1.0, z: 1.0, w: 0.7 }; // xyz为高光颜色，w为高光强度（0~1）
-       ```
+  6. 创建并绑定Shader资源。
 
-     - 针对Shader材质，需绑定自定义Shader资源以实现个性化渲染效果。具体使用方式可参考[创建Shader材质并设置属性](#创建shader材质并设置属性)。
+     通过SceneResourceFactory.createShader()创建自定义着色器资源，并将其绑定到Shader材质上，实现自定义渲染逻辑。
 
-  4. 绑定材质到网格。
+     <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-     将创建的材质赋值给几何体（Geometry）的material或subMeshes[i].material字段，使其生效。常见绑定方式有两种：
+  7. 应用Shader材质到几何体节点。
 
-       - 通过资源工厂新建网格和几何体，再绑定材质（适用于创建新几何体的情况）。示例代码如下：
+     通过按钮点击事件调用不同的函数，可在运行时动态切换模型的材质，实现从默认材质到Shader材质的过渡效果。
 
-         ```ts
-         let mesh = await resourceFactory.createMesh({ name: "mesh" }, geometry);
-         let geometryInstance = await resourceFactory.createGeometry({ name: "geometry" }, mesh);
-         geometryInstance.mesh.subMeshes[0].material = pbrMat;  // 绑定材质
-         ```
+     <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
-       - 通过scene.root.getNodeByPath直接获取已有几何节点，修改绑定材质（适用于加载场景后修改材质）。示例代码如下：
+## 创建PBR材质并设置属性
+在ArkGraphics 3D中，基于物理的渲染（PBR）材质允许开发者通过调整金属度、粗糙度、透明度等参数精确控制物体的外观效果，从而实现高度真实的渲染表现。由于不同模型在导出时所携带的PBR属性可能存在差异，因此在设置材质前建议根据模型内容进行适配。本示例选用CompareClearcoat模型，该模型自带清漆层（Clearcoat）相关的材质参数，适合用于演示清漆效果的调节。通过设置clearCoat与clearCoatRoughness等属性，可以直观观察清漆层的强度、光泽度与反射特性的变化。
 
-         ```ts
-         let pbrNode = scene.root.getNodeByPath("path/to/node");
-         if (pbrNode) {
-           let geometry = pbrNode as Geometry;
-           if (geometry.mesh?.subMeshes?.[0]) {
-             geometry.mesh.subMeshes[0].material = pbrMat;  // 绑定材质
-           }
-         }
-         ```
+  1. 导入相关模块。
 
-  5. 渲染并观察效果。运行渲染流程，观察材质的最终视觉表现。
+     在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建PBR材质及绑定贴图资源。
 
+     <!-- @[pbr_clearcoat_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
 
-## 完整代码
+  2. 加载场景资源。
 
-  ### 创建Shader材质并设置属性
+     调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。场景加载完成后，可以访问场景的资源工厂以创建材质和其他资源。
 
-   ```ts
-   import { MaterialType, ShaderMaterial, SceneResourceParameters, SceneResourceFactory, Scene, Geometry,
-     CullMode } from '@kit.ArkGraphics3D';
+     <!-- @[pbr_clearcoat_loadScene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
 
-   function createAndApplyShaderMaterial(): Promise<void> {
-     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-     let scenePromise: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-     return scenePromise.then(async (scene: Scene) => {
-       if (!scene.root) {
-         return;
-       }
-       // 获取资源工厂
-       let rf: SceneResourceFactory = scene.getResourceFactory();
-       // 创建Shader材质
-       let materialParams: SceneResourceParameters = { name: "material" };
-       let material = await rf.createMaterial(materialParams, MaterialType.SHADER);
-       let shaderMat = material as ShaderMaterial;
-       // 加载并绑定自定义Shader代码（创建shader资源，路径和文件名可根据项目实际资源自定义）
-       let shader = await rf.createShader({
-         name: "shaderResource",
-         uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")
-       });
-       shaderMat.colorShader = shader;
-       // 设置通用属性
-       shaderMat.shadowReceiver = true;
-       shaderMat.cullMode = CullMode.BACK;
-       shaderMat.blend = { enabled: true }; // 例如启用透明混合
-       shaderMat.alphaCutoff = 0.5;
-       // 绑定材质到已有网格节点
-       let shaderNode = scene.root.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
-       if (shaderNode) {
-         let geometry = shaderNode as Geometry;
-         if (geometry.mesh?.subMeshes?.[0]) {
-           geometry.mesh.subMeshes[0].material = shaderMat;
-         }
-       }
-       // 后续执行渲染观察效果
-     });
-   }
-   ```
+  3. 获取几何体节点并预加载纹理。
 
-  ### 创建PBR材质并设置属性
-  
-  不同模型支持的PBR属性可能有所不同，设置材质前建议根据模型内容进行适配。本例使用CompareClearcoat模型作为示例，设置其支持的PBR属性，开发者可根据需要使用对应模型并设置相关属性。
+     通过场景的节点路径获取目标几何体节点，并提取其材质，随后预加载清漆层（Clearcoat）相关的纹理资源。
 
-   ```ts
-   import { MaterialType, SceneResourceParameters, SceneResourceFactory, Scene, MetallicRoughnessMaterial, Geometry,
-     CullMode } from '@kit.ArkGraphics3D';
+     <!-- @[pbr_clearcoat_getMaterialAndTextures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
 
-   function createAndApplyPBRMaterial(): Promise<void> {
-     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-     // 不同模型支持的PBR属性可能有所不同，设置材质前建议根据模型内容进行适配，本例使用CompareClearcoat模型作为示例。
-     let scenePromise: Promise<Scene> = Scene.load($rawfile("CompareClearcoat.glb"));
-     return scenePromise.then(async (scene: Scene) => {
-       if (!scene.root) {
-         return;
-       }
-       // 获取资源工厂
-       let rf: SceneResourceFactory = scene.getResourceFactory();
-       // 创建PBR材质
-       let materialParams: SceneResourceParameters = { name: "MyPBRMaterial" };
-       let material = await rf.createMaterial(materialParams, MaterialType.METALLIC_ROUGHNESS);
-       let pbrMat = material as MetallicRoughnessMaterial;
+  4. 配置环境光照。
 
-       // 加载共享的metallic-roughness贴图（可复用，节省资源），图片路径和文件名可根据项目实际资源自定义，但贴图类型必须与材质属性匹配
-       let metallicImage = await rf.createImage({
-         name: "materialTex",
-         uri: $rawfile("gltf/DamagedHelmet/glTF/Default_metalRoughness.jpg")
-       });
-       pbrMat.material.image = metallicImage;
-       // 配置y，z，w分量控制粗糙度、金属度、反射率
-       pbrMat.material.factor = { x: 0, y: 0.8, z: 0.4, w: 0.6 };
-       // 配置环境光遮蔽贴图
-       pbrMat.ambientOcclusion.factor.x = 1.0;
-       // 配置clearCoat强度与粗糙度
-       pbrMat.clearCoat.factor.x = 1.0;
-       pbrMat.clearCoatRoughness.factor.y = 0.5;
-       // 配置sheen光泽属性
-       pbrMat.sheen.factor = { x: 1.0, y: 0.2, z: 0.2, w: 0.8 };
+     创建图像基础的光照（IBL）环境，配置环境贴图和辐射贴图，以实现真实的环境光照效果。
 
-       // 设置通用属性
-       pbrMat.shadowReceiver = true;
-       pbrMat.cullMode = CullMode.BACK;
-       pbrMat.blend = { enabled: false };
-       pbrMat.alphaCutoff = 0.5;
-       // 绑定材质到已有网格节点
-       let pbrNode = scene.root.getNodeByPath("Unnamed Node 1/GeoSphere002");
-       if (pbrNode) {
-         let geometry = pbrNode as Geometry;
-         geometry.mesh.subMeshes[0].material = pbrMat;
-       }
-       // 运行渲染流程，观察材质的最终视觉表现
-     });
-   }
-   ```
+     <!-- @[pbr_clearcoat_createIBL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
 
+  5. 创建相机并设置视角。
+
+     创建一个相机对象，并设置其位置和观察目标。然后启用轨道控制功能，让用户可以通过手势旋转和缩放视图。
+
+     <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+
+  6. 切换清漆层纹理。
+
+     允许用户在不同的清漆纹理之间切换。通过按下按钮或触发事件来实现纹理的动态切换。
+
+     <!-- @[pbr_clearcoat_changeClearcoatTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+
+  7. 调整清漆层强度。
+
+     通过滑动条调整清漆层的强度。这个方法通过更新材质的clearCoat.factor属性来实现。
+
+     <!-- @[pbr_clearcoat_setClearcoat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+
+  8. 切换粗糙度纹理。
+
+     类似于清漆层纹理切换，用户也可以在不同的粗糙度纹理之间切换。
+
+     <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+
+  9. 调整清漆层粗糙度。
+
+     通过滑动条调整清漆层的粗糙度，同样地，这通过更新clearCoatRoughness.factor来实现。
+
+     <!-- @[pbr_clearcoat_setClearcoatRoughness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
 
 <!--RP1-->
 ## 相关实例
+
+详细的代码实现与示例，可以通过访问相应的samples路径查看，了解更多内容：
+- [通用材质属性与PBR材质示例（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material)
 
 对于3D资源更加综合的使用可以参考以下实例：
 - [3D引擎接口示例（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
