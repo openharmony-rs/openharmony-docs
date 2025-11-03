@@ -35,6 +35,44 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 
 <!-- @[service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Start.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Start {
+  build() {
+    Column() {
+      Row() {
+        // 创建启动按钮
+        Button('start UIServiceExtensionAbility')
+          .enabled(true)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let startWant: Want = {
+              bundleName: 'com.samples.uiserviceextensionability', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件的包名。
+              abilityName: 'UiServiceExtAbility', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件名称。
+            };
+            try {
+              // 启动UIServiceExtensionAbility组件
+              context.startUIServiceExtensionAbility(startWant).then(() => {
+                console.info('startUIServiceExtensionAbility success.');
+              }).catch((error: BusinessError) => {
+                console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+              });
+            } catch (err) {
+              let code = (err as BusinessError).code;
+              let msg = (err as BusinessError).message;
+              console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
+            }
+          })
+      }
+    }
+  }
+}
+```
+
 
 ## 客户端连接服务端
 
