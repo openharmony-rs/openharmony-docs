@@ -612,6 +612,10 @@ public:
 #include <js_native_api.h>
 #include <js_native_api_types.h>
 // ···
+const unsigned int NUMBER_2 = 2;
+const unsigned int NUMBER_WIDTH = 100;
+const unsigned int NUMBER_HEIGHT = 100;
+
 static napi_value Add(napi_env env, napi_callback_info info)
 {
     size_t argc = NUMBER_2;
