@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -898,24 +900,30 @@ for (let index = 0; index < fontWidths.length; index++) {
 
 ## textToGlyphs<sup>12+</sup>
 
-textToGlyphs(text: string, glyphCount?: number): Array\<number>
+ArkTS-Dyn: textToGlyphs(text: string, glyphCount?: number): Array\<number>
+
+ArkTS-Sta: textToGlyphs(text: string, glyphCount?: int): Array\<int> | undefined
 
 将文本转换为字形索引。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
 | text     | string                        | 是   | 文本字符串。 |
-| glyphCount | number | 否   | 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等，默认为text的字符数量，该参数为整数。 |
+| glyphCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | ArkTS-Dyn: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当glyphCount传入undefined时，该方法将抛错误码。不传该参数时，默认为text的字符数量，该参数为整数。<br/>ArkTS-Sta: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当不传该参数，或者glyphCount传入undefined时，默认为text的字符数量，该参数为整数。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回转换得到的字形索引数组。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> \| undefined | 返回转换得到的字形索引数组。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -927,6 +935,7 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -934,6 +943,18 @@ let font : drawing.Font = new drawing.Font();
 let text : string = 'hello world';
 let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
+```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font : drawing.Font = new drawing.Font();
+let text : string = 'hello world';
+let glyphs : int[] | undefined = font.textToGlyphs(text);
+if (glyphs != undefined) {
+  console.info("drawing text toglyphs OnTestFunction num =  " + glyphs!.length );
+}
 ```
 
 ## getBounds<sup>18+</sup>

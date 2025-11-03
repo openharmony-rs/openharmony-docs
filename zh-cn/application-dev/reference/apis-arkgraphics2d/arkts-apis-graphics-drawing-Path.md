@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -504,20 +506,26 @@ path.addArc(rect, 90, 180);
 
 ## addCircle<sup>12+</sup>
 
-addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): void
+ArkTS-Dyn: addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): void
+
+ArkTS-Sta: addCircle(x: double, y: double, radius: double, pathDirection?: PathDirection): void
 
 按指定方向，向路径添加圆形，圆的起点位于(x + radius, y)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| x   | number | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
-| y   | number | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
-| radius   | number | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
+| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
+| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
+| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -539,19 +547,25 @@ path.addCircle(100, 200, 50, drawing.PathDirection.CLOCKWISE);
 
 ## addOval<sup>12+</sup>
 
-addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
+ArkTS-Dyn: addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
+
+ArkTS-Sta: addOval(rect: common2D.Rect, start: int, pathDirection?: PathDirection): void
 
 按指定方向，将矩形的内切椭圆添加到路径中。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 椭圆的矩形边界。      |
-| start   | number | 是   | 表示椭圆初始点的索引，0，1，2，3分别对应椭圆的上端点，右端点，下端点，左端点，该参数为不小于0的整数，大于等于4时会对4取余。 |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
+| start   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示椭圆初始点的索引，0，1，2，3分别对应椭圆的上端点，右端点，下端点，左端点，该参数为不小于0的整数，大于等于4时会对4取余。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -579,12 +593,16 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 向路径中添加的矩形轮廓。      |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -612,12 +630,16 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | roundRect        | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是    | 圆角矩形对象。      |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -646,12 +668,16 @@ addPath(path: Path, matrix?: Matrix | null): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | path        | [Path](arkts-apis-graphics-drawing-Path.md) | 是    | 表示源路径对象。      |
-| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)\|null  | 否   | 表示矩阵对象，默认为单位矩阵。 |
+| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)\|null  | 否   | ArkTS-Dyn: 表示矩阵对象。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为单位矩阵。<br/>ArkTS-Sta: 表示矩阵对象。当不传该参数，或者matrix传入undefined时，默认为单位矩阵。 |
 
 **错误码：**
 
