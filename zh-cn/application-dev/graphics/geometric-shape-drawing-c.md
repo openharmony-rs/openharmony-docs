@@ -54,7 +54,7 @@
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -104,7 +104,7 @@ OH_Drawing_PenDestroy(pen);
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @[ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -143,7 +143,7 @@ OH_Drawing_RectDestroy(rect);
 
 此处以使用画笔绘制圆为例，简单示例如下：
 
-<!-- @[ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -184,7 +184,7 @@ OH_Drawing_PointDestroy(point);
 
 此处以使用画笔和画刷绘制五角星为例，示例如下：
 
-<!-- @[ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -248,7 +248,7 @@ OH_Drawing_PathDestroy(path);
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -289,7 +289,7 @@ OH_Drawing_RectDestroy(rect2);
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -325,7 +325,7 @@ OH_Drawing_RectDestroy(rect);
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @[ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -359,5 +359,5 @@ OH_Drawing_RoundRectDestroy(roundRect);
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

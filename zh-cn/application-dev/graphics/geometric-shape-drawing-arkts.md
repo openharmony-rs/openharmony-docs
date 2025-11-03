@@ -49,7 +49,7 @@
 
 简单示例如下：
 
-<!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 效果如下：
 
@@ -64,7 +64,7 @@
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 效果如下：
 
@@ -78,7 +78,7 @@
 绘制圆需要圆心点的x坐标和y坐标，以及圆半径（radius）。
 
 此处以使用画笔绘制圆为例，简单示例如下：
-<!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -119,7 +119,7 @@ canvas.detachPen();
 
 此处以使用画笔和画刷绘制五角星为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 let height_ = VALUE_1800;
@@ -185,7 +185,7 @@ canvas.detachPen();
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -219,7 +219,7 @@ canvas.detachBrush();
 
 此处以使用画刷绘制矩形为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -253,7 +253,7 @@ canvas.detachBrush();
 
 此处以使用画刷绘制圆角矩形为例，简单示例代码如下：
 
-<!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -287,5 +287,5 @@ canvas.detachBrush();
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->
