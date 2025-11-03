@@ -716,7 +716,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名 | **类型** | **必填** | **说明** |
+| **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
