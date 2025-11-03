@@ -54,15 +54,27 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
+import { media } from '@kit.MediaKit';
 
-public getFileFd(): number {
-    let filesDir = '/data/storage/el2/base/haps';
-    let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    return file.fd;
-}
+// 初始化avScreenCaptureRecorder
+let avScreenCaptureRecorder!: media.AVScreenCaptureRecorder;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in createAVScreenCaptureRecorder');
+  } else {
+    console.error('Failed to createAVScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 创建文件
+let filesDir = '/data/storage/el2/base/haps';
+let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 
 let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
-    fd: this.getFileFd(), // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
+    fd: file.fd, // 文件需要先由调用者创建，通常是MP4文件，赋予写权限，将文件fd传给此参数。
     frameWidth: 640,
     frameHeight: 480
     // 补充其他参数。
@@ -102,6 +114,7 @@ startRecording(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.startRecording().then(() => {
     console.info('Succeeded in starting avScreenCaptureRecorder');
@@ -137,6 +150,7 @@ stopRecording(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.stopRecording().then(() => {
     console.info('Succeeded in stopping avScreenCaptureRecorder');
@@ -179,6 +193,7 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 let windowIDs = [];
 avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
@@ -221,6 +236,7 @@ setMicEnabled(enable: boolean): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.setMicEnabled(true).then(() => {
     console.info('Succeeded in setMicEnabled avScreenCaptureRecorder');
@@ -263,6 +279,7 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
     console.info('Succeeded in setPickerMode');
@@ -305,6 +322,7 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 let excludedWindows: Array<number> = [101, 102, 103];
 
@@ -347,6 +365,7 @@ presentPicker(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.presentPicker().then(() => {
     console.info('Succeeded in presentPicker avScreenCaptureRecorder');
@@ -382,6 +401,7 @@ release(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
 
 avScreenCaptureRecorder.release().then(() => {
     console.info('Succeeded in releasing avScreenCaptureRecorder');
@@ -408,6 +428,8 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 **示例：**
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
     console.info('avScreenCaptureRecorder stateChange to ' + state);
 });
@@ -441,6 +463,8 @@ on(type: 'error', callback: ErrorCallback): void
 **示例：**
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 avScreenCaptureRecorder.on('error', (err: BusinessError) => {
     console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
 });
@@ -464,6 +488,8 @@ avScreenCaptureRecorder.on('error', (err: BusinessError) => {
 **示例：**
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 avScreenCaptureRecorder.off('stateChange');
 ```
 
@@ -485,5 +511,7 @@ off(type: 'error', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 avScreenCaptureRecorder.off('error');
 ```
