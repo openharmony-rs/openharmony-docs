@@ -27,6 +27,15 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    创建Image节点，并设置draggable和其它相关属性。
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
+   
+   ``` C
+   dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
+   SetId(dragImage2, "dragImage");
+   SetCommonAttribute(dragImage2, SIZE_140, SIZE_140, DEFAULT_BG_COLOR, BLANK_5);
+   SetImageSrc(dragImage2, "/resources/seagull.png");
+   OH_ArkUI_SetNodeDraggable(dragImage2, true);
+   nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
+   ```
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
    <!-- @[set_imageSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
 
