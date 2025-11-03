@@ -27,196 +27,45 @@
 
 1. 引入相关依赖。
 
-   ```ts
-   import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
-   ```
+   <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
 
 2. 创建执行动画的对象。
 
-   ```ts
-   // 创建动画的初始参数
-   let options: AnimatorOptions = {
-     duration: 1500,
-     easing: "friction",
-     delay: 0,
-     fill: "forwards",
-     direction: "normal",
-     iterations: 2,
-     // 动画onFrame 插值首帧值                                    
-     begin: 200.0,
-     // 动画onFrame 插值尾帧值                                    
-     end: 400.0
-   };
-   let result: AnimatorResult = this.getUIContext().createAnimator(options);
-   // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
-   result.onFrame = (value: number) => {
-     console.info("current value is :" + value);
-   }
-   ```
+   <!-- @[animator_options_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
 
 3. 播放动画。
 
-   ```ts
-   // 播放动画
-   result.play();
-   ```
+   <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
 
 4. 动画执行完成后手动释放AnimatorResult对象。
 
-   ```ts
-   // 释放动画对象
-   result = undefined;
-   ```
+   <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+
 
 ## 使用帧动画实现小球抛物运动
 
 1. 引入相关依赖。
 
-   ```ts
-   import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
-   ```
+   <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
 
 2. 定义要做动画的组件。
 
-   ```ts
-   Button()
-     .width(60)
-     .height(60)
-     .translate({ x: this.translateX, y: this.translateY })
-   ```
+   <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
 
 3. 在onPageShow中创建AnimatorResult对象。
 
-   ```ts
-   onPageShow(): void {
-     //创建animatorResult对象
-     this.animatorOptions = this.getUIContext().createAnimator(options);
-     this.animatorOptions.onFrame = (progress: number) => {
-       this.translateX = progress;
-       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
-         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
-       }
-     }
-     //动画取消时执行方法
-     this.animatorOptions.onCancel = () => {
-       this.animatorStatus = '取消';
-     }
-     //动画完成时执行方法
-     this.animatorOptions.onFinish = () => {
-       this.animatorStatus = '完成';
-     }
-     //动画重复播放时执行方法
-     this.animatorOptions.onRepeat = () => {
-       console.info("动画重复播放");
-     }
-   }
-   ```
+   <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
 
 4. 定义动画播放，重置，暂停的按钮。
 
-   ```ts
-   Button('播放').onClick(() => {
-     this.animatorOptions?.play();
-     this.animatorStatus = '播放中'
-   }).width(80).height(35)
-   Button("重置").onClick(() => {
-     this.translateX = 0;
-     this.translateY = 0;
-   }).width(80).height(35)
-   Button("暂停").onClick(() => {
-     this.animatorOptions?.pause();
-     this.animatorStatus = '暂停'
-   }).width(80).height(35)
-   ```
+   <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
-   ```ts
-   onPageHide(): void {
-     this.animatorOptions = undefined;
-   }
-   ```
+
+   <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
 
 完整示例如下。
 
-```ts
-import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State animatorOptions: AnimatorResult | undefined = undefined;
-  @State animatorStatus: string = '创建';
-  begin: number = 0;
-  end: number = 300;
-  topWidth: number = 150;
-  bottomHeight: number = 100;
-  g: number = 0.18;
-  animatorOption: AnimatorOptions = {
-    duration: 4000,
-    delay: 0,
-    easing: 'linear',
-    iterations: 1,
-    fill: "forwards",
-    direction: 'normal',
-    begin: this.begin,
-    end: this.end
-  };
-  @State translateX: number = 0;
-  @State translateY: number = 0;
-
-  onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
-    this.animatorOptions.onFrame = (progress: number) => {
-      this.translateX = progress;
-      if (progress > this.topWidth && this.translateY < this.bottomHeight) {
-        this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
-      }
-    }
-    this.animatorOptions.onCancel = () => {
-      this.animatorStatus = '取消';
-    }
-    this.animatorOptions.onFinish = () => {
-      this.animatorStatus = '完成';
-    }
-    this.animatorOptions.onRepeat = () => {
-      console.info("动画重复播放");
-    }
-  }
-
-  onPageHide(): void {
-    this.animatorOptions = undefined;
-  }
-
-  build() {
-    Column() {
-      Column({ space: 30 }) {
-        Button('播放').onClick(() => {
-          this.animatorOptions?.play();
-          this.animatorStatus = '播放中';
-        }).width(80).height(35)
-        Button("重置").onClick(() => {
-          this.translateX = 0;
-          this.translateY = 0;
-        }).width(80).height(35)
-        Button("暂停").onClick(() => {
-          this.animatorOptions?.pause();
-          this.animatorStatus = '暂停';
-        }).width(80).height(35)
-      }.width("100%").height('25%')
-
-      Stack() {
-        Button()
-          .width(60)
-          .height(60)
-          .translate({ x: this.translateX, y: this.translateY })
-      }
-      .width("100%")
-      .height('45%')
-      .align(Alignment.Start)
-
-      Text("当前动画状态为:" + this.animatorStatus)
-    }.width("100%").height('100%')
-  }
-}
-```
+<!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
 
 ![zh-cn_image_0000001599958466](figures/animatorSimple.gif)
