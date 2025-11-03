@@ -12,7 +12,7 @@ Focus control attributes set whether a component is focusable and how it partici
 >
 >  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >  
->  - Custom components are inherently unfocusable, and setting [focusable](#focusable) and [enabled](ts-universal-attributes-enable.md#enabled) attributes to **false** or setting the [visibility](ts-universal-attributes-visibility.md#visibility-1) attribute to **Hidden** or **None** does not impact their child components' capability to gain focus.
+>  - Custom components are inherently unfocusable, and setting [focusable](#focusable) and [enabled](ts-universal-attributes-enable.md#enabled) attributes to **false** or setting the [visibility](ts-universal-attributes-visibility.md#visibility) attribute to **Hidden** or **None** does not impact their child components' capability to gain focus.
 >  
 >  - Components can actively acquire focus independently of the window's focus state.
 >  
