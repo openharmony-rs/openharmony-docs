@@ -81,3 +81,63 @@ struct Start {
 如下示例通过connectUIServiceExtensionAbility方法连接一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)
 
 <!-- @[connect_service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Connect.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Connect {
+  comProxy: common.UIServiceProxy | null = null;
+  connectCallback: common.UIServiceExtensionConnectCallback = {
+    onData: (data: Record<string, Object>) => {
+      console.info(`data received, data: ${JSON.stringify(data)}.`);
+    },
+    onDisconnect: () => {
+      console.info(`onDisconnect.`);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        // 创建连接按钮
+        Button('connect ability')
+          .enabled(true)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let startWant: Want = {
+              bundleName: 'com.acts.uiserviceextensionability', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件的包名。
+              abilityName: 'UiServiceExtAbility', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件名称。
+            };
+            try {
+              // 连接UIServiceExtensionAbility组件
+              context.connectUIServiceExtensionAbility(startWant, this.connectCallback)
+                .then((proxy: common.UIServiceProxy) => {
+                  this.comProxy = proxy;
+                  let formData: Record<string, string> = {
+                    'test': 'test'
+                  };
+                  try {
+                    this.comProxy.sendData(formData);
+                  } catch (err) {
+                    let code = (err as BusinessError).code;
+                    let msg = (err as BusinessError).message;
+                    console.error(`sendData failed, err code:${code}, err msg:${msg}.`);
+                  }
+                })
+                .catch((err: BusinessError) => {
+                  console.error(`connectUIServiceExtensionAbility failed, err code: ${err.code}, err msg: ${err.message}.`);
+                });
+            } catch (err) {
+              let code = (err as BusinessError).code;
+              let msg = (err as BusinessError).message;
+              console.error(`connectUIServiceExtensionAbility failed, err code:${code}, err msg:${msg}.`);
+            }
+          })
+      }
+    }
+  }
+}
+```
