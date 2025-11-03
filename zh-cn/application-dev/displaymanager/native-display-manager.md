@@ -60,76 +60,9 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
     <!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
-{
-    NativeDisplayManager_Rotation displayRotation;
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDefaultDisplayRotation(&displayRotation);
-    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-        napi_value rotation;
-        napi_create_int32(env, displayRotation, &rotation);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "rotation=%{public}d", displayRotation);
-        return rotation;
-    } else {
-        napi_value errorCode;
-        napi_create_int32(env, errCode, &errorCode);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-            "GetDefaultDisplayRotation errCode=%{public}d", errCode);
-        return errorCode;
-    }
-}
-```
-
 2. 可以通过OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。 可通过OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo销毁挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
     <!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
-{
-    NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "GetDefaultCutoutInfo errCode=%{public}d", errCode);
-    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-        if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                "GetDefaultCutoutInfo cutOutInfo length=%{public}d", cutOutInfo->boundingRectsLength);
-            for (int i = 0; i < cutOutInfo->boundingRectsLength; i++) {
-                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                    "cutOutInfo[%{public}d]=[%{public}d %{public}d %{public}d %{public}d]",
-                    i, cutOutInfo->boundingRects[i].left, cutOutInfo->boundingRects[i].top,
-                    cutOutInfo->boundingRects[i].width, cutOutInfo->boundingRects[i].height);
-            }
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                "cutOutInfo waterfall left rect=[%{public}d %{public}d %{public}d %{public}d]",
-                cutOutInfo->waterfallDisplayAreaRects.left.left, cutOutInfo->waterfallDisplayAreaRects.left.top,
-                cutOutInfo->waterfallDisplayAreaRects.left.width, cutOutInfo->waterfallDisplayAreaRects.left.height);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                "cutOutInfo waterfall top rect=[%{public}d %{public}d %{public}d %{public}d]",
-                cutOutInfo->waterfallDisplayAreaRects.top.left, cutOutInfo->waterfallDisplayAreaRects.top.top,
-                cutOutInfo->waterfallDisplayAreaRects.top.width, cutOutInfo->waterfallDisplayAreaRects.top.height);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                "cutOutInfo waterfall right rect=[%{public}d %{public}d %{public}d %{public}d]",
-                cutOutInfo->waterfallDisplayAreaRects.right.left, cutOutInfo->waterfallDisplayAreaRects.right.top,
-                cutOutInfo->waterfallDisplayAreaRects.right.width, cutOutInfo->waterfallDisplayAreaRects.right.height);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-                "cutOutInfo waterfall bottom rect=[%{public}d %{public}d %{public}d %{public}d]",
-                cutOutInfo->waterfallDisplayAreaRects.bottom.left,
-                cutOutInfo->waterfallDisplayAreaRects.bottom.top,
-                cutOutInfo->waterfallDisplayAreaRects.bottom.width,
-                cutOutInfo->waterfallDisplayAreaRects.bottom.height);
-        }
-        napi_value boundingRectsLength;
-        napi_create_int32(env, cutOutInfo->boundingRectsLength, &boundingRectsLength);
-        OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(cutOutInfo);
-        return boundingRectsLength;
-    } else {
-        napi_value errorCode;
-        napi_create_int32(env, errCode, &errorCode);
-        return errorCode;
-    }
-}
-```
 
 ## 监听屏幕状态变化
 
@@ -187,61 +120,10 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 
     <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
  
- ``` C++
- static napi_value IsFoldable(napi_env env, napi_callback_info info)
- {
-     bool isFoldDevice = OH_NativeDisplayManager_IsFoldable();
-     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "IsFoldable isFoldDevice =%{public}d.", isFoldDevice);
-     napi_value isFold;
-     napi_get_boolean(env, isFoldDevice, &isFold);
-     return isFold;
- }
- ```
 
 2. 可以通过OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener注册屏幕展开/折叠状态变化的监听。 通过OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener接口取消屏幕展开/折叠状态变化的监听。
 
     <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "displayMode=%{public}d.", displayMode);
-}
-
-static napi_value RegisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-{
-    uint32_t listenerIndex = 0;
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
-        FoldDisplayModeChangeCallback, &listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d errCode=%{public}d.",
-        listenerIndex, errCode);
-    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-        napi_value registerIndex;
-        napi_create_int32(env, listenerIndex, &registerIndex);
-        return registerIndex;
-    } else {
-        napi_value errorCode;
-        napi_create_int32(env, errCode, &errorCode);
-        return errorCode;
-    }
-}
-
-static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = { nullptr };
-    uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_get_value_uint32(env, args[0], &listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d.", listenerIndex);
-    NativeDisplayManager_ErrorCode errCode =
-        OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "errorCode=%{public}d", errCode);
-    napi_value errorCode;
-    napi_create_int32(env, errCode, &errorCode);
-    return errorCode;
-}
-```
 
 ## 注册函数
 

@@ -64,66 +64,13 @@ try {
 
     <!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-  // 获取屏幕Id
-  hilog.info(DOMAIN, 'DisplayTest', `The screen Id is ${displayClass.id}.`);
-  // 获取屏幕刷新率
-  hilog.info(DOMAIN, 'DisplayTest', `The screen is ${displayClass.refreshRate}.`);
-  // 获取屏幕宽度
-  hilog.info(DOMAIN, 'DisplayTest', `The screen width is ${displayClass.width}.`);
-  // 获取屏幕高度
-  hilog.info(DOMAIN, 'DisplayTest', `The screen height is ${displayClass.height}.`);
-  // ...
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 2. 还可以通过getCutoutInfo()获取挖孔屏、刘海屏、瀑布屏等不可用的屏幕区域信息，以在UI布局时更好地规避该区域。也可以通过getAvailableArea()获取当前设备屏幕的可用区域。
 
     <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-  displayClass.getCutoutInfo().then((cutoutInfo: display.CutoutInfo) => {
-    // 在有挖孔信息的时候进行处理
-    if (cutoutInfo.boundingRects.length > 0) {
-      hilog.info(DOMAIN, 'DisplayTest', `cutoutInfo boundingRects: ${JSON.stringify(cutoutInfo.boundingRects)}`);
-    } else {
-      hilog.info(DOMAIN, 'DisplayTest', 'There is no cutout info on the screen.');
-    }
-    // 处理瀑布屏的区域信息
-    hilog.info(DOMAIN, 'DisplayTest',
-      `cutoutInfo waterfallDisplayAreaRects: ${JSON.stringify(cutoutInfo.waterfallDisplayAreaRects)}`);
-  }).catch((err: BusinessError) => {
-    hilog.error(DOMAIN, 'DisplayTest',
-      `Failed to obtain the cutout info object. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
     <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-try {
-  hilog.info(DOMAIN, 'DisplayTest', `The screen is captured or not : ${display.isCaptured()}`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to get display isCaptured. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 
 ## 监听屏幕状态变化
 
@@ -131,80 +78,13 @@ try {
 
     <!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-/**
- * 注册监听的callback参数要采用对象传递.
- * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
- */
-let callback1: Callback<number> = (displayId: number) => {
-  hilog.info(DOMAIN, 'DisplayTest', `Listening enabled. displayId: ${displayId}`);
-};
-try {
-  // 此处以监听显示设备的增加为例
-  display.on('add', callback1);
-  hilog.info(DOMAIN, 'DisplayTest', `register add success`);
-
-  // 关闭单个callback监听
-  display.off('add', callback1);
-  hilog.info(DOMAIN, 'DisplayTest', `unregister add success`);
-  // 如果通过on注册多个callback，同时关闭所有callback监听
-  display.off('add');
-  hilog.info(DOMAIN, 'DisplayTest', `unregister all add success`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
 
     <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-let callback2: Callback<boolean> = (captureStatus: boolean) => {
-  // captureStatus为true表示显示设备开始截屏、投屏或录屏，false表示结束截屏、投屏或录屏
-  hilog.info(DOMAIN, 'DisplayTest', 'Listening capture status: ' + captureStatus);
-};
-
-try {
-  // 开启屏幕截屏、投屏、录屏状态变化的监听
-  display.on('captureStatusChange', callback2);
-  hilog.info(DOMAIN, 'DisplayTest', `register captureStatusChange success`);
-  // 关闭屏幕截屏、投屏、录屏状态变化的监听
-  display.off('captureStatusChange', callback2);
-  hilog.info(DOMAIN, 'DisplayTest', `unregister captureStatusChange success`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
     <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-/**
- * 注册监听的callback参数要采用对象传递.
- * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
- */
-let callback3: Callback<display.Rect> = (data: display.Rect) => {
-  hilog.info(DOMAIN, 'DisplayTest', 'Listening enabled. Data: ' + JSON.stringify(data));
-};
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-  // 开启当前屏幕可用区域变化的监听
-  displayClass.on('availableAreaChange', callback3);
-  hilog.info(DOMAIN, 'DisplayTest', `register availableAreaChange success`);
-  // 关闭当前屏幕可用区域变化的监听
-  displayClass.off('availableAreaChange', callback3);
-  hilog.info(DOMAIN, 'DisplayTest', `unregister availableAreaChange success`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
 
 ## 监听折叠设备状态变化
 
@@ -212,43 +92,6 @@ try {
 
     <!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-let isFoldableDevice: boolean = false;
-try {
-  isFoldableDevice = display.isFoldable();
-  // 打印此设备是否为折叠设备
-  hilog.info(DOMAIN, 'DisplayTest', `This device is foldable: ${isFoldableDevice}`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to get foldable message. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
     <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-/**
- * 注册监听的callback参数要采用对象传递.
- * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
- */
-let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
-  hilog.info(DOMAIN, 'DisplayTest', 'Listening enabled. Data: ' + JSON.stringify(data));
-};
-try {
-  display.on('foldStatusChange', callback);
-  // 如果通过on注册多个callback，同时关闭所有callback监听
-  hilog.info(DOMAIN, 'DisplayTest', `register foldStatusChange success`);
-
-  // 关闭单个callback监听
-  display.off('foldStatusChange', callback);
-  hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
-  // 关闭所有callback监听
-  display.off('foldStatusChange');
-  hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
