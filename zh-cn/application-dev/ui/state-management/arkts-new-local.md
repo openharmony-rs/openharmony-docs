@@ -35,41 +35,41 @@
 状态管理V1使用[\@State装饰器](arkts-state.md)定义组件中的基础状态变量，该状态变量常用来作为组件内部状态，在组件内使用。但由于\@State装饰器又能够从外部初始化，因此无法确保\@State装饰变量的初始值一定为组件内部定义的值。
 
 <!-- @[Local_V1_State_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalV1StateDecorator.ets) -->
-  
-  ``` TypeScript
-  class ComponentInfo {
-    public name: string;
-    public count: number;
-    public message: string;
-  
-    constructor(name: string, count: number, message: string) {
-      this.name = name;
-      this.count = count;
-      this.message = message;
+
+``` TypeScript
+class ComponentInfo {
+  public name: string;
+  public count: number;
+  public message: string;
+
+  constructor(name: string, count: number, message: string) {
+    this.name = name;
+    this.count = count;
+    this.message = message;
+  }
+}
+
+@Component
+struct Child {
+  @State componentInfo: ComponentInfo = new ComponentInfo('Child', 1, 'Hello World'); // 父组件传递的componentInfo会覆盖初始值
+
+  build() {
+    Column() {
+      Text(`componentInfo.message is ${this.componentInfo.message}`)
     }
   }
-  
-  @Component
-  struct Child {
-    @State componentInfo: ComponentInfo = new ComponentInfo('Child', 1, 'Hello World'); // 父组件传递的componentInfo会覆盖初始值
-  
-    build() {
-      Column() {
-        Text(`componentInfo.message is ${this.componentInfo.message}`)
-      }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Child({ componentInfo: new ComponentInfo('Unknown', 0, 'Error') })
     }
   }
-  
-  @Entry
-  @Component
-  struct Index {
-    build() {
-      Column() {
-        Child({ componentInfo: new ComponentInfo('Unknown', 0, 'Error') })
-      }
-    }
-  }
-  ```
+}
+```
 
 上述代码中，可以通过在初始化Child自定义组件时传入新的值来覆盖作为内部状态变量使用的componentInfo。但Child自定义组件并不能感知到componentInfo从外部进行了初始化，这不利于自定义组件内部状态的管理。因此推出\@Local装饰器表示组件的内部状态。
 
