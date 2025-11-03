@@ -137,6 +137,10 @@
       在"index.d.ts"文件中，定义ArkTS接口：
 
       <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+      
+      ``` TypeScript
+      export const testNullptr: () => void;
+      ```
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
