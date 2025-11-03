@@ -87,6 +87,34 @@
 
 - 通过[deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata)清除隐私模式下Web SQL当前使用的所有存储。
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('deleteAllData')
+          .onClick(() => {
+            try {
+              // deleteAllData参数表示删除所有隐私模式（true）或非隐私模式（false）下，内存中的web数据。
+              webview.WebStorage.deleteAllData(true);
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller, incognitoMode: true })
+          .databaseAccess(true)
+      }
+    }
+  }
+  ```
 
   加载的html文件。
    ```html
