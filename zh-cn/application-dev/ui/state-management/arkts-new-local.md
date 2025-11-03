@@ -175,37 +175,37 @@ struct Index {
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
 <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local numArr: number[] = [1, 2, 3, 4, 5]; // 使用@Local装饰一维数组变量
-    @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]]; // 使用@Local装饰二维数组变量
-  
-    build() {
-      Column() {
-        Text(`${this.numArr[0]}`)
-        Text(`${this.numArr[1]}`)
-        Text(`${this.numArr[2]}`)
-        Text(`${this.dimensionTwo[0][0]}`)
-        Text(`${this.dimensionTwo[1][1]}`)
-        Button('change array item') // 按钮1：修改数组中的特定元素
-          .onClick(() => {
-            this.numArr[0]++;
-            this.numArr[1] += 2;
-            this.dimensionTwo[0][0] = 0;
-            this.dimensionTwo[1][1] = 0;
-          })
-        Button('change whole array') // 按钮2：替换整个数组
-          .onClick(() => {
-            this.numArr = [5, 4, 3, 2, 1];
-            this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
-          })
-      }
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local numArr: number[] = [1, 2, 3, 4, 5]; // 使用@Local装饰一维数组变量
+  @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]]; // 使用@Local装饰二维数组变量
+
+  build() {
+    Column() {
+      Text(`${this.numArr[0]}`)
+      Text(`${this.numArr[1]}`)
+      Text(`${this.numArr[2]}`)
+      Text(`${this.dimensionTwo[0][0]}`)
+      Text(`${this.dimensionTwo[1][1]}`)
+      Button('change array item') // 按钮1：修改数组中的特定元素
+        .onClick(() => {
+          this.numArr[0]++;
+          this.numArr[1] += 2;
+          this.dimensionTwo[0][0] = 0;
+          this.dimensionTwo[1][1] = 0;
+        })
+      Button('change whole array') // 按钮2：替换整个数组
+        .onClick(() => {
+          this.numArr = [5, 4, 3, 2, 1];
+          this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
+        })
     }
   }
-  ```
+}
+```
 
 - 当装饰的变量是嵌套类或对象数组时，\@Local无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
 
