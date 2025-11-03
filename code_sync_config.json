@@ -9042,5 +9042,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-file-upload.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"web_file_upload",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-nested-scrolling.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"nested_scrolling",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
