@@ -88,7 +88,7 @@
 
 ![pixelMap](figures/pixelMap.png)
 
-**约束限制：**
+**约束限制：** 
 
 * 对于容器组件，如果内部内容通过position、offset等接口使得绘制区域超出了容器组件范围，则系统截图无法截取到范围之外的内容。此种情况下，如果一定要浮起，即拖拽背板能够包含范围之外的内容，则可考虑通过扩大容器范围或自定义方式实现。
 * 不论是使用自定义builder或是系统默认截图方式，截图都暂时无法应用[scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate)等图形变换效果。
@@ -103,340 +103,54 @@
 
    设置draggable属性为true，并配置onDragStart回调函数。在回调函数中，可通过UDMF（用户数据管理框架）设置拖拽的数据，并返回自定义的拖拽背景图像。
 
-    ```ts
-    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-
-    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-    Image($r('app.media.app_icon'))
-        .width(100)
-        .height(100)
-        .draggable(true)
-        .onDragStart((event) => {
-            let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-            // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
-            data.imageUri = 'resources/base/media/app_icon.png';
-            let unifiedData = new unifiedDataChannel.UnifiedData(data);
-            event.setData(unifiedData);
-
-            let dragItemInfo: DragItemInfo = {
-            pixelMap: this.pixmap,
-            extraInfo: "this is extraInfo",
-            };
-            // onDragStart回调函数中返回自定义拖拽背板图
-            return dragItemInfo;
-        })
-    ```
+    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
 
-    ```ts
-    .parallelGesture(LongPressGesture().onAction(() => {
-       this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
-    }))
-    ```
+    <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
 2. 自定义拖拽背板图。
    
    可以通过在长按50ms时触发的回调中设置[onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)回调函数，来提前准备自定义拖拽背板图的pixmap。
    
-    ```ts
-    .onPreDrag((status: PreDragStatus) => {
-        if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-            this.getComponentSnapshot();
-        }
-    })
-    ```
+    <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    pixmap的生成可以调用[this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)来实现。
 
-      ```ts
-      @Builder
-      pixelMapBuilder() {
-          Column() {
-            Image($r('app.media.startIcon'))
-              .width(100)
-              .height(100)
-          }
-        }
-        private getComponentSnapshot(): void {
-        this.getUIContext().getComponentSnapshot().createFromBuilder(()=>{this.pixelMapBuilder()},
-        (error: Error, pixmap: image.PixelMap) => {
-            if(error){
-              console.error("error: " + JSON.stringify(error))
-              return;
-            }
-            this.pixmap = pixmap;
-        })
-      }
-      ```
+      <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
 3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
 
-    ```ts
-    import { UIAbility } from '@kit.AbilityKit';
-    import { window, UIContext } from '@kit.ArkUI';
-
-    export default class EntryAbility extends UIAbility {
-      onWindowStageCreate(windowStage: window.WindowStage): void {
-        windowStage.loadContent('pages/Index', (err, data) => {
-          if (err.code) {
-            return;
-          }
-          windowStage.getMainWindow((err, data) => {
-            if (err.code) {
-              return;
-            }
-            let windowClass: window.Window = data;
-            let uiContext: UIContext = windowClass.getUIContext();
-            uiContext.getDragController().setDragEventStrictReportingEnabled(true);
-          });
-        });
-      }
-    }
-    ```
+    <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 4. 拖拽过程显示角标样式。
 
    通过设置[allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)来定义接收的数据类型，这将影响角标显示。当拖拽的数据符合定义的允许落入的数据类型时，角标会显示加号。当拖拽的数据类型不在允许范围内时，可强制设置为显示禁用角标。若未设置allowDrop，则角标不会显示加号。以下代码示例表示仅接收UnifiedData中定义的HYPERLINK和PLAIN\_TEXT类型数据，其他类型数据将被禁止落入。
 
-    ```ts
-    .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK, uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-    ```
+    <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
    在实现onDrop回调的情况下，还可以在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
-    ```ts
-    .onDragMove((event) => {
-        event.setResult(DragResult.DROP_ENABLED);
-        event.dragBehavior = DragBehavior.COPY;
-    })
-    ```
+    <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
 5. 拖拽数据的接收。
 
    需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显示设置拖拽结果。
 
-    ```ts
-    .onDrop((dragEvent?: DragEvent) => {
-        // 获取拖拽数据
-        this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-        let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-        let rect: Rectangle = event.getPreviewRect();
-        this.imageWidth = Number(rect.width);
-        this.imageHeight = Number(rect.height);
-        this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-        this.imgState = Visibility.None;
-        // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-        event.setResult(DragResult.DRAG_SUCCESSFUL);
-    })
-    ```
+    <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+
 
    数据的传递是通过UDMF实现的，在数据较大时可能存在时延，因此在首次获取数据失败时建议加1500ms的延迟重试机制。
 
-    ```ts
-    getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-       try {
-         let data: UnifiedData = event.getData();
-         if (!data) {
-           return false;
-         }
-         let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-         if (!records || records.length <= 0) {
-           return false;
-         }
-         callback(event);
-         return true;
-       } catch (e) {
-         console.error("getData failed, code: " + (e as BusinessError).code + ", message: " + (e as BusinessError).message);
-         return false;
-       }
-    }
-
-    getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-      if (this.getDataFromUdmfRetry(event, callback)) {
-        return;
-      }
-      setTimeout(() => {
-        this.getDataFromUdmfRetry(event, callback);
-      }, 1500);
-    }
-    ```
+    <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
 6. 拖拽发起方可以通过设置onDragEnd回调感知拖拽结果。
 
-    ```ts
-    import { promptAction } from '@kit.ArkUI';
-
-    .onDragEnd((event) => {
-        // onDragEnd里取到的result值在接收方onDrop设置
-      if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-        this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-      } else if (event.getResult() === DragResult.DRAG_FAILED) {
-        this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-      }
-    })
-    ```
+    <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 
 **完整示例：**
 
-```ts
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-
-@Entry
-@Component
-struct Index {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  @State pixmap: image.PixelMap|undefined = undefined
-
-  @Builder
-  pixelMapBuilder() {
-    Column() {
-      // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-      Image($r('app.media.app_icon'))
-        .width(100)
-        .height(100)
-    }
-  }
-
-  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-    try {
-      let data: UnifiedData = event.getData();
-      if (!data) {
-        return false;
-      }
-      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-      if (!records || records.length <= 0) {
-        return false;
-      }
-      callback(event);
-      return true;
-    } catch (e) {
-      console.error("getData failed, code: " + (e as BusinessError).code + ", message: " + (e as BusinessError).message);
-      return false;
-    }
-  }
-  // 获取UDMF数据，首次获取失败后添加1500ms延迟重试机制
-  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-    if (this.getDataFromUdmfRetry(event, callback)) {
-      return;
-    }
-    setTimeout(() => {
-      this.getDataFromUdmfRetry(event, callback);
-    }, 1500);
-  }
-  // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-  private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(()=>{this.pixelMapBuilder()},
-      (error: Error, pixmap: image.PixelMap) => {
-        if(error){
-          console.error("error: " + JSON.stringify(error))
-          return;
-        }
-        this.pixmap = pixmap;
-      })
-  }
-  // 长按50ms时提前准备自定义截图的pixmap
-  private PreDragChange(preDragStatus: PreDragStatus): void {
-    if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-      this.getComponentSnapshot();
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .visibility(this.imgState)
-            // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction(() => {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
-              data.imageUri = 'resources/base/media/app_icon.png';
-              let unifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
-
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: "this is extraInfo",
-              };
-              return dragItemInfo;
-            })
-              // 提前准备拖拽自定义背板图
-            .onPreDrag((status: PreDragStatus) => {
-              this.PreDragChange(status);
-            })
-            .onDragEnd((event) => {
-              // onDragEnd里取到的result值在接收方onDrop设置
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
-
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })
-            // 控制角标显示类型为COPY，即显示角标
-            .onDragMove((event) => {
-              event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.COPY
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // 获取拖拽数据
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = Number(rect.width);
-                this.imageHeight = Number(rect.height);
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              })
-            })
-        }
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-
-```
+<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
 ![commonDrag](figures/commonDrag.gif)
 
 ### 多选拖拽适配
