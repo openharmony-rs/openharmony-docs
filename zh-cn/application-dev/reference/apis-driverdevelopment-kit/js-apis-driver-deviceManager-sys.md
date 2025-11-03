@@ -35,7 +35,7 @@ queryDeviceInfo(deviceId?: longr): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 |----------|--------|-----|------------------------|
 | deviceId | long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
 
-**参数：**
+**返回值：**
 
 | 类型                                                     | 说明          |
 |--------------------------------------------------------|-------------|
@@ -89,7 +89,7 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 |-----------|--------|-----|----------------------------|
 | driverUid | string | 否   | 驱动UID，通过queryDeviceInfo获得。 |
 
-**参数：**
+**返回值：**
 
 | 类型                                                     | 说明            |
 |--------------------------------------------------------|---------------|
