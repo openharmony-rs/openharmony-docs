@@ -186,6 +186,17 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 1. 可以通过OH_NativeDisplayManager_IsFoldable接口查询设备是不是折叠设备。
 
     <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value IsFoldable(napi_env env, napi_callback_info info)
+    {
+        bool isFoldDevice = OH_NativeDisplayManager_IsFoldable();
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "IsFoldable isFoldDevice =%{public}d.", isFoldDevice);
+        napi_value isFold;
+        napi_get_boolean(env, isFoldDevice, &isFold);
+        return isFold;
+    }
+    ```
  
 
 2. 可以通过OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener注册屏幕展开/折叠状态变化的监听。 通过OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener接口取消屏幕展开/折叠状态变化的监听。
