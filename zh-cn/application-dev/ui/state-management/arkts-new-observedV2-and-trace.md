@@ -869,6 +869,49 @@ struct SetSample {
 
 <!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public selectedDate: Date = new Date('2021-08-08');
+}
+
+@Entry
+@ComponentV2
+struct DateSample {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('set selectedDate to 2023-07-08')
+        .margin(10)
+        .onClick(() => {
+          this.info.selectedDate = new Date('2023-07-08');
+        })
+      Button('increase the year by 1')
+        .margin(10)
+        .onClick(() => {
+          this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .margin(10)
+        .onClick(() => {
+          this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .margin(10)
+        .onClick(() => {
+          this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.info.selectedDate
+      })
+    }.width('100%')
+  }
+}
+```
+
 ## 常见问题
 
 ### router传递的@ObservedV2类型显示异常
