@@ -53,6 +53,26 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 1. 可以通过OH_NativeDisplayManager_GetDefaultDisplayRotation获取默认屏幕的旋转角度。
 
     <!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
+    {
+        NativeDisplayManager_Rotation displayRotation;
+        NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDefaultDisplayRotation(&displayRotation);
+        if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+            napi_value rotation;
+            napi_create_int32(env, displayRotation, &rotation);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "rotation=%{public}d", displayRotation);
+            return rotation;
+        } else {
+            napi_value errorCode;
+            napi_create_int32(env, errCode, &errorCode);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "GetDefaultDisplayRotation errCode=%{public}d", errCode);
+            return errorCode;
+        }
+    }
+    ```
 
 2. 可以通过OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。 可通过OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo销毁挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
