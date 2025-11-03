@@ -599,7 +599,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-通过跳转到日程创建页面创建单个日程，入参Event不填日程id，使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用才可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用才可以修改。
+通过跳转到日程创建页面创建单个日程，入参Event不填日程id，使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用才能查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用才能修改。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
