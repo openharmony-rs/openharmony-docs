@@ -278,6 +278,69 @@
 3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    
+    ``` TypeScript
+    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    const TAG: string = '[MainPage]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct MainPage {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
+      build() {
+        Column() {
+          List({ initialIndex: 0, space: 8 }) {
+    
+            // ···
+    
+            ListItem() {
+              Row() {
+                // ···
+              }
+              .onClick(() => {
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+                const RESULT_CODE: number = 1001;
+                let want: Want = {
+                  deviceId: '', // deviceId为空表示本设备
+                  bundleName: 'com.samples.uiabilityinteraction',
+                  moduleName: 'entry', // moduleName非必选
+                  abilityName: 'FuncAbilityA',
+                  parameters: {
+                    // 自定义信息
+                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
+                  }
+                };
+                context.startAbilityForResult(want).then((data) => {
+                  if (data?.resultCode === RESULT_CODE) {
+                    // 解析被调用方UIAbility返回的信息
+                    let info = data.want?.parameters?.info;
+                    hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(info) ?? '');
+                    if (info !== null) {
+                      this.getUIContext().getPromptAction().showToast({
+                        message: JSON.stringify(info)
+                      });
+                    }
+                  }
+                  hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(data.resultCode) ?? '');
+                }).catch((err: BusinessError) => {
+                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability for result. Code is ${err.code}, message is ${err.message}`);
+                });
+              })
+            }
+    
+            // ···
+          }
+        // ···
+        }
+        // ···
+      }
+    }
+    ```
 
 
 ## 启动UIAbility的指定页面
