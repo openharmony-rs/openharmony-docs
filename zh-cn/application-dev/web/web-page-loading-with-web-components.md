@@ -164,6 +164,27 @@ struct WebComponent {
    <!-- -->
    
    <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   import { GlobalContext } from './GlobalContext';
+   
+   let url = 'file://' + GlobalContext.getContext().getObject('filesDir') + '/index.html';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         Text('loading success');
+         // 加载沙箱路径文件。
+         Web({ src: url, controller: this.controller });
+       }
+     }
+   }
+   ```
 
 2. 修改`EntryAbility.ets`文件。
 
