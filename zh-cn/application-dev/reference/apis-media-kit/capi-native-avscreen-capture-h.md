@@ -283,7 +283,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBuffer](ccapi-avscreencapture-avscreencapture-oh-nativebuffer.md)* | 执行成功返回OH_NativeBuffer对象，通过OH_NativeBuffer对象相关接口可以获取到视频buffer和分辨率等信息参数。 |
+| [OH_NativeBuffer](capi-avscreencapture-avscreencapture-oh-nativebuffer.md)* | 执行成功返回OH_NativeBuffer对象，通过OH_NativeBuffer对象相关接口可以获取到视频buffer和分辨率等信息参数。 |
 
 ### OH_AVScreenCapture_ReleaseAudioBuffer()
 
