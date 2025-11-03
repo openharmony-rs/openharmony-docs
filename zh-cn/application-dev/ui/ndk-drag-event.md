@@ -248,6 +248,72 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用<database/udmf/udmf_meta.h>头文件，获取[udmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
+   
+   ``` C
+   void GetDragData(ArkUI_DragEvent* dragEvent)
+   {
+       // 获取UDMF data
+       int returnValue;
+       // 创建OH_UdmfData对象
+       OH_UdmfData *data = OH_UdmfData_Create();
+       returnValue = OH_ArkUI_DragEvent_GetUdmfData(dragEvent, data);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragEvent_GetUdmfData returnValue = %{public}d", returnValue);
+       // 判断OH_UdmfData是否有对应的类型
+       bool resultUdmf = OH_UdmfData_HasType(data, UDMF_META_GENERAL_FILE);
+       if (resultUdmf) {
+           // 获取OH_UdmfData的记录
+           unsigned int recordsCount = 0;
+           OH_UdmfRecord **records = OH_UdmfData_GetRecords(data, &recordsCount);
+           // 获取records中的元素
+           int returnStatus;
+           for (int i = 0; i < recordsCount; i++) {
+               // 从OH_UdmfRecord中获取文件类型数据
+               OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
+               returnStatus = OH_UdmfRecord_GetFileUri(records[i], imageValue);
+               const char *fileUri = OH_UdsFileUri_GetFileUri(imageValue);
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   "dragTest OH_UdmfRecord_GetPlainText "
+                   "returnStatus= %{public}d "
+                   "fileUri= %{public}s",
+                   returnStatus, fileUri);
+               // 使用结束后销毁指针
+               OH_UdsFileUri_Destroy(imageValue);
+           }
+           if (recordsCount != 0) {
+               OH_ArkUI_DragEvent_SetDragResult(dragEvent, ARKUI_DRAG_RESULT_SUCCESSFUL);
+               ArkUI_DropOperation option;
+               OH_ArkUI_DragEvent_GetDropOperation(dragEvent, &option);
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   "OH_ArkUI_DragEvent_GetDropOperation returnValue = %{public}d", option);
+           }
+       } else {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               "OH_UdmfData_HasType not contain UDMF_META_GENERAL_FILE");
+       }
+       int32_t count;
+       OH_ArkUI_DragEvent_GetDataTypeCount(dragEvent, &count);
+       if (count <= 0 || count >= MAX_LENGTH) {
+           return;
+       }
+       char **eventTypeArray = new char *[count];
+       for (int i = 0; i < count; i++) {
+           eventTypeArray[i] = new char[MAX_LENGTH];
+       }
+       OH_ArkUI_DragEvent_GetDataTypes(dragEvent, eventTypeArray, count, MAX_LENGTH);
+       for (int i = 0; i < count; i++) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               "OH_ArkUI_DragEvent_GetDataTypes returnValue = %{public}s", eventTypeArray[i]);
+       }
+   }
+   // ···
+               case NODE_ON_DROP: {
+                   OH_ArkUI_DragEvent_SetSuggestedDropOperation(dragEvent, ARKUI_DROP_OPERATION_COPY);
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DROP EventReceiver");
+                   GetDragData(dragEvent);
+                   break;
+               }
+   ```
 
 ## DragAction主动发起拖拽
 
