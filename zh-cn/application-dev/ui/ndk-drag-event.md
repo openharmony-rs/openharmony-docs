@@ -515,6 +515,60 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    ```
    <!-- @[prepare_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
+   
+   ``` C
+   void SetPixelMap(std::vector<OH_PixelmapNative *> &pixelVector)
+   {
+       uint8_t data[960000];
+       size_t dataSize = 960000;
+       for (int i = 0; i < dataSize; i++) {
+           data[i] = i + 1;
+       }
+       // 创建参数结构体实例，并设置参数
+       OH_Pixelmap_InitializationOptions *createOpts;
+       OH_PixelmapInitializationOptions_Create(&createOpts);
+       OH_PixelmapInitializationOptions_SetWidth(createOpts, SIZE_200);
+       OH_PixelmapInitializationOptions_SetHeight(createOpts, SIZE_300);
+       OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
+       OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+       // 创建Pixelmap实例
+       OH_PixelmapNative *pixelmap = nullptr;
+       OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmap);
+       OH_PixelmapNative_Flip(pixelmap, true, true);
+       pixelVector.push_back(pixelmap);
+       int returnValue = OH_ArkUI_DragAction_SetPixelMaps(action, pixelVector.data(), pixelVector.size());
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetPixelMaps returnValue = %{public}d", returnValue);
+   }
+   
+   void SetDragPreviewOption()
+   {
+       auto *previewOptions1 = OH_ArkUI_CreateDragPreviewOption();
+       OH_ArkUI_DragPreviewOption_SetScaleMode(previewOptions1,
+           ArkUI_DragPreviewScaleMode::ARKUI_DRAG_PREVIEW_SCALE_DISABLED);
+       OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(previewOptions1, true);
+       OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(previewOptions1, true);
+       int returnValue = OH_ArkUI_DragAction_SetDragPreviewOption(action, previewOptions1);
+       OH_ArkUI_DragPreviewOption_Dispose(previewOptions1);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetDragPreviewOption returnValue = %{public}d", returnValue);
+   }
+   
+   void PrintDragActionInfos()
+   {
+       // 设置pointerId
+       int returnValue = OH_ArkUI_DragAction_SetPointerId(action, 0);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetPointerId returnValue = %{public}d", returnValue);
+       // 设置touchPoint
+       returnValue = OH_ArkUI_DragAction_SetTouchPointX(action, POINT_POS);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetTouchPointX returnValue = %{public}d", returnValue);
+       returnValue = OH_ArkUI_DragAction_SetTouchPointY(action, POINT_POS);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetTouchPointY returnValue = %{public}d", returnValue);
+   }
+   ```
 4. 处理NODE_ON_DROP事件。
 
    在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作。通常情况下，需要从DragEvent中获取拖拽过程中传递的数据，DragAction中的拖拽数据也需要通过DragEvent获取。
