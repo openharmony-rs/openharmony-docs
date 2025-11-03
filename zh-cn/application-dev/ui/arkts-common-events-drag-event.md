@@ -267,6 +267,17 @@
 6. 拖拽发起方可以通过设置onDragEnd回调感知拖拽结果。
 
     <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+    
+    ``` TypeScript
+    .onDragEnd((event) => {
+      // onDragEnd里取到的result值在接收方onDrop设置
+      if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+        this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+      } else if (event.getResult() === DragResult.DRAG_FAILED) {
+        this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+      }
+    })
+    ```
 
 **完整示例：**
 
