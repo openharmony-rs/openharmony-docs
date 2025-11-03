@@ -43,69 +43,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 
 当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)，可由该参数获得当前按键事件的按键行为（[KeyType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keytype)）、键码（[keyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
 
-
 <!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-export struct OnKey {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    // ···
-        Column() {
-          Button('onKeyEvent')
-            .defaultFocus(true)
-            .width(140).height(70)
-            .onKeyEvent((event?: KeyEvent) => { // 给Button设置onKeyEvent事件
-              if(event){
-                if (event.type === KeyType.Down) {
-                  this.buttonType = 'Down';
-                }
-                if (event.type === KeyType.Up) {
-                  this.buttonType = 'Up';
-                }
-                this.buttonText = 'Button: \n' +
-                  'KeyType:' + this.buttonType + '\n' +
-                  'KeyCode:' + event.keyCode + '\n' +
-                  'KeyText:' + event.keyText;
-              }
-            })
-
-          Divider()
-          Text(this.buttonText).fontColor(Color.Green)
-
-          Divider()
-          Text(this.columnText).fontColor(Color.Red)
-        }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-        .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-          if(event){
-            if (event.type === KeyType.Down) {
-              this.columnType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.columnType = 'Up';
-            }
-            this.columnText = 'Column: \n' +
-              'KeyType:' + this.buttonType + '\n' +
-              'KeyCode:' + event.keyCode + '\n' +
-              'KeyText:' + event.keyText;
-          }
-        })
-
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
-    // ···
-  }
-}
-```
-
 
 上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[焦点事件](arkts-common-events-focus-event.md)。
 
@@ -123,68 +61,7 @@ export struct OnKey {
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
 
-
 <!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-export struct OnKeyPreventBubble {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    // ···
-    Column() {
-      Button('onKeyEvent')
-        .defaultFocus(true)
-        .width(140).height(70)
-        .onKeyEvent((event?: KeyEvent) => {
-          // 通过stopPropagation阻止事件冒泡
-          if(event){
-            if(event.stopPropagation){
-              event.stopPropagation();
-            }
-            if (event.type === KeyType.Down) {
-              this.buttonType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.buttonType = 'Up';
-            }
-            this.buttonText = 'Button: \n' +
-              'KeyType:' + this.buttonType + '\n' +
-              'KeyCode:' + event.keyCode + '\n' +
-              'KeyText:' + event.keyText;
-          }
-        })
-
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if(event){
-        if (event.type === KeyType.Down) {
-          this.columnType = 'Down';
-        }
-        if (event.type === KeyType.Up) {
-          this.columnType = 'Up';
-        }
-        this.columnText = 'Column: \n' +
-          'KeyType:' + this.columnType + '\n' +
-          'KeyCode:' + event.keyCode + '\n' +
-          'KeyText:' + event.keyText;
-      }
-    })
-        // ···
-  }
-}
-```
-
 
 ![zh-cn_image_0000001511900508](figures/zh-cn_image_0000001511900508.gif)
 
@@ -192,125 +69,13 @@ export struct OnKeyPreventBubble {
 
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
 
-``` TypeScript
-import { KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-export struct PreIme {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    // ···
-        Column() {
-          Search({
-            placeholder: 'Search...'
-          })
-            .width('80%')
-            .height('40vp')
-            .border({ radius:'20vp' })
-            .onKeyPreIme((event:KeyEvent) => {
-              if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
-                return true;
-              }
-              return false;
-            })
-        }
-      }
-    // ···
-  }
-}
-```
-
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
 <!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-export struct OnKeyDistributeEvent {
-  build() {
-    // ···
-        Row() {
-          Row() {
-            Button('button1').id('button1').onKeyEvent((event) => {
-              hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
-              return true
-            })
-            Button('button2').id('button2').onKeyEvent((event) => {
-              hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
-              return true
-            })
-          }
-          .width('100%')
-          .height('100%')
-          .id('Row1')
-          .onKeyEventDispatch((event) => {
-            let context = this.getUIContext();
-            context.getFocusController().requestFocus('button1');
-            return context.dispatchKeyEvent('button1', event);
-          })
-
-        }
-        .height('100%')
-        .width('100%')
-        .onKeyEventDispatch((event) => {
-          if (event.type == KeyType.Down) {
-            let context = this.getUIContext();
-            context.getFocusController().requestFocus('Row1');
-            return context.dispatchKeyEvent('Row1', event);
-          }
-          return true;
-        })
-        // ···
-  }
-}
-```
-
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-export struct OnKeyPreImeCommit {
-  @State content: string = '';
-  @State text: string = '';
-  controller: TextAreaController = new TextAreaController();
-
-  build() {
-    // ···
-        Column() {
-          Text('Submissions: ' + this.content)
-          TextArea({ controller: this.controller, text: this.text })
-            .onKeyPreIme((event: KeyEvent) => {
-              hilog.info(DOMAIN, TAG, BUNDLE + JSON.stringify(event));
-              if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
-                const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
-                if (hasCtrl) {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
-                } else {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'Submissions：' + this.text);
-                  this.content = this.text;
-                  this.text = '';
-                  event.stopPropagation();
-                }
-                return true;
-              }
-              return false;
-            })
-            .onChange((value: string) => {
-              this.text = value
-            })
-        }
-        // ···
-  }
-}
-```
 
 ![onKeyPreIme1](figures/onKeyPreIme1.png)
 
