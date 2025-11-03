@@ -8432,5 +8432,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-component-migrate.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"create_main_window",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"web_module_dynamic_attach_detach",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-docking-softkeyboard.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"soft_keyboard_entryability",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"soft_keyboard_index",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"soft_keyboard_setmode",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
