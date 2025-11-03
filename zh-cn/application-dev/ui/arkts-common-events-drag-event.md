@@ -282,6 +282,156 @@
 **完整示例：**
 
 <!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+
+``` TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+// ···
+    }
+  }
+
+  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+    try {
+      let data: UnifiedData = event.getData();
+      if (!data) {
+        return false;
+      }
+      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+      if (!records || records.length <= 0) {
+        return false;
+      }
+      callback(event);
+      return true;
+    } catch (e) {
+      console.error('getData failed, code: ' + (e as BusinessError).code + ', message: ' +
+        (e as BusinessError).message);
+      return false;
+    }
+  }
+
+  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+    if (this.getDataFromUdmfRetry(event, callback)) {
+      return;
+    }
+    setTimeout(() => {
+      this.getDataFromUdmfRetry(event, callback);
+    }, 1500);
+  }
+
+
+  // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+  private getComponentSnapshot(): void {
+    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+      this.pixelMapBuilder()
+    },
+      (error: Error, pixmap: image.PixelMap) => {
+        if (error) {
+          console.error('error: ' + JSON.stringify(error))
+          return;
+        }
+        this.pixmap = pixmap;
+      })
+  }
+
+
+  // 长按50ms时提前准备自定义截图的pixmap
+  private PreDragChange(preDragStatus: PreDragStatus): void {
+    if(preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+    this.getComponentSnapshot();
+  }
+}
+
+build() {
+// ···
+      Row() {
+        Column() {
+          Text('start Drag')
+            .fontSize(18)
+            .width('100%')
+            .height(40)
+            .margin(10)
+            .backgroundColor('#008888')
+          Row() {
+            Image($r('app.media.app_icon'))
+              .width(100)
+              .height(100)
+              .draggable(true)
+              .margin({ left: 15 })
+              .visibility(this.imgState)
+              // 绑定平行手势，可同时触发应用自定义长按手势
+              .parallelGesture(LongPressGesture().onAction(() => {
+                this.getUIContext()
+                  .getPromptAction()
+                  .showToast({ duration: 100, message: 'Long press gesture trigger' });
+              }))
+              .onDragStart((event) => {
+                let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                data.imageUri = 'common/pic/img.png';
+                let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                event.setData(unifiedData);
+
+                let dragItemInfo: DragItemInfo = {
+                  pixelMap: this.pixmap,
+                  extraInfo: 'this is extraInfo',
+                };
+                return dragItemInfo;
+              })
+              // 提前准备拖拽自定义背板图
+              .onPreDrag((status: PreDragStatus) => {
+                this.PreDragChange(status);
+              })
+              .onDragEnd((event) => {
+                // onDragEnd里取到的result值在接收方onDrop设置
+                if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                  this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                  this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                }
+              })
+          }
+
+          Text('Drag Target Area')
+            .fontSize(20)
+            .width('100%')
+            .height(40)
+            .margin(10)
+            .backgroundColor('#008888')
+          Row() {
+            Image(this.targetImage)
+              .width(this.imageWidth)
+              .height(this.imageHeight)
+              .draggable(true)
+              .margin({ left: 15 })
+              .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+              .onDragMove((event) => {
+                event.setResult(DragResult.DROP_ENABLED)
+                event.dragBehavior = DragBehavior.MOVE
+              })
+              .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+              uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+              .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+              .onDrop((dragEvent?: DragEvent) => {
+                // 获取拖拽数据
+                this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                  let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+                  let rect: Rectangle = event.getPreviewRect();
+                  this.imageWidth = Number(rect.width);
+                  this.imageHeight = Number(rect.height);
+                  this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                  this.imgState = Visibility.None;
+                  // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                  event.setResult(DragResult.DRAG_SUCCESSFUL);
+                })
+              })
+          }
+        }
+          .width('100%')
+          .height('100%')
+      }
+        .height('100%')
+    }
+    // ···
+}
+```
 ![commonDrag](figures/commonDrag.gif)
 
 ### 多选拖拽适配
