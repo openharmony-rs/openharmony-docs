@@ -694,6 +694,49 @@ export class PixelUtils {
 
 <!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { display } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export class PixelUtils {
+  public static uiContext: UIContext | undefined;
+
+  static setUIContext(uiContext: UIContext): void {
+    PixelUtils.uiContext = uiContext;
+  }
+
+  static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      let displayClass = display.getDefaultDisplaySync();
+      let density = displayClass.densityPixels;
+      return vpValue * density;
+    }
+    return _uiContext.vp2px(vpValue)
+  }
+
+  static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+      return undefined;
+    }
+    return _uiContext.fp2px(fpValue)
+  }
+
+  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtils.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+      return undefined;
+    }
+    return _uiContext.lpx2px(lpxValue)
+  }
+}
+```
+
 ### 获取Ability的Context
 
 [getContext](../reference/apis-arkui/js-apis-getContext.md)接口用于在UI页面中获取对应UI实例所属Ability的Context，因此依赖于UI实例。
