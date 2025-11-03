@@ -815,7 +815,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            inputDevice.getKeyboardType(1).then((type: Number) => {
+            inputDevice.getKeyboardType(1).then((type: number) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {

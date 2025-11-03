@@ -705,7 +705,7 @@ Defines the type of data to return for a subscription to data changes of the hea
 
 | Name   | Type                                   | Mandatory| Description                                           |
 | ------- | --------------------------------------- | ---- | ----------------------------------------------- |
-| success | [HeartRateResponse](#heartrateresponse) | Yes  | Callback invoked when the heart rate sensor data changes. This callback is invoked every five seconds.|
+| success | [HeartRateResponse](#heartrateresponse) | Yes  | Callback invoked when the heart rate sensor data changes. This callback is invoked every 5 seconds.|
 | fail    | Function                                | No  | Callback invoked when an API call fails.                       |
 
 ## HeartRateResponse 
@@ -722,34 +722,34 @@ Defines a **HeartRateResponse** object.
 
 ## SubscribeOnBodyStateOptions
 
-Defines the callback invoked upon change in the wearing state of the device that accommodates the sensor.
+Defines the callback invoked upon change in the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name   | Type                                       | Mandatory| Description                      |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
-| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when obtaining the wearing state change of the device that accommodates the sensor.|
+| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when the wearing state of the device that houses the sensor is successfully obtained.|
 | fail    | Function                                    | No  | Callback invoked when an API call fails.  |
 
 ## OnBodyStateResponse 
 
-Whether the device where the sensor is located is worn.
+Specifies whether the device that houses the sensor is worn.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name | Type   | Mandatory| Description                                              |
 | ----- | ------- | ---- | -------------------------------------------------- |
-| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value true indicates that the device is worn, and the value **false** indicates the opposite.|
+| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value **true** indicates that the device is worn, and the value **false** indicates the opposite.|
 
 ## GetOnBodyStateOptions
 
- Defines the callback for obtaining the wearing state of the device that accommodates the sensor.
+ Defines the callback for obtaining the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name    | Type                                       | Mandatory| Description                    |
 | -------- | ------------------------------------------- | ---- | ------------------------ |
-| success  | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback upon a successful API call.|
+| success  | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when an API call succeeds.|
 | fail     | Function                                    | No  | Callback invoked when an API call fails.|
 | complete | Function                                    | No  | Callback invoked when the API call is complete.|
 
