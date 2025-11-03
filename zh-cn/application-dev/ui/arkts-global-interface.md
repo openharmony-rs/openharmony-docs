@@ -872,6 +872,11 @@ struct Index {
 
 <!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+let context = ContextUtils.getContext();
+hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
+```
+
 ### LocalStorage替换为UIContext的接口
 
 LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用[getShared](../reference/apis-arkui/arkui-ts/ts-state-management.md#getshareddeprecated)向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将[EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10)的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
