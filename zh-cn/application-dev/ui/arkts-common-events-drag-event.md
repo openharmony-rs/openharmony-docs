@@ -212,6 +212,22 @@
    需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显示设置拖拽结果。
 
     <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+    
+    ``` TypeScript
+    .onDrop((dragEvent?: DragEvent) => {
+      // 获取拖拽数据
+      this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+        let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+        let rect: Rectangle = event.getPreviewRect();
+        this.imageWidth = Number(rect.width);
+        this.imageHeight = Number(rect.height);
+        this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+        this.imgState = Visibility.None;
+        // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+        event.setResult(DragResult.DRAG_SUCCESSFUL);
+      })
+    })
+    ```
 
 
    数据的传递是通过UDMF实现的，在数据较大时可能存在时延，因此在首次获取数据失败时建议加1500ms的延迟重试机制。
