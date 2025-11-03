@@ -336,3 +336,15 @@ HiAppEvent eventInfo.params.log_over_limit=0
 2. 销毁事件观察者。
 
     <!-- @[Sys_Crash_Event_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value DestroyWatcherCrash(napi_env env, napi_callback_info info)
+    {
+        // 销毁创建的观察者，并置eventWatcher为nullptr。
+        OH_HiAppEvent_DestroyWatcher(systemEventWatcherR);
+        OH_HiAppEvent_DestroyWatcher(systemEventWatcherT);
+        systemEventWatcherR = nullptr;
+        systemEventWatcherT = nullptr;
+        return {};
+    }
+    ```
