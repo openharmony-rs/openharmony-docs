@@ -390,6 +390,78 @@ export struct TextPickerCNDialogExample {
 
 <!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct showActionSheetExample {
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showActionSheet')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showActionSheet({
+                title: 'ActionSheet title',
+                message: 'message',
+                autoCancel: false,
+                width: 300,
+                height: 300,
+                cornerRadius: 20,
+                borderWidth: 1,
+                borderStyle: BorderStyle.Solid,
+                borderColor: Color.Blue,
+                backgroundColor: Color.White,
+                transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                  .animation({ duration: 3000, curve: Curve.Sharp })
+                  .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 })
+                  .animation({ duration: 3000, curve: Curve.Sharp })),
+                  TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                    .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                    .animation({ duration: 100, curve: Curve.Smooth }))),
+                confirm: {
+                  value: 'Confirm button',
+                  action: () => {
+                    console.info('Get Alert Dialog handled');
+                  }
+                },
+                alignment: DialogAlignment.Center,
+                sheets: [
+                  {
+                    title: 'apples',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'bananas',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'pears',
+                    action: () => {
+                      console.log('pears');
+                    }
+                  }
+                ]
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.CustomDialog_ActionSheet'))
+  }
+}
+```
+
 
 ![image](figures/UIContextShowactionSheet.gif)
 
