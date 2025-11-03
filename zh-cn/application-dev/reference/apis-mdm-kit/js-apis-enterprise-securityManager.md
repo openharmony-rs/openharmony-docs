@@ -893,7 +893,7 @@ try {
 
 setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
-设置来自外部源扩展的管控策略。
+设置来自外部应用或服务的扩展组件的管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -923,7 +923,7 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 **示例：**
 
 ```ts
-import { securityManager, common } from '@kit.MDMKit';
+import { common, securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -943,7 +943,7 @@ try {
 
 getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
-获取已设置的外部源扩展的管控策略。
+获取已设置的外部应用程序来源的管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -976,7 +976,7 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 **示例：**
 
 ```ts
-import { securityManager, common } from '@kit.MDMKit';
+import { common, securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -989,7 +989,7 @@ try {
     let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
     console.info(`Succeeded in getting managed policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1059,13 +1059,13 @@ try {
 
 ## ManagedPolicy
 
-管理策略。
+管理来自外部来源扩展程序的运行开关策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 默认，表示无管控策略。 |
-| DISALLOW | 1  | 禁用设备的功能 |
-| FORCE_OPEN | 2  | 强制打开设备的功能 |
+| DEFAULT | 0  | 默认，表示无管控策略，运行外部来源的扩展程序开关保持设备当前设置状态。|
+| DISALLOW | 1  | 禁用运行外部来源的扩展程序管控开关。|
+| FORCE_OPEN | 2  | 强制打开外部来源的扩展程序管控开关。|
 
