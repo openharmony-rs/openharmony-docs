@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 当前窗口实例，窗口管理器管理的基本单元。
 
@@ -6466,7 +6467,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.<br>ArkTS模式：该错误码仅适用于ArkTS-Dyn。 |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
 
@@ -9012,7 +9013,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.<br>ArkTS模式：该错误码仅适用于ArkTS-Dyn。 |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300003  | This window manager service works abnormally. |
