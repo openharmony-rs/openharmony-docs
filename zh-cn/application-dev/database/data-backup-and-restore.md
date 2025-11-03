@@ -440,6 +440,20 @@ try {
 2. 关闭所有打开着的结果集。
 
     <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    
+    ``` TypeScript
+    let resultSets: relationalStore.ResultSet[] = []
+    // 使用resultSet.close()方法关闭所有打开着的结果集
+    for (let resultSet of resultSets) {
+      try {
+        resultSet.close();
+      } catch (e) {
+        if (e.code !== 14800014) {
+          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+        }
+      }
+    }
+    ```
 
 
 
