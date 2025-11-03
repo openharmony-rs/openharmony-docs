@@ -209,11 +209,11 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 获取进程能效模式。使用Promise异步回调。
 
-**设备行为差异：**该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
-**需要权限：**ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
+**需要权限：** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
-**系统能力：**SystemCapability.Resourceschedule.BackgroundProcessManager
+**系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **参数：**
 
