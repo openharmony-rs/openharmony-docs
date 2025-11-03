@@ -2080,7 +2080,7 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 | 类型   | 说明                     |
 | ------ | ----------------------- |
-| Promise\<Array\<[NetIpMacInfo](#netipmacinfo)>> | Promise对象，返回ip邻居表条目信息。|
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise对象，返回ip邻居表条目信息。|
 
 
 **错误码：**
