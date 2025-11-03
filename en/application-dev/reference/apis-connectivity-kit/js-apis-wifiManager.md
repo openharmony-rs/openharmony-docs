@@ -1645,7 +1645,7 @@ Represents IPv4 information.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4).|
+| ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
 | gateway | number | No| No| Gateway.|
 | netmask | number | No| No| Subnet mask.|
 | primaryDns | number | No| No| IP address of the preferred DNS server.|
