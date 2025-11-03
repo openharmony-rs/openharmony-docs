@@ -223,6 +223,37 @@ struct WebComponent {
 Web组件可以通过[loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata)接口实现加载HTML格式的文本数据。当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
 <!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('loadData')
+        .onClick(() => {
+          try {
+            // 点击按钮时，通过loadData，加载HTML格式的文本数据
+            this.controller.loadData(
+              '<html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>',
+              'text/html',
+              'UTF-8'
+            );
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 组件创建时，加载www.example.com
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 Web组件可以通过data url方式直接加载HTML字符串。
 <!-- @[web_components_load_html_strings_by_data_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_two.ets) -->
 
