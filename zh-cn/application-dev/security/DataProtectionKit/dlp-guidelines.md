@@ -367,20 +367,20 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 13. 查询沙箱应用配置信息。
 
     <!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
- 
- ``` TypeScript
- getSandboxAppConfig() {
-   dlpPermission.getSandboxAppConfig().then((res) => {
-     this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
-     console.info('res', JSON.stringify(res));
-     hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
-   }).catch((err: BusinessError) => {
-     this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-     console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-     hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-   });
- }
- ```
+    
+    ``` TypeScript
+    getSandboxAppConfig() {
+      dlpPermission.getSandboxAppConfig().then((res) => {
+        this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
+        console.info('res', JSON.stringify(res));
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
+      }).catch((err: BusinessError) => {
+        this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      });
+    }
+    ```
 
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。  
 使用该接口的前置条件：链接DLP凭据服务器。
