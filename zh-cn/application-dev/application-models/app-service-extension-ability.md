@@ -390,6 +390,54 @@ struct ConnectAppServiceExt {
 
 <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
 
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[DisConnectAppServiceExt]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+let connectionId: number;
+
+@Entry
+@Component
+struct DisConnectAppServiceExt {
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+        // ···
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            // connectionId为调用connectServiceExtensionAbility接口时的返回值，需开发者自行维护
+            context.disconnectAppServiceExtensionAbility(connectionId).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility success');
+              // 成功断连后台服务
+              this.getUIContext().getPromptAction().showToast({
+                message: 'SuccessfullyDisconnectBackendService'
+              });
+            }).catch((error: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility failed');
+            });
+          })
+        }
+
+        // ···
+      }
+
+    // ···
+    }
+
+    // ···
+  }
+}
+```
+
 
 ### 客户端与服务端通信
 
