@@ -81,6 +81,33 @@ struct WebComponent {
 
 - 应用侧代码。
   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('loadUrl')
+          .onClick(() => {
+            try {
+              // 点击按钮时，通过loadUrl，跳转到local1.html
+              this.controller.loadUrl($rawfile('local1.html'));
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        // 组件创建时，通过$rawfile加载本地文件local.html
+        Web({ src: $rawfile('local.html'), controller: this.controller });
+      }
+    }
+  }
+  ```
 
 
 - local.html页面代码。
