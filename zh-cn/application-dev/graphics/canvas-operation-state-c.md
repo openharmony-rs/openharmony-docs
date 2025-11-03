@@ -63,25 +63,6 @@
 
 <!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw) -->
 
-``` C++
-// 创建画刷对象
-OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-// 设置画刷填充颜色为蓝色
-OH_Drawing_BrushSetColor(brush, 0xff0000ff);
-// 在画布中设置画刷
-OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
-// 裁剪矩形区域
-OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
-OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
-// 绘制圆形
-OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
-// 去除画布中的画刷
-OH_Drawing_CanvasDetachBrush(canvas);
-// 销毁画刷对象并收回其占的内存
-OH_Drawing_BrushDestroy(brush);
-```
-
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
 | ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
