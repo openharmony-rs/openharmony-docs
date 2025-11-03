@@ -283,6 +283,38 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    相关实现类说明：
 
    <!-- @[arkui_mixed_refresh_template_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp) -->
+   
+   ``` C++
+   
+   // 混合模式交互类。
+   
+   #include "ArkUIMixedRefreshTemplate.h"
+   
+   namespace NativeModule {
+   namespace {
+   napi_env g_env;
+   napi_ref g_createRefresh;
+   napi_ref g_updateRefresh;
+   } // namespace
+   
+   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       g_env = env;
+       napi_ref refer;
+       // 创建引用之后保存，防止释放。
+       napi_create_reference(env, args[0], 1, &refer);
+   
+       g_createRefresh = refer;
+       return nullptr;
+   }
+   
+   } // namespace NativeModule
+   ```
 
    相关的CMakeLists的配置：
 
