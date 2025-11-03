@@ -261,6 +261,35 @@ struct Index {
 
 <!-- @[UiRefresh_CannotTriggered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UiRefreshCannotTriggered.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Person {
+  public id: number = 0;
+  @Trace public age: number = 8;
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  person: Person = new Person();
+
+  build() {
+    Column() {
+      // age被@Trace装饰，用在UI中可以触发UI刷新
+      Text(`${this.person.age}`)
+        .onClick(() => {
+          this.person.age++; // 点击会触发UI刷新
+        })
+      // id未被@Trace装饰，用在UI中不会触发UI刷新
+      Text(`${this.person.id}`) // 当id变化时不会刷新
+        .onClick(() => {
+          this.person.id++; // 点击不会触发UI刷新
+        })
+    }
+  }
+}
+```
+
 - \@ObservedV2仅能装饰class，无法装饰自定义组件。
 
 ```ts
