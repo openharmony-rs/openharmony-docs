@@ -223,6 +223,27 @@ struct Index {
 
 <!-- @[Static_Attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Manager {
+  @Trace public static count: number = 1;
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  build() {
+    Column() {
+      // 当点击改变count时，Text组件会刷新
+      Text(`${Manager.count}`)
+        .onClick(() => {
+          Manager.count++;
+        })
+    }
+  }
+}
+```
+
 - \@Trace装饰内置类型时，可以观测各自API导致的变化：
 
   | 类型  | 可观测变化的API                                              |
