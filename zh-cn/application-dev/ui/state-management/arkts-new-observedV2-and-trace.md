@@ -193,6 +193,32 @@ struct Index {
 
 <!-- @[Inherited_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Father {
+  @Trace public name: string = 'Tom';
+}
+
+class Son extends Father {
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  son: Son = new Son();
+
+  build() {
+    Column() {
+      // 当点击改变name时，Text组件会刷新
+      Text(`${this.son.name}`)
+        .onClick(() => {
+          this.son.name = 'Jack';
+        })
+    }
+  }
+}
+```
+
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
 <!-- @[Static_Attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets) -->
