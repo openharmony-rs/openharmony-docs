@@ -47,7 +47,7 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| context    | Context | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext），其具体Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext）。 |
 
 **返回值：**
 
