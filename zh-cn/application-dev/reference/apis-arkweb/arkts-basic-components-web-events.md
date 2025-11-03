@@ -18,7 +18,7 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -44,8 +44,8 @@ ArkTS-Dyn示例：
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: 'onAlert',
                 message: 'text',
@@ -137,6 +137,10 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
@@ -145,6 +149,7 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -190,6 +195,54 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnBeforeUnloadEvent, $rawfile } from '@kit.ArkUI';
+  import { UIContext, AlertDialogParamWithButtons } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onBeforeUnload((event: OnBeforeUnloadEvent): boolean => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.isReload:" + event?.isReload ?? 'false');
+              this.uiContext.showAlertDialog({
+                title: 'onBeforeUnload',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithButtons);
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -220,7 +273,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -356,7 +409,7 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -560,6 +613,10 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明      |
@@ -568,6 +625,7 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -590,6 +648,38 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
               console.log('getSourceId:' + event.message.getSourceId());
               console.log('getLineNumber:' + event.message.getLineNumber());
               console.log('getMessageLevel:' + event.message.getMessageLevel());
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button('onconsole message')
+          .onClick(() => {
+            this.controller.runJavaScript('myFunction()');
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onConsole((event) => {
+            if (event) {
+              console.info('getMessage:' + event.message.getMessage());
+              console.info('getSourceId:' + event.message.getSourceId());
+              console.info('getLineNumber:' + event.message.getLineNumber());
+              console.info('getMessageLevel:' + event.message.getMessageLevel());
             }
             return false;
           })
@@ -621,6 +711,11 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+
 **参数：**
 
 | 参数名                | 类型   | 必填   | 说明                                |
@@ -629,6 +724,7 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -655,6 +751,34 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDownloadStart((event) => {
+            if (event) {
+              console.info('url:' + event.url)
+              console.info('userAgent:' + event.userAgent)
+              console.info('contentDisposition:' + event.contentDisposition)
+              console.info('contentLength:' + event.contentLength)
+              console.info('mimetype:' + event.mimetype)
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onErrorReceive
 
 onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
@@ -665,7 +789,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -961,7 +1085,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1110,7 +1234,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1181,7 +1305,7 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1246,7 +1370,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1502,7 +1626,7 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2407,7 +2531,7 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2478,7 +2602,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2654,6 +2778,10 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2744,7 +2872,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2906,7 +3034,7 @@ onActivateContent(callback: Callback\<void>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**
 
@@ -3070,7 +3198,7 @@ onWindowExit(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3170,6 +3298,10 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3178,6 +3310,7 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3202,6 +3335,39 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onDataResubmitted((event) => {
             console.log('onDataResubmitted');
+            event.handler.resend();
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 在网页中点击提交之后，点击refresh按钮可以重新提交时的触发函数。
+        Button('refresh')
+          .onClick(() => {
+            try {
+              this.controller.refresh();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onDataResubmitted((event) => {
+            console.info('onDataResubmitted');
             event.handler.resend();
           })
       }
@@ -3295,7 +3461,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3400,6 +3566,10 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3408,6 +3578,7 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3424,6 +3595,31 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onFaviconReceived((event) => {
             console.log('onFaviconReceived');
+            this.icon = event.favicon;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { image } from '@kit.ImageKit';
+  import { Web, Column, Component, Entry, OnFaviconReceivedEvent, State } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State icon: image.PixelMap | undefined = undefined;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFaviconReceived((event) => {
+            console.info('onFaviconReceived');
             this.icon = event.favicon;
           })
       }
@@ -3479,7 +3675,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3550,7 +3746,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3617,7 +3813,7 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3732,7 +3928,7 @@ onRequestSelected(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3852,7 +4048,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3921,7 +4117,7 @@ onControllerAttached(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4592,7 +4788,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4686,7 +4882,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
