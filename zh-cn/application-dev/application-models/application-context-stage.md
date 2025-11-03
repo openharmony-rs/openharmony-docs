@@ -149,6 +149,29 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
+
+@Entry
+@Component
+struct EventHub {
+  // 定义context变量
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  startAbilityTest(): void {
+    let want: Want = {
+      // Want参数信息
+    };
+    this.context.startAbility(want);
+  }
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+```
+
 
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
