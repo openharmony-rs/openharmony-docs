@@ -918,6 +918,37 @@ struct LocalStoragePage {
 
 <!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->
 
+``` TypeScript
+// pages/LocalStoragePage
+@Entry({ useSharedStorage: true })
+@Component
+struct LocalStoragePage {
+  @LocalStorageLink('message') message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('LocalStoragePageHelloWorld')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let uiContext = this.getUIContext();
+          let storage = uiContext.getSharedLocalStorage();
+          if (storage) {
+            storage.setOrCreate('message', 'onClick is called.');
+            this.message = 'LocalStoragePageHelloWorld';
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考[LocalStorage：页面级UI状态存储](./state-management/arkts-localstorage.md)。
 
 <!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
