@@ -3746,7 +3746,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t keyCode | 功能键值。支持的功能键包含CapsLock键。当前仅支持录屏，共享屏幕场景使用，需要用户手动授权。 |
+| int32_t keyCode | 功能键值。支持的功能键包含CapsLock键，键值为1。 |
 | int32_t *state | state 功能键状态。0表示功能键关闭，1表示功能键打开。 |
 
 **返回：**
