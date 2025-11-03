@@ -108,13 +108,13 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 定义内容切换时的过渡效果。
 
+### 属性
+
 **原子化服务API：** 从 API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
-
 | 名称 | 类型 | 只读 | 可选 |说明 |
 | -------- | ---------- | -------- | -------- | -------- | 
-| IDENTITY | [ContentTransitionEffect](#contenttransitioneffect21)\<"identity"> | 是 | 否 | 内容切换时无过渡动画效果。 |
-| OPACITY | [ContentTransitionEffect](#contenttransitioneffect21)\<"opacity"> | 是 | 否 | 内容切换时采用淡入淡出过渡动画。 |
+| IDENTITY | [ContentTransitionEffect](#contenttransitioneffect21对象说明) | 是 | 否 | 内容切换时无过渡动画效果。 |
+| OPACITY | [ContentTransitionEffect](#contenttransitioneffect21对象说明) | 是 | 否 | 内容切换时采用淡入淡出过渡动画。 |
