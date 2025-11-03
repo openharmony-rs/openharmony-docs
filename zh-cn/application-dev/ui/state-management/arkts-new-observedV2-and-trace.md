@@ -691,6 +691,70 @@ struct Index {
 
 <!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) -->
 
+``` TypeScript
+let nextId: number = 0;
+
+@ObservedV2
+class Person {
+  @Trace public age: number = 0;
+
+  constructor(age: number) {
+    this.age = age;
+  }
+}
+
+@ObservedV2
+class Info {
+  public id: number = 0;
+  @Trace public personList: Person[] = [];
+
+  constructor() {
+    this.id = nextId++;
+    this.personList = [new Person(0), new Person(1), new Person(2)];
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`length: ${this.info.personList.length}`)
+        .fontSize(40)
+      Divider()
+      if (this.info.personList.length >= 3) {
+        Text(`${this.info.personList[0].age}`)
+          .fontSize(40)
+          .onClick(() => {
+            this.info.personList[0].age++;
+          })
+
+        Text(`${this.info.personList[1].age}`)
+          .fontSize(40)
+          .onClick(() => {
+            this.info.personList[1].age++;
+          })
+
+        Text(`${this.info.personList[2].age}`)
+          .fontSize(40)
+          .onClick(() => {
+            this.info.personList[2].age++;
+          })
+      }
+
+      Divider()
+
+      ForEach(this.info.personList, (item: Person, index: number) => {
+        Text(`${index} ${item.age}`)
+          .fontSize(40)
+      })
+    }
+  }
+}
+```
+
 ### \@Trace装饰Map类型
 
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
