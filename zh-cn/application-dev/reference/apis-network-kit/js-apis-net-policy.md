@@ -66,7 +66,8 @@ const context: common.UIAbilityContext = getContext() as common.UIAbilityContext
 policy.showAppNetPolicySettings(context).then(() => {
     console.info("showAppNetPolicySettings success");
 }).catch(() => {
-    console.error("showAppNetPolicySettings failed");}
+    console.error("showAppNetPolicySettings failed");
+    }
 )
 ```
 
