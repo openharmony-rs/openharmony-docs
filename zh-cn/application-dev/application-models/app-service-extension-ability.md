@@ -72,91 +72,91 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 3. 在MyAppServiceExtAbility.ets文件中，增加导入[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的依赖包，自定义类继承AppServiceExtensionAbility组件并实现生命周期回调。
 
-<!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+    <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
 
-``` TypeScript
-// [Start ability_app_service_two]
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-// ···
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[MyAppServiceExtAbility]';
-// [StartExclude ability_app_service_two]
-const DOMAIN_NUMBER: number = 0xFF00;
-// [EndExclude  ability_app_service_two]
-
-// [StartExclude ability_app_service_two]
-class StubTest extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
-  }
-
-  onRemoteMessageRequest(code: number,
-    data: rpc.MessageSequence,
-    reply: rpc.MessageSequence,
-    options: rpc.MessageOption): boolean | Promise<boolean> {
-    // 处理客户端发送的消息
-    return true;
-  }
-}
-// [EndExclude  ability_app_service_two]
-
-export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
-  onCreate(want: Want): void {
-    // [StartExclude ability_app_service_two]
-    let appServiceExtensionContext = this.context;
-    hilog.info(DOMAIN_NUMBER, TAG, `onCreate, want: ${want.abilityName}`);
-    // [EndExclude  ability_app_service_two]
+    ``` TypeScript
+    // [Start ability_app_service_two]
+    import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+    import { rpc } from '@kit.IPCKit';
     // ···
-  }
+    import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  // [StartExclude ability_app_service_two]
-  onRequest(want: Want, startId: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, `onRequest, want: ${want.abilityName}`);
-  }
+    const TAG: string = '[MyAppServiceExtAbility]';
+    // [StartExclude ability_app_service_two]
+    const DOMAIN_NUMBER: number = 0xFF00;
+    // [EndExclude  ability_app_service_two]
 
-  onConnect(want: Want): rpc.RemoteObject {
-    hilog.info(DOMAIN_NUMBER, TAG, `onConnect, want: ${want.abilityName}`);
-    return new StubTest('test');
-  }
+    // [StartExclude ability_app_service_two]
+    class StubTest extends rpc.RemoteObject {
+      constructor(des: string) {
+        super(des);
+      }
 
-  onDisconnect(want: Want): void {
-    hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect, want: ${want.abilityName}`);
-  }
+      onRemoteMessageRequest(code: number,
+        data: rpc.MessageSequence,
+        reply: rpc.MessageSequence,
+        options: rpc.MessageOption): boolean | Promise<boolean> {
+        // 处理客户端发送的消息
+        return true;
+      }
+    }
+    // [EndExclude  ability_app_service_two]
 
-  onDestroy(): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
-  }
-  // [EndExclude  ability_app_service_two]
-};
-// [End ability_app_service_two]
-```
+    export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+      onCreate(want: Want): void {
+        // [StartExclude ability_app_service_two]
+        let appServiceExtensionContext = this.context;
+        hilog.info(DOMAIN_NUMBER, TAG, `onCreate, want: ${want.abilityName}`);
+        // [EndExclude  ability_app_service_two]
+        // ···
+      }
+
+      // [StartExclude ability_app_service_two]
+      onRequest(want: Want, startId: number): void {
+        hilog.info(DOMAIN_NUMBER, TAG, `onRequest, want: ${want.abilityName}`);
+      }
+
+      onConnect(want: Want): rpc.RemoteObject {
+        hilog.info(DOMAIN_NUMBER, TAG, `onConnect, want: ${want.abilityName}`);
+        return new StubTest('test');
+      }
+
+      onDisconnect(want: Want): void {
+        hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect, want: ${want.abilityName}`);
+      }
+
+      onDestroy(): void {
+        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
+      }
+      // [EndExclude  ability_app_service_two]
+    };
+    // [End ability_app_service_two]
+    ```
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-<!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
+    <!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
 
-``` JSON5
-{
-  "module": {
-    // ···
-    "extensionAbilities": [
-    // ···
-      {
-        "name": "MyAppServiceExtAbility",
-        "description": "appService",
-        "type": "appService",
-        "exported": true,
-        "srcEntry": "./ets/myappserviceextability/MyAppServiceExtAbility.ets",
-        "appIdentifierAllowList": [
-          // 此处填写允许启动该后台服务的客户端应用的appIdentifier列表
-        ],
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "extensionAbilities": [
+        // ···
+          {
+            "name": "MyAppServiceExtAbility",
+            "description": "appService",
+            "type": "appService",
+            "exported": true,
+            "srcEntry": "./ets/myappserviceextability/MyAppServiceExtAbility.ets",
+            "appIdentifierAllowList": [
+              // 此处填写允许启动该后台服务的客户端应用的appIdentifier列表
+            ],
+          }
+        ]
       }
-    ]
-  }
-}
-```
+    }
+    ```
 
 ## 启动一个后台服务
 
@@ -168,143 +168,143 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 - 在应用中启动一个新的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-<!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
+  <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[StartAppServiceExt]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[StartAppServiceExt]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-@Entry
-@Component
-struct StartAppServiceExt {
-  build() {
-    Column() {
-    // ···
-      List({ initialIndex: 0 }) {
-        ListItem() {
-          Row() {
-            // ···
-          }
-        // ···
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-            let want: Want = {
-              deviceId: '',
-              bundleName: 'com.samples.appserviceextensionability',
-              abilityName: 'MyAppServiceExtAbility'
-            };
-            context.startAppServiceExtensionAbility(want).then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting AppServiceExtensionAbility.');
-              // 成功启动后台服务
-              this.getUIContext().getPromptAction().showToast({
-                message: 'SuccessfullyStartBackendService'
+  @Entry
+  @Component
+  struct StartAppServiceExt {
+    build() {
+      Column() {
+      // ···
+        List({ initialIndex: 0 }) {
+          ListItem() {
+            Row() {
+              // ···
+            }
+          // ···
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+              let want: Want = {
+                deviceId: '',
+                bundleName: 'com.samples.appserviceextensionability',
+                abilityName: 'MyAppServiceExtAbility'
+              };
+              context.startAppServiceExtensionAbility(want).then(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting AppServiceExtensionAbility.');
+                // 成功启动后台服务
+                this.getUIContext().getPromptAction().showToast({
+                  message: 'SuccessfullyStartBackendService'
+                });
+              }).catch((err: BusinessError) => {
+                hilog.error(DOMAIN_NUMBER, TAG,
+                  `Failed to start AppServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
               });
-            }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG,
-                `Failed to start AppServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
-            });
-          })
+            })
+          }
+
+          // ···
         }
-
-        // ···
+      // ···
       }
-    // ···
-    }
 
-    // ···
+      // ···
+    }
   }
-}
-```
+  ```
 
 
 - 在应用中停止一个已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。
 
-<!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
+  <!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[StopAppServiceExt]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[StopAppServiceExt]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-@Entry
-@Component
-struct StopAppServiceExt {
-  build() {
-    Column() {
-    // ···
-      List({ initialIndex: 0 }) {
-        ListItem() {
-          Row() {
-            // ···
-          }
-        // ···
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-            let want: Want = {
-              deviceId: '',
-              bundleName: 'com.samples.appserviceextensionability',
-              abilityName: 'MyAppServiceExtAbility'
-            };
-            context.stopAppServiceExtensionAbility(want).then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in stopping AppServiceExtensionAbility.');
-              this.getUIContext().getPromptAction().showToast({
-                message: 'SuccessfullyStoppedAStartedBackendService'
+  @Entry
+  @Component
+  struct StopAppServiceExt {
+    build() {
+      Column() {
+      // ···
+        List({ initialIndex: 0 }) {
+          ListItem() {
+            Row() {
+              // ···
+            }
+          // ···
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+              let want: Want = {
+                deviceId: '',
+                bundleName: 'com.samples.appserviceextensionability',
+                abilityName: 'MyAppServiceExtAbility'
+              };
+              context.stopAppServiceExtensionAbility(want).then(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in stopping AppServiceExtensionAbility.');
+                this.getUIContext().getPromptAction().showToast({
+                  message: 'SuccessfullyStoppedAStartedBackendService'
+                });
+              }).catch((err: BusinessError) => {
+                hilog.error(DOMAIN_NUMBER, TAG,
+                  `Failed to stop AppServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
               });
-            }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG,
-                `Failed to stop AppServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
-            });
-          })
+            })
+          }
+
+          // ···
         }
 
-        // ···
+      // ···
       }
 
-    // ···
+      // ···
     }
-
-    // ···
   }
-}
-```
+  ```
 
 
 - 已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件停止自身。
 
-<!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+  <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
 
-``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  ``` TypeScript
+  import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  import { rpc } from '@kit.IPCKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[MyAppServiceExtAbility]';
-// ···
+  const TAG: string = '[MyAppServiceExtAbility]';
+  // ···
 
-// ···
+  // ···
 
-export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
-  onCreate(want: Want): void {
-    // ···
-    // 执行业务逻辑
-    this.context.terminateSelf().then(() => {
-      hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
-    });
-  }
+  export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+    onCreate(want: Want): void {
+      // ···
+      // 执行业务逻辑
+      this.context.terminateSelf().then(() => {
+        hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+      });
+    }
 
-// ···
-};
-```
+  // ···
+  };
+  ```
 
 ## 连接一个后台服务
 
@@ -316,127 +316,127 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 - 使用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)建立与后台服务的连接。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-<!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
+  <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  import { rpc } from '@kit.IPCKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[ConnectAppServiceExt]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[ConnectAppServiceExt]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
-let want: Want = {
-  deviceId: '',
-  bundleName: 'com.samples.appserviceextensionability',
-  abilityName: 'MyAppServiceExtAbility'
-};
+  let connectionId: number;
+  let want: Want = {
+    deviceId: '',
+    bundleName: 'com.samples.appserviceextensionability',
+    abilityName: 'MyAppServiceExtAbility'
+  };
 
-let options: common.ConnectOptions = {
-  onConnect(elementName, remote: rpc.IRemoteObject): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
-    if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
-      return;
+  let options: common.ConnectOptions = {
+    onConnect(elementName, remote: rpc.IRemoteObject): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
+      if (remote === null) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        return;
+      }
+      // 通过remote进行通信
+    },
+    onDisconnect(elementName): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
+    },
+    onFailed(code: number): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
-    // 通过remote进行通信
-  },
-  onDisconnect(elementName): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
-  },
-  onFailed(code: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
-  }
-};
+  };
 
-@Entry
-@Component
-struct ConnectAppServiceExt {
-  build() {
-    Column() {
-    // ···
-      List({ initialIndex: 0 }) {
-        ListItem() {
-          Row() {
-            // ···
+  @Entry
+  @Component
+  struct ConnectAppServiceExt {
+    build() {
+      Column() {
+      // ···
+        List({ initialIndex: 0 }) {
+          ListItem() {
+            Row() {
+              // ···
+            }
+          // ···
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+              // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+              connectionId = context.connectAppServiceExtensionAbility(want, options);
+              // 成功连接后台服务
+              this.getUIContext().getPromptAction().showToast({
+                message: 'SuccessfullyConnectBackendService'
+              });
+              hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
+            })
           }
-        // ···
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-            // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-            connectionId = context.connectAppServiceExtensionAbility(want, options);
-            // 成功连接后台服务
-            this.getUIContext().getPromptAction().showToast({
-              message: 'SuccessfullyConnectBackendService'
-            });
-            hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
-          })
+
+          // ···
         }
 
-        // ···
+      // ···
       }
 
-    // ···
+      // ···
     }
-
-    // ···
   }
-}
-```
+  ```
 
 
 - 使用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)断开与后台服务的连接。
 
-<!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
+  <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
 
-``` TypeScript
-import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[DisConnectAppServiceExt]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[DisConnectAppServiceExt]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-let connectionId: number;
+  let connectionId: number;
 
-@Entry
-@Component
-struct DisConnectAppServiceExt {
-  build() {
-    Column() {
-    // ···
-      List({ initialIndex: 0 }) {
-        ListItem() {
-          Row() {
-            // ···
-          }
-        // ···
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-            // connectionId为调用connectServiceExtensionAbility接口时的返回值，需开发者自行维护
-            context.disconnectAppServiceExtensionAbility(connectionId).then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility success');
-              // 成功断连后台服务
-              this.getUIContext().getPromptAction().showToast({
-                message: 'SuccessfullyDisconnectBackendService'
+  @Entry
+  @Component
+  struct DisConnectAppServiceExt {
+    build() {
+      Column() {
+      // ···
+        List({ initialIndex: 0 }) {
+          ListItem() {
+            Row() {
+              // ···
+            }
+          // ···
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+              // connectionId为调用connectServiceExtensionAbility接口时的返回值，需开发者自行维护
+              context.disconnectAppServiceExtensionAbility(connectionId).then(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility success');
+                // 成功断连后台服务
+                this.getUIContext().getPromptAction().showToast({
+                  message: 'SuccessfullyDisconnectBackendService'
+                });
+              }).catch((error: BusinessError) => {
+                hilog.error(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility failed');
               });
-            }).catch((error: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility failed');
-            });
-          })
+            })
+          }
+
+          // ···
         }
 
-        // ···
+      // ···
       }
 
-    // ···
+      // ···
     }
-
-    // ···
   }
-}
-```
+  ```
 
 
 ### 客户端与服务端通信
