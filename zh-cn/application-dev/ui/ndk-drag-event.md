@@ -324,6 +324,19 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    创建Button节点，设置按钮相关属性，同时需要注册[NODE_ON_TOUCH_INTERCEPT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
 
    <!-- @[touch_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
+   
+   ``` C
+   // buttonTouch作为targetId，用于区分不同target的事件。
+   enum {
+       BUTTON_TOUCH = 1
+   };
+   
+   dragButton = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+   SetId(dragButton, "dragBt3");
+   SetCommonAttribute(dragButton, SIZE_80, SIZE_50, 0xFFFF0000, BLANK_20);
+   SetButtonLabel(dragButton, "拖起");
+   nodeAPI->registerNodeEvent(dragButton, NODE_ON_TOUCH_INTERCEPT, BUTTON_TOUCH, nullptr);
+   ```
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
 
 2. 接收NODE_ON_TOUCH_INTERCEPT事件。
