@@ -68,6 +68,24 @@ struct WebComponent {
 在下面的示例中，缓存设置为None模式。
 <!-- @[configure_the_caching_mode_for_page_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_one.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  @State mode: CacheMode = CacheMode.None;
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .cacheMode(this.mode)
+    }
+  }
+}
+```
+
 
 为了获取最新资源，开发者可以通过[removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
 <!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
