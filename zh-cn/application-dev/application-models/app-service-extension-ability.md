@@ -56,16 +56,16 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 在DevEco Studio工程中手动新建一个AppServiceExtensionAbility组件，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为MyAppServiceExtAbility。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为myappserviceextability。
 
-2. 在MyAppServiceExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAppServiceExtAbility.ets。
+2. 在myappserviceextability目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAppServiceExtAbility.ets。
 ![](figures/app-service-extension-ability-create-new-file.png)
 
     其目录结构如下所示：
 
     ```
     ├── ets
-    │ ├── MyAppServiceExtAbility
+    │ ├── myappserviceextability
     │ │   ├── MyAppServiceExtAbility.ets
     └
     ```
