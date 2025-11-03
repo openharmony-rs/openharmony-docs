@@ -9007,5 +9007,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-extension-drawModifier.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets",
+				"functions":[
+					{
+						"end_line":215,
+						"name":"drawFront_drawContent_drawBehind_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"drawForeground_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets",
+				"functions":[
+					{
+						"end_line":122,
+						"name":"Canvas_start",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
