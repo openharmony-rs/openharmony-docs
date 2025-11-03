@@ -792,6 +792,24 @@ struct GetContextPage {
 
 <!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->
 
+``` TypeScript
+export class ContextUtils {
+  public static context: Context | undefined;
+
+  static setContext(context: Context): void {
+    ContextUtils.context = context;
+  }
+
+  static getContext(uiContext?: UIContext): Context | undefined {
+    if (uiContext) {
+      return uiContext.getHostContext();
+    }
+
+    return ContextUtils.context;
+  }
+}
+```
+
 接口的默认返回值设置为Ability的成员属性context。
 
 <!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
