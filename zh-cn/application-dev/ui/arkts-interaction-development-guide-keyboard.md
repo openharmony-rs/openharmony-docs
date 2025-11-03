@@ -274,6 +274,44 @@ export struct OnKeyDistributeEvent {
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct OnKeyPreImeCommit {
+  @State content: string = '';
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    // ···
+        Column() {
+          Text('Submissions: ' + this.content)
+          TextArea({ controller: this.controller, text: this.text })
+            .onKeyPreIme((event: KeyEvent) => {
+              hilog.info(DOMAIN, TAG, BUNDLE + JSON.stringify(event));
+              if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+                const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
+                if (hasCtrl) {
+                  hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
+                } else {
+                  hilog.info(DOMAIN, TAG, BUNDLE + 'Submissions：' + this.text);
+                  this.content = this.text;
+                  this.text = '';
+                  event.stopPropagation();
+                }
+                return true;
+              }
+              return false;
+            })
+            .onChange((value: string) => {
+              this.text = value
+            })
+        }
+        // ···
+  }
+}
+```
+
 ![onKeyPreIme1](figures/onKeyPreIme1.png)
 
 在输入框中输入内容后回车。
