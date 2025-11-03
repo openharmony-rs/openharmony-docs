@@ -814,6 +814,10 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 2. 导入UIAbility模块。
 
    <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { UIAbility } from '@kit.AbilityKit';
+   ```
 
 3. 定义约定的序列化数据。
    调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由number和string组成。
