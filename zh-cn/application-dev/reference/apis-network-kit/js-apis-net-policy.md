@@ -71,5 +71,3 @@ policy.showAppNetPolicySettings(context).then(() => {
 )
 ```
 
-
-
