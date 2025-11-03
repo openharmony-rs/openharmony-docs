@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -15,6 +16,8 @@ import { hash } from '@kit.CoreFileKit';
 ## 使用说明
 
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
+
+ArkTS-Dyn示例：
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
@@ -28,6 +31,16 @@ import { hash } from '@kit.CoreFileKit';
   }
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let pathDir = context.filesDir;
+```
+
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## hash.hash
@@ -39,6 +52,10 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -64,6 +81,8 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
@@ -74,6 +93,20 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
   });
   ```
 
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + "/test.txt";
+hash.hash(filePath, "sha256").then((str: string) => {
+  console.info(`Succeeded in calculating file hash, str: ${str}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to calculate file hash. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## hash.hash
 
 hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): void
@@ -83,6 +116,10 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -103,10 +140,12 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
+  hash.hash(filePath, "sha256", (err: BusinessError | null, str: string | undefined) => {
     if (err) {
       console.error("calculate file hash failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -114,13 +153,31 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
     }
   });
   ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + "/test.txt";
+hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
+  if (err) {
+    console.error(`Failed to calculate file hash. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in calculating file hash, str: ${str}`);
+  }
+});
+```
 ## hash.createHash<sup>12+</sup>
 
-createHash(algorithm: string): HashStream;
+createHash(algorithm: string): HashStream
 
 创建并返回 HashStream 对象，该对象可用于使用给定的 algorithm 生成哈希摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -146,6 +203,8 @@ createHash(algorithm: string): HashStream;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   // pages/xxx.ets
   import { fileIo as fs } from '@kit.CoreFileKit';
@@ -168,10 +227,47 @@ createHash(algorithm: string): HashStream;
   }
   ```
 
+ArkTS-Sta示例：
+
+```ts
+// pages/xxx.ets
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function hashFileWithStream() {
+  let pathDir = "/data/storage/el2/base/haps/entry/files";
+  const filePath = pathDir + "/test.txt";
+  // 创建文件可读流
+  const rs = fs.createReadStream(filePath);
+  // 创建哈希流
+  const hs = hash.createHash('sha256');
+  rs.on('data', (emitData: buffer.Buffer | string) => {
+    const data = emitData;
+    if (data == undefined) {
+      return;
+    }
+    if (data instanceof Record) {
+      return;
+    }
+    const dataStr: string = data.toString();
+    let ret = dataStr.split('').map((x: string) => x.charCodeAt(0));
+    hs.update(new Uint8Array(ret).buffer);
+  });
+  rs.on('close', async () => {
+    const hashResult = hs.digest();
+    const fileHash = await hash.hash(filePath, 'sha256');
+    console.info(`Succeeded in creating hash, hashResult: ${hashResult}, fileHash: ${fileHash}`);
+  });
+}
+```
+
 
 ## HashStream<sup>12+</sup>
 
 HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash](#hashcreatehash12) 接口获得。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 ### update<sup>12+</sup>
 
@@ -181,6 +277,10 @@ update(data: ArrayBuffer): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
@@ -192,6 +292,8 @@ update(data: ArrayBuffer): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   // 创建哈希流
   const hs = hash.createHash('sha256');
@@ -201,6 +303,18 @@ update(data: ArrayBuffer): void
   // 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
   console.info(`hashResult: ${hashResult}`);
   ```
+
+ArkTS-Sta示例：
+
+```ts
+// 创建哈希流
+const hs = hash.createHash('sha256');
+hs.update(new Uint8Array('1234567890'.split('').map((x: string) => x.charCodeAt(0))).buffer);
+hs.update(new Uint8Array('abcdefg'.split('').map((x: string) => x.charCodeAt(0))).buffer);
+const hashResult = hs.digest();
+// 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
+console.info(`Succeeded in creating hash, hashResult: ${hashResult}`);
+```
 
 ### digest<sup>12+</sup>
 
@@ -210,6 +324,10 @@ digest(): string
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
@@ -221,6 +339,8 @@ digest(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   // 创建哈希流
   const hs = hash.createHash('sha256');
@@ -230,3 +350,15 @@ digest(): string
   // 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
   console.info(`hashResult: ${hashResult}`);
   ```
+
+ArkTS-Sta示例：
+
+```ts
+// 创建哈希流
+const hs = hash.createHash('sha256');
+hs.update(new Uint8Array('1234567890'.split('').map((x: string) => x.charCodeAt(0))).buffer);
+hs.update(new Uint8Array('abcdefg'.split('').map((x: string) => x.charCodeAt(0))).buffer);
+const hashResult = hs.digest();
+// 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
+console.info(`Succeeded in creating hash, hashResult: ${hashResult}`);
+```
