@@ -463,6 +463,57 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[dragPreviewOption](../reference/apis-arkui/capi-drag-and-drop-h.md#函数)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
 
    <!-- @[set_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
+   
+   ``` C
+               case NODE_ON_TOUCH_INTERCEPT: {
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
+                   // 创建DragAction
+                   action = OH_ArkUI_CreateDragActionWithNode(dragButton);
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                       "OH_ArkUI_CreateDragActionWithNode returnValue = %{public}p", action);
+                   // 设置pixelMap
+                   std::vector<OH_PixelmapNative *> pixelVector;
+                   SetPixelMap(pixelVector);
+                   // 设置DragPreviewOption
+                   SetDragPreviewOption();
+                   // 设置pointerId、touchPoint
+                   PrintDragActionInfos();
+                   // 设置unifiedData
+                   SetDragActionData();
+                   // startDrag
+                   int returnValue = OH_ArkUI_StartDrag(action);
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                       "OH_ArkUI_StartDrag returnValue = %{public}d",
+                       returnValue);
+                   OH_ArkUI_DragAction_Dispose(action);
+                   break;
+               }
+               // ···
+   void SetDragActionData()
+   {
+       // 创建OH_UdmfRecord对象
+       OH_UdmfRecord *record = OH_UdmfRecord_Create();
+       // 向OH_UdmfRecord中添加纯文本类型数据
+       OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
+       int returnStatus;
+       OH_UdsPlainText_SetAbstract(plainText, "this is plainText Abstract example");
+       OH_UdsPlainText_SetContent(plainText, "this is plainText Content example");
+       returnStatus = OH_UdmfRecord_AddPlainText(record, plainText);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "dragTest OH_UdmfRecord_AddPlainText returnStatus = %{public}d", returnStatus);
+       // 创建OH_UdmfData对象
+       OH_UdmfData *data = OH_UdmfData_Create();
+       // 向OH_UdmfData中添加OH_UdmfRecord
+       returnStatus = OH_UdmfData_AddRecord(data, record);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "dragTest OH_UdmfData_AddRecord returnStatus = %{public}d", returnStatus);
+       int returnValue = OH_ArkUI_DragAction_SetData(action, data);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragAction_SetData returnValue = %{public}d", returnValue);
+       // 注册拖拽状态监听回调
+       OH_ArkUI_DragAction_RegisterStatusListener(action, data, &DragStatusListener);
+   }
+   ```
    <!-- @[prepare_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
 4. 处理NODE_ON_DROP事件。
 
