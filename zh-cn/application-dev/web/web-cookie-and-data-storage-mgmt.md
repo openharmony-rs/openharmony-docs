@@ -90,6 +90,34 @@ struct WebComponent {
 为了获取最新资源，开发者可以通过[removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
 <!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  @State mode: CacheMode = CacheMode.None;
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('removeCache')
+        .onClick(() => {
+          try {
+            // 设置为true时同时清除rom和ram中的缓存，设置为false时只清除ram中的缓存
+            this.controller.removeCache(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        });
+      Web({ src: 'www.example.com', controller: this.controller })
+        .cacheMode(this.mode)
+    }
+  }
+}
+```
+
 
 ### Dom Storage
 
