@@ -33,6 +33,7 @@
 
 <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
 
+
    ```ts
     @Observed
     class Info2 {
