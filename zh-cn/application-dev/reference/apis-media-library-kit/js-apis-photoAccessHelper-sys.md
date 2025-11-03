@@ -3239,6 +3239,115 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### getClonedAssetUris<sup>22+</sup>
+ 
+getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口是系统接口。
+
+**所需权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+ 
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAssetUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/Photo/1/IMG_datetime_0001/displayName1.jpg',
+        'file://media/Photo/2/IMG_datetime_0002/displayName2.jpg',
+        'file://media/Photo/3/IMG_datetime_0003/displayName3.jpg'
+    ];
+    try {
+        let assets: Map<string, string> = await phAccessHelper.getClonedAssetUris(uris);
+        console.info(`Assets: ${assets}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
+}
+```
+
+### getClonedAlbumUris<sup>22+</sup>
+ 
+getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口是系统接口。
+
+**所需权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：** 
+
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAlbumUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/PhotoAlbum/1',
+        'file://media/PhotoAlbum/2',
+        'file://media/AnalysisAlbum/3'
+    ];
+    try {
+        let albums: Map<string, string> = await phAccessHelper.getClonedAlbumUris(uris);
+        console.info(`Albums: ${albums}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
+}
+```
+
 ### batchGetPhotoAssetParams<sup>21+</sup>
 
 batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams
