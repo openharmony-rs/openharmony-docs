@@ -745,6 +745,7 @@
         - [UI高性能开发](ui/ui-performance-overview.md)
         - UI开发常见问题<!--ui-development-faq-->
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
+          - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
