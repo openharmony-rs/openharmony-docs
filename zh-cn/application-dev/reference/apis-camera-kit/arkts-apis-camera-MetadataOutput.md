@@ -255,7 +255,7 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable22)。
 
@@ -298,7 +298,7 @@ onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): 
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('metadataObjectsAvailable')](#onmetadataobjectsavailable)。
 
@@ -338,7 +338,7 @@ off(type: 'metadataObjectsAvailable', callback?: AsyncCallback\<Array\<MetadataO
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offMetadataObjectsAvailable](#offmetadataobjectsavailable22)。
 
@@ -367,7 +367,7 @@ offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>)
 
 注销监听检测到的metadata对象。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('metadataObjectsAvailable')](#offMetadataObjectsAvailable)。
 
@@ -401,7 +401,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
@@ -440,7 +440,7 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
 
@@ -476,7 +476,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
@@ -505,7 +505,7 @@ offError(callback?: ErrorCallback): void
 
 注销监听metadata流的错误。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
