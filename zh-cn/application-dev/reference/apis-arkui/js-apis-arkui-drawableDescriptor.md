@@ -137,7 +137,7 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| [Promise\<DrawableDescriptorLoadedResult>](#drawabledescriptorloadedresult21) | 图片资源的加载结果。 |
+| Promise\<[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)> | 图片资源的加载结果。 |
 
 **错误码：**
 
