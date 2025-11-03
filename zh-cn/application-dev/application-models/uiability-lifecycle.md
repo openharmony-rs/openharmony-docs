@@ -313,6 +313,39 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+// ···
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
+    // ···
+  }
+
+// ···
+
+  onWindowStageDestroy(): void {
+    // 释放UI资源
+  }
+
+  onForeground(): void {
+    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
+  }
+
+  onBackground(): void {
+    // 释放UI不可见时无用的资源
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 更新资源、数据
+  }
+}
+```
+
 ### onDestroy()
 
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)回调。该回调是UIAbility接收到的最后一个生命周期回调，开发者可以在onDestroy()回调中进行系统资源的释放、数据的保存等操作。
