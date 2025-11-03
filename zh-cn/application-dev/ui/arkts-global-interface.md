@@ -814,6 +814,33 @@ export class ContextUtils {
 
 <!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // ···
+    ContextUtils.setContext(this.context);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'setContext success');
+    // ···
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+// ···
+}
+
+```
+
 在UI界面中，建议传入UIContext，以保证符合预期或直接调用getHostContext。
 
 <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
