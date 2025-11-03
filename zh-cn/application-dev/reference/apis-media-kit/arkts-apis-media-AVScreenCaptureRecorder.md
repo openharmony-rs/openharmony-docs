@@ -56,7 +56,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { media } from '@kit.MediaKit';
 
-// 初始化avScreenCaptureRecorder
+// 初始化avScreenCaptureRecorder。
 let avScreenCaptureRecorder!: media.AVScreenCaptureRecorder;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
