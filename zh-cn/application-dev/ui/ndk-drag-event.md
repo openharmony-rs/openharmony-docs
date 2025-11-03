@@ -129,6 +129,17 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    ```
    <!-- @[set_imageSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
+   
+   ``` C
+   void SetImageSrc(ArkUI_NodeHandle &node, const char *src)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_AttributeItem imageSrcItem = {.string = src};
+       nodeAPI->setAttribute(node, NODE_IMAGE_SRC, &imageSrcItem);
+   }
+   ```
 
 2. 自定义拖拽预览和背板图。
 
