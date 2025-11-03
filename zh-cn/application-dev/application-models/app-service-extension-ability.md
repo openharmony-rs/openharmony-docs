@@ -322,6 +322,73 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[ConnectAppServiceExt]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+let connectionId: number;
+let want: Want = {
+  deviceId: '',
+  bundleName: 'com.samples.appserviceextensionability',
+  abilityName: 'MyAppServiceExtAbility'
+};
+
+let options: common.ConnectOptions = {
+  onConnect(elementName, remote: rpc.IRemoteObject): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
+    if (remote === null) {
+      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+      return;
+    }
+    // 通过remote进行通信
+  },
+  onDisconnect(elementName): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
+  },
+  onFailed(code: number): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+  }
+};
+
+@Entry
+@Component
+struct ConnectAppServiceExt {
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+        // ···
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+            connectionId = context.connectAppServiceExtensionAbility(want, options);
+            // 成功连接后台服务
+            this.getUIContext().getPromptAction().showToast({
+              message: 'SuccessfullyConnectBackendService'
+            });
+            hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
+          })
+        }
+
+        // ···
+      }
+
+    // ···
+    }
+
+    // ···
+  }
+}
+```
+
 
 - 使用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)断开与后台服务的连接。
 
