@@ -960,6 +960,10 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 1. 导入[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
 
     <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import { UIAbility } from '@kit.AbilityKit';
+    ```
 
 2. 获取[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。
 
