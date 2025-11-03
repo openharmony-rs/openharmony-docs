@@ -1153,9 +1153,9 @@ onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
 
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                   |
-| -------- | ------------------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<TorchStatusInfo> | 是   | 回调函数，用于获取手电筒状态变化信息。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo)> | 是   | 回调函数，用于获取手电筒状态变化信息。 |
 
 **示例：**
 
@@ -1222,9 +1222,9 @@ offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                                         |
-| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<TorchStatusInfo> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo)> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **示例：**
 
