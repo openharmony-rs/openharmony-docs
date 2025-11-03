@@ -10,41 +10,42 @@
 
 ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。
 
+## 开发步骤
+  1. 导入相关模块。
 
-## 图片资源的创建及使用
-3D场景中的图片资源是指GPU可以直接使用的图片资源。创建图片资源的关键参数包括图片资源的名字以及图片资源的路径。将图片资源应用到材质中作为材质属性，是常见的图片资源使用方式之一，示例代码如下：
-```ts
-import { Image, MaterialType, Material, ShaderMaterial, SceneResourceParameters, SceneResourceFactory,
-  Scene } from '@kit.ArkGraphics3D';
+     在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建场景、相机、材质、图片等对象。
 
-function createImagePromise(): Promise<Image> {
-  return new Promise((resolve, reject) => {
-    // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-    let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-    scene.then(async (result: Scene) => {
-      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
-      // 加载图片资源，可用于材质贴图等。路径uri可根据项目结构自由指定
-      let sceneImageParameter: SceneResourceParameters = { name: "image", uri: $rawfile("bricks.jpg") };
-      // 创建Image
-      let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
-      image.then(async (imageEntity: Image) => {
-        let sceneMaterialParameter: SceneResourceParameters = { name: "material" };
-        // 创建材质
-        let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
-        // ShaderMaterial继承自Material
-        material.then(async (materialEntity: ShaderMaterial) => {
-          // 利用创建的图片资源设置纹理属性
-          if (materialEntity && materialEntity.colorShader) {
-            materialEntity.colorShader.inputs["BASE_COLOR_Image"] = imageEntity;
-          }
-          resolve(imageEntity);
-        });
-      });
-    });
-  });
-}
-```
+     <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
+  2. 加载场景并设置渲染参数。
+
+     调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
+
+     <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+  3. 初始化相机。
+
+     创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
+
+     <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+  4. 获取几何体节点。
+
+     通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
+
+     <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+  5. 创建图片资源并绑定到材质。
+
+     使用SceneResourceFactory.createImage()创建图片资源，再通过createMaterial()创建Shader材质。将图片资源绑定到Shader输入属性BASE_COLOR_Image上，使模型表面贴图生效。
+
+     <!-- @[create_image_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+  6. 应用图片材质到模型节点。
+
+     在按钮点击回调中，通过createShader()创建Shader并绑定材质对象，调用createImagePromise()获取图片资源并将其应用到模型几何体上，实现贴图替换。
+
+     <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
 <!--RP1-->
 ## 相关实例
