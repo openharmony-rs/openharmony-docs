@@ -226,3 +226,28 @@ try {
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
     <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    /**
+     * 注册监听的callback参数要采用对象传递.
+     * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+     */
+    let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+      hilog.info(DOMAIN, 'DisplayTest', 'Listening enabled. Data: ' + JSON.stringify(data));
+    };
+    try {
+      display.on('foldStatusChange', callback);
+      // 如果通过on注册多个callback，同时关闭所有callback监听
+      hilog.info(DOMAIN, 'DisplayTest', `register foldStatusChange success`);
+    
+      // 关闭单个callback监听
+      display.off('foldStatusChange', callback);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
+      // 关闭所有callback监听
+      display.off('foldStatusChange');
+      hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
+    } catch (exception) {
+      hilog.error(DOMAIN, 'DisplayTest',
+        `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    ```
