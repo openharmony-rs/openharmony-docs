@@ -182,53 +182,42 @@ export default class EntryAbility extends UIAbility {
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const DOMAIN = 0x0000;
-    
+
     @Entry
     @Component
     struct Index {
-      @State message: string = 'Hello World';
       @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
+
       build() {
-        Scroll() {
-          Column() {
-            Text(this.message)
-              .id('HelloWorld')
-              .fontSize(30)
-              .fontWeight(FontWeight.Bold)
-              .alignRules({
-                center: { anchor: '__container__', align: VerticalAlign.Center },
-                middle: { anchor: '__container__', align: HorizontalAlign.Center }
-              })
-              .onClick(() => {
-                this.message = 'Welcome';
-              })
-    
+        List({ space: 4 }) {
+          ListItem() {
             Button('terminateSelf').onClick(() => {
-              this.context.terminateSelf();
+              this.context.terminateSelf()
             })
-              .width('60%')
-              .margin({top: 8})
-    
-            Button($r('app.string.Start_UIAbilityB')).onClick((event: ClickEvent) => {
+              .width('100%')
+
+          }
+
+          ListItem() {
+            Button($r('app.string.Start_UIAbilityB'))    //用户自定义字符串资源
+              .onClick((event: ClickEvent) => {
               let want: Want = {
                 bundleName: this.context.abilityInfo.bundleName,
                 abilityName: 'UIAbilityB',
               };
+
               this.context.startAbility(want, (err: BusinessError) => {
                 if (err.code) {
-                  hilog.error(DOMAIN, 'Index', `Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
+                  console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
                 }
               });
             })
-              .width('60%')
-              .margin({top: 8})
+              .width('100%')
           }
-        // ···
         }
+        .listDirection(Axis.Vertical)
+        .backgroundColor(0xDCDCDC).padding(20)
+        .margin({top:250})
       }
     }
     ```
