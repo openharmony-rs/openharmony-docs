@@ -929,7 +929,7 @@ offFoldStatusChange(callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('foldStatusChange')](#offfoldstatuschange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('foldStatusChange')](#offfoldstatuschange12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
