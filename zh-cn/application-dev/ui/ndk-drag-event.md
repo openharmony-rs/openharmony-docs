@@ -146,6 +146,39 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置pixelMap的宽高等各项属性。设置Image节点的[dragPreviewOption](../reference/apis-arkui/capi-drag-and-drop-h.md#函数)，可用于设置跟手图的圆角、角标等。
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
+   
+   ``` C
+   // 创建pixelMap
+   uint8_t data[960000];
+   size_t dataSize = 960000;
+   for (int i = 0; i < dataSize; i++) {
+   data[i] = i + 1;
+   }
+   // 创建参数结构体实例，并设置参数
+   OH_Pixelmap_InitializationOptions *createOpts;
+   OH_PixelmapInitializationOptions_Create(&createOpts);
+   OH_PixelmapInitializationOptions_SetWidth(createOpts, SIZE_200);
+   OH_PixelmapInitializationOptions_SetHeight(createOpts, SIZE_200);
+   OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_BGRA_8888);
+   OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+   // 设置自定义跟手图
+   OH_PixelmapNative *pixelmap = nullptr;
+   OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &pixelmap);
+   OH_PixelmapNative_Opacity(pixelmap, DEFAULT_OPACITY);
+   OH_ArkUI_SetNodeDragPreview(node, pixelmap);
+   // 设置跟手图选项
+   auto *previewOptionsText = OH_ArkUI_CreateDragPreviewOption();
+   OH_ArkUI_DragPreviewOption_SetScaleMode(previewOptionsText, ARKUI_DRAG_PREVIEW_SCALE_DISABLED);
+   OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled(previewOptionsText, true);
+   OH_ArkUI_DragPreviewOption_SetBadgeNumber(previewOptionsText, DRAG_COUNT);
+   OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(previewOptionsText, true);
+   OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(previewOptionsText, true);
+   int returnValue = OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled(previewOptionsText, true);
+   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+       "dragTest DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled returnValue = %{public}d",
+       returnValue);
+   OH_ArkUI_SetNodeDragPreviewOption(node, previewOptionsText);
+   ```
 
 3. 设置相关事件。
 
