@@ -376,6 +376,19 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 更新资源、数据
+  }
+}
+```
+
 ## 相关实例
 
 针对UIAbility生命周期，有以下相关实例可供参考：
