@@ -26,16 +26,14 @@
 
 - [SoundPool](../media/using-soundpool-for-playback.md)：低时延的短音播放ArkTS/JS API，适用于播放急促简短的音效，如相机快门音效、按键音效、游戏射击音效等。
 
-## 后台播放或熄屏播放开发须知
+## 后台播放开发须知
 
-应用如果要实现后台播放或熄屏播放，需要同时满足：
+应用如果需要实现在后台播放音频，除了开发音频播放功能之外，还需要根据自身业务场景，选择[接入AVSession](../avsession/avsession-access-scene.md)或[申请长时任务](../../task-management/continuous-task.md)，具体规则为：
 
-1. 使用媒体会话（AVSession）功能注册到系统内统一管理。具体参考[AVSession Kit开发指导](../avsession/avsession-overview.md)。
+- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。
 
-    注意：若应用没有注册AVSession，且应用进入后台，则系统会对其音频行为做强制管控，主要包括：
-    - 应用在进入后台时，其正在播放的音频流将被强制停止或被强制静音。
-    - 应用在后台状态启动音频流时，该音频流会被禁止启动或被强制静音。
+- 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请[AUDIO_PLAYBACK](./../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)类型长时任务。
 
-2. 申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
+如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放。直到应用重新切回前台时，才会被解除静音并恢复播放。
 
-当应用进入后台，播放被中断，如果被媒体会话管控，将打印日志“pause id”；如果没有该日志，则说明被长时任务管控。
+详细的适配指南可参考[后台播放](./../avsession/avsession-background-scene.md)。
