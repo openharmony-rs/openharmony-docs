@@ -257,7 +257,7 @@
    【正例】
 
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
-
+   
    ``` TypeScript
    @Component
    struct Child {
