@@ -178,9 +178,10 @@ struct WebComponent {
    
      build() {
        Column() {
-         Text('loading success');
+       // ···
          // 加载沙箱路径文件。
-         Web({ src: url, controller: this.controller });
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true);
        }
      }
    }
