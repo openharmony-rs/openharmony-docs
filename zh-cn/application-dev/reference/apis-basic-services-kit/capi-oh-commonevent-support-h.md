@@ -98,4 +98,4 @@
 | static const char * const COMMON_EVENT_MINORSMODE_ON = "usual.event.MINORSMODE_ON" | 表示未成年人模式开启的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_MINORSMODE_OFF = "usual.event.MINORSMODE_OFF" | 表示未成年人模式关闭的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | 表示浏览器托管策略已更改。<br>**起始版本：** 15 |
-
+| static const char * const COMMON_EVENT_LID_MODE_CHANGED = "usual.event.LID_MODE_CHANGED" | 表示合盖模式的公共事件。<br>**起始版本：** 21 |
