@@ -63,7 +63,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
    import { dlpPermission } from '@kit.DataProtectionKit';
    ```
 
-2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。
+2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。
 
     ```ts
     import { common, Want } from '@kit.AbilityKit';
@@ -116,7 +116,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ]
     ```
 
-3. 生成DLP文件。
+3. 2B生成dlp加密文件。
 
     [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
 
