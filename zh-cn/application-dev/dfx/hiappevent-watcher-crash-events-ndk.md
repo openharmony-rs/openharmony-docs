@@ -264,6 +264,11 @@
    在"index.d.ts"文件中，定义ArkTS接口：
 
     <!-- @[Sys_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
+    export const registerWatcherClickCrash: () => void;
+    export const registerWatcherCrashEvent: () => void;
+    ```
 
 7. 在"EntryAbility.ets"文件的onCreate()函数中添加接口调用。
 
