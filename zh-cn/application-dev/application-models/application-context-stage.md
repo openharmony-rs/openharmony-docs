@@ -250,6 +250,23 @@ struct UIAbilityComponentsUsage {
 
 <!-- @[extension_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/extensionability/MyFormExtensionAbility.ets) -->
 
+``` TypeScript
+import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onAddForm(want: Want) {
+    let formExtensionContext = this.context;
+    let dataObj1: Record<string, string> = {
+      'temperature': '11c',
+      'time': '11:00'
+    };
+    let obj1: formBindingData.FormBindingData = formBindingData.createFormBindingData(dataObj1);
+    return obj1;
+  }
+}
+```
+
 
 
 ## Context的典型使用场景
