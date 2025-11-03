@@ -114,6 +114,15 @@ try {
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
     <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    try {
+      hilog.info(DOMAIN, 'DisplayTest', `The screen is captured or not : ${display.isCaptured()}`);
+    } catch (exception) {
+      hilog.error(DOMAIN, 'DisplayTest',
+        `Failed to get display isCaptured. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    ```
 
 ## 监听屏幕状态变化
 
