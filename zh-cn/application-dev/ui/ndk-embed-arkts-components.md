@@ -253,6 +253,32 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 3. Native侧通过Node-API保存创建和更新函数，用于后续调用。
    <!-- @[arkui_mixed_refresh_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h) -->
+   
+   ``` C
+   
+   // 混合模式交互类。
+   
+   #ifndef MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
+   #define MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
+   
+   #include "ArkUIMixedNode.h"
+   
+   #include <optional>
+   
+   #include <arkui/native_node_napi.h>
+   #include <js_native_api_types.h>
+   
+   namespace NativeModule {
+   
+   class ArkUIMixedRefresh : public ArkUIMixedNode {
+   public:
+       static napi_value RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info);
+   };
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
+   ```
 
    相关实现类说明：
 
