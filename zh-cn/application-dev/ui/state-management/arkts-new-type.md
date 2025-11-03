@@ -59,7 +59,6 @@ class Info {
 
 
 
-
 2. 不支持collections.Set、collections.Map等类型。
 
 3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
