@@ -338,6 +338,97 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    nodeAPI->registerNodeEvent(dragButton, NODE_ON_TOUCH_INTERCEPT, BUTTON_TOUCH, nullptr);
    ```
    <!-- @[set_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h) -->
+   
+   ``` C
+   void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue widthValue[] = {width};
+       ArkUI_AttributeItem widthItem = {widthValue, 1};
+       nodeAPI->setAttribute(node, NODE_WIDTH, &widthItem);
+   }
+   
+   void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue heightValue[] = {height};
+       ArkUI_AttributeItem heightItem = {heightValue, 1};
+       nodeAPI->setAttribute(node, NODE_HEIGHT, &heightItem);
+   }
+   
+   void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue colorValue[] = {{.u32 = color}};
+       ArkUI_AttributeItem colorItem = {colorValue, 1};
+       nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &colorItem);
+   }
+   
+   void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue marginValue[] = {margin};
+       ArkUI_AttributeItem marginItem = {marginValue, 1};
+       nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
+   }
+   
+   void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_AttributeItem NODE_Button_SRC_Item = {.string = label};
+       nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
+   }
+   
+   void SetId(ArkUI_NodeHandle &node, const char *id)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_AttributeItem idItem = {.string = id};
+       nodeAPI->setAttribute(node, NODE_ID, &idItem);
+   }
+   
+   void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue borderWidthValue[] = {width};
+       ArkUI_AttributeItem borderWidthItem = {borderWidthValue, 1};
+       nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
+   }
+   
+   void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
+   {
+       if (!nodeAPI) {
+           return;
+       }
+       ArkUI_NumberValue borderColorValue[] = {{.u32 = color}};
+       ArkUI_AttributeItem borderColorItem = {borderColorValue, 1};
+       nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
+   }
+   
+   void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
+                           unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
+   {
+       SetWidth(node, width);
+       SetHeight(node, height);
+       SetBackgroundColor(node, color);
+       SetMargin(node, margin);
+       SetBorderWidth(node, DEFAULT_BORDER_WIDTH);
+       SetBorderColor(node);
+   }
+   ```
 
 2. 接收NODE_ON_TOUCH_INTERCEPT事件。
 
