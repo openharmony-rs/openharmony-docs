@@ -75,6 +75,55 @@ export default class MyAbilityStage extends AbilityStage {
 
 <!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
+``` TypeScript
+import { common, application } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[CreateModuleContext]';
+const DOMAIN = 0xF811;
+
+let storageEventCall = new LocalStorage();
+
+@Entry(storageEventCall)
+@Component
+struct CreateModuleContext {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            let moduleName2: string = 'entry';
+            application.createModuleContext(this.context, moduleName2)
+              .then((data: common.Context) => {
+                hilog.info(DOMAIN, TAG, `CreateModuleContext success, data: ${JSON.stringify(data)}`);
+                if (data !== null) {
+                  this.getUIContext().getPromptAction().showToast({
+                    // $r('app.string.success_message')需要替换为开发者所需的资源文件
+                    message: $r('app.string.success_message')
+                  });
+                }
+              })
+              .catch((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
+              });
+          })
+        }
+        // ···
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
+
 
 ### 获取UIAbilityContext（UIAbility组件的上下文）
 
