@@ -69,7 +69,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 创建文件
+// 创建文件。
 let filesDir = '/data/storage/el2/base/haps';
 let file = fs.openSync(filesDir + '/screenCapture.mp4', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 
