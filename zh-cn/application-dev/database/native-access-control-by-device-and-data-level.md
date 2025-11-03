@@ -69,6 +69,10 @@
 2. 导入头文件。
 
     <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    #include "database/rdb/relational_store.h"
+    ```
 
 
 
