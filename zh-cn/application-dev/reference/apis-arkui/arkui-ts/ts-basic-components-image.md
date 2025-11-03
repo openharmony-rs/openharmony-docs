@@ -637,7 +637,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
