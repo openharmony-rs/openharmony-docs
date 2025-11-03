@@ -222,6 +222,26 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建UdmfRecord，将用于拖拽图片所需的数据 imageUri以fileUri类型添加到[UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中，接着将UdmfRecord设置到[udmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
+   
+   ``` C
+   void SetImageData(ArkUI_DragEvent* dragEvent)
+   {
+       int returnValue;
+       OH_UdmfRecord *record = OH_UdmfRecord_Create();
+       OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
+       OH_UdmfData *data = OH_UdmfData_Create();
+       returnValue = OH_UdmfData_AddRecord(data, record);
+       returnValue = OH_ArkUI_DragEvent_SetData(dragEvent, data);
+   }
+   // ···
+               case NODE_ON_DRAG_START: {
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_START EventReceiver");
+                   SetImageData(dragEvent);
+                   break;
+               }
+   ```
 
 5. 处理NODE_ON_DROP事件。
 
