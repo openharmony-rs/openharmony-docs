@@ -4005,7 +4005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":68,
 						"name":"web_createpdf_callback",
 						"start_line":16
 					}
@@ -4015,7 +4015,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":67,
 						"name":"web_createpdf_promise",
 						"start_line":16
 					}
@@ -4055,7 +4055,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":40,
 						"name":"web_Debugging_Wireless",
 						"start_line":15
 					}
@@ -4135,7 +4135,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":40,
 						"name":"ChangeUserAgent",
 						"start_line":15
 					}
@@ -4145,7 +4145,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":46,
 						"name":"SetPath",
 						"start_line":15
 					}
@@ -4175,7 +4175,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":52,
 						"name":"AchieveAlertDialogPage1",
 						"start_line":15
 					}
@@ -4185,7 +4185,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":63,
 						"name":"AchieveAlertDialogPage2",
 						"start_line":15
 					}
@@ -4195,7 +4195,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":57,
 						"name":"AchieveConfirmDialogPage1",
 						"start_line":15
 					}
@@ -4205,7 +4205,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":82,
 						"name":"AchieveConfirmDialogPage2",
 						"start_line":15
 					}
@@ -4215,7 +4215,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":90,
 						"name":"AchievePromptDialogPage",
 						"start_line":15
 					}
@@ -4230,7 +4230,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":76,
 						"name":"WebFocusManagement",
 						"start_line":15
 					}
@@ -4255,7 +4255,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":52,
 						"name":"DistinguishTwoGesture",
 						"start_line":15
 					}
@@ -4325,7 +4325,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":32,
 						"name":"MonitorZoomRatio",
 						"start_line":15
 					}
@@ -4335,7 +4335,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":46,
 						"name":"ControlZoomByFixedRatio",
 						"start_line":15
 					}
@@ -4345,7 +4345,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":45,
 						"name":"ControlZoomByInput",
 						"start_line":15
 					}
@@ -4355,7 +4355,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":54,
 						"name":"ControlZoomToFixedRatio",
 						"start_line":15
 					}
@@ -4370,7 +4370,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":43,
 						"name":"setRenderProcessMode",
 						"start_line":15
 					}
@@ -4380,7 +4380,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":34,
 						"name":"terminateRenderProcess",
 						"start_line":15
 					}
@@ -4390,7 +4390,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":34,
 						"name":"onRenderExited",
 						"start_line":15
 					}
@@ -4400,7 +4400,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":33,
 						"name":"onRenderProcessNotResponding",
 						"start_line":15
 					}
@@ -4410,7 +4410,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":32,
 						"name":"onRenderProcessResponding",
 						"start_line":15
 					}
@@ -4435,7 +4435,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":68,
 						"name":"DragArkTSPage",
 						"start_line":15
 					}
@@ -5580,7 +5580,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":56,
 						"name":"web_full_screen",
 						"start_line":16
 					}
