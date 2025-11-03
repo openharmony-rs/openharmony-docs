@@ -109,6 +109,39 @@
 3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，在FuncAbility中通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
+    import { common } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = '[FuncAbilityAPage]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct FuncAbilityAPage {
+    
+      build() {
+        Column() {
+          Button($r('app.string.Stop_AbilityA')) //'app.string.Stop_AbilityA'为用户自定义字符串资源
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+              // context为需要停止的UIAbility实例的AbilityContext
+              context.terminateSelf((err) => {
+                if (err.code) {
+                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to terminate self. Code is ${err.code}, message is ${err.message}`);
+                  return;
+                }
+              });
+            })
+            // ···
+    
+        // ···
+        }
+        // ···
+      }
+    }
+    ```
 
     > **说明：**
     >
