@@ -4128,7 +4128,7 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-Subscribes to the visibility status change event of the window.
+Subscribes to the visibility status change event of the window. For non-main windows, their shadow areas are also included in the occlusion calculations.
 
 **System capability**: SystemCapability.Window.SessionManager
 

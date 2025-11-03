@@ -79,7 +79,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 class Params {
   text: string = '';
@@ -118,7 +117,7 @@ class TextNodeController extends NodeController {
 
   // You can customize this method to update layouts.
   update(message: string) {
-    console.log(`update message: ${message}`);
+    console.info(`update message: ${message}`);
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
@@ -211,7 +210,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component

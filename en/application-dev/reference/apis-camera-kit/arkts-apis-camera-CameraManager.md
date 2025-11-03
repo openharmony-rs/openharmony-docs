@@ -750,7 +750,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise.|
+| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -781,7 +781,7 @@ Checks whether a flashlight mode is supported.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight mode. **true** if supported, **false** otherwise.|
+| boolean    | Check result for the support of the flashlight mode. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
