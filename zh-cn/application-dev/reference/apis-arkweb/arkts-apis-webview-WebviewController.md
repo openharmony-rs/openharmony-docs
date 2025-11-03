@@ -10015,11 +10015,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setScrollbarMode<sup>22+</sup>
+## setScrollbarMode<sup>23+</sup>
 
 setScrollbarMode(mode: ScrollbarMode): void
 
-web网页场景,用户使用全局滚动条样式接口设置滚动条样式。默认值：[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode22)（非常驻滚动条）。
+web网页场景,用户使用全局滚动条样式接口设置滚动条样式。默认值：[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
 
 > **说明：**
 >
@@ -10034,7 +10034,7 @@ web网页场景,用户使用全局滚动条样式接口设置滚动条样式。�
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| mode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode22) | 是 | 非常驻滚动条模式。<br>默认值：ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR |
+| mode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。<br>默认值：ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR |
 
 **示例：**
 
