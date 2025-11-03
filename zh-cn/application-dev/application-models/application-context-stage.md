@@ -132,116 +132,116 @@ struct CreateModuleContext {
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
-<!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
+  <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
 
-``` TypeScript
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+  ``` TypeScript
+  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // 获取UIAbility实例的上下文
-    let context = this.context;
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      // 获取UIAbility实例的上下文
+      let context = this.context;
+    }
   }
-}
-```
+  ```
 
 - 在页面中获取UIAbility实例的上下文信息。
 
-<!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
+  <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
 
-@Entry
-@Component
-struct EventHub {
-  // 定义context变量
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Entry
+  @Component
+  struct EventHub {
+    // 定义context变量
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  startAbilityTest(): void {
-    let want: Want = {
-      // Want参数信息
-    };
-    this.context.startAbility(want);
+    startAbilityTest(): void {
+      let want: Want = {
+        // Want参数信息
+      };
+      this.context.startAbility(want);
+    }
+
+    // 页面展示
+    build() {
+      // ···
+    }
   }
-
-  // 页面展示
-  build() {
-    // ···
-  }
-}
-```
+  ```
 
 
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
 
-<!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
+  <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
 
-@Entry
-@Component
-struct UIAbilityComponentsBasicUsage {
-  startAbilityTest(): void {
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let want: Want = {
-      // Want参数信息
-    };
-    context.startAbility(want);
+  @Entry
+  @Component
+  struct UIAbilityComponentsBasicUsage {
+    startAbilityTest(): void {
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      let want: Want = {
+        // Want参数信息
+      };
+      context.startAbility(want);
+    }
+
+    // 页面展示
+    build() {
+      // ···
+    }
   }
-
-  // 页面展示
-  build() {
-    // ···
-  }
-}
-```
+  ```
 
 
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
-<!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
+  <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
 
-``` TypeScript
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG = '[UIAbilityComponentsUsage]';
-const DOMAIN = 0xF811;
-@Entry
-@Component
-struct UIAbilityComponentsUsage {
-  // 页面展示
-  build() {
-    Column() {
-    // ···
-      Button('FuncAbilityB')
-        .onClick(() => {
-          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          try {
-            context.terminateSelf((err: BusinessError) => {
-              if (err.code) {
-                // 处理业务逻辑错误
-                hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
-                return;
-              }
-              // 执行正常业务
-              hilog.info(DOMAIN, TAG, `terminateSelf succeed.`);
-            });
-          } catch (err) {
-            // 捕获同步的参数错误
-            let code = (err as BusinessError).code;
-            let message = (err as BusinessError).message;
-            hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${code}, message is ${message}.`);
-          }
-        })
+  const TAG = '[UIAbilityComponentsUsage]';
+  const DOMAIN = 0xF811;
+  @Entry
+  @Component
+  struct UIAbilityComponentsUsage {
+    // 页面展示
+    build() {
+      Column() {
+      // ···
+        Button('FuncAbilityB')
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            try {
+              context.terminateSelf((err: BusinessError) => {
+                if (err.code) {
+                  // 处理业务逻辑错误
+                  hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  return;
+                }
+                // 执行正常业务
+                hilog.info(DOMAIN, TAG, `terminateSelf succeed.`);
+              });
+            } catch (err) {
+              // 捕获同步的参数错误
+              let code = (err as BusinessError).code;
+              let message = (err as BusinessError).message;
+              hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${code}, message is ${message}.`);
+            }
+          })
+      }
     }
   }
-}
-```
+  ```
 
 
 ### 获取ExtensionAbilityContext (ExtensionAbility组件的上下文)
@@ -337,105 +337,105 @@ export default class EntryAbility extends UIAbility {
 
 - **获取应用缓存目录**
 
-<!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
+  <!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
 
-``` TypeScript
-import { common } from '@kit.AbilityKit';
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
 
-const TAG: string = '[ApplicationContextCache]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[ApplicationContextCache]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-@Entry
-@Component
-struct ApplicationContextCache {
-  @State message: string = 'Hello World';
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Entry
+  @Component
+  struct ApplicationContextCache {
+    @State message: string = 'Hello World';
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-        // ···
-        Button() {
-          Text('create file')
-        // ···
-            .onClick(() => {
-              let applicationContext = this.context.getApplicationContext();
-              // 获取应用缓存路径
-              let cacheDir = applicationContext.cacheDir;
-            })
+    build() {
+      Row() {
+        Column() {
+          Text(this.message)
+          // ···
+          Button() {
+            Text('create file')
+          // ···
+              .onClick(() => {
+                let applicationContext = this.context.getApplicationContext();
+                // 获取应用缓存路径
+                let cacheDir = applicationContext.cacheDir;
+              })
+          }
+          // ···
         }
-        // ···
+      // ···
       }
-    // ···
+      // ···
     }
-    // ···
   }
-}
-```
+  ```
 
 
 - **获取应用文件目录**
 
-<!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
+  <!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
 
-``` TypeScript
-import { common } from '@kit.AbilityKit';
-import { buffer } from '@kit.ArkTS';
-import { fileIo, ReadOptions } from '@kit.CoreFileKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  import { buffer } from '@kit.ArkTS';
+  import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[ApplicationContextFile]';
-const DOMAIN_NUMBER: number = 0xFF00;
+  const TAG: string = '[ApplicationContextFile]';
+  const DOMAIN_NUMBER: number = 0xFF00;
 
-@Entry
-@Component
-struct ApplicationContextFile {
-  @State message: string = 'Hello World';
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Entry
+  @Component
+  struct ApplicationContextFile {
+    @State message: string = 'Hello World';
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-        // ···
-        Button() {
-          Text('create file')
-        // ···
-            .onClick(() => {
-              let applicationContext = this.context.getApplicationContext();
-              // 获取应用文件路径
-              let filesDir = applicationContext.filesDir;
-              hilog.info(DOMAIN_NUMBER, TAG, `filePath: ${filesDir}`);
-              // 文件不存在时创建并打开文件，文件存在时打开文件
-              let file = fileIo.openSync(filesDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              // 写入一段内容至文件
-              let writeLen = fileIo.writeSync(file.fd, 'Try to write str.');
-              hilog.info(DOMAIN_NUMBER, TAG, `The length of str is: ${writeLen}`);
-              // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
-              let arrayBuffer = new ArrayBuffer(1024);
-              // 设置读取的偏移量和长度
-              let readOptions: ReadOptions = {
-                offset: 0,
-                length: arrayBuffer.byteLength
-              };
-              // 读取文件内容到ArrayBuffer对象中，并返回实际读取的字节数
-              let readLen = fileIo.readSync(file.fd, arrayBuffer, readOptions);
-              // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
-              let buf = buffer.from(arrayBuffer, 0, readLen);
-              hilog.info(DOMAIN_NUMBER, TAG, `the content of file: ${buf.toString()}`);
-              // 关闭文件
-              fileIo.closeSync(file);
-            })
+    build() {
+      Row() {
+        Column() {
+          Text(this.message)
+          // ···
+          Button() {
+            Text('create file')
+          // ···
+              .onClick(() => {
+                let applicationContext = this.context.getApplicationContext();
+                // 获取应用文件路径
+                let filesDir = applicationContext.filesDir;
+                hilog.info(DOMAIN_NUMBER, TAG, `filePath: ${filesDir}`);
+                // 文件不存在时创建并打开文件，文件存在时打开文件
+                let file = fileIo.openSync(filesDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                // 写入一段内容至文件
+                let writeLen = fileIo.writeSync(file.fd, 'Try to write str.');
+                hilog.info(DOMAIN_NUMBER, TAG, `The length of str is: ${writeLen}`);
+                // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
+                let arrayBuffer = new ArrayBuffer(1024);
+                // 设置读取的偏移量和长度
+                let readOptions: ReadOptions = {
+                  offset: 0,
+                  length: arrayBuffer.byteLength
+                };
+                // 读取文件内容到ArrayBuffer对象中，并返回实际读取的字节数
+                let readLen = fileIo.readSync(file.fd, arrayBuffer, readOptions);
+                // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
+                let buf = buffer.from(arrayBuffer, 0, readLen);
+                hilog.info(DOMAIN_NUMBER, TAG, `the content of file: ${buf.toString()}`);
+                // 关闭文件
+                fileIo.closeSync(file);
+              })
+          }
+          // ···
         }
-        // ···
+      // ···
       }
-    // ···
+      // ···
     }
-    // ···
   }
-}
-```
+  ```
 
 
 ### 获取和修改加密分区
