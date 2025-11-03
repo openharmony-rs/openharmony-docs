@@ -313,20 +313,20 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 使用该接口的前置条件：由demo应用打开DLP文件。
 
     <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
- 
- ``` TypeScript
- getRetentionSandboxList() {
-   dlpPermission.getRetentionSandboxList().then((res) => {
-     this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
-     console.info('res', JSON.stringify(res));
-     hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
-   }).catch((err: BusinessError) => {
-     this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
-     console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-     hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-   });
- }
- ```
+    
+    ``` TypeScript
+    getRetentionSandboxList() {
+      dlpPermission.getRetentionSandboxList().then((res) => {
+        this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
+        console.info('res', JSON.stringify(res));
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
+      }).catch((err: BusinessError) => {
+        this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
+        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      });
+    }
+    ```
 11. 设置沙箱应用配置信息。
 
     <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
