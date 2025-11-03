@@ -8754,7 +8754,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"load_local_page_file_in_sandbox_path",
 						"start_line":16
 					}
