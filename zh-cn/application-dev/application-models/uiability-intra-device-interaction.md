@@ -224,6 +224,56 @@
 2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)方法，入参[abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md)为FuncAbility需要返回给EntryAbility的信息。
 
     <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    
+    ``` TypeScript
+    import { common } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = '[FuncAbilityAPage]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct FuncAbilityAPage {
+    
+      build() {
+        Column() {
+        // ···
+    
+          List({ initialIndex: 0 }) {
+            ListItem() {
+              Row() {
+                // ···
+              }
+              .onClick(() => {
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+                const RESULT_CODE: number = 1001; //FuncAbilityA返回的结果
+                let abilityResult: common.AbilityResult = {
+                  resultCode: RESULT_CODE,
+                  want: {
+                    bundleName: 'com.samples.uiabilityinteraction',
+                    moduleName: 'entry', // moduleName非必选
+                    abilityName: 'FuncAbilityA',
+                    parameters: {
+                      info: $r('app.string.ability_return_info') //'app.string.ability_return_info'为用户自定义字符串资源
+                    },
+                  },
+                };
+                context.terminateSelfWithResult(abilityResult, (err) => {
+                  if (err.code) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `Failed to terminate self with result. Code is ${err.code}, message is ${err.message}`);
+                    return;
+                  }
+                });
+              })
+            }
+          }
+        // ···
+        }
+        // ···
+      }
+    }
+    ```
 
 3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
