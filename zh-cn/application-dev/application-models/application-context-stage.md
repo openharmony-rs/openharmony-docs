@@ -484,6 +484,60 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
 
+``` TypeScript
+// Index.ets
+import { contextConstant, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct AreaContext {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        // ···
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            // 存储普通信息前，切换到EL1设备级加密
+            if (this.context.area === contextConstant.AreaMode.EL2) { // 获取area
+              this.context.area = contextConstant.AreaMode.EL1; // 修改area
+              this.getUIContext().getPromptAction().showToast({
+                message: 'SwitchToEL1'
+              });
+            }
+            // 存储普通信息
+          })
+        }
+        // ···
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            // 存储敏感信息前，切换到EL2用户级加密
+            if (this.context.area === contextConstant.AreaMode.EL1) { // 获取area
+              this.context.area = contextConstant.AreaMode.EL2; // 修改area
+              this.getUIContext().getPromptAction().showToast({
+                message: 'SwitchToEL2'
+              });
+            }
+            // 存储敏感信息
+          })
+        }
+        // ···
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
+
 
 ### 监听应用前后台变化
 
