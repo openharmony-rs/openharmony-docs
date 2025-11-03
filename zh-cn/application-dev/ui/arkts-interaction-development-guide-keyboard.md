@@ -179,6 +179,36 @@ struct KeyEventPreventBubble {
 
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
 
+``` TypeScript
+import { KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct PreImeEventExample {
+  @State buttonText: string = '';
+  @State buttonType: string = '';
+  @State columnText: string = '';
+  @State columnType: string = '';
+
+  build() {
+    Column() {
+      Search({
+        placeholder: 'Search...'
+      })
+        .width('80%')
+        .height('40vp')
+        .border({ radius:'20vp' })
+        .onKeyPreIme((event:KeyEvent) => {
+          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
+            return true;
+          }
+          return false;
+        })
+    }
+  }
+}
+```
+
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
 <!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
