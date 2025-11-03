@@ -3,8 +3,8 @@
 本模块提供了系统事件打点能力，包括系统事件的埋点、落盘系统事件的订阅及已落盘的系统事件的查询能力。
 
 > **说明：**
-
-> - 本模块同时支持ArkTs-Dyn、ArkTS-Sta。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -46,7 +46,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | domain | string | 是 | 事件领域。 |
 | name | string | 是 | 事件名称。 |
 | eventType | [EventType](#eventtype) | 是 | 事件类型。 |
-| params | ArkTS-Dyn: object<br> ArkTS-Sta: Record<string, boolean \| int \| double \| string \| bigint \| boolean[] \| int[] \| double[] \| string[] \| bigint[]>| 否 | 是 | 事件参数。 |
+| params | ArkTS-Dyn: object<br> ArkTS-Sta: Record<string, boolean \| int \| double \| string \| bigint \| boolean[] \| int[] \| double[] \| string[] \| bigint[]>| 否 | 事件参数。 |
 
 
 ## hiSysEvent.write
@@ -132,7 +132,7 @@ try {
     eventType: hiSysEvent.EventType.FAULT,
     params: customizedParams
   };
-  hiSysEvent.write(eventInfo, (err: BusinessError) => {
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
     // do something here.
   });
 } catch (err) {
@@ -561,7 +561,7 @@ try {
     eventType: hiSysEvent.EventType.FAULT,
     params: customizedParams
   };
-  hiSysEvent.write(eventInfo, (err: BusinessError) => {
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
     // do something here.
   });
 
@@ -705,7 +705,7 @@ try {
     eventType: hiSysEvent.EventType.FAULT,
     params: customizedParams
   };
-  hiSysEvent.write(eventInfo, (err: BusinessError) => {
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
     // do something here.
   });
 
@@ -859,7 +859,7 @@ try {
     eventType: hiSysEvent.EventType.FAULT,
     params: customizedParams
   };
-  hiSysEvent.write(eventInfo, (err: BusinessError) => {
+  hiSysEvent.write(eventInfo, (err: BusinessError<void> | null, data: undefined) => {
     // do something here.
   });
 
