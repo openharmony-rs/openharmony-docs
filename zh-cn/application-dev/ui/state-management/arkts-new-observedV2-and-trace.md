@@ -162,6 +162,33 @@ struct Index {
 
 <!-- @[Observe_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/ObserveChanges.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Son {
+  @Trace public age: number = 100;
+}
+
+class Father {
+  public son: Son = new Son();
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  father: Father = new Father();
+
+  build() {
+    Column() {
+      // 当点击改变age时，Text组件会刷新
+      Text(`${this.father.son.age}`)
+        .onClick(() => {
+          this.father.son.age++;
+        })
+    }
+  }
+}
+```
+
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
 <!-- @[Inherited_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets) -->
