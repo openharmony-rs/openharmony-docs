@@ -678,6 +678,60 @@ export default class ColdStartAbility extends UIAbility {
 
 <!-- @[FuncAbility_Window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
 
+``` TypeScript
+import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[MainPage]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct MainPage {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      List({ initialIndex: 0, space: 8 }) {
+
+        // ···
+
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            let want: Want = {
+              deviceId: '', // deviceId为空表示本设备
+              bundleName: 'com.samples.uiabilityinteraction',
+              moduleName: 'entry', // moduleName非必选
+              abilityName: 'HotStartAbility',
+              parameters: {
+                // 自定义信息
+                info: '来自EntryAbility Index页面'
+              }
+            };
+            let options: StartOptions = {
+              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING,
+            };
+            // context为调用方UIAbility的UIAbilityContext
+            context.startAbility(want, options).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting ability.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+        }
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
+
 效果示意如下图所示。
 
 ![](figures/start-uiability-floating-window.png)
