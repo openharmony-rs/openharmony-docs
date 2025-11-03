@@ -278,6 +278,53 @@ class PixelUtils {
 使用UIContext接口替换：
 
 <!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->
+
+``` TypeScript
+// common/Utils.ets
+// common/Utils.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+export class PixelUtil {
+  static uiContext: UIContext | undefined;
+
+  static setUIContext(uiContext: UIContext): void {
+    PixelUtil.uiContext = uiContext;
+  }
+
+  static removeUIContext(): void {
+    PixelUtil.uiContext = undefined;
+  }
+
+  static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+      return undefined;
+    }
+    return _uiContext.vp2px(vpValue)
+  }
+
+  static fp2px(fpValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+      return undefined;
+    }
+    return _uiContext.fp2px(fpValue)
+  }
+
+  lpx2px(lpxValue: number, uiContext?: UIContext): number | undefined {
+    let _uiContext = uiContext ?? PixelUtil.uiContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+      return undefined;
+    }
+    return _uiContext.lpx2px(lpxValue)
+  }
+}
+```
 <!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 使用替换的封装接口时，建议在能够获取UIContext的场景下传入UIContext参数。
