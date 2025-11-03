@@ -35,99 +35,13 @@
 
 现有状态管理V1版本无法实现对嵌套类对象属性变化的直接观测。
 
-```ts
-@Observed
-class Father {
-  son: Son;
+<!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) -->
 
-  constructor(name: string, age: number) {
-    this.son = new Son(name, age);
-  }
-}
-@Observed
-class Son {
-  name: string;
-  age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State father: Father = new Father('John', 8);
-
-  build() {
-    Row() {
-      Column() {
-        Text(`name: ${this.father.son.name} age: ${this.father.son.age}`)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.father.son.age++;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 在上述代码中，点击Text组件增加age的值时，不会触发UI刷新。原因在于现有的状态管理框架无法观测到嵌套类中属性age的值变化。V1版本的解决方案是使用[\@ObjectLink装饰器](arkts-observed-and-objectlink.md)与自定义组件来实现观测。
 
-```ts
-@Observed
-class Father {
-  son: Son;
+<!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) -->
 
-  constructor(name: string, age: number) {
-    this.son = new Son(name, age);
-  }
-}
-@Observed
-class Son {
-  name: string;
-  age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-@Component
-struct Child {
-  @ObjectLink son: Son;
-
-  build() {
-    Row() {
-      Column() {
-        Text(`name: ${this.son.name} age: ${this.son.age}`)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.son.age++;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State father: Father = new Father('John', 8);
-
-  build() {
-    Column() {
-      Child({son: this.father.son})
-    }
-  }
-}
-```
 
 通过这种方式虽然能够实现对嵌套类中属性变化的观测，但是当嵌套层级较深时，代码将会变得十分复杂，易用性差。因此推出类装饰器\@ObservedV2与成员变量装饰器\@Trace，增强对嵌套类中属性变化的观测能力。
 
@@ -149,79 +63,15 @@ struct Index {
 
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-```ts
-@ObservedV2
-class Son {
-  @Trace age: number = 100;
-}
-class Father {
-  son: Son = new Son();
-}
-@Entry
-@ComponentV2
-struct Index {
-  father: Father = new Father();
-
-  build() {
-    Column() {
-      // 当点击改变age时，Text组件会刷新
-      Text(`${this.father.son.age}`)
-        .onClick(() => {
-          this.father.son.age++;
-        })
-    }
-  }
-}
-
-```
+<!-- @[Observe_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/ObserveChanges.ets) -->
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-```ts
-@ObservedV2
-class Father {
-  @Trace name: string = 'Tom';
-}
-class Son extends Father {
-}
-@Entry
-@ComponentV2
-struct Index {
-  son: Son = new Son();
-
-  build() {
-    Column() {
-      // 当点击改变name时，Text组件会刷新
-      Text(`${this.son.name}`)
-        .onClick(() => {
-          this.son.name = 'Jack';
-        })
-    }
-  }
-}
-```
+<!-- @[Inherited_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets) -->
 
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
-```ts
-@ObservedV2
-class Manager {
-  @Trace static count: number = 1;
-}
-@Entry
-@ComponentV2
-struct Index {
-  build() {
-    Column() {
-      // 当点击改变count时，Text组件会刷新
-      Text(`${Manager.count}`)
-        .onClick(() => {
-          Manager.count++;
-        })
-    }
-  }
-}
-```
+<!-- @[Static_Attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets) -->
 
 - \@Trace装饰内置类型时，可以观测各自API导致的变化：
 
@@ -238,33 +88,7 @@ struct Index {
 
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
-```ts
-@ObservedV2
-class Person {
-  id: number = 0;
-  @Trace age: number = 8;
-}
-@Entry
-@ComponentV2
-struct Index {
-  person: Person = new Person();
-
-  build() {
-    Column() {
-      // age被@Trace装饰，用在UI中可以触发UI刷新
-      Text(`${this.person.age}`)
-        .onClick(() => {
-          this.person.age++; // 点击会触发UI刷新
-        })
-      // id未被@Trace装饰，用在UI中不会触发UI刷新
-      Text(`${this.person.id}`) // 当id变化时不会刷新
-        .onClick(() => {
-          this.person.id++; // 点击不会触发UI刷新
-        })
-    }
-  }
-}
-```
+<!-- @[UiRefresh_CannotTriggered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UiRefreshCannotTriggered.ets) -->
 
 - \@ObservedV2仅能装饰class，无法装饰自定义组件。
 
@@ -313,82 +137,11 @@ class Person {
 
 - 使用\@ObservedV2与\@Trace装饰的类不能和[\@State](arkts-state.md)等V1的装饰器混合使用，编译时报错。
 
-```ts
-// 以@State装饰器为例
-@ObservedV2
-class Job {
-  @Trace jobName: string = 'Teacher';
-}
-@ObservedV2
-class Info {
-  @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  job: Job = new Job();
-}
-@Entry
-@Component
-struct Index {
-  @State info: Info = new Info(); // 无法混用，编译时报错
+<!-- @[Use_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UseMixture.ets) -->
 
-  build() {
-    Column() {
-      Text(`name: ${this.info.name}`)
-      Text(`age: ${this.info.age}`)
-      Text(`jobName: ${this.info.job.jobName}`)
-      Button('change age')
-        .onClick(() => {
-          this.info.age++;
-        })
-      Button('Change job')
-        .onClick(() => {
-          this.info.job.jobName = 'Doctor';
-        })
-    }
-  }
-}
-```
+- 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，编译时报错。
 
-- 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
-
-```ts
-// 以@State装饰器为例
-@ObservedV2
-class Job {
-  @Trace jobName: string = 'Teacher';
-}
-@ObservedV2
-class Info {
-  @Trace name: string = 'Tom';
-  @Trace age: number = 25;
-  job: Job = new Job();
-}
-class Message extends Info {
-    constructor() {
-        super();
-    }
-}
-@Entry
-@Component
-struct Index {
-  @State message: Message = new Message(); // 无法混用，运行时报错
-
-  build() {
-    Column() {
-      Text(`name: ${this.message.name}`)
-      Text(`age: ${this.message.age}`)
-      Text(`jobName: ${this.message.job.jobName}`)
-      Button('change age')
-        .onClick(() => {
-          this.message.age++;
-        })
-      Button('Change job')
-        .onClick(() => {
-          this.message.job.jobName = 'Doctor';
-        })
-    }
-  }
-}
-```
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
 
 - \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
@@ -405,51 +158,7 @@ struct Index {
 * 自定义组件Page中的son是常规变量，因此点击Button('assign Son')并不会观测到变化。
 * 当点击Button('assign Son')后，再点击Button('change length')并不会引起UI刷新。因为此时son的地址改变，其关联的UI组件并没有关联到最新的son。
 
-```ts
-@ObservedV2
-class Pencil {
-  @Trace length: number = 21; // 当length变化时，会刷新关联的组件
-}
-class Bag {
-  width: number = 50;
-  height: number = 60;
-  pencil: Pencil = new Pencil();
-}
-class Son {
-  age: number = 5;
-  school: string = 'some';
-  bag: Bag = new Bag();
-}
-
-@Entry
-@ComponentV2
-struct Page {
-  son: Son = new Son();
-  renderTimes: number = 0;
-  isRender(id: number): number {
-    console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
-    this.renderTimes++;
-    return 40;
-  }
-
-  build() {
-    Column() {
-      Text('pencil length'+ this.son.bag.pencil.length)
-        .fontSize(this.isRender(1))   // UINode (1)
-      Button('change length')
-        .onClick(() => {
-          // 点击更改length值，UINode（1）会刷新
-          this.son.bag.pencil.length += 100;
-        })
-      Button('assign Son')
-        .onClick(() => {
-          // 由于变量son非状态变量，因此无法刷新UINode（1）
-          this.son = new Son();
-        })
-    }
-  }
-}
-```
+<!-- @[Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets) -->
 
 
 ### 继承类场景
@@ -462,348 +171,37 @@ struct Page {
 
 创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-```ts
-@ObservedV2
-class GrandFather {
-  @Trace age: number = 0;
+<!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->
 
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-class Father extends GrandFather{
-  constructor(father: number) {
-    super(father);
-  }
-}
-class Uncle extends GrandFather {
-  constructor(uncle: number) {
-    super(uncle);
-  }
-}
-class Son extends Father {
-  constructor(son: number) {
-    super(son);
-  }
-}
-class Cousin extends Uncle {
-  constructor(cousin: number) {
-    super(cousin);
-  }
-}
-@Entry
-@ComponentV2
-struct Index {
-  son: Son = new Son(0);
-  cousin: Cousin = new Cousin(0);
-  renderTimes: number = 0;
-
-  isRender(id: number): number {
-    console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
-    this.renderTimes++;
-    return 40;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(`Son ${this.son.age}`)
-          .fontSize(this.isRender(1))
-          .fontWeight(FontWeight.Bold)
-        Text(`Cousin ${this.cousin.age}`)
-          .fontSize(this.isRender(2))
-          .fontWeight(FontWeight.Bold)
-        Button('change Son age')
-          .onClick(() => {
-            this.son.age++;
-          })
-        Button('change Cousin age')
-          .onClick(() => {
-            this.cousin.age++;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-```ts
-let nextId: number = 0;
+<!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->
 
-@ObservedV2
-class Arr {
-  id: number = 0;
-  @Trace numberArr: number[] = [];
-
-  constructor() {
-    this.id = nextId++;
-    this.numberArr = [0, 1, 2];
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  arr: Arr = new Arr();
-
-  build() {
-    Column() {
-      Text(`length: ${this.arr.numberArr.length}`)
-        .fontSize(40)
-      Divider()
-      if (this.arr.numberArr.length >= 3) {
-        Text(`${this.arr.numberArr[0]}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.arr.numberArr[0]++;
-          })
-        Text(`${this.arr.numberArr[1]}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.arr.numberArr[1]++;
-          })
-        Text(`${this.arr.numberArr[2]}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.arr.numberArr[2]++;
-          })
-      }
-
-      Divider()
-
-      ForEach(this.arr.numberArr, (item: number, index: number) => {
-        Text(`${index} ${item}`)
-          .fontSize(40)
-      })
-
-      Button('push')
-        .onClick(() => {
-          this.arr.numberArr.push(50);
-        })
-
-      Button('pop')
-        .onClick(() => {
-          this.arr.numberArr.pop();
-        })
-
-      Button('shift')
-        .onClick(() => {
-          this.arr.numberArr.shift();
-        })
-
-      Button('splice')
-        .onClick(() => {
-          this.arr.numberArr.splice(1, 0, 60);
-        })
-
-
-      Button('unshift')
-        .onClick(() => {
-          this.arr.numberArr.unshift(100);
-        })
-
-      Button('copywithin')
-        .onClick(() => {
-          this.arr.numberArr.copyWithin(0, 1, 2);
-        })
-
-      Button('fill')
-        .onClick(() => {
-          this.arr.numberArr.fill(0, 2, 4);
-        })
-
-      Button('reverse')
-        .onClick(() => {
-          this.arr.numberArr.reverse();
-        })
-
-      Button('sort')
-        .onClick(() => {
-          this.arr.numberArr.sort();
-        })
-    }
-  }
-}
-```
 
 ### \@Trace装饰对象数组
 
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-```ts
-let nextId: number = 0;
-
-@ObservedV2
-class Person {
-  @Trace age: number = 0;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@ObservedV2
-class Info {
-  id: number = 0;
-  @Trace personList: Person[] = [];
-
-  constructor() {
-    this.id = nextId++;
-    this.personList = [new Person(0), new Person(1), new Person(2)];
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  info: Info = new Info();
-
-  build() {
-    Column() {
-      Text(`length: ${this.info.personList.length}`)
-        .fontSize(40)
-      Divider()
-      if (this.info.personList.length >= 3) {
-        Text(`${this.info.personList[0].age}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.info.personList[0].age++;
-          })
-
-        Text(`${this.info.personList[1].age}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.info.personList[1].age++;
-          })
-
-        Text(`${this.info.personList[2].age}`)
-          .fontSize(40)
-          .onClick(() => {
-            this.info.personList[2].age++;
-          })
-      }
-
-      Divider()
-
-      ForEach(this.info.personList, (item: Person, index: number) => {
-        Text(`${index} ${item.age}`)
-          .fontSize(40)
-      })
-    }
-  }
-}
-
-```
+<!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) -->
 
 ### \@Trace装饰Map类型
 
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-```ts
-@ObservedV2
-class Info {
-  @Trace memberMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-}
-
-@Entry
-@ComponentV2
-struct MapSample {
-  info: Info = new Info();
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.info.memberMap.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`)
-            .fontSize(30)
-          Text(`${item[1]}`)
-            .fontSize(30)
-          Divider()
-        })
-        Button('init map')
-          .onClick(() => {
-            this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-          })
-        Button('set new one')
-          .onClick(() => {
-            this.info.memberMap.set(4, 'd');
-          })
-        Button('clear')
-          .onClick(() => {
-            this.info.memberMap.clear();
-          })
-        Button('set the key: 0')
-          .onClick(() => {
-            this.info.memberMap.set(0, 'aa');
-          })
-        Button('delete the first one')
-          .onClick(() => {
-            this.info.memberMap.delete(0);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) -->
 
 ### \@Trace装饰Set类型
 
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear和delete。
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观测到变化。
 
-```ts
-@ObservedV2
-class Info {
-  @Trace memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
-}
-
-@Entry
-@ComponentV2
-struct SetSample {
-  info: Info = new Info();
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.info.memberSet.entries()), (item: [number, number]) => {
-          Text(`${item[0]}`)
-            .fontSize(30)
-          Divider()
-        })
-        Button('init set')
-          .onClick(() => {
-            this.info.memberSet = new Set([0, 1, 2, 3, 4]);
-          })
-        Button('set new one')
-          .onClick(() => {
-            this.info.memberSet.add(5);
-          })
-        Button('clear')
-          .onClick(() => {
-            this.info.memberSet.clear();
-          })
-        Button('delete the first one')
-          .onClick(() => {
-            this.info.memberSet.delete(0);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) -->
 
 
 ### \@Trace装饰Date类型
@@ -811,48 +209,7 @@ struct SetSample {
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-```ts
-@ObservedV2
-class Info {
-  @Trace selectedDate: Date = new Date('2021-08-08');
-}
-
-@Entry
-@ComponentV2
-struct DateSample {
-  info: Info = new Info();
-
-  build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick(() => {
-          this.info.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick(() => {
-          this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick(() => {
-          this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.info.selectedDate
-      })
-    }.width('100%')
-  }
-}
-```
+<!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) -->
 
 ## 常见问题
 
