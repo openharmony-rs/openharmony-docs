@@ -34,7 +34,7 @@ type NetBearType = connection.NetBearType
 
 ## policy.showAppNetPolicySettings<sup>22+</sup>
 
-showAppNetPolicySettings(context: Context): Promise\<void>;
+showAppNetPolicySettings(context: Context): Promise\<void>
 
 打开当前应用的联网设置界面。使用Promise异步回调。
 
