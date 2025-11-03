@@ -116,19 +116,19 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
    
 
-    ``` JSON5
-    "skills": [
-      {
-        "entities": [
-          "entity.system.home"
-        ],
-        "actions": [
-          "action.system.home",
-          "ohos.want.action.viewData"
-        ]
-      }
+``` JSON5
+"skills": [
+  {
+    "entities": [
+      "entity.system.home"
+    ],
+    "actions": [
+      "action.system.home",
+      "ohos.want.action.viewData"
     ]
-    ```
+  }
+]
+```
   
 4. 2B生成dlp加密文件。  
 使用该接口的前置条件：链接DLP凭据服务器。
