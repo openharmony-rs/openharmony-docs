@@ -1,4 +1,4 @@
-# OpenGL
+# OpenGL符号列表
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
