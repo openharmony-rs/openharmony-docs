@@ -78,7 +78,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 | 参数名       | 类型                     | 必填 | 说明                               |
 | --------- | ----------------------- | ---- | --------------------------------- |
-| flashMode | [FlashMode](arkts-apis-camera-e.md#flashmode) | 是   | 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。             |
+| flashMode | [FlashMode](arkts-apis-camera-e.md#flashmode) | 是   | ArkTS-Dyn: 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。<br/>ArkTS-Sta: 指定闪光灯模式。目前不支持传参null或者undefined。 |
 
 **返回值：**
 

@@ -36,7 +36,7 @@ setFocusMode(afMode: FocusMode): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。       |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | ArkTS-Dyn: 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。<br/>ArkTS-Sta: 指定的焦距模式。目前不支持传参null或者undefined。 |
 
 **错误码：**
 
