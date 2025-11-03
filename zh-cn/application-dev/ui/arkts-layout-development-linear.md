@@ -50,7 +50,9 @@
 
 ![arrangement-direction-column](figures/arrangement-direction-column.png)
 
-```ts
+<!-- @[ColumnLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutExample.ets) -->
+
+``` TypeScript
 Column({ space: 20 }) {
   Text('space: 20').fontSize(15).fontColor(Color.Gray).width('90%')
   Row().width('90%').height(50).backgroundColor(0xF5DEB3)
@@ -70,7 +72,9 @@ Column({ space: 20 }) {
 ![arrangement-direction-row](figures/arrangement-direction-row.png)
 
 
-```ts
+<!-- @[RowLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutExample.ets) -->
+
+``` TypeScript
 Row({ space: 35 }) {
   Text('space: 35').fontSize(15).fontColor(Color.Gray)
   Row().width('10%').height(150).backgroundColor(0xF5DEB3)
@@ -94,14 +98,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.Start)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
@@ -111,14 +117,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.Center)：元素在垂直方向中心对齐，第一个元素与行首的距离与最后一个元素与行尾距离相同。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentCenter.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
@@ -128,14 +136,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.End)：元素在垂直方向尾部对齐，最后一个元素与行尾对齐，其他元素与后一个对齐。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentEnd.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
@@ -145,14 +155,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceBetween)：垂直方向均匀分配元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceBetween.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
@@ -162,14 +174,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceAround)：垂直方向均匀分配元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceAround.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
@@ -179,14 +193,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceEvenly)：垂直方向均匀分配元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样。
 
-  ```ts
+  <!-- @[ColumnLayoutJustifyContentSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceEvenly.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
@@ -203,14 +219,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.Start)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
@@ -220,14 +238,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.Center)：元素在水平方向中心对齐，第一个元素与行首的距离与最后一个元素与行尾距离相同。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentCenter.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
@@ -237,14 +257,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.End)：元素在水平方向尾部对齐，最后一个元素与行尾对齐，其他元素与后一个对齐。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentEnd.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
@@ -254,14 +276,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceBetween)：水平方向均匀分配元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceBetween.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
@@ -271,14 +295,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceAround)：水平方向均匀分配元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceAround.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
@@ -288,14 +314,16 @@ Row({ space: 35 }) {
 
 - justifyContent(FlexAlign.SpaceEvenly)：水平方向均匀分配元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样。
 
-  ```ts
+  <!-- @[RowLayoutJustifyContentSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceEvenly.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
@@ -318,14 +346,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - HorizontalAlign.Start：子元素在水平方向左对齐。
 
-  ```ts
+  <!-- @[RowLayoutHorizontalAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignStart.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
@@ -335,14 +365,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - HorizontalAlign.Center：子元素在水平方向居中对齐。
 
-  ```ts
+  <!-- @[RowLayoutHorizontalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignCenter.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
@@ -352,14 +384,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - HorizontalAlign.End：子元素在水平方向右对齐。
 
-  ```ts
+  <!-- @[RowLayoutHorizontalAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignEnd.ets) -->
+  
+  ``` TypeScript
   Column({}) {
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('80%').height(50).backgroundColor(0xF5DEB3)
   }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
@@ -376,14 +410,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - VerticalAlign.Top：子元素在垂直方向顶部对齐。
 
-  ```ts
+  <!-- @[RowLayoutVerticalAlignTop_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignTop.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
@@ -393,14 +429,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - VerticalAlign.Center：子元素在垂直方向居中对齐。
 
-  ```ts
+  <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
@@ -410,14 +448,16 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 - VerticalAlign.Bottom：子元素在垂直方向底部对齐。
 
-  ```ts
+  <!-- @[RowLayoutVerticalAlignBottom_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignBottom.ets) -->
+  
+  ``` TypeScript
   Row({}) {
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xD2B48C)
-
+  
     Column() {
     }.width('20%').height(30).backgroundColor(0xF5DEB3)
   }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
@@ -430,7 +470,9 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 在线性布局下，常用空白填充组件[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)，在容器主轴方向自动填充空白空间，达到自适应拉伸效果。Row和Column作为容器，只需要添加宽高为百分比，当屏幕宽高发生变化时，会产生自适应效果。
 
 
-```ts
+<!-- @[BlankExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/BlankExample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct BlankExample {
@@ -462,10 +504,12 @@ struct BlankExample {
 
 - 父容器尺寸确定时，使用layoutWeight属性设置子元素和兄弟元素在主轴上的权重，忽略元素本身尺寸设置，使它们在任意尺寸的设备下自适应占满剩余空间。
 
-  ```ts
+  <!-- @[LayoutWeightExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/LayoutWeightExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
-  struct layoutWeightExample {
+  struct LayoutWeightExample {
     build() {
       Column() {
         Text('1:2:3').width('100%')
@@ -474,31 +518,31 @@ struct BlankExample {
             Text('layoutWeight(1)')
               .textAlign(TextAlign.Center)
           }.layoutWeight(1).backgroundColor(0xF5DEB3).height('100%')
-
+  
           Column() {
             Text('layoutWeight(2)')
               .textAlign(TextAlign.Center)
           }.layoutWeight(2).backgroundColor(0xD2B48C).height('100%')
-
+  
           Column() {
             Text('layoutWeight(3)')
               .textAlign(TextAlign.Center)
           }.layoutWeight(3).backgroundColor(0xF5DEB3).height('100%')
-
+  
         }.backgroundColor(0xffd306).height('30%')
-
+  
         Text('2:5:3').width('100%')
         Row() {
           Column() {
             Text('layoutWeight(2)')
               .textAlign(TextAlign.Center)
           }.layoutWeight(2).backgroundColor(0xF5DEB3).height('100%')
-
+  
           Column() {
             Text('layoutWeight(5)')
               .textAlign(TextAlign.Center)
           }.layoutWeight(5).backgroundColor(0xD2B48C).height('100%')
-
+  
           Column() {
             Text('layoutWeight(3)')
               .textAlign(TextAlign.Center)
@@ -519,7 +563,9 @@ struct BlankExample {
 
 - 父容器尺寸确定时，使用百分比设置子元素和兄弟元素的宽度，使他们在任意尺寸的设备下保持固定的自适应占比。
 
-  ```ts
+  <!-- @[WidthExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/WidthExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct WidthExample {
@@ -530,12 +576,12 @@ struct BlankExample {
             Text('left width 20%')
               .textAlign(TextAlign.Center)
           }.width('20%').backgroundColor(0xF5DEB3).height('100%')
-
+  
           Column() {
             Text('center width 50%')
               .textAlign(TextAlign.Center)
           }.width('50%').backgroundColor(0xD2B48C).height('100%')
-
+  
           Column() {
             Text('right width 30%')
               .textAlign(TextAlign.Center)
@@ -564,10 +610,12 @@ struct BlankExample {
 - 使用Scroll组件：在线性布局中，开发者可以进行垂直方向或者水平方向的布局。当一屏无法完全显示时，可以在Column或Row组件的外层包裹一个可滚动的容器组件Scroll来实现可滑动的线性布局。
     垂直方向布局中使用Scroll组件：
 
-  ```ts
+  <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
-  struct ScrollExample {
+  struct ScrollVerticalExample {
     scroller: Scroller = new Scroller();
     private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   
@@ -577,13 +625,13 @@ struct BlankExample {
           ForEach(this.arr, (item?:number|undefined) => {
             if(item){
               Text(item.toString())
-              .width('90%')
-              .height(150)
-              .backgroundColor(0xFFFFFF)
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .margin({ top: 10 })
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
             }
           }, (item:number) => item.toString())
         }.width('100%')
@@ -603,10 +651,12 @@ struct BlankExample {
   水平方向布局中使用Scroll组件：
 
 
-  ```ts
+  <!-- @[ScrollHorizontalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollHorizontalExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
-  struct ScrollExample {
+  struct ScrollHorizontalExample {
     scroller: Scroller = new Scroller();
     private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   
@@ -616,13 +666,13 @@ struct BlankExample {
           ForEach(this.arr, (item?:number|undefined) => {
             if(item){
               Text(item.toString())
-              .height('90%')
-              .width(150)
-              .backgroundColor(0xFFFFFF)
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .margin({ left: 10 })
+                .height('90%')
+                .width(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ left: 10 })
             }
           })
         }.height('100%')
