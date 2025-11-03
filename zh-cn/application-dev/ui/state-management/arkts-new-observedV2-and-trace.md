@@ -37,6 +37,49 @@
 
 <!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) -->
 
+``` TypeScript
+@Observed
+class Father {
+  public son: Son;
+
+  constructor(name: string, age: number) {
+    this.son = new Son(name, age);
+  }
+}
+
+@Observed
+class Son {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State father: Father = new Father('John', 8);
+
+  build() {
+    Row() {
+      Column() {
+        Text(`name: ${this.father.son.name} age: ${this.father.son.age}`)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.father.son.age++;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 
 在上述代码中，点击Text组件增加age的值时，不会触发UI刷新。原因在于现有的状态管理框架无法观测到嵌套类中属性age的值变化。V1版本的解决方案是使用[\@ObjectLink装饰器](arkts-observed-and-objectlink.md)与自定义组件来实现观测。
 
