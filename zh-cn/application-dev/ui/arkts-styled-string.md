@@ -113,6 +113,161 @@
 除了初始化属性字符串对象即初始样式对象，亦可通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
   <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
+  
+  ``` TypeScript
+  import { drawing } from '@kit.ArkGraphics2D';
+  
+  let gUIContext: UIContext;
+  
+  class MyCustomSpan extends CustomSpan {
+    constructor(word: string, width: number, height: number, fontSize: number) {
+      super();
+      this.word = word;
+      this.width = width;
+      this.height = height;
+      this.fontSize = fontSize;
+    }
+  
+    onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
+      return { width: this.width, height: this.height };
+    }
+  
+    onDraw(context: DrawContext, options: CustomSpanDrawInfo) {
+      let canvas = context.canvas;
+  
+      const brush = new drawing.Brush();
+      brush.setColor({
+        alpha: 255,
+        red: 0,
+        green: 0,
+        blue: 0
+      });
+      const font = new drawing.Font();
+      font.setSize(gUIContext.vp2px(this.fontSize));
+      const textBlob =
+        drawing.TextBlob.makeFromString(this.word.substring(0, 5), font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+      canvas.attachBrush(brush);
+  
+      this.onDrawRectByRadius(context, options.x, options.x + gUIContext.vp2px(this.width), options.lineTop,
+        options.lineBottom, 20);
+      brush.setColor({
+        alpha: 255,
+        red: 255,
+        green: 255,
+        blue: 255
+      });
+      canvas.attachBrush(brush);
+      canvas.drawTextBlob(textBlob, options.x, options.lineBottom - 30);
+      brush.setColor({
+        alpha: 255,
+        red: 255,
+        green: 228,
+        blue: 196
+      });
+      canvas.attachBrush(brush);
+      const textBlob1 =
+        drawing.TextBlob.makeFromString(this.word.substring(5), font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+      canvas.drawTextBlob(textBlob1, options.x + gUIContext.vp2px(100), options.lineBottom - 30);
+  
+      canvas.detachBrush();
+    }
+  
+    onDrawRectByRadius(context: DrawContext, left: number, right: number, top: number, bottom: number, radius: number) {
+      let canvas = context.canvas;
+      let path = new drawing.Path();
+  
+      // 画带radius的rect
+      path.moveTo(left + radius, top);
+      path.lineTo(right - radius, top);
+      path.arcTo(right - 2 * radius, top, right, top + 2 * radius, 270, 90);
+      path.lineTo(right, bottom - radius);
+      path.arcTo(right - 2 * radius, bottom - 2 * radius, right, bottom, 0, 90);
+  
+      path.lineTo(left + 2 * radius, bottom);
+      path.arcTo(left, bottom - 2 * radius, left + 2 * radius, bottom, 90, 90);
+      path.lineTo(left, top + 2 * radius);
+      path.arcTo(left, top, left + 2 * radius, top + 2 * radius, 180, 90);
+  
+      canvas.drawPath(path);
+    }
+  
+    setWord(word: string) {
+      this.word = word;
+    }
+  
+    public width: number = 160;
+    public word: string = 'drawing';
+    public height: number = 10;
+    public fontSize: number = 16;
+  }
+  
+  @Entry
+  @Component
+  export struct StyledStringGestureStyle {
+    customSpan3: MyCustomSpan = new MyCustomSpan('99VIP88%off', 200, 40, 30);
+    customSpanStyledString: MutableStyledString = new MutableStyledString(this.customSpan3);
+    textController: TextController = new TextController();
+    isPageShow: boolean = true;
+    @State backgroundColor1: ResourceColor | undefined = undefined;
+    gestureStyleAttr: GestureStyle = new GestureStyle({
+      onClick: () => {
+        this.backgroundColor1 = Color.Green;
+      },
+      onLongPress: () => {
+        this.backgroundColor1 = Color.Grey;
+      }
+    });
+  
+    aboutToAppear() {
+      gUIContext = this.getUIContext();
+    }
+  
+    async onPageShow() {
+      if (!this.isPageShow) {
+        return;
+      }
+      this.isPageShow = false;
+      this.customSpanStyledString.setStyle({
+        start: 0,
+        length: 1,
+        styledKey: StyledStringKey.GESTURE,
+        styledValue: this.gestureStyleAttr
+      })
+      this.textController.setStyledString(this.customSpanStyledString);
+    }
+  
+    build() {
+      NavDestination() {
+        Column({ space: 12 }) {
+          //'app.string.TStyledStringGestureStyle_title'资源文件中的value值为"设置事件"
+          ComponentCard({ title: $r('app.string.TStyledStringGestureStyle_title') }) {
+            Row() {
+              Column() {
+                //'app.string.StyledStringGestureStyle_button_content'资源文件中的value值为"响应属性字符串事件改变背景色"
+                Button($r('app.string.StyledStringGestureStyle_button_content'))
+                  .backgroundColor(this.backgroundColor1)
+                  .width('80%')
+                  .margin(10)
+                Text(undefined, { controller: this.textController })
+                  .id('text1')
+                  .copyOption(CopyOptions.InApp)
+                  .fontSize(30)
+              }
+              .width('100%')
+            }
+            .height('100%')
+          }
+        }
+        .width('100%')
+        .height('100%')
+        .padding({ left: 12, right: 12 })
+      }
+      .backgroundColor('#f1f2f3')
+      //'app.string.TStyledStringGestureStyle_title'资源文件中的value值为"设置事件"
+      .title($r('app.string.TStyledStringGestureStyle_title'))
+    }
+  }
+  ```
 
   ![styled_string_event](figures/styled_string_event.gif)
 
