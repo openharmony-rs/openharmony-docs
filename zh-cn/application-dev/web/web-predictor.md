@@ -56,6 +56,40 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com/', controller: this.webviewController })
+        .onAppear(() => {
+          // 预获取时，需要将'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
+            },
+            [{
+              headerKey: 'c',
+              headerValue: 'z',
+            },],
+            'KeyX', 500);
+        })
+        .onPageEnd(() => {
+          // 清除后续不再使用的预获取资源缓存。
+          webview.WebviewController.clearPrefetchedResource(['KeyX',]);
+        })
+    }
+  }
+}
+```
+
 如果能够预测到Web组件将要加载页面或者即将要跳转页面中的post请求。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取即将要加载页面的post请求。
 
   以下示例，在onPageEnd中，触发预获取一个要访问页面的post请求。
