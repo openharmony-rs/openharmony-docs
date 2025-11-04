@@ -893,7 +893,7 @@ try {
 
 setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
-设置来自外部应用或服务的扩展组件的管控策略。
+设置除应用市场外，受信任开发者的扩展程序的运行开关管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -931,7 +931,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
@@ -945,7 +945,7 @@ try {
 
 getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
-获取已设置的外部应用程序来源的管控策略。
+获取除应用市场外，已设置受信任开发者的扩展程序的运行开关管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -965,7 +965,7 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-|  [ManagedPolicy](#managedPolicy22) | 返回ManagedPolicy枚举类型的外部源扩展管控策略。 |
+|  [ManagedPolicy](#managedPolicy22) | 返回ManagedPolicy枚举类型的除应用市场外，已设置受信任开发者的扩展程序运行开关管控策略。 |
 
 **错误码：**
 
@@ -986,7 +986,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
