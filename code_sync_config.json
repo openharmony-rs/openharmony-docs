@@ -13181,5 +13181,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-gesture-events-combined-gestures.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets",
+				"functions":[
+					{
+						"end_line":84,
+						"name":"sequence_identification",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"parallel_recognition",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"mutual_exclusion",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"scene_example",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
