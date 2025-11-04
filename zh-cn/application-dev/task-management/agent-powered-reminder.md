@@ -71,13 +71,13 @@
 
    - 定义倒计时实例。
      
-      <!-- [timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
       ```ts
       let timer: reminderAgent.ReminderRequestTimer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,  // 提醒类型为倒计时类型
         ringDuration: Constant.REMINDER_DURATION,
-        title: context.resourceManager.getStringSync($r('app.string.timer').id),  // 指明提醒标题
-        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // 指明提醒内容
+        title: context.resourceManager.getStringSync($r('app.string.timer').id),  // 指明提醒标题“计时器”
+        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // 指明提醒内容“计时器已结束”
         wantAgent: {  // // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
@@ -90,7 +90,7 @@
 
    - 定义日历实例。
      
-      <!-- [calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
       ```ts
       let calendar: reminderAgent.ReminderRequestCalendar = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,  // 提醒类型为日历类型
@@ -103,21 +103,21 @@
         },
         actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [{
-          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),
+          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // “关闭日历提醒”
           type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
         }],
         // 点击提醒通知后跳转的目标UIAbility信息
         wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
         ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
-        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题
-        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容
+        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题“日历”
+        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容“日历提醒时间到了”
         slotType: notificationManager.SlotType.CONTENT_INFORMATION  // 指明提醒的Slot类型
       }
       ```
 
    - 定义闹钟实例。
    
-      <!-- [alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
+      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
       ```ts
       let alarm: reminderAgent.ReminderRequestAlarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,  // 提醒类型为闹钟类型
@@ -126,11 +126,11 @@
         actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // “关闭闹钟”
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // “推迟闹钟”
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
           }
         ],
@@ -140,8 +140,8 @@
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题
-        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题“闹钟”
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容“闹钟时间已到”
         snoozeTimes: 0,  // 指明延迟提醒次数
         timeInterval: 0,  // 执行延迟提醒间隔（单位：秒）
         daysOfWeek: []  // 指明每周哪几天需要重复提醒
@@ -150,17 +150,17 @@
 
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
-   <!-- [publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    ```ts
    let reminderId: number = await reminderAgent.publishReminder(
      this.calendarReminders[index].reminderRequestCalendar!);
-   Logger.info(TAG, `publish reminder result: id is ${reminderId}`);
+   Logger.info(TAG, `publish reminder result: id is ${reminderId}`);  // 保存发布的提醒ID
    this.calendarReminders[index].reminderId = reminderId;
    ```
 
 4. 根据需要删除提醒任务。
    
-   <!-- [cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    ```ts
    Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
    await reminderAgent.cancelReminder(this.calendarReminders[index].reminderId);
