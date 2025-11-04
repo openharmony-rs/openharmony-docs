@@ -251,6 +251,10 @@ DriverExtensionAbility的上下文环境。
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 
 | 类型 | 说明 |
 | -------- | -------- | 
