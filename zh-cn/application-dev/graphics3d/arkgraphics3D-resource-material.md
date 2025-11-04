@@ -436,6 +436,16 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      通过滑动条调整清漆层的粗糙度，同样地，这通过更新clearCoatRoughness.factor来实现。
 
      <!-- @[pbr_clearcoat_setClearcoatRoughness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     setClearcoatRoughness(v: number) {
+       if (this.material) {
+         const f: Vec4 = (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor;
+         f.y = v / RESO;
+         (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor = f;
+       }
+     }
+     ```
 
 <!--RP1-->
 ## 相关实例
