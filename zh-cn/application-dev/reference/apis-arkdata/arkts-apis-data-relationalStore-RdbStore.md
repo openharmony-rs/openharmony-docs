@@ -6065,7 +6065,9 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 > **说明：**
 >
 > 加密参数变更需谨慎，在完成rekeyEx操作后，getRdbStore时必须使用新的参数来打开数据库，否则可能会导致开库失败。
+> 
 > 如果rekey过程因设备断电等原因中断，操作可能成功也可能失败。因此，建议业务方做好兜底保障（使用RekeyEx前后的参数进行冗余重试），确保不会错误地判断数据库的状态，从而避免出现数据库无法打开的问题。
+> 
 > 如果有加密参数变更，不建议getRdbStore时使用AllowedRebuild参数，防止因为传入的错误加密参数导致数据库发生重建。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
