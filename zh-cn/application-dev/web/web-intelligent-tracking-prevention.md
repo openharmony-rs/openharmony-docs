@@ -11,6 +11,33 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
 - 通过调用[enableIntelligentTrackingPrevention](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableintelligenttrackingprevention12)接口启用或关闭Web组件的智能防跟踪功能。默认情况下，该功能未启用。
   <!-- @[enable_or_disable_web_component_anti_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnableIntTrackPrevent.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('enableIntelligentTrackingPrevention')
+          .onClick(() => {
+            try {
+              this.controller.enableIntelligentTrackingPrevention(true);
+              console.info('enableIntelligentTrackingPrevention: true');
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: 'www.example.com', controller: this.controller });
+      }
+    }
+  }
+  ```
 
 - 调用[isIntelligentTrackingPreventionEnabled](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isintelligenttrackingpreventionenabled12)接口，判断Web组件是否开启了智能防跟踪功能。
   <!-- @[check_if_web_component_anti_tracking_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/IsIntTrackPreventEnabled.ets) -->
