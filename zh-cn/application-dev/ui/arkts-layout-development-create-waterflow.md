@@ -56,6 +56,88 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 <!-- @[waterFlowDynamicSwitchover_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets) -->
 
+``` TypeScript
+@Reusable
+@Component
+struct ReusableListItem {
+  @State item: number = 0;
+
+  aboutToReuse(params: Record<string, number>) {
+    this.item = params.item;
+  }
+
+  build() {
+    Row() {
+      Image('res/waterFlow(' + this.item % 5 + ').JPG')
+        .objectFit(ImageFit.Fill)
+        .height(100)
+        .aspectRatio(1)
+      Text('N' + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
+    }
+  }
+}
+
+@Entry
+@Component
+export struct WaterFlowDynamicSwitchover {
+  // 通过状态变量设置列数，可以按需修改触发布局更新
+  @State columns: number = 2;
+
+// ···
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
+          Column({ space: 2 }) {
+            Button('切换列数').fontSize(20).onClick(() => {
+              if (this.columns === 2) {
+                this.columns = 1;
+              } else {
+                this.columns = 2;
+              }
+            })
+            WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+              LazyForEach(this.dataSource, (item: number) => {
+                FlowItem() {
+                  if (this.columns === 1) {
+                    ReusableListItem({ item: item })
+                  } else {
+                    ReusableFlowItem({ item: item })
+                  }
+                }
+                .width('100%')
+                .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+                .backgroundColor(this.colors[item % 5])
+              }, (item: string) => item)
+            }
+            .columnsTemplate('1fr '.repeat(this.columns))
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .layoutWeight(1)
+            // 即将触底时提前增加数据
+            .onScrollIndex((first: number, last: number) => {
+              if (last + 20 >= this.dataSource.totalCount()) {
+                setTimeout(() => {
+                  this.dataSource.addNewItems(100);
+                }, 1000);
+              }
+            })
+            // ···
+          }
+        }
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.WaterFlowDynamicSwitchover_title'))
+  }
+}
+```
+
 ![](figures/waterflow-columns.gif)
 
 ## 分组混合布局
