@@ -421,6 +421,15 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      类似于清漆层纹理切换，用户也可以在不同的粗糙度纹理之间切换。
 
      <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     changeClearcoatRoughTex() {
+       if (this.textures.length > 0) {
+         let i = ++this.textureInUse % this.textures.length;
+         (this.material as MetallicRoughnessMaterial).clearCoatRoughness.image = this.textures[i];
+       }
+     }
+     ```
 
   9. 调整清漆层粗糙度。
 
