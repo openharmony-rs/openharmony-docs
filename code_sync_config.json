@@ -7519,6 +7519,36 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"arkui_mixed_refresh_template",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"arkui_mixed_refresh_template_cpp",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp",
+				"functions":[
+					{
+						"end_line":223,
+						"name":"arkui_mixed_refresh_cpp",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
