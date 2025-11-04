@@ -231,6 +231,61 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      通过按钮点击事件调用不同的函数，可在运行时动态切换模型的材质，实现从默认材质到Shader材质的过渡效果。
 
      <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     Button('Replace with a blank material')
+     // ···
+       .onClick(async (): Promise<void> => {
+         console.info('Start to replace with a blank material');
+     
+         if (!this.blankMat) {
+           this.blankMat = await createMaterialPromise();
+         }
+     
+         if (!this.scene || !this.rf) {
+           return;
+         }
+     
+         this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+     
+         this.geom.mesh.materialOverride = undefined;
+         if (this.blankMat) {
+           this.geom.mesh.subMeshes[0].material = this.blankMat;
+         }
+     
+       });
+     
+     Button('Replace with a Shader material')
+     // ···
+       .onClick(async (): Promise<void> => {
+         console.info('Start to replace with a shader material');
+     
+         if (!this.shader) {
+           this.shader = await createShaderPromise();
+         }
+     
+         if (!this.scene || !this.rf) {
+           return;
+         }
+     
+         if (!this.shaderMat) {
+           let rf = this.scene.getResourceFactory();
+           this.shaderMat = await rf.createMaterial({ name: 'shaderMat' }, MaterialType.SHADER);
+         }
+     
+         if (this.shader) {
+           this.shaderMat.colorShader = this.shader;
+         }
+     
+         this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+     
+         this.geom.mesh.materialOverride = undefined;
+     
+         if (this.shaderMat) {
+           this.geom.mesh.subMeshes[0].material = this.shaderMat;
+         }
+       })
+     ```
 
 ## 创建PBR材质并设置属性
 在ArkGraphics 3D中，基于物理的渲染（PBR）材质允许开发者通过调整金属度、粗糙度、透明度等参数精确控制物体的外观效果，从而实现高度真实的渲染表现。由于不同模型在导出时所携带的PBR属性可能存在差异，因此在设置材质前建议根据模型内容进行适配。本示例选用CompareClearcoat模型，该模型自带清漆层（Clearcoat）相关的材质参数，适合用于演示清漆效果的调节。通过设置clearCoat与clearCoatRoughness等属性，可以直观观察清漆层的强度、光泽度与反射特性的变化。
