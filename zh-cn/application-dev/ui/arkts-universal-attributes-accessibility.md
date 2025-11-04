@@ -24,6 +24,13 @@ accessibilityGroup属性，用于设置是否启用无障碍分组。若启用�
 
 <!-- @[accessibility_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) --> 
 
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+```
+
 ## 设置无障碍重要性
 
 accessibilityLevel属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
