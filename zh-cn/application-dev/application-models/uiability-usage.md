@@ -140,7 +140,7 @@ export default class EntryAbility extends UIAbility {
     build() {
       // ···
        Column() {
-      
+          // ···
           Button('FuncAbilityB')
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -161,8 +161,6 @@ export default class EntryAbility extends UIAbility {
                 hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
               }
             })
-            .width('60%')
-            .margin({top: 8})
         }
       }
     }
