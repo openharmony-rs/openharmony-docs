@@ -150,6 +150,17 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
      完成相机初始化后，将加载好的场景与相机绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示，具体渲染方式可参考模型加载示例。
 
      <!-- @[cam_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) --> 
+     
+     ``` TypeScript
+     this.camera = await createCameraPromise();
+     if (globalScene && this.camera) {
+       this.scene = globalScene;
+       this.positionX = this.camera.position.x;
+       this.positionY = this.camera.position.y;
+       this.positionZ = this.camera.position.z;
+       this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     }
+     ```
 
   5. 相机交互。
 
