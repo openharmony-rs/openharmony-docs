@@ -63,6 +63,13 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
      通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
 
      <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+     
+     // record original material
+     this.originalMat = this.geom.mesh.subMeshes[0].material;
+     ```
 
   5. 创建环境并绑定图片。
 
