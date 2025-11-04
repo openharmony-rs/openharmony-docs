@@ -72,6 +72,15 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
      通过SceneResourceFactory.createCamera()创建相机并调整观察位置。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，以便通过Component3D在界面上进行渲染。
 
      <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     // create a new camera.
+     this.cam = await rf.createCamera({ 'name': 'Camera' });
+     // set the camera.
+     this.cam.enabled = true;
+     this.cam.position.z = 5;
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     ```
 
   5. 构建界面与动画控制。
 
