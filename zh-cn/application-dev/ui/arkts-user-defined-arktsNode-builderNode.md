@@ -2454,6 +2454,34 @@ struct FreezeBuildNode {
 1. 创建载体Ability，并创建Web组件。
 
   <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { createNWeb } from '../Common/CommonIndex';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  
+  const DOMAIN = 0x0000;
+  
+  export default class EntryAbility extends UIAbility {
+  // ···
+  
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      // Main window is created, set main page for this ability
+      hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+  
+      windowStage.loadContent('pages/Index', (err) => {
+        createNWeb('', windowStage.getMainWindowSync().getUIContext());
+        if (err.code) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+          return;
+        }
+        hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+      });
+    }
+  // ···
+  }
+  ```
 
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
