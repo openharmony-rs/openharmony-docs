@@ -15,15 +15,19 @@
 
 [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)可通过调用以下接口来创建。
 
-```ts
-ArcList() {
+<!-- @[arcList_create_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCreate.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2
+}) {
   ArcListItem() {
-    // ...
+    // ···
   }
   ArcListItem() {
-    // ...
+    // ···
   }
-  // ...
+// ···
 }
 ```
 
@@ -35,109 +39,121 @@ ArcList() {
 
 弧形列表视图垂直展示项目集合，当列表项超出屏幕范围时，提供滚动功能，这使得它非常适合展示大型数据集合。在最简单的弧形列表形式中，[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)静态创建其列表项[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)的内容。
 
-```ts
-// xxx.ets
+<!-- @[arcListShow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets) -->
+
+``` TypeScript
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ArcListExample {
+export struct ArcListShow {
   build() {
-    Stack() {
-      ArcList({ initialIndex: 2 }) {
-        ArcListItem() {
-          Row() {
-            Image($r("app.media.wlan")).width("99px").height("99px")
-              .borderRadius("50px").margin({ left: 7 })
-            Column() {
-              Text("WLAN").fontSize("38px").fontColor("#FFFFFFFF")
-              Text("已开启").fontSize("20px").fontColor("#FFFFFFFF")
-            }.width("190px")
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.wlan')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_waln')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
 
-            Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-              .borderRadius("50px")
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.blueTooth')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_blue')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.mobileData')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_net')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.ic_settings_more_connections')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_connect')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.displayAndBrightness')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_light')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
           }
+          .width('466px')
+          .height('466px')
+          .space(LengthMetrics.px(10))
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
         }
-        .borderRadius("65px")
-        .width("414px")
-        .height("129px")
-        .backgroundColor("#26FFFFFF")
-
-        ArcListItem() {
-          Row() {
-            Image($r("app.media.blueTooth")).width("99px").height("99px")
-              .borderRadius("50px").margin({ left: 7 })
-            Column() {
-              Text("蓝牙").fontSize("38px").fontColor("#FFFFFFFF")
-              Text("已开启").fontSize("20px").fontColor("#FFFFFFFF")
-            }.width("190px")
-
-            Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-              .borderRadius("50px")
-          }
-        }
-        .borderRadius("65px")
-        .width("414px")
-        .height("129px")
-        .backgroundColor("#26FFFFFF")
-
-        ArcListItem() {
-          Row() {
-            Image($r("app.media.mobileData")).width("99px").height("99px")
-              .borderRadius("50px").margin({ left: 7 })
-            Column() {
-              Text("移动网络").fontSize("38px").fontColor("#FFFFFFFF")
-            }.width("190px")
-
-            Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-              .borderRadius("50px")
-          }
-        }
-        .borderRadius("65px")
-        .width("414px")
-        .height("129px")
-        .backgroundColor("#26FFFFFF")
-
-        ArcListItem() {
-          Row() {
-            Image($r("app.media.ic_settings_more_connections")).width("99px").height("99px")
-              .borderRadius("50px").margin({ left: 7 })
-            Column() {
-              Text("更多连接").fontSize("38px").fontColor("#FFFFFFFF")
-            }.width("190px")
-
-            Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-              .borderRadius("50px")
-          }
-        }
-        .borderRadius("65px")
-        .width("414px")
-        .height("129px")
-        .backgroundColor("#26FFFFFF")
-
-        ArcListItem() {
-          Row() {
-            Image($r("app.media.displayAndBrightness")).width("99px").height("99px")
-              .borderRadius("50px").margin({ left: 7 })
-            Column() {
-              Text("显示和亮度").fontSize("38px").fontColor("#FFFFFFFF")
-            }.width("190px")
-
-            Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-              .borderRadius("50px")
-          }
-        }
-        .borderRadius("65px")
-        .width("414px")
-        .height("129px")
-        .backgroundColor("#26FFFFFF")
       }
-      .width("466px")
-      .height("466px")
-      .space(LengthMetrics.px(10))
-      .borderRadius("233px")
-      .backgroundColor(Color.Black)
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.ArcListShow_title'))
   }
 }
 ```
@@ -152,10 +168,12 @@ struct ArcListExample {
 
 ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)提供了组件的循环渲染能力。以简单的联系人列表为例，将联系人名称和头像数据以Contact类结构存储到contacts数组中，使用[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)中嵌套的[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)来代替多个平铺的、内容相似的[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)，从而减少重复代码，使代码更加简洁高效。
 
-```ts
-// xxx.ets
+<!-- @[arcListContentsTitle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets) -->
+
+``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
+import { ComponentCard } from '../../common/Card';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
@@ -170,44 +188,55 @@ class Contact {
 
 @Entry
 @Component
-struct SimpleContacts {
+export struct ArcListContents {
   private contacts: Array<object> = [
-    new Contact('小红', $r("app.media.ic_contact")),
-    new Contact('小兰', $r("app.media.ic_contact")),
-    new Contact('小王', $r("app.media.ic_contact")),
-    new Contact('小李', $r("app.media.ic_contact")),
-    new Contact('小明', $r("app.media.ic_contact"))
+    new Contact('小红', $r('app.media.ic_contact')),
+    new Contact('小兰', $r('app.media.ic_contact')),
+    new Contact('小王', $r('app.media.ic_contact')),
+    new Contact('小李', $r('app.media.ic_contact')),
+    new Contact('小明', $r('app.media.ic_contact'))
   ];
 
   build() {
-    Stack() {
-      ArcList({ initialIndex: 2 }) {
-        ForEach(this.contacts, (item: Contact) => {
-          ArcListItem() {
-            Row() {
-              Image(item.icon)
-                .width(40)
-                .height(40)
-                .margin(10)
-                .backgroundColor("#FF9CC998")
-                .borderRadius(20)
-              Text(item.name).fontSize("38px").fontColor("#FFFFFFFF")
-            }
-            .width('100%')
-            .justifyContent(FlexAlign.Start)
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ForEach(this.contacts, (item: Contact) => {
+              ArcListItem() {
+                Row() {
+                  Image(item.icon)
+                    .width(40)
+                    .height(40)
+                    .margin(10)
+                    .backgroundColor('#FF9CC998')
+                    .borderRadius(20)
+                  Text(item.name).fontSize('38px').fontColor('#FFFFFFFF')
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Start)
+              }
+              .borderRadius('65px')
+              .width('410px')
+              .height('130px')
+              .backgroundColor('#26FFFFFF')
+            }, (item: Contact) => JSON.stringify(item))
           }
-          .borderRadius("65px")
-          .width("410px")
-          .height('130px')
-          .backgroundColor("#26FFFFFF")
-        }, (item: Contact) => JSON.stringify(item))
+          .space(LengthMetrics.px(10))
+          .width('466px')
+          .height('466px')
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
+        }
       }
-      .space(LengthMetrics.px(10))
-      .width('466px')
-      .height('466px')
-      .borderRadius('233px')
-      .backgroundColor(Color.Black)
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.ArcListContents_title'))
   }
 }
 ```
@@ -224,12 +253,14 @@ struct SimpleContacts {
 
 1. 首先，需要构造自定义标题组件customHeader。
 
-   ```ts
+   <!-- @[create_customHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
    @Builder
    function customHeader() {
      Column() {
-       Text("设置")
-         .fontColor("#FFFFFFFF")
+       Text($r('app.string.ArcListCrown_set'))
+         .fontColor('#FFFFFFFF')
          .fontSize('19fp')
      }
    }
@@ -237,22 +268,28 @@ struct SimpleContacts {
 
 2. 由于[header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数的类型是[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)，所以需要对自定义标题组件进行封装。
 
-   ```ts
+   <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
    context: UIContext = this.getUIContext();
    arcListHeader: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(customHeader));
    ```
 
 3. 最后，通过[header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数将arcListHeader设置到弧形列表中。
 
-   ```ts
-   ArcList({header: this.arcListHeader}) {
+   <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
+   ArcList({ header: this.arcListHeader }) {
      ArcListItem() {
-       // ...
+     // ···
      }
+     // ···
+   
      ArcListItem() {
-       // ...
+     // ···
      }
-     // ...
+     // ···
    }
    ```
 
@@ -264,9 +301,11 @@ struct SimpleContacts {
 
 在初始化列表时，若需在列表项之间添加间距，可以通过[space](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#space)属性实现。例如，为在每个列表项的垂直方向上增加30px的间距。
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListSpace_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+
+``` TypeScript
+ArcList({ initialIndex: 2 }) {
+  // ···
 }
 .space(LengthMetrics.px(30))
 ```
@@ -279,9 +318,11 @@ ArcList() {
 
 在弧形列表中，列表项默认具有在接近上下两端时自动缩放的效果。然而，在某些情况下，可能不希望有这种缩放效果。此时，可以通过设置[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)的[autoScale](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#autoscale)属性为false来禁用该效果。例如，如图5所示，“网络”和“显示”两个列表项，在关闭了自动缩放属性后，无论它们所处的位置如何，都不会出现缩放效果。
 
-```ts
+<!-- @[arcListScale_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+
+``` TypeScript
 ArcListItem() {
-  // ...
+// ···
 }
 .autoScale(false)
 ```
@@ -296,9 +337,11 @@ ArcListItem() {
 
 在使用[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件时，可以通过[scrollBar](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbar)属性来控制弧形列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate)，当设置为BarState.Auto时，表示滚动条将按需显示。在这种模式下，当用户触摸到滚动条区域时，滚动条会显示出来，支持上下拖拽以快速浏览内容，且在拖拽过程中滚动条会变粗。若用户不进行任何操作，滚动条将在2秒后自动消失。此外，还可以通过[scrollBarWidth](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbarwidth)属性来设置滚动条在按压状态下的宽度，以及通过[scrollBarColor](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbarcolor)属性来设置滚动条的颜色。
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListBuiltInScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/arcListBuiltInScrollerBar.ets) -->
+
+``` TypeScript
+ArcList({ header: this.arcListHeader }) {
+  // ···
 }
 .scrollBar(BarState.Auto)
 .scrollBarWidth(LengthMetrics.px(10))
@@ -315,22 +358,28 @@ ArcList() {
 
 1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象arcListScroller。
 
-   ```ts
+   <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    private arcListScroller: Scroller = new Scroller();
    ```
 
 2. 然后，弧形列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数绑定滚动控制器。
 
-   ```ts
+   <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    // 将arcListScroller用于初始化ArcList组件的scroller参数，完成arcListScroller与弧形列表的绑定。
-   ArcList({ scroller: this.arcListScroller }) {
-   // ...
+   ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
+     // ···
    }
    ```
 
 3. 最后，弧形滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md#arcscrollbaroptions)参数绑定滚动控制器。
 
-   ```ts
+   <!-- @[bind_arcScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    // 将arcListScroller用于初始化ArcScrollBar组件的scroller参数，完成arcListScroller与滚动条的绑定。
    ArcScrollBar({ scroller: this.arcListScroller })
    ```
@@ -353,48 +402,57 @@ ArcList() {
 
 在选中索引项时，根据此时选中项的索引值index，重新计算列表联系人对应的位置，然后通过列表绑定的滚动控制器arcListScroller的[scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex)方法控制列表跳转到对应的联系人位置。弧形列表[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)可通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数绑定[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)（滚动控制器）。
 
-```ts
-import {
-  ArcList,
-  ArcListAttribute,
-  ArcListItemAttribute,
-  ArcListItem,
-  ArcAlphabetIndexer,
-  ArcAlphabetIndexerAttribute
-} from '@kit.ArkUI';
 
-const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K',
-  'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+<!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
+
+``` TypeScript
+import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+
+// ···
+const alphabets: string[] = [
+  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
+  'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+];
+
 @Entry
 @Component
-struct ContactsArcList {
+export struct ArcListArcIndexerBar {
+
+// ···
   // 索引条选中项索引
-  @State selectedIndex: number = 0;
+  @State indexerIndex: number = 0;
   // 列表绑定的滚动控制器
   private arcListScroller: Scroller = new Scroller();
 
-  build() {
-    Stack({ alignContent: Alignment.End }) {
-      ArcList({ scroller: this.arcListScroller }) {
-        // ...
-      }
-      .onScrollIndex((firstIndex: number) => {
-        // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
-        this.selectedIndex = firstIndex + 1;
-      })
+// ···
 
-      // 弧形索引条组件
-      ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.selectedIndex })
-        .selected(this.selectedIndex)
-        .onSelect((index: number) => {
-          // 选中索引项后，列表跳转到相应位置
-          this.selectedIndex = index;
-          this.arcListScroller.scrollToIndex(this.selectedIndex - 1);
-        })
-    }
+  build() {
+    // ···
+          Stack({alignContent: Alignment.End}) {
+            ArcList({ initialIndex: 0, header:this.tabBar1, scroller:this.arcListScroller }) {
+            // ···
+            }
+            // ···
+            .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
+              this.indexerIndex = centerIndex + 1;
+            })
+            // ···
+            // 弧形索引条组件
+            ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.indexerIndex})
+              .selected(this.indexerIndex!!)
+              .onSelect((index: number) => {
+                // 选中索引项后，列表跳转到相应位置
+                this.indexerIndex = index
+                this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
+              })
+            // ···
+          }
+        // ···
   }
 }
 ```
+
 
   **图8** 弧形列表与弧形索引条联动
 
@@ -407,8 +465,11 @@ struct ContactsArcList {
 在联系人列表中，end参数表示设置[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)左滑时尾端划出自定义组件，即删除按钮。在初始化end方法时，将滑动列表项的索引传入删除按钮组件，当用户点击删除按钮时，可以根据数据索引来删除列表项对应的数据，从而实现侧滑删除功能。
 
 1. 首先，实现尾端滑出组件的构建。
-   ```ts
-   @Builder 
+
+   <!-- @[create_SideSlip_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
+   @Builder
    itemEnd(item: Contact) {
      // 构建尾端滑出组件
      Button({ type: ButtonType.Circle }) {
@@ -416,6 +477,8 @@ struct ContactsArcList {
          .width(20)
          .height(20)
      }
+     .width(20)
+     .height(20)
      .backgroundColor(Color.Black)
      .onClick(() => {
        this.getUIContext()?.animateTo({
@@ -433,20 +496,27 @@ struct ContactsArcList {
    }
    ```
 
+
 2. 然后，绑定[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction)属性到可左滑的ArcListItem上。
 
-   ```ts
+
+   <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
    // 构建ArcList时，通过ForEach基于数据源this.contacts循环渲染ArcListItem
    ArcListItem() {
-     // ...
+   // ···
    }
    .swipeAction({
      end: {
-       // item为该列表项在数据源this.contacts中对应的数据
-       builder: () => { this.itemEnd(item) }
+       // index为该ArcListItem在ArcList中的索引值。
+       builder: () => {
+         this.itemEnd(item);
+       },
      }
-   }) // 设置侧滑属性
+   }) // 设置侧滑属性.
    ```
+
 
   **图9** 侧滑删除列表项
 
@@ -458,11 +528,15 @@ struct ContactsArcList {
 
 当使用懒加载方式渲染列表时，为了减少列表滑动时出现白块，[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)组件提供了[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#cachedcount)属性，该属性用于设置列表项缓存数，只在懒加载[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)中生效。
 
-```ts
+
+<!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
+
+``` TypeScript
 ArcList() {
-  // ...
+  // ···
 }.cachedCount(3)
 ```
+
 
 >**说明：**
 >
@@ -474,9 +548,13 @@ ArcList() {
 
 手表设备上弧形列表在获焦的情况下可对旋转表冠做出响应，用户可通过旋转表冠的操作滑动列表，浏览列表项数据。弧形列表可通过下列[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)相关属性成为所在页面的默认焦点。
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2,
+}) {
+// ···
 }
 // 设置弧形列表支持获焦
 .focusable(true)
@@ -488,9 +566,14 @@ ArcList() {
 
 还可以通过[digitalCrownSensitivity](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#digitalcrownsensitivity)属性设置表冠响应事件的灵敏度，以应对不同量级的列表项数据。列表项数据较多时可以设置更高的响应事件灵敏度，数据较少时可以设置较低的响应事件灵敏度。
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListCrownDigitalCrownSensitivity_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2,
+}) {
+// ···
 }
+// ···
 .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
 ```
