@@ -31,47 +31,53 @@
 
 1. DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   ```
+    <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和[崩溃日志规格自定义参数](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)，示例代码如下：
 
-   ```ts
+
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     // 构建崩溃事件的自定义参数
-    let params: Record<string, hiAppEvent.ParamType> = {
+    let crashParams: Record<string, hiAppEvent.ParamType> = {
       "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
-    hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
+    hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to set event param`);
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
-   
+    
     // 构建崩溃日志规格自定义参数
-    let configParams: Record<string, hiAppEvent.ParamType> = {
+    let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
       "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
       "log_file_cutoff_sz_bytes": 102400, // 截断崩溃日志到100KB
       "simplify_vma_printing": true // 使能精简打印maps
     };
-   
+    
     // 开发者可以设置崩溃日志配置参数
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, configParams).then(() => {
+    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
-   ```
+    ```
 
 3. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在 `onCreate` 函数中订阅系统事件。示例代码如下：
 
-   ```ts
+    <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // 添加崩溃事件观察者
     let watcher: hiAppEvent.Watcher = {
       // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: "watcher",
+      name: 'crashEventWatcher',
       // 开发者可以订阅感兴趣的系统事件，此处是订阅了崩溃事件
       appEventFilters: [
         {
@@ -108,10 +114,6 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
             // 开发者可以获取到崩溃事件发生时日志信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // 开发者可以获取到崩溃事件的故障进程存活时间
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
-            // 开发者可以获取到崩溃事件发生时内存信息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
             // 开发者可以获取到崩溃事件发生时的崩溃日志文件
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
@@ -122,37 +124,71 @@
       }
     };
     hiAppEvent.addWatcher(watcher);
-   ```
+    ```
 
 4. 构造崩溃场景
 
     - 构造NativeCrash类型崩溃
 
-      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，Add方法中增加如下代码：
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，增加如下代码：
 
-      ```cpp
-      int *p = nullptr;
-      int a = *p; // 空指针解引用，程序会在此处崩溃
+      <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static napi_value TestNullptr(napi_env env, napi_callback_info info)
+      {
+          int *p = nullptr;
+          int a = *p; // 空指针解引用，程序会在此处崩溃
+          return {};
+      }
       ```
 
-       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
+      在"index.d.ts"文件中，定义ArkTS接口：
 
-      ```ts
-      Button("NativeCrash").onClick(()=>{
-        // 在按钮点击函数中调用napi_init.cpp中Add方法触发NativeCrash类型崩溃事件
-        testNapi.add(2, 3);
-      })
+      <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+      
+      ``` TypeScript
+      export const testNullptr: () => void;
+      ```
+
+      编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
+
+      <!-- @[Native_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      Button('NativeCrash')
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('80%')
+        .height('5%')
+        .onClick(() => {
+          // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
+          testNapi.testNullptr();
+        })
       ```
 
     - 构造JsError类型崩溃
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
-      ```ts
-      Button("JsError").onClick(()=>{
-        // 在按钮点击函数中构造一个JsError类型崩溃，触发应用崩溃事件
-        let result: object = JSON.parse("");
-      })
+      <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      Button('JsError')
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('80%')
+        .height('5%')
+        .onClick(() => {
+          // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
+          JSON.parse('');
+        })
       ```
 
 5. 点击DevEco Studio界面的运行按钮，启动应用工程。在应用界面中点击“NativeCrash”或“JsError”按钮，触发崩溃事件。系统根据崩溃类型生成相应的日志并进行回调。
@@ -189,28 +225,19 @@ HiAppEvent eventName=APP_CRASH
 HiAppEvent eventInfo.domain=OS
 HiAppEvent eventInfo.name=APP_CRASH
 HiAppEvent eventInfo.eventType=1
-HiAppEvent eventInfo.params.time=1711440614001
+HiAppEvent eventInfo.params.time=1761901141155
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=true
 HiAppEvent eventInfo.params.bundle_version=1.0.0
-HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
-HiAppEvent eventInfo.params.pid=2043
-HiAppEvent eventInfo.params.uid=20010043
-HiAppEvent eventInfo.params.uuid=b1e953ba0022c112e4502e28e8b3ad6d95cf3c87bae74068038f03b38ce7f66a
-HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON","name":"SyntaxError","stack":"at anonymous (entry/src/main/ets/pages/Index.ets:55:34)"}
-HiAppEvent eventInfo.params.hilog.size=90
-HiAppEvent eventInfo.params.process_life_time=1
-HiAppEvent eventInfo.params.memory={"rss":150748,"sys_avail_mem":5387264,"sys_free_mem":218902,"sys_total_mem":11679236}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1711440614112_2043.log"]
+HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
+HiAppEvent eventInfo.params.pid=7851
+HiAppEvent eventInfo.params.uid=20010044
+HiAppEvent eventInfo.params.uuid=7c3b1579c8ca8629af3858f8145254c2867ee402dc16ee18034337aae258620b
+HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty Text","name":"SyntaxError","stack":"    at anonymous (entry|entry|1.0.0|src/main/ets/pages/Index.ts:163:22)\n","thread_name":"amples.eventsub"}
+HiAppEvent eventInfo.params.hilog.size=100
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1761901141724_7851.log"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100
-```
-
-### 移除事件观察者
-
-```ts
-// 移除该应用事件观察者以取消订阅事件
-hiAppEvent.removeWatcher(watcher);
 ```
 <!--RP1-->
 <!--RP1End-->
