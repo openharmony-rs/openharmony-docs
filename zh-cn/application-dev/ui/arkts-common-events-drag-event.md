@@ -1439,6 +1439,33 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
+  ``` TypeScript
+  build() {
+    Column() {
+    // ···
+        Column() {
+          // 'app.string.DoubleClick_Text'需要替换为开发者所需的文本资源文件
+          Text($r('app.string.DoubleClick_Text'))
+            .fontSize(30)
+            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
+        }.padding({ bottom: 30 })
+        // 'app.string.Search_Device'需要替换为开发者所需的文本资源文件
+        Button($r('app.string.Search_Device'))
+          .width('80%')
+          .height('80vp')
+          .fontSize(30)
+          .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
+            detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
+            preferType: SheetType.BOTTOM,
+            // 'app.string.Search_Device'需要替换为开发者所需的文本资源文件
+            title: { title: $r('app.string.Search_Device') },
+          })
+        // ···
+    }.width('100%').height('100%')
+      .justifyContent(FlexAlign.Center)
+  }
+  ```
+  
 2.实现SheetBuilder
 
   实现半模态弹框的UI界面。
