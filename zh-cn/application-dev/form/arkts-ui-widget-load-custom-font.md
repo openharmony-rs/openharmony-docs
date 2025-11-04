@@ -14,15 +14,17 @@ import { text } from '@kit.ArkGraphics2D'
 @Entry
 @Component
 struct loadFontSyncCard {
+  // 在这里使用getLocalInstance访问本地字体集实例
   private fc: text.FontCollection = text.FontCollection.getLocalInstance();
   @State content: string = "默认字体"
 
   build() {
     Column({ space: 10 }) {
       Text(this.content)
-        .fontFamily("custom")
+        .fontFamily("custom")  // 在此处声明组件使用自定义字体
       Button("load font")
         .onClick(() => {
+          // 在此处加载自定义字体，也可以加载rawfile目录下的字体文件
           this.fc.loadFontSync("custom", "file:///system/fonts/NotoSansCJK-Regular.ttc")
           this.content = "自定义字体"
         })
@@ -38,5 +40,8 @@ struct loadFontSyncCard {
 }
 ```
 
+注意：
+1、同一应用的所有卡片共用一个本地字体集实例，加载、卸载自定义字体后所有卡片都会生效。
+
 运行效果如下图所示。  
-![WidgetCanvasDemo](figures/WidgetCustomFontDemo.gif)
+![WidgetCustomFontDemo](figures/WidgetCustomFontDemo.gif)
