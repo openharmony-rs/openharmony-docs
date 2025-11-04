@@ -486,6 +486,9 @@ router自定义转场可以通过[pageTransition](../reference/apis-arkui/arkui-
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 ```
 
 
