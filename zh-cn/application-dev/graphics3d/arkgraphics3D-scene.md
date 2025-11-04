@@ -35,6 +35,22 @@
      ArkGraphics 3D提供Scene.load()接口用于加载glTF模型文件。支持.gltf与.glb格式，其中.glb为二进制封装形式，与.gltf内容等价但更便于加载与使用。$rawfile()表示从应用的resources/rawfile/目录读取资源文件。模型加载成功后会返回一个Scene实例，可通过它继续创建相机或光照等组件。
 
      <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+     
+     ``` TypeScript
+     if (this.scene == null) {
+       // Load the model and place the gltf file in the related path. Use the actual path during loading.
+       // Switched from .gltf to .glb; same content, different format
+       Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
+         .then(async (result: Scene) => {
+           this.scene = result;
+           let rf: SceneResourceFactory = this.scene.getResourceFactory();
+         // ···
+         })
+         .catch((reason: string) => {
+           console.log(reason);
+       });
+     }
+     ```
 
   3. 创建相机并设置场景渲染参数。
 
