@@ -576,7 +576,7 @@ struct BuilderIndex {
 │   │   ├── pages 存放页面组件。
 │   │   ├── views 存放业务组件。
 │   │   ├── shares 存放通用组件。
-│   │   └── viewModel 数据服务。
+│   │   └── viewmodel 数据服务。
 │   │   │   ├── LoginViewModel.ets 登录页ViewModel。
 │   │   │   └── xxxViewModel.ets 其他页ViewModel。
 │
@@ -629,7 +629,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewModel
+│   │   ├── viewmodel
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources
