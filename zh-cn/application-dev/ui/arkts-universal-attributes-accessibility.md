@@ -170,6 +170,19 @@ accessibilitySelected属性，用于表示组件在支持单选的情况下是�
 
 <!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilitySelected(undefined)
+```
+
 ### accessibilityChecked属性与accessibilitySelected属性的关键区别
 
 在ArkUI无障碍属性中，accessibilityChecked和accessibilitySelected均用于表示组件的状态，但二者应用场景与语义含义存在本质差异。以下是二者的对比：
