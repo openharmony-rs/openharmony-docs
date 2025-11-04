@@ -490,6 +490,76 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
   #endif // MYAPPLICATION_ARKUIBASENODE_H
   ```
   <!-- @[Cpp_ArkUINode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUINode.h) -->
+  
+  ``` C
+  // ArkUINode.h
+  // 提供通用属性和事件的封装。
+  #ifndef MYAPPLICATION_ARKUINODE_H
+  #define MYAPPLICATION_ARKUINODE_H
+  
+  #include "ArkUIBaseNode.h"
+  #include "NativeModule.h"
+  #include <arkui/native_node.h>
+  #include <arkui/native_type.h>
+  
+  namespace NativeModule {
+  
+  class ArkUINode : public ArkUIBaseNode {
+  public:
+      explicit ArkUINode(ArkUI_NodeHandle handle) : ArkUIBaseNode(handle) {}
+  
+      ~ArkUINode() override {}
+      
+      void SetWidth(float width)
+      {
+          ArkUI_NumberValue value[] = {{.f32 = width}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
+      }
+      void SetPercentWidth(float percent)
+      {
+          ArkUI_NumberValue value[] = {{.f32 = percent}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
+      }
+      void SetHeight(float height)
+      {
+          ArkUI_NumberValue value[] = {{.f32 = height}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
+      }
+      void SetPercentHeight(float percent)
+      {
+          ArkUI_NumberValue value[] = {{.f32 = percent}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
+      }
+      void SetBackgroundColor(uint32_t color)
+      {
+          ArkUI_NumberValue value[] = {{.u32 = color}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
+      }
+  
+  protected:
+      // 组件树操作的实现类对接。
+      void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
+      {
+          nativeModule_->addChild(handle_, child->GetHandle());
+      }
+      void OnRemoveChild(const std::shared_ptr<ArkUIBaseNode> &child) override
+      {
+          nativeModule_->removeChild(handle_, child->GetHandle());
+      }
+      void OnInsertChild(const std::shared_ptr<ArkUIBaseNode> &child, int32_t index) override
+      {
+          nativeModule_->insertChildAt(handle_, child->GetHandle(), index);
+      }
+  };
+  } // namespace NativeModule
+  
+  #endif // MYAPPLICATION_ARKUINODE_H
+  ```
 
    3）实现列表组件。
    
