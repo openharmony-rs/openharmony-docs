@@ -26,6 +26,10 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 **系统接口：** 此接口为系统接口
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **需要权限：**  ohos.permission.MANAGE_USB_CONFIG
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
