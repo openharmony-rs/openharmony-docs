@@ -3245,18 +3245,20 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
 
-**系统接口：** 此接口是系统接口。
+**系统接口：** 此接口为系统接口。
 
-**所需权限：** ohos.permission.READ_IMAGEVIDEO
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | --------------------- | --------------------------- |
 | Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
@@ -3264,6 +3266,7 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
 | **错误码ID** | **错误信息** |
 | ----------------- | --------------------------------------------------------------------------------- |
 | 201 | Permission denied. |
@@ -3299,9 +3302,9 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
 
-**系统接口：** 此接口是系统接口。
+**系统接口：** 此接口为系统接口。
 
-**所需权限：** ohos.permission.READ_IMAGEVIDEO
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3312,6 +3315,7 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 | oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | --------------------- | --------------------------- |
 | Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
@@ -3319,6 +3323,7 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 **错误码：** 
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
 | **错误码ID** | **错误信息** |
 | ----------------- | --------------------------------------------------------------------------------- |
 | 201 | Permission denied. |
