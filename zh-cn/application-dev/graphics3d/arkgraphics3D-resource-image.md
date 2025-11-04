@@ -16,6 +16,11 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建场景、相机、材质、图片等对象。
 
      <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
+       SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
+     ```
 
   2. 加载场景并设置渲染参数。
 
