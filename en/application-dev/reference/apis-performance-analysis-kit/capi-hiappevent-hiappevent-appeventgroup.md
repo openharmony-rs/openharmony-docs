@@ -23,6 +23,6 @@ Defines the information of an event group, including its name, the array of even
 
 | Name| Description|
 | -- | -- |
-| const char* name                                        | Pointer to the event name.|
+| const char* name | Pointer to the event name.|
 | const struct [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md)* appEventInfos | Pointer to the array of events with the same event name.|
-| uint32_t infoLen                                        | Length of the event array.|
+| uint32_t infoLen | Length of the event array.|

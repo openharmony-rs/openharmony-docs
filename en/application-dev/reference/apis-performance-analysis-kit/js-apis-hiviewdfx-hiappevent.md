@@ -49,7 +49,7 @@ Adds an event watcher. You can use the callback of the event watcher to subscrib
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [App Event Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
@@ -68,7 +68,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 > For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../../arkts-utils/multi-thread-concurrency-overview.md).
 >
-> The name passed to the **addWatcher()** API should be unique. If the same name is passed, the previous subscription will be overwritten.
+> The name passed to the **addWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.
 
 **Example**
 
@@ -190,7 +190,7 @@ Removes an event watcher.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiAPPEvent Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message             |
 | -------- | --------------------- |
@@ -229,17 +229,17 @@ Sets custom event parameters. This API uses a promise to return the result. Duri
 | ------ | ------------------------------ | ---- | -------------- |
 | params | Record&lt;string, [ParamType](#paramtype12)&gt; | Yes| Custom parameter object. The parameter name and value are defined as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.  <br>- The parameter value is of the [ParamType](#paramtype12) and contains a maximum of 1024 characters.<br>- The number of parameters must be less than 64.|
 | domain | string                        | Yes| Event domain. The event domain can be associated with application events and system events (hiAppEvent.domain.OS).|
-| name   | string                        | No| Event name. The default value is an empty string, which indicates all event names in the associated event domain. Event names can be associated with app events and system events. System events can be associated with only the following:<br>- [Crash Event](../../dfx/hiappevent-watcher-crash-events.md) (hiAppEvent.event.APP_CRASH)<br>- [App Freeze Event](../../dfx/hiappevent-watcher-freeze-events.md) (hiAppEvent.event.APP_FREEZE)<br>- [Resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) (hiAppEvent.event.RESOURCE_OVERLIMIT).<br>**Note**: From API version 20, the [resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) is supported.|
+| name   | string                        | No| Event name. The default value is an empty string, which indicates all event names in the associated event domain. Event names can be used to associate application events and system events. System events can only be associated with the following events:<br>- [Crash event](../../dfx/hiappevent-watcher-crash-events.md) (**hiAppEvent.event.APP_CRASH**)<br>- [Application freeze event](../../dfx/hiappevent-watcher-freeze-events.md) (**hiAppEvent.event.APP_FREEZE**)<br>- [Resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) (**hiAppEvent.event.RESOURCE_OVERLIMIT**).<br>**Note**: Since API version 20, the [resource leak event](../../dfx/hiappevent-watcher-resourceleak-events.md) is supported.|
 
 **Return value**
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.  |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [App Event Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -275,10 +275,10 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
-Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Different events have different configuration items. Currently, only the following events are supported:
-- MAIN_THREAD_JANK (For details about the parameter configuration, see [Main Thread Timeout Event Detection](../../dfx/hiappevent-watcher-mainthreadjank-events.md).)
-- APP_CRASH (For details about parameter settings, see [Crash Log Parameter Settings](../../dfx/hiappevent-watcher-crash-events.md))
-- RESOURCE_OVERLIMIT (For details about the parameter configuration, see [Resource Leak Event Detection](../../dfx/hiappevent-watcher-resourceleak-events.md).)
+Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Configuration items vary depending on events. Currently, only the following events are supported:
+- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#custom-parameters).)
+- **APP_CRASH** (For details about the parameter configuration, see [Customizing Crash Log Specifications](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
+- **RESOURCE_OVERLIMIT** (For details about the parameter configuration, see [Resource Leak Event Overview](../../dfx/hiappevent-watcher-resourceleak-events.md#customizing-specifications).)
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -295,7 +295,7 @@ Sets event configuration. This method uses a promise to return the result. In th
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -432,7 +432,7 @@ Sets the threshold for the data size of the event package obtained each time.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [App Event Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
@@ -466,7 +466,7 @@ Sets the number of data records of the event package obtained each time. When **
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiAPPEvent Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
@@ -576,7 +576,7 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiAppEvent Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -642,11 +642,11 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.  |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiAppEvent Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
@@ -763,7 +763,7 @@ Adds the configuration information of the data processor. The configuration file
 
 | Type   | Description                  |
 | ------ | ---------------------- |
-| Promise&lt;number&gt; | Promise that returns no value. Unique ID of the added data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
+| Promise&lt;number&gt; | Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
 
 **Error codes**
 
@@ -1030,7 +1030,7 @@ Configures the application event logging function, such as setting the logging s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiAPPEvent Error Codes](errorcode-hiappevent.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Event Logging Error Codes](errorcode-hiappevent.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1174,7 +1174,7 @@ Provides event name constants, including system event name constants and applica
 | RESOURCE_OVERLIMIT<sup>12+</sup> | string | Yes| Application resource leak event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
 | ADDRESS_SANITIZER<sup>12+</sup> | string | Yes| Application address sanitizer event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
 | MAIN_THREAD_JANK<sup>12+</sup> | string | Yes| Main thread jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 12.|
-| APP_KILLED<sup>20+</sup> | string | Yes| Application termination event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 20.|
+| APP_KILLED<sup>20+</sup> | string | Yes| Application killed event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 20.|
 
 
 ## hiAppEvent.param

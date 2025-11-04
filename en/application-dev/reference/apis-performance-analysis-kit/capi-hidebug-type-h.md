@@ -36,6 +36,7 @@ Defines the structs of the HiDebug module.
 | [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | Defines the stack frame content.|
 | [HiDebug_MallocDispatch](capi-hidebug-hidebug-mallocdispatch.md) | HiDebug_MallocDispatch | Defines the struct types of the replaceable/restorable **HiDebug_MallocDispatch** table of the application process.|
 | [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | Defines the object used for stack backtracing and stack parsing.|
+| [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | Defines the pointer to **HiDebug_ThreadCpuUsage**.|
 
 ### Enums
 
@@ -104,7 +105,7 @@ Enumerates the error codes used in the HiDebug module.
 | HIDEBUG_NO_PERMISSION = 11400103 | No file write permission.|
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | Internal system error.|
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | No trace task is running.|
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | The PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | PC address passed to the symbol parsing function is invalid.<br>**Since**: 20|
 
 ### HiDebug_TraceFlag
 

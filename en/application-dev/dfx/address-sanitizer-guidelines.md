@@ -8,15 +8,15 @@
 
 ## Overview
 
-Out-of-bounds address access refers to the access to an invalid address. As a result, the program runs abnormally and the application may crash. Common causes include use after free, double-free, stack-overflow, and heap-overflow. As application crash logs are limited and not the first crash site, it is difficult to locate out-of-bounds address access issues. Typically, you can use detection tools such as ASan, HWASan, and GWP-ASan to obtain more memory operation information. Since API 13, you are advised to use HWASan to analyze out-of-bounds address access issues.
+Out-of-bounds address access refers to the access to an invalid address. As a result, the program runs abnormally and the application may crash. Common causes include use after free, double-free, stack-overflow, and heap-overflow. As application crash logs are limited and not the first crash site, it is difficult to locate out-of-bounds address access issues. Typically, you can use detection tools such as ASan, HWASan, and GWP-ASan to obtain more memory operation information. Since API 13, you are advised to use [HWASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-hwasan-detection) to analyze out-of-bounds address access issues.
 
 ## Common Out-of-bounds Types and Impacts
 
-For details, see Typical Types of Out-of-bounds Address Access.
+For details, see [Typical Types of Out-of-bounds Address Access](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-address-sanitizer-catagory).
 
 ## Principle of Address Sanitizer Detection
 
-For details, see Address Sanitizer Detection.
+For details, see [Address Sanitizer Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ram-detection).
 
 ## How to Obtain Logs
 
@@ -116,7 +116,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 
 ### HWASan Log Specifications
 
-HWASan logs are similar to ASan logs. Its title also displays key information such as device information, fault occurrence time, faulty process, and trigger cause. The log content includes the out-of-bounds address (for example, **0x0002013c0100**), access size (for example, **WRITE of size 4**), and thread and process information. In addition, the call stack displays the execution path of the function that triggers the out-of-bounds error, and lists the address, module, and offset of each layer to help you quickly locate the code. Different from ASan, HWASan also outputs the tags of pointers and memory blocks, and compares the tags to determine whether invalid access exists.
+HWASan logs are similar to ASan logs. Its title also displays key information such as device information, fault occurrence time, faulty process, and trigger cause. The log content includes the out-of-bounds address (for example, **0x0002013c0100**), access size (for example, **WRITE of size 4**), and thread and process information. In addition, the call stack displays the execution path of the function that triggers the out-of-bounds error, and lists the address, module, and offset of each layer to help you quickly locate the code. Unlike ASan, HWAsan also outputs the tags of pointers and memory blocks, and compares the tags to determine whether an invalid access exists.
 
 ```text
 Device info:XXX <- Device information
@@ -259,7 +259,7 @@ Process memory map follows: <- Process memory space when the fault occurs
  0x0002e0020000-0x0002e0040000 rw-p 00000000 [anon:SizeClassAllocator: freearray]
 ```
 
-### MemDebug
+### MemDebug Log Specifications
 
 MemDebug employs an isolation area combined with a poison-fill mechanism and reuses HWASan's tag-verification detector. Its log format for double-free errors is identical to HWASan's.
 
@@ -341,7 +341,7 @@ For Use-After-Free (Write) problems, the logs are different in the problem overv
 ptrBeg was re-written after free 0x000100946540[1], 0x000100946548 5555555500000009:5555555555555555
 ```
 
-**0x000100946540** is the start address of the problematic memory block, **[1]** is the 8-byte offset of the detected problematic memory based on the start address, **0x000100946548** is the actual modified address, and **5555555500000009:5555555555555555** indicates the comparison between the actual value and expected value after the memory content is modified. The log also outputs the release stack and allocation stack of the corresponding memory block. The format of the call stack is the same as that of the HWASan log.
+**0x000100946540** is the start address of the problematic memory block, **[1]** is the 8-byte offset of the detected problematic memory based on the start address, **0x000100946548** is the actual modified address, and **5555555500000009:5555555555555555** indicates the comparison between the actual value and expected value after the memory content is modified. After this line, the log also prints the allocation call stack and the deallocation call stack for the affected memory block. The stack format is identical to that used in HWASan logs and is therefore omitted here.
 
 ### GWP-ASan Log Specifications
 

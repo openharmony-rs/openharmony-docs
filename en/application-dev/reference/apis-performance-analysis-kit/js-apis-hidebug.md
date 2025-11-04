@@ -113,7 +113,7 @@ let pss: bigint = hidebug.getPss();
 
 getVss(): bigint
 
-Obtains the virtual memory size occupied by an application process. This API is implemented by multiplying the value of **size** (number of memory pages) in the **/proc/{pid}/statm** node by the page size (4 KB per page).
+Obtains the virtual set size used by the application process. This API is implemented by multiplying the value of **size** (number of memory pages) in the **/proc/{pid}/statm** node by the page size (4 KB per page).
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -121,7 +121,7 @@ Obtains the virtual memory size occupied by an application process. This API is 
 
 | Type  | Description                                    |
 | ------ | ---------------------------------------- |
-| bigint | Virtual memory size occupied by an application process, in KB.|
+| bigint | Virtual set size used by the application process, in KB.|
 
 **Example**:
 
@@ -198,7 +198,7 @@ Obtains the CPU usage of a process.
 
 | Type  | Description                      |
 | ------ | -------------------------- |
-| number | Obtains the CPU usage of a process. For example, if the CPU usage is **50%**, **0.5** is returned.|
+| number | CPU usage of a process. For example, if the CPU usage is **50%**, **0.5** is returned.|
 
 
 **Example**:
@@ -224,7 +224,7 @@ Obtains system service information.
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | Yes  | Service ID used to obtain system service information.|
 | fd | number | Yes  | File descriptor to which data is written by the API.        |
-| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254 characters.|
+| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254.|
 
 **Error codes**
 
@@ -273,7 +273,7 @@ Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **
 
 | Name  | Type  | Mandatory| Description                                              |
 | -------- | ------ | ---- |--------------------------------------------------|
-| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128.|
+| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128.|
 
 **Error codes**
 
@@ -325,7 +325,7 @@ try {
 
 dumpJsHeapData(filename: string): void
 
-Dumps the heap data of a virtual machine.
+Dumps VM heap data.
 
 > **NOTE**
 >
@@ -337,7 +337,7 @@ Dumps the heap data of a virtual machine.
 
 | Name  | Type  | Mandatory| Description                                           |
 | -------- | ------ | ---- | ----------------------------------------------- |
-| filename | string | Yes  | Name of the heap data dump output file customized by the user. The heapsnapshot file named after this parameter is generated in the `files` directory of the application. The maximum length of the string is 128.|
+| filename | string | Yes  | User-defined name of the VM heap data output file. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128.|
 
 **Error codes**
 
@@ -376,7 +376,7 @@ Starts the VM profiling method. **startProfiling(filename: string)** and **stopP
 
 | Name  | Type  | Mandatory| Description                                            |
 | -------- | ------ | ---- | ------------------------------------------------ |
-| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128 characters.|
+| filename | string | Yes  | Custom file name of the sampling data. The .json file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128.|
 
 **Example**:
 
@@ -422,7 +422,7 @@ dumpHeapData(filename: string): void
 > 
 > This API is deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9).
 
-Dumps the VM heap data and generates a `filename.heapsnapshot` file.
+Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -430,7 +430,7 @@ Dumps the VM heap data and generates a `filename.heapsnapshot` file.
 
 | Name  | Type  | Mandatory| Description                                                     |
 | -------- | ------ | ---- |---------------------------------------------------------|
-| filename | string | Yes  | User-defined heap file name. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of the string is 128 characters.|
+| filename | string | Yes  | User-defined heap file name. The .heapsnapshot file is generated in the **files** directory of the application based on the specified file name. The maximum length of a string is 128.|
 
 **Example**:
 
@@ -507,7 +507,7 @@ Evaluation method: limitSize = Expected trace collection duration x Unit trace t
 
 Expected trace collection duration: You can determine the duration based on the fault scenario. The unit is second.
 
-Trace traffic per second: size of traces generated by an app per second. The recommended value is 300 KB/s. You are advised to use the actual value of your app, in KB/s.
+Unit trace traffic: Size of trace data generated by an application per second, in KB/s. The recommended value is 300 KB/s. You are advised to use the actual value of your application.
 
 To obtain the unit trace traffic of an application, you can call **startAppTraceCapture()** with **limitSize** set to the maximum value 500 MB. After **N** seconds, call **stopAppTraceCapture()** to stop the collection and check the size **S** (KB) of the trace data. The unit trace traffic is **S**/**N** (KB/s).
 
@@ -525,11 +525,11 @@ To obtain the unit trace traffic of an application, you can call **startAppTrace
 
 | Type            | Description           |
 | -----------------|---------------|
-| string           | Returns the trace file name and path. (The interface returns the actual physical path. If the app needs to access the path, convert the path based on the mapping between the app sandbox path and the actual physical path. For details, see [Mapping Between App Sandbox Paths and Actual Physical Paths](../../file-management/app-sandbox-directory.md).)|
+| string           | Trace file path. (The API returns the actual physical path. If the path needs to be accessed in the application, convert the path by referring to [Mappings Between Application Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).)|
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HiDebug-Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiDebug Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
@@ -571,7 +571,7 @@ If **startAppTraceCapture ()** is called without a properly specified **limitSiz
 
 **Error codes**
 
-For details about the following error codes, see [HiDebug-Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
+For details about the error codes, see [HiDebug Trace Error Codes](errorcode-hiviewdfx-hidebug-trace.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
@@ -679,12 +679,12 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 | Name  | Type  | Mandatory| Description                                                                                                                                                                     |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | string |  Yes | Types of leak resources:<br>- pss_memory (native memory)<br>- js_heap (JavaScript heap memory)<br>- fd (file descriptor)<br>- thread (thread)                                                                           |
-| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 x 1024 x 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**|
+| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 × 1024 × 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**|
 | enableDebugLog | boolean |  Yes | Whether to enable external debugging logs. Enable external debugging logs only in the grayscale version (test version released to a small number of users before the official version is released). Collecting debugging logs occupies a large number of CPU and memory resources, which may cause application smoothness problems.<br>The value **true** means to enable external debugging logs, and false means the opposite.<br>                                     |
 
 **Error codes**
 
-For details about the following error codes, see [Common Error Codes](../errorcode-universal.md) and [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
 
 | ID| Error Message|
 | ------- | ----------------------------------------------------------------- |
@@ -740,7 +740,7 @@ console.info(`pss: ${nativeMemInfo.pss}, vss: ${nativeMemInfo.vss}, rss: ${nativ
 
 getAppNativeMemInfoAsync(): Promise&lt;NativeMemInfo&gt;
 
-Reads the data of the /proc/{pid}/smaps_rollup and /proc/{pid}/statm nodes to obtain the memory information of an application process. This method uses a promise for asynchronous callback.
+Obtains the memory information of application processes by reading the data of the **/proc/{pid}/smaps_rollup** and **/proc/{pid}/statm** nodes. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -748,7 +748,7 @@ Reads the data of the /proc/{pid}/smaps_rollup and /proc/{pid}/statm nodes to ob
 
 | Type                                              | Description                   |
 |--------------------------------------------------| --------------------- |
-| Promise&lt;[NativeMemInfo](#nativememinfo12)&gt; | Promise that returns the memory information of an application process.|
+| Promise&lt;[NativeMemInfo](#nativememinfo12)&gt; | Promise used to return the application process memory information.|
 
 **Example**:
 
@@ -857,7 +857,7 @@ Obtains the specified system [GC](../../arkts-utils/gc-introduction.md) statisti
 
 | Name  | Type  | Mandatory| Description         |
 | -------- | ------ | ---- |-------------|
-| item | string | Yes  | Type of the statistics to be obtained. The following statistics can be obtained:<br>"ark.gc.gc-count": number of GC times of the current thread.<br>"ark.gc.gc-time": total GC duration triggered by the current thread, in milliseconds.<br>"ark.gc.gc-bytes-allocated": size of the memory allocated to the current thread Ark VM, in bytes.<br>"ark.gc.gc-bytes-freed": memory freed by the current thread, in bytes.<br> "ark.gc.fullgc-longtime-count": number of long full GCs of the current thread.|
+| item | string | Yes  | Type of the statistics to obtain. The following statistics can be obtained:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.|
 
 **Return value**
 
@@ -901,7 +901,7 @@ Defines the memory limit of the application process.
 | rssLimit    | bigint |  No | No | Limit on the resident set size, in KB.    |
 | vssLimit  | bigint |  No | No | Limit on the virtual memory size, in KB.      |
 | vmHeapLimit | bigint |  No | No | Limit on the JS VM heap size of the calling thread, in KB.|
-| vmTotalHeapSize | bigint |  No | No | Size limit of the JS heap memory of the process, in KB. |
+| vmTotalHeapSize | bigint |  No | No | Limit on the JS heap memory size of the process, in KB. |
 
 ## VMMemoryInfo<sup>12+</sup>
 
@@ -980,7 +980,7 @@ Describes memory information of the application process.
 | Name     | Type  | Read Only | Optional| Description                                                                            |
 | --------- | ------ | --|----|--------------------------------------------------------------------------------|
 | pss  | bigint |  No | No | Size of the occupied physical memory (including the proportionally allocated memory occupied by the shared library), in KB. The value of this parameter is obtained by summing up the values of **Pss** and **SwapPss** in the **/proc/{pid}/smaps_rollup** node.|
-| vss  | bigint |  No | No |  Size of the occupied virtual memory (including the memory occupied by the shared library), in KB. The value of this parameter is obtained by multiplying the value of **size** in the **/proc/{pid}/statm** node by **4**.               |
+| vss  | bigint |  No | No | Size of the occupied virtual memory (including the memory occupied by the shared library), in KB. The value of this parameter is obtained by multiplying the value of **size** in the **/proc/{pid}/statm** node by **4**.               |
 | rss  | bigint |  No | No | Size of the occupied physical memory (including the memory occupied by the shared library), in KB. The value of this parameter is obtained by reading the value of **Rss** in the **/proc/{pid}/smaps_rollup** node.               |
 | sharedDirty  | bigint |  No | No | Size of the shared dirty memory, in KB. The value of this parameter is obtained by reading the value of **Shared_Dirty** in the **/proc/{pid}/smaps_rollup** node.                   |
 | privateDirty  | bigint |  No | No | Size of the private dirty memory, in KB. The value of this parameter is obtained by reading the value of **Private_Dirty** in the **/proc/{pid}/smaps_rollup** node.                  |
@@ -1020,15 +1020,15 @@ Describes the key-value pair used to store GC statistics. This type does not sup
 
 | Type     | Description                         |
 | -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. The key-value information includes:<br>ark.gc.gc-count: number of GC times of the current thread.<br>ark.gc.gc-time: total GC duration of the current thread, in milliseconds.<br>ark.gc.gc-bytes-allocated: size of the memory allocated to the current thread, in bytes.<br>ark.gc.gc-bytes-freed: size of the memory successfully reclaimed by the current thread, in bytes.<br> ark.gc.fullgc-longtime-count: number of times that the current thread triggers long full GC.   |
+| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. It contains the following information:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.   |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
 Enumerates the trimming levels of the heap snapshot.
 
-**TRIM_LEVEL_2** takes a longer time than **TRIM_LEVEL_1**. The threshold for screen freezing is 6 seconds. When TRIM_LEVEL_1 is used, the threshold is not reached. When TRIM_LEVEL_2 is used, the trimming time may exceed 6 seconds, triggering the APP_FREEZE event. As a result, the application is terminated by the system. In this case, the trimming level is rolled back to TRIM_LEVEL_1.
+**TRIM_LEVEL_2** takes a longer time than **TRIM_LEVEL_1**. The threshold for screen freezing is 6 seconds. With **TRIM_LEVEL_1**, the trim duration stays below this threshold. Upon switching to **TRIM_LEVEL_2**, the duration may exceed 6s, triggering an **APP_FREEZE** (screen freeze event) and causing the system to kill the application; the trim level then reverts to **TRIM_LEVEL_1**.
 
-You are advised to use **TRIM_LEVEL_1** to ensure application stability and use **TRIM_LEVEL_2** only when more complete trimming is required.
+You are advised to use **TRIM_LEVEL_1** to ensure application stability and use **TRIM_LEVEL_2 **only when more complete trimming is required.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1049,7 +1049,7 @@ Obtains the debugging state of an application process.
 
 | Type | Description                                                  |
 | ------ |------------------------------------------------------|
-| boolean | Whether the Ark or native layer of the application process is in the debugging state. true: yes false: no|
+| boolean | Whether the Ark or native layer of the application process is in the debugging state. The value **true** indicates that the layer is in the debugging state, and **false** indicates the opposite.|
 
 **Example**:
 
@@ -1063,7 +1063,7 @@ console.info(`isDebugState = ${hidebug.isDebugState()}`)
 
 getGraphicsMemory(): Promise&lt;number&gt;
 
-Obtains the size of the application video RAM asynchronously using a promise.
+Obtains the GPU memory size of the application. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1072,8 +1072,8 @@ Obtains the size of the application video RAM asynchronously using a promise.
 **Return value**
 
 | Type                   | Description                        |
-|-----------------------|----------------------------|
-| Promise&lt;number&gt; | Promise object, which returns the size of the application video RAM (in KB).|
+|-----------------------|---------------------------|
+| Promise&lt;number&gt; | Promise used to return the GPU memory size of the application, in KB.|
 
 **Error codes**
 
@@ -1100,7 +1100,7 @@ hidebug.getGraphicsMemory().then((ret: number) => {
 
 getGraphicsMemorySync(): number
 
-Obtains the size of the application video RAM in synchronous mode.
+Obtains the GPU memory size of an application in synchronous mode.
 
 > **NOTE**
 >
@@ -1114,7 +1114,7 @@ Obtains the size of the application video RAM in synchronous mode.
 
 | Type | Description            |
 | ------ |----------------|
-| number | Size of the application video RAM, in KB.|
+| number | Size of the application's GPU memory, in KB.|
 
 **Error codes**
 
@@ -1141,7 +1141,7 @@ try {
 
 dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
-Dumps the original heap snapshot of the VM for the current thread and generates a rawheap file. The rawheap file can be converted into a heapsnapshot file using the rawheap-translator tool for parsing. The path of the generated file is returned using a promise for asynchronous callback.
+Dumps the original VM heap snapshot for the current thread and generates a .rawheap file. You can use [rawheap-translator](../../tools/rawheap-translator.md) to convert the generated file into a .heapsnapshot file for parsing. This API uses a promise to return the generated file path.
 
 > **NOTE**
 >
@@ -1156,7 +1156,7 @@ Dumps the original heap snapshot of the VM for the current thread and generates 
 
 | Name                    | Type     | Mandatory| Description                                         |
 |-------------------------|---------|----|---------------------------------------------|
-| needGC         | boolean | No | Whether GC is required before storing heap snapshots. true: GC is required. false: GC is not required. The default value is **true**.|
+| needGC         | boolean | No | Whether GC is required before storing heap snapshots. The value **true** indicates that GC is required, and **false** indicates the opposite. The default value is **true**.|
 
 **Return value**
 
@@ -1195,14 +1195,16 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 
 enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 
-Enables GWP-ASan to detect invalid behaviors during heap memory usage.
+Enables GWP-ASan to detect illegal behaviors in heap memory usage.
 
-This API is used to dynamically configure and enable GWP-ASan to adapt to the GWP-ASan detection policy customized by the application. The configuration takes effect after the application is restarted.
+This API is used to dynamically configure and enable GWP-ASan to adapt to the custom GWP-ASan detection policy. The configuration takes effect after the application is restarted.
+
+ 
 
 > **NOTE**
 > 
-> 1. If the number of GWP-ASan applications set by calling this API exceeds the quota, the API call will fail and an error code will be returned. Use try-catch to capture exceptions to prevent the application from exiting abnormally.
-> 2. After the device is restarted, the GWP-ASan parameters set by calling this API will become invalid.
+> 1. If the number of GWP-ASan applications configured using this API exceeds the quota during device running, this API fails to be called and an error code is thrown. Use **try-catch** to capture exceptions to prevent the application from exiting abnormally.
+> 2. After the device restarts, the GWP-ASan parameters set by this API are invalid.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1210,7 +1212,7 @@ This API is used to dynamically configure and enable GWP-ASan to adapt to the GW
 
 | Name  | Type  | Mandatory| Description  |
 |---------|---------|--------|-----|
-| options | [GwpAsanOptions](#gwpasanoptions20) | No| GWP-ASan configuration item. If this parameter is not set, the default parameter is used.|
+| options | [GwpAsanOptions](#gwpasanoptions20) | No| GWP-ASan configuration items. If this parameter is not set, the default parameter is used.|
 | duration | number | No| GWP-ASan duration, in days. The default value is 7. The value must be a positive integer greater than 0.|
 
 **Error codes**
@@ -1243,15 +1245,15 @@ try {
 }
 ```
 ## GwpAsanOptions<sup>20+</sup>
-GWP-ASan configuration item. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
+Enumerates the GWP-ASan configuration items. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 | Name        | Type | Read Only | Optional| Description|
 |--------------|------|-------|-------|-----|
-|alwaysEnabled | boolean | No | Yes| true: GWP-ASan is enabled at 100%.<br>false: GWP-ASan is enabled at a probability of 1/128.<br> The default value is **false**.|
-|sampleRate    |number| No |Yes|GWP-ASan sampling frequency. The default value is 2500. A positive integer greater than 0 must be passed. If a decimal is passed, the value is rounded up.<br> GWP-Asan performs sampling on the allocated memory at a probability of 1/**sampleRate**.<br> Recommended value: >= 1000. If the value is too small, the performance is significantly affected.|
-|maxSimutaneousAllocations|number|No|Yes|Maximum number of allocated slots. The default value is **1000**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br>When the slots are used up, the newly allocated memory is no longer monitored.<br>After the used memory is released, the slots occupied by the memory are automatically reused to facilitate subsequent memory monitoring.<br> Recommended value: <= 20000. If the value is too large, the VMA may crash due to exceeding the threshold.|
+|alwaysEnabled | boolean | No | Yes| The value **true** means to enable GWP-ASan 100%.<br>The value **false** means to enable GWP-ASan at a probability of 1/128.<br> The default value is **false**.|
+|sampleRate    |number| No |Yes|Sampling rate of GWP-ASan. The default value is **2500**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br> GWP-Asan performs sampling on the allocated memory at a probability of 1/**sampleRate**.<br> You are advised to set this parameter to a value greater than or equal to 1000. If the value is too small, the performance is affected.|
+|maxSimutaneousAllocations|number|No|Yes|Maximum number of allocated slots. The default value is **1000**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br>When the slots are used up, the newly allocated memory is no longer monitored.<br>After the used memory is released, the slots occupied by the memory are automatically reused to facilitate subsequent memory monitoring.<br> You are advised to set this parameter to a value less than or equal to 20000. If the value is too large, the VMA may break down.|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
@@ -1271,7 +1273,7 @@ hidebug.disableGwpAsanGrayscale();
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
 getGwpAsanGrayscaleState(): number
 
-Obtains the remaining days for enabling GWP-ASan.
+Obtains the number of remaining days for enabling GWP-ASan.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1279,7 +1281,7 @@ Obtains the remaining days for enabling GWP-ASan.
 
 | Type| Description|
 |-----------|-------------|
-| number    |Obtains the remaining days for enabling GWP-ASan. If GWP-Asan is disabled, **0** is returned.|
+| number    |Number of remaining days for enabling GWP-ASan. If GWP-Asan is disabled, **0** is returned.|
 
 **Example**:
 

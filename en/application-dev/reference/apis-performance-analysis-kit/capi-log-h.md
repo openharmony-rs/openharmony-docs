@@ -11,7 +11,7 @@
 
 Defines the logging functions of the HiLog module. Before outputting logs, you must define the service domain, and log tag, use the API with the specified log type and level, and specify the privacy identifier.<br> **Service domain**: service domain of logs. You can define the value as required. Its value is a hexadecimal integer ranging from 0x0 to 0xFFFF. If the value exceeds the range, logs cannot be printed.<br> **Log tag**: a string used to identify the class, file, or service behavior.<br> **Log level**: DEBUG, INFO, WARN, ERROR, or FATAL.<br> **Parameter format**: printf format string, which starts with a % character, including a parameter type identifier and a variable parameter.<br> **Privacy identifier**: **{public}** or **{private}** added between the % character and the parameter type identifier in each parameter. **Note**: If no privacy identifier is added, the parameter is considered to be **private**.
 
-**Reference file**: <hilog/log.h>
+**File to include**: <hilog/log.h>
 
 **Library**: libhilog_ndk.z.so
 
@@ -34,11 +34,11 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 | Name| Description|
 | -- | -- |
-| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
-| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
-| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
 
 ### Functions
 
@@ -46,12 +46,18 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 | -- | -- | -- |
 | [int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)](#oh_log_print) | - |  Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format.|
 | [int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)](#oh_log_printmsg) | - |  Outputs constant log strings of the specified **type**, **level**, **domain**, and **tag**.|
-| [int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen,const char *message, size_t messageLen)](#oh_log_printmsgbylen) | - |  Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.|
+| [int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)](#oh_log_printmsgbylen) | - |  Outputs log constant strings of the specified **domain**, **tag**, and **level**. The tag and string length must be specified. Unlike **OH_LOG_PrintMsg**, this API allows strings without terminators.|
 | [int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)](#oh_log_vprint) | - |  Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.|
 | [bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)](#oh_log_isloggable) | - | Checks whether logs of the specified service domain, tag, and level can be printed.|
-| [typedef void (\*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)](#logcallback) | LogCallback | Defines a function for customizing the processing of logs in the callback.|
+| [typedef void (\*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)](#logcallback) | LogCallback | Customizes the processing of HiLog logs in the callback.|
 | [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | Registers a callback function. After this function is called, the customized callback can take over all logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.|
 | [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | Sets the minimum log level.|
+
+> **NOTE**
+>
+> If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the **OH_LOG_SetMinLogLevel()** setting does not take effect.
+>
+> In the debug applications, the **OH_LOG_SetMinLogLevel()** function does not take effect.
 
 ## Enum Description
 
@@ -156,7 +162,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 ### OH_LOG_PrintMsgByLen()
 
 ```
-int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen,const char *message, size_t messageLen)
+int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)
 ```
 
 **Description**
@@ -374,12 +380,12 @@ Indicates FATAL logs. This is a function-like macro. Before calling this functio
 ### LogCallback()
 
 ```
-typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)
+typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)
 ```
 
 **Description**
 
-Defines a function for customizing the processing of logs in the callback.
+Customizes the processing of HiLog logs in the callback.
 
 **Since**: 11
 
@@ -402,7 +408,7 @@ void OH_LOG_SetCallback(LogCallback callback)
 
 **Description**
 
-Registers a callback function. After this function is called, the customized callback can take over all logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.
+Registers a callback function. After this function is called, the custom callback can receive all HiLog logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.
 
 **Since**: 11
 
@@ -423,6 +429,12 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 Sets the minimum log level.
 
+**NOTE**
+
+1. If the set log level is lower than the [global log level](../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+
+2. This function does not take effect for debug applications.
+
 **Since**: 15
 
 
@@ -431,4 +443,5 @@ Sets the minimum log level.
 | Name| Description|
 | -- | -- |
 | [LogLevel](capi-log-h.md#loglevel) level | Log level.|
+
 
