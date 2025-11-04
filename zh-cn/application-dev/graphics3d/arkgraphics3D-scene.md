@@ -202,6 +202,10 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于加载场景、创建相机与灯光。
 
      <!-- @[light_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+     
+     ``` TypeScript
+     import { Camera, Light, LightType, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     ```
 
   2. 加载场景资源。
 
