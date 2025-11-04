@@ -54,6 +54,42 @@
 - 创建及应用文本行高对象（LineHeightStyle）
 
   <!-- @[styledStringLineHeightStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLineHeightStyle.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo6 {
+    //'app.string.StyledStringStyle_Text_5'资源文件中的value值为"运动35分钟\n顶顶顶\n得到"
+    @State str: string =
+      this.getUIContext()
+        .getHostContext()?.resourceManager.getStringSync($r('app.string.StyledStringStyle_Text_5')) as string;
+    mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
+      {
+        start: 8,
+        length: 3,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(LengthMetrics.vp(50))
+      }
+    ]);
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.mutableStyledString);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+      }
+      .width('100%')
+      .margin({ top: 10 })
+    }
+  }
+  ```
 
   ![StyledString_lineHeight](figures/styled_string_lineHeight.png)
 
