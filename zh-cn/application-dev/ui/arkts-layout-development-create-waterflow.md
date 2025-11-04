@@ -70,6 +70,116 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 <!-- @[waterFlowGroupingMixing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowGroupingMixing.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct WaterFlowGroupingMixing {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource(100);
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+  private gridItems: number[] = [];
+  @State sections: WaterFlowSections = new WaterFlowSections();
+  sectionMargin: Margin = {
+    top: 10,
+    left: 5,
+    bottom: 10,
+    right: 5
+  };
+  oneColumnSection: SectionOptions = {
+    itemsCount: 1,
+    crossCount: 1,
+    columnsGap: 5,
+    rowsGap: 10,
+    margin: this.sectionMargin,
+  };
+  twoColumnSection: SectionOptions = {
+    itemsCount: 98,
+    crossCount: 2,
+  };
+  // 使用分组瀑布流时无法通过footer设置尾部组件，可以保留一个固定的分组作为footer
+  lastSection: SectionOptions = {
+    itemsCount: 1,
+    crossCount: 1,
+  };
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  aboutToAppear() {
+    this.setItemSizeArray();
+    for (let i = 0; i < 15; ++i) {
+      this.gridItems.push(i);
+    }
+    // 所有分组的itemCount之和需要和WaterFlow下数据源的子节点总数相等，否则无法正常布局
+    let sectionOptions: SectionOptions[] = [this.oneColumnSection, this.twoColumnSection, this.lastSection];
+    this.sections.splice(0, 0, sectionOptions);
+  }
+
+  build() {
+    NavDestination() {
+      // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+      ComponentCard({ title: $r('app.string.WaterFlowGroupingMixing_title') }) {
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              if (item === 0) {
+                Grid() {
+                  ForEach(this.gridItems, (day: number) => {
+                    GridItem() {
+                      Text('GridItem').fontSize(14).height(16)
+                    }.backgroundColor(0xFFC0CB)
+                  }, (day: number) => day.toString())
+                }
+                .height('30%')
+                .rowsGap(5)
+                .columnsGap(5)
+                .columnsTemplate('1fr '.repeat(5))
+                .rowsTemplate('1fr '.repeat(3))
+              } else {
+                ReusableFlowItem({ item: item })
+              }
+            }
+            .width('100%')
+            .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+            .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
+          }, (item: string) => item)
+        }
+        .backgroundColor(0xFAEEE0)
+        .height('100%')
+        // 即将触底时提前增加数据
+        .onScrollIndex((first: number, last: number) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+              // 增加数据后同步调整对应分组的itemCount
+              this.twoColumnSection.itemsCount += 100;
+              this.sections.update(1, this.twoColumnSection);
+            }, 1000);
+          }
+        })
+        .margin(10)
+      }
+    }.backgroundColor('#f1f2f3')
+    // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.WaterFlowGroupingMixing_title'))
+  }
+}
+```
+
 >**说明：**
 >
 >使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。
