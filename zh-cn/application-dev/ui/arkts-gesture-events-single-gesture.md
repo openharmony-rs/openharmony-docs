@@ -446,6 +446,50 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 <!-- @[catch_swipe_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct Swipe {
+  @State rotateAngle: number = 0;
+  @State speed: number = 1;
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Column() {
+            Text('SwipeGesture speed\n' + this.speed)
+            Text('SwipeGesture angle\n' + this.rotateAngle)
+          }
+          .border({ width: 3 })
+          .width(300)
+          .height(200)
+          .margin(100)
+          // 在Column组件上绑定旋转，通过滑动手势的滑动速度和角度修改旋转的角度
+          .rotate({ angle: this.rotateAngle })
+          .gesture(
+            // 绑定滑动手势且限制仅在竖直方向滑动时触发
+            SwipeGesture({ direction: SwipeDirection.Vertical })
+              // 当滑动手势触发时，获取滑动的速度和角度，实现对组件的布局参数的修改
+              .onAction((event: GestureEvent|undefined) => {
+                if(event){
+                  this.speed = event.speed;
+                  this.rotateAngle = event.angle;
+                }
+              })
+          )
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_SwipeGesture_title'))
+  }
+}
+```
+
 
 ![swipe](figures/swipe.gif)
 
