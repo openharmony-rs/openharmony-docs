@@ -108,6 +108,21 @@
 通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，推荐在[onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached)回调中注册应用侧函数，如果在其它时机注册，需要手动调用[refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh)才能生效。
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->
+  
+  ``` C++
+  // 注册对象
+  OH_LOG_Print(
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+  ArkWeb_ProxyMethodWithResult method1 = {
+      "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethodWithResult method2 = {
+      "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
+  // 调用Native Development Kit接口注册对象
+  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
+  ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
+  controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
+  ```
 
   - 参数permission是一个JSON字符串，示例如下：
   ```json
