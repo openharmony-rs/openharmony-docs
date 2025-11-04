@@ -67,7 +67,7 @@ onDetach(callback: Callback\<void>): T
 
 onAppear(event: () => void): T
 
-组件挂载显示后触发此回调。
+组件挂载后触发此回调。
 
 > **说明：**
 >
@@ -96,7 +96,7 @@ onAppear(event: () => void): T
 
 onDisAppear(event: () => void): T
 
-组件从组件树卸载消失时触发此回调。
+组件从组件树卸载时触发此回调。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
