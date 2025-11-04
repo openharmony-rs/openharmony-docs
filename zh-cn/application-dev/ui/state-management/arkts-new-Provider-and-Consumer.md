@@ -600,6 +600,44 @@ struct Child {
 
 <!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Provider() val: number = 10;
+
+  build() {
+    Column() {
+      Parent()
+    }
+  }
+}
+
+@ComponentV2
+struct Parent {
+  @Provider() val: number = 20;
+  @Consumer('val') val2: number = 0; // 10
+
+  build() {
+    Column() {
+      Text(`${this.val2}`)
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() val: number = 0; // 20
+
+  build() {
+    Column() {
+      Text(`${this.val}`)
+    }
+  }
+}
+```
+
 上面的例子中：
 
 - Parent中的\@Consumer向上查找，查找到Index中定义的`@Provider() val: number = 10`，初始化为10。
