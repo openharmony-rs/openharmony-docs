@@ -16,6 +16,10 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。
 
      <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     ```
 
   2. 加载场景资源。
 
