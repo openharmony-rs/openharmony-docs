@@ -1368,7 +1368,7 @@
         - 账号管理<!--account-management-->
           <!--Del-->
           - [账号管理概述](basic-services/account/account-overview-sys.md)
-          - 系统账号 <!--os-account-->
+          - 系统账号（仅对系统应用开放）<!--os-account-->
             - [管理系统账号](basic-services/account/manage-os-account-sys.md)
             - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints-sys.md)
             - [管理系统账号凭据](basic-services/account/manage-os-account-credential-sys.md)
@@ -5394,6 +5394,7 @@
           - [OH_AVScreenCapture_ContentFilter](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-contentfilter.md)
           - [OH_AVScreenCapture_CaptureStrategy](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-capturestrategy.md)
           - [OH_AVScreenCapture_UserSelectionInfo](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)
+          - [OH_AVScreenCaptureHighlightConfig](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapturehighlightconfig.md)
           - [OH_LowPowerAudioSink](reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
           - [OH_LowPowerAudioSinkCallback](reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
           - [OH_AVSamplesBuffer](reference/apis-media-kit/capi-avsinkbase-oh-avsamplesbuffer.md)

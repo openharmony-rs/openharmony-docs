@@ -10,6 +10,8 @@
 
 
 >  **说明：**
+> 
+> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md)，请参考[示例2](#示例2使用swiper替代stepper)。
 >
 > 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -128,6 +130,7 @@ onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&n
 
 ## 示例
 
+### 示例1（使用Stepper）
 该示例主要演示如何使用步骤导航器组件。
 
 ```ts
@@ -227,7 +230,168 @@ struct StepperExample {
   }
 }
 ```
-
-
 ![stepper](figures/stepper.gif)
 
+### 示例2（使用Swiper替代Stepper）
+该示例主要演示如何使用Swiper组件实现Stepper组件的功能，示例效果图同示例1。
+
+```ts
+@Styles
+function itemStyle() {
+  .width(336)
+  .height(621)
+  .margin({ top: 48, left: 12 })
+  .borderRadius(24)
+  .backgroundColor('#FFFFFF')
+}
+
+@Extend(Text)
+function itemTextStyle() {
+  .fontColor('#182431')
+  .fontSize(36)
+  .fontWeight(500)
+  .opacity(0.4)
+  .margin({ top: 82, bottom: 40 })
+}
+
+@Entry
+@Component
+struct StepperExample {
+  @State currentIndex: number = 0;
+  @State status: number = 0;
+  @State nextLabel: string = "Next";
+  @State prevLabel: string = "Previous";
+  private swiperController: SwiperController = new SwiperController();
+
+  build() {
+    Column() {
+      Swiper(this.swiperController) {
+        // 第一个步骤页
+        Column() {
+          Text('Page One')
+            .itemTextStyle()
+          Button('change status:' + this.status)
+            .backgroundColor('#007dFF')
+            .onClick(() => {
+              if (this.status < 3) {
+                this.status += 1
+              } else {
+                this.status = 0
+              }
+            })
+        }.itemStyle()
+        // 第二个步骤页
+        Column() {
+          Text('Page Two')
+            .itemTextStyle()
+          Button('change status:' + this.status)
+            .backgroundColor('#007dFF')
+            .onClick(() => {
+              if (this.status < 3) {
+                this.status += 1
+              } else {
+                this.status = 0
+              }
+            })
+        }.itemStyle()
+        // 第三个步骤页
+        Column() {
+          Text('Page Three')
+            .itemTextStyle()
+          Button('change status:' + this.status)
+            .backgroundColor('#007dFF')
+            .onClick(() => {
+              if (this.status < 3) {
+                this.status += 1
+              } else {
+                this.status = 0
+              }
+            })
+        }.itemStyle()
+        // 第四个步骤页
+        Column() {
+          Text('Page Four')
+            .itemTextStyle()
+        }.itemStyle()
+      }
+      .index(this.currentIndex)
+      .disableSwipe(true)
+      .loop(false)
+      .indicator(false)
+      .backgroundColor('#fff5f2f2')
+      .onChange((index) => {
+        console.info("Changed")
+        this.currentIndex = index
+        this.nextLabel = this.currentIndex == 2 ? "下一步" : "Next"
+        this.prevLabel = this.currentIndex == 2 ? "返回" : "Previous"
+      })
+      // 底部按钮
+      Row() {
+        if (this.currentIndex > 0) {
+          Row() {
+            SymbolGlyph($r("sys.symbol.chevron_left"))
+              .fontSize(20)
+              .margin({ right: 5 })
+            Text(this.prevLabel)
+            // 使用这里的onClick替代原Stepper的onPrevious
+              .onClick(() => {
+                this.swiperController.showPrevious()
+              })
+          }
+          .justifyContent(FlexAlign.Start)
+          .width(100)
+          .height(20)
+          .position({ left: 20 })
+        }
+        Row() {
+          if (this.currentIndex == 3) {
+            Text("开始")
+            // 使用这里的onClick替代原Stepper的onFinish
+              .onClick(() => {
+                console.info("Finish")
+              })
+          } else if (this.status == 0) {
+            Text(this.nextLabel)
+            // 使用这里的onClick替代原Stepper的onNext
+              .onClick(() => {
+                this.swiperController.showNext()
+              })
+            SymbolGlyph($r("sys.symbol.chevron_right"))
+              .fontSize(20)
+              .margin({ left: 5 })
+          } else if (this.status == 1) {
+            Text(this.nextLabel)
+              .fontColor('#ff818181')
+            SymbolGlyph($r("sys.symbol.chevron_right"))
+              .fontSize(20)
+              .fontColor(['#ff818181'])
+              .margin({ left: 5 })
+          } else if (this.status == 2) {
+            LoadingProgress()
+              .width(25)
+          } else if (this.status == 3) {
+            Text("跳过")
+            // 使用这里的onClick替代原Stepper的onSkip
+              .onClick(() => {
+                console.info("Skip")
+              })
+            SymbolGlyph($r("sys.symbol.chevron_right"))
+              .fontSize(20)
+              .margin({ left: 5 })
+          }
+        }
+        .justifyContent(FlexAlign.End)
+        .width(100)
+        .height(20)
+        .position({ right: 20 })
+      }
+      .backgroundColor('#fff5f2f2')
+      .position({ bottom: 30 })
+      .width("100%")
+    }
+    .backgroundColor('#fff5f2f2')
+    .width("100%")
+    .height("100%")
+  }
+}
+```

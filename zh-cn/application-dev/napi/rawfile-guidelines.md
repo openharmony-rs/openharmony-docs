@@ -54,11 +54,11 @@
     <!-- @[declare_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     
     ``` TypeScript
-    import resourceManager from '@kit.LocalizationKit';
-    export const getFileList: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Array<String>;
-    export const getRawFileContent: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Uint8Array;
-    export const getRawFileDescriptor: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => resourceManager.resourceManager.RawFileDescriptor;
-    export const isRawDir: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => boolean;
+    import { resourceManager } from '@kit.LocalizationKit';
+    export const getFileList: (resMgr: resourceManager.ResourceManager, path: string) => Array<String>;
+    export const getRawFileContent: (resMgr: resourceManager.ResourceManager, path: string) => Uint8Array;
+    export const getRawFileDescriptor: (resMgr: resourceManager.ResourceManager, path: string) => resourceManager.RawFileDescriptor;
+    export const isRawDir: (resMgr: resourceManager.ResourceManager, path: string) => boolean;
     ```
 
 **3. 修改源文件**
@@ -410,11 +410,13 @@
              this.rawfileListMsg = 'FileList = ' + rawFileList;
              hilog.info(DOMAIN, TAG, this.rawfileListMsg);
  
+             // 'subrawfile'仅作示例，请替换为实际使用的资源
              let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
              this.retMsg = 'isRawDir = ' + ret;
              hilog.info(DOMAIN, TAG, this.retMsg);
  
              // 传入资源管理对象，以及访问的rawfile文件夹名称
+             // 'rawfile1.txt'仅作示例，请替换为实际使用的资源
              let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
              // 将Uint8Array转为字符串
              let textDecoder: util.TextDecoder = new util.TextDecoder();
@@ -423,6 +425,7 @@
              hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
  
              // 传入资源管理对象，以及访问的rawfile文件名称
+             // 'rawfile1.txt'仅作示例，请替换为实际使用的资源
              let rawfileDescriptor: resourceManager.RawFileDescriptor =
                testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
              this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;

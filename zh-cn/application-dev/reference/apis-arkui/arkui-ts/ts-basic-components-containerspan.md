@@ -98,7 +98,7 @@ struct Index {
 从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性展示了文本设置背景样式的效果。
 
 ```ts
-import { ContainerSpanModifier } from '@ohos.arkui.modifier';
+import { ContainerSpanModifier } from '@kit.ArkUI';
 
 class MyContainerSpanModifier extends ContainerSpanModifier {
   applyNormalAttribute(instance: ContainerSpanAttribute): void {
@@ -116,8 +116,8 @@ struct ContainerSpanModifierExample {
     Column() {
       Text() {
         ContainerSpan() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
-          ImageSpan($r('app.media.app_icon'))
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+          ImageSpan($r('app.media.startIcon'))
             .width('40vp')
             .height('40vp')
             .verticalAlign(ImageSpanAlignment.CENTER)

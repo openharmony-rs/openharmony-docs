@@ -279,8 +279,6 @@
     - [Navigation](arkui-ts/ts-basic-components-navigation.md)
     - [NavDestination](arkui-ts/ts-basic-components-navdestination.md)
     - [MultiNavigation](arkui-ts/ohos-arkui-advanced-MultiNavigation.md)
-    - [Stepper](arkui-ts/ts-basic-components-stepper.md)
-    - [StepperItem](arkui-ts/ts-basic-components-stepperitem.md)
     - [Tabs](arkui-ts/ts-container-tabs.md)
     - [TabContent](arkui-ts/ts-container-tabcontent.md)
     - [ToolBarItem](arkui-ts/ts-basic-components-toolbaritem.md)
@@ -518,6 +516,8 @@
     - [Navigator](arkui-ts/ts-container-navigator.md)
     - [点击控制](arkui-ts/ts-universal-attributes-click.md)
     - [栅格设置](arkui-ts/ts-universal-attributes-grid.md)
+    - [Stepper](arkui-ts/ts-basic-components-stepper.md)
+    - [StepperItem](arkui-ts/ts-basic-components-stepperitem.md)
 - JS组件 <!--arkui-js-comp-->
   - [兼容JS的类Web开发范式（ArkUI.Full）](arkui-js/Readme-CN.md)<!--arkui-js-full-comp-->
   - [兼容JS的类Web开发范式（ArkUI.Lite）](arkui-js-lite/Readme-CN.md)<!--arkui-js-lite-comp-->

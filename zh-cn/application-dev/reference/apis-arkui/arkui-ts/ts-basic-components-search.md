@@ -1099,6 +1099,8 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 <!--Del-->
 在搜索框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
 
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -2181,3 +2183,28 @@ struct SearchExample {
 }
 ```
 ![searchPlaceholder](figures/searchPlaceholder.jpg)
+
+### 示例23（设置输入法扩展信息）
+
+从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SearchExample {
+  build() {
+    Column() {
+      Search({ value: '拉起输入法前执行onWillAttachIME回调' })
+        .onWillAttachIME((client: IMEClient) => {
+          client.setExtraConfig({
+            customSettings: {
+              name: "Search", // 自定义属性
+              id: client.nodeId // 自定义属性
+            }
+          })
+        })
+    }.height('100%')
+  }
+}
+```

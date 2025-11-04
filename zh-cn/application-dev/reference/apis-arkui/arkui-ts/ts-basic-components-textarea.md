@@ -1338,6 +1338,27 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | callback  | Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> | 是   | 在文本内容将要发生变化时的回调。<br/>返回true时，表示正常修改。返回false时，表示拦截此次触发。 |
 
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> | undefined)
+
+在输入框将要绑定输入法前触发该回调。
+
+<!--Del-->
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在输入框将要绑定输入法前触发该回调。 |
+
 ## TextAreaController<sup>8+</sup>
 
 TextArea组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
@@ -2695,3 +2716,28 @@ struct TextAreaExample {
 }
 ```
 ![textAreaPlaceholder](figures/textAreaPlaceholder.jpg)
+
+### 示例26（设置输入法扩展信息）
+
+从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Column() {
+      TextArea({ text: '拉起输入法前执行onWillAttachIME回调' })
+        .onWillAttachIME((client: IMEClient) => {
+          client.setExtraConfig({
+            customSettings: {
+              name: "TextArea", // 自定义属性
+              id: client.nodeId // 自定义属性
+            }
+          })
+        })
+    }.height('100%')
+  }
+}
+```

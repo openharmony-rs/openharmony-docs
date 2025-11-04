@@ -837,7 +837,7 @@ display.off('foldStatusChange', callback);
 
 ## display.on('brightnessInfoChange')<sup>22+</sup>
 
-on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -865,9 +865,7 @@ on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallb
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
@@ -879,7 +877,7 @@ try {
 
 ## display.off('brightnessInfoChange')<sup>22+</sup>
 
-off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
 
 关闭所有屏幕亮度信息状态变化的监听。
 
@@ -907,9 +905,7 @@ off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscal
 **示例：**
 
 ```ts
-import { BrightnessCallback } from '@kit.BasicServicesKit';
-
-let callback = (id: number, data: display.BrightnessInfo) => {
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
 try {
