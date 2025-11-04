@@ -225,7 +225,7 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式状态，EFFICIENCY_MODE表示高效能模式(非节能模式)，DEFAULT_MODE表示默认节能模式。 |
+| Promise<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式状态，EFFICIENCY_MODE表示效率模式(非能效模式)，DEFAULT_MODE表示进入能效模式。 |
 
 **错误码：**
 
