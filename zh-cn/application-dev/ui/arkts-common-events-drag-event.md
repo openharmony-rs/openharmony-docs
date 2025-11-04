@@ -908,6 +908,27 @@ build() {
 
     <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
     
+    ``` TypeScript
+    Column() {
+      Image(this.targetImage)
+        .width(this.imageWidth)
+        .height(this.imageHeight)
+    }
+    .draggable(true)
+    .margin({ left: 15 })
+    .border({ color: Color.Black, width: 1 })
+    .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+    .onDrop((dragEvent: DragEvent) => {
+      let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
+      let rect: Rectangle = dragEvent.getPreviewRect();
+      this.imageWidth = Number(rect.width);
+      this.imageHeight = Number(rect.height);
+      this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+      dragEvent.useCustomDropAnimation = true;
+      dragEvent.executeDropAnimation(this.customDropAnimation)
+    })
+    ```
+    
 
 **完整示例：**
 
