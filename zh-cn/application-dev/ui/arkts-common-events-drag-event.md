@@ -1082,6 +1082,43 @@ export struct DropAnimationExample {
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
     <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+    
+    ``` TypeScript
+    .onClick(() => {
+      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+      if (this.isSelectedGrid[idx]) {
+        let data: UDC.Image = new UDC.Image();
+        // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
+        data.uri = '/resource/image.jpeg';
+        if (!this.unifiedData) {
+          this.unifiedData = new UDC.UnifiedData(data);
+        }
+        this.unifiedData.addRecord(data);
+        this.numberBadge++;
+        let gridItemName = 'grid' + idx;
+        // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+        this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+          this.pixmap = pixmap;
+          this.previewData[idx] = {
+            pixelMap: this.pixmap
+          }
+        })
+      } else {
+        this.numberBadge--;
+        for (let i = 0; i < this.isSelectedGrid.length; i++) {
+          if (this.isSelectedGrid[i] === true) {
+            let data: UDC.Image = new UDC.Image();
+            // '/resource/image.jpeg'需要替换为开发者所需的图像资源文件
+            data.uri = '/resource/image.jpeg';
+            if (!this.unifiedData) {
+              this.unifiedData = new UDC.UnifiedData(data);
+            }
+            this.unifiedData.addRecord(data);
+          }
+        }
+      }
+    })
+    ```
 
 3. 拖拽数据提前准备。
 
