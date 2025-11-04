@@ -15,15 +15,25 @@ import { print } from '@kit.BasicServicesKit';
 
 打印任务完成后的事件监听回调接口类。
 
-### PrintTask.on
+### PrintTask.on<sup>(deprecated)</sup>
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
 注册打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onBlock](#printtaskonblocksup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -58,15 +68,74 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### PrintTask.onBlock<sup>22+</sup>
+
+onBlock(callback: Callback&lt;void&gt;): void
+
+注册打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.onBlock(() => {
+        console.log('print state is block');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.on<sup>(deprecated)</sup>
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
 注册打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onSucceed](#printtaskonsucceedsup22sup)。
+
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -101,15 +170,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### PrintTask.onSucceed<sup>22+</sup>
+
+onSucceed(callback: Callback&lt;void&gt;): void
+
+注册打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-1)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.onSucceed(() => {
+        console.log('print state is succeed');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.on<sup>(deprecated)</sup>
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
 注册打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onFail](#printtaskonfailsup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -144,15 +271,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on
+### PrintTask.onFail<sup>22+</sup>
+
+onFail(callback: Callback&lt;void&gt;): void
+
+注册打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-2)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.onFail(() => {
+        console.log('print state is fail');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.on<sup>(deprecated)</sup>
 
 on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
 注册打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onCancel](#printtaskoncancelsup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -187,15 +372,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### PrintTask.onCancel<sup>22+</sup>
+
+onCancel(callback: Callback&lt;void&gt;): void
+
+注册打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-3)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.onCancel(() => {
+        console.log('print state is cancel');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.off<sup>(deprecated)</sup>
 
 off(type: 'block', callback?: Callback&lt;void&gt;): void
 
 取消打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offBlock](#printtaskoffblocksup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -230,15 +473,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### PrintTask.offBlock<sup>22+</sup>
+
+offBlock(callback?: Callback&lt;void&gt;): void
+
+取消打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.offBlock(() => {
+        console.log('unregister state block');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.off<sup>(deprecated)</sup>
 
 off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
 取消打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offSucceed](#printtaskoffsucceedsup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -273,15 +574,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### PrintTask.offSucceed<sup>22+</sup>
+
+offSucceed(callback?: Callback&lt;void&gt;): void
+
+取消打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-1)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.offSucceed(() => {
+        console.log('unregister state succeed');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.off<sup>(deprecated)</sup>
 
 off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
 取消打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offFail](#printtaskofffailsup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -316,15 +675,73 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.off
+### PrintTask.offFail<sup>22+</sup>
+
+offFail(callback?: Callback&lt;void&gt;): void
+
+取消打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-2)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.offFail(() => {
+        console.log('unregister state fail');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
+### PrintTask.off<sup>(deprecated)</sup>
 
 off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
 取消打印完成后的监听，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offCancel](#printtaskoffcancelsup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -359,6 +776,54 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
+### PrintTask.offCancel<sup>22+</sup>
+
+offCancel(callback?: Callback&lt;void&gt;): void
+
+取消打印完成后的监听，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-3)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { fileUri } from '@kit.CoreFileKit';
+
+let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
+print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+    printTask.offCancel(() => {
+        console.log('unregister state cancel');
+    })
+    // ...
+}).catch((error: BusinessError) => {
+    console.error('print err ' + JSON.stringify(error));
+})
+```
+
 ## PrintDocumentAdapter<sup>11+</sup>
 
 第三方应用程序实现此接口来渲染要打印的文件。
@@ -372,6 +837,10 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -428,6 +897,10 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -480,6 +953,10 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -525,6 +1002,10 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -573,6 +1054,10 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -636,6 +1121,10 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -701,6 +1190,10 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -778,6 +1271,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -794,6 +1291,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -807,6 +1308,10 @@ struct Index {
 定义打印页面尺寸的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
@@ -824,6 +1329,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | DIRECTION_MODE_AUTO | 0 | 表示自动选择纸张方向。 |
@@ -836,6 +1345,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | COLOR_MODE_MONOCHROME | 0 | 表示黑白打印。 |
@@ -846,6 +1359,10 @@ struct Index {
 打印单双面模式的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -858,6 +1375,10 @@ struct Index {
 打印纸张类型的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -880,6 +1401,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | PREVIEW_DESTROY | 0 | 表示预览失败。 |
@@ -889,6 +1414,10 @@ struct Index {
 | PRINT_TASK_BLOCK | 4 | 表示打印任务阻塞。 |
 
 ## PrintFileCreationState<sup>11+</sup>
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 打印文件创建状态的枚举。
 
@@ -906,6 +1435,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | PRINTER_ADDED | 0 | 表示新打印机到达。 |
@@ -921,6 +1454,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | PRINT_JOB_PREPARE | 0 | 表示打印任务的初始状态。 |
@@ -934,6 +1471,10 @@ struct Index {
 打印任务子状态的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -973,6 +1514,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | E_PRINT_NONE | 0 | 表示没有错误。 |
@@ -993,6 +1538,10 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | APPLICATION_CREATED | 0 | 表示打印应用被拉起的事件。 |
@@ -1008,6 +1557,10 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1059,6 +1612,10 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1129,6 +1686,10 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -1172,6 +1733,10 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -1211,6 +1776,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -1231,6 +1800,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -1248,6 +1821,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | QUALITY_DRAFT | 3 | 表示经济的打印质量。 |
@@ -1259,6 +1836,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 打印方向的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -1274,6 +1855,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | PRINTER_IDLE | 0 | 表示打印机空闲状态。 |
@@ -1285,6 +1870,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 定义打印机首选项的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
 
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
@@ -1303,6 +1892,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | PRINTER_EVENT_ADDED | 0 | 表示打印机添加事件。 |
@@ -1318,6 +1911,10 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
 | DEFAULT_PRINTER_TYPE_SET_BY_USER | 0 | 表示将用户手动设置的默认打印机作为当前默认打印机。 |
@@ -1332,6 +1929,10 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 | **类型** | **说明** |
@@ -1368,21 +1969,35 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | 是 | 表示打印机事件。 |
 | printerInformation | PrinterInformation | 是 | 表示打印机信息。 |
 
-## print.on<sup>18+</sup>
+## print.on<sup>18+</sup><sup>(deprecated)</sup>
 
 on(type: 'printerChange', callback: PrinterChangeCallback): void
 
 注册打印机变动事件回调，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.onPrinterChange](#printonprinterchangesup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：18
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1412,15 +2027,68 @@ let onPrinterChange =
 print.on('printerChange', onPrinterChange);
 ```
 
-## print.off<sup>18+</sup>
+## print.onPrinterChange<sup>22+</sup>
+
+onPrinterChange(callback: PrinterChangeCallback): void
+
+注册打印机变动事件回调，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.on](#printonsup18supsupdeprecatedsup)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+// Trigger this callback when a added printer is changed.
+let onPrinterChange =
+    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+    };
+print.onPrinterChange(onPrinterChange);
+```
+
+## print.off<sup>18+</sup><sup>(deprecated)</sup>
 
 off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
 取消注册打印机变动事件回调，使用callback回调。
 
+> **说明：**
+>
+> 从API version 12开始废弃。系统不再开放相关功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.offPrinterChange](#printoffprinterchangesup22sup)。
+
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：18
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1443,10 +2111,52 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 import { print } from '@kit.BasicServicesKit';
 
 // Trigger this callback when a added printer is changed.
-let onPrinterChange =
+let offPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
         console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
-print.on('printerChange', onPrinterChange);
-print.off('printerChange');
+print.off('printerChange', offPrinterChange);
+```
+
+## print.offPrinterChange<sup>22+</sup>
+
+offPrinterChange(callback?: PrinterChangeCallback): void
+
+取消注册打印机变动事件回调，使用callback回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.off](#printoffsup18supsupdeprecatedsup)。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+// Trigger this callback when a added printer is changed.
+let offPrinterChange =
+    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+    };
+print.offPrinterChange(offPrinterChange);
 ```

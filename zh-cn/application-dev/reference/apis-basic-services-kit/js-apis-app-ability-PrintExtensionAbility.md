@@ -20,6 +20,10 @@ onCreate(want: Want): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -47,6 +51,10 @@ onStartDiscoverPrinter(): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **示例：**
 
 ```ts
@@ -68,6 +76,10 @@ onStopDiscoverPrinter(): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **示例：**
 
 ```ts
@@ -83,16 +95,20 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onConnectPrinter
 
-onConnectPrinter(printerId: number): void
+onConnectPrinter(printerId: int): void
 
 连接到特定打印机时调用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID |
+| printerId | int | 是 | 表示打印机ID |
 
 **示例：**
 
@@ -100,7 +116,7 @@ onConnectPrinter(printerId: number): void
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
-    onConnectPrinter(printerId: number): void {
+    onConnectPrinter(printerId: int): void {
         console.log('onConnectPrinter enter');
         // ...
     }
@@ -109,16 +125,20 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onDisconnectPrinter
 
-onDisconnectPrinter(printerId: number): void
+onDisconnectPrinter(printerId: int): void
 
 断开与特定打印机的连接时调用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID |
+| printerId | int | 是 | 表示打印机ID |
 
 **示例：**
 
@@ -126,7 +146,7 @@ onDisconnectPrinter(printerId: number): void
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
-    onDisconnectPrinter(printerId: number): void {
+    onDisconnectPrinter(printerId: int): void {
         console.log('onDisconnectPrinter enter');
         // ...
     }
@@ -140,6 +160,10 @@ onDestroy(): void
 结束打印扩展时调用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 **示例：**
 

@@ -21,6 +21,10 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -56,6 +60,10 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -85,16 +93,20 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onRequestPrinterCapability
 
-onRequestPrinterCapability(printerId: number): print.PrinterCapability
+onRequestPrinterCapability(printerId: int): print.PrinterCapability
 
 请求打印机能力时调用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID |
+| printerId | int | 是 | 表示打印机ID |
 
 **返回值：**
 | **类型** | **说明** |
@@ -116,7 +128,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 import { print } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
-    onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+    onRequestPrinterCapability(printerId: int): print.PrinterCapability {
         console.log('onRequestPrinterCapability enter');
         // ...
         let tmp : print.PrinterCapability = {
@@ -136,6 +148,10 @@ onRequestPreview(jobInfo: print.PrintJob): string
 请求预览时调用，并将结果返回到Print SA。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
