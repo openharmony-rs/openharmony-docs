@@ -183,6 +183,12 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
 
+``` TypeScript
+ArcList() {
+  // ···
+}.cachedCount(3)
+```
+
 
 >**说明：**
 >
