@@ -94,6 +94,10 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于加载场景、创建相机及资源管理。
 
      <!-- @[cam_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+     
+     ``` TypeScript
+     import { Camera, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     ```
 
   2. 加载场景资源。
 
