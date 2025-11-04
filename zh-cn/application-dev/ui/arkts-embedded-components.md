@@ -103,7 +103,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
   使用loadContent方法绑定ArkTS页面与扩展能力上下文。
 
-**入口页面**
+**入口页面** 
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
