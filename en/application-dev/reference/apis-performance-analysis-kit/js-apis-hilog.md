@@ -51,7 +51,7 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## LogLevel
 
-Log level.
+Enumerates the log levels.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -316,7 +316,7 @@ hilog.info(0x0001, "jsHilogTest", "print bigNum: %{public}d %{public}i", bigNum,
 hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
-**Log printing result**:
+**Log result**:
 ```
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}

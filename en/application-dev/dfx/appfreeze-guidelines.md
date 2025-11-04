@@ -22,7 +22,7 @@ Currently, AppFreeze detection supports the fault types listed in the following 
 | APP_INPUT_BLOCK | The user input response times out.|
 | LIFECYCLE_TIMEOUT | Ability lifecycle switching times out.|
 
-When the preceding faults occur in an app, the app will be killed to ensure that the app can be restored. and report the application freeze event. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) by using HiAppEvent.
+When any of the preceding faults occurs in an application, the application is killed to ensure that it is recoverable and the application freeze event is reported. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) by using HiAppEvent.
 
 ### THREAD_BLOCK_6S Application Main Thread Timeout
 
@@ -50,7 +50,7 @@ The following figure shows the detection principle.
 
 ### Lifecycle Switching Timeout
 
-**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [page lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
+**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [PageAbility lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
 
 This fault occurs during lifecycle switching and affects Ability switching and PageAbility switching of the application.
 
@@ -79,11 +79,11 @@ DevEco Studio collects process crash logs from **/data/log/faultlog/faultlogger/
 
 **Method 2: HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md) field of the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field of the event.
 
 **Method 3: hdc**
 
-Enable the developer option and run the **hdc file recv /data/log/faultlog/faultlogger D:\** command to export fault logs to the local device. The fault log file name is in the format of **appfreeze-process name-process UID-millisecond-level timestamp.log**.
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/faultlogger D:\` command to export fault logs to the local device. The fault log file name is in the format of **appfreeze-process name-process UID-millisecond-level timestamp.log**.
 
 ## Log Specifications
 
@@ -130,9 +130,9 @@ PROCESS_NAME:com.samples.freezedebug
 NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
 ***
 ```
-From API version 20 onwards, when a system resource alarm (such as low memory or thermal throttling) is generated, the NOTE line is displayed. When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
+Since API version 20, the **NOTE** line is displayed when a device resource alarm is generated (for example, the device memory is low or thermal throttling is enabled). When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
 
-From API version 20 onwards, when the THREAD_BLOCK_6S fault occurs, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log. HitraceId is the unique tracing ID provided by HiTraceChain, which is used to trace the call chain of a service process. You can use this field to view the HiLog logs of the faulty process during the fault period and analyze the logs to check the application execution status.
+Since API version 20, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log when the **THREAD_BLOCK_6S** fault occurs. Provided by HiTraceChain, the **HitraceId** uniquely identifies each service process call chain. You can use it to view the HiLog logs of the faulty process during the fault period, and analyze the logs to check the application execution status.
 
 All the three types of AppFreeze events include the following information.
 
@@ -157,7 +157,7 @@ PACKAGE_NAME = com.samples.freezedebug
 PROCESS_NAME = com.samples.freezedebug
 eventLog_action = ffrt,t,GpuStack,cmd:m,hot
 eventLog_interval = 10
-MSG = 
+MSG =
 Fault time:2025/06/28-14:08:34
 App main thread is not response!
 Main handler dump start time: 2025-06-28 14:08:34.067
@@ -197,7 +197,7 @@ All the three types of AppFreeze events include the following information.
 | PROCESS_NAME | Application process name.|
 | MSG | Time when the fault occurs and **EventHandler** information.|
 | task name | Task name in the task queue.|
-| trigger time | Task execution time|
+| trigger time | Task execution time.|
 | completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
 
 ### Stack Information
@@ -320,9 +320,9 @@ Total: 22.45%; User Space: 13.64%; Kernel Space: 8.81%; iowait: 0.33%; irq: 0.07
 Details of Processes:
     PID   Total Usage      User Space    Kernel Space    Page Fault Minor    Page Fault Major    Name
     13680      8.86%           8.31%          0.55%            4711                6637            com.samples.freezedebug
-    644        2.55%           1.40%          1.15%          210104                7391            hiview         
-    600        0.89%           0.78%          0.10%           60192                 514            hilogd         
-    1685       0.53%           0.31%          0.22%          879838               59636            foundation     
+    644        2.55%           1.40%          1.15%          210104                7391            hiview
+    600        0.89%           0.78%          0.10%           60192                 514            hilogd
+    1685       0.53%           0.31%          0.22%          879838               59636            foundation
 ```
 
 | | |

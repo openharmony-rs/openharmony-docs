@@ -95,7 +95,7 @@ Page switch history: <- Page switch history
 Reason:TypeError <- Fault cause
 Error name:TypeError <- Fault type
 Error message:Cannot read property c of undefined <- Error message
-Cannot get SourceMap info, dump raw stack: <- The release package does not contain the **SourceMap** file, and the JS stack fails to parse it.
+Cannot get SourceMap info, dump raw stack: <- The release package does not contain the SourceMap file, and the JS stack fails to parse it.
 Stacktrace:
     at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <- Call stack of the exception code
            ^        ^                              ^
@@ -110,7 +110,7 @@ HiLog:
 
 ### Page switch history
 
-From API version 20, the page switch history segment is used to record the page switch history. A maximum of 10 latest historical tracks can be recorded in the fault log. The format of a record is as follows:
+Since API version 20, the **Page switch history** field is used to record the page switch history. A maximum of 10 latest history records can be recorded in the fault log. The format of a record is as follows:
 ```text
   14:08:30:327 /ets/pages/Index:JsError
        ^             ^            ^
@@ -191,7 +191,7 @@ Format description:
 2. Execution method name: **onPageShow** indicates the name of the calling method that triggers an exception.
 
 3. The structure of the compilation product is as follows:
-   - For details, see the key field in [Exception Stack Trace Analysis: Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
+   - Path: For details, see the key field in [Exception Stack Trace Analysis: Sourcemap Format](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713).
 
    - File type: The file name extension is **.ts**. (For .js files, the exception can be located directly without SourceMap mapping.)
 

@@ -26,15 +26,15 @@ After a process crashes, the system detects the crash, captures crash informatio
 
 - **lr**
 
-  Link register, which stores the return address of a subprogram.
+  Link Register stores the return address of the subprogram.
 
 - **sp**
 
-  Stack pointer register, which stores the address of the top of the stack frame of the current function.
+  Stack Pointer stores the address of the top of the stack for the current function.
 
 - **fp**
 
-  Frame pointer register, which stores the address of the bottom of the stack frame of the current function.
+  Frame Pointer stores the address of the bottom of the stack for the current function.
 
 - **Call stack**
 
@@ -159,7 +159,7 @@ In addition to the preceding classification by **signo**, signals can also be cl
 
 - The system has registered signal handlers for the preceding crash signals and signals **35**, **38**, and **42**. It is recommended that you do not register signal handlers for these signals in applications. Otherwise, the system detection capability may fail.
 
-- The asynchronous thread stack tracing and maintenance functionality is enabled only in the ARM 64-bit system in debug mode. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
+- By default, the asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
 
 ## Obtaining Logs
 
@@ -203,7 +203,7 @@ The following table describes the fields in a fault log.
 | Reason | Fault cause.| 8 | Yes| - |
 | LastFatalMessage | Last **Fatal** log recorded by the application.| 8 | No| This field is displayed when the process is aborted and the last **Fatal** log is printed in HiLog.|
 | Fault thread info | Fault thread information.| 8 | Yes| - |
-| SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system.|
+| SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled for debug-type applications only in the ARM 64-bit system.|
 | Registers | Fault register.| 8 | Yes| - |
 | Other thread info | Other thread information.| 8 | Yes| - |
 | Memory near registers | Memory value near the fault register.| 8 | Yes| - |
@@ -215,7 +215,7 @@ The following table describes the fields in a fault log.
 
 > **NOTE**
 >
-> From **API version 20**,<!--Del--> the cpsr status register is added to the fault scene register of the arm32 architecture, and the pstate and esr status registers are added to the fault scene register of the aarch64 architecture.<!--DelEnd-->
+> Since API version 20, the **cpsr** register is added to the ARM32 architecture, the **pstate** and **esr** registers are added to the AArch64 architecture.
 
 The log specifications vary slightly according to different fault scenarios. The following lists log specifications of seven scenarios:
 

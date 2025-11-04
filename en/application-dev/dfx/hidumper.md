@@ -35,23 +35,23 @@ For FAQs about hidumper, see [FAQs](#faqs).
 | [-s](#obtaining-system-service-details)| Obtains the detailed information about all system capabilities.|
 | [-s [SA0 SA1]](#obtaining-system-service-details)| Obtains the detailed information about one or more system capabilities. Multiple system capability names are separated by spaces. You can run **-ls** to query the system capability name.|
 | [-s [SA] -a ["option"]](#obtaining-capabilities-of-a-specified-system-service)| Executes a specific option of a system capability.<br>**SA**: system capability name.<br>**option**: options supported by the system capability. You can run **-s [SA] -a ["-h"]** to obtain all options supported by a system capability.|
-| [-e](#obtaining-system-fault-logs)| Obtains fault logs. For details about the log specifications, see [CppCrash](cppcrash-guidelines.md), [JSCrash](jscrash-guidelines.md), and [AppFreeze](appfreeze-guidelines.md).|
+| [-e](#obtaining-system-fault-logs)| Obtains fault logs. For details about the log specifications, see [CppCrash](cppcrash-guidelines.md#log-specifications), [JSCrash](jscrash-guidelines.md#log-specifications), and [AppFreeze](appfreeze-guidelines.md#log-specifications).|
 | [--net [pid]](#querying-network-information)| Obtains network information, including network traffic, network API statistics, and IP information. If **pid** is specified, obtains only the network traffic usage of the specified process.|
 | [--storage [pid]](#querying-storage-information)| Obtains storage information, including disk statistics, disk usage, and file handles. If **pid** is specified, the I/O information of the specified process is displayed.|
 | [-p [pid]](#querying-process-information)| Obtains all process and thread information.|
 | [--cpuusage [pid]](#querying-process-cpu-usage)| Obtains the CPU usage by process and category. If a PID is specified, the CPU usage of the specified PID is displayed. The value range is (0, Number of CPU cores].|
 | [--cpufreq](#querying-cpu-frequency)| Obtains the actual CPU frequency of each core, in kHz.|
-| [--mem [--prune]](#querying-device-memory)| Obtains the total memory usage. If **--prune** is specified, only simplified memory usage is exported.<br>**Note**: The --prune parameter is supported since API version 20.|
-| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>If --show-ashmem is specified, the ashmem usage details of the process are printed.<br>If --show-dmabuf is specified for an application process, the DMA memory details are printed.<br>**Note**: The --show-ashmem and --show-dmabuf parameters are supported since API version 20.|
+| [--mem [--prune]](#querying-device-memory)| Obtains the total memory usage. If **--prune** is specified, only simplified memory usage is exported.<br>Note: The **--prune** parameter is supported since API version 20.|
+| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>When **--show-ashmem** is specified, the ashmem usage details of the process are printed.<br>When **--show-dmabuf** is specified for an application process, the DMA memory details are printed.<br>Note: The **--show-ashmem** and **--show-dmabuf** parameters are supported since API version 20.|
 | [--zip](#compressing-exported-information)| Saves the command output to a compressed file in ZIP format in **/data/log/hidumper**.|
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#obtaining-ipc-information)| Collects IPC information of a process in a specified period. If **-a** is used, IPC information of all processes is collected. **--start-stat** starts the IPC information collection. **--stat** obtains the IPC information. **--stop-stat** stops the IPC information collection.|
-| [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>**NOTE**: This parameter is supported since API version 20.|
-| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#querying-vm-heap-memory)| pid is mandatory. Triggers the GC and heap memory snapshot export of the ArkTS application JS thread. If **tid** is specified, only the thread's GC is triggered and its heap memory snapshot is exported. If **--gc** is specified, only GC is triggered and the snapshot is not exported. If **--leakobj** is specified, the list of leaked objects can be obtained after leak detection is enabled for the application.<br>The file is named in the format of <!--RP1-->jsheap-process ID-JS thread ID-timestamp <!--RP1End-->. The file content is a JS heap snapshot of the JSON structure.<br>If **--raw** is specified, the heap snapshot is exported in .rawheap format.<br>**Note**: The --raw parameter is supported since API version 19.|
-| [--mem-cjheap pid [--gc]](#querying-vm-heap-memory)| pid is mandatory. Triggers the GC and heap memory snapshot export of the Cjade application. If **--gc** is specified, only GC is triggered. No snapshot is exported.<br>**NOTE**: This parameter is supported since API version 20.|
+| [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>Note: This parameter is supported since API version 20.|
+| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#querying-vm-heap-memory)| Triggers GC and exports a heap snapshot for the JS thread of the ArkTS application. The **pid** parameter is mandatory. If **tid** is specified, only the thread's GC is triggered and its heap memory snapshot is exported. If **--gc** is specified, only GC is triggered and the snapshot is not exported. If **--leakobj** is specified, the list of leaked objects can be obtained after leak detection is enabled for the application.<br>The file is named in the format of <!--RP1-->jsheap-process ID-JS thread ID-timestamp<!--RP1End-->. The file content is a JS heap snapshot of the JSON structure.<br>If **--raw** is specified, the heap snapshot is exported in .rawheap format.<br>Note: The **--raw** parameter is supported since API version 19.|
+| <!--DelRow-->[--mem-cjheap pid [--gc]](#querying-vm-heap-memory)| Triggers GC and exports a heap snapshot for the Cangjie application. The **pid** parameter is mandatory. If **--gc** is specified, only GC is triggered. No snapshot is exported.<br>Note: This parameter is supported since API version 20.|
 
 ## Querying Memory Information
 
-The hidumper memory information query module is used to view device memory usage and process memory usage. To use this module, you need to understand the basic memory knowledge.
+The hidumper memory information query module is used to view device memory usage and process memory usage. To use this module, you need to understand the [basic memory knowledge](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-memory-basic-knowledge).
 
 ### Querying Device Memory
 
@@ -125,7 +125,7 @@ Purgeable Summary (PurgSum) is the total amount of memory that can be reclaimed 
 
 Purgeable Pinned (PurgPin) is memory that is reclaimable but not immediately reclaimable.
 
-GL indicates the GPU memory, including the GPU memory used by applications and the GPU memory generated by unified rendering in the service process.
+GL indicates the GPU memory usage, including both the memory consumed by applications and that produced by unified rendering in the service process.
 
 Graph indicates the graphics memory, that is, the DMA memory.
 
@@ -241,7 +241,7 @@ Process_name    Process_ID      Fd      Cnode_idx       Applicant_Pid   Ashmem_n
 wei.xxx.xxx  27336   72      328415  27336   dev/ashmem/Paf.Permission.appImg        147456  147456  14105
 ```
 
-Run the hidumper --mem pid --show-dmabuf command to obtain the memory usage of a specified PID and print detailed DMA memory information.
+Run the **hidumper --mem pid --show-dmabuf** command to obtain the memory usage of a specified PID and print the DMA memory details.
 
 Example:
 
@@ -291,17 +291,17 @@ Field description:
 
 | Field| Description|
 | -------- | -------- |
-| Process | Package name of the app process that holds the ION memory block (truncated to 16 characters).|
+| Process | Bundle name of the application process that holds the ION memory block (truncated to 16 characters).|
 | pid | PID of the faulty process.|
 | fd | Handle held by the process.|
-| size_bytes | Size of the ION memory buffer held by the process, in bytes.|
-| ino | File inode number.|
+| size_bytes | Size of the ION buffer held by the process, in bytes.|
+| ino | Inode number of the file.|
 | exp_pid | PID of the process that applies for the ION memory from the kernel.|
 | exp_task_comm | Name of the process that applies for the ION memory from the kernel.|
-| buf_name | Name of the ION memory buffer.|
-| exp_name | Extension of the ION memory buffer.|
-| buf_type | Type of the ION memory buffer.|
-| leak_type | Type of the buffer for ION memory leakage maintenance and test.|
+| buf_name | Name of the ION buffer.|
+| exp_name | Extension name of the ION buffer.|
+| buf_type | Type of the ION buffer.|
+| leak_type | Type of the ION buffer used for memory leak maintenance and debugging.|
 
 Run the **hidumper --mem-smaps pid** command to obtain the detailed memory usage of a specified process. This command aggregates values for identical memory segments.
 
@@ -377,7 +377,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
 >
 > For details about how to check whether the application specified by the command is debuggable, see "NOTE" in the **hidumper --mem-smaps [pid] [-v]** command.
 
-- You can run the hidumper --mem-jsheap pid command to obtain the VM heap memory of all JS threads of a specified process. The file is named in the format of <!--RP1-->jsheap-Process ID-JS thread ID-Timestamp<!--RP1End-->. If there are multiple JS threads, multiple files will be generated.
+- Run the **hidumper --mem-jsheap pid** command to obtain the VM heap memory of all JS threads of a specified process. The file is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->. If there are multiple JS threads, multiple files will be generated.
 
   Example:
 
@@ -390,7 +390,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
   ```
   <!--RP3End-->
 
-- You can run the hidumper --mem-jsheap pid -T tid command to obtain the VM heap memory of a specified JS thread in a specified process. The file is named in the format of <!--RP1-->jsheap-Process ID-JS thread ID-Timestamp<!--RP1End-->.
+- Run the **hidumper --mem-jsheap pid -T tid** command to obtain the VM heap memory of a specified JS thread in a specified process. The file is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->.
 
   Example:
 
@@ -402,7 +402,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
   ```
   <!--RP4End-->
 
-- You can run the hidumper --mem-jsheap pid \[-T tid] --raw command to obtain the VM heap memory of a specified process or JS thread. The generated heap memory file is in .rawheap format and is named in the format of <!--RP1-->jsheap- Process ID-JS thread ID- Timestamp<!--RP1End-->.rawheap. For details about how to parse and convert the .rawheap file, see [rawheap-translator](../tools/rawheap-translator.md).
+- Run the **hidumper --mem-jsheap pid [-T tid] --raw** command to obtain the VM heap memory of a specified process or JS thread. The generated heap memory file is in .rawheap format and is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->**.rawheap**. For details about how to parse and convert the .rawheap file, see [rawheap-translator](../tools/rawheap-translator.md).
 
   Example:
 
@@ -426,7 +426,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
   $ hidumper --mem-jsheap 64949 --gc  -> 64949 indicates the process ID of the target application.
   ```
 
-- You can run the hidumper --mem-jsheap pid --leakobj command to obtain the VM heap memory and leaked object information of a specified process. The file is named in the format of <!--RP6-->leaklist- Process ID- Timestamp<!--RP6End-->.
+- Run the **hidumper --mem-jsheap pid --leakobj** command to obtain the VM heap memory and leaked object information of a specified process. The file is named in the format of <!--RP6-->**leaklist-Process ID-Timestamp**<!--RP6End-->.
 
     Before obtaining the VM heap memory and leaked object information of a specified process, ensure that the leak detection functionality is enabled for the application using the [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Detection)](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md) API.
 
@@ -820,17 +820,17 @@ cancelled_write_bytes: 734003
 The fields in the I/O information are described as follows:
 
 
-- rchar: total number of characters read since the process is started, including characters read through the cache or directly.  
+- **rchar**: total number of characters read by the process from the cache or directly since it starts, in bytes.
 
-- wchar: total number of characters written since the process is started, including characters written through the cache or directly.  
+- **wchar**: total number of characters written by the process from the cache or directly since it starts, in bytes.
 
 - **syscr**: number of **read** system calls executed by the process since it starts.
 
 - **syscw**: number of **write** system calls executed by the process since it starts.
 
-- read_bytes: number of bytes read since the process is started, including the number of bytes read from devices such as the file system and network.  
+- **read_bytes**: number of bytes read by the process from the file system and network since it starts, in bytes.
 
-- write_bytes: indicates the number of bytes written since the process is started, including the number of bytes written to devices such as the file system and network.  
+- **write_bytes**: number of bytes written by the process to the file system and network since it starts, in bytes.
 
 - **cancelled_write_bytes**: number of bytes that are not written due to write cancellation since the process starts, in bytes. Generally, the value of this field is 0 unless an error occurs when data is written to the disk or the write operation is interrupted.  
 
@@ -971,7 +971,7 @@ PID        Total Pss(xxx in SwapPss)    Total Vss    Total Rss    Total Uss     
 ...
 ```
 
-- Run the **hidumper -c** command to obtain the full cluster information, The information clusters include the base and system information clusters.
+- Run the **hidumper -c** command to obtain all information clusters, including the **base** and **system** clusters.
 
 
 ## Obtaining System Fault Logs

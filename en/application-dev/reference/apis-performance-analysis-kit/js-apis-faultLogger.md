@@ -39,16 +39,16 @@ Defines the data structure of the fault log information.
 
 **System capability**: SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| pid | number | Yes| Process ID of the faulty process.|
-| uid | number | Yes| User ID of the faulty process.|
-| type | [FaultType](#faulttype) | Yes| Fault type.|
-| timestamp | number | Yes| Millisecond-level timestamp when the log was generated.|
-| reason | string | Yes| Reason for the fault.|
-| module | string | Yes| Module on which the fault occurred.|
-| summary | string | Yes| Summary of the fault.|
-| fullLog | string | Yes| Full log text.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| pid | number | No| No| Process ID of the faulty process.|
+| uid | number | No| No| User ID of the faulty process.|
+| type | [FaultType](#faulttype) | No| No| Fault type.|
+| timestamp | number | No| No| Millisecond-level timestamp when the log was generated.|
+| reason | string | No| No| Reason for the fault.|
+| module | string | No| No| Module on which the fault occurred.|
+| summary | string | No| No| Summary of the fault.|
+| fullLog | string | No| No| Full log text.|
 
 ## FaultLogger.query<sup>9+</sup>
 

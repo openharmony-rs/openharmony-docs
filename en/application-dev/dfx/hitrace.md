@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-HiTrace provides the capability of collecting trace information, including system logging and custom logging set through the [HiTraceMeter APIs](hitracemeter-intro.md). This tool collects trace information in text or binary format in multiple ways, helping developers observe program running status and locate faults.
+hitrace provides the capability of collecting trace information in text or binary format, including system logging and custom logging set through the [HiTraceMeter APIs](hitracemeter-intro.md), helping you observe program running status and locate faults.
 
 
 ## Environment Requirements
@@ -41,11 +41,11 @@ HiTrace provides the capability of collecting trace information, including syste
 | --dump_bgsrv | Dumps the trace data in the snapshot mode to a file.|
 | --stop_bgsrv | Stops trace collection in the snapshot mode.|
 | --trace_level | Sets the trace level threshold. The value can be **Debug**, **Info**, **Critical**, **Commercial**, or **D**, **I**, **C**, or **M**.<br>**Note**: This command is supported since API version 19.|
-| --get_level | Queries the trace output level threshold.<br>**Note**: This command is supported since API version 20.|
+| --get_level | Queries the trace level threshold.<br>Note: This command is supported since API version 20.|
 
 > **NOTE**
 >
-> Trace information can be saved in text or binary format. You can view trace information in text format using a text editor. You can use the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host) tool to analyze trace information in binary format. Download link: [developtools_smartperf_host official release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+> Trace information can be saved in text or binary format. The trace information in text format can be viewed using a text editor, and the trace information in binary format can be analyzed using the [Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
 
 ## Examples
@@ -467,7 +467,7 @@ $ hitrace --stop_bgsrv
 
 In record mode, the system continuously saves binary trace data generated during running. When the file size exceeds the preset value, a new file is generated. The save path cannot be specified.
 
-Run the following command to enable the recording mode: Set the buffer size to 204800 KB, the file size to 102400 KB, and the collected tags to app and graphic.
+Run the following command to enable the record mode. Set the buffer size to 204800 KB, the file size to 102400 KB, and the tags to **app** and **graphic**.
 
 ```shell
 hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
@@ -521,17 +521,17 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 ```
 
 
-### Setting and querying the trace output level threshold
+### Setting and Querying the Trace Level Threshold
 
 The priority of the trace level is as follows: **M** (**Commercial**), **C** (**Critical**), **I** (**Info**) and **D** (**Debug**). The trace level lower than the threshold does not take effect.
 
 You can use the logging APIs with the trace level (for details, see the logging APIs of API version 19 in [js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output under different thresholds meets the expectation.
 
 ```shell
-// Set the trace output level threshold.
+// Set the trace level threshold.
 hitrace --trace_level D/I/C/M
 hitrace --trace_level Debug/Info/Critical/Commercial
-//Query the trace output level threshold.
+// Query the trace level threshold.
 hitrace --get_level
 ```
 

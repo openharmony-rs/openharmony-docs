@@ -32,7 +32,7 @@ The following describes how to subscribe to the main thread jank event, which is
     import { fileIo as fs } from '@kit.CoreFileKit';
    ```
 
-2. Edit the entry > src > main > ets > entryability > EntryAbility.ets file in the project. You can add system event subscription to other APIs such as onCreate and onForeground (add the subscription method at a proper position based on service requirements). The sample code is as follows:
+2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in APIs such as **onCreate()** and **onForeground()** at a proper position. The sample code is as follows:
 
    ```ts
     hiAppEvent.addWatcher({
@@ -69,9 +69,9 @@ The following describes how to subscribe to the main thread jank event, which is
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the start time of task execution (main thread timeout stack sampling parameter).
+            // Obtain the start time of the task when the main thread jank event occurs. (Parameter of the main thread timeout event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
-            // Obtain the call stack that is printed most frequently in the main thread timeout log file (main thread timeout stack sampling parameter).
+            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread timeout event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
 
             // Obtain the error log file generated when the main thread jank event occurs.
@@ -193,13 +193,13 @@ The following describes how to subscribe to the main thread jank event, which is
      }
    ```
 
-5. This step is used to simulate the main thread timeout sampling trace event.
+5. Simulate a main thread timeout trace sampling event.
 
-   Edit the entry > src > main > ets > pages> Index.ets file in the project and add a button. The onClick function of the button triggers the main thread timeout sampling trace function.
+   In the **entry/src/main/ets/pages/Index.ets** file of the project, add a button in **onClick()** to trigger the timeout trace capture. The sample code is as follows:
 
    > **NOTE**
    >
-   > The prerequisite for enabling the main thread timeout detection and trace capture function is that you use the nolog version and disable the developer mode.
+   > To enable the main thread checker to capture trace data when a task times out, ensure that the nolog version is used and **Developer Options** is disabled.
 
    ```ts
      @Entry
@@ -228,7 +228,7 @@ The following describes how to subscribe to the main thread jank event, which is
 
 6. Click the **Run** button in DevEco Studio to run the project.
 
-  The main thread timeout sampling trace function is enabled only after two consecutive timeout events are detected. Therefore, you can click the timeout trigger button twice consecutively to trigger the main thread timeout event.
+  The main thread jank event can be captured only when two timeout events are detected consecutively. You can click the timeout trigger button twice consecutively to trigger the main thread jank event.
 
 ### Verifying the Subscription
 
