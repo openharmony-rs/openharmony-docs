@@ -82,6 +82,43 @@ TapGesture(value?: TapGestureParameters)
 
 <!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct Tap {
+  @State value: string = '';
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Text('Click twice').fontSize(28)
+            .gesture(
+              // 绑定count为2的TapGesture
+              TapGesture({ count: 2 })
+                .onAction((event: GestureEvent|undefined) => {
+                  if(event){
+                    this.value = JSON.stringify(event.fingerList[0]);
+                  }
+                }))
+          Text(this.value)
+        }
+        .height(200)
+        .width(250)
+        .padding(20)
+        .border({ width: 3 })
+        .margin(30)
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_TapGesture_title'))
+  }
+}
+```
+
   ![tap](figures/tap.gif)
 
 
