@@ -72,6 +72,71 @@
 以下代码示例展示了如何创建ParagraphStyle并应用。如果将ParagraphStyle附加到段落开头、末尾或之间的任何位置，均会应用样式，非段落区间内则不会应用样式。
 
   <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics} from '@kit.ArkUI';
+  
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    //'app.string.StyledStringParagraphStyle_Text_1'资源文件中的value值为"段落标题\n正文第一段落开始0123456789正文第一段落结束。"
+    @State str: string =
+      this.getUIContext()
+        .getHostContext()?.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_1')) as string;
+    titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+    // 段落首行缩进15vp
+    paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15) });
+    // 行高样式对象
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
+    // 创建含段落样式的对象paragraphStyledString1
+    paragraphStyledString1: MutableStyledString =
+      new MutableStyledString(this.str, [
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.titleParagraphStyleAttr
+        },
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: new LineHeightStyle(new LengthMetrics(50))
+        }, {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(24), fontWeight: FontWeight.Bolder })
+      },
+        {
+          start: 5,
+          length: 3,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyleAttr1
+        },
+        {
+          start: 5,
+          length: 20,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: this.lineHeightStyle1
+        }
+      ]);
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.paragraphStyledString1);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
   
