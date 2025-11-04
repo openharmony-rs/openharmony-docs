@@ -390,6 +390,15 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      允许用户在不同的清漆纹理之间切换。通过按下按钮或触发事件来实现纹理的动态切换。
 
      <!-- @[pbr_clearcoat_changeClearcoatTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     changeClearcoatTex() {
+       if (this.textures.length > 0) {
+         let i = ++this.textureInUse % this.textures.length;
+         (this.material as MetallicRoughnessMaterial).clearCoat.image = this.textures[i];
+       }
+     }
+     ```
 
   7. 调整清漆层强度。
 
