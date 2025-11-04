@@ -540,6 +540,60 @@ struct Child {
 
 <!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
 
+``` TypeScript
+@ObservedV2
+class User {
+  @Trace public name: string;
+  @Trace public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+const data: User[] = [new User('Json', 10), new User('Eric', 15)];
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider('data') users: User[] = data;
+
+  build() {
+    Column() {
+      Child()
+      Button('add new user')
+        .onClick(() => {
+          this.users.push(new User('Molly', 18));
+        })
+      Button('age++')
+        .onClick(() => {
+          this.users[0].age++;
+        })
+      Button('change name')
+        .onClick(() => {
+          this.users[0].name = 'Shelly';
+        })
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer('data') users: User[] = [];
+
+  build() {
+    Column() {
+      ForEach(this.users, (item: User) => {
+        Column() {
+          Text(`name: ${item.name}`).fontSize(30)
+          Text(`age: ${item.age}`).fontSize(30)
+          Divider()
+        }
+      })
+    }
+  }
+}
+```
+
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
