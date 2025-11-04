@@ -95,6 +95,13 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcListScale_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
 
+``` TypeScript
+ArcListItem() {
+// ···
+}
+.autoScale(false)
+```
+
   **图5** 列表项关闭自动缩放
 
 ![arcListItem_autoScale](figures/arcListItem_autoScale.png)
