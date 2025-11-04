@@ -10033,7 +10033,7 @@ setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| scrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。
+| scrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 滚动条模式。 |
 
 **示例：**
 
