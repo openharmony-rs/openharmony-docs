@@ -183,6 +183,56 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
    <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   import { resourceConfigs } from './Resource';
+   import { BuilderData } from './DynamicComponent';
+   
+   @Builder
+   function webBuilder(data: BuilderData) {
+     Web({ src: data.url, controller: data.controller })
+       .onControllerAttached(async () => {
+         try {
+           data.controller.injectOfflineResources(await getData (data.context));
+         } catch (err) {
+           console.error('error: ' + err.code + ' ' + err.message);
+         }
+       })
+       .fileAccess(true)
+   }
+   
+   export const injectWebview = wrapBuilder<BuilderData[]>(webBuilder);
+   
+   export async function getData(context: UIContext) {
+     const resourceMapArr: webview.OfflineResourceMap[] = [];
+   
+     // 读取配置，从rawfile目录中读取文件内容
+     for (let config of resourceConfigs) {
+       let buf: Uint8Array = new Uint8Array(0);
+       if (config.localPath) {
+         buf = await readRawFile(config.localPath, context);
+       }
+   
+       resourceMapArr.push({
+         urlList: config.urlList,
+         resource: buf,
+         responseHeaders: config.responseHeaders,
+         type: config.type,
+       })
+     }
+   
+     return resourceMapArr;
+   }
+   
+   export async function readRawFile(url: string, context: UIContext) {
+     try {
+       return await context.getHostContext()!.resourceManager.getRawFileContent(url);
+     } catch (err) {
+       return new Uint8Array(0);
+     }
+   }
+   ```
 
 4. 编写业务用组件代码。
 
