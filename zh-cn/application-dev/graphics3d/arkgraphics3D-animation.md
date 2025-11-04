@@ -46,6 +46,26 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
       - onFinished()：动画播放完成或执行finish操作时触发。
 
      <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     this.anim = this.scene.animations[0];
+     if (this.anim) {
+       this.anim.enabled = true;
+       // Register callback function
+       this.anim.onStarted(() => {
+       // ···
+         this.animationCallbackInvoked = 'animation on start';
+       });
+     
+       this.anim.onFinished(() => {
+       // ···
+         this.animationCallbackInvoked = 'animation on finish';
+       });
+       // ···
+     } else {
+       console.error('No animation found in scene.');
+     }
+     ```
 
   4. 创建相机与设置场景渲染参数。
 
