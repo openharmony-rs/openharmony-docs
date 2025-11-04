@@ -65,6 +65,16 @@ accessibilityText属性用于为无文本内容的组件提供朗读文本。若
 
 <!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+```
+
 ## 设置无障碍说明
 
 accessibilityDescription属性用于提供更详细的组件说明，播报时紧随文本内容之后。
