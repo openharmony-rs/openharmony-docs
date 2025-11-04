@@ -4,21 +4,29 @@
 
 >  **说明：**
 >
->  该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
+>  - 当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## StyledString
 
 ### marshalling
 
-static marshalling(styledString: StyledString): ArrayBuffer
+ArkTS-Dyn: static marshalling(styledString: StyledString): ArrayBuffer
+
+ArkTS-Sta: static marshalling(styledString: StyledString): ArrayBuffer | undefined
 
 序列化属性字符串。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -30,17 +38,23 @@ static marshalling(styledString: StyledString): ArrayBuffer
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| ArrayBuffer | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
+| ArkTS-Dyn: ArrayBuffer <br/> ArkTS-Sta: ArrayBuffer \| undefined | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
 
 ### marshalling<sup>19+</sup>
 
-static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer
+ArkTS-Dyn: static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer
+
+ArkTS-Sta: static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer | undefined
 
 序列化属性字符串，通过定义回调来序列化属性字符串的[StyledStringMarshallingValue](#styledstringmarshallingvalue19)。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -53,17 +67,23 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 | 类型              |说明       |
 | ------- | --------------------------------- | 
-| ArrayBuffer | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
+| ArkTS-Dyn: ArrayBuffer <br/> ArkTS-Sta: ArrayBuffer \| undefined | 序列化后的buffer信息。<br/>**说明：** <br/>目前支持文本和图片。 |
 
 ### unmarshalling
 
-static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
+ArkTS-Dyn: static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
+
+ArkTS-Sta: static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString | undefined>
 
 反序列化后得到属性字符串。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -75,7 +95,7 @@ static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise对象，返回属性字符串。 |
+| ArkTS-Dyn: Promise\<[StyledString](ts-universal-styled-string.md)> <br/> ArkTS-Sta: Promise\<[StyledString](ts-universal-styled-string.md) &nbsp;\|&nbsp; undefined> | Promise对象，返回属性字符串。 |
 
 **错误码**：
 
@@ -88,13 +108,19 @@ static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 
 ### unmarshalling<sup>19+</sup>
 
-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise\<StyledString>
+ArkTS-Dyn: static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise\<StyledString>
+
+ArkTS-Sta: static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise\<StyledString | undefined>
 
 反序列化后得到属性字符串，通过定义回调来反序列化[StyledStringMarshallingValue](#styledstringmarshallingvalue19)。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -107,7 +133,7 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise对象，返回属性字符串。 |
+| ArkTS-Dyn: Promise\<[StyledString](ts-universal-styled-string.md)> <br/> ArkTS-Sta: Promise\<[StyledString](ts-universal-styled-string.md) &nbsp;\|&nbsp; undefined> | Promise对象，返回属性字符串。 |
 
 **错误码**：
 
