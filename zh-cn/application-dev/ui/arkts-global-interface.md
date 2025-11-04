@@ -213,6 +213,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -229,7 +230,6 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
@@ -355,6 +355,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -371,7 +372,6 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
@@ -520,6 +520,7 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
       // 需要在回调中调用。
       try {
         let uiContext = window.getUIContext();
@@ -536,7 +537,6 @@ export default class EntryAbility extends UIAbility {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
       // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
-      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
     });
   }
 
@@ -970,34 +970,15 @@ export default class EntryAbility extends UIAbility {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let localStorage = new LocalStorage();
     localStorage.setOrCreate('message', 'Message from Storage')
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
-    let window = windowStage.getMainWindowSync();
-    // 注册主窗的回调。
-    WindowUIContextUtils.registerWindowCallback(window);
-    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+// ···
     windowStage.loadContent('pages/Index', localStorage, (err) => {
       // 需要在loadContent完成后获取UIContext。
       if (err.code) {
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
-      // 需要在回调中调用。
-      try {
-        let uiContext = window.getUIContext();
-        PixelUtils.setUIContext(uiContext);
-        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
-        WindowUIContextUtils.setActiveUIContext(uiContext)
-        if (!uiContext) {
-          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
-          return;
-        }
-        let pxValue = uiContext.vp2px(20);
-        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
-      } catch (e) {
-        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
-      }
-      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
       hilog.info(DOMAIN, 'testTag', `loadContent success.`);
+    // ···
     });
   }
 
