@@ -16,7 +16,9 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 ## serialManager.addSerialRight
 
-addSerialRight(tokenId: int, portId: int): void
+ArkTS-Dyn: addSerialRight(tokenId: number, portId: number): void
+
+ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
 为应用程序添加访问串口设备权限。
 
@@ -32,8 +34,10 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 参数名     | 类型     | 必填 | 说明                                  |
 |---------|--------|----|-------------------------------------|
-| tokenId | int | 是  | 需要访问权限的tokenId。                  |
-| portId  | int | 是  | 端口号。 |
+| tokenId | number | 是  | 需要访问权限的tokenId。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| portId  | number | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| tokenId | int | 是  | 需要访问权限的tokenId。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| portId  | int | 是  | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 **错误码：**
 
@@ -41,12 +45,12 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception. |
-| 31400001 | Serial port management exception. |
-| 31400003 | Device does not exist. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission verification failed. A non-system application calls a system API.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 14400005 | Database operation exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 31400001 | Serial port management exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 31400003 | Device does not exist.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 ```ts

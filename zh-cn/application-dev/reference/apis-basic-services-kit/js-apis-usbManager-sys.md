@@ -359,11 +359,11 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-**说明：**
-
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -388,10 +388,10 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.  <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported.  <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -420,15 +420,17 @@ let tokenId: string = "";
 
 ## getFunctionsFromString<sup>12+</sup>
 
-getFunctionsFromString(funcs: string): int
+ArkTS-Dyn: getFunctionsFromString(funcs: string): number
+
+ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-**说明：**
-
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -444,7 +446,8 @@ getFunctionsFromString(funcs: string): int
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| int | 转化后的数字掩码。 |
+| number | 转化后的数字掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| int | 转化后的数字掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 
 **错误码：**
 
@@ -452,11 +455,10 @@ getFunctionsFromString(funcs: string): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported.                                    |
-
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
 **示例：**
 
 ```ts
@@ -466,15 +468,17 @@ let ret: int = usbManager.getFunctionsFromString(funcs);
 
 ## getStringFromFunctions<sup>12+</sup>
 
-getStringFromFunctions(funcs: FunctionType): string
+ArkTS-Dyn: getStringFromFunctions(funcs: FunctionType): string
+
+ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-**说明：**
-
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -490,7 +494,9 @@ getStringFromFunctions(funcs: FunctionType): string
 
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
-| string | 转化后的字符串形式的功能列表。 |
+| string | 转化后的字符串形式的功能列表。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| int | 转化后的字符串形式的功能列表。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+
 
 **错误码：**
 
@@ -498,10 +504,10 @@ getStringFromFunctions(funcs: FunctionType): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -514,13 +520,15 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
+setDeviceFunctions(funcs: int): Promise\<void\>
+
 在设备模式下，设置当前的USB功能列表。
 
-**说明：**
-
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -544,12 +552,12 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
-| 14400002 | Permission denied. The HDC is disabled by the system.                                                   |
-| 14400006 | Unsupported operation. The function is not supported.                                                   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 14400002 | Permission denied. The HDC is disabled by the system.  <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 14400006 | Unsupported operation. The function is not supported. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -565,15 +573,17 @@ usbManager.setDeviceFunctions(funcs).then(() => {
 
 ## getDeviceFunctions<sup>12+</sup>
 
-getDeviceFunctions(): FunctionType
+ArkTS-Dyn: getDeviceFunctions(): FunctionType
 
-在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+ArkTS-Sta: getDeviceFunctions(): int
 
-**说明：**
-
-> 从 API version 12开始支持。
+在设备模式下，获取当前的USB功能列表的数字组合掩码。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -583,7 +593,9 @@ getDeviceFunctions(): FunctionType
 
 | 类型                          | 说明                              |
 | ----------------------------- | --------------------------------- |
-| [FunctionType](#functiontype) | 当前的USB功能列表的数字组合掩码。 |
+| [FunctionType](#functiontype) | 当前的USB功能列表的数字组合掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| [int](#functiontype) | 当前的USB功能列表的数字组合掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| undefined |开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
 
@@ -591,10 +603,11 @@ getDeviceFunctions(): FunctionType
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required.                                    |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
-| 801      | Capability not supported.                                    |
+| 401      | Parameter error. No parameters are required. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 
 **示例：**
 
@@ -606,13 +619,13 @@ let ret: int = usbManager.getDeviceFunctions();
 
 getPortList(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
-
-**说明：**
-
-> 从 API version 12开始支持。
+获取所有物理USB端口描述信息。开
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -623,6 +636,7 @@ getPortList(): Array\<USBPort\>
 | 类型                       | 说明                  |
 | -------------------------- | --------------------- |
 | Array<[USBPort](#usbport)> | USB端口描述信息列表。 |
+| undefined | 开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
 
@@ -630,10 +644,10 @@ getPortList(): Array\<USBPort\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.   <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -643,11 +657,17 @@ let ret: Array<usbManager.USBPort> = usbManager.getPortList();
 
 ## getPortSupportModes<sup>12+</sup>
 
-getPortSupportModes(portId: int): PortModeType
+ArkTS-Dyn: getPortSupportModes(portId: number): PortModeType
+
+ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 获取指定的端口支持的模式列表的组合掩码。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -657,7 +677,8 @@ getPortSupportModes(portId: int): PortModeType
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| portId | int | 是   | 端口号。 |
+| portId | number | 是   | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| portId | int | 是   | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 **返回值：**
 
@@ -671,11 +692,11 @@ getPortSupportModes(portId: int): PortModeType
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.  <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 14400003 | Unsupported operation. The current device does not support port role switching.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -685,15 +706,17 @@ let ret: int = usbManager.getPortSupportModes(0);
 
 ## setPortRoleTypes<sup>12+</sup>
 
-setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
+ArkTS-Dyn: setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
+
+ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
 设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
 
-**说明：**
-
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -703,7 +726,8 @@ setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType):
 
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
-| portId    | int                          | 是   | 端口号。         |
+| portId    | number                          | 是   | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| portId    | int                          | 是   | 端口号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | powerRole | [PowerRoleType](#powerroletype) | 是   | 充电的角色。     |
 | dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输的角色。 |
 
@@ -719,11 +743,11 @@ setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType):
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api.<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 14400003 | Unsupported operation. The current device does not support port role switching. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -739,13 +763,19 @@ usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.
 
 ## addAccessoryRight<sup>14+<sup>
 
-addAccessoryRight(tokenId: int, accessory: USBAccessory): void
+ArkTS-Dyn: addAccessoryRight(tokenId: number, accessory: USBAccessory): void
+
+ArkTS-Sta: addAccessoryRight(tokenId: int, accessory: USBAccessory): void
 
 为应用程序添加访问USB配件权限。
 
 usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -755,7 +785,8 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 参数名    | 类型         | 必填 | 说明                     |
 | --------- | ------------ | ---- | ------------------------ |
-| tokenId   | int      | 是   | 应用程序tokenId。 |
+| tokenId   | number      | 是   | 应用程序tokenId。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| tokenId   | int      | 是   | 应用程序tokenId。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 | accessory | USBAccessory | 是   | USB配件。                |
 
 **错误码：**
@@ -764,12 +795,12 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | The permission check failed.                                 |
-| 202      | Permission denied. Normal application do not have permission to use system api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported.                                    |
-| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception.                                |
+| 201      | The permission check failed. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. Normal application do not have permission to use system api. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 801      | Capability not supported. <br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20|
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
+| 14400005 | Database operation exception. <br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -794,11 +825,16 @@ USB设备端口。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称           | 类型                            | 必填 | 说明                                |
 | -------------- | ------------------------------- | ---- | ----------------------------------- |
-| id             | int                          | 是   | USB端口唯一标识。                   |
+| id             | number                          | 是   | USB端口唯一标识。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| id             | int                          | 是   | USB端口唯一标识。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 | supportedModes | [PortModeType](#portmodetype)   | 是   | USB端口所支持的模式的数字组合掩码。 |
 | status         | [USBPortStatus](#usbportstatus) | 是   | USB端口角色。                       |
 
@@ -808,19 +844,31 @@ USB设备端口角色信息。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称             | 类型   | 必填 | 说明                   |
 | ---------------- | ------ | ---- | ---------------------- |
-| currentMode      | int | 是   | 当前的USB模式。        |
-| currentPowerRole | int | 是   | 当前设备充电模式。     |
-| currentDataRole  | int | 是   | 当前设备数据传输模式。 |
+| currentMode      | number | 是   | 当前的USB模式。  <br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| currentPowerRole | number | 是   | 当前设备充电模式。    <br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| currentDataRole  | number | 是   | 当前设备数据传输模式。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| currentMode      | int | 是   | 当前的USB模式。 <br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| currentPowerRole | int | 是   | 当前设备充电模式。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| currentDataRole  | int | 是   | 当前设备数据传输模式。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+
 
 ## FunctionType
 
 USB设备侧功能。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -843,6 +891,10 @@ USB端口模式类型。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称      | 值 | 说明                                                 |
@@ -859,6 +911,10 @@ USB端口模式类型。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称   | 值 | 说明       |
@@ -872,6 +928,10 @@ USB端口模式类型。
 数据角色类型。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **系统能力：** SystemCapability.USB.USBManager
 
