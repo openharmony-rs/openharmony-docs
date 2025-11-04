@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 显示图标小符号的组件。<!--RP1--><!--RP1End-->
 
@@ -463,7 +463,7 @@ ReplaceSymbolEffect的构造函数，替换动效。
 
 constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)
 
-ReplaceSymbolEffect的构造函数，替换动效。
+ReplaceSymbolEffect的构造函数，替换动效。支持指定具体的替换动效类型。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 

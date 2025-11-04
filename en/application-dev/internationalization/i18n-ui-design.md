@@ -1,5 +1,12 @@
 # UI Design for Internationalization
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 A set of effective internationalization guidelines for UI design can not only establish the tonality of products, but also ensure consistent user experience. Complying with the following guidelines can effectively improve the quality of your products targeted at global markets.
 
 ## Space Reservation and Flexible Layout
@@ -31,20 +38,20 @@ Different text alignment modes and reading sequences may be used for different l
 
 **Figure 1** Example general layout (English)
 
-![zh-cn_image_0000001784343297](figures/zh-cn_image_0000001784343297.png)
+![image_0000001784343297](figures/image_0000001784343297.png)
 
 **Figure 2** Example mirroring layout (Arabic)
 
-![zh-cn_image_0000001784263053](figures/zh-cn_image_0000001784263053.png)
+![image_0000001784263053](figures/image_0000001784263053.png)
 
 **Figure 3** General icon resources
 
-![zh-cn_image_0000001737423164](figures/zh-cn_image_0000001737423164.png)
+![image_0000001737423164](figures/image_0000001737423164.png)
 
 **Figure 4** Icon resources for RTL languages
 
-![zh-cn_image_0000001737264020](figures/zh-cn_image_0000001737264020.png)
+![image_0000001737264020](figures/image_0000001737264020.png)
 
 **Figure 5** Mirroring controls for RTL languages
 
-![zh-cn_image_0000001784343305](figures/zh-cn_image_0000001784343305.png)
+![image_0000001784343305](figures/image_0000001784343305.png)

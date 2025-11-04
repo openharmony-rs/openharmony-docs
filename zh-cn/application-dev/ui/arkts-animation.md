@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 UI（用户界面）中包含开发者与设备进行交互时所看到的各种组件（如时间、壁纸等）。属性作为接口，用于控制组件的行为。例如，开发者可通过位置属性调整组件在屏幕上的位置。

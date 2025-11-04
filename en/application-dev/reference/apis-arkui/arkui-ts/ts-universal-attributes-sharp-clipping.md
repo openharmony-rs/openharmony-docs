@@ -1,4 +1,10 @@
 # Shape Clipping
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 Shape clipping changes the visible portion of a component through clipping or masking.
 
@@ -10,7 +16,7 @@ Shape clipping changes the visible portion of a component through clipping or ma
 
 clip(value: boolean): T
 
-Sets whether to clip the areas of child components that extend beyond this component's boundaries, that is, whether to perform clipping based on the edge contour of the parent container
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +28,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to perform clipping based on the edge contour of the parent container.<br>Default value: **false**<br>**true**: Perform clipping.<br>**false**: Do not perform clipping.<br>**NOTE**<br>If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
+| value  | boolean | Yes  | Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Default value: **false**<br>The value true means to clip the areas of child components that extend beyond the current component's bounds, and false means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
 
 **Return value**
 
@@ -34,7 +40,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 clip(clip: Optional\<boolean>): T
 
-Sets whether to clip the areas of child components that extend beyond this component's boundaries, that is, whether to perform clipping based on the edge contour of the parent container Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type for the **clip** parameter.
+Sets whether to clip the areas of child components that extend beyond this component's boundaries, that is, whether to perform clipping based on the edge contour of the parent container. Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type for the **clip** parameter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +52,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type              | Mandatory                                                        | Description|
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | Optional\<boolean> | Yes|  Whether to perform clipping based on the edge contour of the parent container.<br>Default value: **false**<br>**NOTE**<br>If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
+| clip   | Optional\<boolean> | Yes|  Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Default value: **false**<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
 
 **Return value**
 
@@ -65,6 +71,8 @@ Sets whether to clip this component based on the given shape.
 > This API is supported since API version 7 and deprecated since API version 12. You are advised to use [clip](#clip12) and [clipShape](#clipshape12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +112,7 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape) | Yes  | Shape (which may include position information) to clip the current component.<br>**NOTE**<br>The clipped area remains responsive to bound gesture events.|
+| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | Yes  | Shape (which may include position information) to clip the current component.<br>**NOTE**<br>The clipped area remains responsive to bound gesture events.|
 
 **Return value**
 
@@ -136,13 +144,77 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape)> | Yes  | Shape (which may include position information) to clip the current component.<br>**NOTE**<br>The clipped area remains responsive to bound gesture events.<br>If **shape** is set to **undefined**, the previous value is retained.|
+| shape  | Optional\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>**NOTE**<br>The clipped area remains responsive to bound gesture events.<br>If the value of shape is undefined, the current value is reset.|
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
 | T | Current component.|
+
+## CircleShape<sup>12+</sup>
+
+type CircleShape = CircleShape
+
+Imports the CircleShape object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [CircleShape](../js-apis-arkui-shape.md#circleshape) | Circle shape.|
+
+## EllipseShape<sup>12+</sup>
+
+type EllipseShape = EllipseShape
+
+Imports the EllipseShape type object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | Ellipse shape.|
+
+## PathShape<sup>12+</sup>
+
+type PathShape = PathShape
+
+Imports the PathShape type object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [PathShape](../js-apis-arkui-shape.md#pathshape) | Interface path.|
+
+## RectShape<sup>12+</sup>
+
+type RectShape = RectShape
+
+Imports the RectShape type object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| [RectShape](../js-apis-arkui-shape.md#rectshape) | Rectangle shape.|
 
 ## mask<sup>12+</sup>
 
@@ -200,6 +272,8 @@ Adds a mask of the specified shape to the component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -230,7 +304,7 @@ Adds a mask of the specified shape to the component.
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape) | Yes  | Mask of the specified shape to add to the component.|
+| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | Yes  | Mask of the specified shape to add to the component.|
 
 **Return value**
 
@@ -254,7 +328,7 @@ Adds a mask of the specified shape to the component. Compared with [maskShape<su
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape)> | Yes  | Mask of the specified shape to add to the component.<br>If **shape** is set to **undefined**, the previous value is retained.|
+| shape  | Optional\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of shape is undefined, the current value is reset.|
 
 **Return value**
 
@@ -352,23 +426,27 @@ struct ClipAndMaskExample {
     Column({ space: 15 }) {
       Text('clip').fontSize(12).width('75%').fontColor('#DCDCDC')
       Row() {
+        // Replace $r("app.media.testImg") with the image resource file you use.
         Image($r('app.media.testImg')).width('500px').height('280px')
       }
       .clip(true) // If clip is not set to true, the image is not confined by the rounded corners of the <Row> component and may extend beyond the <Row> component.
       .borderRadius(20)
 
       // Clip the image based on a circle with a diameter of 280 px.
+      // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       Text('mask').fontSize(12).width('75%').fontColor('#DCDCDC')
       // Add a 500x280 px square mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new RectShape({ width: '500px', height: '280px' }).fill(Color.Gray))
         .width('500px').height('280px')
 
       // Add a 280x280 px circular mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new CircleShape({ width: '280px', height: '280px' }).fill(Color.Gray))
         .width('500px').height('280px')
@@ -397,6 +475,7 @@ struct ProgressMaskExample {
     Column({ space: 15 }) {
       Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
       // Add a 280x280 px progress mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .width('500px').height('280px')
         .mask(this.progress)

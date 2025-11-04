@@ -1,4 +1,10 @@
 # @system.prompt (Prompt)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **Prompt** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
 

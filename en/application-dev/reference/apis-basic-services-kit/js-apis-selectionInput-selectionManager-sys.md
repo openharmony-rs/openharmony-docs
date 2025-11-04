@@ -1,5 +1,12 @@
 # @ohos.selectionInput.selectionManager (Word Selection Management) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying windows, listening for word selection events, and retrieving the selected text.
 
 > **NOTE**
@@ -13,7 +20,6 @@ This module provides word selection management capabilities, including creating,
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
-
 
 ## on('selectionCompleted')
 

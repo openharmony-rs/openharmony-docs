@@ -1,4 +1,10 @@
 # GridObjectSortComponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @HelloCrease-->
 
 
 **GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects.
@@ -8,7 +14,6 @@
 >
 >  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  This component is not supported on wearables.
 
 
 ## Modules to Import
@@ -37,6 +42,8 @@ Creates a **GridObjectSortComponent** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 
 | Name    | Type                            | Mandatory| Decorator| Description        |
 | -------- | -------------------------------- | ---------- | ---- | ---- |
@@ -53,14 +60,16 @@ Provides configuration options for the **GridObjectSortComponent** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Type                     | Mandatory| Description                                                         |
-| -------------- | ------------------------- | ---- |-------------------------------------------------------------|
-| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | No  | Component display type: text only or image with text.<br>Default value: **GridObjectSortComponentType.text**. |
-| imageSize      | number \| [Resource](ts-types.md#resource) | No  | Image size, in vp.<br>The value must be greater than or equal to 0.<br>Default value: **56vp**.                |
-| normalTitle | [ResourceStr](ts-types.md#resourcestr)     | No  | Title displayed in the non-editing state.<br>Default value: **Channel**                                  |
-| showAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | No  | First subtitle of the display area.<br>Default value: **Drag to sort**                             |
-| addAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | No  | Second subtitle of the display area.<br>Default value: **Tap to add**                               |
-| editTitle      | [ResourceStr](ts-types.md#resourcestr)     | No  | Title displayed in the editing state.<br>Default value: **Edit**                                   |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name          | Type                     | Read-Only| Optional| Description                                                         |
+| -------------- | ------------------------- |---|---|-------------------------------------------------------------|
+| type           | [GridObjectSortComponentType](#gridobjectsortcomponenttype) | No| Yes| Component display type: text only or image with text.<br>Default value: **GridObjectSortComponentType.TEXT** |
+| imageSize      | number \| [Resource](ts-types.md#resource) | No| Yes| Image size, in vp.<br>The value must be greater than or equal to 0.<br>Default value: **56vp**.                 |
+| normalTitle | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| Title displayed in the non-editing state.<br>Default value: **Channel**                                  |
+| showAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| First subtitle of the display area.<br>Default value: **Drag to sort**                            |
+| addAreaTitle | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| Second subtitle of the display area.<br>Default value: **Tap to add**                              |
+| editTitle      | [ResourceStr](ts-types.md#resourcestr)     | No| Yes| Title displayed in the editing state.<br>Default value: **Edit**                                  |
 
 ## GridObjectSortComponentType
 
@@ -70,10 +79,12 @@ Enumerates display types for nodes in the **GridObjectSortComponent** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Value   | Description          |
-| -------- | ----- | -------------- |
-| IMAGE_TEXT | 'image_text' | Image with text.|
-| TEXT     | 'text'       | Text only.    |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name    | Value | Description          |
+| -------- | --- | -------------- |
+| IMAGE_TEXT | "image_text" | Image with text.|
+| TEXT     | "text"     | Text only.    |
 
 ## GridObjectSortComponentItem
 
@@ -81,14 +92,16 @@ Provides data item configuration for the **GridObjectSortComponent** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                  | Mandatory| Description                                                                                                                      |
-| -------- | -------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------|
-| id       | number \| string             | Yes  | Data ID, which must be unique.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                         |
-| text     | [ResourceStr](ts-types.md#resourcestr) | Yes  | Text information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                             |
-| selected | boolean                                | Yes  | Whether the grid object has been added. The value **true** means that the grid object has been added, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| url      | [ResourceStr](ts-types.md#resourcestr) | No  | URL of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Symbol resource of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. The priority of this property is higher than that of **url**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| order    | number                                 | Yes  | Sequence number.<br>The value must be greater than or equal to 0.<br>Default value: **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                  |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name    | Type                                  | Read-Only| Optional| Description                                                                                                                      |
+| -------- | -------------------------------------- |---|---|--------------------------------------------------------------------------------------------------------------------------|
+| id       | number \| string             | No| No| Data ID, which must be unique.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                         |
+| text     | [ResourceStr](ts-types.md#resourcestr) | No| No| Text information.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                             |
+| selected | boolean                                | No| No| Whether the grid object has been added. The value **true** means that the grid object has been added, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
+| url      | [ResourceStr](ts-types.md#resourcestr) | No| Yes| URL of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol resource of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. The priority of this property is higher than that of **url**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| order    | number                                 | No| No| Sequence number.<br>The value must be greater than or equal to 0.<br>Default value: **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                  |
 
 ## Events
 

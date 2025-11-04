@@ -3,12 +3,13 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
-Defines information about a single event, including the event domain, event name, event type, and custom parameter list in JSON string format.
+Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format.
 
 **Since**: 12
 
@@ -20,9 +21,9 @@ Defines information about a single event, including the event domain, event name
 
 ### Member Variables
 
-| Name                                                   | Description|
-|-------------------------------------------------------| -- |
-| const char* domain                                    | Pointer to the event domain.|
-| const char* name                                      | Pointer to the event name.|
+| Name| Description|
+| -- | -- |
+| const char* domain | Pointer to the event domain.|
+| const char* name | Pointer to the event name.|
 | enum [EventType](capi-hiappevent-h.md#eventtype) type | Event type.|
-| const char* params                                    | Event parameter list in JSON format.|
+| const char* params | Event parameter list in JSON format.|

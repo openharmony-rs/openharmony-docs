@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -58,7 +58,7 @@ Creates an OH_AVMetadataExtractor instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* | Pointer to the OH_AVMetadataExtractor instance created if the operation is successful; nullptr otherwise.<br>Possible cause of failures: **HstEngineFactory::CreateAVMetadataHelperEngine** fails to run.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* | Pointer to the OH_AVMetadataExtractor instance created if the operation is successful; nullptr otherwise.<br>         Possible cause of failures: **HstEngineFactory::CreateAVMetadataHelperEngine** fails to run.|
 
 ### OH_AVMetadataExtractor_SetFDSource()
 
@@ -88,7 +88,7 @@ Sets a data source based on the media file descriptor.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVMetadataExtractor_FetchMetadata()
 
@@ -112,13 +112,13 @@ This function must be called after [OH_AVMetadataExtractor_SetFDSource](#oh_avme
 | Parameter| Description|
 | -- | -- |
 | [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)* extractor | Pointer to the OH_AVMetadataExtractor instance.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* avMetadata | Pointer to the OH_AVFormat instance, which contains the obtained metadata.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* avMetadata | Pointer to the OH_AVFormat instance, which contains the obtained metadata.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
@@ -148,7 +148,7 @@ This function must be called after [OH_AVMetadataExtractor_SetFDSource](#oh_avme
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVMetadataExtractor_Release()
 
@@ -175,4 +175,4 @@ Releases the resources used by the OH_AVMetadataExtractor instance and destroys 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **extractor** is nullptr or a parameter is invalid.|

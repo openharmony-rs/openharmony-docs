@@ -53,8 +53,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value RemoveAsset(napi_env env, napi_callback_info info) 

@@ -92,7 +92,7 @@ buddy.getName()?.length; // Successful builds and no runtime error.
 
 ## Program Performance
 
-To ensure program correctness, dynamically typed languages have to check object types at runtime. Back to our example, the undefined property cannot be read in JS. But the only way to check if some value is undefined is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
+To ensure program correctness, dynamically typed languages have to check object types at runtime. Back to our example, the undefined property cannot be read in JS. But the only way to check if a value is **undefined** is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
 
 
 **Null Safety**
@@ -152,7 +152,7 @@ ArkTS supports efficient interoperability with TS/JS. In the current version, Ar
 ```typescript
 // lib.ts
 export class C {
-  v: string; // Compile-time error reported: Property 'v' has no initializer
+  v: string; // Compile-time error in TS strict mode: Property 'v' has no initializer
 }
 
 export let c = new C()

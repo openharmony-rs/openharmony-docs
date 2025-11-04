@@ -187,7 +187,7 @@
 
 8. Develop an update package.
 
-	For details, see the [update_packaging_tools repository](https://gitee.com/openharmony/update_packaging_tools).
+	For details, see the [update_packaging_tools](https://gitcode.com/openharmony/update_packaging_tools) repository.
 
 9. Start the package search server.
 

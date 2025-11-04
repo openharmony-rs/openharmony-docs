@@ -1,4 +1,10 @@
 # Device Management Error Codes
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **NOTE**
 >
@@ -9,6 +15,10 @@
 **Error Message**
 
 Failed to execute the function.
+
+**Description**
+
+This error code is reported if a service fails to be invoked due to an internal error.
 
 **Possible Causes**
 
@@ -24,6 +34,10 @@ Call the API again.
 
 Failed to obtain the service.
 
+**Description**
+
+This error code is reported if the service fails to start, resulting in a service access failure.
+
 **Possible Causes**
 
 The service is not started or fails to start.
@@ -37,6 +51,10 @@ Make sure the service is started and obtain the service again.
 **Error Message**
 
 Authentication unavailable.
+
+**Description**
+
+This error code is reported if the current service call fails because the previous authentication service is still in progress.
 
 **Possible Causes**
 
@@ -52,6 +70,10 @@ Wait until the previous authentication service is complete and call the authenti
 
 Discovery unavailable.
 
+**Description**
+
+This error code is reported if the current service call fails because the previous discovery service is still in progress.
+
 **Possible Causes**
 
 The previous discovery service is still in progress.
@@ -65,6 +87,10 @@ Wait until the previous discovery service is complete and call the discovery API
 **Error Message**
 
 Publish unavailable.
+
+**Description**
+
+This error code is reported if the current service call fails because the previous publish service is still in progress.  
 
 **Possible Causes**
 
@@ -80,6 +106,10 @@ Wait until the previous publish service is complete and call the publish API aga
 
 Failed to get data from the cloud.
 
+**Description**
+
+This error code is reported if the attempt to retrieve data from the cloud fails because the network is abnormal.
+
 **Possible Causes**
 
 The network connection is abnormal, or the network request returns an error.
@@ -93,6 +123,10 @@ Ensure that the network connection is normal and call the API again with correct
 **Error Message**
 
 A login account is required.
+
+**Description**
+
+This error code is reported if a login account is required for service invocation.
 
 **Possible Causes**
 
@@ -108,6 +142,10 @@ Use the correct account to log in to the device and call the API again.
 
 The device name contains non-compliant content.
 
+**Description**
+
+This error code is reported if device name contains illegitimate information.
+
 **Possible Causes**
 
 The new device name contains unlawful information.
@@ -121,6 +159,10 @@ Ensure that the device name complies with laws and regulations.
 **Error Message**
 
 Only one stream can be created for the current session.
+
+**Description**
+
+This error code is reported if a session for which a transport stream is created already exists.
 
 **Possible Causes**
 
@@ -136,19 +178,27 @@ Ensure that the task of the previous transport stream is complete. Use **destroy
 
 The stream at the receive end is not started.
 
+**Description**
+
+This error code is reported if the receive end of transport streams is not started.
+
 **Possible Causes**
 
-This error code is reported if the receive end is not started before
+The receive end is not started.
 
 **Solution**
 
-the transmission of transport streams begins.
+Start transmission of transport streams after the receive end is started.
 
 ## 32300003 Bit Rate Not Supported
 
 **Error Message**
 
 Bitrate not supported.
+
+**Description**
+
+This error code is reported if the bit rate is not supported.
 
 **Possible Causes**
 
@@ -163,6 +213,10 @@ Select an appropriate bit rate based on network conditions and requirements.
 **Error Message**
 
 Color space not supported.
+
+**Description**
+
+This error code is reported if the color space is not supported.
 
 **Possible Causes**
 

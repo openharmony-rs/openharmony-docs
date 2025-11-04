@@ -23,7 +23,7 @@ Functions of the folders are as follows:
 -   The **app.js** file manages global JavaScript logics and application lifecycle. For details, see [app.js](js-framework-js-file.md).
 -   The **pages** directory stores all component pages.
 -   The **common** directory stores public resource files, such as media resources, custom components,  and  .js  files.
--   The **resources** directory stores resource configuration files, for example, for multi-resolution loading. For details, see  [Resource Limitations and Access](js-framework-resource-restriction.md).
+-   The **resources** directory stores resource configuration files, for example, for multi-resolution loading. For details, see [Resource Limitations and Access](js-framework-resource-restriction.md).
 -   The **share** directory<sup>5+</sup>  is used to configure resources shared by multiple instances. For example, images and JSON files in this directory can be shared by **default1** and **default2** instances.
 
 >**NOTE** 

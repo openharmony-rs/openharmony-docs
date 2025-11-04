@@ -37,7 +37,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 申请ohos.permission.READ_PASTEBOARD权限
 
-    ohos.permission.READ_PASTEBOARD是受限的user_grant（用户授权）权限，使用自定义控件的应用可以通过申请ohos.permission.READ_PASTEBOARD权限，在用户授权的场景下访问剪贴板内容。
+    ohos.permission.READ_PASTEBOARD是受限的user_grant（用户授权）权限，使用自定义控件的应用申请此权限后，在用户授权场景下可访问剪贴板内容。
 
     权限申请步骤：
     <!--RP1-->
@@ -58,4 +58,4 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 使用[getChangeCount](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getchangecount18)获取剪贴板的内容变化次数，与上次读取剪贴板时查询的变化次数比较是否一致，一致则剪贴板内容无变化，不访问剪贴板。
 
-- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是应用自身的口令，建议应用使用[cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。
+- 使用[detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13)判断是否包含应用自身口令的格式，如果格式不匹配，则不访问剪贴板。应用读取口令后如果确认是自身的口令，建议使用[cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9)清除剪贴板口令内容。

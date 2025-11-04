@@ -89,7 +89,7 @@ struct Index {
 ### 开发步骤
 
 1. 开发者使能取色功能。
-2. 调用窗口实例获取对应的窗口id。
+2. 调用窗口实例获取对应的窗口ID。
 3. 设置鼠标光标样式为取色器样式。
 4. 取色结束。
 5. 设置鼠标光标样式为默认样式。
@@ -107,7 +107,7 @@ struct Index {
       Text()
         .onClick(() => {
           // 1.开发者使能取色功能
-          // 2.调用窗口实例获取对应的窗口id
+          // 2.调用窗口实例获取对应的窗口ID
           window.getLastWindow(this.getUIContext().getHostContext(),
             (error: BusinessError, windowClass: window.Window) => {
               if (error.code) {

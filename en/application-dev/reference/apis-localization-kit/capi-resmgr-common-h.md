@@ -1,5 +1,12 @@
 # resmgr_common.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 Provides the enum types and structures for resource manager APIs.
@@ -114,8 +121,8 @@ Enumerates color modes.
 
 | Enum Item| Description|
 | -- | -- |
-| DARK = 0 | Dark mode.|
-| LIGHT = 1 | Light mode.|
+| COLOR_MODE_DARK = 0 | Dark mode.|
+| COLOR_MODE_LIGHT = 1 | Light mode.|
 
 ### ResourceManager_DeviceType
 

@@ -1,6 +1,12 @@
 # SymbolGlyph
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
-The **SymbolGlyph** component represents a symbol glyph.
+The **SymbolGlyph** component represents a symbol glyph.<!--RP1--><!--RP1End-->
 
 >  **NOTE**
 >
@@ -32,7 +38,7 @@ SymbolGlyph(value?: Resource)
 
 ## Attributes
 
-The [universal attributes](ts-component-general-attributes.md) are supported. With regard to text attributes, only the following attributes are supported.
+The [universal attributes](ts-component-general-attributes.md) are supported. For text attributes, only the following attributes are supported.
 
 ### fontColor
 
@@ -70,7 +76,7 @@ The display size of the symbol glyph is controlled by the **fontSize** setting. 
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br>Unit: fp<br>Percentage strings are not supported.|
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)<br>Percentage strings are not supported.|
 
 ### fontWeight
 
@@ -149,7 +155,7 @@ Sets the symbol effect and effect state for the **SymbolGlyph** component.
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
 | symbolEffect  | [SymbolEffect](#symboleffect12) | Yes  | Symbol effect of the **SymbolGlyph** component.<br>Default value: [SymbolEffect](#symboleffect12) |
-| isActive  | boolean | No  | Whether the effect is active.<br>Default value: **false**|
+| isActive  | boolean | No  | Whether the effect is active.<br>**true**: playing. **false**: not playing.<br>Default value: **false**.|
 
 ### symbolEffect<sup>12+</sup>
 
@@ -206,6 +212,42 @@ Sets the maximum font scale factor for the **SymbolGlyph** component.
 | ------ | ---- | ---- | ----- |
 | scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)>  | Yes  | Maximum font scale factor for the **SymbolGlyph** component.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
 
+### shaderStyle<sup>20+</sup>
+
+shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle)
+
+Sets the gradient effect of the **SymbolGlyph** component.
+
+Applies gradient or solid color effects to text. Supports [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), and [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20). **shaderStyle** takes precedence over [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) and AI-based styling. For solid colors, prefer using [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor).
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type                                        | Mandatory                            | Description                              |
+| -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
+| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>When ShaderStyle is passed, all layers are overwritten. When an array is passed, if the data item is ShaderStyle, the layer is applied. If the array item is undefined, the layer uses the default SymbolGlyph color. The layers that are not set also use the default color. Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)).<br>**NOTE**<br>Unit: [vp](ts-pixel-units.md)<br>Use the center point by percentage. If a non-percentage (for example, 10PX) is used, the effect is the same as that of 1000%.<br>You are advised to use a percentage as the radius.<br>The percentage is based on the icon size. The recommended value range is [0, 1).|
+
+### symbolShadow<sup>20+</sup>
+
+symbolShadow(shadow: Optional\<ShadowOptions\>)
+
+Sets the shadow effect of the **SymbolGlyph** component.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description |
+| ------ | ---- | ---- | ----- |
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\> ; | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The fill and type attributes and the enumerated values of ColoringStrategy in color are not supported.|
+
 ## ScaleSymbolEffect<sup>12+</sup>
 
 Inherits from **SymbolEffect**.
@@ -216,12 +258,12 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)  |  No  | Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) |  No  | Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| scope     | [EffectScope](#effectscope12)  |  No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**   |
+| direction | [EffectDirection](#effectdirection12) |  No  | Yes| Effect direction.<br>Default value: **EffectDirection.DOWN**|
 
 ### constructor<sup>12+</sup>
 
@@ -252,11 +294,11 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| fillStyle | [EffectFillStyle](#effectfillstyle12) | No  | Effect fill style.<br>Default value: **EffectFillStyle.CUMULATIVE**|
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| fillStyle | [EffectFillStyle](#effectfillstyle12) | No  | Yes| Effect fill style.<br>Default value: **EffectFillStyle.CUMULATIVE**|
 
 ### constructor<sup>12+</sup>
 
@@ -286,11 +328,11 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**|
 
 ### constructor<sup>12+</sup>
 
@@ -320,11 +362,11 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**|
 
 ### constructor<sup>12+</sup>
 
@@ -354,12 +396,12 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)         | No  | Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) | No  | Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| scope     | [EffectScope](#effectscope12)         | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**   |
+| direction | [EffectDirection](#effectdirection12) | No  | Yes| Effect direction.<br>Default value: **EffectDirection.DOWN**|
 
 ### constructor<sup>12+</sup>
 
@@ -390,11 +432,14 @@ Inherits from **SymbolEffect**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Properties
+### Attributes
 
-| Name| Type| Mandatory| Description |
-| ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description |
+| ---- | ---- | ---- | ---- | ---- |
+| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| replaceType<sup>20+</sup>  | [ReplaceEffectType](#replaceeffecttype20) | No  | Yes| Replacement effect type.<br>Default value: **ReplaceEffectType.SEQUENTIAL**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ### constructor<sup>12+</sup>
 
@@ -413,6 +458,25 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
 | scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+
+### constructor<sup>20+</sup>
+
+constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)
+
+A constructor used to create a **ReplaceSymbolEffect** instance, which comes with a replace animation effect.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description |
+| ---- | ---- | ---- | ---- |
+| scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| replaceType  | [ReplaceEffectType](#replaceeffecttype20) | No  | Replaces the animation type.<br>Default value: ReplaceEffectType.SEQUENTIAL|
 
 ## SymbolEffectStrategy<sup>11+</sup>
 
@@ -458,7 +522,7 @@ Defines the **SymbolEffect** class.
 
 ## PulseSymbolEffect<sup>12+</sup>
 
-A constructor used to create a **PulseSymbolEffect** instance, which comes with a pulse animation effect.
+PulseSymbolEffect inherits from the parent class SymbolEffect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -505,6 +569,22 @@ A constructor used to create a **PulseSymbolEffect** instance, which comes with 
 | CUMULATIVE | 0    | Cumulative style.|
 | ITERATIVE  | 1    | Iterative style.|
 
+## ReplaceEffectType<sup>20+</sup>
+
+Enumerates symbol replacement effect types.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name      | Value  | Description      |
+| ---------- | ---- | ---------- |
+| SEQUENTIAL | 0    | Sequential replacement: The current symbol disappears before a new symbol appears. This is the default symbol replacement effect type.|
+| CROSS_FADE | 1    | Cross-fade transition effect: The current symbol fades out while a new symbol fades in simultaneously.|
+| SLASH_OVERLAY | 2    | Slash overlay effect: The current symbol is replaced with a symbol featuring diagonal slash, typically indicating disabled state.|
+
 ## Events
 
 The [universal events](ts-component-general-events.md) are supported.
@@ -513,7 +593,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ###  Example 1: Setting Rendering and Effect Strategies
 
-This example demonstrates different rendering and effect strategies using **renderingStrategy** and **effectStrategy**.
+This example demonstrates different rendering and effect strategies using [renderingStrategy](#renderingstrategy) and [effectStrategy](#effectstrategy), available since API version 11.
 
 ```ts
 // xxx.ets
@@ -583,14 +663,14 @@ struct Index {
           Text("Overall scale effect")
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
-            .effectStrategy(1)
+            .effectStrategy(SymbolEffectStrategy.SCALE)
         }
 
         Column() {
           Text("Hierarchical effect")
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
-            .effectStrategy(2)
+            .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
         }
       }
     }
@@ -599,9 +679,9 @@ struct Index {
 ```
 ![symbol](figures/symbolGlyph.gif)
 
-###  Example 2: Setting Effects
+###  Example 2: Setting Symbol and Shadow Effects
 
-This example demonstrates the effects of variable color animation and replacement animation using **symbolEffect**.
+This example demonstrates various symbol effects using the [symbolEffect](#symboleffect12) attribute (available since API version 12) and shadow effects with [symbolShadow](#symbolshadow20) (available since API version 20).
 
 ```ts
 // xxx.ets
@@ -610,37 +690,234 @@ This example demonstrates the effects of variable color animation and replacemen
 struct Index {
   @State isActive: boolean = true;
   @State triggerValueReplace: number = 0;
+  @State triggerValueReplace1: number = 0;
+  @State triggerValueReplace2: number = 0;
+  @State renderMode: number = 1;
+
   replaceFlag: boolean = true;
+  replaceFlag1: boolean = true;
+  replaceFlag2: boolean = true;
+
+  options: ShadowOptions = {
+    radius: 10.0,
+    color: Color.Blue,
+    offsetX: 10,
+    offsetY: 10,
+  };
 
   build() {
     Column() {
       Row() {
         Column() {
-          Text("Variable color animation")
+          Text("Variable color effect")
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
-          Button(this.isActive ? 'Off' : 'Play').onClick(() => {
-            this.isActive = !this.isActive;
-          })
-        }.margin({ right: 20 })
-
+          Button(this.isActive ? 'Stop' : 'Play')
+            .onClick(() => {
+              this.isActive = !this.isActive;
+            })
+        }
+        .margin({ right: 20 })
         Column() {
-          Text("Replacement animation")
+          Text("Replacement effect")
           SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.triggerValueReplace)
-          Button('Trigger').onClick(() => {
-            this.replaceFlag = !this.replaceFlag;
-            this.triggerValueReplace = this.triggerValueReplace + 1;
-          })
+          Button('Trigger')
+            .onClick(() => {
+              this.replaceFlag = !this.replaceFlag;
+              this.triggerValueReplace = this.triggerValueReplace + 1;
+            })
         }
+        .margin({ right: 20 })
       }
-    }.margin({
-      left: 30,
+
+      Row() {
+        Column() {
+          Text("Slash overlay")
+          SymbolGlyph(this.replaceFlag1 ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
+            .fontSize(96)
+            .renderingStrategy(this.renderMode)
+            .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY), this.triggerValueReplace1)
+          Button('Trigger')
+            .onClick(() => {
+              this.replaceFlag1 = !this.replaceFlag1;
+              this.triggerValueReplace1 = this.triggerValueReplace1 + 1;
+            })
+        }
+        .margin({ right: 20 })
+        Column() {
+          Text("Cross-fade transition")
+          SymbolGlyph(this.replaceFlag2 ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
+            .fontSize(96)
+            .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace2)
+          Button('Trigger')
+            .onClick(() => {
+              this.replaceFlag2 = !this.replaceFlag2;
+              this.triggerValueReplace2 = this.triggerValueReplace2 + 1;
+            })
+        }
+        .margin({ right: 20 })
+        Column() {
+          Text("Shadow effect")
+          SymbolGlyph($r('sys.symbol.ohos_wifi'))
+            .fontSize(96)
+            .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
+            .symbolShadow(this.options)
+          Button(this.isActive ? 'Stop' : 'Play')
+            .onClick(() => {
+              this.isActive = !this.isActive;
+            })
+        }
+        .margin({ right: 20 })
+      }
+    }
+    .margin({
+      left: 45,
       top: 50
     })
   }
 }
 ```
-![symbol](figures/symbolGlyph_symbolEffect.gif)
+![symbol](figures/SymbolGlyph_Example2.gif)
+
+### Example 3: Setting Gradient Color Effects
+
+This example demonstrates how to apply gradient colors to **SymbolGlyph** components using the [shaderStyle](#shaderstyle20) API, available since API version 20.
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  linearGradientOptions1: LinearGradientOptions = {
+    angle: 45,
+    colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+  };
+
+  linearGradientOptions2: LinearGradientOptions = {
+    direction: GradientDirection.LeftTop,
+    colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+    repeating: true,
+  };
+
+  radialGradientOptions: RadialGradientOptions = {
+    center: ["50%", "50%"],
+    radius: "20%",
+    colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+    repeating: true,
+  };
+
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('Linear gradient with 45° angle')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([new LinearGradientStyle(this.linearGradientOptions1)])
+        }
+        .margin({ right: 20 })
+        Column() {
+          Text('Linear gradient from LeftTop')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([new LinearGradientStyle(this.linearGradientOptions2)])
+        }
+        .margin({ right: 20 })
+      }
+
+      Row() {
+        Column() {
+          Text('Radial gradient')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
+        }
+        .margin({ right: 20 })
+        Column() {
+          Text('Solid color')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([new ColorShaderStyle(Color.Red)])
+        }
+        .margin({ right: 20 })
+        Column() {
+          Text('Linear and radial gradient')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([
+              new LinearGradientStyle(this.linearGradientOptions2),
+              new LinearGradientStyle(this.linearGradientOptions2),
+              new RadialGradientStyle(this.radialGradientOptions)
+            ])
+            .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+        }
+        .margin({ right: 20 })
+      }
+
+      Row() {
+        Column() {
+          Text('Single-layer array gradient')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([
+              new LinearGradientStyle(this.linearGradientOptions2),
+            ])
+            .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+        }.margin({ right: 20 })
+
+        Column() {
+          Text('Non-array covers all')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle(new RadialGradientStyle(this.radialGradientOptions))
+            .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+        }.margin({ right: 20 })
+
+        Column() {
+          Text('First layer is default')
+            .fontSize(18)
+            .fontColor(0xCCCCCC)
+            .textAlign(TextAlign.Center)
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .shaderStyle([
+              undefined,
+              new LinearGradientStyle(this.linearGradientOptions2),
+            ])
+            .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+        }.margin({ right: 20 })
+      }
+    }
+    .margin({
+      left: 20,
+      top: 50
+    })
+  }
+}
+```
+![symbol](figures/SymbolGlyph_Example3.jpeg)

@@ -227,7 +227,7 @@
       - [remoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
-    - continuation<!--continuation-->
+    - continuation<!--ability--continuation-->
       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
       - [continuationResult](js-apis-continuation-continuationResult.md)
     - security<!--ability-security-->
@@ -320,4 +320,6 @@
   - [包管理子系统通用错误码](errorcode-bundle.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
-  - [应用域名校验错误码](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

@@ -306,7 +306,7 @@ Function called when the input method obtains the text on the right of the curso
 | [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set.|
 |  int32_t number | Length of the text to be obtained.|
 | char16_t text[] | Text content of a specified length on the right of the cursor. You need to assign a value to the text content in the function implementation.|
-|  size_t *length | Length of the text on the left of the cursor.|
+|  size_t *length | Pointer to the length of the text on the right of the cursor. You need to transfer this parameter.|
 
 ### OH_TextEditorProxy_GetTextIndexAtCursorFunc()
 

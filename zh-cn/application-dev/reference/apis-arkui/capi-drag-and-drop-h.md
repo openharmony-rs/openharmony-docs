@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -214,9 +214,9 @@ enum ArkUI_DragStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_DRAG_STATUS_STARTED | Started。 |
-| ARKUI_DRAG_STATUS_ENDED | Ended。 |
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | 未知的拖拽状态。 |
+| ARKUI_DRAG_STATUS_STARTED | 拖拽开始。 |
+| ARKUI_DRAG_STATUS_ENDED | 拖拽结束。 |
 
 
 ## 函数说明

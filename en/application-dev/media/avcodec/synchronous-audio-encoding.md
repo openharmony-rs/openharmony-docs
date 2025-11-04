@@ -5,7 +5,7 @@
 <!--Owner: @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, audio encoding in synchronous mode is supported.
 
@@ -25,8 +25,8 @@ Asynchronous mode is generally recommended for most use cases. For details, see 
 
   Export edited PCM data, encode it into the corresponding audio format, and then multiplex it into a file. For details about multiplexing, see [Media Data Multiplexing](audio-video-muxer.md).
 > **NOTE**
->
-> AAC encoders adopt the VBR mode by default. This may result in differences from the expected bit rate.
+> - AAC encoders adopt the VBR mode by default. This may result in differences from the expected bit rate.
+> - By default, AAC encoders include an ADTS header in its output, which occupies the first 7 bytes of each frame.
 
 ## Development Guidelines
 
@@ -101,7 +101,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | OH_MD_KEY_BITRATE             |       Bit rate.      |  Optional |  Mandatory|   Mandatory  |   -   |
    | OH_MD_KEY_CHANNEL_LAYOUT      |     Audio channel layout.    |  Optional |  Mandatory|    -     |   -   |
    | OH_MD_KEY_MAX_INPUT_SIZE      |   Maximum input size.   |  Optional |  Optional|   Optional  |  Optional |
-   | OH_MD_KEY_AAC_IS_ADTS         |     ADTS or not.    |  Optional |   -   |    -    |   -    |
    | OH_MD_KEY_COMPLIANCE_LEVEL    |    Compatibility level.    |  -    |  Optional|    -     |   -    |
    <!--RP1End-->
 
@@ -136,7 +135,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT);
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set the synchronous mode.
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
     // Configure the encoder.
     ret = OH_AudioCodec_Configure(audioEnc_, format);
     if (ret != AV_ERR_OK) {
@@ -170,7 +169,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set the synchronous mode.
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
     // Configure the encoder.
     ret = OH_AudioCodec_Configure(audioEnc_, format);
     if (ret != AV_ERR_OK) {
@@ -313,11 +312,11 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
 
-   | Value| Description|
+   | Value| Description| 
    | -------- | -------- |
-   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.|
-   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.|
-   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.|
+   | AVCODEC_BUFFER_FLAGS_NONE | Common frame.| 
+   | AVCODEC_BUFFER_FLAGS_EOS | The buffer is an end-of-stream frame.| 
+   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | The buffer contains codec-specific data.| 
 
 7. (Optional) Call **OH_AudioCodec_Reset()** to reset the encoder.
 

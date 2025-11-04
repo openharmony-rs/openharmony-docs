@@ -4,13 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
-
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -333,6 +327,19 @@ Enumerates the sources of the image or video data.
 
 | Name               | Value  | Description                                                                                                                |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| ALL | 0   | Image or video from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ALL | 0   | Images and videos from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | CAMERA | 1   | Image or video taken by the camera.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | SCREENSHOT | 2   | Screenshot or screen capture video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
+## HdrMode<sup>21+</sup>
+
+Enumerates the HDR types of images.
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Default type.|
+| HDR_ISO_SINGLE |  1 |  Single-layer HDR technology. |
+| HDR_ISO_DUAL |  2 |  Dual-layer HDR technology. |
+| HDR_CUVA |  3 |  HDR standard of the China UHD Video Industry Alliance. |
+| HDR_VIVID_SINGLE |  4 |  Single-layer HDR Vivid technology |
+| HDR_VIVID_DUAL |  5 |  Dual-layer HDR Vivid technology. |

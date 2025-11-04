@@ -1,4 +1,10 @@
 # @ohos.promptAction (Prompt) (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **PromptAction** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
 
@@ -16,7 +22,7 @@ import { promptAction } from '@kit.ArkUI';
 
 ### ToastShowMode
 
-Describes the mode in which the toast is shown.
+Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in sub-windows.
 
 **System API**: This is a system API.
 
@@ -24,4 +30,4 @@ Describes the mode in which the toast is shown.
 
 | Name    | Value  | Description                  |
 | -------- | ---- | ---------------------- |
-| SYSTEM_TOP_MOST | 2    | The toast is displayed in a window of the TYPE_SYSTEM_TOAST type. |
+| SYSTEM_TOP_MOST | 2    | The toast is displayed in a window of the TYPE_SYSTEM_TOAST type.|

@@ -82,15 +82,11 @@
 
 ## AvoidArea<sup>7+</sup>
 
-窗口内容规避区域。如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。在规避区无法响应用户点击事件。
+窗口内容的避让区域。
 
-除此之外还需注意规避区域的如下约束，具体为：
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
 
-- 底部手势区域中非底部导航条区域支持点击、长按事件透传，不支持拖入。
-
-- 左右侧边手势区域支持点击、长按以及上下滑动事件透传，不支持拖入。
-
-- 底部导航条区域支持长按、点击、拖入事件响应，不支持事件向下透传。
+在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -98,11 +94,17 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible<sup>9+</sup>    | boolean       | 否   | 否   | 规避区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕左侧的矩形区。 |
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕顶部的矩形区。 |
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕右侧的矩形区。 |
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕底部的矩形区。 |
+| visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 |
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 |
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 |
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 |
+
+> **说明：**
+>
+> 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。
+>
+>  ![avoidArea](figures/avoidArea.png)
 
 ## Size<sup>7+</sup>
 

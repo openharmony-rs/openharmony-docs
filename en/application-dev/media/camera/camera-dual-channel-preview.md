@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -149,14 +149,6 @@ The figure below shows the recommended API calling process of the dual-channel p
             } else {
               console.error('byteBuffer is null');
             }
-            // Release the resource when the pixelMap is not in use.
-            if (pixelMap != undefined) {
-              await pixelMap.release().then(() => {
-                console.info('Succeeded in releasing pixelMap object.');
-              }).catch((error: BusinessError) => {
-                console.error(`Failed to release pixelMap object. code is ${error.code}, message is ${error.message}`);
-              })
-            }
             // Release the resource when the buffer is not in use.
             // If an asynchronous operation is performed on the buffer, call nextImage.release() to release the resource after the asynchronous operation is complete.
             nextImage.release();
@@ -166,41 +158,41 @@ The figure below shows the recommended API calling process of the dual-channel p
     }
     ```
 
-The following methods are available for parsing the image buffer data by using [image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9).
+    The following methods are available for parsing the image buffer data by using [image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9).
 
-> **NOTE**
->
-> Check whether the width of the image is the same as **rowStride**. If they are different, perform the following operations:
+    > **NOTE**
+    >
+    > Check whether the width of the image is the same as **rowStride**. If they are different, perform the following operations:
 
-Method 1: Remove the stride data from **imgComponent.byteBuffer**, obtain a new buffer by means of copy, and process the buffer by calling the API that does not support stride.
+    Method 1: Remove the stride data from **imgComponent.byteBuffer**, obtain a new buffer by means of copy, and process the buffer by calling the API that does not support stride.
 
-```ts
-// The values of size and srcPixelFormat used during PixelMap creation must match size and format in the preview profile of the preview output stream.
-const dstBufferSize = width * height * mSize;
-const dstArr = new Uint8Array(dstBufferSize);
-// Read the buffer data line by line.
-for (let j = 0; j < height * mSize; j++) {
-  // Copy the first width bytes of each line of data in imgComponent.byteBuffer to dstArr.
-  const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width);
-  dstArr.set(srcBuf, j * width);
-}
-let pixelMap = await image.createPixelMap(dstArr.buffer, {
-  size: { height: height, width: width }, srcPixelFormat: pixelMapFormat
+    ```ts
+    // The values of size and srcPixelFormat used during PixelMap creation must match size and format in the preview profile of the preview output stream.
+    const dstBufferSize = width * height * mSize;
+    const dstArr = new Uint8Array(dstBufferSize);
+    // Read the buffer data line by line.
+    for (let j = 0; j < height * mSize; j++) {
+      // Copy the first width bytes of each line of data in imgComponent.byteBuffer to dstArr.
+      const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width);
+      dstArr.set(srcBuf, j * width);
+    }
+    let pixelMap = await image.createPixelMap(dstArr.buffer, {
+      size: { height: height, width: width }, srcPixelFormat: pixelMapFormat
 
-});
-```
+    });
+    ```
 
-Method 2: Create a PixelMap based on the value of stride * height, and call **cropSync** of the PixelMap to crop redundant pixels.
+    Method 2: Create a PixelMap based on the value of stride * height, and call **cropSync** of the PixelMap to crop redundant pixels.
 
-```ts
-// Create a PixelMap, with width set to the value of stride.
-let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
-  size:{height: height, width: stride}, srcPixelFormat: pixelMapFormat});
-// Crop extra pixels.
-pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
-```
+    ```ts
+    // Create a PixelMap, with width set to the value of stride.
+    let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
+      size:{height: height, width: stride}, srcPixelFormat: pixelMapFormat});
+    // Crop extra pixels.
+    pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+    ```
 
-Method 3: Pass **imgComponent.byteBuffer** and **stride** to the API that supports stride.
+    Method 3: Pass **imgComponent.byteBuffer** and **stride** to the API that supports stride.
 
 ### Second Preview Stream Used for Image Display
 

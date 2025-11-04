@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -471,7 +471,7 @@ Sets lyrics for the media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | Pointer to an OH_AVMetadataBuilder instance.|
-| const char* lyric | Pointer to the lyrics in the lrc format.|
+| const char* lyric | Pointer to the lyrics in the LRC format.|
 
 **Returns**
 

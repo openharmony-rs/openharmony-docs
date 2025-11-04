@@ -1,5 +1,10 @@
 # Animation with the transform Attribute
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 Set the transform attribute for component rotation, scaling, translation, and skewing.
 
@@ -251,7 +256,7 @@ Set the rotation center around an element in different transform-origin position
     align-items: center;
     justify-content: center;
 }
-/* Use react4 and react5 to shape eyes. */
+/* Use rect4 and rect5 to shape eyes. */
 .rect4 {
     width: 100px;
     height: 100px;
@@ -350,7 +355,7 @@ Set the scaling values for the x-axis, y-axis, and z-axis in **scale3d** to impl
 .ripple{
     margin-top: 400px;
     margin-left: 40%;
-    position: absolute;  z-index: 0;
+    position: absolute; z-index: 0;
     width: 100px;
     height: 100px;
     border-radius: 50px;

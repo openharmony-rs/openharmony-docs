@@ -41,7 +41,7 @@ Checks whether a specified type of **RunningLock** is supported.
 
 **Error codes**
 
-For details about the error codes, see [RunningLock Error Codes](errorcode-runninglock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -78,7 +78,7 @@ Creates a **RunningLock** object.
 
 **Error codes**
 
-For details about the error codes, see [RunningLock Error Codes](errorcode-runninglock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -123,7 +123,7 @@ Creates a **RunningLock** object.
 
 **Error codes**
 
-For details about the error codes, see [RunningLock Error Codes](errorcode-runninglock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
@@ -297,7 +297,7 @@ Locks and holds a **RunningLock** object.
 
 **Error codes**
 
-For details about the error codes, see [RunningLock Error Codes](errorcode-runninglock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message    |
 |---------|----------|
@@ -347,7 +347,7 @@ Releases a **RunningLock** object.
 
 **Error codes**
 
-For details about the error codes, see [RunningLock Error Codes](errorcode-runninglock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message    |
 |---------|----------|

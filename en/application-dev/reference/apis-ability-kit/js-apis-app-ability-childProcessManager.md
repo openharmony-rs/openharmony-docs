@@ -18,8 +18,6 @@ The created child process will exit when the parent process exits and cannot run
 
 ## Constraints
 
-- The APIs of this module work only for 2-in-1 devices and tablets.
-
 - The child processes created through the APIs of this module have the following restrictions:
   - The created child process does not support the creation of UIs. 
   - The created child process does not support API calls that depend on the Context module (including the APIs of the Context module and the APIs that use the Context instance as an input parameter). 
@@ -58,6 +56,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 > The child process started by calling this API does not support asynchronous ArkTS API calls. It supports only synchronous ArkTS API calls.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 16000061 is returned.
 
 **Parameters**
 
@@ -132,6 +132,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 16000061 is returned.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description|
@@ -200,6 +202,8 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -312,6 +316,8 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
+
 **Parameters**
 
   | Name| Type| Mandatory| Description|
@@ -340,7 +346,7 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **Example**
 
-Sample code for the child process is provided below. For details, see [Native Child Process Development (C/C++) - Creating a Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-child-process-that-supports-pass-by-parameter).
+Sample code for the child process is provided below. For details, see [Native Child Process Development (C/C++) - Creating a Native Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-native-child-process-that-supports-pass-by-parameter).
 
 ```c++
 #include <AbilityKit/native_child_process.h>

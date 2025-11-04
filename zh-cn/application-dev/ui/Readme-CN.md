@@ -4,30 +4,30 @@
 <!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
-    - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
-    - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
+    - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
+    - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
     - 自定义组件<!--arkts-custom-components-->
-      - [创建自定义组件](../ui/state-management/arkts-create-custom-components.md)
-      - [自定义组件生命周期](../ui/state-management/arkts-page-custom-components-lifecycle.md)
-      - [自定义组件的自定义布局](../ui/state-management/arkts-page-custom-components-layout.md)
-      - [自定义组件成员属性访问限定符使用限制](../ui/state-management/arkts-custom-components-access-restrictions.md)
+      - [创建自定义组件](state-management/arkts-create-custom-components.md)
+      - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
+      - [自定义组件的自定义布局](state-management/arkts-page-custom-components-layout.md)
+      - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
     - 组件扩展<!--arkts-extend-components-->
-      - [组件扩展概述](../ui/state-management/arkts-extend-components-overview.md)
-      - [\@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
-      - [\@LocalBuilder装饰器：维持组件关系](../ui/state-management/arkts-localBuilder.md)
-      - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
-      - [wrapBuilder：封装全局@Builder](../ui/state-management/arkts-wrapBuilder.md)
-    - [\@Styles装饰器：定义组件重用样式](../ui/state-management/arkts-style.md)
-    - [\@Extend装饰器：定义扩展组件样式](../ui/state-management/arkts-extend.md)
-    - [stateStyles：多态样式](../ui/state-management/arkts-statestyles.md)
-    - [@AnimatableExtend装饰器：定义可动画属性](../ui/state-management/arkts-animatable-extend.md)
-    - [@Require装饰器：校验构造传参](../ui/state-management/arkts-require.md)
-    - [@Reusable装饰器：组件复用](../ui/state-management/arkts-reusable.md)
+      - [组件扩展概述](state-management/arkts-extend-components-overview.md)
+      - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
+      - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
+      - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
+      - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
+    - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
+    - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
+    - [stateStyles：多态样式](state-management/arkts-statestyles.md)
+    - [@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
+    - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
+    - [@Reusable装饰器：组件复用](state-management/arkts-reusable.md)
   - 学习UI范式状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
     - 状态管理（V1）<!--arkts-state-management-v1-->
@@ -88,7 +88,7 @@
       - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
       - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-      - [LazyForEach迁移Repeat指导文档](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
+      - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
       - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
@@ -118,6 +118,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
+    - [管理软键盘](arkts-manage-keyboard.md)
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
@@ -339,7 +340,7 @@
         - [动画动效](ui-js-animate-dynamic-effects.md)
         - [动画帧](ui-js-animate-frame.md)
   - [自定义组件](ui-js-custom-components.md)
-  - [WebGL](../webgl/Readme-CN.md)
+  - [WebGL](../webgl/Readme-CN.md)<!--ui-js-webgl-->
 - UI开发调试调优<!--ui-debug-optimize-->
   - UI稳定性故障调试<!--ui-stability-->
     - [UI稳定性故障分析概述](arkts-stability-guide.md)
@@ -350,5 +351,5 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
-- [窗口管理](../windowmanager/Readme-CN.md)
-- [屏幕管理](../displaymanager/Readme-CN.md)
+- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-api-->
+- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-api-->

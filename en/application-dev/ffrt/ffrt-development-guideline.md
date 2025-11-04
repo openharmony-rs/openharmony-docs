@@ -31,8 +31,8 @@ The APIs are as follows:
 
 | C++ API                                                                                                                                  | C API                                                                               | Description                  |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------- |
-| [queue_attr::timeout](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | [ffrt_queue_attr_set_timeout](ffrt-api-guideline-c.md#ffrt_queue_attr_t)   | Sets the queue timeout.    |
-| [queue_attr::callback](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | [ffrt_queue_attr_set_callback](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | Sets the queue timeout callback.|
+| [queue_attr::timeout](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | [ffrt_queue_attr_set_timeout](ffrt-api-guideline-c.md#ffrt_queue_attr_t)   | Sets the queue timeout.    |
+| [queue_attr::callback](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | [ffrt_queue_attr_set_callback](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | Sets the queue timeout callback.|
 
 ### Long-Time Task Monitoring
 
@@ -456,7 +456,7 @@ The following describes how to use the native APIs provided by FFRT to create pa
 
 Risks exist when thread local variables are used in FFRT tasks. The details are as follows:
 
-- Thread local variables include the variables defined by `thread_local` provided by C/C++ and the variables created by using `thread_local`.
+- Thread local variables include the variables defined by `thread_local` provided by C/C++ and the variables created by using `pthread_key_create`.
 - FFRT supports task scheduling. The thread to which a task is scheduled is random. Therefore, there are risks to use thread local variables, which is consistent with all other frameworks that support concurrent task scheduling.
 - By default, an FFRT task runs in coroutine mode. During task execution, the coroutine may exit. When the task is resumed, the thread that executes the task may change.
 
@@ -471,7 +471,11 @@ Using the standard library's recursive mutex in FFRT tasks may lead to deadlocks
 - When `lock()` is successfully executed, the recursive mutex records the execution stack of the caller as the lock owner. If the caller is the current execution stack, a success message is returned to support nested lock acquisition within the same execution stack. In the standard library, the execution stack is identified by the thread ID.
 - When using the standard library's recursive mutex in FFRT tasks, if a task (coroutine) exits between the outer and inner `lock()` calls and resumes execution on a different FFRT Worker thread than the one where `lock()` was initially called, the current thread will not be recognized as the owner. This causes the `lock()` to fail, suspends the FFRT Worker thread, and prevents the subsequent `unlock()` from executing, leading to a deadlock.
 
-### Support for the Process `fork()` Scenario
+### Synchronization Primitives in FFRT
+
+- `std::runtime_error` cannot be handled across threads. Therefore, when using **try-catch** in an FFRT task, it is advisable not to use FFRT synchronization primitives in the catch block. Otherwise, exceptions may fail to be caught, leading to crashes.
+
+### Support for Process `fork()`
 
 - Create a child process in a process that does not use FFRT. FFRT can be used in the child process.
 - Create a child process using `fork()` in a process that uses FFRT. FFRT cannot be used in the child process.
@@ -494,7 +498,7 @@ Using the standard library's recursive mutex in FFRT tasks may lead to deadlocks
 
 ## Common Anti-Patterns
 
-### After an FFRT object is initialized in the C code, you are responsible for setting the object to null or destroying the object.
+### Responsibility for Nulling and Destroying FFRT Objects After Initialization in the C API
 
 - To ensure high performance, the C APIs of FFRT do not use a flag to indicate the object destruction status. You need to release resources properly. Repeatedly destroying an object will cause undefined behavior.
 - Noncompliant example 1: Repeated calling of destroy() may cause unpredictable data damage.

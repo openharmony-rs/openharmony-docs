@@ -29,7 +29,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help | 帮助命令。用于查询aa支持的命令信息。|
 | start | 启动命令。用于启动一个应用组件，目标组件可以是FA模型的PageAbility和ServiceAbility组件，也可以是Stage模型的UIAbility和ServiceExtensionAbility组件，且目标组件相应配置文件中的exported标签不能配置为false。|
-| stop-service | 停止命令。用于停止ServiceAbility。 |
+| stop-service | 停止命令。用于停止一个应用组件，目标组件可以是FA模型的ServiceAbility组件，也可以是Stage模型的ExtensionAbility组件。 |
 | dump<sup>(deprecated)</sup> | 打印命令。用于打印应用组件的相关信息。|
 | force-stop | 强制停止进程命令。通过bundleName强制停止一个进程。|
 | test | 启动测试框架命令。根据所携带的参数启动测试框架。 |
@@ -192,7 +192,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
 ## 停止命令（stop-service）
 
-用于停止ServiceAbility。
+停止命令。用于停止一个应用组件，目标组件可以是FA模型的ServiceAbility组件，也可以是Stage模型的ExtensionAbility组件。
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
@@ -209,7 +209,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
 
   **返回值**：
 
-  当成功停止ServiceAbility时，返回"stop service ability successfully."；当停止失败时，返回"error: failed to stop service ability."。
+  当成功停止ServiceAbility或ExtensionAbility时，返回"stop service ability successfully."；当停止失败时，返回"error: failed to stop service ability."。
 
   **错误码**：
 
@@ -330,7 +330,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **说明**：
 > 
-> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->[aa test命令执行配置参数](../application-test/arkxtest-guidelines.md#在cmd执行)<!--RP2End-->。
+> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->[aa test命令执行配置参数](../application-test/unittest-guidelines.md#命令行执行测试脚本)<!--RP2End-->。
 
   **启动测试框架命令参数列表**
   | 参数 | 参数说明 |

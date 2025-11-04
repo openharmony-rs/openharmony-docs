@@ -1,11 +1,11 @@
 # Startup Development
 
 
-## How do I obtain the system version of a device? (API 9)
+## How do I obtain the system version of a device? (API version 9)
 
 **Solution**
 
-You can obtain the system version of a device through the **osFullName** attribute of the [deviceInfo](../reference/apis-basic-services-kit/js-apis-device-info.md) object.
+You can obtain the system version of a device through the **osFullName** property of the [deviceInfo](../reference/apis-basic-services-kit/js-apis-device-info.md) object.
 
 **Sample Code**
 
@@ -15,7 +15,7 @@ let v = deviceInfo.osFullName
 ```
 
 
-## How do I obtain the UDID of a device? (API 9)
+## How do I obtain the UDID of a device? (API version 9)
 
 **Solution**
 
@@ -24,7 +24,7 @@ let v = deviceInfo.osFullName
 - Method 2: Obtain the UDID from the code. For details, see [udid](../reference/apis-basic-services-kit/js-apis-device-info.md).
 
 
-##  How do I obtain device information? (API 9)
+## How do I obtain device information? (API version 9)
 
 You can call **deviceInfo** to obtain device information, such as the device model.
 
@@ -33,7 +33,7 @@ You can call **deviceInfo** to obtain device information, such as the device mod
 [Device Information](../reference/apis-basic-services-kit/js-apis-device-info.md)
 
 
-## How do I prevent application development from being interrupted by screen saving? (API 9)
+## How do I prevent application development from being interrupted by screen saving? (API version 9)
 
 **Solution**
 

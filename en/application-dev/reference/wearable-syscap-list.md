@@ -1,5 +1,12 @@
 # SystemCapability List
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
 Before using an API for development, you are advised to familiarize yourself with [SysCap](syscap.md), and then consult the following tables to see whether the SysCap set required for the API is supported by the target device type.
@@ -64,7 +71,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Telephony.CallManager
 - SystemCapability.Telephony.CellularData
 - SystemCapability.Security.Cert
-- SystemCapability.Notification.CommonEvent
 - SystemCapability.Customization.ConfigPolicy
 - SystemCapability.Customization.CustomConfig
 - SystemCapability.Telephony.CoreService
@@ -91,11 +97,12 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.BundleManager.DistributedBundleFramework
 - SystemCapability.DistributedHardware.DistributedHardwareFWK
-- SystemCapability.Notification.Notification
-- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Multimedia.Drm.Core
 - SystemCapability.Utils.Lang
+- SystemCapability.Notification.CommonEvent
+- SystemCapability.Notification.Notification
+- SystemCapability.Notification.ReminderAgent
 - SystemCapability.Notification.Emitter
 - SystemCapability.Resourceschedule.Ffrt.Core
 - SystemCapability.Ability.Form

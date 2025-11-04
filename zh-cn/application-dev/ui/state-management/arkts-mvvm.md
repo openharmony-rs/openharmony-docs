@@ -59,7 +59,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 **不可跨层访问**
 
 * View层不可以直接调用Model层的数据，只能通过ViewModel提供的方法进行调用。
-* Model层数据，不可以直接操作UI，Model层只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
+* Model层不能直接操作UI，只能通知ViewModel层数据有更新，由ViewModel层更新对应的数据。
 
 **下层不可访问上层数据**
 

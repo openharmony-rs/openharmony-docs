@@ -654,7 +654,7 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
 
 queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
-通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
+通过指定起始和结束时间，查询应用使用时长的具体信息（包含分身应用），统计的最小颗粒度是天。使用Promise异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1706,21 +1706,21 @@ FA模型的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| 名称                  | 类型                                       | 必填   | 说明                            |
-| -------------------- | ---------------------------------------- | ---- | ----------------------------- |
-| deviceId             | string                                   | 否    | 设备Id。                 |
-| bundleName           | string                                   | 是    | 应用名称。             |
-| moduleName           | string                                   | 是    | FA所属module名。                  |
-| abilityName          | string                                   | 否    | FA的MainAbility名。              |
-| appLabelId           | number                                   | 否    | FA的应用labelId。                 |
-| labelId              | number                                   | 否    | FA所属module的labelId。           |
-| descriptionId        | number                                   | 否    | FA所属的应用descriptionId。         |
-| abilityLableId       | number                                   | 否    | FA的MainAbility labelId。       |
-| abilityDescriptionId | number                                   | 否    | FA的MainAbility descriptionId。 |
-| abilityIconId        | number                                   | 否    | FA的MainAbility iconId。        |
-| launchedCount        | number                                   | 是    | FA的启动次数。                      |
-| lastModuleUsedTime   | number                                   | 是    | FA的上一次使用时间。                   |
-| formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | 是    | FA中卡片的使用记录。                   |
+| 名称                  | 类型                                       | 只读   | 可选   | 说明                            |
+| -------------------- | ---------------------------------------- | ----| ---- | ----------------------------- |
+| deviceId             | string                                   | 否    | 是    | 设备Id。                 |
+| bundleName           | string                                   | 否    | 否    | 应用名称。             |
+| moduleName           | string                                   | 否    | 否    | FA所属module名。                  |
+| abilityName          | string                                   | 否    | 是    | FA的MainAbility名。              |
+| appLabelId           | number                                   | 否    | 是    | FA的应用labelId。                 |
+| labelId              | number                                   | 否    | 是    | FA所属module的labelId。           |
+| descriptionId        | number                                   | 否    | 是    | FA所属的应用descriptionId。         |
+| abilityLableId       | number                                   | 否    | 是    | FA的MainAbility labelId。       |
+| abilityDescriptionId | number                                   | 否    | 是    | FA的MainAbility descriptionId。 |
+| abilityIconId        | number                                   | 否    | 是    | FA的MainAbility iconId。        |
+| launchedCount        | number                                   | 否    | 否    | FA的启动次数。                      |
+| lastModuleUsedTime   | number                                   | 否    | 否    | FA的上一次使用时间。                   |
+| formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | 否    | 否    | FA中卡片的使用记录。                   |
 
 ## HapFormInfo
 
@@ -1728,13 +1728,13 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| 名称              | 类型     | 必填   | 说明          |
-| ---------------- | ------ | ---- | ----------- |
-| formName         | string | 是    | 卡片名称。       |
-| formDimension    | number | 是    | 卡片尺寸。       |
-| formId           | number | 是    | 卡片Id。       |
-| formLastUsedTime | number | 是    | 卡片的上一次点击时间。 |
-| count            | number | 是    | 卡片的点击次数。    |
+| 名称              | 类型     | 只读   | 可选   | 说明          |
+| ---------------- | ------ | ---- | ---- | ----------- |
+| formName         | string | 否    | 否    | 卡片名称。       |
+| formDimension    | number | 否    | 否    | 卡片尺寸。       |
+| formId           | number | 否    | 否    | 卡片Id。       |
+| formLastUsedTime | number | 否    | 否    | 卡片的上一次点击时间。 |
+| count            | number | 否    | 否    | 卡片的点击次数。    |
 
 ## AppGroupCallbackInfo
 
@@ -1742,13 +1742,13 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
-| 名称           | 类型   | 必填 | 说明             |
-| ---------------- | ------ | ---- | ---------------- |
-| appOldGroup | number | 是   | 变化前的应用分组。 |
-| appNewGroup | number | 是   | 变化后的应用分组。|
-| userId           | number | 是   | 用户id。           |
-| changeReason     | number | 是   | 分组变化原因。<br>- 256:使用记录初创建时，默认匹配的原因。<br>- 512:计算优先级分组时异常。<br>- 768:使用时长变化。  <br>- 1024:有其他应用为当前应用强制设置优先级分组。|
-| bundleName       | string | 是   | 应用名称。         |
+| 名称           | 类型   | 只读 | 可选 | 说明             |
+| ---------------- | ------ | ---- | ---- | ---------------- |
+| appOldGroup | number | 否   | 否   | 变化前的应用分组。 |
+| appNewGroup | number | 否   | 否   | 变化后的应用分组。|
+| userId           | number | 否   | 否   | 用户id。           |
+| changeReason     | number | 否   | 否   | 分组变化原因。<br>- 256:使用记录初创建时，默认匹配的原因。<br>- 512:计算优先级分组时异常。<br>- 768:使用时长变化。  <br>- 1024:有其他应用为当前应用强制设置优先级分组。|
+| bundleName       | string | 否   | 否   | 应用名称。         |
 
 ## BundleStatsInfo
 
@@ -1756,19 +1756,19 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| 名称                      | 类型     | 必填   | 说明                                       |
-| ------------------------ | ------ | ---- | ---------------------------------------- |
-| bundleName               | string | 否    | 应用包名。                                    |
-| abilityPrevAccessTime    | number | 否    | 应用最后一次使用的时间。                             |
-| abilityInFgTotalTime     | number | 否    | 应用在前台使用的总时间。                             |
-| id                       | number | 是    | 用户id。 |
-| abilityPrevSeenTime      | number | 否    | 应用最后一次在前台可见的时间。 |
-| abilitySeenTotalTime     | number | 否    | 应用在前台可见的总时间。 |
-| fgAbilityAccessTotalTime | number | 否    | 应用访问前台的总时间。 |
-| fgAbilityPrevAccessTime  | number | 否    | 应用最后一次访问前台的时间。|
-| infosBeginTime           | number | 否    | BundleActiveInfo对象中第一条应用使用统计的记录时间。 |
-| infosEndTime             | number | 否    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。 |
-| appIndex<sup>15+</sup>                 | number | 否    | 应用程序的索引。 |
+| 名称                      | 类型     | 只读   | 可选   | 说明                                       |
+| ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
+| bundleName               | string | 否    | 是    | 应用包名。                                    |
+| abilityPrevAccessTime    | number | 否    | 是    | 应用最后一次使用的时间。                             |
+| abilityInFgTotalTime     | number | 否    | 是    | 应用在前台使用的总时间。                             |
+| id                       | number | 否    | 否    | 用户id。 |
+| abilityPrevSeenTime      | number | 否    | 是    | 应用最后一次在前台可见的时间。 |
+| abilitySeenTotalTime     | number | 否    | 是    | 应用在前台可见的总时间。 |
+| fgAbilityAccessTotalTime | number | 否    | 是    | 应用访问前台的总时间。 |
+| fgAbilityPrevAccessTime  | number | 否    | 是    | 应用最后一次访问前台的时间。|
+| infosBeginTime           | number | 否    | 是    | BundleActiveInfo对象中第一条应用使用统计的记录时间。 |
+| infosEndTime             | number | 否    | 是    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。 |
+| appIndex<sup>15+</sup>                 | number | 否    | 是    | 应用程序的索引。 |
 
 ## BundleEvents
 
@@ -1776,14 +1776,14 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| 名称                   | 类型     | 必填   | 说明                                       |
-| --------------------- | ------ | ---- | ---------------------------------------- |
-| bundleName            | string | 否    | 应用包名。                                    |
-| eventId             | number | 否    | 应用事件类型。                                  |
-| eventOccurredTime     | number | 否    | 应用事件发生的时间戳。                              |
-| appGroup | number | 否    | 应用程序的使用优先级组。|
-| indexOfLink           | string | 否    | 快捷方式id。|
-| nameOfClass           | string | 否    | 类名。|
+| 名称                   | 类型     | 只读   | 可选   | 说明                                       |
+| --------------------- | ------ | ---- | ---- | ---------------------------------------- |
+| bundleName            | string | 否    | 是    | 应用包名。                                    |
+| eventId             | number | 否    | 是    | 应用事件类型。                                  |
+| eventOccurredTime     | number | 否    | 是    | 应用事件发生的时间戳。                              |
+| appGroup | number | 否    | 是    | 应用程序的使用优先级组。|
+| indexOfLink           | string | 否    | 是    | 快捷方式id。|
+| nameOfClass           | string | 否    | 是    | 类名。|
 
 ## BundleStatsMap
 
@@ -1811,11 +1811,11 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| 名称     | 类型     | 必填   | 说明                |
-| ------- | ------ | ---- | ----------------- |
-| name    | string | 是    | 通知应用包名或者系统事件名。    |
-| eventId | number | 是    | 通知、系统事件类型。        |
-| count   | number | 是    | 应用通知次数或者系统事件触发次数。 |
+| 名称     | 类型     | 只读   | 可选   | 说明                |
+| ------- | ------ | ---- | ---- | ----------------- |
+| name    | string | 否    | 否    | 通知应用包名或者系统事件名。    |
+| eventId | number | 否    | 否    | 通知、系统事件类型。        |
+| count   | number | 否    | 否    | 应用通知次数或者系统事件触发次数。 |
 
 ## IntervalType
 

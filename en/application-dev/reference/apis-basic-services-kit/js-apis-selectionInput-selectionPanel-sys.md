@@ -1,5 +1,12 @@
 # @ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides the properties and types of the word selection panel.
 
 > **NOTE**

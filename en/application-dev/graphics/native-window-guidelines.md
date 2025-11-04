@@ -1,12 +1,17 @@
 # Native Window Development (C/C++)
-
-## When to Use
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+## Overview
 
 The native window module is a local platform-based window that represents the producer of a graphics queue. It provides APIs for you to request and flush a buffer and configure buffer attributes.
 
 The following scenarios are common for native window development:
 
-* Request a graphics buffer by using the native window API, write the produced graphics content to the buffer, and flush the buffer to the graphics queue.
+* Apply for a graphics `Buffer` through the Native API provided by `NativeWindow`, write the generated graphics content to the graphics `Buffer`, and submit the `Buffer` to the graphics queue.
 * Request and flush a buffer when adapting to the **eglswapbuffer** interface at the EGL.
 
 ## Available APIs
@@ -17,11 +22,11 @@ The following scenarios are common for native window development:
 | OH_NativeWindow_NativeWindowFlushBuffer (OHNativeWindow \*window, OHNativeWindowBuffer \*buffer, int fenceFd, Region region) | Flushes the **OHNativeWindowBuffer** filled with the produced content to the buffer queue through an **OHNativeWindow** instance for content consumption.| 
 | OH_NativeWindow_NativeWindowHandleOpt (OHNativeWindow \*window, int code,...) | Sets or obtains the attributes of an **OHNativeWindow** instance, including the width, height, and content format.| 
 
-For details about the APIs, see [native_window](../reference/apis-arkgraphics2d/_native_window.md).
+For details, see [native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md).
 
 ## How to Develop
 
-The following describes how to use the native window APIs to request a graphics buffer, write the produced graphics content to the buffer, and flush the buffer to the graphics queue.
+The following procedure describes how to use the native APIs provided by `NativeWindow` to apply for a graphics `buffer`, write graphics content, and submit the `buffer` to the graphics queue.
 
 **Adding Dynamic Link Libraries**
 
@@ -42,148 +47,169 @@ libnative_window.so
 
 1. Obtain an **OHNativeWindow** instance.
 
-    You can call the APIs provided by [OH_NativeXComponent_Callback](../reference/apis-arkui/_o_h___native_x_component___callback.md) to obtain an **OHNativeWindow** instance. An example code snippet is provided below. For details about how to use the **XComponent**, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
+    You can obtain the OHNativeWindow through the [`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md) API. The sample code is as follows: For details about how to use the XComponent module, see [XComponent Development Guidelines](../ui/napi-xcomponent-guidelines.md).
+
     1. Add an **XComponent** to the .ets file.
-        ```ts
-        XComponent({ id: 'xcomponentId', type: 'surface', libraryname: 'entry'})
-            .width(360)
-            .height(360)
+        <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
+
+        ``` C++
+        XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+            .margin({ bottom: 26 })
+            .onLoad((nativeWindowContext) => {
+            this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
+            })
         ```
+
     2. Obtain **NativeXComponent** at the native C++ layer.
-        ```c++
+        <!-- @[get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+        ``` C++
         napi_value exportInstance = nullptr;
-        // Parse the attribute of the wrapped NativeXComponent pointer.
-        napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance);
         OH_NativeXComponent *nativeXComponent = nullptr;
-        // Use the napi_unwrap API to parse the NativeXComponent instance pointer.
-        napi_unwrap(env, exportInstance, reinterpret_cast<void**>(&nativeXComponent));
-        // Obtain the XComponent ID.
+        int32_t ret;
         char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {};
         uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
-        OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize);
+
+        status = napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance);
+        if (status != napi_ok) {
+            return false;
+        }
+
+        status = napi_unwrap(env, exportInstance, reinterpret_cast<void**>(&nativeXComponent));
+        if (status != napi_ok) {
+            return false;
+        }
+
+        ret = OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize);
+        if (ret != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+            return false;
+        }
         ```
+
     3. Define **OH_NativeXComponent_Callback**.
-        ```c++
-        // Define the callback.
+        <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+        ``` C++
         void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
         {
-            // Obtain an OHNativeWindow instance.
+            // ···
             OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-            // After this callback is triggered, the reference count for the window is initialized to 1. If the window-related APIs and XComponent destructor are concurrently used,
-            // you must manually adjust the reference count by using OH_NativeWindow_NativeObjectReference to increase it and OH_NativeWindow_NativeObjectUnreference to decrease it.
-            // This manual management of the reference count by 1 helps to avoid issues with dangling or null pointers that could occur during concurrent calls to window APIs following the destruction of an XComponent.
+            // ···
         }
+
         void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
         {
-            // Obtain an OHNativeWindow instance.
+            // ···
             OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-            // ...
+            // ···
         }
+
         void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
         {
-            // Obtain an OHNativeWindow instance.
+            // ···
             OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-            // After this callback is triggered, the reference count for the window is decremented by 1. When the reference count reaches 0, the window is destructed.
-            // Once the window is destructed, no further API calls should be made through the window. This operation results in a crash caused by dangling or null pointers.
+            // ···
         }
+
         void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
         {
-            // Obtain an OHNativeWindow instance.
+            // ···
             OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-            // ...
         }
+        // ···
+        callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+        callback_.OnSurfaceChanged = OnSurfaceChangedCB;
+        callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+        callback_.DispatchTouchEvent = DispatchTouchEventCB;
         ```
-        ```c++
-        // Initialize OH_NativeXComponent_Callback.
-        OH_NativeXComponent_Callback callback;
-        callback.OnSurfaceCreated = OnSurfaceCreatedCB;
-        callback.OnSurfaceChanged = OnSurfaceChangedCB;
-        callback.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
-        callback.DispatchTouchEvent = DispatchTouchEventCB;
-        ```
-   4. Register **OH_NativeXComponent_Callback** with **NativeXComponent**.
-        ```c++
-        // Register the callback.
-        OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback);
+
+    4. Register **OH_NativeXComponent_Callback** with **NativeXComponent**.
+        <!-- @[register_xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+        ``` C++
+        OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
         ```
 
 2. Set the attributes of an **OHNativeWindowBuffer** by using **OH_NativeWindow_NativeWindowHandleOpt**.
-    ```c++
-    // Set the width and height of the OHNativeWindowBuffer.
-    int32_t code = SET_BUFFER_GEOMETRY;
-    int32_t width = 0x100;
-    int32_t height = 0x100;
-    // The nativeWindow instance is obtained from the callback in the previous step.
-    int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
+    <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t bufferHeight = static_cast<int32_t>(height_ / 4);
+    int32_t bufferWidth = static_cast<int32_t>(width_ / 2);
+    OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, code, bufferWidth, bufferHeight);
     ```
 
 3. Request an **OHNativeWindowBuffer** from the graphics queue.
-    ```c++
-    OHNativeWindowBuffer* buffer = nullptr;
-    int releaseFenceFd = -1;
-    // Obtain the OHNativeWindowBuffer instance by calling OH_NativeWindow_NativeWindowRequestBuffer.
-    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &buffer, &releaseFenceFd);
-    if (ret != 0 || buffer == nullptr) {
+    <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
+    int fenceFd = -1;
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    if (ret != 0 || nativeWindowBuffer == nullptr) {
         return;
     }
-    // Obtain the buffer handle by calling OH_NativeWindow_GetBufferHandleFromNative.
-    BufferHandle* bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
+    BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(nativeWindowBuffer);
     ```
 
 4. Map memory.
-    ```c++
-    #include <sys/mman.h>
+    <!-- @[map_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-    // Use mmap() to map the shared memory allocated to the buffer handle to the user space. Image data can be written to the buffer handle by using the obtained virtual address.
-    // bufferHandle->virAddr indicates the start address of the buffer handle in the shared memory, and bufferHandle->size indicates the memory usage of the buffer handle in the shared memory.
-    void* mappedAddr = mmap(bufferHandle->virAddr, bufferHandle->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle->fd, 0);
-    if (mappedAddr == MAP_FAILED) {
-        // mmap failed
-    }
+    ``` C++
+    void *mappedAddr =
+        mmap(bufferHandle->virAddr, bufferHandle->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle->fd, 0);
     ```
 
-5. Write the produced content to the **OHNativeWindowBuffer**.
+5. Write the produced content to the **OHNativeWindowBuffer**. Before this operation, wait until **releaseFenceFd** is available. (Note that **poll** needs to be called only when **releaseFenceFd** is not **-1**.) If no data waiting for **releaseFenceFd** is available (POLLIN), problems such as artifacts, cracks, and High Efficiency Bandwidth Compression (HEBC) faults may occur. **releaseFenceFd** is a file handle created by the consumer process to indicate that the consumer has consumed the buffer, the buffer is readable, and the producer can start to fill in the buffer.
+    <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-   Before this operation, wait until **releaseFenceFd** is available. (Note that **poll** needs to be called only when **releaseFenceFd** is not **-1**.) If no data waiting for **releaseFenceFd** is available (POLLIN), problems such as artifacts, cracks, and High Efficiency Bandwidth Compression (HEBC) faults may occur. **releaseFenceFd** is a file handle created by the consumer process to indicate that the consumer has consumed the buffer, the buffer is readable, and the producer can start to fill in the buffer.
-    ```c++
+    ``` C++
     int retCode = -1;
     uint32_t timeout = 3000;
-    if (releaseFenceFd != -1) {
+    if (fenceFd != -1) {
         struct pollfd pollfds = {0};
-        pollfds.fd = releaseFenceFd;
+        pollfds.fd = fenceFd;
         pollfds.events = POLLIN;
         do {
             retCode = poll(&pollfds, 1, timeout);
         } while (retCode == -1 && (errno == EINTR || errno == EAGAIN));
-        close(releaseFenceFd); // Prevent FD leakage.
+        close(fenceFd);
     }
-
-    static uint32_t value = 0x00;
-    value++;
-    uint32_t *pixel = static_cast<uint32_t *>(mappedAddr); // Use the address obtained by mmap() to access the memory.
-    for (uint32_t x = 0; x < width; x++) {
-        for (uint32_t y = 0;  y < height; y++) {
+    uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+    for (uint64_t x = 0; x < bufferHandle->width; x++) {
+        for (uint64_t y = 0; y < bufferHandle->height; y++) {
             *pixel++ = value;
         }
     }
     ```
 
-6. Flush the **OHNativeWindowBuffer** to the graphics queue.
+6. Flush the **OHNativeWindowBuffer** to the graphics queue. Note that **acquireFenceFd** of **OH_NativeWindow_NativeWindowFlushBuffer** cannot be the same as **releaseFenceFd** obtained by **OH_NativeWindow_NativeWindowRequestBuffer**. **acquireFenceFd** is the file handle passed in by the producer, and the default value **-1** can be passed. Based on **acquireFenceFd**, the consumer, after obtaining the buffer, determines when to render and display the buffered content.
+    <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-   Note that **acquireFenceFd** of **OH_NativeWindow_NativeWindowFlushBuffer** cannot be the same as **releaseFenceFd** obtained by **OH_NativeWindow_NativeWindowRequestBuffer**. **acquireFenceFd** is the file handle passed in by the producer, and the default value **-1** can be passed. Based on **acquireFenceFd**, the consumer, after obtaining the buffer, determines when to render and display the buffered content.
-    ```c++
-    // Set the refresh region. If Rect in Region is a null pointer or rectNumber is 0, all contents in the OHNativeWindowBuffer are changed.
-    Region region{nullptr, 0};
-    int acquireFenceFd = -1;
-    // Flush the buffer to the consumer through OH_NativeWindow_NativeWindowFlushBuffer, for example, by displaying it on the screen.
-    OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, acquireFenceFd, region);
-    ```
-7. Unmap memory.
-    ```c++
-    // Unmap the memory when the memory is no longer required.
-    int result = munmap(mappedAddr, bufferHandle->size);
-    if (result == -1) {
-        // munmap failed
+    ``` C++
+    struct Region *region = new Region();
+    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
+    if (ret != NATIVE_ERROR_OK) {
+        LOGE("flush failed");
+        (void)OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer);
+        return;
     }
     ```
 
+7. Unmaps memory using munmap.
+    <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
+    if (munmap(mappedAddr, bufferHandle->size) < 0) {
+        OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+        LOGE("munmap failed");
+        return;
+    }
+    ```
+
+## Samples
+
+The following samples are provided to help you better understand how to use the native Window module for development:
+
+- [NativeWindow (API11) ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow)

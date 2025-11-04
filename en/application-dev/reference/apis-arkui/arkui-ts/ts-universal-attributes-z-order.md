@@ -1,4 +1,10 @@
 # Z-order Control
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The **zIndex** attribute sets the z-order of a component in the stacking context.
 
@@ -53,6 +59,7 @@ struct ZIndexExample {
           .zIndex(1)
         Text('3, zIndex(0)')
           .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
+          .zIndex(0)
       }.width('100%').height(200)
     }.width('100%').height(200)
   }
@@ -104,6 +111,6 @@ Effect after clicking the **Button** component to dynamically change **zIndex** 
 
 ![zIndex_1.png](figures/zIndex_1.png)
 
-Effect after the **Button** component is clicked to dynamically change **zIndex** so that **Text1** has a higher **zIndex** value than **Text2**
+Effect after the **Button** component is clicked to dynamically change **zIndex** so that **Text2** has a higher **zIndex** value than **Text1**
 
 ![zIndex_2.png](figures/zIndex_2.png)

@@ -59,15 +59,15 @@ You can obtain and set the serial port configuration as follows:
 1. Import the **usbManager** module.
 
     ```ts
-    // Import the usbManager module.
-    import serial from '@ohos.usbManager.serial';
+    // Import the serialManager module.
+    import { serialManager } from '@kit.BasicServicesKit';
     ``` 
 
 2. Obtain the USB device list.
 
     ```ts
     // Obtain the list of USB devices connected to the host.
-    let portList: serial.SerialPort[] = serial.getPortList();
+    let portList: serialManager.SerialPort[] = serialManager.getPortList();
     console.info(`usbSerial portList: ${portList}`);
     if (portList === undefined || portList.length === 0) {
       console.error('usbSerial portList is empty');
@@ -82,8 +82,8 @@ You can obtain and set the serial port configuration as follows:
     // Name the function based on the specific service.
     async function serialDefault() {
       let portId: number = portList[0].portId;
-      if (!serial.hasSerialRight(portId)) {
-        await serial.requestSerialRight(portId).then(result => {
+      if (!serialManager.hasSerialRight(portId)) {
+        await serialManager.requestSerialRight(portId).then(result => {
           if(!result) {
             // If the device does not have the access permission and is not granted by the user, the device exits.
             console.error('The user does not have permission to perform this operation');
@@ -98,7 +98,7 @@ You can obtain and set the serial port configuration as follows:
 
     ```ts
     try {
-      serial.open(portId)
+      serialManager.open(portId)
       console.info(`open usbSerial success, portId: ${portId}`);
     } catch (error) {
       console.error(`open usbSerial error: ${error}`);
@@ -110,7 +110,7 @@ You can obtain and set the serial port configuration as follows:
     ```ts
     // Obtain the serial port configuration.
     try {
-      let attribute: serial.SerialAttribute = serial.getAttribute(portId);
+      let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
       if (attribute === undefined) {
         console.error('getAttribute usbSerial error, attribute is undefined');
       } else {
@@ -122,13 +122,13 @@ You can obtain and set the serial port configuration as follows:
    
     // Set the serial port configuration.
     try {
-      let attribute: serial.SerialAttribute = {
-        baudRate: serial.BaudRates.BAUDRATE_9600,
-        dataBits: serial.DataBits.DATABIT_8,
-        parity: serial.Parity.PARITY_NONE,
-        stopBits: serial.StopBits.STOPBIT_1
+      let attribute: serialManager.SerialAttribute = {
+        baudRate: serialManager.BaudRates.BAUDRATE_9600,
+        dataBits: serialManager.DataBits.DATABIT_8,
+        parity: serialManager.Parity.PARITY_NONE,
+        stopBits: serialManager.StopBits.STOPBIT_1
       }
-      serial.setAttribute(portId, attribute);
+      serialManager.setAttribute(portId, attribute);
       console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
     } catch (error) {
       console.error(`setAttribute usbSerial error: ${error}`);

@@ -63,7 +63,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 获取宿主应用窗口的避让信息
     const avoidArea = extensionHostWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-    console.log(`avoidArea: ${JSON.stringify(avoidArea)}`);
+    console.info(`avoidArea: ${JSON.stringify(avoidArea)}`);
   }
 }
 ```
@@ -241,7 +241,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 获取UIExtensionComponent位置和大小信息
     const rect = extensionHostWindow.properties.uiExtensionHostWindowProxyRect;
-    console.log(`Rect Info: ${JSON.stringify(rect)}`);
+    console.info(`Rect Info: ${JSON.stringify(rect)}`);
   }
 }
 ```
@@ -570,23 +570,23 @@ export default class EntryAbility extends UIExtensionAbility {
   const TAG: string = '[ExampleUIExtensionAbility]';
   export default class ExampleUIExtensionAbility extends UIExtensionAbility {
     onCreate() {
-      console.log(TAG, `onCreate`);
+      console.info(TAG, `onCreate`);
     }
 
     onForeground() {
-      console.log(TAG, `onForeground`);
+      console.info(TAG, `onForeground`);
     }
 
     onBackground() {
-      console.log(TAG, `onBackground`);
+      console.info(TAG, `onBackground`);
     }
 
     onDestroy() {
-      console.log(TAG, `onDestroy`);
+      console.info(TAG, `onDestroy`);
     }
 
     onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
       let param: Record<string, UIExtensionContentSession> = {
         'session': session
       };
@@ -621,14 +621,14 @@ export default class EntryAbility extends UIExtensionAbility {
       });
       let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
       promise?.then(()=> {
-        console.log(`Succeeded in hiding the non-secure windows.`);
+        console.info(`Succeeded in hiding the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
       this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.log(`Successfully enabled privacy protection for non-system screenshots.`);
+        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
       }).catch((err: BusinessError) => {
-        console.log(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
       })
     }
 
@@ -637,9 +637,9 @@ export default class EntryAbility extends UIExtensionAbility {
       this.extensionHostWindow?.off('avoidAreaChange');
       let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
       promise?.then(()=> {
-        console.log(`Succeeded in showing the non-secure windows.`);
+        console.info(`Succeeded in showing the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
     }
 

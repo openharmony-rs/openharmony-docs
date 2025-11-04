@@ -1,9 +1,16 @@
 # Introduction to Notification Kit
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 With Notification Kit, you can publish local notifications from your application and push them to users on the client. Local notifications can be displayed by ringtones, vibrations, banners, lock screen, screen off, Always On Display (AOD), and notification panel based on the notification type and publishing scenario.
 
 ## When to Use
-When application is running in the foreground, you can use the Notification Kit to publish notifications to users.<!--RP1--><!--RP1End-->
+When an application is running, you can use the Notification Kit to publish notifications to users.<!--RP1--><!--RP1End-->
 You can use the local notification capability in multiple scenarios. For example, synchronize the upload and download progress of the user, send instant customer service payment notifications, and update the number of steps.
 
 ## Capability Scope

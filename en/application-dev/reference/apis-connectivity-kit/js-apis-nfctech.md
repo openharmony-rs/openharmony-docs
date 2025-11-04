@@ -1,5 +1,12 @@
 # nfctech (Standard NFC Technologies)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **nfctech** module provides APIs for reading and writing tags that use different Near-Field Communication (NFC) technologies.
 
 > **NOTE**
@@ -330,7 +337,7 @@ console.info("isoDep hiLayerResponse: " + hiLayerResponse);
 
 isExtendedApduSupported(): Promise&lt;boolean&gt;
 
-Checks whether an extended application protocol data unit (APDU) is supported. This API uses a promise to return the result.
+Checks whether extended APDUs are supported. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -342,7 +349,7 @@ Checks whether an extended application protocol data unit (APDU) is supported. T
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the extended APDU is supported; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that extended APDUs are supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -375,11 +382,10 @@ function nfcTechDemo() {
         isoDep.isExtendedApduSupported().then((response: boolean) => {
             console.info("isoDep isExtendedApduSupported Promise response: " + response);
         }).catch((err: BusinessError) => {
-            console.error("isoDep isExtendedApduSupported Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`isoDep isExtendedApduSupported Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("isoDep isExtendedApduSupported Promise Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`isoDep isExtendedApduSupported Promise Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -389,7 +395,7 @@ function nfcTechDemo() {
 
 isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 
-Checks whether an extended APDU is supported. This API uses an asynchronous callback to return the result.
+Checks whether extended APDUs are supported. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -401,7 +407,7 @@ Checks whether an extended APDU is supported. This API uses an asynchronous call
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the operation result. If the extended APDU is supported, **true** is returned; otherwise, **false** is returned.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the operation result. The value **true** indicates that extended APDUs are supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -433,13 +439,13 @@ function nfcTechDemo() {
     try {
         isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
             if (err) {
-                console.error("isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}");
+                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
             } else {
                 console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
             }
         });
-    } catch (busiErr) {
-        console.error("isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, " + "message: ${(businessError as Business).message}");
+    } catch (businessError) {
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
     }
 }
 
@@ -567,7 +573,7 @@ console.info("ndef isNdefWritable: " + isWritable);
 
 readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
-Reads the NDEF message from this tag. This API uses a promise to return the result.
+Reads the NDEF message from the NDEF tag. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -579,7 +585,7 @@ Reads the NDEF message from this tag. This API uses a promise to return the resu
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise\<[NdefMessage](#ndefmessage9)> | Promise used to return the message object read.|
+| Promise\<[NdefMessage](#ndefmessage9)> | Promise used to return the **Message** object read from the NDEF tag.|
 
 **Error codes**
 
@@ -615,8 +621,7 @@ function nfcTechDemo(){
             console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, " +
-        "message: ${(businessError as BusinessError).message}");
+        console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -626,7 +631,7 @@ function nfcTechDemo(){
 
 readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 
-Reads the NDEF message from this tag. This API uses an asynchronous callback to return the result.
+Reads the NDEF message from the NDEF tag. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -670,14 +675,13 @@ function nfcTechDemo() {
     try {
         ndefTag.readNdef((err : BusinessError, ndefmessage : tag.NdefMessage)=> {
             if (err) {
-                console.error("ndef readNdef AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef readNdef AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef readNdef AsyncCallback ndefmessage: " + ndefmessage);
             }
         });
     } catch (businessError) {
-        console.error("ndef readNdef AsyncCallback catch Code: ${(businessError : BusinessError).code}," +
-        " message: ${(businessError : BusinessError).message}");
+        console.error(`ndef readNdef AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -687,7 +691,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-Writes an NDEF message to this tag. This API uses a promise to return the result.
+Writes a **Message** object to the NDEF tag. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -743,11 +747,10 @@ function nfcTechDemo() {
         ndefTag.writeNdef(ndefMessage).then(() => {
             console.info("ndef writeNdef Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndef writeNdef err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef writeNdef err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndef writeNdef Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef writeNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -756,7 +759,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-Writes an NDEF message to this tag. This API uses an asynchronous callback to return the result.
+Writes a **Message** object to the NDEF tag. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -812,8 +815,7 @@ function nfcTechDemo() {
             }
         }); 
     } catch (businessError) {
-        console.error("ndef writeNdef AsyncCallback catch businessError Code: ${(businessError as Businsess).code}," +
-            " message: ${(businessError as Businsess).message}");
+        console.error(`ndef writeNdef AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -859,7 +861,7 @@ console.info("ndef canSetReadOnly: " + canSetReadOnly);
 
 setReadOnly(): Promise\<void>
 
-Sets this NDEF tag to read-only. This API uses a promise to return the result.
+Sets the NDEF tag to read-only. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -908,8 +910,7 @@ function nfcTechDemo() {
             console.error("ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("ndef setReadOnly Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef setReadOnly Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -918,7 +919,7 @@ function nfcTechDemo() {
 
 setReadOnly(callback: AsyncCallback\<void>): void
 
-Sets this NDEF tag to read-only. This API uses an asynchronous callback to return the result.
+Sets the NDEF tag to read-only. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -963,14 +964,13 @@ function nfcTechDemo() {
     try {
         ndefTag.setReadOnly((err : BusinessError)=> {
             if (err) {
-                console.error("ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef setReadOnly AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1017,8 +1017,7 @@ try {
     let ndefTypeString : string = ndefTag.getNdefTagTypeString(tag.NfcForumType.NFC_FORUM_TYPE_1);
     console.info("ndef ndefTypeString: " + ndefTypeString);
 } catch (businessError) {
-    console.error("ndef getNdefTagTypeString catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`ndef getNdefTagTypeString catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -1095,8 +1094,7 @@ function nfcTechDemo() {
             console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1154,14 +1152,13 @@ function nfcTechDemo() {
         let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}");
+                console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic authenticateSector AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1188,7 +1185,7 @@ Reads a block (16 bytes) on this tag. This API uses a promise to return the resu
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| Promise\<number[]> | Promise used to return the block read.|
+| Promise\<number[]> | Promise used to return the read block data.|
 
 **Error codes**
 
@@ -1223,11 +1220,10 @@ function nfcTechDemo() {
         mifareClassic.readSingleBlock(blockIndex).then((data : number[]) => {
             console.info("mifareClassic readSingleBlock Promise data: " + data);
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic readSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic readSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1289,8 +1285,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic readSingleBlock AsyncCallback catch businessError Code: " + 
-        " ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic readSingleBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1358,8 +1353,7 @@ function nfcTechDemo() {
             console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, "
-        + "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1418,15 +1412,13 @@ function nfcTechDemo() {
             0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // Set the correct data. The value must contain 16 bytes.
         mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic writeSingleBlock AsyncCallback err Code:" +
-                "${err.code}, message: ${err.message}");
+                console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic writeSingleBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1435,7 +1427,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number): Promise\<void>
 
-Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses a promise to return the result. This API uses a promise to return the result.
+Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -1490,11 +1482,10 @@ function nfcTechDemo() {
         mifareClassic.incrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic incrementBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic incrementBlock Promise catch Code: ${(businessError as Businsess).code}, " +
-           "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic incrementBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1503,7 +1494,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result.
+Increments a block with the specified value and saves the result in a buffer for internal transmission. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -1552,14 +1543,13 @@ function nfcTechDemo() {
         let value = 0x20; // Set the correct data.
         mifareClassic.incrementBlock(blockIndex, value, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic incrementBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1626,8 +1616,7 @@ function nfcTechDemo() {
             console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1692,8 +1681,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-          "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1755,11 +1743,10 @@ function nfcTechDemo() {
         mifareClassic.transferToBlock(blockIndex).then(() => {
             console.info("mifareClassic transferToBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic transferToBlock Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
     }
 }
 ```
@@ -1815,15 +1802,13 @@ function nfcTechDemo() {
         let blockIndex = 1; // Set a correct index.
         mifareClassic.transferToBlock(blockIndex, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic transferToBlock AsyncCallback errCode: ${err.code}," +
-                    "message: ${err.message}");
+                console.error(`mifareClassic transferToBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic transferToBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1885,11 +1870,10 @@ function nfcTechDemo() {
         mifareClassic.restoreFromBlock(blockIndex).then(() => {
             console.info("mifareClassic restoreFromBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic restoreFromBlock Promise catch businessError Code: ${(businessError as Businsess).code}," +
-            " message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic restoreFromBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1945,15 +1929,13 @@ function nfcTechDemo() {
         let blockIndex = 1; // Set a correct index.
         mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}," +
-                    " message: ${err.message}");
+                console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic restoreFromBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2028,8 +2010,7 @@ try {
     let blockCnt : number = mifareClassic.getBlockCountInSector(sectorIndex);
     console.info("mifareClassic blockCnt: " + blockCnt);
 } catch (businessError) {
-    console.error("mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2156,8 +2137,7 @@ try {
     let blockIndex : number = mifareClassic.getBlockIndex(sectorIndex);
     console.info("mifareClassic blockIndex: " + blockIndex);
 } catch (businessError) {
-    console.error("mifareClassic getBlockIndex catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getBlockIndex catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2204,8 +2184,7 @@ try {
     let sectorIndex : number = mifareClassic.getSectorIndex(blockIndex);
     console.info("mifareClassic sectorIndex: " + sectorIndex);
 } catch (businessError) {
-    console.error("mifareClassic getSectorIndex catch businessError Code: ${(businessError as Businsess).code}, " +
-       "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getSectorIndex catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2277,11 +2256,10 @@ function nfcTechDemo() {
         mifareUltralight.readMultiplePages(pageIndex).then((data : number[]) => {
             console.info("mifareUltralight readMultiplePages Promise data = " + data);
         }).catch((err : BusinessError)=> {
-            console.error("mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareUltralight readMultiplePages Promise catch businessError" +
-            " Code: ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight readMultiplePages Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2337,14 +2315,13 @@ function nfcTechDemo() {
         let pageIndex = 1; // Set a correct index.
         mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
             if (err) {
-                console.log("mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.log(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
             }
         });
     } catch (businessError) {
-        console.error("mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2408,11 +2385,10 @@ function nfcTechDemo() {
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareUltralight writeSinglePage Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight writeSinglePage Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2470,15 +2446,13 @@ function nfcTechDemo() {
         let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes. 
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
-                console.error("mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}," +
-                    "message: ${err.message}");
+                console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight writeSinglePage AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2580,11 +2554,10 @@ function nfcTechDemo() {
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`defFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndefFormatable format Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable format Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2606,12 +2579,7 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | Yes  | NDEF message to write when the formatting is successful. If this parameter is **null**, the tag is formatted only (no data will be written).|
-
-**Return value**
-
-| **Type**| **Description**                            |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2648,14 +2616,13 @@ function nfcTechDemo() {
 
         ndefFormatable.format(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndefFormatable format AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`ndefFormatable format AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndefFormatable format AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndefFormatable format AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable format AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2721,11 +2688,10 @@ function nfcTechDemo() {
         ndefFormatable.formatReadOnly(ndefMessage).then(() => {
             console.info("ndefFormatable formatReadOnly Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndefFormatable formatReadOnly Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`ndefFormatable formatReadOnly Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndefFormatable formatReadOnly Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable formatReadOnly Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2747,12 +2713,7 @@ Formats this tag as an NDEF tag, writes an NDEF message to the NDEF tag, and the
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | Yes  | NDEF message to write. If this parameter is **null**, the tag is formatted only (no data will be written).|
-
-**Return value**
-
-| **Type**| **Description**                            |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2790,14 +2751,13 @@ function nfcTechDemo() {
 
         ndefFormatable.formatReadOnly(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndefFormatable formatReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndefFormatable formatReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndefFormatable formatReadOnly AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndefFormatable formatReadOnly AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable formatReadOnly AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```

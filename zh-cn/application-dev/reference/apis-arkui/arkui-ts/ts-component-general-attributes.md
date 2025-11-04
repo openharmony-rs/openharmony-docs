@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
 - [尺寸设置](ts-universal-attributes-size.md)
 - [位置设置](ts-universal-attributes-location.md)

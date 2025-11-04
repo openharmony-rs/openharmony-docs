@@ -5,7 +5,7 @@
 <!--Owner: @Saber_e-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ The file declares the structs and enums of the LowPowerVideoSink.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) | OH_LowPowerVideoSink | Describes the declaration for the LowPowerVideoSink.|
-| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the LowPowerVideoSink.<br>To ensure the normal running of the LowPowerVideoSink, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the LowPowerVideoSink.<br> To ensure the normal running of the LowPowerVideoSink, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions.|
 
 ### Functions
 
@@ -83,7 +83,7 @@ Called when an error occurs in the LowPowerVideoSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) errCode | Error code returned when an error occurs during service operations.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errCode | Error code returned when an error occurs during service operations.|
 | const char* errMsg | Pointer to the error message returned when an error occurs during service operations.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
@@ -147,7 +147,7 @@ Called when the stream changes in the LowPowerVideoSink. This callback is includ
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* format | Pointer to the changed parameters and their values.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* format | Pointer to the changed parameters and their values.|
 |  void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()

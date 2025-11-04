@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 During the use of various terminal devices, users have different core performance requirements, such as smoothness, response speed, and power saving, for audio-related features in different scenarios. Typical scenarios include:
 
@@ -27,7 +27,7 @@ The choice of channels depends on the scenario, but the system cannot directly p
 
 ### Low-Latency Audio Playback and Recording
 
-Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data to when the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data to when the data is passed to the application through the system interface.
+Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
 To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set this through API parameters. For details, see [Audio Latency Management](audio-latency.md).
 
@@ -60,7 +60,7 @@ The following sections provide specific methods for obtaining performance logs a
 **Using DevEco Profiler**
 
 DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. It is integrated into DevEco Studio
-and can be used directly during application development. For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-insight-description-V5).
+and can be used directly during application development. For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
 
 DevEco Profiler is primarily used for analyzing and optimizing the runtime process of applications. The guide provides detailed steps for analysis, which will not be repeated here.
 

@@ -65,7 +65,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 | 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. |
 | 16000055 | Installation-free timed out. |
 | 16000071 | App clone is not supported. |
 | 16000072 | App clone or multi-instance is not supported. |
@@ -123,7 +123,7 @@ terminateSelf(): Promise&lt;void&gt;
 | ------- | ------------------------- |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.      |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. |
 
 **示例:**
 
@@ -173,7 +173,7 @@ stopNativeConnection(connectionId: number): Promise&lt;void&gt;
 |---------|----------|
 | 201 | The application does not have permission to call the interface. |
 | 16000011 | The context does not exist.      |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. |
 
 **示例:**
 

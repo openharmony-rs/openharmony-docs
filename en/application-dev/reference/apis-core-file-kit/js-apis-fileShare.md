@@ -15,7 +15,7 @@ The **FileShare** module provides APIs for granting permissions on a user file t
 ## Modules to Import
 
 ```ts
-import fileShare from '@ohos.fileshare';
+import { fileShare } from '@kit.CoreFileKit';
 ```
 
 ## OperationMode<sup>11+</sup>
@@ -49,6 +49,8 @@ Enumerates the error codes for a permission policy.
 
 Represents the detailed permission policy error result, which can be used when **persistPermission**, **revokePermission**, **activatePermission**, or **deactivatePermission** throws an error.
 
+type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
+
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 | Name| Type| Mandatory| Description|
@@ -63,10 +65,10 @@ Represents a permission policy, that is, a policy for granting or activating the
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name | Type | Mandatory | Description                                                  |
-|------|-------|------|------------------------------------------------------|
-| uri| string | Yes  | URI of the file, on which the permission is to be granted or activated.                                      |
-| operationMode | number | Yes  | URI operation mode. For details, see [OperationMode](#operationmode11).|
+| Name | Type | Read-Only| Optional| Description                                                  |
+|------|-------|------|-----|------------------------------------------------------|
+| uri| string | No  | No| URI of the file, on which the permission is to be granted or activated.                                      |
+| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11).|
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -74,10 +76,10 @@ Represents the information about the file or directory to be queried.
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name| Type | Mandatory | Description |
-|------|-------|-----|--------|
-| path          | string        | Yes  | Path to be queried.|
-| operationMode | OperationMode | Yes  | Operation mode of the path to be queried. For details, see [OperationMode](#operationmode11).|
+| Name| Type | Read-Only| Optional| Description |
+|------|-------|-----|-----|--------|
+| path          | string        | No| No  | Path to be queried.|
+| operationMode | OperationMode | No| No  | Operation mode of the path to be queried. For details, see [OperationMode](#operationmode11).|
 
 ## PolicyType<sup>15+</sup>
 
@@ -123,7 +125,7 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -138,7 +140,8 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        operationMode: fileShare.OperationMode.READ_MODE,
+        //Use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE for read and write authorization.
+        operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
       fileShare.persistPermission(policies).then(() => {
@@ -193,7 +196,7 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -263,7 +266,7 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -334,7 +337,7 @@ If the permission deactivation of some URIs fails, error code 13900001 will be r
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
 | 13900001 | Operation not permitted.|
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -397,7 +400,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 |----------| --------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
-| 13900042 | Unknown error.|
+| 13900042 | Out of memory.|
 
 **Example**
 
@@ -418,7 +421,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       fileShare.checkPersistentPermission(policies).then(async (data) => {
         let result: Array<boolean> = data;
         for (let i = 0; i < result.length; i++) {
-          console.log("checkPersistentPermission result: " + JSON.stringify(result[i]));
+          console.info("checkPersistentPermission result: " + JSON.stringify(result[i]));
           if(!result[i]){
             let info: fileShare.PolicyInfo = {
               uri: policies[i].uri, 

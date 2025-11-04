@@ -15,7 +15,7 @@ Applications can directly use the uniform data structs in certain scenarios. For
 
 ## Basic Concepts
 
-- UDS<br> A uniform data struct (UDS) defines the data of a certain type (specified by a UTD). Uniform data structs allow unified parsing standards to be used in data interaction, which minimizes the adaptation workload. Uniform data structs are used for data interaction across applications and devices, such as, the drag-and-drop operations.
+- UDS<br>A uniform data struct (UDS) defines the data of a certain type (specified by a UTD). Uniform data structs allow unified parsing standards to be used in data interaction, which minimizes the adaptation workload. Uniform data structs are used for data interaction across applications and devices, such as, the drag-and-drop operations.
 
 ## Available APIs
 
@@ -50,13 +50,9 @@ libudmf.so, libhilog_ndk.z.so
 ## Including Header Files
 
 ```c
-#include <cstdio>
-#include <cstring>
-#include <database/udmf/utd.h>
 #include <database/udmf/uds.h>
 #include <database/udmf/udmf.h>
 #include <database/udmf/udmf_meta.h>
-#include <database/udmf/udmf_err_code.h>
 #include <hilog/log.h>
 
 #undef LOG_TAG

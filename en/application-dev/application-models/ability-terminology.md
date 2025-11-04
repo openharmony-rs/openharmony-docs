@@ -25,6 +25,13 @@ An ArkTS child process is where the system automatically sets up an ArkTS runtim
 When an application has multiple processes, the system automatically designates a master process at application startup. If you want the current process to be selected as the master process, you can add it to the candidate master process list. Processes in this list are considered candidate master processes. When the current master process is destroyed, the system sets the candidate master process at the head of the list as the new master process.
 
 
+## F
+
+### FA Model
+
+The FA model is an early application model that provides essential components and runtime mechanisms for applications. Each application component in this model has its own ArkTS engine instance, making it ideal for developing simple applications.
+
+
 ## M
 
 ### Master Process
@@ -39,3 +46,11 @@ You can set the return value of [onNewProcessRequest](../reference/apis-ability-
 ### Native Child Process
 
 A native child process runs only C/C++ code. By default, the system does not create an ArkTS runtime environment for this type of child process.
+
+## S
+
+### Stage Model
+
+The stage model is the currently recommended application model, providing essential components and runtime mechanisms for applications. This model introduces the AbilityStage component manager and the WindowStage window manager, which act as the stages for application components and windows, respectively—hence the name "stage model."
+
+The stage model allows multiple application components to share a single ArkTS engine instance and supports state sharing and object invocation between components. This reduces memory overhead and enhances development efficiency, making it well-suited for complex application development.

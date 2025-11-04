@@ -56,7 +56,7 @@ y(): number
 
 getLinkUrl(): string
 
-获取链接地址。
+获取经过安全检查的url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -70,7 +70,7 @@ getLinkUrl(): string
 
 getUnfilteredLinkUrl(): string
 
-获取链接地址。
+获取原始url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

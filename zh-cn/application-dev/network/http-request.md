@@ -418,11 +418,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
         ],
         "cleartextTrafficPermitted": false
       }
-    ]
-  }
-  "component-config": {
-    "Network Kit": true,
-    "ArkWeb": true
+    ],
+    "component-config": {
+    	"Network Kit": true,
+    	"ArkWeb": true
+    }
   }
 }
 ```

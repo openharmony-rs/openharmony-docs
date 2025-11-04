@@ -8,15 +8,11 @@
 
 ## When to Use
 
-You may need to restore a database in any of the following cases:
+If an error occurs during the operation or storage, you can restore the database to the previous state and continue the operation.
 
-An important operation being performed by an application is interrupted.
-
-The database is unavailable due to data loss or corruption, or dirty data.
-
+If a database is tampered with, deleted, or powered off, the database may be unavailable due to data loss, data corruption, or dirty data. In this case, you can use the backup and restore capability to restore the database to the available state.
 
 Both KV stores and RDB stores support database backup and restore. You can also delete KV store backups to release local storage space.
-
 
 ## Backing Up, Restoring, and Deleting a KV Store
 
@@ -112,7 +108,7 @@ You can use **backup()** to back up a KV store, use **restore()** to restore a K
        if (err) {
          console.error(`Fail to backup data.code:${err.code},message:${err.message}`);
        } else {
-         console.info('Succeeded in backuping data.');
+         console.info('Succeeded in backing up data.');
        }
      });
    } catch (e) {
@@ -395,7 +391,7 @@ The following example contains only the code snippet for the restore process. Th
          store = await relationalStore.getRdbStore(context, STORE_CONFIG);
          // Call restore() to restore data.
          await store.restore("Backup.db");
-         console.log("Restore from back success.")
+         console.info("Restore from backup success.")
        } catch (e) {
          const err = e as BusinessError;
          console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);

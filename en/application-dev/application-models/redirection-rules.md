@@ -1,5 +1,11 @@
 # Redirection Rules
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 Generally, UI redirection within an application is triggered by users. However, an application can call **startAbility()** to implement UI redirection.
 

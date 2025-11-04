@@ -1,8 +1,8 @@
 # @ohos.file.picker (Picker)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -403,8 +403,6 @@ getSelectedIndex(): number
 
 Obtains the index of the file suffix type of the file saved.
 
-Only 2-in-1 devices are supported.
-
 This method takes effect only when used with [save()](#save).
 
 This method can be used only after [DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions) is configured.
@@ -776,8 +774,6 @@ async function example18(context: common.UIAbilityContext) { // Ensure that cont
 
 Enumerates the types of documents selected.
 
-Only 2-in-1 devices are supported.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection
@@ -798,14 +794,14 @@ Defines the options for selecting documents.
 
 | Name                   | Type                                         | Read-Only| Optional| Description                                      |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>10+</sup>       | number                                      | No  | Yes| Maximum number of documents that can be selected.<br>Value range: 1 to 500.<br>Only the devices with the required system capability can select directories, and only one directory can be selected at a time. The default value is **500**.<br>**System capability**: SystemCapability.FileManagement.UserFileService |
+| maxSelectNumber<sup>10+</sup>       | number                                      | No  | Yes| Maximum number of files that can be selected.<br>In API version 20 and earlier versions, a maximum of 500 files can be selected at a time. The default value is 500. Directories can be selected only on devices that have the system capability. A maximum of one directory can be selected.<br>The restriction is canceled in API version 21 and later. Due to system capability restrictions, if too many files are selected at a time, the functionality may be abnormal or the processing performance may be poor. It is recommended that a maximum of 10,000 files be selected at a time.<br>**System capability**: SystemCapability.FileManagement.UserFileService |
 | defaultFilePathUri<sup>10+</sup>    | string                                      | No  |  Yes| URI of the file or directory that can be selected. It is empty by default (the recently opened page is displayed).          |
 | fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | No  |  Yes| Suffix of the document to select. <br>The value is a string array. Each element specifies an option, which includes at most two parts with a vertical bar (\|) in between. The first part is the description, and the second part is the document suffix. If there is no "\|", the option does not have the description. Each filter suffix can contain multiple suffixes, separated by a comma (,). The length of the input array cannot exceed 100 characters, for example, ['Images (.png, .jpg)\|.png,.jpg', 'Documents\|.txt', 'Videos\|.mp4', '.pdf'].<br>By default, no filtering is performed, that is, all documents are selected. The wildcard ['All files (\*.\*)\|.*'] can be used on 2-in-1 devices to display all files. (Mobile phones can support this configuration since API version 17.)<br>This parameter is available only to the devices that have the required system capability.<br>**System capability**: SystemCapability.FileManagement.UserFileService  |
-| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | No  |  Yes| Only 2-in-1 devices are supported. The default value is **FILE**.<br>**System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection |
-| authMode<sup>12+</sup>    | boolean                              | No  |  Yes| Whether to start Picker.<br>Default value: **false**. If **authMode** is **true**, **defaultFilePathUri** is mandatory, which specifies the URI of the file allowed to access. Only 2-in-1 devices are supported.<br>**System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection |
-|multiAuthMode<sup>15+</sup>  | boolean                             |No   |  Yes| Whether to enable the batch authorization mode.<br>The value **false** (default) means to disable the batch authorization mode; the value **true** means to enable the batch authorization mode. The **multiUriArray** parameter only takes effect when **multAuthMode** is set to **true**.<br> **Device behavior differences**: This API can be called on mobile phones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |No   |  Yes| Whether to pass the URIs for batch authorization (only files are supported). <br>This parameter is used with **multAuthMode**, and does not take effect when **multAuthMode** is set to **false**. By default, this parameter is left empty. (The files displayed on the batch authorization page are empty.)<br> **Device behavior differences**: This API can be called on mobile phones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |No   |  Yes| Whether to enable the aggregation view mode for a file management application. The default value is **DEFAULT**, indicating that this parameter does not take effect and the aggregation view is disabled. If this parameter is set to a value other than **DEFAULT**, other parameters do not take effect.<br> **Device behavior differences**: This API can be called on mobile phones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | No  |  Yes| Type of the document selected by Picker. The default value is **FILE** (file type).<br>**System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection |
+| authMode<sup>12+</sup>    | boolean                              | No  |  Yes| Whether to start Picker.<br>Default value: **false**. If **authMode** is **true**, **defaultFilePathUri** is mandatory, which specifies the URI of the file allowed to access.<br>**Device behavior differences**: This parameter can be used on 2-in-1 devices but has no effect on other devices.<br>**System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection |
+|multiAuthMode<sup>15+</sup>  | boolean                             |No   |  Yes| Whether to enable the batch authorization mode.<br>The value **false** (default) means to disable the batch authorization mode; the value **true** means to enable the batch authorization mode. The **multiUriArray** parameter only takes effect when **multiAuthMode** is set to **true**.<br> **Device behavior differences**: This parameter can be used on smartphones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |No   |  Yes| Whether to pass the URIs for batch authorization (only files are supported). This parameter is used together with **multiAuthMode** and does not take effect when **multiAuthMode** is set to **false**. By default, this parameter is left empty. (The files displayed on the batch authorization page are empty.)<br> **Device behavior differences**: This parameter can be used on smartphones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |No   |  Yes| Whether to enable the aggregation view mode for a file management application. The default value is **DEFAULT**, indicating that this parameter does not take effect and the aggregation view is disabled. If this parameter is set to a value other than **DEFAULT**, other parameters do not take effect.<br> **Device behavior differences**: This parameter can be used on smartphones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 |isEncryptionSupported<sup>19+</sup>    | boolean |No   |  Yes| Whether to support encryption (only files are supported). The default value is **false**. If this parameter is set to **true**, files can be encrypted on the Picker page.<br>**Atomic service API**: This API can be used in atomic services since API version 19.<br> **System capability**: SystemCapability.FileManagement.UserFileService|
 
 ## DocumentPickerMode<sup>12+</sup>
@@ -820,6 +816,10 @@ Enumerates the modes for saving documents.
 | ----- |  ---- | ---- |
 | DEFAULT  | 0  | Standard mode.|
 | DOWNLOAD | 1  | Download mode.|
+
+> **NOTE**
+>
+> Directories created in DOWNLOAD mode are used only to store files. Directories are not isolated from each other. You are not advised to store sensitive application data.
 
 ## MergeTypeMode<sup>15+</sup>
 
@@ -847,12 +847,12 @@ Defines the options for saving documents.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type               | Mandatory|  Description                          |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames            | Array&lt;string&gt;    | No  | Name of the document to save. If this parameter is not specified, the user needs to enter the document name. |
-| defaultFilePathUri<sup>10+</sup>    | string  | No  | URI of the file or directory to save. |
-| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | No  | Document suffix of the document to save.<br>The value is a string array. Each element specifies an option, which includes at most two parts with a vertical bar (\|) in between. The first part is the description, and the second part is the document suffix. If there is no "\|", the option does not have the description. By default, all documents are saved.|
-| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | No  | Mode for starting Picker.<br>Default value: **DEFAULT**. If **pickerMode** is **DOWNLOAD**, the settings of **newFileNames**, **defaultFilePathUri**, and **fileSuffixChoices** do not take effect.|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames            | Array&lt;string&gt;   | No| Yes  | Name of the document to save. If this parameter is not specified, the user needs to enter the document name. |
+| defaultFilePathUri<sup>10+</sup>    | string  | No| Yes   | URI of the file or directory to save. This parameter is left empty by default. |
+| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | No| Yes   | Document suffix of the document to save. <br>The value is a string array. Each element specifies an option, which includes at most two parts with a vertical bar (\|) in between. The first part is the description, and the second part is the document suffix. If there is no "\|", the option does not have the description. By default, all documents are saved.|
+| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | No| Yes   | Mode for starting Picker.<br>Default value: **DEFAULT**. If **pickerMode** is **DOWNLOAD**, the settings of **newFileNames**, **defaultFilePathUri**, and **fileSuffixChoices** do not take effect.|
 
 ## AudioSelectOptions
 
@@ -862,9 +862,9 @@ Defines the options for selecting audio clips.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type                                         | Mandatory| Description                                      |
-| :---------------------- |---------------------------------------------| ---- |------------------------------------------|
-| maxSelectNumber<sup>12+</sup>       | number                                      | No  | Maximum number of audio clips that can be selected.<br>Default value: **1**<br>Value range: 1 to 500|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| maxSelectNumber<sup>12+</sup>       | number                                   | No    | Yes  | Maximum number of audio clips that can be selected.<br>Default value: **1**<br>Value range: 1 to 500|
 
 ## AudioSaveOptions
 
@@ -874,9 +874,9 @@ Defines the options for saving audio clips.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type               | Mandatory|  Description                          |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames              | Array&lt;string&gt;    | No | File name of the audio clip to save. If this parameter is not specified, the user needs to enter the file name.|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| ---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames              | Array&lt;string&gt;   | No| Yes | File name of the audio clip to save. If this parameter is not specified, the user needs to enter the file name.|
 
 ## PhotoViewPicker<sup>(deprecated)</sup>
 
@@ -904,7 +904,7 @@ A constructor used to create a **PhotoViewPicker** instance. This constructor is
 
 > **NOTE**
 >
-> This API is deprecated since API version 12.
+> This API is supported since API version 12 and deprecated since API version 18.
 
 **Example**
 
@@ -946,7 +946,7 @@ A constructor used to create a **PhotoViewPicker** instance. This constructor is
 
 > **NOTE**
 >
-> This API is deprecated since API version 12.
+> This API is supported since API version 12 and deprecated since API version 18.
 
 **Example**
 
@@ -1252,9 +1252,9 @@ Enumerates the media file types that can be selected.
 
 | Name |  Value|  Description|
 | ----- |  ---- | ---- |
-| IMAGE_TYPE  |  'image/*' | Image. |
-| VIDEO_TYPE |  'video/*' | Video. |
-| IMAGE_VIDEO_TYPE |  '\*/*' | Image and video. |
+| IMAGE_TYPE  |  'image/*' | Image.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18. |
+| VIDEO_TYPE |  'video/*' | Video.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18.|
+| IMAGE_VIDEO_TYPE |  '\*/*' | Image and video.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18. |
 
 ## PhotoSelectOptions<sup>(deprecated)</sup>
 
@@ -1268,10 +1268,10 @@ Defines the options for selecting images or videos.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type               | Mandatory| Description                         |
-| ----------------------- | ------------------- | ---- | -------------------------------- |
-| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)   | No  | Media file types to select. If this parameter is not specified, **IMAGE_VIDEO_TYPE** is used by default. |
-| maxSelectNumber       | number | No  | Maximum number of media files that can be selected. The default value is **50**, and the maximum value is **500**.     |
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| MIMEType              | [PhotoViewMIMETypes](#photoviewmimetypesdeprecated)  | No | Yes  | Media file types to select. If this parameter is not specified, **IMAGE_VIDEO_TYPE** is used by default.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18. |
+| maxSelectNumber       | number  | No| Yes  | Maximum number of media files that can be selected. The default value is **50**, and the maximum value is **500**.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18.     |
 
 ## PhotoSelectResult<sup>(deprecated)</sup>
 
@@ -1285,10 +1285,10 @@ Defines information about the images or videos selected.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type               | Mandatory| Description                          |
-| ----------------------- | ------------------- | ----| ------------------------------ |
-| photoUris        | Array&lt;string&gt;    | Yes  | URIs of the media files selected. This URI array can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri). |
-| isOriginalPhoto        | boolean    | Yes  | Whether the selected image is the original one. The value **true** means the selected image is the original one; the value **false** means the opposite. |
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| photoUris        | Array&lt;string&gt;    | No| No | URIs of the media files selected. This URI array can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).<br>**Note**: This API is supported since API version 9 and deprecated since API version 18. |
+| isOriginalPhoto        | boolean   | No | No  | Whether the selected image is the original one. The value **true** means the selected image is the original one; the value **false** means the opposite.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18. |
 
 ## PhotoSaveOptions<sup>(deprecated)</sup>
 
@@ -1300,6 +1300,6 @@ Defines the options for saving images or videos.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
-| Name                   | Type               | Mandatory|  Description                          |
-| ----------------------- | ------------------- | ---- | ---------------------------- |
-| newFileNames              | Array&lt;string&gt;    | No | File name of the image or video to save. If this parameter is not specified, the user needs to enter the file name.|
+| Name                   | Type                                         | Read-Only| Optional| Description                                      |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames              | Array&lt;string&gt;    | No| Yes | File name of the image or video to save. If this parameter is not specified, the user needs to enter the file name.<br>**Note**: This API is supported since API version 9 and deprecated since API version 18.|

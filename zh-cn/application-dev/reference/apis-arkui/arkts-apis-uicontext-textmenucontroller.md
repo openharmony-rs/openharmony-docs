@@ -1,5 +1,13 @@
 # Class (TextMenuController)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 提供控制文本菜单的能力。
 
 > **说明：**

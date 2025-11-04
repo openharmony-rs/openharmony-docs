@@ -31,6 +31,54 @@ ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主
 > 2. 不建议在键值中包含数据项索引`index`，这可能会导致[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。
 > 3. 如果开发者在`itemGenerator`函数中声明了`index`参数，但未在`keyGenerator`函数中声明`index`参数，框架会在`keyGenerator`函数返回值的基础上拼接`index`，作为最终的键值，这将会引发上述第二点中的问题。为避免此现象，请在`keyGenerator`函数中声明`index`参数。
 
+键值生成示例:
+
+```ts
+interface ChildItemType {
+  str: string;
+  num: number;
+}
+
+@Entry
+@Component
+struct Index {
+  @State simpleList: Array<ChildItemType> = [
+    { str: 'one', num: 1 },
+    { str: 'two', num: 2 },
+    { str: 'three', num: 3 }
+  ];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, (item: ChildItemType, index: number) => {
+          ChildItem({ str: item.str, num: index }) // 组件生成函数中使用index参数
+        }, (item: ChildItemType, index: number) => {
+          return item.str; // 建议在键值生成函数中使用与UI界面相关的数据属性str
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@Component
+struct ChildItem {
+  @Prop str: string = '';
+  @Prop num: number = 0;
+
+  build() {
+    Text(this.str)
+      .fontSize(50)
+  }
+}
+```
+
+在上述示例中，当组件生成函数声明index时，建议键值生成函数也声明index参数，以避免渲染性能降低和渲染结果非预期。同时建议在键值生成函数实现中使用与UI相关的数据属性，在本示例中，数据属性str与UI界面显示相关，因此建议将其作为键值生成函数的返回值。
+
 ## 组件创建规则
 
 在确定键值生成规则后，ForEach的第二个参数`itemGenerator`函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：[ForEach首次渲染](#首次渲染)和[ForEach非首次渲染](#非首次渲染)。
@@ -73,7 +121,7 @@ struct ChildItem {
 
 运行效果如下图所示。
 
-**图2**  ForEach数据源不存在相同值案例首次渲染运行效果图  
+**图2**  ForEach数据项不存在相同键值案例首次渲染运行效果图  
 ![ForEach-CaseStudy-1stRender-NoDup](figures/ForEach-CaseStudy-1stRender-NoDup.png)
 
 在上述代码中，`keyGenerator`函数的返回值是`item`。在ForEach渲染循环时，为数组项依次生成键值`one`、`two`和`three`，并创建对应的`ChildItem`组件渲染到界面上。
@@ -356,7 +404,7 @@ struct ArticleCard {
 
 ### 数据源数组项子属性变化
 
-当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`重新渲染，需要结合[\@Observed和\@ObjectLink](../state-management/arkts-observed-and-objectlink.md)装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
+当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`子组件重新渲染，需要结合[\@Observed和\@ObjectLink](../state-management/arkts-observed-and-objectlink.md)装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
 
 ```ts
 @Observed
@@ -468,7 +516,7 @@ struct ArticleCard {
 2. `article`实例是`@ObjectLink`装饰的状态变量，其属性值变化，会触发`ArticleCard`组件渲染，此时读取的`isLiked`和`likesCount`为修改后的新值。
 
 ### 拖拽排序
-在List组件下使用ForEach，并设置[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
+在List组件下使用ForEach，并设置[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 
 ```ts
 @Entry
@@ -538,7 +586,7 @@ struct ForEachSort {
 
 ## 错误使用案例
 
-对ForEach键值的错误使用会导致功能和性能问题，导致渲染效果非预期。详见案例[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。
+对ForEach键值的错误使用会导致功能和性能问题。详见案例[渲染结果非预期](#渲染结果非预期)和[渲染性能降低](#渲染性能降低)。
 
 ### 渲染结果非预期
 

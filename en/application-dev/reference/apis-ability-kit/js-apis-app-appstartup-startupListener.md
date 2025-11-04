@@ -1,4 +1,4 @@
-# @ohos.app.appstartup.StartupListener (Startup Task Listener)
+# @ohos.app.appstartup.StartupListener (AppStartup Task Listener)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 
 
-The module provides APIs to listen for startup tasks.
+The module defines the task listener used in [App Startup](../../application-models/app-startup.md).
 
 > **NOTE**
 >

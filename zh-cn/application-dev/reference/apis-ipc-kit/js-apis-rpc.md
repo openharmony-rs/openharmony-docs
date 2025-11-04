@@ -3040,7 +3040,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 | 类型            | 说明                        |
 | --------------- | --------------------------- |
-| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组。 |
+| [IRemoteObject](#iremoteobject)[] | 返回IRemoteObject对象数组；当写入的是空数组时，返回的是null。 |
 
 **错误码：**
 

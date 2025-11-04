@@ -5,7 +5,7 @@
 <!--Owner: @yang-xiaoyu5-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 因来源、编解码协议及设备能力的不同，导致不同设备上可用的编解码器及其能力存在差异。
 
@@ -242,7 +242,7 @@ if (ret != AV_ERR_OK || qualityRange.maxVal < 0) {
 if (quality > qualityRange.maxVal || quality < qualityRange.minVal) {
    // 3.（可选）调整待配置质量参数。
 }
-// 5. 配置编码参数。
+// 4. 配置编码参数。
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
 if (videoEnc == nullptr) {
    // 异常处理。
@@ -407,9 +407,9 @@ if (ret != AV_ERR_OK || bitrateRange.maxVal <= 0) {
    // 异常处理。
 }
 if (bitrate > bitrateRange.maxVal || bitrate < bitrateRange.minVal ) {
-   // 7.（可选）调整待配置码率值。
+   // 6.（可选）调整待配置码率值。
 }
-// 8. 配置编码参数。
+// 7. 配置编码参数。
 OH_AVCodec *audioEnc = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
 if (audioEnc == nullptr) {
    // 异常处理。

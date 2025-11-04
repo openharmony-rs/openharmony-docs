@@ -61,17 +61,27 @@ The input method subtypes allow the input method to switch to a specific mode or
 
    ```ts
    import { InputMethodSubtype, inputMethodEngine } from '@kit.IMEKit';
-   
-   let panel: inputMethodEngine.Panel;
+
+   let panelInfo: inputMethodEngine.PanelInfo = {
+     type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+     flag: inputMethodEngine.PanelFlag.FLG_FIXED
+   };
    let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-   inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-     let subType = inputMethodSubtype; // Save the current input method subtype. You can also change the state variable value here, based on which different layouts are displayed.
-     if (inputMethodSubtype.id == 'InputMethodExtAbility') {// Different soft keyboard UIs are loaded according to the subtype.
-       panel.setUiContent('pages/Index'); 
-     }
-     if (inputMethodSubtype.id == 'InputMethodExtAbility1') { // Different soft keyboard UIs are loaded according to the subtype.
-       panel.setUiContent('pages/Index1');
-     }
+   // CreatePanel needs to be completed in the Create lifecycle of InputMethodExtensionAbility. this.context is InputMethodExtensionContext in InputMethodExtensionAbility.
+   inputMethodAbility.createPanel(this.context, panelInfo).then(async (panel: inputMethodEngine.Panel) => {
+     let inputPanel: inputMethodEngine.Panel = panel;
+     inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+       // Save the current input method subtype. You can also change the state variable value here, based on which different layouts are displayed.
+       let subType: InputMethodSubtype = inputMethodSubtype;
+       if (inputMethodSubtype.id == 'InputMethodExtAbility') {// Different soft keyboard UIs are loaded according to the subtype.
+         inputPanel.setUiContent('pages/Index');
+       }
+       if (inputMethodSubtype.id == 'InputMethodExtAbility1') { // Different soft keyboard UIs are loaded according to the subtype.
+         inputPanel.setUiContent('pages/Index1');
+       }
+     });
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
    });
    ```
 

@@ -1,5 +1,12 @@
 # @ohos.bundle.appDomainVerify (Application Domain Name Verification) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @hw-xpc-->
+<!--Designer: @xuchuanqi87-->
+<!--Tester: @sl_sunshineGirl-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The appDomainVerify module provides APIs to query the mappings between applications and domain names for the purposes of application domain name verification.
 
 > **NOTE**
@@ -46,7 +53,7 @@ Queries the list of domain names associated with an application based on its bun
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -94,7 +101,7 @@ Obtains the list of bundle names associated with a domain name.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |

@@ -96,7 +96,7 @@
         console.error('decrypt failed');
       }
     } catch (error) {
-      console.error(`SM4 “${error}“, error code: ${error.code}`);
+      console.error(`SM4 ${error}, error code: ${error.code}`);
     }
   }
   ```
@@ -158,7 +158,7 @@
         console.error('decrypt failed');
       }
     } catch (error) {
-      console.error(`SM4 “${error}“, error code: ${error.code}`);
+      console.error(`SM4 ${error}, error code: ${error.code}`);
     }
   }
   ```

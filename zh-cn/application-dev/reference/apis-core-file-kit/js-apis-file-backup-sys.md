@@ -696,7 +696,7 @@ getBackupInfo(bundleToBackup: string): string
 
 updateTimer(bundleName: string, timeout: number): boolean
 
-调用时机为onBundleBegin之后，onBundleEnd之前。
+设置应用备份或恢复的时长，调用时机为onBundleBegin之后，onBundleEnd之前。
 
 **系统接口**：此接口为系统接口。
 
@@ -752,7 +752,7 @@ updateTimer(bundleName: string, timeout: number): boolean
 
 updateSendRate(bundleName: string, sendRate: number): boolean
 
-调用时机为onBundleBegin之后，onBundleEnd之前。
+更新备份应用发送fd的速率，调用时机为onBundleBegin之后，onBundleEnd之前。
 
 **系统接口**：此接口为系统接口。
 

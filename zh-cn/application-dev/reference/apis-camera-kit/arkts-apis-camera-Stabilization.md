@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -40,7 +40,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 | 类型        | 说明          |
 | ---------- |-------------|
-| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | 视频防抖是否正在使用。 |
+| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | 视频防抖是否正在使用。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

@@ -1,5 +1,12 @@
 # Canceling a Notification
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 When a user taps a notification and starts the application in the foreground, the application can cancel one or all notifications.
 
 For example, after a user receives an IM from a friend and taps a notification to view the message, the application can cancel the notification.

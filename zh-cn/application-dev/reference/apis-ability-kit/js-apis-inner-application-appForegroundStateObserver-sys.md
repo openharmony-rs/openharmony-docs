@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-定义应用启动和退出的状态监听，可以作为[on](js-apis-app-ability-appManager-sys.md#appmanageronappforegroundstate11)的入参监听所有应用的启动和退出的变化。
+定义应用启动和退出的状态监听，可以作为[appManager.on('appForegroundState')](js-apis-app-ability-appManager-sys.md#appmanageronappforegroundstate11)的入参监听所有应用的启动和退出的变化。
 
 > **说明：**
 >
@@ -42,7 +42,7 @@ onAppStateChanged(appStateData: AppStateData): void
 import { appManager } from '@kit.AbilityKit';
 
 let observer: appManager.AppForegroundStateObserver = {
-  onAppStateChanged(appStateData) {
+  onAppStateChanged(appStateData: appManager.AppStateData) {
     console.info(`onAppStateChanged appStateData: ${JSON.stringify(appStateData)}`);
   },
 };

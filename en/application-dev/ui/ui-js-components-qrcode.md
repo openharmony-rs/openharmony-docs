@@ -1,5 +1,10 @@
 # &lt;qrcode&gt; Development
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **&lt;qrcode&gt;** component is used to generate and display a QR code. For details, see [qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md).
 
@@ -33,18 +38,18 @@ Create a **&lt;qrcode&gt;** component in the .hml file under **pages/index**.
 
 > **NOTE**
 >
-> The **value** parameter must be set.
+> The **value** attribute is mandatory and must be specified.
 
 
 ## Setting the Component Type
 
-Set the **type** attribute to select the QR code type from rectangle and circle.
+Set the **type** attribute to select the QR code type, such as rectangle or circle.
 
 
 ```html
 <!-- xxx.hml-->
 <div class="container">
-  <select onchange="setType">
+  <select onchange="settype">
     <option for="{{bcol_list}}" value="{{$item}}">{{$item}}</option>
   </select>
   <qrcode value="Hello" type="{{qr_type}}"></qrcode>
@@ -76,7 +81,7 @@ export default {
     qr_type: 'rect',
     bcol_list: ['rect','circle']
   },
-  setType(e) {
+  settype(e) {
     this.qr_type = e.newValue 
   },
 }
@@ -119,9 +124,9 @@ qrcode{
 
 > **NOTE**
 > - If the values of **width** and **height** are different, the smaller value is used as the length of the QR code. The generated QR code is center displayed.
-> 
+>
 > - If either **width** or **height** is set, the value is used as the length of the QR code. If neither of them is set, the default length of 200 px is used.
-> 
+>
 
 
 ## Example Scenario

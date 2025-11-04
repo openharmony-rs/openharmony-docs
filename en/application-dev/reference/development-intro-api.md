@@ -26,7 +26,7 @@ The following description is provided for each API in the reference document to 
 ## Service Widget Description
 
 A [service widget](../form/formkit-overview.md) (also called widget) is a set of UI components that display important information or operations specific to an application or atomic service. It provides users with direct access to a desired service, without the need to open the application first.
-- For APIs that can be used in ArkTS widgets, the following description will be added: "Widget capability: This API can be used on the ArkTS widget UI since API version *x*."
+- For APIs that can be used in ArkTS widgets, a description about the widget capability will be added. Example: "Widget capability: This API can be used on the ArkTS widget UI since API version 12."
 - For APIs that cannot be used on the ArkTS widget UI, no special description is provided.
 
 ## Permission Description
