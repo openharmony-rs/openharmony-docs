@@ -1,5 +1,12 @@
 # 滑动白块问题解决指导
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 当应用程序需要使用列表显示内容时，通常会使用List+LazyForEach组件来实现。但是列表中需要显示耗时加载的内容时，仅依靠List+LazyForEach不足以获得最优的用户体验。例如显示在线网络图片，在弱网以及快速滑动浏览的场景下，由于来不及完成图片加载、解码显示，列表中图片显示位置会出现白块占位符，影响用户浏览体验。
 
 ## 问题场景
@@ -82,7 +89,6 @@ LazyForEach懒加载可以通过使用Prefetcher来预取和预渲染数据，�
 ```
 import { SongInfoItem } from '../model/LearningResource';
 import { HashMap } from '@kit.ArkTS';
-import fs from '@ohos.file.fs';
 import { IDataSourcePrefetching } from '@kit.ArkUI';
 import { http } from '@kit.NetworkKit';
 
