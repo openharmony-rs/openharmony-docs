@@ -296,6 +296,64 @@ struct Child {
 
 <!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider() selectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Text(`parent: ${this.selectedDate}`)
+      Button('update the new date')
+        .onClick(() => {
+          this.selectedDate = new Date('2023-07-07');
+        })
+      Button('increase the year by 1')
+        .onClick(() => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .onClick(() => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() selectedDate: Date = new Date('2022-07-07');
+
+  build() {
+    Column() {
+      Text(`child: ${this.selectedDate}`)
+      Button('update the new date')
+        .onClick(() => {
+          this.selectedDate = new Date('2025-01-01');
+        })
+      Button('increase the year by 1')
+        .onClick(() => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .onClick(() => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+    }
+  }
+}
+```
+
 ### 装饰Map类型变量
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
