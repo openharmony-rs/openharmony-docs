@@ -220,5 +220,67 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 以下示例实现了子组件绑定长按和滑动手势，长按手势和滑动手势需要可以同时触发，但是在长按手势未成功时，需要让父组件Swiper的内置滑动手势触发的功能。由于子组件的滑动手势和父组件的内置滑动手势是竞争关系，且子组件的滑动手势的优先级更高，因此需要通过动态控制子组件的滑动手势是否触发。
 
   <!-- @[scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { PromptAction } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct CombinedGestureDemo {
+    @State isLongPress: boolean = false;
+    promptAction: PromptAction = this.getUIContext().getPromptAction();
+  
+    build() {
+      Swiper() {
+        // 页面1
+        Row()
+          .width('100%')
+          .height('100%')
+          .backgroundColor(Color.Grey)
+          .borderRadius(12)
+          // 通过自定义手势判定回调，判断在长按手势未成功时，拒绝子组件的滑动手势，从而让父组件Swiper的滑动手势成功
+          .onGestureRecognizerJudgeBegin(
+            (event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>)=>{
+            if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
+              return GestureJudgeResult.CONTINUE;
+            };
+            if (this.isLongPress) {
+              return GestureJudgeResult.CONTINUE;
+            };
+            return GestureJudgeResult.REJECT;
+          })
+          .gesture(
+            // 绑定并行手势组，实现长按手势和滑动手势可以同时触发
+            GestureGroup(GestureMode.Parallel,
+              LongPressGesture()
+                .onAction(() => {
+                  this.isLongPress = true;
+                  this.promptAction.showToast({ message: 'LongPress trigger' });
+                })
+                .onActionEnd(() => {
+                  this.isLongPress = false;
+                })
+              ,
+              PanGesture()
+                .onActionStart(() => {
+                  this.promptAction.showToast({ message: 'child pan start' });
+                })
+            )
+          )
+        // 页面2
+        Row()
+          .width('100%')
+          .height('100%')
+          .backgroundColor(Color.Pink)
+          .borderRadius(12)
+      }
+      .borderWidth(2)
+      .width('100%')
+      .height(300)
+      .padding(20)
+    }
+  }
+  ```
 
 ![combined-gesture](figures/combined-gesture.gif)
