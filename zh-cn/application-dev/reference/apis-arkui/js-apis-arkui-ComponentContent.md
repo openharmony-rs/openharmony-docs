@@ -697,6 +697,9 @@ inheritFreezeOptions(enabled: boolean): void
 
 查询当前ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ComponentContent对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
+> **说明：**
+>
+> ComponentContent设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1541,6 +1544,10 @@ struct Index {
 inheritFreezeOptions(enabled: boolean): void
 
 查询当前ReactiveComponentContent对象是否设置为继承父组件中自定义组件的[冻结策略](./arkui-ts/ts-custom-component-parameter.md#componentoptions)。如果设置继承状态为false，则ReactiveComponentContent对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+
+> **说明：**
+>
+> ReactiveComponentContent设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
