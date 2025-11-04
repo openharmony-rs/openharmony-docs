@@ -543,6 +543,40 @@ const TAG = '[Sample_ArkTSRouter]';
 
 <!-- @[page_showDialog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
 
+``` TypeScript
+onBackClick() {
+  // 弹出自定义的询问框
+  this.getUIContext().getPromptAction().showDialog({
+    // 您还没有完成支付，确定要返回吗？
+    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    buttons: [
+      {
+        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        color: '#FF0000'
+      },
+      {
+        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        color: '#0099FF'
+      }
+    ]
+  }).then((result: promptAction.ShowDialogSuccessResponse) => {
+    if (result.index === 0) {
+      // 用户点击了“取消”按钮
+      hilog.info(DOMAIN, TAG, 'User canceled the operation.');
+    } else if (result.index === 1) {
+      // 用户点击了“确认”按钮
+      hilog.info(DOMAIN, TAG, 'User confirmed the operation.');
+      // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
+      this.getUIContext().getRouter().back();
+    }
+  }).catch((err: Error) => {
+    let message = (err as BusinessError).message;
+    let code = (err as BusinessError).code;
+    hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
+  })
+}
+```
+
 当用户点击“返回”按钮时，会弹出自定义的询问框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
 
 ## 命名路由
