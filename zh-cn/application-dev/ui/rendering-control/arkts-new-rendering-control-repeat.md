@@ -168,7 +168,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，可以通
 
 首次渲染，列表的节点状态如下图所示（template type在图中简写为ttype）。
 
-![Repeat-Reuse-1](figures/repeat-reuse-1.svg)
+![Repeat-Reuse-1](figures/repeat-reuse-1.png)
 
 ### 滑动场景
 
@@ -178,7 +178,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，可以通
 2）index=0的节点滑出了有效加载范围。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
 3）其余节点仍在有效加载范围，均只更新索引index。如果对应template type的缓存池已满，Repeat会在UI主线程空闲时销毁掉多余的节点。
 
-![Repeat-Reuse-2](figures/repeat-reuse-2.svg)
+![Repeat-Reuse-2](figures/repeat-reuse-2.png)
 
 ### 数据更新场景
 
@@ -188,7 +188,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，可以通
 2）后面的列表节点前移，新进入有效加载区域的节点`11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。<br/>
 3）对于节点数据从`07`变为`new`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据item是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
 
-![Repeat-Reuse-3](figures/repeat-reuse-3.svg)
+![Repeat-Reuse-3](figures/repeat-reuse-3.png)
 
 ### 节点复用情况查看
 
