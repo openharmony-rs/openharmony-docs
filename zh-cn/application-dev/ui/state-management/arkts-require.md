@@ -270,7 +270,7 @@ struct ChildV2 {
 }
 ```
 
-当父组件Index在构造Child与ChildV2时传递了相应的参数，则编译通过。
+当父组件Index在构造ChildV1与ChildV2时传递了相应的参数，则编译通过。
 
 【正例】
 
