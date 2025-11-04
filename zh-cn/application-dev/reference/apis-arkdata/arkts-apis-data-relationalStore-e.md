@@ -35,9 +35,9 @@
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| AES_256_GCM |  0    | 表示数据库使用AES_256_GCM加密。     |
-| AES_256_CBC |  1    | 表示数据库使用AES_256_CBC加密。     |
-| PLAIN_TEXT<sup>22+</sup> | 2 | 表示数据库不进行加密。 |
+| AES_256_GCM |  0    | 数据库使用AES_256_GCM加密。     |
+| AES_256_CBC |  1    | 数据库使用AES_256_CBC加密。     |
+| PLAIN_TEXT<sup>22+</sup> | 2 | 数据库不进行加密。 |
 
 ## HmacAlgo<sup>14+</sup>
 
