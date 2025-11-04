@@ -564,6 +564,36 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    3）实现列表组件。
    
   <!-- @[Cpp_ArkUIListNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListNode.h) -->
+  
+  ``` C
+  // ArkUIListNode.h
+  // 提供列表组件的封装。
+  #ifndef MYAPPLICATION_ARKUILISTNODE_H
+  #define MYAPPLICATION_ARKUILISTNODE_H
+  
+  #include "ArkUINode.h"
+  
+  namespace NativeModule {
+  class ArkUIListNode : public ArkUINode {
+  public:
+      ArkUIListNode()
+          : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST)) {}
+  
+      ~ArkUIListNode() override {}
+      
+      void SetScrollBarState(bool isShow)
+      {
+          ArkUI_ScrollBarDisplayMode displayMode =
+              isShow ? ARKUI_SCROLL_BAR_DISPLAY_MODE_ON : ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF;
+          ArkUI_NumberValue value[] = {{.i32 = displayMode}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_SCROLL_BAR_DISPLAY_MODE, &item);
+      }
+  };
+  } // namespace NativeModule
+  
+  #endif // MYAPPLICATION_ARKUILISTNODE_H
+  ```
 
    4）实现列表项组件。
    
