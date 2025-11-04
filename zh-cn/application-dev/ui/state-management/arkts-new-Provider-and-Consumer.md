@@ -497,6 +497,42 @@ struct Child {
 
 <!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Local childX: number = 0;
+  @Local childY: number = 1;
+  @Provider() onDrag: (x: number, y: number) => void = (x: number, y: number) => {
+    console.info(`onDrag event at x=${x} y:${y}`);
+    this.childX = x;
+    this.childY = y;
+  }
+
+  build() {
+    Column() {
+      Text(`child position x: ${this.childX}, y: ${this.childY}`)
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() onDrag: (x: number, y: number) => void = (x: number, y: number) => {
+  };
+
+  build() {
+    Button('changed')
+      .draggable(true)
+      .onDragStart((event: DragEvent) => {
+        // 当前预览器上不支持通用拖拽事件
+        this.onDrag(event.getDisplayX(), event.getDisplayY());
+      })
+  }
+}
+```
+
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
