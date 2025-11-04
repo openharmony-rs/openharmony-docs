@@ -70,6 +70,11 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 2. 由于[header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数的类型是[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)，所以需要对自定义标题组件进行封装。
 
    <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
+   context: UIContext = this.getUIContext();
+   arcListHeader: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(customHeader));
+   ```
 
 3. 最后，通过[header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数将arcListHeader设置到弧形列表中。
 
