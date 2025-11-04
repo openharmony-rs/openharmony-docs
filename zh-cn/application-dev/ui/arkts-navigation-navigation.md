@@ -379,52 +379,52 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
-  <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
-  ```
-  <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushPathByName('pageTwo', 'PageTwo Param');
-  ```
+      <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+      
+      ``` TypeScript
+      this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
+      ```
+      <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      
+      ``` TypeScript
+      this.pageStack.pushPathByName('pageTwo', 'PageTwo Param');
+      ```
 
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
-  <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageInfo.pushPathByName('temp4-pageTwo', 'temp4-pageTwo Param', (popInfo) => {
-    hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
-      JSON.stringify(popInfo.result));
-  // ···
-  });
-  ```
+      <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
+      
+      ``` TypeScript
+      this.pageInfo.pushPathByName('temp4-pageTwo', 'temp4-pageTwo Param', (popInfo) => {
+        hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
+          JSON.stringify(popInfo.result));
+      // ···
+      });
+      ```
 
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
-  <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushDestination({
-    name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
-  });
-  ```
-  <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
-  });
-  ```
+      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      
+      ``` TypeScript
+      this.pageStack.pushDestination({
+        name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
+        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+          'error.message = ', error.message);
+      }).then(() => {
+        hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
+      });
+      ```
+      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      
+      ``` TypeScript
+      this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
+        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
+          'error.message = ', error.message);
+      }).then(() => {
+        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
+      });
+      ```
 
 
 ### 页面返回
@@ -959,17 +959,17 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置：
 
-<!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ···
-    "routerMap": "$profile:route_map",
-    // ···
-  }
-}
-```
+    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "routerMap": "$profile:route_map",
+        // ···
+      }
+    }
+    ```
 
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建route_map.json文件。添加如下配置信息：
    
