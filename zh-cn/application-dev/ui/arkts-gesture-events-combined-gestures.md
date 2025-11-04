@@ -170,6 +170,38 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 以在一个Column组件上绑定单击手势和双击手势组合而成的互斥识别组合手势为例。若先绑定单击手势后绑定双击手势，由于单击手势只需要一次点击即可触发而双击手势需要两次，每次的点击事件均被单击手势消费而不能积累成双击手势，所以双击手势无法触发。若先绑定双击手势后绑定单击手势，则触发双击手势不触发单击手势。
 
   <!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct MutualExclusion {
+    @State count1: number = 0;
+    @State count2: number = 0;
+  
+    build() {
+      Column() {
+        Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+          .fontSize(28)
+      }
+      .height(200)
+      .width('100%')
+      //以下组合手势为互斥识别，单击手势识别成功后，双击手势会识别失败
+      .gesture(
+        GestureGroup(GestureMode.Exclusive,
+          TapGesture({ count: 1 })
+            .onAction(() => {
+              this.count1++;
+            }),
+          TapGesture({ count: 2 })
+            .onAction(() => {
+              this.count2++;
+            })
+        )
+      )
+    }
+  }
+  ```
 
 
 ![exclusive](figures/exclusive.gif)
