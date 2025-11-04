@@ -319,6 +319,46 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    对应实现文件。
 
   <!-- @[Cpp_NativeEntry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.cpp) -->
+  
+  ``` C++
+  // NativeEntry.cpp
+  
+  #include <arkui/native_node_napi.h>
+  #include <hilog/log.h>
+  #include <js_native_api.h>
+  #include "NativeEntry.h"
+  #include "NormalTextListExample.h"
+  
+  namespace NativeModule {
+  
+  napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 1;
+      napi_value args[1] = {nullptr};
+  
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  
+      // 获取NodeContent
+      ArkUI_NodeContentHandle contentHandle;
+      OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+      NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+  
+      // 创建文本列表
+      auto list = CreateTextListExample();
+  
+      // 保持Native侧对象到管理类中，维护生命周期。
+      NativeEntry::GetInstance()->SetRootNode(list);
+      return nullptr;
+  }
+  
+  napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+  {
+      // 从管理类中释放Native侧对象。
+      NativeEntry::GetInstance()->DisposeRootNode();
+      return nullptr;
+  }
+  } // namespace NativeModule
+  ```
    
    
    使用NDK提供的C接口需要在CMakeLists.txt中增加libace_ndk.z.so的引用，如下所示。其中entry为工程导出的动态库名称，如当前示例使用的是默认的名称libentry.so。新增cpp文件后，同样需要在CMakeLists.txt中添加相应的cpp文件。若未进行此配置，对应的文件将不会被编译。
