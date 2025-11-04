@@ -151,6 +151,39 @@ struct Child {
 
 <!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider() str: string = 'hello';
+
+  build() {
+    Column() {
+      Button(this.str)
+        .onClick(() => {
+          this.str += '0';
+        })
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  // @Consumer装饰的属性str和Parent组件中@Provider装饰的属性str名称相同，因此建立了双向绑定关系
+  @Consumer() str: string = 'world';
+
+  build() {
+    Column() {
+      Button(this.str)
+        .onClick(() => {
+          this.str += '0';
+        })
+    }
+  }
+}
+```
+
 **未建立双向绑定**
 
 下面的例子中，\@Provider和\@Consumer由于aliasName值不同，无法建立双向同步关系。
