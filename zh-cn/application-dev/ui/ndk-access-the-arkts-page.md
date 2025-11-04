@@ -224,6 +224,40 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    Native实现。
 
   <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  // entry/src/main/cpp/napi_init.cpp
+  #include "napi/native_api.h"
+  #include "NativeEntry.h"
+  
+  EXTERN_C_START
+  static napi_value Init(napi_env env, napi_value exports)
+  {
+      // 绑定Native侧的创建组件和销毁组件。
+      napi_property_descriptor desc[] = {
+          {"createNativeRoot", nullptr,
+           NativeModule::CreateNativeRoot, nullptr, nullptr,
+           nullptr, napi_default, nullptr},
+          {"destroyNativeRoot", nullptr,
+           NativeModule::DestroyNativeRoot, nullptr, nullptr,
+           nullptr, napi_default, nullptr}};
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
+  }
+  EXTERN_C_END
+  
+  static napi_module demoModule = {
+      .nm_version = 1,
+      .nm_flags = 0,
+      .nm_filename = nullptr,
+      .nm_register_func = Init,
+      .nm_modname = "entry",
+      .nm_priv = ((void *)0),
+      .reserved = {0},
+  };
+  
+  extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+  ```
 
 3. 在NativeEntry.h文件中创建Native界面。
 
