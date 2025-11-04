@@ -1139,6 +1139,19 @@ export struct DropAnimationExample {
    在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出[WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18)信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到[dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
 
     <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+    
+    ``` TypeScript
+    .onDragStart((event: DragEvent) => {
+      this.dragEvent = event;
+      if (this.finished == false) {
+        this.getUIContext()
+          .getDragController()
+          .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+      } else {
+        event.setData(this.unifiedData);
+      }
+    })
+    ```
 
 **完整示例：**
 
