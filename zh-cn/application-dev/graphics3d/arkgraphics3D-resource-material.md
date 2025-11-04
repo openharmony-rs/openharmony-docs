@@ -353,6 +353,23 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      创建图像基础的光照（IBL）环境，配置环境贴图和辐射贴图，以实现真实的环境光照效果。
 
      <!-- @[pbr_clearcoat_createIBL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     scene.environment = await rf.createEnvironment({ name: 'env' });
+     scene.environment.backgroundType = EnvironmentBackgroundType.BACKGROUND_CUBEMAP;
+     scene.environment.environmentImage = await rf.createImage({ name: 'cube', uri: $rawfile('Environment/quarry_02_2k_skybox.ktx') });
+     scene.environment.radianceImage = await rf.createImage({ name: 'rad', uri: $rawfile('Environment/quarry_02_2k_radiance.ktx') });
+     scene.environment.irradianceCoefficients =
+       [{ x: 1.080343842506409, y: 0.936282396316528, z: 0.665518164634705 },
+         { x: 0.959947884082794, y: 0.828918874263763, z: 0.569704353809357 },
+         { x: 0.848236382007599, y: 0.715092182159424, z: 0.473145037889481 },
+         { x: -0.591795265674591, y: -0.501678705215454, z: -0.334018945693970 },
+         { x: -0.775423347949982, y: -0.655484378337860, z: -0.437325984239578 },
+         { x: 1.053589701652527, y: 0.887459456920624, z: 0.587381422519684 },
+         { x: -0.018954016268253, y: -0.014871496707201, z: -0.008891185745597 },
+         { x: -0.566255271434784, y: -0.476870059967041, z: -0.314557582139969 },
+         { x: -0.239390164613724, y: -0.200478553771973, z: -0.132790848612785 }];
+     ```
 
   5. 创建相机并设置视角。
 
