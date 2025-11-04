@@ -198,6 +198,33 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      通过SceneResourceFactory.createShader()创建自定义着色器资源，并将其绑定到Shader材质上，实现自定义渲染逻辑。
 
      <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     function createShaderPromise(): Promise<Shader> {
+       return new Promise((resolve, reject) => {
+         // Ensure the scene is loaded before accessing sceneFactory
+         if (globalScene) {
+           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+     
+           // Create a SceneResourceParameters object and use it to create a shader
+           let sceneResourceParameter: SceneResourceParameters = {
+             name: 'shaderResource',
+             uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
+           };
+     
+           let shader: Promise<Shader> = sceneFactory.createShader(sceneResourceParameter);
+           shader.then((shaderEntity: Shader) => {
+             resolve(shaderEntity);
+           }).catch((err: string) => {
+             console.error('Shader load failed: ' + err + '.');
+             reject(err);
+           });
+         } else {
+           reject('Scene is not loaded yet.');
+         }
+       });
+     }
+     ```
 
   7. 应用Shader材质到几何体节点。
 
