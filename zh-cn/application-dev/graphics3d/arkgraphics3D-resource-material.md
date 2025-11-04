@@ -146,6 +146,12 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
 
      <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam.enabled = true;
+     this.cam.position.z = 5;
+     ```
 
   4. 获取几何体节点。
 
