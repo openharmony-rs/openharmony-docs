@@ -329,6 +329,24 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      通过场景的节点路径获取目标几何体节点，并提取其材质，随后预加载清漆层（Clearcoat）相关的纹理资源。
 
      <!-- @[pbr_clearcoat_getMaterialAndTextures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     let pbrNode: Node | null | undefined = this.scene.root?.getNodeByPath('Unnamed Node 1/GeoSphere003');
+     if (pbrNode) {
+       this.material = (pbrNode as Geometry).mesh.subMeshes[0].material;
+       let mrMaterial = (this.material as MetallicRoughnessMaterial);
+       let original: Image | null = mrMaterial.clearCoat.image;
+       const helmAlbedo: Resource = $rawfile('image/round_pattern.png');
+       const irregularUri: Resource = $rawfile('image/irregular_pattern.png');
+       let round: Image | null = await rf.createImage({name: 'round', uri: helmAlbedo });
+       let irregular: Image | null = await rf.createImage({name: 'irregular', uri: irregularUri });
+       if (original && round && irregular ) {
+         this.textures.push(original);
+         this.textures.push(round);
+         this.textures.push(irregular);
+       }
+     }
+     ```
 
   4. 配置环境光照。
 
