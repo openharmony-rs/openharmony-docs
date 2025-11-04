@@ -8694,6 +8694,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"set_the_value_of_a_single_cookie",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -8749,6 +8759,56 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"determine_whether_the_current_web_component_is_in_privacy_mode",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"check_whether_cookies_exist_in_mode",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -8761,6 +8821,56 @@
 					{
 						"end_line":40,
 						"name":"partial_domain_name_list",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnableIntTrackPrevent.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"enable_or_disable_web_component_anti_tracking",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/IsIntTrackPreventEnabled.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"check_if_web_component_anti_tracking_on",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/OnIntTrackPreventResult.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"retrieve_blocked_and_visited_domain_names",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/AddIntTrackPreventByPassList.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"set_domains_to_bypass_intelligent_tracking",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/ClearIntTrackPreventByPassList.ets",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"clear_all_intelligent_tracking_prevention_bypasses",
 						"start_line":15
 					}
 				]
@@ -8829,6 +8939,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"resource_loading",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -8841,6 +8961,16 @@
 					{
 						"end_line":35,
 						"name":"w3c_print_html",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"create_web_print_document",
 						"start_line":16
 					}
 				]
@@ -8857,6 +8987,36 @@
 						"end_line":28,
 						"name":"navigate_to_profile_page",
 						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"button_click_trigger_back",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"index_load_route_link_to_profile",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"click_link_call_html_to_reach_phone_dialing_screen",
+						"start_line":16
 					}
 				]
 			}
@@ -12607,6 +12767,121 @@
 						"end_line":42,
 						"name":"executing_builder_function_watch_correct_usage",
 						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-adsblock.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnablingAdsBlocking.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"app_select_list_rule_file_for_ad_filter",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_one.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"turn_off_ad_filtering_for_specific_domain_pages",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"set_up_page_level_ad_filtering_switch",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/CollectingAdsBlockingInformation.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"collect_information_about_ad_filtering",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-default-userAgent.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"get_the_current_default_user_agent",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"set_up_a_custom_user_agent",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"set_app_custom_user_agent",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"get_a_custom_user_agent",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-resource-interception-request-mgmt.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"build_response_resources_to_implement_custom_page_response_scenarios",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"build_response_resource_enable_gen",
+						"start_line":16
 					}
 				]
 			}
