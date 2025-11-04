@@ -3042,7 +3042,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 onWifiRssiChange(callback: Callback&lt;int&gt;): void
 
-注册WIFI信号强度(RSSI)变化事件。在业务退出时，要调用WifiRssiChange(callback?: Callback&lt;int&gt;)接口去掉之前的注册回调。
+注册WIFI信号强度(RSSI)变化事件。在业务退出时，要调用offWifiRssiChange(callback?: Callback&lt;int&gt;)接口去掉之前的注册回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
