@@ -360,6 +360,72 @@ struct Child {
 
 <!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider() message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+
+  build() {
+    Column() {
+      Text('Parent').fontSize(30)
+      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[1]}`).fontSize(30)
+        Divider()
+      })
+      Button('init map').onClick(() => {
+        this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
+      })
+      Button('set new one').onClick(() => {
+        this.message.set(4, 'd');
+      })
+      Button('clear').onClick(() => {
+        this.message.clear();
+      })
+      Button('replace the first one').onClick(() => {
+        this.message.set(0, 'a~');
+      })
+      Button('delete the first one').onClick(() => {
+        this.message.delete(0);
+      })
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() message: Map<number, string> = new Map([[0, 'd'], [1, 'e'], [3, 'f']]);
+
+  build() {
+    Column() {
+      Text('Child').fontSize(30)
+      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[1]}`).fontSize(30)
+        Divider()
+      })
+      Button('init map').onClick(() => {
+        this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
+      })
+      Button('set new one').onClick(() => {
+        this.message.set(4, 'g');
+      })
+      Button('clear').onClick(() => {
+        this.message.clear();
+      })
+      Button('replace the first one').onClick(() => {
+        this.message.set(0, 'a*');
+      })
+      Button('delete the first one').onClick(() => {
+        this.message.delete(0);
+      })
+    }
+  }
+}
+```
+
 ### 装饰Set类型变量
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
