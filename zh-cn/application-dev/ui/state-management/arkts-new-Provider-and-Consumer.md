@@ -149,38 +149,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str，通知其对应的\@Consumer，对应UI刷新。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，通知其对应的\@Provider，对应UI刷新。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() str: string = 'hello';
-
-  build() {
-    Column() {
-      Button(this.str)
-        .onClick(() => {
-          this.str += '0';
-        })
-      Child()
-    }
-  }
-}
-
-@ComponentV2
-struct Child {
-  // @Consumer装饰的属性str和Parent组件中@Provider装饰的属性str名称相同，因此建立了双向绑定关系
-  @Consumer() str: string = 'world';
-
-  build() {
-    Column() {
-      Button(this.str)
-        .onClick(() => {
-          this.str += '0';
-        })
-    }
-  }
-}
-```
+<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) -->
 
 **未建立双向绑定**
 
@@ -192,429 +161,51 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() str1: string = 'hello';
-
-  build() {
-    Column() {
-      Button(this.str1)
-        .onClick(() => {
-          this.str1 += '0';
-        })
-      Child()
-    }
-  }
-}
-
-@ComponentV2
-struct Child {
-  // @Consumer装饰的属性str和Parent组件中@Provider装饰的属性str1名称不同，无法建立双向绑定关系
-  @Consumer() str: string = 'world';
-
-  build() {
-    Column() {
-      Button(this.str)
-        .onClick(() => {
-          this.str += '0';
-        })
-    }
-  }
-}
-```
+<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) -->
 
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() count: number[] = [1,2,3];
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(this.count, (item: number) => {
-          Text(`parent: ${item}`).fontSize(30)
-          Divider()
-        })
-        Button('push').onClick(() => {
-          this.count.push(111);
-        })
-        Button('reverse').onClick(() => {
-          this.count.reverse();
-        })
-        Button('fill').onClick(() => {
-          this.count.fill(6);
-        })
-        Child()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Consumer() count: number[] = [9,8,7];
-
-  build() {
-    Column() {
-      ForEach(this.count, (item: number) => {
-        Text(`child: ${item}`).fontSize(30)
-        Divider()
-      })
-      Button('push').onClick(() => {
-        this.count.push(222);
-      })
-      Button('reverse').onClick(() => {
-        this.count.reverse();
-      })
-      Button('fill').onClick(() => {
-        this.count.fill(8);
-      })
-    }
-    .width('100%')
-  }
-}
-```
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
 
 ### 装饰Date类型变量
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() SelectedDate: Date = new Date('2021-08-08');
-
-  build() {
-    Column() {
-      Text(`parent: ${this.SelectedDate}`)
-      Button('update the new date')
-        .onClick(() => {
-          this.SelectedDate = new Date('2023-07-07');
-        })
-      Button('increase the year by 1')
-        .onClick(() => {
-          this.SelectedDate.setFullYear(this.SelectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .onClick(() => {
-          this.SelectedDate.setMonth(this.SelectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .onClick(() => {
-          this.SelectedDate.setDate(this.SelectedDate.getDate() + 1);
-        })
-      Child()
-    }
-  }
-}
-@ComponentV2
-struct Child {
-  @Consumer() SelectedDate: Date = new Date('2022-07-07');
-
-  build() {
-    Column() {
-      Text(`child: ${this.SelectedDate}`)
-      Button('update the new date')
-        .onClick(() => {
-          this.SelectedDate = new Date('2025-01-01');
-        })
-      Button('increase the year by 1')
-        .onClick(() => {
-          this.SelectedDate.setFullYear(this.SelectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .onClick(() => {
-          this.SelectedDate.setMonth(this.SelectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .onClick(() => {
-          this.SelectedDate.setDate(this.SelectedDate.getDate() + 1);
-        })
-    }
-  }
-}
-```
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
 
 ### 装饰Map类型变量
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-
-  build() {
-    Column() {
-      Text('Parent').fontSize(30)
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
-        Divider()
-      })
-      Button('init map').onClick(() => {
-        this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.set(4, 'd');
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('replace the first one').onClick(() => {
-        this.message.set(0, 'a~');
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(0);
-      })
-      Child()
-    }
-  }
-}
-@ComponentV2
-struct Child {
-  @Consumer() message: Map<number, string> = new Map([[0, 'd'], [1, 'e'], [3, 'f']]);
-
-  build() {
-    Column() {
-      Text('Child').fontSize(30)
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
-        Divider()
-      })
-      Button('init map').onClick(() => {
-        this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.set(4, 'g');
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('replace the first one').onClick(() => {
-        this.message.set(0, 'a*');
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(0);
-      })
-    }
-  }
-}
-```
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
 
 ### 装饰Set类型变量
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider() message: Set<number> = new Set([1, 2, 3, 4]);
-
-  build() {
-    Column() {
-      Text('Parent').fontSize(30)
-      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Divider()
-      })
-      Button('init set').onClick(() => {
-        this.message = new Set([1, 2, 3, 4]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.add(5);
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(1);
-      })
-      Child()
-    }
-  }
-}
-@ComponentV2
-struct Child {
-  @Consumer() message: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
-
-  build() {
-    Column() {
-      Text('Child').fontSize(30)
-      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Divider()
-      })
-      Button('init set').onClick(() => {
-        this.message = new Set([1, 2, 3, 4, 5, 6]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.add(7);
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(1);
-      })
-    }
-  }
-}
-```
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
 
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
 当需要在父组件中向子组件注册回调函数时，可以使用\@Provider和\@Consumer装饰回调方法来实现。
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
-```ts
-@Entry
-@ComponentV2
-struct Parent {
-  @Local childX: number = 0;
-  @Local childY: number = 1;
-  @Provider() onDrag: (x: number, y: number) => void = (x: number, y: number) => {
-    console.info(`onDrag event at x=${x} y:${y}`);
-    this.childX = x;
-    this.childY = y;
-  }
-
-  build() {
-    Column() {
-      Text(`child position x: ${this.childX}, y: ${this.childY}`)
-      Child()
-    }
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Consumer() onDrag: (x: number, y: number) => void = (x: number, y: number) => {};
-
-  build() {
-    Button('changed')
-      .draggable(true)
-      .onDragStart((event: DragEvent) => {
-        // 当前预览器上不支持通用拖拽事件
-        this.onDrag(event.getDisplayX(), event.getDisplayY());
-      })
-  }
-}
-```
+<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) -->
 
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-```ts
-@ObservedV2
-class User {
-  @Trace name: string;
-  @Trace age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-const data: User[] = [new User('Json', 10), new User('Eric', 15)];
-@Entry
-@ComponentV2
-struct Parent {
-  @Provider('data') users: User[] = data;
-
-  build() {
-    Column() {
-      Child()
-      Button('add new user')
-        .onClick(() => {
-          this.users.push(new User('Molly', 18));
-        })
-      Button('age++')
-        .onClick(() => {
-          this.users[0].age++;
-        })
-      Button('change name')
-        .onClick(() => {
-          this.users[0].name = 'Shelly';
-        })
-    }
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Consumer('data') users: User[] = [];
-
-  build() {
-    Column() {
-      ForEach(this.users, (item: User) => {
-        Column() {
-          Text(`name: ${item.name}`).fontSize(30)
-          Text(`age: ${item.age}`).fontSize(30)
-          Divider()
-        }
-      })
-    }
-  }
-}
-```
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-```ts
-@Entry
-@ComponentV2
-struct Index {
-  @Provider() val: number = 10;
-
-  build() {
-    Column() {
-      Parent()
-    }
-  }
-}
-
-@ComponentV2
-struct Parent {
-  @Provider() val: number = 20;
-  @Consumer('val') val2: number = 0; // 10
-
-  build() {
-    Column() {
-      Text(`${this.val2}`)
-      Child()
-    }
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Consumer() val: number = 0; // 20
-
-  build() {
-    Column() {
-      Text(`${this.val}`)
-    }
-  }
-}
-```
+<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) -->
 
 上面的例子中：
 
@@ -625,48 +216,7 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-```ts
-@Entry
-@ComponentV2
-struct Index {
-  @Provider() val: number = 10;
-
-  build() {
-    Column() {
-      Text(`Index @Provider val: ${this.val}`).fontSize(30)
-      Parent({ val2: this.val })
-    }
-  }
-}
-
-@ComponentV2
-struct Parent {
-  @Consumer() val: number = 0;
-  @Require @Param val2: number;
-
-  build() {
-    Column() {
-      Text(`Parent @Consumer val: ${this.val}`).fontSize(30)
-      Button('change val').onClick(() => {
-        this.val++;
-      })
-      Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
-      Child({ val: this.val })
-    }.border({ width: 2, color: Color.Green })
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Require @Param val: number;
-
-  build() {
-    Column() {
-      Text(`Child @Param val ${this.val}`).fontSize(30)
-    }.border({ width: 2, color: Color.Pink })
-  }
-}
-```
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
 
 上面的例子中：
 
@@ -687,121 +237,7 @@ struct Child {
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 
-```ts
-import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
-
-@Builder
-function buildText() {
-  TestRemove();
-}
-
-let globalBuilderNode: BuilderNode<[]> | null = null;
-
-class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private uiContext: UIContext | null = null;
-
-  constructor() {
-    super();
-  }
-
-  makeNode(context: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(context);
-    this.uiContext = context;
-    return this.rootNode;
-  }
-
-  addBuilderNode(): void {
-    if (globalBuilderNode === null && this.uiContext) {
-      globalBuilderNode = new BuilderNode(this.uiContext);
-      // 构建BuilderNode，TestRemove作为子组件
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
-    }
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  removeBuilderNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
-    }
-  }
-
-  disposeNode(): void {
-    if (this.rootNode && globalBuilderNode) {
-      globalBuilderNode.dispose();
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct RemoChildDisconnectProvider {
-  @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
-    console.info(`Provider change ${this.content}`);
-  }
-  controllerIndex: TextNodeController = new TextNodeController();
-
-  build() {
-    Column({space: 8}) {
-      Text(`Provider: ${this.content}`)
-
-      // 添加BuilderNode，@Consumer与@Provider建立双向同步
-      Button('add child')
-        .onClick(() => {
-          this.controllerIndex.addBuilderNode();
-        })
-
-      // 移除BuilderNode，@Consumer与@Provider断开连接，恢复默认值
-      Button('remove child')
-        .onClick(() => {
-          this.controllerIndex.removeBuilderNode();
-        })
-
-      // 释放BuilderNode的子节点TestRemove，随后该子节点销毁，触发子节点的aboutToDisappear回调
-      Button('dispose child')
-        .onClick(() => {
-          this.controllerIndex.disposeNode();
-      })
-
-      // @Provider/@Consumer双向同步更新
-      Button('change Provider')
-        .onClick(() => {
-          this.content += 'Pro';
-        })
-      NodeContainer(this.controllerIndex);
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@ComponentV2
-struct TestRemove {
-  @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
-    console.info(`Consumer change ${this.content}`);
-  }
-
-  aboutToDisappear() {
-    console.info(`TestRemove aboutToDisappear`);
-  }
-
-  build() {
-    Column() {
-      Text('Consumer ' + this.content)
-
-      // @Provider和@Consumer绑定的Text组件刷新，并回调@Provider和@Consumer的@Monitor方法
-      Button('change cc')
-        .onClick(() => {
-          this.content += 'cc';
-        })
-    }
-  }
-}
-```
+<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) -->
 
 上面的例子中：
 
