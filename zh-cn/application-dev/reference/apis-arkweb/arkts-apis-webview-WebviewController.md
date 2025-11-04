@@ -10017,14 +10017,13 @@ export default class EntryAbility extends UIAbility {
 
 ## setScrollbarMode<sup>23+</sup>
 
-setScrollbarMode(ScrollbarMode: ScrollbarMode): void
+setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
 在Web页面场景，设置全局滚动条模式。不显式调用时，默认值为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
 
 > **说明：**
 >
-> - 根据滚动条样式，改变当前应用所有web滚动条样式为常驻滚动条或非常驻滚动条。
-> - 若不设置全局滚动条样式，则默认为非常驻滚动条。
+> - 根据滚动条模式，改变当前应用所有web滚动条模式为常驻滚动条或非常驻滚动条。
 > - 若[forceDisplayScrollBar](./arkts-basic-components-web-attributes.md#forcedisplayscrollbar14)接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。
 > - 该接口需要在WebViewController绑定Web组件之前调用。
 
@@ -10034,7 +10033,7 @@ setScrollbarMode(ScrollbarMode: ScrollbarMode): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| ScrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。
+| scrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。
 
 **示例：**
 
