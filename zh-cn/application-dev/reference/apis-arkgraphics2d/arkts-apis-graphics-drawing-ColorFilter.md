@@ -9,6 +9,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -25,11 +27,15 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createBlendModeColorFilter
 
-createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
+static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : ColorFilter
 
 创建指定的颜色和混合模式的颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -63,17 +69,23 @@ let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.
 
 ## createBlendModeColorFilter<sup>18+</sup>
 
-static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode) : ColorFilter
+ArkTS-Dyn: static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter
+
+ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color | int, mode: BlendMode): ColorFilter
 
 使用指定的颜色和混合模式创建颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
+| color  | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是   | 颜色，可以用16进制ARGB格式的无符号整数表示。 |
 | mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 颜色的混合模式。 |
 
 **返回值：**
@@ -100,11 +112,17 @@ let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(0xffff0000, dra
 
 ## createComposeColorFilter
 
-createComposeColorFilter(outer: ColorFilter, inner: ColorFilter) : ColorFilter
+ArkTS-Dyn: static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter) : ColorFilter
+
+ArkTS-Sta: static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter | undefined
 
 创建一个先应用inner进行滤波，再应用outer进行滤波的组合颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -117,7 +135,7 @@ createComposeColorFilter(outer: ColorFilter, inner: ColorFilter) : ColorFilter
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -140,17 +158,23 @@ let colorFilter = drawing.ColorFilter.createComposeColorFilter(colorFilter1, col
 
 ## createLinearToSRGBGamma
 
-createLinearToSRGBGamma() : ColorFilter
+ArkTS-Dyn: static createLinearToSRGBGamma() : ColorFilter
+
+ArkTS-Sta: static createLinearToSRGBGamma() : ColorFilter | undefined
 
 创建一个从线性颜色空间转换到SRGB颜色空间的颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -162,17 +186,23 @@ let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
 
 ## createSRGBGammaToLinear
 
-createSRGBGammaToLinear() : ColorFilter
+ArkTS-Dyn: static createSRGBGammaToLinear(): ColorFilter
+
+ArkTS-Sta: static createSRGBGammaToLinear(): ColorFilter | undefined
 
 创建一个从SRGB颜色空间转换到线性颜色空间的颜色滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -184,17 +214,23 @@ let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 
 ## createLumaColorFilter
 
-createLumaColorFilter() : ColorFilter
+ArkTS-Dyn: static createLumaColorFilter(): ColorFilter
+
+ArkTS-Sta: static createLumaColorFilter(): ColorFilter | undefined
 
 创建一个颜色滤波器将其输入的亮度值乘以透明度通道，并将红色、绿色和蓝色通道设置为零。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -206,23 +242,29 @@ let colorFilter = drawing.ColorFilter.createLumaColorFilter();
 
 ## createMatrixColorFilter<sup>12+</sup>
 
-static createMatrixColorFilter(matrix: Array\<number>): ColorFilter
+ArkTS-Dyn: static createMatrixColorFilter(matrix: Array\<number>): ColorFilter
+
+ArkTS-Sta: static createMatrixColorFilter(matrix: Array\<double>): ColorFilter | undefined
 
 创建颜色滤波器，通过4x5颜色矩阵变换颜色。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| matrix | Array\<number> | 是   | 长度为20的数组，表示用于颜色变换的4*5矩阵。                 |
+| matrix | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是   | 长度为20的数组，表示用于颜色变换的4*5矩阵。                 |
 
 **返回值：**
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回颜色滤波器。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回颜色滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -234,6 +276,7 @@ static createMatrixColorFilter(matrix: Array\<number>): ColorFilter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -245,20 +288,38 @@ let matrix: Array<number> = [
 ];
 let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
 ```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix: Array<double> = [
+  1, 0, 0, 0, 0,
+  0, 1, 0, 0, 0,
+  0, 0, 100, 0, 0,
+  0, 0, 0, 1, 0
+];
+let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
+```
+
 ## createLightingColorFilter<sup>20+</sup>
 
 static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
 
 创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以一种颜色值并加上另一种颜色值，计算结果会被限制在0到255范围内。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
-| 参数名   | 类型                                         | 必填 | 说明                            |
-| -------- | -------------------------------------------- | ---- | ------------------------------- |
-| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行乘法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
-| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行加法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是     | 用来进行乘法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
+| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是     | 用来进行加法运算的颜色，ARGB格式的颜色，每个颜色通道是0到255之间的整数。为number类型时必须是16进制ARGB格式的无符号整数。 |
 
 **返回值：**
 
