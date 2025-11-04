@@ -10421,5 +10421,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-fixes-style-dialog.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"time_picker_dialog",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"text_picker_dialog",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"action_sheet_dialog",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"alert_dialog",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
