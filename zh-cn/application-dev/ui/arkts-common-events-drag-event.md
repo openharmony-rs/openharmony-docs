@@ -890,6 +890,17 @@ build() {
 
     <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
     
+    ``` TypeScript
+    customDropAnimation =
+      () => {
+        this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
+          this.imageWidth = 200;
+          this.imageHeight = 200;
+          this.imgState = Visibility.None;
+        })
+      }
+    ```
+    
 
 3. 拖拽落位适配动效。
 
