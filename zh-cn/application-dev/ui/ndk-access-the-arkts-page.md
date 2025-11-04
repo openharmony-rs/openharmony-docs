@@ -26,6 +26,45 @@
 - 占位组件和其他ArkTS系统组件使用方法相同。详细代码请参考[示例](#示例)。
 
   <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import nativeNode from 'libentry.so';
+  import { NodeContent } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct Index {
+    // 初始化NodeContent对象。
+    private rootSlot:NodeContent = new NodeContent();
+    @State @Watch('changeNativeFlag') showNative: boolean = false;
+  
+    changeNativeFlag(): void {
+      if (this.showNative) {
+        // 传递NodeContent对象用于Native创建组件的挂载显示
+        nativeNode.createNativeRoot(this.rootSlot)
+      } else {
+        // 销毁NativeModule组件
+        nativeNode.destroyNativeRoot()
+      }
+    }
+  
+    build() {
+      Column() {
+        Button(this.showNative ? 'HideNativeUI' : 'ShowNativeUI')
+          .onClick(() => {
+          this.showNative = !this.showNative
+        })
+          .id('btn')
+        Row() {
+          // 将NodeContent和ContentSlot占位组件绑定
+          ContentSlot(this.rootSlot)
+        }.layoutWeight(1)
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
 
 - 占位组件可以通过相关接口在Native侧转化为挂载对象。
   ```
