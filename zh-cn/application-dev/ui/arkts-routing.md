@@ -114,6 +114,33 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
   <!-- @[setting_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Setting.ets) -->
+  
+  ``` TypeScript
+  import { router } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
+  @Entry
+  @Component
+  struct Login {
+    // 在Setting页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/pageRouter/jumpPage/SetTheme' // 目标url
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+      });
+    }
+  
+    build() {
+      // ···
+  }
+  ```
     
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
