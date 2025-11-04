@@ -24,7 +24,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -95,7 +95,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -162,7 +162,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -293,7 +293,7 @@ try {
 
 setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -382,7 +382,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -462,7 +462,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -625,7 +625,7 @@ try {
 
 resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -696,7 +696,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -762,7 +762,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
