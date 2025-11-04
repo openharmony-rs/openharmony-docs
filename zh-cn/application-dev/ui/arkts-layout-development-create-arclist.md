@@ -41,6 +41,123 @@ ArcList({
 
 <!-- @[arcListShow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets) -->
 
+``` TypeScript
+import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct ArcListShow {
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.wlan')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_waln')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.blueTooth')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_blue')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.mobileData')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_net')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.ic_settings_more_connections')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_connect')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.displayAndBrightness')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_light')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+          }
+          .width('466px')
+          .height('466px')
+          .space(LengthMetrics.px(10))
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.ArcListShow_title'))
+  }
+}
+```
+
   **图1** 显示弧形列表数据
 
 ![arcList_item](figures/arcList_item.png)
