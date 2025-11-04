@@ -653,6 +653,119 @@ Grid() {
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
+    ``` TypeScript
+    @State numberBadge: number = 0;
+    unifiedData: UnifiedData | undefined = undefined;
+    timeout: number = 1;
+    finished: boolean = false;
+    dragEvent: DragEvent | undefined;
+    
+    @Styles
+    normalStyles(): void {
+      .opacity(1.0)
+    }
+    
+    @Styles
+    selectStyles(): void {
+      .opacity(0.4)
+    }
+    
+    aboutToAppear(): void {
+      let i: number = 0
+      for (i = 0; i < 500; i++) {
+        this.numbers.push(i)
+        this.isSelectedGrid.push(false)
+        this.previewData.push({})
+      }
+    }
+    
+    loadData() {
+      this.timeout = setTimeout(() => {
+        //数据准备完成后的状态
+        if (this.dragEvent) {
+          this.dragEvent.setData(this.unifiedData);
+        }
+        this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.READY);
+        this.finished = true;
+      }, 4000);
+    }
+    
+    @Builder
+    RandomBuilder(idx: number) {
+      Column()
+        .backgroundColor(Color.Blue)
+        .width(50)
+        .height(50)
+        .opacity(1.0)
+    }
+    
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          Button($r('app.string.Select_All'))
+            .onClick(() => {
+              for (let i = 0; i < this.isSelectedGrid.length; i++) {
+                if (this.isSelectedGrid[i] === false) {
+                  this.numberBadge++;
+                  this.isSelectedGrid[i] = true;
+                  let data: UDC.Image = new UDC.Image();
+                  // '../../../resources/base/media/background.png'需要替换为开发者所需的图像资源文件
+                  data.uri = '/resources/base/media/background.png';
+                  if (!this.unifiedData) {
+                    this.unifiedData = new UDC.UnifiedData(data);
+                  }
+                  this.unifiedData.addRecord(data);
+                  let gridItemName = 'grid' + i;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                    this.pixmap = pixmap
+                    this.previewData[i] = {
+                      pixelMap: this.pixmap
+                    }
+                  })
+                }
+              }
+            })
+          Grid() {
+            ForEach(this.numbers, (idx: number) => {
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              .dragPreview({
+                pixelMap: this.pixmap
+              })
+              .dragPreview(this.previewData[idx])
+              .onDragStart(() => {
+              })
+              .selectable(true)
+              .selected(this.isSelectedGrid[idx])
+              // 设置多选显示效果
+              .stateStyles({
+                normal: this.normalStyles,
+                selected: this.selectStyles
+              })
+              // ···
+                  this.numberBadge++;
+                  let gridItemName = 'grid' + idx;
+                  // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                  this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                    this.pixmap = pixmap;
+                    this.previewData[idx] = {
+                      pixelMap: this.pixmap
+                    }
+                  })
+                } else {
+                  this.numberBadge--;
+                  // ···
+              })
+              .dragPreviewOptions({ numberBadge: this.numberBadge })
+    ```
+    
 **完整示例：**
 
 <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) -->
