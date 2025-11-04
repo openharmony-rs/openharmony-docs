@@ -144,6 +144,46 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 6. 在页面中使用。
 
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   import { NodeController } from '@kit.ArkUI';
+   import { createNode } from './DynamicComponent';
+   import { precompileWebview } from './PrecompileWebview';
+   import { businessWebview } from './BusinessWebview';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State precompileNode: NodeController | undefined = undefined;
+     precompileController: webview.WebviewController = new webview.WebviewController();
+   
+     @State businessNode: NodeController | undefined = undefined;
+     businessController: webview.WebviewController = new webview.WebviewController();
+   
+     aboutToAppear(): void {
+       // 初始化用于注入本地资源的Web组件
+       this.precompileNode = createNode(precompileWebview,
+         { url: 'https://www.example.com/empty.html', controller: this.precompileController, context: this.getUIContext()});
+     }
+   
+     build() {
+       Column() {
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
+         Button('加载页面')
+           .onClick(() => {
+             this.businessNode = createNode(businessWebview, {
+               url: 'https://www.example.com/business.html',
+               controller: this.businessController,
+               context: this.getUIContext()
+             });
+           })
+         // 用于业务的Web组件
+         NodeContainer(this.businessNode);
+       }
+     }
+   }
+   ```
 
 当需要更新本地已经生成的编译字节码时，修改cacheOptions参数中responseHeaders中的E-Tag或Last-Modified响应头对应的值，再次调用接口即可。
 
