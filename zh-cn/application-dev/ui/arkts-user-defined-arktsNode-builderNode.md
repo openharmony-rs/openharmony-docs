@@ -128,6 +128,76 @@ BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-a
 BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)的大小作为BuilderNode的布局约束。不推荐通过该方式挂载节点。
 
   <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, BuilderNode, FrameNode, UIContext, RenderNode } from '@kit.ArkUI';
+  
+  class Params {
+    public text: string = '';
+  
+    constructor(text: string) {
+      this.text = text;
+    }
+  }
+  
+  @Builder
+  function buildText(params: Params) {
+    Column() {
+      Text(params.text)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+    }
+  }
+  
+  class TextNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+    private textNode: BuilderNode<[Params]> | null = null;
+    private message: string = 'DEFAULT';
+  
+    constructor(message: string) {
+      super();
+      this.message = message;
+    }
+  
+    makeNode(context: UIContext): FrameNode | null {
+      this.rootNode = new FrameNode(context);
+      let renderNode = new RenderNode();
+      renderNode.clipToFrame = false;
+      this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
+      const textRenderNode = this.textNode?.getFrameNode()?.getRenderNode();
+  
+      const rootRenderNode = this.rootNode.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode.appendChild(renderNode);
+        renderNode.appendChild(textRenderNode);
+      }
+  
+      return this.rootNode;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct RenderNodePage {
+    @State message: string = 'hello world';
+  
+    build() {
+      Row() {
+        Column() {
+          NodeContainer(new TextNodeController(this.message))
+            .width('100%')
+            .height(100)
+            .backgroundColor('#FFF0F0F0')
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
 
 ## 更新组件树
 
