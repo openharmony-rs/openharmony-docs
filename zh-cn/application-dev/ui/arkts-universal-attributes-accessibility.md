@@ -143,6 +143,19 @@ accessibilityChecked属性，用于表示组件在支持多选的情况下是否
 
 <!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityChecked(true)
+```
+
 ### 在支持单选的情况下，设置无障碍节点是否被选中
 
 accessibilitySelected属性，用于表示组件在支持单选的情况下是否被选择（如单选列表项、标签页等），适用于需要区分“当前选中项”的场景（如单选组、导航菜单），支持以下值：
