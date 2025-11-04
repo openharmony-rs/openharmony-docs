@@ -222,4 +222,30 @@ struct WebComponent {
 在Web组件的广告过滤开关开启后，访问的网页如果发生了广告过滤，会通过Web组件的[onAdsBlocked()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onadsblocked12)回调接口通知到应用，应用可根据需要进行过滤信息的收集和统计。
 <!-- @[collect_information_about_ad_filtering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/CollectingAdsBlockingInformation.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry    
+@Component    
+struct WebComponent {    
+  @State totalAdsBlockCounts: number = 0;    
+
+  controller: webview.WebviewController = new webview.WebviewController();    
+
+  build() {    
+    Column() {    
+      Web({ src: 'https://www.example.com', controller: this.controller })    
+        .onAdsBlocked((details: AdsBlockedDetails) => {    
+          if (details) {    
+            console.info(' Blocked ' + details.adsBlocked.length + ' in ' + details.url);    
+            let adList: Array<string> = Array.from(new Set(details.adsBlocked));    
+            this.totalAdsBlockCounts += adList.length;    
+            console.info('Total blocked counts :' + this.totalAdsBlockCounts);    
+          }    
+        })    
+    }    
+  }    
+}
+```
+
 由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
