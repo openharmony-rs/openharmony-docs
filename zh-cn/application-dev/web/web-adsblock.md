@@ -52,6 +52,52 @@ ArkWeb为应用提供广告过滤功能，支持通过云端推送默认的easyl
 在下面的示例中，演示了一个应用通过文件选择器选择easylist规则文件，并开启广告过滤功能。
 <!-- @[app_select_list_rule_file_for_ad_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnablingAdsBlocking.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+import { picker, fileUri } from '@kit.CoreFileKit';    
+
+// 演示点击按钮，通过filepicker打开一个easylist规则文件并设置到Web组件中    
+@Entry    
+@Component    
+struct WebComponent {    
+  main_url: string = 'https://www.example.com';    
+  controller: webview.WebviewController = new webview.WebviewController();    
+
+  @State input_text: string = 'https://www.example.com';    
+
+  build() {    
+    Column() {    
+      Row() {    
+        Flex() {    
+          Button({type: ButtonType.Capsule}) {    
+            Text('setAdsBlockRules')
+          }    
+          .onClick(() => {    
+            try {    
+              let documentSelectionOptions: ESObject = new picker.DocumentSelectOptions();    
+              let documentPicker: ESObject = new picker.DocumentViewPicker();    
+              documentPicker.select(documentSelectionOptions).then((documentSelectResult: ESObject) => {    
+                if (documentSelectResult && documentSelectResult.length > 0) {    
+                  let fileRealPath = new fileUri.FileUri(documentSelectResult[0]);    
+                  console.info('DocumentViewPicker.select successfully, uri: ' + fileRealPath);    
+                  webview.AdsBlockManager.setAdsBlockRules(fileRealPath.path, true);    
+                }    
+              })    
+            } catch (err) {    
+              console.error('DocumentViewPicker.select failed with err:' + err);    
+            }    
+          })    
+        }    
+      }    
+      Web({ src: this.main_url, controller: this.controller })    
+        .onControllerAttached(()=>{    
+          this.controller.enableAdsBlock(true);    
+        })    
+    }    
+  }    
+}
+```
+
 如果存在内置的easylist规则文件，[setAdsBlockRules()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#setadsblockrules12)接口的replace参数可用于设置规则文件的使用策略，replace为true表示不使用内置的easylist规则文件，replace为false表示自定义规则和内置的规则将会同时工作，如果发现内置规则与自定义规则冲突，可使用replace=true禁用内置规则效果。
 
 设置的自定义规则文件在应用进程内对所有的Web组件生效，是一个应用级全局配置文件，并将持久化，应用重启后可继续工作。
