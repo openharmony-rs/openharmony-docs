@@ -76,6 +76,44 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
      使用SceneResourceFactory.createEnvironment()创建环境对象，并通过createImage()加载环境贴图。设置backgroundType为等矩形贴图类型，将图片绑定到environmentImage，再调整indirectDiffuseFactor等属性以控制环境光强度。
 
      <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     function createEnvironmentPromise() : Promise<Environment> {
+       return new Promise((resolve, reject) => {
+         // Ensure the scene is loaded before accessing sceneFactory
+         if (globalScene) {
+           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+     
+           // Manually load environment maps (.ktx/.jpg/.png etc.)
+           let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
+           let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
+           image.then(async (imageEntity: Image) => {
+             // Create Environment
+             let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
+             let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
+             env.then(async (envEntity: Environment) => {
+               envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
+               envEntity.environmentImage  = imageEntity;
+               // Set environment related properties
+               envEntity.indirectDiffuseFactor.x = 1;
+               envEntity.indirectDiffuseFactor.y = 1;
+               envEntity.indirectDiffuseFactor.z = 1;
+               envEntity.indirectDiffuseFactor.w = 1;
+               resolve(envEntity);
+             }).catch((err: string) => {
+               console.error('Environment mapping material create failed: ' + err + '.');
+               reject(err);
+             });
+           }).catch((err: string) => {
+             console.error('Image load failed: ' + err);
+             reject(err);
+           });
+         } else {
+           reject('Scene is not loaded yet.');
+         }
+       });
+     }
+     ```
 
   6. 应用环境到场景。
 
