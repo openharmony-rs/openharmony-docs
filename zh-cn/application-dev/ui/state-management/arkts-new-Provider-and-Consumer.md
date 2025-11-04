@@ -235,6 +235,61 @@ struct Child {
 
 <!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider() count: number[] = [1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.count, (item: number) => {
+          Text(`parent: ${item}`).fontSize(30)
+          Divider()
+        })
+        Button('push').onClick(() => {
+          this.count.push(111);
+        })
+        Button('reverse').onClick(() => {
+          this.count.reverse();
+        })
+        Button('fill').onClick(() => {
+          this.count.fill(6);
+        })
+        Child()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() count: number[] = [9, 8, 7];
+
+  build() {
+    Column() {
+      ForEach(this.count, (item: number) => {
+        Text(`child: ${item}`).fontSize(30)
+        Divider()
+      })
+      Button('push').onClick(() => {
+        this.count.push(222);
+      })
+      Button('reverse').onClick(() => {
+        this.count.reverse();
+      })
+      Button('fill').onClick(() => {
+        this.count.fill(8);
+      })
+    }
+    .width('100%')
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
