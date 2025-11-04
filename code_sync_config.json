@@ -10366,5 +10366,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/theme_skinning.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/AppTheme.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"app_theme",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets",
+				"functions":[
+					{
+						"end_line":137,
+						"name":"display_page",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"entry_ability",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme2/Theme2.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"custom_theme",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"with_theme",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
