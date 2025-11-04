@@ -115,3 +115,50 @@ public:
 ```
 
 <!-- @[normalTextListExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NormalTextListExample.h) -->
+
+``` C
+// NormalTextListExample.h
+// 自定义接入入口函数
+
+#ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+#define MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+
+#include "ArkUIBaseNode.h"
+#include "ArkUIListItemNode.h"
+#include "ArkUIListNode.h"
+#include "ArkUITextNode.h"
+// ···
+#include <hilog/log.h>
+
+namespace NativeModule {
+
+std::shared_ptr<ArkUIBaseNode> CreateTextListExample()
+{
+    // 创建组件并挂载
+    // 1：使用智能指针创建List组件。
+    auto list = std::make_shared<ArkUIListNode>();
+    list->SetPercentWidth(1);
+    list->SetPercentHeight(1);
+    // 2：创建ListItem子组件并挂载到List上。
+    for (int32_t i = 0; i < 1; ++i) {
+        auto listItem = std::make_shared<ArkUIListItemNode>();
+        auto textNode = std::make_shared<ArkUITextNode>();
+        textNode->SetTextContent(std::to_string(i));
+        textNode->SetFontSize(SIZE_16);
+        textNode->SetPercentWidth(1);
+        textNode->SetHeight(SIZE_100);
+        textNode->SetBackgroundColor(COLOR_BACKGROUND);
+        textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
+        // 在当前节点注册布局回调
+        textNode->SetLayoutCallBack(i);
+        // 在当前节点注册绘制送显回调
+        textNode->SetDrawCallBack(i);
+        listItem->AddChild(textNode);
+        list->AddChild(listItem);
+    }
+    return list;
+}
+} // namespace NativeModule
+
+#endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
+```
