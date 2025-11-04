@@ -279,6 +279,32 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件停止自身。
 
   <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+  
+  ``` TypeScript
+  import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  // ···
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = '[MyAppServiceExtAbility]';
+  // ···
+  
+  // ···
+  
+  export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+    onCreate(want: Want): void {
+      // ···
+      // 执行业务逻辑
+      this.context.terminateSelf().then(() => {
+        hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+      });
+    }
+  
+  // ···
+  };
+  ```
 
 ## 连接一个后台服务
 
