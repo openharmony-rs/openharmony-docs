@@ -2,8 +2,12 @@
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)。
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)。
 
 ## 导入模块
 
