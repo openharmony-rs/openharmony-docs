@@ -9,6 +9,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -25,26 +27,32 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## makeFromPosText<sup>12+</sup>
 
-static makeFromPosText(text: string, len: number, points: common2D.Point[], font: Font): TextBlob
+ArkTS-Dyn: static makeFromPosText(text: string, len: number, points: common2D.Point[], font: Font): TextBlob
+
+ArkTS-Sta: static makeFromPosText(text: string, len: int, points: common2D.Point[], font: Font): TextBlob | undefined
 
 使用文本创建TextBlob对象，TextBlob对象中每个字形的坐标由points中对应的坐标信息决定。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明                                   |
 | -------- | ----------------------------- | ---- | -------------------------------------- |
 | text     | string             | 是   | 绘制字形的文本内容。                   |
-| len      | number             | 是   | 字形个数，由[countText](arkts-apis-graphics-drawing-Font.md#counttext12)获取，该参数为整数。 |
+| len      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 字形个数，由[countText](arkts-apis-graphics-drawing-Font.md#counttext12)获取，该参数为整数。 |
 | points   |[common2D.Point](js-apis-graphics-common2D.md#point12)[]     | 是   |点数组，用于指定每个字形的坐标，长度必须为len。|
 | font     | [Font](arkts-apis-graphics-drawing-Font.md)      | 是   | 字型对象。 |
 
 **返回值：**
 
-| 类型                  | 说明           |
-| --------------------- | -------------- |
-| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob对象。 |
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
 
 
 **错误码：**
@@ -57,6 +65,7 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing,common2D} from '@kit.ArkGraphics2D';
@@ -78,21 +87,54 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let text: string = 'makeFromPosText';
+    let font: drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points: common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35.0, y: i * 35.0 });
+    }
+    let textblob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    if (textblob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textblob, 100.0, 100.0);
+  }
+}
+```
+
 ## uniqueID<sup>12+</sup>
 
-uniqueID(): number
+ArkTS-Dyn: uniqueID(): number
+
+ArkTS-Sta: uniqueID(): long
 
 获取该TextBlob对象的唯一的非零标识符。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| number | 返回TextBlob对象的唯一的非零标识符。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回TextBlob对象的唯一的非零标识符。 |
 
 **示例：**
+
+ArkTS-Dyn:
 
 ```ts
 import {drawing} from "@kit.ArkGraphics2D";
@@ -105,13 +147,33 @@ let id = textBlob.uniqueID();
 console.info("uniqueID---------------" +id);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { drawing } from "@kit.ArkGraphics2D";
+
+let text: string = 'TextBlobUniqueId';
+let font: drawing.Font = new drawing.Font();
+font.setSize(100);
+let textBlob = drawing.TextBlob.makeFromString(text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+if (textBlob != undefined) {
+  let id = textBlob!.uniqueID();
+  console.info("uniqueID---------------" + id);
+}
+```
+
 ## makeFromString
 
-static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob
+ArkTS-Dyn: static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob
+
+ArkTS-Sta: static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob | undefined
 
 将string类型的值转化成TextBlob对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -123,9 +185,9 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 
 **返回值：**
 
-| 类型                  | 说明           |
-| --------------------- | -------------- |
-| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob对象。 |
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -137,6 +199,7 @@ static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBl
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -156,6 +219,29 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20.0);
+    const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.attachBrush(brush);
+    canvas.drawTextBlob(textBlob, 20.0, 20.0);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## makeFromRunBuffer
 
 ArkTS-Dyn: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob
@@ -168,7 +254,7 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -258,20 +344,27 @@ class DrawingRenderNode extends RenderNode {
 
 ## bounds
 
-bounds(): common2D.Rect
+ArkTS-Dyn: bounds(): common2D.Rect
+
+ArkTS-Sta: bounds(): common2D.Rect | undefined
 
 获取文字边界框的矩形区域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 文字边界框的矩形区域。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。创建失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
@@ -279,4 +372,16 @@ const font = new drawing.Font();
 font.setSize(20);
 const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 let bounds = textBlob.bounds();
+```
+
+ArkTS-Sta示例：
+```ts
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+font.setSize(20.0);
+const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+if (textBlob != undefined) {
+  let bounds = textBlob!.bounds();
+}
 ```
