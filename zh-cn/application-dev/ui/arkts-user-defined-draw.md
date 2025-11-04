@@ -299,5 +299,34 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
 3. 使用自定义绘制组件和自定义容器创建示例界面。
 
     <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->
+    
+    ``` C++
+    #include <arkui/native_node_napi.h>
+    #include <arkui/native_type.h>
+    #include <js_native_api.h>
+    #include "ArkUICustomContainerNode.h"
+    #include "ArkUICustomNode.h"
+    
+    // 全局环境变量声明
+    static napi_env g_env = nullptr;
+    #include "NativeEntry.h"
+    #include "LazyTextListExample.h"
+    #include <arkui/native_node_napi.h>
+    #include <arkui/native_type.h>
+    #include <js_native_api.h>
+    #include <uv.h>
+    namespace NativeModule {
+    // ···
+        return nullptr;
+    }
+    
+    napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+    {
+        // 从管理类中释放Native侧对象。
+        NativeEntry::GetInstance()->DisposeRootNode();
+        return nullptr;
+    }
+    } // namespace NativeModule
+    ```
 
 ![customDrawLayer](figures/capiDrawLayer.jpg)
