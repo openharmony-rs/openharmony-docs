@@ -1211,7 +1211,7 @@ on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 |----------|---------------------------------------------|-------|---------------------------------------------------|
 | type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
-| callback | Callback\<boolean\> | 是 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边条）。 |
+| callback | Callback\<boolean\> | 是 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。 |
 
 **示例：**
 
@@ -1237,7 +1237,7 @@ off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 |----------|------------|----|---------------------------------------------------------------------|
 | type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
-| callback | Callback\<boolean\> | 否 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边条）。 |
+| callback | Callback\<boolean\> | 否 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。如果未传入参数，解除type为'activeStatusChange'的所有回调。 |
 
 **示例：**
 
