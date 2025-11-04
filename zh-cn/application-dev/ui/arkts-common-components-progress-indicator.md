@@ -51,6 +51,18 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
 - 环形有刻度样式进度条
 
   <!-- @[progress_style_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条总刻度数为20，刻度宽度为5vp
+  Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为5vp
+  Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
+  ```
 
   ![progress_scalering](figures/progress_scalering.png)
 
