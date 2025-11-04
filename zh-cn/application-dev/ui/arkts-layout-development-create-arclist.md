@@ -168,6 +168,21 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 
    <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
+   // 构建ArcList时，通过ForEach基于数据源this.contacts循环渲染ArcListItem
+   ArcListItem() {
+   // ···
+   }
+   .swipeAction({
+     end: {
+       // index为该ArcListItem在ArcList中的索引值。
+       builder: () => {
+         this.itemEnd(item);
+       },
+     }
+   }) // 设置侧滑属性.
+   ```
 
 
   **图9** 侧滑删除列表项
