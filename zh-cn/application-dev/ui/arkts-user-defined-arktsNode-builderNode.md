@@ -1195,6 +1195,29 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
 PageTwo的实现如下：
 
   <!-- @[Main_RouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage2.ets) -->
+  
+  ``` TypeScript
+  // ets/pages/RouterPage2.ets
+  // 该页面中存在一个按钮，可跳转回主页面，回到主页面后，原有的文字消失
+  import 'ets/pages/RouterPage1';
+  
+  @Entry({ routeName: 'pageTwo' })
+  @Component
+  struct PageTwo {
+    build() {
+      Column() {
+        Button('Router replace to index')
+          .onClick(() => {
+            this.getUIContext().getRouter().replaceNamedRoute({ name: 'myIndex' });
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .alignItems(HorizontalAlign.Center)
+      .padding(16)
+    }
+  }
+  ```
 
 ![BuilderNode Reuse Example](./figures/builder_node_reuse.gif)
 
