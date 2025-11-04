@@ -372,23 +372,26 @@ struct Home {
 <!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Index.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 // Index.ets
 @Entry
 @Component
 struct MyComponent {
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageShow() {
-    console.info('Index onPageShow');
+    hilog.info(DOMAIN, TAG, 'Index onPageShow');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageHide() {
-    console.info('Index onPageHide');
+    hilog.info(DOMAIN, TAG, 'Index onPageHide');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onBackPress() {
-    console.info('Index onBackPress');
+    hilog.info(DOMAIN, TAG, 'Index onBackPress');
     // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理
     return true;
   }
