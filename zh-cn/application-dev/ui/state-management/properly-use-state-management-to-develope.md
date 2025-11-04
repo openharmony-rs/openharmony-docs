@@ -1017,6 +1017,13 @@ public loadData() {
 
 <!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) -->
 
+``` TypeScript
+@State childList: ChildList8 =
+  new ChildList8([new Child8(1), new Child8(2), new Child8(3),
+    new Child8(4), new Child8(5)]);
+@State ancestor: Ancestor8 = new Ancestor8(this.childList)
+```
+
 但是由于这里的childList实际上是被@State装饰了，根据当前状态管理的观测能力，尽管右边赋值的是一个Child8[]类型的数据，它并没有被@Observed装饰，这里的childList8却依然具备了被观测的能力，所以能够正常的触发UI的刷新。当去掉childList8的@State的装饰器后，不去重置数据源，也无法通过点击“X”按钮触发刷新。
 
 因此，需要将具有观测能力的类对象绑定组件，来确保当改变这些类对象的内容时，UI能够正常的刷新。
