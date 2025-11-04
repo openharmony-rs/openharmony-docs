@@ -41,33 +41,5 @@ export default class EntryAbility extends UIAbility {
   
 ```ts
 // Index.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Row() {
-        Button("Add options").onClick((event: ClickEvent) => {
-          let options = new webview.BackForwardCacheOptions();
-          options.size = 10;
-          options.timeToLive = 300;
-          this.controller.setBackForwardCacheOptions(options);
-        })
-        Button("Backward").onClick((event: ClickEvent) => {
-          this.controller.backward();
-        })
-        Button("Forward").onClick((event: ClickEvent) => {
-          this.controller.forward();
-        })
-      }
-      Web({ src: "https://www.example.com", controller: this.controller })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
 ```
+<!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
