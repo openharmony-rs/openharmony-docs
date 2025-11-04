@@ -1504,6 +1504,17 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
+  ``` TypeScript
+  .onDragEnter(() => {
+    // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
+    this.buttonBackgroundColor = this.reminderColor
+  })
+  .onDragLeave(() => {
+    // 当用户拖拽离开按钮范围，恢复UI
+    this.buttonBackgroundColor = this.normalColor
+  })
+  ```
+  
 
 4.实现Spring Loading响应
 
