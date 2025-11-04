@@ -11291,5 +11291,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-interaction-development-guide-keyboard.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"listen_response_key_event",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"listen_response_key_event",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"key_event_intercept",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"key_distribute_event",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"key_event_intercept",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
