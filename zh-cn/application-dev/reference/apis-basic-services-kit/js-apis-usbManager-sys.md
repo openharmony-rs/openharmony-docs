@@ -488,14 +488,14 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| funcs  | [int](#functiontype) | 是   | USB功能数字掩码。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 
 **返回值：**
 
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
-| string | 转化后的字符串形式的功能列表。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
-| int | 转化后的字符串形式的功能列表。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
+| string | 转化后的字符串形式的功能列表。|
 
 
 **错误码：**
