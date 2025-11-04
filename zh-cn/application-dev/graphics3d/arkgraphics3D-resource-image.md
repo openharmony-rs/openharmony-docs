@@ -27,6 +27,24 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
      调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
 
      <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     if (this.scene === null) {
+       // Switched from .gltf to .glb; same content, different format
+       Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
+         .then(async (result: Scene) => {
+           // Assign loaded scene to globalScene for unified resource creation
+           globalScene = result;
+           this.scene = result;
+           this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+           this.rf = this.scene.getResourceFactory();
+         // ···
+         })
+         .catch((error: string) => {
+           console.error('init error: ' + error + '.');
+         });
+     }
+     ```
 
   3. 初始化相机。
 
