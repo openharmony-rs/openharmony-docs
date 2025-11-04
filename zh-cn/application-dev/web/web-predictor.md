@@ -191,6 +191,44 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 5. 编写资源配置信息。
 
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb';
+   
+   export interface ResourceConfig {
+     urlList: Array<string>,
+     type: webview.OfflineResourceType,
+     responseHeaders: Array<Header>,
+     localPath: string, // 本地资源存放在rawfile目录下的路径
+   }
+   
+   export const resourceConfigs: ResourceConfig[] = [
+     {
+       localPath: 'example.png',
+       urlList: [
+         'https://www.example.com/',
+         'https://www.example.com/path1/example.png',
+         'https://www.example.com/path2/example.png',
+       ],
+       type: webview.OfflineResourceType.IMAGE,
+       responseHeaders: [
+         { headerKey: 'Cache-Control', headerValue: 'max-age=1000' },
+         { headerKey: 'Content-Type', headerValue: 'image/png' },
+       ]
+     },
+     {
+       localPath: 'example.js',
+       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
+         'https://www.example.com/example.js',
+       ],
+       type: webview.OfflineResourceType.CLASSIC_JS,
+       responseHeaders: [
+         // 以<script crossorigin='anonymous' />方式使用，提供额外的响应头
+         { headerKey: 'Cross-Origin', headerValue:'anonymous' }
+       ]
+     },
+   ];
+   ```
 
 6. 在页面中使用。
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
