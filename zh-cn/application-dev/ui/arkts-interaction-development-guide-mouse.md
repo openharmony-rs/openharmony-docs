@@ -97,6 +97,54 @@ struct MouseMove {
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
 <!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct StopPropagation {
+  @State buttonText: string = '';
+  @State columnText: string = '';
+  @State text: string = 'OnMouse Sample Button';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.text, { type: ButtonType.Capsule })
+        .width(200)
+        .height(100)
+        .backgroundColor(this.color)
+        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
+          if (event) {
+            event.stopPropagation(); // 在Button的onMouse事件中设置阻止冒泡
+            this.buttonText = 'Button onMouse:\n' + '' +
+              'button = ' + event.button + '\n' +
+              'action = ' + event.action + '\n' +
+              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+          }
+        })
+      Divider()
+      Text(this.buttonText).fontColor(Color.Green)
+      Divider()
+      Text(this.columnText).fontColor(Color.Red)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .borderWidth(2)
+    .borderColor(Color.Red)
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
+      if (event) {
+        this.columnText = 'Column onMouse:\n' + '' +
+          'button = ' + event.button + '\n' +
+          'action = ' + event.action + '\n' +
+          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+      }
+    })
+  }
+}
+```
 ![onMouse2](figures/onMouse_2.gif)
 
 在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如下）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
