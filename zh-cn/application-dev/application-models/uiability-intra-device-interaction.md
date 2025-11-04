@@ -159,7 +159,7 @@
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
@@ -280,7 +280,7 @@
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
@@ -365,7 +365,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 <!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
-import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
+import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -430,7 +430,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window, UIContext } from '@kit.ArkUI';
 
 const DOMAIN_NUMBER: number = 0xFF00;
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[ColdStartAbility]';
 
 export default class ColdStartAbility extends UIAbility {
   private funcAbilityWant: Want | undefined = undefined;
@@ -479,7 +479,7 @@ export default class ColdStartAbility extends UIAbility {
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+    import { Want, UIAbility } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
     const DOMAIN_NUMBER: number = 0xFF00;
     const TAG: string = '[HotStartAbility]';
@@ -487,11 +487,6 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-    
-      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // 接收调用方UIAbility传过来的参数
-        this.funcAbilityWant = want;
-      }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
@@ -575,6 +570,7 @@ export default class ColdStartAbility extends UIAbility {
             .mode(NavigationMode.Stack)
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -610,6 +606,7 @@ export default class ColdStartAbility extends UIAbility {
             })
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -827,10 +824,6 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
     ``` TypeScript
     import { rpc } from '@kit.IPCKit';
-
-    const MSG_SEND_METHOD: string = 'CallSendMsg';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    const TAG: string = '[CalleeAbility]';
 
     class MyParcelable {
       public num: number = 0;
