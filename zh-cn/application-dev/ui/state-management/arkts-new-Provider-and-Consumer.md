@@ -649,6 +649,49 @@ struct Child {
 
 <!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Provider() val: number = 10;
+
+  build() {
+    Column() {
+      Text(`Index @Provider val: ${this.val}`).fontSize(30)
+      Parent({ val2: this.val })
+    }
+  }
+}
+
+@ComponentV2
+struct Parent {
+  @Consumer() val: number = 0;
+  @Require @Param val2: number;
+
+  build() {
+    Column() {
+      Text(`Parent @Consumer val: ${this.val}`).fontSize(30)
+      Button('change val').onClick(() => {
+        this.val++;
+      })
+      Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
+      Child({ val: this.val })
+    }.border({ width: 2, color: Color.Green })
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Require @Param val: number;
+
+  build() {
+    Column() {
+      Text(`Child @Param val ${this.val}`).fontSize(30)
+    }.border({ width: 2, color: Color.Pink })
+  }
+}
+```
+
 上面的例子中：
 
 - Index中\@Provider装饰的变量val与Parent中\@Consumer装饰的变量val建立双向数据绑定。Parent中\@Param装饰的变量val2接收Index中数据源val的数据，并同步其变化。Child中\@Param装饰的变量val接收Parent中数据源val的数据，并同步其变化。
