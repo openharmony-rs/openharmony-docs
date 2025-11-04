@@ -57,6 +57,16 @@
      使用SceneResourceFactory.createCamera()创建相机，并设置相机启用状态与观察位置。通过调整相机的z轴位置，可控制观察距离。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，用于Component3D渲染显示。
 
      <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+     
+     ``` TypeScript
+     // Create a Camera.
+     this.cam = await rf.createCamera({ 'name': 'Camera' });
+     // Set proper camera parameters.
+     this.cam.enabled = true;
+     this.cam.position.z = 5;
+     
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     ```
 
   4. 渲染3D模型。
 
