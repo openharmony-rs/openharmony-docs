@@ -148,6 +148,54 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
 
+``` TypeScript
+import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+
+// ···
+const alphabets: string[] = [
+  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
+  'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+];
+
+@Entry
+@Component
+export struct ArcListArcIndexerBar {
+
+// ···
+  // 索引条选中项索引
+  @State indexerIndex: number = 0;
+  // 列表绑定的滚动控制器
+  private arcListScroller: Scroller = new Scroller();
+
+// ···
+
+  build() {
+    // ···
+          Stack({alignContent: Alignment.End}) {
+            ArcList({ initialIndex: 0, header:this.tabBar1, scroller:this.arcListScroller }) {
+            // ···
+            }
+            // ···
+            .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+              // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
+              this.indexerIndex = centerIndex + 1;
+            })
+            // ···
+            // 弧形索引条组件
+            ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.indexerIndex})
+              .selected(this.indexerIndex!!)
+              .onSelect((index: number) => {
+                // 选中索引项后，列表跳转到相应位置
+                this.indexerIndex = index
+                this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
+              })
+            // ···
+          }
+        // ···
+  }
+}
+```
+
 
   **图8** 弧形列表与弧形索引条联动
 
