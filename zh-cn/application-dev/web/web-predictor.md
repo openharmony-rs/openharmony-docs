@@ -140,6 +140,29 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 5. 编写资源配置信息。
 
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
+   
+   ``` TypeScript
+   import { webview } from '@kit.ArkWeb'
+   
+   export interface Config {
+     url:  string,
+     localPath: string, // 本地资源路径
+     options: webview.CacheOptions
+   }
+   
+   export let configs: Config[] = [
+     {
+       url: 'https://www.example.com/example.js',
+       localPath: 'example.js',
+       options: {
+         responseHeaders: [
+           { headerKey: 'E-Tag', headerValue: 'aWO42N9P9dG/5xqYQCxsx+vDOoU='},
+           { headerKey: 'Last-Modified', headerValue: 'Wed, 21 Mar 2025 10:38:41 GMT'}
+         ]
+       }
+     }
+   ]
+   ```
 
 6. 在页面中使用。
 
