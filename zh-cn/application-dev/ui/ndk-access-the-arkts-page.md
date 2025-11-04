@@ -621,6 +621,51 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    5）实现文本组件。
    
   <!-- @[Cpp_ArkUITextNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUITextNode.h) -->
+  
+  ``` C
+  // ArkUITextNode.h
+  // 实现文本组件的封装类。
+  #ifndef MYAPPLICATION_ARKUITEXTNODE_H
+  #define MYAPPLICATION_ARKUITEXTNODE_H
+  
+  #include "ArkUINode.h"
+  
+  #include <string>
+  
+  namespace NativeModule {
+  class ArkUITextNode : public ArkUINode {
+  public:
+      ArkUITextNode()
+          : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_TEXT)) {}
+      
+      void SetFontSize(float fontSize)
+      {
+          ArkUI_NumberValue value[] = {{.f32 = fontSize}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_FONT_SIZE, &item);
+      }
+      void SetFontColor(uint32_t color)
+      {
+          ArkUI_NumberValue value[] = {{.u32 = color}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_FONT_COLOR, &item);
+      }
+      void SetTextContent(const std::string &content)
+      {
+          ArkUI_AttributeItem item = {nullptr, 0, content.c_str()};
+          nativeModule_->setAttribute(handle_, NODE_TEXT_CONTENT, &item);
+      }
+      void SetTextAlign(ArkUI_TextAlignment align)
+      {
+          ArkUI_NumberValue value[] = {{.i32 = align}};
+          ArkUI_AttributeItem item = {value, 1};
+          nativeModule_->setAttribute(handle_, NODE_TEXT_ALIGN, &item);
+      }
+  };
+  } // namespace NativeModule
+  
+  #endif // MYAPPLICATION_ARKUITEXTNODE_H
+  ```
    
 5. 完善步骤3的CreateTextListExample函数，实现Native文本列表的创建和挂载显示。
 
