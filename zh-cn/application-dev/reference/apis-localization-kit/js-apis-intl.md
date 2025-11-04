@@ -444,7 +444,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 ## NumberFormat
 
-提供数字格式化的能力。
+提供标准的数字格式化的能力。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -454,7 +454,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 constructor()
 
-创建数字格式化对象。
+使用当前系统区域创建数字格式化对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -473,7 +473,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
-创建数字格式化对象。
+根据指定的区域和配置项创建数字格式化对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -498,7 +498,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 format(num: number): string
 
-对数字进行格式化。
+格式化数字。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -639,7 +639,7 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 constructor()
 
-创建排序对象。
+使用当前系统区域创建排序对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -658,7 +658,7 @@ let collator = new intl.Collator();
 
 constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 
-创建排序对象。
+根据指定的区域和配置项创建排序对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 

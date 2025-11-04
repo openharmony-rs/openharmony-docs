@@ -565,7 +565,7 @@ Disables listening for the **open** events of a WebSocket connection. This API u
 
 | Name  | Type                   | Mandatory| Description                         |
 | -------- | ----------------------- | ---- | ----------------------------- |
-| type     | string                  | Yes  | Event type. <br /> **open**: event indicating that a WebSocket connection has been opened.|
+| type     | string                  | Yes  | Event type.<br /> **open**: event indicating that a WebSocket connection has been opened.|
 | callback | AsyncCallback\<Object\> | No  | Callback used to return the result.                   |
 
 **Example**
@@ -639,7 +639,7 @@ Disables listening for the **message** events of a WebSocket connection. This AP
 
 | Name  | Type                                               | Mandatory| Description                                        |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
-| type     | string                                              | Yes  | Type of the event to unsubscribe from. **message**: event indicating that a message has been received from the server.|
+| type     | string                                              | Yes  | Event type.<br /> **message**: event indicating that a message has been received from the server.|
 | callback | AsyncCallback\<string \|ArrayBuffer <sup>8+</sup>\> | No  | Callback used to return the result.                                  |
 
 **Example**
@@ -698,7 +698,7 @@ Disables listening for the **close** events of a WebSocket connection. This API 
 
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                          | Yes  | Event type. <br /> **close**: event indicating that a WebSocket connection has been closed.|
+| type     | string                                          | Yes  | Event type.<br /> **close**: event indicating that a WebSocket connection has been closed.|
 | callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
@@ -757,7 +757,7 @@ Disables listening for the **error** events of a WebSocket connection. This API 
 
 | Name  | Type         | Mandatory| Description                           |
 | -------- | ------------- | ---- | ------------------------------- |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: event indicating the WebSocket connection has encountered an error.|
+| type     | string        | Yes  | Event type.<br /> **error**: event indicating the WebSocket connection has encountered an error.|
 | callback | ErrorCallback | No  | Callback used to return the result.                     |
 
 **Example**
@@ -811,7 +811,7 @@ Disables listening for the **dataEnd** events of a WebSocket connection. This AP
 
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. **dataEnd**: event indicating the data receiving over the WebSocket connection has ended.|
+| type     | string           | Yes  | Event type.<br /> **dataEnd**: event indicating the data receiving over the WebSocket connection has ended.|
 | callback | Callback\<void\> | No  | Callback used to return the result.                            |
 
 **Example**
@@ -865,7 +865,7 @@ Unregisters the observer for HTTP Response Header events. This API uses an async
 
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. Event type. The value is **headerReceive**.|
+| type     | string           | Yes  | Event type.<br /> Event type. The value is **headerReceive**.|
 | callback | Callback\<ResponseHeaders\> | No  | Callback used to return the result.                          |
 
 **Example**
@@ -1466,8 +1466,8 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 | proxy<sup>12+</sup> | ProxyConfiguration |  No | Yes| Proxy configuration. By default, the system network proxy is used.|
 | protocol<sup>12+</sup> | string |  No | Yes| Custom **Sec-WebSocket-Protocol** field. The default value is "".             |
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
-| pingInterval<sup>21+</sup> | int | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
-| pongTimeout<sup>21+</sup> | int | No| Yes| Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
+| pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
+| pongTimeout<sup>21+</sup> | number | No| Yes| Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1531,7 +1531,7 @@ Enumerates the response headers sent by the server.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-|  [k:string]  | string \| string[] \| undefined | Yes  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
+|  [k:string]  | string \| string[] \| undefined | No  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
 
 ## Result Codes for Connection Closing
 

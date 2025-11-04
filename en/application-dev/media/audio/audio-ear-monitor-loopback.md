@@ -94,12 +94,12 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     });
    ```
 
-4. Call [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) to set the reverb mode for audio loopback.
+4. Call [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) to set the reverb mode for audio loopback. This API is available from API version 21.
 
     > **NOTE**
     > - If you set the reverb mode before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
     > - If you set the reverb mode after enabling loopback, the setting takes effect immediately.
-    > - If you do not set the reverb mode before enabling loopback, the default mode **THEATER** is used upon activation of audio loopback.
+    > - If you do not set the reverb mode before enabling loopback, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is used upon activation of audio loopback.
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -110,11 +110,11 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     }
    ```
 
-5. Call [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) to obtain the current reverb mode of audio loopback.
+5. Call [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) to obtain the current reverb mode of audio loopback. This API is available from API version 21.
 
     > **NOTE**
     >
-    > If no reverb mode has been set, the default mode **THEATER** is returned.
+    > If no reverb mode has been set, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is returned.
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
@@ -124,12 +124,12 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     }
    ```
 
-6. Call [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) to set the equalizer type for audio loopback.
+6. Call [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) to set the equalizer type for audio loopback. This API is available from API version 21.
 
     > **NOTE**
     > - If you set the equalizer type before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
     > - If you set the equalizer type after enabling loopback, the setting takes effect immediately.
-    > - If you do not set the equalizer type before enabling loopback, the default mode **FULL** is used upon activation of audio loopback.
+    > - If you do not set the equalizer type before enabling loopback, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is used upon activation of audio loopback.
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,11 +140,11 @@ The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLo
     }
    ```
 
-7. Call [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) to obtain the current equalizer type of audio loopback.
+7. Call [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) to obtain the current equalizer type of audio loopback. This API is available from API version 21.
 
     > **NOTE**
     >
-    > If no equalizer type has been set, the default mode **FULL** is returned.
+    > If no equalizer type has been set, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is returned.
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
@@ -238,17 +238,17 @@ async function setVolume(volume: number) {
 }
 
 // Set the reverb mode for audio loopback.
-async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset): void {
+async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setReverbPreset(preset);
-      Logger.info(`setReverbPreset( ${preset} succeeded.`);
-      currentReverbPreset = this.audioLoopback.getReverbPreset(); // Obtain the current reverb mode to prevent setting failures.
+      console.info(`setReverbPreset( ${preset} succeeded.`);
+      currentReverbPreset = audioLoopback.getReverbPreset(); // Obtain the current reverb mode to prevent setting failures.
     } catch (err) {
-      Logger.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 
@@ -257,13 +257,13 @@ async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setEqualizerPreset(preset);
-      Logger.info(`setEqualizerPreset ${preset} succeeded.`);
-      currentEqualizerPreset = this.audioLoopback.getEqualizerPreset(); // Obtain the current equalizer type to prevent setting failures.
+      console.info(`setEqualizerPreset ${preset} succeeded.`);
+      currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // Obtain the current equalizer type to prevent setting failures.
     } catch (err) {
-      Logger.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 

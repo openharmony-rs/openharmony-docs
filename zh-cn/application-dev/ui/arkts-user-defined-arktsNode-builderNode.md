@@ -5,7 +5,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -1459,8 +1459,11 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 >
 > 当BuilderNode节点被冻结时，调用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口不会触发节点的更新，等其被解冻时再更新节点。
 
-```ts
+### BuilderNode常用冻结场景（状态管理V1）
 
+从API version 20开始，在状态管理V1中，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新，示例如下。
+
+```ts
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 class Params {
@@ -1645,6 +1648,738 @@ struct TextBuilder {
 ```
 
 ![inheritFreezeOptions](figures/builderNode_inheritFreezeOptions.gif)
+
+### BuilderNode常用冻结场景（状态管理V2）
+
+从API version 20开始，在状态管理V2中，BuilderNode冻结开启方式和在状态管理V1中的开启方式一致，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新。以下示例展示了几种状态管理V2常用的BuilderNode冻结场景。
+
+**页面路由**
+
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
+
+![alt text](state-management/figures/freezeInPage.png)
+
+页面1示例代码如下：
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@ObservedV2
+export class Book {
+  @Trace name: string = "100";
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Builder
+function buildText(book: Book) {
+  Column() {
+    buildNodeChild()
+  }
+}
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private textNode: BuilderNode<[Book]> | null = null;
+  index: number = 0;
+  name: string = "100";
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+    this.textNode.build(wrapBuilder<[Book]>(buildText), new  Book (this.name));
+    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true
+    if (this.rootNode !== null) {
+      this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树
+    }
+    return this.rootNode;
+  }
+}
+
+const textNodeController: TextNodeController = new TextNodeController();
+
+@Entry
+@ComponentV2({ freezeWhenInactive: true })
+export struct Index3 {
+  build() {
+    Column() {
+      NodeContainer(textNodeController)
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct BuildNodeChild {
+  @Local bookTest: Book = new Book("A Midsummer Night’s Dream");
+
+  @Monitor("bookTest.name")
+  onMessageChange(monitor: IMonitor) {
+    console.info(`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Book name is  ${this.bookTest.name}`).fontSize(30)
+      Button('change').width('60%').height(40).fontSize(30)
+        .onClick(() => {
+          this.bookTest.name = "The Old Man and the Sea";
+        })
+        .margin(5)
+      Button('next').width('60%').height(40).fontSize(30)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/routing' });
+          setTimeout(() => {
+            this.bookTest = new Book("Jane Austen's Pride and Prejudice");
+          }, 1000)
+        })
+    }
+  }
+}
+```
+
+页面2-Routing2（即页面1的下一页）示例代码如下：
+
+```ts
+@Entry
+@ComponentV2
+struct Page2 {
+  build() {
+    Column() {
+      Text(`This is the page2`).fontSize(25)
+      Button('Back')
+        .onClick(() => {
+          this.getUIContext().getRouter().back();
+        })
+    }
+  }
+}
+```
+
+![inheritFreezeOptions](figures/V2Routing.gif)
+
+在上面的示例中：
+
+在页面1中点击`change`按钮，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
+
+在页面1中点击`next`按钮，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，@Local装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
+
+**TabContent**
+
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，BuilderNode的子组件在不活跃时将会冻结，当切换至活跃状态时解冻。
+
+在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
+
+图示如下：
+
+![freezeWithTab](state-management/figures/freezewithTabs.png)
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class Params {
+  message: number = 0;
+
+  constructor( message: number) {
+    this.message = message;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    buildNodeChild({ message: params.message});
+  }
+}
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private textNode: BuilderNode<[Params]> | null = null;
+  private message: number = 0;
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
+    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为True
+    if (this.rootNode !== null) {
+      this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树
+    }
+    return this.rootNode;
+  }
+
+  update(): void {
+    if (this.textNode !== null) {
+      this.message += 1;
+      this.textNode.update(new Params(this.message)); // 更新BuilderNode中的数据，可以触发Log
+    }
+  }
+}
+
+const textNodeController: TextNodeController = new TextNodeController();
+
+@Entry
+@ComponentV2
+struct TabContentTest {
+  @Local message: number = 0;
+  @Local index:number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          textNodeController.update();
+        })
+          .fontSize(25)
+          .height(40)
+
+        Tabs() {
+          TabContent() {
+            Column() {
+              FreezeBuildNode({ message: this.message })
+              Text('Tabs遍历后BuilderNode处于冻结')
+                .fontWeight(FontWeight.Bold)
+                .margin({ top: 48, bottom: 48 })
+                .fontSize(30)
+            }
+          }.tabBar(`tab`+`${this.index}`)
+          TabContent() {
+            Column() {
+              FreezeBuildNode({ message: this.message })
+            }
+          }.tabBar(`tab`+`${this.index+1}`)
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct FreezeBuildNode {
+  @Param message: number = 0;
+  @Param index: number = 0;
+  @Monitor('message') onMessageUpdated(mon: IMonitor) {
+    console.info(`FreezeBuildNode message callback func ${this.message}`);
+  }
+  build() {
+    if (this.index === 0) {
+      NodeContainer(textNodeController);
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true }) // BuilderNode下面的子组件开启冻结
+struct buildNodeChild {
+  @Param message: number = 0;
+  @Param index: number = 0;
+
+  @Monitor('message') onMessageUpdated(mon: IMonitor) {
+    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}`)
+      .fontSize(40)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
+![inheritFreezeOptions](figures/V2tabFree.gif)
+
+在上面的示例中：
+
+1.点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+
+2.点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
+
+3.点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
+
+**Navigation**
+
+Navigation组件的BuilderNode冻结功能（通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）是组件冻结机制在导航场景下的延伸，核心作用是优化包含BuilderNode的Navigation组件在页面切换或状态更新时的性能，避免非活跃状态下的冗余计算和渲染。当BuilderNode所在的Navigation页面处于非活跃状态（如被切换到后台、隐藏在Tab页/侧边栏后等），系统会将其标记为 “冻结”。冻结状态下，该BuilderNode的子组件会暂停状态更新、事件响应和渲染刷新（如@State、@Prop等状态变化不会触发重新渲染，生命周期回调暂时失效）。通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true，BuilderNode会继承父组件（如Navigation）的冻结状态，确保其下的整个子组件树同步进入冻结状态，避免局部未冻结导致的性能浪费。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class Params {
+  count: number = 0;
+
+  constructor(count: number) {
+    this.count = count;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+
+  Column() {
+    TextBuilder({ message: params.count });
+  }
+}
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private textNode: BuilderNode<[Params]> | null = null;
+  private count: number = 0;
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.count));
+    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为True
+    if (this.rootNode !== null) {
+      this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树
+    }
+    return this.rootNode;
+  }
+
+  update(): void {
+    if (this.textNode !== null) {
+      this.count += 1;
+      this.textNode.update(new Params(this.count)); // 更新BuilderNode中的数据，可以触发Log
+    }
+  }
+}
+
+const textNodeController: TextNodeController = new TextNodeController();
+
+@Entry
+@ComponentV2
+struct MyNavigationTestStack {
+  @Provider('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+  @Local message: number = 0;
+  @Local logNumber: number = 0;
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      pageOneStack({ message: this.message, logNumber: this.logNumber })
+    } else if (name === 'pageTwo') {
+      pageTwoStack({ message: this.message, logNumber: this.logNumber })
+    }
+  }
+
+  build() {
+    Column() {
+      Button('update builderNode') // 点击更新BuildrNode
+        .onClick(() => {
+          textNodeController.update();
+        })
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
+
+@ComponentV2
+struct pageOneStack {
+  @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
+  @Local index: number = 1;
+  @Param @Require  message: number;
+  @Param @Require logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@ComponentV2
+struct PageTwoStack {
+  @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
+  @Local index: number = 2;
+  @Param @Require message: number;
+  @Param @Require logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Text('BuilderNode处于冻结')
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 48, bottom: 48 })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+struct NavigationContentMsgStack {
+  @Param @Require message: number;
+  @Param @Require index: number;
+  @Param @Require logNumber: number;
+
+  build() {
+    Column() {
+      if (this.index === 1) {
+        NodeContainer(textNodeController);
+      }
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+struct TextBuilder {
+  @Param  message: number = 0;
+
+  @Monitor('message')
+  info() {
+    console.info(` freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结
+  }
+  build() {
+    Row() {
+      Column() {
+        Text(`文本更新次数： ${this.message}`)
+          .fontWeight(FontWeight.Bold)
+          .margin({ top: 48, bottom: 48 })
+      }
+    }
+  }
+}
+```
+
+![inheritFreezeOptions](figures/V2Navination.gif)
+
+在上面的示例中：
+
+1.进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
+
+2.点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
+
+3.点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
+
+**Repeat**
+
+Repeat组件（用于循环生成子组件）的BuilderNode冻结功能（通过设置BuilderNode的[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true启用），是组件冻结机制在循环列表场景下的具体应用，核心目的是优化列表中重复生成的子组件在非活跃状态下的性能，减少不必要的资源消耗。当BuilderNode生成的子组件处于非活跃状态（如列表项被滚动出屏幕、父组件进入冻结状态、或整个列表不可见时），系统会将该BuilderNode及其子组件树标记为“冻结”。冻结状态下，该BuilderNode对应的列表项会暂停状态更新（如@Local、@Param等状态变化不会触发重新渲染）、事件响应（如点击、滑动等事件暂时失效）和生命周期回调，避免后台无效计算。通过[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true，BuilderNode会继承Repeat父组件的冻结状态，确保循环生成的每个子组件都能同步遵循冻结规则，避免局部未冻结导致的性能浪费。
+
+```ts
+import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
+// 定义一个Params类，用于传递参数
+@ObservedV2
+class Params {
+  // 单例模式，确保只有一个Params实例
+  static singleton_: Params;
+
+  // 获取Params实例的方法
+  static instance() {
+    if (!Params.singleton_) {
+      Params.singleton_ = new Params('');
+    }
+    return Params.singleton_;
+  }
+
+  // 使用@Trace装饰器装饰message、bgColor属性，以便跟踪其变化
+  @Trace message: string = '';
+  @Trace bgColor: Color = Color.Pink;
+  index: number = 0;
+
+  constructor( message: string) {
+    this. message = message;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    buildNodeChild({ message: params.message });
+  }
+}
+
+class TextNodeController extends NodeController {
+  private textNode: BuilderNode<[Params]> | null = null;
+  private message: string = '';
+  // 构造函数接收一个message参数
+  constructor(message: string){
+    super();
+    this.message = message;
+  }
+  // 创建并返回一个FrameNode
+  makeNode(context: UIContext): FrameNode | null {
+    this.textNode = new BuilderNode(context);
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
+    this.textNode.inheritFreezeOptions(true); // BuilderNode开启冻结
+    return this.textNode.getFrameNode();
+  }
+}
+
+@Entry
+@ComponentV2
+export struct RepeatVirtualScrollFreeze {
+  @Local simpleList: Array<string> = [];
+  storage: Params = Params.instance();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 7; i++) {
+      this.simpleList.push(`item${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('Reduce length to 5').width('60%').height(40).fontSize(25)
+        .onClick(() => {
+          this.simpleList = this.simpleList.slice(0, 5);
+        })
+        .margin(5)
+      Button('Change bgColor').width('60%').height(40).fontSize(25)
+        .onClick(() => {
+          this.storage.bgColor = this.storage.bgColor == Color.Pink ? Color.Yellow : Color.Pink;
+        })
+
+      List() {
+        Repeat(this.simpleList)
+          .each((obj: RepeatItem<string>) => {
+          })
+          .virtualScroll({ totalCount: this.simpleList.length })
+          .templateId(() => 'a')
+          .template('a', (ri) => {
+            FreezeBuildNode({
+              message: ri.item,
+              bgColor: this.storage.bgColor
+            })
+          }, { cachedCount: 2 })
+      }
+      .cachedCount(0)
+      .margin({top: 12, left: 180 })
+    }
+    .height('80%')
+    .justifyContent(FlexAlign.Center)
+    .margin({ top: 5 })
+  }
+}
+
+// 开启组件冻结
+@ComponentV2({ freezeWhenInactive: true })
+struct FreezeBuildNode {
+  storage: Params = Params.instance();
+  @Param @Require message: string ;
+  @Param @Require bgColor: Color;
+  @Monitor('storage.bgColor')
+  onBgColorChange(monitor: IMonitor) {
+    // bgColor改变时，缓存池中组件不刷新，不会打印日志
+    console.info(`repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+  build() {
+    NodeContainer(new TextNodeController(this.message))
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct BuildNodeChild {
+  // 使用Params实例作为storage属性
+  storage: Params = Params.instance();
+  @Param message: string = '';
+
+  // 使用@Monitor装饰器监听storage.message的变化
+  @Monitor('storage.bgColor')
+  onMessageChange(monitor: IMonitor) {
+    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  }
+
+  build() {
+    Text(`[a]: ${this.message}`)
+      .fontSize(25)
+      .backgroundColor(this.storage.bgColor)
+      .margin(2)
+  }
+}
+
+```
+
+  ![inheritFreezeOptions](figures/20251015-191040.gif)
+
+在上面的示例中：
+
+点击`Reduce length to 5`后，被移除的两个组件会进入Repeat缓存池，然后点击`Change bgColor`更改bgColor的值触发节点刷新。
+
+开启组件冻结（freezeWhenInactive: true）和BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20): true），只有剩余节点中@Monitor装饰的方法onMessageChange被触发，如示例中屏上的5个节点会刷新并打印BuilderNode子组件monitor的5条日志，缓存池中的节点则不会。
+
+**Repeat和TabContent混用**
+
+BuilderNode节点开启冻结功能（即通过设置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）后，支持与Repeat、TabContent等不同组件混合使用，示例如下：
+
+```ts
+import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+
+// 定义一个Params类，用于传递参数
+@ObservedV2
+class Params {
+  // 单例模式，确保只有一个Params实例
+  static singleton_: Params;
+
+  // 获取Params实例的方法
+  static instance() {
+    if (!Params.singleton_) {
+      Params.singleton_ = new Params(0);
+    }
+    return Params.singleton_;
+  }
+
+  // 使用@Trace装饰器装饰message属性，以便跟踪其变化
+  @Trace message: string = "Hello";
+  index: number = 0;
+
+  constructor(index: number) {
+    this.index = index;
+  }
+}
+
+// 定义一个buildNodeChild组件
+@ComponentV2({ freezeWhenInactive: true }) // BuilderNode下面的子组件开启冻结
+struct buildNodeChild {
+  // 使用Params实例作为storage属性
+  storage: Params = Params.instance();
+  @Param index: number = 0;
+
+  // 使用@Monitor装饰器监听storage.message的变化
+  @Monitor("storage.message")
+  onMessageChange(monitor: IMonitor) {
+    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
+  }
+
+  build() {
+    Text(`buildNode Child message: ` +`\n` + `${this.storage.message}`).fontSize(30)
+  }
+}
+
+// 定义一个buildText函数
+@Builder
+function buildText(params: Params) {
+  Column() {
+    buildNodeChild({ index: params.index })
+  }
+}
+
+class TextNodeController extends NodeController {
+  private textNode: BuilderNode<[Params]> | null = null;
+  private index: number = 0;
+
+  // 构造函数接收一个index参数
+  constructor(index: number) {
+    super();
+    this.index = index;
+  }
+
+  // 创建并返回一个FrameNode
+  makeNode(context: UIContext): FrameNode | null {
+    this.textNode = new BuilderNode(context);
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.index));
+    this.textNode.inheritFreezeOptions(true); // BuilderNode开启冻结
+    return this.textNode.getFrameNode();
+  }
+}
+
+// 定义一个Index组件
+@Entry
+@ComponentV2
+export struct RepeatTab {
+  // 使用Params实例作为storage属性
+  storage: Params = Params.instance();
+  private data: number[] = [0, 1];
+
+  build() {
+    Row() {
+      Column() {
+        Button("change").width('80%').height(40).fontSize(30)
+          .onClick(() => {
+            this.storage.message += 'a';
+          })
+
+        Tabs() {
+          // 使用Repeat重复渲染TabContent组件
+          Repeat<number>(this.data)
+            .each((obj: RepeatItem<number>) => {
+              TabContent() {
+                FreezeBuildNode({ index: obj.item })
+                  .margin({ top:20,bottom:5,left:5,right:5 })
+              }.tabBar(`tab${obj.item}`)
+            })
+            .key((item: number) => item.toString())
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+// 定义一个FreezeBuildNode组件
+@ComponentV2({ freezeWhenInactive: true })
+struct FreezeBuildNode {
+  // 使用Params实例作为storage属性
+  storage: Params = Params.instance();
+  @Param index: number = 0;
+
+  // 使用@Monitor装饰器监听storage.message的变化
+  @Monitor("storage.message")
+  onMessageChange(monitor: IMonitor) {
+    console.info(`FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
+  }
+
+  build() {
+    NodeContainer(new TextNodeController(this.index))
+      .width('100%')
+      .height('100%')
+  }
+}
+```
+
+![inheritFreezeOptions](figures/V2RepeatTabs.gif)
+
+在上面的示例中：
+
+1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+
+2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+
+3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据
 

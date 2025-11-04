@@ -27,14 +27,16 @@ import { media } from '@kit.MediaKit';
 
 | Name   | Type                                | Read-Only| Optional| Description              |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
-| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## prepare<sup>12+</sup>
 
 prepare(config: AVTranscoderConfig): Promise\<void>
 
 Sets video transcoding parameters. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -96,6 +98,8 @@ Starts transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12) API is called.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -138,6 +142,8 @@ pause(): Promise\<void>
 Pauses transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [start()](#start12) API is called. You can call [resume()](#resume12) to resume transcoding.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -182,6 +188,8 @@ Resumes transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [pause()](#pause12) API is called.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -224,6 +232,8 @@ cancel(): Promise\<void>
 Cancels transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12), [start()](#start12), [pause()](#pause12), or [resume()](#resume12) API is called.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -268,6 +278,8 @@ Releases the video transcoding resources. This API uses a promise to return the 
 
 After the resources are released, you can no longer perform any operation on the AVTranscoder instance.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value**
@@ -304,9 +316,11 @@ async function test() {
 
 ## on('progressUpdate')<sup>12+</sup>
 
-on(type: 'progressUpdate', callback: Callback\<number>): void
+on(type:'progressUpdate', callback: Callback\<number\>):void
 
 Subscribes to transcoding progress updates. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -337,6 +351,8 @@ off(type:'progressUpdate', callback?: Callback\<number>): void
 
 Unsubscribes from transcoding progress updates.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Parameters**
@@ -365,6 +381,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to AVTranscoder errors. If this event is reported, call [release()](#release12) to exit the transcoding.
 
 An application can subscribe to only one AVTranscoder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -411,6 +429,8 @@ off(type:'error', callback?: ErrorCallback): void
 
 Unsubscribes from AVTranscoder errors. After the unsubscription, your application can no longer receive AVTranscoder errors.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Parameters**
@@ -439,6 +459,8 @@ on(type: 'complete', callback: Callback\<void>): void
 Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding completion event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 When this event is reported, the current transcoding operation is complete. You need to call [release()](#release12) to exit the transcoding.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -475,6 +497,8 @@ async function test() {
 off(type:'complete', callback?: Callback\<void>): void
 
 Unsubscribes from the event indicating that transcoding is complete.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 

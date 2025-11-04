@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)。
@@ -71,69 +71,104 @@ TextInput、TextArea和Search都支持设置输入框类型，通过type属性�
 
 TextInput有以下类型可选择：Normal基本输入模式、Password密码输入模式、Email邮箱地址输入模式、Number纯数字输入模式、PhoneNumber电话号码输入模式、USER_NAME用户名输入模式、NEW_PASSWORD新密码输入模式、NUMBER_PASSWORD纯数字密码输入模式、<!--Del-->SCREEN_LOCK_PASSWORD锁屏应用密码输入模式、<!--DelEnd-->NUMBER_DECIMAL带小数点的数字输入模式、带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
-
-- 基本输入模式（默认类型）。
+### 基本输入模式（默认类型）
 
   ```ts
-  TextInput({ text: 'aaa' })
+  TextInput()
     .type(InputType.Normal)
   ```
 
   ![zh-cn_image_0000001562820765](figures/zh-cn_image_0000001562820765.png)
 
-- 密码输入模式。
+### 密码模式
 
+包括Password密码输入模式、NUMBER_PASSWORD纯数字密码模式、NEW_PASSWORD新密码输入模式。
+
+以下示例是Password密码输入模式的输入框。
   ```ts
-  TextInput({ text: '123' })
+  TextInput()
     .type(InputType.Password)
   ```
 
   ![zh-cn_image_0000001511580840](figures/zh-cn_image_0000001511580840.png)
 
-- 邮箱地址输入模式。
+### 邮箱地址输入模式
+
+邮箱地址输入模式的输入框，只能存在一个@符号。
 
   ```ts
-  TextInput({ text: '123456@example.com' })
+  TextInput()
     .type(InputType.Email)
   ```
 
   ![text_input_type_email](figures/text_input_type_email.PNG)
 
-- 纯数字输入模式。
+### 纯数字输入模式
+纯数字输入模式的输入框，只能输入数字[0-9]。
 
   ```ts
-  TextInput({ text: '123456789' })
+  TextInput()
     .type(InputType.Number)
   ```
 
   ![text_input_type_number](figures/text_input_type_number.PNG)
 
-- 电话号码输入模式。
+### 电话号码输入模式
 
+电话号码输入模式的输入框，支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
+
+```ts
+TextInput()
+  .type(InputType.PhoneNumber)
+```
+
+![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
+
+### 带小数点的数字输入模式
+
+带小数点的数字输入模式的输入框，只能输入数字[0-9]和小数点，只能存在一个小数点。
   ```ts
-  TextInput({ text: '+86 123-0123-0456' })
-    .type(InputType.PhoneNumber)
-  ```
-
-  ![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
-
-- 带小数点的数字输入模式。
-
-  ```ts
-  TextInput({ text: '9.15' })
+  TextInput()
     .type(InputType.NUMBER_DECIMAL)
   ```
 
   ![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
 
-- 带URL的输入模式。
+### 带URL的输入模式
 
+带URL的输入模式，无特殊限制。
   ```ts
-  TextInput({ text: 'https://www.example.com' })
+  TextInput()
     .type(InputType.URL)
   ```
 
   ![text_input_type_url](figures/text_input_type_url.PNG)
+
+## 设置输入框多态样式
+
+TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。下面以多行输入框TextArea为例进行说明。
+
+TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
+
+### 默认风格
+
+默认风格的输入框，在编辑态和非编辑态，样式没有区别。
+```ts
+TextArea()
+  .style(TextContentStyle.DEFAULT)
+```
+
+  ![textArea_style_default](figures/textArea_style_default.gif)
+
+### 内联模式
+
+内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
+```ts
+TextArea()
+  .style(TextContentStyle.INLINE)
+```
+
+  ![textArea_style_default](figures/textArea_style_inline.gif)
 
 ## 自定义样式
 

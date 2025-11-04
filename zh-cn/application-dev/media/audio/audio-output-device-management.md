@@ -1,4 +1,4 @@
-# 管理全局音频输出设备
+# 查询和监听音频输出设备
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -6,9 +6,9 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 应用可通过以下两种方式管理全局音频输出设备：
-- 通常情况下，可以通过[AudioRoutingManager管理全局音频输出设备](#通过audioroutingmanager管理全局音频输出设备)。
-- 从API 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持通过[AudioSession管理全局音频输出](#通过audiosession管理全局音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。
-## 通过AudioRoutingManager管理全局音频输出设备
+- 通常情况下，可以[通过AudioRoutingManager查询和监听音频输出设备](#通过audioroutingmanager查询和监听音频输出设备)。
+- 从API 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持[通过AudioSession查询和监听音频输出设备](#通过audiosession查询和监听音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。
+## 通过AudioRoutingManager查询和监听音频输出设备
 
 本模块提供音频输出设备管理能力，包括查询设备信息和监听连接状态变化。具体API说明请参考文档[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
 
@@ -56,7 +56,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data:
 
 > **说明：**
 >
-> 监听设备连接状态变化可以监听到全部的设备连接状态变化，不建议作为应用处理自动暂停的依据。应用如需处理自动暂停相关业务，可参考[音频流输出设备变更原因](audio-output-device-change.md)。
+> 监听设备连接状态变化可以监听到全部的设备连接状态变化，不建议作为应用处理自动暂停的依据。应用如需处理自动暂停相关业务，可参考[音频流输出设备变更原因](audio-output-device-change.md#音频流输出设备变更原因)。
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -157,9 +157,9 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
 ```
 
-## 通过AudioSession管理全局音频输出设备
+## 通过AudioSession查询和监听音频输出设备
 应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，因此无法灵活控制播放设备的选择和状态监听。从API 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
-- ArkTS API：[AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
+- ArkTS API：[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
 - C API：[OH_AudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### 创建AudioSession实例

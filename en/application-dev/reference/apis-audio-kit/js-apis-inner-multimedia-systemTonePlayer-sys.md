@@ -29,10 +29,10 @@ Describes the options of system tones.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name       | Type   | Mandatory| Description                                         |
-| ----------- | ------- | ---- | --------------------------------------------- |
-| muteAudio   | boolean | No  | Whether the sound is muted. **true** if muted, **false** otherwise.  |
-| muteHaptics | boolean | No  | Whether haptics feedback is turned off. **true** if turned off, **false** otherwise.|
+| Name       | Type   | Read-Only| Optional| Description                                         |
+| ----------- | ------- | ---- | ---- | --------------------------------------------- |
+| muteAudio   | boolean | No  | Yes  | Whether to mute the audio. **true** to mute, **false** otherwise.  |
+| muteHaptics | boolean | No  | Yes  | Whether to turn off haptics feedback when a system tone is played. **true** to turn off, **false** otherwise.|
 
 ## SystemTonePlayer
 

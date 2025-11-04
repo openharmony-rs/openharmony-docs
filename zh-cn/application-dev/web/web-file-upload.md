@@ -14,42 +14,42 @@ Web组件支持前端页面选择文件上传功能，应用开发者可以使�
 
 
 - 应用侧代码。
-  
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+<!-- @[web_file_upload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets) -->
 
-    build() {
-      Column() {
-        Web({ src: $rawfile('local.html'), controller: this.controller })
-          .onShowFileSelector((event) => {
-            console.info('MyFileUploader onShowFileSelector invoked');
-            const documentSelectOptions = new picker.DocumentSelectOptions();
-            let uri: string | null = null;
-            const documentViewPicker = new picker.DocumentViewPicker();
-            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-              uri = documentSelectResult[0];
-              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-              if (event) {
-                event.result.handleFileList([uri]);
-              }
-            }).catch((err: BusinessError) => {
-              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-            })
-            return true;
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { picker } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('local.html'), controller: this.controller })
+        .onShowFileSelector((event) => {
+          console.info('MyFileUploader onShowFileSelector invoked');
+          const documentSelectOptions = new picker.DocumentSelectOptions();
+          let uri: string | null = null;
+          const documentViewPicker = new picker.DocumentViewPicker();
+          documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
+            uri = documentSelectResult[0];
+            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            if (event) {
+              event.result.handleFileList([uri]);
+            }
+          }).catch((err: BusinessError) => {
+            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
           })
-      }
+          return true;
+        })
     }
   }
-  ```
-
+}
+```
 
 - local.html页面代码。
   

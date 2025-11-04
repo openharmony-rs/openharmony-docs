@@ -44,7 +44,9 @@ libudmf.so, libhilog_ndk.z.so
 
 ## Including Header Files
 
-```c
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <cstdio>
 #include <cstring>
 #include <database/udmf/utd.h>
@@ -57,6 +59,7 @@ libudmf.so, libhilog_ndk.z.so
 #undef LOG_TAG
 #define LOG_TAG "MY_LOG"
 ```
+
 ## Obtaining Different Types of Data and Comparing Their Relationships
 
 The following walks you through on how to use the UTD to obtain plaintext data.
@@ -69,18 +72,20 @@ The following walks you through on how to use the UTD to obtain plaintext data.
 7. Check whether **typeIds1[0]** is a higher-level type of **typeIds2[0]**.
 8. Destroy the pointers created.
 
-```c
+<!-- @[uniform_data_type_descriptors_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 1. Obtain typeId of the UTD based on the file name extension .txt.
 unsigned int typeIds1Count = 0;
-const char** typeIds1 = OH_Utd_GetTypesByFilenameExtension(".txt", &typeIds1Count);
+const char **typeIds1 = OH_Utd_GetTypesByFilenameExtension(".txt", &typeIds1Count);
 OH_LOG_INFO(LOG_APP, "the count of typeIds1 is %{public}u", typeIds1Count);
 // 2. Obtain typeId based on the MIME type.
 unsigned int typeIds2Count = 0;
-const char** typeIds2 = OH_Utd_GetTypesByMimeType("text/plain", &typeIds2Count);
+const char **typeIds2 = OH_Utd_GetTypesByMimeType("text/plain", &typeIds2Count);
 OH_LOG_INFO(LOG_APP, "the count of typeIds2 is %{public}u", typeIds2Count);
 // 3. Use the typeIds obtained to create two UTD instances.
-OH_Utd* utd1 = OH_Utd_Create(typeIds1[0]);
-OH_Utd* utd2 = OH_Utd_Create(typeIds2[0]);
+OH_Utd *utd1 = OH_Utd_Create(typeIds1[0]);
+OH_Utd *utd2 = OH_Utd_Create(typeIds2[0]);
 // 4. Check whether the two UTD instances are the same.
 bool isEquals = OH_Utd_Equals(utd1, utd2);
 if (isEquals) {
@@ -107,7 +112,7 @@ bool isHigher = OH_Utd_IsHigher(typeIds1[0], typeIds2[0]);
 if (isHigher) {
     OH_LOG_INFO(LOG_APP, "typeIds1[0] is higher typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0]  is not higher typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] is not higher typeIds2[0]");
 }
 // 8. Destroy the pointers obtained by OH_Utd_GetTypesByFilenameExtension and OH_Utd_GetTypesByMimeType and the UTD pointers.
 OH_Utd_DestroyStringList(typeIds1, typeIds1Count);

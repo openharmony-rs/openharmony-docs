@@ -4,7 +4,7 @@
 <!--Owner: @liwenzhen3-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文档主要介绍数据组件内的状态变量的迁移场景，包含以下场景。
 | V1装饰器名                | V2装饰器名                  |

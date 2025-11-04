@@ -26,4 +26,4 @@ In many cases, the input device and tool may be the same. For example, the mouse
 
 [Keyboard input events](./arkts-interaction-development-guide-keyboard.md): explains keyboard-generated events and usage patterns.
 
-[Crown input events](./arkts-common-events-crown-event.md): explains watch crown-generated events and usage patterns.
+[Crown input events](./arkts-common-events-crown-event.md): explains crown-generated events and usage patterns.

@@ -366,7 +366,7 @@ isMovingPhotoSupported(): boolean
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| boolean | 返回是否支持动态照片拍照。true表示支持，false表示不支持。 |
+| boolean | 返回是否支持动态照片拍照。true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -518,7 +518,7 @@ isMirrorSupported(): boolean
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| boolean | 返回是否支持镜像拍照，true表示支持，false表示不支持。 |
+| boolean | 返回是否支持镜像拍照，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -588,7 +588,7 @@ getSupportedMovingPhotoVideoCodecTypes(): Array\<VideoCodecType\>
 
 | 类型            | 说明                |
 | -------------- |-------------------|
-| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | 支持的动态照片短视频编码类型列表。 |
+| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | 支持的动态照片短视频编码类型列表。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -1083,7 +1083,7 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取拍照旋转角度。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取拍照旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

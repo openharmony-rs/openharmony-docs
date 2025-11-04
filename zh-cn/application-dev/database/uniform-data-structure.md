@@ -29,72 +29,97 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 以使用标准化数据结构定义数据内容（包含超链接、纯文本两条数据记录）为例，提供基本的开发步骤。
 
-数据提供方可通过UDMF提供的addRecord()接口添加数据记录，使用getRecords()接口获取当前数据对象内的所有数据记录。
+数据提供方可通过UDMF提供的addRecord()接口，使用getRecords()接口获取当前数据对象内的所有数据记录。
 
-  ```ts
-  // 1. 导入unifiedDataChannel和uniformTypeDescriptor模块。
-  import { uniformDataStruct, uniformTypeDescriptor, unifiedDataChannel } from '@kit.ArkData';
+1. 导入对应模块。
 
-  // 2. 创建超链接数据记录。
-  let hyperlinkDetails : Record<string, string> = {
-    'attr1': 'value1',
-    'attr2': 'value2'
-  }
-  let hyperlink : uniformDataStruct.Hyperlink = {
-    uniformDataType:'general.hyperlink',
-    url : 'www.XXX.com',
-    description : 'This is the description of this hyperlink',
-    details : hyperlinkDetails
-  }
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-  hyperlink.description = '...';  // 修改hyperlink属性description
+    ``` TypeScript
+    // 1. 导入unifiedDataChannel和uniformTypeDescriptor模块。
+    import { uniformDataStruct, uniformTypeDescriptor, unifiedDataChannel } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
 
-  console.info(`hyperlink url = ${hyperlink.url}`);  // 访问对象属性。
+2. 创建超链接数据记录。
 
-  // 3. 创建纯文本数据类型记录，将其添加到刚才创建的UnifiedData对象。
-  let plainTextDetails : Record<string, string> = {
-    'attr1': 'value1',
-    'attr2': 'value2'
-  }
-  let plainText : uniformDataStruct.PlainText = {
-    uniformDataType: 'general.plain-text',
-    textContent : 'This is plainText textContent example',
-    abstract : 'this is abstract',
-    details : plainTextDetails
-  }
-  // 4. 创建一个统一数据对象实例。
-  let unifiedData = new unifiedDataChannel.UnifiedData();
-  let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
-  let plainTextRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+3. 创建数据记录并添加到统一数据对象中。
 
-  // 5. 添加plainText数据记录。
-  unifiedData.addRecord(hyperlinkRecord);
-  unifiedData.addRecord(plainTextRecord);
+4. 创建统一数据对象实例。
 
-  // 6. 记录添加完成后，可获取当前UnifiedData对象内的所有数据记录。
-  let records = unifiedData.getRecords();
+5. 添加plainText数据记录。
 
-  // 7. 遍历每条记录，判断该记录的数据类型，转换为子类对象，得到原数据记录。
-  for (let i = 0; i < records.length; i ++) {
-    let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-    let record = unifiedDataRecord.getValue() as object;
-    if (record != undefined) {
-      // 读取该数据记录的类型
-      let type : string = record["uniformDataType"];
-      switch (type) {
-        case uniformTypeDescriptor.UniformDataType.HYPERLINK:
-          Object.keys(record).forEach(key => {
-            console.info('show records: ' + key + ', value:' + record[key]);
-          });
-          break;
-        case uniformTypeDescriptor.UniformDataType.PLAIN_TEXT:
-          Object.keys(record).forEach(key => {
-            console.info('show records: ' + key + ', value:' + record[key]);
-          });
-          break;
-        default:
-          break;
+6. 添加并获取当前UnifiedData对象内的所有数据记录。
+
+7. 遍历每条记录，判断该记录的数据类型，转换为子类对象并得到原数据记录。
+
+    <!-- @[unified_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+    ``` TypeScript
+    // 2. 创建超链接数据记录。
+    let hyperlinkDetails: Record<string, string> = {
+      'attr1': 'value1',
+      'attr2': 'value2'
+    }
+    let hyperlink: uniformDataStruct.Hyperlink = {
+      uniformDataType: 'general.hyperlink',
+      url: 'www.XXX.com',
+      description: 'This is the description of this hyperlink',
+      details: hyperlinkDetails
+    }
+
+    // 修改hyperlink属性description
+    hyperlink.description = '...';
+
+    // 访问对象属性。
+    hilog.info(0xFF00, '[Sample_Udmf]', `hyperlink.url = ${hyperlink.url}`);
+
+    // 3. 创建纯文本数据类型记录，将其添加到刚才创建的UnifiedData对象。
+    let plainTextDetails: Record<string, string> = {
+      'attr1': 'value1',
+      'attr2': 'value2'
+    }
+    let plainText: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      textContent: 'This is plainText textContent example',
+      abstract: 'this is abstract',
+      details: plainTextDetails
+    }
+    // 4. 创建一个统一数据对象实例。
+    let unifiedData = new unifiedDataChannel.UnifiedData();
+    let hyperlinkRecord =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
+    let plainTextRecord =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+
+    // 5. 添加plainText数据记录。
+    unifiedData.addRecord(hyperlinkRecord);
+    unifiedData.addRecord(plainTextRecord);
+
+    // 6. 记录添加完成后，可获取当前UnifiedData对象内的所有数据记录。
+    let records = unifiedData.getRecords();
+
+    // 7. 遍历每条记录，判断该记录的数据类型，转换为子类对象，得到原数据记录。
+    for (let i = 0; i < records.length; i++) {
+      let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
+      let record = unifiedDataRecord.getValue() as object;
+      if (record != undefined) {
+        // 读取该数据记录的类型
+        let type: string = record['uniformDataType'];
+        switch (type) {
+          case uniformTypeDescriptor.UniformDataType.HYPERLINK:
+            Object.keys(record).forEach(key => {
+              hilog.info(0xFF00, '[Sample_Udmf]', `show records: ${key} + , value: ${record[key]}`);
+            });
+            break;
+          case uniformTypeDescriptor.UniformDataType.PLAIN_TEXT:
+            Object.keys(record).forEach(key => {
+              hilog.info(0xFF00, '[Sample_Udmf]', `show records: ${key} + , value: ${record[key]}`);
+            });
+            break;
+          default:
+            break;
+        }
       }
     }
-  }
-  ```
+    ```

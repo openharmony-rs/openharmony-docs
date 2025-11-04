@@ -227,7 +227,7 @@
     ```
    将上述gen_customtitle_abc加入到`foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/BUILD.gn`文件的编译依赖中。编译后生成的.abc文件在`obj/foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces`目录下。
    
-   具体可参考如下路径下的实现：[foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces](https://gitee.com/openharmony/arkui_ace_engine/tree/master/frameworks/core/components_ng/pattern/container_modal/interfaces)。
+   具体可参考如下路径下的实现：[foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces](https://gitcode.com/openharmony/arkui_ace_engine/tree/master/frameworks/core/components_ng/pattern/container_modal/interfaces)。
 
 
 4. 将.abc文件配置到系统中的指定目录，如/system/lib64/，然后命令行设置配置参数"persist.sys.arkui.customtitle"的值为.abc文件的路径，就可以读取并显示自定义的标题栏。

@@ -163,3 +163,22 @@
 - PKCS7：填充方法和PKCS5一致。但PKCS7的可以在1-255字节之间任意填充，PKCS5固定为8字节。
 
 对于CFB、OFB、CTR、GCM、CCM这类将分组密码转化为流模式实现的模式，不需要填充，因此无论是否指定填充模式，都会按照NoPadding实现。
+
+## ChaCha20
+
+从API22开始，算法库支持该算法。
+
+算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+
+常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为[Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22)。
+
+由于ChaCha20是流算法，无需填充算法。
+
+当前支持以字符串参数完成ChaCha20加解密，具体的“字符串参数”由“对称密钥类型”和“分组模式”使用符号“|”拼接而成，用于在创建对称加解密实例时，指定算法规格。
+
+如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。
+
+| 对称算法名 | 密钥长度（bit） | 字符串参数 | API版本 | 
+| -------- | -------- | -------- | -------- |
+| ChaCha20 | 256 | ChaCha20 | 22+ | 
+| ChaCha20 | 256 | ChaCha20\|Poly1305 | 22+ | 

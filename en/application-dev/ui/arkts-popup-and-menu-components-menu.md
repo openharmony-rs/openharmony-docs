@@ -129,7 +129,7 @@ Button('click for Menu')
 
 Use the **bindContextMenu** API to customize the menu content and menu popup mode: right-click or long press. The menu items that are displayed using **bindContextMenu** are in an independent child window and can be displayed outside the application window.
 
-- Use @Builder to customize the menu content. The content is the same as that in the preceding section.
+- Use @Builder to customize the menu content. The content configuration follows the same logic as the preceding section.
 - Check the menu popup mode and bind the component through the **bindContextMenu** attribute. In the example, the menu is displayed upon right-clicking.
   
   ```ts
@@ -137,9 +137,9 @@ Use the **bindContextMenu** API to customize the menu content and menu popup mod
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
-## Setting the Vibration Effect When the Menu Is Displayed
+## Configuring Haptic Feedback When Menu Appears
 
-The menu vibration effect is supported since API version 18. By default, there is no vibration effect when the menu is displayed. If you want the menu to vibrate when it is displayed, you can set the vibration mode of the menu by using the hapticFeedbackMode attribute of [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10).
+Menu haptic feedback is supported since API version 18. By default, menus are displayed without haptic feedback. To enable haptic feedback when menus appear, configure the haptic feedback mode using the **hapticFeedbackMode** property in [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10).
 
 - The haptic feedback mode is only configurable for level-1 menus.
 - The settings take effect only when the application has the ohos.permission.VIBRATE permission and the user has enabled haptic feedback. To enable haptic feedback, you must [declare the required permission](../security/AccessToken/declare-permissions.md) under **requestPermissions** in the **module.json5** file of the project as follows:
@@ -307,7 +307,7 @@ Since API version 20, menus can be displayed at specific positions relative to t
 > **NOTE**
 >- Positioning offsets do not apply during menu preview state.
 >- Predefined [placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10) settings become ineffective.
->- Offsets combine with the offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10) parameter for final positioning.
+>- Offsets combine with the [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10) parameter for final positioning.
 >- With both horizontal and vertical offsets negative, positioning references the bound component's lower left corner.
 >- With only one negative offset, positioning uses the upper left corner with reverse offset applied.
 

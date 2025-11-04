@@ -1406,6 +1406,121 @@ function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
 }
 ```
 
+## createCroppedAndScaledPixelMap<sup>22+</sup>
+
+createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap\>
+
+根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                          |
+| -------- | ------------------- | ---- | ----------------------------- |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
+| x        | number | 是   | 宽度的缩放倍数。不能为0。 |
+| y        | number | 是   | 高度的缩放倍数。不能为0。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
+
+**返回值：**
+
+| 类型           | 说明                        |
+| -------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+| 7600204 | Invalid region. |
+| 7600205 | Unsupported memory format or pixel format. |
+| 7600301 | Memory alloc failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
+  const imageInfo = pixelMap.getImageInfoSync();
+  const region: image.Region = {
+    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
+    x: imageInfo.size.width / 4,
+    y: imageInfo.size.height / 4
+  };
+  const scaleX: number = 2.0;
+  const scaleY: number = 2.0;
+  pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
+    .then((croppedAndScaled: PixelMap) => {
+      console.info('PixelMap crop and scale succeeded.');
+    })
+    .catch((error: BusinessError) => {
+      console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
+## createCroppedAndScaledPixelMapSync<sup>22+</sup>
+
+createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?: AntiAliasingLevel): PixelMap
+
+根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。同步返回结果。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                          |
+| -------- | ------------------- | ---- | ----------------------------- |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
+| x        | number | 是   | 宽度的缩放倍数。不能为0。 |
+| y        | number | 是   | 高度的缩放倍数。不能为0。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功则同步返回PixelMap对象，失败则抛出异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+| 7600204 | Invalid region. |
+| 7600205 | Unsupported memory format or pixel format. |
+| 7600301 | Memory alloc failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
+  const imageInfo = pixelMap.getImageInfoSync();
+  const region: image.Region = {
+    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
+    x: imageInfo.size.width / 4,
+    y: imageInfo.size.height / 4
+  };
+  const scaleX: number = 2.0;
+  const scaleY: number = 2.0;
+  try {
+    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
 ## clone<sup>18+</sup>
 
 clone(): Promise\<PixelMap>
@@ -1429,8 +1544,8 @@ clone(): Promise\<PixelMap>
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -1471,8 +1586,8 @@ cloneSync(): PixelMap
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -2573,11 +2688,15 @@ async function Unmarshalling() {
 
 ## release<sup>7+</sup>
 
-release():Promise\<void>
+release(): Promise\<void\>
 
-释放PixelMap对象。使用Promise异步回调。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用Promise异步回调。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2609,11 +2728,15 @@ async function Release(pixelMap:image.PixelMap) {
 
 ## release<sup>7+</sup>
 
-release(callback: AsyncCallback\<void>): void
+release(callback: AsyncCallback\<void\>): void
 
-释放PixelMap对象，使用callback形式返回释放结果。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用callback形式返回释放结果。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2741,5 +2864,63 @@ function SetMemoryNameSync(pixelMap:image.PixelMap) {
       console.error(`setMemoryNameSync error. code is ${error.code}, message is ${error.message}`);
     }
   }
+}
+```
+
+## getUniqueId<sup>22+</sup>
+
+getUniqueId(): number
+
+获取PixelMap的唯一ID。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| number | 唯一ID。取值为正整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+
+**示例：**
+
+```ts
+function DemoGetUniqueId(pixelMap: PixelMap) {
+  const uniqueId: number = pixelMap.getUniqueId();
+}
+```
+
+## isReleased<sup>22+</sup>
+
+isReleased(): boolean
+
+检查PixelMap对象是否已被释放。如果已被释放，则任何访问该对象内部数据的方法调用将会失败。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| boolean | PixelMap是否已被释放。返回true表示已被释放，否则返回false。 |
+
+**示例：**
+
+```ts
+async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
+  pixelMap.isReleased(); // 返回false。
+  await pixelMap.release();
+  pixelMap.isReleased(); // 返回true。
 }
 ```

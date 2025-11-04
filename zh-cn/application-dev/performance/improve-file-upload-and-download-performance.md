@@ -172,6 +172,8 @@ async zipUploadFiles(fileUris: Array<string>): Promise<void> {
 ```ts
 import { common } from '@kit.AbilityKit';
 import { request } from '@kit.BasicServicesKit';
+import { http } from '@kit.NetworkKit';
+import { hash } from '@kit.CoreFileKit';
 ```
 
 2. 创建相关上传类：

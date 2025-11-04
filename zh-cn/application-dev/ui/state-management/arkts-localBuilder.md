@@ -39,6 +39,53 @@ this.myBuilderFunction()
 
 - 在自定义函数体中，this指代当前所属组件，组件的状态变量可以在自定义构建函数内访问。建议通过this访问自定义组件的状态变量而不是参数传递。
 
+## \@LocalBuilder和局部\@Builder使用区别
+
+跨组件传递局部\@Builder函数时，会使用.bind(this)更改函数上下文，但这可能会导致组件的父子关系与状态管理的父子关系不一致。而\@LocalBuilder无论是否使用.bind(this)，都不会改变组件的父子关系，即\@LocalBuilder中定义组件所属的父组件是确定的，无法被改变。
+
+![zh-cn_image_compatible_localBuilder](figures/zh-cn_image_compatible_localBuilder.png)
+
+> **说明：**
+>
+> bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
+
+下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
+
+```ts
+@Component
+struct Child {
+  label: string = 'Child';
+  @BuilderParam customBuilderParam: () => void;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'Parent';
+
+  @Builder componentBuilder() {
+    Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
+  }
+
+  @LocalBuilder componentLocalBuilder() {
+     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
+  }
+
+  build() {
+    Column() {
+      Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child
+      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent
+    }
+  }
+}
+```
+
 ## 限制条件
 
 - \@LocalBuilder只能在所属组件内声明，不允许全局声明。
@@ -47,19 +94,9 @@ this.myBuilderFunction()
 
 - 在自定义组件中，\@LocalBuilder不能用来装饰静态函数。
 
-## \@LocalBuilder和局部\@Builder使用区别
-
-跨组件传递局部\@Builder函数时，会使用.bind(this)更改函数上下文，但这可能会导致组件的父子关系与状态管理的父子关系不一致。而\@LocalBuilder无论是否使用.bind(this)，都不会改变组件的父子关系，即\@LocalBuilder中定义组件所属的父组件是确定的，无法被改变。详情请参考[@LocalBuilder和@Builder区别说明](arkts-localBuilder.md#localbuilder和builder区别说明)。
-
-![zh-cn_image_compatible_localBuilder](figures/zh-cn_image_compatible_localBuilder.png)
-
-> **说明：**
->
-> bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
-
 ## 参数传递规则
 
-\@LocalBuilder函数的参数传递有[按值传递](#按值传递参数)和[按引用传递](#按引用传递参数)两种，均需遵守以下规则：
+\@LocalBuilder函数的参数传递有[按回调传递](#按回调传递参数)，[按引用传递](#按引用传递参数)和[按值传递](#按值传递参数)，均需遵守以下规则：
 
 - 参数的类型必须与参数声明的类型一致，且不允许为undefined、null。
 
@@ -67,7 +104,38 @@ this.myBuilderFunction()
 
 - \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数)。
 
-- 传入一个对象字面量参数时按引用传递，其他方式按值传递。
+- 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
+
+### 按回调传递参数
+
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)。
+
+```ts
+import { UIUtils, Binding } from '@ohos.arkui.StateManagement';
+
+@Entry
+@Component
+struct Parent {
+  @State variableValue: string = 'Hello World';
+
+  @LocalBuilder
+  citeLocalBuilder(params: Binding<string>) {
+    Row() {
+      Text(`UseStateVarByReference: ${params.value}`)
+    }
+  }
+
+  build() {
+    Column() {
+      this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
+      Button('Click me')
+        .onClick(() => {
+          this.variableValue = 'Hi World';
+        })
+    }
+  }
+}
+```
 
 ### 按引用传递参数
 
@@ -75,7 +143,7 @@ this.myBuilderFunction()
 
 > **说明：**
 >
-> 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
+> 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。见常见错误[\@LocalBuilder函数和`$$`参数一起使用UI不刷新](#localbuilder函数和参数一起使用ui不刷新)。
 
 组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
 
@@ -225,7 +293,7 @@ struct Child {
 
 ### 按值传递参数
 
-调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按引用传递](#按引用传递参数)。
+调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
 组件Parent将\@State修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
 
@@ -245,49 +313,6 @@ struct Parent {
   build() {
     Column() {
       this.citeLocalBuilder(this.label)
-    }
-  }
-}
-```
-
-## \@LocalBuilder和\@Builder区别说明
-
-当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
-说明：
-
-\@Builder componentBuilder()通过this.componentBuilder的形式传给子组件\@BuilderParam customBuilderParam，this指向子组件Child的实例。
-
-\@LocalBuilder componentBuilder()通过this.componentBuilder的形式传给子组件\@BuilderParam customBuilderParam，this指向父组件Parent的实例。
-
-```ts
-@Component
-struct Child {
-  label: string = 'Child';
-  @BuilderParam customBuilderParam: () => void;
-
-  build() {
-    Column() {
-      this.customBuilderParam()
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'Parent';
-
-  @Builder componentBuilder() {
-    Text(`${this.label}`)
-  }
-
-  // @LocalBuilder componentBuilder() {
-  //   Text(`${this.label}`)
-  // }
-
-  build() {
-    Column() {
-      Child({ customBuilderParam: this.componentBuilder })
     }
   }
 }
@@ -395,3 +420,106 @@ struct ParentPage {
   }
 }
 ```
+
+## 常见问题
+### @LocalBuilder函数和`$$`参数一起使用UI不刷新
+
+若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
+
+【反例】
+
+```ts
+class LayoutSize {
+  size: number = 0;
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'parent';
+  @State layoutSize: LayoutSize = { size: 0 };
+
+  @LocalBuilder
+  componentBuilder($$: LayoutSize) {
+    Text(`this: ${this.label}`)
+    Text(`size: ${$$.size}`)
+  }
+
+  build() {
+    Column() {
+      Child({
+        customBuilder: this.componentBuilder, 
+        layoutSize: this.layoutSize
+      })
+    }
+  }
+}
+
+@Component 
+struct Child {
+  label: string = 'child';
+  @BuilderParam customBuilder: ((layoutSize: LayoutSize) => void);
+  @Link layoutSize: LayoutSize;
+
+  build() {
+    Column() {
+      this.customBuilder({ size: this.layoutSize.size }) // 子组件调用父组件的@LocalBuilder函数
+      Button("add child size")
+        .onClick(() => {
+          this.layoutSize.size += 1; // 子组件传入的参数发生变化，不会引起@LocalBuilder函数内的UI刷新
+        })
+    }
+  }
+}
+```
+
+【正例】
+
+在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
+
+```ts
+class LayoutSize {
+  size: number = 0;
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'parent';
+  @State layoutSize: LayoutSize = { size: 0 };
+
+  @LocalBuilder
+  componentBuilder() {
+    Text(`this: ${this.label}`)
+    Text(`size: ${this.layoutSize.size}`)
+  }
+
+  build() {
+    Column() {
+      Child({
+        customBuilder: this.componentBuilder, 
+        layoutSize: this.layoutSize
+      })
+    }
+  }
+}
+
+@Component 
+struct Child {
+  label: string = 'child';
+  @BuilderParam customBuider: () => void;
+  @Link layoutSize: LayoutSize;
+
+  build() {
+    Column() {
+      this.customBuilder() 
+      Button("add child size")
+        .onClick(() => {
+          this.layoutSize.size += 1; //子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
+        })
+    }
+  }
+}
+```
+
+![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)

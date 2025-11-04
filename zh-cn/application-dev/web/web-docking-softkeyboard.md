@@ -129,11 +129,13 @@ struct WebComponent {
 
 （1）设置UIContext的软键盘避让模式。
 
-```ts
-// EntryAbility.ets
+<!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+
+``` TypeScript
 import { KeyboardAvoidMode } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// ···
 onWindowStageCreate(windowStage: window.WindowStage) {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
@@ -164,8 +166,9 @@ onWindowStageCreate(windowStage: window.WindowStage) {
   </body>
 </html>
 ```
+<!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 //Index.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -206,7 +209,9 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 在应用代码中设置ArkWeb的软键盘避让模式。
 
-```ts
+<!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -216,11 +221,15 @@ struct KeyboardAvoidExample {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Row().height("50%").width("100%").backgroundColor(Color.Gray)
-      Web({ src: $rawfile("index.html"),controller: this.controller})
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
         .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-    }.width('100%').height("100%")
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
   }
 }
 ```

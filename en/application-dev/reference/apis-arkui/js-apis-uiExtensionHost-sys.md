@@ -24,7 +24,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 ## UIExtensionHostWindowProxy
 
-### Attributes
+### Properties
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,7 +162,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
-Subscribes to changes in the size of the component (**EmbeddedComponent** or **UIExtensionComponent**).
+Subscribes to size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,8 +172,8 @@ Subscribes to changes in the size of the component (**EmbeddedComponent** or **U
 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change event.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | Yes  | Callback function. The input parameter is used to receive the size of the current component (EmbeddedComponent or UIExtensionComponent).|
+| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | Yes  | Callback function that receives the current component size as the input parameter.|
 
 **Error codes**
 
@@ -190,7 +190,7 @@ import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.Abilit
 export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Register the listener for the size change of the component (EmbeddedComponent or UIExtensionComponent).
+    // Subscribe to size change events of the component (EmbeddedComponent or UIExtensionComponent).
     extensionHostWindow.on('windowSizeChange', (size) => {
       console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
     });
@@ -202,7 +202,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
-Deregisters the listener for the size change of the component (EmbeddedComponent or UIExtensionComponent).
+Unsubscribes from size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,7 +212,7 @@ Deregisters the listener for the size change of the component (EmbeddedComponent
 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | string                | Yes  | Deregistered event type. The fixed value is windowSizeChange, indicating the size change event of the component (EmbeddedComponent or UIExtensionComponent).|
+| type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
@@ -230,7 +230,7 @@ import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Unsubscribe from changes in the size of the component (EmbeddedComponent or UIExtensionComponent).
+    // Unsubscribe from size change events of the component (EmbeddedComponent or UIExtensionComponent).
     extensionHostWindow.off('windowSizeChange');
   }
 }
@@ -240,12 +240,12 @@ export default class EntryAbility extends UIExtensionAbility {
 
 hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
-Sets whether to hide insecure windows. This API uses a promise for asynchronous callback.
+Sets whether to hide non-secure windows. This API uses a promise to return the result.
 > **NOTE**
 >
-> - An insecure window refers to a window that may block the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md) component, such as a global floating window, host sub-window, and dialog window created by the host (excluding the preceding types of windows created by system apps).
-> - When the **EmbeddedComponent** (or **UIExtensionComponent**) is used to present important information, you can hide insecure windows to prevent such information from being blocked. When the EmbeddedComponent or UIExtensionComponent component is not displayed or is destroyed, the insecure window is displayed again.
-> - For PC/2-in-1 devices, when hideNonSecureWindows(true) is called, the global floating window in the insecure window is not hidden.
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md), such as global floating windows, host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
+> - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
+> - On PCs/2-in-1 devices, global floating windows within non-secure windows remain visible when **hideNonSecureWindows(true)** is called.
 
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
@@ -454,7 +454,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 Sets whether to enable privacy protection for the UIExtension component during non-system screenshots. This API uses a promise to return the result.
 > **NOTE**
 >
-> When privacy protection is enabled, using [window.snapshot](arkts-apis-window-Window.md#snapshot9) or [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will not capture the content of the current component (excluding child windows created under this component).
+> When privacy protection is enabled, neither [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
  
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -511,9 +511,9 @@ Defines information about the host application window and **UIExtensionComponent
 
 **System API**: This is a system API.
 
-| Name                        | Type       | Mandatory     | Description                            |
-| ------------------------------ | ----------- | -------------------------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | Yes| Position, width, and height of the **UIExtensionComponent**.|
+| Name                        | Type       | Read-Only | Optional   | Description                            |
+| ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | Yes| No|Position, width, and height of the **UIExtensionComponent**.|
 
 ## Example
 

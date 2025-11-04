@@ -3209,7 +3209,7 @@ Sets the gesture focus mode of the **Web** component.
   </html>
   ```
 
-## rotateRenderEffect<sup>21+</sup>
+## rotateRenderEffect<sup>22+</sup>
 
 rotateRenderEffect(effect: WebRotateEffect)
 
@@ -3221,7 +3221,7 @@ Set up the rotation effect for the **Web** component. When this property is not 
 
 | Name             | Type                             | Mandatory  | Description         |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect21) | Yes    | Set up the rotation effect of **Web**.|
+| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | Yes    | Set up the rotation effect of **Web**.|
 
 **Example**
 

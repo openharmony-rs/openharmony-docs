@@ -8,7 +8,7 @@
 
 ExtensionContext是[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的上下文环境，继承自[Context](js-apis-inner-application-context.md#context)。
 
-ExtensionContext模块提供访问特定[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的资源的能力，对于扩展的ExtensionAbility，可直接将ExtensionContext作为上下文环境，或者定义一个继承自ExtensionContext的类型作为上下文环境。
+ExtensionContext模块提供访问特定[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的资源的能力。
 
 > **说明：**
 >

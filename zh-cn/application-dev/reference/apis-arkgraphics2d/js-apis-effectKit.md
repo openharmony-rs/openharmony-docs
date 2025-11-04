@@ -704,25 +704,64 @@ blur(radius: number): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let radius = 5;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.blur(radius);
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let radius = 5;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.blur(radius);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![zh-ch_image_Add_Blur.png](figures/zh-ch_image_Add_Blur.png)
 
@@ -754,25 +793,64 @@ blur(radius: number, tileMode: TileMode): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let radius = 30;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.blur(radius, effectKit.TileMode.DECAL);
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let radius = 30;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.blur(radius, effectKit.TileMode.DECAL);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![zh-ch_image_Add_Blur_With_TileMode.png](figures/zh-ch_image_Add_Blur_With_TileMode.png)
 
@@ -793,24 +871,63 @@ invert(): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.invert();
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.invert();
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageInvert(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![zh-ch_image_Add_Invert.png](figures/zh-ch_image_Add_Invert.png)
 
@@ -845,30 +962,69 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let colorMatrix:Array<number> = [
+      0.2126,0.7152,0.0722,0,0,
+      0.2126,0.7152,0.0722,0,0,
+      0.2126,0.7152,0.0722,0,0,
+      0,0,0,1,0
+      ];
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.setColorMatrix(colorMatrix);
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let colorMatrix:Array<number> = [
-    0.2126,0.7152,0.0722,0,0,
-    0.2126,0.7152,0.0722,0,0,
-    0.2126,0.7152,0.0722,0,0,
-    0,0,0,1,0
-  ];
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.setColorMatrix(colorMatrix);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageColorFilter(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ### brightness
@@ -898,25 +1054,64 @@ brightness(bright: number): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let bright = 0.5;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.brightness(bright);
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let bright = 0.5;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.brightness(bright);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageBrightness(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![zh-ch_image_Add_Brightness.png](figures/zh-ch_image_Add_Brightness.png)
 
@@ -941,24 +1136,63 @@ grayscale(): Filter
 **示例：**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.grayscale();
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.grayscale();
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageGrayscale(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![zh-ch_image_Add_Grayscale.png](figures/zh-ch_image_Add_Grayscale.png)
 

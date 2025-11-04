@@ -70,7 +70,7 @@ export default class MyAbility extends UIAbility {
 
 ### 设置深浅色模式
 
-应用深浅色模式默认跟随系统。开发者可以自定义应用或组件的深浅色模式。
+应用深浅色模式默认跟随系统。开发者可以设置应用或组件的深浅色模式。设置后，不再支持订阅系统的深浅色模式变化。
 
 配置生效的优先级为：UIAbility/UIExtensionAbility的深浅色模式 > 应用的深浅色模式 > 系统的深浅色模式。
 

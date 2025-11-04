@@ -1,4 +1,10 @@
 # DLP Service Development
+<!--Kit: Data Protection Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @winnieHuYu-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 The Data Loss Prevention (DLP) service is a system solution provided to prevent leakage of sensitive data. It provides a file format called DLP. A DLP file consists of the original file in ciphertext and the authorization credential, and ".dlp" is added to the end of the original file name (including the file name extension), for example, **test.docx.dlp**.
 
@@ -44,6 +50,8 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 |getSandboxAppConfig(): Promise&lt;string&gt;|Obtain the sandbox application configuration.|
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|Clear the sandbox application configuration.|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br>| Starts the DLP manager application on the current UIAbility page in borderless mode (available only for the stage model).|
+|setEnterprisePolicy(policy: EnterprisePolicy): void|Sets the protection policy for enterprise applications.|
+| scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
 
 ## How to Develop
 
@@ -82,8 +90,8 @@ This document provides API sample code. For details about how to create a projec
       let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
 
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
       } catch (err) {
         console.error('openDLPFile startAbility failed', (err as BusinessError).code, (err as BusinessError).message);
@@ -343,4 +351,102 @@ This document provides API sample code. For details about how to create a projec
     }).catch((err: BusinessError) => {
       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
     });
+    ```
+
+16. Set the protection policy for enterprise applications.
+    
+    16.1 Policy format
+    | Field| Type| Description|
+    | -------- | -------- | -------- |
+    | rules | Array&lt;Rule&gt; | Rule list. A policy can contain a maximum of 32 rules.|
+    | policyId |string | Policy name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
+    | ruleConflictAlg | number | Rule conflict resolution algorithm. The value **0** indicates the first match, and the value **1** indicates the complete match.|
+
+    16.2 Rule format
+    | Field| Type| Description|
+    | -------- | -------- | -------- |
+      | ruleId |string | Rule name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
+    | attributes | Array&lt;Attribute&gt; | Attribute list. A rule can contain a maximum of 32 attributes.|
+
+    16.3 Attribute format
+    | Field| Type| Description|
+    | -------- | -------- | -------- |
+      | attributeId |string | Attribute name.|
+    | attributeValues | Array&lt;string&gt; | Attribute value. A maximum of 32 attribute values is allowed.|
+    | valueType | number | Attribute value type. The value** 0** indicates an integer, and the value **1** indicates a string.|
+    | opt | number | Comparison method, which is used to compare the actual attribute with the policy attribute.|
+
+    16.4 Supported attributes
+    | Attribute Name| Attribute Value| Attribute Value Type| Scenario|
+    | -------- | -------- | -------- | -------- |
+     | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | Integer| 1: The device health report is normal.<br>2: The device has health risks, but the risk factor is irrelevant to the root.<br> 3: The device has health risks, and the risk factor is relevant to the root.<br> 4: An exception occurs.|
+    | NetStatus | InterNet <br> ExtraNet <br> NoNet | String| InterNet: The device is used inside the company.<br>ExtraNet: The device is used outside the company.<br>NoNet: The device is offline.|
+    | DebugMode | 1 <br> 2 | Integer| 1: The debugging mode is enabled on the device.<br>2: The debugging mode is disabled on the device.|
+    | AdvancedSecurityMode | 1 <br> 2 | Integer| 1: The advanced security mode is enabled on the device.<br>2: The advanced security mode is disabled on the device. |
+
+    ```ts
+    import { dlpPermission } from '@kit.DataProtectionKit';
+
+    interface Attribute {
+      attributeId: string;
+      attributeValues: Array<string>;
+      valueType: number;
+      opt: number;
+    }
+
+    interface Rule {
+      ruleId: string;
+      attributes: Array<Attribute>;
+    }
+
+    interface Policy {
+      rules: Array<Rule>;
+      policyId: string;
+      ruleConflictAlg: number;
+    }
+
+    try {
+      let attributeValues: Array<string> = [ '1' ];
+      let attribute: Attribute = {
+        attributeId: 'DeviceHealthyStatus',
+        attributeValues: attributeValues,
+        valueType: 0,
+        opt: 2
+      }; // Attribute information
+      let rule: Rule = {
+        ruleId: 'ruleId',
+        attributes: [ attribute ]
+      }; // Rule
+      let policy: Policy = {
+        rules: [ rule ],
+        policyId: 'policyId',
+        ruleConflictAlg: 0
+      }; // Policy
+      let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+        policyString: JSON.stringify(policy)
+      };
+      dlpPermission.setEnterprisePolicy(enterprisePolicy);
+      console.info('set enterprise policy success');
+    } catch (err) {
+      console.error('error:' + err.code + err.message); // Throw an error if the operation fails.
+    }
+    ```
+
+17. (Available since API version 21) Identify sensitive content in a specified file.
+    ```ts
+    import { identifySensitiveContent } from '@kit.DataProtectionKit';
+
+    let filepath = "file://docs/storage/Users/currentUser/Desktop/test.txt";
+    let policies: Array<identifySensitiveContent.Policy> = [
+      {"sensitiveLabel":"1", "keywords":[], "regex":""}
+    ];
+    try {
+      identifySensitiveContent.scanFile(filepath, policies).then(records => {
+        console.info('scanFile finish');
+      }).catch((err:Error) => {
+        console.error('error message', err.message);
+      })
+    } catch (err) {
+      console.error('error message', err.message);
+    }
     ```

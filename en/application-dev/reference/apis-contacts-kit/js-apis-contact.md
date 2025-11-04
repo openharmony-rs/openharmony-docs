@@ -4220,6 +4220,44 @@ Queries the key of a contact based on the specified contact ID and holder. This 
   });
   ```
 
+## contact.queryContactsCount<sup>22+</sup>
+
+queryContactsCount(context: Context): Promise&lt;int&gt;
+
+Queries the number of all contacts. This API uses a promise to return the result.
+
+**Permission required**: ohos.permission.READ_CONTACTS
+
+**System capability**: SystemCapability.Applications.ContactsData
+
+**Parameters**
+
+| Name| Type             | Mandatory| Description                  |
+| ------ | ----------------- | ---- | ---------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context. For the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).  |
+
+**Return Value**
+
+| Type                 | Description                                      |
+| --------------------- | ------------------------------------------ |
+| Promise&lt;int&gt; | Promise used to return the result, which is the number of queried contacts.|
+
+**Example**
+
+```js
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the application context.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.queryContactsCount(context);
+promise.then((data) => {
+  console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query ContactsCount. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## contact.addContactViaUI<sup>15+</sup>
 
 addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
@@ -4241,7 +4279,7 @@ Opens the **Add contact** page to add a contact. This API uses a promise to retu
 
 | Type                 | Description                                      |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;number&gt; | Promise Contact ID.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the contact ID.|
 
 **Error codes**
 
@@ -4305,7 +4343,7 @@ Opens the **Save to existing** page to save a contact to an existing one. This A
 
 | Type                 | Description                                      |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;number&gt; | Promise Contact ID.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the ID of the added contact.|
 
 **Error codes**
 
@@ -4784,6 +4822,7 @@ Defines a contact's name.
 | middleNamePhonetic | string   | No  | Yes  | Middle name of the contact in pinyin.       |
 | namePrefix         | string   | No  | Yes  | Prefix of the contact name.         |
 | nameSuffix         | string   | No  | Yes  | Suffix of the contact name.         |
+| hasName<sup>22+</sup>            | boolean  | No  | Yes  | Whether the contact information contains the name. The value **true** indicates that the contact information contains the name, and the value **false** indicates the opposite.         |
 
 **Example**
 
@@ -4946,6 +4985,9 @@ let portrait: contact.Portrait = {
     uri: "uri"
 };
 ```
+> **NOTE**
+>
+>  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../../ui/arkts-graphics-display.md#pixel-map) format.
 
 ## PostalAddress
 

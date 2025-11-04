@@ -10,7 +10,9 @@
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-The **ImagePacker** class provides APIs to compress and encode images. Before calling any API in ImagePacker, you must use [createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker) to create an ImagePacker object. Currently, this class applies only to images in .jpeg, .webp, .png, or heif<sup>12+</sup> (depending on the hardware).
+The **ImagePacker** class provides APIs to compress and encode images. Before calling any API in ImagePacker, you must use [createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker) to create an ImagePacker instance.
+
+Currently, the following formats are supported: jpeg, webp, png, heif<sup>12+</sup>, and gif<sup>18+</sup>. (The availability of these formats can differ across hardware devices. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
 
 ## Modules to Import
 
@@ -24,7 +26,7 @@ import { image } from '@kit.ImageKit';
 
 | Name            | Type          | Read Only| Optional| Description                      |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | Yes  | No  | Supported formats, including .jpeg, .webp, .png, and heic<sup>12+</sup> (depending on the hardware).|
+| supportedFormats | Array\<string> | Yes  | No  | Supported formats for image encoding.|
 
 ## packToData<sup>13+</sup>
 

@@ -466,7 +466,7 @@ struct MyComponent {
 
 箭头函数体内的`this`对象，就是定义该函数时所在的作用域指向的对象，而不是使用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是被装饰器\@State代理的状态变量。
 
-反例：
+【反例】
 
 ```ts
 

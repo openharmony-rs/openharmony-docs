@@ -4,7 +4,7 @@
 <!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态、工具。
 
@@ -357,14 +357,18 @@ static getTarget\<T extends object\>(source: T): T
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
+
 let nonObservedClass: NonObservedClass = new NonObservedClass();
+
 @Entry
 @Component
 struct Index {
   @State someClass: NonObservedClass = nonObservedClass;
+
   build() {
     Column() {
       Text(`this.someClass === nonObservedClass: ${this.someClass === nonObservedClass}`) // false
@@ -400,6 +404,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
@@ -409,6 +414,7 @@ class NonObservedClass {
 struct Index {
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
+
   build() {
     Column() {
       Text(`observedClass: ${this.observedClass.name}`)
@@ -785,6 +791,7 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 
 **错误码：**
 以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 |130000|The target is not a custom component instance or V2 class instance.|
@@ -844,6 +851,226 @@ struct Index {
   }
 }
 ```
+
+### applySync<sup>22+</sup>
+
+static applySync\<T\>(task: TaskCallback): T
+
+同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed计算](../../ui/state-management/arkts-new-Computed.md)、[@Monitor回调](../../ui/state-management/arkts-new-monitor.md)以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                          | 必填 | 说明                                             |
+| ------ | ----------------------------- | ---- | ------------------------------------------------ |
+| task   | [TaskCallback](#taskcallback22) | 是   | 闭包函数，该闭包中产生的状态变量修改会同步执行。 |
+
+**返回值：**
+
+| 类型 | 说明                       |
+| ---- | -------------------------- |
+| T    | 闭包函数执行得到的返回值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 140001   | The function is not allowed to be called in @Computed. |
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local w: number = 50; // 宽度
+  @Local h: number = 50; // 高度
+  @Local message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          UIUtils.applySync(() => {
+            this.w = 100;
+            this.h = 100;
+            this.message = 'Hello World';
+          });
+          // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+          });
+        })
+      // Column方框
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
+### flushUpdates<sup>22+</sup>
+
+static flushUpdates(): void
+
+同步刷新在调用该函数之前所有的状态变量修改，包括更新@Computed计算、@Monitor回调以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 140001   | The function is not allowed to be called in @Computed. |
+| 140002   | The function is not allowed to be called in @Monitor.  |
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local w: number = 50; // 宽度
+  @Local h: number = 50; // 高度
+  @Local message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          this.w = 100;
+          this.h = 100;
+          this.message = 'Hello World';
+          UIUtils.flushUpdates();
+          // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+          });
+        })
+      // Column方框
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
+### flushUIUpdates<sup>22+</sup>
+
+static flushUIUpdates(): void
+
+立即处理在调用该函数之前所有的状态变量修改，同步[标脏](../../ui/state-management/arkts-state-management-introduce.md#触发更新)对应的UI节点，但不会同步执行@Computed计算和@Monitor回调，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 140001   | The function is not allowed to be called in @Computed. |
+| 140002   | The function is not allowed to be called in @Monitor.  |
+
+**示例：**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local w: number = 50; // 宽度
+  @Local h: number = 50; // 高度
+  @Local message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          this.w = 100;
+          this.h = 100;
+          this.message = 'Hello World';
+          UIUtils.flushUIUpdates();
+          // 动画在1s内，Column方框的尺寸由（100*100）渐变为（200*200），方框内的文本变为Hello ArkUI
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            console.info(`animateTo-in, w=${this.w}, h=${this.h}`);
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+            console.info(`animateTo-out, w=${this.w}, h=${this.h}`);
+          });
+        })
+      // Column方框
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
+## TaskCallback<sup>22+</sup>
+
+type TaskCallback = () => T
+
+同步执行的回调方法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明                       |
+| ---- | -------------------------- |
+| T    | 闭包函数执行得到的返回值。 |
 
 ## MonitorOptions<sup>20+</sup>
 

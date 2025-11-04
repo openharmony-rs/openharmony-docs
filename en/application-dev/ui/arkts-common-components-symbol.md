@@ -1,4 +1,10 @@
 # Symbol Glyph (SymbolGlyph/SymbolSpan)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **SymbolGlyph** is a component designed for icon glyphs, making it easy to use sophisticated icons, including multi-colored and animated icons. You can add symbol glyphs in text through the use of the **SymbolSpan** component, a child of the **Text** component. For details, see [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) and [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md).
 
@@ -22,7 +28,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
 
 - Create a **SymbolSpan** component.
 
-  The **SymbolSpan** component works only when included in a **Text** component. It does not display any content when used alone.
+  A **SymbolSpan** component is only visible when embedded within a **Text** component. Using a **SymbolSpan** independently displays no content.
 
 
   ```ts
@@ -225,7 +231,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   ```ts
   @State isActive: boolean = true;
   Column() {
-    Text("Variable Color Effect")
+    Text("Variable color effect")
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -241,7 +247,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   ```ts
   @State triggerValueReplace: number = 0;
   Column() {
-    Text("Bounce Effect")
+    Text("Bounce effect")
     SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
       .fontSize(96)
       .fontColor([Color.Gray])
@@ -253,6 +259,94 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   ```
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
+- Since API version 20, you can configure the slash overlay effect of **SymbolGlyph** and its trigger conditions by setting **SymbolEffect** to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and specifying [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20) as **ReplaceEffectType.SLASH_OVERLAY**.
+
+  ```ts
+  @State triggerValueReplace: number = 0;
+  @State renderMode: number = 1;
+  replaceFlag: boolean = true;
+
+  Column() {
+    Text("Slash overlay")
+    SymbolGlyph(this.replaceFlag ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
+      .fontSize(96)
+      .renderingStrategy(this.renderMode)
+      .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY), this.triggerValueReplace)
+    Button('Trigger').onClick(() => {
+      this.replaceFlag = !this.replaceFlag;
+      this.triggerValueReplace = this.triggerValueReplace + 1;
+    })
+  }
+  ```
+  ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
+
+- Since API version 20, you can configure the cross-fade transition effect of **SymbolGlyph** and its trigger conditions by setting **SymbolEffect** to [ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12) and specifying [ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20) as **ReplaceEffectType.CROSS_FADE**.
+
+  ```ts
+  @State triggerValueReplace: number = 0;
+  replaceFlag: boolean = true;
+
+  Column() {
+    Text("Cross-fade transition")
+    SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
+      .fontSize(96)
+      .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace)
+    Button('Trigger').onClick(() => {
+      this.replaceFlag = !this.replaceFlag;
+      this.triggerValueReplace = this.triggerValueReplace + 1;
+    })
+  }
+  ```
+  ![symbolGlyph_symbolEffect_quick_replace](figures/symbolGlyph_symbolEffect_quick_replace.gif)
+
+## Setting Shadow and Gradient Color Effects
+
+- Since API version 20, you can apply shadow effects to the **SymbolGlyph** component using the [symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20) API.
+
+  ```ts
+  @State isActive: boolean = true;
+
+  options: ShadowOptions = {
+    radius: 10.0,
+    color: Color.Blue,
+    offsetX: 10,
+    offsetY: 10,
+  };
+
+  Column() {
+    Text("Shadow effect")
+    SymbolGlyph($r('sys.symbol.ohos_wifi'))
+      .fontSize(96)
+      .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
+      .symbolShadow(this.options)
+    Button(!this.isActive ? 'Off' : 'Play').onClick(() => {
+      this.isActive = !this.isActive;
+    })
+  }
+  ```
+  ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
+
+- Since API version 20, you can implement gradient color effects for the **SymbolGlyph** component using the [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20) API.
+
+  ```ts
+  radialGradientOptions: RadialGradientOptions = {
+    center: ["50%", "50%"],
+    radius: "20%",
+    colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+    repeating: true,
+  };
+
+  Column() {
+    Text('Radial gradient')
+      .fontSize(18)
+      .fontColor(0xCCCCCC)
+      .textAlign(TextAlign.Center)
+    SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+      .fontSize(96)
+      .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
+  }
+  ```
+  ![ShaderStyleSymbolEffect](figures/symbolGlyph_shaderStyle.jpg)
 
 ## Adding Events
 

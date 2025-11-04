@@ -826,7 +826,7 @@ struct Index {
               uiEffect.Mask.createRippleMask(this.rippleMaskCenter, this.rippleMaskRadius, this.rippleMaskWidth, 0.0)
               ))
           .onClick(() => {
-            animateTo({duration: 1000}, () => {
+            this.getUIContext().animateTo({duration: 1000}, () => {
               this.rippleMaskWidth = 1.0;
             })
           })

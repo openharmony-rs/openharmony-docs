@@ -146,7 +146,7 @@ The class system of ArkTS is similar to that of Java in syntax, but it offers mo
 |------------|------------|------------------|-------------------------------|
 | Namespace organization   | Static nested class/inner class    | **namespace** keyword or module file structure          | Supports the mixed mode of explicit namespace and modular organization.  |
 | Inheritance mechanism       | Class-based inheritance mechanism       | Prototype chain-based inheritance mechanism          | Similar syntax with differential underlying mechanism.       |
-| Class member visibility   | public/private/protected       | Same as Java, but supports module-level visibility control.         | Added the dimension for controlling module export.|
+| Class member visibility   | public/private/protected       | Same as Java, but supports [module-level](../arkts-utils/module-principle.md) visibility control.         | Added the dimension for controlling module export.|
 
 **Namespace management**
 
