@@ -122,6 +122,13 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 2. 然后，弧形列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数绑定滚动控制器。
 
    <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
+   // 将arcListScroller用于初始化ArcList组件的scroller参数，完成arcListScroller与弧形列表的绑定。
+   ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
+     // ···
+   }
+   ```
 
 3. 最后，弧形滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md#arcscrollbaroptions)参数绑定滚动控制器。
 
