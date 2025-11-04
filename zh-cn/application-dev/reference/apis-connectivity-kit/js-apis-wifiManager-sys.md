@@ -148,15 +148,11 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
 | disableReason | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
-| netId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 <br />ArkTS-Dyn起始版本： 9<br />ArkTS-Sta起始版本： 22|
+| netId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 22|
 | randomMacType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
 | randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
 | ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
@@ -302,17 +298,16 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
-| snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
-| suppState | [SuppState](#suppstate9) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
-
+| chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 |
+| snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
+| suppState | [SuppState](#suppstate9) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 
 
 ## SuppState<sup>9+</sup>
