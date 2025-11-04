@@ -48,6 +48,26 @@ export default class EntryAbility extends UIAbility {
   
 <!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com/', controller: this.webviewController })
+        .onPageEnd(() => {
+          // 预加载https://www.iana.org/help/example-domains。
+          this.webviewController.prefetchPage('https://www.iana.org/help/example-domains');
+        })
+    }
+  }
+}
+```
+
 ## 预获取post请求
 
 此方法可以针对请求级进行优化。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的post请求。在页面加载结束时，可以通过[clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12)清除后续不再使用的预获取资源缓存。
