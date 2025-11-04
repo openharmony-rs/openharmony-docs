@@ -29,33 +29,7 @@
   ```
 
 - 通过[isIncognitoMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) 判断当前Web组件是否是隐私模式。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Button('isIncognitoMode')
-          .onClick(() => {
-            try {
-              let result = this.controller.isIncognitoMode();
-              console.info('isIncognitoMode' + result);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller })
-      }
-    }
-  }
-  ```
+  <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
 
 隐私模式提供了一系列接口，用于操作地理位置、Cookie以及Cache Data。
 
@@ -122,40 +96,7 @@
   ```
 
 - 通过[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)以回调方式异步获取隐私模式下指定源的地理位置权限状态。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    origin: string = "file:///";
-
-    build() {
-      Column() {
-        Button('getAccessibleGeolocation')
-          .onClick(() => {
-            try {
-              // getAccessibleGeolocation第三个参数表示隐私模式（true）或非隐私模式（false）下，以回调方式异步获取指定源的地理位置权限状态。
-              webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
-                if (error) {
-                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
-                  return;
-                }
-                console.info('getAccessibleGeolocationAsync result: ' + result);
-              }, true);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
-      }
-    }
-  }
-  ```
+  <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
 
 - 通过[deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata)清除隐私模式下Web SQL当前使用的所有存储。
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
@@ -233,88 +174,13 @@
   ```
 
 - 通过[fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11)获取隐私模式下指定url对应cookie的值。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Button('fetchCookieSync')
-          .onClick(() => {
-            try {
-              // fetchCookieSync第二个参数表示获取隐私模式（true）或非隐私模式（false）下，webview的内存cookies。
-              let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', true);
-              console.info("fetchCookieSync cookie = " + value);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
-      }
-    }
-  }
-  ```
+  <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
 
 - 通过[configCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)设置隐私模式下指定url的单个cookie的值。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Button('configCookieSync')
-          .onClick(() => {
-            try {
-              // configCookieSync第三个参数表示获取隐私模式（true）或非隐私模式（false）下，对应url的cookies。
-              webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', true);
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
-      }
-    }
-  }
-  ```
+  <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
 
 - 通过[existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie)查询隐私模式下是否存在cookie。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Button('existCookie')
-          .onClick(() => {
-            // existCookie参数表示隐私模式（true）或非隐私模式（false）下，查询是否存在cookies。
-            let result = webview.WebCookieManager.existCookie(true);
-            console.info("result: " + result);
-          })
-        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
-      }
-    }
-  }
-  ```
+  <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
 
 - 通过[clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11)清除隐私模式下所有cookie。 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->

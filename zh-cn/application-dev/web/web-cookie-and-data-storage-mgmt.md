@@ -16,32 +16,7 @@ Web组件提供[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-We
 
 下面以[configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11)接口为例，为“www\.example.com”设置单个Cookie的值“value=test”。其他Cookie的相关功能及使用，请参考[WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)接口文档。
 
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('configCookieSync')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+<!-- @[set_the_value_of_a_single_cookie](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets) -->
 
 > **说明：**
 >

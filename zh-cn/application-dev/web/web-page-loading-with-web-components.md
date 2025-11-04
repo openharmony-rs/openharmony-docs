@@ -279,34 +279,7 @@ struct WebComponent {
 ## resource协议加载本地资源
 
 resource协议允许访问应用资源目录中的文件。
-
-```ts
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct ResourceWebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('加载Resource资源')
-        .onClick(() => {
-          try {
-            // 通过resource加载resources/rawfile目录下的index1.html文件
-            this.controller.loadUrl('resource://rawfile/index1.html');
-          } catch (error) {
-            console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
-          }
-        })
-
-      // 组件创建时直接使用resource协议加载资源
-      Web({
-        src: 'resource://rawfile/index.html', controller: this.controller})
-    }
-  }
-}
-```
+<!-- @[resource_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets) -->
 
 在“src\main\resources\rawfile”文件夹下创建index.html：
 ```html
