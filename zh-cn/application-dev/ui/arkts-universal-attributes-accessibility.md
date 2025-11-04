@@ -83,6 +83,18 @@ accessibilityDescription属性用于提供更详细的组件说明，播报时�
 
 <!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
+``` TypeScript
+Column() {
+  Text('HelloWorld')
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
+  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+```
+
 ## 设置无障碍虚拟子节点
 
 accessibilityVirtualNode属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
