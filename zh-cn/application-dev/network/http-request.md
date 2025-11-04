@@ -690,7 +690,7 @@ chain.addChain([
 
 6.  将请求应用到拦截器链
 
-    调用apply()方法，将拦截器加入到拦截器链中。
+    调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
 <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
