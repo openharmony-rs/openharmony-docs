@@ -118,6 +118,41 @@ struct WebComponent {
 建议在Web组件创建前先调用静态接口[getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
 <!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+import { BusinessError } from '@kit.BasicServicesKit';    
+
+@Entry    
+@Component    
+struct WebComponent {    
+  controller: webview.WebviewController = new webview.WebviewController();    
+
+  aboutToAppear(): void {    
+    try {    
+      webview.WebviewController.initializeWebEngine();    
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();    
+      let appUA = defaultUserAgent + ' appUA';    
+      webview.WebviewController.setAppCustomUserAgent(appUA);    
+      webview.WebviewController.setUserAgentForHosts(    
+        appUA,    
+        [    
+          'www.example.com',    
+          'www.baidu.com'    
+        ]    
+      );    
+    } catch (error) {    
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);    
+    }    
+  }    
+
+  build() {    
+    Column() {    
+      Web({ src: 'www.example.com', controller: this.controller })    
+    }    
+  }    
+}
+```
+
 在下面的示例中，通过[getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10)接口获取自定义用户代理。
 <!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
