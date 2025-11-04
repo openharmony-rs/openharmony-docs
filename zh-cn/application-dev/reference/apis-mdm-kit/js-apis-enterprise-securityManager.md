@@ -899,6 +899,8 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
@@ -948,6 +950,8 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
