@@ -871,7 +871,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-Represents the plaintext data. It is a child class of [Text](#text) and is used to describe plaintext data.
+Represents the plain text data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -892,7 +892,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-Represents hyperlink data. It is a child class of [Text](#text) and is used to describe data of the hyperlink type.
+Represents the hyperlink data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -913,7 +913,7 @@ link.description = 'This is description';
 
 ## HTML
 
-Represents the HTML data. It is a child class of [Text](#text) and is used to describe HTML data.
+Represents the HTML data. It is a child class of [Text](#text).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

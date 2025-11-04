@@ -1,7 +1,7 @@
 # SQLite Debugging Tool
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @MyLinChi-->
+<!--Owner: @linzhuobin1-->
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
