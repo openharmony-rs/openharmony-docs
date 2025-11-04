@@ -78,6 +78,89 @@
   除了可以在创建属性字符串时就预设样式，也可以后续通过[replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle)清空原样式替换新样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
   <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    context = this.getUIContext().getHostContext();
+    /*'app.string.StyledStringParagraphStyle_Text_2'资源文件中的value值为"段落标题\n正文第一段落开始0123456789正文第一段落结束，
+     通过replaceStyle清空原样式替换新样式。"*/
+    @State message1: string =
+      this.context!.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_2').id);
+    titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+    // 段落首行缩进15vp
+    paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15) });
+    // 行高样式对象
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
+    // 创建含段落样式的对象paragraphStyledString1
+    paragraphStyledString1: MutableStyledString =
+      new MutableStyledString(this.message1, [
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.titleParagraphStyleAttr
+        },
+        {
+          start: 0,
+          length: 4,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: new LineHeightStyle(new LengthMetrics(50))
+        }, {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(24), fontWeight: FontWeight.Bolder })
+      },
+        {
+          start: 5,
+          length: 3,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyleAttr1
+        },
+        {
+          start: 5,
+          length: 20,
+          styledKey: StyledStringKey.LINE_HEIGHT,
+          styledValue: this.lineHeightStyle1
+        }
+      ]);
+    paragraphStyleAttr3: ParagraphStyle = new ParagraphStyle({
+      textAlign: TextAlign.End,
+      maxLines: 1,
+      wordBreak: WordBreak.BREAK_ALL,
+      overflow: TextOverflow.Ellipsis
+    });
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.paragraphStyledString1);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller }).width(300)
+        //'app.string.Replace_paragraph_style'资源文件中的value值为"替换段落样式"
+        Button($r('app.string.Replace_paragraph_style'))
+          .onClick(() => {
+            this.paragraphStyledString1.replaceStyle({
+              start: 5,
+              length: 3,
+              styledKey: StyledStringKey.PARAGRAPH_STYLE,
+              styledValue: this.paragraphStyleAttr3
+            });
+            this.controller.setStyledString(this.paragraphStyledString1);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
 
