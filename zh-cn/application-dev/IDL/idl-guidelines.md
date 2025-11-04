@@ -600,7 +600,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    ]
    ```
 
-### 修改方法二
+### BUILD.gn文件修改方法二
 
 1. 导入IDL工具模板到当前BUILD.gn文件。
 
