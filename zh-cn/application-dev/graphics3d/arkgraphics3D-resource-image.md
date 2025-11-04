@@ -108,6 +108,39 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
      在按钮点击回调中，通过createShader()创建Shader并绑定材质对象，调用createImagePromise()获取图片资源并将其应用到模型几何体上，实现贴图替换。
 
      <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     Button('Replace with a Image material')
+     // ···
+       .onClick(async (): Promise<void> => {
+         console.info('Start to replace with a material of image');
+     
+         if (!this.scene || !this.cam || !this.rf) {
+           return;
+         }
+     
+         // create shader
+         this.shader = await this.rf.createShader({
+           name: 'shaderResource',
+           uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
+         });
+     
+         // create imageMat
+         this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
+     
+         // bind between shader and imageMat
+         this.imageMat.colorShader = this.shader;
+         let createdImage =  await createImagePromise();
+         if (createdImage) {
+           this.imageMat.colorShader.inputs['BASE_COLOR_Image'] = createdImage;
+         }
+     
+         this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+     
+         this.geom.mesh.materialOverride = undefined;
+         this.geom.mesh.subMeshes[0].material = this.imageMat;
+       })
+     ```
 
 <!--RP1-->
 ## 相关实例
