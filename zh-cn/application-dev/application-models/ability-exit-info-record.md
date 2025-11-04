@@ -28,20 +28,20 @@
 
     在UIAbility类的OnCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
-    <!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility1.ets) -->
+    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility1.ets) -->
 
 
 2. 根据上次退出的信息做相应的业务处理。
 
     - 对于不同的退出原因，开发者可以增加不同的处理逻辑，例如：
 
-    <!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
 
     - 根据进程信息感知应用内存占用异常，例如：
 
-    <!-- @[quick_start1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
 
 
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
     
-    <!-- @[quick_start2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->

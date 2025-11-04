@@ -50,7 +50,7 @@
 
 例如，声明应用关联在域名是www.example.com，则需进行如下配置：
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
+<!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
 ### 在开发者网站上关联应用
 
@@ -86,7 +86,7 @@
 
 在应用的Ability(如EntryAbility)的onCreate()或者onNewWant()生命周期回调中添加代码，以处理传入的链接。
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
+<!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
 
 ## 拉起方应用实现应用跳转
 
@@ -102,7 +102,7 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 
 本文为了方便验证App Linking的配置是否正确，选择方式一，示例如下。
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
 
 
 在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
