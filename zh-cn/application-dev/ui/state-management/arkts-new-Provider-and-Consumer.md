@@ -196,6 +196,39 @@ struct Child {
 
 <!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider() str1: string = 'hello';
+
+  build() {
+    Column() {
+      Button(this.str1)
+        .onClick(() => {
+          this.str1 += '0';
+        })
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  // @Consumer装饰的属性str和Parent组件中@Provider装饰的属性str1名称不同，无法建立双向绑定关系
+  @Consumer() str: string = 'world';
+
+  build() {
+    Column() {
+      Button(this.str)
+        .onClick(() => {
+          this.str += '0';
+        })
+    }
+  }
+}
+```
+
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
