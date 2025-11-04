@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -23,30 +25,40 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型   | 只读 | 可选 | 说明                  |
 | ------ | ------ | ---- | ---- | --------------------- |
-| length | number | 是   | 否   | BitVector的元素个数。 |
+| length | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | BitVector的元素个数。 |
 
 
 ## constructor
 
-constructor(length: number)
+ArkTS-Dyn: constructor(length: number)
+
+ArkTS-Sta: constructor(length: int)
 
 BitVector的构造函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| length | number | 是   | 初始化BitVector的长度。 |
+| length | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 初始化BitVector的长度。 |
 
 **示例：**
 
@@ -54,22 +66,27 @@ BitVector的构造函数。
 let bitVector: collections.BitVector = new collections.BitVector(0);
 ```
 
-
 ## push
 
-push(element:number): boolean
+ArkTS-Dyn: push(element: number): boolean
+
+ArkTS-Sta: push(element: int): boolean
 
 在BitVector尾部插入元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | ----------------------------------- |
-| element | number | 是   | 待插入的元素，0表示0，其余值表示1。 |
+| element | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待插入的元素，0表示0，其余值表示1。 |
 
 **返回值：**
 
@@ -100,19 +117,25 @@ bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 
 ## pop
 
-pop(): number
+ArkTS-Dyn: pop(): number
+
+ArkTS-Sta: pop(): int | undefined
 
 弹出BitVector尾部的元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
 | 类型   | 说明                                       |
 | ------ | ------------------------------------------ |
-| number | 弹出BitVector尾部的元素，其值为对应bit值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int \| undefined | 弹出BitVector尾部的元素，其值为对应bit值。 |
 
 **错误码：**
 
@@ -138,21 +161,27 @@ console.info("bitVector pop:", res); // 0
 
 ## has
 
-has(element: number, fromIndex: number, toIndex: number): boolean
+ArkTS-Dyn: has(element: number, fromIndex: number, toIndex: number): boolean
+
+ArkTS-Sta: has(element: int, fromIndex: int, toIndex: int): boolean
 
 判断范围内是否包含特定bit值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                 |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | 是   | 待判断的bit值，0表示0，其余值表示1。 |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
-| toIndex   | number | 是   | 范围终止索引，包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待判断的bit值，0表示0，其余值表示1。 |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
 
 **返回值：**
 
@@ -185,21 +214,27 @@ console.info("bitVector has 0:", res0); // true
 
 ## setBitsByRange
 
-setBitsByRange(element: number, fromIndex: number, toIndex: number): void
+ArkTS-Dyn: setBitsByRange(element: number, fromIndex: number, toIndex: number): void
+
+ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 将BitVector中指定范围的元素均设为特定bit值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                               |
 | --------- | ------ | ---- | ---------------------------------- |
-| element   | number | 是   | 待设置的bit值，0表示0，其余表示1。 |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。     |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待设置的bit值，0表示0，其余表示1。 |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。     |
 
 **错误码：**
 
@@ -226,19 +261,25 @@ bitVector.setBitsByRange(1, 1, 3); // bitVector: [0, 1, 1, 1, 0]
 
 ## setAllBits
 
-setAllBits(element: number): void
+ArkTS-Dyn: setAllBits(element: number): void
+
+ArkTS-Sta: setAllBits(element: int): void
 
 将BitVector中所有元素均设为特定bit值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | ----------------------------------- |
-| element | number | 是   | 待设置的元素，0表示0，其余值表示1。 |
+| element | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待设置的元素，0表示0，其余值表示1。 |
 
 **错误码：**
 
@@ -264,20 +305,26 @@ bitVector.setAllBits(1); // bitVector: [1, 1, 1, 1, 1]
 
 ## getBitsByRange
 
-getBitsByRange(fromIndex: number, toIndex: number): BitVector
+ArkTS-Dyn: getBitsByRange(fromIndex: number, toIndex: number): BitVector
+
+ArkTS-Sta: getBitsByRange(fromIndex: int, toIndex: int): BitVector
 
 获取指定范围内的bit值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。   |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。      |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。   |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。      |
 
 **返回值：**
 
@@ -311,7 +358,9 @@ console.info("bitVector2 length:", bitVector2.length); // 2
 
 ## resize
 
-resize(size: number): void
+ArkTS-Dyn: resize(size: number): void
+
+ArkTS-Sta: resize(size: int): void
 
 改变BitVector的长度。
 
@@ -319,15 +368,19 @@ resize(size: number): void
 
 若size小于等于原BitVector的长度，则将原BitVector按size长度大小裁剪。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| size   | number | 是   | 需要改变的长度。 |
+| size   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 需要改变的长度。 |
 
 **错误码：**
 
@@ -356,27 +409,33 @@ console.info("bitVector get bit vector's length:", bitVector.length); // 3
 
 ## getBitCountByRange
 
-getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
+ArkTS-Dyn: getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
+
+ArkTS-Sta: getBitCountByRange(element: int, fromIndex: int, toIndex: int): int
 
 统计指定范围内获取指定bit值的数量。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                 |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | 是   | 待统计的bit值，0表示0，其余值表示1。 |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待统计的bit值，0表示0，其余值表示1。 |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
 
 **返回值：**
 
 | 类型   | 说明                                |
 | ------ | ----------------------------------- |
-| number | 统计指定范围内获取指定bit值的数量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 统计指定范围内获取指定bit值的数量。 |
 
 **错误码：**
 
@@ -391,6 +450,7 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let bitVector: collections.BitVector = new collections.BitVector(0);
 bitVector.push(0);
@@ -402,29 +462,47 @@ let res: number = bitVector.getBitCountByRange(1, 1, 4);
 console.info("bitVector getBitCountByRange:", res); // 2
 ```
 
+ArkTS-Sta示例：
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
+let res: int = bitVector.getBitCountByRange(1, 1, 4);
+console.info("bitVector getBitCountByRange:", res); // 2
+```
+
 ## getIndexOf
 
-getIndexOf(element: number, fromIndex: number, toIndex: number): number
+ArkTS-Dyn: getIndexOf(element: number, fromIndex: number, toIndex: number): number
+
+ArkTS-Sta: getIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 返回指定bit值首次出现时的索引值，查找失败返回-1。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                 |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | 是   | 待统计的bit值，0表示0，其余值表示1。 |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待统计的bit值，0表示0，其余值表示1。 |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
 
 **返回值：**
 
 | 类型   | 说明                                              |
 | ------ | ------------------------------------------------- |
-| number | 返回指定bit值首次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定bit值首次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -439,6 +517,7 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let bitVector: collections.BitVector = new collections.BitVector(0);
 bitVector.push(0);
@@ -450,29 +529,47 @@ let res: number = bitVector.getIndexOf(0, 1, 4);
 console.info("bitVector getIndexOf:", res); // 2
 ```
 
+ArkTS-Sta示例：
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
+let res: int = bitVector.getIndexOf(0, 1, 4);
+console.info("bitVector getIndexOf:", res); // 2
+```
+
 ## getLastIndexOf
 
-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
+ArkTS-Dyn: getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
+
+ArkTS-Sta: getLastIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 返回指定bit值最后一次出现时的下标值，查找失败返回-1。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                                 |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | 是   | 待统计的bit值，0表示0，其余值表示1。 |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待统计的bit值，0表示0，其余值表示1。 |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。    |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。       |
 
 **返回值：**
 
 | 类型   | 说明                                                  |
 | ------ | ----------------------------------------------------- |
-| number | 返回指定bit值最后一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定bit值最后一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -487,6 +584,7 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let bitVector: collections.BitVector = new collections.BitVector(0);
 bitVector.push(0);
@@ -498,21 +596,39 @@ let res: number = bitVector.getLastIndexOf(0, 1, 4);
 console.info("bitVector getLastIndexOf:", res); // 2
 ```
 
+ArkTS-Sta示例：
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
+let res: int = bitVector.getLastIndexOf(0, 1, 4);
+console.info("bitVector getLastIndexOf:", res); // 2
+```
+
 ## flipBitByIndex
 
-flipBitByIndex(index: number): void
+ArkTS-Dyn: flipBitByIndex(index: number): void
+
+ArkTS-Sta: flipBitByIndex(index: int): void
 
 翻转BitVector指定索引处的bit值，0翻转为1，1翻转为0。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| index  | number | 是   | 指定索引。index<0或者index>=length时，则会抛出错误。 |
+| index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定索引。index<0或者index>=length时，则会抛出错误。 |
 
 **错误码：**
 
@@ -539,20 +655,26 @@ bitVector.flipBitByIndex(3); // bitVector: [0, 1, 0, 0, 0]
 
 ## flipBitsByRange
 
-flipBitsByRange(fromIndex: number, toIndex: number): void
+ArkTS-Dyn: flipBitsByRange(fromIndex: number, toIndex: number): void
+
+ArkTS-Sta: flipBitsByRange(fromIndex: int, toIndex: int): void
 
 翻转BitVector指定范围内的bit值，0翻转为1，1翻转为0。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
-| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。     |
+| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex<0或者fromIndex>=toIndex时，则会抛出错误。  |
+| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex<0或者toIndex>=length时，则会抛出错误。     |
 
 **错误码：**
 
@@ -579,19 +701,25 @@ bitVector.flipBitsByRange(1, 4); // bitVector: [0, 0, 1, 0, 0]
 
 ## values
 
-values(): IterableIterator\<number>
+ArkTS-Dyn: values(): IterableIterator\<number>
+
+ArkTS-Sta: values(): IterableIterator\<int>
 
 返回一个新的迭代器对象，该对象包含BitVector中每个元素的值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| IterableIterator&lt;number&gt; | 返回一个BitVector迭代器对象。 |
+|  ArkTS-Dyn: IterableIterator&lt;number&gt;<br>ArkTS-Sta: IterableIterator&lt;int&gt; | 返回一个BitVector迭代器对象。 |
 
 **错误码：**
 
@@ -604,6 +732,7 @@ values(): IterableIterator\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let bitVector: collections.BitVector = new collections.BitVector(0);
 bitVector.push(0);
@@ -613,6 +742,22 @@ bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let iter: IterableIterator<number> = bitVector.values();
 let temp: IteratorResult<number> = iter.next();
+while (!temp.done) {
+  console.info(JSON.stringify(temp.value));
+  temp = iter.next();
+} // 依次输出 0,1,0,1,0
+```
+
+ArkTS-Sta示例：
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
+let iter: IterableIterator<int> = bitVector.values();
+let temp: IteratorResult<int> = iter.next();
 while (!temp.done) {
   console.info(JSON.stringify(temp.value));
   temp = iter.next();
@@ -631,7 +776,11 @@ while (!temp.done) {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -662,6 +811,43 @@ for (let item of bitVector) {
 }
 ```
 
+## $_iterator<sup>20+</sup>
+
+\$_iterator\(): IterableIterator&lt;int&gt;
+
+返回一个迭代器，迭代器的每一项都是一个 JavaScript 对象，并返回该对象。
+
+> **说明：**
+>
+> 本接口不支持在.ets文件中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型                      | 说明             |
+| ------------------------- | ---------------- |
+| IterableIterator&lt;int&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+
+for (let item of bitVector) {
+  console.info("value: " + item);
+}
+```
+
 ## [index: number]
 
 &#91;index: number&#93;: number
@@ -670,7 +856,11 @@ for (let item of bitVector) {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -683,6 +873,40 @@ for (let item of bitVector) {
 | 类型   | 说明                 |
 | ----- | ---------------------|
 | number | 返回number数据类型。 |
+
+**示例：**
+
+```ts
+let bitVector: collections.BitVector = new collections.BitVector(0);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0);
+bitVector.push(1);
+bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
+console.info("BitVector Element Index at 1: " + bitVector[1]);
+```
+
+## [index: int]<sup>20+</sup>
+
+&#91;index: int&#93;: int
+
+返回BitVector指定索引位置的元素。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+| 参数名    | 类型   | 必填 | 说明                     |
+| ----- | ------ | ---- | -------------------------- |
+| index | int | 是   | 所需代码单元的从零开始的索引。|
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ----- | ---------------------|
+| int | 返回int数据类型。 |
 
 **示例：**
 

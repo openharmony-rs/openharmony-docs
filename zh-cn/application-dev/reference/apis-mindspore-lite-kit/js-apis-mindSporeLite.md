@@ -494,7 +494,7 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 1000000  | Model path error. Possible causes: 1. The model path is nul l; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 | 1000008  | Invalid model path in training. Possible causes: 1. The model path is null; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 | 1000009  | Failed to create native training model from path. Possible causes: 1. The model file is incorrect; 2. The training configuration is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
@@ -544,7 +544,7 @@ loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Cont
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 1000000  | Model path error. Possible causes: 1. The model path is nul l; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 | 1000010  | Invalid model buffer in training. Possible causes: 1. The model buffer size is incorrect; 2. The model buffer is null.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 | 1000011  | Failed to create native training model from buffer. Possible causes: 1. The model buffer is incorrect; 2. The training configuration is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
@@ -734,7 +734,7 @@ Neural Network Runtime表示神经网络运行时，简称NNRt。作为中间桥
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
@@ -800,10 +800,6 @@ NNRt推理任务优先级枚举。
 NNRt设备信息描述，包含设备ID，设备名称等信息。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
 
 ### deviceID<sup>12+</sup>
 

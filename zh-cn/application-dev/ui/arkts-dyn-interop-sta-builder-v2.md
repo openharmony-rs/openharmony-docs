@@ -229,6 +229,7 @@ export struct CustomContainer {
 ```
 
 ```TypeScript
+'use static'
 // library/index.ets
 export { CustomContainer } from './src/main/ets/components/MainPage';
 ```
