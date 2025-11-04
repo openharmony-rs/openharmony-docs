@@ -376,6 +376,14 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      创建一个相机对象，并设置其位置和观察目标。然后启用轨道控制功能，让用户可以通过手势旋转和缩放视图。
 
      <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
+     this.cam.enabled = true;
+     lookAt(this.cam,{x:0,y:0,z:-3},{x:0,y:0,z:0},{x:0,y:1,z:0});
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     this.orbitCamera.SetOrbitFromEye(this.cam.position, this.scene.root.position, this.cam.rotation);
+     ```
 
   6. 切换清漆层纹理。
 
