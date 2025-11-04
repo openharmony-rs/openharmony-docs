@@ -10186,5 +10186,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-spring-curve.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets",
+				"functions":[
+					{
+						"end_line":110,
+						"name":"spring_curve",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-traditional-curve.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/traditionalCurve/template1/CurveDemo.ets",
+				"functions":[
+					{
+						"end_line":111,
+						"name":"traditional_curve",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
