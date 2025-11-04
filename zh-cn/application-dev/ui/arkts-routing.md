@@ -43,6 +43,34 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 
   <!-- @[jump_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Index.ets) -->
   
+  ``` TypeScript
+  import { router } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
+  @Entry
+  @Component
+  struct Index {
+    // 在Home页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/pageRouter/jumpPage/Detail' // 目标url
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+      });
+    }
+  
+    build() {
+      // ···
+    }
+  }
+  ```
+  
   >**说明：**
   >
   >多实例模式下，router.RouterMode.Standard参数可以省略。
