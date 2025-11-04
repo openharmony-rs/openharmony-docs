@@ -344,7 +344,7 @@ Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内�
 
 ## ScrollbarMode<sup>23+</sup>
 
-web网页场景，用户使用全局滚动条样式接口设置滚动条样式。
+Web页面场景下，全局滚动条模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
