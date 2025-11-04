@@ -335,6 +335,23 @@ this.getUIContext().getRouter().back();
 
 <!-- @[home_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/backPage/Home.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Home {
+  @State message: string = 'Hello World';
+
+  onPageShow() {
+    const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // 获取传递过来的参数对象
+    if (params) {
+      const info: string = params.info as string; // 获取info属性的值
+    }
+  }
+
+// ···
+}
+```
+
 
 >**说明：**
 >
