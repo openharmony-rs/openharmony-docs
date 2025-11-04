@@ -94,6 +94,69 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
       - 跳转（seek）：按比例跳转动画进度（例如seek(0.3)跳至总时长的30%）。
 
      <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     Button('start')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.start();
+       });
+     
+     Button('pause')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.pause();
+       });
+     
+     Button('stop')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.stop();
+       });
+     
+     Button('finish')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.finish();
+       });
+     
+     Button('restart')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.restart();
+       });
+     
+     Button('seek to 30% progress')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         // seek to 30%
+         this.anim.seek(0.3);
+       });
+     ```
 
 <!--RP1-->
 ## 相关实例
