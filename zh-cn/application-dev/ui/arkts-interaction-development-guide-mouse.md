@@ -36,6 +36,53 @@ onMouse(event: (event?: MouseEvent) => void)
 >按键（MouseButton）的值：Left/Right/Middle/Back/Forward 均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示无按键，会出现在鼠标没有按键按下或松开的状态下，移动鼠标所触发的事件中。
 <!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct MouseMove {
+  @State buttonText: string = '';
+  @State columnText: string = '';
+  @State text: string = 'OnMouse Sample Button';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.text, { type: ButtonType.Capsule })
+        .width(200)
+        .height(100)
+        .backgroundColor(this.color)
+        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
+          if (event) {
+            this.buttonText = 'Button onMouse:\n' + '' +
+              'button = ' + event.button + '\n' +
+              'action = ' + event.action + '\n' +
+              'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+          }
+        })
+      Divider()
+      Text(this.buttonText).fontColor(Color.Green)
+      Divider()
+      Text(this.columnText).fontColor(Color.Red)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .borderWidth(2)
+    .borderColor(Color.Red)
+    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+      if (event) {
+        this.columnText = 'Column onMouse:\n' + '' +
+          'button = ' + event.button + '\n' +
+          'action = ' + event.action + '\n' +
+          'x,y = (' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=(' + event.windowX + ',' + event.windowY + ')';
+      }
+    })
+  }
+}
+```
+
 上面的示例中给Button绑定onMouse接口。在回调中，打印出鼠标事件的button/action等回调参数值。同时，在外层的Column容器上，也做相同的设置。整个过程可以分为以下两个动作：
 
 1. 移动鼠标：当鼠标从Button外部移入Button的过程中，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
