@@ -135,6 +135,40 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+  
+    build() {
+      Row() {
+        Web({ src: '', controller: this.controller })
+          .onControllerAttached(() => {
+            try {
+              // 设置允许可以跨域访问的路径列表
+              this.controller.setPathAllowingUniversalAccess([
+                this.uiContext.getHostContext()!.resourceDir,
+                this.uiContext.getHostContext()!.filesDir + '/example'
+                ]);
+              this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html');
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as   BusinessError).message}`);
+            }
+          })
+          .javaScriptAccess(true)
+          .fileAccess(true)
+          .domStorageAccess(true)
+      }
+    }
+  }
+  ```
   <!---->
 
   ```html
