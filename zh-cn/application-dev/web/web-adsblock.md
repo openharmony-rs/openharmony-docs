@@ -162,6 +162,59 @@ AdsBlockManager中缓存有2组域名列表，分别为DisallowedList和AllowLis
 例如，应用想要开启域名为'news.example.com'和'sport.example.com'的广告过滤，但需要关闭'example.com'的其他域名下网页的广告过滤，就可以先使用addAdsBlockDisallowedList()接口添加'example.com'域名到DisallowedList，再使用[addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)接口添加'news.example.com'和'sport.example.com'域名。
 <!-- @[set_up_page_level_ad_filtering_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+
+// 演示addAdsBlockAllowedList和addAdsBlockAllowedList配套使用，设置网页级的广告过滤开关。    
+@Entry    
+@Component    
+struct WebComponent {    
+  main_url: string = 'https://www.example.com';    
+  text_input_controller: TextInputController = new TextInputController();    
+  controller: webview.WebviewController = new webview.WebviewController();    
+
+  @State input_text: string = 'https://www.example.com';    
+
+  build() {    
+    Column() {    
+      Row() {    
+        Flex() {    
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})    
+            .id('input_url')    
+            .height(40)    
+            .margin(5)    
+            .borderColor(Color.Blue)    
+            .onChange((value: string) => {    
+              this.input_text = value;    
+            })    
+
+          Button({type: ButtonType.Capsule}) { Text('Go') }    
+          .onClick(() => {    
+            this.controller.loadUrl(this.input_text);    
+          })    
+
+          Button({type: ButtonType.Capsule}) { Text('addAdsBlockAllowedList') }    
+          .onClick(() => {    
+            let arrDisallowDomainSuffixes = new Array<string>();    
+            arrDisallowDomainSuffixes.push('example.com');
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDisallowDomainSuffixes);    
+
+            let arrAllowedDomainSuffixes = new Array<string>();    
+            arrAllowedDomainSuffixes.push('news.example.com');
+            arrAllowedDomainSuffixes.push('sport.example.com');
+            webview.AdsBlockManager.addAdsBlockAllowedList(arrAllowedDomainSuffixes);    
+          })    
+        }    
+      }    
+      Web({ src: this.main_url, controller: this.controller })    
+        .onControllerAttached(()=>{    
+          this.controller.enableAdsBlock(true);    
+        })    
+    }    
+  }    
+}
+```
+
 需要注意的是，AdsBlockManager的DisallowedList和AllowedList列表不会持久化，因此重启应用后会重置为空。
 如果Web组件未通过[enableAdsBlock()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableadsblock12)接口开启广告过滤功能，上述接口设置在此Web组件中将不起作用。
 
