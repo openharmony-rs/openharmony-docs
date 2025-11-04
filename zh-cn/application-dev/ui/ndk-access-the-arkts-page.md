@@ -214,6 +214,12 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    接口声明。
 
   <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
+  ``` TypeScript
+  // entry/src/main/cpp/types/libentry/Index.d.ts
+  export const createNativeRoot: (content: Object) => void;
+  export const destroyNativeRoot: () => void;
+  ```
 
    Native实现。
 
