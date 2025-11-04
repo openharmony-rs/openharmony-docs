@@ -74,6 +74,20 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 3. 最后，通过[header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数将arcListHeader设置到弧形列表中。
 
    <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
+   ArcList({ header: this.arcListHeader }) {
+     ArcListItem() {
+     // ···
+     }
+     // ···
+   
+     ArcListItem() {
+     // ···
+     }
+     // ···
+   }
+   ```
 
   **图3** 自定义弧形列表标题
 
