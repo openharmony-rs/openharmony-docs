@@ -159,8 +159,8 @@ WLAN配置信息。
 | staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 20|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 20|
 | configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 20|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />ArkTS-Dyn起始版本： 17<br />ArkTS-Sta起始版本： 20|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。<br />ArkTS-Dyn起始版本： 20<br />ArkTS-Sta起始版本： 20|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 20|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 20|
 
 ## IpType<sup>9+</sup>
 
