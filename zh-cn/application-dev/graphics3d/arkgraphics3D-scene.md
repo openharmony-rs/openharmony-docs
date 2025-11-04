@@ -167,6 +167,27 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
      开发者可通过设置相机的位置、旋转、缩放、FOV等参数，以实现交互式视角控制。以下示例以Z轴控制为例，X/Y轴逻辑与此类似。
 
      <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+     
+     ``` TypeScript
+     Slider({
+       value: this.positionZ,
+       min: 5,
+       max: 10,
+       step: 0.1,
+       style: SliderStyle.OutSet
+     })
+       .showTips(false)
+       .onChange((value: number, mode: SliderChangeMode) => {
+         this.positionZ = value;
+         if (mode === SliderChangeMode.End) {
+           if (!this.scene || !this.camera) {
+             return;
+           }
+           this.camera.position.z = value;
+         }
+       })
+       .width('100%')
+     ```
 
 ## 光源的创建及管理
 
