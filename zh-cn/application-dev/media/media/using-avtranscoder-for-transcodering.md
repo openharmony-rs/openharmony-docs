@@ -43,23 +43,25 @@
    private currentProgress: number = 0;
    private avTranscoder: media.AVTranscoder | undefined = undefined;
 
-   // 创建转码实例。
-   this.avTranscoder = await media.createAVTranscoder();
-   if (this.avTranscoder != undefined) {
-     // 转码完成回调函数。
-     this.avTranscoder.on('complete', async () => {
-       console.info(`AVTranscoder is completed`);
-       await this.releaseTranscoderingProcess();
-     });
-     // 错误上报回调函数。
-     this.avTranscoder.on('error', (err: BusinessError) => {
-       console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
-     });
-     // 进度上报回调函数
-     this.avTranscoder.on('progressUpdate', (progress: number) => {
-       console.info(`AVTranscoder progressUpdate = ${progress}`);
-       this.currentProgress = progress;
-     })
+   async test() {
+     // 创建转码实例。
+     this.avTranscoder = await media.createAVTranscoder();
+     if (this.avTranscoder != undefined) {
+       // 转码完成回调函数。
+       this.avTranscoder.on('complete', async () => {
+         console.info(`AVTranscoder is completed`);
+         await this.releaseTranscoderingProcess();
+       });
+       // 错误上报回调函数。
+       this.avTranscoder.on('error', (err: BusinessError) => {
+         console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
+       });
+       // 进度上报回调函数
+       this.avTranscoder.on('progressUpdate', (progress: number) => {
+         console.info(`AVTranscoder progressUpdate = ${progress}`);
+         this.currentProgress = progress;
+       })
+     }
    }
 
    // 获取当前进度。
@@ -95,7 +97,7 @@
    > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
    ```ts
-   //导入来自于ets/transcoder/AVTranscoderManager.ets文件
+   // 导入来自于ets/transcoder/AVTranscoderManager.ets文件。
    import {AVTranscoderDemo} from '../transcoder/AVTranscoderManager'
 
    @Entry
@@ -109,7 +111,7 @@
      build() {
        RelativeContainer() {
          Column() {
-           Button($r('app.string.StartTranscoder')) //来自于resources/base/element/string.json文件中的name:StartTranscoder的值
+           Button($r('app.string.StartTranscoder')) // 来自于resources/base/element/string.json文件中的name:StartTranscoder的值。
              .onClick(async () => {
                console.info(`Button put`);
                await this.avTranscoder?.avTranscoderDemo();
@@ -264,7 +266,7 @@
          // 1.销毁实例。
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
-         // 关闭转码目标文件fd。
+         // 2.关闭转码目标文件fd。
          fs.closeSync(this.avTranscoder!.fdDst);
        }
      }
@@ -275,7 +277,7 @@
    ```ts
    async avTranscoderDemo() {
      await this.startTranscoderingProcess(); // 开始转码。
-     await this.pauseTranscoderingProcess(); //暂停转码。
+     await this.pauseTranscoderingProcess(); // 暂停转码。
      await this.resumeTranscoderingProcess(); // 恢复转码。
    }
    ```
