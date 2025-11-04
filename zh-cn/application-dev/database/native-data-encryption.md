@@ -120,4 +120,322 @@
     config = nullptr;
     ```
 
+4. 从API version 22开始，支持更换数据库密钥和加密参数，如果开发者需要更换已创建的加密数据库的密钥或者加密参数，可以使用OH_Rdb_RekeyEx进行更换。
+   针对更换数据库密钥和加密参数，有如下场景：
+    > **说明：**
+    >
+    > 加密参数变更需谨慎，在完成OH_Rdb_RekeyEx操作后，必须使用新的参数来打开数据库，否则可能会导致开库失败。如果rekey过程因设备断电等原因中断，操作可能成功也可能失败。因此，建议业务方做好兜底保障（使用OH_Rdb_RekeyEx前后的参数进行冗余重试），确保不会错误地判断数据库的状态，从而避免出现数据库无法打开的问题。
+
+    * 场景1：原数据库为默认参数加密数据库，更换密钥和加密参数。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, true);
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_DestroyConfig(config);
+            OH_Rdb_CloseStore(store);
+            config = NULL;
+            store = NULL;
+            return;
+        }
+        OH_Crypto_SetEncryptionAlgo(crypto, RDB_AES_256_CBC);
+        OH_Crypto_SetHmacAlgo(crypto, RDB_HMAC_SHA512);
+        OH_Crypto_SetKdfAlgo(crypto, RDB_KDF_SHA512);
+        OH_Crypto_SetCryptoPageSize(crypto, 2048);
+        errCode = OH_Rdb_RekeyEx(store, crypto);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        ```
+
+    * 场景2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, true);
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        uint8_t encryptionKey[] = "12345678";
+        OH_Crypto_SetEncryptionKey(crypto, encryptionKey, sizeof(encryptionKey));
+        memset(encryptionKey, 0, sizeof(encryptionKey));
+        OH_Rdb_SetCryptoParam(config, crypto);
+
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *newCryptoParam = OH_Rdb_CreateCryptoParam();
+        if (newCryptoParam == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create newCryptoParam failed.");
+            OH_Rdb_DestroyConfig(config);
+            OH_Rdb_CloseStore(store);
+            OH_Rdb_DestroyCryptoParam(crypto);
+            config = NULL;
+            store = NULL;
+            crypto = NULL;
+            return;
+        }
+        // 注意：示例中使用硬编码密钥仅用于演示目的，实际应用中应使用安全的密钥管理服务，使用后应该及时清零
+        uint8_t key[] = "87654321";
+        OH_Crypto_SetEncryptionKey(newCryptoParam, key, sizeof(key));
+        memset(key, 0, sizeof(key));
+        OH_Crypto_SetEncryptionAlgo(newCryptoParam, RDB_AES_256_CBC);
+        OH_Crypto_SetHmacAlgo(newCryptoParam, RDB_HMAC_SHA512);
+        OH_Crypto_SetKdfAlgo(newCryptoParam, RDB_KDF_SHA512);
+        OH_Crypto_SetCryptoPageSize(newCryptoParam, 4096);
+        errCode = OH_Rdb_RekeyEx(store, newCryptoParam);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        OH_Rdb_DestroyCryptoParam(newCryptoParam);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        newCryptoParam = NULL;
+        ```
+
+    * 场景3：原数据库为默认参数加密库，更换自定义密钥和加密参数。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, true);
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_CloseStore(store);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            store = NULL;
+            return;
+        }
+        // 注意：示例中使用硬编码密钥仅用于演示目的，实际应用中应使用安全的密钥管理服务，使用后应该及时清零
+        uint8_t key[] = "12345678";
+        errCode = OH_Crypto_SetEncryptionKey(crypto, key, sizeof(key));
+        memset(key, 0, sizeof(key));
+        OH_Crypto_SetEncryptionAlgo(crypto, RDB_AES_256_CBC);
+        OH_Crypto_SetHmacAlgo(crypto, RDB_HMAC_SHA512);
+        OH_Crypto_SetKdfAlgo(crypto, RDB_KDF_SHA512);
+        OH_Crypto_SetCryptoPageSize(crypto, 2048);
+        errCode = OH_Rdb_RekeyEx(store, crypto);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        ```
+    * 场景4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, true);
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        // 注意：示例中使用硬编码密钥仅用于演示目的，实际应用中应使用安全的密钥管理服务，使用后应该及时清零
+        uint8_t encryptionKey[] = "12345678";
+        OH_Crypto_SetEncryptionKey(crypto, encryptionKey, sizeof(encryptionKey));
+        memset(encryptionKey, 0, sizeof(encryptionKey));
+        OH_Rdb_SetCryptoParam(config, crypto);
+
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *newCryptoParam = OH_Rdb_CreateCryptoParam();
+        if (newCryptoParam == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create newCryptoParam failed.");
+            OH_Rdb_DestroyConfig(config);
+            OH_Rdb_CloseStore(store);
+            OH_Rdb_DestroyCryptoParam(crypto);
+            config = NULL;
+            store = NULL;
+            crypto = NULL;
+            return;
+        }
+        OH_Crypto_SetEncryptionAlgo(newCryptoParam, RDB_AES_256_CBC);
+        OH_Crypto_SetHmacAlgo(newCryptoParam, RDB_HMAC_SHA512);
+        OH_Crypto_SetKdfAlgo(newCryptoParam, RDB_KDF_SHA512);
+        OH_Crypto_SetCryptoPageSize(newCryptoParam, 4096);
+        errCode = OH_Rdb_RekeyEx(store, newCryptoParam);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        OH_Rdb_DestroyCryptoParam(newCryptoParam);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        newCryptoParam = NULL;
+        ```
+    * 场景5：原数据库为加密数据库，更换为非加密数据库。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, true);
+
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_DestroyConfig(config);
+            OH_Rdb_CloseStore(store);
+            config = NULL;
+            store = NULL;
+            return;
+        }
+        OH_Crypto_SetEncryptionAlgo(crypto, RDB_PLAIN_TEXT);
+        errCode = OH_Rdb_RekeyEx(store, crypto);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        ```
+    * 场景6：原数据库为非加密数据库，更换为加密数据库。
+
+        ```c
+        OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+        OH_Rdb_SetDatabaseDir(config, "/data/storage/el3/database");
+        OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL3);
+        OH_Rdb_SetStoreName(config, "RdbTest.db");
+        OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+        OH_Rdb_SetModuleName(config, "entry");
+        OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+        OH_Rdb_SetEncrypted(config, false);
+
+        int errCode = 0;
+        OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+        if (store == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
+            OH_Rdb_DestroyConfig(config);
+            config = NULL;
+            return;
+        }
+        OH_Rdb_CryptoParam *crypto = OH_Rdb_CreateCryptoParam();
+        if (crypto == NULL) {
+            OH_LOG_ERROR(LOG_APP, "Create crypto failed.");
+            OH_Rdb_DestroyConfig(config);
+            OH_Rdb_CloseStore(store);
+            config = NULL;
+            store = NULL;
+            return;
+        }
+        OH_Crypto_SetEncryptionAlgo(crypto, RDB_AES_256_CBC);
+        OH_Crypto_SetHmacAlgo(crypto, RDB_HMAC_SHA512);
+        OH_Crypto_SetKdfAlgo(crypto, RDB_KDF_SHA512);
+        OH_Crypto_SetCryptoPageSize(crypto, 2048);
+        errCode = OH_Rdb_RekeyEx(store, crypto);
+
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "RekeyEx failed, errCode: %{public}d", errCode);
+        }
+        // 在完成OH_Rdb_RekeyEx操作后，如果后续需要重新开库时必须使用新的参数来打开数据库
+        OH_Rdb_DestroyConfig(config);
+        OH_Rdb_CloseStore(store);
+        OH_Rdb_DestroyCryptoParam(crypto);
+        config = NULL;
+        store = NULL;
+        crypto = NULL;
+        ```
 
