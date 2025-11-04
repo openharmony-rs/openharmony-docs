@@ -285,7 +285,7 @@ offFrameEnd(callback?: AsyncCallback\<void\>): void
 
 **ArkTS模式：**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offframeend)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameEnd')](#offframeend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
