@@ -573,6 +573,54 @@ Grid() {
 
     <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
+    ``` TypeScript
+      @State previewData: DragItemInfo[] = [];
+      @State isSelectedGrid: boolean[] = [];
+    // ···
+                .onClick(() => {
+                  this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                  if (this.isSelectedGrid[idx]) {
+                    // ···
+                    let gridItemName = 'grid' + idx;
+                    // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                    this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                      this.pixmap = pixmap;
+                      this.previewData[idx] = {
+                        pixelMap: this.pixmap
+                      }
+                    })
+                    // ···
+                })
+                .dragPreviewOptions({ numberBadge: this.numberBadge })
+                .onPreDrag((status: PreDragStatus) => {
+                  // 1.长按时通知，350ms回调
+                  if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+                    // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
+                    this.loadData()
+                  } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+                    // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
+                    clearTimeout(this.timeout);
+                  }
+                })
+                // >=500ms,移动超过10vp触发
+                .onDragStart((event: DragEvent) => {
+                  this.dragEvent = event;
+                  if (this.finished == false) {
+                    this.getUIContext()
+                      .getDragController()
+                      .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+                  } else {
+                    event.setData(this.unifiedData);
+                  }
+                })
+                .onDragEnd(() => {
+                  this.finished = false;
+                })
+    
+              }, (idx: string) => idx)
+            }
+    ```
+    
 
 3. 多选显示效果。
 
