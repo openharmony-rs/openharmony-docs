@@ -107,6 +107,62 @@ Web组件发起的下载会根据当前显示的url以及Web组件默认的Refer
 
 <!-- @[init_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
+
+  build() {
+    Column() {
+      Text(this.myText)
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('will start a download.');
+              // 传入一个下载路径，并开始下载。
+              // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('download update guid: ' + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            // 这里指定下载地址为 https://www.example.com/，Web组件会发起一个下载任务将该页面下载下来。
+            // 开发者需要替换为自己想要下载的内容的地址。
+            this.controller.startDownload('https://www.example.com/');
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 使用[DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
 ```ts
 // xxx.ets
