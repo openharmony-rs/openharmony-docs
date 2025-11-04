@@ -3241,7 +3241,7 @@ Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | 快捷键对象的实例。 |
-| bool *isRepeat | isRepeat 返回Key事件是否重复。 |
+| bool *isRepeat | isRepeat 返回Key事件是否重复。true表示重复，false表示不重复。 |
 
 **返回：**
 
