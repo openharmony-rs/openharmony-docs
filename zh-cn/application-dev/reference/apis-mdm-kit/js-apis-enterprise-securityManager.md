@@ -905,10 +905,10 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
-| policy     | [ManagedPolicy](#managedpolicy)                     | 是   | 管控策略。                                                                                                                                                    |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
+| policy     | [ManagedPolicy](#managedpolicy22)                     | 是   | 管控策略。                                                                                                                                                    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -955,15 +955,16 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                       
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。                    
+                       |                                                                               
 
 **返回值：**
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-| ManagedPolicy | 返回ManagedPolicy枚举类型的外部源扩展管控策略。 |
+|  [ManagedPolicy](#managedPolicy22) | 返回ManagedPolicy枚举类型的外部源扩展管控策略。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -1057,7 +1058,7 @@ try {
 | GRANTED | 0  | 已静默授予。 |
 | DENIED | -1  | 已静默拒绝。 |
 
-## ManagedPolicy
+## ManagedPolicy<sup>22+</sup>
 
 管理来自外部来源扩展程序的运行开关策略。
 
@@ -1065,7 +1066,7 @@ try {
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 默认，表示无管控策略，运行外部来源的扩展程序开关保持设备当前设置状态。|
-| DISALLOW | 1  | 禁用运行外部来源的扩展程序管控开关。|
+| DEFAULT | 0  | 默认，表示无管控策略，外部来源的扩展程序开关保持设备当前设置状态。|
+| DISALLOW | 1  | 禁用外部来源的扩展程序管控开关。|
 | FORCE_OPEN | 2  | 强制打开外部来源的扩展程序管控开关。|
 
