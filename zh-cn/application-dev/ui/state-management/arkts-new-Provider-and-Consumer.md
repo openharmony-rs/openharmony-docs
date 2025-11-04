@@ -432,6 +432,64 @@ struct Child {
 
 <!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+export struct Parent {
+  @Provider() message: Set<number> = new Set([1, 2, 3, 4]);
+
+  build() {
+    Column() {
+      Text('Parent').fontSize(30)
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Divider()
+      })
+      Button('init set').onClick(() => {
+        this.message = new Set([1, 2, 3, 4]);
+      })
+      Button('set new one').onClick(() => {
+        this.message.add(5);
+      })
+      Button('clear').onClick(() => {
+        this.message.clear();
+      })
+      Button('delete the first one').onClick(() => {
+        this.message.delete(1);
+      })
+      Child()
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() message: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
+
+  build() {
+    Column() {
+      Text('Child').fontSize(30)
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Divider()
+      })
+      Button('init set').onClick(() => {
+        this.message = new Set([1, 2, 3, 4, 5, 6]);
+      })
+      Button('set new one').onClick(() => {
+        this.message.add(7);
+      })
+      Button('clear').onClick(() => {
+        this.message.clear();
+      })
+      Button('delete the first one').onClick(() => {
+        this.message.delete(1);
+      })
+    }
+  }
+}
+```
+
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
 当需要在父组件中向子组件注册回调函数时，可以使用\@Provider和\@Consumer装饰回调方法来实现。
