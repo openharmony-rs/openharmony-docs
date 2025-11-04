@@ -110,7 +110,7 @@ Native侧
 1. 在界面中定义XComponent，在cpp/types/libnativerender/Index.d.ts中声明接口，具体实现位于Native侧。
 
     <!-- @[xcomponent_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/types/libnativerender/Index.d.ts) -->
-
+    
     ``` TypeScript
     // 函数声明，在cpp/types/libnativerender/Index.d.ts中定义
     type XComponentContextStatus = {
@@ -126,10 +126,10 @@ Native侧
     ```
 
     <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     import nativeRender from 'libnativerender.so';
-
+    
     // 重写XComponentController，设置生命周期回调
     class MyXComponentController extends XComponentController{
       onSurfaceCreated(surfaceId: string): void {
@@ -154,7 +154,7 @@ Native侧
       xComponentController: XComponentController = new MyXComponentController();
       build() {
         Column() {
-          // ···
+        // ···
           //在xxx.ets 中定义 XComponent
           Column({ space: 10 }) {
             XComponent({
@@ -176,7 +176,7 @@ Native侧
               this.currentStatus = "change color";
             }
           })
-          // ···
+        // ···
           Row() {
             Button('Draw Star')
               .fontSize('16fp')
@@ -211,13 +211,13 @@ Native侧
 2. Node-API模块注册，具体使用请参考[Node-API开发规范](../napi/napi-guidelines.md)。
 
     <!-- @[xcomponent_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     #include <hilog/log.h>
-
+    
     #include "common/common.h"
     #include "manager/plugin_manager.h"
-
+    
     namespace NativeXComponentSample {
     // 在napi_init.cpp文件中，Init方法注册接口函数，从而将封装的C++方法传递出来，供ArkTS侧调用
     EXTERN_C_START
@@ -269,7 +269,7 @@ Native侧
 3. 上述注册的六个函数在Native侧的具体实现如下：ChangeColor和DrawPattern利用OpenGL(https://developer.huawei.com/consumer/cn/doc/harmonyos-references/opengl)进行五角星的绘制；ChangeSurface根据传入的surfaceId、width、height调整Surface的大小；SetSurfaceId基于SurfaceId完成NativeWindow的初始化；DestroySurface销毁与Surface相关的资源；GetXComponentStatus获取xcomponent状态并返回至ArkTS侧。
 
     <!-- @[xcomponent_define_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/manager/plugin_manager.h) -->
-
+    
     ``` C
     // PluginManager类定义
     class PluginManager {
@@ -289,23 +289,23 @@ Native侧
     ```
 
     <!-- @[xcomponent_render_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-
+    
     ``` C++
     void PluginRender::ChangeColor()
     {
         eglCore_->ChangeColor(hasChangeColor_);
     }
-
+    
     void PluginRender::DrawPattern()
     {
         eglCore_->Draw(hasDraw_); // 参考Native XComponent场景Draw实现
     }
-
+    
     void PluginRender::InitNativeWindow(OHNativeWindow *window)
     {
         eglCore_->EglContextInit(window); // 参考Native XComponent场景EglContextInit的实现
     }
-
+    
     void PluginRender::UpdateNativeWindowSize(int width, int height)
     {
         eglCore_->UpdateSize(width, height); // 参考Native XComponent场景UpdateSize的实现
@@ -313,12 +313,12 @@ Native侧
             eglCore_->Background(); // 参考Native XComponent场景Background的实现
         }
     }
-
+    
     int32_t PluginRender::HasDraw()
     {
         return hasDraw_;
     }
-
+    
     int32_t PluginRender::HasChangedColor()
     {
         return hasChangeColor_;
@@ -326,7 +326,7 @@ Native侧
     ```
 
     <!-- @[xcomponent_manager_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     namespace {
         // 解析从ArkTS侧传入的surfaceId，此处surfaceId是一个64位int值
@@ -352,7 +352,7 @@ Native侧
         }
     }
     // ···
-
+    
     PluginRender* PluginManager::GetPluginRender(int64_t& id)
     {
         if (pluginRenderMap_.find(id) != pluginRenderMap_.end()) {
@@ -360,7 +360,7 @@ Native侧
         }
         return nullptr;
     }
-
+    
     // 设置SurfaceId，基于SurfaceId完成对NativeWindow的初始化
     napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
     {
@@ -380,7 +380,7 @@ Native侧
         pluginRender->InitNativeWindow(nativeWindow);
         return nullptr;
     }
-
+    
     // 销毁Surface
     napi_value PluginManager::DestroySurface(napi_env env, napi_callback_info info)
     {
@@ -397,22 +397,22 @@ Native侧
         }
         return nullptr;
     }
-
+    
     // 根据传入的surfaceId、width、height实现Surface大小的变动
     napi_value PluginManager::ChangeSurface(napi_env env, napi_callback_info info)
     {
         if ((env == nullptr) || (info == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "ChangeSurface: OnLoad env or info is null");
+                         "ChangeSurface: OnLoad env or info is null");
             return nullptr;
         }
         int64_t surfaceId = 0;
         size_t argc = 3;
         napi_value args[3] = {nullptr};
-
+    
         if (napi_ok != napi_get_cb_info(env, info, &argc, args, nullptr, nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "ChangeSurface: GetContext napi_get_cb_info failed");
+                         "ChangeSurface: GetContext napi_get_cb_info failed");
         }
         bool lossless = true;
         int index = 0;
@@ -435,7 +435,7 @@ Native侧
         pluginRender->UpdateNativeWindowSize(width, height);
         return nullptr;
     }
-
+    
     // 实现改变绘制图形颜色的功能
     napi_value PluginManager::ChangeColor(napi_env env, napi_callback_info info)
     {
@@ -448,7 +448,7 @@ Native侧
         pluginRender->ChangeColor(); // 参考Native XComponent场景ChangeColor实现
         return nullptr;
     }
-
+    
     // 实现EGL绘画逻辑
     napi_value PluginManager::DrawPattern(napi_env env, napi_callback_info info)
     {
@@ -461,7 +461,7 @@ Native侧
         pluginRender->DrawPattern();
         return nullptr;
     }
-
+    
     // 获得xcomponent状态，并返回至ArkTS侧
     napi_value PluginManager::GetXComponentStatus(napi_env env, napi_callback_info info)
     {
@@ -469,7 +469,7 @@ Native侧
         auto pluginRender = GetPluginRender(surfaceId);
         if (pluginRender == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: Get pluginRender failed");
+                         "GetXComponentStatus: Get pluginRender failed");
             return nullptr;
         }
         napi_value hasDraw;
@@ -477,32 +477,32 @@ Native侧
         napi_status ret = napi_create_int32(env, pluginRender->HasDraw(), &(hasDraw));
         if (ret != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_create_int32 hasDraw_ error");
+                         "GetXComponentStatus: napi_create_int32 hasDraw_ error");
             return nullptr;
         }
         ret = napi_create_int32(env, pluginRender->HasChangedColor(), &(hasChangeColor));
         if (ret != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_create_int32 hasChangeColor_ error");
+                         "GetXComponentStatus: napi_create_int32 hasChangeColor_ error");
             return nullptr;
         }
         napi_value obj;
         ret = napi_create_object(env, &obj);
         if (ret != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
-                        "PluginManager", "GetXComponentStatus: napi_create_object error");
+                         "PluginManager", "GetXComponentStatus: napi_create_object error");
             return nullptr;
         }
         ret = napi_set_named_property(env, obj, "hasDraw", hasDraw);
         if (ret != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_set_named_property hasDraw error");
+                         "GetXComponentStatus: napi_set_named_property hasDraw error");
             return nullptr;
         }
         ret = napi_set_named_property(env, obj, "hasChangeColor", hasChangeColor);
         if (ret != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_set_named_property hasChangeColor error");
+                         "GetXComponentStatus: napi_set_named_property hasChangeColor error");
             return nullptr;
         }
         return obj;
@@ -649,7 +649,7 @@ Native侧
 1. 在界面中定义XComponent。
 
     <!-- @[page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageThree.ets) -->
-
+    
     ``` TypeScript
     import native from 'libnativerender.so';
     // ···
@@ -664,7 +664,7 @@ Native侧
       @State text: string = '单指点击XComponent软键盘消失';
       controller: TextInputController = new TextInputController();
       myNodeController: MyNodeController = new MyNodeController();
-
+    
       build() {
         NavDestination() {
         Column() {
@@ -691,7 +691,7 @@ Native侧
                 .defaultFocus(true)
             }
           }.height(200)
-
+    
           Button('创建/销毁').onClick(() => {
             this.isShow = !this.isShow;
           }).width('50%')
@@ -701,7 +701,7 @@ Native侧
               left: 12,
               right: 12
             })
-
+    
           Column() {
             Text('期望帧率设置：')
               .textAlign(TextAlign.Start)
@@ -744,7 +744,7 @@ Native侧
             }).width('100%')
               .id('expectedSlider')
           }.backgroundColor('#F0FAFF')
-
+    
           Button(this.needSoftKeyboardState)
             .onClick(() => {
               this.needSoftKeyboard = !this.needSoftKeyboard;
@@ -759,7 +759,7 @@ Native侧
               left: 12,
               right: 12
             })
-          // ···
+        // ···
         }
         .width('100%')
       }
@@ -770,13 +770,13 @@ Native侧
 2. Node-API模块注册，具体使用请参考[Node-API开发规范](../napi/napi-guidelines.md)。
 
     <!-- @[napi_init_part](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     #include <hilog/log.h>
-
+    
     #include "common/common.h"
     #include "manager/plugin_manager.h"
-
+    
     namespace NativeXComponentSample {
     // 在napi_init.cpp文件中，Init方法注册接口函数，从而将封装的C++方法传递出来，供ArkTS侧调用
     EXTERN_C_START
@@ -794,9 +794,9 @@ Native侧
             {"unbindNode", nullptr, PluginManager::UnbindNode, nullptr, nullptr, nullptr, napi_default, nullptr},
             {"setFrameRate", nullptr, PluginManager::SetFrameRate, nullptr, nullptr, nullptr, napi_default, nullptr},
             {"setNeedSoftKeyboard", nullptr, PluginManager::SetNeedSoftKeyboard, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
+             nullptr},
             // ···
-        };
+         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
             return nullptr;
@@ -805,7 +805,7 @@ Native侧
         return exports;
     }
     EXTERN_C_END
-
+    
     // 编写接口的描述信息，根据实际需要可以修改对应参数
     static napi_module nativerenderModule = { .nm_version = 1,
         .nm_flags = 0,
@@ -816,7 +816,7 @@ Native侧
         .nm_modname = "nativerender", // 指定模块名称，对于XComponent相关开发，这个名称必须和ArkTS侧XComponent中libraryname的值保持一致
         .nm_priv = ((void*)0),
         .reserved = { 0 } };
-
+    
     // __attribute__((constructor))修饰的方法由系统自动调用，使用Node-API接口napi_module_register()传入模块描述信息进行模块注册
     extern "C" __attribute__((constructor)) void RegisterModule(void)
     {
@@ -830,7 +830,7 @@ Native侧
     (1) 定义BindNode、UnbindNode、SetFrameRate、SetNeedSoftKeyboard方法，暴露到ArkTS侧的bindNode、unbindNode、setFrameRate、setNeedSoftKeyboard方法会执行该方法。
 
     <!-- @[plugin_manager_h_part](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.h) -->
-
+    
     ``` C
     // plugin_manager.h
     namespace NativeXComponentSample {
@@ -843,7 +843,7 @@ Native侧
         static napi_value SetFrameRate(napi_env env, napi_callback_info info);
         static napi_value SetNeedSoftKeyboard(napi_env env, napi_callback_info info);
         // ···
-
+    
     public:
         // ···
         static std::unordered_map<std::string, ArkUI_NodeHandle> nodeHandleMap_;
@@ -855,7 +855,7 @@ Native侧
     ```
 
     <!-- @[plugin_manager_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // plugin_manager.cpp
     std::unordered_map<std::string, ArkUI_NodeHandle> PluginManager::nodeHandleMap_;
@@ -910,7 +910,7 @@ Native侧
          * **/
         return nullptr;
     }
-
+    
     napi_value PluginManager::UnbindNode(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -939,7 +939,7 @@ Native侧
         nodeHandleMap_.erase(nodeId);
         return nullptr;
     }
-
+    
     napi_value PluginManager::SetFrameRate(napi_env env, napi_callback_info info)
     {
         size_t argc = 4;
@@ -947,20 +947,20 @@ Native侧
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         std::string nodeId = value2String(env, args[0]);
         auto node = nodeHandleMap_[nodeId];
-
+    
         int32_t min = 0;
         napi_get_value_int32(env, args[FIRST_ARG], &min);
-
+    
         int32_t max = 0;
         napi_get_value_int32(env, args[SECOND_ARG], &max);
-
+    
         int32_t expected = 0;
         napi_get_value_int32(env, args[THIRD_ARG], &expected);
         OH_NativeXComponent_ExpectedRateRange range = {.min = min, .max = max, .expected = expected};
         OH_ArkUI_XComponent_SetExpectedFrameRateRange(node, range); // 设置期望帧率
         return nullptr;
     }
-
+    
     napi_value PluginManager::SetNeedSoftKeyboard(napi_env env, napi_callback_info info)
     {
         size_t argc = 2;
@@ -973,7 +973,7 @@ Native侧
             return nullptr;
         }
         node = nodeHandleMap_[nodeId];
-
+    
         bool needSoftKeyboard = false;
         napi_get_value_bool(env, args[1], &needSoftKeyboard);
         OH_ArkUI_XComponent_SetNeedSoftKeyboard(node, needSoftKeyboard); // 设置是否需要软键盘
@@ -984,7 +984,7 @@ Native侧
     (2) 定义Surface创建成功，发生改变，销毁和事件，可变帧率回调接口。
 
     <!-- @[surface_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
     {
@@ -992,31 +992,31 @@ Native侧
         auto render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->SetUpEGLContext(window); // 初始化egl环境
     }
-
+    
     void OnSurfaceChangedNative(OH_ArkUI_SurfaceHolder *holder, uint64_t width, uint64_t height)
     {
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->SetEGLWindowSize(width, height); // 设置绘制区域大小
         render->DrawStar(true);                  // 绘制五角星
     }
-
+    
     void OnSurfaceDestroyedNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "onBind", "on destroyed");
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->DestroySurface();  // 销毁eglSurface相关资源
     }
-
+    
     void OnSurfaceShowNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface show");
     }
-
+    
     void OnSurfaceHideNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
     }
-
+    
     void OnFrameCallbackNative(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)
     {
         if (!PluginManager::surfaceHolderMap_.count(node)) {
@@ -1028,7 +1028,7 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
         }
     }
-
+    
     void onEvent(ArkUI_NodeEvent *event)
     {
         auto eventType = OH_ArkUI_NodeEvent_GetEventType(event); // 获取组件事件类型
@@ -1046,136 +1046,136 @@ Native侧
 4. 初始化环境，包括初始化可用的EGLDisplay、确定可用的Surface配置、创建渲染区域Surface、创建并关联上下文等。
 
     <!-- @[egl_const_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLConst.h) -->
-
+    
     ``` C
     // EGLConst.h
     #include <EGL/egl.h>
     #include <EGL/eglext.h>
     #include <GLES3/gl3.h>
-
+    
     const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
-
+    
     /**
      * Program 错误
      */
     const GLuint PROGRAM_ERROR = 0;
-
+    
     /**
      * 位置错误。
      */
     const GLint POSITION_ERROR = -1;
-
+    
     /**
      * 默认x坐标。
      */
     const int DEFAULT_X_POSITION = 0;
-
+    
     /**
      * 默认y坐标。
      */
     const int DEFAULT_Y_POSITION = 0;
-
+    
     /**
      * Gl 红色默认值。
      */
     const GLfloat GL_RED_DEFAULT = 0.0;
-
+    
     /**
      * Gl 绿色默认值。
      */
     const GLfloat GL_GREEN_DEFAULT = 0.0;
-
+    
     /**
      * Gl 蓝色默认值。
      */
     const GLfloat GL_BLUE_DEFAULT = 0.0;
-
+    
     /**
      * Gl 透明度。
      */
     const GLfloat GL_ALPHA_DEFAULT = 1.0;
-
+    
     /**
      * Pointer 数量。
      */
     const GLint POINTER_SIZE = 2;
-
+    
     /**
      * Triangle fan 尺寸。
      */
     const GLsizei TRIANGLE_FAN_SIZE = 4;
-
+    
     /**
      * 50%。
      */
     const float FIFTY_PERCENT = 0.5;
-
+    
     /**
      * 位置句柄名字。
      */
     const char POSITION_NAME[] = "a_position";
-
+    
     // ···
-
+    
     /**
      * 背景色 #f4f4f4.
      */
     const GLfloat BACKGROUND_COLOR[] = {244.0f / 255, 244.0f / 255, 244.0f / 255, 1.0f};
-
+    
     // ···
-
+    
     /**
      * Draw 颜色 #7E8FFB.
      */
     const GLfloat DRAW_COLOR[] = {126.0f / 255, 143.0f / 255, 251.0f / 255, 1.0f};
-
+    
     /**
      * Change 颜色 #92D6CC.
      */
     const GLfloat CHANGE_COLOR[] = {146.0f / 255, 214.0f / 255, 204.0f / 255, 1.0f};
-
+    
     /**
      * 背景区域。
      */
     const GLfloat BACKGROUND_RECTANGLE_VERTICES[] = {-1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f};
-
+    
     const EGLint ATTRIB_LIST[] = {
         // 键，值。
         EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_ALPHA_SIZE, 8,
         EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
         // 结束。
         EGL_NONE};
-
+    
     const EGLint CONTEXT_ATTRIBS[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
-
+    
     /**
      * 顶点着色器
      */
     const char VERTEX_SHADER[] = "#version 300 es\n"
-                                "layout(location = 0) in vec4 a_position;\n"
-                                "layout(location = 1) in vec4 a_color;   \n"
-                                "out vec4 v_color;                       \n"
-                                "void main()                             \n"
-                                "{                                       \n"
-                                "   gl_Position = a_position;            \n"
-                                "   v_color = a_color;                   \n"
-                                "}                                       \n";
-
+                                 "layout(location = 0) in vec4 a_position;\n"
+                                 "layout(location = 1) in vec4 a_color;   \n"
+                                 "out vec4 v_color;                       \n"
+                                 "void main()                             \n"
+                                 "{                                       \n"
+                                 "   gl_Position = a_position;            \n"
+                                 "   v_color = a_color;                   \n"
+                                 "}                                       \n";
+    
     /**
      * 片元着色器。
      */
     const char FRAGMENT_SHADER[] = "#version 300 es\n"
-                                "precision mediump float;                  \n"
-                                "in vec4 v_color;                          \n"
-                                "out vec4 fragColor;                       \n"
-                                "void main()                               \n"
-                                "{                                         \n"
-                                "   fragColor = v_color;                   \n"
-                                "}                                         \n";
+                                   "precision mediump float;                  \n"
+                                   "in vec4 v_color;                          \n"
+                                   "out vec4 fragColor;                       \n"
+                                   "void main()                               \n"
+                                   "{                                         \n"
+                                   "   fragColor = v_color;                   \n"
+                                   "}                                         \n";
     ```
 
     <!-- @[egl_render_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.h) -->
-
+    
     ``` C
     // EGLRender.h
     #include "EGLConst.h"
@@ -1184,7 +1184,7 @@ Native侧
     #include <EGL/eglplatform.h>
     #include <GLES3/gl3.h>
     #include <string>
-
+    
     class EGLRender {
     public:
         bool SetUpEGLContext(void *window);
@@ -1192,10 +1192,10 @@ Native侧
         void DrawStar(bool drawColor);
         void DestroySurface();
         // ···
-
+    
         std::string xcomponentId;
         EGLNativeWindowType eglWindow_;
-
+    
         EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
         EGLConfig eglConfig_ = EGL_NO_CONFIG_KHR;
         EGLSurface eglSurface_ = EGL_NO_SURFACE;
@@ -1203,7 +1203,7 @@ Native侧
         GLuint program_;
         int width_ = 0;
         int height_ = 0;
-
+    
     private:
         GLint PrepareDraw();
         bool ExecuteDraw(GLint position, const GLfloat *color, const GLfloat shapeVertices[]);
@@ -1211,7 +1211,7 @@ Native侧
     ```
 
     <!-- @[egl_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.cpp) -->
-
+    
     ``` C++
     // EGLRender.cpp
     #include "EGLRender.h"
@@ -1224,7 +1224,7 @@ Native侧
     #include <algorithm>
     #include <hilog/log.h>
     #include <iostream>
-
+    
     namespace {
     void Rotate2d(GLfloat centerX, GLfloat centerY, GLfloat *rotateX, GLfloat *rotateY, GLfloat theta)
     {
@@ -1233,37 +1233,37 @@ Native侧
         *rotateX = tempX + centerX;
         *rotateY = tempY + centerY;
     }
-
+    
     GLuint LoadShader(GLenum type, const char *shaderSrc)
     {
         if ((type <= 0) || (shaderSrc == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "glCreateShader type or shaderSrc error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint shader = glCreateShader(type);
         if (shader == 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "glCreateShader unable to load shader");
             return PROGRAM_ERROR;
         }
-
+    
         // The gl function has no return value.
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
-
+    
         GLint compiled;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
         if (compiled != 0) {
             return shader;
         }
-
+    
         GLint infoLen = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
         if (infoLen <= 1) {
             glDeleteShader(shader);
             return PROGRAM_ERROR;
         }
-
+    
         char *infoLog = (char *)malloc(sizeof(char) * (infoLen + 1));
         if (infoLog != nullptr) {
             memset(infoLog, 0, infoLen + 1);
@@ -1275,28 +1275,28 @@ Native侧
         glDeleteShader(shader);
         return PROGRAM_ERROR;
     }
-
+    
     // 创建program
     GLuint CreateProgram(const char *vertexShader, const char *fragShader)
     {
         if ((vertexShader == nullptr) || (fragShader == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "createProgram: vertexShader or fragShader is null");
+                         "createProgram: vertexShader or fragShader is null");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint vertex = LoadShader(GL_VERTEX_SHADER, vertexShader);
         if (vertex == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram vertex error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint fragment = LoadShader(GL_FRAGMENT_SHADER, fragShader);
         if (fragment == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram fragment error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint program = glCreateProgram();
         if (program == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram program error");
@@ -1304,12 +1304,12 @@ Native侧
             glDeleteShader(fragment);
             return PROGRAM_ERROR;
         }
-
+    
         //  该gl函数没有返回值。
         glAttachShader(program, vertex);
         glAttachShader(program, fragment);
         glLinkProgram(program);
-
+    
         GLint linked;
         glGetProgramiv(program, GL_LINK_STATUS, &linked);
         if (linked != 0) {
@@ -1317,7 +1317,7 @@ Native侧
             glDeleteShader(fragment);
             return program;
         }
-
+    
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram linked error");
         GLint infoLen = 0;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
@@ -1335,7 +1335,7 @@ Native侧
         return PROGRAM_ERROR;
     }
     } // namespace
-
+    
     bool EGLRender::SetUpEGLContext(void *window)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "EGLRender", "EglContextInit execute");
@@ -1350,7 +1350,7 @@ Native侧
         EGLint minorVersion;
         if (!eglInitialize(eglDisplay_, &majorVersion, &minorVersion)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglInitialize: unable to get initialize EGL display");
+                         "eglInitialize: unable to get initialize EGL display");
             return false;
         };
         // 选择配置。
@@ -1365,12 +1365,12 @@ Native侧
         eglSurface_ = eglCreateWindowSurface(eglDisplay_, eglConfig_, eglWindow_, NULL);
         if (eglSurface_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglCreateWindowSurface: unable to create surface");
+                         "eglCreateWindowSurface: unable to create surface");
             return false;
         }
         if (eglSurface_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglCreateWindowSurface: unable to create surface");
+                         "eglCreateWindowSurface: unable to create surface");
             return false;
         }
         // 创建上下文。
@@ -1387,7 +1387,7 @@ Native侧
         }
         return true;
     }
-
+    
     GLint EGLRender::PrepareDraw()
     {
         if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (eglContext_ == nullptr) ||
@@ -1395,16 +1395,16 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "PrepareDraw: param error");
             return POSITION_ERROR;
         }
-
+    
         // 该gl函数没有返回值。
         glViewport(DEFAULT_X_POSITION, DEFAULT_Y_POSITION, width_, height_);
         glClearColor(GL_RED_DEFAULT, GL_GREEN_DEFAULT, GL_BLUE_DEFAULT, GL_ALPHA_DEFAULT);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(program_);
-
+    
         return glGetAttribLocation(program_, POSITION_NAME);
     }
-
+    
     // 绘制五角星
     void EGLRender::DrawStar(bool drawColor)
     {
@@ -1414,13 +1414,13 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR, BACKGROUND_RECTANGLE_VERTICES)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw background failed");
             return;
         }
-
+    
         // 将其划分为五个四边形，并计算其中一个四边形的顶点
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -1433,16 +1433,16 @@ Native侧
         // 将角度 18° 转换为弧度
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = {centerX / width_, centerY / height_, leftX / width_,  leftY / height_,
-                                        rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
+                                         rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
         auto color = drawColor ? DRAW_COLOR : CHANGE_COLOR;
         if (!ExecuteDraw(position, color, shapeVertices)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw shape failed");
             return;
         }
-
+    
         // 将角度 72° 转换为弧度
         GLfloat rad = M_PI / 180 * 72;
         // 旋转四次。
@@ -1451,11 +1451,11 @@ Native侧
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
             Rotate2d(centerX, centerY, &leftX, &leftY, rad);
             Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-
+    
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = {centerX / width_, centerY / height_, leftX / width_,  leftY / height_,
-                                            rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
-
+                                             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
+    
             // 绘制图形
             if (!ExecuteDraw(position, color, shapeVertices)) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw shape failed");
@@ -1470,43 +1470,43 @@ Native侧
             return;
         }
     }
-
+    
     // ···
-
+    
     bool EGLRender::ExecuteDraw(GLint position, const GLfloat *color, const GLfloat shapeVertices[])
     {
         if ((position > 0) || (color == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "ExecuteDraw: param error");
             return false;
         }
-
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-
+    
         return true;
     }
-
+    
     void EGLRender::SetEGLWindowSize(int width, int height)
     {
         width_ = width;
         height_ = height;
     }
-
+    
     // 释放相关资源
     void EGLRender::DestroySurface()
     {
         if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (!eglDestroySurface(eglDisplay_, eglSurface_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
-
+    
         if ((eglDisplay_ == nullptr) || (eglContext_ == nullptr) || (!eglDestroyContext(eglDisplay_, eglContext_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
-
+    
         if ((eglDisplay_ == nullptr) || (!eglTerminate(eglDisplay_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
@@ -1676,11 +1676,11 @@ Native侧
 1. 在界面中定义XComponent。
 
     <!-- @[page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageOne.ets) -->
-
+    
     ``` TypeScript
     import nativeNode from 'libnativerender.so';
     import {NodeContent} from '@kit.ArkUI';
-
+    
     // ···
     @Component
     export struct PageOne {
@@ -1690,7 +1690,7 @@ Native侧
         // 通过C-API创建节点，并添加到管理器nodeContent上
         nativeNode.createNativeNode(this.nodeContent,'CreatNativeNode');
       }
-
+    
       build() {
         NavDestination() {
             Column() {
@@ -1706,7 +1706,7 @@ Native侧
             .margin({ top: 24 })
             .width('100%')
             .height(56)
-
+    
             Column({ space: 10 }) {
                 // 显示nodeContent管理器里存放的Native侧的组件
                 ContentSlot(this.nodeContent);
@@ -1732,7 +1732,7 @@ Native侧
             })
             .height('40%')
             .width('90%')
-
+    
             Row() {
                 Button('Draw Star')
                 .fontSize('16fp')
@@ -1768,13 +1768,13 @@ Native侧
 2. Node-API模块注册，具体使用请参考[Node-API开发规范](../napi/napi-guidelines.md)。
 
     <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     #include <hilog/log.h>
-
+    
     #include "common/common.h"
     #include "manager/plugin_manager.h"
-
+    
     namespace NativeXComponentSample {
     // 在napi_init.cpp文件中，Init方法注册接口函数，从而将封装的C++方法传递出来，供ArkTS侧调用
     EXTERN_C_START
@@ -1784,13 +1784,13 @@ Native侧
         // 向ArkTS侧暴露接口
         napi_property_descriptor desc[] = {
             {"createNativeNode", nullptr, PluginManager::createNativeNode, nullptr, nullptr, nullptr,
-            napi_default, nullptr },
+             napi_default, nullptr },
             {"getStatus", nullptr, PluginManager::GetXComponentStatus, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+             nullptr, napi_default, nullptr},
             {"drawPattern", nullptr, PluginManager::NapiDrawPattern, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+             nullptr, napi_default, nullptr},
             // ···
-        };
+         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
             return nullptr;
@@ -1799,7 +1799,7 @@ Native侧
         return exports;
     }
     EXTERN_C_END
-
+    
     // 编写接口的描述信息，根据实际需要可以修改对应参数
     static napi_module nativerenderModule = { .nm_version = 1,
         .nm_flags = 0,
@@ -1810,7 +1810,7 @@ Native侧
         .nm_modname = "nativerender", // 指定模块名称，对于XComponent相关开发，这个名称必须和ArkTS侧XComponent中libraryname的值保持一致
         .nm_priv = ((void*)0),
         .reserved = { 0 } };
-
+    
     // __attribute__((constructor))修饰的方法由系统自动调用，使用Node-API接口napi_module_register()传入模块描述信息进行模块注册
     extern "C" __attribute__((constructor)) void RegisterModule(void)
     {
@@ -1824,7 +1824,7 @@ Native侧
     (1) 定义Surface创建成功，发生改变，销毁和XComponent的touch事件回调接口。
 
     <!-- @[plugin_manager_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.h) -->
-
+    
     ``` C
     // 在头文件中定义PluginManager类
     class PluginManager {
@@ -1832,7 +1832,7 @@ Native侧
         static OH_NativeXComponent_Callback callback_;
         PluginManager();
         ~PluginManager();
-
+    
         static PluginManager* GetInstance()
         {
             return &PluginManager::pluginManager_;
@@ -1847,14 +1847,14 @@ Native侧
         void DispatchTouchEvent(OH_NativeXComponent* component, void* window);
         void OnSurfaceCreated(OH_NativeXComponent* component, void* window);
         // ···
-
+    
     private:
         static PluginManager pluginManager_;
-
+    
         std::unordered_map<std::string, OH_NativeXComponent*> nativeXComponentMap_;
         // ···
         std::unordered_map<std::string, PluginManager*> pluginManagerMap_;
-
+    
     public:
         EGLCore *eglcore_;
         uint64_t width_;
@@ -1867,7 +1867,7 @@ Native侧
     ```
 
     <!-- @[plugin_on_surface_created](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // 定义一个函数OnSurfaceCreatedCB()，封装初始化环境与绘制背景
     void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
@@ -1880,7 +1880,7 @@ Native侧
     ```
 
     <!-- @[plugin_on_surface_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // 定义一个函数OnSurfaceChangedCB()
     void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
@@ -1893,7 +1893,7 @@ Native侧
     ```
 
     <!-- @[plugin_on_surface_destroyed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // 定义一个函数OnSurfaceDestroyedCB()，将PluginRender类内释放资源的方法Release()封装在其中
     void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
@@ -1905,7 +1905,7 @@ Native侧
     ```
 
     <!-- @[plugin_dispatch_touch_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // 定义一个函数DispatchTouchEventCB()，响应触摸事件时触发该回调
     void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
@@ -1919,7 +1919,7 @@ Native侧
     (2) 定义createNativeNode方法，暴露到ArkTS侧的createNativeNode()方法会执行该方法。
 
     <!-- @[plugin_create_native_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     ArkUI_NodeHandle CreateNodeHandle(const std::string &tag)
     {
@@ -1961,14 +1961,14 @@ Native侧
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &PluginManager::callback_);
         auto typeRet = nodeAPI->getAttribute(xc, NODE_XCOMPONENT_TYPE);
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "xcomponent type: %{public}d",
-                    typeRet->value[0].i32);
+                     typeRet->value[0].i32);
         auto idRet = nodeAPI->getAttribute(xc, NODE_XCOMPONENT_ID);
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "xcomponent id: %{public}s",
-                    idRet->string);
+                     idRet->string);
         nodeAPI->addChild(column, xc);
         return column;
     }
-
+    
     napi_value PluginManager::createNativeNode(napi_env env, napi_callback_info info)
     {
         if ((env == nullptr) || (info == nullptr)) {
@@ -1997,7 +1997,7 @@ Native侧
         }
         if (nodeAPI != nullptr && nodeAPI->createNode != nullptr && nodeAPI->addChild != nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "CreateNativeNode tag=%{public}s", tag.c_str());
+                         "CreateNativeNode tag=%{public}s", tag.c_str());
             auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
                 ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
                 std::string *userDate = reinterpret_cast<std::string*>(OH_ArkUI_NodeContent_GetUserData(handle));
@@ -2022,7 +2022,7 @@ Native侧
     (3) 定义NapiDrawPattern方法，暴露到ArkTS侧的drawPattern()方法会执行该方法。
 
     <!-- @[plugin_draw_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     napi_value PluginManager::NapiDrawPattern(napi_env env, napi_callback_info info)
     {
@@ -2033,7 +2033,7 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "NapiDrawPattern: napi_get_cb_info fail");
             return nullptr;
         }
-
+    
         auto *pluginManger = PluginManager::GetInstance();
         // 调用绘制方法
         pluginManger->eglcore_->Draw(hasDraw_);
@@ -2046,7 +2046,7 @@ Native侧
 4. 初始化环境，包括初始化可用的EGLDisplay、确定可用的Surface配置、创建渲染区域Surface、创建并关联上下文等。
 
     <!-- @[native_update_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::UpdateSize(int width, int height)
     {
@@ -2060,14 +2060,14 @@ Native侧
     ```
 
     <!-- @[native_create_context_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     bool EGLCore::EglContextInit(void* window, int width, int height)
     {
         // ···
         UpdateSize(width, height);
         eglWindow_ = static_cast<EGLNativeWindowType>(window);
-
+    
         // 初始化display
         eglDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
         if (eglDisplay_ == EGL_NO_DISPLAY) {
@@ -2082,7 +2082,7 @@ Native侧
                 LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglInitialize: unable to get initialize EGL display");
             return false;
         }
-
+    
         // 选择配置
         const EGLint maxConfigSize = 1;
         EGLint numConfigs;
@@ -2096,7 +2096,7 @@ Native侧
     ```
 
     <!-- @[native_create_environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     bool EGLCore::CreateEnvironment()
     {
@@ -2128,7 +2128,7 @@ Native侧
     ```
 
     <!-- @[native_create_program](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     GLuint EGLCore::CreateProgram(const char* vertexShader, const char* fragShader)
     {
@@ -2137,19 +2137,19 @@ Native侧
                 LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram: vertexShader or fragShader is null");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint vertex = LoadShader(GL_VERTEX_SHADER, vertexShader);
         if (vertex == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram vertex error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint fragment = LoadShader(GL_FRAGMENT_SHADER, fragShader);
         if (fragment == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram fragment error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint program = glCreateProgram();
         if (program == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram program error");
@@ -2157,12 +2157,12 @@ Native侧
             glDeleteShader(fragment);
             return PROGRAM_ERROR;
         }
-
+    
         // 该gl函数没有返回值。
         glAttachShader(program, vertex);
         glAttachShader(program, fragment);
         glLinkProgram(program);
-
+    
         GLint linked;
         glGetProgramiv(program, GL_LINK_STATUS, &linked);
         if (linked != 0) {
@@ -2170,7 +2170,7 @@ Native侧
             glDeleteShader(fragment);
             return program;
         }
-
+    
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram linked error");
         GLint infoLen = 0;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
@@ -2190,7 +2190,7 @@ Native侧
     ```
 
     <!-- @[native_load_shader](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     GLuint EGLCore::LoadShader(GLenum type, const char* shaderSrc)
     {
@@ -2198,30 +2198,30 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glCreateShader type or shaderSrc error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint shader = glCreateShader(type);
         if (shader == 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glCreateShader unable to load shader");
             return PROGRAM_ERROR;
         }
-
+    
         // 该gl函数没有返回值。
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
-
+    
         GLint compiled;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
         if (compiled != 0) {
             return shader;
         }
-
+    
         GLint infoLen = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
         if (infoLen <= 1) {
             glDeleteShader(shader);
             return PROGRAM_ERROR;
         }
-
+    
         char* infoLog = (char*)malloc(sizeof(char) * (infoLen + 1));
         if (infoLog != nullptr) {
             memset(infoLog, 0, infoLen + 1);
@@ -2240,26 +2240,26 @@ Native侧
    (1) 绘制背景。
 
     <!-- @[native_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     /**
-    * 绘制背景颜色 #f4f4f4.
-    */
+     * 绘制背景颜色 #f4f4f4.
+     */
     const GLfloat BACKGROUND_COLOR[] = {244.0f / 255, 244.0f / 255, 244.0f / 255, 1.0f};
-
+    
     /**
-    * 绘制图案颜色 #7E8FFB.
-    */
+     * 绘制图案颜色 #7E8FFB.
+     */
     const GLfloat DRAW_COLOR[] = {126.0f / 255, 143.0f / 255, 251.0f / 255, 1.0f};
-
+    
     /**
-    * 绘制图案改变后的颜色 #92D6CC.
-    */
+     * 绘制图案改变后的颜色 #92D6CC.
+     */
     const GLfloat CHANGE_COLOR[] = {146.0f / 255, 214.0f / 255, 204.0f / 255, 1.0f};
-
+    
     /**
-    * 绘制背景顶点
-    */
+     * 绘制背景顶点
+     */
     const GLfloat BACKGROUND_RECTANGLE_VERTICES[] = {
         -1.0f, 1.0f,
         1.0f, 1.0f,
@@ -2268,7 +2268,7 @@ Native侧
     ```
 
     <!-- @[native_background](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     // 绘制背景颜色
     void EGLCore::Background()
@@ -2278,13 +2278,13 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background get position failed");
             return;
         }
-
+    
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background execute draw failed");
             return;
         }
-
+    
         if (!FinishDraw()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background FinishDraw failed");
             return;
@@ -2293,7 +2293,7 @@ Native侧
     ```
 
     <!-- @[native_prepare_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     // 绘前准备，获取position，创建成功时position值从0开始
     GLint EGLCore::PrepareDraw()
@@ -2303,19 +2303,19 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "PrepareDraw: param error");
             return POSITION_ERROR;
         }
-
+    
         // 该gl函数没有返回值。
         glViewport(DEFAULT_X_POSITION, DEFAULT_Y_POSITION, width_, height_);
         glClearColor(GL_RED_DEFAULT, GL_GREEN_DEFAULT, GL_BLUE_DEFAULT, GL_ALPHA_DEFAULT);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(program_);
-
+    
         return glGetAttribLocation(program_, POSITION_NAME);
     }
     ```
 
     <!-- @[native_execute_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     // 依据传入参数在指定区域绘制指定颜色
     bool EGLCore::ExecuteDraw(GLint position, const GLfloat* color, const GLfloat shapeVertices[], unsigned long vertSize)
@@ -2324,20 +2324,20 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
             return false;
         }
-
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-
+    
         return true;
     }
     ```
 
     <!-- @[native_finish_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     // 结束绘制操作
     bool EGLCore::FinishDraw()
@@ -2352,7 +2352,7 @@ Native侧
    (2) 绘制图形。
 
     <!-- @[native_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::Draw(int& hasDraw)
     {
@@ -2363,14 +2363,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw background failed");
             return;
         }
-
+    
         // 将五角星分为五个四边形，计算其中一个四边形的四个顶点
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -2383,16 +2383,16 @@ Native侧
         // Convert DEG(18°) to RAD
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
         if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
             return;
         }
-
+    
         // Convert DEG(72°) to RAD
         GLfloat rad = M_PI / 180 * 72;
         // Rotate four times
@@ -2401,25 +2401,25 @@ Native侧
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
             Rotate2d(centerX, centerY, &leftX, &leftY, rad);
             Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-
+    
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
                 rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
             // 绘制图形
             if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
                 return;
             }
         }
-
+    
         // 结束绘制
         if (!FinishDraw()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw FinishDraw failed");
             return;
         }
         hasDraw = 1;
-
+    
         flag_ = true;
     }
     ```
@@ -2427,7 +2427,7 @@ Native侧
    (3) 改变颜色，重新画一个大小相同颜色不同的图形，与原图形替换，达到改变颜色的效果。
 
     <!-- @[native_change_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::ChangeColor(int& hasChangeColor)
     {
@@ -2440,14 +2440,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor execute draw background failed");
             return;
         }
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -2460,17 +2460,17 @@ Native侧
         // Convert DEG(18°) to RAD
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
         // 使用新的颜色绘制
         if (!ExecuteDrawNewStar(0, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
             return;
         }
-
+    
         // Convert DEG(72°) to RAD
         GLfloat rad = M_PI / 180 * 72;
         // Rotate four times
@@ -2482,14 +2482,14 @@ Native侧
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
                 rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
             // 使用新的颜色绘制
             if (!ExecuteDrawNewStar(position, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
                 return;
             }
         }
-
+    
         // 结束绘制
         if (!FinishDraw()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor FinishDraw failed");
@@ -2504,14 +2504,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
             return false;
         }
-
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-
+    
         return true;
     }
     ```
@@ -2521,7 +2521,7 @@ Native侧
     (1) EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
 
     <!-- @[native_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::Release()
     {
