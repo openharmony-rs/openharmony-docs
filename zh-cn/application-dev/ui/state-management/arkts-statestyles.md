@@ -43,6 +43,42 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 <!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct StateStylesSample {
+  build() {
+    Column() {
+      Button('Button1')
+        .stateStyles({
+          focused: {
+            .backgroundColor('#ffffeef0')
+          },
+          pressed: {
+            .backgroundColor('#ff707070')
+          },
+          normal: {
+            .backgroundColor('#ff2787d9')
+          }
+        })
+        .margin(20)
+      Button('Button2')
+        .stateStyles({
+          focused: {
+            .backgroundColor('#ffffeef0')
+          },
+          pressed: {
+            .backgroundColor('#ff707070')
+          },
+          normal: {
+            .backgroundColor('#ff2787d9')
+          }
+        })
+    }.margin('30%')
+  }
+}
+```
+
 
 
   **图1** 获焦态和按压态  
