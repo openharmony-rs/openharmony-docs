@@ -7,6 +7,8 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+音视频的编解码能力以及文件格式封装和解封装能力的支持情况，在不同平台存在能力和规格的差异。开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)来获取实际的支持情况和规格情况。
+
 ## 媒体编解码
 
 ### 视频解码
@@ -124,7 +126,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 >
 > 用户自定义的key必须以"com.openharmony."为开头。值类型可以为int32_t、float、string，从API20开始增加支持uint8_t*。
 
-配置选项key值说明：  
+配置选项key值说明：
 
 mp4封装格式：
    |                key                 |         描述         |   aac  |   mp3  |  H.264  |  H.265  |  jpg   |  png   |  bmp   |
