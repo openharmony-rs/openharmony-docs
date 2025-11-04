@@ -1066,6 +1066,17 @@ export struct DropAnimationExample {
 
     <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
     
+    ``` TypeScript
+    onPageShow(): void {
+      let i: number = 0;
+      for (i = 0; i < 500; i++) {
+        this.numbers.push(i);
+        this.isSelectedGrid.push(false);
+        this.previewData.push({});
+      }
+    }
+    ```
+    
 2. 多选拖拽选中时添加数据。
 
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
