@@ -495,6 +495,25 @@ const TAG = '[Sample_ArkTSRouter]';
 
 <!-- @[page_showAlert2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
 
+``` TypeScript
+// 定义一个返回按钮的点击事件处理函数
+onBackClick(): void {
+  // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
+  try {
+    this.getUIContext().getRouter().showAlertBeforeBackPage({
+      message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
+    });
+  } catch (err) {
+    let message = (err as BusinessError).message;
+    let code = (err as BusinessError).code;
+    hilog.error(DOMAIN, TAG,`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
+  }
+
+  // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
+  this.getUIContext().getRouter().back();
+}
+```
+
 其中，this.getUIContext().getRouter().showAlertBeforeBackPage方法接收一个对象作为参数，该对象包含以下属性：
 
 message：string类型，表示询问框的内容。
