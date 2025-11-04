@@ -5620,6 +5620,26 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets",
+				"functions":[
+					{
+						"end_line":134,
+						"name":"particle_example3",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets",
+				"functions":[
+					{
+						"end_line":131,
+						"name":"particle_example6",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
