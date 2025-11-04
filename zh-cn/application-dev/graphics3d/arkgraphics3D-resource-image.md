@@ -76,6 +76,32 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
      使用SceneResourceFactory.createImage()创建图片资源，再通过createMaterial()创建Shader材质。将图片资源绑定到Shader输入属性BASE_COLOR_Image上，使模型表面贴图生效。
 
      <!-- @[create_image_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     function createImagePromise(): Promise<Image> {
+       return new Promise((resolve, reject) => {
+         // Ensure the scene is loaded before accessing sceneFactory
+         if (globalScene) {
+           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+     
+           let sceneImageParameter: SceneResourceParameters = {
+             name: 'image',
+             uri: $rawfile('image/Cube_BaseColor.png')
+           };
+     
+           let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
+           image.then((imageEntity: Image) => {
+             resolve(imageEntity);
+           }).catch((err: string) => {
+             console.error('Image load failed: ' + err + '.');
+             reject(err);
+           });
+         } else {
+           reject('Scene is not loaded yet.');
+         }
+       });
+     }
+     ```
 
   6. 应用图片材质到模型节点。
 
