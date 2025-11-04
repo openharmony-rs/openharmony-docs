@@ -26,6 +26,30 @@
 
 <!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src:
+        'https://www.example.com/test.pdf',                     // 方式一 加载网络PDF文档
+          // this.getUIContext().getHostContext()!.filesDir + '/test.pdf', // 方式二 加载本地应用沙箱内PDF文档
+          // 'resource://rawfile/test.pdf',                         // 方式三 本地PDF文档 (格式一)
+          // $rawfile('test.pdf'),                                 // 方式三 本地PDF文档 (格式二)
+          controller: this.controller
+      })
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+
 PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)权限:
 
   ```
