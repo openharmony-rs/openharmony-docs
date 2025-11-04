@@ -128,6 +128,41 @@ Web组件可以实现点击前端页面超链接跳转到其他应用。
 
 - 应用侧代码。
   <!-- @[click_link_call_html_to_reach_phone_dialing_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { call } from '@kit.TelephonyKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    webviewController: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Web({ src: $rawfile('call.html'), controller: this.webviewController })
+          .onLoadIntercept((event) => {
+            if (event) {
+              let url: string = event.data.getRequestUrl();
+              // 判断链接是否为拨号链接
+              if (url.indexOf('tel://') === 0) {
+                // 跳转拨号界面
+                call.makeCall(url.substring(6), (err) => {
+                  if (!err) {
+                    console.info('make call succeeded.');
+                  } else {
+                    console.info('make call fail, err is:' + JSON.stringify(err));
+                  }
+                });
+                return true;
+              }
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
 
 - 前端页面call.html代码。
   
