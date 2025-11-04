@@ -1259,7 +1259,7 @@ sendCommand(command: LocationCommand): Promise&lt;boolean&gt;
 | countryCode<sup>7+</sup> | string | 否 | 是 | 表示国家码信息。 |
 | countryName<sup>7+</sup> | string | 否 | 是 | 表示国家信息。 |
 | administrativeArea<sup>7+</sup> | string | 否 | 是 | 表示省份区域信息。 |
-| subAdministrativeArea<sup>7+</sup> | string | 否 | 是 | 表示表示子区域信息。 |
+| subAdministrativeArea<sup>7+</sup> | string | 否 | 是 | 表示子区域信息。 |
 | locality<sup>7+</sup> | string | 否 | 是 | 表示城市信息。 |
 | subLocality<sup>7+</sup> | string | 否 | 是 | 表示子城市信息。 |
 | roadName<sup>7+</sup> | string | 否 | 是 | 表示路名信息。 |
