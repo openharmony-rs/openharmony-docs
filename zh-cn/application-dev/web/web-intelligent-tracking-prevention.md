@@ -71,6 +71,37 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
 - 通过[onIntelligentTrackingPreventionResult](../reference/apis-arkweb/arkts-basic-components-web-events.md#onintelligenttrackingpreventionresult12)接口将被拦截的跟踪型域名及其触发网站的域名回调给应用。
   <!-- @[retrieve_blocked_and_visited_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/OnIntTrackPreventResult.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调
+        Button('enableIntelligentTrackingPrevention')
+          .onClick(() => {
+            try {
+              this.controller.enableIntelligentTrackingPrevention(true);
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onIntelligentTrackingPreventionResult((details) => {
+            console.info('onIntelligentTrackingPreventionResult: [websiteHost]= ' + details.host +
+              ', [trackerHost]=' + details.trackerHost);
+          })
+      }
+    }
+  }
+  ```
 
 智能防跟踪功能提供了一组接口，用于设置绕过该功能的域名列表。这些接口设置的域名列表适用于整个应用，而非特定的Web组件。
 
