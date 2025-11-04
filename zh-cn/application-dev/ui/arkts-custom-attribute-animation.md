@@ -18,6 +18,34 @@ ArkUI提供[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-
 
 <!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template1/Index.ets) -->
 
+``` TypeScript
+// 第一步：使用@AnimatableExtend装饰器，自定义可动画属性接口
+@AnimatableExtend(Text)
+function animatableWidth(width: number) {
+  .width(width) // 调用系统属性接口，逐帧回调函数每帧修改可动画属性的值，实现逐帧布局的效果。
+}
+
+@Entry
+@Component
+struct AnimatablePropertyExample {
+  @State textWidth: number = 80; // 80: 初始文本宽度
+
+  build() {
+    Column() {
+      Text('AnimatableProperty')
+        .animatableWidth(this.textWidth) // 第二步：将自定义可动画属性接口设置到组件上
+        .animation({ duration: 2000, curve: Curve.Ease }) // 第三步:为自定义可动画属性接口绑定动画。
+      Button('Play')
+        .onClick(() => {
+          this.textWidth = this.textWidth == 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画。
+        })
+    }
+    .width('100%')
+    .padding(10) // 10: 内边距
+  }
+}
+```
+
 
 ![zh-cn_image_0000001600119626](figures/zh-cn_image_0000001600119626.gif)
 
