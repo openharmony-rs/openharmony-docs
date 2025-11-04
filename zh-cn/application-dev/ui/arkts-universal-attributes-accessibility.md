@@ -101,6 +101,30 @@ accessibilityVirtualNode属性，用于为自绘制组件添加虚拟无障碍�
 
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct VirtualNodeExample {
+  @Builder customAccessibilityNode() {
+    // 'app.string.UniversalAttributesAccessibility_text6'需要替换为开发者所需的文本资源文件
+    Text($r('app.string.UniversalAttributesAccessibility_text6'))
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+  build() {
+    Column() {
+      // 'app.string.UniversalAttributesAccessibility_text5'需要替换为开发者所需的文本资源文件
+      Text($r('app.string.UniversalAttributesAccessibility_text5'))
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .accessibilityGroup(true)
+      .accessibilityLevel('yes')
+      .accessibilityVirtualNode(this.customAccessibilityNode)
+  }
+}
+```
+
 ## 设置无障碍节点是否被选中
 
 accessibilityChecked和accessibilitySelected是两个用于增强无障碍体验的属性，主要用于向屏幕朗读等辅助工具传达组件的选中状态。
