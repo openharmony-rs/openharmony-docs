@@ -33,6 +33,49 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
 - 应用侧代码。
   <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    responseResource: WebResourceResponse = new WebResourceResponse();
+    // 开发者自定义响应数据
+    @State webData: string = '<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '<head>\n' +
+      '<title>intercept test</title>\n' +
+      '</head>\n' +
+      '<body>\n' +
+      '<h1>intercept ok</h1>\n' +
+      '</body>\n' +
+      '</html>'
+  
+    build() {
+      Column() {
+        Web({ src: $rawfile('index1.html'), controller: this.controller })
+          .onInterceptRequest((event) => {
+            if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+              // 拦截页面请求
+              if (event.request.getRequestUrl() !== 'https://www.example.com/test.html') {
+                return null;
+              }
+            }
+            // 构造响应数据
+            this.responseResource.setResponseData(this.webData);
+            this.responseResource.setResponseEncoding('utf-8');
+            this.responseResource.setResponseMimeType('text/html');
+            this.responseResource.setResponseCode(200);
+            this.responseResource.setReasonMessage('OK');
+            return this.responseResource;
+          })
+      }
+    }
+  }
+  ```
 
 - 被拦截后的页面
 
