@@ -493,6 +493,87 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
 ![BuilderNode_BuilderProxyNode_2](figures/BuilderNode_BuilderProxyNode_2.png)
 
   <!-- @[Main_BuilderProxyNode02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode02.ets) -->
+  
+  ``` TypeScript
+  import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @Component
+  struct BlueRowComponent {
+    build() {
+      Row() {
+        Row() {
+        }
+        .width('100%')
+        .height('200vp')
+        .backgroundColor(0xFF2787D9)
+        .onTouch((event: TouchEvent) => {
+          // 触摸绿色Column，蓝色Row的触摸事件触发
+          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+        })
+      }
+    }
+  }
+  
+  @Component
+  struct GreenColumnComponent {
+    build() {
+      Column() {
+      }
+      .width('100%')
+      .height('100vp')
+      .backgroundColor(0xFF17A98D)
+      .hitTestBehavior(HitTestMode.Transparent)
+      .onTouch((event: TouchEvent) => {
+        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+      })
+    }
+  }
+  
+  @Builder
+  function buildBlueRow() {
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
+    BlueRowComponent()
+  }
+  
+  @Builder
+  function buildGreenColumn() {
+    // Builder根节点为容器组件，不会生成BuilderProxyNode，可以设置属性
+    Stack() {
+      GreenColumnComponent()
+    }
+    .hitTestBehavior(HitTestMode.Transparent)
+  }
+  
+  class MyNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
+  
+      const blueRowNode = new BuilderNode(uiContext);
+      blueRowNode.build(wrapBuilder(buildBlueRow));
+  
+      const greenColumnNode = new BuilderNode(uiContext);
+      greenColumnNode.build(wrapBuilder(buildGreenColumn));
+  
+      // greenColumnNode覆盖在blueRowNode上
+      relativeContainer.appendChild(blueRowNode.getFrameNode());
+      relativeContainer.appendChild(greenColumnNode.getFrameNode());
+  
+      return relativeContainer;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    build() {
+      Column() {
+        NodeContainer(new MyNodeController())
+          .id('BuilderProxyNode02')
+      }
+    }
+  }
+  ```
 
 此外，对于自定义组件，可以直接设置属性，此时将额外生成节点__Common__，自定义组件的属性将挂载于__Common__上，同样能够实现上述效果。
 
