@@ -106,6 +106,55 @@ struct WebComponent {
 在Web组件的广告过滤开关开启后，应用有时候会期望关闭一些特定页面的广告过滤功能，除了可以使用自定义的easylist规则，AdsBlockManager还提供了[addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)接口完成此功能。
 <!-- @[turn_off_ad_filtering_for_specific_domain_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_one.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';    
+
+// 演示通过一个按钮的点击向Web组件设置广告过滤的域名策略    
+@Entry    
+@Component    
+struct WebComponent {    
+  main_url: string = 'https://www.example.com';    
+  text_input_controller: TextInputController = new TextInputController();    
+  controller: webview.WebviewController = new webview.WebviewController();    
+
+  @State input_text: string = 'https://www.example.com';    
+
+  build() {    
+    Column() {    
+      Row() {    
+        Flex() {    
+          TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})    
+            .id('input_url')    
+            .height(40)    
+            .margin(5)    
+            .borderColor(Color.Blue)    
+            .onChange((value: string) => {    
+              this.input_text = value;    
+            })    
+
+          Button({type: ButtonType.Capsule}) { Text('Go') }    
+          .onClick(() => {    
+            this.controller.loadUrl(this.input_text);    
+          })    
+
+          Button({type: ButtonType.Capsule}) { Text('addAdsBlockDisallowedList') }    
+          .onClick(() => {    
+            let arrDomainSuffixes = new Array<string>();    
+            arrDomainSuffixes.push('example.com');    
+            arrDomainSuffixes.push('abcdefg.cn');    
+            webview.AdsBlockManager.addAdsBlockDisallowedList(arrDomainSuffixes);    
+          })    
+        }    
+      }    
+      Web({ src: this.main_url, controller: this.controller })    
+        .onControllerAttached(()=>{    
+          this.controller.enableAdsBlock(true);    
+        })    
+    }    
+  }    
+}
+```
+
 [addAdsBlockDisallowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)接口将域名设置到AdsBlockManager的DisallowedList中，下次页面加载时会使用网页url和DisallowedList中的域名进行后缀匹配，匹配成功则不会对此页面进行广告过滤。此外，还提供了[addAdsBlockAllowedList()](../reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md#addadsblockallowedlist12)接口配合DisallowedList进行域名设置，控制是否开启广告过滤。
 
 AdsBlockManager中缓存有2组域名列表，分别为DisallowedList和AllowList，其中DisallowedList用于禁用网页的广告过滤，而AllowList用于重新开启被DisallowedList关闭的广告过滤开关，其中AllowList优先级更高。页面加载时会先使用网页url和AllowList进行匹配，匹配成功的网页广告过滤将保持开启，否则将会继续使用DisallowedList进行匹配，匹配成功将关闭网页的广告过滤。如果访问的网页不在AllowList和DisallowedList中，那么默认网页的广告过滤会保持开启状态。
