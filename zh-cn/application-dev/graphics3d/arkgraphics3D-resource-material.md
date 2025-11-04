@@ -295,6 +295,12 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建PBR材质及绑定贴图资源。
 
      <!-- @[pbr_clearcoat_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+     
+     ``` TypeScript
+     import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
+       PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
+     import {lookAt, OrbitCameraHelper } from '../common/utils';
+     ```
 
   2. 加载场景资源。
 
