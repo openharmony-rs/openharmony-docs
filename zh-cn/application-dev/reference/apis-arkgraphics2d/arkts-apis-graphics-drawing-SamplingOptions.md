@@ -9,6 +9,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -33,10 +35,29 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    let samplingOptions = new drawing.SamplingOptions();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -56,6 +77,10 @@ constructor(filterMode: FilterMode)
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                                 |
@@ -72,8 +97,22 @@ constructor(filterMode: FilterMode)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let samplingOptions = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
