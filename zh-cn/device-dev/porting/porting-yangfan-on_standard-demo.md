@@ -1567,7 +1567,7 @@ struct v4l2_buffer {
 │   └── unittest      # input模块的单元测试代码。
 ```
 
-详细请参考input子系统[README](https://gitee.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
+详细请参考input子系统[README](https://gitcode.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
 
 ### TP HDF驱动适配
 
