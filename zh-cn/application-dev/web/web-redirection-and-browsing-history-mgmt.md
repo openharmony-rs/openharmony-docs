@@ -57,6 +57,35 @@ struct WebComponent {
 
 - 应用首页Index.ets页面代码。
   <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { router } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    webviewController: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        // 资源文件route.html存放路径src/main/resources/rawfile
+        Web({ src: $rawfile('route.html'), controller: this.webviewController })
+          .onLoadIntercept((event) => {
+            if (event) {
+              let url: string = event.data.getRequestUrl();
+              if (url.indexOf('native://') === 0) {
+                // 跳转其他界面
+                this.getUIContext().getRouter().pushUrl({ url: url.substring(9) });
+                return true;
+              }
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
 
 - route.html前端页面代码。
   
