@@ -109,6 +109,37 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
 
+``` TypeScript
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+
+let storage = LocalStorage.getShared();
+
+@Entry(storage)
+@Component
+struct Extension {
+  @State message: string = 'EmbeddedUIExtensionAbility Index';
+  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
+        // 点击按钮后调用terminateSelfWithResult退出
+        this.session?.terminateSelfWithResult({
+          resultCode: 1,
+          want: {
+            bundleName: 'com.samples.uiextensionandaccessibility',
+            abilityName: 'ExampleEmbeddedAbility',
+          }
+        });
+      })
+    }.width('100%').height('100%')
+  }
+}
+```
+
 在实现入口页面时，开发者需要注意以下几点：
 
 1. 会话管理
@@ -138,6 +169,22 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
   在module.json5配置文件的"extensionAbilities"标签下增加ExampleEmbeddedAbility配置，以注册ExampleEmbeddedAbility嵌入式UI扩展能力。
 
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "name": "ExampleEmbeddedAbility",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
+  "type": "embeddedUI"
+},
+```
+
+``` JSON5
+{
+  "name": "ExampleEmbeddedAbility",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
+  "type": "embeddedUI"
+},
+```
 
 **预期效果**
 
