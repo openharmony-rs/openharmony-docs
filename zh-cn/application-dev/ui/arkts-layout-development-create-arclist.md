@@ -107,6 +107,15 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcListBuiltInScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/arcListBuiltInScrollerBar.ets) -->
 
+``` TypeScript
+ArcList({ header: this.arcListHeader }) {
+  // ···
+}
+.scrollBar(BarState.Auto)
+.scrollBarWidth(LengthMetrics.px(10))
+.scrollBarColor(ColorMetrics.resourceColor(Color.White))
+```
+
   **图6** 弧形列表的内置滚动条 
 
 ![arcList_scrollBar](figures/arcList_scrollBar.gif)
