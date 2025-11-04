@@ -12886,5 +12886,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-statestyles.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"state_style",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"normal_style",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"focus_style",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
