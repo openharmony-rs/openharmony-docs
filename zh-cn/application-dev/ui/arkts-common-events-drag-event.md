@@ -1472,6 +1472,31 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
+  ``` TypeScript
+  @Builder
+  SheetBuilder() {
+    Column() {
+      // 输入框
+      TextInput({ placeholder: $r('app.string.Push_Here') })
+        .width('80%')
+        .borderWidth(1)
+        .borderColor(Color.Black)
+        .padding({ bottom: 5 })
+        .onChange((value: string) => {
+          if (value.length == 0) {
+            this.isSearchDone = false;
+            return;
+          }
+          // 此处简化处理，直接显示固定搜索结果
+          this.isSearchDone = true;
+        })
+      if (this.isSearchDone) {
+        Text(this.searchResult).fontSize(20).textAlign(TextAlign.Start).width('80%')
+      }
+    }.width('100%').height('100%')
+  }
+  ```
+  
 
 3.为Button控件添加进入和离开的响应
 
