@@ -48,6 +48,47 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 <!-- @[waterFlowInfiniteScrollingEarly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrollingEarly.ets) -->
 
+``` TypeScript
+build() {
+  NavDestination() {
+    Column({ space: 12 }) {
+      // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+      ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrollingEarly_title') }) {
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: string) => item)
+        }
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // 即将触底时提前增加数据
+        .onScrollIndex((first: number, last: number) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+            }, 1000);
+          }
+        })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ left: 12, right: 12 })
+  }
+  .backgroundColor('#f1f2f3')
+  // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+  .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
+}
+```
+
 ![](figures/waterflow-demo2.gif)
 
 ## 动态切换列数
