@@ -29,13 +29,13 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
 ### 获取并解析拉起方传入的应用链接
 
 在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
 
 ## 拉起方应用实现应用跳转
 
@@ -48,7 +48,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 示例代码如下：
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
+<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
 
 ### 使用startAbility实现应用跳转
 
@@ -57,7 +57,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 示例代码如下：
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
+<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
 
 ### 使用Web组件实现应用跳转
 
@@ -65,7 +65,7 @@ Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-compone
 
 示例代码如下：
 
-<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
+<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
 
 前端页面代码：
 ```html
