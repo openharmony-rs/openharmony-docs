@@ -212,6 +212,19 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建灯光。
 
      <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+     
+     ``` TypeScript
+     let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+     scene.then(async (result: Scene) => {
+     // ···
+       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+       let lightParameter: SceneNodeParameters = { name: 'light' };
+     // ···
+     }).catch((error: string) => {
+       console.error('Scene load failed: ' + error);
+     // ···
+     });
+     ```
 
   3. 创建灯光并配置灯光参数。
 
