@@ -36,6 +36,44 @@
 - 创建及应用文本阴影对象（TextShadowStyle）
 
   <!-- @[styledStringTextShadowStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextShadowStyle.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo3 {
+    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
+    @State str: string =
+      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+    mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
+      {
+        start: 0,
+        length: 3,
+        styledKey: StyledStringKey.TEXT_SHADOW,
+        styledValue: new TextShadowStyle({
+          radius: 5,
+          type: ShadowType.COLOR,
+          color: Color.Red,
+          offsetX: 10,
+          offsetY: 10
+        })
+      }
+    ]);
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.mutableStyledString);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![StyledString_TextShadow](figures/styled_string_text_shadow.png)
 
