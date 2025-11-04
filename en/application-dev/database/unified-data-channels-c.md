@@ -39,7 +39,7 @@ The public data channel allows all applications to write data into it. When data
 
 For details about the APIs, see [UDMF](../reference/apis-arkdata/capi-udmf-h.md).
 
-| API                                                                                   | Description                                         |
+| API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
 | OH_UdsHyperlink* OH_UdsHyperlink_Create()                                           | Creates a pointer to an **OH_UdsHyperlink** instance.|
 | int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description) | Sets the description parameter in an **OH_UdsHyperlink** instance.|
@@ -75,7 +75,9 @@ libudmf.so, libhilog_ndk.z.so
 
 ## Including Header Files
 
-```c
+<!-- @[unified_data_channels_c_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <cstdio>
 #include <cstring>
 #include <database/udmf/utd.h>
@@ -100,58 +102,72 @@ To write the **OH_UdsHyperlink** data, perform the following steps:
 6. Construct and write data to the database. The key of the data is returned.
 7. Destroy all the pointers created.
 
-```c
-void createDataTest()
+<!-- @[unified_data_channels_c_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
 {
-    // 1. Create a UDS data structure for hyperlink.
-    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
     // 2. Set the URL and description for the hyperlink.
-    if (OH_UdsHyperlink_SetUrl(hyperlink, "www.demo.com") != Udmf_ErrCode::UDMF_E_OK) {
+    int ret = OH_UdsHyperlink_SetUrl(hyperlink, "www.demo.com");
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        return;
+        return ret;
     }
-    if (OH_UdsHyperlink_SetDescription(hyperlink, "This is the description.") != Udmf_ErrCode::UDMF_E_OK) {
+    ret = OH_UdsHyperlink_SetDescription(hyperlink, "This is the description.");
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set description error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        return;
+        return ret;
     }
-    // 3. Create an OH_UdmfRecord object and add the hyperlink data to it.
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    if (OH_UdmfRecord_AddHyperlink(record, hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
+    // 3. Add the hyperlink data to OH_UdmfRecord.
+    ret = OH_UdmfRecord_AddHyperlink(record, hyperlink);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Add hyperlink to record error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        OH_UdmfRecord_Destroy(record);
-        return;
+        return ret;
     }
-    // 4. Create an OH_UdmfData object and add OH_UdmfRecord to it.
-    OH_UdmfData* data = OH_UdmfData_Create();
-    if (OH_UdmfData_AddRecord(data, record) != Udmf_ErrCode::UDMF_E_OK) {
+    // 4. Add OH_UdmfRecord to OH_UdmfData.
+    ret = OH_UdmfData_AddRecord(data, record);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Add record to data error!");
+        return ret;
+    }
+    return UDMF_E_OK;
+}
+
+int32_t CreateDataTest()
+{
+    // 1. Create the UDS data struct, OH_UdmfRecord object, and OH_UdmfData object of the hyperlink.
+    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    OH_UdmfData* data = OH_UdmfData_Create();
+    int32_t ret = SetHyperlinkData(hyperlink, record, data);
+    if (ret != UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Create data error!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
-        return;
+        return ret;
     }
-    // 5. Construct an OH_UdmfOptions.
+    // Construct an OH_UdmfOptions.
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
-    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK) {
+    ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Set option error!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
         OH_UdmfOptions_Destroy(options);
-        return;
+        return ret;
     }
     // 6. Construct and write data to the database. The key of the data is returned.
     char key[UDMF_KEY_BUFFER_LEN] = {0};
-    if (OH_Udmf_SetUnifiedDataByOptions(options, data, key, sizeof(key)) != Udmf_ErrCode::UDMF_E_OK) {
+    ret = OH_Udmf_SetUnifiedDataByOptions(options, data, key, sizeof(key));
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Set data error!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
         OH_UdmfOptions_Destroy(options);
-        return;
+        return ret;
     }
     OH_LOG_INFO(LOG_APP, "key = %{public}s", key);
     // 7. Destroy all the pointers created.
@@ -159,6 +175,7 @@ void createDataTest()
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdmfOptions_Destroy(options);
+    return UDMF_E_OK;
 }
 ```
 
@@ -171,63 +188,100 @@ To obtain the **OH_UdsHyperlink** data, perform the following steps:
 4. Obtain data records and hyperlink data.
 5. Destroy all the pointers created.
 
-```c
-void getDataTest()
+<!-- @[unified_data_channels_c_get_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t ProcessHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount, char** typeIdsFromRecord)
 {
-    // 1. Construct an OH_UdmfOptions.
-    OH_UdmfOptions* options = OH_UdmfOptions_Create();
-    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK) {
-        OH_LOG_ERROR(LOG_APP, "Set option error!");
-        OH_UdmfOptions_Destroy(options);
-        return;
+    for (unsigned int k = 0; k < recordTypeIdCount; k++) {
+         // Obtain the hyperlink data from OH_UdmfRecord.
+        if (strcmp(typeIdsFromRecord[k], UDMF_META_HYPERLINK) == 0) {
+             // Create a UDS to hold the hyperlink data read from the unified record.
+            OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+            int32_t ret = OH_UdmfRecord_GetHyperlink(record, hyperlink);
+            if (ret != Udmf_ErrCode::UDMF_E_OK) {
+                OH_LOG_ERROR(LOG_APP, "Fail get hyperlink from record!");
+                return ret;
+            }
+            // Read information in OH_UdsHyperlink.
+            OH_LOG_INFO(LOG_APP, "The hyperlink type id is : %{public}s", OH_UdsHyperlink_GetType(hyperlink));
+            OH_LOG_INFO(LOG_APP, "The hyperlink url is : %{public}s", OH_UdsHyperlink_GetUrl(hyperlink));
+            OH_LOG_INFO(LOG_APP, "The hyperlink description is : %{public}s",
+                OH_UdsHyperlink_GetDescription(hyperlink));
+            OH_UdsHyperlink_Destroy(hyperlink);
+        }
     }
-    // 2. Obtain data through OH_UdmfOptions.
-    unsigned int dataSize = 0;
-    OH_UdmfData* readData = nullptr;
-    if (OH_Udmf_GetUnifiedDataByOptions(options, &readData, &dataSize) != Udmf_ErrCode::UDMF_E_OK) {
-        OH_LOG_ERROR(LOG_APP, "Get Data error!");
-        OH_UdmfOptions_Destroy(options);
-        return;
+    return UDMF_E_OK;
+}
+
+int32_t ProcessData(OH_UdmfData* data)
+{
+    unsigned int recordsCount = 0;
+    OH_UdmfRecord** records = OH_UdmfData_GetRecords(data, &recordsCount);
+    OH_LOG_INFO(LOG_APP, "the count of records count is %{public}u", recordsCount);
+    for (unsigned int j = 0; j < recordsCount; j++) {
+        // Obtain the OH_UdmfRecord type list.
+        unsigned int recordTypeIdCount = 0;
+        char** typeIdsFromRecord = OH_UdmfRecord_GetTypes(records[j], &recordTypeIdCount);
+        int32_t ret = ProcessHyperlinks(records[j], recordTypeIdCount, typeIdsFromRecord);
+        if (ret != Udmf_ErrCode::UDMF_E_OK) {
+            OH_LOG_ERROR(LOG_APP, "ProcessRecordHyperlinks error!");
+            return ret;
+        }
     }
-    OH_UdmfOptions_Destroy(options);
-    OH_LOG_INFO(LOG_APP, "the size of data is %{public}u", dataSize);
-    OH_UdmfData** dataArray = &readData;
+    return UDMF_E_OK;
+}
+
+int32_t HandleUdmfHyperlinkData(OH_UdmfData* readData, unsigned int dataSize, OH_UdmfData** dataArray)
+{
     for (unsigned int i = 0; i < dataSize; i++) {
-        OH_UdmfData* data = dataArray[i];
-        // 3. Check whether OH_UdmfData has the required data type.
+        OH_UdmfData* data = OH_UDMF_GetDataElementAt(dataArray, i);
+         // 3. Check whether OH_UdmfData has the required data type.
         if (!OH_UdmfData_HasType(data, UDMF_META_HYPERLINK)) {
             OH_LOG_INFO(LOG_APP, "There is no hyperlink type in data[%{public}u].", i);
             continue;
         }
         // 4. Obtain data records and hyperlink data.
-        unsigned int recordsCount = 0;
-        OH_UdmfRecord** records = OH_UdmfData_GetRecords(data, &recordsCount);
-        OH_LOG_INFO(LOG_APP, "the count of records count is %{public}u", recordsCount);    // 5. Obtain elements from records.
-        for (unsigned int j = 0; j < recordsCount; j++) {
-            // Obtain the OH_UdmfRecord type list.
-            unsigned int recordTypeIdCount = 0;
-            char** typeIdsFromRecord = OH_UdmfRecord_GetTypes(records[i], &recordTypeIdCount);
-            for (unsigned int k = 0; k < recordTypeIdCount; k++) {
-                // Obtain the hyperlink data from OH_UdmfRecord.
-                if (strcmp(typeIdsFromRecord[k], UDMF_META_HYPERLINK) == 0) {
-                    // Create a UDS to hold the hyperlink data read from the unified record.
-                    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
-                    if (OH_UdmfRecord_GetHyperlink(records[j], hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
-                        OH_LOG_ERROR(LOG_APP,"Fail get hyperlink from record!");
-                        OH_UdsHyperlink_Destroy(hyperlink);
-                        break;
-                    }
-                    // Read information in OH_UdsHyperlink.
-                    OH_LOG_INFO(LOG_APP, "The hyperlink type id is : %{public}s", OH_UdsHyperlink_GetType(hyperlink));
-                    OH_LOG_INFO(LOG_APP, "The hyperlink url is : %{public}s", OH_UdsHyperlink_GetUrl(hyperlink));
-                    OH_LOG_INFO(LOG_APP, "The hyperlink description is : %{public}s", OH_UdsHyperlink_GetDescription(hyperlink));
-                    OH_UdsHyperlink_Destroy(hyperlink);
-                }
-            }
+        int32_t ret = ProcessData(data);
+        if (ret != Udmf_ErrCode::UDMF_E_OK) {
+            OH_LOG_ERROR(LOG_APP, "Process data error!");
+            return ret;
         }
+    }
+    return UDMF_E_OK;
+}
+
+int32_t GetDataTest()
+{
+    // 1. Construct an OH_UdmfOptions.
+    OH_UdmfOptions* options = OH_UdmfOptions_Create();
+    int32_t ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set option error!");
+        OH_UdmfOptions_Destroy(options);
+        return ret;
+    }
+    // 2. Obtain data through OH_UdmfOptions.
+    unsigned int dataSize = 0;
+    OH_UdmfData* readData = nullptr;
+    ret = OH_Udmf_GetUnifiedDataByOptions(options, &readData, &dataSize);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Get Data error!");
+        OH_UdmfOptions_Destroy(options);
+        return ret;
+    }
+    OH_UdmfOptions_Destroy(options);
+    OH_LOG_INFO(LOG_APP, "the size of data is %{public}u", dataSize);
+    OH_UdmfData** dataArray = &readData;
+    ret = HandleUdmfHyperlinkData(readData, dataSize, dataArray);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Get Data error!");
+        OH_UdmfOptions_Destroy(options);
+        return ret;
     }
     // 5. Destroy all the pointers created.
     OH_Udmf_DestroyDataArray(dataArray, dataSize);
+    return UDMF_E_OK;
 }
 ```
 
@@ -242,60 +296,74 @@ To update the **OH_UdsHyperlink** data, perform the following steps:
 6. Update data and write the data to the database.
 7. Destroy all the pointers created.
 
-```c
-void updateDataTest()
+<!-- @[unified_data_channels_c_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t AddHyperlinkToUdmfRecord(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
 {
-    // 1. Create a UDS data structure for hyperlink.
-    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
     // 2. Set the URL and description for the hyperlink.
-    if (OH_UdsHyperlink_SetUrl(hyperlink, "www.demo2.com") != Udmf_ErrCode::UDMF_E_OK) {
+    int32_t ret = OH_UdsHyperlink_SetUrl(hyperlink, "www.demo2.com");
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        return;
+        return ret;
     }
-    if (OH_UdsHyperlink_SetDescription(hyperlink, "This is the new description.") != Udmf_ErrCode::UDMF_E_OK) {
+    ret = OH_UdsHyperlink_SetDescription(hyperlink, "This is the new description.");
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Hyperlink set description error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        return;
+        return ret;
     }
-    // 3. Create an OH_UdmfRecord object and add the hyperlink data to it.
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    if (OH_UdmfRecord_AddHyperlink(record, hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
+    // 3. Add the hyperlink data to OH_UdmfRecord.
+    ret = OH_UdmfRecord_AddHyperlink(record, hyperlink);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Add hyperlink to record error!");
-        OH_UdsHyperlink_Destroy(hyperlink);
-        OH_UdmfRecord_Destroy(record);
-        return;
+        return ret;
     }
-    // 4. Create an OH_UdmfData object and add OH_UdmfRecord to it.
-    OH_UdmfData* data = OH_UdmfData_Create();
-    if (OH_UdmfData_AddRecord(data, record) != Udmf_ErrCode::UDMF_E_OK) {
+    // 4. Add OH_UdmfRecord to OH_UdmfData.
+    ret = OH_UdmfData_AddRecord(data, record);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Add record to data error!");
+        return ret;
+    }
+    return UDMF_E_OK;
+}
+
+int32_t UpdateDataTest()
+{
+    // 1. Create the UDS data struct, OH_UdmfRecord object, and OH_UdmfData object of the hyperlink.
+    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    OH_UdmfData* data = OH_UdmfData_Create();
+    int32_t ret = AddHyperlinkToUdmfRecord(hyperlink, record, data);
+    if (ret != UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Fail to create hyperlink!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
-        return;
+        return ret;
     }
     // 5. Construct an OH_UdmfOptions.
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     // The key here is an example and cannot be directly used. The key must be the same as that returned by OH_Udmf_SetUnifiedDataByOptions.
     char key[] = "udmf://DataHub/com.ohos.test/0123456789";
-    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK
+    ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
+    if (ret != Udmf_ErrCode::UDMF_E_OK
         || OH_UdmfOptions_SetKey(options, key) != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Set option error!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
         OH_UdmfOptions_Destroy(options);
-        return;
+        return ret;
     }
     // 6. Update data and write the data to the database.
-    if (OH_Udmf_UpdateUnifiedData(options, data) != Udmf_ErrCode::UDMF_E_OK) {
+    ret = OH_Udmf_UpdateUnifiedData(options, data);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Update data error!");
         OH_UdsHyperlink_Destroy(hyperlink);
         OH_UdmfRecord_Destroy(record);
         OH_UdmfData_Destroy(data);
         OH_UdmfOptions_Destroy(options);
-        return;
+        return ret;
     }
     OH_LOG_INFO(LOG_APP, "update data success");
     // 7. Destroy all the pointers created.
@@ -303,6 +371,7 @@ void updateDataTest()
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdmfOptions_Destroy(options);
+    return UDMF_E_OK;
 }
 ```
 
@@ -316,64 +385,105 @@ To delete the **OH_UdsHyperlink** data, perform the following steps:
 5. Obtain elements in data records.
 6. Destroy all the pointers created.
 
-```c
-void deleteDataTest()
+<!-- @[unified_data_channels_c_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t ProcessRecordHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount, char** typeIdsFromRecord)
 {
-    // 1. Construct an OH_UdmfOptions.
-    OH_UdmfOptions* options = OH_UdmfOptions_Create();
-    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK) {
-        OH_LOG_ERROR(LOG_APP, "Set option error!");
-        OH_UdmfOptions_Destroy(options);
-        return;
+    for (unsigned int k = 0; k < recordTypeIdCount; k++) {
+        // Obtain the hyperlink data from OH_UdmfRecord.
+        if (strcmp(typeIdsFromRecord[k], UDMF_META_HYPERLINK) == 0) {
+            // Create a UDS to hold the hyperlink data read from the unified record.
+            OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+            int32_t ret = OH_UdmfRecord_GetHyperlink(record, hyperlink);
+            if (ret != Udmf_ErrCode::UDMF_E_OK) {
+                OH_LOG_ERROR(LOG_APP, "Fail get hyperlink from record!");
+                OH_UdsHyperlink_Destroy(hyperlink);
+                return ret;
+            }
+            // Read information in OH_UdsHyperlink.
+            OH_LOG_INFO(LOG_APP, "The hyperlink type id is : %{public}s", OH_UdsHyperlink_GetType(hyperlink));
+            OH_LOG_INFO(LOG_APP, "The hyperlink url is : %{public}s", OH_UdsHyperlink_GetUrl(hyperlink));
+            OH_LOG_INFO(LOG_APP, "The hyperlink description is : %{public}s",
+                OH_UdsHyperlink_GetDescription(hyperlink));
+            OH_UdsHyperlink_Destroy(hyperlink);
+        }
     }
-    // 2. Delete data through OH_UdmfOptions.
-    unsigned int dataSize = 0;
-    OH_UdmfData* readData = nullptr;
-    if (OH_Udmf_DeleteUnifiedData(options, &readData, &dataSize) != Udmf_ErrCode::UDMF_E_OK) {
-        OH_LOG_ERROR(LOG_APP, "Delete Data error!");
-        OH_UdmfOptions_Destroy(options);
-        return;
+    return UDMF_E_OK;
+}
+
+int32_t ProcessDataElement(OH_UdmfData* data)
+{
+    unsigned int recordsCount = 0;
+    OH_UdmfRecord** records = OH_UdmfData_GetRecords(data, &recordsCount);
+    OH_LOG_INFO(LOG_APP, "the count of records count is %{public}u", recordsCount);
+    // 5. Obtain elements in data records.
+    for (unsigned int j = 0; j < recordsCount; j++) {
+        // Obtain the OH_UdmfRecord type list.
+        unsigned int recordTypeIdCount = 0;
+        char** typeIdsFromRecord = OH_UdmfRecord_GetTypes(records[j], &recordTypeIdCount);
+        int32_t ret = ProcessRecordHyperlinks(records[j], recordTypeIdCount, typeIdsFromRecord);
+        if (ret != Udmf_ErrCode::UDMF_E_OK) {
+            OH_LOG_ERROR(LOG_APP, "ProcessRecordHyperlinks error!");
+            return ret;
+        }
     }
-    OH_UdmfOptions_Destroy(options);
-    OH_LOG_INFO(LOG_APP, "the size of data is %{public}u", dataSize);
-    OH_UdmfData** dataArray = &readData;
+    return UDMF_E_OK;
+}
+
+int32_t ProcessHyperlinkDataFromArray(OH_UdmfData* readData, unsigned int dataSize, OH_UdmfData** dataArray)
+{
     for (unsigned int i = 0; i < dataSize - 1; i++) {
-        OH_UdmfData* data = dataArray[i];
+        OH_UdmfData* data = OH_UDMF_GetDataElementAt(dataArray, i);
         // 3. Check whether OH_UdmfData has the required data type.
         if (!OH_UdmfData_HasType(data, UDMF_META_HYPERLINK)) {
             OH_LOG_INFO(LOG_APP, "There is no hyperlink type in data[%{public}u].", i);
             continue;
         }
         // 4. Obtain data records and hyperlink data.
-        unsigned int recordsCount = 0;
-        OH_UdmfRecord** records = OH_UdmfData_GetRecords(data, &recordsCount);
-        OH_LOG_INFO(LOG_APP, "the count of records count is %{public}u", recordsCount);    
-        // 5. Obtain elements in data records.
-        for (unsigned int j = 0; j < recordsCount; j++) {
-            // Obtain the OH_UdmfRecord type list.
-            unsigned int recordTypeIdCount = 0;
-            char** typeIdsFromRecord = OH_UdmfRecord_GetTypes(records[i], &recordTypeIdCount);
-            for (unsigned int k = 0; k < recordTypeIdCount; k++) {
-                // Obtain the hyperlink data from OH_UdmfRecord.
-                if (strcmp(typeIdsFromRecord[k], UDMF_META_HYPERLINK) == 0) {
-                    // Create a UDS to hold the hyperlink data read from the unified record.
-                    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
-                    if (OH_UdmfRecord_GetHyperlink(records[j], hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
-                        OH_LOG_ERROR(LOG_APP,"Fail get hyperlink from record!");
-                        OH_UdsHyperlink_Destroy(hyperlink);
-                        break;
-                    }
-                    // Read information in OH_UdsHyperlink.
-                    OH_LOG_INFO(LOG_APP, "The hyperlink type id is : %{public}s", OH_UdsHyperlink_GetType(hyperlink));
-                    OH_LOG_INFO(LOG_APP, "The hyperlink url is : %{public}s", OH_UdsHyperlink_GetUrl(hyperlink));
-                    OH_LOG_INFO(LOG_APP, "The hyperlink description is : %{public}s", OH_UdsHyperlink_GetDescription(hyperlink));
-                    OH_UdsHyperlink_Destroy(hyperlink);
-                }
-            }
+        int32_t ret = ProcessDataElement(data);
+        if (ret != UDMF_E_OK) {
+            OH_LOG_ERROR(LOG_APP, "processDataElement data error!");
+            return ret;
         }
+    }
+    return UDMF_E_OK;
+}
+
+int32_t DeleteDataTest()
+{
+    // 1. Construct an OH_UdmfOptions.
+    OH_UdmfOptions* options = OH_UdmfOptions_Create();
+    int32_t ret = OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set option error!");
+        OH_UdmfOptions_Destroy(options);
+        return ret;
+    }
+    // 2. Delete data through OH_UdmfOptions.
+    unsigned int dataSize = 0;
+    OH_UdmfData* readData = nullptr;
+    ret = OH_Udmf_DeleteUnifiedData(options, &readData, &dataSize);
+    if (ret != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Delete Data error!");
+        OH_UdmfOptions_Destroy(options);
+        return ret;
+    }
+    OH_UdmfOptions_Destroy(options);
+    if (dataSize == 0) {
+        OH_LOG_INFO(LOG_APP, "the size of data is %{public}u", dataSize);
+        return UDMF_E_OK;
+    }
+    OH_LOG_INFO(LOG_APP, "the size of data is %{public}u", dataSize);
+    OH_UdmfData** dataArray = &readData;
+    ret = ProcessHyperlinkDataFromArray(readData, dataSize, dataArray);
+    if (ret != UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Process hyperlink data error!");
+        return ret;
     }
     // 6. Destroy all the pointers created.
     OH_Udmf_DestroyDataArray(dataArray, dataSize);
+    return UDMF_E_OK;
 }
 ```
 
@@ -387,10 +497,13 @@ The following uses hyperlink data as an example to describe how to define a call
 3. Set the URL and description for the hyperlink.
 4. Define a callback to be invoked when **OH_UdmfRecordProvider** is destroyed.
 
-```c
+<!-- @[unified_data_channels_c_define_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // For better code readability, the operation result verification of each step is omitted in the following code. In actual development, you need to check whether each call is successful.
 // 1. Define a callback to be invoked to return the UDS data obtained.
-static void* GetDataCallback(void* context, const char* type) {
+static void* GetDataCallback(void* context, const char* type)
+{
     if (strcmp(type, UDMF_META_HYPERLINK) == 0) {
         // 2. Create a UDS for hyperlink data.
         OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
@@ -415,13 +528,15 @@ The following uses hyperlink data as an example to describe how to use OH_UdmfRe
 4. Construct and write data to the database. The key of the data is returned.
 5. Destroy all the pointers created.
 
-```c
-void providerSetDataTest()
+<!-- @[unified_data_channels_c_delay_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t ProviderSetDataTest()
 {
     // For better code readability, the operation result verification of each step is omitted in the following code. In actual development, you need to check whether each call is successful.
     // 1. Create an OH_UdmfRecordProvider instance and set a data providing function for it and a callback to be invoked when this instance is destroyed.
     OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-    OH_UdmfRecordProvider_SetData(provider, (void* )provider, GetDataCallback, ProviderFinalizeCallback);
+    OH_UdmfRecordProvider_SetData(provider, (void*)provider, GetDataCallback, ProviderFinalizeCallback);
 
     // 2. Create an OH_UdmfRecord object and configure OH_UdmfRecordProvider in it.
     OH_UdmfRecord* record = OH_UdmfRecord_Create();
@@ -437,7 +552,7 @@ void providerSetDataTest()
     if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Set option error!");
         OH_UdmfOptions_Destroy(options);
-        return;
+        return UDMF_ERR;
     }
     char key[UDMF_KEY_BUFFER_LEN] = {0};
     if (OH_Udmf_SetUnifiedDataByOptions(options, data, key, sizeof(key)) != Udmf_ErrCode::UDMF_E_OK) {
@@ -449,5 +564,6 @@ void providerSetDataTest()
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(data);
     OH_UdmfOptions_Destroy(options);
+    return UDMF_E_OK;
 }
 ```

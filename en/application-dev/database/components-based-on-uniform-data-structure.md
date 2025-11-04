@@ -26,9 +26,12 @@ The following table describes the **ContentFormCard** API.
 
 ### How to Develop
 
-```ts
+<!-- @[components_based_on_uniform_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/ContentForm/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 1. Import required modules.
-import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData'
+import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
@@ -54,20 +57,20 @@ struct Index {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      hilog.error(0xFF00, '[Sample_Udmf]', 'Init data error');
     }
   }
 
   build() {
     Column() {
-      Button('show card')
+      Button('show card').fontSize(30)
         .onClick(() => {
           // 3. startToShow is changed to true upon a tap, and the page is re-rendered.
           this.startToShow = true;
@@ -77,14 +80,17 @@ struct Index {
         ContentFormCard({
           contentFormData: this.contentForm,
           formType: FormType.TYPE_SMALL,
-          formWidth: 110,
-          formHeight: 50,
+          formWidth: 220,
+          formHeight: 100,
           handleOnClick: () => {
-            console.info("Clicked card");
+            hilog.info(0xFF00, '[Sample_Udmf]', 'Clicked card');
           }
         })
       }
     }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
