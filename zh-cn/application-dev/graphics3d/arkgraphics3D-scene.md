@@ -123,6 +123,27 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
      调用 SceneResourceFactory.createCamera()创建相机，并配置相机的启用状态、位置、视场角（FOV）等参数。相机位置影响场景的观察距离，FOV决定画面透视范围。
 
      <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+     
+     ``` TypeScript
+     let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
+     camera.then(async (cameraEntity: Camera) => {
+       // Enable the camera node.
+       cameraEntity.enabled = true;
+     
+       // Set the camera position.
+       cameraEntity.position.z = 5;
+     
+       // Set the FoV.
+       cameraEntity.fov = 60 * Math.PI / 180;
+     
+       // Set other camera parameters.
+       // ...
+       // ···
+     }).catch((error: string) => {
+       console.error('Camera create failed: ' + error + '.');
+       // ···
+     });
+     ```
 
   4. 初始化与渲染绑定。
 
