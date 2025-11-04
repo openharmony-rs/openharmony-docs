@@ -135,6 +135,48 @@ LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
 
 <!-- @[catch_long_press_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/LongPressGesture.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct LongPress {
+  @State count: number = 0;
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Text('LongPress OnAction:' + this.count).fontSize(28)
+            .gesture(
+              // 绑定可以重复触发的LongPressGesture
+              LongPressGesture({ repeat: true })
+                .onAction((event: GestureEvent | undefined) => {
+                  if (event) {
+                    if (event.repeat) {
+                      this.count++;
+                    }
+                  }
+                })
+                .onActionEnd(() => {
+                  this.count = 0;
+                })
+            )
+        }
+        .height(200)
+        .width(250)
+        .padding(20)
+        .border({ width: 3 })
+        .margin(30)
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_LongPressGesture_title'))
+  }
+}
+```
+
 
 ![longPress](figures/longPress.gif)
 
