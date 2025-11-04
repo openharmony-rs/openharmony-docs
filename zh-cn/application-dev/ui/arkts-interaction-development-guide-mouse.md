@@ -164,6 +164,32 @@ onHover(event: (isHover: boolean) => void)
 
 <!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct OnHover {
+  @State hoverText: string = 'Not Hover';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.hoverText)
+        .width(200).height(100)
+        .backgroundColor(this.color)
+        .onHover((isHover?: boolean) => { // 使用onHover接口监听鼠标是否悬浮在Button组件上
+          if (isHover) {
+            this.hoverText = 'Hovered!';
+            this.color = Color.Green;
+          } else {
+            this.hoverText = 'Not Hover';
+            this.color = Color.Gray;
+          }
+        })
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 该示例创建了一个Button组件，初始背景色为灰色，内容为“Not Hover”。示例中的Button组件绑定了onHover回调，在该回调中将this.isHovered变量置为回调参数：isHover。
 
 当鼠标从Button外移动到Button内的瞬间，回调响应，isHover值等于true，isHovered的值变为true，将组件的背景色改成Color.Green，内容变为“Hovered!”。
