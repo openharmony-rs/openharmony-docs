@@ -53,7 +53,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ``` TypeScript
 async createGroup() {
   try {
-    let deviceInfo = await wifiManager.getP2pLocalDevice()
+    let deviceInfo = await wifiManager.getP2pLocalDevice();
     let config:wifiManager.WifiP2PConfig = {
       deviceAddress: deviceInfo.deviceAddress,
       netId: this.netId,
@@ -61,11 +61,11 @@ async createGroup() {
       groupName: this.groupName,
       goBand: this.goBand,
     }
-    hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`)
-    wifiManager.createGroup(config)
-    promptAction.showToast({ message : 'createGroup success' })
+    hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`);
+    await wifiManager.createGroup(config);
+    promptAction.showToast({ message : 'createGroup success' });
   } catch (e) {
-    hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`)
+    hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`);
   }
 }
 ```
@@ -123,9 +123,9 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 ``` TypeScript
 connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
-  promptAction.showToast({ message : 'connect to device' })
-  hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`)
-  hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo))
+  promptAction.showToast({ message : 'connect to device' });
+  hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`);
+  hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo));
   let config: wifi.WifiP2PConfig = {
     deviceAddress : p2pScanInfo.deviceAddress,
     netId : - 2 ,
@@ -134,7 +134,7 @@ connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
     groupName : '' ,
     goBand : 0
   }
-  wifi.p2pConnect(config)
+  wifi.p2pConnect(config);
 }
 ```
 5. 开始P2P设备发现。
@@ -144,17 +144,17 @@ connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
 aboutToAppear() {
   // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
   if (!wifi.isWifiActive()) {
-    promptAction.showToast({ message : 'place active wifi' })
-    return
+    promptAction.showToast({ message : 'place active wifi' });
+    return;
   }
   this.isSwitchOn = true;
-  wifi.startDiscoverDevices()
+  wifi.startDiscoverDevices();
   this.addListener();
 }
 
 aboutToDisappear() {
-  wifi.off('p2pPeerDeviceChange')
-  wifi.off('p2pConnectionChange')
+  wifi.off('p2pPeerDeviceChange');
+  wifi.off('p2pConnectionChange');
 }
 ```
 6. 示例代码：
