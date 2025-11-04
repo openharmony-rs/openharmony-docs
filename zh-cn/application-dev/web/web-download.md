@@ -18,6 +18,58 @@
 
 <!-- @[download_delegate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ListenForPageDown.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  @State myText: string = 'download';
+
+  build() {
+    Column() {
+      Text(this.myText)
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('will start a download.');
+              // 传入一个下载路径，并开始下载。
+              // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              // 下载任务的唯一标识。
+              console.info('download update guid: ' + webDownloadItem.getGuid());
+              // 下载的进度。
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
+              // 当前的下载速度。
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
+              // 下载任务失败的错误码。
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+              this.myText = 'download finish';
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+    }
+  }
+}
+```
+
 加载的html文件。
 ```html
 <!-- index.html -->
