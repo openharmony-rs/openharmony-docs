@@ -17,7 +17,7 @@ ArkUI开发框架在NDK接口主要提供属性动画，实现组件出现/消�
 > 
 > - 在Native侧通过[OH_ArkUI_GetContextFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md)方法获取context。
 > 
-> - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中callback中。
+> - 需要执行的动画属性变化必须写在[ArkUI_ContextCallback](../reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md)中的callback中。
 > 
 > - 需要执行的动画属性，必须在执行动画之前设置过。
 >
