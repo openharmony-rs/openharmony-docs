@@ -231,6 +231,21 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      调用 SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。灯光类型决定了光线的方向，位置决定了光线的位置，颜色决定了光线的颜色。
 
      <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+     
+     ``` TypeScript
+     let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
+     light.then(async (lightEntity: Light) => {
+       // Set the color of the directional light.
+       lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
+     
+       // Set other light parameters.
+       // ...
+       // ···
+     }).catch((err: string) => {
+       console.error('Light create failed: ' + err + '.');
+       // ···
+     });
+     ```
 
   4. 初始化与渲染绑定。
 
