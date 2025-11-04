@@ -328,6 +328,11 @@
 * Node-API侧暴露ArkTS接口
 
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->
+  
+  ``` TypeScript
+  export const nativeWebInit: (webName: string) => void;
+  export const runJavaScript: (webName: string, jsCode: string) => void;
+  ```
 
 * Node-API侧编译配置`entry/src/main/cpp/CMakeLists.txt`
 
