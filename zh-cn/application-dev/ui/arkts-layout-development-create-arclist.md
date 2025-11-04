@@ -118,6 +118,10 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象arcListScroller。
 
    <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
+   private arcListScroller: Scroller = new Scroller();
+   ```
 
 2. 然后，弧形列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions)参数绑定滚动控制器。
 
