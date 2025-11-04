@@ -1521,6 +1521,34 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   实现一个Spring Loading的响应函数，处理所有状态，如下：
 
   <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  handleSpringLoading(context: SpringLoadingContext) {
+    // BEGIN 状态时检查拖拽数据类型
+    if (context.state == dragController.DragSpringLoadingState.BEGIN) {
+    // ···
+      // 进行必要判断，决定是否要终止触发
+      return;
+    }
+    if (context.state == dragController.DragSpringLoadingState.UPDATE) {
+    // ···
+      // 刷新提醒
+      return;
+    }
+    // 处理Spring Loading结束，触发视图切换
+    if (context.state == dragController.DragSpringLoadingState.END) {
+    // ···
+      // 视图激活或跳转
+      return;
+    }
+    // 处理CANCEL状态，复原UI
+    if (context.state == dragController.DragSpringLoadingState.CANCEL) {
+    // ···
+      // 恢复状态与UI
+      return;
+    }
+  }
+  ```
 
 **完整示例：**
 
