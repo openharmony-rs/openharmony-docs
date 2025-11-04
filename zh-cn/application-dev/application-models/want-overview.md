@@ -46,6 +46,21 @@
 
 
   <!-- @[implicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+              let wantInfo: Want = {
+                // uncomment line below if wish to implicitly query only in the specific bundle.
+                // bundleName: 'com.example.myapplication',
+                action: 'ohos.want.action.search',
+                // entities can be omitted
+                entities: [ 'entity.system.browsable' ],
+                uri: 'https://www.test.com:8080/query/student',
+                type: 'text/plain',
+              };
+              // ···
+  ```
 
   
   > **说明：**
