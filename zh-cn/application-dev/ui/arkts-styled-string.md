@@ -30,6 +30,57 @@
 - 创建及应用文本字体样式对象（TextStyle）
 
   <!-- @[styledStringTextStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextStyle.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct styled_string_demo2 {
+    //'app.string.CreateApply_Text_3'资源文件中的value值为"运动45分钟 目标达成"
+    @State str: string =
+      this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_3')) as string;
+    textStyleAttrs: TextStyle =
+      new TextStyle({
+        fontWeight: FontWeight.Bolder,
+        fontSize: LengthMetrics.vp(24),
+        fontStyle: FontStyle.Italic,
+        strokeWidth: LengthMetrics.px(5),
+        strokeColor: Color.Green
+      });
+    mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
+      {
+        start: 2,
+        length: 2,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.textStyleAttrs
+      },
+      {
+        start: 7,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Orange, fontSize: LengthMetrics.vp(12),
+          superscript: SuperscriptStyle.SUPERSCRIPT
+        })
+      }
+    ]);
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.mutableStyledString);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+          .margin({ top: 10 })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![StyledString_TextStyle](figures/StyledString_TextStyle.png)
 
