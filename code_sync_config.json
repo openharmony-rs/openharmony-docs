@@ -10151,5 +10151,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-gesture-events-binding.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"regular_binding",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"priority_binding",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/ParallelGesture.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"parallel_binding",
+						"start_line":19
+					}
+				]
+			}
+		]
 	}
 ]
