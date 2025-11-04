@@ -4577,6 +4577,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 **描述**
 
 设置自定义鼠标光标样式。
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **起始版本：** 22
 
@@ -4584,7 +4585,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式，传入其他窗口id本接口可以运行成功但设置不生效。|
+| int32_t windowId | 窗口Id。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式。|
 | Input_CustomCursor* customCursor | 自定义鼠标光标资源[Input_CustomCursor](./capi-input-input-customcursor.md)。 |
 | Input_CursorConfig* cursorConfig | 自定义鼠标光标配置[Input_CursorConfig](./capi-input-input-cursorconfig.md)。 |
 
