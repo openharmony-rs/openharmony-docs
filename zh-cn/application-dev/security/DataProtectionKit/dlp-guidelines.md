@@ -493,7 +493,6 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 17. （API 21开始支持）识别指定文件中的敏感内容。  
-使用该接口的前置条件：链接DLP凭据服务器。
     <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
