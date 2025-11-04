@@ -43,33 +43,6 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 
   <!-- @[jump_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Index.ets) -->
   
-  ``` TypeScript
-  import { router } from '@kit.ArkUI';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { DOMAIN, TAG } from '../../common/Common';
-  
-  @Entry
-  @Component
-  struct Index {
-    // 在Home页面中
-    onJumpClick(): void {
-      this.getUIContext().getRouter().pushUrl({
-        url: 'pages/pageRouter/jumpPage/Detail' // 目标url
-      }, router.RouterMode.Standard, (err) => {
-        if (err) {
-          hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
-      });
-    }
-  
-    build() {
-      // ···
-    }
-  }
-  ```
-
   >**说明：**
   >
   >多实例模式下，router.RouterMode.Standard参数可以省略。
@@ -77,34 +50,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
   <!-- @[login_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Login.ets) -->
-  
-  ``` TypeScript
-  import { router } from '@kit.ArkUI';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { DOMAIN, TAG } from '../../common/Common';
-  
-  @Entry
-  @Component
-  struct Login {
-    // 在Login页面中
-    onJumpClick(): void {
-      this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/pageRouter/jumpPage/Profile' // 目标url
-      }, router.RouterMode.Standard, (err) => {
-        if (err) {
-          hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
-    }
-  
-    build() {
-      // ···
-    }
-  }
-  ```
-  
+    
   >**说明：**
   >
   >多实例模式下，router.RouterMode.Standard参数可以省略。
@@ -112,64 +58,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
   <!-- @[setting_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Setting.ets) -->
-  
-  ``` TypeScript
-  import { router } from '@kit.ArkUI';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { DOMAIN, TAG } from '../../common/Common';
-  
-  @Entry
-  @Component
-  struct Login {
-    // 在Setting页面中
-    onJumpClick(): void {
-      this.getUIContext().getRouter().pushUrl({
-        url: 'pages/pageRouter/jumpPage/SetTheme' // 目标url
-      }, router.RouterMode.Single, (err) => {
-        if (err) {
-          hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
-      });
-    }
-  
-    build() {
-      // ···
-  }
-  ```
-  
-  
+    
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
   <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
   
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { DOMAIN, TAG } from '../../common/Common';
-  import { router } from '@kit.ArkUI';
-  
-  @Entry
-  @Component
-  struct SearchResult {
-    // 在SearchResult页面中
-    onJumpClick(): void {
-      this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/pageRouter/jumpPage/SearchDetail' // 目标url
-      }, router.RouterMode.Single, (err) => {
-        if (err) {
-          hilog.error(DOMAIN, TAG, `Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
-      })
-    }
-  
-    build() {
-      // ···
-  }
-  ```
-    
+
 以上是不带参数传递的场景。
 
 如果需要在跳转时传递一些数据给目标页面，则可以在调用Router模块的方法时，添加一个params属性，并指定一个对象作为参数。例如：
@@ -271,7 +165,7 @@ this.getUIContext().getRouter().back();
   返回普通页面。
 
   <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome'
@@ -296,7 +190,7 @@ this.getUIContext().getRouter().back();
   返回到普通页面。
 
   <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
@@ -310,7 +204,7 @@ this.getUIContext().getRouter().back();
   返回命名路由页面。
 
   <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage为返回的命名路由页面别名
@@ -331,22 +225,6 @@ this.getUIContext().getRouter().back();
 
 <!-- @[home_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/backPage/Home.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-struct Home {
-  @State message: string = 'Hello World';
-
-  onPageShow() {
-    const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // 获取传递过来的参数对象
-    if (params) {
-      const info: string = params.info as string; // 获取info属性的值
-    }
-  }
-
-// ···
-}
-```
 
 >**说明：**
 >
@@ -484,26 +362,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 <!-- @[page_showAlert2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
 
-``` TypeScript
-// 定义一个返回按钮的点击事件处理函数
-onBackClick(): void {
-  // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
-  try {
-    this.getUIContext().getRouter().showAlertBeforeBackPage({
-      // 您还没有完成支付，确定要返回吗？
-      message: 'You haven\'t completed the payment yet. Are you sure you want to return?', // 设置询问框的内容
-    });
-  } catch (err) {
-    let message = (err as BusinessError).message;
-    let code = (err as BusinessError).code;
-    hilog.error(DOMAIN, TAG,`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
-  }
-
-  // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
-  this.getUIContext().getRouter().back();
-}
-```
-
 其中，this.getUIContext().getRouter().showAlertBeforeBackPage方法接收一个对象作为参数，该对象包含以下属性：
 
 message：string类型，表示询问框的内容。
@@ -529,40 +387,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 
 <!-- @[page_showDialog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
-
-``` TypeScript
-onBackClick() {
-  // 弹出自定义的询问框
-  this.getUIContext().getPromptAction().showDialog({
-    // 您还没有完成支付，确定要返回吗？
-    message: 'You haven\'t completed the payment yet. Are you sure you want to return?',
-    buttons: [
-      {
-        text: 'Cancel',
-        color: '#FF0000'
-      },
-      {
-        text: 'Confirm',
-        color: '#0099FF'
-      }
-    ]
-  }).then((result: promptAction.ShowDialogSuccessResponse) => {
-    if (result.index === 0) {
-      // 用户点击了“取消”按钮
-      hilog.info(DOMAIN, TAG, 'User canceled the operation.');
-    } else if (result.index === 1) {
-      // 用户点击了“确认”按钮
-      hilog.info(DOMAIN, TAG, 'User confirmed the operation.');
-      // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
-      this.getUIContext().getRouter().back();
-    }
-  }).catch((err: Error) => {
-    let message = (err as BusinessError).message;
-    let code = (err as BusinessError).code;
-    hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
-}
-```
 
 当用户点击“返回”按钮时，会弹出自定义的询问框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
 
@@ -622,45 +446,6 @@ export struct MyComponent {
 
 <!-- @[page_router_hsp3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp3.ets) -->
 
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import '@ohos/library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { DOMAIN, TAG } from '../../common/Common';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Text('Hello World')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .margin({ top: 20 })
-        .backgroundColor('#ccc')
-        .onClick(() => { // 点击跳转到其他共享包中的页面
-          try {
-            this.getUIContext().getRouter().pushNamedRoute({
-              name: 'myPage',
-              params: {
-                data1: 'message',
-                data2: {
-                  data3: [123, 456, 789]
-                }
-              }
-            })
-          } catch (err) {
-            let message = (err as BusinessError).message;
-            let code = (err as BusinessError).code;
-            hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ## 相关实例
 
