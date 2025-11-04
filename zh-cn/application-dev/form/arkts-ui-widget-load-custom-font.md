@@ -39,4 +39,4 @@ struct loadFontSyncCard {
 ```
 
 运行效果如下图所示。  
-![WidgetCanvasDemo](figures/WidgetCanvasDemo.jpeg)
+![WidgetCanvasDemo](figures/WidgetCustomFontDemo.gif)
