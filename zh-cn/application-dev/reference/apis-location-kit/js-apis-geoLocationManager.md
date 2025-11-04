@@ -718,7 +718,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -775,7 +775,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -903,7 +903,7 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
@@ -950,7 +950,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
@@ -1214,7 +1214,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -1927,7 +1927,7 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
@@ -2019,7 +2019,7 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
 读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION（持有ohos.permission.LOCATION权限时包含ohos.permission.APPROXIMATELY_LOCATION权限）
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
