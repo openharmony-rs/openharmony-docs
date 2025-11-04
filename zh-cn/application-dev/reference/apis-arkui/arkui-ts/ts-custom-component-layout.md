@@ -445,7 +445,7 @@ struct CustomLayout {
 }
 ```
 
-**ArkTS1.2示例：**
+**ArkTS-Sta示例：**
 ```ts
 import { Text, Column, Component, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout} from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -462,7 +462,7 @@ struct MyStateSample {
 
 @Builder
 function ColumnChildren() {
-  ForEach([1, 2, 3], (item: Int, index: number) => { // 暂不支持lazyForEach的写法
+  ForEach([1, 2, 3], (item: Int, index: Int) => { // 暂不支持lazyForEach的写法
     Text('S' + item)
       .fontSize(30)
       .width(100)
@@ -499,9 +499,8 @@ struct Custom1 {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
-      size += result.width / 2
-      ;
+      let childMeasureResult: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size }) as MeasureResult;
+      size += childMeasureResult.width / 2;
     })
     this.result.width = 100;
     this.result.height = 400;
@@ -513,7 +512,6 @@ struct Custom1 {
   }
 }
 ```
-ArkTS-Sta示例：
 
 ```
 import { Text, Column, ComponentV2, Position, Entry, Builder, BuilderParam, ForEach, SizeResult, GeometryInfo, Layoutable, ConstraintSizeOptions, Measurable, MeasureResult, CustomLayout, Local} from '@kit.ArkUI';
@@ -530,7 +528,7 @@ struct MyStateSample {
 
 @Builder
 function ColumnChildren() {
-  ForEach([1, 2, 3], (item: Int, index: number) => { // 暂不支持lazyForEach的写法
+  ForEach([1, 2, 3], (item: Int, index: Int) => { // 暂不支持lazyForEach的写法
     Text('S' + item)
       .fontSize(30)
       .width(100)
@@ -567,8 +565,8 @@ struct Custom1 {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size });
-      size += result.width / 2;
+      let childMeasureResult: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size }) as MeasureResult;
+      size += childMeasureResult.width / 2;
     })
     this.result.width = 100;
     this.result.height = 400;
