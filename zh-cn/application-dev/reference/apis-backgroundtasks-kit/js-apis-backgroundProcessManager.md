@@ -219,13 +219,13 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。<br>取值范围：正整数（1~2147483647）。  |
+| pid         | number    | 是        | 进程号。<br>取值范围：大于0的整数。  |
 
 **返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式状态，EFFICIENCY_MODE表示效率模式(非能效模式)，DEFAULT_MODE表示进入能效模式。 |
+| Promise<[PowerSaveMode](#powersavemode20)> | Promise对象。返回进程能效模式状态。 |
 
 **错误码：**
 
