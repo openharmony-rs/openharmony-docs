@@ -9,6 +9,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 15开始支持。
@@ -27,11 +29,17 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## makeColorFromResourceColor<sup>15+</sup>
 
-static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
+ArkTS-Dyn: static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
+
+ArkTS-Sta: static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color | undefined
 
 将ResourceColor类型的值转换为common2D.Color对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -43,7 +51,7 @@ static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [common2D.Color](js-apis-graphics-common2D.md#color) | 转换后的common2D.Color颜色对象，若转换失败则返回空指针。 |
+| ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color)<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| undefined | 转换后的common2D.Color颜色对象，若转换失败则返回undefined。 |
 
 **错误码：**
 
@@ -55,6 +63,7 @@ static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 
@@ -79,4 +88,38 @@ let color10: common2D.Color = drawing.Tool.makeColorFromResourceColor($r('sys.co
 // Use color
 let brush = new drawing.Brush();
 brush.setColor(color1);
+```
+
+ArkTS-Sta示例：
+```ts
+import { $rawfile, $r, Color } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+// Color
+let color1: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor(Color.Blue);
+
+// Number
+let color2: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor(0xffc0cb);
+let color3: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor(0x11ffa500);
+
+// String
+let color4: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('#ff0000');
+let color5: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('#110000ff');
+let color6: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('#00f');
+let color7: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('#100f');
+let color8: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('rgb(255, 100, 255)');
+let color9: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor('rgba(255, 100, 255, 0.5)');
+
+// Resource
+let color10: common2D.Color | undefined =
+  drawing.Tool.makeColorFromResourceColor($r('sys.color.ohos_id_color_secondary'));
+let color11: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor($r('app.color.appColorTest'));
+let color12: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor($r('app.string.appColorTest'));
+let color13: common2D.Color | undefined = drawing.Tool.makeColorFromResourceColor($r('app.integer.appColorTest'));
+
+// Use color
+let brush = new drawing.Brush();
+if (color1 != undefined) {
+  brush.setColor(color1!);
+}
 ```
