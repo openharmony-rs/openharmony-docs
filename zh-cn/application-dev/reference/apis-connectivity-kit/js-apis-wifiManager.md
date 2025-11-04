@@ -2631,7 +2631,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -2652,11 +2652,11 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 | 2 | 激活中。 |
 | 3 | 去激活中。 |
 
-## wifiManager.offWifiStateChange('wifiStateChange')<sup>22+</sup>
+## wifiManager.offWifiStateChange<sup>22+</sup>
 
-offWifiStateChange(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
+offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
-注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+注册取消WLAN状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2672,7 +2672,7 @@ offWifiStateChange(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;int&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;Array&lt;int&gt;&gt; [Callback] | 否 | 状态改变回调函数。 |
 
 **错误码：**
 
