@@ -20,6 +20,37 @@
   > 从API version 15开始，在aboutToAppear中调用setStyledString方法，页面初始化时可以显示属性字符串。
 
   <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct styled_string_demo1 {
+    //'app.string.CreateApply_Text_Forty_Five'资源文件中的value值为"运动45分钟"
+    styledString1: StyledString = new StyledString(resource.resourceToString($r('app.string.CreateApply_Text_Forty_Five')));
+    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
+    mutableStyledString1: MutableStyledString = new MutableStyledString(resource.resourceToString($r('app.string.CreateApply_Text_Third_Five')));
+    controller1: TextController = new TextController();
+    controller2: TextController = new TextController();
+  
+    async onPageShow() {
+      // 在生命周期onPageShow回调中绑定属性字符串
+      this.controller1.setStyledString(this.styledString1);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller1 })
+        Text(undefined, { controller: this.controller2 })
+          .onAppear(() => {
+            // 在组件onAppear回调中绑定属性字符串
+            this.controller2.setStyledString(this.mutableStyledString1);
+          })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![StyledString_Init](figures/span_string_init.png)
 
