@@ -60,6 +60,30 @@
 * C++侧
 
   <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  
+  ``` C++
+  // 解析存储webTag
+  static napi_value NativeWebInit(napi_env env, napi_callback_info info)
+  {
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit NativeWebInit start");
+      size_t argc = 1;
+      napi_value args[1] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      // 获取第一个参数webTag
+      size_t webTagSize = 0;
+      napi_get_value_string_utf8(env, args[0], nullptr, 0, &webTagSize);
+      char *webTagValue = new (std::nothrow) char[webTagSize + 1];
+      size_t webTagLength = 0;
+      napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
+      OH_LOG_Print(
+          LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit NativeWebInit webTag:%{public}s", webTagValue);
+  
+      // 将webTag保存在实例对象中
+      jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
+      if (jsbridge_object_ptr)
+          jsbridge_object_ptr->Init();
+  ```
 
 ### 使用Native接口获取API结构体
 
