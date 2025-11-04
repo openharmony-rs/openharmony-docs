@@ -107,39 +107,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
-<<<<<<< HEAD
 <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
-=======
-```ts
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Extension {
-  @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private localStorage: LocalStorage|undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-      Button("terminateSelfWithResult").fontSize(20).onClick(() => {
-        // 点击按钮后调用terminateSelfWithResult退出
-        this.session?.terminateSelfWithResult({
-          resultCode: 1,
-          want: {
-            bundleName: "com.example.embeddeddemo",
-            abilityName: "ExampleEmbeddedAbility",
-          }
-        });
-      })
-    }.width('100%').height('100%')
-  }
-}
-```
->>>>>>> origin/master
 
 在实现入口页面时，开发者需要注意以下几点：
 
