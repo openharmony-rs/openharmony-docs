@@ -99,6 +99,13 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   ```
   <!---->
   <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->
+  
+  ``` JavaScript
+  const body = document.body;
+  const element = document.createElement('div');
+  element.textContent = 'success';
+  body.appendChild(element);
+  ```
 
 - 方法二
 
