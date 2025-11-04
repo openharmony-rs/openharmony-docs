@@ -120,6 +120,79 @@ Component 2 render
 
 <!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[EvtryAblity]';
+
+class LogTrack {
+  @Track public str1: string;
+  @Track public str2: string;
+
+  constructor(str1: string) {
+    this.str1 = str1;
+    this.str2 = 'World';
+  }
+}
+
+class LogNotTrack {
+  public str1: string;
+  public str2: string;
+
+  constructor(str1: string) {
+    this.str1 = str1;
+    this.str2 = 'World';
+  }
+
+  getUIContext() {
+    throw new Error('Method not implemented.');
+  }
+}
+
+@Entry
+@Component
+struct AddLog {
+  @State logTrack: LogTrack = new LogTrack('Hello');
+  @State logNotTrack: LogNotTrack = new LogNotTrack(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.state_hello').id));
+
+  isRender(index: number) {
+    hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
+    return 50;
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.logTrack.str1) // Text1
+          .id('str1')
+          .fontSize(this.isRender(1))
+          .fontWeight(FontWeight.Bold)
+        Text(this.logTrack.str2) // Text2
+          .fontSize(this.isRender(2))
+          .fontWeight(FontWeight.Bold)
+        Button('change logTrack.str1')
+          .id('str2')
+          .onClick(() => {
+            this.logTrack.str1 = 'Bye';
+          })
+        Text(this.logNotTrack.str1) // Text3
+          .fontSize(this.isRender(3))
+          .fontWeight(FontWeight.Bold)
+        Text(this.logNotTrack.str2) // Text4
+          .fontSize(this.isRender(4))
+          .fontWeight(FontWeight.Bold)
+        Button('change logNotTrack.str1')
+          .onClick(() => {
+            this.logNotTrack.str1 = this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.state_bye').id);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 在上面的示例中：
 
 1. 类LogTrack中的属性均被\@Track装饰器装饰，点击按钮"change logTrack.str1"，此时Text1刷新，Text2不刷新，只有一条日志输出，避免了冗余刷新。
