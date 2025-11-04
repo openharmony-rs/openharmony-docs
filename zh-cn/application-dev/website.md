@@ -5701,7 +5701,7 @@
     - Calendar Kit（日历服务）<!--calendar-api-->
       - ArkTS API<!--calendar-arkts-->
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
-    - Contacts Kit（联系人服务）<!--contacts-->
+    - Contacts Kit（联系人服务）<!--contacts-api-->
       - ArkTS API<!--contacts-arkts-->
         - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
       - 错误码<!--contacts-arkts-errcode-->
