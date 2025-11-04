@@ -167,3 +167,23 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
 - 调用[clearIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearintelligenttrackingpreventionbypassinglist12)接口清除所有绕过域名列表。
   <!-- @[clear_all_intelligent_tracking_prevention_bypasses](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/ClearIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('clearIntelligentTrackingPreventionBypassingList')
+          .onClick(() => {
+            webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
+          })
+        Web({ src: 'www.example.com', controller: this.controller })
+      }
+    }
+  }
+  ```
