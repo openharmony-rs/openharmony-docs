@@ -45,6 +45,17 @@
 * ArkTS侧
 
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  webTag: string = 'ArkWeb1';
+  controller: webview.WebviewController = new webview.WebviewController(this.webTag);
+  @State testObjtest: testObj = new testObj();
+  
+  aboutToAppear() {
+    console.info('aboutToAppear');
+    //初始化web Native Development Kit
+    testNapi.nativeWebInit(this.webTag);
+  ```
 
 * C++侧
 
