@@ -404,27 +404,7 @@ struct OnVisibleAreaChangeSample {
       .borderWidth(1)
       .height(200)
       .width(200)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change1.jpg)
 
-### 示例4 (设置measureFromViewport子组件被父组件裁切超出父组件不显示)
-
-从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有有微小差异。
-
-```ts
-@Entry
-@Component
-struct OnVisibleAreaChangeSample {
-  @State ratio1: number = 0.0;
-  @State ratio2: number = 0.0;
-
-  build() {
-    Column() {
       Text(`onVisibleChange with measureFromViewport \nratio: ${this.ratio1}`)
       Column() {
         Row() {
@@ -450,36 +430,10 @@ struct OnVisibleAreaChangeSample {
       .borderWidth(1)
       .height(200)
       .width(200)
-
-      Text(`onVisibleChange without measureFromViewport \nratio: ${this.ratio2}`)
-      Column() {
-        Row() {
-          Row() {
-
-          }
-          .backgroundColor(Color.Blue)
-          .height(120)
-          .width(120)
-          .offset({ x: 0, y: 60 })
-          // 不设置measureFromViewport，measureFromViewport默认为false，父组件设置clip(true)，超出父组件的区域被视为不可见区域。
-          // .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio2 = currentRatio
-          })
-        }
-        .clip(true)
-        .backgroundColor(Color.Pink)
-        .height(120)
-        .width(120)
-      }
-      .padding(5)
-      .borderWidth(1)
-      .height(200)
-      .width(200)
     }
     .height('100%')
     .width('100%')
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change2.jpg)
+![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change3.jpg)
