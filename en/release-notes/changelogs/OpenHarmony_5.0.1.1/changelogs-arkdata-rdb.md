@@ -7,7 +7,7 @@ Public API
 
 **Reason for Change**
 
-No error code is reported when the root key does not match the working key. The error code 14800020 is added to trigger the database restore and rebuild on the service side.
+No error code is reported when the root key does not match the working key. The error code 14800020 is added to trigger database restore and rebuild on the service side.
 
 **Change Impact**
 
@@ -27,7 +27,7 @@ OpenHarmony 5.0.1.1
 
 **Key API/Component Changes**
 
-The following APIs in [@ohos.data.relationalStore.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts):
+The following APIs in [@ohos.data.relationalStore.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.data.relationalStore.d.ts):
 
 1. function getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<RdbStore\>): void;
 
