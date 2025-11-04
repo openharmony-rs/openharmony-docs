@@ -27,6 +27,49 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
 
 - 在事件注册时将自定义节点、事件类型（例如ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW，获取NDK接口支持的事件类型范围可通过查询[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)枚举值）、事件ID和UserData作为参数传入。
     <!-- @[userdata_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
+    
+    ``` C
+    // UserData
+    struct A {
+        int32_t a = 6;
+        bool flag = true;
+        ArkUI_NodeHandle node;
+    };
+    A *a = new A;
+    a->node = customNode;
+    // ···
+    nodeAPI->registerNodeCustomEvent(customNode, ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW, 1, a);
+    // 事件回调函数的编写
+    nodeAPI->registerNodeCustomEventReceiver([](ArkUI_NodeCustomEvent *event) {
+    // 事件回调函数逻辑
+        // 获取自定义事件的相关信息。
+        auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+        auto targetId = OH_ArkUI_NodeCustomEvent_GetEventTargetId(event);
+        auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+        if (type == ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW && targetId == 1 && userData->flag) {
+            // 获取自定义事件绘制的上下文。
+            auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+            // 获取绘制canvas指针。
+            auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
+            // 转换为OH_Drawing_Canvas指针进行绘制。
+            OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
+            int32_t width = SIZE_1000;
+            int32_t height = SIZE_1000;
+            auto path = OH_Drawing_PathCreate();
+            OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+            OH_Drawing_PathClose(path);
+            auto pen = OH_Drawing_PenCreate();
+            OH_Drawing_PenSetWidth(pen, SIZE_10);
+            OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
+            OH_Drawing_CanvasAttachPen(canvas, pen);
+            OH_Drawing_CanvasDrawPath(canvas, path);
+        }
+    });
+    ```
 
 - 在回调函数中，获取自定义事件的事件类型（通过[OH_ArkUI_NodeCustomEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype)）、事件ID（通过[OH_ArkUI_NodeCustomEvent_GetEventTargetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid)获取）、UserData（通过[OH_ArkUI_NodeCustomEvent_GetUserData](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata)获取）进行判断，以执行不同的逻辑。
 
