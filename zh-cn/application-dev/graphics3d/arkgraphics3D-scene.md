@@ -274,6 +274,32 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      开发者可通过调整灯光的颜色、位置或方向等参数，实现交互式光照控制。以下示例展示了基于颜色分量（R/G/B）的交互逻辑，其余参数的控制方式与此类似。
 
      <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+     
+     ``` TypeScript
+     Slider({
+       value: this.red,
+       min: 0,
+       max: 1,
+       step: 0.01,
+       style: SliderStyle.OutSet
+     })
+       .showTips(false)
+       .onChange((value: number, mode: SliderChangeMode) => {
+         this.red = value;
+         if (mode === SliderChangeMode.End) {
+           if (!this.scene || !this.light) {
+             return;
+           }
+           this.light.color = {
+             r: this.red,
+             g: this.green,
+             b: this.blue,
+             a: 1.0
+           }
+         }
+       })
+       .width('100%')
+     ```
 
 <!--RP1-->
 ## 相关实例
