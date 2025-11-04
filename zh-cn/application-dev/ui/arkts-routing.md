@@ -78,6 +78,34 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
   <!-- @[login_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Login.ets) -->
+  
+  ``` TypeScript
+  import { router } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
+  @Entry
+  @Component
+  struct Login {
+    // 在Login页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/pageRouter/jumpPage/Profile' // 目标url
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      })
+    }
+  
+    build() {
+      // ···
+    }
+  }
+  ```
     
   >**说明：**
   >
