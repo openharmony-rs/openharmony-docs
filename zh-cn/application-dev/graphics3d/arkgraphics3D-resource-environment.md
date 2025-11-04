@@ -120,6 +120,23 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
      在按钮点击事件中调用createEnvironmentPromise()创建环境资源，并将其赋值给场景的environment属性，使环境背景立即生效。
 
      <!-- @[environment_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     Button('Add to Environment')
+     // ···
+       .onClick(async (): Promise<void> => {
+         console.info('Start to replace with a material of image');
+     
+         if (!this.scene || !this.cam) {
+           return;
+         }
+     
+         this.env = await createEnvironmentPromise();
+         if (this.env) {
+           this.scene.environment = this.env;
+         }
+       });
+     ```
 
 <!--RP1-->
 ## 相关实例
