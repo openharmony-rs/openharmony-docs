@@ -171,6 +171,27 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      调用SceneResourceFactory.createMaterial()创建Shader类型的空白材质，为后续绑定自定义Shader做准备。
 
      <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+     
+     ``` TypeScript
+     function createMaterialPromise(): Promise<Material> {
+       return new Promise((resolve, reject) => {
+         // Ensure the scene is loaded before accessing sceneFactory
+         if (globalScene) {
+           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+           let sceneMaterialParameter: SceneResourceParameters = { name: 'material' };
+           // Create Material
+           let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
+           material.then(resolve)
+           .catch((err: string) => {
+             console.error('Blank material create failed: ' + err);
+             reject(err);
+           });
+         } else {
+           reject('Scene is not loaded yet.');
+         }
+       });
+     }
+     ```
 
   6. 创建并绑定Shader资源。
 
