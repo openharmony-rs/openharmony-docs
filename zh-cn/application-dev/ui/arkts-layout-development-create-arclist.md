@@ -162,6 +162,34 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 1. 首先，实现尾端滑出组件的构建。
 
    <!-- @[create_SideSlip_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   itemEnd(item: Contact) {
+     // 构建尾端滑出组件
+     Button({ type: ButtonType.Circle }) {
+       Image($r('app.media.ic_public_delete_filled'))
+         .width(20)
+         .height(20)
+     }
+     .width(20)
+     .height(20)
+     .backgroundColor(Color.Black)
+     .onClick(() => {
+       this.getUIContext()?.animateTo({
+         duration: 1000,
+         curve: Curve.Smooth,
+         iterations: 1,
+         playMode: PlayMode.Normal,
+       }, () => {
+         // this.contacts为列表数据源，可根据实际场景构造，indexOf方法可获取将被删除数据在数据源中的索引
+         let index = this.contacts.indexOf(item);
+         // 从数据源删除指定数据项
+         this.contacts.splice(index, 1);
+       })
+     })
+   }
+   ```
 
 
 2. 然后，绑定[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction)属性到可左滑的ArcListItem上。
