@@ -11,7 +11,7 @@
 
 >  **说明：**
 > 
-> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md), 请参考[示例2](#示例2使用Swiper替代Stepper)。
+> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md)，请参考[示例2](#示例2使用swiper替代stepper)。
 >
 > 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -233,7 +233,7 @@ struct StepperExample {
 ![stepper](figures/stepper.gif)
 
 ### 示例2（使用Swiper替代Stepper）
-该示例主要演示如何使用Swiper组件实现Stepper组件的功能。
+该示例主要演示如何使用Swiper组件实现Stepper组件的功能，示例效果图同示例1。
 
 ```ts
 @Styles
