@@ -34,6 +34,59 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 <!-- @[WaterFlowInfiniteScrolling_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrolling.ets) -->
 
+``` TypeScript
+@Builder
+itemFoot() {
+  Row() {
+    LoadingProgress()
+      .color(Color.Blue).height(50).aspectRatio(1).width('20%')
+    Text(`正在加载`)
+      .fontSize(20)
+      .width('30%')
+      .height(50)
+      .align(Alignment.Center)
+      .margin({ top: 2 })
+  }.width('100%').justifyContent(FlexAlign.Center)
+}
+
+build() {
+  NavDestination() {
+    Column({ space: 12 }) {
+      // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+      ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrolling_title') }) {
+        WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+          LazyForEach(this.dataSource, (item: number) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: string) => item)
+        }
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // 触底加载数据
+        .onReachEnd(() => {
+          setTimeout(() => {
+            this.dataSource.addNewItems(100);
+          }, 1000)
+        })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ left: 12, right: 12 })
+  }
+  .backgroundColor('#f1f2f3')
+  // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+  .title($r('app.string.WaterFlowInfiniteScrolling_title'))
+}
+```
+
 在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的onDataReloaded()方法通知瀑布流重新加载数据。
 
 由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
