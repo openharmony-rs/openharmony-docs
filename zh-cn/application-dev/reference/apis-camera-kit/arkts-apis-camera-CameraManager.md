@@ -996,7 +996,7 @@ isTorchModeSupported(mode: TorchMode): boolean
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn: 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta: 手电筒模式。目前不支持传参null或者undefined。 |
+| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn： 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta： 手电筒模式。目前不支持传参null或者undefined。 |
 
 **返回值：**
 
@@ -1061,7 +1061,7 @@ setTorchMode(mode: TorchMode): void
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn: 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta: 手电筒模式。目前不支持传参null或者undefined。 |
+| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn： 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta： 手电筒模式。目前不支持传参null或者undefined。 |
 
 **错误码：**
 

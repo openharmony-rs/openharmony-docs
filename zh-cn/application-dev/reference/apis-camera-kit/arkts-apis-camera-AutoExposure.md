@@ -80,7 +80,7 @@ setExposureMode(aeMode: ExposureMode): void
 
 | 参数名      | 类型                            | 必填 | 说明                    |
 | -------- | -------------------------------| ---- | ----------------------- |
-| aeMode   | [ExposureMode](arkts-apis-camera-e.md#exposuremode)  | 是   | ArkTS-Dyn: 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。<br/>ArkTS-Sta: 曝光模式。目前不支持传参null或者undefined。 |
+| aeMode   | [ExposureMode](arkts-apis-camera-e.md#exposuremode)  | 是   | ArkTS-Dyn： 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。<br/>ArkTS-Sta： 曝光模式。目前不支持传参null或者undefined。 |
 
 **错误码：**
 
