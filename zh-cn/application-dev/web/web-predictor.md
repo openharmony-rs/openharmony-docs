@@ -179,6 +179,55 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 2. 编写动态组件所需基础代码。
 
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+   
+   export interface BuilderData {
+     url: string;
+     controller: WebviewController;
+     context: UIContext;
+   }
+   
+   let storage : LocalStorage | undefined = undefined;
+   
+   export class NodeControllerImpl extends NodeController {
+     private rootNode: BuilderNode<BuilderData[]> | null = null;
+     private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
+   
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>,  context: UIContext) {
+     storage = context.getSharedLocalStorage();
+       super();
+       this.wrappedBuilder = wrappedBuilder;
+     }
+   
+     makeNode(): FrameNode | null {
+       if (this.rootNode != null) {
+         return this.rootNode.getFrameNode();
+       }
+       return null;
+     }
+   
+     initWeb(url: string, controller: WebviewController) {
+       if(this.rootNode != null) {
+         return;
+       }
+   
+       const uiContext: UIContext = storage!.get<UIContext>('uiContext') as UIContext;
+       if (!uiContext) {
+         return;
+       }
+       this.rootNode = new BuilderNode(uiContext);
+       this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
+     }
+   }
+   
+   export const createNode = (wrappedBuilder: WrappedBuilder<BuilderData[]>, data: BuilderData) => {
+     const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+     baseNode.initWeb(data.url, data.controller);
+     return baseNode;
+   }
+   ```
 
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
