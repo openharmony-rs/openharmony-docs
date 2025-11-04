@@ -72,9 +72,14 @@
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
 1. 导入模块。
-     
-   ```ts
-   import { relationalStore } from '@kit.ArkData';
+   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   import { relationalStore } from '@kit.ArkData'; // 导入模块
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
    ```
 
 2. 请求权限。
@@ -83,40 +88,45 @@
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表。
-     
-   ```ts
-   import { UIAbility } from '@kit.AbilityKit';
-   import { window } from '@kit.ArkUI';
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-
-   const STORE_CONFIG: relationalStore.StoreConfig = {
-     name: 'RdbTest.db',
-     securityLevel: relationalStore.SecurityLevel.S3
-   };
-
-   export default class EntryAbility extends UIAbility {
-     async onWindowStageCreate(windowStage: window.WindowStage): Promise<void> {
-       let store: relationalStore.RdbStore | null = null;
-       try {
-         store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
-         await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-         // 将已创建的表设置分布式表。
-         await store.setDistributedTables(['EMPLOYEE']);
-         // 进行数据的相关操作
-       } catch (err) {
-         console.error(`Failed to set distributed tables. code: ${err.code}, message: ${err.message}`);
-       }
-     }
-   }
+   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   let context = getContext();
+   let store: relationalStore.RdbStore | undefined = undefined;
+   // ···
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // 数据库文件名
+       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+     };
+     // 打开数据库并设置分布式表
+     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       // 将已创建的表设置分布式表。
+       await store.setDistributedTables(['EMPLOYEE']);
+     }).catch((err: BusinessError) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
    ```
 
 4. 订阅组网内其他设备的数据变化消息。
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
-
-   ```ts
+   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // 订阅组网内其他设备的数据变化消息
    if (store) {
      try {
+       // 查询组网内的设备列表
+       const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+       const deviceList = deviceManager.getAvailableDeviceListSync();
+       const devices: string[] = [];
+       deviceList.forEach(item => {
+         if (item.networkId) {
+           devices.push(item.networkId);
+         }
+       });
        // 调用分布式数据订阅接口，注册数据库的观察者
        // 当分布式数据库中的数据发生更改时，将调用回调
        store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, async (devices) => {
@@ -125,17 +135,17 @@
            if (!store) {
              return;
            }
-           console.info(`The data of device:${device} has been changed.`);
+           hilog.info(DOMAIN, 'rdbDataSync', `The data of device:${device} has been changed.`);
            // 获取device对应的分布式表名。
            const distributedTableName = await store.obtainDistributedTableName(device, 'EMPLOYEE');
            // 创建查询谓词，查询组网内设备分布式表的数据
            const predicates = new relationalStore.RdbPredicates(distributedTableName);
            const resultSet = await store.query(predicates);
-           console.info(`device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+           hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
          }
        });
      } catch (err) {
-       console.error(`Failed to register observer. Code:${err.code},message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataSync', `Failed to register observer. Code:${err.code},message:${err.message}`);
      }
    }
    ```
@@ -143,8 +153,11 @@
 5. 同步当前设备数据变化至组网内其他设备。
    1. 当前设备分布式表中的数据发生变化后，调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PUSH](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数推送数据变化至其他设备。
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定推送的目标设备。
-     
-   ```ts
+  
+   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // 同步当前设备数据变化至组网内其他设备
    if (store) {
      // 当前设备分布式数据表中插入新数据
      const ret = store.insertSync('EMPLOYEE', {
@@ -152,9 +165,9 @@
        age: 18,
        salary: 666
      });
-     console.info('Insert to distributed table EMPLOYEE, result: ' + ret);
+     hilog.info(DOMAIN, 'rdbDataSync', 'Insert to distributed table EMPLOYEE, result: ' + ret);
      // 查询组网内的设备列表
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const syncTarget: string[] = [];
      deviceList.forEach(item => {
@@ -163,7 +176,7 @@
        }
      });
      if (syncTarget.length === 0) {
-       console.error('no device to sync');
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to sync');
      } else {
        // 构造用于同步分布式表的谓词对象
        const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -172,19 +185,19 @@
        try {
          // 调用同步数据的接口推送当前设备数据变化至组网内其他设备
          const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates);
-         console.info('Push data success.');
+         hilog.info(DOMAIN, 'rdbDataSync', 'Push data success.');
          // 获取同步结果
          for (let i = 0; i < result.length; i++) {
            const deviceId = result[i][0];
            const syncResult = result[i][1];
            if (syncResult === 0) {
-             console.info(`device:${deviceId} sync success`);
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
            } else {
-             console.error(`device:${deviceId} sync failed, status:${syncResult}`);
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
            }
          }
        } catch (e) {
-         console.error('Push data failed, code: ' + e.code + ', message: ' + e.message);
+         hilog.error(DOMAIN, 'rdbDataSync', 'Push data failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }
@@ -193,11 +206,14 @@
 6. 拉取组网内其他设备的数据变化。
    1. 当前设备可调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PULL](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数拉取组网内其他设备的数据变化。
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定拉取的目标设备。
-
-   ```ts
+   
+   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // 拉取组网内其他设备的数据变化
    if (store) {
      // 查询组网内的设备列表
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const syncTarget: string[] = [];
      deviceList.forEach(item => {
@@ -206,7 +222,7 @@
        }
      });
      if (syncTarget.length === 0) {
-       console.error('no device to pull data');
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to pull data');
      } else {
        // 构造用于同步分布式表的谓词对象
        const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -215,30 +231,32 @@
        try {
          // 调用同步数据的接口拉取其他设备数据变化至当前设备
          const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PULL, predicates);
-         console.info('Pull data success.');
+         hilog.info(DOMAIN, 'rdbDataSync', 'Pull data success.');
          // 获取同步结果
          for (let i = 0; i < result.length; i++) {
            const deviceId = result[i][0];
            const syncResult = result[i][1];
            if (syncResult === 0) {
-             console.info(`device:${deviceId} sync success`);
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
            } else {
-             console.error(`device:${deviceId} sync failed, status:${syncResult}`);
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
            }
          }
        } catch (e) {
-         console.error('Pull data failed, code: ' + e.code + ', message: ' + e.message);
+         hilog.error(DOMAIN, 'rdbDataSync', 'Pull data failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }
    ```
 
 7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
-
-   ```ts
+   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   // 查询组网内指定设备上分布式表中的数据
    if (store) {
      // 查询组网内的设备列表
-     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.appdatamgrverify');
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
      const deviceList = deviceManager.getAvailableDeviceListSync();
      const devices: string[] = [];
      deviceList.forEach(item => {
@@ -247,16 +265,16 @@
        }
      });
      if (devices.length === 0) {
-       console.error('no device to query data');
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to query data');
      } else {
        // 构造用于查询分布式表的谓词对象
        const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
        try {
          // 查询组网内设备上的分布式表
          const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
-         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+         hilog.info(DOMAIN, 'rdbDataSync', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
        } catch (e) {
-         console.error('Remote query failed, code: ' + e.code + ', message: ' + e.message);
+         hilog.error(DOMAIN, 'rdbDataSync', 'Remote query failed, code: ' + e.code + ', message: ' + e.message);
        }
      }
    }

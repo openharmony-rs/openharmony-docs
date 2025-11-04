@@ -228,7 +228,7 @@ reuse(param?: Object): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用WrappedBuilder对象封装的builder函数参数，与constructor传入的参数类型保持一致。 |
+| param  | Object | 否   | 自定义组件的构造参数，调用该方法会同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。<br>默认值：undefined |
 
 ### recycle
 
@@ -996,7 +996,7 @@ ReactiveComponentContent通过reuse和[recycle](#recycle)接口完成其内外�
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用WrappedBuilder对象封装的@builder函数参数，与[constructor](#constructor)传入的参数类型保持一致。<br>默认值：undefined |
+| param  | Object | 否   | 自定义组件的构造参数，调用该方法会同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。<br>默认值：undefined |
 
 **示例：**
 

@@ -31,7 +31,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -99,7 +100,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -172,6 +174,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 > 
 >- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
 >- 该接口支持给分身应用授权，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -265,7 +268,8 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -317,7 +321,8 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -375,6 +380,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
 > 
 >- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 >- 该接口支持撤销授权给分身应用的URI权限，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 

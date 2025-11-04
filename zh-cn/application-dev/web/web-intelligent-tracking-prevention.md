@@ -132,26 +132,27 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
   ```
 
 - 调用[removeIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removeintelligenttrackingpreventionbypassinglist12)接口删除部分绕过域名列表。
-
-  ```ts
-  // xxx.ets
+  <!-- @[partial_domain_name_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/RemoveIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('removeIntelligentTrackingPreventionBypassingList')
           .onClick(() => {
             try {
-              let hostList = [ "www.test1.com", "www.test2.com" ];
+              let hostList = [ 'www.test1.com', 'www.test2.com' ];
               webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Web({ src: 'www.example.com', controller: this.controller })

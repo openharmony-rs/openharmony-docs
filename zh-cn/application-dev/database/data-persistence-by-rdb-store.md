@@ -69,96 +69,96 @@
 
 关系型数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发，具体可见[关系型数据库异常重建](data-backup-and-restore.md#关系型数据库异常重建)。
 
-1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。示例代码如下所示：
-
+1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。推荐使用事务接口保证数据库升级流程原子性。
+   示例代码如下所示：
    Stage模型示例：
      
-   ```ts
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';
-
-   // 此处示例在Ability中实现，使用者也可以在其他合理场景中使用
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage) {
-       // 若希望使用分词器，可调用isTokenizerSupported检查希望使用的分词器是否支持当前平台。
-       let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
-       let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
-       if (!tokenTypeSupported) {
-         console.error(`ICU_TOKENIZER is not supported on this platform.`);
-       }
-       const STORE_CONFIG: relationalStore.StoreConfig = {
-         // 数据库文件名
-         name: 'RdbTest.db',
-         // 数据库安全级别
-         securityLevel: relationalStore.SecurityLevel.S3,
-         // 可选参数，指定数据库是否加密，默认不加密
-         encrypt: false,
-         // 可选参数，数据库自定义路径。默认在本应用沙箱目录下创建RdbStore实例。
-         customDir: 'customDir/subCustomDir',
-         // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
-         isReadOnly: false,
-         // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
-         tokenizer: tokenType
-       };
-
-       // 判断数据库版本，如果不匹配则需进行升降级操作
-       // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
-       // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
-       const SQL_CREATE_TABLE =
-         'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
-
-       relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err, store) => {
-         if (err) {
-           console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-           return;
-         }
-         console.info('Succeeded in getting RdbStore.');
-         let storeVersion = store.version;
-         // 当数据库创建时，数据库默认版本为0
-         if (storeVersion === 0) {
-           try {
-             await store.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
-             storeVersion = 3;
-             // 设置数据库的版本，入参为大于0的整数
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-
-         // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
-         // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
-         if (storeVersion === 1) {
-           // version = 1：表结构：EMPLOYEE (NAME, SALARY, CODES, ADDRESS) => version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
-             console.info("Upgrade store version from 1 to 2 success.")
-             storeVersion = 2;
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-
-         // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
-         if (storeVersion === 2) {
-           // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) => version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
-             storeVersion = 3;
-             console.info("Upgrade store version from 2 to 3 success.")
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-         store.version = storeVersion;
-         // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
-       });
-     }
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
+   
+   let store: relationalStore.RdbStore | undefined = undefined;
+   let context = getContext();
+   let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
+   let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
+   if (!tokenTypeSupported) {
+     hilog.error(DOMAIN, 'rdbDataPersistence', `ICU_TOKENIZER is not supported on this platform.`);
    }
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     // 数据库文件名
+     name: 'RdbTest.db',
+     // 数据库安全级别
+     securityLevel: relationalStore.SecurityLevel.S3,
+     // 可选参数，指定数据库是否加密，默认不加密
+     encrypt: false,
+     // 可选参数，数据库自定义路径。默认在本应用沙箱目录下创建RdbStore实例。
+     customDir: 'customDir/subCustomDir',
+     // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
+     isReadOnly: false,
+     // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
+     tokenizer: tokenType
+   };
+   // ···
+     // 判断数据库版本，如果不匹配则需进行升降级操作
+     // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+     // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
+     const SQL_CREATE_TABLE =
+       'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
+   
+     relationalStore.getRdbStore(context, STORE_CONFIG, async (err, store) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
+       let storeVersion = store.version;
+       // 当数据库创建时，数据库默认版本为0
+       if (storeVersion === 0) {
+         try {
+           await store.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
+           storeVersion = 3;
+           // 设置数据库的版本，入参为大于0的整数
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+   
+       // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
+       // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
+       if (storeVersion === 1) {
+         // version = 1：表结构：EMPLOYEE (NAME, SALARY, CODES, ADDRESS)
+         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+         try {
+           await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.')
+           storeVersion = 2;
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+   
+       // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
+       if (storeVersion === 2) {
+         // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) 
+         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
+         try {
+           await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
+           storeVersion = 3;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+       store.version = storeVersion;
+       // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
+     });
    ```
 
    FA模型示例：
@@ -240,8 +240,10 @@
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
 2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
-     
-   ```ts
+   <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 插入数据
    let value1 = 'Lisa';
    let value2 = 18;
    let value3 = 100.5;
@@ -254,14 +256,14 @@
      CODES: value4,
      IDENTITY: value5,
    };
-
+   
    if (store !== undefined) {
      try {
        const rowId = await store.insert('EMPLOYEE', valueBucket);
-       console.info(`Succeeded in inserting data. rowId:${rowId}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in inserting data. rowId:${rowId}`);
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Failed to insert data. Code:${err.code}, message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to insert data. Code:${err.code}, message:${err.message}`);
      }
    }
    ```
@@ -273,8 +275,10 @@
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
-
-   ```ts
+   <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 修改数据、删除数据
    let value6 = 'Rose';
    let value7 = 22;
    let value8 = 200.5;
@@ -287,30 +291,30 @@
      CODES: value9,
      IDENTITY: value10,
    };
-
+   
    // 修改数据
    let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE'); // 创建表'EMPLOYEE'的predicates
    predicates1.equalTo('NAME', 'Lisa'); // 匹配表'EMPLOYEE'中'NAME'为'Lisa'的字段
    if (store !== undefined) {
      (store as relationalStore.RdbStore).update(valueBucket2, predicates1, (err: BusinessError, rows: number) => {
        if (err) {
-         console.error(`Failed to update data. Code:${err.code}, message:${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in updating data. row count: ${rows}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to update data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in updating data. row count: ${rows}`);
      })
    }
-
+   
    // 删除数据
    predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates1.equalTo('NAME', 'Lisa');
    if (store !== undefined) {
      (store as relationalStore.RdbStore).delete(predicates1, (err: BusinessError, rows: number) => {
        if (err) {
-         console.error(`Failed to delete data. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete data. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Delete rows: ${rows}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Delete rows: ${rows}`);
      })
    }
    ```
@@ -318,17 +322,19 @@
 4. 根据谓词指定的查询条件查找数据。
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
-
-   ```ts
+   <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 查找数据
    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates2.equalTo('NAME', 'Rose');
    if (store !== undefined) {
      (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'IDENTITY'], (err: BusinessError, resultSet) => {
        if (err) {
-         console.error(`Failed to query data. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
        while (resultSet.goToNextRow()) {
          const id = resultSet.getLong(resultSet.getColumnIndex('ID'));
@@ -336,7 +342,7 @@
          const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
          const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
          const identity = resultSet.getValue(resultSet.getColumnIndex('IDENTITY'));
-         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
        }
        // 释放数据集的内存
        resultSet.close();
@@ -351,17 +357,19 @@
    当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
 
    以中文关键字检索为例：
-
-   ```ts
+   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 中文关键字检索，查找数据
    if (store !== undefined) {
      // 创建全文检索表
      const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
      try {
        await store.execute(SQL_CREATE_TABLE);
-       console.info('Succeeded in creating fts table.');
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
      }
    }
    if (store !== undefined) {
@@ -369,12 +377,12 @@
        const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
-         console.info(`name=${name}`);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
        }
        resultSet.close();
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`Query failed. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
      }
    }
    ```
@@ -385,8 +393,10 @@
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
    具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
-
-   ```ts
+   <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 使用事务对象执行数据的插入、删除和更新操作
    if (store !== undefined) {
      // 创建事务对象
      try {
@@ -403,8 +413,8 @@
            },
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
-         console.info(`Insert is successful, rowId = ${rowId}`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Insert is successful, rowId = ${rowId}`);
+   
          const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
          predicates.equalTo('NAME', 'Lisa');
          // 使用事务对象更新数据
@@ -418,24 +428,24 @@
            predicates,
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
-         console.info(`Updated row count: ${rows}`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Updated row count: ${rows}`);
+   
          // 使用事务对象删除数据
          await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
-         console.info(`execute delete success`);
-
+         hilog.info(DOMAIN, 'rdbDataPersistence', `execute delete success`);
+   
          // 提交事务
          await transaction.commit();
-         console.info('Transaction commit success.');
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Transaction commit success.');
        } catch (error) {
          const err = error as BusinessError;
          // 执行失败回滚事务
          await transaction.rollback();
-         console.error(`Transaction execute failed, code is ${err.code}, message is ${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Transaction execute failed, code is ${err.code}, message is ${err.message}`);
        }
      } catch (error) {
        const err = error as BusinessError;
-       console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `createTransaction failed, code is ${err.code}, message is ${err.message}`);
      }
    }
    ```
@@ -443,16 +453,18 @@
 6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
    此处以手动备份为例：
-
-   ```ts
+   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 在同路径下备份数据库
    if (store !== undefined) {
-     // "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + "backup.db"
-     (store as relationalStore.RdbStore).backup("Backup.db", (err: BusinessError) => {
+     // 'Backup.db'为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + 'Backup.db'
+     (store as relationalStore.RdbStore).backup('Backup.db', (err: BusinessError) => {
        if (err) {
-         console.error(`Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Succeeded in backing up RdbStore.`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in backing up RdbStore.`);
      })
    }
    ```
@@ -460,15 +472,17 @@
 7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
    此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
-
-   ```ts
+   <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 备份数据库中恢复数据
    if (store !== undefined) {
-     (store as relationalStore.RdbStore).restore("Backup.db", (err: BusinessError) => {
+     (store as relationalStore.RdbStore).restore('Backup.db', (err: BusinessError) => {
        if (err) {
-         console.error(`Failed to restore RdbStore. Code:${err.code}, message:${err.message}`);
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to restore RdbStore. Code:${err.code}, message:${err.message}`);
          return;
        }
-       console.info(`Succeeded in restoring RdbStore.`);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in restoring RdbStore.`);
      })
    }
    ```
@@ -478,26 +492,16 @@
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
-
-   ```ts
-   relationalStore.deleteRdbStore(this.context, 'RdbTest.db', (err: BusinessError) => {
-    if (err) {
-       console.error(`Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
-       return;
-     }
-     console.info('Succeeded in deleting RdbStore.');
-   });
-   ```
-
-   FA模型示例：
-
-   ```ts
+   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 删除数据库
    relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
-       console.error(`Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
        return;
      }
-     console.info('Succeeded in deleting RdbStore.');
+     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
 

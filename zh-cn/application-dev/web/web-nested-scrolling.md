@@ -19,78 +19,89 @@ Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚
 使用Web组件[nestedScroll](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nestedscroll11)属性来设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动，同时也允许在过程中动态改变嵌套滚动的模式。
 
 **完整代码**
-```ts
-// xxx.ets
+
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @ComponentV2
 struct NestedScroll {
-  private scrollerForScroll: Scroller = new Scroller()
-  private listScroller: Scroller = new Scroller()
+  private scrollerForScroll: Scroller = new Scroller();
+  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
-  @Local arr: Array<number> = []
+  @Local arr: Array<number> = [];
 
   aboutToAppear(): void {
     for (let i = 0; i < 10; i++) {
-      this.arr.push(i)
-    }
+    this.arr.push(i);
   }
+}
 
-  build() {
-    Scroll(this.scrollerForScroll) {
-      Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-          .nestedScroll({
-            scrollUp: NestedScrollMode.PARENT_FIRST,//向上滚动父组件优先
-            scrollDown: NestedScrollMode.SELF_FIRST,//向下滚动子组件优先
-          }).height("100%")
-        Repeat<number>(this.arr)
-          .each((item: RepeatItem<number>) => {
-            Text("Scroll Area")
-              .width("100%")
-              .height("40%")
-              .backgroundColor(0X330000FF)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-          })
-      }
+build() {
+  Scroll(this.scrollerForScroll) {
+    Column() {
+      Web({ src: $rawfile('scroll.html'), controller: this.controller })
+        .nestedScroll({
+          scrollUp: NestedScrollMode.PARENT_FIRST,//向上滚动父组件优先
+          scrollDown: NestedScrollMode.SELF_FIRST,//向下滚动子组件优先
+        }).height('100%')
+      Repeat<number>(this.arr)
+        .each((item: RepeatItem<number>) => {
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
+            .backgroundColor(0X330000FF)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+        })
     }
   }
 }
+}
 ```
+
 加载的html文件。
 
 ```html
-<!-- index.html -->
+<!-- scroll.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .blue {
-          background-color: lightblue;
+            background-color: lightblue;
         }
+
         .green {
-          background-color: lightgreen;
+            background-color: lightgreen;
         }
-        .blue, .green {
-         font-size:16px;
-         height:200px;
-         text-align: center;       /* 水平居中 */
-         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+
+        .blue,
+        .green {
+            font-size: 16px;
+            height: 200px;
+            text-align: center;
+            /* 水平居中 */
+            line-height: 200px;
+            /* 垂直居中（值等于容器高度） */
         }
     </style>
 </head>
+
 <body>
-<div class="blue" >webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
-<div class="green">webArea</div>
-<div class="blue">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
+    <div class="green">webArea</div>
+    <div class="blue">webArea</div>
 </body>
+
 </html>
 ```
 ![web-nested-scrolling](figures/web-nested-scrolling2.gif)

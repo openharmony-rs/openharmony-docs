@@ -2083,6 +2083,55 @@ if (netHandle.netId != 0) {
 }
 ```
 
+## connection.getIpNeighTable<sup>22+</sup>
+
+getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
+
+获取本地设备IP邻居表条目信息，包括IPv4和IPv6，每个条目信息包括IP地址、MAC地址、网卡名。使用Promise异步回调。
+
+> **说明：**
+>
+> 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise对象，返回ip邻居表条目信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
+  if (data.length !== 0) {
+    console.info(`ipAddress:${data[0].ipAddress}`);
+    console.info(`ifaceName:${data[0].iface}`);
+    console.info(`macAddress:${data[0].macAddress}`);
+  }
+}).catch((error: BusinessError) => {
+  console.error("error fetching ip neigh table:", Code:JSON.stringify(error));
+  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## NetConnection
 
 网络连接的句柄。
@@ -3054,3 +3103,16 @@ type UDPSocket = socket.UDPSocket
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.UDPSocket | 定义UDPSocket连接。     |
+
+
+## NetIpMacInfo<sup>22+</sup>
+
+IP邻居表条目信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
+| iface       | string                              | 否 | 否 |网卡名。                                    |
+| macAddress | string | 否 | 否 |MAC地址。                                |

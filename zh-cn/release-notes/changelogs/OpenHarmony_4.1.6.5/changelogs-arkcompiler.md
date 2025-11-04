@@ -10,7 +10,7 @@
 
 该变更为非兼容性变更。
 
-- Sendable数据用于解决跨线程数据传递的性能问题。其使用介绍参见[@Sendable装饰器：声明并校验Sendable类](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md)。
+- Sendable数据用于解决跨线程数据传递的性能问题。其使用介绍参见[@Sendable装饰器：声明并校验Sendable类](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md)。
 - 部分约束在热点函数中未做检查，导致开发者能够绕过该约束
 - 下面是本次变更涉及绕过的约束
 
@@ -21,7 +21,7 @@
 
 - 对于违反**属性类型限制**的情况。
     - 变更前：程序正常运行，无错误
-    - 变更后：程序在违反约束的点抛出异常，提醒开发者此处赋值类型不匹配，需要按照：[@Sendable装饰器：声明并校验Sendable类](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md) 中**装饰的对象内的属性类型限制**的要求进行适配
+    - 变更后：程序在违反约束的点抛出异常，提醒开发者此处赋值类型不匹配，需要按照：[@Sendable装饰器：声明并校验Sendable类](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md) 中**装饰的对象内的属性类型限制**的要求进行适配
 
 **API Level**
 
@@ -37,4 +37,4 @@ OpenHarmony_4.1.6.5
 
 **适配指导**
 
-本次变更后，如在运行时发生类型不匹配异常，可能违反了本次修改涉及的使用约束，需要对赋值类型进行检查。详细说明，参见[@Sendable装饰器：声明并校验Sendable类](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md)
+本次变更后，如在运行时发生类型不匹配异常，可能违反了本次修改涉及的使用约束，需要对赋值类型进行检查。详细说明，参见[@Sendable装饰器：声明并校验Sendable类](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/arkts-utils/arkts-sendable.md)

@@ -18,10 +18,10 @@
 
 通过repo下载
 
-方式一（推荐）：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+方式一（推荐）：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.3-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -29,7 +29,7 @@ repo forall -c 'git lfs pull'
 方式二：通过repo + https 下载。
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.3-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -55,7 +55,7 @@ repo forall -c 'git lfs pull'
 
 | 子系统   | 新增特性                                                     | 修改特性 | 删除特性 |
 | -------- | ------------------------------------------------------------ | -------- | -------- |
-| 芯片平台 | 支持了轻量设备在windows环境下编译版本（[pulls/60](https://gitee.com/openharmony/device_hisilicon_hispark_pegasus/pulls/60)） | N/A      | N/A      |
+| 芯片平台 | 支持了轻量设备在windows环境下编译版本（[pulls/60](https://gitcode.com/openharmony/device_hisilicon_hispark_pegasus/pulls/60)） | N/A      | N/A      |
 
 
 ## 已修复缺陷列表
@@ -66,15 +66,15 @@ repo forall -c 'git lfs pull'
 
 | ISSUE                                                        | 问题描述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I43MZK](https://gitee.com/openharmony/startup_syspara_lite/issues/I43MZK?from=project-issue) | release1.0.1分支命名中出现空格字符，与外部接口标准不符       |
-| [I44ZGK](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I44ZGK?from=project-issue) | 组件ffmpeg 4.2.2存在未修复的漏洞                             |
-| [I41ZMV](https://gitee.com/openharmony/graphic_utils/issues/I41ZMV?from=project-issue) | HI3516刷机之后，在系统bin目录下存在module_ActsUiInterfaceTest1.bin测试文件 |
-| [I3ZOIO](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ZOIO?from=project-issue) | los_disk_deinit 资源释放失败                                 |
-| [I43WLG](https://gitee.com/openharmony/kernel_liteos_a/issues/I43WLG?from=project-issue) | OsMountRootfs启动失败                                        |
-| [I48FKQ](https://gitee.com/openharmony/kernel_liteos_m/issues/I48FKQ?from=project-issue) | osEventFlagsGet传NULL时应该返回0                             |
-| [I48FL1](https://gitee.com/openharmony/kernel_liteos_m/issues/I48FL1?from=project-issue) | osThreadNew函数attr为NULL时，创建线程失败                    |
-| [I48FLX](https://gitee.com/openharmony/kernel_liteos_a/issues/I48FLX?from=project-issue) | shell命令中使用rm -r指令尝试删除dev下节点时会导致系统出错    |
-| [I48FMK](https://gitee.com/openharmony/kernel_liteos_a/issues/I48FMK?from=project-issue) | 小型系统的ActsProcessApiTest/UidGidTest/testGetgroup测试用例失败 |
-| [I48FMT](https://gitee.com/openharmony/kernel_liteos_a/issues/I48FMT?from=project-issue) | nanosleep函数实现存在缺陷                                    |
+| [I43MZK](https://gitcode.com/openharmony/startup_syspara_lite/issues/I43MZK?from=project-issue) | release1.0.1分支命名中出现空格字符，与外部接口标准不符       |
+| [I44ZGK](https://gitcode.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I44ZGK?from=project-issue) | 组件ffmpeg 4.2.2存在未修复的漏洞                             |
+| [I41ZMV](https://gitcode.com/openharmony/graphic_utils/issues/I41ZMV?from=project-issue) | HI3516刷机之后，在系统bin目录下存在module_ActsUiInterfaceTest1.bin测试文件 |
+| [I3ZOIO](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3ZOIO?from=project-issue) | los_disk_deinit 资源释放失败                                 |
+| [I43WLG](https://gitcode.com/openharmony/kernel_liteos_a/issues/I43WLG?from=project-issue) | OsMountRootfs启动失败                                        |
+| [I48FKQ](https://gitcode.com/openharmony/kernel_liteos_m/issues/I48FKQ?from=project-issue) | osEventFlagsGet传NULL时应该返回0                             |
+| [I48FL1](https://gitcode.com/openharmony/kernel_liteos_m/issues/I48FL1?from=project-issue) | osThreadNew函数attr为NULL时，创建线程失败                    |
+| [I48FLX](https://gitcode.com/openharmony/kernel_liteos_a/issues/I48FLX?from=project-issue) | shell命令中使用rm -r指令尝试删除dev下节点时会导致系统出错    |
+| [I48FMK](https://gitcode.com/openharmony/kernel_liteos_a/issues/I48FMK?from=project-issue) | 小型系统的ActsProcessApiTest/UidGidTest/testGetgroup测试用例失败 |
+| [I48FMT](https://gitcode.com/openharmony/kernel_liteos_a/issues/I48FMT?from=project-issue) | nanosleep函数实现存在缺陷                                    |
 
 

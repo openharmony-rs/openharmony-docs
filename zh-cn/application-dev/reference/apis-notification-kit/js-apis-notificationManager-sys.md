@@ -5265,12 +5265,12 @@ export default class EntryAbility extends UIAbility {
         ringtoneUri: "ringtoneUri",
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
-        hilog.info(0x0000, 'testTag', 'setRingtoneInfoByBundle ,bundle:' + JSON.stringify(bundle) + 'ringtoneInfoJSON' + JSON.stringify(ringtoneInfo));
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
       }).catch((err: BusinessError) => {
-        console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`setRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
@@ -5325,14 +5325,17 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
-          hilog.info(0x0000, 'testTag', 'getRingtoneInfoByBundle success：' + this.ringtoneInfo);
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
         }).catch((err: BusinessError) => {
-          console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
       });
     } catch (err) {
-      console.error(`getRingtoneInfoByBundle failed. Code is ${err.code}, message is ${err.message}`);
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
     }
   }
 }

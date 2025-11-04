@@ -37,6 +37,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | 用于细节增强的质量等级。 |
+| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | 视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#变量)。 |
 | [VideoProcessing_ErrorCode](#videoprocessing_errorcode) | VideoProcessing_ErrorCode | 视频处理错误码。 |
 | [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | 视频处理状态。<br>视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate)进行报告。 |
 
@@ -44,7 +45,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | 视频处理过程中报告错误的回调函数指针。 |
+| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | 视频处理过程中报告错误的回调函数指针。<br> 错误码[VideoProcessing_ErrorCode](#videoprocessing_errorcode)：VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING，不支持的处理，比如不支持输入输出的颜色空间类型转换。<br> VIDEO_PROCESSING_ERROR_INVALID_VALUE，无效的视频属性，比如视频的颜色空间无效。<br> VIDEO_PROCESSING_ERROR_NO_MEMORY，内存不足。<br> VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。 |
 | [typedef void (\*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)](#oh_videoprocessingcallback_onstate) | OH_VideoProcessingCallback_OnState | 报告视频处理状态的回调函数指针。<br>[OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_start)成功调用之后状态会变为[VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING。调用[OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop)，所有的缓存buffer处理完成后，状态会变为[VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED。 |
 | [typedef void (\*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)](#oh_videoprocessingcallback_onnewoutputbuffer) | OH_VideoProcessingCallback_OnNewOutputBuffer | 报告输出buffer已填充好数据的回调函数指针。<br>每个新输出buffer填充好数据之后该buffer的索引就会报告给用户。调用[OH_VideoProcessing_RenderOutputBuffer](capi-video-processing-h.md#oh_videoprocessing_renderoutputbuffer)根据索引来处理渲染并输出该buffer。如果未注册该函数，则输出buffer填充好数据后不会报告用户，而是直接进行处理渲染并输出。 |
 
@@ -56,6 +57,7 @@
 | const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | 表示创建元数据生成视频处理实例。<br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建元数据生成视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12 |
 | const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | 表示创建细节增强视频处理实例。<br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建细节增强视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12 |
 | const char* VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel)查看具体取值。<br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置质量等级。<br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前质量等级。<br>**起始版本：** 12 |
+| const char * VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol)。调用[OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue)设置视频元数据生成的风格模式到AVFormat参数。调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置当前视频元数据生成的风格模式。调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前视频元数据生成的风格模式。<br>**起始版本：** 22 |
 
 ## 枚举类型说明
 
@@ -67,7 +69,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 **描述**
 
-用于细节增强的质量等级。参数VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL的具体取值，设置方法详见开发指南。
+用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](#变量)的具体取值，设置方法详见开发指南。
 
 **起始版本：** 12
 
@@ -83,6 +85,31 @@ enum VideoDetailEnhancer_QualityLevel
 [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)
 
 [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)
+
+### VideoMetadataGeneratorStyleControl
+
+```
+enum VideoMetadataGeneratorStyleControl
+```
+
+**描述**
+
+视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#变量)。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 0 | 亮度优先模式。 |
+| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 1 | 对比度优先模式。 |
+
+**参考：**
+
+[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)
+
+[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)
+
+[OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue)
 
 ### VideoProcessing_ErrorCode
 
@@ -118,9 +145,7 @@ enum VideoProcessing_State
 
 **描述**
 
-视频处理状态。
-
-视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate)进行报告。
+视频处理状态。视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate)进行报告。
 
 **起始版本：** 12
 
@@ -135,7 +160,7 @@ enum VideoProcessing_State
 ### OH_VideoProcessingCallback_OnError()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)
+typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)
 ```
 
 **描述**
@@ -154,7 +179,6 @@ VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -166,7 +190,7 @@ VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。
 ### OH_VideoProcessingCallback_OnState()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state,void* userData)
+typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)
 ```
 
 **描述**
@@ -177,19 +201,18 @@ typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProc
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 视频处理实例。 |
-|  [VideoProcessing_State](#videoprocessing_state) state | 视频处理状态。 |
+| [VideoProcessing_State](#videoprocessing_state) state | 视频处理状态。 |
 | void* userData | 用户的自定义数据。 |
 
 ### OH_VideoProcessingCallback_OnNewOutputBuffer()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index,void* userData)
+typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)
 ```
 
 **描述**
@@ -200,13 +223,12 @@ typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing*
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | 视频处理实例。 |
 |  uint32_t index | 新输出buffer的索引。 |
-| void* userData | 用户自定义的数据。 |
+|  void* userData | 用户自定义的数据。 |
 
 

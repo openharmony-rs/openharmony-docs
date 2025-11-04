@@ -391,6 +391,24 @@ GATT未授权。
 
 检查GATT是否已授权。
 
+## 2901008
+
+**错误信息**
+
+GATT service is not found.
+
+**错误描述**
+
+GATT服务不存在。在获取指定的GATT服务之前，该服务应当已经被添加。
+
+**可能原因**
+
+GATT服务尚未被添加。
+
+**处理步骤**
+
+先调用[addService](js-apis-bluetooth-ble.md#addservice)添加该服务。
+
 ## 2901054
 
 **错误信息**
