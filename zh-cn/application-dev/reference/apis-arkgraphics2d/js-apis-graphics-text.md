@@ -998,17 +998,22 @@ paragraph.layoutSync(100);
 
 ### layout<sup>18+</sup>
 
-layout(width: number): Promise\<void>
+ArkTS-Dyn: layout(width: number): Promise\<void>  
+ArkTS-Sta: layout(width: double): Promise\<void>
 
 进行排版并计算所有字形位置，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 |   参数名   |    类型               | 必填 | 说明                                    |
 |   -----   |   ------------------  | ---- | --------------------------------------- |
-|   width   | number                | 是   | 单行的最大宽度，浮点数，单位为物理像素px。    |
+|   width   | ArkTS-Dyn: number<br>ArkTS-Sta: double                | 是   | 单行的最大宽度，浮点数，单位为物理像素px。    |
 
 **返回值：**
 
@@ -1025,6 +1030,8 @@ layout(width: number): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, text } from '@kit.ArkGraphics2D'
@@ -1083,7 +1090,86 @@ struct Index {
         .height(50)
         .onClick(() => {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          if (this.pixelmap == undefined) {
+            // 构造图片对象
+            this.pixelmap = image.createPixelMapSync(color, opts);
+          }
+          // 进行绘制文字
+          this.fun(this.pixelmap);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Component, Column, Image, Button, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing, text } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit';
+
+let textStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 255,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 30,
+};
+let paragraphStyle: text.ParagraphStyle = {
+  textStyle: textStyle,
+};
+let fontCollection: text.FontCollection = new text.FontCollection();
+let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+// 添加文本字符串
+paragraphBuilder.addText("test");
+// 生成排版对象
+let paragraph = paragraphBuilder.build();
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap != undefined) {
+    // 通过图片对象构造画布
+    let canvas = new drawing.Canvas(pixelmap);
+    // 进行绘制文本字符串
+    paragraph.paint(canvas, 100, 10);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+
+  async prepareLayoutPromise() {
+    // 排版对象进行布局计算
+    paragraph.layout(200).then(() => {
+      console.info(`Succeeded in doing layout`);
+    }).catch((error: Error) => {
+      console.error(`Failed to do layout, error: ${JSON.stringify(error)} message: ${error.message}`);
+    });
+  }
+
+  aboutToAppear() {
+    this.prepareLayoutPromise();
+  }
+
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("layout")
+        .width(100)
+        .height(50)
+        .onClick((e: ClickEvent) => {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
           if (this.pixelmap == undefined) {
             // 构造图片对象
             this.pixelmap = image.createPixelMapSync(color, opts);
@@ -1104,25 +1190,30 @@ struct Index {
 
 ### paint
 
-paint(canvas: drawing.Canvas, x: number, y: number): void
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void  
+ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以 (x, y) 为左上角绘制文本。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标画布。         |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
+|    x   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
+|    y   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
 
 **示例：**
 
 ```ts
 const color: ArrayBuffer = new ArrayBuffer(160000);
-let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
 let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
 let canvas = new drawing.Canvas(pixelMap);
 paragraph.paint(canvas, 0, 0);
@@ -1130,11 +1221,16 @@ paragraph.paint(canvas, 0, 0);
 
 ### paintOnPath
 
-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void
+ArkTS-Dyn: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void  
+paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
 
 在画布上沿路径绘制文本。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1142,14 +1238,14 @@ paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标画布。         |
 | path | [drawing.Path](arkts-apis-graphics-drawing-Path.md) | 是   | 确认文字位置的路径。         |
-|    hOffset   | number                                               | 是   | 沿路径方向偏置，从路径起点向前为正，向后为负。|
-|    vOffset   | number                                               | 是   | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正。|
+|    hOffset   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 沿路径方向偏置，从路径起点向前为正，向后为负。|
+|    vOffset   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正。|
 
 **示例：**
 
 ```ts
 const color: ArrayBuffer = new ArrayBuffer(160000);
-let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
 let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
 let canvas = new drawing.Canvas(pixelMap);
 let path = new drawing.Path();
@@ -1159,17 +1255,22 @@ paragraph.paintOnPath(canvas, path, 0, 0);
 
 ### getMaxWidth
 
-getMaxWidth(): number
+ArkTS-Dyn: getMaxWidth(): number  
+ArkTS-Sta: getMaxWidth(): double
 
 获取文本最大行宽。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明       |
 | ------ | --------- |
-| number | 最大的行宽，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 最大的行宽，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1179,17 +1280,22 @@ let maxWidth = paragraph.getMaxWidth();
 
 ### getHeight
 
-getHeight(): number
+ArkTS-Dyn: getHeight(): number  
+ArkTS-Sta: getHeight(): double
 
 获取文本总高度。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明   |
 | ------ | ----- |
-| number | 总高度，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 总高度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1199,17 +1305,22 @@ let height = paragraph.getHeight();
 
 ### getLongestLine
 
-getLongestLine(): number
+ArkTS-Dyn: getLongestLine(): number  
+ArkTS-Sta: getLongestLine(): double
 
 获取文本最长行宽。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | ------------- |
-| number | 最长一行的宽度，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 最长一行的宽度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1219,17 +1330,22 @@ let longestLine = paragraph.getLongestLine();
 
 ### getLongestLineWithIndent<sup>13+</sup>
 
-getLongestLineWithIndent(): number
+ArkTS-Dyn: getLongestLineWithIndent(): number  
+ArkTS-Sta: getLongestLineWithIndent(): double
 
 获取文本最长一行的宽度（包含缩进），建议向上取整。文本内容为空时返回0。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | ------------- |
-| number | 最长一行的宽度（该宽度包含当前行缩进的宽度），浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 最长一行的宽度（该宽度包含当前行缩进的宽度），浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1239,17 +1355,22 @@ let longestLineWithIndent = paragraph.getLongestLineWithIndent();
 
 ### getMinIntrinsicWidth
 
-getMinIntrinsicWidth(): number
+ArkTS-Dyn: getMinIntrinsicWidth(): number  
+ArkTS-Sta: getMinIntrinsicWidth(): double
 
 获取段落最小固有宽度。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                           |
 | ------ | ----------------------------- |
-| number | 该段落所占水平空间的最小固有宽度，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 该段落所占水平空间的最小固有宽度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1259,17 +1380,22 @@ let minIntrinsicWidth = paragraph.getMinIntrinsicWidth();
 
 ### getMaxIntrinsicWidth
 
-getMaxIntrinsicWidth(): number
+ArkTS-Dyn: getMaxIntrinsicWidth(): number  
+ArkTS-Sta: getMaxIntrinsicWidth(): double
 
 获取段落最大固有宽度。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                           |
 | ------ | ----------------------------- |
-| number | 该段落所占水平空间的最大固有宽度，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 该段落所占水平空间的最大固有宽度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1279,17 +1405,22 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 ### getAlphabeticBaseline
 
-getAlphabeticBaseline(): number
+ArkTS-Dyn: getAlphabeticBaseline(): number  
+ArkTS-Sta: getAlphabeticBaseline(): double
 
 获取拉丁字母基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1299,17 +1430,22 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 ### getIdeographicBaseline
 
-getIdeographicBaseline(): number
+ArkTS-Dyn: getIdeographicBaseline(): number  
+ArkTS-Sta: getIdeographicBaseline(): double
 
 获取表意字（如CJK（中文，日文，韩文））下的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| number | 获取表意字下的基线位置，浮点数，单位为物理像素px。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 获取表意字下的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1324,6 +1460,10 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 获取给定的矩形区域宽度以及矩形区域高度的规格下，文本中该区间范围内的字符所占的矩形区域。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1354,6 +1494,10 @@ getRectsForPlaceholders(): Array\<TextBox>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                         | 说明        |
@@ -1368,18 +1512,23 @@ let placeholderRects = paragraph.getRectsForPlaceholders();
 
 ### getGlyphPositionAtCoordinate
 
-getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
+ArkTS-Dyn: getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity  
+ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity
 
 获取与给定坐标最接近的字形位置信息。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明   |
 | ----- | ------ | ---- | ------ |
-| x     | number | 是   | 横坐标，浮点数。|
-| y     | number | 是   | 纵坐标，浮点数。|
+| x     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横坐标，浮点数。|
+| y     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵坐标，浮点数。|
 
 **返回值：**
 
@@ -1395,17 +1544,22 @@ let positionWithAffinity = paragraph.getGlyphPositionAtCoordinate(0, 0);
 
 ### getWordBoundary
 
-getWordBoundary(offset: number): Range
+ArkTS-Dyn: getWordBoundary(offset: number): Range  
+ArkTS-Sta: getWordBoundary(offset: int): Range
 
 返回给定offset的字形所在单词的索引区间。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明        |
 | ------ | ------ | ---- | ----------- |
-| offset | number | 是   | 字形的偏移量，整数。|
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 字形的偏移量，整数。|
 
 **返回值：**
 
@@ -1421,17 +1575,22 @@ let wordRange = paragraph.getWordBoundary(0);
 
 ### getLineCount
 
-getLineCount(): number
+ArkTS-Dyn: getLineCount(): number  
+ArkTS-Sta: getLineCount(): int
 
 返回文本行数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明       |
 | ------ | --------- |
-| number | 文本行数量，整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 文本行数量，整数。|
 
 **示例：**
 
@@ -1441,23 +1600,28 @@ let lineCount = paragraph.getLineCount();
 
 ### getLineHeight
 
-getLineHeight(line: number): number
+ArkTS-Dyn: getLineHeight(line: number): number  
+ArkTS-Sta: getLineHeight(line: int): double
 
 返回指定行的行高。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ----- | ------ | ---- | --------- |
-| line  | number | 是   | 文本行索引，整数，范围为0~getLineCount()-1。|
+| line  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文本行索引，整数，范围为0~getLineCount()-1。|
 
 **返回值：**
 
 | 类型   | 说明  |
 | ------ | ---- |
-| number | 行高。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 行高。|
 
 **示例：**
 
@@ -1467,23 +1631,28 @@ let lineHeight = paragraph.getLineHeight(0);
 
 ### getLineWidth
 
-getLineWidth(line: number): number
+ArkTS-Dyn: getLineWidth(line: number): number  
+ArkTS-Sta: getLineWidth(line: int): double
 
 返回指定行的行宽。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ----- | ------ | ---- | --------- |
-| line  | number | 是   | 文本行索引，整数，范围为0~getLineCount()-1。|
+| line  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文本行索引，整数，范围为0~getLineCount()-1。|
 
 **返回值：**
 
 | 类型   | 说明  |
 | ------ | ---- |
-| number | 行宽。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 行宽。|
 
 **示例：**
 
@@ -1498,6 +1667,10 @@ didExceedMaxLines(): boolean
 返回段落是否超过最大行数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1519,6 +1692,10 @@ getTextLines(): Array\<TextLine>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                          | 说明          |
@@ -1533,17 +1710,22 @@ let lines = paragraph.getTextLines();
 
 ### getActualTextRange
 
-getActualTextRange(lineNumber: number, includeSpaces: boolean): Range
+ArkTS-Dyn: getActualTextRange(lineNumber: number, includeSpaces: boolean): Range  
+ArkTS-Sta: getActualTextRange(lineNumber: int, includeSpaces: boolean): Range
 
 获取指定行的实际可见文本范围，不包括溢出的省略号。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ----- | ------ | ---- | --------- |
-| lineNumber  | number | 是   | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过[getLineCount](#getlinecount)接口获取。|
+| lineNumber  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要获取文本范围的行索引，行索引从0开始。该接口只能获取已有行的边界，即输入行索引从0开始。最大行索引为文本行数量-1，文本行数量可通过[getLineCount](#getlinecount)接口获取。|
 | includeSpaces  | boolean | 是   | 表示是否应包含空白字符。true表示包含空白字符，false表示不包含空白字符。|
 
 **返回值：**
@@ -1567,6 +1749,10 @@ getLineMetrics(): Array\<LineMetrics>
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                          | 说明          |
@@ -1581,17 +1767,22 @@ let arrLineMetrc =  paragraph.getLineMetrics();
 
 ### getLineMetrics
 
-getLineMetrics(lineNumber: number): LineMetrics | undefined
+ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics | undefined  
+ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 获取特定行号的行度量信息。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ----- | ------ | ---- | --------- |
-| lineNumber  | number | 是   | 要查询度量信息的行的编号，行号从0开始。|
+| lineNumber  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 要查询度量信息的行的编号，行号从0开始。|
 
 **返回值：**
 
@@ -1613,6 +1804,10 @@ updateColor(color: common2D.Color): void;
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
@@ -1632,6 +1827,10 @@ updateDecoration(decoration: Decoration): void;
 更新整个文本段落的装饰线。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1658,24 +1857,29 @@ paragraph.updateDecoration({
 
 ### getLineBreak<sup>18+</sup>
 
-getLineBreak(startIndex: number, width: number): number
+ArkTS-Dyn: getLineBreak(startIndex: number, width: number): number  
+ArkTS-Sta: getLineBreak(startIndex: int, width: double): int
 
 计算在限定宽度下，从指定位置开始可以排版的字符数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
-| startIndex | number | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，参数非法时抛出异常。|
-| width | number | 是   | 可用于排版的宽度，大于0的浮点数，单位为物理像素px。|
+| startIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，参数非法时抛出异常。|
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 可用于排版的宽度，大于0的浮点数，单位为物理像素px。|
 
 **返回值：**
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 返回在限定排版宽度下，从指定位置开始可排版的字符总数，取值为整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回在限定排版宽度下，从指定位置开始可排版的字符总数，取值为整数。|
 
 **错误码：**
 
@@ -1695,18 +1899,23 @@ let count = lineTypeset.getLineBreak(startIndex, width);
 
 ### createLine<sup>18+</sup>
 
-createLine(startIndex: number, count: number): TextLine
+ArkTS-Dyn: createLine(startIndex: number, count: number): TextLine  
+ArkTS-Sta: createLine(startIndex: int, count: int): TextLine
 
 根据指定的排版区间生成文本行对象。 
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
-| startIndex | number | 是 | 开始计算排版的起始位置，整数，取值范围为[0, 文本字符总数)。|
-| count | number | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本结尾]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
+| startIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 开始计算排版的起始位置，整数，取值范围为[0, 文本字符总数)。|
+| count | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本结尾]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
 
 **返回值：**
 
@@ -1750,17 +1959,17 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
-| startIndex | number                                            | 否   | 否   | 文本缓冲区中该行开始的索引位置。|
-| endIndex   | number                                            | 否   | 否   | 文本缓冲区中该行结束的索引位置。|
-| ascent     | number                                            | 否   | 否   | 文字上升高度，即从基线到字符顶部的距离。|
-| descent    | number                                            | 否   | 否   | 文字下降高度，即从基线到字符底部的距离。|
-| height     | number                                            | 否   | 否   | 当前行的高度，计算方式为 `Math.round(ascent + descent)`|
-| width      | number                                            | 否   | 否   | 行的宽度。                      |
-| left       | number                        | 否   | 否   | 行的左边缘位置。右边缘可通过 `left+width` 计算得出。|
-| baseline   | number                        | 否   | 否   | 该行基线相对于段落顶部的 Y 坐标位置。|
-| lineNumber   | number                        | 否   | 否   | 行号，从0开始计数。|
-| topHeight   | number                        | 否   | 否   | 从顶部到当前行的高度。|
-| runMetrics   | Map<number, [RunMetrics](#runmetrics)>                        | 否   | 否   | 文本索引范围与关联的字体度量信息之间的映射。|
+| startIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 否   | 否   | 文本缓冲区中该行开始的索引位置。|
+| endIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 否   | 否   | 文本缓冲区中该行结束的索引位置。|
+| ascent     | ArkTS-Dyn: number<br>ArkTS-Sta: double                                            | 否   | 否   | 文字上升高度，即从基线到字符顶部的距离。|
+| descent    | ArkTS-Dyn: number<br>ArkTS-Sta: double                                            | 否   | 否   | 文字下降高度，即从基线到字符底部的距离。|
+| height     | ArkTS-Dyn: number<br>ArkTS-Sta: double                                            | 否   | 否   | 当前行的高度，计算方式为 `Math.round(ascent + descent)`|
+| width      | ArkTS-Dyn: number<br>ArkTS-Sta: double                                            | 否   | 否   | 行的宽度。                      |
+| left       | ArkTS-Dyn: number<br>ArkTS-Sta: double                        | 否   | 否   | 行的左边缘位置。右边缘可通过 `left+width` 计算得出。|
+| baseline   | ArkTS-Dyn: number<br>ArkTS-Sta: double                        | 否   | 否   | 该行基线相对于段落顶部的 Y 坐标位置。|
+| lineNumber   | ArkTS-Dyn: number<br>ArkTS-Sta: int                        | 否   | 否   | 行号，从0开始计数。|
+| topHeight   | ArkTS-Dyn: number<br>ArkTS-Sta: double                        | 否   | 否   | 从顶部到当前行的高度。|
+| runMetrics   | ArkTS-Dyn: Map<number, [RunMetrics](#runmetrics)><br>ArkTS-Sta: Map<int, [RunMetrics](#runmetrics)>                        | 否   | 否   | 文本索引范围与关联的字体度量信息之间的映射。|
 
 ## TextBox
 
@@ -1781,7 +1990,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | number                | 否   | 否   | 字形相对于段落的索引，整数。  |
+| position  | ArkTS-Dyn: number<br>ArkTS-Sta: int                | 否   | 否   | 字形相对于段落的索引，整数。  |
 | affinity  | [Affinity](#affinity) | 否   | 否   | 位置亲和度。               |
 
 ## RectWidthStyle
@@ -1833,6 +2042,10 @@ ParagraphBuilder对象的构造函数。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名         | 类型                               | 必填 | 说明        |
@@ -1841,6 +2054,8 @@ ParagraphBuilder对象的构造函数。
 | fontCollection | [FontCollection](#fontcollection) | 是   | 字体集。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from "@kit.ArkGraphics2D";
@@ -1872,6 +2087,40 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### pushStyle
 
  pushStyle(textStyle: TextStyle): void
@@ -1884,6 +2133,10 @@ struct Index {
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型       | 必填 | 说明                                                                                                   |
@@ -1891,6 +2144,8 @@ struct Index {
 | textStyle | [TextStyle](#textstyle) | 是   | 包含了对文本的各种视觉属性的定义，如字体、字号、颜色、字重、字间距、行距、装饰（如下划线、删除线）、文本阴影等。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
@@ -1926,6 +2181,44 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+    align: text.TextAlign.CENTER,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.pushStyle(myTextStyle);
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### popStyle
 
 popStyle(): void
@@ -1934,7 +2227,13 @@ popStyle(): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
@@ -1971,6 +2270,45 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.pushStyle(myTextStyle);
+  paragraphBuilder.popStyle();
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### addText
 
 addText(text: string): void
@@ -1979,6 +2317,10 @@ addText(text: string): void
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                       |
@@ -1986,6 +2328,8 @@ addText(text: string): void
 | text    | string  | 是   | 段落中插入的具体文本字符串，传入非法Unicode时会显示�。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
@@ -2014,6 +2358,44 @@ struct Index {
   build() {
     Column() {
       Button().onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText("123666");
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
         this.fun();
       })
     }
