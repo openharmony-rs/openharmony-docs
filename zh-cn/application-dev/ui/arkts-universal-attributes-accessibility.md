@@ -24,13 +24,6 @@ accessibilityGroup属性，用于设置是否启用无障碍分组。若启用�
 
 <!-- @[accessibility_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) --> 
 
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-```
-
 ## 设置无障碍重要性
 
 accessibilityLevel属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
@@ -47,14 +40,6 @@ accessibilityLevel属性表示组件的无障碍重要性，用于控制组件�
 
 <!-- @[accessibility_level_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-```
-
 ## 设置无障碍文本
 
 accessibilityText属性用于为无文本内容的组件提供朗读文本。若组件已有文本，则优先播报无障碍文本。
@@ -65,16 +50,6 @@ accessibilityText属性用于为无文本内容的组件提供朗读文本。若
 
 <!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-```
-
 ## 设置无障碍说明
 
 accessibilityDescription属性用于提供更详细的组件说明，播报时紧随文本内容之后。
@@ -83,47 +58,11 @@ accessibilityDescription属性用于提供更详细的组件说明，播报时�
 
 <!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
-``` TypeScript
-Column() {
-  Text('HelloWorld')
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
-```
-
 ## 设置无障碍虚拟子节点
 
 accessibilityVirtualNode属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
 
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct VirtualNodeExample {
-  @Builder customAccessibilityNode() {
-    // 'app.string.UniversalAttributesAccessibility_text6'需要替换为开发者所需的文本资源文件
-    Text($r('app.string.UniversalAttributesAccessibility_text6'))
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-  }
-  build() {
-    Column() {
-      // 'app.string.UniversalAttributesAccessibility_text5'需要替换为开发者所需的文本资源文件
-      Text($r('app.string.UniversalAttributesAccessibility_text5'))
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .accessibilityGroup(true)
-      .accessibilityLevel('yes')
-      .accessibilityVirtualNode(this.customAccessibilityNode)
-  }
-}
-```
 
 ## 设置无障碍节点是否被选中
 
@@ -143,19 +82,6 @@ accessibilityChecked属性，用于表示组件在支持多选的情况下是否
 
 <!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
-  .accessibilityChecked(true)
-```
-
 ### 在支持单选的情况下，设置无障碍节点是否被选中
 
 accessibilitySelected属性，用于表示组件在支持单选的情况下是否被选择（如单选列表项、标签页等），适用于需要区分“当前选中项”的场景（如单选组、导航菜单），支持以下值：
@@ -169,19 +95,6 @@ accessibilitySelected属性，用于表示组件在支持单选的情况下是�
 这里以Column组件为例，设置在支持单选的情况下由系统自行确定其选中状态：
 
 <!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 'app.string.UniversalAttributesAccessibility_text7'需要替换为开发者所需的文本资源文件
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // 'app.string.UniversalAttributesAccessibility_text8'需要替换为开发者所需的文本资源文件
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
-  .accessibilitySelected(undefined)
-```
 
 ### accessibilityChecked属性与accessibilitySelected属性的关键区别
 
@@ -215,51 +128,5 @@ Column() {
 其中，对于该组件的无障碍文本的内容，在既拥有文本属性又拥有无障碍文本属性的情况下，当组件被选中时，仅播报无障碍文本内容。
 
 <!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-@Component
-export struct AccessibilityText {
-
-  @Builder customAccessibilityNode() {
-    Column() {
-      Text(`virtual node`)
-    }
-    .width(10)
-      .height(10)
-  }
-
-  build() {
-    NavDestination() {
-      Row() {
-        // ···
-        Column() {
-          // $r('app.media.UniversalAttributesAccessibility_text5')需要替换为开发者所需的文本资源文件
-          Text($r('app.string.UniversalAttributesAccessibility_text5'))
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-          // $r('app.media.UniversalAttributesAccessibility_text6')需要替换为开发者所需的文本资源文件
-          Text($r('app.string.UniversalAttributesAccessibility_text6'))
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-        }
-        .width('100%')
-          .accessibilityGroup(true)
-          .accessibilityLevel('yes')
-          // $r('app.media.UniversalAttributesAccessibility_text7')需要替换为开发者所需的文本资源文件
-          .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-          // $r('app.media.UniversalAttributesAccessibility_text8')需要替换为开发者所需的文本资源文件
-          .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
-          .accessibilityVirtualNode(this.customAccessibilityNode)
-          .accessibilityChecked(true)
-          .accessibilitySelected(undefined)
-      }
-      .height('100%')
-    }
-    .backgroundColor('#f1f2f3')
-      // $r('app.media.UniversalAttributesAccessibility_title1')需要替换为开发者所需的文本资源文件
-      .title($r('app.string.UniversalAttributesAccessibility_title1'))
-  }
-}
-```
 
 ![zh-cn_image_0000001745415556](figures/zh-cn_image_0000001745415556.jpg)
