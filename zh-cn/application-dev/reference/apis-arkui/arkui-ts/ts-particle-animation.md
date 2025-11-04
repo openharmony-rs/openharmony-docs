@@ -1238,10 +1238,12 @@ struct ParticleExample {
 
 该示例主要演示如何通过粒子扰动场的干扰下来实现运动轨迹发生变化的效果。
 
-```
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample3 {
   build() {
     Stack() {
       Text()
@@ -1354,10 +1356,9 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5
       }])
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
-
 ```
 ![particle](figures/disturbanceFields.gif)
 
@@ -1525,25 +1526,24 @@ struct ParticleExample5 {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample6 {
 
-  @State radius: number = 1
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS
-  @State emitRate: number = 200
-  @State count: number = 2000
-  private timerID: number = -1
-  private centerX: LengthMetrics = LengthMetrics.percent(0.5)
-  private centerY: LengthMetrics = LengthMetrics.percent(0.5)
-  private inRadius: LengthMetrics = LengthMetrics.vp(120)
-  private outRadius: LengthMetrics = LengthMetrics.vp(120)
-  private startAngle: number = 0
-  private endAngle: number = 90
+  @State radius: number = 1;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State emitRate: number = 200;
+  @State count: number = 2000;
+  private timerID: number = -1;
+  private centerX: LengthMetrics = LengthMetrics.percent(0.5);
+  private centerY: LengthMetrics = LengthMetrics.percent(0.5);
+  private inRadius: LengthMetrics = LengthMetrics.vp(120);
+  private outRadius: LengthMetrics = LengthMetrics.vp(120);
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1599,8 +1599,8 @@ struct ParticleExample {
               },
             },
           ]
-        }).width("100%")
-          .height("100%")
+        }).width('100%')
+          .height('100%')
           .emitter(this.emitterProperties)
           .onClick(()=>{
             // 清除已有定时器
@@ -1636,8 +1636,8 @@ struct ParticleExample {
 
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .align(Alignment.Center)
     }
   }
