@@ -25,6 +25,26 @@
 在以下示例中，通过点击应用按钮来触发前端页面的后退操作。
 <!-- @[button_click_trigger_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('loadData')
+        .onClick(() => {
+          if (this.webviewController.accessBackward()) {
+            this.webviewController.backward();
+          }
+        })
+      Web({ src: 'https://www.example.com/cn/', controller: this.webviewController });
+    }
+  }
+}
+```
+
 
 如果存在历史记录，[accessBackward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessbackward)接口将返回true。同样，开发者可以使用[accessForward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessforward)接口检查是否存在前进的历史记录。如果未执行检查，当用户浏览到历史记录的末尾时，调用[forward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#forward)和[backward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#backward)接口将不会执行任何操作。
 
