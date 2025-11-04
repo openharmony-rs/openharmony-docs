@@ -2615,6 +2615,8 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 onWifiStateChange(callback: Callback&lt;int&gt;): void
 
+取消订阅WiFi状态改变事件。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
