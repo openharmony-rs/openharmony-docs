@@ -42,6 +42,67 @@
 - 创建及应用文本装饰线对象（DecorationStyle）
 
   <!-- @[styledStringDecorationStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringDecorationStyle.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct styled_string_demo4 {
+    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
+    @State str: string =
+      this.getUIContext()
+        .getHostContext()?.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five')) as string;
+    mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Red, thicknessScale: 3 })
+      },
+      {
+        start: 4,
+        length: 2,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.Underline,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          }
+        )
+      },
+      {
+        start: 4,
+        length: 2,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.LineThrough,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          }
+        )
+      },
+    ]);
+    controller: TextController = new TextController();
+  
+    async onPageShow() {
+      this.controller.setStyledString(this.mutableStyledString);
+    }
+  
+    build() {
+      Column() {
+        // 显示属性字符串
+        Text(undefined, { controller: this.controller })
+      }
+      .width('100%')
+    }
+  }
+  ```
 
   ![StyledString_Decoration](figures/styled_string_decoration.jpg)
 
