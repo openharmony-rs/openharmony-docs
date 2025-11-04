@@ -373,6 +373,43 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
 1）获取ArkUI在NDK接口的入口模块[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)，该结构体模块提供了一系列组件创建、树构建、属性设置和事件注册等函数指针。
    
   <!-- @[Cpp_NativeModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeModule.h) -->
+  
+  ``` C
+  // NativeModule.h
+  // 提供获取ArkUI在Native侧模块的封装接口
+  
+  #ifndef MYAPPLICATION_NATIVEMODULE_H
+  #define MYAPPLICATION_NATIVEMODULE_H
+  
+  #include <arkui/native_node.h>
+  #include <cassert>
+  
+  #include <arkui/native_interface.h>
+  
+  namespace NativeModule {
+  
+  class NativeModuleInstance {
+  public:
+      static NativeModuleInstance *GetInstance()
+      {
+          static NativeModuleInstance instance;
+          return &instance;
+      }
+      NativeModuleInstance()
+      {
+          OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativeNodeApi_);
+      }
+      // 暴露给其他模块使用。
+      ArkUI_NativeNodeAPI_1 *GetNativeNodeAPI() { return arkUINativeNodeApi_; }
+  
+  private:
+      ArkUI_NativeNodeAPI_1 *arkUINativeNodeApi_ = nullptr;
+  };
+  
+  } // namespace NativeModule
+  
+  #endif // MYAPPLICATION_NATIVEMODULE_H
+  ```
 
    2）提供列表，文本组件的基类对象，用于封装通用属性和事件。
    
