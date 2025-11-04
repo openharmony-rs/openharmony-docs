@@ -129,6 +129,35 @@ stateStyles可以通过this绑定组件内的常规变量和状态变量。
 
 <!-- @[focus_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct CompWithInlineStateStyles {
+  @State focusedColor: Color = 0xD5D5D5;
+  normalColor: Color = 0x004AAF;
+
+  build() {
+    Column() {
+      Button('clickMe')
+        .height(100)
+        .width(100)
+        .stateStyles({
+          normal: {
+            .backgroundColor(this.normalColor)
+          },
+          focused: {
+            .backgroundColor(this.focusedColor)
+          }
+        })
+        .onClick(() => {
+          this.focusedColor = 0x707070;
+        })
+        .margin('30%')
+    }
+  }
+}
+```
+
 Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focus态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为深灰色。
 
   **图3** 点击改变获焦态样式  
