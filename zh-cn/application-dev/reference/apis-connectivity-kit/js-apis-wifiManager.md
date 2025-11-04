@@ -603,16 +603,16 @@ WLAN配置信息。
 | identity | string | 否 | 否 | 身份信息。当eapMethod为EAP_PEAP、EAP_TLS或EAP_PWD时，该字段不能为空串。 |
 | anonymousIdentity | string | 否 | 否 | 匿名身份。暂未使用。 |
 | password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 |
-| caCertAlias | string | 否 | 否 | CA 证书别名。 <br>ArkTS-Dyn起始版本： |
-| caPath | string | 否 | 否 | CA 证书路径。 <br>ArkTS-Dyn起始版本： |
-| clientCertAlias | string | 否 | 否 | 客户端证书别名。 <br>ArkTS-Dyn起始版本： |
+| caCertAlias | string | 否 | 否 | CA 证书别名。 |
+| caPath | string | 否 | 否 | CA 证书路径。 |
+| clientCertAlias | string | 否 | 否 | 客户端证书别名。 |
 | certEntry | Uint8Array | 否 | 否 | CA 证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 |
-| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 <br>ArkTS-Dyn起始版本： |
-| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 <br>ArkTS-Dyn起始版本： |
-| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 <br>ArkTS-Dyn起始版本： |
-| realm | string | 否 | 否 | 通行证凭证的领域。 <br>ArkTS-Dyn起始版本： |
-| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 <br>ArkTS-Dyn起始版本： |
-| eapSubId | number | 否 | 否 | SIM卡的子ID。 <br>ArkTS-Dyn起始版本： |
+| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 |
+| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 |
+| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 |
+| realm | string | 否 | 否 | 通行证凭证的领域。  |
+| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 |
+| eapSubId | number | 否 | 否 | SIM卡的子ID。 |
 
 
 ## WifiWapiConfig<sup>12+</sup>
