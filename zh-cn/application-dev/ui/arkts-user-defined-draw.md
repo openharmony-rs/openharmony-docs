@@ -40,6 +40,29 @@ NDK提供了自定义绘制节点的能力，通过以下接口，开发者可�
 
 - [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw)通过自定义组件事件获取绘制上下文，并将其传入 [OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas)中以获取绘制canvas指针，该指针随后转换为OH_Drawing_Canvas指针进行绘制。
     <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
+    
+    ``` C
+    // 获取自定义事件绘制的上下文。
+    auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+    // 获取绘制canvas指针。
+    auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
+    // 转换为OH_Drawing_Canvas指针进行绘制。
+    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
+    int32_t width = SIZE_1000;
+    int32_t height = SIZE_1000;
+    auto path = OH_Drawing_PathCreate();
+    OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
+    OH_Drawing_PathClose(path);
+    auto pen = OH_Drawing_PenCreate();
+    OH_Drawing_PenSetWidth(pen, SIZE_10);
+    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
+    OH_Drawing_CanvasAttachPen(canvas, pen);
+    OH_Drawing_CanvasDrawPath(canvas, path);
+    ```
 
 **内容绘制的完整示例：** 
 <!-- @[drawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
