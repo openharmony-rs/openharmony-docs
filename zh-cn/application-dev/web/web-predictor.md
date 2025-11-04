@@ -187,6 +187,19 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 4. 编写业务用组件代码。
 
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
+   
+   ``` TypeScript
+   import { BuilderData } from './DynamicComponent';
+   
+   @Builder
+   function webBuilder(data: BuilderData) {
+     // 此处组件可根据业务需要自行扩展
+     Web({ src: data.url, controller: data.controller })
+       .cacheMode(CacheMode.Default)
+   }
+   
+   export const businessWebview = wrapBuilder<BuilderData[]>(webBuilder);
+   ```
 
 5. 编写资源配置信息。
 
