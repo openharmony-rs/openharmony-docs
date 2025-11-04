@@ -55,170 +55,211 @@ The following example walks you through on how to implement many-to-many sharing
 
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
-   ```ts
-   import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-   ```
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+    ``` TypeScript
+    import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. Create a **UnifiedData** object and insert it to the UDMF public data channel.
+   1. Import the corresponding data object modules.
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { image } from '@kit.ImageKit';
-   // Create plaintext data.
-   let plainTextObj : uniformDataStruct.PlainText = {
-     uniformDataType: 'general.plain-text',
-     textContent : 'Hello world',
-     abstract : 'This is abstract'
-   }
-   let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextObj);
-   // Create HTML data.
-   let htmlObj : uniformDataStruct.HTML = {
-     uniformDataType :'general.html',
-     htmlContent : '<div><p>Hello world</p></div>',
-     plainContent : 'Hello world'
-   }
-   // Add a new entry to the data record, storing the same data in another format.
-   record.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
-   let unifiedData = new unifiedDataChannel.UnifiedData(record);
+      <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-   // Create pixelMap data.
-   let arrayBuffer = new ArrayBuffer(4*3*3);
-   let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 3, width: 3 }, alphaType: 3 };
-   let pixelMap : uniformDataStruct.PixelMap = {
-     uniformDataType : 'openharmony.pixel-map',
-     pixelMap : image.createPixelMapSync(arrayBuffer, opt)
-   }
-   unifiedData.addRecord(new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap));
-   // Specify the type of the data channel to which the data is to be inserted.
-   let options: unifiedDataChannel.Options = {
-     intention: unifiedDataChannel.Intention.DATA_HUB
-   }
-   try {
-     unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
-       if (err === undefined) {
-         console.info(`Succeeded in inserting data. key = ${key}`);
-       } else {
-         console.error(`Failed to insert data. code is ${err.code},message is ${err.message} `);
-       }
-     });
-   } catch (e) {
-     let error: BusinessError = e as BusinessError;
-     console.error(`Insert data throws an exception. code is ${error.code},message is ${error.message} `);
-   }
-   ```
+      ``` TypeScript
+      import { BusinessError } from '@kit.BasicServicesKit';
+      import { image } from '@kit.ImageKit';
+      ```
+
+   2. Create and inset data.
+
+      <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+      ``` TypeScript
+      // Create plaintext data.
+      let plainTextObj: uniformDataStruct.PlainText = {
+        uniformDataType: 'general.plain-text',
+        textContent: 'Hello world',
+        abstract: 'This is abstract'
+      }
+      let record =
+        new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextObj);
+      // Create HTML data.
+      let htmlObj: uniformDataStruct.HTML = {
+        uniformDataType: 'general.html',
+        htmlContent: '<div><p>Hello world</p></div>',
+        plainContent: 'Hello world'
+      }
+      // Add a new entry to the data record, storing the same data in another format.
+      record.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
+      let unifiedData = new unifiedDataChannel.UnifiedData(record);
+
+      // Create pixelMap data.
+      let arrayBuffer = new ArrayBuffer(4 * 3 * 3);
+      let opt: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: { height: 3, width: 3 },
+        alphaType: 3
+      };
+      let pixelMap: uniformDataStruct.PixelMap = {
+        uniformDataType: 'openharmony.pixel-map',
+        pixelMap: image.createPixelMapSync(arrayBuffer, opt)
+      }
+      unifiedData.addRecord(new unifiedDataChannel.UnifiedRecord(
+        uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap));
+      // Specify the type of the data channel to which the data is to be inserted.
+      let options: unifiedDataChannel.Options = {
+        intention: unifiedDataChannel.Intention.DATA_HUB
+      }
+      try {
+        unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
+          if (err === undefined) {
+            hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key}`);
+          } else {
+            hilog.error(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key})`);
+          }
+        });
+      } catch (e) {
+        let error: BusinessError = e as BusinessError;
+        hilog.error(0xFF00, '[Sample_Udmf]',
+          `Insert data throws an exception. code is ${error.code},message is ${error.message}`);
+      }
+      ```
+
 3. Update the **UnifiedData** object inserted.
 
-   ```ts
-   let plainTextUpdate : uniformDataStruct.PlainText = {
-     uniformDataType: 'general.plain-text',
-     textContent : 'How are you',
-     abstract : 'This is abstract'
-   }
-   let recordUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
-   let htmlUpdate : uniformDataStruct.HTML = {
-     uniformDataType :'general.html',
-     htmlContent : '<div><p>How are you</p></div>',
-     plainContent : 'How are you'
-   }
-   recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
-   let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
-   
-   // Specify the URI of the UnifiedData object to update.
-   let optionsUpdate: unifiedDataChannel.Options = {
-     // The key here is an example and cannot be directly used. Use the value in the callback of insertData().
-     key: 'udmf://DataHub/com.ohos.test/0123456789'
-   };
-   
-   try {
-     unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
-       if (err === undefined) {
-         console.info('Succeeded in updating data.');
-       } else {
-         console.error(`Failed to update data. code is ${err.code},message is ${err.message} `);
-       }
-     });
-   } catch (e) {
-     let error: BusinessError = e as BusinessError;
-     console.error(`Update data throws an exception. code is ${error.code},message is ${error.message} `);
-   }
-   ```
+    <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+    ``` TypeScript
+    let plainTextUpdate: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      textContent: 'How are you',
+      abstract: 'This is abstract'
+    }
+    let recordUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+    let htmlUpdate: uniformDataStruct.HTML = {
+      uniformDataType: 'general.html',
+      htmlContent: '<div><p>How are you</p></div>',
+      plainContent: 'How are you'
+    }
+    recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
+    let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
+
+    // Specify the URI of the UnifiedData object to update.
+    let optionsUpdate: unifiedDataChannel.Options = {
+      // The key here is an example and cannot be directly used. Use the value in the callback of insertData().
+      key: 'udmf://DataHub/com.ohos.test/0123456789'
+    };
+
+    try {
+      unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
+        if (err === undefined) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in updating data.`);
+        } else {
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code},message is ${err.message}`);
+        }
+      });
+    } catch (e) {
+      let error: BusinessError = e as BusinessError;
+      hilog.error(0xFF00, '[Sample_Udmf]',
+        `Update data throws an exception. code is ${error.code},message is ${error.message}`);
+    }
+    ```
+
 4. Delete the **UnifiedData** object from the UDMF public data channel.
 
-   ```ts
-   // Specify the type of the data channel whose data is to be deleted.
-   let optionsDelete: unifiedDataChannel.Options = {
-     intention: unifiedDataChannel.Intention.DATA_HUB
-   };
+    <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-   try {
-     unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
-       if (err === undefined) {
-         console.info(`Succeeded in deleting data. size = ${data.length}`);
-         for (let i = 0; i < data.length; i++) {
-           let records = data[i].getRecords();
-           for (let j = 0; j < records.length; j++) {
-             let types = records[j].getTypes();
-             // Obtain data of the specified format from the record based on service requirements.
-             if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-               let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-               console.info(`${i + 1}.${text.textContent}`);
-             }
-             if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
-               let html = records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
-               console.info(`${i + 1}.${html.htmlContent}`);
-             }
-           }
-         }
-       } else {
-         console.error(`Failed to delete data. code is ${err.code},message is ${err.message} `);
-       }
-     });
-   } catch (e) {
-     let error: BusinessError = e as BusinessError;
-     console.error(`Delete data throws an exception. code is ${error.code},message is ${error.message} `);
-   }
-   ```
-   
+    ``` TypeScript
+    // Specify the type of the data channel whose data is to be deleted.
+    let optionsDelete: unifiedDataChannel.Options = {
+      intention: unifiedDataChannel.Intention.DATA_HUB
+    };
+
+    try {
+      unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
+        if (err === undefined) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in deleting data. size = ${data.length}`);
+          for (let i = 0; i < data.length; i++) {
+            let records = data[i].getRecords();
+            for (let j = 0; j < records.length; j++) {
+              let types = records[j].getTypes();
+              // Obtain data of the specified format from the record based on service requirements.
+              if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+                let text =
+                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
+              }
+              if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
+                let html =
+                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
+              }
+            }
+          }
+        } else {
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code},message is ${err.message}`);
+        }
+      });
+    } catch (e) {
+      let error: BusinessError = e as BusinessError;
+      hilog.error(0xFF00, '[Sample_Udmf]',
+        `Delete data throws an exception. code is ${error.code},message is ${error.message}`);
+    }
+    ```
+
 ### Data Consumer
 
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
-   ```ts
-   import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-   ```
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+    ``` TypeScript
+    import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. Query the full data in the UDMF public data channel.
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   // Specify the type of the data channel whose data is to be queried.
-   let options: unifiedDataChannel.Options = {
-     intention: unifiedDataChannel.Intention.DATA_HUB
-   };
+    <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-   try {
-     unifiedDataChannel.queryData(options, (err, data) => {
-       if (err === undefined) {
-         console.info(`Succeeded in querying data. size = ${data.length}`);
-         for (let i = 0; i < data.length; i++) {
-           let records = data[i].getRecords();
-           for (let j = 0; j < records.length; j++) {
-             let types = records[j].getTypes();
-             // Obtain data of the specified format from the record based on service requirements.
-             if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-               let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-               console.info(`${i + 1}.${text.textContent}`);
-             }
-             if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
-               let html = records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
-               console.info(`${i + 1}.${html.htmlContent}`);
-             }
-           }
-         }
-       } else {
-         console.error(`Failed to query data. code is ${err.code},message is ${err.message} `);
-       }
-     });
-   } catch(e) {
-     let error: BusinessError = e as BusinessError;
-     console.error(`Query data throws an exception. code is ${error.code},message is ${error.message} `);
-   }
-   ```
+    ``` TypeScript
+    // Specify the type of the data channel whose data is to be queried.
+    let options: unifiedDataChannel.Options = {
+      intention: unifiedDataChannel.Intention.DATA_HUB
+    };
+
+    try {
+      unifiedDataChannel.queryData(options, (err, data) => {
+        if (err === undefined) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in querying data. size = ${data.length}`);
+          for (let i = 0; i < data.length; i++) {
+            let records = data[i].getRecords();
+            for (let j = 0; j < records.length; j++) {
+              let types = records[j].getTypes();
+              // Obtain data of the specified format from the record based on service requirements.
+              if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+                let text =
+                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
+              }
+              if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
+                let html =
+                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
+              }
+            }
+          }
+        } else {
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code},message is ${err.message}`);
+        }
+      });
+    } catch (e) {
+      let error: BusinessError = e as BusinessError;
+      hilog.error(0xFF00, '[Sample_Udmf]',
+        `Query data throws an exception. code is ${error.code},message is ${error.message}`);
+    }
+    ```
