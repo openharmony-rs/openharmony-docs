@@ -62,6 +62,36 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com/', controller: this.webviewController })
+        .onPageEnd(() => {
+          // 预获取时，需要将'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
+          webview.WebviewController.prefetchResource(
+            {
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
+            },
+            [{
+              headerKey: 'c',
+              headerValue: 'z',
+            },],
+            'KeyX', 500);
+        })
+    }
+  }
+}
+```
+
 也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)提前初始化内核，然后在初始化内核后调用[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的post请求。这种方式适合提前预获取首页的post请求。
 
   以下示例，在Ability的onCreate中，提前初始化Web内核并预获取首页的post请求。
