@@ -2599,6 +2599,8 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
+目前仅支持在录屏和共享屏幕场景使用，此功能需要用户手动授权。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **需要权限：** ohos.permission.INPUT_MONITORING
