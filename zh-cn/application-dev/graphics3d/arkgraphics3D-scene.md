@@ -25,6 +25,10 @@
      在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和管理3D场景与相机。
 
      <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+     
+     ``` TypeScript
+     import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     ```
 
   2. 加载场景资源。
 
