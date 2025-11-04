@@ -84,6 +84,29 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
 更新当前进度值，如应用安装进度条，可通过点击Button增加progressValue，value属性将progressValue设置给Progress组件，进度条组件即会触发刷新，更新当前进度。
 
 <!-- @[progress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ProgressCase1 {
+  @State progressValue: number = 0;    // 设置进度条初始值为0
+  build() {
+    Column() {
+      Column() {
+        Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
+        Row().width('100%').height(5)
+        Button('进度条+5')
+          .onClick(()=>{
+            this.progressValue += 5;
+            if (this.progressValue > 100){
+              this.progressValue = 0;
+            }
+          })
+      }
+    }.width('100%').height('100%')
+  }
+}
+```
     
 ![progress](figures/progress.gif)
 
