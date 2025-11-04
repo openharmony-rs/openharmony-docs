@@ -16,6 +16,86 @@
 
 <!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[EvtryAblity]';
+
+@Entry
+@Component
+struct Index {
+  @State items: string[] = [];
+  @State ids: string[] = [];
+  @State age: number[] = [];
+  @State gender: string[] = [];
+
+  aboutToAppear() {
+    this.items.push('Head');
+    this.items.push('List');
+    for (let i = 0; i < 20; i++) {
+      this.ids.push('id: ' + Math.floor(Math.random() * 1000));
+      this.age.push(Math.floor(Math.random() * 100 % 40));
+      this.gender.push(Math.floor(Math.random() * 100) % 2 == 0 ? 'Male' : 'Female');
+    }
+  }
+
+  isRenderText(index: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
+    return 1;
+  }
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.items, (item: string) => {
+          if (item == 'Head') {
+            Text('Personal Info')
+              .fontSize(40)
+          } else if (item == 'List') {
+            List() {
+              ForEach(this.ids, (id: string, index) => {
+                ListItem() {
+                  Row() {
+                    Text(id)
+                      .fontSize(20)
+                      .margin({
+                        left: 30,
+                        right: 5
+                      })
+                    Text('age: ' + this.age[index as number])
+                      .fontSize(20)
+                      .margin({
+                        left: 5,
+                        right: 5
+                      })
+                      .position({ x: 100 })
+                      .opacity(this.isRenderText(index))
+                      .onClick(() => {
+                        this.age[index]++;
+                      })
+                    Text('gender: ' + this.gender[index as number])
+                      .margin({
+                        left: 5,
+                        right: 5
+                      })
+                      .position({ x: 180 })
+                      .fontSize(20)
+                  }
+                }
+                .margin({
+                  top: 5,
+                  bottom: 5
+                })
+              })
+            }
+          }
+        })
+      }
+    }
+  }
+}
+```
+
 上述代码运行效果如下。
 
 ![properly-use-state-management-to-develope-1](figures/properly-use-state-management-to-develope-1.gif)
