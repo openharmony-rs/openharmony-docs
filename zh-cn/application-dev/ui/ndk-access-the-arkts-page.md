@@ -598,6 +598,25 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
    4）实现列表项组件。
    
   <!-- @[Cpp_ArkUIListItemNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListItemNode.h) -->
+  
+  ``` C
+  // ArkUIListItemNode.h
+  // 提供列表项的封装类。
+  #ifndef MYAPPLICATION_ARKUISTACKNODE_H
+  #define MYAPPLICATION_ARKUISTACKNODE_H
+  
+  #include "ArkUINode.h"
+  
+  namespace NativeModule {
+  class ArkUIListItemNode : public ArkUINode {
+  public:
+      ArkUIListItemNode()
+          : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST_ITEM)) {}
+  };
+  } // namespace NativeModule
+  
+  #endif // MYAPPLICATION_ARKUISTACKNODE_H
+  ```
 
    5）实现文本组件。
    
