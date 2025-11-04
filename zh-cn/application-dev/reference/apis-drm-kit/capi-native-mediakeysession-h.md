@@ -416,7 +416,7 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 **描述**
 
-设置MediaKeySession会话事件回调。
+设置MediaKeySession事件回调。
 
 **起始版本：** 11
 
