@@ -30,12 +30,13 @@
 3. 获取加密[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。
 
    文档中提供多个示例，当使用不同算法时，请注意配置对应参数。
-   - 使用AES算法加密，用例中选取的分组模式为CBC、填充模式为PKCS7时，必须要填参数IV，请见[开发案例：AES/CBC/PKCS7](#aescbcpkcs7)。
-   - 使用AES算法加密，用例中选取的分组模式为GCM时，必须要填参数NONCE，AAD可选，请见[开发案例：AES/GCM/NoPadding](#aesgcmnopadding)。
-   - 使用RSA算法加密，需要选择其对应分组模式以及填充模式和摘要算法DIGEST，请见[开发案例：RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5)和[开发案例：RSA/ECB/OAEP/SHA256](#rsaecboaepsha256)。
+   - 使用AES算法加密，选取的分组模式为CBC、填充模式为PKCS7时，参数IV必选，请见[开发案例：AES/CBC/PKCS7](#aescbcpkcs7)。
+   - 使用AES算法加密，选取的分组模式为GCM时，参数NONCE可选，AAD可选，请见[开发案例：AES/GCM/NoPadding](#aesgcmnopadding)。
+   - 使用AES算法加密，选取的分组模式为CCM时，参数NONCE可选，AAD可选，请见[开发案例：AES/CCM/NoPadding](#aesccmnopadding)。
+   - 使用RSA算法加密，需要选择相对应的分组模式、填充模式以及摘要算法DIGEST，请见[开发案例：RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5)和[开发案例：RSA/ECB/OAEP/SHA256](#rsaecboaepsha256)。
    - 使用SM2算法加密，摘要算法DIGEST需要指定为SM3，请见[开发案例：SM2](#sm2)。
    <!--Del-->
-   - 使用DES算法加密，用力中选取的分组模式为CBC，必须要填参数IV，请见[开发案例：DES/CBC/NoPadding](#descbcnopadding)
+   - 使用DES算法加密，选取的分组模式为CBC时，参数IV必选，请见[开发案例：DES/CBC/NoPadding](#descbcnopadding)。
    <!--DelEnd-->
    
    详细规格请参考[加密/解密介绍及算法规格](huks-encryption-decryption-overview.md)。
