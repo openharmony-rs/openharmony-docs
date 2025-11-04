@@ -57,6 +57,13 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
 - 圆形样式进度条
 
   <!-- @[progress_style_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 从左往右，1号圆形进度条，默认前景色为蓝色
+  Progress({ value: 10, total: 150, type: ProgressType.Eclipse }).width(100).height(100)
+  // 从左往右，2号圆形进度条，指定前景色为灰色
+  Progress({ value: 20, total: 150, type: ProgressType.Eclipse }).color(Color.Grey).width(100).height(100)
+  ```
 
   ![progress_circle](figures/progress_circle.png)
 
