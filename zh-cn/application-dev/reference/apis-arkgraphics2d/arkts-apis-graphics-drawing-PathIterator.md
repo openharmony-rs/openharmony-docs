@@ -35,6 +35,10 @@ constructor(path: Path)
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
@@ -62,7 +66,7 @@ ArkTS-Sta: next(points: Array<common2D.Point>, offset?: int): PathIteratorVerb |
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -131,17 +135,23 @@ if (verb != undefined) {
 
 ## peek<sup>18+</sup>
 
-peek(): PathIteratorVerb
+ArkTS-Dyn: peek(): PathIteratorVerb
+
+ArkTS-Sta: peek(): PathIteratorVerb | undefined
 
 返回当前路径的下一个操作，迭代器保持在原操作。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | 迭代器包含的路径操作类型。 |
+| ArkTS-Dyn: [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18)<br/>ArkTS-Sta: [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) \| undefined | 迭代器包含的路径操作类型。创建失败时返回undefined。 |
 
 **示例：**
 
@@ -160,6 +170,10 @@ hasNext(): boolean
 判断路径操作迭代器中是否还有下一个操作。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
