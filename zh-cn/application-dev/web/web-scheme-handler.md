@@ -79,6 +79,18 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 注册三方协议的配置。
+    testNapi.registerCustomSchemes();
+    // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
+    webview.WebviewController.initializeWebEngine();
+    // 设置SchemeHandler。
+    testNapi.setSchemeHandler();
+  }
+```
+
 testNapi.registerCustomSchemes的C++实现：
 
 <!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
