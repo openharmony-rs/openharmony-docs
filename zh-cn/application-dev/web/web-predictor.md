@@ -17,6 +17,34 @@
 
 <!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
+
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('loadData')
+        .onClick(() => {
+          if (this.webviewController.accessBackward()) {
+            this.webviewController.backward();
+          }
+        })
+      Web({ src: 'https://www.example.com/', controller: this.webviewController })
+        .onAppear(() => {
+          // 指定第二个参数为true，代表要进行预连接，如果为false该接口只会对网址进行dns预解析
+          // 第三个参数为要预连接socket的个数。最多允许6个。
+          webview.WebviewController.prepareForPageLoad('https://www.example.com/', true, 2);
+        })
+    }
+  }
+}
+```
+
 也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)来提前初始化内核，然后在初始化内核后调用[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)对即将要加载的页面进行预解析、预连接。这种方式适合提前对首页进行预解析、预连接。
 
   在下面的示例中，Ability的onCreate中提前初始化Web内核并对首页进行预连接。
