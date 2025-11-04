@@ -91,6 +91,42 @@ export struct Embedded {
 }
 ```
 
+``` TypeScript
+import { Want } from '@kit.AbilityKit';
+
+@Component
+export struct Embedded {
+  @State message: string = 'Message: ';
+  private want: Want = {
+    bundleName: 'com.samples.uiextensionandaccessibility',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
+  build() {
+    // ···
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info) => {
+              // 点击extension页面内的terminateSelfWithResult按钮后触发onTerminated回调，文本框显示如下信息
+              this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+            })
+            .onError((error) => {
+              // 失败或异常触发onError回调，文本框显示如下报错内容
+              this.message = `Error: code = ${error.code}`;
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+    // ···
+  }
+}
+```
+
 在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
