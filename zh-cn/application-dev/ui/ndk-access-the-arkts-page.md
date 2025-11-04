@@ -13,6 +13,15 @@
 - NDK配置文件entry/src/main/cpp/types/libentry/oh-package.json5如下。
 
   <!-- @[Cpp_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/oh-package.json5) --> 
+  
+  ``` JSON5
+  {
+    "name": "libentry.so",
+    "types": "./Index.d.ts",
+    "version": "1.0.0",
+    "description": "Please describe the basic information."
+  }
+  ```
 
 - 占位组件和其他ArkTS系统组件使用方法相同。详细代码请参考[示例](#示例)。
 
