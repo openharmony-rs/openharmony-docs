@@ -85,6 +85,13 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcListSpace_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
 
+``` TypeScript
+ArcList({ initialIndex: 2 }) {
+  // ···
+}
+.space(LengthMetrics.px(30))
+```
+
   **图4** 设置弧形列表项间距
 
 ![arcList_space](figures/arcList_space.png)
