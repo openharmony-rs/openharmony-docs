@@ -61,13 +61,7 @@ rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间
 只要将rowsTemplate设置为'1fr 1fr 1fr'，同时将columnsTemplate设置为'1fr 2fr 1fr'，即可实现上述网格布局。
 
 
-```ts
-Grid() {
-  // ...
-}
-.rowsTemplate('1fr 1fr 1fr')
-.columnsTemplate('1fr 2fr 1fr')
-```
+<!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
 
 >**说明：**
 >
