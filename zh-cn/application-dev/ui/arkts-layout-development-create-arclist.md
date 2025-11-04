@@ -53,6 +53,77 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 
 <!-- @[arcListContentsTitle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets) -->
 
+``` TypeScript
+import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+import { util } from '@kit.ArkTS';
+import { ComponentCard } from '../../common/Card';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+@Entry
+@Component
+export struct ArcListContents {
+  private contacts: Array<object> = [
+    new Contact('小红', $r('app.media.ic_contact')),
+    new Contact('小兰', $r('app.media.ic_contact')),
+    new Contact('小王', $r('app.media.ic_contact')),
+    new Contact('小李', $r('app.media.ic_contact')),
+    new Contact('小明', $r('app.media.ic_contact'))
+  ];
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ForEach(this.contacts, (item: Contact) => {
+              ArcListItem() {
+                Row() {
+                  Image(item.icon)
+                    .width(40)
+                    .height(40)
+                    .margin(10)
+                    .backgroundColor('#FF9CC998')
+                    .borderRadius(20)
+                  Text(item.name).fontSize('38px').fontColor('#FFFFFFFF')
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Start)
+              }
+              .borderRadius('65px')
+              .width('410px')
+              .height('130px')
+              .backgroundColor('#26FFFFFF')
+            }, (item: Contact) => JSON.stringify(item))
+          }
+          .space(LengthMetrics.px(10))
+          .width('466px')
+          .height('466px')
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.ArcListContents_title'))
+  }
+}
+```
+
   **图2** 迭代弧形列表内容
 
 ![arcList_foreach](figures/arcList_foreach.png)
