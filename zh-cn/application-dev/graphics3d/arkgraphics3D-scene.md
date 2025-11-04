@@ -73,6 +73,15 @@
      通过Component3D渲染加载完成的3D场景。若模型尚未加载完成，则显示提示文本。Component3D会根据传入的SceneOptions自动进行渲染。
 
      <!-- @[render_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+     
+     ``` TypeScript
+     if (this.sceneOpt) {
+       // Use Component3D to display the 3D scenario.
+       Component3D(this.sceneOpt);
+     } else {
+       Text('Loading···');
+     }
+     ```
 
 ## 相机的创建及管理
 
