@@ -17,6 +17,20 @@
 
 <!-- @[arcList_create_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCreate.ets) -->
 
+``` TypeScript
+ArcList({
+  initialIndex: 2
+}) {
+  ArcListItem() {
+    // ···
+  }
+  ArcListItem() {
+    // ···
+  }
+// ···
+}
+```
+
 >**说明：**
 >
 >[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)的子组件必须是[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)，[ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md)必须配合[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)来使用。
