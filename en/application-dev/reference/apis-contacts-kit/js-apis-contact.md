@@ -4305,7 +4305,7 @@ Opens the **Save to existing** page to save a contact to an existing one. This A
 
 | Type                 | Description                                      |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the result, which is the ID of the added contact.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the contact ID.|
 
 **Error codes**
 
@@ -4474,11 +4474,19 @@ Defines a contact.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name              | Type  | Value  | Description            |
 | ------------------ | ---- | ---- | ---------------- |
 | INVALID_CONTACT_ID | number   | -1   | Default contact ID.|
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 |       Name       |                   Type                 | Read-Only| Optional| Description                                  |
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -4554,22 +4562,22 @@ Enumerates contact attributes.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-| Name                 | Description                              |
-| --------------------- | ---------------------------------- |
-| ATTR_CONTACT_EVENT    | Important dates such as birthday and anniversaries of the contact.|
-| ATTR_EMAIL            | Email address of the contact.                |
-| ATTR_GROUP_MEMBERSHIP | Groups of the contact.                    |
-| ATTR_IM               | IM addresses of the contact.            |
-| ATTR_NAME             | Contact name.                    |
-| ATTR_NICKNAME         | Contact nickname.                    |
-| ATTR_NOTE             | Contact notes.                    |
-| ATTR_ORGANIZATION     | Organization of the contact.                |
-| ATTR_PHONE            | Phone number of the contacts.                |
-| ATTR_PORTRAIT         | Contact portrait.                    |
-| ATTR_POSTAL_ADDRESS   | Postal address of the contact.                |
-| ATTR_RELATION         | Relationship with the contact.                    |
-| ATTR_SIP_ADDRESS      | SIP addresses of the contact. |
-| ATTR_WEBSITE          | Website that stores the contact information.                    |
+| Name                 | Value| Description                              |
+| --------------------- | ---- | ---------------------------------- |
+| ATTR_CONTACT_EVENT    | 0 | Important dates such as birthday and anniversaries of the contact.|
+| ATTR_EMAIL            | 1 | Email address of the contact.                |
+| ATTR_GROUP_MEMBERSHIP | 2 | Groups of the contact.                    |
+| ATTR_IM               | 3 | IM addresses of the contact.            |
+| ATTR_NAME             | 4 | Contact name.                    |
+| ATTR_NICKNAME         | 5 | Contact nickname.                    |
+| ATTR_NOTE             | 6 | Contact notes.                    |
+| ATTR_ORGANIZATION     | 7 | Organization of the contact.                |
+| ATTR_PHONE            | 8 | Phone number of the contacts.                |
+| ATTR_PORTRAIT         | 9 | Contact portrait.                    |
+| ATTR_POSTAL_ADDRESS   | 10 | Postal address of the contact.                |
+| ATTR_RELATION         | 11 | Relationship with the contact.                    |
+| ATTR_SIP_ADDRESS      | 12 | SIP addresses of the contact. |
+| ATTR_WEBSITE          | 13 | Website that stores the contact information.                    |
 
 **Example**
 
@@ -4589,6 +4597,10 @@ Defines a contact's email.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            | Type  | Value  | Description            |
 | ---------------- | ---- | ---- | ---------------- |
 | CUSTOM_LABEL     | number    |  0    |Custom mailbox type.|
@@ -4598,6 +4610,10 @@ Defines a contact's email.
 | INVALID_LABEL_ID | number    | -1   | Invalid mailbox.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name       |   Type  | Read-Only| Optional| Description            |
 | ----------- | -------- | ---- | ---- | ---------------- |
@@ -4659,6 +4675,10 @@ Defines a contact's event.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name             |   Type  |  Value  | Description              |
 | ----------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL      | number   | 0    | Custom event.  |
@@ -4668,6 +4688,10 @@ Defines a contact's event.
 | INVALID_LABEL_ID  | number   | -1   | Invalid event.    |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 |    Name  |   Type  | Read-Only| Optional| Description          |
 | --------- | -------- | ---- | ---- | -------------- |
@@ -4681,7 +4705,7 @@ Defines a contact's event.
 
 ```js
 let event: contact.Event = {
-    eventDate: "2000-01-01"
+    eventDate: "xxxxxx"
 };
 ```
 
@@ -4689,7 +4713,7 @@ let event: contact.Event = {
 
 ```js
 let event = new contact.Event();
-event.eventDate = "2000-01-01";
+event.eventDate = "xxxxxx";
 ```
 
 ## Group
@@ -4726,6 +4750,10 @@ Enumerates IM addresses.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | -1   | Custom IM|
@@ -4739,6 +4767,10 @@ Enumerates IM addresses.
 | INVALID_LABEL_ID | number   | -2   | Invalid IM|
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name     |   Type  | Read-Only| Optional| Description              |
 | --------- | -------- | ---- | ---- | ------------------ |
@@ -4874,6 +4906,10 @@ Defines a contact's phone number.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |  Type | Value  | Description                                            |
 | ---------------- | ---- | ---- | ------------------------------------------------ |
 | CUSTOM_LABEL     |  number  | 0    | Custom phone type.                                |
@@ -4900,6 +4936,10 @@ Defines a contact's phone number.
 | INVALID_LABEL_ID |  number  | -1   | Invalid phone type.                                  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name       |   Type  | Read-Only| Optional| Description              |
 | ----------- | -------- | ---- | ---- | ------------------ |
@@ -4957,6 +4997,10 @@ Defines a contact's postal address.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | 0    | Custom postal address type.|
@@ -4966,6 +5010,10 @@ Defines a contact's postal address.
 | INVALID_LABEL_ID | number   | -1   | Invalid address type.      |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name         |   Type  | Read-Only| Optional| Description                      |
 | ------------- | -------- | ---- | ---- | -------------------------- |
@@ -5009,6 +5057,10 @@ Defines a contact's relationship.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name                     |  Type  | Value  | Description              |
 | ------------------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL              | number   | 0    | Custom relationship.  |
@@ -5029,6 +5081,10 @@ Defines a contact's relationship.
 | INVALID_LABEL_ID          | number   | -1   | Invalid relationship.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name        |   Type  | Read-Only| Optional| Description          |
 | ------------ | -------- | ---- | ---- | -------------- |
@@ -5065,6 +5121,10 @@ Defines a contact's SIP address.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                               |
 | ---------------- | ---- | ---- | ----------------------------------- |
 | CUSTOM_LABEL     | number   | 0    | Custom SIP address.|
@@ -5074,6 +5134,10 @@ Defines a contact's SIP address.
 | INVALID_LABEL_ID | number   | -1   | Invalid SIP address.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name      |   Type  | Read-Only| Optional| Description                             |
 | ---------- | -------- | ---- | ---- | --------------------------------- |
