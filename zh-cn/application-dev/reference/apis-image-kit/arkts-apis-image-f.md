@@ -357,7 +357,7 @@ async function CreatePixelMapFromParcel() {
     data.readParcelable(ret);
 
     // 获取到pixelmap。
-    let unmarshPixelmap = ret.pixel_map;
+    let newPixelmap = ret.pixel_map;
   }
 }
 ```
