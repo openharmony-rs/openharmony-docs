@@ -26,6 +26,17 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
      调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。
 
      <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
+       .then(async (result: Scene) => {
+         this.scene = result;
+         let rf: SceneResourceFactory = this.scene.getResourceFactory();
+       // ···
+       }).catch((err: string) => {
+         console.error(err);
+     });
+     ```
 
   3. 获取动画并注册回调。
 
