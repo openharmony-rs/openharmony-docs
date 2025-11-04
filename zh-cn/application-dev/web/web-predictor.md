@@ -130,6 +130,47 @@ export default class EntryAbility extends UIAbility {
 3. 编写用于生成字节码缓存的组件，本例中的本地Javascript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
+   
+   ``` TypeScript
+   import { BuilderData } from './DynamicComponent';
+   import { Config, configs } from './PrecompileConfig';
+   
+   @Builder
+   function webBuilder(data: BuilderData) {
+     Web({ src: data.url, controller: data.controller })
+       .onControllerAttached(() => {
+         precompile(data.controller, configs, data.context);
+       })
+       .fileAccess(true)
+   }
+   
+   export const precompileWebview = wrapBuilder<BuilderData[]>(webBuilder);
+   
+   export const precompile = async (controller: WebviewController, configs: Array<Config>, context: UIContext) => {
+     for (const config of configs) {
+       let content = await readRawFile(config.localPath, context);
+   
+       try {
+         controller.precompileJavaScript(config.url, content, config.options)
+           .then(errCode => {
+             console.error('precompile successfully! ' + errCode);
+           }).catch((errCode: number) => {
+             console.error('precompile failed. ' + errCode);
+         });
+       } catch (err) {
+         console.error('precompile failed. ' + err.code + ' ' + err.message);
+       }
+     }
+   }
+   
+   async function readRawFile(path: string, context: UIContext) {
+     try {
+       return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+     } catch (err) {
+       return new Uint8Array(0);
+     }
+   }
+   ```
 
 JavaScript资源的获取方式也可通过[网络请求](../reference/apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
