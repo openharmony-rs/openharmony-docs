@@ -93,6 +93,31 @@ struct StateStylesSample {
 
 <!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct MyComponent {
+  @Styles normalStyle() {
+    .backgroundColor(Color.Gray)
+  }
+
+  @Styles pressedStyle() {
+    .backgroundColor(Color.Red)
+  }
+  build() {
+    Column() {
+      Text('Text1')
+        .fontSize(50)
+        .fontColor(Color.White)
+        .stateStyles({
+          normal: this.normalStyle,
+          pressed: this.pressedStyle,
+        })
+    }
+  }
+}
+```
+
   **图2** 正常态和按压态  
 
 ![Video_2023-03-17_144824](figures/Video_2023-03-17_144824.gif)
