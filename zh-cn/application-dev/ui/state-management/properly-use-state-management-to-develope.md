@@ -672,6 +672,175 @@ struct Page4 {
 
 <!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[EvtryAblity]';
+
+@Observed
+class UiStyle5 {
+  @Track public translateX: number = 0;
+  @Track public translateY: number = 0;
+  @Track public scaleX: number = 0.3;
+  @Track public scaleY: number = 0.3;
+  @Track public width: number = 336;
+  @Track public height: number = 178;
+  @Track public posX: number = 10;
+  @Track public posY: number = 50;
+  @Track public alpha: number = 0.5;
+  @Track public borderRadius: number = 24;
+  @Track public imageWidth: number = 78;
+  @Track public imageHeight: number = 78;
+  @Track public translateImageX: number = 0;
+  @Track public translateImageY: number = 0;
+  @Track public fontSize: number = 20;
+}
+
+@Component
+struct SpecialImage5 {
+  @ObjectLink uiStyle: UiStyle5;
+  private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
+    hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
+    return 1;
+  }
+
+  build() {
+    Image($r('app.media.foreground')) // 此处'app.media.foreground'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      .width(this.uiStyle.imageWidth)
+      .height(this.uiStyle.imageHeight)
+      .margin({ top: 20 })
+      .translate({
+        x: this.uiStyle.translateImageX,
+        y: this.uiStyle.translateImageY
+      })
+      .opacity(this.isRenderSpecialImage()) // 如果Image重新渲染，该函数将被调用
+  }
+}
+
+@Component
+struct Page5Child {
+  @ObjectLink uiStyle: UiStyle5
+
+  // 下面的函数用于显示组件是否被渲染
+  private isRenderColumn(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Column is rendered');
+    return 1;
+  }
+
+  private isRenderStack(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Stack is rendered');
+    return 1;
+  }
+
+  private isRenderImage(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Image is rendered');
+    return 1;
+  }
+
+  private isRenderText(): number {
+    hilog.info(DOMAIN_NUMBER, TAG, 'Text is rendered');
+    return 1;
+  }
+
+  build() {
+    Column() {
+      SpecialImage5({
+        uiStyle: this.uiStyle
+      })
+      Stack() {
+        Column() {
+          Image($r('app.media.foreground')) // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+            .opacity(this.uiStyle.alpha)
+            .scale({
+              x: this.uiStyle.scaleX,
+              y: this.uiStyle.scaleY
+            })
+            .padding(this.isRenderImage())
+            .width(300)
+            .height(300)
+        }
+        .width('100%')
+        .position({ y: -80 })
+
+        Stack() {
+          Text('Hello World')
+            .fontColor('#182431')
+            .fontWeight(FontWeight.Medium)
+            .fontSize(this.uiStyle.fontSize)
+            .opacity(this.isRenderText())
+            .margin({ top: 12 })
+        }
+        .opacity(this.isRenderStack())
+        .position({
+          x: this.uiStyle.posX,
+          y: this.uiStyle.posY
+        })
+        .width('100%')
+        .height('100%')
+      }
+      .margin({ top: 50 })
+      .borderRadius(this.uiStyle.borderRadius)
+      .opacity(this.isRenderStack())
+      .backgroundColor('#FFFFFF')
+      .width(this.uiStyle.width)
+      .height(this.uiStyle.height)
+      .translate({
+        x: this.uiStyle.translateX,
+        y: this.uiStyle.translateY
+      })
+
+      Column() {
+        Button('Move')
+          .width(312)
+          .fontSize(20)
+          .backgroundColor('#FF007DFF')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.getUIContext().animateTo({
+              duration: 500
+            }, () => {
+              this.uiStyle.translateY = (this.uiStyle.translateY + 180) % 250;
+            })
+          })
+        Button('Scale')
+          .borderRadius(20)
+          .backgroundColor('#FF007DFF')
+          .fontSize(20)
+          .width(312)
+          .onClick(() => {
+            this.uiStyle.scaleX = (this.uiStyle.scaleX + 0.6) % 0.8;
+          })
+      }
+      .position({
+        y: 666
+      })
+      .height('100%')
+      .width('100%')
+
+    }
+    .opacity(this.isRenderColumn())
+    .width('100%')
+    .height('100%')
+
+  }
+}
+
+@Entry
+@Component
+struct Page5 {
+  @State uiStyle: UiStyle5 = new UiStyle5();
+
+  build() {
+    Stack() {
+      SpecialImage5({
+        uiStyle: this.uiStyle
+      })
+    }
+    .backgroundColor('#F1F3F5')
+  }
+}
+```
+
 
 ### 使用@Observed装饰或被声明为状态变量的类对象绑定组件
 
