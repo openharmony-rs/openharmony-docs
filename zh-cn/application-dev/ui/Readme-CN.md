@@ -29,6 +29,7 @@
       - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](arkts-sta-interop-dyn-builder-v2.md)
       - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](arkts-dyn-interop-sta-builder-v2.md)
     - 状态管理V1V2混用互操作
+      - [ArkTS-Sta与ArkTS-Dyn状态管理V1V2混用互操作校验规格](arkts-sta-interop-dyn-validate.md)
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
     - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
