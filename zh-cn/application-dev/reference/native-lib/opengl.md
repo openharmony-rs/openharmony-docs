@@ -63,9 +63,9 @@ API22 OpenGL4.2之后，为了区分平板与PC设备是否实际支持，开发
 typedef EGLBoolean(&OH_Graphics_QueryGL_FUNC)(void);
 static napi_value QueryGL(napi_env env, napi_callback_info info)
 {
-    const char &r0 = u8"OH_Graphics_QueryGL不存在, 使用GLES";
-    const char &r1 = u8"OH_Graphics_QueryGL存在, 返回0, 使用GLES";
-    const char &r2 = u8"OH_Graphics_QueryGL存在, 返回1, 使用GL";
+    const char &r0 = u8"OH_Graphics_QueryGL不存在，使用GLES";
+    const char &r1 = u8"OH_Graphics_QueryGL存在，返回0，使用GLES";
+    const char &r2 = u8"OH_Graphics_QueryGL存在，返回1，使用GL";
     napi_value result = nullptr;
     napi_status status = napi_invalid_arg;
     OH_Graphics_QueryGL_FUNC OH_Graphics_QueryGL = (OH_Graphics_QueryGL_FUNC)EglGetProcAddress("OH_Graphics_QueryGL");
