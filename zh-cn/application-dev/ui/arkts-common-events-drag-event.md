@@ -1034,6 +1034,33 @@ export struct DropAnimationExample {
    创建GridItem子组件，并设置其状态为可选中。再设置多选拖拽功能isMultiSelectionEnabled为true，最后设置选中状态用作区分是否选中。
 
    <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   Grid() {
+     ForEach(this.numbers, (idx: number) => {
+       GridItem() {
+         Column()
+           .backgroundColor(Color.Blue)
+           .width(50)
+           .height(50)
+           .opacity(1.0)
+           .id('grid' + idx)
+       }
+       .dragPreview(this.previewData[idx])
+       .dragPreviewOptions({ numberBadge: this.numberBadge },
+         { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
+       .selectable(true)
+       .selected(this.isSelectedGrid[idx])
+       .stateStyles({
+         normal: this.normalStyles,
+         selected: this.selectStyles
+       })
+       .onClick(() => {
+         this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+       })
+     }, (idx: string) => idx)
+   }
+   ```
 
    多选拖拽的数据数量过多可能影响拖拽的体验，推荐多选拖拽最大多选数量为500。
 
