@@ -252,6 +252,22 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      完成灯光初始化后，将加载好的场景与灯光进行绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示。同时创建相机并设置观察位置，用于控制场景显示效果。
 
      <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+     
+     ``` TypeScript
+     this.light = await createLightPromise();
+     if (globalScene && this.light) {
+       this.scene = globalScene;
+       this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+       this.rf = this.scene.getResourceFactory();
+       this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+       this.cam.enabled = true;
+       this.cam.position.z = 5;
+       // Initialize color value
+       this.red = this.light.color.r;
+       this.green = this.light.color.g;
+       this.blue = this.light.color.b;
+     }
+     ```
 
   5. 灯光交互。
 
