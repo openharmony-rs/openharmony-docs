@@ -27,6 +27,17 @@
     > 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用，推荐通过指定[应用链接](app-startup-overview.md#应用链接)的方式来实现。
 
   <!-- @[explicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+              let wantInfo: Want = {
+                deviceId: '', // deviceId为空表示本设备
+                bundleName: 'com.samples.wantoverview',
+                abilityName: 'ExplicitAbility',
+              };
+              // ···
+  ```
 
   
 - **隐式Want**：在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中未指定abilityName，称为隐式Want。
