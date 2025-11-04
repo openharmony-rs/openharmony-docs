@@ -1,4 +1,4 @@
-# MVVM模式
+# MVM模式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->
