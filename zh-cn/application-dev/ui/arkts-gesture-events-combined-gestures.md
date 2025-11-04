@@ -115,6 +115,38 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 以在一个Column组件上绑定点击手势和双击手势组成的并行识别手势为例，由于单击手势和双击手势是并行识别，因此两个手势可以同时进行识别，二者互不干涉。
 
   <!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct parallelRecognition {
+    @State count1: number = 0;
+    @State count2: number = 0;
+  
+    build() {
+      Column() {
+        Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+          .fontSize(28);
+      }
+      .height(200)
+      .width('100%')
+      // 以下组合手势为并行识别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
+      .gesture(
+        GestureGroup(GestureMode.Parallel,
+          TapGesture({ count: 1 })
+            .onAction(() => {
+              this.count1++;
+            }),
+          TapGesture({ count: 2 })
+            .onAction(() => {
+              this.count2++;
+            })
+        )
+      )
+    }
+  }
+  ```
 
 
 ![parallel](figures/parallel.gif)
