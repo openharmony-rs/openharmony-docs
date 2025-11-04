@@ -298,6 +298,28 @@
 
 - 通过[existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie)查询隐私模式下是否存在cookie。
   <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('existCookie')
+          .onClick(() => {
+            // existCookie参数表示隐私模式（true）或非隐私模式（false）下，查询是否存在cookies。
+            let result = webview.WebCookieManager.existCookie(true);
+            console.info('result: ' + result);
+          })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
+      }
+    }
+  }
+  ```
 
 - 通过[clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11)清除隐私模式下所有cookie。 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
