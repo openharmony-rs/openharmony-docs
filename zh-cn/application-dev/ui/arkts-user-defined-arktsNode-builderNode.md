@@ -64,6 +64,64 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)的[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)返回值。
 
   <!-- @[Main_FrameNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/FrameNode.ets) --> 
+  
+  ``` TypeScript
+  import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+  
+  class Params {
+    public text: string = '';
+  
+    constructor(text: string) {
+      this.text = text;
+    }
+  }
+  
+  @Builder
+  function buildText(params: Params) {
+    Column() {
+      Text(params.text)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+    }
+  }
+  
+  class TextNodeController extends NodeController {
+    private textNode: BuilderNode<[Params]> | null = null;
+    private message: string = 'DEFAULT';
+  
+    constructor(message: string) {
+      super();
+      this.message = message;
+    }
+  
+    makeNode(context: UIContext): FrameNode | null {
+      this.textNode = new BuilderNode(context);
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      return this.textNode.getFrameNode();
+    }
+  }
+  
+  @Entry
+  @Component
+  struct FrameNodePage {
+    @State message: string = 'hello';
+  
+    build() {
+      Row() {
+        Column() {
+          NodeContainer(new TextNodeController(this.message))
+            .width('100%')
+            .height(100)
+            .backgroundColor('#FFF0F0F0')
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
 
 将BuilderNode与RenderNode进行结合使用。
 
