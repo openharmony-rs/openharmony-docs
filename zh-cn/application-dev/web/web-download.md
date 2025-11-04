@@ -258,5 +258,98 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 <!-- @[recovery_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DownloadUtil, fileName, filePath } from './downloadUtil'; // downloadUtil.ets 见下文
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  download: webview.WebDownloadItem = new webview.WebDownloadItem();
+  // 用于记录失败的下载任务。
+  failedData: Uint8Array = new Uint8Array();
+
+  aboutToAppear(): void {
+    DownloadUtil.init(this.getUIContext());
+  }
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('will start a download.');
+              // 传入一个下载路径，并开始下载。
+              // 如果传入一个不存在的路径，则会下载到默认/data/storage/el2/base/cache/web/目录。
+              webDownloadItem.start('/data/storage/el2/base/cache/web/' + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
+              this.download = webDownloadItem;
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
+              // 序列化失败的下载任务到一个字节数组。
+              this.failedData = webDownloadItem.serialize();
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+            webview.WebDownloadManager.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            // 这里指定下载地址为 https://www.example.com/，Web组件会发起一个下载任务将该页面下载下来。
+            // 开发者需要替换为自己想要下载的内容的地址。
+            this.controller.startDownload('https://www.example.com/');
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 将当前的下载任务信息序列化保存，用于后续恢复下载任务。
+      // 当前用例仅展示下载一个任务的场景，多任务场景请按需扩展。
+      Button('record')
+        .onClick(() => {
+          try {
+            // 保存当前下载数据到持久化文档中。
+            DownloadUtil.saveDownloadInfo(DownloadUtil.uint8ArrayToStr(this.download.serialize()));
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // 从序列化的下载任务信息中，恢复下载任务。
+      // 按钮触发时必须保证WebDownloadManager.setDownloadDelegate设置完成。
+      Button('recovery')
+        .onClick(() => {
+          try {
+            // 当前默认持久化文件存在，用户根据实际情况增加判断。
+            let webDownloadItem =
+              webview.WebDownloadItem.deserialize(
+                DownloadUtil.strToUint8Array(DownloadUtil.readFileSync(filePath, fileName)));
+            webview.WebDownloadManager.resumeDownload(webDownloadItem);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 下载任务信息持久化工具类文件。
 <!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->
