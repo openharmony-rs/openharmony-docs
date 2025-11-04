@@ -10017,15 +10017,15 @@ export default class EntryAbility extends UIAbility {
 
 ## setScrollbarMode<sup>23+</sup>
 
-setScrollbarMode(mode: ScrollbarMode): void
+setScrollbarMode(ScrollbarMode: ScrollbarMode): void
 
-web网页场景,用户使用全局滚动条样式接口设置滚动条样式。默认值：[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
+web网页场景,用户使用全局滚动条样式接口设置滚动条样式。不显示调用时，默认值为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
 
 > **说明：**
 >
-> - 根据滚动条样式,改变当前应用所有web滚动条样式为常驻滚动条或非常驻滚动条。
-> - 若不设置全局滚动条样式,则默认为非常驻滚动条。
-> - 若[forceDisplayScrollBar](./arkts-basic-components-web-attributes.md#forcedisplayscrollbar14)接口与当前接口一同设置,forceDisplayScrollBar接口设置不生效。
+> - 根据滚动条样式，改变当前应用所有web滚动条样式为常驻滚动条或非常驻滚动条。
+> - 若不设置全局滚动条样式，则默认为非常驻滚动条。
+> - 若[forceDisplayScrollBar](./arkts-basic-components-web-attributes.md#forcedisplayscrollbar14)接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。
 > - 该接口需要在WebViewController绑定Web组件之前调用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -10034,7 +10034,7 @@ web网页场景,用户使用全局滚动条样式接口设置滚动条样式。�
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| mode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。<br>默认值：ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR |
+| ScrollbarMode | [ScrollbarMode](./arkts-apis-webview-e.md#scrollbarmode23) | 是 | 非常驻滚动条模式。
 
 **示例：**
 
