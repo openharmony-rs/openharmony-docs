@@ -409,6 +409,84 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
 ![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
   <!-- @[Main_BuilderProxyNode01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode01.ets) -->
+  
+  ``` TypeScript
+  import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @Component
+  struct BlueRowComponent {
+    build() {
+      Row() {
+        Row() {
+        }
+        .width('100%')
+        .height('200vp')
+        .backgroundColor(0xFF2787D9)
+        .onTouch((event: TouchEvent) => {
+          // 触摸绿色Column，蓝色Row的触摸事件不触发
+          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+        })
+      }
+    }
+  }
+  
+  @Component
+  struct GreenColumnComponent {
+    build() {
+      Column() {
+      }
+      .id('BuilderProxyNode01')
+      .width('100%')
+      .height('100vp')
+      .backgroundColor(0xFF17A98D)
+      .hitTestBehavior(HitTestMode.Transparent)
+      .onTouch((event: TouchEvent) => {
+        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+      })
+    }
+  }
+  
+  @Builder
+  function buildBlueRow() {
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
+    BlueRowComponent()
+  }
+  
+  @Builder
+  function buildGreenColumn() {
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
+    GreenColumnComponent()
+  }
+  
+  class MyNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
+  
+      const blueRowNode = new BuilderNode(uiContext);
+      blueRowNode.build(wrapBuilder(buildBlueRow));
+  
+      const greenColumnNode = new BuilderNode(uiContext);
+      greenColumnNode.build(wrapBuilder(buildGreenColumn));
+  
+      // greenColumnNode覆盖在blueRowNode上
+      relativeContainer.appendChild(blueRowNode.getFrameNode());
+      relativeContainer.appendChild(greenColumnNode.getFrameNode());
+  
+      return relativeContainer;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct BuilderProxyNode01 {
+    build() {
+      Column() {
+        NodeContainer(new MyNodeController())
+      }
+    }
+  }
+  ```
 
 在上述场景中，若要实现触摸测试的传递，可以使用一个容器组件包裹语法节点或自定义组件，以避免生成BuilderProxyNode，并将容器组件的hitTestBehavior设置为HitTestMode.Transparent，从而向兄弟节点传递触摸测试。
 
