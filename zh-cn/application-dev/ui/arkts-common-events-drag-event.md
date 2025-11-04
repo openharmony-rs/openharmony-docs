@@ -451,6 +451,91 @@ struct Index {
 
 <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
 
+``` TypeScript
+Grid() {
+  ForEach(this.numbers, (idx: number) => {
+    GridItem() {
+      Column()
+        .backgroundColor(Color.Blue)
+        .width(50)
+        .height(50)
+        .opacity(1.0)
+        .id('grid' + idx)
+    }
+    // ···
+    .onDragStart(() => {
+    })
+    .selectable(true)
+    .selected(this.isSelectedGrid[idx])
+    // 设置多选显示效果
+    .stateStyles({
+      normal: this.normalStyles,
+      selected: this.selectStyles
+    })
+    .onClick(() => {
+      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+      if (this.isSelectedGrid[idx]) {
+        let data: UDC.Image = new UDC.Image();
+        // '../../../resources/base/media/background.png'需要替换为开发者所需的图像资源文件
+        data.uri = '../../../resources/base/media/background.png';
+        if (!this.unifiedData) {
+          this.unifiedData = new UDC.UnifiedData(data);
+        }
+        this.unifiedData.addRecord(data);
+        this.numberBadge++;
+        let gridItemName = 'grid' + idx;
+        // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+        this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+          this.pixmap = pixmap;
+          this.previewData[idx] = {
+            pixelMap: this.pixmap
+          }
+        })
+      } else {
+        this.numberBadge--;
+        for (let i = 0; i < this.isSelectedGrid.length; i++) {
+          if (this.isSelectedGrid[i] === true) {
+            let data: UDC.Image = new UDC.Image();
+            // '../../../resources/base/media/background.png'需要替换为开发者所需的图像资源文件
+            data.uri = '../../../resources/base/media/background.png';
+            if (!this.unifiedData) {
+              this.unifiedData = new UDC.UnifiedData(data);
+            }
+            this.unifiedData.addRecord(data);
+          }
+        }
+      }
+    })
+    .dragPreviewOptions({ numberBadge: this.numberBadge })
+    .onPreDrag((status: PreDragStatus) => {
+      // 1.长按时通知，350ms回调
+      if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+        // 2.用户按住一段时间，还没有松手，有可能会拖拽，此时可准备数据
+        this.loadData()
+      } else if (status == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+        // 3.用户停止拖拽交互，取消数据准备(模拟方法：定时器取消)
+        clearTimeout(this.timeout);
+      }
+    })
+    // >=500ms,移动超过10vp触发
+    .onDragStart((event: DragEvent) => {
+      this.dragEvent = event;
+      if (this.finished == false) {
+        this.getUIContext()
+          .getDragController()
+          .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+      } else {
+        event.setData(this.unifiedData);
+      }
+    })
+    .onDragEnd(() => {
+      this.finished = false;
+    })
+
+  }, (idx: string) => idx)
+}
+```
+
    多选拖拽功能默认处于关闭状态。若要启用此功能，需在[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)接口的DragInteractionOptions参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，DragInteractionOptions还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
 
     ```ts
