@@ -665,7 +665,7 @@ on(type: 'cameraStatus', callback: AsyncCallback\<CameraStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraStatus](#oncamerastatus22)。
 
@@ -709,7 +709,7 @@ onCameraStatus(callback: AsyncCallback\<CameraStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onCameraStatus')](#oncamerastatus)。
 
@@ -750,7 +750,7 @@ off(type: 'cameraStatus', callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraStatus](#offcamerastatus22)。
 
@@ -779,7 +779,7 @@ offCameraStatus(callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cameraStatus')](#offcamerastatus)。
 
@@ -813,7 +813,7 @@ on(type: 'foldStatusChange', callback: AsyncCallback\<FoldStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFoldStatusChange](#onfoldstatuschange22)。
 
@@ -857,7 +857,7 @@ onFoldStatusChange(callback: AsyncCallback\<FoldStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('foldStatusChange')](#onfoldstatuschange12)。
 
@@ -927,7 +927,7 @@ offFoldStatusChange(callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 关闭折叠设备折叠状态变化的监听。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('foldStatusChange')](#offfoldstatuschange12)。
 
@@ -1143,7 +1143,7 @@ onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('torchStatusChange')](#ontorchstatuschange11)。
 
@@ -1212,7 +1212,7 @@ offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('torchStatusChange')](#offtorchstatuschange11)。
 

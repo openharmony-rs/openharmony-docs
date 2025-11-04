@@ -452,7 +452,7 @@ onError(camera: CameraDevice, callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
 
@@ -519,7 +519,7 @@ offError(camera: CameraDevice, callback?: ErrorCallback): void
 
 注销监听CameraInput的错误事件。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 

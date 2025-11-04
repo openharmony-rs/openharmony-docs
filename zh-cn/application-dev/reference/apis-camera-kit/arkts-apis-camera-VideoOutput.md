@@ -253,7 +253,7 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameStart](#onframestart22)。
 
@@ -296,7 +296,7 @@ onFrameStart(callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameStart')](#onframestart)。
 
@@ -340,7 +340,7 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameStart](#offframestart22)。
 
@@ -374,7 +374,7 @@ offFrameStart(callback?: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameStart')](#offframestart)。
 
@@ -405,7 +405,7 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameEnd](#onframeend22)。
 
@@ -444,7 +444,7 @@ onFrameEnd(callback: AsyncCallback\<void\>): void
 
 监听录像结束，通过注册回调函数获取结果。使用callback异步回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameEnd')](#onframeend)。
 
@@ -484,7 +484,7 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameEnd](#offframeend22)。
 
@@ -513,7 +513,7 @@ offFrameEnd(callback?: AsyncCallback\<void\>): void
 
 注销监听录像结束。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameEnd')](#offframeend)。
 
@@ -547,7 +547,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
@@ -587,7 +587,7 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
 
@@ -623,7 +623,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
@@ -652,7 +652,7 @@ offError(callback?: ErrorCallback): void
 
 注销监听录像输出发生错误。
 
-**ArkTS模式：**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：**该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
