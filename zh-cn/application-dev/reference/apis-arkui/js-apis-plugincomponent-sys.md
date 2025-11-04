@@ -79,6 +79,7 @@ push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.push(
   {
     owner: {
@@ -130,6 +131,7 @@ request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallb
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.request(
   {
     owner: {
