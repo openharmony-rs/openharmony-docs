@@ -81,7 +81,7 @@ struct Index {
 
 setPointerSpeed(speed: number): Promise&lt;void&gt;
 
-设置鼠标移动速度，使用Promise异步方式返回结果。
+设置鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -97,7 +97,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -242,7 +242,7 @@ struct Index {
 
 getPointerSpeed(): Promise&lt;number&gt;
 
-获取当前鼠标移动速度，使用Promise异步方式返回结果。
+获取当前鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -252,7 +252,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise实例，异步返回鼠标移动速度。 |
+| Promise&lt;number&gt; | Promise对象，异步返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -395,7 +395,7 @@ struct Index {
 
 setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
-设置鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+设置鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -411,7 +411,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -501,7 +501,7 @@ struct Index {
 
 getHoverScrollState(): Promise&lt;boolean&gt;
 
-获取当前鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+获取当前鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -511,7 +511,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise实例，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
+| Promise&lt;boolean&gt; | Promise对象，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
 
 **错误码**：
 
@@ -606,7 +606,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
-设置鼠标主键，使用Promise异步方式返回结果。
+设置鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -622,7 +622,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -712,7 +712,7 @@ struct Index {
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
-获取当前鼠标主键，使用Promise异步方式返回结果。
+获取当前鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -722,7 +722,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise实例，异步返回鼠标主键。 |
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，异步返回鼠标主键。 |
 
 **错误码**：
 
@@ -817,7 +817,7 @@ struct Index {
 
 setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
-设置鼠标滚动行数，使用Promise异步方式返回结果。
+设置鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -833,7 +833,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -923,7 +923,7 @@ struct Index {
 
 getMouseScrollRows(): Promise&lt;number&gt;
 
-获取当前鼠标滚动行数，使用Promise异步方式返回结果。
+获取当前鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -933,7 +933,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise实例，异步返回鼠标滚动行数。 |
+| Promise&lt;number&gt; | Promise对象，异步返回鼠标滚动行数。 |
 
 **错误码**：
 
@@ -1028,7 +1028,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
-设置触控板滚轴开关，使用Promise异步方式返回结果。
+设置触控板滚轴开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1044,7 +1044,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1134,7 +1134,7 @@ struct Index {
 
 getTouchpadScrollSwitch(): Promise\<boolean>
 
-获取触控板滚轴能力开启状态，使用Promise异步方式返回结果。
+获取触控板滚轴能力开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1144,7 +1144,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
 
 **错误码**：
 
@@ -1239,7 +1239,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
 
-设置触控板滚轴的方向，使用Promise异步方式返回结果。
+设置触控板滚轴的方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1255,7 +1255,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1345,7 +1345,7 @@ struct Index {
 
 getTouchpadScrollDirection(): Promise\<boolean>
 
-获取触控板滚轴方向，使用Promise异步方式返回结果。
+获取触控板滚轴方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1355,7 +1355,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
 
 **错误码**：
 
@@ -1450,7 +1450,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
-设置触控板轻触功能开关，使用Promise异步方式返回结果。
+设置触控板轻触功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1466,7 +1466,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1556,7 +1556,7 @@ struct Index {
 
 getTouchpadTapSwitch(): Promise\<boolean>
 
-获取触控板轻触功能开启状态，使用Promise异步方式返回结果。
+获取触控板轻触功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1566,7 +1566,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
 
 **错误码**：
 
@@ -1661,7 +1661,7 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number): Promise\<void>
 
-设置触控板光标移动速度，使用Promise异步方式返回结果。
+设置触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1677,7 +1677,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1767,7 +1767,7 @@ struct Index {
 
 getTouchpadPointerSpeed(): Promise\<number>
 
-获取触控板光标移动速度，使用Promise异步方式返回结果。
+获取触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1777,7 +1777,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise实例，异步返回触控板光标移动速度。 |
+| Promise\<number> | Promise对象，异步返回触控板光标移动速度。 |
 
 **错误码**：
 
@@ -1872,7 +1872,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
-设置触控板双指捏合功能开关，使用Promise异步方式返回结果。
+设置触控板双指捏合功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1888,7 +1888,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1978,7 +1978,7 @@ struct Index {
 
 getTouchpadPinchSwitch(): Promise\<boolean>
 
-获取触控板双指捏合功能开启状态，使用Promise异步方式返回结果。
+获取触控板双指捏合功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1988,7 +1988,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
 
 **错误码**：
 
@@ -2083,7 +2083,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
-设置触控板多指滑动功能开关，使用Promise异步方式返回结果。
+设置触控板多指滑动功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2099,7 +2099,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2189,7 +2189,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
 
-获取触控板多指滑动功能开启状态，使用Promise异步方式返回结果。
+获取触控板多指滑动功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2199,7 +2199,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
 
 **错误码**：
 
@@ -2294,7 +2294,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
-设置触控板右键菜单类型，使用Promise异步方式返回结果。
+设置触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2310,7 +2310,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2400,7 +2400,7 @@ struct Index {
 
 getTouchpadRightClickType(): Promise\<RightClickType>
 
-获取触控板右键菜单类型，使用Promise异步方式返回结果。
+获取触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2410,7 +2410,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise实例，异步返回触控板右键菜单类型。 |
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，异步返回触控板右键菜单类型。 |
 
 **错误码**：
 
@@ -2505,7 +2505,7 @@ struct Index {
 
 setPointerSize(size: number): Promise&lt;void&gt;
 
-设置鼠标光标大小，使用Promise异步方式返回结果。
+设置鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2521,7 +2521,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2660,7 +2660,7 @@ struct Index {
 
 getPointerSize(): Promise&lt;number&gt;
 
-获取当前鼠标光标大小，使用Promise异步方式返回结果。
+获取当前鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2818,7 +2818,7 @@ struct Index {
 
 setPointerColor(color: number): Promise&lt;void&gt;
 
-设置鼠标光标颜色，使用Promise异步方式返回结果。
+设置鼠标光标颜色，使用Promise异步回调。
 
 **说明**
 >
@@ -2838,7 +2838,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2981,7 +2981,7 @@ struct Index {
 
 getPointerColor(): Promise&lt;number&gt;
 
-获取当前鼠标光标颜色，使用Promise异步方式返回结果。
+获取当前鼠标光标颜色，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3135,7 +3135,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
-设置触控板双击拖拽开关状态，使用Promise异步方式返回结果。
+设置触控板双击拖拽开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3151,7 +3151,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3241,7 +3241,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
-获取触控板双击拖拽开关的开启状态，使用Promise异步方式返回结果。
+获取触控板双击拖拽开关的开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3251,7 +3251,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
+| Promise\<boolean> | Promise对象，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
 
 **错误码**：
 
