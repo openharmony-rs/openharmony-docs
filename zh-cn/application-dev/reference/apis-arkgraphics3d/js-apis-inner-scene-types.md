@@ -13,7 +13,7 @@
 
 ## 导入模块
 ```ts
-import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
+import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, PrimitiveTopology, CustomGeometry, CubeGeometry, PlaneGeometry, SphereGeometry, CylinderGeometry, Position3, Rotation3, Scale3 } from '@kit.ArkGraphics3D';
 ```
 
 ## Vec2
@@ -111,6 +111,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | CUBE | 1 | 立方体类型。 |
 | PLANE | 2 | 平面类型。 |
 | SPHERE | 3 | 球体类型。 |
+| CYLINDER<sup>23+</sup> | 4 | 圆柱体类型。|
 
 ## GeometryDefinition<sup>18+</sup>
 几何类型定义抽象类，用于解释特定几何类型的属性。
@@ -171,6 +172,26 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | 否 | 否 | 球体半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
 | segmentCount | number | 否 | 否 | 在球体上以经纬度分割的段数，取值范围大于0。 |
+
+## CylinderGeometry<sup>23+</sup>
+
+圆柱体几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| radius | number | 否 | 否 | 圆柱体的底面半径，取值范围大于0。 |
+| height | number | 否 | 否 | 圆柱体的高度，取值范围大于0。 |
+| segmentCount | number | 否 | 否 | 圆柱体圆周方向的分段面数量，取值范围是大于等于3的正整数。该数值直接影响圆柱体侧面的光滑度：数值越大，侧面包含的面片数量越多，视觉上越接近光滑曲面；数值越小，侧面会呈现明显的多边形轮廓。注意数值过大会延长几何创建耗时，还可能导致线程阻塞。|
+
+>**说明：**
+>
+>开发者需保证上述三个参数设置正确，否则无法创建圆柱体并可能引发未定义行为。
+
+以radius=0.5，height=1，segmentCount=20为例，生成圆柱体的网格以及UV布局如下：
+
+![cylinder](figures/cylinder.png)
 
 ## Position3
 type Position3 = Vec3
