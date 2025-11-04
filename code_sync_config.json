@@ -10444,7 +10444,7 @@
 						"start_line":100
 					},
 					{
-						"end_line":184,
+						"end_line":188,
 						"name":"CrashEvent_ArkTS_Add_Watcher",
 						"start_line":133
 					}
