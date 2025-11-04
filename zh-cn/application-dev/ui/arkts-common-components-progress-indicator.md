@@ -39,6 +39,11 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
 
 
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(200).height(50)
+  Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
+  ```
 
   ![zh-cn_image_0000001562700417](figures/zh-cn_image_0000001562700417.png)
 
