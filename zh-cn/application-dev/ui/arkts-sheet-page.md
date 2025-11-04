@@ -131,6 +131,76 @@ struct SheetDemo {
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
 <!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_SupportingAgingFriendly]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'SupportingAgingFriendly_';
+
+@Entry
+@Component
+struct OnWillDismiss_Dismiss {
+  @State isShow: Boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button('Button')
+    }
+  }
+
+  build() {
+    Button('OpenBindSheet')
+      .onClick(() => {
+        this.isShow = true
+      })
+      .margin(120)
+      .bindSheet($$this.isShow, this.myBuilder(), {
+        height: SheetSize.MEDIUM,
+        blurStyle: BlurStyle.Thick,
+        dragBar: true,
+        detents: [SheetSize.MEDIUM, SheetSize.LARGE],
+        title: { title: 'title', subtitle: 'subtitle' },
+        enableOutsideInteractive: false,
+        onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
+          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
+          this.getUIContext().showAlertDialog(
+            {
+              message: $r('app.string.bindContentCover_label2'),
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 4,
+              offset: { dx: 0, dy: -20 },
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  hilog.info(DOMAIN, TAG, 'Callback when the cancel button is clicked');
+                }
+              },
+              secondaryButton: {
+                enabled: true,
+                defaultFocus: true,
+                style: DialogButtonStyle.HIGHLIGHT,
+                value: 'ok',
+                // 第三步：确认关闭半模态逻辑所在，此处为AlertDialog的Button回调
+                action: () => {
+                  // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
+                  dismissSheetAction.dismiss();
+                  hilog.info(DOMAIN, TAG, 'Callback when the ok button is clicked');
+                }
+              },
+              cancel: () => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'onWillDismiss_Dismiss:' + 'AlertDialog Closed callbacks');
+              }
+            }
+          )
+        })
+      })
+  }
+}
+```
+
 
 ![onWillDismiss](figures/onWillDismiss.png)
 
