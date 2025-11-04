@@ -104,6 +104,19 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
      使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建相机。
 
      <!-- @[cam_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+     
+     ``` TypeScript
+     let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+     scene.then(async (result: Scene) => {
+     // ···
+       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+       let sceneCameraParameter: SceneNodeParameters = { name: 'camera' };
+     // ···
+     }).catch((error: string) => {
+       console.error('Scene load failed: ' + error);
+       reject(error);
+     });
+     ```
 
   3. 创建相机并配置相机参数。
 
