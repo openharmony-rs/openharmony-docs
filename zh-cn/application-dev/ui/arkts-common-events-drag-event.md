@@ -1291,6 +1291,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   SheetBuilder() {
     Column() {
       // 输入框
+      // $r('app.string.Push_Here')需要替换为开发者所需的文本资源文件
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
