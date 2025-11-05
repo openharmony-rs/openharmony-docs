@@ -51,6 +51,20 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   当ToggleType为Button时，只能包含一个子组件，如果子组件有文本设置，则相应的文本内容会显示在按钮上。
 
   <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Button, isOn: false }) {
+    Text('status button')
+      .fontColor('#182431')
+      .fontSize(12)
+  }.width(100).id('toggle5') // 请开发者替换为实际的id
+  
+  Toggle({ type: ToggleType.Button, isOn: true }) {
+    Text('status button')
+      .fontColor('#182431')
+      .fontSize(12)
+  }.width(100).id('toggle6') // 请开发者替换为实际的id
+  ```
 
     ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
 
