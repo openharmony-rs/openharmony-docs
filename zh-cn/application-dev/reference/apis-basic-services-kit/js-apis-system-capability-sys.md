@@ -24,7 +24,7 @@ import { systemcapability } from '@kit.BasicServicesKit';
 
 querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
-获取系统能力集合的字符串，并使用callback回调函数。
+获取系统能力集合的字符串，使用callback异步回调。
 
 **系统能力：** SystemCapability.Developtools.Syscap
 
@@ -55,7 +55,7 @@ try {
 
 querySystemCapabilities(): Promise&lt;string&gt;
 
-获取系统能力的集合，并使用Promise异步回调函数。
+获取系统能力的集合，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Developtools.Syscap
 
