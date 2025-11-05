@@ -113,7 +113,7 @@
     
     ``` TypeScript
     // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
-    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntity, InsightIntentEntry } from '@kit.AbilityKit';
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
     
     // 意图执行返回值数据格式定义
     class PlayMusicResultDef {
