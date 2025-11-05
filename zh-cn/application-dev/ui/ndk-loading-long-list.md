@@ -587,6 +587,61 @@ private:
 ## 使用分组列表 
 1. 分组列表使用ListItemGroup组件实现，ListItemGroup支持添加header、footer设置函数，支持使用懒加载。
    <!-- @[Use_grouped_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemGroupNode.h) -->
+   
+   ``` C
+   // ArkUIListItemGroupNode.h
+   
+   #ifndef MYAPPLICATION_ARKUILISTITEMGROUPNODE_H
+   #define MYAPPLICATION_ARKUILISTITEMGROUPNODE_H
+   #include "ArkUINode.h"
+   #include "ArkUIListItemAdapter.h"
+   namespace NativeModule {
+   class ArkUIListItemGroupNode : public ArkUINode {
+   public:
+       ArkUIListItemGroupNode()
+           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())
+       ->createNode(ARKUI_NODE_LIST_ITEM_GROUP)) {}
+       void SetHeader(std::shared_ptr<ArkUINode> node)
+       {
+           if (node) {
+               ArkUI_AttributeItem Item = { .object = node->GetHandle() };
+               nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER, &Item);
+           } else {
+               nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER);
+           }
+       }
+       void SetFooter(std::shared_ptr<ArkUINode> node)
+       {
+           if (node) {
+               ArkUI_AttributeItem Item = { .object= node->GetHandle() };
+               nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER, &Item);
+           } else {
+               nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER);
+           }
+       }
+       std::shared_ptr<ArkUINode> GetHeader() const
+       {
+           return header_;
+       }
+       std::shared_ptr<ArkUINode> GetFooter() const
+       {
+           return footer_;
+       }
+       //引入懒加载模块。
+       void SetLazyAdapter(const std::shared_ptr<ArkUIListItemAdapter> &adapter)
+       {
+           ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter->GetHandle()};
+           nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_NODE_ADAPTER, &item);
+           adapter_ = adapter;
+       }
+   private:
+       std::shared_ptr<ArkUINode> header_;
+       std::shared_ptr<ArkUINode> footer_;
+       std::shared_ptr<ArkUIListItemAdapter> adapter_;
+   };
+   }
+   #endif //MYAPPLICATION_ARKUILISTITEMGROUPNODE_H
+   ```
 2. List组件设置吸顶。
    <!-- @[SetSticky](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
 3. List组件下使用ListItemGroup实现分组列表界面。
