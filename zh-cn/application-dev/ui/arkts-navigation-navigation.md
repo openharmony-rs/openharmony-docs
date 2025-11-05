@@ -320,7 +320,6 @@ Navigation组件通过mode属性设置页面的显示模式。
          .menus([toolTmp, toolTmp, toolTmp, toolTmp])
    ```
 
-
 ## 设置工具栏
 
 工具栏位于Navigation组件的底部，开发者可以通过[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性进行设置。
