@@ -530,6 +530,14 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
 
 <!-- @[SetTextMargin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets) -->
 
+``` TypeScript
+TextArea({
+  text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
+})
+  .fontSize(22)
+  .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+```
+
 ![TextInput_line_spacing](figures/TextInput_line_spacing.jpg)
 
 ## 键盘避让
