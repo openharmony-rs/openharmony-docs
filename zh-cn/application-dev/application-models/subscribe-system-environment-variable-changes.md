@@ -238,6 +238,37 @@ export default class EnvAbility5 extends UIAbility {
 2. 在资源使用完成之后，可以通过调用[off](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextoffenvironment-1)方法释放相关资源。
 
     <!-- @[envconf_apppage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage7.ets) --> 
+    
+    ``` TypeScript
+    import { common } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    const TAG: string = '[MyAbility]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct EnvAbilityPage7 {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      private callbackId: number = 0; // 注册订阅系统环境变化的ID
+    
+      unsubscribeConfigurationUpdate() {
+        let applicationContext = this.context.getApplicationContext();
+        try {
+          applicationContext.off('environment', this.callbackId);
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister applicationContext. Code is ${code}, message is ${message}`);
+        }
+      }
+    
+      // 页面展示
+      build() {
+      }
+    }
+    ```
 
 ### 在AbilityStage组件管理器中订阅回调
 
