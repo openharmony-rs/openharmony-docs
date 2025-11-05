@@ -64,6 +64,78 @@
 
 <!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Parent {
+  @State showChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
+
+  // 组件生命周期
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
+  }
+
+  // 组件生命周期
+  onDidBuild() {
+    hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
+  }
+
+  // 组件生命周期
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
+  }
+
+  build() {
+    Column() {
+      // this.showChild为true，创建Child子组件，执行Child aboutToAppear
+      if (this.showChild) {
+        Child()
+      }
+      Button('delete Child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .onClick(() => {
+          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear
+          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear
+          this.showChild = !this.showChild;
+        })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State title: string = 'Hello World';
+
+  // 组件生命周期
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
+  }
+
+  // 组件生命周期
+  onDidBuild() {
+    hilog.info(0x0000, 'testTag', 'Child onDidBuild');
+  }
+
+  // 组件生命周期
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
+  }
+
+  build() {
+    Text(this.title)
+      .fontSize(50)
+      .margin(20)
+      .onClick(() => {
+        this.title = 'Hello ArkUI';
+      })
+  }
+}
+```
+
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 
 - 应用冷启动的初始化流程为：Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild --&gt; Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild。此处体现了自定义组件懒展开特性，即Parent执行完onDidBuild之后才会执行Child组件的aboutToAppear。日志输出信息如下：
