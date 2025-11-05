@@ -26,7 +26,7 @@
 
 1. 获取UIAbility上次退出的原因。
 
-    在UIAbility类的OnCreate成员函数的launchParam参数中读取Ability上次退出的信息。
+    在UIAbility类的onCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
     <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility1.ets) -->
     
