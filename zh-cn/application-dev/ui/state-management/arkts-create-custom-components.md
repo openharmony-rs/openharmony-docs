@@ -439,6 +439,19 @@ struct Son {
   }
   ```
   <!-- @[if_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ModuleComponent.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
+      // 正例：使用if判断
+      if (this.aVar > 10) {
+        Text('...')
+      } else {
+        Image('...')
+      }
+    }
+  }
+  ```
 
 
 - 不允许直接改变状态变量，反例如下。详细分析见[\@State常见问题：不允许在build里改状态变量](./arkts-state.md#不允许在build里改状态变量)。
