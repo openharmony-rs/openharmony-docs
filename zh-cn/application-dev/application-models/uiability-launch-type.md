@@ -143,7 +143,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
         Row() {
           Column() {
             // ···
-            Button($r('app.string.new_doc')) //app.string.new_doc为用户自定义字符串资源
+            Button($r('app.string.new_doc')) // app.string.new_doc为用户自定义字符串资源
             // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -166,7 +166,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
     
-            Button($r('app.string.open_old_doc')) //app.string.open_old_doc为用户自定义字符串资源
+            Button($r('app.string.open_old_doc')) // app.string.open_old_doc为用户自定义字符串资源
             // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
