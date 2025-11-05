@@ -148,6 +148,30 @@
    - 通过dialogOptions控制弹窗样式。
 
      <!-- @[open_dialogOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     
+     ``` C++
+     int32_t g_id = 0;
+     void OpenDialogCallBack(int32_t dialogId)
+     {
+         g_id = dialogId;
+     }
+     
+     void OpenCustomDialog()
+     {
+         auto contentNode = CreateDialogContent();
+         if (!g_dialogOptions) {
+             g_dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(contentNode);
+         }
+         OH_ArkUI_CustomDialog_SetAlignment(g_dialogOptions, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
+         OH_ArkUI_CustomDialog_SetBackgroundColor(g_dialogOptions, 0xffffffff);
+         OH_ArkUI_CustomDialog_SetCornerRadius(g_dialogOptions, 6.0f, 6.0f, 6.0f, 6.0f);
+         OH_ArkUI_CustomDialog_SetModalMode(g_dialogOptions, false);
+         OH_ArkUI_CustomDialog_SetAutoCancel(g_dialogOptions, true);
+         OH_ArkUI_CustomDialog_SetBorderStyle(g_dialogOptions, ARKUI_BORDER_STYLE_SOLID,
+                                              ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID);
+         OH_ArkUI_CustomDialog_OpenDialog(g_dialogOptions, OpenDialogCallBack);
+     }
+     ```
 
 3. 弹窗关闭方式。
 
