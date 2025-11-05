@@ -1615,6 +1615,10 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -1642,6 +1646,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1669,6 +1674,39 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to set the status bar color. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
+import { ColorMetrics, window } from '@ohos.window';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err}`);
+        return;
+      }
+      windowClass = data;
+      try {
+        let promise = windowClass.setStatusBarColor(ColorMetrics.numeric(0x112233));
+        promise.then(() => {
+          console.info('Succeeded in setting the status bar color.');
+        }).catch((err: BusinessError) => {
+          console.error(`Set the status bar color failed. Cause code: ${err}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set the status bar color. Cause code: ${exception}`);
       }
     });
   }
