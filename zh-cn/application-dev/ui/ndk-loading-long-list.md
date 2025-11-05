@@ -644,6 +644,22 @@ private:
    ```
 2. List组件设置吸顶。
    <!-- @[SetSticky](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
+   
+   ``` C
+   // ArkUIListNode.h
+   // 提供列表组件的封装。
+   // ···
+   class ArkUIListNode : public ArkUINode {
+       // ···
+       void SetSticky(ArkUI_StickyStyle style)
+       {
+           ArkUI_NumberValue value[] = {{.i32 = style}};
+           ArkUI_AttributeItem item = {value, 1};
+           nativeModule_->setAttribute(handle_, NODE_LIST_STICKY, &item);
+       }
+       // ···
+   };
+   ```
 3. List组件下使用ListItemGroup实现分组列表界面。
    <!-- @[Grouped_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample.h) -->
 
