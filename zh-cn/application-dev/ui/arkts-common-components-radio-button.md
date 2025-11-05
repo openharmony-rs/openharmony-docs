@@ -24,6 +24,13 @@ Radio支持设置选中状态和非选中状态的样式。
 
 <!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
+``` TypeScript
+Radio({ value: 'Radio1', group: 'radioGroup' })
+  .checked(false)
+Radio({ value: 'Radio2', group: 'radioGroup' })
+  .checked(true)
+```
+
 
 ![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
 
