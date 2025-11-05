@@ -74,6 +74,10 @@
 
 - 当不再需要弹窗操作时，需要主动调用[OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions)接口销毁弹窗控制器对象。
   <!-- @[dialog_disposeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  
+  ``` C++
+  OH_ArkUI_CustomDialog_DisposeOptions(g_dialogOptions);
+  ```
 
 ## 设置弹窗样式
 
