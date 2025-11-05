@@ -33,6 +33,10 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 - 单行输入框。
 
   <!-- @[create_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  
+  ``` TypeScript
+  TextInput()
+  ```
 
   ![zh-cn_image_0000001511580844](figures/zh-cn_image_0000001511580844.png)
 
