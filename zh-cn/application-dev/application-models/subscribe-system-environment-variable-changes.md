@@ -24,6 +24,27 @@
 开发者可以使用[getConfigurationSync](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#getconfigurationsync10)主动获取当前[环境变量](../../application-dev/reference/apis-localization-kit/js-apis-resource-manager.md#configuration)，包括深浅色模式、屏幕方向、语言地区、屏幕密度、设备类型等，对应用程序作出相应处理，提供更好的用户体验。
 
   <!-- @[get_envconf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility0.ets) --> 
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN_NUMBER = 0xF811;
+  const TAG  = '[Sample_EnvConfig]';
+  
+  export default class EnvAbility0 extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      try {
+        let value = this.context.resourceManager.getConfigurationSync();
+        // 屏幕方向
+        let direction = value.direction;
+        // 语言文字国家地区
+        let locale = value.locale;
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'getConfigurationSync error is ' + error);
+      }
+    }
+  }
+  ```
 
 ## 设置环境变量
 
