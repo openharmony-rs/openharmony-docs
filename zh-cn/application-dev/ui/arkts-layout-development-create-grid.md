@@ -111,11 +111,11 @@ Grid() {
     }
   }
 // ···
-          Grid(undefined, this.layoutOptions) {
-            // ···
-          }
-          .columnsTemplate('1fr 1fr 1fr 1fr')
-          .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+Grid(undefined, this.layoutOptions) {
+  // ···
+}
+.columnsTemplate('1fr 1fr 1fr 1fr')
+.rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
 ```
 
 ### 设置主轴方向
