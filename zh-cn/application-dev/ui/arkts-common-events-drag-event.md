@@ -871,7 +871,7 @@ export struct DropAnimationExample {
    多选拖拽的数据数量过多可能影响拖拽的体验，推荐多选拖拽最大多选数量为500。
 
    <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
-    
+   
    ``` TypeScript
    onPageShow(): void {
      let i: number = 0;
