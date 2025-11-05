@@ -432,6 +432,22 @@ private:
 
 3. 控制列表滚动指定偏移量。
    <!-- @[ScrollBy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
+   
+   ``` C
+   // ArkUIListNode.h
+   // 提供列表组件的封装。
+   // ···
+   class ArkUIListNode : public ArkUINode {
+       // ···
+       void ScrollBy(float offset)
+       {
+           ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}};
+           ArkUI_AttributeItem Item = {.value = value, .size = 2};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &Item);
+       }
+       // ···
+   };
+   ```
 ## ListItem横划删除 
 
 1. ListItem设置NODE_LIST_ITEM_SWIPE_ACTION属性，将ArkUI_ListItemSwipeActionOption对象作为属性参数传入。
