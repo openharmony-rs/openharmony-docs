@@ -77,6 +77,17 @@
 
 <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
+``` JSON5
+"uris": [
+  {
+    "scheme": "https",
+    "host": "developer.huawei.com",
+    "path": "consumer",
+    "linkFeature": "Login"
+  }
+]
+```
+
 ### 清理应用沙箱缓存数据场景
 
 通过“设置 > 存储”可以选择进入某个应用的应用详情页，该页面默认会包含“清空缓存”选项，用于清除当前应用的所有缓存数据。
