@@ -14191,5 +14191,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-universal-attributes-accessibility.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"accessibility_group_start",
+						"start_line":34
+					},
+					{
+						"end_line":48,
+						"name":"accessibility_level_start",
+						"start_line":41
+					},
+					{
+						"end_line":58,
+						"name":"accessibility_text_group_start",
+						"start_line":49
+					},
+					{
+						"end_line":70,
+						"name":"accessibility_description_start",
+						"start_line":59
+					},
+					{
+						"end_line":83,
+						"name":"accessibility_checked_start",
+						"start_line":71
+					},
+					{
+						"end_line":96,
+						"name":"accessibility_selected_start",
+						"start_line":84
+					},
+					{
+						"end_line":128,
+						"name":"accessibility_text_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"virtual_node_example_start",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
