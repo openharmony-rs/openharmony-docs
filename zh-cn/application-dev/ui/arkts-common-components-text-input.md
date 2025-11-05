@@ -66,6 +66,12 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 - 搜索框。
 
   <!-- @[create_text_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  
+  ``` TypeScript
+  Search()
+    // 'app.string.Creat_TextInput_Content'资源文件中的value值为"搜索"
+    .searchButton($r('app.string.Creat_TextInput_Content'))
+  ```
 
   ![zh-ch_image_ui_arkts-common-components-text-input_search_default](figures/zh-ch_image_ui_arkts-common-components-text-input_search_default.png)
 
