@@ -117,6 +117,16 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 <!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
 
+``` TypeScript
+Toggle({ type: ToggleType.Switch, isOn: false })
+  .onChange((isOn: boolean) => {
+    if(isOn) {
+      // 需要执行的操作
+      // ···
+    }
+  })
+```
+
 
 ## 场景示例
 
