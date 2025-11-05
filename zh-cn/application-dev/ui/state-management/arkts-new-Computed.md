@@ -208,6 +208,47 @@ get varName(): T {
 - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_Textcomponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'Textcomponent_';
+  
+  @Entry
+  @ComponentV2
+  struct CustomComponentUse {
+    @Local firstName: string = 'Li';
+    @Local lastName: string = 'Hua';
+    age: number = 20; // 无法触发Computed
+  
+    @Computed
+    get fullName() {
+      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+      return this.firstName + ' ' + this.lastName + this.age;
+    }
+  
+    build() {
+      Column() {
+        Text(this.lastName + ' ' + this.firstName)
+        Text(this.lastName + ' ' + this.firstName)
+        Divider()
+        Text(this.fullName)
+        Text(this.fullName)
+        Button('changed lastName')
+          .onClick(() => {
+            this.lastName += 'a';
+          })
+  
+        Button('changed age')
+          .onClick(() => {
+            this.age++;  // 无法触发Computed
+          })
+      }
+    }
+  }
+  ```
 
 计算属性本身会带来性能开销，在实际应用开发中需要注意：
 - 对于简单的计算逻辑，可以不使用计算属性。
