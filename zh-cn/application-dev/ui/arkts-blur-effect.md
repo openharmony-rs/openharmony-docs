@@ -59,6 +59,60 @@ struct BlurEffectsExample {
 
 <!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
 
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State radius: number = 0;
+  @State text: string = '';
+  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);//app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上’
+
+  aboutToAppear() {
+    // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+    this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + 
+    "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+      "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+      Text(this.text)
+        .height(200)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily("cursive")
+        .fontStyle(FontStyle.Italic)
+      // $r("app.media.bg")需要替换为开发者所需的图像资源文件
+      Image($r("app.media.bg"))
+        .blur(this.radius)// 使用blur接口为照片组件添加内容模糊效果
+        .height('100%')
+        .width("100%")
+        .objectFit(ImageFit.Cover)
+    }.height('100%')
+    .width("100%")
+    .onTouch((event?: TouchEvent) => {
+      if (event) {
+        if (event.type === TouchType.Move) {
+          this.y = Number(event.touches[0].y.toString()).toString();
+          this.radius = Number(this.y) / 10; // 根据跟手过程中的滑动距离修改模糊半径，配合模糊接口，形成跟手模糊效果
+        }
+        if (event.type === TouchType.Up) {
+          this.radius = 0;
+          //app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上‘
+          this.y = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);
+        }
+      }
+      // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+      this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+        "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
+    })
+  }
+}
+```
+
 
 ![zh-cn_image_0000001599813588](figures/zh-cn_image_0000001599813588.gif)
 
