@@ -14331,5 +14331,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-common-components-progress-indicator.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"progress_style_1",
+						"start_line":36
+					},
+					{
+						"end_line":50,
+						"name":"progress_style_2",
+						"start_line":43
+					},
+					{
+						"end_line":65,
+						"name":"progress_style_3",
+						"start_line":55
+					},
+					{
+						"end_line":75,
+						"name":"progress_style_4",
+						"start_line":70
+					},
+					{
+						"end_line":84,
+						"name":"progress_style_5",
+						"start_line":80
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"progress_example",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
