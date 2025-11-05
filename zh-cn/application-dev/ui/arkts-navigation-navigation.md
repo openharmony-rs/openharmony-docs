@@ -785,6 +785,13 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   通过[observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate)提供的注册接口可以注册NavDestination生命周期变化的监听，使用方式如下：
   
   <!-- @[uiObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template2/Index.ets) -->
+  
+  ``` TypeScript
+  const DOMAIN = 0x0000;
+  uiObserver.on('navDestinationUpdate', (info) => {
+    hilog.info(DOMAIN, 'testTag', 'NavDestination state update', JSON.stringify(info));
+  });
+  ```
 
   
   也可以注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听：
