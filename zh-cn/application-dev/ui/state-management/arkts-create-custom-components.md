@@ -253,6 +253,42 @@ struct ParentComponent {
 
 <!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  -->
 
+``` TypeScript
+@Entry
+@Component
+struct Parent {
+  @State cnt: number = 0;
+  submit: () => void = () => {
+    this.cnt++;
+  };
+
+  build() {
+    Column() {
+      Text(`${this.cnt}`)
+      Son({ submitArrow: this.submit })
+    }
+  }
+}
+
+@Component
+struct Son {
+  submitArrow?: () => void;
+
+  build() {
+    Row() {
+      Button('add')
+        .width(80)
+        .onClick(() => {
+          if (this.submitArrow) {
+            this.submitArrow()
+          }
+        })
+    }
+    .height(56)
+  }
+}
+```
+
 ## build()函数
 
 所有在build()函数中声明的语句统称为UI描述，UI描述需要遵循以下规则：
