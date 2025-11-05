@@ -151,6 +151,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_SETUP_HEADER            | vorbis设置头的键，值类型为uint8_t\*，仅vorbis解码器支持。该键是可选的。 |
 | OH_MD_KEY_AUDIO_OBJECT_NUMBER | 音频对象数目的键，值类型为int32_t，只有Audio Vivid解码使用。该键是可选的。            |
 | OH_MD_KEY_AUDIO_VIVID_METADATA | Audio Vivid元数据的键，值类型为uint8_t\*，只有Audio Vivid解码使用。该键是可选的。     |
+| OH_MD_KEY_BLOCK_ALIGN | 每个packet字节数的键，值类型为int32_t，仅WMAV1、WMAV2、WMA PRO解码时必须。（从API version 22开始支持） |
 
 ### 封装/解封装专有的键值对
 
