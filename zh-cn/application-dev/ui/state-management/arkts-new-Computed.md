@@ -252,6 +252,38 @@ get varName(): T {
 - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
+  
+  ``` TypeScript
+  @ObservedV2
+  class Name {
+    @Trace public firstName: string = 'Hua';
+    @Trace public lastName: string = 'Li';
+  
+    @Computed
+    get fullName() {
+      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
+      return this.firstName + ' ' + this.lastName;
+    }
+  }
+  
+  const name: Name = new Name();
+  
+  @Entry
+  @ComponentV2
+  struct ObservedV2ClassUser {
+    name1: Name = name;
+  
+    build() {
+      Column() {
+        Text(this.name1.fullName)
+        Text(this.name1.fullName)
+        Button('changed lastName').onClick(() => {
+          this.name1.lastName += 'a';
+        })
+      }
+    }
+  }
+  ```
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
