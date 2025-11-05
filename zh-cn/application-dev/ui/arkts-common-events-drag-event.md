@@ -895,7 +895,7 @@ export struct DropAnimationExample {
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
    <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
-    
+   
    ``` TypeScript
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
