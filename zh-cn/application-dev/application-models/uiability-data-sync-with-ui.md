@@ -41,7 +41,7 @@
         eventhub.on('event1', (data: string) => {
           // 触发事件，完成相应的业务操作
         });
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+        hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
       }
     
       eventFunc(argOne: object, argTwo: object): void {
