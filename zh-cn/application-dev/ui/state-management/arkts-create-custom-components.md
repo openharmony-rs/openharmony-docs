@@ -117,6 +117,13 @@ struct ParentComponent {
   | freezeWhenInactive | boolean | 否 | 否 | 是否开启组件冻结。默认值false。true表示开启组件冻结，false表示不开启组件冻结。 |
 
   <!-- @[freezeWhenInactive_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/FreezeWhenInactive.ets) -->
+  
+  ``` TypeScript
+  @Component({ freezeWhenInactive: true })
+  struct MyComponent {
+  // ···
+  }
+  ```
 
 ### build()函数
 
