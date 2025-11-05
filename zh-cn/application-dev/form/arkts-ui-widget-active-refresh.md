@@ -349,5 +349,74 @@
 由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { formHost } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   let storage = new LocalStorage();
+   
+   @Entry(storage)
+   @Component
+   struct Index {
+     @State formId: string = '0';
+   
+     build() {
+       Column() {
+         Column() {
+           FormComponent({
+             id: 0,
+             name: 'widget',
+             bundle: 'com.samples.formupdatedemo', // 请开发者替换为实际的bundlename
+             ability: 'EntryFormAbility',
+             module: 'entry',
+             dimension: 2,
+             temporary: false,
+           })
+             .size({
+               width:200,
+               height:200,
+             })
+             .borderColor(Color.Black)
+             .borderRadius(10)
+             .borderWidth(1)
+             .onAcquired((form: FormCallbackInfo) => {
+               hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${JSON.stringify(form)}`)
+               this.formId = form.id.toString();
+             })
+             .onRouter(() => {
+               hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
+             })
+             .onError((error) => {
+               hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
+             })
+           // ···
+           Button($r('app.string.button_update'))
+             .onClick(() => {
+               hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
+               // formId需要为实际需要刷新的卡片ID
+               if (this.formId != null) {
+                 formHost.requestForm(this.formId).then(() => {
+                   hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
+                 }).catch((error: BusinessError) => {
+                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
+                 })
+               }
+             })
+             .margin(5)
+             .width('50%')
+         }
+         .width('100%')
+         .height('100%')
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
 <!--DelEnd-->
