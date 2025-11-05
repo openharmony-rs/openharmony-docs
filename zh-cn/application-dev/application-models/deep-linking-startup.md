@@ -35,7 +35,30 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 {
   "module": {
     // ···
-    "abilities": [
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+
+``` TypeScript
+// 以EntryAbility.ets为例
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { url } from '@kit.ArkTS';
+
+const DOMAIN = 0x0000;
+
+export default class DeepAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 从want中获取传入的链接信息。
+    // 如传入的url为：link://www.example.com/programs?action=showall
+    let uri = want?.uri;
+    if (uri) {
+      // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
+      let urlObject = url.URL.parseURL(want?.uri);
+      let action = urlObject.params.get('action');
+      // 例如，当action为showall时，展示所有的节目。
+      if (action === 'showall') {
+      }
+    }
+  }
+```
     // ···
       {
         // ···
