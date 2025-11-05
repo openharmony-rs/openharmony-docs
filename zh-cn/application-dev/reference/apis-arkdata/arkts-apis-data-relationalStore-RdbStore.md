@@ -4859,7 +4859,7 @@ try {
 
 off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;string&gt;&gt;\| Callback&lt;Array&lt;ChangeInfo&gt;&gt;): void
 
-取消数据变更的事件监听，当分布式数据库或本地数据库中的数据发生更改时，将不会调用回调。
+取消数据变更的事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4920,7 +4920,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-取消指定的事件监听。
+取消数据变更的事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5033,7 +5033,7 @@ try {
 
 off(event: 'statistics', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
-取消订阅取值为'statistics'的SQL统计信息。
+取消订阅SQL统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5114,7 +5114,7 @@ try {
 
 off(event: 'perfStat', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
-取消订阅取值为'perfStat'的SQL统计信息。
+取消订阅SQL统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
