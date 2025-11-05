@@ -237,6 +237,45 @@ export struct CalendarDialog {
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
+``` TypeScript
+
+@Entry
+@Component
+export struct DatePickerDialogExample {
+  @State selectTime: Date = new Date('2023-12-25T08:30:00');
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showDatePickerDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showDatePickerDialog({
+                start: new Date('2000-1-1'),
+                end: new Date('2100-12-31'),
+                selected: this.selectTime,
+                lunarSwitch: true,
+                showTime: true,
+                onDateAccept: (value: Date) => {
+                  this.selectTime = value;
+                  console.info('DatePickerDialog:onAccept()' + JSON.stringify(value));
+                },
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ···
+  }
+}
+```
+
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
