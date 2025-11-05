@@ -4,6 +4,8 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
@@ -346,19 +348,25 @@ hideNavBar(value: boolean)
 
 ### navDestination<sup>10+</sup>
 
-navDestination(builder: (name: string, param: unknown) => void)
+ArkTS-Dyn: navDestination(builder: (name: string, param: unknown) => void)
 
-创建NavDestination组件。使用builder函数，基于name和param构造NavDestination组件。builder下只能有一个根节点。builder中允许在NavDestination组件外包含一层自定义组件， 但自定义组件不允许设置属性和事件，否则仅显示空白。
+ArkTS-Sta: navDestination(builder: PageMapBuilder | undefined)
+
+创建NavDestination组件。使用builder函数，基于name和param构造NavDestination组件。builder下只能有一个根节点。builder中允许在NavDestination组件外包含一层自定义组件，但自定义组件不允许设置属性和事件，否则显示空白。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                   | 必填 | 说明                     |
 | ------- | -------------------------------------- | ---- | ------------------------ |
-| builder | (name: string, param: unknown) => void | 是   | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unkown可以是用户自定义的类型。 |
+| builder | ArkTS-Dyn: (name: string, param: unknown) => void <br/>ArkTS-Sta: [PageMapBuilder](ts-types.md#pagemapbuilder22)&nbsp;\|&nbsp;undefined | 是   | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unkown可以是用户自定义的类型。 |
 
 ### navBarWidthRange<sup>10+</sup>
 
