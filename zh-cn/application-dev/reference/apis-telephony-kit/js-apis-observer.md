@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -98,6 +100,10 @@ type CardType = sim.CardType
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [sim.CardType](js-apis-sim.md#cardtype7) | 卡类型。 |
@@ -150,7 +156,7 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 
 ```ts
 observer.on('networkStateChange', (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -193,7 +199,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('networkStateChange', options, (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -233,7 +239,7 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 }
 observer.on('networkStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -274,7 +280,7 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -316,7 +322,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -358,7 +364,7 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -402,7 +408,7 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 
 ```ts
 observer.on('callStateChange', (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -446,7 +452,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -486,7 +492,7 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 
 ```ts
 let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 }
 observer.on('callStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -526,7 +532,7 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 
 ```ts
 observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -566,7 +572,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -606,7 +612,7 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataConnectionStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -648,7 +654,7 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 import { data } from '@kit.TelephonyKit';
 
 observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -690,7 +696,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -732,7 +738,7 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 import { data } from '@kit.TelephonyKit';
 
 let callback: (data: data.DataFlowType) => void = (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataFlowChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -772,7 +778,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 ```ts
 observer.on('simStateChange', (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -812,7 +818,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('simStateChange', options, (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -852,7 +858,7 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 
 ```ts
 let callback: (data: observer.SimStateData) => void = (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 }
 observer.on('simStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -891,7 +897,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
 ```ts
 observer.on('iccAccountInfoChange', () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 });
 ```
 
@@ -931,7 +937,7 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 
 ```ts
 let callback: () => void = () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 }
 observer.on('iccAccountInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -945,6 +951,10 @@ observer.off('iccAccountInfoChange');
 SIM卡锁类型。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值   | 说明              |
 | ----------- | ---- | ----------------- |
@@ -969,11 +979,15 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                | 必填 | 说明                                                      |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | 是   | SIM卡类型。 |
-| state               | [SimState](js-apis-sim.md#simstate) | 是   | SIM卡状态。 |
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 是   | SIM卡锁类型。                                             |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+|     名称            |                 类型                | 只读|可选 | 说明   |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | 否  |否 | SIM卡类型。 |
+| state               | [SimState](js-apis-sim.md#simstate) | 否 |  否| SIM卡状态。 |
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 否  | 否| SIM卡锁类型。                                             |
 
 
 ## CallStateInfo<sup>11+</sup>
@@ -982,10 +996,14 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                    | 必填 | 说明     |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 是   | 通话类型。 |
-| number              | string                                 | 是   | 电话号码。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
+| number              | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
