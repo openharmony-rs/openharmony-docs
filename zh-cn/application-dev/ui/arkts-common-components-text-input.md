@@ -495,6 +495,16 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   ellipsisMode属性需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
   <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.Set_Omission_Property_textContent'资源文件中的value值为"这是一段文本，用来展示省略模式"
+  TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
+    .textOverflow(TextOverflow.Ellipsis)
+    .ellipsisMode(EllipsisMode.END)
+    .style(TextInputStyle.Inline)
+    .fontSize(30)
+    .margin(30)
+  ```
   ![TextInput_ellipsismode](figures/TextInput_ellipsismode.jpg)
 
 - 设置文本描边属性。
