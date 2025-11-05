@@ -262,6 +262,48 @@ struct DisableSystemServiceMenuItem {
 
 <!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
 
+``` TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DisableMenuItem {
+  aboutToAppear(): void {
+    // 禁用搜索和翻译
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
+  }
+
+  aboutToDisappear(): void {
+    // 页面消失时恢复系统服务菜单项
+    TextMenuController.disableMenuItems([])
+  }
+
+  build() {
+    Row() {
+      Column() {
+        // 'app.string.ProhibitSelectMenu_content'资源文件中的value值为"这是一个TextInput，长按弹出文本选择菜单"
+        TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含搜索和翻译
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.gif)
 
 ## 自动填充
