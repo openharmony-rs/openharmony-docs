@@ -237,11 +237,11 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         // 绑定Native侧的创建组件和销毁组件。
         napi_property_descriptor desc[] = {
             {"createNativeRoot", nullptr,
-            NativeModule::CreateNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
+             NativeModule::CreateNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr},
             {"destroyNativeRoot", nullptr,
-            NativeModule::DestroyNativeRoot, nullptr, nullptr,
-            nullptr, napi_default, nullptr}};
+             NativeModule::DestroyNativeRoot, nullptr, nullptr,
+             nullptr, napi_default, nullptr}};
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
     }
