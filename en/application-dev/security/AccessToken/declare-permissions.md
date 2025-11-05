@@ -29,12 +29,12 @@ Declare the permissions required by your application under **requestPermissions*
 >
 > ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION in the following example are for reference only. Set permissions to match your case.
 
-<!-- [request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
+<!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
-  "module" : {
-    // ...
+  "module": {
+	// ···
     "requestPermissions": [
       {
         "name": "ohos.permission.APPROXIMATELY_LOCATION",
@@ -60,6 +60,7 @@ Declare the permissions required by your application under **requestPermissions*
   }
 }
 ```
+
 
 ## Specifications for reason
 
