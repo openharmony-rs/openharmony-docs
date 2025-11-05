@@ -58,6 +58,23 @@
 
 <!-- @[env_setscale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility1.ets) --> 
 
+``` TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EnvAbility1 extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        return;
+      }
+    });
+    let applicationContext = this.context.getApplicationContext();
+    applicationContext.setFontSizeScale(2);
+  }
+}
+```
+
 ### 设置深浅色模式
 
 应用深浅色模式默认跟随系统。开发者可以设置应用或组件的深浅色模式。设置后，不再支持订阅系统的深浅色模式变化。
