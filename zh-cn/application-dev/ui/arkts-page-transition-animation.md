@@ -49,6 +49,18 @@ type为RouteType.None表示对页面栈的push、pop操作均生效，type的默
 
 <!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
 
+``` TypeScript
+// page B
+pageTransition() {
+  // 定义页面进入时的效果，从右侧滑入，时长为1000ms，无论页面栈发生push还是pop操作均可生效
+  PageTransitionEnter({ type: RouteType.None, duration: 1000 })
+    .slide(SlideEffect.Right)
+  // 定义页面退出时的效果，向右侧滑出，时长为1200ms，无论页面栈发生push还是pop操作均可生效
+  PageTransitionExit({ type: RouteType.None, duration: 1200 })
+    .slide(SlideEffect.Right)
+}
+```
+
 
 
 假设页面跳转配置为多实例模式，即页面栈中允许存在重复的页面。可能会有4种场景，对应的页面转场效果如下表。
