@@ -149,6 +149,11 @@ TextInput({ text: '+86 123-0123-0456' })
 带小数点的数字输入模式的输入框，只能输入数字[0-9]和小数点，只能存在一个小数点。
 <!-- @[set_number_decimal_input_type_6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.NUMBER_DECIMAL)
+```
+
 ![text_input_type_number_decimal](figures/text_input_type_number_decimal.PNG)
 
 ### 带URL的输入模式
