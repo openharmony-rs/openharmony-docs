@@ -267,6 +267,41 @@ Grid() {
 
 <!-- @[build_scrollable_horizontally_grid_layouts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollableGrid.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct ScrollableGrid {
+// ···
+  @State services: Array<string> = [
+    // app.string.Live_Streaming资源文件中的value值为‘直播’
+    this.context!.resourceManager.getStringSync($r('app.string.Live_Streaming').id),
+    // app.string.Imported资源文件中的value值为‘进口’
+    this.context!.resourceManager.getStringSync($r('app.string.Imported').id)
+    ];
+// ···
+  build() {
+    // ···
+
+      Column({ space: 5 }) {
+        // ···
+
+          Grid() {
+            ForEach(this.services, (service: string, index) => {
+              GridItem() {
+              }
+              .width('25%')
+            }, (service: string): string => service)
+          }
+          .rowsTemplate('1fr 1fr') // 只设置rowsTemplate属性，当内容超出Grid区域时，可水平滚动。
+          .rowsGap(15)
+
+        // ···
+        }
+      }
+    // ···
+}
+```
+
 
 ## 控制滚动位置
 
