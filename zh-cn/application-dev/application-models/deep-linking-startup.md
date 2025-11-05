@@ -160,6 +160,42 @@ struct DeepOpenLinkIndex {
 
 <!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[UIAbilityComponentsOpenLink]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct DeepStartIndex {
+  build() {
+    Button('start ability', { type: ButtonType.Capsule, stateEffect: true })
+      .width('87%')
+      .height('5%')
+      .margin({ bottom: '12vp' })
+      .onClick(() => {
+        let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let want: Want = {
+          uri: 'link://www.example.com'
+        };
+
+        try {
+          context.startAbility(want).then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
+          }).catch((err: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
+          });
+        } catch (paramError) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${paramError.code}, message is ${paramError.message}`);
+        }
+      })
+  }
+}
+```
+
 ### 使用Web组件实现应用跳转
 
 Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)的回调函数中实现应用跳转。
