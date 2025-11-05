@@ -137,6 +137,11 @@ TextInput()
 
 <!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.PhoneNumber)
+```
+
 ![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
 
 ### 带小数点的数字输入模式
