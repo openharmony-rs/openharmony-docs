@@ -187,6 +187,11 @@ TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.
 
 TextInput:
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+// 'app.string.SelectMenu_textContent_1'资源文件中的value值为"这是一段文本，用来展示选中菜单"
+TextInput({ text: $r('app.string.SelectMenu_textContent_1') })
+```
 ![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
 TextArea:
