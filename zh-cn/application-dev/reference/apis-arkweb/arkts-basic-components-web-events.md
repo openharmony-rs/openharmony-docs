@@ -1813,7 +1813,7 @@ struct Index {
     ```
 
 ## onVerifyPin<sup>22+</sup>
-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute;
+onVerifyPin(callback: OnVerifyPinCallback)
 
 通知用户进行PIN码认证。
 
