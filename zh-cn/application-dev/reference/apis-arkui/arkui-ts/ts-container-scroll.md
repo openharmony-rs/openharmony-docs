@@ -1041,8 +1041,7 @@ contentSize(): SizeResult
 >
 >  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
 >
->  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时，获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
-
+>  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1874,11 +1873,15 @@ struct ScrollExample1 {
     Column() {
       Text('设置scroller控制器和ForEach')
       Row() {
+        // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
             this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
             this.contentHeight = this.scroller.contentSize().height;
           })
+        // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
           .fontColor(Color.Red)
           .height(50)

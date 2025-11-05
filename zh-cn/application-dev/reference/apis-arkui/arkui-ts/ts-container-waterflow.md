@@ -1992,11 +1992,15 @@ struct WaterFlowContentSizeDemo {
 
   build() {
     Column({ space: 2 }) {
+      // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(() => {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
           this.contentWidth = this.scroller.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
           this.contentHeight = this.scroller.contentSize().height;
         }).margin(5)
+      // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width:' + this.contentWidth)
         .fontColor(Color.Red)
         .height(30)
