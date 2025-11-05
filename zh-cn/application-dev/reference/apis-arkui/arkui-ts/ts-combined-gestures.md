@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并发识别和互斥识别。
 
@@ -25,7 +25,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode    | [GestureMode](#gesturemode枚举说明)                          | 是   | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence      |
-| gesture | [GestureType](./ts-gesture-common.md#gesturetype11-1)[] | 否   | 设置一个或者多个基础手势类型时，这些手势会被识别为组合手势。若此参数不填则组合手势识别功能不生效。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
+| gesture | [GestureType](./ts-gesture-common.md#gesturetype)[] | 否   | 设置一个或者多个基础手势类型时，这些手势会被识别为组合手势。若此参数不填则组合手势识别功能不生效。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GestureMode枚举说明
 

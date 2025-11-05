@@ -136,6 +136,7 @@
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的数据类型。 |
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | 获取数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
+| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
 
 ## 枚举类型说明
 
@@ -1997,7 +1998,7 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，表示统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，表示统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表。<br>需要使用[OH_UDMF_GetDataElementAt](capi-udmf-h.md#oh_udmf_getdataelementat)函数通过下标访问每个元素。<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
 | unsigned int* dataSize | 该参数是输出参数，表示获取到的统一数据对象个数。 |
 
 **返回：**
@@ -2106,7 +2107,7 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，<br>此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 该参数是输出参数，统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)列表，需要使用[OH_UDMF_GetDataElementAt](capi-udmf-h.md#oh_udmf_getdataelementat)函数通过下标访问每个元素。此指针需要使用[OH_Udmf_DestroyDataArray](capi-udmf-h.md#oh_udmf_destroydataarray)函数释放。 |
 | unsigned int* dataSize | 该参数是输出参数，表示获取到的统一数据对象个数。 |
 
 **返回：**
@@ -2305,3 +2306,28 @@ void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, 
 | -- | -- |
 | [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* params | 表示指向异步请求参数[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例的指针。 |
 | const [OH_Udmf_DataProgressListener](#oh_udmf_dataprogresslistener) dataProgressListener | 用户自定义的监听回调函数，可用于获取进度信息和数据。 |
+
+### OH_UDMF_GetDataElementAt()
+
+```
+OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)
+```
+
+**描述**
+
+从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)** dataArray | 指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)的指针数组。<br>只接受从[OH_Udmf_GetUnifiedDataByOptions](capi-udmf-h.md#oh_udmf_getunifieddatabyoptions)和[OH_Udmf_DeleteUnifiedData](capi-udmf-h.md#oh_udmf_deleteunifieddata)接口中获得的指针数组。 |
+| unsigned int index | 表示要获取到的统一数据对象的下标。请确保该值不超出数组范围，否则会出现数组越界。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UdmfData*](capi-udmf-oh-udmfdata.md) | 执行成功则返回一个指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例对象的指针，如果输入数组为空，则返回空。 |

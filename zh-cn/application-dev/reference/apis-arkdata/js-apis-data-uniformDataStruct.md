@@ -20,7 +20,7 @@ import { uniformDataStruct } from '@kit.ArkData';
 
 ## PlainText
 
-纯文本类型数据，用于描述纯文本类型数据。
+纯文本类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -57,7 +57,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ## Hyperlink
 
-超链接类型数据，用于描述超链接类型数据。
+超链接类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 

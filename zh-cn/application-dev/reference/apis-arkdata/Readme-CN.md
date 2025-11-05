@@ -49,7 +49,7 @@
     - [@ohos.data.rdb (关系型数据库)](js-apis-data-rdb.md)
     - [@ohos.data.storage (轻量级存储)](js-apis-data-storage.md)
     - [@system.storage数据存储](js-apis-system-storage.md)
-    - data/rdb
+    - data/rdb<!--data-rdb-->
       - [resultSet结果集](js-apis-data-resultset.md)
 - ArkTS 组件<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (内容卡片)](js-apis-data-UdmfComponents.md)
@@ -127,6 +127,7 @@
     - [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)
     - [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
     - [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)
+    - [OH_UdsDetails](capi-udmf-oh-udsdetails.md)
     - [OH_Utd](capi-udmf-oh-utd.md)
 - 错误码<!--arkdata-arkts-errcode-->
   - [关系型数据库错误码](errorcode-data-rdb.md)

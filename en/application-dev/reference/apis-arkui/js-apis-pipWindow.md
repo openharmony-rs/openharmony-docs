@@ -79,7 +79,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 class Params {
   text: string = '';
@@ -118,7 +117,7 @@ class TextNodeController extends NodeController {
 
   // You can customize this method to update layouts.
   update(message: string) {
-    console.log(`update message: ${message}`);
+    console.info(`update message: ${message}`);
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
@@ -211,7 +210,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -263,18 +261,18 @@ Defines the parameters for creating a PiP controller.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name                 | Type                                                                        | Mandatory | Description                                                                                                                                                                                                                                                                                                                                       |
-|---------------------|----------------------------------------------------------------------------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Context environment.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                 |
-| componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | Yes  | Original [XComponent](arkui-ts/ts-basic-components-xcomponent.md) controller.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                     |
-| navigationId        | string                                                                     | No  | Navigation ID of the current page. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| templateType        | [PiPTemplateType](#piptemplatetype)                                        | No  | Template type, which is used to distinguish video playback, video call, and video meeting scenarios. If no value is passed, the video playback template is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                 |
-| contentWidth        | number                                                                     | No  | Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1920. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the width of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                |
-| contentHeight       | number                                                                     | No  | Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1080. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the height of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                |
-| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No  | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for an application, the basic components (for example, play/pause of the video playback component group) are displayed. A maximum of three components can be configured in the list.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                |
-| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No  | Custom UI that can be displayed at the top of the PiP window. If no value is passed, custom UI is not used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                          |
-| localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No  | A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                                                                                                                                                                                                                                          |
-| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>The value **1** means a small window,<br>and **2** means a large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
+| Name                 | Type                                                                        | Read-Only | Optional| Description                                                                                                                                                                                                                                                                                                                                       |
+|---------------------|----------------------------------------------------------------------------|-----|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No | No| Context environment.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | No | No| Original [XComponent](arkui-ts/ts-basic-components-xcomponent.md) controller.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| navigationId        | string                                                           | No | Yes| Navigation ID of the current page. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| templateType        | [PiPTemplateType](#piptemplatetype)                                        | No | Yes| Template type, which is used to distinguish video playback, video call, and video meeting scenarios. If no value is passed, the video playback template is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| contentWidth        | number                                                                     | No | Yes| Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1920. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the width of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| contentHeight       | number                                                           | No | Yes| Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1080. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the height of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
+| controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No| Yes | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for an application, the basic components (for example, play/pause of the video playback component group) are displayed. A maximum of three components can be configured in the list.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
+| customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI that can be displayed at the top of the PiP window. If no value is passed, custom UI is not used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
+| localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No | Yes| A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                         |
+| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>The value **1** means a small window,<br>and **2** means a large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -557,10 +555,10 @@ Describes the parameters in the callback of the action event of the PiP controll
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name                      | Type          | Mandatory   | Description                                                                                                                               |
-|--------------------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| controlType       |  [PiPControlType](#pipcontroltype12)      | Yes| Type of the action event of the PiP controller. The application performs processing based on the component type. For example, if the video play/pause component is touched, the application starts or stops the video.                                                                     |
-| status | [PiPControlStatus](#pipcontrolstatus12) | No| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **PiPControlStatus.PLAY** means that the component is enabled and **PiPControlStatus.PAUSE** means that the component is disabled. For the hang-up component, the default value is **-1**.|
+| Name                      | Type          | Read-Only | Optional  | Description                                                                                                                               |
+|--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| controlType       |  [PiPControlType](#pipcontroltype12)      | No | No| Type of the action event of the PiP controller. The application performs processing based on the component type. For example, if the video play/pause component is touched, the application starts or stops the video.                                                                     |
+| status | [PiPControlStatus](#pipcontrolstatus12) | No | Yes| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **PiPControlStatus.PLAY** means that the component is enabled and **PiPControlStatus.PAUSE** means that the component is disabled. For the hang-up component, the default value is **-1**.|
 
 ## PiPController
 
@@ -739,7 +737,7 @@ this.pipController.updatePiPControlStatus(controlType, status);
 ### updateContentNode<sup>18+</sup>
 updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 
-Updates the PiP node content.
+Updates the PiP node content. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -816,7 +814,7 @@ this.pipController.setPiPControlEnabled(controlType, enabled);
 ### getPiPWindowInfo<sup>15+</sup>
 getPiPWindowInfo(): Promise&lt;[PiPWindowInfo](#pipwindowinfo15)&gt;
 
-Obtains the PIP window information.
+Obtains the PIP window information. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -857,7 +855,7 @@ try {
 ### getPiPSettingSwitch<sup>20+</sup>
 getPiPSettingSwitch(): Promise&lt;boolean&gt;
 
-Obtains the status of the auto-start PiP switch in Settings.
+Obtains the status of the auto-start PiP switch in Settings. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

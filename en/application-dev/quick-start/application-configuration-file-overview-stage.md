@@ -28,7 +28,7 @@ The [app.json5](app-configuration-file.md) file contains the following informati
 The [module.json5](module-configuration-file.md) file contains the following information:
 
 
-- Basic module configuration, such as the name, type, description, and supported device types of the module
+- Basic [module](./application-package-overview.md#module-types) configuration, such as the name, type, description, and supported device types of the module
 
 - Application component information, including the descriptions of the [UIAbility](module-configuration-file.md#abilities) and [ExtensionAbility](module-configuration-file.md#extensionabilities) components
 

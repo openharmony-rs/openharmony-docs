@@ -19,46 +19,54 @@
 应用可以通过[onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert)事件监听网页`alert`方法，并创建合适的弹框。
 
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Hello World';
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
-
-    build() {
-      Row() {
-        Web({ src: $rawfile('test.html'), controller: this.webviewController })
-          .onAlert((event) => {
-            if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
-              this.uiContext.showAlertDialog({
-                title: "来自" + event.url + "的警告",
-                message: event.message,
-                confirm:{
-                  value: "确认",
-                  action: () => {
-                    console.info('Alert confirmed.');
-                    event.result.handleConfirm();
+    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ShowWebPageDialog]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ShowWebPageDialog_';
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      uiContext: UIContext = this.getUIContext();
+      context = this.getUIContext().getHostContext();
+    
+      build() {
+        Row() {
+          Web({ src: $rawfile('test.html'), controller: this.webviewController })
+            .onAlert((event) => {
+              if (event) {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                this.uiContext.showAlertDialog({
+                  // $r('app.string.from')需要替换为开发者所需的资源文件
+                  title: this.context?.resourceManager.getStringSync($r('app.string.from').id) + event.url +
+                    // $r('app.string.warn')需要替换为开发者所需的资源文件
+                  this.context?.resourceManager.getStringSync($r('app.string.warn').id),
+                  message: event.message,
+                  confirm:{
+                    // $r('app.string.notarize')需要替换为开发者所需的资源文件
+                    value: $r('app.string.notarize'),
+                    action: () => {
+                      hilog.info(DOMAIN, TAG, BUNDLE, 'Alert confirmed.');
+                      event.result.handleConfirm();
+                    }
+                  },
+                  cancel: () => {
+                    event.result.handleCancel();
                   }
-                },
-                cancel: () => {
-                  event.result.handleCancel();
-                }
-              })
-            }
-            return true;
-          })
+                })
+              }
+              return true;
+            })
+        }
       }
     }
-  }
-  ```
+    ```
   加载的html。
   ```html
   <!-- test.html -->
@@ -90,58 +98,66 @@
   ```
 
 - 用[CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
-
-  ```ts
-  // xxx.ets
-  import { AlertDialog } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct AlertDialogPage {
-    @State message: string = 'Hello World';
-    @State title: string = 'Hello World';
-    @State subtitle: string = '';
-    @State result: JsResult | null = null;
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    dialogControllerAlert: CustomDialogController = new CustomDialogController({
-      builder: AlertDialog({
-        primaryTitle: this.title,
-        secondaryTitle: this.subtitle,
-        content: this.message,
-        primaryButton: {
-          value: '确认',
-          role: ButtonRole.ERROR,
-          action: () => {
-            console.info('Callback when the second button is clicked');
-            this.result?.handleConfirm();
-          }
-        },
-      }),
-      onWillDismiss: () => {
-        this.result?.handleCancel();
-        this.dialogControllerAlert.close();
-      }
-    })
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('alert.html'), controller: this.webviewController })
-          .onAlert((event) => {
-            if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
-              this.title = "来自" + event.url + "的警告";
-              this.message = event.message;
-              this.result = event.result;
-              this.dialogControllerAlert.open();
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
+    
+    ``` TypeScript
+    import { AlertDialog } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ShowWebPageDialog]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ShowWebPageDialog_';
+    
+    @Entry
+    @Component
+    struct AlertDialogPage {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State subtitle: string = '';
+      @State result: JsResult | null = null;
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      dialogControllerAlert: CustomDialogController = new CustomDialogController({
+        builder: AlertDialog({
+          primaryTitle: this.title,
+          secondaryTitle: this.subtitle,
+          content: this.message,
+          primaryButton: {
+            // $r('app.string.notarize')需要替换为开发者所需的资源文件
+            value: $r('app.string.notarize'),
+            role: ButtonRole.ERROR,
+            action: () => {
+              hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the second button is clicked');
+              this.result?.handleConfirm();
             }
-            return true;
-          })
+          },
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogControllerAlert.close();
+        }
+      })
+      context = this.getUIContext().getHostContext();
+      build() {
+        Column() {
+          Web({ src: $rawfile('alert.html'), controller: this.webviewController })
+            .onAlert((event) => {
+              if (event) {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                // $r('app.string.from')需要替换为开发者所需的资源文件
+                this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) + event.url +
+                  // $r('app.string.warn')需要替换为开发者所需的资源文件
+                this.context?.resourceManager.getStringSync($r('app.string.warn').id);
+                this.message = event.message;
+                this.result = event.result;
+                this.dialogControllerAlert.open();
+              }
+              return true;
+            })
+        }
       }
     }
-  }
-  ```
+    ```
   加载的html。
   ```html
   <!-- alert.html -->
@@ -185,51 +201,58 @@
 应用可以通过[onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm)事件监听网页`confirm`方法，并创建合适的弹框。
 
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Hello World';
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('test.html'), controller: this.webviewController })
-          .onConfirm((event) => {
-            if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
-              this.uiContext.showAlertDialog({
-                title: "来自" + event.url + "的消息",
-                message: event.message,
-                primaryButton: {
-                  value: 'cancel',
-                  action: () => {
+    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ShowWebPageDialog]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ShowWebPageDialog_';
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      uiContext: UIContext = this.getUIContext();
+      context = this.getUIContext().getHostContext();
+      build() {
+        Column() {
+          Web({ src: $rawfile('test.html'), controller: this.webviewController })
+            .onConfirm((event) => {
+              if (event) {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                this.uiContext.showAlertDialog({
+                  // $r('app.string.from')需要替换为开发者所需的资源文件
+                  title: this.context?.resourceManager.getStringSync($r('app.string.from').id) +
+                    // $r('app.string.info')需要替换为开发者所需的资源文件
+                  event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id),
+                  message: event.message,
+                  primaryButton: {
+                    value: 'cancel',
+                    action: () => {
+                      event.result.handleCancel();
+                    }
+                  },
+                  secondaryButton: {
+                    value: 'ok',
+                    action: () => {
+                      event.result.handleConfirm();
+                    }
+                  },
+                  cancel: () => {
                     event.result.handleCancel();
                   }
-                },
-                secondaryButton: {
-                  value: 'ok',
-                  action: () => {
-                    event.result.handleConfirm();
-                  }
-                },
-                cancel: () => {
-                  event.result.handleCancel();
-                }
-              })
-            }
-            return true;
-          })
+                })
+              }
+              return true;
+            })
+        }
       }
     }
-  }
-  ```
+    ```
 
   加载的html。
   ```html
@@ -265,76 +288,87 @@
   ```
 
 - 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
+    <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { ConfirmDialog } from '@kit.ArkUI';
-
-  @Entry
-  @Component
-  struct DialogConfirmDialog {
-    @State message: string = 'Hello World';
-    @State title: string = 'Hello World';
-    @State result: JsResult | null = null;
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    isChecked = false;
-    dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
-      builder: ConfirmDialog({
-        title: this.title,
-        content: this.message,
-        // 勾选框选中状态
-        isChecked: this.isChecked,
-        // 勾选框说明文本
-        checkTips: '禁止后不再提示',
-        primaryButton: {
-          value: '禁止',
-          action: () => {
-            this.result?.handleCancel();
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { ConfirmDialog } from '@kit.ArkUI';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ShowWebPageDialog]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ShowWebPageDialog_';
+    
+    @Entry
+    @Component
+    struct DialogConfirmDialog {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State result: JsResult | null = null;
+      context = this.getUIContext().getHostContext()
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      isChecked = false;
+      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+        builder: ConfirmDialog({
+          title: this.title,
+          content: this.message,
+          // 勾选框选中状态
+          isChecked: this.isChecked,
+          // 勾选框说明文本
+          // $r('app.string.noPrompt')需要替换为开发者所需的资源文件
+          checkTips: $r('app.string.noPrompt'),
+          primaryButton: {
+            // $r('app.string.no')需要替换为开发者所需的资源文件
+            value: $r('app.string.no'),
+            action: () => {
+              this.result?.handleCancel();
+            },
           },
-        },
-        secondaryButton: {
-          value: '允许',
-          action: () => {
-            this.isChecked = false;
-            console.info('Callback when the second button is clicked');
-            this.result?.handleConfirm();
-          }
-        },
-        onCheckedChange: (checked) => {
-          this.isChecked = checked;
-          console.info('Callback when the checkbox is clicked');
-        },
-      }),
-      onWillDismiss: () => {
-        this.result?.handleCancel();
-        this.dialogControllerCheckBox.close();
-      },
-      autoCancel: true
-    })
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('confirm.html'), controller: this.webviewController })
-          .onConfirm((event) => {
-            if (event) {
-              if (this.isChecked) {
-                event.result.handleCancel();
-              } else {
-                console.info("event.url:" + event.url);
-                console.info("event.message:" + event.message);
-                this.title = "来自" + event.url + "的消息";
-                this.message = event.message;
-                this.result = event.result;
-                this.dialogControllerCheckBox.open();
-              }
+          secondaryButton: {
+            // $r('app.string.allow')需要替换为开发者所需的资源文件
+            value: $r('app.string.allow'),
+            action: () => {
+              this.isChecked = false;
+              hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the second button is clicked');
+              this.result?.handleConfirm();
             }
-            return true;
-          })
+          },
+          onCheckedChange: (checked) => {
+            this.isChecked = checked;
+            hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the checkbox is clicked');
+          },
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogControllerCheckBox.close();
+        },
+        autoCancel: true
+      })
+    
+      build() {
+        Column() {
+          Web({ src: $rawfile('confirm.html'), controller: this.webviewController })
+            .onConfirm((event) => {
+              if (event) {
+                if (this.isChecked) {
+                  event.result.handleCancel();
+                } else {
+                  hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
+                  hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                  // $r('app.string.from')需要替换为开发者所需的资源文件
+                  this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) +
+                    // $r('app.string.info')需要替换为开发者所需的资源文件
+                  event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id);
+                  this.message = event.message;
+                  this.result = event.result;
+                  this.dialogControllerCheckBox.open();
+                }
+              }
+              return true;
+            })
+        }
       }
     }
-  }
-  ```
+    ```
   加载的html。
   ```html
   <!-- confirm.html -->
@@ -382,84 +416,94 @@
 应用可以通过[onPrompt](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprompt9)事件监听网页`prompt`方法，并创建合适的弹框。
 
 - 用[CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12)创建弹框。
-
-  ```ts
-  // xxx.ets
-  import { CustomContentDialog } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct PromptDialog {
-    @State message: string = 'Hello World';
-    @State title: string = 'Hello World';
-    @State result: JsResult | null = null;
-    promptResult: string = '';
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    dialogController: CustomDialogController = new CustomDialogController({
-      builder: CustomContentDialog({
-        primaryTitle: this.title,
-        contentBuilder: () => {
-          this.buildContent();
-        },
-        buttons: [
-          {
-            value: '取消',
-            buttonStyle: ButtonStyleMode.TEXTUAL,
-            action: () => {
-              console.info('Callback when the button is clicked');
-              this.result?.handleCancel();
-            }
+    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
+    
+    ``` TypeScript
+    import { CustomContentDialog } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ShowWebPageDialog]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ShowWebPageDialog_';
+    
+    @Entry
+    @Component
+    struct PromptDialog {
+      @State message: string = 'Hello World';
+      @State title: string = 'Hello World';
+      @State result: JsResult | null = null;
+      promptResult: string = '';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      context = this.getUIContext().getHostContext();
+      dialogController: CustomDialogController = new CustomDialogController({
+        builder: CustomContentDialog({
+          primaryTitle: this.title,
+          contentBuilder: () => {
+            this.buildContent();
           },
-          {
-            value: '确认',
-            buttonStyle: ButtonStyleMode.TEXTUAL,
-            action: () => {
-              this.result?.handlePromptConfirm(this.promptResult);
+          buttons: [
+            {
+              // $r('app.string.cancel')需要替换为开发者所需的资源文件
+              value: $r('app.string.cancel'),
+              buttonStyle: ButtonStyleMode.TEXTUAL,
+              action: () => {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'Callback when the button is clicked');
+                this.result?.handleCancel();
+              }
+            },
+            {
+              // $r('app.string.notarize')需要替换为开发者所需的资源文件
+              value: $r('app.string.notarize'),
+              buttonStyle: ButtonStyleMode.TEXTUAL,
+              action: () => {
+                this.result?.handlePromptConfirm(this.promptResult);
+              }
             }
-          }
-        ],
-      }),
-      onWillDismiss: () => {
-        this.result?.handleCancel();
-        this.dialogController.close();
+          ],
+        }),
+        onWillDismiss: () => {
+          this.result?.handleCancel();
+          this.dialogController.close();
+        }
+      });
+    
+      // 自定义弹出框的内容区
+      @Builder
+      buildContent(): void {
+        Column() {
+          Text(this.message)
+          TextInput()
+            .onChange((value) => {
+              this.promptResult = value;
+            })
+            .defaultFocus(true)
+        }
+        .width('100%')
       }
-    });
-
-    // 自定义弹出框的内容区
-    @Builder
-    buildContent(): void {
-      Column() {
-        Text(this.message)
-        TextInput()
-          .onChange((value) => {
-            this.promptResult = value;
-          })
-          .defaultFocus(true)
+    
+      build() {
+        Column() {
+          Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
+            .onPrompt((event) => {
+              if (event) {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.url:' + event.url);
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.message:' + event.message);
+                hilog.info(DOMAIN, TAG, BUNDLE, 'event.value:' + event.value);
+                // $r('app.string.from')需要替换为开发者所需的资源文件
+                this.title = this.context?.resourceManager.getStringSync($r('app.string.from').id) +
+                  // $r('app.string.info')需要替换为开发者所需的资源文件
+                event.url + this.context?.resourceManager.getStringSync($r('app.string.info').id);
+                this.message = event.message;
+                this.promptResult = event.value;
+                this.result = event.result;
+                this.dialogController.open();
+              }
+              return true;
+            })
+        }
       }
-      .width('100%')
     }
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
-          .onPrompt((event) => {
-            if (event) {
-              console.info("event.url:" + event.url);
-              console.info("event.message:" + event.message);
-              console.info("event.value:" + event.value);
-              this.title = "来自" + event.url + "的消息";
-              this.message = event.message;
-              this.promptResult = event.value;
-              this.result = event.result;
-              this.dialogController.open();
-            }
-            return true;
-          })
-      }
-    }
-  }
-  ```
+    ```
   加载的html。
   ```html
   <!-- prompt.html -->
@@ -495,4 +539,32 @@
   </html>
   ```
 
+需要的资源文件string.json
+
+  ```json
+  {
+    "string": [
+      {
+        "name": "from",
+        "value": "来自"
+      },
+      {
+        "name": "warn",
+        "value": "的警告"
+      },
+      {
+        "name": "notarize",
+        "value": "确认"
+      },
+      {
+        "name": "cancel",
+        "value": "取消"
+      },
+      {
+        "name": "info",
+        "value": "的消息"
+      }
+    ]
+  }
+  ```
   ![PromptDialog](./figures/web-prompt-dialog.gif)

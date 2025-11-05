@@ -628,6 +628,8 @@ cancel(task: Task): void
 **正在执行的任务取消示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 第一次检查任务是否已经取消并作出响应
@@ -657,6 +659,8 @@ function concurrentFunc() {
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
     console.info("taskpool test result: " + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
   });
   taskpool.execute(task2);
   taskpool.execute(task3);
@@ -706,6 +710,8 @@ cancel(group: TaskGroup): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -726,6 +732,8 @@ function concurrentFunc() {
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
     console.info("taskGroup2 res is:" + res);
+  }).catch((err: BusinessError) => {
+    console.error("taskGroup2 catch err: " + err.message);
   });
   setTimeout(() => {
     try {
@@ -769,6 +777,8 @@ cancel(taskId: number): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function printArgs(args: number): number {
   let t: number = Date.now();
@@ -794,7 +804,9 @@ function cancelFunction(taskId: number) {
 
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
-  taskpool.execute(task);
+  taskpool.execute(task).catch((err: BusinessError) => {
+    console.error("taskpool catch err: " + err.message);
+  });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
     taskpool.execute(cancelTask);
@@ -912,6 +924,73 @@ getTaskPoolInfo(): TaskPoolInfo
 
 ```ts
 let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+```
+
+## taskpool.getTask<sup>22+</sup>
+
+getTask(taskId: number, taskName?: string): Task | undefined
+
+通过taskId或taskId与taskName获取对应的Task实例。
+
+> **说明：**
+>
+> - 如果传入的taskId查询不到对应的Task实例，则会返回undefined；
+> - 如果传入的taskId能够查询到对应的Task实例，但是调用getTask方法的线程和创建Task实例的线程不一致，则会返回undefined；
+> - 如果传入了taskId和taskName，通过taskId查询到的Task实例的name和传入的taskName不一致，则会返回undefined。
+>
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型          | 必填 | 说明                 |
+| ------ | ------------- | ---- | -------------------- |
+| taskId   | number | 是   | 任务ID。 |
+| taskName   | string | 否   | 任务名称。默认值为undefined。 |
+
+**返回值：**
+
+| 类型    | 说明                                 |
+| ------- | ------------------------------------ |
+| [Task](#task) \| undefined | 返回Task实例；当情况异常时，返回undefined，具体可见上文说明。 |
+
+**示例：**
+
+```ts
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function addNum(num1: number, num2: number) {
+  return num1 + num2;
+}
+
+function checkTask() {
+  try {
+    taskpool.getTask(null);
+  } catch (e) {
+    console.error("error:" + e);
+    // error:BusinessError: Parameter error. The input parameters are invalid, the type of the first param must be number.
+  }
+
+  let task1:taskpool.Task = new taskpool.Task("addNum", addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "addNum"); // task2 is not undefined
+  let task3:taskpool.Task | undefined = taskpool.getTask(task1.taskId, "add"); // task3 is undefined
+  let task4:taskpool.Task | undefined = taskpool.getTask(0); // task4 is undefined
+}
+
+function dealTask() {
+  let task1:taskpool.Task = new taskpool.Task(addNum, 1, 2);
+  let task2:taskpool.Task | undefined = taskpool.getTask(task1.taskId);
+  if (task2 === undefined) {
+    return;
+  }
+
+  taskpool.execute(task2).then((result) => {
+    console.info("task2 result: " + result); // task2 result: 3
+  })
+}
 ```
 
 ## Priority
@@ -2483,7 +2562,7 @@ async function asyRunner2() {
 | 名称     | 类型                    | 只读 | 可选 | 说明                                                      |
 | -------- | ---------------------- | ---- | ---- | -------------------------------------------------------- |
 | tid      | number                 | 否   | 否   | 工作线程的标识符。如果返回为空，表示当前没有任务执行。不建议修改此值。 |
-| taskIds  | number[]               | 否   | 是   | 在当前线程上运行的任务id列表。返回为空时，代表没有任务执行。不建议修改此值。   |
+| taskIds  | number[]               | 否   | 是   | 在当前线程上运行的任务ID列表。返回为空时，代表没有任务执行。不建议修改此值。   |
 | priority | [Priority](#priority)  | 否   | 是   | 当前线程的优先级。返回为空时，代表没有任务执行。 不建议修改此值。             |
 
 ## TaskPoolInfo<sup>10+</sup>
@@ -2601,7 +2680,7 @@ function runningCancelError() {
 ## 其他说明
 
 ### 序列化支持类型
-序列化支持类型包括：目前支持的数据类型有[普通对象](../../arkts-utils/normal-object.md)、[ArrayBuffer对象](../../arkts-utils/arraybuffer-object.md)、[SharedArrayBuffer对象](../../arkts-utils/shared-arraybuffer-object.md)、[Transferable对象（NativeBinding对象）](../../arkts-utils/transferabled-object.md)、[Sendable对象](../../arkts-utils/arkts-sendable.md)五种。
+序列化支持类型参考[线程间通信对象概述](../../arkts-utils/serializable-overview.md)里的介绍。
 
 ### 简单使用
 

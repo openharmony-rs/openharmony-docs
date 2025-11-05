@@ -114,10 +114,10 @@ Represents the basic information about a distributed device.
 
 | Name          | Type | Read-Only| Optional             |  Description   |
 | ---------------------- | ------------------------- | --- | ---- | -------- |
-| deviceId               | string                    | Yes| No | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
-| deviceName             | string                    | Yes| No | Device name.   |
-| deviceType             | string                    | Yes| No | [Device type](#getdevicetype).   |
-| networkId              | string                    | Yes| Yes | Network ID of the device. |
+| deviceId               | string                    | No| No | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
+| deviceName             | string                    | No| No | Device name.   |
+| deviceType             | string                    | No| No | [Device type](#getdevicetype).   |
+| networkId              | string                    | No| Yes | Network ID of the device. |
 
 ## DeviceStateChange
 

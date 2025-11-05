@@ -1,7 +1,7 @@
 # Class (ComponentSnapshot)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -9,7 +9,7 @@ Provides APIs for obtaining component snapshots, including snapshots of componen
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
@@ -21,7 +21,7 @@ Provides APIs for obtaining component snapshots, including snapshots of componen
 
 get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void
 
-Obtains the snapshot of a component that has been loaded. This API uses an asynchronous callback to return the result.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](arkui-ts/ts-universal-attributes-component-id.md). This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ Obtains the snapshot of a component that has been loaded. This API uses an async
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | id       | string                                                       | Yes  | [ID](arkui-ts/ts-universal-attributes-component-id.md) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported.|
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result.                                        |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result. If the snapshot capture is successful, **err** is **undefined**, and **data** contains the resulting [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md). Otherwise, **err** provides detailed error information.                                        |
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | No   | Custom settings of the snapshot.|
 
 **Error codes**
@@ -59,17 +59,24 @@ import { UIContext } from '@kit.ArkUI';
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   build() {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(150).height(150).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           this.uiContext.getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error));
+              console.error('error: ${JSON.stringify(error)}');
               return;
             }
             this.pixmap = pixmap;
@@ -87,7 +94,7 @@ struct SnapshotExample {
 
 get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-Obtains the snapshot of a component that has been loaded. This API uses a promise to return the result.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](arkui-ts/ts-universal-attributes-component-id.md). This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -108,7 +115,7 @@ Obtains the snapshot of a component that has been loaded. This API uses a promis
 
 | Type                                                        | Description            |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the snapshot object.|
 
 **Error codes**
 
@@ -135,8 +142,14 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.icon')).autoResize(true).width(150).height(150).margin(5).id("root")
+        Image($r('app.media.icon'))
+          .autoResize(true)
+          .width(150)
+          .height(150)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           this.uiContext.getComponentSnapshot()
@@ -160,12 +173,13 @@ struct SnapshotExample {
 
 createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
 
-Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](arkui-ts/ts-types.md#custombuilder8). This API uses a callback to return the result.
+Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](arkui-ts/ts-types.md#custombuilder8). This API uses an asynchronous callback to return the result.
+
 > **NOTE**
 >
-> Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
+> - Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
 >
-> If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -176,7 +190,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)         | Yes  | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.     |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result. If the snapshot capture is successful, **err** is **undefined**, and **data** contains the resulting [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md). Otherwise, **err** provides detailed error information. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
 | delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncload** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
 | checkImageStatus  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | No   | Custom settings of the snapshot.|
@@ -202,6 +216,7 @@ import { UIContext } from '@kit.ArkUI';
 struct ComponentSnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   @Builder
   RandomBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -230,7 +245,7 @@ struct ComponentSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error));
+                console.error('error: ${JSON.stringify(error)}');
                 return;
               }
               this.pixmap = pixmap;
@@ -250,13 +265,13 @@ struct ComponentSnapshotExample {
 
 createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](arkui-ts/ts-types.md#custombuilder8). This API uses a callback to return the result.
+Captures a snapshot of an offscreen-rendered component created from a [CustomBuilder](arkui-ts/ts-types.md#custombuilder8). This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
+> - Due to the need to wait for the component to be built and rendered, there is a delay of not more than 500 ms in the callback for off-screen snapshot capturing. Therefore, this API is not recommended for performance-sensitive scenarios.
 >
-> If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
+> - If a component is on a time-consuming task, for example, an [Image](arkui-ts/ts-basic-components-image.md) or [Web](../apis-arkweb/arkts-basic-components-web.md) component that is loading online images, its loading may be still in progress when this API is called. In this case, the output snapshot does not represent the component in the way it looks when the loading is successfully completed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -275,7 +290,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 
 | Type                                                        | Description            |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the snapshot object.|
 
 **Error codes**
 
@@ -298,6 +313,7 @@ import { UIContext } from '@kit.ArkUI';
 struct ComponentSnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined;
   uiContext: UIContext = this.getUIContext();
+
   @Builder
   RandomBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -316,6 +332,7 @@ struct ComponentSnapshotExample {
     .width(100)
     .id("builder")
   }
+
   build() {
     Column() {
       Button("click to generate UI snapshot")
@@ -345,7 +362,7 @@ struct ComponentSnapshotExample {
 
 getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
-Obtains the snapshot of a component that has been loaded. This API synchronously waits for the snapshot to complete and returns a [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object.
+Obtains the snapshot of a component that has been loaded based on the provided [component ID](arkui-ts/ts-universal-attributes-component-id.md). This API synchronously returns a [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) after completing the capture. Note that this API blocks the main thread and has a 3-second timeout. If the operation exceeds this limit, it throws an exception. Use with caution in performance-critical scenarios.
 
 > **NOTE**
 >
@@ -393,12 +410,19 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
-      Button("click to generate UI snapshot")
+
+      Button("click to generate UI snapshot")   
         .onClick(() => {
           try {
-            let pixelmap = this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
+            let pixelmap =
+              this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
             this.pixmap = pixelmap;
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message);
@@ -437,7 +461,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 | Type                                                        | Description            |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
+| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the snapshot object.|
 
 **Error codes**
 
@@ -457,7 +481,6 @@ import { UIContext } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
-
   public imageNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -477,7 +500,6 @@ class MyNodeController extends NodeController {
 @Component
 struct SnapshotExample {
   private myNodeController: MyNodeController = new MyNodeController();
-
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
@@ -486,20 +508,22 @@ struct SnapshotExample {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         NodeContainer(this.myNodeController).width(200).height(200).margin(5)
       }
+
       Button("UniqueId get snapshot")
         .onClick(() => {
           try {
             this.getUIContext()
               .getComponentSnapshot()
-              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(), { scale: 2, waitUntilRenderFinished: true })
+              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true })
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.log("error: " + err);
+                console.error("error: " + err);
               })
           } catch (error) {
-            console.error("UniqueId get snapshot Error: " + JSON.stringify(error));
+            console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
           }
         }).margin(10)
     }
@@ -556,7 +580,6 @@ import { UIContext } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
-
   public imageNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
@@ -576,7 +599,6 @@ class MyNodeController extends NodeController {
 @Component
 struct SnapshotExample {
   private myNodeController: MyNodeController = new MyNodeController();
-
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
@@ -585,14 +607,16 @@ struct SnapshotExample {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
         NodeContainer(this.myNodeController).width(200).height(200).margin(5)
       }
+
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
-              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(), { scale: 2, waitUntilRenderFinished: true });
+              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                { scale: 2, waitUntilRenderFinished: true });
           } catch (error) {
-            console.error("UniqueId getSync snapshot Error: " + JSON.stringify(error));
+            console.error('UniqueId getSync snapshot Error: ${JSON.stringify(error)}');
           }
         }).margin(10)
     }
@@ -607,7 +631,7 @@ struct SnapshotExample {
 
 createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-Takes a snapshot of the provided **content** object. This API uses a promise to return the result.
+Captures a snapshot of the provided component content. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -626,7 +650,7 @@ Takes a snapshot of the provided **content** object. This API uses a promise to 
 
 | Type                           | Description      |
 | ----------------------------- | -------- |
-| Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise used to return the result.|
+| Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise used to return the snapshot object.|
 
 **Error codes**
 
@@ -645,9 +669,9 @@ import { image } from '@kit.ImageKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
-  text: string | undefined | null  = "";
+  text: string | undefined | null = "";
 
-  constructor(text: string | undefined | null ) {
+  constructor(text: string | undefined | null) {
     this.text = text;
   }
 }
@@ -659,14 +683,14 @@ function buildText(params: Params) {
 
 @Component
 struct ReusableChildComponent {
-  @Prop text: string | undefined | null  = "";
+  @Prop text: string | undefined | null = "";
 
   aboutToReuse(params: Record<string, object>) {
-    console.log("ReusableChildComponent Reusable " + JSON.stringify(params));
+    console.info(`ReusableChildComponent Reusable ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info("ReusableChildComponent aboutToRecycle " + this.text);
   }
 
   build() {

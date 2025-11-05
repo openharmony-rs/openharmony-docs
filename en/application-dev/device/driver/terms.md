@@ -28,7 +28,7 @@
 
 ### DDK
 
-  The Driver Development Kit (DDK) is a tool package provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
+  A toolkit provided by OpenHarmony to develop drivers for non-standard USB serial port devices based on the peripheral framework.
 
 ## H
 

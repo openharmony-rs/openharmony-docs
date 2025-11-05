@@ -58,37 +58,29 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { InputMethodSubtype } from '@kit.IMEKit';
 
 async function switchInputMethodWithSubtype() {
   // 1. Obtain the current input method.
-  const currentIme = inputMethod.getCurrentInputMethod();
+  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
   if (!currentIme) {
     console.error("Failed to get current input method");
     return;
   }
   // 2. Switch the input method.
-  try {
-    await inputMethod.switchInputMethod(currentIme.name);
-    console.info('Succeeded in switching inputmethod.');
-  } catch (err) {
-    console.error(`Failed to switch input method: Code: ${err.code}, Message: ${err.message}`);
-    return;
-  }
+  await inputMethod.switchInputMethod(currentIme.name);
+  console.info('Succeeded in switching inputmethod.');
   // 3. Obtain the current input method subtype.
-  const currentSubtype = inputMethod.getCurrentInputMethodSubtype();
+  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
     return;
   }
   // 4. Switch the input method subtype.
-  try {
-    await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
-    console.info('Succeeded in switching inputmethod.');
-  } catch (err) {
-    console.error(`Failed to switch input subtype: Code: ${err.code}, Message: ${err.message}`);
-  }
+  await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
+  console.info('Succeeded in switching inputmethod.');
 }
+
 switchInputMethodWithSubtype();
 ```
 
@@ -124,13 +116,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-try {
-  inputMethodSetting.on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {
-    console.info('Succeeded in subscribing imeShow event.');
-  });
-} catch(err) {
-  console.error(`Failed to subscribing imeShow. Code: ${err.code}, Message: ${err.message}`);
-}
+inputMethod.getSetting().on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeShow event.');
+});
 ```
 
 ### on('imeHide')<sup>10+</sup>
@@ -162,13 +150,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-try {
-  inputMethodSetting.on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
-    console.info('Succeeded in subscribing imeHide event.');
-  });
-} catch(err) {
-  console.error(`Failed to subscribing imeHide. Code: ${err.code}, Message: ${err.message}`);
-}
+inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeHide event.');
+});
 ```
 
 ### off('imeShow')<sup>10+</sup>
@@ -191,11 +175,7 @@ Unsubscribes from the soft keyboard show event of the [input method panel](js-ap
 **Example**
 
 ```ts
-try {
-  inputMethodSetting.off('imeShow');
-} catch(err) {
-  console.error(`Failed to unsubscribing imeShow. Code: ${err.code}, Message: ${err.message}`);
-}
+inputMethod.getSetting().off('imeShow');
 ```
 
 ### off('imeHide')<sup>10+</sup>
@@ -218,11 +198,7 @@ Unsubscribes from the soft keyboard hide event of the [input method panel](js-ap
 **Example**
 
 ```ts
-try {
-  inputMethodSetting.off('imeHide');
-} catch(err) {
-  console.error(`Failed to unsubscribing imeHide. Code: ${err.code}, Message: ${err.message}`);
-}
+inputMethod.getSetting().off('imeHide');
 ```
 
 ### isPanelShown<sup>11+</sup>
@@ -266,12 +242,9 @@ let info: PanelInfo = {
   type: PanelType.SOFT_KEYBOARD,
   flag: PanelFlag.FLAG_FIXED
 }
-try {
-  let result = inputMethodSetting.isPanelShown(info);
-  console.info('Succeeded in querying isPanelShown, result: ' + result);
-} catch (err) {
-  console.error(`Failed to query isPanelShown: ${JSON.stringify(err)}`);
-}
+
+let result: boolean = inputMethod.getSetting().isPanelShown(info);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
 ### enableInputMethod<sup>20+</sup>
@@ -318,17 +291,21 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function enableInputMethodSafely() {
-  const currentIme = inputMethod.getCurrentInputMethod();
+  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
   if (!currentIme) {
     console.error("Failed to get current input method");
     return;
   }
 
-  inputMethodSetting.enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE).then(() => {
-    console.info('Succeeded in enable inputmethod.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
-  });
+  inputMethod.getSetting()
+    .enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE)
+    .then(() => {
+      console.info('Succeeded in enable inputmethod.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
+    });
 }
+
 enableInputMethodSafely();
 ```

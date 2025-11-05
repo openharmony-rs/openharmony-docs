@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考[rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)。

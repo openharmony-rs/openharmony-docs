@@ -1,10 +1,16 @@
 # Address Sanitizer Event Overview
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @mlkgeek-->
+<!--Designer: @StevenLai1994-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
 
 ## Overview
 
 An address sanitizer error refers to an invalid memory access that causes application exceptions or crashes.
 
-You can subscribe to address sanitizer events using the HiAppEvent APIs. Currently, the ArkTs and C/C++ APIs are provided. For details, see the following topics.
+You can subscribe to address sanitizer events using the ArkTs and C/C++ APIs provided by HiAppEvent. For details, see the following documents:
 
 - [Subscribing to Address Sanitizer Events (ArkTS)](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
@@ -37,10 +43,11 @@ For details, see [Address Sanitizer Detection](address-sanitizer-guidelines.md).
 
 | Value| Description|
 | -------- | -------- |
-| GWP-ASAN | Error triggered by [GWP-ASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection).|
-| UBSAN | Error triggered by [UBSan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ubsan-detection).|
-| TSAN | Error triggered by [TSan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-tsan-detection).|
-| stack tag-mismatch | Stack tag mismatch detected by [HWASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-hwasan-detection), possibly due to stack use-after-return, out-of-scope access, or out-of-bounds access.|
+| GWP-ASAN | Error triggered by GWP-ASan.|
+| UBSAN | Error triggered by UBSan.|
+| TSAN | Error triggered by TSan.|
+| FDSAN | Error triggered by [fdsan](../napi/fdsan.md). This type is supported since API version 20.|
+| stack tag-mismatch | Stack tag mismatch detected by HWASan, possibly due to stack use-after-return, out-of-scope access, or out-of-bounds access.|
 | alloc-dealloc-mismatch | The memory allocation and release modes do not match.|
 | allocation-size-too-big | The heap memory is too large.|
 | calloc-overflow | **calloc()** fails to allocate memory.|

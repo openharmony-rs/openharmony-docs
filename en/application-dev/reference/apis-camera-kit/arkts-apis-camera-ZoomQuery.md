@@ -33,7 +33,7 @@ Obtains the supported zoom ratio range.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| Array\<number\>   | Array containing the minimum and maximum zoom ratios. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| Array\<number\>   | Array containing the minimum and maximum zoom ratios. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 

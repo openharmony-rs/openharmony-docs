@@ -24,10 +24,10 @@ Defines the attributes of the input method panel.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | [PanelType](#paneltype) | Yes| Type of the input method panel.|
-| flag | [PanelFlag](#panelflag) | No| State type of the input method panel.<br>- The default value is **FLAG_FIXED**.<br>- Currently, this parameter is used to describe the state type of the soft keyboard.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| type | [PanelType](#paneltype) | No| No| Type of the input method panel.|
+| flag | [PanelFlag](#panelflag) | No| Yes| State type of the input method panel.<br>- The default value is **FLAG_FIXED**.<br>- Currently, this parameter is used to describe the state type of the soft keyboard.|
 
 ##  PanelType
 

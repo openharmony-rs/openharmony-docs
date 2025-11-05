@@ -73,11 +73,11 @@ Enumerates the codec MIME types.
 | Name        | Value                   | Description                    |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | Video in H.263 format.     |
-| VIDEO_AVC    | 'video/avc'           | Video in AVC format.      |
+| VIDEO_AVC    | 'video/avc'           | Video in AVC format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | VIDEO_MPEG2  | 'video/mpeg2'         | Video in MPEG-2 format.    |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | Video in MPEG-4 format.    |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | Video in VP8 format.      |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.|
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_VORBIS | 'audio/vorbis'        | Audio in Vorbis format.   |
 | AUDIO_FLAC   | 'audio/flac'          | Audio in FLAC format.     |
@@ -247,7 +247,7 @@ Enumerates the container format types (CFTs).
 
 | Name       | Value   | Description                 |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | Video container format MP4.|
+| CFT_MPEG_4  | 'mp4' | Video container format MP4.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | CFT_MPEG_4A | 'm4a' | Audio container format M4A.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | CFT_MP3<sup>12+</sup>  | 'mp3' | Audio container format MP3.|
 | CFT_WAV<sup>12+</sup>  | 'wav' | Audio container format WAV.|

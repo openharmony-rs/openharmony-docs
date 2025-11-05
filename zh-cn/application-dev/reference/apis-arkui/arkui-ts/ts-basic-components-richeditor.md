@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持图文混排和文本交互式编辑的组件。
 
@@ -212,32 +212,6 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | enable  | boolean \| undefined | 是   | 是否启用选择文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
-
-> **说明：** 
-> 
-> 当enableSelectedDataDetector未配置或设置为true，若已配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性，则以其types配置为准。
->
-> 当enableSelectedDataDetector未配置或设置为true，且未配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性时，将遵循[dataDetectorConfig](#datadetectorconfig11)中types的配置；若[dataDetectorConfig](#datadetectorconfig11)也未配置，则默认识别所有类型。
-> 
-> 当enableSelectedDataDetector设置为false时，不激活实体文本选择AI菜单项。
-
-### selectedDataDetectorConfig<sup>22+</sup>
-
-selectedDataDetectorConfig(config: selectDataDetectorConfig | undefined)
-
-文本选择AI菜单项识别配置。
-
-[enableSelectedDataDetector](#enableselecteddatadetector22)未配置或设置为true时，selectedDataDetectorConfig的配置才能生效。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 文本识别配置。|
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -515,7 +489,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置组件滚动条颜色。<br />默认值：'\#66182431'<br />**说明：** 设置异常值时按默认值处理。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
 
 
 ## 事件
@@ -6040,14 +6014,13 @@ struct AutoSpacing {
 ![AutoSpacing](figures/richEditorAutoSpacing.gif)
 
 ### 示例32（设置文本选择的AI菜单）
-从API version 22开始，该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)和[selectedDataDetectorConfig](#selecteddatadetectorconfig22)接口，配置文本选择AI菜单功能。
+从API version 22开始，该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
 
 ```ts
 @Entry
 @Component
 struct Demo32 {
   controller: RichEditorController = new RichEditorController();
-  @State config: SelectDataDetectorConfig | undefined = { types: [TextDataDetectorType.URL] };
   textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
   exampleText: string = '示例网址：www.example.com';
 
@@ -6060,7 +6033,6 @@ struct Demo32 {
           })
           .copyOptions(CopyOptions.LocalDevice)
           .enableSelectedDataDetector(true)
-          .selectedDataDetectorConfig(this.config)
           .border({ width: 1, color: Color.Black })
           .height(300)
           .margin(10)

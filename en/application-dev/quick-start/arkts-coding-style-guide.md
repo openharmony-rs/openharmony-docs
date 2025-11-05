@@ -77,7 +77,7 @@ class User {
   }
 
   sayHi() {
-    console.log('hi' + this.username);
+    console.info('hi' + this.username);
   }
 }
 
@@ -251,22 +251,22 @@ It is a best practice to add braces ({}) to the execution body of statements suc
 **[Incorrect Example]**
 
 ```
-if (condition)
-  console.log('success');
-
-for (let idx = 0; idx < 5; ++idx)
-  console.log(idx);
+let condition = true;
+if (condition) 
+  console.info('success');
+for (let idx = 0; idx < 5; ++idx) 
+  console.info('', idx);
 ```
 
 **[Correct Example]**
 
 ```
+let condition = true;
 if (condition) {
-  console.log('success');
+  console.info('success');
 }
-
 for (let idx = 0; idx < 5; ++idx) {
-  console.log(idx);
+  console.info('', idx);
 }
 ```
 
@@ -369,7 +369,7 @@ if(isJedi) {
 
 // There is a space between the method name fight and the open parenthesis.
 function fight (): void {
-  console.log('Swooosh!');
+  console.info('Swooosh!');
 }
 ```
 
@@ -383,7 +383,7 @@ if (isJedi) {
 
 // There is no space between the method name fight and the open parenthesis.
 function fight(): void {
-  console.log('Swooosh!');
+  console.info('Swooosh!');
 }
 ```
 
@@ -439,14 +439,14 @@ To maintain code consistency and readability, use single quotes.
 
 ```
 let message = "world";
-console.log(message);
+console.info(message);
 ```
 
 **[Correct Example]**
 
 ```
 let message = 'world';
-console.log(message);
+console.info(message);
 ```
 
 ### If an Object Literal Has More Than Four Properties, Place Each of Them at Separate Lines
@@ -752,7 +752,7 @@ function foo() {
     // ...
     return 2;
   } finally {
-    console.log('XXX!');
+    console.info('XXX!');
   }
 }
 ```

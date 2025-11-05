@@ -1,4 +1,10 @@
 # DLP Service Overview
+<!--Kit: Data Protection Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @winnieHuYu-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 The Data Loss Prevention (DLP) service is a system-level solution provided to prevent data disclosure. It provides capabilities for cross-device file access management, encrypted storage, and access authorization. The data owner can grant the permission (read only, edit, or full control) on a confidential file based on account authentication. The confidential file is encrypted and stored in ciphertext. Only the user who has passed the device-cloud authentication using a DLP-capable device can access or modify the file.
 

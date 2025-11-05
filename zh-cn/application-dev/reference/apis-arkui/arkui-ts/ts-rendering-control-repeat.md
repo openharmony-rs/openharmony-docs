@@ -4,7 +4,7 @@
 <!--Owner: @liubihao-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 > 
@@ -62,7 +62,7 @@ Repeat<string>(this.arr)
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-组件生成函数。当所有`.template()`的type和`.templateId()`返回值不匹配时，将使用`.each()`处理数据项。
+组件生成函数。当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
 
 > **说明**
 >

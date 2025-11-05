@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)和[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)作为自定义节点的占位节点。主要用于自定义节点以及自定义节点树的显示。
 
@@ -40,12 +40,14 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 通过NodeController在NodeContainer下挂载自定义节点。
 
-```ts
+<!-- @[place_holder_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
 // common.ets
 import { BuilderNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text";
+  public text: string = 'this is a text';
 }
 
 let buttonNode: BuilderNode<[Params]> | null = null;
@@ -63,7 +65,7 @@ function buttonBuilder(params: Params) {
 
 export function createNode(uiContext: UIContext) {
   buttonNode = new BuilderNode<[Params]>(uiContext);
-  buttonNode.build(wrapBuilder(buttonBuilder), { text: "This is a Button" });
+  buttonNode.build(wrapBuilder(buttonBuilder), { text: 'This is a Button' });
   return buttonNode;
 }
 
@@ -75,12 +77,17 @@ export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | n
   }
 }
 ```
-```ts
+
+<!-- @[place_holder_custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/CustomNode.ets) -->
+
+``` TypeScript
 // Index.ets
 import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
-import { getOrCreateNode } from "./common";
+import { getOrCreateNode } from './Common';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "NodeContainer";
+const DOMAIN = 0xF811
+const TAG = '[Sample_ArkTSUserPlaceHolder]';
 
 class MyNodeController extends NodeController {
   private isShow: boolean = false;
@@ -99,19 +106,19 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.log(TEST_TAG + " aboutToResize width : " + size.width + " height : " + size.height);
+    hilog.info(DOMAIN, TAG,' aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   aboutToAppear() {
-    console.log(TEST_TAG + " aboutToAppear");
+    hilog.info(DOMAIN, TAG,' aboutToAppear');
   }
 
   aboutToDisappear() {
-    console.log(TEST_TAG + " aboutToDisappear");
+    hilog.info(DOMAIN, TAG,' aboutToDisappear');
   }
 
   onTouchEvent(event: TouchEvent) {
-    console.log(TEST_TAG + " onTouchEvent");
+    hilog.info(DOMAIN, TAG,' onTouchEvent');
   }
 
   toShow() {
@@ -134,14 +141,14 @@ struct Index {
   build() {
     Column() {
       NodeContainer(this.myNodeController1)
-        .width("100%")
-        .height("40%")
+        .width('100%')
+        .height('40%')
         .backgroundColor(Color.Brown)
       NodeContainer(this.myNodeController2)
-        .width("100%")
-        .height("40%")
+        .width('100%')
+        .height('40%')
         .backgroundColor(Color.Gray)
-      Button("Change the place of button")
+      Button('Change the place of button')
         .onClick(() => {
           // 先在原始占位节点中下树
           // 后在新的占位节点中上树
@@ -151,8 +158,8 @@ struct Index {
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -161,14 +168,16 @@ struct Index {
 
 [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是一个容器节点，布局参考左上角对齐的[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件，不会按照父容器的布局规则进行布局。[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)只是一个语法节点，不参与布局，添加的子节点会按照父容器的布局规则进行布局。
 
-```ts
+<!-- @[place_holder_layout_diff](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets) -->
+
+``` TypeScript
 import { FrameNode, NodeContent, NodeController, typeNode, UIContext } from '@kit.ArkUI';
 
 class NodeContentCtrl {
-  content: NodeContent
-  textNode: Array<typeNode.Text> = new Array();
-  uiContext: UIContext
-  width: number
+  public content: NodeContent
+  public textNode: Array<typeNode.Text> = [];
+  public uiContext: UIContext
+  public width: number
 
   constructor(uiContext: UIContext) {
     this.content = new NodeContent();
@@ -177,8 +186,8 @@ class NodeContentCtrl {
   }
 
   AddNode() {
-    let node = typeNode.createNode(this.uiContext, "Text");
-    node.initialize("ContentText:" + this.textNode.length).fontSize(20);
+    let node = typeNode.createNode(this.uiContext, 'Text');
+    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
     this.textNode.push(node);
     this.content.addFrameNode(node);
   }
@@ -200,7 +209,7 @@ class NodeContentCtrl {
 
 class MyNodeController extends NodeController {
   public rootNode: FrameNode | null = null;
-  textNode: Array<typeNode.Text> = new Array();
+  public textNode: Array<typeNode.Text> = [];
 
   makeNode(uiContext: UIContext): FrameNode {
     this.rootNode = new FrameNode(uiContext);
@@ -208,8 +217,8 @@ class MyNodeController extends NodeController {
   }
 
   AddNode(frameNode: FrameNode | null, uiContext: UIContext) {
-    let node = typeNode.createNode(uiContext, "Text");
-    node.initialize("ControllerText:" + this.textNode.length).fontSize(20);
+    let node = typeNode.createNode(uiContext, 'Text');
+    node.initialize('ControllerText:' + this.textNode.length).fontSize(20);
     this.textNode.push(node);
     frameNode?.appendChild(node);
   }
@@ -236,17 +245,17 @@ struct Index {
     Row() {
       Column() {
         ContentSlot(this.controller.GetContent())
-        Button("AddToSlot")
+        Button('AddToSlot')
           .onClick(() => {
             this.controller.AddNode();
           })
           .margin(10)
-        Button("RemoveBack")
+        Button('RemoveBack')
           .onClick(() => {
             this.controller.RemoveNode();
           })
           .margin(10)
-        Button("RemoveFront")
+        Button('RemoveFront')
           .onClick(() => {
             this.controller.RemoveFront();
           })
@@ -256,17 +265,17 @@ struct Index {
 
       Column() {
         NodeContainer(this.myNodeController)
-        Button("AddToNodeContainer")
+        Button('AddToNodeContainer')
           .onClick(() => {
             this.myNodeController.AddNode(this.myNodeController.rootNode, this.getUIContext());
           })
           .margin(10)
-        Button("RemoveBack")
+        Button('RemoveBack')
           .onClick(() => {
             this.myNodeController.RemoveNode(this.myNodeController.rootNode);
           })
           .margin(10)
-        Button("RemoveFront")
+        Button('RemoveFront')
           .onClick(() => {
             this.myNodeController.RemoveFront(this.myNodeController.rootNode);
           })

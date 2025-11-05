@@ -204,8 +204,10 @@ createAVTranscoder(): Promise\<AVTranscoder>
 Creates an AVTranscoder instance. This API uses a promise to return the result.
 
 > **NOTE**
-
+>
 > A maximum of 2 AVTranscoder instances can be created.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 

@@ -6,19 +6,22 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **deviceConfig** tag contains device-specific configuration of the application, including attributes such as **default**, **tv**, **car**, and **wearable**. The configuration in the **default** tag applies to all common devices. If a specific configuration is required for other device types, you need to configure in the corresponding tag.
+The **deviceConfig** tag contains device-specific configuration of the application, including attributes such as **default**, **tv**, **car**, and **wearable**.
 
 ## Internal Structure of the deviceConfig Tag
 
 **Table 1** Internal structure of the deviceConfig tag
 
+<!--RP1-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| default | Application configuration that provides full access to system capabilities.| Object| Yes (initial value: left empty)|
+| default | Default application configuration. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).| Object| Yes (initial value: left empty)|
 | tablet | Application configuration specific to tablets.| Object| Yes (initial value: left empty)|
 | tv | Application configuration specific to smart TVs.| Object| Yes (initial value: left empty)|
 | car | Application configuration specific to telematics devices.| Object| Yes (initial value: left empty)|
 | wearable | Application configuration specific to wearables.| Object| Yes (initial value: left empty)|
+| 2in1 | Application configuration specific to PCs, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity.| Object| Yes (initial value: left empty)|
+<!--RP1End-->
 
 
 For details about the attributes of the **deviceConfig** tag, see [Internal Structure of the deviceConfig Attributes](#internal-structure-of-the-deviceconfig-attributes).
@@ -31,7 +34,7 @@ For details about the attributes of the **deviceConfig** tag, see [Internal Stru
 | -------- | -------- | -------- | -------- |
 | process | Name of the process running the application or ability. If the **process** attribute is configured in the **deviceConfig** tag, all abilities of the application run in this process. You can set the **process** attribute for a specific ability in the **abilities** attribute, so that the ability can run in the particular process. The value can contain a maximum of 31 characters.| String| Yes (initial value: left empty)|
 | keepAlive | Whether the application keeps running. This attribute applies only to system applications and does not take effect for third-party applications.<br>- **true**: The application keeps running. The system starts the application upon its startup and restarts the application when the application exits.<br>- **false**: The application does not keep running. The system neither starts the application upon its startup nor restarts the application when the application exits.| Boolean| Yes (initial value: **false**)|
-| supportBackup | Whether the application supports backup and restoration.<br>- **true**: Yes<br>- **false**: No| Boolean| Yes (initial value: **false**)|
+| supportBackup | Whether the application supports backup and restore.<br>- **true**: Yes<br>- **false**: No| Boolean| Yes (initial value: **false**)|
 | compressNativeLibs | Whether libraries are stored in the HAP after being compressed during HAP packaging.<br>- **true**: Libraries are stored in the HAP file after being compressed.<br>- **false**: Libraries are stored without being compressed.<br>Whether libraries need to be decompressed during application installation. (Since API version 16, this field is supported. In earlier versions, libraries are decompressed by default.)<br>- **true**: Libraries need to be decompressed.<br>- **false**: Libraries do not need to be decompressed.| Boolean| Yes (During HAP packaging, initial value: **false**; during application installation, initial value: **true**)|
 | network | Network security configuration. You can customize the network security settings of the application in the security statement of the configuration file without modifying the application code.| Object| Yes (initial value: left empty)|
 

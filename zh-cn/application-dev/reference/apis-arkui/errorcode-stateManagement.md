@@ -65,3 +65,39 @@ addMonitor/clearMonitor的回调方法参数不合法。
 **处理步骤**
 
 确保addMonitor/clearMonitor的回调方法合法，详情可见[addMonitor/clearMonitor开发指南](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md#限制条件)。
+
+## 140001 applySync/flushUpdates/flushUIUpdates非法调用
+
+**错误信息**
+
+The function is not allowed to be called in @Computed.
+
+**错误描述**
+
+applySync/flushUpdates/flushUIUpdates接口在@Computed装饰的getter方法内调用是不合法的。
+
+**可能原因**
+
+applySync/flushUpdates/flushUIUpdates接口在@Computed装饰的getter方法内被调用。
+
+**处理步骤**
+
+确保在@Computed装饰的getter方法内没有调用applySync/flushUpdates/flushUIUpdates接口。
+
+## 140002 flushUpdates/flushUIUpdates非法调用
+
+**错误信息**
+
+The function is not allowed to be called in @Monitor.
+
+**错误描述**
+
+flushUpdates/flushUIUpdates接口在@Monitor回调方法内调用是不合法的。
+
+**可能原因**
+
+flushUpdates/flushUIUpdates接口在@Monitor回调方法内被调用。
+
+**处理步骤**
+
+确保在@Monitor回调方法内没有调用flushUpdates/flushUIUpdates接口。

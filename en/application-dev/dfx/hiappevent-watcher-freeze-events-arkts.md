@@ -1,8 +1,15 @@
 # Subscribing to Application Freeze Events (ArkTS)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
-The following describes how to subscribe to application freeze events by using the ArkTS APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This topic describes how to subscribe to application freeze events by using the ArkTS APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
@@ -45,7 +52,7 @@ The following describes how to subscribe to the application freeze event trigger
      hiAppEvent.addWatcher({
       // Set the watcher name. The system identifies different watchers based on their names.
       name: "watcher",
-      // You can subscribe to system events that you are interested in. For example, the application freeze event.
+      // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
       appEventFilters: [
         {
           domain: hiAppEvent.domain.OS,
@@ -63,17 +70,17 @@ The following describes how to subscribe to the application freeze event trigger
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // Obtain the timestamp of the application freeze event.
+            // Obtain the timestamp when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // Obtain the foreground/background status of the frozen application.
+            // Obtain the foreground/background status of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-            // Obtain the version of the frozen application.
+            // Obtain the version information of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // Obtain the bundle name of the frozen application.
+            // Obtain the bundle name of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // Obtain the process name of the frozen application.
+            // Obtain the process name of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-            // Obtain the process ID of the frozen application.
+            // Obtain the process ID of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
@@ -96,6 +103,8 @@ The following describes how to subscribe to the application freeze event trigger
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
             // Obtain the custom test_data of the application freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
+            // Obtain the life time of the faulty process when the application freezes.
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
           }
         }
       }
@@ -141,11 +150,14 @@ The following describes how to subscribe to the application freeze event trigger
    HiAppEvent eventInfo.params.event_handler_size_6s=6
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1361464,"sys_free_mem":796232,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1711440899240_3197.log"]
    HiAppEvent eventInfo.params.log_over_limit=false
    HiAppEvent eventInfo.params.test_data=100
+   HiAppEvent eventInfo.params.process_life_time=18
    ```
+
+2. If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 
 <!--RP1-->
 <!--RP1End-->

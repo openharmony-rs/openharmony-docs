@@ -1,5 +1,4 @@
 # Application Domain Name Verification Error Codes
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @hw-xpc-->

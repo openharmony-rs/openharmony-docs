@@ -49,45 +49,54 @@ The display effects are as follows.
 
   This configuration takes effect only when the **module.json5** configuration file does not contain any UIAbility or **icon** and **label** under the **abilities** tag of the UIAbility are not set. (You can manually delete the icon and label configurations).
 
-  ```json
-  {
-    "app": {
-      "icon": "$media:app_icon",
-      "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-      // ...
-    }
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+	// ···
+    "icon": "$media:app_icon",
+    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
   }
-  ```
+}
+```
+
 
 - **Method 2: Configuring module.json5**
 
   In addition to configuring the **icon** and **label** fields, you need to add **entity.system.home** under **entities** and **ohos.want.action.home** under **actions**.
 
-  ```json
-  {
-    "module": {
-      // ...
-      "abilities": [
-        {
-          "icon": "$media:icon",
-          "label": "$string:EntryAbility_label", // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-          "skills": [
-            {
-              "entities": [
-                "entity.system.home"
-              ],
-              "actions": [
-                "ohos.want.action.home"
-              ]
-            }
-          ],
-        }
-      ]
-    }
-  }
-  ```
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
 
-## Configuring the Layered Icon and Label
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
+      {
+		// ···
+        "icon": "$media:icon",
+        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+        "label": "$string:EntryAbility_label",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ],
+	// ···
+  }
+}
+```
+
+
+## Configuring a Layered Icon and Label
 
 - **Method 1: Configuring app.json5**
 
@@ -109,15 +118,18 @@ The display effects are as follows.
       }
       ```
   3. Reference the layered icon resource file in the [app.json5](app-configuration-file.md) file. Example:
-      ```json
-          {
-            "app": {
-              "icon": "$media:app_layered_image",
-              "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-              // ...
-            }
-          }
-      ```
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+	// ···
+    "icon": "$media:layered_image",
+    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+  }
+}
+```
+
 
 - **Method 2: Configuring module.json5**
 
@@ -139,32 +151,37 @@ The display effects are as follows.
 
   3. To display a UIAbility icon on the home screen, you must configure the **icon** and **label** fields, and under the **skills** tag, add **entity.system.home** to **entities** and **ohos.want.action.home** to **actions**.
 
-      ```json
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
       {
-        "module": {
-          "abilities": [
-            {
-              "name": "EntryAbility",
-              // ...
-              "icon": "$media:layered_image", // Set icon to the index of the layered icon resource file.
-              "label": "$string:EntryAbility_label", // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-              "skills": [
-                {
-                  "entities": [
-                    "entity.system.home"
-                  ],
-                  "actions": [
-                    "ohos.want.action.home"
-                  ]
-                }
-              ],
-              // ...
-            }
-          ]
-          // ...
-        }
+		// ···
+        // Set icon to the index of the layered icon resource file.
+        "icon": "$media:layered_image",
+        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+        "label": "$string:EntryAbility_label",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
       }
-      ```
+    ],
+	// ···
+  }
+}
+```
+
+
 
 >
 > **NOTE**
@@ -177,4 +194,4 @@ The display effects are as follows.
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately displaying no icon on the home screen to block uninstall attempts. Therefore, home screen icons cannot be hidden for applications except pre-installed ones.
 
-If the pre-installed application indeed needs to hide the home screen icon, the **AllowAppDesktopIconHide** [application privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges) must be configured. For details about the configuration, see "Application Privilege Configuration." After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->
+If the pre-installed application indeed needs to hide the home screen icon, the application privilege **AllowAppDesktopIconHide** must be configured. For details about how to configure, see [Application Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges). After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->

@@ -23,41 +23,56 @@ Multiple applications in a group can use the same dynamic shared package. To red
 ## Development Instructions
 1. Project configuration for creators: Set the **useNormalizedOHMUrl** field to **true** in the project-level **build-profile.json5** file to configure the integrated HSP.
 
-    ```json
-    // created_party_project/build-profile.json5
-    {
-      "app": {
-        "products": [
-          {
-            "name": "default",
-            "signingConfig": "default",
-            "compatibleSdkVersion": "5.0.0(12)",
-            "runtimeOS": "HarmonyOS",
-            "buildOption": {
-              "strictMode": {
-                "useNormalizedOHMUrl": true
-              }
-            }
-            // ...
-          }
-        ]
-        // ...
-      }
-    }
-    ```
-2. Module configuration for creators: Set the **integratedHsp** field to **true** in the module-level [build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile) file to specify an HSP module to be built as the integrated HSP module.
+    <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
 
-    ```json
-    // created_party_project/library/build-profile.json5
-    {
-      "apiType": "stageMode",
-      "buildOption": {
-        "arkOptions": {
-          "integratedHsp": true
+``` JSON5
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.1.1(19)",
+        "compatibleSdkVersion": "5.1.1(19)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+			// ···
+            "useNormalizedOHMUrl": true,
+          }
         }
       }
-    }
-    ```
+    ],
+	// ···
+  },
+// ···
+}
+```
+
+2. Module configuration for creators: Set the **integratedHsp** field to **true** in the module-level [build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile) file to specify an HSP module to be built as the integrated HSP module.
+
+    <!-- @[integrated_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/library/build-profile.json5) -->
+
+``` JSON5
+// library/build-profile.json5
+{
+  "apiType": "stageMode",
+// ···
+  "buildOptionSet": [
+    {
+	// ···
+      "arkOptions": {
+        "integratedHsp": true,
+		// ···
+      },
+    },
+  ],
+// ···
+}
+```
+
 
 3. Packaging configuration for creators (.tgz package)
 
@@ -73,33 +88,44 @@ Multiple applications in a group can use the same dynamic shared package. To red
 
 5. Project dependency configuration for users: Add dependencies to the **oh-package.json5** configuration file in the main module.
 
-    ```json
-    // user_project/entry/oh-package.json5
-      "dependencies": {
-        "hsp": "./libs/library-default.tgz"
-      }
-    ```
+    <!-- @[integrated_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/entry/oh-package.json5) -->
+
+``` JSON5
+  "dependencies": {
+    "library": "file:./libs/library-default.tgz"
+  },
+```
+
 
 6. Project configuration for users: Set **useNormalizedOHMUrl** to **true** in the project-level **build-profile.json5** file.
-    ```json
-    // user_project/build-profile.json5
-    {
-      "app": {
-        "products": [
-          {
-            "name": "default",
-            "signingConfig": "default",
-            "compatibleSdkVersion": "5.0.0(12)",
-            "runtimeOS": "HarmonyOS",
-            "buildOption": {
-              "strictMode": {
-                "useNormalizedOHMUrl": true
-              }
-            }
+
+    <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
+
+``` JSON5
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.1.1(19)",
+        "compatibleSdkVersion": "5.1.1(19)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+			// ···
+            "useNormalizedOHMUrl": true,
           }
-        ]
+        }
       }
-    }
-    ```
-    > **NOTE**
-    > Before installing and running an application, the user must configure the project signature information. For details, see [Configuring a Debug Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+    ],
+	// ···
+  },
+// ···
+}
+```
+
+> **NOTE**
+> Before installing and running an application, the user must configure the project signature information. For details, see [Configuring a Debug Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

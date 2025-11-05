@@ -151,7 +151,7 @@ panel.setShadow(20, '#000000', 20, 20);
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
 | NONE | 0 | 不使用流光模式。 |
-| BACKGROUND_FLUID_LIGHT  | 1 | 背景流光。 |
+| BACKGROUND_FLUID_LIGHT  | 1 | 开启背景流光模式。此时系统面板会变为透明，流光效果需要由编辑框宿主应用实现。 |
 
 ## EditorAttribute
 

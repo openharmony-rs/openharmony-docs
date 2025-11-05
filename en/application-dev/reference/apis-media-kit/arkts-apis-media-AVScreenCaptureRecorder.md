@@ -264,6 +264,46 @@ avScreenCaptureRecorder.release().then(() => {
 });
 ```
 
+## presentPicker<sup>22+</sup>
+
+presentPicker(): Promise\<void>
+
+Displays the Picker once more after the screen capture starts, allowing for dynamic updates to the recording source, such as changing the window or screen being recorded. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - The ongoing capture process remains uninterrupted while updating the recording source.
+> - Following the dynamic update of the recording source through the Picker, the capture proceeds with the newly selected source.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value**
+
+| Type          | Description                             |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avScreenCaptureRecorder.presentPicker().then(() => {
+    console.info('Succeeded in presentPicker avScreenCaptureRecorder');
+}).catch((err: BusinessError) => {
+    console.error('Failed to presentPicker avScreenCaptureRecorder, error: ' + err.message);
+});
+```
+
 ## on('stateChange')<sup>12+</sup>
 
 on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void

@@ -45,7 +45,9 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
+<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 
 static constexpr int INT_ARG_2 = 2; // 入参索引
@@ -103,30 +105,50 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+
+
 
 接口声明
 
-```ts
-// index.d.ts
+index.d.ts
+<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
 ```
-<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+
 
 ArkTS侧示例代码
 
-```ts
+导入模块
+
+<!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import { process } from '@kit.ArkTs';
+import { process } from '@kit.ArkTS';
+```
 
+测试代码
+
+<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d', testNapi.asynchronousWork({}, process.ProcessManager, (num: number)=>{return num;}, 123));
+  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d',
+    testNapi.asynchronousWork({}, process.ProcessManager, (num: number) => {
+      return num;
+    }, 123));
+  // ···
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API asynchronousWork error: %{public}s', error.message);
+  // ···
 }
 ```
-<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

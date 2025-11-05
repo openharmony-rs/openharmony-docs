@@ -73,7 +73,7 @@ Takes a screenshot. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
 
 **Parameters**
 
@@ -133,7 +133,7 @@ Takes a screenshot. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
 
 **Parameters**
 
@@ -177,7 +177,7 @@ Takes a screenshot. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
 
 **Parameters**
 
@@ -249,7 +249,7 @@ Takes a screenshot. This API uses a promise to return the result. SDR stands for
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22) (available only for system applications)
 
 **Parameters**
 

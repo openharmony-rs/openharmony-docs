@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 粒子动画是在一定范围内随机生成的大量粒子产生运动而组成的动画。动画元素是一个个粒子，这些粒子可以是圆点、图片。通过对粒子在颜色、透明度、大小、速度、加速度、自旋角度等维度变化做动画，来营造一种氛围感，比如下雪的动效，雪花飘舞就相当于一个个雪花粒子在做动画。
 
@@ -723,8 +723,9 @@ type Vector2T\<T> = Vector2T\<T>
 
 描述粒子动画基础用法，通过圆形初始化粒子。
 
-```ts
-// xxx.ets
+<!-- @[particle_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template1/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ParticleExample {
@@ -751,6 +752,7 @@ struct ParticleExample {
             },
             color: {
               range: [Color.Red, Color.Yellow], //初始颜色范围
+              distributionType: DistributionType.GAUSSIAN, // 初始颜色随机值分布
               updater: {
                 type: ParticleUpdater.CURVE, //变化方式为曲线变化
                 config: [
@@ -832,7 +834,7 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1236,10 +1238,12 @@ struct ParticleExample {
 
 该示例主要演示如何通过粒子扰动场的干扰下来实现运动轨迹发生变化的效果。
 
-```
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample3 {
   build() {
     Stack() {
       Text()
@@ -1352,19 +1356,20 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5
       }])
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
-
 ```
 ![particle](figures/disturbanceFields.gif)
 
 ### 示例4（调整粒子发射器位置）
 通过emitter()调整粒子发射器的位置。
-```ts
+<!-- @[particle_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template4/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample4 {
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1372,7 +1377,7 @@ struct ParticleExample {
       position: { x: 60, y: 80 },
       size: { width: 200, height: 200 }
     }
-  ]
+  ];
 
   build() {
     Stack() {
@@ -1429,7 +1434,7 @@ struct ParticleExample {
         .width(300)
         .height(300)
         .emitter(this.emitterProperties)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1437,12 +1442,12 @@ struct ParticleExample {
 
 ### 示例5（环形发射器创建）
 描述粒子动画环形发射器创建的基础用法。
-```ts
-import { LengthMetrics } from '@kit.ArkUI';
+<!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample5 {
   build() {
     Stack() {
       Text()
@@ -1513,7 +1518,7 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1521,25 +1526,24 @@ struct ParticleExample {
 
 ### 示例6（环形发射器更新）
 描述粒子动画环形发射器更新的基础用法。
-```ts
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample6 {
 
-  @State radius: number = 1
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS
-  @State emitRate: number = 200
-  @State count: number = 2000
-  private timerID: number = -1
-  private centerX: LengthMetrics = LengthMetrics.percent(0.5)
-  private centerY: LengthMetrics = LengthMetrics.percent(0.5)
-  private inRadius: LengthMetrics = LengthMetrics.vp(120)
-  private outRadius: LengthMetrics = LengthMetrics.vp(120)
-  private startAngle: number = 0
-  private endAngle: number = 90
+  @State radius: number = 1;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State emitRate: number = 200;
+  @State count: number = 2000;
+  private timerID: number = -1;
+  private centerX: LengthMetrics = LengthMetrics.percent(0.5);
+  private centerY: LengthMetrics = LengthMetrics.percent(0.5);
+  private inRadius: LengthMetrics = LengthMetrics.vp(120);
+  private outRadius: LengthMetrics = LengthMetrics.vp(120);
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1595,8 +1599,8 @@ struct ParticleExample {
               },
             },
           ]
-        }).width("100%")
-          .height("100%")
+        }).width('100%')
+          .height('100%')
           .emitter(this.emitterProperties)
           .onClick(()=>{
             // 清除已有定时器
@@ -1632,8 +1636,8 @@ struct ParticleExample {
 
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .align(Alignment.Center)
     }
   }

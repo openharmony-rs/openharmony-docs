@@ -838,7 +838,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
 
 Updates data in the database. This API uses an asynchronous callback to return the result.
 
@@ -885,7 +885,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
 
 Updates data in the database. This API uses a promise to return the result.
 
@@ -933,7 +933,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) =>
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, callback: AsyncCallback\<number>): void
 
 Uses a custom processing logic to update data records in the database. This API uses an asynchronous callback to return the result.
 
@@ -1346,4 +1346,4 @@ Defines the PacMap type used for data storage.
 
 | Name| Type| Read-Only| Optional| Description|
 | ----- | ---- | ---- | ---- | ---- |
-| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | No| No| Data stored in key-value pairs.|
+| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | No| Yes| Data stored in key-value pairs.|

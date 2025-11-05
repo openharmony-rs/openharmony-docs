@@ -438,18 +438,6 @@ This configuration is only available for the [Text](ts-basic-components-text.md)
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| No| Yes  | Style of the entity decoration when text recognition succeeds.<br>Default value:<br>{<br> type: TextDecorationType.Underline,<br> color: same as the entity<br> style: TextDecorationStyle.SOLID <br>}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enablePreviewMenu<sup>20+</sup>   | boolean | No| Yes  | Whether to enable the preview menu displayed when long-pressing recognized text. The value **true** means to enable the preview menu, and **false** means the opposite.<br>Default value: **false**.<br>When [copyOptions](ts-basic-components-richeditor.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-## SelectDataDetectorConfig<sup>22+</sup>
-
-Defines the configuration for text selection data detection.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type | Read Only| Optional| Description |
-| ------ | -------- | ---- | ---- | ------------------------------------------- |
-| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11)[] \| undefined | No| No | Entity types for text recognition. Values **undefined** and **[]** indicate that all types of entities can be recognized.|
-
 ## PreviewText<sup>12+</sup>
 
 Preview text.
