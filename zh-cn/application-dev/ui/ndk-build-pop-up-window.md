@@ -85,6 +85,40 @@
 
 1. 创建弹窗内容节点。
    <!-- @[create_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+   
+   ``` C++
+   ArkUI_NodeHandle CreateDialogContent()
+   {
+       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
+       ArkUI_NumberValue textWidthValue[] = {{.f32 = 300}};
+       ArkUI_AttributeItem textWidthItem = {.value = textWidthValue,
+                                            .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(text, NODE_WIDTH, &textWidthItem);
+       ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
+       ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
+                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(text, NODE_HEIGHT, &textHeightItem);
+       ArkUI_NodeHandle span = nodeAPI->createNode(ARKUI_NODE_SPAN);
+       ArkUI_AttributeItem spanItem = {.string = "这是一个弹窗"};
+       nodeAPI->setAttribute(span, NODE_SPAN_CONTENT, &spanItem);
+       ArkUI_NodeHandle imageSpan = nodeAPI->createNode(ARKUI_NODE_IMAGE_SPAN);
+       ArkUI_AttributeItem imageSpanItem = {.string = "/pages/common/sky.jpg"};
+       nodeAPI->setAttribute(imageSpan, NODE_IMAGE_SPAN_SRC, &imageSpanItem);
+       ArkUI_NumberValue imageSpanWidthValue[] = {{.f32 = 300}};
+       ArkUI_AttributeItem imageSpanWidthItem = {.value = imageSpanWidthValue,
+                                                 .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(imageSpan, NODE_WIDTH, &imageSpanWidthItem);
+       ArkUI_NumberValue imageSpanHeightValue[] = {{.f32 = 200}};
+       ArkUI_AttributeItem imageSpanHeightItem = {.value = imageSpanHeightValue,
+                                                  .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(imageSpan, NODE_HEIGHT, &imageSpanHeightItem);
+       nodeAPI->addChild(text, span);
+       nodeAPI->addChild(text, imageSpan);
+       return text;
+   }
+   ```
 
 2. 以下介绍两种控制弹窗样式的方式，弹窗接口请参考[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md)。
 
