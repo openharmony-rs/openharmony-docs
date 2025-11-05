@@ -666,6 +666,23 @@ Router可以通过observer实现注册监听，接口定义请参考Router无感
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
 
+``` TypeScript
+import { UIContext, uiObserver } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+function callbackFunc(info: uiObserver.RouterPageInfo) {
+  hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
+}
+
+// used in ability context.
+uiObserver.on('routerPageUpdate', this.context, callbackFunc);
+
+// used in UIContext.
+uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
+```
+
 在页面状态发生变化时，注册的回调将会触发，开发者可以通过回调中传入的入参拿到页面的相关信息，如：页面的名字，索引，路径，生命周期状态等。
 
 Navigation同样可以通过在observer中实现注册监听。
