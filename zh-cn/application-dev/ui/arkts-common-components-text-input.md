@@ -665,4 +665,59 @@ struct CursorAvoid {
 
 <!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
 
+``` TypeScript
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
+  // 'app.string.NormalQuestion_AddInput'资源文件中的value值为"我是TextArea"
+  private changeText = this.resourceManager?.getStringSync($r('app.string.NormalQuestion_change')) as string;
+  @State fullText: string = this.changeText;
+  @State originText: string = this.changeText;
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: 'minLines: ' + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: 'constraintSize: ' + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height('auto')
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+      // 'app.string.NormalQuestion_AddInput'资源文件中的value值为"增加输入"
+      Button($r('app.string.NormalQuestion_AddInput'))
+        .onClick(() => {
+          this.fullText += this.changeText;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
 ![textinputkeyboardavoid](figures/textareaHeight.gif)
