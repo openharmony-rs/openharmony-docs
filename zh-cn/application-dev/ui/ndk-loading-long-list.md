@@ -662,4 +662,46 @@ private:
    ```
 3. List组件下使用ListItemGroup实现分组列表界面。
    <!-- @[Grouped_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample.h) -->
+   
+   ``` C
+   // LazyTextListExample.h
+   // 懒加载列表示例代码。
+   #ifndef MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   #define MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   #include "ArkUIBaseNode.h"
+   #include "ArkUIListNode.h"
+   #include "ArkUIListItemGroupNode.h"
+   namespace NativeModule {
+   const int32_t NUMBER_3 = 3;
+   const int32_t NUMBER_50 = 50;
+   
+   std::shared_ptr<ArkUIBaseNode> CreateLazyTextListExample()
+   {
+       // 创建组件并挂载。
+       // 1: 创建List组件。
+       auto list = std::make_shared<ArkUIListNode>();
+       list->SetPercentWidth(1);
+       list->SetPercentHeight(1);
+       // 设置吸顶。
+       list->SetSticky(ARKUI_STICKY_STYLE_BOTH);
+       // 2: 创建ListItemGroup并挂载到List上。
+       for (int32_t i = 0; i < NUMBER_3; i++) {
+           auto header = std::make_shared<ArkUITextNode>();
+           header->SetTextContent("header");
+           header->SetFontSize(NUMBER_16);
+           header->SetPercentWidth(1);
+           header->SetHeight(NUMBER_50);
+           header->SetBackgroundColor(0xFFDCDCDC);
+           header->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
+           auto listItemGroup = std::make_shared<ArkUIListItemGroupNode>();
+           listItemGroup->SetHeader(header);
+           auto adapter = std::make_shared<ArkUIListItemAdapter>();
+           listItemGroup->SetLazyAdapter(adapter);
+           list->AddChild(listItemGroup);
+       }
+       return list;
+   }
+   } // namespace NativeModule
+   #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   ```
 
