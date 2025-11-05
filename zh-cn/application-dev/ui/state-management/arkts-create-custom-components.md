@@ -574,5 +574,17 @@ struct MyComponent {
 - 在\@ComponentV2装饰的自定义组件中支持使用。
 
   <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->
+  
+  ``` TypeScript
+  @ComponentV2
+  struct MyComponent {
+    static a: string = '';
+    // 静态代码块生效，a的值变为'hello world'
+    static {
+      this.a = 'hello world';
+    }
+  // ···
+  }
+  ```
 
 <!--no_check-->
