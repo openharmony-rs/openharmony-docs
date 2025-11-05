@@ -205,7 +205,7 @@ Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-compone
 <!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
 
 ``` TypeScript
-// index.ets
+// DeepWebIndex.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -215,7 +215,7 @@ const TAG  = '[Sample_PullLinking]';
 
 @Entry
 @Component
-struct DeepOpenLinkAbility {
+struct DeepWebIndex {
   controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
