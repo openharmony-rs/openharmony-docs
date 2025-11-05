@@ -161,6 +161,11 @@ TextInput()
 带URL的输入模式，无特殊限制。
 <!-- @[set_url_input_type_7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.URL)
+```
+
 ![text_input_type_url](figures/text_input_type_url.PNG)
 
 ## 设置输入框多态样式
