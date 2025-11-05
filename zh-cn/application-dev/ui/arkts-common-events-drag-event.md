@@ -749,12 +749,12 @@ build() {
 
 ``` TypeScript
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-export const dropAnimationRoutePrefix: string = 'dropAnimation';
+// ···
 
 @Entry
 @Component
 export struct DropAnimationExample {
-  @Consume pathStack: NavPathStack;
+// ···
   @State targetImage: string = '';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
@@ -768,7 +768,7 @@ export struct DropAnimationExample {
       })
     }
   build() {
-    NavDestination() {
+    // ···
       Row() {
         Column() {
           // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
@@ -824,14 +824,7 @@ export struct DropAnimationExample {
         .margin({ left: '5%' })
       }
       .height('100%')
-      .width('100%')
-    }
-    .backgroundColor('#f1f3f5')
-    .title('', {
-      backgroundBlurStyle: BlurStyle.COMPONENT_THICK,
-      barStyle: BarStyle.STACK
-    })
-    .title($r('app.string.Pages_Index_DropAnimation'))
+    // ···
   }
 }
 ```
