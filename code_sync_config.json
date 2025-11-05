@@ -14846,5 +14846,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-dialog-focusable.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"dialog_focus_text",
+						"start_line":20
+					},
+					{
+						"end_line":57,
+						"name":"dialog_focus_text_input",
+						"start_line":42
+					},
+					{
+						"end_line":63,
+						"name":"dialog_focus",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-embedded-dialog.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"dialog_embedded",
+						"start_line":53
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"next",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
