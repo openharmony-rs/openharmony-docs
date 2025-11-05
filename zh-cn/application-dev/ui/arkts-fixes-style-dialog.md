@@ -43,6 +43,54 @@
 
 <!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
 
+``` TypeScript
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct ShowActionMenuExample {
+  build() {
+    // ···
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('ShowActionMenu')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showActionMenu({
+                  title: 'showActionMenu Title Info',
+                  buttons: [
+                    {
+                      text: 'item1',
+                      color: '#666666'
+                    },
+                    {
+                      text: 'item2',
+                      color: '#000000'
+                    },
+                  ]
+                })
+                  .then(data => {
+                    console.info('showActionMenu success, click button: ' + data.index);
+                  })
+                  .catch((err: Error) => {
+                    console.error('showActionMenu error: ' + err);
+                  })
+              } catch (error) {
+              }
+            })
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+    // ···
+  }
+}
+```
+
 ![image](figures/UIContextShowMenu.gif)
 
 ## 对话框 (showDialog)
