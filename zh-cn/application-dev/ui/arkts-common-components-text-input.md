@@ -546,6 +546,28 @@ TextArea({
 
 <!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct KeyboardAvoid {
+  placeHolderArr: string[] = ['1', '2', '3', '4', '5', '6', '7'];
+
+  build() {
+    Scroll() {
+      Column() {
+        ForEach(this.placeHolderArr, (placeholder: string) => {
+          TextInput({ placeholder: 'TextInput ' + placeholder })
+            .margin(30)
+            // ···
+        })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 ![textinputkeyboardavoid](figures/TextInputKeyboardAvoid.gif)
 
