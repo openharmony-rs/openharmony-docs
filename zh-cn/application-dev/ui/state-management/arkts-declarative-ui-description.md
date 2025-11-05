@@ -109,7 +109,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
   例如，可以按以下方式配置Text组件的颜色和字体样式。
 
   <!-- @[segment8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   Text('hello')
     .fontSize(20)
@@ -125,7 +125,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 - 使用箭头函数配置组件的事件方法。
 
   <!-- @[segment9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   Button('Click me')
     .onClick(() => {
@@ -154,8 +154,8 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
     }
   
   // ···
-     Button('add counter')	
-       .onClick(this.myClickHandler.bind(this))
+          Button('add counter')
+            .onClick(this.myClickHandler.bind(this))
   ```
 
 - 使用声明的箭头函数时可以直接调用，不需要bind this。
@@ -169,8 +169,8 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
     };
   
   // ···
-     Button('add counter')
-       .onClick(this.fn)
+          Button('add counter')
+            .onClick(this.fn)
   ```
 
 
