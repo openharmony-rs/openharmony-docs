@@ -54,6 +54,12 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 - 多行输入框文字超出一行时会自动折行。
 
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.CreatTextInput_textContent'资源文件中的value值为"我是TextArea我是TextArea我是TextArea我是TextArea"
+  TextArea({ text: $r('app.string.CreatTextInput_textContent') })
+    .width(300)
+  ```
 
 ![zh-cn_image_0000001511580836](figures/zh-cn_image_0000001511580836.png)
 
