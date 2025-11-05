@@ -560,6 +560,22 @@ struct Index {
     多选拖拽的数量角标当前需要应用使用dragPreviewOptions中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    
+    ``` TypeScript
+      @State numberBadge: number = 0;
+    // ···
+                .onClick(() => {
+                  this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                  if (this.isSelectedGrid[idx]) {
+                    // ···
+                    this.numberBadge++;
+                    // ···
+                  } else {
+                    this.numberBadge--;
+                    // ···
+                })
+                .dragPreviewOptions({ numberBadge: this.numberBadge })
+    ```
 
 **完整示例：**
 
