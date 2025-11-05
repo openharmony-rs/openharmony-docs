@@ -969,7 +969,7 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-|  [ManagedPolicy](#managedPolicy22) | 返回ManagedPolicy枚举类型的除应用市场外，已设置受信任开发者的扩展程序的运行开关管控策略。 |
+|  [ManagedPolicy](#managedpolicy22) | 返回ManagedPolicy枚举类型的除应用市场外，已设置受信任开发者的扩展程序的运行开关管控策略。 |
 
 **错误码：**
 
