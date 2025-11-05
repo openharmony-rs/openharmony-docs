@@ -59,6 +59,15 @@
   [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md)自定义弹窗的内容对象，可以通过调用[OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions)接口创建一个自定义弹窗的内容对象。
 该方法返回ArkUI_CustomDialogOptions类型的指针。
   <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  
+  ``` C++
+  ArkUI_CustomDialogOptions* g_dialogOptions = nullptr;
+  // ···
+      auto textNode = std::make_shared<NativeModule::ArkUITextNode>();
+      if (!g_dialogOptions) {
+          g_dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(textNode->GetHandle());
+      }
+  ```
   > **说明：**
   > 
   > ArkUITextNode的声明方式可以查看[ArkUINode.h](../ui/ndk-access-the-arkts-page.md)文件中的实现文本组件。
