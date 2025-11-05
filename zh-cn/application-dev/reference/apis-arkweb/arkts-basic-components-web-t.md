@@ -54,7 +54,7 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 ## OnVerifyPinCallback<sup>22+</sup>
 
-type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void;
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
 
 需要用户进行PIN码认证时触发的回调。
 
