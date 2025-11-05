@@ -48,6 +48,21 @@ struct HelloComponent {
 
 <!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct ParentComponent {
+  build() {
+    Column() {
+      Text('ArkUI message')
+      HelloComponent({ message: 'Hello World!' })
+      Divider()
+      HelloComponent({ message: 'Hello ArkTS!' })
+    }
+  }
+}
+```
+
 
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 
