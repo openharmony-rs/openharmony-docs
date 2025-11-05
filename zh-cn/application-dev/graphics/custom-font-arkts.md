@@ -224,7 +224,7 @@ struct RenderTest {
       .backgroundColor(Color.White)
 
       Row() {
-        Button("load font")
+        Button($r('app.string.Button_load_font'))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
@@ -237,7 +237,7 @@ struct RenderTest {
           .width('30%')
           .height(40)
           .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-        Button("unload font")
+        Button($r('app.string.Button_unload_font'))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
