@@ -9786,8 +9786,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -9839,8 +9838,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -9892,8 +9890,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
