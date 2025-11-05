@@ -474,7 +474,7 @@ struct ContextMenuExample {
 
 ### 示例4（右键弹出指向型菜单）
 
-该示例为bindContextMenu通过配置responseType.RightClick、enableArrow（从API version 10开始）弹出指向型菜单。同时，通过配置hapticFeedbackMode（从API version 18开始）属性实现弹出时的振动效果。
+该示例为bindContextMenu通过配置responseType.RightClick、enableArrow弹出指向型菜单。同时，从API version 18开始通过配置hapticFeedbackMode属性实现弹出时的振动效果。
 
 ```ts
 // xxx.ets
