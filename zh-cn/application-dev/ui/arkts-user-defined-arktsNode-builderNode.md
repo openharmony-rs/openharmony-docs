@@ -2528,7 +2528,7 @@ struct FreezeBuildNode {
       // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
-        hilog.info(0xF811,'testTag','%{public}s',' uicontext is     undefined :' + (uiContext === undefined));
+        hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
         if (this.rootnode != null) {
           // 返回FrameNode节点。
           return this.rootnode.getFrameNode();
