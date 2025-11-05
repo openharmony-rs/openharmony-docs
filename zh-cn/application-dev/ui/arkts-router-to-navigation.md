@@ -672,6 +672,39 @@ Navigation同样可以通过在observer中实现注册监听。
 
 <!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
 
+``` TypeScript
+// EntryAbility.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIObserver, window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ...
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      // ...
+      let windowClass = data;
+      // 获取UIContext实例。
+      let uiContext: UIContext = windowClass.getUIContext();
+      // 获取UIObserver实例。
+      let uiObserver : UIObserver = uiContext.getUIObserver();
+      // 注册DevNavigation的状态监听.
+      uiObserver.on('navDestinationUpdate',(info) => {
+        // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
+        if (info.state == 0) {
+          // NavDestination组件显示时操作
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+        }
+      })
+    })
+  }
+}
+```
+
 ## 页面信息查询
 
 为了实现页面内自定义组件跟页面解耦，自定义组件中提供了全局查询页面信息的接口。
