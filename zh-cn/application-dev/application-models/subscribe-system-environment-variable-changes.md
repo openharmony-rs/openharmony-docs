@@ -283,6 +283,33 @@ export default class EnvAbility5 extends UIAbility {
 
 <!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility8.ets) --> 
 
+``` TypeScript
+import { AbilityStage, Configuration } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[MyAbilityStage]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+let systemLanguage: string | undefined; // 系统当前语言
+
+export default class EnvAbility8 extends AbilityStage {
+  onCreate(): void {
+    systemLanguage = this.context.config.language; // Module首次加载时，获取系统当前语言
+    hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
+  }
+
+  onConfigurationUpdate(newConfig: Configuration): void {
+    hilog.info(DOMAIN_NUMBER, TAG, `onConfigurationUpdate, language: ${newConfig.language}`);
+    hilog.info(DOMAIN_NUMBER, TAG, `onConfigurationUpdated systemLanguage is ${systemLanguage}, newConfig: ${JSON.stringify(newConfig)}`);
+
+    if (systemLanguage !== newConfig.language) {
+      hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage from ${systemLanguage} changed to ${newConfig.language}`);
+      systemLanguage = newConfig.language; // 将变化之后的系统语言保存，作为下一次变化前的系统语言
+    }
+  }
+}
+```
+
 ### 在UIAbility组件中订阅回调
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件提供了[UIAbility.onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)回调方法用于订阅环境变量的变化。当环境变量发生变化时，会调用该回调方法。在该方法中，通过[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)对象获取最新的环境变量信息，而无需重启UIAbility。
