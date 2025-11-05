@@ -130,6 +130,15 @@ struct ParentComponent {
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
   <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct MyComponent {
+    build() {
+      // ···
+    }
+  }
+  ```
 
 ### \@Entry
 
