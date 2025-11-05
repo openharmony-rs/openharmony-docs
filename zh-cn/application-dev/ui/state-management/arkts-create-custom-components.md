@@ -365,6 +365,29 @@ struct Son {
   }
   ```
   <!-- @[Builder_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuilderMethod.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct ParentComponent {
+    calcTextValue(): string {
+      return 'Hello World';
+    }
+  
+    @Builder
+    doSomeRender() {
+      Text(`Hello World`)
+    }
+  
+    build() {
+      Column() {
+        // 正例：可以调用
+        this.doSomeRender()
+        // 正例：参数可以为调用TS方法的返回值
+        Text(this.calcTextValue())
+      }
+    }
+  }
+  ```
 
 
 - 不允许使用switch语法，当需要使用条件判断时，请使用[if](../rendering-control/arkts-rendering-control-ifelse.md)。示例如下。
