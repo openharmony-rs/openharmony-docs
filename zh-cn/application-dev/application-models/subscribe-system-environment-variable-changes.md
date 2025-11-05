@@ -186,6 +186,54 @@ export default class EnvAbility5 extends UIAbility {
 1. 使用[on](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)方法，应用程序可以通过在非应用组件模块中订阅环境变量的变化来动态响应这些变化。例如，使用该方法在页面中监测系统语言的变化。
 
     <!-- @[envconf_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage6.ets) --> 
+    
+    ``` TypeScript
+    import { common, EnvironmentCallback, Configuration } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    const TAG: string = '[MyAbility]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct EnvAbilityPage6 {
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      private callbackId: number = 0; // 注册订阅系统环境变化的ID
+    
+      subscribeConfigurationUpdate(): void {
+        let systemLanguage: string | undefined = this.context.config.language; // 获取系统当前语言
+    
+        // 1.获取ApplicationContext
+        let applicationContext = this.context.getApplicationContext();
+    
+        // 2.通过applicationContext订阅环境变量变化
+        let environmentCallback: EnvironmentCallback = {
+          onConfigurationUpdated(newConfig: Configuration) {
+            hilog.info(DOMAIN_NUMBER, TAG, `onConfigurationUpdated systemLanguage is ${systemLanguage}, newConfig: ${JSON.stringify(newConfig)}`);
+            if (systemLanguage !== newConfig.language) {
+              hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage from ${systemLanguage} changed to ${newConfig.language}`);
+              systemLanguage = newConfig.language; // 将变化之后的系统语言保存，作为下一次变化前的系统语言
+            }
+          },
+          onMemoryLevel(level) {
+            hilog.info(DOMAIN_NUMBER, TAG, `onMemoryLevel level: ${level}`);
+          }
+        }
+        try {
+          this.callbackId = applicationContext.on('environment', environmentCallback);
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register applicationContext. Code is ${code}, message is ${message}`);
+        }
+      }
+    
+      // 页面展示
+      build() {
+      }
+    }
+    ```
 
 2. 在资源使用完成之后，可以通过调用[off](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextoffenvironment-1)方法释放相关资源。
 
