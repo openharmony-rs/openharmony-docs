@@ -413,6 +413,22 @@ private:
    ```
 2. 控制列表滚动到指定元素。 
    <!-- @[ScrollToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
+   
+   ``` C
+   // ArkUIListNode.h
+   // 提供列表组件的封装。
+   // ···
+   class ArkUIListNode : public ArkUINode {
+       // ···
+       void ScrollToIndex(int32_t index)
+       {
+           ArkUI_NumberValue value[] = {{.i32 = index}};
+           ArkUI_AttributeItem Item = {.value = value, .size = 1};
+           nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &Item);
+       }
+       // ···
+   };
+   ```
 
 3. 控制列表滚动指定偏移量。
    <!-- @[ScrollBy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
