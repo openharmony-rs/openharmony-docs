@@ -112,6 +112,11 @@ TextInput()
 
 <!-- @[set_email_input_type_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.Email)
+```
+
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
 ### 纯数字输入模式
