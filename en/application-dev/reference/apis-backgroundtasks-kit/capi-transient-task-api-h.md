@@ -1,5 +1,12 @@
 # transient_task_api.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 The **transient_task_api.h** file declares the APIs for requesting, querying, and canceling transient tasks.

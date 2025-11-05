@@ -1,5 +1,12 @@
 # WorkSchedulerExtensionContext (System API)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the WorkSchedulerExtensionAbility.
 
 This module provides APIs for accessing the resources of a WorkSchedulerExtensionAbility.
