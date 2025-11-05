@@ -130,6 +130,14 @@ Grid() {
 
 <!-- @[Set_the_direction_of_the_main_axis_of_the_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
 
+``` TypeScript
+Grid() {
+  // ···
+}
+.maxCount(3)
+.layoutDirection(GridDirection.Row)
+```
+
 >**说明：**
 >
 >- layoutDirection属性仅在不设置rowsTemplate和columnsTemplate时生效，此时元素在layoutDirection方向上排列。
