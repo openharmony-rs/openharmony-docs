@@ -557,6 +557,18 @@ struct MyComponent {
 - 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。
 
   <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct MyComponent {
+    static a: string = '';
+    // 静态代码块不生效，a的值仍为空字符串''
+    static {
+      this.a = 'hello world';
+    }
+  // ···
+  }
+  ```
 
 
 - 在\@ComponentV2装饰的自定义组件中支持使用。
