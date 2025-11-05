@@ -236,6 +236,82 @@ private:
 
 1. 在ArkUIListNode中添加SetLazyAdapter函数，给列表节点设置NODE_LIST_NODE_ADAPTER属性，并将NodeAdapter作为属性入参传入。
    <!-- @[List_encapsulated_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
+   
+   ``` C
+   // ArkUIListNode.h
+   // 提供列表组件的封装。
+   #ifndef MYAPPLICATION_ARKUILISTNODE_H
+   #define MYAPPLICATION_ARKUILISTNODE_H
+   
+   #include "ArkUINode.h"
+   #include "ArkUIListItemAdapter.h"
+   namespace NativeModule {
+   class ArkUIListNode : public ArkUINode {
+   public:
+       ArkUIListNode() // 创建ArkUI的列表组件。
+           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST)) {}
+   
+       ~ArkUIListNode() override
+       {
+           if (nativeModule_) {
+               nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX);
+           }
+           if (adapter_) {
+               // 析构的时候卸载adapter下的UI组件。
+               nativeModule_->resetAttribute(handle_, NODE_LIST_NODE_ADAPTER);
+               adapter_.reset();
+           }
+       }
+       // List组件的属性接口封装。
+       void SetScrollBarState(bool isShow)
+       {
+           ArkUI_ScrollBarDisplayMode displayMode =
+               isShow ? ARKUI_SCROLL_BAR_DISPLAY_MODE_ON : ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF;
+           ArkUI_NumberValue value[] = {{.i32 = displayMode}};
+           ArkUI_AttributeItem item = {value, 1};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_BAR_DISPLAY_MODE, &item);
+       }
+   
+       void RegisterOnScrollIndex(const std::function<void(int32_t index)> &onScrollIndex)
+       {
+           onScrollIndex_ = onScrollIndex;
+           nativeModule_->registerNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX, 0, nullptr);
+       }
+       // 引入懒加载模块。
+       void SetLazyAdapter(const std::shared_ptr<ArkUIListItemAdapter> &adapter)
+       {
+           ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter->GetHandle()};
+           nativeModule_->setAttribute(handle_, NODE_LIST_NODE_ADAPTER, &item);
+           adapter_ = adapter;
+       }
+       // ···
+   protected:
+       void OnNodeEvent(ArkUI_NodeEvent *event) override
+       {
+           auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+           switch (eventType) {
+               case NODE_LIST_ON_SCROLL_INDEX: {
+                   auto index = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event)->data[0];
+                   if (onScrollIndex_) {
+                       onScrollIndex_(index.i32);
+                   }
+                   break;
+               }
+               default: {
+                   break;
+               }
+           }
+       }
+   
+   private:
+       std::function<void(int32_t index)> onScrollIndex_;
+   
+       std::shared_ptr<ArkUIListItemAdapter> adapter_;
+   };
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUILISTNODE_H
+   ```
 
 2. 创建List使用懒加载的示例代码，调用List节点的SetLazyAdapter接口设置懒加载适配器。
    <!-- @[Grouped_List_Interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
