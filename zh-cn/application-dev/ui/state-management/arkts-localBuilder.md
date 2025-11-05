@@ -507,7 +507,7 @@ struct Parent {
 @Component 
 struct Child {
   label: string = 'child';
-  @BuilderParam customBuider: () => void;
+  @BuilderParam customBuilder: () => void;
   @Link layoutSize: LayoutSize;
 
   build() {
