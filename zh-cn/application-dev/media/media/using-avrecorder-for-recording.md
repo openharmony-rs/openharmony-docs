@@ -170,6 +170,8 @@
 
   参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
+  使用当前示例代码时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
