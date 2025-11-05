@@ -44,6 +44,10 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 - 多行输入框。
 
   <!-- @[create_text_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  
+  ``` TypeScript
+  TextArea()
+  ```
 
   ![zh-cn_image_0000001562940481](figures/zh-cn_image_0000001562940481.png)
 
