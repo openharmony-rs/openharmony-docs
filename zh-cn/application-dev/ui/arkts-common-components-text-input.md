@@ -215,6 +215,15 @@ TextArea()
 - 设置输入框当前的文本内容。
 
   <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.i_am_placeholder'资源文件中的value值为"我是提示文本"
+  // 'app.string.i_am_current_text_content'资源文件中的value值为"我是当前文本内容"
+  TextInput({
+    placeholder: $r('app.string.i_am_placeholder'),
+    text: $r('app.string.i_am_current_text_content')
+  })
+  ```
 
   ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
 
