@@ -125,6 +125,25 @@
    - 通过controller控制弹窗样式。
 
      <!-- @[show_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     
+     ``` C++
+     void ShowDialog()
+     {
+         ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+         if (!g_dialogController) {
+             g_dialogController = dialogAPI->create();
+         }
+         auto contentNode = CreateDialogContent();
+         dialogAPI->setContent(g_dialogController, contentNode);
+         dialogAPI->setContentAlignment(g_dialogController, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
+         dialogAPI->setBackgroundColor(g_dialogController, 0xffffffff);
+         dialogAPI->setCornerRadius(g_dialogController, 6.0f, 6.0f, 6.0f, 6.0f);
+         dialogAPI->setModalMode(g_dialogController, false);
+         dialogAPI->setAutoCancel(g_dialogController, true);
+         dialogAPI->show(g_dialogController, false);
+     }
+     ```
 
    - 通过dialogOptions控制弹窗样式。
 
