@@ -205,6 +205,44 @@
 
 1. 创建可交互界面，点击Button后弹窗。其中获取与使用ArkUI_NodeContentHandle类型节点可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
    <!-- @[main_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+   
+   ``` C++
+   constexpr int32_t BUTTON_CLICK_ID = 1;
+   ArkUI_NodeHandle g_buttonNode = nullptr;
+   
+   void MainViewMethod(ArkUI_NodeContentHandle handle)
+   {
+       ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+       ArkUI_NumberValue widthValue[] = {{.f32 = 300}};
+       ArkUI_AttributeItem widthItem = {.value = widthValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(column, NODE_WIDTH, &widthItem);
+       ArkUI_NumberValue heightValue[] = {{.f32 = 300}};
+       ArkUI_AttributeItem heightItem = {.value = heightValue, .size = sizeof(heightValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(column, NODE_HEIGHT, &heightItem);
+       
+       g_buttonNode = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+       ArkUI_NumberValue buttonWidthValue[] = {{.f32 = 200}};
+       ArkUI_AttributeItem buttonWidthItem = {.value = buttonWidthValue,
+                                              .size = sizeof(buttonWidthValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(g_buttonNode, NODE_WIDTH, &buttonWidthItem);
+       ArkUI_NumberValue buttonHeightValue[] = {{.f32 = 50}};
+       ArkUI_AttributeItem buttonHeightItem = {.value = buttonHeightValue,
+                                               .size = sizeof(buttonHeightValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(g_buttonNode, NODE_HEIGHT, &buttonHeightItem);
+       ArkUI_AttributeItem labelItem = {.string = "点击弹窗"};
+       nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
+       ArkUI_NumberValue buttonTypeValue[] = {{.i32 = static_cast<int32_t>(ARKUI_BUTTON_TYPE_NORMAL)}};
+       ArkUI_AttributeItem buttonTypeItem = {.value = buttonTypeValue,
+                                             .size = sizeof(buttonTypeValue) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_TYPE, &buttonTypeItem);
+       nodeAPI->registerNodeEvent(g_buttonNode, NODE_ON_CLICK, BUTTON_CLICK_ID, nullptr);
+       nodeAPI->addNodeEventReceiver(g_buttonNode, OnButtonClicked);
+       nodeAPI->addChild(column, g_buttonNode);
+       OH_ArkUI_NodeContent_AddNode(handle, column);
+   }
+   ```
 
 2. 创建Button事件的回调函数，当Button点击时触发弹窗显示或关闭。
 
