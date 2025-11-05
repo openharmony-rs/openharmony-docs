@@ -653,7 +653,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation(imageRotation);
-    console.log(`Preview rotation is: ${previewRotation}`);
+    console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

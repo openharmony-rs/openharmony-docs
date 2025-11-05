@@ -647,6 +647,8 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
 **参数：**
 
 | 参数名     | 类型                                           | 必填 | 说明                       |

@@ -602,7 +602,7 @@ function unRegisterCaptureStartWithInfo(photoOutput: camera.PhotoOutput): void {
 
 ## offCaptureStartWithInfo<sup>22+</sup>
 
-offCaptureStartWithInfo( callback?: AsyncCallback\<CaptureStartInfo\>): void
+offCaptureStartWithInfo(callback?: AsyncCallback\<CaptureStartInfo\>): void
 
 注销监听拍照。
 
@@ -759,7 +759,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void {
   if (err) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error:: ${err.code}`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -803,7 +803,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError | null, photoAsset: photoAccessHelper.PhotoAsset | undefined): void {
   if (err && err!.code !== 0) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error:: ${err.code}`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -884,7 +884,7 @@ isMirrorSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1083,9 +1083,9 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FrameShutterInfo](arkts-apis-camera-i.md#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。该回调返回意味着可以再次下发拍照请求。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | AsyncCallback\<[FrameShutterInfo](arkts-apis-camera-i.md#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。表示可以再次下发拍照请求。 |
 
 **示例：**
 
@@ -1959,7 +1959,7 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度。 |
 
 **返回值：**
 
@@ -1985,7 +1985,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -2002,7 +2002,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
