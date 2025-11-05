@@ -66,152 +66,6 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 
   <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @Component
-  struct PageDisplayModeSplit {
-    @State toolTmp: ToolbarItem = {
-      'value': 'func',
-      'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',  // 当前目录image文件夹下的图标资源
-      'action': () => {}
-    };
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
-    private arr: number[] = [1, 2, 3];
-  
-    @Builder
-    pageMap(name: string) {
-      if (name === 'NavDestinationTitle1') {
-        pageOneTmp();
-      } else if (name === 'NavDestinationTitle2') {
-        pageTwoTmp();
-      } else if (name === 'NavDestinationTitle3') {
-        pageThreeTmp();
-      }
-    }
-  
-    build() {
-      Column() {
-        Navigation(this.pageInfos) {
-          TextInput({ placeholder: 'search...' })
-            .width('90%')
-            .height(40)
-            .backgroundColor('#FFFFFF')
-  
-          List({ space: 12 }) {
-            ForEach(this.arr, (item: number) => {
-              ListItem() {
-                Text('Page' + item)
-                  .width('100%')
-                  .height(72)
-                  .backgroundColor('#FFFFFF')
-                  .borderRadius(24)
-                  .fontSize(16)
-                  .fontWeight(500)
-                  .textAlign(TextAlign.Center)
-                  .onClick(() => {
-                    this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
-                  })
-              }
-            }, (item: number) => item.toString())
-          }
-          .width('90%')
-          .margin({ top: 12 })
-        }
-        // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
-        .title($r('app.string.mainTitle'))
-        .mode(NavigationMode.Split)
-        .navDestination(this.pageMap)
-        .menus([
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_add.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          }
-        ])
-        .toolbarConfiguration([this.toolTmp, this.toolTmp, this.toolTmp])
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5')
-    }
-  }
-  
-  @Component
-  export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-    context = this.getUIContext().getHostContext();
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent1')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle1')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
-        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
-          JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  
-  @Component
-  export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-    context = this.getUIContext().getHostContext();
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent2')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle2')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
-        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
-          JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  
-  @Component
-  export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-    context = this.getUIContext().getHostContext();
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent3')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle3')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
-        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
-          JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  ```
 
   ![导航分栏模式](figures/导航分栏模式.jpg)
 
@@ -304,20 +158,7 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![菜单栏](figures/菜单栏.jpg)
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
-   
-   ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
-     'value': 'func',
-     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
-     'action': () => {}
-   };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标。
-         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
-   ```
+
 
 ## 设置工具栏
 
@@ -357,21 +198,7 @@ Navigation路由相关的操作都是基于导航控制器[NavPathStack](../refe
 > 2.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
    <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
-   ``` TypeScript
-   @Entry
-   @Component
-   struct Index {
-     // 创建一个导航控制器对象并传入Navigation
-     pageStack: NavPathStack = new NavPathStack();
-   // ···
-     build() {
-       Navigation(this.pageStack) {
-       // ···
-       }.title('Main')
-     }
-   }
-   ```
+
 
 ### 页面跳转
 
@@ -393,38 +220,13 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
       <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
-      
-      ``` TypeScript
-      this.pageInfo.pushPathByName('temp4-pageTwo', 'temp4-pageTwo Param', (popInfo) => {
-        hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
-          JSON.stringify(popInfo.result));
-      // ···
-      });
-      ```
+
 
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
       <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-      
-      ``` TypeScript
-      this.pageStack.pushDestination({
-        name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
-          'error.message = ', error.message);
-      }).then(() => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
-      });
-      ```
+
       <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-      
-      ``` TypeScript
-      this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
-          'error.message = ', error.message);
-      }).then(() => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
-      });
-      ```
 
 
 ### 页面返回
@@ -438,11 +240,7 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
-   ``` TypeScript
-   // 返回到上一个temp4-pageOne页面
-   this.pathStack.popToName('temp4-pageOne');
-   ```
+
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
    
    ``` TypeScript
@@ -461,29 +259,8 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
 NavPathStack通过Replace相关接口去实现页面替换功能。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 将栈顶页面替换为pageTwo
-   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
-   ```
-   <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   this.pageStack.replacePathByName('pageTwo', 'PageTwo Param');
-   ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
-   this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageTwo Param' })
-     .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
-         'error.message = ', error.message);
-     }).then(() => {
-     hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
-   })
-   ```
 
 
 ### 页面删除
@@ -553,30 +330,6 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   class NavParam {
-     desc: string = 'navigation-param'
-   };
-   // ···
-   @Component
-   export struct PageOne {
-   // ···
-     build() {
-       NavDestination() {
-       // ···
-       }
-       // ···
-       .onResult((param: Object) => {
-         if (param instanceof NavParam) {
-           console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
-           return;
-         }
-         console.info('TestTag', 'param not instance of NavParam');;
-       })
-     }
-   }
-   ```
 
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
@@ -610,24 +363,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 开发者可以在willShow回调中通过修改路由栈来实现路由拦截重定向的能力。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
-   ``` TypeScript
-   this.pageStack.setInterception({
-     willShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
-       operation: NavigationOperation, animated: boolean) => {
-       if (typeof to === 'string') {
-         hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
-         return;
-       }
-       // 将跳转到PageTwo的路由重定向到PageOne
-       let target: NavDestinationContext = to as NavDestinationContext;
-       if (target.pathInfo.name === 'pageTwo') {
-         target.pathStack.pop();
-         target.pathStack.pushPathByName('pageOne', null);
-       }
-     }
-   })
-   ```
+
 
 ### 单例跳转
 
@@ -778,12 +514,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   通过[observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate)提供的注册接口可以注册NavDestination生命周期变化的监听，使用方式如下：
   
   <!-- @[uiObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template2/Index.ets) -->
-  
-  ``` TypeScript
-  uiObserver.on('navDestinationUpdate', (info) => {
-    hilog.info(DOMAIN, 'testTag', 'NavDestination state update', JSON.stringify(info));
-  });
-  ```
+
   
   也可以注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听：
   
@@ -973,7 +704,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建route_map.json文件。添加如下配置信息：
    
-   ```json
+     ```json
      {
        "routerMap": [
          {
@@ -986,7 +717,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
          }
        ]
      }
-   ```
+     ```
 
     配置说明如下：
 
@@ -1078,98 +809,6 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
-  private arr: number[] = [1, 2];
-
-  @Builder
-  pageMap(name: string) {
-    if (name === 'NavDestinationTitle1') {
-      pageOneTmp();
-    } else if (name === 'NavDestinationTitle2') {
-      pageTwoTmp();
-    }
-  }
-
-  build() {
-    Column() {
-      Navigation(this.pageInfos) {
-        TextInput({ placeholder: 'search...' })
-          .width('90%')
-          .height(40)
-
-        List({ space: 12 }) {
-          ForEach(this.arr, (item: number) => {
-            ListItem() {
-              Text('Page' + item)
-                .width('100%')
-                .height(72)
-                .borderRadius(24)
-                .fontSize(16)
-                .fontWeight(500)
-                .textAlign(TextAlign.Center)
-                .onClick(() => {
-                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
-                })
-            }
-          }, (item: number) => item.toString())
-        }
-        .width('90%')
-        .margin({ top: 12 })
-      }
-      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
-      .title($r('app.string.mainTitle'))
-      .navDestination(this.pageMap)
-      .mode(NavigationMode.Split)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Component
-export struct pageTwoTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
-  context = this.getUIContext().getHostContext();
-  build() {
-    NavDestination() {
-      Column() {
-        Text('NavDestinationContent2')
-      }.width('100%').height('100%')
-    }.title('NavDestinationTitle2')
-    .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
-      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
-        JSON.stringify(popDestinationInfo));
-      return true;
-    })
-  }
-}
-
-@Component
-export struct pageOneTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
-  context = this.getUIContext().getHostContext();
-  build() {
-    NavDestination() {
-      Column() {
-        Text('NavDestinationContent1')
-      }.width('100%').height('100%')
-    }.title('NavDestinationTitle1')
-    .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
-      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
-        JSON.stringify(popDestinationInfo));
-      return true;
-    })
-  }
-}
-```
 
 ## 导航示例
 
