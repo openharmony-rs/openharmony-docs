@@ -23,7 +23,7 @@
 | getRawOffset(): number | 获取时区的固定偏移量。 |
 | getOffset(date?: number): number | 获取某一时刻时区对象所表示时区的偏移量。 |
 | getAvailableIDs(): Array&lt;string&gt; | 获取系统支持的时区ID列表。 |
-| getAvailableZoneCityIDs(): Array&lt;string&gt; | 获取系统支持的时区城市ID列表 |
+| getAvailableZoneCityIDs(): Array&lt;string&gt; | 获取系统支持的时区城市ID列表。 |
 | getCityDisplayName(cityID: string, locale: string): string | 获取时区城市名称在指定语言下的翻译。 |
 | getTimezoneFromCity(cityID: string): TimeZone | 根据城市ID创建对应的时区对象。 |
 | getTimezonesByLocation(longitude: number, latitude: number): Array&lt;TimeZone&gt; | 根据地理坐标获取所在时区对象的数组。 |
