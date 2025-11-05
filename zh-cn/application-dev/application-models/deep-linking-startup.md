@@ -113,6 +113,44 @@ export default class DeepAbility extends UIAbility {
 
 <!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
 
+``` TypeScript
+import { common, OpenLinkOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[UIAbilityComponentsOpenLink]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct DeepOpenLinkIndex {
+  build() {
+    Button('start link', { type: ButtonType.Capsule, stateEffect: true })
+      .width('87%')
+      .height('5%')
+      .margin({ bottom: '12vp' })
+      .onClick(() => {
+        let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let link: string = 'link://www.example.com';
+        let openLinkOptions: OpenLinkOptions = {
+          appLinkingOnly: false
+        };
+
+        try {
+          context.openLink(link, openLinkOptions)
+            .then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
+            }).catch((err: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
+          });
+        } catch (paramError) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
+        }
+      })
+  }
+}
+```
+
 ### 使用startAbility实现应用跳转
 
 [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入want中，通过调用[隐式want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
