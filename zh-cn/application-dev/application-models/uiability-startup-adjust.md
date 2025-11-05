@@ -58,6 +58,64 @@
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
 
     <!-- @[want_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets) --> 
+    
+    ``` TypeScript
+    import { common, OpenLinkOptions } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = '[UIAbilityComponentsOpenLink]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    @Entry
+    @Component
+    struct WantAbilityPage1 {
+      build() {
+        Button('start link', { type: ButtonType.Capsule, stateEffect: true })
+          .width('87%')
+          .height('5%')
+          .margin({ bottom: '12vp' })
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            // 通过startAbility接口显式启动其他UIAbility，推荐使用openLink接口。
+            // let want: Want = {
+            //   bundleName: "com.test.example",
+            //   moduleName: "entry",
+            //   abilityName: "EntryAbility"
+            // };
+            // try {
+            //   context.startAbility(want)
+            //     .then(() => {
+            //       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
+            //     }).catch((err: BusinessError) => {
+            //       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
+            //     })
+            // } catch (paramError) {
+            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code},\
+            //   message is ${paramError.message}`);
+            // }
+            let link: string = 'https://www.example.com';
+            let openLinkOptions: OpenLinkOptions = {
+              // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
+              appLinkingOnly: true,
+              // 同want中的parameter，用于传递的参数
+              parameters: {demo_key: 'demo_value'}
+            };
+    
+            try {
+              context.openLink(link, openLinkOptions)
+                .then(() => {
+                  hilog.info(DOMAIN_NUMBER, TAG, 'open link success.');
+                }).catch((err: BusinessError) => {
+                hilog.error(DOMAIN_NUMBER, TAG, `open link failed. Code is ${err.code}, message is ${err.message}`);
+              })
+            } catch (paramError) {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
+            }
+          })
+      }
+    }
+    ```
 
 ## 启动其他应用的UIAbility并获取返回结果
 
