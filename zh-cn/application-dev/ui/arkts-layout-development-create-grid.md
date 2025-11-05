@@ -402,6 +402,16 @@ private scroller: Scroller = new Scroller();
 
 <!-- @[long_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/LongGrid.ets) -->
 
+``` TypeScript
+Grid() {
+  LazyForEach(this.dataSource, () => {
+    GridItem() {
+    }
+  })
+}
+.cachedCount(3)
+```
+
 >**说明：**
 >
 >cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
