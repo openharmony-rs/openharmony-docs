@@ -3429,33 +3429,35 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
-## wifiManager.onP2pStateChange<sup>22+</sup>
+## wifiManager.on('p2pConnectionChange')<sup>9+</sup>
 
-onP2pStateChange(callback?: Callback&lt;int&gt;): void
+on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-取消注册P2P状态改变事件。
+注册P2P连接状态改变事件。在业务退出时，要调用off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
+  | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+  | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](errorcode-universal.md)。
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| 错误码ID | 错误信息 |
-| -------- | -------- |
+| **错误码ID** | **错误信息** |
+| -------- | ---------------------------- |
 | 201 | Permission denied.                 |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
@@ -3485,36 +3487,6 @@ onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-| 201 | Permission denied.                 |
-| 801 | Capability not supported.          |
-| 2801000  | Operation failed. |
-
-## wifiManager.onP2pStateChange<sup>22+</sup>
-
-onP2pStateChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
-
-注册P2P连接改变事件，在业务退出时，要调用offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。
-
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Sta起始版本：** 22
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
@@ -3565,6 +3537,36 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
   // Unregister event
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
+
+## wifiManager.offP2pConnectionChange<sup>22+</sup>
+
+offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
+
+注册P2P连接状态改变事件。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 否 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2801000  | Operation failed. |
 
 ## wifiManager.offP2pStateChange<sup>22+</sup>
 

@@ -1584,7 +1584,6 @@ setDeviceName(devName: string): void
 	}
 ```
 
-
 ## wifiManager.on('streamChange')<sup>9+</sup>
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
@@ -1707,7 +1706,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 ## wifiManager.offStreamChange<sup>22+</sup>
 
-onStreamChange(callback: Callback&lt;int&gt;): void
+offStreamChange(callback: Callback&lt;int&gt;): void
 
 取消注册WIFI流变更事件。
 
@@ -1725,7 +1724,7 @@ onStreamChange(callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。|
 
 **错误码：**
 
