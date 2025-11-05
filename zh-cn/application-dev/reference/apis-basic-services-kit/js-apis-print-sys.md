@@ -26,6 +26,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | top | number | 否 | 表示页面上边距。默认值为0。 |
@@ -46,6 +47,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | startPage | number | 否 | 表示起始页。默认值为1。 |
@@ -65,6 +67,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | previewRange | [PrinterRange](#printerrange) | 是 | 表示预览页面范围。 |
@@ -83,6 +86,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | id | string | 是 | 表示分辨率ID。 |
@@ -106,12 +110,12 @@ import { print } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| colorMode | number | 是 | 表示色彩模式。 |
-| duplexMode | number | 是 | 表示单双面打印模式。 |
-| pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | 是 | 表示打印机支持的页面尺寸列表。 |
-| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | 否 | 表示打印机支持的分辨率列表。 |
-| minMargin | [PrintMargin](#printmargin) | 否 | 表示打印机最小边距。 |
-| options<sup>11+</sup> | Object | 否 | 表示JSON对象字符串。 |
+| colorMode | number | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| duplexMode | number | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | 是 | 表示打印机支持的页面尺寸列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | 否 | 表示打印机支持的分辨率列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| minMargin | [PrintMargin](#printmargin) | 否 | 表示打印机最小边距。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| options<sup>11+</sup> | Object | 否 | 表示JSON对象字符串。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
 
 ## PrinterInfo
 
@@ -126,6 +130,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示打印机ID。 |
@@ -151,21 +156,21 @@ import { print } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| fdList | Array&lt;number&gt; | 是 | 表示待打印文件fd列表。 |
-| jobId | string | 是 | 表示打印任务ID。 |
-| printerId | string | 是 | 表示负责打印的打印机ID。 |
-| jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | 是 | 表示当前打印任务状态。 |
-| jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | 是 | 表示当前打印任务子状态。 |
-| copyNumber | number | 是 | 表示文件列表副本。 |
-| pageRange | [PrinterRange](#printerrange) | 是 | 表示打印范围大小。 |
-| isSequential | boolean | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
-| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 是 | 表示选定的页面尺寸。 |
-| isLandscape | boolean | 是 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
-| colorMode | number | 是 | 表示色彩模式。 |
-| duplexMode | number | 是 | 表示单双面打印模式。 |
-| margin | [PrintMargin](#printmargin) | 否 | 表示当前页边距设置。 |
-| preview | [PreviewAttribute](#previewattribute) | 否 | 表示预览设置。 |
-| options | Object | 否 | 表示JSON对象字符串。 |
+| fdList | Array&lt;number&gt; | 是 | 表示待打印文件fd列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| jobId | string | 是 | 表示打印任务ID。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| printerId | string | 是 | 表示负责打印的打印机ID。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | 是 | 表示当前打印任务状态。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | 是 | 表示当前打印任务子状态。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
+| copyNumber | number | 是 | 表示文件列表副本。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| pageRange | [PrinterRange](#printerrange) | 是 | 表示打印范围大小。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| isSequential | boolean | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 是 | 表示选定的页面尺寸。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| isLandscape | boolean | 是 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| colorMode | number | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| duplexMode | number | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| margin | [PrintMargin](#printmargin) | 否 | 表示当前页边距设置。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| preview | [PreviewAttribute](#previewattribute) | 否 | 表示预览设置。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| options | Object | 否 | 表示JSON对象字符串。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 
 ## PrinterExtensionInfo
 
@@ -180,6 +185,7 @@ import { print } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：20
 
 **属性：**
+<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | extensionId | string | 是 | 表示打印机扩展的扩展ID。 |
@@ -289,7 +295,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -303,11 +309,17 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
@@ -338,7 +350,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -356,11 +368,17 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
@@ -389,7 +407,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -402,10 +420,16 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
@@ -434,7 +458,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -447,10 +471,16 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
@@ -477,7 +507,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -491,11 +521,17 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
@@ -525,7 +561,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -543,11 +579,17 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
+ArkTS-Dyn错误码:
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+ArkTS-Sta错误码:
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
 
 **示例：**
 
