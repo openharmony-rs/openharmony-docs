@@ -263,7 +263,7 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-``` TypeScript	
+``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -290,14 +290,14 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript	
+``` TypeScript
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatSubWindow2]';
+const TAG : string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -469,7 +469,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_SetWindowSystemBarEnable]';
+const TAG : string = '[Sample_SetWindowSystemBarEnable]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -618,7 +618,6 @@ export default class EntryAbility extends UIAbility {
           hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
-      // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
     });
   }
 };
