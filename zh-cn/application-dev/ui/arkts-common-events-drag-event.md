@@ -536,6 +536,24 @@ struct Index {
     通过[stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
 
     <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    
+    ``` TypeScript
+      @Styles
+      normalStyles(): void {
+        .opacity(1.0)
+      }
+    
+      @Styles
+      selectStyles(): void {
+        .opacity(0.4)
+      }
+    
+    // ···
+                .stateStyles({
+                  normal: this.normalStyles,
+                  selected: this.selectStyles
+                })
+    ```
 
 4. 适配数量角标。
 
