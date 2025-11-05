@@ -1651,7 +1651,7 @@ struct TextBuilder {
 
 ### BuilderNode常用冻结场景（状态管理V2）
 
-从API version 20开始，在状态管理V2中，BuilderNode冻结开启方式和在状态管理V1中的开启方式一致，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新。以下示例展示了几种状态管理V2常用的BuilderNode冻结场景。
+从API version 22开始，在状态管理V2中，BuilderNode冻结开启方式和在状态管理V1中的开启方式一致，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新。以下示例展示了几种状态管理V2常用的BuilderNode冻结场景。
 
 **页面路由**
 
@@ -1675,7 +1675,7 @@ export class Book {
 @Builder
 function buildText(book: Book) {
   Column() {
-    buildNodeChild()
+    BuildNodeChild()
   }
 }
 
@@ -1956,9 +1956,9 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack({ message: this.message, logNumber: this.logNumber })
+      PageOneStack({ message: this.message, logNumber: this.logNumber })
     } else if (name === 'pageTwo') {
-      pageTwoStack({ message: this.message, logNumber: this.logNumber })
+      PageTwoStack({ message: this.message, logNumber: this.logNumber })
     }
   }
 
@@ -1986,7 +1986,7 @@ struct MyNavigationTestStack {
 }
 
 @ComponentV2
-struct pageOneStack {
+struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
   @Local index: number = 1;
   @Param @Require  message: number;
@@ -2128,7 +2128,7 @@ class Params {
 @Builder
 function buildText(params: Params) {
   Column() {
-    buildNodeChild({ message: params.message });
+    BuildNodeChild({ message: params.message });
   }
 }
 
