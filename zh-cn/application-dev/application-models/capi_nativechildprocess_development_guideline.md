@@ -48,9 +48,7 @@ libchild_process.so
 
 ``` C++
 #include <IPCKit/ipc_kit.h>
-// [StartExclude child_process_must_method]
 #include <AbilityKit/native_child_process.h>
-// [EndExclude child_process_must_method]
 ```
 
 1. 子进程-实现必要的导出方法。
