@@ -153,6 +153,14 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
   <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct MyComponent {
+  // ···
+  }
+  ```
 
 **EntryOptions<sup>10+</sup>**
 
