@@ -14586,5 +14586,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-enter-exit-transition.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template6/Index.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"transition_animation",
+						"start_line":21
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template4/Index.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"transition_effectExample4",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template5/Index.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"transition_effectExample5",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
