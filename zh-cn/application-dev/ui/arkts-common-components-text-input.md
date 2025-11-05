@@ -211,6 +211,16 @@ TextArea()
 - 添加backgroundColor改变输入框的背景颜色。
 
   <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.i_am_placeholder'资源文件中的value值为"我是提示文本"
+  // 'app.string.i_am_current_text_content'资源文件中的value值为"我是当前文本内容"
+  TextInput({
+    placeholder: $r('app.string.i_am_placeholder'),
+    text: $r('app.string.i_am_current_text_content')
+  })
+    .backgroundColor(Color.Pink)
+  ```
 
   ![zh-cn_image_0000001511740444](figures/zh-cn_image_0000001511740444.png)
 
