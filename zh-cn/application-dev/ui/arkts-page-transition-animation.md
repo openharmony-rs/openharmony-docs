@@ -95,6 +95,24 @@ type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType
 
 <!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
 
+``` TypeScript
+// page A
+pageTransition() {
+  // 定义页面进入时的效果，从右侧滑入，时长为1200ms，页面栈发生push操作时该效果才生效
+  PageTransitionEnter({ type: RouteType.Push, duration: 1200 })
+    .slide(SlideEffect.Right)
+  // 定义页面进入时的效果，从左侧滑入，时长为1200ms，页面栈发生pop操作时该效果才生效
+  PageTransitionEnter({ type: RouteType.Pop, duration: 1200 })
+    .slide(SlideEffect.Left)
+  // 定义页面退出时的效果，向左侧滑出，时长为1000ms，页面栈发生push操作时该效果才生效
+  PageTransitionExit({ type: RouteType.Push, duration: 1000 })
+    .slide(SlideEffect.Left)
+  // 定义页面退出时的效果，向右侧滑出，时长为1000ms，页面栈发生pop操作时该效果才生效
+  PageTransitionExit({ type: RouteType.Pop, duration: 1000 })
+    .slide(SlideEffect.Right)
+}
+```
+
 <!-- -->
 
 <!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
