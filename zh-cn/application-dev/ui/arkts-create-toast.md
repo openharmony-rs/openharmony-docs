@@ -52,6 +52,58 @@
 
 <!-- @[toast_showDefaultAndTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets) -->
 
+``` TypeScript
+import {promptAction} from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct DefaultAndTopToastExample {
+  build() {
+    // ···
+      Column({ space: 10 }) {
+        TextInput()
+        Button() {
+          // 'app.string.DefaultAndTopToast_defaultToast'资源文件中的value值为'DEFAULT类型Toast'
+          Text($r('app.string.DefaultAndTopToast_defaultToast'))
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+        }
+        .height('100')
+        .width('100%')
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showToast({
+            // 'app.string.DefaultAndTopToast_defaultToastMessage'资源文件中的value值为'ok，我是DEFAULT toast'
+            message: $r('app.string.DefaultAndTopToast_defaultToastMessage'),
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.DEFAULT,
+            bottom: 80
+          });
+        })
+
+        Blank().height(200);
+        Button() {
+          // 'app.string.DefaultAndTopToast_topToast'资源文件中的value值为'TOPMOST类型Toast'
+          Text($r('app.string.DefaultAndTopToast_topToast'))
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+        }
+        .height('100')
+        .width('100%')
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showToast({
+            // 'app.string.DefaultAndTopToast_topToastMessage'资源文件中的value值为'ok，我是TOP_MOST toast'
+            message: $r('app.string.DefaultAndTopToast_topToastMessage'),
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.TOP_MOST,
+            bottom: 85
+          });
+        })
+      }
+    // ···
+  }
+}
+```
+
 ## 创建即时反馈
 
 适用于短时间内提示框自动消失的场景。
