@@ -13751,5 +13751,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-pdf-preview.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"web_module_preview_pdf",
+						"start_line":66
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"web_module_create_load_pdf",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
