@@ -153,6 +153,60 @@ export struct CreateToastExample {
 
 <!-- @[toast_openClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets) -->
 
+``` TypeScript
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
+
+@Entry
+@Component
+export struct OpenCloseToastExample {
+  @State toastId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
+
+  build() {
+    // ···
+      Column() {
+        Button('Open Toast')
+          .height(100)
+          .type(ButtonType.Capsule)
+          .onClick(() => {
+            try {
+              this.promptAction.openToast({
+                message: 'Toast Massage',
+                duration: 10000,
+              }).then((toastId: number) => {
+                this.toastId = toastId;
+              });
+            } catch (error) {
+              let message = (error as BusinessError).message;
+              let code = (error as BusinessError).code;
+              hilog.error(DOMAIN, TAG, '%{public}s', 'OpenToast error code is $\{code}, message is $\{message}');
+            }
+          })
+        Blank().height(50);
+        Button('Close Toast')
+          .height(100)
+          .type(ButtonType.Capsule)
+          .onClick(() => {
+            try {
+              this.promptAction.closeToast(this.toastId);
+            } catch (error) {
+              let message = (error as BusinessError).message;
+              let code = (error as BusinessError).code;
+              hilog.error(DOMAIN, TAG, '%{public}s', 'CloseToast error code is $\{code}, message is $\{message}');
+            }
+          })
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    // ···
+  }
+}
+```
+
 ![image](figures/UIToast.gif)
 
 
