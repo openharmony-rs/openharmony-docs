@@ -1255,6 +1255,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
         }.padding({ bottom: 30 })
+  
         // 'app.string.Search_Device'需要替换为开发者所需的文本资源文件
         Button($r('app.string.Search_Device'))
           .width('80%')
@@ -1268,7 +1269,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
           })
         // ···
     }.width('100%').height('100%')
-      .justifyContent(FlexAlign.Center)
+    .justifyContent(FlexAlign.Center)
   }
   ```
   
