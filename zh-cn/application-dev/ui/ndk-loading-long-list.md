@@ -315,6 +315,35 @@ private:
 
 2. 创建List使用懒加载的示例代码，调用List节点的SetLazyAdapter接口设置懒加载适配器。
    <!-- @[Grouped_List_Interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
+   
+   ``` C
+   // LazyTextListExample
+   // 懒加载列表示例代码。
+   
+   #ifndef MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   #define MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   
+   #include "ArkUIBaseNode.h"
+   #include "ArkUIListNode.h"
+   
+   namespace NativeModule {
+   
+   std::shared_ptr<ArkUIBaseNode> CreateLazyTextListExample()
+   {
+       // 创建组件并挂载。
+       // 1：创建List组件。
+       auto list = std::make_shared<ArkUIListNode>();
+       list->SetPercentWidth(1);
+       list->SetPercentHeight(1);
+       // 2：创建ListItem懒加载组件并挂载到List上。
+       auto adapter = std::make_shared<ArkUIListItemAdapter>();
+       list->SetLazyAdapter(adapter);
+       return list;
+   }
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
+   ```
 
 3. 在NativeEntry.cpp中调用List使用懒加载的示例代码。
    <!-- @[Interface_entrance_mounting_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/NativeEntry.cpp) -->
