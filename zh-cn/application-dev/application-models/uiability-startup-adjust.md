@@ -57,7 +57,7 @@
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
 
-    <!-- @[want_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets) --> 
+    <!-- @[want_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets) --> 
     
     ``` TypeScript
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
