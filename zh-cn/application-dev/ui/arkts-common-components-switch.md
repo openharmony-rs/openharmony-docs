@@ -29,6 +29,11 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
   <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // 请开发者替换为实际的id
+  Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // 请开发者替换为实际的id
+  ```
 
   ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
   
