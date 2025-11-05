@@ -506,7 +506,11 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick(() => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
+            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button('ViewParent: item property in middle')
         .width(320)
