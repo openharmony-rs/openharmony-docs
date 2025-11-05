@@ -376,6 +376,11 @@ private scroller: Scroller = new Scroller();
       
 
    <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   
+   ``` TypeScript
+   // gridScroller初始化ScrollBar组件的scroller参数，绑定gridScroller与滚动条。
+   ScrollBar({ scroller: this.gridScroller })
+   ```
 
   **图11** 网格的外置滚动条 
 
