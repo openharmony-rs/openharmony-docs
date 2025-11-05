@@ -1485,73 +1485,69 @@ List(
 3. 滑动离手事件onWillStopDragging及新闻处理逻辑：
    - 上报离手瞬间滑动速度，支持正负方向速度检测，向上滑动为正，向下滑动为负。
 
-   <!-- @[scroll_index_scroller_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
-   
-   ``` TypeScript
-   .onWillStopDragging((velocity: number) => {
-     if (velocity < 0) {
-       // 向下滑动处理
-     } else {
-       // 向上滑动处理
-     }
-   // ···
-   })
-   ```
+     <!-- @[scroll_index_scroller_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     .onWillStopDragging((velocity: number) => {
+       if (velocity < 0) {
+         // 向下滑动处理
+       } else {
+         // 向上滑动处理
+       }
+     // ···
+     })
+     ```
 
    - 通过getItemRect接口方法获取当前项位置信息。
 
-   <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
-   
-   ``` TypeScript
-   let rect = this.scrollerForList.getItemRect(this.currentIndex);
-   ```
-   
-   ``` TypeScript
-   let rect = this.scrollerForList.getItemRect(this.currentIndex);
-   ```
+     <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     let rect = this.scrollerForList.getItemRect(this.currentIndex);
+     ```
 
    - 处理短新闻：直接跳转相邻项。
 
-   <!-- @[scroll_to_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
-   
-   ``` TypeScript
-   if (velocity > 10) {
-     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START)
-   } else if (velocity < -10) {
-     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START)
-   }
-   ```
+     <!-- @[scroll_to_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     if (velocity > 10) {
+       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START)
+     } else if (velocity < -10) {
+       this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START)
+     }
+     ```
 
    - 处理长新闻：计算剩余显示范围决定滚动终点。
    
-   <!-- @[scroller_for_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
-   
-   ``` TypeScript
-   let rect = this.scrollerForList.getItemRect(this.currentIndex);
-   if (velocity < -30) {
-     if (rect) {
-       // 当前节点在页面内的剩余显示范围
-       let leftRect = rect.y + rect.height;
-       //   终点位置
-       let mainPosition = -velocity * DEFAULT_FRICTION / FRICTION_SCALE;
+     <!-- @[scroller_for_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     let rect = this.scrollerForList.getItemRect(this.currentIndex);
+     if (velocity < -30) {
+       if (rect) {
+         // 当前节点在页面内的剩余显示范围
+         let leftRect = rect.y + rect.height;
+         //   终点位置
+         let mainPosition = -velocity * DEFAULT_FRICTION / FRICTION_SCALE;
+         if (leftRect + mainPosition > 0.75 * this.listHeight) {
+           this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+           return;
+         } else if (leftRect + mainPosition < 0.25 * this.listHeight) {
+           this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.END,
+             { extraOffset: LengthMetrics.vp(this.listHeight * 0.3) })
+           return;
+         }
+       }
+     } else if (velocity > 30) {
+       let leftRect = rect?.y + rect?.height;
+       let mainPosition = velocity * DEFAULT_FRICTION / FRICTION_SCALE;
        if (leftRect + mainPosition > 0.75 * this.listHeight) {
-         this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
-         return;
-       } else if (leftRect + mainPosition < 0.25 * this.listHeight) {
-         this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.END,
-           { extraOffset: LengthMetrics.vp(this.listHeight * 0.3) })
+         this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
          return;
        }
      }
-   } else if (velocity > 30) {
-     let leftRect = rect?.y + rect?.height;
-     let mainPosition = velocity * DEFAULT_FRICTION / FRICTION_SCALE;
-     if (leftRect + mainPosition > 0.75 * this.listHeight) {
-       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
-       return;
-     }
-   }
-   ```
+     ```
 
 ## 设置边缘滑动效果
 
