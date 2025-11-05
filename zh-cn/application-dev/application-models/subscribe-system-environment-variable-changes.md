@@ -130,6 +130,18 @@ export default class EnvAbility1 extends UIAbility {
 - **设置UIExtensionAbility的深浅色模式：** 使用UIExtensionContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#setcolormode18)，可以设置UIExtensionAbility的深浅色模式。
 
     <!-- @[env_setcolormode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility4.ets) --> 
+    
+    ``` TypeScript
+    // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+    import { ShareExtensionAbility, ConfigurationConstant } from '@kit.AbilityKit';
+    
+    export default class EnvAbility4 extends ShareExtensionAbility {
+      onForeground() {
+        let uiExtensionContext = this.context;
+        uiExtensionContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+      }
+    }
+    ```
 
 ### 设置应用语言
 
