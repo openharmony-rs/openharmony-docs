@@ -204,6 +204,42 @@ Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-compone
 
 <!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
 
+``` TypeScript
+// index.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[Sample_PullLinking]';
+
+@Entry
+@Component
+struct DeepOpenLinkAbility {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onLoadIntercept((event) => {
+          const url: string = event.data.getRequestUrl();
+          if (url === 'link://www.example.com') {
+            (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
+              .then(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
+              }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG,`openLink failed, err: ${JSON.stringify(err)}.`);
+            });
+            return true;
+          }
+          // 返回true表示阻止此次加载，否则允许此次加载
+          return false;
+        })
+    }
+  }
+}
+```
+
 前端页面代码：
 ```html
 // index.html
