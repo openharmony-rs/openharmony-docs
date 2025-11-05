@@ -14,6 +14,28 @@
 
 <!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 
+``` TypeScript
+Text() {
+  // $r('app.media.hot_sale')需要替换为开发者所需的资源文件。
+  ImageSpan($r('app.media.hot_sale'))
+    .width(50)
+    .height(30)
+    .borderRadius(5)
+    .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
+  // 'app.string.surprise_price'资源文件中的value值为"惊喜价 ￥1299"
+  Span($r('app.string.surprise_price'))
+    .fontSize(25)
+    .fontColor(Color.Red)
+  Span('1599')
+    .decoration({
+      type: TextDecorationType.LineThrough,
+      color: Color.Grey,
+      style: TextDecorationStyle.SOLID
+    })
+    .fontSize(16)
+}.textVerticalAlign(TextVerticalAlign.CENTER)
+```
+
 
 ![span_imagespan_composition](figures/span_imagespan_composition.png)
 
