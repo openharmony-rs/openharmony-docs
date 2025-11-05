@@ -28,12 +28,15 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 
 当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有Navigation页面。
 
-```ts
+<!-- [open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
+``` TypeScript
 this.getUIContext().getPromptAction().openCustomDialog({
   builder: () => {
     this.customDialogComponent();
   },
   levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+  // ···
 })
 ```
 
@@ -43,17 +46,23 @@ this.getUIContext().getPromptAction().openCustomDialog({
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
-```ts
-Text(this.message).id("test_text")
+<!-- [test_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
+``` TypeScript
+Text(this.message).id('test_text')
   .onClick(() => {
-    const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+    const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
     this.getUIContext().getPromptAction().openCustomDialog({
       builder: () => {
         this.customDialogComponent();
       },
-      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+      // ···
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框	
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
     })
+      .then((dialogId: number) => {
+        customDialogId = dialogId;
+      });
   })
 ```
 
@@ -61,10 +70,14 @@ Text(this.message).id("test_text")
 
 如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
 
-```ts
-Text(this.message).id("test_text")
+<!-- @[dialog_embedded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
+``` TypeScript
+Text(this.message).id('test_text')
+  .fontSize(50)
+  .fontWeight(FontWeight.Bold)
   .onClick(() => {
-    const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+    const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
     this.getUIContext().getPromptAction().openCustomDialog({
       builder: () => {
         this.customDialogComponent();
@@ -73,8 +86,12 @@ Text(this.message).id("test_text")
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
       immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
     })
+      .then((dialogId: number) => {
+        customDialogId = dialogId;
+      });
   })
 ```
+
 
 ## 交互说明
 
@@ -85,8 +102,9 @@ Text(this.message).id("test_text")
 2. 点击弹出框的蒙层，默认会关闭弹出框，点击蒙层以外的区域则不会。
 
 ## 完整示例
-```ts
-// Index.ets
+<!-- [page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
+``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
 
 let customDialogId: number = 0;
@@ -96,12 +114,12 @@ function customDialogBuilder(uiContext: UIContext) {
   Column() {
     Text('Custom dialog Message').fontSize(20).height(100)
     Row() {
-      Button("Next").onClick(() => {
+      Button('Next').onClick(() => {
         // 在弹窗内部进行路由跳转。
-        uiContext.getRouter().pushUrl({url: 'pages/Next'});
+        uiContext.getRouter().pushUrl({ url: 'pages/Next' });
       })
       Blank().width(50)
-      Button("Close").onClick(() => {
+      Button('Close').onClick(() => {
         uiContext.getPromptAction().closeCustomDialog(customDialogId);
       })
     }
@@ -110,7 +128,7 @@ function customDialogBuilder(uiContext: UIContext) {
 
 @Entry
 @Component
-struct Index {
+export struct PageLevelDialogBox {
   @State message: string = 'Hello World';
   private uiContext: UIContext = this.getUIContext();
 
@@ -120,32 +138,39 @@ struct Index {
   }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message).id("test_text")
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
-            this.uiContext.getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent();
-              },
-              levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
-              levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
-              immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
-            }).then((dialogId: number) => {
-              customDialogId = dialogId;
+    NavDestination() {
+      Row() {
+        Column() {
+          Text(this.message).id('test_text')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
+              this.getUIContext().getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent();
+                },
+                levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+                levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+                immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+              })
+                .then((dialogId: number) => {
+                  customDialogId = dialogId;
+                });
             })
-          })
+        }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 }
+
 ```
-```ts
+
+<!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
+
+``` TypeScript
 // Next.ets
 @Entry
 @Component
