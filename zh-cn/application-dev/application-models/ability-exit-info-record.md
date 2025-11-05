@@ -93,6 +93,13 @@
     - 根据进程信息感知应用内存占用异常，例如：
 
     <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    
+    ``` TypeScript
+    if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
+      // RSS或PSS值过大，说明内存使用率接近或达到上限，打印告警，或者增加处理逻辑。
+      hilog.warn(DOMAIN_NUMBER,TAG,`Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
+    }
+    ```
 
 
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
