@@ -4585,7 +4585,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口Id。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式。|
+| int32_t windowId | 窗口ID。取值范围为大于等于0的整数，仅支持传入当前窗口的光标样式。|
 | Input_CustomCursor* customCursor | 自定义鼠标光标资源[Input_CustomCursor](./capi-input-input-customcursor.md)。 |
 | Input_CursorConfig* cursorConfig | 自定义鼠标光标配置[Input_CursorConfig](./capi-input-input-cursorconfig.md)。 |
 
