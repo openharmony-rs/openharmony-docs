@@ -224,6 +224,31 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 <!-- @[Parameter_specification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets) -->
 
+``` TypeScript
+@Component
+struct MyComponent {
+  private countDownFrom: number = 0;
+  private color: Color = Color.Blue;
+
+  build() {
+    // ···
+  }
+}
+
+@Entry
+@Component
+struct ParentComponent {
+  private someColor: Color = Color.Pink;
+
+  build() {
+    Column() {
+      // 创建MyComponent实例，并将创建MyComponent成员变量countDownFrom初始化为10，将成员变量color初始化为this.someColor
+      MyComponent({ countDownFrom: 10, color: this.someColor })
+    }
+  }
+}
+```
+
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
 <!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  -->
