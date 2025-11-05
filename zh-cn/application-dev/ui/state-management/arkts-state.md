@@ -46,7 +46,7 @@
 
   **图1** 初始化规则图示
 
-![zh-cn_image_0000001502091796](figures/zh-cn_image_0000001502091796.png)
+![state-initialization](figures/state-initialization.png)
 
 ## 观察变化和行为表现
 
