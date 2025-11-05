@@ -3542,7 +3542,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-注册P2P连接状态改变事件。
+取消注册P2P连接状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3572,7 +3572,7 @@ offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-取消注册P2P连接改变事件。
+取消注册P2P状态改变事件。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
