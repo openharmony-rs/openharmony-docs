@@ -1785,6 +1785,20 @@ export class RectJson {
 
 <!-- @[bind_sheet_window_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/WindowUtils.ets) -->
 
+``` TypeScript
+// WindowUtils.ets
+// 窗口信息
+import { window } from '@kit.ArkUI';
+
+export class WindowUtils {
+  public static window: window.Window;
+  public static windowWidthPx: number;
+  public static windowHeightPx: number;
+  public static topAvoidAreaHeightPx: number;
+  public static navigationIndicatorHeightPx: number;
+}
+```
+
 <!-- @[bind_sheet_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ![zh-cn_image_BindSheetNodeTransfer](figures/zh-cn_image_BindSheetNodeTransfer.gif)
