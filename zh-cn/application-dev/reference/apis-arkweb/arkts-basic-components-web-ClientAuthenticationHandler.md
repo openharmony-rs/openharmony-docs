@@ -76,7 +76,7 @@ confirm(authUri : string): void
 
 ## confirm<sup>22+</sup>
 
-confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void;
+confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
 
 通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。   
 
