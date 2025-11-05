@@ -10654,6 +10654,56 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"fixed_style_pop_up_box",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"show_dialog_example",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"calender_picker_dialog",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"date_picker_dialog",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"date_picker_custom_dialog",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
