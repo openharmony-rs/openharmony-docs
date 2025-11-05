@@ -1023,8 +1023,8 @@ struct GridEts {
 
   build() {
     Column({ space: 5 }) {
+      // $r('app.string.Select_All')需要替换为开发者所需的文本资源文件
       Button($r('app.string.Select_All'))
-
         .onClick(() => {
           for (let i = 0; i < this.isSelectedGrid.length; i++) {
             if (this.isSelectedGrid[i] === false) {
