@@ -249,6 +249,37 @@
    非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考[创建ArkTS卡片](arkts-ui-widget-creation.md)。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
 
     <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/widget/pages/WidgetCard.ets
+    @Entry
+    @Component
+    struct WidgetCard {
+      build() {
+        Row() {
+          Column() {
+            // $r('app.string.liveform_click1')需要在相应的资源文件string.json中定义
+            Text($r('app.string.liveform_click1'))
+              .fontSize($r('app.float.font_size'))
+              .fontWeight(FontWeight.Medium)
+              .fontColor($r('sys.color.font_primary'))
+          }
+          .width('100%')
+        }
+        .height('100%')
+        .onClick(() => {
+          // 点击卡片时，选择向EntryFormAbility发送消息，并在其onFormEvent回调中调用formProvider.requestOverflow，请求卡片动效
+          postCardAction(this, {
+            action: 'message',
+            abilityName: 'EntryFormAbility',
+            params: {
+              message: 'requestOverflow'
+            }
+          });
+        })
+      }
+    }
+    ```
 
 
 2. form_config.json配置
