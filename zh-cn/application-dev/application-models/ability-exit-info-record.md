@@ -76,6 +76,19 @@
     - 对于不同的退出原因，开发者可以增加不同的处理逻辑，例如：
 
     <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    
+    ``` TypeScript
+    if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
+      // Ability上次因无响应而退出，此处可增加处理逻辑。
+      doSomething();
+    } else if (reason === AbilityConstant.LastExitReason.SIGNAL && subReason === 9) {
+      // Ability上次所在进程因kill -9信号而退出，此处可增加处理逻辑。
+      doAnotherThing();
+    } else if (reason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
+      // Ability上次因rss管控而退出，此处可实现处理逻辑，最简单的就是打印出来。
+      hilog.info(DOMAIN_NUMBER,TAG,`The ability has exit last because the rss control，the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
+    }
+    ```
 
     - 根据进程信息感知应用内存占用异常，例如：
 
