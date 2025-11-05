@@ -329,6 +329,64 @@
    互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。
 
     <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ets
+    import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { Constants } from '../common/Constants';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = 'EntryFormAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    
+    export default class EntryFormAbility extends FormExtensionAbility {
+      async onFormEvent(formId: string, message: string) {
+        let shortMessage: string = JSON.parse(message)['message'];
+    
+        // 当接收的message为requestOverflow，触发互动卡片动效
+        if (shortMessage === 'requestOverflow') {
+          let formRect: formInfo.Rect = await formProvider.getFormRect(formId);
+          this.requestOverflow(formId, formRect.width, formRect.height);
+          return;
+        }
+      }
+    
+      private requestOverflow(formId: string, formWidth: number, formHeight: number): void {
+        if (formWidth <= 0 || formHeight <= 0) {
+          hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow failed, form size is not correct.');
+          return;
+        }
+    
+        // 基于卡片自身尺寸信息，计算卡片动效渲染区域
+        let left: number = -Constants.OVERFLOW_LEFT_RATIO * formWidth;
+        let top: number = -Constants.OVERFLOW_TOP_RATIO * formHeight;
+        let width: number = Constants.OVERFLOW_WIDTH_RATIO * formWidth;
+        let height: number = Constants.OVERFLOW_HEIGHT_RATIO * formHeight;
+        let duration: number = Constants.OVERFLOW_DURATION;
+    
+        // 发起互动卡片动效申请
+        try {
+          formProvider.requestOverflow(formId, {
+            // 动效申请范围
+            area: { left: left, top: top, width: width, height: height },
+            // 动效持续时间
+            duration: duration,
+            // 指定是否使用系统提供的默认切换动效
+            useDefaultAnimation: true,
+          }).then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow requestOverflow succeed');
+          }).catch((error: BusinessError) => {
+            hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow requestOverflow catch error` + `,
+              code: ${error.code}, message: ${error.message}`);
+          })
+        } catch (e) {
+          hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow call requestOverflow catch error` + `,
+            code: ${e.code}, message: ${e.message}`);
+        }
+      }
+    }
+    ```
 
 
 2. 互动卡片动效工具函数实现
