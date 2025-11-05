@@ -1193,3 +1193,55 @@ try {
   console.error(`Failed to disable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+### on('activeStatusChange')<sup>22+</sup>
+
+on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
+
+开启画中画窗口隐藏状态变化事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|---------------------------------------------|-------|---------------------------------------------------|
+| type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
+| callback | Callback\<boolean\> | 是 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.on('activeStatusChange', callback);
+```
+
+### off('activeStatusChange')<sup>22+</sup>
+
+off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
+
+关闭画中画窗口隐藏状态变化事件的监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|------------|----|---------------------------------------------------------------------|
+| type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
+| callback | Callback\<boolean\> | 否 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。如果未传入参数，解除type为'activeStatusChange'的所有回调。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.off('activeStatusChange', callback);
+```
