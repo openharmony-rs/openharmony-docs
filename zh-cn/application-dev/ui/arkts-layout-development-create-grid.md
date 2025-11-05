@@ -181,6 +181,7 @@ Grid组件初始化时，可以绑定一个[Scroller](../reference/apis-arkui/ar
 
 3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
       
+
    <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
 
   **图11** 网格的外置滚动条 
