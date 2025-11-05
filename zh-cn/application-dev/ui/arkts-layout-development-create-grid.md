@@ -245,6 +245,14 @@ export struct DataInGrid {
 
 <!-- @[set_rows_and_columns_occupied](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridColumnsGap.ets) -->
 
+``` TypeScript
+Grid() {
+  // ···
+}
+.columnsGap(10)
+.rowsGap(15)
+```
+
 ## 构建可滚动的网格布局
 
 可滚动的网格布局常用在文件管理、购物或视频列表等页面中，如下图所示。在设置Grid的行列数量与占比时，如果仅设置行、列数量与占比中的一个，即仅设置rowsTemplate或仅设置columnsTemplate属性，网格单元按照设置的方向排列，超出Grid显示区域后，Grid拥有可滚动能力。
