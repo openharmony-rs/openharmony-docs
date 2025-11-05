@@ -682,7 +682,6 @@ getPortSupportModes(portId: number): PortModeType
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
-| 14400003 | Unsupported operation. The current device does not support port role switching.                         |
 
 **示例：**
 
