@@ -1674,7 +1674,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。|
 
 **错误码：**
 
@@ -1724,7 +1724,7 @@ offStreamChange(callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。|
+| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。|
 
 **错误码：**
 
@@ -1826,7 +1826,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。|
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。|
 
 **错误码：**
 
@@ -1876,7 +1876,7 @@ offDeviceConfigChange(callback?: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -1910,7 +1910,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
@@ -1942,7 +1942,7 @@ onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
@@ -1976,7 +1976,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2026,7 +2026,7 @@ offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2060,7 +2060,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
@@ -2094,7 +2094,7 @@ onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
@@ -2128,7 +2128,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2178,7 +2178,7 @@ offHotspotStaLeave(callback?: Callback&lt;StationInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 

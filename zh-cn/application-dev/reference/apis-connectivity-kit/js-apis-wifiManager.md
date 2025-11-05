@@ -2540,7 +2540,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiStateChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
 
 **错误码：**
 
@@ -2631,7 +2631,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
 
 **错误码：**
 
@@ -2672,7 +2672,7 @@ offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2705,7 +2705,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiConnectionChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
 
 **连接状态改变事件的枚举：**
 
@@ -2792,7 +2792,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未连接，1：已连接 |
 
 **错误码：**
 
@@ -2833,7 +2833,7 @@ offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2866,7 +2866,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiScanStateChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功 |
 
 **扫描状态改变事件的枚举：**
 
@@ -2955,7 +2955,7 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。返回：0：扫描失败；1：扫描成功  |
 
 **错误码：**
 
@@ -2994,7 +2994,7 @@ offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3056,7 +3056,7 @@ onWifiRssiChange(callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回以dBm为单位的RSSI值。 |
 
 **错误码：**
 
@@ -3164,7 +3164,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStateChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
 
 **热点状态改变事件的枚举：**
 
@@ -3204,7 +3204,7 @@ onHotspotStateChange(Callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：未激活，1：已激活，2：正在激活，3：正在去激活 |
 
 **热点状态改变事件的枚举：**
 
@@ -3290,7 +3290,7 @@ offHotspotStateChange(Callback?: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;int&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3321,7 +3321,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pStateChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭 |
 
 **P2P状态改变事件的枚举：**
 
@@ -3370,7 +3370,7 @@ onP2pStateChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回1：空闲，2：启动中，3：已启动，4：正在关闭，5：已关闭 |
 
 **错误码：**
 
@@ -3448,7 +3448,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息 |
 
 **错误码：**
 
@@ -3479,7 +3479,7 @@ onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息  |
 
 **错误码：**
 
@@ -3556,7 +3556,7 @@ offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3586,7 +3586,7 @@ offP2pStateChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3619,7 +3619,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDeviceChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。返回P2P设备信息。 |
 
 **错误码：**
 
@@ -3650,7 +3650,7 @@ onP2pDeviceChange(callback: Callback&lt;WifiP2pDevice&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。返回P2P设备信息。 |
 
 **错误码：**
 
@@ -3725,7 +3725,7 @@ offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;WifiP2pDevice&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;WifiP2pDevice&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -3863,7 +3863,7 @@ offP2pPeerDeviceChange(callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | 否 | 状态改变回调函数。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（仅系统应用可申请），则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（仅系统应用可申请），则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
@@ -4001,7 +4001,7 @@ offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;void&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;void&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -4032,7 +4032,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDiscoveryChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：状态无变化，1：状态有变化。 |
 
 **发现设备状态改变事件的枚举：**
 
@@ -4070,7 +4070,7 @@ onP2pDiscoveryChange(callback: Callback&lt;int&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;int&gt; | 是 | 状态改变回调函数。返回0：状态无变化，1：状态有变化。 |
 
 
 **错误码：**
