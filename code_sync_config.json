@@ -14246,5 +14246,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-sheet-page.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"Nested_scrolling_Sheet",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"onWillDismiss_Dismiss",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"SheetTransitionExample",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
