@@ -224,6 +224,15 @@ TextArea()
     text: $r('app.string.i_am_current_text_content')
   })
   ```
+  
+  ``` TypeScript
+  // 'app.string.i_am_placeholder'资源文件中的value值为"我是提示文本"
+  // 'app.string.i_am_current_text_content'资源文件中的value值为"我是当前文本内容"
+  TextInput({
+    placeholder: $r('app.string.i_am_placeholder'),
+    text: $r('app.string.i_am_current_text_content')
+  })
+  ```
 
   ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
 
