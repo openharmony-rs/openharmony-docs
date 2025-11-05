@@ -62,6 +62,14 @@ rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间
 
 <!-- @[build_a_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
 
+``` TypeScript
+Grid() {
+  // ···
+}
+.rowsTemplate('1fr 1fr 1fr')
+.columnsTemplate('1fr 2fr 1fr')
+```
+
 >**说明：**
 >
 >当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../reference/apis-arkui/arkui-ts/ts-container-grid.md#属性)。
