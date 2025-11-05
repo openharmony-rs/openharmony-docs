@@ -632,6 +632,28 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 - 在FormExtensionAbility中接收message事件并获取参数
 
     <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+    const TAG: string = 'JsCardFormAbility';
+    // ···
+    const DOMAIN_NUMBER: number = 0xFF00;
+    // ···
+    
+    export default class JsCardFormAbility extends FormExtensionAbility {
+    // ···
+      onFormEvent(formId: string, message: string): void {
+        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
+        // 获取message事件中传递的detail参数
+        let msg: Record<string, string> = JSON.parse(message);
+        if (msg.detail === 'message detail') {
+          // 执行业务逻辑
+          hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+        }
+      }
+    }
+    ```
 
 
 <!--Del-->
