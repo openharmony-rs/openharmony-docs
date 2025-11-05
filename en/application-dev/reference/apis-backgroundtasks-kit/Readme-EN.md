@@ -45,7 +45,7 @@
     - [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md)
 - Error Codes<!--background-tasks-arkts-errcode-->
   - [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md)
-  - [BackgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md)
+  - [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md)
   <!--Del-->
   - [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md)
   <!--DelEnd-->
