@@ -40,6 +40,23 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 <!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
+``` TypeScript
+Radio({ value: 'Radio1', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      //需要执行的操作
+      // ···
+    }
+  })
+Radio({ value: 'Radio2', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      //需要执行的操作
+      // ···
+    }
+  })
+```
+
 
 ## 场景示例
 
