@@ -208,41 +208,6 @@ get varName(): T {
 - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @ComponentV2
-  struct CustomComponentUse {
-    @Local firstName: string = 'Li';
-    @Local lastName: string = 'Hua';
-    age: number = 20; // 无法触发Computed
-  
-    @Computed
-    get fullName() {
-      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-      return this.firstName + ' ' + this.lastName + this.age;
-    }
-  
-    build() {
-      Column() {
-        Text(this.lastName + ' ' + this.firstName)
-        Text(this.lastName + ' ' + this.firstName)
-        Divider()
-        Text(this.fullName)
-        Text(this.fullName)
-        Button('changed lastName')
-          .onClick(() => {
-            this.lastName += 'a';
-          })
-  
-        Button('changed age')
-          .onClick(() => {
-            this.age++;  // 无法触发Computed
-          })
-      }
-    }
-  }
-  ```
 
 计算属性本身会带来性能开销，在实际应用开发中需要注意：
 - 对于简单的计算逻辑，可以不使用计算属性。
@@ -252,38 +217,6 @@ get varName(): T {
 - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-  
-  ``` TypeScript
-  @ObservedV2
-  class Name {
-    @Trace public firstName: string = 'Hua';
-    @Trace public lastName: string = 'Li';
-  
-    @Computed
-    get fullName() {
-      hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-      return this.firstName + ' ' + this.lastName;
-    }
-  }
-  
-  const name: Name = new Name();
-  
-  @Entry
-  @ComponentV2
-  struct ObservedV2ClassUser {
-    name1: Name = name;
-  
-    build() {
-      Column() {
-        Text(this.name1.fullName)
-        Text(this.name1.fullName)
-        Button('changed lastName').onClick(() => {
-          this.name1.lastName += 'a';
-        })
-      }
-    }
-  }
-  ```
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
