@@ -160,6 +160,77 @@ export struct OverlayManagerComponent {
 显示一个始终在屏幕左侧的悬浮球，点击可以弹出alertDialog弹窗。
 
 <!-- @[OverlayManager_Demo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets) -->
+
+``` TypeScript
+import { ComponentContent, OverlayManager } from '@kit.ArkUI';
+
+class Params {
+  public context: UIContext;
+  public offset: Position;
+  constructor(context: UIContext, offset: Position) {
+    this.context = context;
+    this.offset = offset;
+  }
+}
+@Builder
+function builderOverlay(params: Params) {
+  Column() {
+    Stack(){
+    }.width(50).height(50).backgroundColor(Color.Yellow).position(params.offset).borderRadius(50)
+    .onClick(() => {
+      params.context.showAlertDialog(
+        {
+          title: 'title',
+          message: 'Text',
+          autoCancel: true,
+          alignment: DialogAlignment.Center,
+          gridCount: 3,
+          confirm: {
+            value: 'Button',
+            action: () => {}
+          },
+          cancel: () => {}
+        }
+      )
+    })
+  }.focusable(false).width('100%').height('100%').hitTestBehavior(HitTestMode.Transparent)
+}
+
+@Entry
+@Component
+export struct OverlayManagerAlertDialog {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  private overlayContent:ComponentContent<Params>[] = [];
+  controller: TextInputController = new TextInputController();
+
+  aboutToAppear(): void {
+    let uiContext = this.getUIContext();
+    let componentContent = new ComponentContent(
+      this.uiContext, wrapBuilder<[Params]>(builderOverlay),
+      new Params(uiContext, {x:0, y: 100})
+    );
+    this.overlayNode.addComponentContent(componentContent, 0);
+    this.overlayContent.push(componentContent);
+  }
+
+  aboutToDisappear(): void {
+    let componentContent = this.overlayContent.pop();
+    this.overlayNode.removeComponentContent(componentContent);
+  }
+
+  build() {
+    // ···
+      Column() {
+
+      }
+      .width('100%')
+      .height('100%')
+    // ···
+  }
+}
+```
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
 从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
