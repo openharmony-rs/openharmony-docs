@@ -66,106 +66,41 @@
 - 当装饰的数据类型为class或Object时，可以观察到自身的赋值和属性赋值的变化，即Object.keys(observedObject)返回的所有属性。示例如下：
   
   声明Person和Model类。
-
-  ```ts
-  class Person {
-    public value: string;
-  
-    constructor(value: string) {
-      this.value = value;
-    }
-  }
-  
-  class Model {
-    public value: string;
-    public name: Person;
-    constructor(value: string, person: Person) {
-      this.value = value;
-      this.name = person;
-    }
-  }
-  ```
+  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
 
   \@State装饰的类型是Model。
-
-  ```ts
-  // class类型
-  @State title: Model = new Model('Hello', new Person('World'));
-  ```
+    <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
 
   对\@State装饰变量的赋值。
-
-  ```ts
-  // class类型赋值
-  this.title = new Model('Hi', new Person('ArkUI'));
-  ```
+    <!-- @[state_decorate_object_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
 
   对\@State装饰变量的属性赋值。
-
-  ```ts
-  // class属性的赋值
-  this.title.value = 'Hi';
-  ```
+    <!-- @[state_decorate_object_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
 
   嵌套属性的赋值观察不到。
+    <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
 
-  ```ts
-  // 嵌套的属性赋值观察不到
-  this.title.name.value = 'ArkUI';
-  ```
 - 当装饰的对象是array时，可以观察到数组本身的赋值和添加、删除、更新数组的变化。例子如下。
   声明Model类。
-
-  ```ts
-  class Model {
-    public value: number;
-    constructor(value: number) {
-      this.value = value;
-    }
-  }
-  ```
+    <!-- @[state_change_observation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   \@State装饰的对象为Model类型数组时。
-
-  ```ts
-  // 数组类型
-  @State title: Model[] = [new Model(11), new Model(1)];
-  ```
+    <!-- @[state_decorate_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   数组自身的赋值可以观察到。
-
-  ```ts
-  // 数组赋值
-  this.title = [new Model(2)];
-  ```
+    <!-- @[state_decorate_array_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   数组项的赋值可以观察到。
-
-  ```ts
-  // 数组项赋值
-  this.title[0] = new Model(2);
-  ```
+    <!-- @[state_decorate_array_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   删除数组项可以观察到。
-
-  ```ts
-  // 数组项更改
-  this.title.pop();
-  ```
+    <!-- @[state_decorate_array_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   新增数组项可以观察到。
-
-  ```ts
-  // 数组项更改
-  this.title.push(new Model(12));
-  ```
+    <!-- @[state_decorate_array_change_04](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
   数组项中属性的赋值观察不到。
-
-  ```ts
-  // 嵌套的属性赋值观察不到
-  this.title[0].value = 6;
-  ```
+    <!-- @[state_decorate_array_change_05](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
 
 - 当装饰的对象是Date时，可以观察到Date的赋值，以及通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -202,22 +137,7 @@
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 
 - 执行Button组件的更新方法，实现按需刷新。
-
-```ts
-@Entry
-@Component
-struct MyComponent {
-  @State count: number = 0;
-
-  build() {
-    Button(`click times: ${this.count}`)
-      .onClick(() => {
-        this.count += 1;
-      })
-  }
-}
-```
-
+<!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
 
 ### 装饰class对象类型的变量
 
@@ -225,57 +145,7 @@ struct MyComponent {
 
 - EntryComponent中有多个MyComponent组件实例，第一个MyComponent内部状态的更改不会影响第二个MyComponent。
 
-```ts
-class Model {
-  public value: string;
-
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-@Entry
-@Component
-struct EntryComponent {
-  build() {
-    Column() {
-      // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化
-      MyComponent({ count: 1, increaseBy: 2 })
-        .width(300)
-      MyComponent({ title: new Model('Hello World 2'), count: 7 })
-    }
-  }
-}
-
-@Component
-struct MyComponent {
-  @State title: Model = new Model('Hello World');
-  @State count: number = 0;
-  increaseBy: number = 1;
-
-  build() {
-    Column() {
-      Text(`${this.title.value}`)
-        .margin(10)
-      Button(`Click to change title`)
-        .onClick(() => {
-          // @State变量的更新将触发上面的Text组件内容更新
-          this.title.value = this.title.value === 'Hello ArkUI' ? 'Hello World' : 'Hello ArkUI';
-        })
-        .width(300)
-        .margin(10)
-
-      Button(`Click to increase count = ${this.count}`)
-        .onClick(() => {
-          // @State变量的更新将触发该Button组件的内容更新
-          this.count += this.increaseBy;
-        })
-        .width(300)
-        .margin(10)
-    }
-  }
-}
-```
+<!-- @[state_scene_type_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
 
 ![Video-state](figures/Video-state.gif)
 
@@ -283,21 +153,11 @@ struct MyComponent {
 
 1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
 
-   ```ts
-   // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
-   MyComponent({ count: 1, increaseBy: 2 })
-   // increaseBy没有外部传入，使用本地的值1进行初始化
-   MyComponent({ title: new Model('Hello World 2'), count: 7 })
-   ```
+    <!-- @[state_scene_type_class_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
 
 2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
 
-   ```ts
-   // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
-   MyComponent({ count: 1, increaseBy: 2 })
-   // title和count均有外部传入，分别使用传入的new Model('Hello World 2')和7进行初始化
-   MyComponent({ title: new Model('Hello World 2'), count: 7 })
-   ```
+    <!-- @[state_scene_type_class_out_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
 
 ### 装饰Map类型变量
 
@@ -306,43 +166,7 @@ struct MyComponent {
 > 从API version 11开始，\@State支持Map类型。
 
 在下面的示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct MapSample {
-  @State message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
-        })
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the first one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
 
 ### 装饰Set类型变量
 
@@ -351,113 +175,18 @@ struct MapSample {
 > 从API version 11开始，\@State支持Set类型。
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct SetSample {
-  @State message: Set<number> = new Set([0, 1, 2, 3, 4]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Divider()
-        })
-        Button('init set').onClick(() => {
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.add(5);
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
 
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
-
-```ts
-  @Entry
-  @Component
-  struct DatePickerExample {
-    @State selectedDate: Date = new Date('2021-08-08');
-  
-    build() {
-      Column() {
-        Button('set selectedDate to 2023-07-08')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate = new Date('2023-07-08');
-          })
-        Button('increase the year by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-          })
-        Button('increase the month by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-          })
-        Button('increase the day by 1')
-          .margin(10)
-          .onClick(() => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-        DatePicker({
-          start: new Date('1970-1-1'),
-          end: new Date('2100-1-1'),
-          selected: this.selectedDate
-        })
-      }.width('100%')
-    }
-  }
-```
+<!-- @[state_scene_type_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets) -->
 
 
 ### State支持联合类型实例
 
 \@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的属性或者类型，视图会随之刷新。
-
-```ts
-@Entry
-@Component
-struct EntryComponent {
-  build() {
-    Column() {
-      MyComponent()
-    }
-  }
-}
-
-@Component
-struct MyComponent {
-  @State count: number | undefined = 0;
-
-  build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button('change')
-        .onClick(() => {
-          this.count = undefined;
-        })
-    }
-  }
-}
-```
+<!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 
 ## 常见问题
@@ -467,85 +196,18 @@ struct MyComponent {
 箭头函数体内的`this`对象，就是定义该函数时所在的作用域指向的对象，而不是使用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是被装饰器\@State代理的状态变量。
 
 【反例】
+<!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) -->
 
-```ts
 
-export default class PlayDetailViewModel {
-  coverUrl: string = '#00ff00';
-
-  changeCoverUrl= ()=> {
-    this.coverUrl = '#00F5FF';
-  }
-
-}
-```
-
-```ts
-import PlayDetailViewModel from './PlayDetailViewModel';
-
-@Entry
-@Component
-struct PlayDetailPage {
-  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
-
-  build() {
-    Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
-      Row() {
-        Button('点击改变颜色')
-          .onClick(() => {
-            this.vm.changeCoverUrl();
-          })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .alignContent(Alignment.Top)
-  }
-}
-```
+<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
 
 将当前this.vm传入，调用代理状态变量的属性赋值。
 
 正例：
 
-```ts
+<!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) -->
 
-export default class PlayDetailViewModel {
-  coverUrl: string = '#00ff00';
-
-  changeCoverUrl= (model:PlayDetailViewModel)=> {
-    model.coverUrl = '#00F5FF';
-  }
-
-}
-```
-
-```ts
-import PlayDetailViewModel from './PlayDetailViewModel';
-
-@Entry
-@Component
-struct PlayDetailPage {
-  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
-
-  build() {
-    Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
-      Row() {
-        Button('点击改变颜色')
-          .onClick(() => {
-            let self = this.vm;
-            this.vm.changeCoverUrl(self);
-          })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .alignContent(Alignment.Top)
-  }
-}
-```
+<!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
 
 ### 类的构造函数中通过捕获this修改变量无法观察
 
@@ -556,220 +218,29 @@ struct PlayDetailPage {
 当开发者将修改`success`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
 【反例】
-
-```ts
-@Entry
-@Component
-struct Index {
-  @State viewModel: TestModel = new TestModel();
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.viewModel.isSuccess ? 'success' : 'failed')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.viewModel.query();
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-
-export class TestModel {
-  isSuccess: boolean = false;
-  model: Model
-
-  constructor() {
-    this.model = new Model(() => {
-      this.isSuccess = true;
-      console.info(`this.isSuccess: ${this.isSuccess}`);
-    })
-  }
-
-  query() {
-    this.model.query();
-  }
-}
-
-export class Model {
-  callback: () => void
-
-  constructor(cb: () => void) {
-    this.callback = cb;
-  }
-
-  query() {
-    this.callback();
-  }
-}
-```
+<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->
 
 上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
 
 【正例】
-
-```ts
-@Entry
-@Component
-struct Index {
-  @State viewModel: TestModel = new TestModel();
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.viewModel.isSuccess ? 'success' : 'failed')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.viewModel.query();
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-
-export class TestModel {
-  isSuccess: boolean = false;
-  model: Model = new Model(() => {
-  })
-
-  query() {
-    this.model.callback = () => {
-      this.isSuccess = true;
-    }
-    this.model.query();
-  }
-}
-
-export class Model {
-  callback: () => void
-
-  constructor(cb: () => void) {
-    this.callback = cb;
-  }
-
-  query() {
-    this.callback();
-  }
-}
-```
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
 
 上文示例代码将状态变量的修改放在类的普通方法中，界面开始时显示“failed”，点击后显示“success”。
 
 ### 状态变量只能影响其直接绑定的UI组件的刷新
 
 【示例1】
-
-```ts
-class Info {
-  address: string = '杭州';
-}
-
-@Entry
-@Component
-struct Test {
-  @State message: string = '上海';
-  @State info: Info = new Info();
-
-  aboutToAppear(): void {
-    this.info.address = this.message;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.message}`);
-      Text(`${this.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.info.address = '北京';
-        })
-    }
-  }
-}
-```
+<!-- @[state_problem_state_ui_refresh_example_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample01.ets) -->
 
 点击`Button('change')`只会触发第二个`Text`组件的刷新，因为`message`是字符串类型。字符串是值类型，点击按钮时，改变的是`info`中的`address`值，而不会影响`this.message`的值，因此第一个Text组件不会刷新。
 
 【示例2】
-
-```ts
-class Info {
-  address: string = '杭州';
-
-  constructor(address: string) {
-    this.address = address;
-  }
-}
-
-class User {
-  info: Info = new Info('天津');
-}
-
-@Entry
-@Component
-struct Test {
-  @State info: Info = new Info('上海');
-  @State user: User = new User();
-
-  aboutToAppear(): void {
-    this.user.info = this.info;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.info.address}`);
-      Text(`${this.user.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.user.info.address = '北京';
-        })
-    }
-  }
-}
-```
+<!-- @[state_problem_state_ui_refresh_example_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets) -->
 
 在`aboutToAppear`中，`info`的引用被赋值给了`user`的成员属性`info`。因此，点击按钮改变`info`中的属性时，会触发第一个`Text`组件的刷新。第二个`Text`组件由于观测能力仅有一层，无法检测到二层属性的变化，所以不会刷新。
 
 【示例3】
-
-```ts
-class Info {
-  address: string = '杭州';
-
-  constructor(address: string) {
-    this.address = address;
-  }
-}
-
-class User {
-  info: Info = new Info('天津');
-}
-
-@Entry
-@Component
-struct Test {
-  @State info: Info = new Info('上海');
-  @State user: User = new User();
-
-  aboutToAppear(): void {
-    this.user.info = this.info;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.info.address}`);
-      Text(`${this.user.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.user.info = new Info('广州');
-          this.user.info.address = '北京';
-        })
-    }
-  }
-}
-```
+<!-- @[state_problem_state_ui_refresh_example_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample03.ets) -->
 
 在上述示例中，点击按钮后有以下变化：
 
@@ -779,149 +250,18 @@ struct Test {
 如果上述示例注释掉`this.user.info = new Info('广州')`，则与示例2场景一致，只会触发第一个`Text`组件更新，第二个`Text`组件将无法更新。
 
 ### 复杂类型常量重复赋值给状态变量触发刷新
-
-```ts
-class DataObj {
-  name: string = 'default name';
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  list: DataObj[] = [new DataObj('a'), new DataObj('b'), new DataObj('c')];
-  @State dataObjFromList: DataObj = this.list[0];
-
-  build() {
-    Column() {
-      ConsumerChild({ dataObj: this.dataObjFromList })
-      Button('change to self').onClick(() => {
-        this.dataObjFromList = this.list[0];
-      })
-    }
-  }
-}
-
-@Component
-struct ConsumerChild {
-  @Link @Watch('onDataObjChange') dataObj: DataObj;
-
-  onDataObjChange() {
-    console.info('dataObj changed');
-  }
-
-  getContent() {
-    console.info(`this.dataObj.name change: ${this.dataObj.name}`);
-    return this.dataObj.name;
-  }
-
-  build() {
-    Column() {
-      Text(this.getContent()).fontSize(30)
-    }
-  }
-}
-```
+<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->
 
 以上示例每次点击Button('change to self')，把相同的类常量赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。  
 当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。 
 为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。  
 方法一：增加\@Observed
-
-```ts
-@Observed
-class DataObj {
-  name: string = 'default name';
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  list: DataObj[] = [new DataObj('a'), new DataObj('b'), new DataObj('c')];
-  @State dataObjFromList: DataObj = this.list[0];
-
-  build() {
-    Column() {
-      ConsumerChild({ dataObj: this.dataObjFromList })
-      Button('change to self').onClick(() => {
-        this.dataObjFromList = this.list[0];
-      })
-    }
-  }
-}
-
-@Component
-struct ConsumerChild {
-  @Link @Watch('onDataObjChange') dataObj: DataObj;
-
-  onDataObjChange() {
-    console.info('dataObj changed');
-  }
-
-  build() {
-    Column() {
-      Text(this.dataObj.name).fontSize(30)
-    }
-  }
-}
-```
+<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->
 
 以上示例，给对应的类增加了\@Observed装饰器后，list[0]已经是Proxy类型了，这样再次赋值时，相同的对象，就不会触发刷新。
 
 方法二：使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象
-
-```ts
-import { UIUtils } from '@ohos.arkui.StateManagement';
-
-class DataObj {
-  name: string = 'default name';
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  list: DataObj[] = [new DataObj('a'), new DataObj('b'), new DataObj('c')];
-  @State dataObjFromList: DataObj = this.list[0];
-
-  build() {
-    Column() {
-      ConsumerChild({ dataObj: this.dataObjFromList })
-      Button('change to self').onClick(() => {
-        // 获取原始对象来和新值做对比
-        if (UIUtils.getTarget(this.dataObjFromList) !== this.list[0]) {
-          this.dataObjFromList = this.list[0];
-        }
-      })
-    }
-  }
-}
-
-@Component
-struct ConsumerChild {
-  @Link @Watch('onDataObjChange') dataObj: DataObj;
-
-  onDataObjChange() {
-    console.info('dataObj changed');
-  }
-
-  build() {
-    Column() {
-      Text(this.dataObj.name).fontSize(30)
-    }
-  }
-}
-```
+<!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->
 
 以上示例，在赋值前，使用getTarget获取了对应状态变量的原始对象，经过对比后，如果和当前对象一样，就不赋值，不触发刷新。
 
@@ -942,23 +282,7 @@ struct ConsumerChild {
     3. count的改变再次触发Text组件的刷新。
 
     4. Text最终显示为2。
-
-```ts
-@Entry
-@Component
-struct Index {
-  @State count: number = 1;
-
-  build() {
-    Column() {
-      // 应避免直接在Text组件内改变count的值
-      Text(`${this.count++}`)
-        .width(50)
-        .height(50)
-    }
-  }
-}
-```
+<!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
 
 在首次创建的过程中，Text组件被多渲染了一次，最终显示为2。
 
@@ -1008,48 +332,7 @@ struct Index {
 在build方法内，当\@State装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法Balloon.increaseVolume或者this.reduceVolume修改balloon的volume时，UI不会刷新。
 
 【反例】
-
-```ts
-class Balloon {
-  volume: number;
-  constructor(volume: number) {
-    this.volume = volume;
-  }
-
-  static increaseVolume(balloon:Balloon) {
-    balloon.volume += 2;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State balloon: Balloon = new Balloon(10);
-
-  reduceVolume(balloon:Balloon) {
-    balloon.volume -= 1;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
-        .fontSize(30)
-      Button(`increaseVolume`)
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Balloon.increaseVolume(this.balloon);
-        })
-      Button(`reduceVolume`)
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.reduceVolume(this.balloon);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
 
 状态变量观察类属性变化是通过代理捕获其变化的，当使用a.b(this.object)调用时，框架会将代理对象转换为原始对象。修改原始对象属性，无法观察，因此UI不会刷新。开发者可以使用如下方法修改：
 
@@ -1058,50 +341,7 @@ struct Index {
 具体见正例。
 
 【正例】
-
-```ts
-class Balloon {
-  volume: number;
-  constructor(volume: number) {
-    this.volume = volume;
-  }
-
-  static increaseVolume(balloon:Balloon) {
-    balloon.volume += 2;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State balloon: Balloon = new Balloon(10);
-
-  reduceVolume(balloon:Balloon) {
-    balloon.volume -= 1;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
-        .fontSize(30)
-      Button(`increaseVolume`)
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let balloon1 = this.balloon;
-          Balloon.increaseVolume(balloon1);
-        })
-      Button(`reduceVolume`)
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let balloon2 = this.balloon;
-          this.reduceVolume(balloon2);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) -->
 
 ### 用注册回调的方式更改状态变量需要执行解注册
 
@@ -1110,53 +350,6 @@ struct Index {
 >**注意：**
 >
 > 需要在aboutToDisappear中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
-
-```ts
-class Model {
-  private callback: (() => void) | undefined = () => {};
-
-  add(callback: () => void): void {
-    this.callback = callback;
-  }
-
-  delete(): void {
-    this.callback = undefined;
-  }
-
-  call(): void {
-    if (this.callback) {
-      this.callback();
-    }
-  }
-}
-
-let model: Model = new Model();
-
-@Entry
-@Component
-struct Test {
-  @State count: number = 10;
-
-  aboutToAppear(): void {
-    model.add(() => {
-      this.count++;
-    })
-  }
-
-  build() {
-    Column() {
-      Text(`count值: ${this.count}`)
-      Button('change')
-        .onClick(() => {
-          model.call();
-        })
-    }
-  }
-
-  aboutToDisappear(): void {
-    model.delete();
-  }
-}
-```
+<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->
 
 此外，也可以使用 LocalStorage在[自定义组件外改变状态变量](./arkts-localstorage.md#自定义组件外改变状态变量)。
