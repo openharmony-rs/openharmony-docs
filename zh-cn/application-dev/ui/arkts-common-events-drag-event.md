@@ -750,7 +750,12 @@ build() {
 
 ``` TypeScript
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 // ···
+
+const DOMAIN = 0x0000;
+const TAG = 'DropAnimationExampleTag'
 
 @Entry
 @Component
@@ -768,6 +773,7 @@ export struct DropAnimationExample {
         this.imgState = Visibility.None;
       })
     }
+
   build() {
     // ···
       Row() {
@@ -783,9 +789,9 @@ export struct DropAnimationExample {
             })
             .onDragEnd((event) => {
               if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                console.info('Drag Success');
+                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
               } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                console.info('Drag failed');
+                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
               }
             })
 
