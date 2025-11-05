@@ -558,7 +558,7 @@ struct SwipeGestureExample {
 // xxx.ets
 @Entry
 @Component
-struct buttonTestDemo {
+struct ButtonTestDemo {
   @State txt: string = 'overflowTextOverLengthTextOverflow.Clip';
   @State widthShortSize: number = 205;
 
