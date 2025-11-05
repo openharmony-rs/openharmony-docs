@@ -84,6 +84,25 @@ export default class EnvAbility1 extends UIAbility {
 - **设置应用的深浅色模式：** 使用ApplicationContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)接口，可以设置应用深浅色模式。
 
     <!-- @[env_appsetcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility2.ets) --> 
+    
+    ``` TypeScript
+    import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    
+    export default class EnvAbility2 extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage) {
+        windowStage.loadContent('pages/Index', (err, data) => {
+          if (err.code) {
+            hilog.error(0x0000, 'testTag', 'Failed to load the content.');
+            return;
+          }
+          let applicationContext = this.context.getApplicationContext();
+          applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+        });
+      }
+    }
+    ```
 
 - **设置UIAbility的深浅色模式：** 使用UIAbilityContext的[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)，可以设置UIAbility的深浅色模式。
 
