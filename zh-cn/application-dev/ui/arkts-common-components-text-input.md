@@ -214,6 +214,48 @@ TextArea({ text: $r('app.string.SelectMenu_textContent_1') })
 
 <!-- @[DisableSystemServiceMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableSystemServiceMenuItems.ets) -->
 
+``` TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DisableSystemServiceMenuItem {
+  aboutToAppear(): void {
+    // 禁用所有系统服务菜单项
+    TextMenuController.disableSystemServiceMenuItems(true)
+  }
+
+  aboutToDisappear(): void {
+    // 页面消失时恢复系统服务菜单项
+    TextMenuController.disableSystemServiceMenuItems(false)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        // 'app.string.ProhibitSelectMenu_content'资源文件中的value值为"这是一个TextInput，长按弹出文本选择菜单"
+        TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
+          .height(60)
+          .fontStyle(FontStyle.Italic)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Center)
+          .caretStyle({ width: '4vp' })
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含被屏蔽的系统菜单项
+              return menuItems
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false
+            }
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
 从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)方法屏蔽文本选择菜单中指定的系统服务菜单项。
