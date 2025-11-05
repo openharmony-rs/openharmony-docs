@@ -565,6 +565,25 @@ private:
    ```
 3. ArkUIListItemAdapter中新增RemoveItem，用于删除数据源并且调用OH_ArkUI_NodeAdapter_RemoveItem接口通知框架刷新UI。
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
+   
+   ``` C
+   // ArkUIListItemAdapter
+   // ···
+   class ArkUIListItemAdapter {
+       // ···
+       void RemoveItem(size_t  index)
+       {
+           // 删除第index个数据。
+           data_.erase(data_.begin() + index);
+           // 如果index会导致可视区域元素发生可见性变化，则会回调NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER事件删除元素，
+           // 根据是否有新增元素回调NODE_ADAPTER_EVENT_ON_GET_NODE_ID和NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER事件。
+           OH_ArkUI_NodeAdapter_RemoveItem(handle_, index, 1);
+           // 更新新的数量。
+           OH_ArkUI_NodeAdapter_SetTotalNodeCount(handle_, data_.size());
+       }
+       // ···
+   };
+   ```
 ## 使用分组列表 
 1. 分组列表使用ListItemGroup组件实现，ListItemGroup支持添加header、footer设置函数，支持使用懒加载。
    <!-- @[Use_grouped_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemGroupNode.h) -->
