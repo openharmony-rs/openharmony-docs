@@ -11954,8 +11954,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认类型。|
-| HDR_ISO_SINGLE |  1 |  单层HDR技术。  |
-| HDR_ISO_DUAL |  2 |  单层HDR技术。  |
-| HDR_CUVA |  3 |  中国超高清视频产业联盟HDR标准。  |
-| HDR_VIVID_SINGLE |  4 |  单层HDR VIVID技术。  |
-| HDR_VIVID_DUAL |  5 |  单层HDR VIVID技术。  |
+| HDR_ISO_SINGLE |  1 |  符合ISO标准的单层HDR图片。  |
+| HDR_ISO_DUAL |  2 |  符合ISO标准的双层HDR图片。  |
+| HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
+| HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
+| HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |
