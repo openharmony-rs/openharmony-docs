@@ -191,6 +191,13 @@
    - 通过dialogOptions关闭弹窗。
 
      <!-- @[close_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     
+     ``` C++
+     void CloseCustomDialog()
+     {
+         OH_ArkUI_CustomDialog_CloseDialog(g_id);
+     }
+     ```
 
 ## 弹窗的交互
 
