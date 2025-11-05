@@ -135,6 +135,28 @@
 
 <!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { url } from '@kit.ArkTS';
+
+export default class AppLinkEntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 从want中获取传入的链接信息。
+    // 如传入的url为：https://www.example.com/programs?action=showall
+    let uri = want?.uri;
+    if (uri) {
+      // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
+      let urlObject = url.URL.parseURL(want?.uri);
+      let action = urlObject.params.get('action');
+      // 例如，当action为showall时，展示所有的节目。
+      if (action === 'showall') {
+        // ...
+      }
+    }
+  }
+}
+```
+
 ## 拉起方应用实现应用跳转
 
 拉起方应用通过UIAbilityContext.openLink接口，传入目标应用的链接，拉起目标应用。
