@@ -158,6 +158,35 @@
    pixmap的生成可以调用[this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)来实现。
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+     @Builder
+     pixelMapBuilder() {
+       Column() {
+         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+         Image($r('app.media.startIcon'))
+           .width(120)
+           .height(120)
+           // ···
+       }
+     }
+   
+   // ···
+   
+     // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+     private getComponentSnapshot(): void {
+       this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+         this.pixelMapBuilder()
+       },
+         (error: Error, pixmap: image.PixelMap) => {
+           if (error) {
+             hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+             return;
+           }
+           this.pixmap = pixmap;
+         })
+     }
+   ```
 
 
 
