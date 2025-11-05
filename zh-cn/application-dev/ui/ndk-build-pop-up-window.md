@@ -45,6 +45,13 @@
 
 - 当不再需要弹窗操作时，需要主动调用dispose接口销毁弹窗控制器对象。
   <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  
+  ``` C++
+  ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+  dialogAPI->dispose(g_dialogController);
+  g_dialogController = nullptr;
+  ```
 
 ### 通过创建自定义弹窗的内容对象显示自定义弹窗
 
