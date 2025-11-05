@@ -17,7 +17,7 @@ A struct that describes all transient task information.
 | Name                                                                                                                           | Description|
 |-------------------------------------------------------------------------------------------------------------------------------| -- |
 | int32_t remainingQuota                                                                                                        | Remaining quota of the current day, in ms.|
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) transientTasks [TRANSIENT_TASK_MAX_NUM](#transient_task_max_num) | All requsted transient task information, including the task request ID and remaining time, in ms.|
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) transientTasks[[TRANSIENT_TASK_MAX_NUM](#transient_task_max_num)] | All requsted transient task information, including the task request ID and remaining time, in ms.|
 
 ## Macro Description
 

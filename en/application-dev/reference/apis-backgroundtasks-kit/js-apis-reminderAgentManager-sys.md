@@ -12,7 +12,7 @@ The reminderAgentManager module provides APIs related to agent-powered reminders
 ## Modules to Import
 
 ```ts
-import reminderAgentManager from '@ohos.reminderAgentManager';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## ActionButtonType
@@ -31,25 +31,24 @@ Defines the button on the reminder displayed.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| wantAgent<sup>10+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No| Information about the ability that is displayed after the button is clicked.|
-| dataShareUpdate<sup>11+</sup> | [DataShareUpdate](#datashareupdate11) | No| The application database will be updated after a click on the button.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| wantAgent<sup>10+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No| Yes| Information about the ability that is displayed after the button is clicked.|
+| dataShareUpdate<sup>11+</sup> | [DataShareUpdate](#datashareupdate11) | No| Yes| The application database will be updated after a click on the button.|
 
 ## DataShareUpdate<sup>11+</sup>
 
-Defines the parameter information used to update the database.
-
-The data provider needs to set the ID, read/write permissions, and basic information of the table to be shared under **proxyDatas** in the **module.json5** file. For details about the configuration method, see [Data Proxy](../../database/share-data-by-silent-access.md).
+Defines the parameter information used to update the database.<br>
+The data provider needs to set the ID, read/write permissions, and basic information of the table to be shared under **proxyData** in the **module.json5** file. For details about the configuration method, see [Data Provider Application Development](../../database/share-data-by-silent-access-sys.md#data-provider-application-development).
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| uri | string | Yes| URI of the data, which is the unique identifier for cross-application data access.|
-| equalTo | Record<string, number \| string \| boolean> | Yes| Filter criteria. Currently, only equal to is supported.|
-| value | [ValueBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | Yes| New data.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| uri | string | No| No| URI of the data, which is the unique identifier for cross-application data access.|
+| equalTo | Record<string, number \| string \| boolean> | No| No| Filter criteria. Currently, only equal to is supported.|
+| value | [ValueBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | No| No| New data.|
 
 ## ReminderRequestCalendar
 
@@ -57,6 +56,6 @@ Defines a reminder for a calendar event.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name                        | Type                                                    | Mandatory| Description                                              |
-| ---------------------------- | -------------------------------------------------------- | ---- | -------------------------------------------------- |
-| rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No  | Custom reminder, which specifies the ServiceExtensionAbility to start.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No| Yes| Custom reminder, which specifies the ServiceExtensionAbility to start.|
