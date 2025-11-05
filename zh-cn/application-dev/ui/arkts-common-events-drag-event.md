@@ -483,6 +483,15 @@ struct Index {
    为了确保选中状态，应将GridItem子组件的selected属性设置为true。例如，可以通过调用[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)来设置特定组件为选中状态。
 
    <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   .selected(this.isSelectedGrid[idx])
+   // ···
+   .onClick(() => {
+     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+   // ···
+   })
+   ```
 
 2. 优化多选拖拽性能。
 
