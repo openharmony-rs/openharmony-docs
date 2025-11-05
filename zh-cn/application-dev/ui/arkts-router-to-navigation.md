@@ -520,6 +520,47 @@ Router可以通过命名路由的方式实现跨包跳转。
 2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
    <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import('library/src/main/ets/pages/routerToNavigation/router/Index');  // 引入共享包中的命名路由页面
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0xF811;
+   const TAG = '[Sample_ArkTSRouter]';
+   
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+         Text('Hello World')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .margin({ top: 20 })
+           .backgroundColor('#ccc')
+           .onClick(() => { // 点击跳转到其他共享包中的页面
+             try {
+               this.getUIContext().getRouter().pushNamedRoute({
+                 name: 'myPage',
+                 params: {
+                   data1: 'message',
+                   data2: {
+                     data3: [123, 456, 789]
+                   }
+                 }
+               })
+             } catch (err) {
+               let message = (err as BusinessError).message
+               let code = (err as BusinessError).code
+               hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
+             }
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
 Navigation作为路由组件，默认支持跨包跳转。
 
