@@ -89,7 +89,7 @@
    @Component
    struct TransitionEffectDemo {
      @State isPresent: boolean = false;
-     // 第一步，创建TransitionEffect
+     // 第一步：创建TransitionEffect
      private effect: TransitionEffect =
        // 创建默认透明度转场效果，并指定了springMotion(0.6, 0.8)曲线
        TransitionEffect.OPACITY.animation({
