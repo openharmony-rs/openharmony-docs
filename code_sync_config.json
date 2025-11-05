@@ -14996,5 +14996,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-interaction-basic-principles.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"focus_onclick",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
