@@ -29,7 +29,7 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
     
     ``` TypeScript
     @State dialogIdIndex: number = 0;
-    // 'dialog_message'需要替换为开发者所需的资源名称
+    //'dialog_message'资源文件中的value值为'弹窗'
     private message: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
     
@@ -79,7 +79,7 @@ ArkUI的弹出框焦点策略可以设定是否中断用户当前操作，并聚
 @Component
 export struct Index {
   @State dialogIdIndex: number = 0;
-  // 'dialog_message'需要替换为开发者所需的资源名称
+  //'dialog_message'资源文件中的value值为'弹窗'
   private message: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
 
