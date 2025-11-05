@@ -49,6 +49,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - \@Computed装饰的方法只有初次访问，或者其被计算的状态变量改变时，才会发生重新计算。不建议开发者在\@Computed装饰的getter方法中做除获取数据外其余的逻辑操作，如下面例子。
 
    ```ts
+   'use static'
+
    import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { Computed, Local } from '@ohos.arkui.stateManagement';
    
@@ -87,6 +89,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
  在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
 
    ```ts
+   'use static'
+
    import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { Computed, Local } from '@ohos.arkui.stateManagement';
    
@@ -122,6 +126,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - \@Computed装饰的是getter访问器，不会被子组件同步，也不能被赋值。开发者自己实现的计算属性的setter不生效，且产生编译时报错。
 
    ```ts
+   'use static'
+
    import { Button, ClickEvent, Column, ColumnOptions, ComponentV2, Entry, Scroll, Text } from '@ohos.arkui.component';
    import { Computed, Event, Local, Param } from '@ohos.arkui.stateManagement';
 
@@ -191,6 +197,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
    ```ts
+   'use static'
+
    import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, Text } from '@ohos.arkui.component';
    import { Computed, Local } from '@ohos.arkui.stateManagement';
    
@@ -235,6 +243,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
    ```ts
+   'use static'
+
    import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
    import { Computed, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    
@@ -275,6 +285,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
    ```ts
+   'use static'
+
    import { Button, ClickEvent, Column, ComponentV2, Entry, Row, Text } from '@ohos.arkui.component';
    import { Computed, IMonitor, Local, ObservedV2, Monitor, Trace } from '@ohos.arkui.stateManagement';
    
@@ -329,6 +341,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
    ```ts
+   'use static'
+   
    import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
             ForEach, HorizontalAlign, Row, Text } from '@ohos.arkui.component';
    import { Computed, Local, ObservedV2, Param, Trace } from '@ohos.arkui.stateManagement';

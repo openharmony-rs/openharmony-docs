@@ -10,6 +10,10 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 ## 属性
 
 | 名称 | 类型 | 必填 | 说明 |
@@ -24,3 +28,8 @@ constructor()
 BackForwardCacheOptions的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20

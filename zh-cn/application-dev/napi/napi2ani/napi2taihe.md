@@ -3,7 +3,7 @@
 了解 Taihe 工具的基本概念后，本文将通过实际案例代码，介绍如何将现有 Node-API 模块迁移至 Taihe ANI 模块。
 首先，介绍 Taihe IDL 工具自动生成代码的结构，帮助开发者更好地理解从 Node-API 迁移到 Taihe IDL 的基本流程。
 本文将从初学者视角出发，说明如何识别接口并使用 Taihe IDL 进行描述。
-如果您熟悉 ArkTS 1.0 工程结构及 Node-API 模块的封装方式，可跳过第一部分内容。
+如果您熟悉ArkTS 1.0工程结构及Node-API模块的封装方式，可跳过第一章内容。
 
 ## 第一章，识别Node-API模块接口
 
@@ -33,7 +33,7 @@ napi_module_register(&queue_work_module);
 * 使用 napi_create_object 创建对象，并通过 napi_set_named_property 设置属性；
 
 * 通过 napi_define_class 定义类，再使用 napi_create_object 创建实例对象。
-具体代码例子请参考《Node-API到ANI迁移指南》。
+具体代码示例请参考[Node-API到ANI迁移指南](./napi2ani_guide.md)。
 
 ### 3. 根据初始化函数推导接口声明
 如果 Native 模块提供了对应的 .d.ts 类型声明文件，可以直接参考其中定义的接口，无需手动推导。如果没有类型声明文件，则需要基于初始化代码中的接口注册逻辑推断接口结构。
@@ -151,7 +151,7 @@ declare namespace batteryInfo {
 }
 ```
 
-**Taihe IDL定义(ohos.batteryInfo.taihe)**
+**Taihe IDL定义(ohos.batteryInfo.ohidl)**
 在IDL文件中书写IDL声明
 ```
 @！namespace("@ohos.batteryInfo", "batteryInfo")
@@ -223,7 +223,7 @@ inline int32_t SetBatteryConfig(::taihe::string_view sceneName, ::taihe::string_
 
 4. C ABI层
 
-接口对应的C的ABI层，通过这个C ABI，taihe可以很容易在多种语言间相互转换。
+接口对应的C的ABI层，通过这个C ABI，Taihe可以很容易在多种语言间相互转换。
 ```cpp
 int32_t ohos_batteryInfo_SetBatteryConfig_f(struct TString scenceName, struct TString sceneValue)
 ```
@@ -248,5 +248,5 @@ TH_EXPORT_CPP_API_SetBatteryConfig(SetBatteryConfig);
 ```
 
 ### 一个更复杂的例子
-下面是一个更加复杂的例子，请参考[深入解析Taihe生成代码](../taihe/AniGeneratedCode.md)
+下面是一个更加复杂的例子，请参考[深入解析Taihe生成代码](../../taihe/taihe-generated-code-ani.md)。
 

@@ -1,20 +1,20 @@
-# 使用 Taihe 进行 import 相关开发
+# 使用Taihe进行import相关开发
 
 ## 简介
 
-在 Taihe 中，使用 `use` 语法来导入外部声明。Taihe 有两种导入方式：
+在Taihe中，使用`use`语法来导入外部声明。Taihe有两种导入方式：
 
 1. `from ModuleA use DeclFoo;`
 
 2. `use ModuleA;`
 
-其中，`ModuleA` 是 Taihe 文件的名称，`DeclFoo` 是一个声明。
+其中，`ModuleA`是要导入的Taihe IDL文件的名称（不含文件扩展名），`DeclFoo`是要导入的具体声明名称。
 
 ## 基本概念
 
-使用 `use` 语句导入外部声明。
+使用`use`语句导入外部声明。
 
-被导入模块文件 user.taihe
+被导入的Taihe IDL文件user.ohidl：
 ```rust
 interface IUser {
     @get getEmail(): String;
@@ -24,7 +24,7 @@ interface IUser {
 function makeUser(path: String): IUser;
 ```
 
-导入模块文件 notification.taihe
+导入的Taihe IDL文件notification.ohidl：
 ```rust
 from user use IUser;
 
@@ -34,7 +34,8 @@ interface INotificationService{
 
 function makeNotificationService(): INotificationService;
 ```
-或
+
+或者也可以使用`use ModuleA;`的方式导入整个模块：
 ```rust
 use user;
 
@@ -45,13 +46,13 @@ interface INotificationService{
 function makeNotificationService(): INotificationService;
 ```
 
-为了避免重名导致无法分辨由哪个模块导入的情况，支持 `as` 语法：
+为了避免重名导致无法分辨由哪个模块导入的情况，支持`as`语法：
 
 1. `use A as C;`
 
 2. `from A use B as C;`
 
-上述被导入模块文件样例更改为
+上述被导入模块文件样例更改为：
 ```rust
 use user as userA;
 
@@ -70,9 +71,9 @@ interface INotificationService{
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
-**被导入模块文件 user.taihe**
+**被导入模块文件user.ohidl**
 ```rust
 interface IUser {
     @get getEmail(): String;
@@ -82,7 +83,7 @@ interface IUser {
 function makeUser(path: String): IUser;
 ```
 
-**导入模块文件 notification.taihe**
+**导入模块文件notification.ohidl**
 ```rust
 from user use IUser;
 
@@ -93,9 +94,9 @@ interface INotificationService{
 function makeNotificationService(): INotificationService;
 ```
 
-### C++ 实现
+### C++实现
 
-**user 实现文件**
+**user实现文件**
 ```cpp
 class IUserImpl {
 public:
@@ -118,14 +119,14 @@ IUser makeUser(string_view path) {
 }
 ```
 
-**notification 实现文件**
+**notification实现文件**
 ```cpp
 class INotificationServiceImpl {
 public:
     INotificationServiceImpl() {}
 
     void sendMessage(::user::weak::IUser a) {
-        string_view user_email = a->getEmail(); // 使用 -> 调用Taihe对象的成员方法
+        string_view user_email = a->getEmail(); // 使用->调用Taihe对象的成员方法。
         std::cout << "Welcome " << a->getEmail() << std::endl;
     }
 };
@@ -135,7 +136,7 @@ INotificationService makeNotificationService() {
 }
 ```
 
-### ets 使用
+### ets使用
 
 ```typescript
 let userA = user.makeUser("12345@huawei.com");

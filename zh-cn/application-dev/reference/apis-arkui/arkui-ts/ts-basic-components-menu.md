@@ -187,12 +187,15 @@ Menu子菜单展开样式枚举。
 
 该示例通过配置MenuItem中的builder参数实现多级菜单。
 
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
 struct Index {
   @State select: boolean = true;
+  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
   private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
 
   @Builder
@@ -206,6 +209,7 @@ struct Index {
   @Builder
   MyMenu(){
     Menu() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
         .enabled(false)
@@ -222,6 +226,7 @@ struct Index {
           endIcon: this.iconStr2,
           builder: ():void=>this.SubMenu()
         })
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
         MenuItem({
           startIcon: $r("app.media.app_icon"),
           content: "菜单选项",
@@ -233,6 +238,120 @@ struct Index {
         startIcon: this.iconStr,
         content: "菜单选项",
       })
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
+  private iconStr2: ResourceStr = $r("app.media.arrow_right_filled");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" } as MenuItemOptions)
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" } as MenuItemOptions)
+    }
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
+      MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" } as MenuItemOptions)
+        .enabled(false)
+      MenuItem({
+        startIcon: this.iconStr,
+        content: "菜单选项",
+        endIcon: this.iconStr2,
+        builder: ():void=>this.SubMenu()
+      } as MenuItemOptions)
+      MenuItemGroup({ header: '小标题' }) {
+        MenuItem({
+          startIcon: this.iconStr,
+          content: "菜单选项",
+          endIcon: this.iconStr2,
+          builder: ():void=>this.SubMenu()
+        } as MenuItemOptions)
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+        MenuItem({
+          startIcon: $r("app.media.app_icon"),
+          content: "菜单选项",
+          endIcon: this.iconStr2,
+          builder: ():void=>this.SubMenu()
+        } as MenuItemOptions)
+      }
+      MenuItem({
+        startIcon: this.iconStr,
+        content: "菜单选项",
+      } as MenuItemOptions)
     }
   }
 
@@ -396,8 +515,9 @@ struct Index {
 
 该示例通过设置menuItemGroupDivider属性实现分割线样式。
 
+ArkTS-Dyn示例：
 ```ts
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -431,6 +551,95 @@ struct Index {
     RelativeContainer() {
       Button("show menu")
         .bindMenu(this.MyMenu())
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight,
+  LengthMetrics,
+  DividerMode,
+  RelativeContainer
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+      MenuItemGroup() {
+        MenuItem({ content: "Group Child" } as MenuItemOptions)
+        MenuItem({ content: "Group Child" } as MenuItemOptions)
+      }
+      MenuItem({ content: "Item Content" } as MenuItemOptions)
+    }
+    .menuItemDivider({
+      strokeWidth: LengthMetrics.vp(5),
+      color: '#d5d5d5',
+      mode: DividerMode.EMBEDDED_IN_MENU
+    })
+    .menuItemGroupDivider({
+      strokeWidth: LengthMetrics.vp(5),
+      color: '#707070',
+      mode: DividerMode.EMBEDDED_IN_MENU
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      Button("show menu")
+        .bindMenu(this.MyMenu)
     }
     .height('100%')
     .width('100%')

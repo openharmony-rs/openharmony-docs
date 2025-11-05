@@ -116,15 +116,20 @@ createPdf函数输入参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
+
 | 名称                  | 类型    | 必填 | 说明                                                         |
 | --------------------- | ------- | ---- | ------------------------------------------------------------ |
-| width                 | number  | 是   | 页面宽度。<br>单位：英寸。<br />推荐值：A4纸页面宽度8.27英寸。   |
-| height                | number  | 是   | 页面高度。<br>单位：英寸。<br />推荐值：A4纸页面高度11.69英寸。  |
-| scale                 | number  | 否   | 放大倍数。<br>取值范围：[0.0, 2.0]。如果不在取值范围内，小于0.0设置为0.0，大于2.0设置为2.0。<br>默认值：1.0。 |
-| marginTop             | number  | 是   | 上边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginBottom          | number  | 是   | 下边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginRight           | number  | 是   | 右边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginLeft            | number  | 是   | 左边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| width                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 页面宽度。<br>单位：英寸。<br />推荐值：A4纸页面宽度8.27英寸。   |
+| height                | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 页面高度。<br>单位：英寸。<br />推荐值：A4纸页面高度11.69英寸。  |
+| scale                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 放大倍数。<br>取值范围：[0.0, 2.0]。如果不在取值范围内，小于0.0设置为0.0，大于2.0设置为2.0。<br>默认值：1.0。 |
+| marginTop             | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 上边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginBottom          | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 下边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginRight           | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 右边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginLeft            | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 左边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
 | shouldPrintBackground | boolean | 否   | true表示打印背景颜色，false表示不打印背景颜色。<br>默认值：false。                            |
 
 ## ScrollOffset<sup>13+</sup>
@@ -159,6 +164,10 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
 | UNATTACHED | 0 | 未绑定状态。 |
@@ -170,11 +179,15 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  20
+
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
 | errCode | WebBlanklessErrorCode | 否   | 否   | 无白屏加载的异常错误码，见[WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20)定义。 |
-| similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为0~1.0，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似性将在下次加载时才可反映。建议当相似度较低时，应用不启用无白屏加载插帧方案。 |
-| loadingTime | int | 否   | 否   | 根据历史加载首屏耗时预测本次加载耗时，单位ms，取值范围需大于0。 |
+| similarity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为0~1.0，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似性将在下次加载时才可反映。建议当相似度较低时，应用不启用无白屏加载插帧方案。 |
+| loadingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 根据历史加载首屏耗时预测本次加载耗时，单位ms，取值范围需大于0。 |
 
 ## HistoryItem
 
@@ -216,9 +229,13 @@ WebViewController与Web组件的绑定状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称           | 类型       | 只读 | 可选 | 说明                         |
 | -------------- | --------- | ---- | ---- | ---------------------------- |
-| x  | number   | 否   | 否   | 矩形区域左上角x坐标。    |
-| y  | number   | 否   | 否   | 矩形区域左上角y坐标。    |
-| width  | number   | 否   | 否   | 矩形的宽度。    |
-| height  | number   | 否   | 否   | 矩形的高度。    |
+| x  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角x坐标。    |
+| y  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角y坐标。    |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的宽度。    |
+| height  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的高度。    |

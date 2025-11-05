@@ -1,12 +1,12 @@
-# ArkTS1.2迁移工具使用指导
+# ArkTS-Sta迁移工具使用指导
 
 ## 说明
 
-ArkTS1.2迁移工具提供语法差异检查和代码自动修复功能，帮助开发者将工程代码从ArkTS1.1迁移到ArkTS1.2。
+ArkTS-Sta迁移工具提供语法差异检查和代码自动修复功能，帮助开发者将工程代码从ArkTS-Dyn迁移到ArkTS-Sta。
 
 ## 下载地址
 
-从Gitee仓库的[每日构建](https://gitee.com/link?target=https%3A%2F%2Fci.openharmony.cn%2Fworkbench%2Fcicd%2Fdailybuild%2Fdailylist)中下载ArkTS1.2特性分支（如当前是`OpenHarmony_feature_20250702`分支）的SDK并解压。
+从Gitee仓库的[每日构建](https://gitee.com/link?target=https%3A%2F%2Fci.openharmony.cn%2Fworkbench%2Fcicd%2Fdailybuild%2Fdailylist)中下载ArkTS-Sta特性分支（如当前是`OpenHarmony_feature_20250702`分支）的SDK并解压。
 
 **图1** 每日构建页面
 
@@ -23,7 +23,7 @@ ArkTS1.2迁移工具提供语法差异检查和代码自动修复功能，帮助
 | 参数                       | 参数说明                                                     |
 | -------------------------- | ------------------------------------------------------------ |
 | --ide-interactive          | 生成json文件，支持IDE解析。                                    |
-| --arkts-2                  | 启用ArkTS1.2规则。                                            |
+| --arkts-2                  | 启用ArkTS-Sta规则。                                            |
 | --autofix                  | 自动修复建议，生成到json文件中。                                |
 | --check-ts-as-source       | 支持扫描.ts和.ets混合工程。                                    |
 | --migrate                  | 启用迁移功能。启用后会修改原有代码。                            |
@@ -39,7 +39,7 @@ ArkTS1.2迁移工具提供语法差异检查和代码自动修复功能，帮助
 
 1. 命令行参数中传入的路径不能包含空格，例如`/DevEco Studio/sdk`。
 
-2. 推荐先基于ArkTS1.1编译工程。否则，可能会缺失工程的模块间依赖，导致部分规则漏扫或误扫。
+2. 推荐先基于ArkTS-Dyn编译工程。否则，可能会缺失工程的模块间依赖，导致部分规则漏扫或误扫。
 
 3. 设备要求：建议使用32GB及以上Windows环境扫描。在扫描过程中发生out of memory错误时，可以为node添加参数"--max-old-space-size=8192"解决部分场景问题。
 

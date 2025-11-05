@@ -12,7 +12,7 @@
 
 @Once作为辅助装饰器，用于状态管理V2中，需要搭配@Param一起使用，适用于仅从外部初始化一次且不接受后续同步变化的场景。
 
-在动态语言上下文中使用时，开发指南参考：[@Once：初始化同步一次（ArkTS-DT）](../../../ui/state-management/arkts-new-once.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Once：初始化同步一次（ArkTS-Dyn）](../../../ui/state-management/arkts-new-once.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -155,9 +155,6 @@ struct Index {
             this.borderStyles = BorderStyle.Solid;
           })
       )
-      .onCancel(() => {
-        console.log("sequence gesture canceled")
-      })
     )
   }
 }

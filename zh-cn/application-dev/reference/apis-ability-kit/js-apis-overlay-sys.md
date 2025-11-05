@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle.overlay`](js-apis-overlay.md)。
@@ -25,6 +27,10 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 **需要权限：** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -58,6 +64,7 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { overlay } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -78,6 +85,28 @@ try {
     console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
+ArkTS-Sta:
+```ts
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和moduleName。
+let bundleName = "com.example.myapplication_xxxxx";
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+    overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled)
+        .then(() => {
+            console.info('setOverlayEnabledByBundleName successfully');
+        }).catch((err: Error) => {
+            console.error('setOverlayEnabledByBundleName failed due to err code: ' + (err as BusinessError).code + ' ' + 'message:' + (err as BusinessError).message);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```
 
 ## overlay.setOverlayEnabledByBundleName
 
@@ -90,6 +119,10 @@ setOverlayEnabledByBundleName(bundleName: string, moduleName: string, isEnabled:
 **需要权限：** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -152,6 +185,10 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -213,6 +250,10 @@ getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string, callbac
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -272,6 +313,10 @@ getOverlayModuleInfoByBundleName(bundleName: string, callback: AsyncCallback\<Ar
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -326,6 +371,10 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: s
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -388,6 +437,10 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName: st
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -446,6 +499,10 @@ getTargetOverlayModuleInfosByBundleName(targetBundleName: string, callback: Asyn
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 

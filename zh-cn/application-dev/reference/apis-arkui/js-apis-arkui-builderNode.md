@@ -213,7 +213,7 @@ build的可选参数。
 
 **示例：**
 
-该示例演示了BuilderNode的build方法设置useParallel为true，以并行的方式创建组件。
+该示例演示了BuilderNode的build方法设置useParallel为true，BuildTextWithParams中Column组件和Text组件会以并行的方式创建。并行创建成功后会显示`Build with Params`等参数，Update按钮可以更新该参数。
 
 ```ts
 import { UIContext } from '@ohos.arkui.component'

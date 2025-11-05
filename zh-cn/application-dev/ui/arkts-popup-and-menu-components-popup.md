@@ -37,7 +37,7 @@ struct PopupExample {
 
 ArkTS-Sta示例：
 
-在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupOptions：
+在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupOptions。
 
 ```ts
 'use static'
@@ -99,7 +99,7 @@ struct PopupExample {
 
 ArkTS-Sta示例：
 
-在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupStateChangeParam：
+在ArkTS1.2上弹出气泡时，需先导入用来指定参数类型的PopupStateChangeParam。
 
 ```ts
 'use static'
@@ -921,6 +921,8 @@ struct PopupItemChild {
 > - 如果气泡的点击位置在中轴区域，则气泡不会避让。
 > - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -982,6 +984,85 @@ struct Index {
         top: this.index == 2 ? 330 : this.index == 1 ? 50 : 0,
         bottom: this.index == 0 ? 330 : 0
       })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Column, Component, Button, ClickEvent, ColumnOptions, PopupOptions,
+  CustomPopupOptions, Placement, Position, Color, PopupCommonOptions, FontWeight,
+  RelativeContainer, Row, Margin, VerticalAlign, HorizontalAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import { BusinessError } from '@ohos.base';
+
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State index: Int = 0;
+  @State arrayStr: Array<string> = ['上半屏', '中轴', '下半屏'];
+  @State enableHoverMode: boolean | undefined = true;
+  @State showInSubwindow: boolean = false;
+  @State placement: Placement | undefined = undefined;
+  @State isShow: boolean = false;
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Button('区域:' + this.arrayStr[this.index])
+          .onClick(() => {
+            if (this.index < 2) {
+              this.index++
+            } else {
+              this.index = 0
+            }
+          })
+
+        Button('子窗显示:' + (this.showInSubwindow ? '子窗' : '非子窗'))
+          .onClick((event: ClickEvent) => {
+            this.showInSubwindow = !this.showInSubwindow
+          })
+
+        Button('hoverMode开启:' + this.enableHoverMode)
+          .onClick((event: ClickEvent) => {
+            if (this.enableHoverMode == undefined) {
+              this.enableHoverMode = true
+            } else if (this.enableHoverMode == true) {
+              this.enableHoverMode = false
+            } else {
+              this.enableHoverMode = undefined
+            }
+          })
+      }
+
+      Row() {
+        Button('Popup')
+          .fontWeight(FontWeight.Bold)
+          .bindPopup(this.isShow, {
+            message: 'popup',
+            enableHoverMode: this.enableHoverMode,
+            showInSubWindow: this.showInSubwindow,
+          } as PopupOptions)
+          .onClick((event: ClickEvent) => {
+            this.isShow = !this.isShow
+          })
+      }
+      .alignRules({
+        center: { anchor: '__container__', align: VerticalAlign.Center },
+        middle: { anchor: '__container__', align: HorizontalAlign.Center }
+      })
+      .margin({
+        top: this.index == 2 ? 330 : this.index == 1 ? 50 : 0,
+        bottom: this.index == 0 ? 330 : 0
+      } as Margin)
     }
     .height('100%')
     .width('100%')

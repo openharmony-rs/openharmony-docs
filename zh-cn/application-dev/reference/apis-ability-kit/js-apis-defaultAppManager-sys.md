@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle.defaultAppManager`](js-apis-defaultAppManager.md)。
 
@@ -26,6 +26,10 @@ ArkTS-Sta: getDefaultApplication(type: string, userId?: int): Promise\<BundleInf
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -92,7 +96,7 @@ ArkTS-Sta:
 ```ts
 import { bundleManager, defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
   .then((data: bundleManager.BundleInfo) => {
@@ -129,6 +133,10 @@ ArkTS-Sta: getDefaultApplication(type: string, userId: int, callback: AsyncCallb
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -191,7 +199,7 @@ ArkTS-Sta:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 // 代码中使用的useId需为应用实际的用户ID。
 let userId = 100;
@@ -230,6 +238,10 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -254,6 +266,7 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -283,6 +296,36 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
 });
 ```
+ArkTS-Sta:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication("image/png", (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+```
 
 ## defaultAppManager.getDefaultApplicationSync<sup>10+</sup>
 
@@ -294,6 +337,10 @@ ArkTS-Sta: getDefaultApplicationSync(type: string, userId?: int): BundleInfo
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -362,6 +409,10 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -446,7 +497,7 @@ ArkTS-Sta:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 // 代码中使用的bundleName、moduleName、abilityName、useId需为应用实际的包名、Module名称、Ability名称、用户ID。
 defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
@@ -501,6 +552,10 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId:
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -576,7 +631,7 @@ ArkTS-Sta:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 // 代码中使用的bundleName、moduleName、abilityName、useId需为应用实际的包名、Module名称、Ability名称、用户ID。
 let userId = 100;
@@ -627,6 +682,10 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -652,6 +711,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -693,6 +753,49 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful.');
 });
 ```
+ArkTS-Sta:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 开发者需根据实际工程更新bundleName、moduleName和abilityName。
+defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.setDefaultApplication("image/png", {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+```
 
 ## defaultAppManager.setDefaultApplicationSync<sup>10+</sup>
 
@@ -704,6 +807,10 @@ ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, use
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -792,6 +899,10 @@ ArkTS-Sta: resetDefaultApplication(type: string, userId?: int): Promise\<void>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -857,7 +968,7 @@ ArkTS-Sta:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 // 代码中使用的useId需为应用实际的用户ID。
 let userId = 100;
@@ -896,6 +1007,10 @@ ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCal
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 
@@ -957,7 +1072,7 @@ ArkTS-Sta:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
 // 代码中使用的useId需为应用实际的用户ID。
 let userId = 100;
@@ -996,6 +1111,10 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：**  此接口为系统接口。
 
 **参数：**
@@ -1019,6 +1138,7 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1048,6 +1168,36 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
   console.info('Operation successful.');
 });
 ```
+ArkTS-Sta:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication("image/png", (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+```
 
 ## defaultAppManager.resetDefaultApplicationSync<sup>10+</sup>
 
@@ -1059,6 +1209,10 @@ ArkTS-Sta: resetDefaultApplicationSync(type: string, userId?: int): void
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口：**  此接口为系统接口。
 

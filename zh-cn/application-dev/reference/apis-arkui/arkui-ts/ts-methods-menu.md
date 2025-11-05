@@ -32,6 +32,7 @@ static close()
 
 <!--deprecated_code_no_check-->
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -63,6 +64,94 @@ struct Index {
       .onDragStart(()=>{
         // 拖拽时关闭菜单
         ContextMenu.close() // 建议使用 this.getUIContext().getContextMenuController().close()
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+ 'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Builder,
+  TextAlign,
+  ResponseType,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  Margin,
+  Flex,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  Divider,
+  TransitionEffect,
+  Curve,
+  Stack,
+  BlurStyle,
+  BackgroundBlurStyleOptions,
+  ThemeColorMode,
+  BlurStyleActivePolicy,
+  AdaptiveColor,
+  MenuElement,
+  ContextMenuOptions,
+  ContextMenuAnimationOptions,
+  MenuPreviewMode,
+  Color,
+  Edges,
+  SymbolGlyphModifier,
+  MenuItemGroup,
+  Row,
+  FontWeight,
+  LengthMetrics,
+  DividerMode,
+  RelativeContainer
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @Builder MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('Test ContextMenu1')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('Test ContextMenu2')
+      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Button('Test ContextMenu3')
+    }
+    .width(200)
+    .height(160)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Column() {
+        Text("Test ContextMenu")
+          .fontSize(20)
+          .width('100%')
+          .height(500)
+          .backgroundColor(0xAFEEEE)
+          .textAlign(TextAlign.Center)
+      }
+      .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
+      .onDragStart(()=>()=>{
+        // 拖拽时关闭菜单
+        this.getUIContext().getContextMenuController().close()
       })
     }
     .width('100%')

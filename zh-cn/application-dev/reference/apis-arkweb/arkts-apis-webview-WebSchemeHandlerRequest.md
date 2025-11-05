@@ -18,6 +18,10 @@ getHeader(): Array\<WebHeader\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                         | 说明         |
@@ -35,6 +39,10 @@ getRequestUrl(): string
 获取资源请求的URL信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -54,6 +62,10 @@ getRequestMethod(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -71,6 +83,10 @@ getReferrer(): string
 获取referrer。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -90,6 +106,10 @@ isMainFrame(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -107,6 +127,10 @@ hasGesture(): boolean
 获取资源请求是否与手势（如点击）相关联。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -126,11 +150,15 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| [WebHttpBodyStream](./arkts-apis-webview-WebSchemeHandler.md) \| null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
+| [WebHttpBodyStream](./arkts-apis-webview-WebHttpBodyStream.md) \| null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
 
 **示例：**
 
@@ -143,6 +171,10 @@ getRequestResourceType(): WebResourceType
 获取资源请求的资源类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -161,6 +193,10 @@ getFrameUrl(): string
 获取触发此请求的Frame的URL。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

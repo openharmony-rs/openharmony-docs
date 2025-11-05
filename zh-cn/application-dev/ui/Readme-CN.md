@@ -2,33 +2,39 @@
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
-  - 从ArkTS1.1到ArkTS1.2的UI适配指导<!--ui-arkts-migration-guide-->
-    - ArkTS1.2不再支持的UI接口<!--ui-deprecated-apis-->
-      - [滚动与滑动](arkts-v1.2-deprecated-scrollable-apis.md)
-      - [像素单位转换](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
-      - [页面上下文](arkts-v1.2-deprecated-ts-context-apis.md)
-      - [绘制组件](arkts-v1.2-deprecated-drawing-apis.md)
-      - [Picker类组件](arkts-v1.2-deprecated-picker-apis.md)
-      - [渲染控制](arkts-v1.2-deprecated-rendering-control-apis.md)
-      - [弹窗类组件](arkts-v1.2-deprecated-dialog-apis.md)
-      - [表单类组件](arkts-v1.2-deprecated-form-apis.md)
-      - [文本类组件](arkts-v1.2-deprecated-text-apis.md)
-      - [布局类组件](arkts-v1.2-deprecated-layout-apis.md)
-      - [布局回调](arkts-v1.2-deprecated-inspector.md)
-      - [路由和导航类接口](arkts-v1.2-deprecated-router-navigation.md)
-      - [动效类接口](arkts-v1.2-deprecated-animation.md)
-      - [视效类接口](arkts-v1.2-deprecated-visual-effect.md)
-      - [Swiper](arkts-v1.2-deprecated-swiper.md)
-      - [Panel](arkts-v1.2-deprecated-panel.md)
-      - [AlphabetIndexer](arkts-v1.2-deprecated-alphabet-indexer.md)
-      - [状态管理](arkts-v1.2-deprecated-state-management-apis.md)
-      - [@ohos.arkui.dragController](arkts-v1.2-deprecated-dragController-apis.md)
-      - [@ohos.arkui.componentSnapshot](arkts-v1.2-deprecated-componentSnapshot-apis.md)
-      - [@ohos.arkui.componentUtils](arkts-v1.2-deprecated-componentUtils-apis.md)
-      - [交互事件字段](arkts-v1.2-deprecated-event-object-apis.md)
-      - [UIExtensionComponent (系统接口)](arkts-v1.2-deprecated-uiextension.md)
-      - [AbilityComponent (系统接口)](arkts-v1.2-deprecated-abilitycomponent.md)
-      - [ChipGroup](arkts-v1.2-deprecated-chipgroup.md)
+  - ArkTS-Dyn与ArkTS-Sta的交互能力<!--ui-arkts-sta-interop-dyn-->
+    - [互操作概述](arkts-dyn-sta-ui-interop.md)
+    - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
+      - [ArkTS-Sta使用ArkTS-Dyn自定义组件](arkts-sta-interop-dyn-component.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn动态数据](arkts-sta-interop-dyn-data.md)
+      - [ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数](arkts-sta-interop-dyn-builder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta全局自定义构建函数](arkts-dyn-interop-sta-builder.md)
+      - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-wrappedbuilder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta WrappedBuilder对象](arkts-dyn-interop-sta-wrappedbuilder.md)
+      - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
+      - [ArkTS-Dyn @Builder函数初始化ArkTS-Sta自定义组件@BuilderParam成员属性](arkts-dyn-interop-sta-builderparam.md)
+      - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
+      - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
+      - [ArkTS-Dyn的Navigation调用ArkTS-Sta的NavDestination页面](arkts-dyn-interop-sta-navigation.md)
+    - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
+      - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
+      - [ArkTS-Dyn使用ArkTS-Sta状态管理互操作](arkts-dyn-interop-sta-statemanagement.md)
+      - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
+      - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](arkts-sta-interop-dyn-observed.md)
+    - 状态管理V2互操作
+      - [ArkTS-Sta使用ArkTS-Dyn状态管理V2组件内互操作](arkts-sta-interop-dyn-statemanagement-v2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta状态管理V2组件内互操作](arkts-dyn-interop-sta-statemanagement-v2.md)
+      - [ArkTS-Sta使用ArkTS-Dyn的AppStorageV2进行状态存储](arkts-sta-interop-dyn-storages-v2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta的AppStorageV2进行状态存储](arkts-dyn-interop-sta-storages-v2.md)
+      - [ArkTS-Sta使用ArkTS-Dyn @ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta @ObservedV2数据和@Trace数据互操作](arkts-dyn-interop-sta-observedv2.md)
+      - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](arkts-sta-interop-dyn-builder-v2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](arkts-dyn-interop-sta-builder-v2.md)
+    - 状态管理V1V2混用互操作
+      - [ArkTS-Sta与ArkTS-Dyn状态管理V1V2混用互操作校验规格](arkts-sta-interop-dyn-validate.md)
+    - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
+    - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
@@ -42,12 +48,15 @@
     - 静态自定义组件<!--arkts-static-custom-components-->
       - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
       - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
+        - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
+        - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - UI装饰器
       - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
       - 组件扩展<!--arkts-extend-components-->
         - [组件扩展概述](../ui/state-management/arkts-extend-components-overview.md)
         - [\@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
-        - [\@LocalBuilder装饰器：维持组件关系](../ui/state-management/arkts-localBuilder.md)
+        - [\@LocalBuilder装饰器：维持组件关系（ArkTS-DT）](../ui/state-management/arkts-localBuilder.md)
         - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
         - [wrapBuilder：封装全局@Builder（ArkTS1.1）](../ui/state-management/arkts-wrapBuilder.md)
         - [wrapBuilder：封装全局@Builder（ArkTS1.2）](../ui/state-management/arkts-v1.2-wrapBuilder.md)
@@ -78,7 +87,7 @@
           - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management/arkts-observed-and-objectlink.md)
           - [\@Watch装饰器：状态变量更改通知](state-management/arkts-watch.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
-          - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management/arkts-track.md)
+          - [\@Track装饰器：class对象属性级更新](state-management/arkts-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
           - [LocalStorage：页面级UI状态存储](state-management/arkts-localstorage.md)
           - [AppStorage：应用全局的UI状态存储](state-management/arkts-appstorage.md)
@@ -89,7 +98,7 @@
           - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
             - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
-          - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
+          - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
@@ -103,12 +112,11 @@
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-monitor-interface.md)
-      - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - [状态管理V1向V2迁移指导](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1和V2混合使用<!--arkts-state-management-v1-v2-migration-->
         - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
         - [状态管理V1V2混用文档](state-management/arkts-v1-v2-mixusage.md)
-      - [优秀实践](state-management/arkts-state-management-best-practices.md)
+      - [状态管理优秀实践](state-management/arkts-state-management-best-practices.md)
       - [开发指导](state-management/properly-use-state-management-to-develope.md)
     - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
       - 状态管理（V1）<!--arkts-state-management-v1-->
@@ -120,7 +128,7 @@
           - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
           - [\@Watch装饰器：状态变量更改通知](state-management-static/arkts-static-watch.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-->
-          - [\@Observed装饰器和\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
+          - [\@Track装饰器：class对象属性级更新](state-management-static/arkts-static-track.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-->
           - [LocalStorage：页面级UI状态存储](state-management-static/arkts-static-localstorage.md)
           - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
@@ -131,24 +139,23 @@
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
             - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
-          - [\@Event装饰器：组件输出](state-management-static/arkts-static-new-event.md)
+          - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
           - [\@Computed装饰器：计算属性](state-management-static/arkts-static-new-computed.md)
         - 管理应用拥有的状态<!--arkts-application-state-management-v2-->
-          - AppStorageV2: 应用全局UI状态存储
-          - PersistenceV2: 持久化存储UI状态
+          - [AppStorageV2: 应用全局的UI状态存储](./state-management-static/arkts-static-appstoragev2.md)
+          - [PersistenceV2: 持久化存储UI状态](state-management-static/arkts-static-new-persistencev2.md)
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
           - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
           - addMonitor/clearMonitor接口：动态添加/取消监听
-      - 状态管理V1和V2对比<!--arkts-state-management-v1-v2-compare-->
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
-      - 优秀实践
+      - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
   - 渲染控制<!--arkts-rendering-control-->
@@ -232,7 +239,6 @@
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
     - [形状裁剪 (clipShape)](arkts-clip-shape.md)
-    - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
   - [添加交互响应](arkts-interaction-development-guide-overview.md)
     - [交互响应概述](arkts-interaction-capability-overview.md)
     - [交互基础机制说明](arkts-interaction-basic-principles.md)
@@ -293,6 +299,7 @@
       - [内容修改器 (ContentModifier)](arkts-common-attributes-content-modifier.md)
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
+  - [UI国际化](arkts-internationalization.md)
   - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
     - [支持无障碍](arkts-universal-attributes-accessibility.md)
     - [支持适老化](arkui-support-for-aging-adaptation.md)
@@ -311,6 +318,24 @@
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](arkts-isolated-components.md)
     <!--DelEnd-->
+  - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+    - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](arkts-dyn-sta-ui-rules.md)
+    - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+      - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
+      - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
+      - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
+      - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
+      - [UI组件适配（布局）](arkts-sta-deprecated-layout.md)
+      - [UI组件适配（文本）](arkts-sta-deprecated-text.md)
+      - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
+      - [UI组件适配（表单与弹窗）](arkts-sta-deprecated-form-and-dialog.md)
+      - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
+      - [UI组件适配（XComponent）](arkts-sta-deprecated-xcomponent.md)
+      - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
+      - [UI组件适配（特殊场景）](arkts-sta-deprecated-special-scene.md)
+      <!--Del-->
+      - [UI组件适配（系统接口）](arkts-sta-deprecated-sys.md)
+      <!--DelEnd-->
   - 使用NDK接口构建UI<!--arkts-use-ndk-->
     - [NDK接口概述](ndk-build-ui-overview.md)
     - [接入ArkTS页面](ndk-access-the-arkts-page.md)
@@ -335,14 +360,8 @@
     - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)
     - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
     - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)
-  - 使用互操作功能构建UI<!--arkts-use-interop-ui-->
-    - [ArkTS1.2使用ArkTS1.1自定义组件](interop-compatible-component.md)
-    - [ArkTS1.2使用ArkTS1.1状态管理互操作](interop-compatible-statemanagement.md)
-    - [ArkTS1.2与ArkTS1.1应用间状态存储互操作](interop-storages.md)
-    - [ArkTS1.2使用ArkTS1.1全局自定义构建函数](interop-compatible-builder.md)
-    - [ArkTS1.2使用ArkTS1.1 WrappedBuilder对象](interop-compatible-WrappedBuilder.md)
 - [UI高性能开发](ui-performance-overview.md)
-  - [BuilderNode并行化构建和更新节点树](ui-parallel-buildernode.md)
+  - [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui-parallel-buildernode.md)
   - [UI并行化创建组件树](ui-parallel-components.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
@@ -418,6 +437,7 @@
   - [自定义组件](ui-js-custom-components.md)
   - [WebGL](../webgl/Readme-CN.md)
 - UI开发调试调优<!--ui-debug-optimize-->
+  - [预览](ui-ide-previewer.md)
   - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
 - [窗口管理](../windowmanager/Readme-CN.md)
 - [屏幕管理](../displaymanager/Readme-CN.md)

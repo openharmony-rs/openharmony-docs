@@ -13,7 +13,7 @@
 
 @State用于状态管理V1中，将自定义组件内的普通变量转变为状态变量，管理组件内UI刷新。
 
-在动态语言上下文中使用时，开发指南参考：[@State装饰器：组件内状态（ArkTS-DT）](../../../ui/state-management/arkts-state.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@State装饰器：组件内状态（ArkTS-Dyn）](../../../ui/state-management/arkts-state.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

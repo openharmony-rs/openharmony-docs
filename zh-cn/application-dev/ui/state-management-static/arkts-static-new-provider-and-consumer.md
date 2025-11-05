@@ -127,6 +127,8 @@ struct Child {
 1. \@Provider和\@Consumer为自定义组件的属性装饰器，只能装饰自定义组件内的属性，不能装饰class的属性。
 
    ```ts
+   'use static'
+   
    import { Entry, ComponentV2 } from '@ohos.arkui.component';
    import { Provider, Consumer } from '@ohos.arkui.stateManagement';
    
@@ -158,6 +160,8 @@ struct Child {
 2. \@Provider和\@Consumer为状态管理V2装饰器，只能在\@ComponentV2中使用，不能在\@Component中使用。
 
    ```ts
+   'use static'
+   
    import { Entry, Component, ComponentV2 } from '@ohos.arkui.component';
    import { Provider, Consumer } from '@ohos.arkui.stateManagement';
    
@@ -187,6 +191,8 @@ struct Child {
 3. \@Provider和\@Consumer只支持本地初始化，不支持外部传入初始化。
 
    ```ts
+   'use static'
+   
    import { Entry, ComponentV2, Column } from '@ohos.arkui.component';
    import { Provider, Consumer } from '@ohos.arkui.stateManagement';
    
@@ -229,6 +235,8 @@ struct Child {
 3. 点击Child中Button，改变\@Consumer装饰的str，通知其对应的\@Provider，刷新对应UI组件。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -274,6 +282,8 @@ struct Child {
 3. 点击Child中Button，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -311,9 +321,11 @@ struct Child {
 
 ### 装饰字面量类型变量
 
-当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
+当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -335,7 +347,7 @@ struct Parent {
         })
       Button('parent change interface name')
         .onClick((e: ClickEvent) => {
-          this.info.name += '~'; // 变化可观察
+          this.info.name += '~'; // 变化无法观察
         })
       Child()
     }
@@ -355,7 +367,7 @@ struct Child {
         })
       Button('child change interface name')
         .onClick((e: ClickEvent) => {
-          this.info.name += '*'; // 变化可观察
+          this.info.name += '*'; // 变化无法观察
         })
     }
   }
@@ -367,6 +379,8 @@ struct Child {
 当装饰数组时，可以观察到数组整体和数组项的变化，同时可以通过调用Array的接口`push`、`pop`、`shift`、`unshift`、`splice`、`copyWithin`、`fill`、`reverse`、`sort`更新Array的数据。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -419,6 +433,8 @@ struct Parent {
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -471,6 +487,8 @@ struct Child {
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`、`clear`、`delete`带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -524,6 +542,8 @@ struct Child {
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口`add`、`clear`、`delete`带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -573,6 +593,8 @@ struct Child {
 \@Provider和\@Consumer支持装饰箭头函数。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { Provider, Consumer, Local } from '@ohos.arkui.stateManagement';
 
@@ -615,6 +637,8 @@ struct Child {
 2. 装饰内置类型Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同\@Trace。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, ClickEvent, Text, ForEach, Divider } from '@ohos.arkui.component';
 import { Provider, Consumer, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
@@ -676,6 +700,8 @@ struct Child {
 \@Provider可以在组件树上重名，当重名时\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text } from '@ohos.arkui.component';
 import { Provider, Consumer } from '@ohos.arkui.stateManagement';
 
@@ -727,6 +753,8 @@ struct Child {
 - `Parent @Consumer() val`的变化同步给Child，从而触发`Text(Child @Param val ${this.val})`的刷新。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, ClickEvent, Color } from '@ohos.arkui.component';
 import { Provider, Consumer, Param } from '@ohos.arkui.stateManagement';
 

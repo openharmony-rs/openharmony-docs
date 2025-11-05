@@ -1,14 +1,16 @@
 # UI调优
 本章节主要介绍UI的dump和调优能力，用于提高开发效率和优化开发者体验。
 
-为提升开发者定位状态管理问题的效率，UI提供针对状态变量的hidumper功能，将状态变量的内部信息提供给开发者，帮助开发者深入了解状态变量和UI组件的变化过程，提升开发高性能应用的效率。
+为提升开发者定位状态管理问题的效率，UI提供针对状态变量的[hidumper](../../application-dev/dfx/hidumper.md)功能，将状态变量的内部信息提供给开发者，帮助开发者深入了解状态变量和UI组件的变化过程，提升开发高性能应用的效率。
 
 ## 状态管理hidumper能力
 状态管理接入hidumper，支持通过-element选项获取状态变量、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，便于写出高性能应用代码。
 
-具体例子如下：下面的例子为嵌套两层子组件的典型示例，使用了装饰器\@State和\@Link。开发者可组合使用上述命令，展示前端组件树、自定义组件和状态变量等信息。
+具体例子如下：下面的例子为嵌套两层子组件的典型示例，使用了装饰器[\@State](./state-management-static/arkts-static-state.md)和[\@Link](./state-management-static/arkts-static-link.md)。开发者可组合使用上述命令，展示前端组件树、自定义组件和状态变量等信息。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 
@@ -89,3 +91,11 @@ hdc shell hidumper -s WindowManagerService -a '-w 90 -element -c' > arkui.dump
     | -----start print decoratorInfo
     | decorator:"@State" propertyName:"message" value:"hello world"
 ```
+
+## Trace调试能力
+
+ArkUI内部针对关键的UI处理流程添加了Trace信息，帮助开发者通过Trace工具观测应用的UI耗时，辅助定位问题。详细Trace说明及案例参考：[常用Trace使用指导](../performance/common-trace-using-instructions.md)。
+
+## Inspector调试能力
+
+ArkUI Inspector是DevEco Studio内置的页面布局检查工具，帮助开发者查看应用的UI层级结构、组件属性和布局效果。详细Inspector使用方法及案例参考：[页面布局检查器ArkUI Inspector使用指导](../performance/arkUI-inspector.md)。

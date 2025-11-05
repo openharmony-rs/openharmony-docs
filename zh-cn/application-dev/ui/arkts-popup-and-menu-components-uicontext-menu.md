@@ -5,26 +5,44 @@
 ## 弹出菜单
 
 通过[openMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#openmenu18)可以弹出菜单。
-   
-   ```ts
-   promptAction.openMenu(contentNode, { id: targetId }, {
-     enableArrow: true
-   })
-     .then(() => {
-       console.info('openMenu success');
-     })
-     .catch((err: BusinessError) => {
-       console.error('openMenu error: ' + err.code + ' ' + err.message);
-     })
-   ```
+
+ArkTS-Dyn示例：
+
+```ts
+promptAction.openMenu(contentNode, { id: targetId }, {
+  enableArrow: true
+})
+  .then(() => {
+    console.info('openMenu success');
+  })
+  .catch((err: BusinessError) => {
+    console.error('openMenu error: ' + err.code + ' ' + err.message);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+promptAction.openMenu(contentNode, { id: targetId }, {
+  enableArrow: true
+})
+  .then(() => {
+    console.info('openMenu success');
+  })
+  .catch((err: Error) => {
+    let code =  (err as BusinessError).code;
+    console.error('openMenu error: ' + code + ' ' + err.message);
+  })
+```
 
 ### 创建ComponentContent
    
    通过调用openMenu接口弹出菜单，需要提供用于定义自定义弹出框的内容[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
-   
-   ```ts
-   private contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message);
-   ```
+
+```ts
+let context = this.getUIContext();
+const contentNode = new ComponentContent(context, wrapBuilder(buildText));
+```
    
    如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
    
@@ -81,48 +99,104 @@
    
    通过调用openMenu接口弹出菜单，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/js-apis-arkui-UIContext.md#targetinfo18)。若未传入有效的target，则无法弹出菜单。
    
-   ```ts
-   let frameNode: FrameNode | null = this.ctx.getFrameNodeByUniqueId(this.getUniqueId());
-   let targetId = frameNode?.getChild(0)?.getUniqueId();
-   ```
+ArkTS-Dyn示例：
+
+```ts
+let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+let frameNodeTarget = frameNode?.getFirstChild();
+frameNodeTarget = frameNodeTarget?.getChild(0);
+let targetId = frameNodeTarget?.getUniqueId();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+let frameNodeTarget = frameNode?.getFirstChild();
+frameNodeTarget = frameNodeTarget?.getChild(0);
+if (frameNodeTarget == null) {
+  return;
+}
+let targetId = frameNodeTarget!.getUniqueId();
+```
 
 ### 设置弹出菜单样式
    
    通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
-   
-   ```ts
-   private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
-   ```
+
+ArkTS-Dyn示例：
+
+```ts
+let options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
+```
+
+ArkTS-Sta示例：
+
+```ts
+let options: MenuOptions = { enableArrow: true, placement: Placement.Bottom } as MenuOptions;
+```
 
 ## 更新菜单样式
 
 通过[updateMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
-   
-   ```ts
-   promptAction.updateMenu(contentNode, {
-     enableArrow: false
-   }, true)
-     .then(() => {
-       console.info('updateMenu success');
-     })
-     .catch((err: BusinessError) => {
-       console.error('updateMenu error: ' + err.code + ' ' + err.message);
-     })
-   ```
+
+ArkTS-Dyn示例：
+
+```ts
+promptAction.updateMenu(contentNode, {
+  enableArrow: false
+}, true)
+  .then(() => {
+    console.info('updateMenu success');
+  })
+  .catch((err: BusinessError) => {
+    console.error('updateMenu error: ' + err.code + ' ' + err.message);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+promptAction.updateMenu(contentNode, {
+  enableArrow: false
+}, true)
+  .then(() => {
+    console.info('updateMenu success');
+  })
+  .catch((err: Error) => {
+    let code =  (err as BusinessError).code;
+    console.error('updateMenu error: ' + code + ' ' + err.message);
+  })
+```
 
 ## 关闭菜单
 
 通过调用[closeMenu](../reference/apis-arkui/js-apis-arkui-UIContext.md#closemenu18)可以关闭菜单。
-   
-   ```ts
-   promptAction.closeMenu(contentNode)
-     .then(() => {
-       console.info('openMenu success');
-     })
-    .catch((err: BusinessError) => {
-      console.error('openMenu error: ' + err.code + ' ' + err.message);
-    })
-   ```
+
+ArkTS-Dyn示例：
+
+```ts
+promptAction.closeMenu(contentNode)
+  .then(() => {
+    console.info('closeMenu success');
+  })
+ .catch((err: BusinessError) => {
+   console.error('closeMenu error: ' + err.code + ' ' + err.message);
+ })
+```
+
+ArkTS-Sta示例：
+
+```ts
+promptAction.closeMenu(contentNode)
+  .then(() => {
+    console.info('closeMenu success');
+  })
+ .catch((err: BusinessError) => {
+   let code =  (err as BusinessError).code;
+   console.error('closeMenu error: ' + code + ' ' + err.message);
+ })
+```
 
 > **说明：**
 >

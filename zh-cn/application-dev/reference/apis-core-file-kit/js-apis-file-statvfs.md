@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -14,11 +15,17 @@ import { statfs } from '@kit.CoreFileKit';
 
 ## statfs.getFreeSize
 
-getFreeSize(path:string): Promise&lt;number&gt;
+ArkTS-Dyn: getFreeSize(path:string): Promise&lt;number&gt;
+
+ArkTS-Sta: getFreeSize(path:string): Promise&lt;long&gt;
 
 异步方法获取指定文件系统空闲字节数，以Promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -30,7 +37,7 @@ getFreeSize(path:string): Promise&lt;number&gt;
 
   | 类型                  | 说明           |
   | --------------------- | -------------- |
-  | Promise&lt;number&gt; | Promise对象，返回空闲字节数。 |
+  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回空闲字节数。 |
 
 **错误码：**
 
@@ -54,6 +61,7 @@ getFreeSize(path:string): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,21 +76,43 @@ getFreeSize(path:string): Promise&lt;number&gt;
     console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
   });
   ```
+ArkTS-Sta示例：
+<!--code_no_check-->
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
+
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path).then((number: long) => {
+    console.info(`Succeeded in getFreeSize, Size: ${number}`);
+  }).catch((error: Error) => {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to getFreeSize. Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
 
 ## statfs.getFreeSize
 
-getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getFreeSize(path:string, callback:AsyncCallback&lt;long&gt;): void
 
 异步方法获取指定文件系统空闲字节数，使用callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
   | 参数名   | 类型                        | 必填 | 说明                         |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | 是   | 需要查询的文件系统的文件路径。 |
-  | callback | AsyncCallback&lt;number&gt; | 是   | 异步获取空闲字节数之后的回调。 |
+  | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步获取空闲字节数之后的回调。 |
 
 **错误码：**
 
@@ -106,6 +136,7 @@ getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -122,14 +153,37 @@ getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
     }
   });
   ```
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+statfs.getFreeSize(path, (err: BusinessError | null, number: long | undefined) => {
+  if (err) {
+    console.error(`Failed to getFreeSize. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getFreeSize, Size: ${number}`);
+  }
+});
+```
 
 ## statfs.getFreeSizeSync<sup>10+</sup>
 
-getFreeSizeSync(path:string): number
+ArkTS-Dyn: getFreeSizeSync(path:string): number
+
+ArkTS-Sta: getFreeSizeSync(path:string): long
 
 以同步方法获取指定文件系统空闲字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -141,7 +195,7 @@ getFreeSizeSync(path:string): number
 
   | 类型                  | 说明           |
   | --------------------- | -------------- |
-  | number | 返回空闲字节数。 |
+  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回空闲字节数。 |
 
 **错误码：**
 
@@ -165,6 +219,7 @@ getFreeSizeSync(path:string): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { common } from '@kit.AbilityKit';
@@ -176,13 +231,31 @@ getFreeSizeSync(path:string): number
   console.info("getFreeSizeSync succeed, Size: " + number);
   ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+let num = statfs.getFreeSizeSync(path);
+console.info(`Succeeded in getFreeSizeSync, Size: ${num}`);
+```
+
 ## statfs.getTotalSize
 
-getTotalSize(path: string): Promise&lt;number&gt;
+ArkTS-Dyn: getTotalSize(path: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getTotalSize(path: string): Promise&lt;long&gt;
 
 异步方法获取指定文件系统总字节数，以Promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -194,7 +267,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | Promise&lt;number&gt; | Promise对象，返回总字节数。 |
+  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回总字节数。 |
 
 **错误码：**
 
@@ -218,6 +291,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -232,21 +306,44 @@ getTotalSize(path: string): Promise&lt;number&gt;
     console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
   });
   ```
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+statfs.getTotalSize(path).then((number: long) => {
+  console.info("getTotalSize succeed, Size: " + number);
+  console.info(`Succeeded in getTotalSize, Size: ${number}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to getTotalSize. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## statfs.getTotalSize
 
-getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getTotalSize(path: string, callback: AsyncCallback&lt;long&gt;): void
 
 异步方法获取指定文件系统总字节数，使用callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
   | 参数名   | 类型                        | 必填 | 说明                         |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | 是   | 需要查询的文件系统的文件路径。 |
-  | callback | AsyncCallback&lt;number&gt; | 是   | 异步获取总字节数之后的回调。   |
+  | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步获取总字节数之后的回调。   |
 
 **错误码：**
 
@@ -270,6 +367,7 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -286,14 +384,37 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
     }
   });
   ```
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+statfs.getTotalSize(path, (err: BusinessError | null, number: long | undefined) => {
+  if (err) {
+    console.error(`Failed to getTotalSize. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getTotalSize, Size: ${number}`);
+  }
+});
+```
 
 ## statfs.getTotalSizeSync<sup>10+</sup>
 
-getTotalSizeSync(path: string): number
+ArkTS-Dyn: getTotalSizeSync(path: string): number
+
+ArkTS-Sta: getTotalSizeSync(path: string): long
 
 以同步方法获取指定文件系统总字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -305,7 +426,7 @@ getTotalSizeSync(path: string): number
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | number | 返回总字节数。 |
+  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回总字节数。 |
 
 **错误码：**
 
@@ -329,6 +450,7 @@ getTotalSizeSync(path: string): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
   ```ts
   import { common } from '@kit.AbilityKit';
@@ -339,3 +461,15 @@ getTotalSizeSync(path: string): number
   let number = statfs.getTotalSizeSync(path);
   console.info("getTotalSizeSync succeed, Size: " + number);
   ```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+let num = statfs.getTotalSizeSync(path);
+console.info(`Succeeded in getTotalSizeSync, Size: ${num}`);
+```

@@ -20,6 +20,10 @@ pdfArrayBuffer(): Uint8Array
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型       | 说明     |

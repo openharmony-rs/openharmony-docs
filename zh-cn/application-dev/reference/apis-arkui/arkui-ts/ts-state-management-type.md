@@ -12,7 +12,7 @@
 
 @Type装饰类属性，用于状态管理V1中，可以实现序列化类时不丢失属性的复杂类型。
 
-在动态语言上下文中使用时，开发指南参考：[@Type装饰器：标记类属性的类型（ArkTS-DT）](../../../ui/state-management/arkts-new-type.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Type装饰器：标记类属性的类型（ArkTS-Dyn）](../../../ui/state-management/arkts-new-type.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

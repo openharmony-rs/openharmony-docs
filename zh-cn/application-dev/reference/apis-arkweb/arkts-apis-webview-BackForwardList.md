@@ -20,26 +20,34 @@ import { webview } from '@kit.ArkWeb';
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| currentIndex | ArkTS1.1: number<br>ArkTS1.2: int | 否   | 否   | 当前在页面历史列表中的索引。                                 |
-| size         | ArkTS1.1: number<br>ArkTS1.2: int | 否   | 否   | 历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。 |
+| currentIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 当前在页面历史列表中的索引。                                 |
+| size         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 历史列表中索引的数量，最多保存50条，超过时起始记录会被覆盖。 |
 
 ## getItemAtIndex
 
-ArkTS1.1: getItemAtIndex(index: number): HistoryItem
+ArkTS-Dyn: getItemAtIndex(index: number): HistoryItem
 
-ArkTS1.2: getItemAtIndex(index: int): HistoryItem
+ArkTS-Sta: getItemAtIndex(index: int): HistoryItem
 
 获取历史列表中指定索引的历史记录项信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| index  | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 指定历史列表中的索引。 |
+| index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定历史列表中的索引。 |
 
 **返回值：**
 
@@ -57,7 +65,7 @@ ArkTS1.2: getItemAtIndex(index: int): HistoryItem
 
 **示例：**
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -89,13 +97,13 @@ struct WebComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import webview from '@ohos.web.webview';
-import { Text, Entry, Column, Component, BusinessError, Button, Web, ClickEvent } from '@ohos.arkui.component';
-import type image from '@ohos.multimedia.image';
-import { State } from '@ohos.arkui.stateManagement';
+import { State, Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
 
 @Entry
 @Component
@@ -104,9 +112,9 @@ struct WebComponent {
   @State icon: image.PixelMap | undefined = undefined;
 
   build() {
-    Column(undefined) {
+    Column() {
       Button('getBackForwardEntries')
-        .onClick((e: ClickEvent) => {
+        .onClick(() => {
           try {
             let list = this.controller.getBackForwardEntries();
             let historyItem = list.getItemAtIndex(list.currentIndex);

@@ -68,16 +68,23 @@ ArkTS-Sta示例：
 
 import { Column, ContentSlot, Entry, Component } from '@ohos.arkui.component';
 import { Content, NodeContent } from '@ohos.arkui.node';
-import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so。
 
+class Native {
+  static {
+    loadLibrary("entry")
+  }
+
+  native createNativeNode(content: NodeContent): void;
+}
 @Entry
 @Component
 struct Parent {
   private nodeContent: Content = new NodeContent();
+  private nativeNode: Native = new Native();
 
   aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上。
-    nativeNode.createNativeNode(this.nodeContent);
+    this.nativeNode.createNativeNode(this.nodeContent as NodeContent);
   }
 
   build() {

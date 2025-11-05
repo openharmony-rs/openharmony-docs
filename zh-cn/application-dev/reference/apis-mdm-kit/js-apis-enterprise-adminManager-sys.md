@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放。
@@ -646,7 +648,9 @@ getSuperAdmin(): Promise\<Want>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：12
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 
@@ -798,7 +802,9 @@ getEnterpriseInfo(admin: Want, callback: AsyncCallback&lt;EnterpriseInfo&gt;): v
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：9
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 
@@ -846,7 +852,9 @@ getEnterpriseInfo(admin: Want): Promise&lt;EnterpriseInfo&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：9
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 

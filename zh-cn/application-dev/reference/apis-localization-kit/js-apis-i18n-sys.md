@@ -8,6 +8,8 @@
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 >
 >  - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.i18n (国际化-I18n)](js-apis-intl.md)。
+>
+>  - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 
 ## 导入模块
@@ -210,7 +212,9 @@ static set24HourClock(option: boolean): void
 
 ### addPreferredLanguage<sup>9+</sup>
 
-static addPreferredLanguage(language: string, index?: number): void
+ArkTS-Dyn: static addPreferredLanguage(language: string, index?: number): void
+
+ArkTS-Sta: static addPreferredLanguage(language: string, index?: int): void
 
 在系统偏好语言列表的指定位置添加偏好语言。
 
@@ -225,7 +229,7 @@ static addPreferredLanguage(language: string, index?: number): void
 | 参数名      | 类型     | 必填   | 说明         |
 | -------- | ------ | ---- | ---------- |
 | language | string | 是    | 待添加的偏好语言，要求是合法的语言ID。  |
-| index    | number | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
+| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -254,7 +258,9 @@ static addPreferredLanguage(language: string, index?: number): void
 
 ### removePreferredLanguage<sup>9+</sup>
 
-static removePreferredLanguage(index: number): void
+ArkTS-Dyn: static removePreferredLanguage(index: number): void
+
+ArkTS-Sta: static removePreferredLanguage(index: int): void
 
 从系统偏好语言列表中移除指定位置的偏好语言。
 
@@ -268,7 +274,7 @@ static removePreferredLanguage(index: number): void
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | --------------------- |
-| index | number | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
 
 **错误码：**
 
@@ -285,7 +291,7 @@ static removePreferredLanguage(index: number): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 删除系统偏好语言列表中的第一个偏好语言
-  let index: number = 0;
+  let index = 0;
   try {
     i18n.System.removePreferredLanguage(index);
   } catch(error) {

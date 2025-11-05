@@ -933,6 +933,7 @@
 | int32_t [OH_ArkUI_NativeModule_GetNodeHandleFromAniValue](#oh_arkui_nativemodule_getnodehandlefromanivalue)  (ani_env* env, ani_object frameNode, [ArkUI_NodeHandle](#arkui_nodehandle) \*handle) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。<br />**起始版本：** 20  | 
 | int32_t [OH_ArkUI_NativeModule_GetContextFromAniValue](#oh_arkui_nativemodule_getcontextfromanivalue)  (ani_env* env, ani_object context, [ArkUI_ContextHandle](_ark_u_i___native_module.md#arkui_contexthandle-12) \*handle) | 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。<br />**起始版本：** 20  | 
 | int32_t [OH_ArkUI_NativeModule_GetNodeContentFromAniValue](#oh_arkui_nativemodule_getnodecontentfromanivalue)  (ani_env* env, ani_object nodeContent, [ArkUI_NodeContentHandle](#arkui_nodecontenthandle) \*content) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。<br />**起始版本：** 20  | 
+| ArkUI_ErrorCode [OH_ArkUI_NativeModule_GetNavDestinationAniParam](#oh_arkui_nativemodule_getnavdestinationaniparam)  (ArkUI_NodeHandle node, ani_env* env, ani_value* param) | 获取指定节点所在的NavDestination页面的参数。<br />**起始版本：** 20  | 
 
 
 ## 宏定义说明
@@ -19731,3 +19732,26 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env* env, ani_objec
 **返回：**
 
 [ARKUI_ERROR_CODE_NO_ERROR](_ark_u_i___native_module.md#arkui_errorcode) 成功。 [ARKUI_ERROR_CODE_PARAM_INVALID](_ark_u_i___native_module.md#arkui_errorcode) 函数参数异常。
+
+### OH_ArkUI_NativeModule_GetNavDestinationAniParam()
+
+```
+ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle node, ani_env* env, ani_value* param)
+```
+**描述：**
+
+获取指定节点所在的NavDestination页面的参数。
+
+**起始版本：** 20
+
+**参数:**
+
+| 名称 | 描述 |
+| -------- | -------- |
+| node | 指定的节点。 |
+| env | ANI的环境指针。  |
+| param | 返回的页面参数。 |
+
+**返回：**
+
+[ARKUI_ERROR_CODE_NO_ERROR](_ark_u_i___native_module.md#arkui_errorcode) 成功。[ARKUI_ERROR_CODE_PARAM_INVALID](_ark_u_i___native_module.md#arkui_errorcode) 函数参数异常。[ARKUI_ERROR_CODE_GET_INFO_FAILED](_ark_u_i__native_module.md#arkui_errorcode) 查询页面参数信息失败。

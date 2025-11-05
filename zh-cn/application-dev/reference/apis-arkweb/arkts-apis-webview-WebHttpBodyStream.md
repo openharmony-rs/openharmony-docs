@@ -132,6 +132,10 @@ ArkTS-Sta: read(size: int): Promise\<ArrayBuffer\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
@@ -166,6 +170,10 @@ ArkTS-Sta: getSize(): long
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -186,6 +194,10 @@ ArkTS-Sta: getPosition(): long
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -203,6 +215,10 @@ isChunked(): boolean
 WebHttpBodyStream是否采用分块传输。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -222,6 +238,10 @@ isEof(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -239,6 +259,10 @@ isInMemory(): boolean
 判断WebHttpBodyStream中的上传数据是否在内存中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

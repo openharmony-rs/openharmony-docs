@@ -1,12 +1,16 @@
 # UI并行化创建组件树
-从API version 20开始，UI可以并行创建组件树，从而降低组件创建时延并提升应用的流畅度。执行并行构建的部分不会在当帧立即渲染，因此这些内容一般为屏幕外、可延迟显示或可用占位符替代的内容。
+从API version 20开始，UI可以并行创建组件树，从而降低组件创建时延并提升应用的流畅度。
 ## 概述
 随着用户对应用响应速度和流畅度提出的更高要求，传统单线程UI渲染方式已无法满足日益复杂UI和数据处理需求，UI卡顿、响应迟缓等问题严重影响用户体验。基于上述问题，ArkUI提出声明式下部分UI并行化创建方案。开发者可指定并行内容，减少组件创建时延，提升用户体验。
 
+适用场景：需要对现有复杂页面进行拆分。执行并行构建的部分不会在当前帧立即渲染，因此执行并行的内容一般为屏幕外的内容、可以延迟显示的内容或者可以先用占位替代需要显示的内容。如该页面可以将当前帧显示的内容串行创建，屏幕外的内容并行创建。
+
+![ui_parallel003](figures/page.png)
+
 ## 约束与限制
-  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)创建[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)传递到[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部使用。
-  * 当前ParallelizeUI仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。
-  * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。
+  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)创建[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)传递到[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部使用。尝试使用外部定义的状态变量可能会导致读写安全问题。
+  * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部只能使用上述组件，其他组件将触发运行时错误，导致应用崩溃。
+  * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持并行化创建，创建完成后的更新操作仍在主线程完成。
 
 
@@ -70,7 +74,8 @@ struct Index {
 ```
 ![ui_parallel003](figures/ui_parallel003.png)
 
-## 并行化创建组件
+
+## 并行化创建组件示例
 
 并行创建的UI在创建完成后的下一帧才能合并显示，页面需要多帧才能显示全部内容。
 
@@ -193,4 +198,8 @@ struct Page {
 
 ```
 ![ui_parallel003](figures/ui_parallel004.gif)
+
+## 相关实例
+
+[使用声明式的并行化方法创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/ParallelizeUI/README.md)
 

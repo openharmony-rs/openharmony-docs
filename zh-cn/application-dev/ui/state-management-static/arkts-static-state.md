@@ -8,7 +8,7 @@
 
 \@State装饰的变量拥有以下特点：
 
-- @State装饰的变量与子组件中的[@PropRef](arkts-static-propref.md)装饰变量建立单向数据同步，与@Link、@ObjectLink装饰变量建立双向数据同步。
+- @State装饰的变量与子组件中的[@PropRef](arkts-static-propref.md)装饰变量建立单向数据同步，与[@Link](./arkts-static-link.md)、[@ObjectLink](./arkts-static-observed-and-objectlink.md)装饰变量建立双向数据同步。
 
 - \@State装饰的变量生命周期与其所属自定义组件的生命周期相同。
 
@@ -23,7 +23,7 @@ import { State } from '@ohos.arkui.stateManagement';
 | \@State变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
 | 初始化规则         | 必须定义本地默认值。<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。 |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@State初始化时，仅作为初始值，后续变量的变化不会同步至\@State。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、[\@Provide](arkts-static-provide-and-consume.md)。<br/>\@State变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
@@ -101,6 +101,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 当装饰Date时，可以观察到Date的赋值，并通过调用`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`接口更新Date的属性。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   @Entry
@@ -143,6 +145,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
 
   ```ts
+  'use static'
+
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -193,6 +197,8 @@ import { State } from '@ohos.arkui.stateManagement';
 - 仅Button组件执行更新方法，实现按需刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -214,6 +220,8 @@ struct MyComponent {
 在下面的示例中，message类型为Map\<number, string\>，点击Button改变其值，视图随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, ForEach, Divider, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -257,6 +265,8 @@ struct MapSample {
 在下面的示例中，message类型为Set\<number\>，点击Button改变其值，视图随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Row, Column, ForEach, Divider, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry
@@ -296,6 +306,8 @@ struct SetSample {
 \@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为number | undefined，点击Button改变count的值或类型，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Entry

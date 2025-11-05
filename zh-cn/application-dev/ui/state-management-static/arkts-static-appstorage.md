@@ -148,26 +148,35 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
 
 1. \@StoragePropRef、\@StorageLink的参数必须为string类型，否则编译期会报错。
 
-  ```ts
-  import { Entry, Column, Component } from '@ohos.arkui.component';
-  import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
+    ```ts
+    'use static'
 
-  AppStorage.setOrCreate('PropA', 47);
-  
-  @Entry
-  @Component
-  struct Index {
-    // 错误写法，编译报错
-    // @StoragePropRef() storageProp: number = 1;
-    // @StorageLink() storageLink: number = 2;
-  
-    // 正确写法
-    @StoragePropRef('PropA') storageProp: number = 1;
-    @StorageLink('PropA') storageLink: number = 2;
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
+    import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
 
-    build() {}
-  }
-  ```
+    @Entry
+    @Component
+    struct Index {
+      // 错误写法，编译报错
+      // @StoragePropRef() storageProp: int = 1;
+      // @StorageLink() storageLink: int = 2;
+
+      // 正确写法
+      @StoragePropRef('PropA') storageProp: int = 1;
+      @StorageLink('PropA') storageLink: int = 2;
+      // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+      static {
+        AppStorage.setOrCreate<int>('PropA', 47); 
+      }
+
+      build() {
+        Column() {
+          Text(`storageProp ${this.storageProp}`)
+          Text(`storageLink ${this.storageLink}`)
+        }
+      }
+    }
+    ```
 
 2.AppStorage与[PersistentStorage](arkts-static-persiststorage.md)和[Environment](arkts-static-environment.md)配合使用时，需要注意以下几点：：
 
@@ -213,6 +222,8 @@ link2!.get() // == 49
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, AppStorage, StorageLink, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -224,9 +235,6 @@ class Data {
   }
 }
 
-AppStorage.setOrCreate('PropA', 47);
-AppStorage.setOrCreate('PropB', new Data(50));
-
 @Entry
 @Component
 struct Index {
@@ -234,6 +242,10 @@ struct Index {
   @LocalStorageLink('LinkA') localStorageLink: number = 1;
   @StorageLink('PropB') storageLinkObject: Data = new Data(1);
   @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+  static {
+    AppStorage.setOrCreate<Double>('PropA', 47);
+    AppStorage.setOrCreate<Data>('PropB', new Data(50));
+  }
 
   build() {
     Column() {
@@ -270,6 +282,8 @@ struct Index {
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { AppStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
@@ -333,6 +347,8 @@ struct Index {
 以下示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -374,6 +390,8 @@ struct DateSample {
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -415,6 +433,8 @@ struct MapSample {
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 

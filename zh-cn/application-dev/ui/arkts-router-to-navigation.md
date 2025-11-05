@@ -19,7 +19,7 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 // index.ets
@@ -87,7 +87,7 @@ struct pageOne {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 // index.ets
@@ -232,17 +232,41 @@ export struct PageOne {
 
 Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UIContext](../reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中的[getRouter](../reference/apis-arkui/js-apis-arkui-UIContext.md#getrouter)获取[Router](../reference/apis-arkui/js-apis-arkui-UIContext.md#router)实例。
 
+ArkTS-Dyn示例：
+
 ```ts
-// push page
+// push页面入栈
+router.pushUrl({ url:"pages/pageOne", params: null });
+
+// pop页面出栈
+router.back({ url: "pages/pageOne" });
+
+// replace替换页面
+router.replaceUrl({ url: "pages/pageOne" });
+
+// 清除所有页面
+router.clear();
+
+// 获取页面栈大小
+let size = router.getLength();
+
+// 获取页面状态
+let pageState = router.getState();
+```
+
+ArkTS-Sta示例：
+
+```ts
+// push页面入栈
 this.getUIContext().getRouter().pushUrl({ url:"pages/pageOne", params: null });
 
-// pop page
+// pop页面出栈
 this.getUIContext().getRouter().back({ url: "pages/pageOne" });
 
-// replace page
+// replace替换页面
 this.getUIContext().getRouter().replaceUrl({ url: "pages/pageOne" });
 
-// clear all page
+// 清除所有页面
 this.getUIContext().getRouter().clear();
 
 // 获取页面栈大小
@@ -254,7 +278,7 @@ let pageState = this.getUIContext().getRouter().getState();
 
 Navigation通过导航控制器对象[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -262,120 +286,53 @@ ArkTS1.1示例：
 struct Index {
   pathStack: NavPathStack = new NavPathStack();
 
-  build() {
-    // 设置NavPathStack并传入Navigation
+  build() { // 设置NavPathStack并传入Navigation
     Navigation(this.pathStack) {
-      // ...
-    }.width('100%').height('100%')
-    .title("Navigation")
-    .mode(NavigationMode.Stack)
+      Button('push page').onClick(() => {
+        this.pathStack.pushPath({ name: 'pageOne' });
+      })
+      Button('pop page').onClick(() => {
+        this.pathStack.pop();
+        this.pathStack.popToIndex(1);
+        this.pathStack.popToName('pageOne');
+      })
+      Button('replace page').onClick(() => {
+        this.pathStack.replacePath({ name: 'pageOne' });
+      })
+      Button('clear all page').onClick(() => {
+        this.pathStack.clear();
+      })
+      Button('get stack size').onClick(() => {
+        let size: number = this.pathStack.size();
+      })
+      Button('删除栈中name为PageOne的所有页面').onClick(() => {
+        this.pathStack.removeByName("pageOne");
+      })
+      Button('删除指定索引的页面').onClick(() => {
+        this.pathStack.removeByIndexes([1, 3, 5]);
+      })
+      Button('获取栈中所有页面name集合').onClick(() => {
+        this.pathStack.getAllPathName();
+      })
+      Button('获取索引为1的页面参数').onClick(() => {
+        this.pathStack.getParamByIndex(1);
+      })
+      Button('获取PageOne页面的参数').onClick(() => {
+        this.pathStack.getParamByName("pageOne");
+      })
+      Button('获取PageOne页面的索引集合').onClick(() => {
+        this.pathStack.getIndexByName("pageOne");
+      })
+    }.width('100%').height('100%').title("Navigation").mode(NavigationMode.Stack)
   }
 }
-
-
-// push page
-this.pathStack.pushPath({ name: 'pageOne' });
-
-// pop page
-this.pathStack.pop();
-this.pathStack.popToIndex(1);
-this.pathStack.popToName('pageOne');
-
-// replace page
-this.pathStack.replacePath({ name: 'pageOne' });
-
-// clear all page
-this.pathStack.clear();
-
-// 获取路由栈大小
-let size: number = this.pathStack.size();
-
-// 删除栈中name为PageOne的所有页面
-this.pathStack.removeByName("pageOne");
-
-// 删除指定索引的页面
-this.pathStack.removeByIndexes([1, 3, 5]);
-
-// 获取栈中所有页面name集合
-this.pathStack.getAllPathName();
-
-// 获取索引为1的页面参数
-this.pathStack.getParamByIndex(1);
-
-// 获取PageOne页面的参数
-this.pathStack.getParamByName("pageOne");
-
-// 获取PageOne页面的索引集合
-this.pathStack.getIndexByName("pageOne");
-// ...
 ```
-
-ArkTS1.2示例：
-
-在ArkTS1.2上通过Navigation设置路由操作时，需导入Navigation，NavPathStack，NavigationMode。
-
-```ts
-import { Entry, Component, NavPathStack, Navigation, NavigationMode } from '@ohos.arkui.component';
-
-@Entry
-@Component
-struct Index {
-  pathStack: NavPathStack = new NavPathStack();
-
-  build() {
-    // 设置NavPathStack并传入Navigation
-    Navigation(this.pathStack) {
-      // ...
-    }.width('100%').height('100%')
-    .title("Navigation")
-    .mode(NavigationMode.Stack)
-  }
-}
-
-
-// push page
-this.pageStack.pushPath(info, {} as NavigationOptions);
-
-// pop page
-this.pageStack.pop(new Object(), true);
-this.pageStack.popToIndex(1, new Object(), true);
-this.pageStack.popToName("PageOne", new Object(), true);
-
-// replace page
-this.pageStack.replacePath(info, {} as NavigationOptions);
-
-// clear all page
-this.pathStack.clear();
-
-// 获取路由栈大小
-let size: number = this.pathStack.size();
-
-// 删除栈中name为PageOne的所有页面
-this.pathStack.removeByName("pageOne");
-
-// 删除指定索引的页面
-this.pathStack.removeByIndexes([1, 3, 5]);
-
-// 获取栈中所有页面name集合
-this.pathStack.getAllPathName();
-
-// 获取索引为1的页面参数
-this.pathStack.getParamByIndex(1);
-
-// 获取PageOne页面的参数
-this.pathStack.getParamByName("pageOne");
-
-// 获取PageOne页面的索引集合
-this.pathStack.getIndexByName("pageOne");
-// ...
-```
-
 
 Router作为全局通用模块，可以在任意页面中调用，Navigation作为组件，子页面想要做路由需要拿到Navigation持有的导航控制器对象NavPathStack，可以通过如下几种方式获取：
 
 **方式一**：通过`@Provide`和`@Consume`传递给子页面（有耦合，不推荐）。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 // Navigation根容器
@@ -409,9 +366,9 @@ export struct PageOne {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
-在ArkTS1.2上通过`@Provide`和`@Consume`传递给子页面时，需导入Provide，Consume。
+在ArkTS-Sta上通过`@Provide`和`@Consume`传递给子页面时，需导入Provide和Consume。
 
 ```ts
 // Navigation根容器
@@ -461,7 +418,7 @@ export struct PageOne { // NavDestination通过Consume获取到
 
 **方式二**：子页面通过`OnReady`回调获取。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 @Component
@@ -479,9 +436,9 @@ export struct PageOne {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
-在ArkTS1.2上子页面通过`OnReady`回调获取，使用时需导入NavDestinationContext，Callback。
+在ArkTS-Sta上子页面通过`OnReady`回调获取，使用时需导入NavDestinationContext和Callback。
 
 ```ts
 let pathStack: NavPathStack = new NavPathStack();
@@ -536,7 +493,7 @@ export struct PageOne {
 
 **方式四**：通过自定义组件查询接口获取，参考[queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 // 子页面中的自定义组件
@@ -563,9 +520,9 @@ struct CustomNode {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
-在ArkTS1.2上通过自定义组件查询接口获取时，需先导入NavigationInfo。
+在ArkTS-Sta上通过自定义组件查询接口获取时，需先导入NavigationInfo。
 
 ```ts
 // 子页面中的自定义组件
@@ -841,7 +798,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 Router可以通过observer实现注册监听，接口定义请参考Router无感监听[observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { uiObserver } from '@kit.ArkUI';
@@ -857,9 +814,9 @@ uiObserver.on('routerPageUpdate', this.context, callBackFunc);
 uiObserver.on('routerPageUpdate', this.getUIContext(), callBackFunc);
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
-在ArkTS1.2上Router通过observer实现注册监听时，需先导入UIContext，UIObserver。
+在ArkTS-Sta上Router通过observer实现注册监听时，需先导入UIContext和UIObserver。
 
 ```ts
 import { UIContext, UIObserver } from '@ohos.arkui.UIContext';
@@ -877,7 +834,7 @@ uiObserver.on('routerPageUpdate', this.getUIContext(), callBackFunc);
 
 Navigation同样可以通过在observer中实现注册监听。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -908,9 +865,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
-在ArkTS1.2上Navigation通过observer实现注册监听时，需先导入UIContext，UIObserver。
+在ArkTS-Sta上Navigation通过observer实现注册监听时，需先导入UIContext和UIObserver。
 
 ```ts
 // EntryAbility.ets
@@ -960,7 +917,7 @@ Router可以通过[queryRouterPageInfo](../reference/apis-arkui/arkui-ts/ts-cust
 | state                | RouterPageState             | 是   | routerPage页面的状态。           |
 | pageId<sup>12+</sup> | string                      | 是   | routerPage页面的唯一标识。       |
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { uiObserver } from '@kit.ArkUI';
@@ -978,7 +935,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import uiObserver from '@ohos.arkui.observer';
@@ -1007,7 +964,7 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | param<sup>12+<sup>            | Object              | 否   | NavDestination组件的参数。                   |
 | navDestinationId<sup>12+<sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 ```ts
 import { uiObserver } from '@kit.ArkUI';
@@ -1036,7 +993,7 @@ struct MyComponent {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ```ts
 import uiObserver from '@ohos.arkui.observer';

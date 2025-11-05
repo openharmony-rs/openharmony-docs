@@ -1,13 +1,20 @@
 # @ohos.ai.mindSporeLite (端侧AI框架)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 MindSpore Lite是一个轻量化、高性能的端侧AI引擎，提供了标准的模型推理和训练接口，内置通用硬件高性能算子库，支持Neural Network Runtime Kit使能AI专用芯片加速推理，助力打造全场景智能应用。
 
 本模块主要介绍MindSpore Lite AI引擎支持模型端侧推理/训练的相关能力。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。示例代码使用模型均为MindSpore端侧模型。
-> 
 > - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -20,16 +27,31 @@ import { mindSporeLite } from '@kit.MindSporeLiteKit';
 
 loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
-从完整路径加载输入模型用于推理。使用callback异步回调。
+从完整路径加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                     |
-| -------- | ------------------------- | ---- | ------------------------ |
-| model    | string                    | 是   | 模型的完整输入路径。     |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| 参数名   | 类型                      | 必填 | 说明                                             |
+| -------- | ------------------------- | ---- | ------------------------------------------------ |
+| model    | string                    | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000000  | Model path error. Possible causes: 1. The model path is nul l; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000002  | Failed to create native model. Possible causes: 1. Insufficient permission to access the model path; 2. The model file is corrupted.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -37,7 +59,11 @@ loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 let modelFile : string = '/path/to/xxx.ms';
 mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ## mindSporeLite.loadModelFromFile
@@ -48,13 +74,28 @@ loadModelFromFile(model: string, context: Context, callback: Callback&lt;Model&g
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | string                              | 是   | 模型的完整输入路径。   |
+| model    | string                              | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
 | context | [Context](#context) | 是 | 运行环境的配置信息。 |
 | callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000000  | Model path error. Possible causes: 1. The model path is nul l; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000002  | Failed to create native model. Possible causes: 1. Insufficient permission to access the model path; 2. The model file is corrupted.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -64,7 +105,11 @@ context.target = ['cpu'];
 let modelFile : string = '/path/to/xxx.ms';
 mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ## mindSporeLite.loadModelFromFile
@@ -75,12 +120,16 @@ loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名  | 类型                | 必填 | 说明                                          |
-| ------- | ------------------- | ---- | --------------------------------------------- |
-| model   | string              | 是   | 模型的完整输入路径。                          |
-| context | [Context](#context) | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。 |
+| 参数名  | 类型                | 必填 | 说明                                             |
+| ------- | ------------------- | ---- | ------------------------------------------------ |
+| model   | string              | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
+| context | [Context](#context) | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。    |
 
 **返回值：**
 
@@ -88,22 +137,41 @@ loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 | ------------------------- | ---------------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000000  | Model path error. Possible causes: 1. The model path is nul l; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000002  | Failed to create native model. Possible causes: 1. Insufficient permission to access the model path; 2. The model file is corrupted.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
 mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ## mindSporeLite.loadModelFromBuffer
 
 loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
-从内存加载输入模型用于推理。使用callback异步回调。
+从内存加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -112,12 +180,23 @@ loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 | model    | ArrayBuffer               | 是   | 包含模型的内存。         |
 | callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000004  | Model buffer error. Possible causes: 1. The buffer size is 0; 2. The buffer is a null pointer.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000005  | Failed to create native model from buffer. Possible causes: 1. The buffer size is incorrect; 2. The buffer file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -127,7 +206,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
     let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
     console.info('MS_LITE_LOG: ' + modelInputs[0].name);
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -137,6 +218,10 @@ loadModelFromBuffer(model: ArrayBuffer, context: Context, callback: Callback&lt;
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                   |
@@ -145,12 +230,23 @@ loadModelFromBuffer(model: ArrayBuffer, context: Context, callback: Callback&lt;
 | context | [Context](#context) | 是  | 运行环境的配置信息。 |
 | callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000004  | Model buffer error. Possible causes: 1. The buffer size is 0; 2. The buffer is a null pointer.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000005  | Failed to create native model from buffer. Possible causes: 1. The buffer size is incorrect; 2. The buffer file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -162,7 +258,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
     let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
     console.info('MS_LITE_LOG: ' + modelInputs[0].name);
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -171,6 +269,10 @@ loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt;
 从内存加载输入模型用于推理。使用Promise异步函数。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -185,12 +287,23 @@ loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt;
 | ------------------------------- | ---------------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000003  | Error in model loading method. Possible causes: 1. The loading method must be path, buffer, or fd.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000004  | Model buffer error. Possible causes: 1. The buffer size is 0; 2. The buffer is a null pointer.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000005  | Failed to create native model from buffer. Possible causes: 1. The buffer size is incorrect; 2. The buffer file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -200,22 +313,39 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
     let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
     console.info('MS_LITE_LOG: ' + modelInputs[0].name);
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 ## mindSporeLite.loadModelFromFd
 
-loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
+ArkTS-Dyn: loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
-从文件描述符加载输入模型用于推理。使用callback异步回调。
+ArkTS-Sta: loadModelFromFd(model: int, callback: Callback&lt;Model&gt;): void
+
+从文件描述符加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | number                         | 是   | 模型的文件描述符。 |
+| model    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 模型的文件描述符。跟随文件系统返回fd值传入。 |
 | callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000007  | Failed to create native model from file descriptor (fd). Possible causes: 1. The file descriptor (fd) is incorrect; 2. The model file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -225,24 +355,43 @@ let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ## mindSporeLite.loadModelFromFd
 
-loadModelFromFd(model: number, context: Context, callback: Callback&lt;Model&gt;): void
+ArkTS-Dyn: loadModelFromFd(model: number, context: Context, callback: Callback&lt;Model&gt;): void
+
+ArkTS-Sta: loadModelFromFd(model: int, context: Context, callback: Callback&lt;Model&gt;): void
 
 从文件描述符加载输入模型用于推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | number                   | 是   | 模型的文件描述符。 |
+| model    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 模型的文件描述符。跟随文件系统返回fd值传入。 |
 | context | [Context](#context) | 是  | 运行环境的配置信息。 |
 | callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000007  | Failed to create native model from file descriptor (fd). Possible causes: 1. The file descriptor (fd) is incorrect; 2. The model file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -254,29 +403,48 @@ context.target = ['cpu'];
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ## mindSporeLite.loadModelFromFd
 
-loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
+ArkTS-Dyn: loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
+
+ArkTS-Sta: loadModelFromFd(model: int, context?: Context): Promise&lt;Model&gt;
 
 从文件描述符加载输入模型用于推理。使用Promise异步函数。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名  | 类型                | 必填 | 说明                                          |
-| ------- | ------------------- | ---- | --------------------------------------------- |
-| model   | number              | 是   | 模型的文件描述符。                            |
-| context | [Context](#context) | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。 |
+| 参数名  | 类型                                 | 必填 | 说明                                          |
+| ------- | ------------------------------------ | ---- | --------------------------------------------- |
+| model   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 模型的文件描述符。跟随文件系统返回fd值传入。  |
+| context | [Context](#context)                  | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。 |
 
 **返回值：**
 
 | 类型                      | 说明                         |
 | ------------------------- | ---------------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000007  | Failed to create native model from file descriptor (fd). Possible causes: 1. The file descriptor (fd) is incorrect; 2. The model file is damaged.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -286,7 +454,11 @@ let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.Model) => {
   let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 
@@ -298,13 +470,17 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                    | 必填 | 说明                                           |
-| -------- | ----------------------- | ---- | ---------------------------------------------- |
-| model    | string                  | 是   | 模型的完整输入路径。                           |
-| trainCfg | [TrainCfg](#traincfg12) | 否   | 模型训练配置。默认值为TrainCfg各属性默认值。   |
-| context  | [Context](#context)     | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。 |
+| 参数名   | 类型                    | 必填 | 说明                                             |
+| -------- | ----------------------- | ---- | ------------------------------------------------ |
+| model    | string                  | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
+| trainCfg | [TrainCfg](#traincfg12) | 否   | 模型训练配置。默认值为TrainCfg各属性默认值。     |
+| context  | [Context](#context)     | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。    |
 
 **返回值：**
 
@@ -312,13 +488,27 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 | ------------------------ | -------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000008  | Invalid model path in training. Possible causes: 1. The model path is null; 2. The model path does not exist.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000009  | Failed to create native training model from path. Possible causes: 1. The model file is incorrect; 2. The training configuration is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
 mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 
@@ -329,6 +519,10 @@ loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Cont
 从内存缓冲区加载训练模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -344,12 +538,22 @@ loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Cont
 | ------------------------ | -------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000010  | Invalid model buffer in training. Possible causes: 1. The model buffer size is incorrect; 2. The model buffer is null.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000011  | Failed to create native training model from buffer. Possible causes: 1. The model buffer is incorrect; 2. The training configuration is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -358,30 +562,47 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
   mindSporeLite.loadTrainModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
     console.info("MSLITE trainMode: ", mindSporeLiteModel.trainMode);
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ## mindSporeLite.loadTrainModelFromFd<sup>12+</sup>
 
-loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
+ArkTS-Dyn: loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
+
+ArkTS-Sta: loadTrainModelFromFd(model: int, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
 
 从文件描述符加载训练模型文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                    | 必填 | 说明                                          |
-| -------- | ----------------------- | ---- | --------------------------------------------- |
-| model    | number                  | 是   | 训练模型的文件描述符。                        |
-| trainCfg | [TrainCfg](#traincfg12) | 否   | 模型训练配置。默认值为TrainCfg各属性默认值。  |
-| context  | [Context](#context)     | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。 |
+| 参数名   | 类型                                 | 必填 | 说明                                             |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------ |
+| model    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 训练模型的文件描述符。跟随文件系统返回fd值传入。 |
+| trainCfg | [TrainCfg](#traincfg12)              | 否   | 模型训练配置。默认值为TrainCfg各属性默认值。     |
+| context  | [Context](#context)                  | 否   | 运行环境的配置信息。默认使用CpuDevice初始化。    |
 
 **返回值：**
 
 | 类型                     | 说明                         |
 | ------------------------ | ---------------------------- |
 | Promise<[Model](#model)> | Promise对象。返回Model对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000001  | Invalid context. Possible causes: 1. The context target is incorrect; 2. The device information is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 1000012  | Failed to create native training model from file descriptor (fd). Possible causes: 1. The model file or file descriptor (fd) is incorrect; 2. The training configuration is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
 
 **示例：** 
 
@@ -402,6 +623,10 @@ getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                                | 说明                   |
@@ -421,9 +646,11 @@ if (allDevices == null) {
 
 定义运行环境的配置信息。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 
 | 名称   | 类型                      | 只读 | 可选 | 说明                                                         |
@@ -443,20 +670,24 @@ context.target = ['cpu','nnrt'];
 
 CPU后端设备选项。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| threadNum              | number                                    | 否   | 是   | 设置运行时的线程数，默认值：2。                              |
+| threadNum              | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否   | 是   | 设置运行时的线程数，默认值：2。                              |
 | threadAffinityMode     | [ThreadAffinityMode](#threadaffinitymode) | 否   | 是   | 设置运行时的CPU绑核策略模式，默认值为不绑核：mindSporeLite.ThreadAffinityMode.NO_AFFINITIES。 |
-| threadAffinityCoreList | number[]                                  | 否   | 是   | 设置运行时的CPU绑核列表，设置绑核策略模式后使能，当绑核策略模式为mindSporeLite.ThreadAffinityMode.NO_AFFINITIES时，绑核列表为空。列表中的数字代表核的序号。默认值：[]。 |
+| threadAffinityCoreList | ArkTS-Dyn: number[]<br/>ArkTS-Sta: int[]  | 否   | 是   | 设置运行时的CPU绑核列表，设置绑核策略模式后使能，当绑核策略模式为mindSporeLite.ThreadAffinityMode.NO_AFFINITIES时，绑核列表为空。列表中的数字代表核的序号。默认值：[]。 |
 | precisionMode          | string                                    | 否   | 是   | 设置是否使能**Float16推理模式**，设置为'preferred_fp16'代表使能半精度推理，其余设置情况均为不支持，默认设置'enforce_fp32'表示不使能半精度推理。 |
 
 **Float16推理模式**：  Float16又称半精度，它使用16比特表示一个数。Float16推理模式表示推理的时候用半精度进行推理。 
 
 **示例：** 
+
+ArkTS-Dyn示例：
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -468,11 +699,28 @@ context.cpu.precisionMode = 'preferred_fp16';
 context.cpu.threadAffinityCoreList = [0, 1, 2];
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let context: mindSporeLite.Context = {};
+context.target = ['cpu'];
+context.cpu = {
+  threadNum: 2,
+  threadAffinityMode: 0,
+  threadAffinityCoreList: [0, 1, 2],
+  precisionMode: 'preferred_fp16'
+};
+```
+
 ## ThreadAffinityMode
 
 设置运行时的CPU绑核策略模式，有效值为0-2，0为默认不绑核，1为绑大核，2为绑中核。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称               | 值   | 说明         |
 | ------------------ | ---- | ------------ |
@@ -484,9 +732,11 @@ context.cpu.threadAffinityCoreList = [0, 1, 2];
 
 Neural Network Runtime表示神经网络运行时，简称NNRt。作为中间桥梁，连通上层 AI 推理框架和底层加速芯片，实现 AI 模型的跨芯片推理计算。MindSpore Lite 可配置NNRt后端。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 类型                                | 只读 | 可选 | 说明                     |
 | ----------------------------- | ----------------------------------- | ---- | ------------------------ | ------------------------ |
@@ -500,6 +750,10 @@ Neural Network Runtime表示神经网络运行时，简称NNRt。作为中间桥
 NNRt设备的工作性能模式枚举。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                | 值   | 说明                |
 | ------------------- | ---- | ------------------- |
@@ -515,6 +769,10 @@ NNRt推理任务优先级枚举。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称            | 值   | 说明           |
 | --------------- | ---- | -------------- |
 | PRIORITY_NONE   | 0    | 无优先级偏好。 |
@@ -526,9 +784,11 @@ NNRt推理任务优先级枚举。
 
 定义NNRt设备的扩展信息。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                | 类型        | 只读 | 可选 | 说明             |
 | ------------------- | ----------- | ---- | ---- | ---------------- |
@@ -541,13 +801,17 @@ NNRt设备信息描述，包含设备ID，设备名称等信息。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
-### deviceID
+### deviceID<sup>12+</sup>
 
 deviceID() : bigint
 
 获取NNRt设备ID。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -557,26 +821,51 @@ deviceID() : bigint
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```ts
-let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
-}
 let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
-for (let i: number = 0; i < allDevices.length; i++) {
-  console.info(allDevices[i].deviceID().toString());
+let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
+if (allDevices == null) {
+  console.error('getAllNNRTDeviceDescriptions is NULL.');
+} else {
+  for (let i: number = 0; i < allDevices.length; i++) {
+    console.info(allDevices[i].deviceID().toString());
+  }
 }
 ```
 
-### deviceType
+ArkTS-Sta示例：
+
+```ts
+let context: mindSporeLite.Context = {};
+context.target = ["nnrt"];
+let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
+if (allDevices == null) {
+  console.error('getAllNNRTDeviceDescriptions is NULL.');
+} else {
+  console.info(allDevices[0].deviceID().toString());
+  context.nnrt = {
+    deviceID: allDevices[0].deviceID(),
+    performanceMode: mindSporeLite.PerformanceMode.PERFORMANCE_NONE,
+    priority: mindSporeLite.Priority.PRIORITY_NONE,
+  }
+}
+```
+
+### deviceType<sup>12+</sup>
 
 deviceType() : NNRTDeviceType
 
 获取NNRt设备类型。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -587,25 +876,30 @@ deviceType() : NNRTDeviceType
 **示例：** 
 
 ```ts
-let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
-}
 let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
-for (let i: number = 0; i < allDevices.length; i++) {
-  console.info(allDevices[i].deviceType().toString());
+let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
+if (allDevices == null) {
+  console.error('getAllNNRTDeviceDescriptions is NULL.');
+} else {
+  for (let i: number = 0; i < allDevices.length; i++) {
+    console.info(allDevices[i].deviceType().toString());
+  }
 }
 ```
 
-### deviceName
+### deviceName<sup>12+</sup>
 
 deviceName() : string
 
 获取NNRt设备名称。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -616,15 +910,16 @@ deviceName() : string
 **示例：** 
 
 ```ts
-let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
-}
 let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
-for (let i: number = 0; i < allDevices.length; i++) {
-  console.info(allDevices[i].deviceName().toString());
+let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
+if (allDevices == null) {
+  console.error('getAllNNRTDeviceDescriptions is NULL.');
+} else {
+  for (let i: number = 0; i < allDevices.length; i++) {
+    console.info(allDevices[i].deviceName().toString());
+  }
 }
 ```
 
@@ -633,6 +928,10 @@ for (let i: number = 0; i < allDevices.length; i++) {
 NNRt设备类型枚举。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 值   | 说明                                |
 | ---------------------- | ---- | ----------------------------------- |
@@ -645,9 +944,11 @@ NNRt设备类型枚举。
 
 端侧训练相关参数的配置文件。
 
-### 属性
-
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                            | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -668,6 +969,10 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值   | 说明                                                       |
 | ---- | ---- | ---------------------------------------------------------- |
 | O0   | 0    | 无优化等级。                                               |
@@ -681,6 +986,10 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 量化类型信息，有效值为0-2。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 值   | 说明       |
 | ------------ | ---- | ---------- |
@@ -698,10 +1007,14 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
-| 名称                       | 类型    | 只读 | 可选 | 说明                                                         |
-| -------------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| learningRate<sup>12+</sup> | number  | 否   | 是   | 训练模型的学习率。默认值从加载的模型中读取。                 |
-| trainMode<sup>12+</sup>    | boolean | 否   | 是   | 模型是否为训练模式。true表示训练模式，false表示非训练模式。如果是训练模型，trainMode默认是true；如果是推理模型，trainMode默认是false。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                       | 类型                                 | 只读 | 可选 | 说明                                                         |
+| -------------------------- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| learningRate<sup>12+</sup> | ArkTS-Dyn: double<br/>ArkTS-Sta: int | 否   | 是   | 训练模型的学习率。默认值从加载的模型中读取。                 |
+| trainMode<sup>12+</sup>    | boolean                              | 否   | 是   | 模型是否为训练模式。true表示训练模式，false表示非训练模式。如果是训练模型，trainMode默认是true；如果是推理模型，trainMode默认是false。 |
 
 ### getInputs
 
@@ -710,6 +1023,10 @@ getInputs(): MSTensor[]
 获取模型的输入用于推理。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -723,7 +1040,11 @@ getInputs(): MSTensor[]
 let modelFile = '/path/to/xxx.ms';
 mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
+  if (modelInputs == null) {
+    console.error('MS_LITE_ERR: getInputs failed.')
+  } else {
+    console.info(modelInputs[0].name);
+  }
 })
 ```
 ### predict
@@ -733,6 +1054,10 @@ predict(inputs: MSTensor[], callback: Callback&lt;MSTensor[]&gt;): void
 执行推理模型。使用callback异步回调。需要确保调用时模型对象不被资源回收。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -744,9 +1069,9 @@ predict(inputs: MSTensor[], callback: Callback&lt;MSTensor[]&gt;): void
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -763,7 +1088,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
       console.info('MS_LITE_LOG: ' + output[i].toString());
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 ### predict
 
@@ -772,6 +1099,10 @@ predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;
 执行推理模型，返回推理结果。使用Promise异步回调。需要确保调用时模型对象不被资源回收。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -788,9 +1119,9 @@ predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -806,23 +1137,31 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
       console.info(output[i].toString());
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ### resize
 
-resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
+ArkTS-Dyn: resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
+
+ArkTS-Sta: resize(inputs: MSTensor[], dims: Array&lt;Array&lt;int&gt;&gt;): boolean
 
 重新设置张量大小。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                          |
 | ------ | --------------------- | ---- | ----------------------------- |
 | inputs | [MSTensor](#mstensor)[]            | 是   | 模型的输入列表。  |
-| dims   | Array&lt;Array&lt;number&gt;&gt; | 是   | 需要修改的目标张量大小。 |
+| dims   | ArkTS-Dyn: Array&lt;Array&lt;number&gt;&gt;<br/>ArkTS-Sta: Array&lt;Array&lt;int&gt;&gt; | 是   | 需要修改的目标张量大小。 |
 
 **返回值：**
 
@@ -848,6 +1187,10 @@ runStep(inputs: MSTensor[]): boolean
 单步训练模型，仅用于端侧训练。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -883,6 +1226,10 @@ getWeights(): MSTensor[]
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                      | 说明         |
@@ -892,9 +1239,9 @@ getWeights(): MSTensor[]
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -911,7 +1258,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
       console.info("MS_LITE weights: ", printStr);
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ### updateWeights<sup>12+</sup>
@@ -921,6 +1270,10 @@ updateWeights(weights: MSTensor[]): boolean
 更新模型的权重，仅用于端侧训练。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -937,9 +1290,9 @@ updateWeights(weights: MSTensor[]): boolean
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -952,24 +1305,32 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
       console.error('MS_LITE_LOG: updateWeights failed.')
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ### setupVirtualBatch<sup>12+</sup>
 
-setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number): boolean
+ArkTS-Dyn: setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number): boolean
+
+ArkTS-Sta: setupVirtualBatch(virtualBatchMultiplier: int, lr: double, momentum: double): boolean
 
 设置虚拟批次用于训练，仅用于端侧训练。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名                 | 类型   | 必填 | 说明                                                 |
-| ---------------------- | ------ | ---- | ---------------------------------------------------- |
-| virtualBatchMultiplier | number | 是   | 虚拟批次乘法器，当设置值小于1时，表示禁用虚拟batch。 |
-| lr                     | number | 是   | 学习率。                                             |
-| momentum               | number | 是   | 动量。                                               |
+| 参数名                 | 类型                                    | 必填 | 说明                                                 |
+| ---------------------- | --------------------------------------- | ---- | ---------------------------------------------------- |
+| virtualBatchMultiplier | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 虚拟批次乘法器，当设置值小于1时，表示禁用虚拟batch。 |
+| lr                     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 学习率。                                             |
+| momentum               | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 动量。                                               |
 
 **返回值：**
 
@@ -980,9 +1341,9 @@ setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number):
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -994,7 +1355,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
       console.error('MS_LITE setupVirtualBatch failed.')
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ### exportModel<sup>12+</sup>
@@ -1005,11 +1368,15 @@ exportModel(modelFile: string, quantizationType?: QuantizationType, exportInfere
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名              | 类型                                    | 必填 | 说明                                                         |
 | ------------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| modelFile           | string                                  | 是   | 导出模型的文件路径。                                         |
+| modelFile           | string                                  | 是   | 导出模型的文件路径。字符串长度限制跟随文件系统。             |
 | quantizationType    | [QuantizationType](#quantizationtype12) | 否   | 量化类型，默认为NO_QUANT。                                   |
 | exportInferenceOnly | boolean                                 | 否   | 是否只导出推理模型。true表示只导出推理模型，false表示导出训练和推理两个模型。默认为true。 |
 | outputTensorName    | string[]                                | 否   | 设置导出模型的输出张量的名称。默认为空字符串数组，表示全量导出。 |
@@ -1045,11 +1412,15 @@ exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, ena
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名                | 类型     | 必填 | 说明                                                         |
 | --------------------- | -------- | ---- | ------------------------------------------------------------ |
-| weightFile            | string   | 是   | 权重文件路径。                                               |
+| weightFile            | string   | 是   | 权重文件路径。字符串长度限制跟随文件系统。                   |
 | isInference           | boolean  | 否   | 是否从推理模型中导出权重。true表示从推理模型中导出权重，目前只支持true，默认为true。 |
 | enableFp16            | boolean  | 否   | 浮点权重是否以float16格式保存。true表示以float16格式保存，false表示不以float16格式保存。默认为false。 |
 | changeableWeightsName | string[] | 否   | 设置可变权重的名称。默认为空字符串数组。                     |
@@ -1083,14 +1454,18 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
 
-| 名称       | 类型                  | 只读 | 可选 | 说明                   |
-| ---------- | --------------------- | ---- | ---- | ---------------------- |
-| name       | string                | 否   | 否   | 张量的名称。           |
-| shape      | number[]              | 否   | 否   | 张量的维度数组。       |
-| elementNum | number                | 否   | 否   | 张量的维度数组的长度。 |
-| dataSize   | number                | 否   | 否   | 张量的数据的长度。     |
-| dtype      | [DataType](#datatype) | 否   | 否   | 张量的数据类型。       |
-| format     | [Format](#format)     | 否   | 否   | 张量的数据排布方式。   |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称       | 类型                                     | 只读 | 可选 | 说明                   |
+| ---------- | ---------------------------------------- | ---- | ---- | ---------------------- |
+| name       | string                                   | 否   | 否   | 张量的名称。           |
+| shape      | ArkTS-Dyn: number[]<br/>ArkTS-Sta: int[] | 否   | 否   | 张量的维度数组。       |
+| elementNum | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 否   | 否   | 张量的维度数组的长度。 |
+| dataSize   | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 否   | 否   | 张量的数据的长度。     |
+| dtype      | [DataType](#datatype)                    | 否   | 否   | 张量的数据类型。       |
+| format     | [Format](#format)                        | 否   | 否   | 张量的数据排布方式。   |
 
 **示例：** 
 
@@ -1115,6 +1490,10 @@ getData(): ArrayBuffer
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型        | 说明                 |
@@ -1124,9 +1503,9 @@ getData(): ArrayBuffer
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1142,7 +1521,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
       console.info(output[i].toString());
     }
   })
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ### setData
@@ -1153,18 +1534,30 @@ setData(inputArray: ArrayBuffer): void
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型        | 必填 | 说明                   |
 | ---------- | ----------- | ---- | ---------------------- |
 | inputArray | ArrayBuffer | 是   | 张量的输入数据缓冲区。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[MindSporeLite错误码](errorcode-mindSporeLite.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1000013  | Failed to set MSTensor data. Possible causes: 1. The input array buffer size is incorrect.<br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+
 **示例：** 
 
 ```ts
-import { mindSporeLite } from '@kit.MindSporeLiteKit';
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1174,7 +1567,9 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
   let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
   let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   modelInputs[0].setData(inputBuffer);
-})
+}).catch((error: BusinessError) => {
+  console.error("getRawFileContent promise error is " + error);
+});
 ```
 
 ## DataType
@@ -1182,6 +1577,10 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
 张量的数据类型。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                | 值   | 说明                |
 | ------------------- | ---- | ------------------- |
@@ -1203,6 +1602,10 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(inputNam
 张量的数据排布方式。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 值   | 说明                  |
 | -------------- | ---- | --------------------- |

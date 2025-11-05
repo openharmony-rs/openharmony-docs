@@ -4,14 +4,16 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
 ## 导入模块
 
 ``` ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
+import { distributedBundleManager } from '@kit.AbilityKit';
 ```
 
 ## 系统能力
@@ -26,7 +28,7 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 权限等级参考[权限APL等级说明](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAbilityInfo>): void
 
@@ -37,6 +39,10 @@ getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAb
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -62,17 +68,43 @@ getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAb
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, (err: BusinessError, data: distributedBundle.RemoteAbilityInfo) => {
+        }, (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
+            if (err) {
+                console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+            } else {
+                console.info('Operation succeed:' + JSON.stringify(data));
+            }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo | undefined) => {
             if (err) {
                 console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
             } else {
@@ -86,7 +118,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 
@@ -97,6 +129,10 @@ getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -127,17 +163,18 @@ getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }).then((data: distributedBundle.RemoteAbilityInfo) => {
+        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -148,8 +185,31 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-## distributedBundle.getRemoteAbilityInfo
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
@@ -160,6 +220,10 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -185,12 +249,13 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -202,7 +267,41 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], (err: BusinessError, data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo[] | undefined) => {
           if (err) {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -216,7 +315,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
@@ -227,6 +326,10 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteA
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -257,12 +360,13 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteA
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -274,7 +378,7 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ]).then((data: distributedBundle.RemoteAbilityInfo[]) => {
+        ]).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -285,8 +389,39 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
 
-## distributedBundle.getRemoteAbilityInfo
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(elementNames).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCallback\<RemoteAbilityInfo>): void
 
@@ -297,6 +432,10 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCa
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -323,17 +462,43 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundle.RemoteAbilityInfo) => {
+        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN', (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo | undefined) => {
           if (err) {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -347,7 +512,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteAbilityInfo>
 
@@ -358,6 +523,10 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteA
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -389,17 +558,18 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteA
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN').then((data: distributedBundle.RemoteAbilityInfo) => {
+        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -410,8 +580,31 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-## distributedBundle.getRemoteAbilityInfo
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
@@ -422,6 +615,10 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -448,12 +645,13 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -465,7 +663,41 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
+          if (err) {
+           console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, 'zh-Hans-CN', (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo[] | undefined) => {
           if (err) {
            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -479,7 +711,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
@@ -490,6 +722,10 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -521,12 +757,13 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -538,10 +775,42 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], 'zh-Hans-CN').then((data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta:
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
         });
 } catch (err) {
     let code = (err as BusinessError).code;
@@ -559,6 +828,10 @@ type RemoteAbilityInfo = _RemoteAbilityInfo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

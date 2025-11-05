@@ -534,8 +534,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-// PromptActionClass.ets
 'use static'
+// PromptActionClass.ets
 
 import { ComponentContent, BusinessError } from '@ohos.arkui.component';
 import { UIContext } from '@ohos.arkui.UIContext';
@@ -612,8 +612,8 @@ export class PromptActionClass {
 ```
 
 ```ts
-// Index.ets
 'use static'
+// Index.ets
 
 import { Entry, Text, Column, ColumnOptions, Row, Component, Button, Builder, FontWeight, ComponentContent,
   DialogAlignment, Margin, wrapBuilder } from '@ohos.arkui.component';

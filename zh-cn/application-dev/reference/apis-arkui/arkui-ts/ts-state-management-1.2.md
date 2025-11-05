@@ -4,7 +4,9 @@
 
 >**说明：**
 >
->本模块为静态ArkTS文档，首批接口从API version 20开始支持,后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Sta。
+>
+> - 首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -370,9 +372,9 @@ LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)]
 
 ### constructor
 
-constructor(initializingProperties?: Record<string, Any>)
+constructor(initializingProperties?: RecordData)
 
-创建一个新的[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)实例。使用Record<string, Any>中的属性和其数值，初始化LocalStorage实例。。
+创建一个新的[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)实例。使用initializingProperties中的属性和其数值，初始化LocalStorage实例。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,7 +382,7 @@ constructor(initializingProperties?: Record<string, Any>)
 
 | 参数名                    | 类型     | 必填   | 说明                                     |
 | ---------------------- | ------ | ---- | ---------------------------------------- |
-| initializingProperties | Record<string, Any> | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。 |
+| initializingProperties | [RecordData](../../apis-arkts/js-apis-util.md#recorddata20) | 否    | 用initializingProperties包含的属性和数值初始化LocalStorage。initializingProperties不能为undefined。 |
 
 **示例：**
 ```ts
@@ -751,7 +753,7 @@ let storage: LocalStorage = new LocalStorage(para);
 let res: boolean = storage.clear(); // true，已经没有订阅者
 ```
 
-## AbstractProperty
+## AbstractProperty\<T\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -834,6 +836,32 @@ import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 AppStorage.setOrCreate<number>('PropA', 47);
 let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
 ref1?.info(); //  ref1.info()='PropA'
+```
+
+### onChange
+onChange(onChangeFunc: OnChangeType\<T\> | undefined): void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化的事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明                              |
+| -------- | ---- | ---- | ------------------------------------- |
+| onChangeFunc | [OnChangeType\<T\>](#onchangetype) \| undefined    | 否   | 属性变化回调函数。</br>如果传入有效值，则添加到监听属性变化的函数列表中。</br>如果传入undefined，则清除所有监听回调。 |
+
+**示例：**
+
+```ts
+'use static'
+import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
+
+AppStorage.setOrCreate<number>('PropA', 47);
+let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+ref1?.onChange((propertyName: string, value: number) => {
+  console.info(`ref for ${propertyName} has changed to ${value}.`);
+});
 ```
 
 ## SubscribedAbstractProperty
@@ -932,13 +960,7 @@ info(): string
 | toJson       | ToJsonType\<T\> | 否 | 是 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
 | fromJson     | FromJsonType\<T\> | 否 | 是 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
 
-## PersistentStorage
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management-static/arkts-static-persiststorage.md)
-
-### ToJsonType\<T\>
+## ToJsonType\<T\>
 
 type ToJsonType\<T\> = (value: T) => jsonx.JsonElement
 
@@ -948,13 +970,19 @@ type ToJsonType\<T\> = (value: T) => jsonx.JsonElement
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### FromJsonType\<T\>
+## FromJsonType\<T\>
 
 type FromJsonType\<T\> = (element: jsonx.JsonElement) => T
 
 >**说明：**
 >
 >静态ArkTS反序列化接口，需开发者自己实现。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PersistentStorage
+
+PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management-static/arkts-static-persiststorage.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -966,11 +994,13 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 
 确定属性的类型和值的顺序如下：
 
-1. 如果[PersistentStorage](../../../ui/state-management-static/arkts-static-persiststorage.md)文件中存在key对应的属性，在AppStorage中创建对应的propName，并用在PersistentStorage中找到的key的属性初始化。
+1. 如果[PersistentStorage](../../../ui/state-management-static/arkts-static-persiststorage.md)文件中存在key对应的属性，则返回false。
 
-2. 如果PersistentStorage文件中没有查询到key对应的属性，则在AppStorage中查找key对应的属性。如果找到key对应的属性，则将该属性持久化。
+2. 如果PersistentStorage文件中没有查询到key对应的属性，则在AppStorage中查找key对应的属性。如果找到key对应的属性，则将该属性持久化，并返回true。
 
-3. 如果AppStorage中也没查找到key对应的属性，则在AppStorage中创建key对应的属性。用defaultValue初始化其值，并将该属性持久化。
+3. 如果AppStorage中也没查找到key对应的属性，则在磁盘中查找key对应的属性。如果找到key对应的属性，则在AppStorage中创建和初始化key对应的属性，并将该属性持久化，最终返回true。
+
+4. 如果磁盘中不存在对应属性，则在AppStorage中创建和初始化key对应的属性，并将该属性持久化，最终返回true。
 
 根据上述的初始化流程，如果AppStorage中有该属性，则会使用其值，覆盖掉PersistentStorage文件中的值。由于AppStorage是内存内数据，该行为会导致数据丧失持久化能力。
 
@@ -987,6 +1017,11 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 | toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
 | fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
 
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 如果PersistentStorage文件中存在key对应的属性，则返回false。否则将依次从AppStorage、磁盘中查找对应属性，若存在，则返回true，若不存在，则创建并持久化key对应的属性，并返回true。|
 
 **示例：**
 
@@ -1107,7 +1142,7 @@ Environment具体使用说明，详见[Environment(设备环境查询)](../../..
 
 ### envProp
 
-static envProp&lt;S&gt;(key: string, value: T): boolean
+static envProp&lt;T&gt;(key: string, value: T): boolean
 
 将[Environment](../../../ui/state-management/arkts-environment.md)的内置环境变量key存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。如果系统中未查询到Environment环境变量key的值，则使用默认值value，存入成功，返回true。如果AppStorage中已经有对应的key，则返回false。
 
@@ -1191,7 +1226,7 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 
 | key                  | 类型            | 说明                                                         |
 | -------------------- | --------------- | ------------------------------------------------------------ |
-| accessibilityEnabled | boolean         | 无障碍屏幕朗读是否启用。当无法获取环境变量中的accessibilityEnabled的值时，将通过envProp、envProps等接口传入的开发者指定的默认值添加到AppStorage中。 |
+| accessibilityEnabled | boolean         | 无障碍屏幕朗读是否启用，可选值为：<br/>-&nbsp;true：启用；<br/>-&nbsp;false：不启用。<br/>当无法获取环境变量中的accessibilityEnabled的值时，将通过envProp、envProps等接口传入的开发者指定的默认值添加到AppStorage中。 |
 | colorMode            | ColorMode       | 深浅色模式，可选值为：<br/>-&nbsp;ColorMode.LIGHT：浅色模式；<br/>-&nbsp;ColorMode.DARK：深色模式。 |
 | fontScale            | number          | 字体大小比例。                                               |
 | fontWeightScale      | number          | 字重比例。                                                   |
@@ -1221,3 +1256,15 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | LTR   | 0    | 从左向右布局。 |
 | RTL   | 1    | 从右向左布局。 |
 | AUTO  | 2    | 自动布局，跟随系统。 |
+
+## OnChangeType
+type OnChangeType\<T\> = (propertyName: string, newValue: T) => void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化事件的回调函数类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数名 | 类型                                          | 必填 | 说明                             |
+| ------ | --------------------------------------------- | ---- | ------------------------------------ |
+| propertyName  | string | 是   | 修改的属性名称。 |
+| newValue      | T      | 是   | 修改后属性的值。 |

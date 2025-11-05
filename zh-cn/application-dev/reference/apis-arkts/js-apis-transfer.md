@@ -144,6 +144,11 @@ export function har1func(dynamic_obj: Any) {
 |"ArkUI.ShapeClip" | [ShapeClip](../apis-arkui/js-apis-arkui-graphics.md#shapeclip12)| 
 |"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
 |"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
+| "ArkUI.ColorFilter" | [ColorFilter](../apis-arkui/arkui-ts/ts-types.md#colorfilter9) |
+| "ArkUI.Colors" | [Colors](../apis-arkui/js-apis-arkui-theme.md#colors) |
+| "ArkUI.CustomColors" | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |
+| "ArkUI.Theme" | [Theme](../apis-arkui/js-apis-arkui-theme.md#theme) |
+| "ArkUI.CustomTheme" | [CustomTheme](../apis-arkui/js-apis-arkui-theme.md#customtheme) |
 |"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
 | "ImageKit.AuxiliaryPicture" | [AuxiliaryPicture](../apis-image-kit/arkts-apis-image-AuxiliaryPicture.md) |
 | "ImageKit.ImageCreator" | [ImageCreator](../apis-image-kit/arkts-apis-image-ImageCreator.md) |
@@ -158,3 +163,8 @@ export function har1func(dynamic_obj: Any) {
 | "ArkGraphics3D.Node" | [Node](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#node)|
 | "ArkGraphics3D.Scene" | [Scene](../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1)|
 | "ArkGraphics3D.SceneResourceFactory" | [SceneResourceFactory](../apis-arkgraphics3d/js-apis-inner-scene.md#sceneresourcefactory)|
+| "ArkWeb.FileSelectorParam" | [FileSelectorParam](../apis-arkweb/arkts-basic-components-web-FileSelectorParam.md)|
+| "ArkWeb.FileSelectorResult" | [FileSelectorResult](../apis-arkweb/arkts-basic-components-web-FileSelectorResult.md)|
+| "ArkWeb.JsResult" | [JsResult](../apis-arkweb/arkts-basic-components-web-JsResult.md)|
+| "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
+| "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|

@@ -37,6 +37,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 - 当装饰boolean、string、number类型时，可观察数据源同步变化。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local, Param, Require } from '@ohos.arkui.stateManagement';
   @Entry
@@ -83,6 +85,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖\@ObservedV2和\@Trace装饰器。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
   class RawObject {
@@ -143,6 +147,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local, Param, Require } from '@ohos.arkui.stateManagement';
   @Entry
@@ -203,10 +209,12 @@ import { Param } from '@ohos.arkui.stateManagement';
   | Set   | add, clear, delete                                           |
 
 
-- 当装饰interface字面量类型时，可以观察到字面量整体以及属性的变化。
+- 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
   ```ts
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
+  'use static'
+  
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
   import { Local, Param, Require } from '@ohos.arkui.stateManagement';
   interface Info {
     name: string;
@@ -220,9 +228,16 @@ import { Param } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`Local info.name: ${this.info.name}`)
+        Text(`Local info.age: ${this.info.age}`)
+        Button('Local change info')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Tom'; // 变化可观察
+            this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
           })
+        Button('Local change info.name')
+          .onClick((e: ClickEvent) => {
+            this.info.name = 'Lucy'; // 变化无法观察
+          })
+        Child({info: this.info})
       }
     }
   }
@@ -232,8 +247,10 @@ import { Param } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`Param info.name: ${this.info.name}`)
+        Text(`Param info.age: ${this.info.age}`)
+        Button('Param change info.name')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Lucy'; // 变化可观察
+            this.info.name = 'Mary'; // 变化无法观察
           })
       }
     }
@@ -262,6 +279,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。必须存在本地初始值或外部传入值，当二者同时存在时，优先使用外部传入值。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { Local, Param, Require } from '@ohos.arkui.stateManagement';
   @ComponentV2
@@ -296,6 +315,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 - 使用`@Param`装饰的变量在子组件中无法被直接修改。但是，如果装饰的变量是对象类型，在子组件中可以修改对象的属性。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
   import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
   @ObservedV2
@@ -349,6 +370,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 \@Param能够接受父组件\@Local或\@Param传递的数据并与之变化同步。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, ForEach, Button, Text, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
 @ObservedV2
@@ -416,6 +439,8 @@ struct SubComponent {
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param, Require } from '@ohos.arkui.stateManagement';
 @Entry
@@ -460,6 +485,8 @@ struct Child {
 当装饰Date类型时，可以观察到数据源对Date整体的赋值及其API操作的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Button, Text, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param } from '@ohos.arkui.stateManagement';
 @ComponentV2
@@ -511,6 +538,8 @@ struct ParentComponent {
 当装饰Map类型时，可以观察到数据源对Map整体的赋值及其API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param } from '@ohos.arkui.stateManagement';
 @ComponentV2
@@ -564,6 +593,8 @@ struct MapSample {
 当装饰Set类型时，可以观察到数据源对Set整体的赋值及其API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param } from '@ohos.arkui.stateManagement';
 @ComponentV2
@@ -614,6 +645,8 @@ struct SetSample {
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | null，点击改变count的类型时，UI会自动刷新。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param } from '@ohos.arkui.stateManagement';
 @Entry

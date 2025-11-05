@@ -464,14 +464,6 @@ clearResourceCache(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 202 | The caller is not a system application. |
-
 ArkTS1.2示例：
 
 ```ts

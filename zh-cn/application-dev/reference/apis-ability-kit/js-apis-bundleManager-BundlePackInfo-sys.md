@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批ArkTS-Sta接口从API version 20开始支持。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -22,6 +22,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称     | 类型                                    | 只读 | 可选 | 说明                      |
 | -------- | --------------------------------------- | ---- | ---- | ------------------------- |
 | packages | Array\<[PackageConfig](#packageconfig)> | 是   | 否   | pack.info的包信息。       |
@@ -32,6 +36,10 @@ import { freeInstall } from '@kit.AbilityKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                | 类型           | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -46,6 +54,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称    | 类型                                          | 只读 | 可选 | 说明                 |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------- |
 | app     | [BundleConfigInfo](#bundleconfiginfo)         | 是   | 否   | 包的配置信息。       |
@@ -57,6 +69,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型                | 只读 | 可选 | 说明                                   |
 | ---------- | ------------------- | ---- | ---- | -------------------------------------- |
 | bundleName | string              | 是   | 否   | 应用Bundle名称，用于标识应用的唯一性。 |
@@ -67,6 +83,10 @@ import { freeInstall } from '@kit.AbilityKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称               | 类型                                              | 只读 | 可选 | 说明                               |
 | ------------------ | ------------------------------------------------- | ---- | ---- | ---------------------------------- |
@@ -83,6 +103,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                | 类型    | 只读 | 可选 | 说明                                                         |
 | ------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | deliveryWithInstall | boolean | 是   | 否   | 是否跟随应用一起安装。true表示跟随应用一起安装，false表示不跟随应用一起安装。 |
@@ -95,6 +119,10 @@ import { freeInstall } from '@kit.AbilityKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称    | 类型                                        | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -109,6 +137,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  | 类型                                        | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | name | string | 是 | 否 | 表示该ExtensionAbility的名称。 |
@@ -119,6 +151,10 @@ import { freeInstall } from '@kit.AbilityKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                | 类型           | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -136,6 +172,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称        | 类型   | 只读 | 可选 | 说明                 |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | 是   | 否   | 版本的名称。         |
@@ -147,6 +187,10 @@ import { freeInstall } from '@kit.AbilityKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                     | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |

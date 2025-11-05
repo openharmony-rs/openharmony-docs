@@ -2,7 +2,7 @@
 
 LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持UIAbility实例内多个页面间状态共享。
 
-本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
+本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStoragePropRef](#localstoragepropref)和[\@LocalStorageLink](#localstoragelink)。
 
 在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -24,9 +24,9 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了两个装饰器：
 
-- [@LocalStoragePropRef](#localstoragepropref)：\@LocalStoragePropRef装饰的变量与LocalStorage中给定属性建立单向同步关系。
+- \@LocalStoragePropRef：\@LocalStoragePropRef装饰的变量与LocalStorage中给定属性建立单向同步关系。
 
-- [@LocalStorageLink](#localstoragelink)：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
+- \@LocalStorageLink：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
 
 在静态上下文中使用时，需导入LocalStorage：
 
@@ -111,7 +111,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
 1. 本地修改发生，该修改会被写回LocalStorage中。
 
-2. LocalStorage中的修改发生后，该修改会被同步到所有绑定LocalStorage对应key的属性上，包括单向（\@LocalStorageProp和通过prop创建的单向绑定变量）、双向（\@LocalStorageLink和通过link创建的双向绑定变量）变量。
+2. LocalStorage中的修改发生后，该修改会被同步到所有绑定LocalStorage对应key的属性上，包括单向（\@LocalStoragePropRef）、双向（\@LocalStorageLink和通过link创建的双向绑定变量）变量。
 
 ### 装饰器使用规则
 
@@ -127,7 +127,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 | 传递/访问规则        | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | 从父节点初始化和更新 | 禁止，\@LocalStorageLink不支持从父节点初始化，只能从LocalStorage中key对应的属性初始化，如果没有对应的key，将使用本地默认值初始化。 |
-| 初始化子节点         | 支持，可用于初始化\@State、\@Link、\@Prop、\@Provide。       |
+| 初始化子节点         | 支持，可用于初始化\@State、\@Link、\@PropRef、\@Provide。       |
 | 是否支持组件外访问   | 否。                                                         |
 
 ### 观察变化和行为表现
@@ -148,33 +148,44 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
 1. 使用\@LocalStorageLink(key)装饰的变量更新时，会同步写回LocalStorage对应的key，还会引起所属的自定义组件的重新渲染。
 
-2. 当LocalStorage中对应key的值发生变化时，所有绑定该key的数据（包括双向\@LocalStorageLink和单向\@LocalStorageProp）都会同步更新。
+2. 当LocalStorage中对应key的值发生变化时，所有绑定该key的数据（包括双向\@LocalStorageLink和单向\@LocalStoragePropRef）都会同步更新。
 
 ## 限制条件
 
 1. \@LocalStoragePropRef/\@LocalStorageLink的参数必须为string类型，否则编译期会报错。
 
-  ```ts
-  import { Entry, Column, Component } from '@ohos.arkui.component';
-  import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@ohos.arkui.stateManagement';
+    ```ts
+    'use static'
 
-  let storage = new LocalStorage();
-  storage.setOrCreate('PropA', 48);
-   
-  @Entry
-  @Component
-  struct Index {
-    // 错误写法，编译报错
-    // @LocalStoragePropRef() localStorageProp: number = 1;
-    // @LocalStorageLink() localStorageLink: number = 2;
-    
-    // 正确写法
-    @LocalStoragePropRef('PropA') localStorageProp: number = 1;
-    @LocalStorageLink('PropA') localStorageLink: number = 2;
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
+    import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
-    build() {}
-  }
-  ```
+    let storage = new LocalStorage();
+    storage.setOrCreate('PropA', 48);
+    let storageFunc = (): LocalStorage => {
+      return storage;
+    }
+
+
+    @Entry({ storage: 'storageFunc' })
+    @Component
+    struct Index {
+      // 错误写法，编译报错
+      // @LocalStoragePropRef() localStorageProp: int = 1;
+      // @LocalStorageLink() localStorageLink: int = 2;
+
+      // 正确写法
+      @LocalStoragePropRef('PropA') localStorageProp: int = 1;
+      @LocalStorageLink('PropA') localStorageLink: int = 2;
+
+      build() {
+        Column() {
+          Text(`localStorageProp ${this.localStorageProp}`)
+          Text(`localStorageLink ${this.localStorageLink}`)
+        }
+      }
+    }
+    ```
 
 2. LocalStorage创建后，命名属性的类型不可更改。后续调用Set时必须使用相同类型的值。
 
@@ -208,77 +219,79 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
 - \@LocalStorageLink绑定LocalStorage对给定的属性，建立双向数据同步。
 
- ```ts
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement';
+  ```ts
+  'use static'
 
-class Data {
-  code: number;
+  import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
-  constructor(code: number) {
-    this.code = code;
-  }
-}
-// 创建新实例并使用给定对象初始化
-let para: Record<string, Any> = { 'PropA': 47 };
-let storageA: LocalStorage = new LocalStorage(para);
-storageA.setOrCreate('PropB', new Data(50));
-let storageFunc = (): LocalStorage => {
-  return storageA;
-}
+  class Data {
+    code: number;
 
-// 静态ArkTS，@Entry只支持传入字符串，因次必须传入匿名函数
-@Entry({storage: 'storageFunc'})
-@Component
-struct Parent {
-  // @LocalStorageLink变量装饰器与LocalStorage中的'PropA'属性建立双向绑定
-  @LocalStorageLink('PropA') parentLinkNumber: int = 1;
-  // @LocalStorageLink变量装饰器与LocalStorage中的'PropB'属性建立双向绑定
-  @LocalStorageLink('PropB') parentLinkObject: Data = new Data(0);
-
-  build() {
-    Column() {
-      // 由于LocalStorage中PropA已经被初始化，因此this.parentLinkNumber的值为47
-      Button(`Parent from LocalStorage ${this.parentLinkNumber}`)
-        .onClick((e: ClickEvent) => {
-          this.parentLinkNumber += 1;
-        })
-      // 由于LocalStorage中PropB已经被初始化，因此this.parentLinkObject.code的值为50
-      // 类属性观测需要使用@Observed装饰class，因此不支持刷新
-      Button(`Parent from LocalStorage ${this.parentLinkObject.code}`)
-        .onClick((e: ClickEvent) => {
-          this.parentLinkObject.code += 1;
-        })
-      // @Component子组件自动获得对Parent LocalStorage实例的访问权限
-      Child()
+    constructor(code: number) {
+      this.code = code;
     }
   }
-}
+  // 创建新实例并使用给定对象初始化
+  let para: Record<string, Any> = { 'PropA': 47 };
+  let storageA: LocalStorage = new LocalStorage(para);
+  storageA.setOrCreate('PropB', new Data(50));
+  let storageFunc = (): LocalStorage => {
+    return storageA;
+  }
 
-@Component
-struct Child {
-  // @LocalStorageLink变量装饰器与LocalStorage中的'PropA'属性建立双向绑定
-  @LocalStorageLink('PropA') childLinkNumber: int = 1;
-  // @LocalStorageLink变量装饰器与LocalStorage中的'PropB'属性建立双向绑定
-  @LocalStorageLink('PropB') childLinkObject: Data = new Data(0);
+  // 静态ArkTS，@Entry只支持传入字符串，因次必须传入匿名函数
+  @Entry({storage: 'storageFunc'})
+  @Component
+  struct Parent {
+    // @LocalStorageLink变量装饰器与LocalStorage中的'PropA'属性建立双向绑定
+    @LocalStorageLink('PropA') parentLinkNumber: int = 1;
+    // @LocalStorageLink变量装饰器与LocalStorage中的'PropB'属性建立双向绑定
+    @LocalStorageLink('PropB') parentLinkObject: Data = new Data(0);
 
-  build() {
-    Column() {
-      // 更改将同步至LocalStorage中的'PropA'以及Parent.parentLinkNumber
-      Button(`Child from LocalStorage ${this.childLinkNumber}`)
-        .onClick((e: ClickEvent) => {
-          this.childLinkNumber += 1;
-        })
-      // 更改将同步至LocalStorage中的'PropB'以及Parent.parentLinkObject.code
-      // 类属性观测需要使用@Observed装饰class，因此不支持刷新
-      Button(`Child from LocalStorage ${this.childLinkObject.code}`)
-        .onClick((e: ClickEvent) => {
-          this.childLinkObject.code += 1;
-        })
+    build() {
+      Column() {
+        // 由于LocalStorage中PropA已经被初始化，因此this.parentLinkNumber的值为47
+        Button(`Parent from LocalStorage ${this.parentLinkNumber}`)
+          .onClick((e: ClickEvent) => {
+            this.parentLinkNumber += 1;
+          })
+        // 由于LocalStorage中PropB已经被初始化，因此this.parentLinkObject.code的值为50
+        // 类属性观测需要使用@Observed装饰class，因此不支持刷新
+        Button(`Parent from LocalStorage ${this.parentLinkObject.code}`)
+          .onClick((e: ClickEvent) => {
+            this.parentLinkObject.code += 1;
+          })
+        // @Component子组件自动获得对Parent LocalStorage实例的访问权限
+        Child()
+      }
     }
   }
-}
- ```
+
+  @Component
+  struct Child {
+    // @LocalStorageLink变量装饰器与LocalStorage中的'PropA'属性建立双向绑定
+    @LocalStorageLink('PropA') childLinkNumber: int = 1;
+    // @LocalStorageLink变量装饰器与LocalStorage中的'PropB'属性建立双向绑定
+    @LocalStorageLink('PropB') childLinkObject: Data = new Data(0);
+
+    build() {
+      Column() {
+        // 更改将同步至LocalStorage中的'PropA'以及Parent.parentLinkNumber
+        Button(`Child from LocalStorage ${this.childLinkNumber}`)
+          .onClick((e: ClickEvent) => {
+            this.childLinkNumber += 1;
+          })
+        // 更改将同步至LocalStorage中的'PropB'以及Parent.parentLinkObject.code
+        // 类属性观测需要使用@Observed装饰class，因此不支持刷新
+        Button(`Child from LocalStorage ${this.childLinkObject.code}`)
+          .onClick((e: ClickEvent) => {
+            this.childLinkObject.code += 1;
+          })
+      }
+    }
+  }
+  ```
 
 ### \@LocalStoragePropRef和LocalStorage单向同步的简单场景
 
@@ -288,55 +301,59 @@ struct Child {
 
 - Child组件中，Text绑定的storageProp2 依旧显示47。
 
-```ts
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { LocalStorage, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
+  ```ts
+  'use static'
 
-// 创建新实例并使用给定对象初始化
-let para: Record<string, Any> = { 'PropA': 47 };
-let storageA: LocalStorage = new LocalStorage(para);
-let storageFunc = (): LocalStorage => {
-  return storageA;
-}
+  import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+  import { LocalStorage, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
-// 使LocalStorage可从@Component组件访问
-@Entry({storage: 'storageFunc'})
-@Component
-struct Parent {
-  // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
-  @LocalStoragePropRef('PropA') storageProp1: int = 1;
+  // 创建新实例并使用给定对象初始化
+  let para: Record<string, Any> = { 'PropA': 47 };
+  let storageA: LocalStorage = new LocalStorage(para);
+  let storageFunc = (): LocalStorage => {
+    return storageA;
+  }
 
-  build() {
-    Column() {
-      // 点击后从47开始加1，只改变当前组件显示的storageProp1，不会同步到LocalStorage中
-      Button(`Parent from LocalStorage ${this.storageProp1}`)
-        .onClick((e: ClickEvent) => {
-          this.storageProp1 += 1;
-        })
-      Child()
+  // 使LocalStorage可从@Component组件访问
+  @Entry({storage: 'storageFunc'})
+  @Component
+  struct Parent {
+    // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
+    @LocalStoragePropRef('PropA') storageProp1: int = 1;
+
+    build() {
+      Column() {
+        // 点击后从47开始加1，只改变当前组件显示的storageProp1，不会同步到LocalStorage中
+        Button(`Parent from LocalStorage ${this.storageProp1}`)
+          .onClick((e: ClickEvent) => {
+            this.storageProp1 += 1;
+          })
+        Child()
+      }
     }
   }
-}
 
-@Component
-struct Child {
-  // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
-  @LocalStoragePropRef('PropA') storageProp2: int = 2;
+  @Component
+  struct Child {
+    // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
+    @LocalStoragePropRef('PropA') storageProp2: int = 2;
 
-  build() {
-    Column() {
-      // 当Parent改变时，当前storageProp2不会改变，显示47
-      Text(`Parent from LocalStorage ${this.storageProp2}`)
+    build() {
+      Column() {
+        // 当Parent改变时，当前storageProp2不会改变，显示47
+        Text(`Parent from LocalStorage ${this.storageProp2}`)
+      }
     }
   }
-}
-```
+  ```
 
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
@@ -389,72 +406,74 @@ Child自定义组件中的变化：
 
 1. playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
-```ts
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
+    ```ts
+    'use static'
 
-let count: Record<string, Any> = { 'countStorage': 1 };
-let storageA: LocalStorage = new LocalStorage(count);
-let storageFunc = (): LocalStorage => {
-  return storageA;
-}
+    import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+    import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 
-@Component
-struct Child {
-  // 子组件实例的名字
-  label: string = 'no name';
-  // 和LocalStorage中“countStorage”的双向绑定数据
-  @LocalStorageLink('countStorage') playCountLink: int = 0;
-
-  build() {
-    Row() {
-      Text(this.label)
-        .width(50).height(60).fontSize(12)
-      Text(`playCountLink ${this.playCountLink}: inc by 1`)
-        .onClick((e: ClickEvent) => {
-          this.playCountLink += 1;
-        })
-        .width(200).height(60).fontSize(12)
-    }.width(300).height(60)
-  }
-}
-
-@Entry({storage: 'storageFunc'})
-@Component
-struct Parent {
-  @LocalStorageLink('countStorage') playCount: int = 0;
-
-  build() {
-    Column() {
-      Row() {
-        Text('Parent')
-          .width(50).height(60).fontSize(12)
-        Text(`playCount ${this.playCount} dec by 1`)
-          .onClick((e: ClickEvent) => {
-            this.playCount -= 1;
-          })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
-
-      Row() {
-        Text('LocalStorage')
-          .width(50).height(60).fontSize(12)
-        Text(`countStorage ${this.playCount} incr by 1`)
-          .onClick((e: ClickEvent) => {
-            storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
-          })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
-
-      Child({ label: 'ChildA' })
-      Child({ label: 'ChildB' })
-
-      Text(`playCount in LocalStorage for debug ${storageA.get<int>('countStorage')}`)
-        .width(300).height(60).fontSize(12)
+    let count: Record<string, Any> = { 'countStorage': 1 };
+    let storageA: LocalStorage = new LocalStorage(count);
+    let storageFunc = (): LocalStorage => {
+      return storageA;
     }
-  }
-}
-```
+
+    @Component
+    struct Child {
+      // 子组件实例的名字
+      label: string = 'no name';
+      // 和LocalStorage中“countStorage”的双向绑定数据
+      @LocalStorageLink('countStorage') playCountLink: int = 0;
+
+      build() {
+        Row() {
+          Text(this.label)
+            .width(50).height(60).fontSize(12)
+          Text(`playCountLink ${this.playCountLink}: inc by 1`)
+            .onClick((e: ClickEvent) => {
+              this.playCountLink += 1;
+            })
+            .width(200).height(60).fontSize(12)
+        }.width(300).height(60)
+      }
+    }
+
+    @Entry({storage: 'storageFunc'})
+    @Component
+    struct Parent {
+      @LocalStorageLink('countStorage') playCount: int = 0;
+
+      build() {
+        Column() {
+          Row() {
+            Text('Parent')
+              .width(50).height(60).fontSize(12)
+            Text(`playCount ${this.playCount} dec by 1`)
+              .onClick((e: ClickEvent) => {
+                this.playCount -= 1;
+              })
+              .width(250).height(60).fontSize(12)
+          }.width(300).height(60)
+
+          Row() {
+            Text('LocalStorage')
+              .width(50).height(60).fontSize(12)
+            Text(`countStorage ${this.playCount} incr by 1`)
+              .onClick((e: ClickEvent) => {
+                storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
+              })
+              .width(250).height(60).fontSize(12)
+          }.width(300).height(60)
+
+          Child({ label: 'ChildA' })
+          Child({ label: 'ChildB' })
+
+          Text(`playCount in LocalStorage for debug ${storageA.get<int>('countStorage')}`)
+            .width(300).height(60).fontSize(12)
+        }
+      }
+    }
+    ```
 
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 
@@ -462,6 +481,8 @@ struct Parent {
 
 ```ts
 // EntryAbility.ets
+'use static'
+
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { LocalStorage } from '@ohos.arkui.stateManagement'
@@ -488,6 +509,8 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // index.ets
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 
@@ -495,7 +518,7 @@ import { LocalStorage, LocalStorageLink } from '@ohos.arkui.stateManagement'
 @Entry({ useSharedStorage: true })
 @Component
 struct Index {
-  // 可以使用@LocalStorageLink/Prop与LocalStorage实例中的变量建立联系
+  // 可以使用@LocalStorageLink/LocalStoragePropRef与LocalStorage实例中的变量建立联系
   @LocalStorageLink('PropA') propA: int = 1;
 
   build() {
@@ -520,6 +543,8 @@ struct Index {
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
@@ -583,6 +608,8 @@ struct Index {
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -624,6 +651,8 @@ struct DateSample {
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -664,6 +693,8 @@ struct MapSample {
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
@@ -703,6 +734,8 @@ struct SetSample {
 ### 自定义组件外改变状态变量
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorageLink, LocalStorage } from '@ohos.arkui.stateManagement';
 

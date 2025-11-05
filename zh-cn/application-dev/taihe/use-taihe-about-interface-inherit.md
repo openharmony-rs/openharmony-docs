@@ -2,7 +2,7 @@
 
 ## 简介
 
-Taihe 支持 interface 继承 interface，@class interface 继承 interface，需要用户对 [interface](./use-taihe-about-interface.md) 有基础的了解。
+Taihe支持interface继承interface，@class interface继承interface，需要用户对[interface](./use-taihe-about-interface.md)和[class](./use-taihe-about-class.md)有基础的了解。
 
 ## 基本概念
 

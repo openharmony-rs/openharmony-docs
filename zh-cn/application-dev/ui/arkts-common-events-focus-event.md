@@ -1230,7 +1230,7 @@ struct Index {
         .defaultFocus(true)
       Button('Button2')
         .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
-    }.focusScopeId('RowScope')
+    }.focusScopeId('RowScope', false, false)
   }
 }
 ```
@@ -1882,7 +1882,7 @@ struct FocusableExample {
             }
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
         }
-        // .focusScopeId('ColumnScope1')
+        .focusScopeId('ColumnScope1', false, false)
         Column({ space: 5 } as ColumnOptions) {  // 标记为Column2
           TextInput({placeholder: 'input', text: this.inputValue})
             .onChange((value: string, previewText?: PreviewText, options?: TextChangeOptions) => {
@@ -1933,7 +1933,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        // .focusScopeId('ColumnScope2', true)  // Column2为焦点组
+        .focusScopeId('ColumnScope2', true, true)  // Column2为焦点组
       }.alignItems(VerticalAlign.Top)
     }
   }

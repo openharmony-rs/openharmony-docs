@@ -84,16 +84,20 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 完整代码如下：
 
 ```ts
+'use static'
+
 import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { PersistentStorage, StorageLink, State } from '@ohos.arkui.stateManagement';
-
-PersistentStorage.persistProp<number>('aProp', 47);
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
   @StorageLink('aProp') aProp: number = 48;
+  // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+  static {
+    PersistentStorage.persistProp<number>('aProp', 47);
+  }
 
   build() {
     Row() {
@@ -135,6 +139,8 @@ struct Index {
 该示例为反例。在调用PersistentStorage.persistProp或者persistProps之前使用接口访问AppStorage中的属性是错误的，因为这样的调用顺序会丢失上一次应用程序运行中的属性值：
 
 ```ts
+'use static'
+
 import { PersistentStorage, AppStorage } from '@ohos.arkui.stateManagement';
 
 let aProp = AppStorage.setOrCreate('aProp', 47);
@@ -150,6 +156,8 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
 ```ts
+'use static'
+
 import { PersistentStorage, AppStorage } from '@ohos.arkui.stateManagement';
 
 PersistentStorage.persistProp('aProp', 48);
@@ -167,6 +175,8 @@ if (AppStorage.get('aProp') > 50) {
 静态ArkTS中,语言不支持序列化undefined，因此，不建议开发者使用PersitentStorage时去持久化undefined，可使用null代替，如在下面的示例中，使用persistProp方法初始化'P'为12。通过@StorageLink('P')绑定变量p，类型为number | string | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -231,6 +241,8 @@ struct MapSample {
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新，并且persistedDate的值会被持久化存储。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -286,6 +298,8 @@ struct MapSample {
 在下面的示例中，@StorageLink装饰的map类型为Map\<string, string\>，点击Button改变map的值，视图会随之刷新，并且map的值被持久化存储。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -351,6 +365,8 @@ struct MapSample {
 在下面的示例中，@StorageLink装饰的set类型为Set\<string\>，点击Button改变set的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 
@@ -416,6 +432,8 @@ struct SetSample {
 在下面的示例中，@StorageLink装饰的class被@Observed修饰，@Observed装饰的class属性改变时，能触发PersistentStorage持久化。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 

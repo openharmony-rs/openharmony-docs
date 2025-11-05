@@ -23,7 +23,7 @@ Taihe 提供基础类型和字符串类型。
 | `bool`     | `bool`          | `bool`                   | `boolean`  |
 | `String`   | `taihe::string` | `taihe::string_view`     | `string`   |
 
-注意，目前 Taihe 支持 unsigned 类型，但 ets 并不支持，如果进行 ets 相关开发，请避免直接使用 `u8`、`u16`、`u32`、`u64`。`Array\<u8\>`，`Array<\u64\>` 等是特例，后续会在 bigint，arraybuffer 章节介绍。
+注意，目前Taihe支持unsigned类型，但ets并不支持，如果进行ets相关开发，请避免直接使用`u8`、`u16`、`u32`、`u64`。`Array<u8>`，`Array<u64>`等特例，后续会在[bigint](./use-taihe-about-bigint.md)，[arraybuffer](./use-taihe-about-arraybuffer-and-typedarray.md)章节介绍。
 
 作为参数时，string 类型有 view 类型和非 view 类型，其中，view 类型的语义是不拥有所有权，只是对现有类型的引用，而非 view 类型则是拥有当前类型的所有权，用户可以根据使用场景来进行使用。
 

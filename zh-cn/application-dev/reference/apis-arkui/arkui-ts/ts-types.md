@@ -2,7 +2,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## Resource
 
@@ -34,7 +36,121 @@
 >
 >  引用资源类型时，需确保资源类型对象用法为当前支持的用法，否则当前以资源类型作为参数的属性效果将和不设置该属性相同。
 
+**使用@ohos.transfer进行Resource类型转换**
+
+通过在ArkTS-Dyn中引用ArkTS-Sta创建的Resource对象的方法显示图片。
+
+- 创建ArkTS-Dyn子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
+ 
+  ArkTS-Sta示例：
+ 
+  ```TypeScript
+    'use static'
+  // library2/src/main/ets/components/MainPage.ets
+
+  import transfer from '@ohos.transfer';
+  import {$rawfile, $r} from '@ohos.arkui.component';
+
+  export function rawFileTest() {
+    let rawFile = $rawfile('startIcon.png');
+    let dynamicRawFile = transfer.transferDynamic(rawFile, 'Global.Resource');
+    return dynamicRawFile! as Object;
+  }
+  export function resourceTest(): Object {
+    let resource = $r('app.float.image_size');
+    let dynamicResource = transfer.transferDynamic(resource, 'Global.Resource');
+    return dynamicResource! as Object;
+  }
+  ```
+
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建Resource对象。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  import { resourceTest, rawFileTest } from 'library2';
+  // Resource $r对象互操作
+  export function resourceTrans(): Resource {
+    return  resourceTest() as Resource;
+  }
+  // Resource RawFile对象互操作
+  export function rawFileTrans(): Resource {
+     return rawFileTest() as Resource;
+  }
+
+  @Entry
+  @Component
+  struct MyStateSample {
+    build() {
+      Column(undefined) {
+        Image(rawFileTrans())
+          .size({width:resourceTrans(), height:resourceTrans()})
+      }
+    }
+  }
+  ```
+  ![image](figures/resourceTransfer.png)
+
+通过在ArkTS-Sta中引用ArkTS-Dyn创建的Resource对象显示图片。
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynResource的方法。
+    
+    ArkTS-Dyn示例：
+
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    export function rawFileTest() {
+      return $rawfile('startIcon.png');
+    }
+  
+    export function resourceTest(): Object {
+      return $r('app.float.image_size');
+    }
+    ```
+  
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn Resource对象。
+    
+    ArkTS-Sta示例：
+
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+    
+    import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
+    import transfer from '@ohos.transfer';
+    import { resourceTest, rawFileTest } from 'library';
+  
+    // Resource $r对象互操作
+    export function resourceTrans(): Resource {
+       let resourceDynamic = resourceTest();
+       return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+  
+    }
+    // Resource RawFile对象互操作
+    export function rawFileTrans(): Resource {
+      let resourceDynamic = rawFileTest();
+      return transfer.transferStatic(resourceDynamic, 'Global.Resource')! as Resource;
+    }
+    
+    @Entry
+    @Component
+    struct MyStateSample {
+      build() {
+        Column(undefined) {
+          Image(rawFileTrans())
+            .size({width:resourceTrans(), height:resourceTrans()})
+        }
+      }
+    }
+    ```
+    ![image](figures/resourceTransfer.png)
+    
 ## Length
+
+ArkTS-Dyn: type Length = string | number | Resource
+
+ArkTS-Sta: type Length = string | double | Resource
 
 长度类型，用于描述尺寸单位。
 
@@ -44,10 +160,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
 | string                | 需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br/>**说明：** <br/>不指定像素单位时，默认单位vp，如'10'，等同于10。 |
-| number                | 默认单位vp。                                |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double               | 默认单位vp。                                |
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。               |
 
 ## ResourceStr
@@ -282,7 +402,9 @@
 
 ## ResourceColor
 
-type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
+ArkTS-Dyn: type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
+
+ArkTS-Sta: type ResourceColor = [Color](ts-appendix-enums.md#color) | int | string | [Resource](#resource)
 
 颜色类型，用于描述资源颜色类型。
 
@@ -292,10 +414,14 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                | 说明                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
 | [Color](ts-appendix-enums.md#color) | 颜色枚举值。                                                 |
-| number                              | HEX格式颜色，支持rgb或者argb。示例：0xffffff，0xffff0000。number无法识别传入位数，格式选择依据值的大小，例如0x00ffffff作rgb格式解析 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int                              | HEX格式颜色，支持rgb或者argb。示例：0xffffff，0xffff0000。number无法识别传入位数，格式选择依据值的大小，例如0x00ffffff作rgb格式解析。 |
 | string                              | rgb或者argb格式颜色。示例：'#ffffff'，'#ff000000'，'rgb(255, 100, 255)'，'rgba(255, 100, 255, 0.5)'。 |
 | [Resource](#resource)               | 使用引入资源的方式，引入系统资源或者应用资源中的颜色。       |
 
@@ -459,15 +585,156 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 创建具有4*5矩阵的颜色过滤器。
 
+支持使用[@ohos.transfer](../../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型       | 必填   | 描述                                       |
 | ----------- | -------- | ---- | ---------------------------------------- |
-| constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+| constructor | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+
+**使用@ohos.transfer进行ColorFilter类型转换**
+
+ArkTS-Dyn中使用ArkTS-Sta的ColorFilter对象。
+
+- 在ArkTS-Sta主模块中创建ArkTS-Dyn ColorFilter，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  import { Entry, Column, Component, Button, $r, ColorFilter, FlexAlign } from '@ohos.arkui.component';
+  import transfer from '@ohos.transfer';
+  import { MyChild, createColorFilterDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    aboutToAppear() {
+      let colorFilterStatic = new ColorFilter([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.8, 0]);
+      try {
+        let colorFilterDynamic = transfer.transferDynamic(colorFilterStatic, "ArkUI.ColorFilter") as Object;
+        let moduleName = ESValue.load("@normalized:N&entry&com.example.myApplication&library/Index&1.0.0");
+        let colorFilterMapFunc = moduleName.getProperty('createColorFilterDynamic');
+        colorFilterMapFunc.invoke(colorFilterDynamic);
+      } catch (e: Error) {
+        console.log('transferDynamic catch error：-----------' + e.message);
+      }
+    }
+
+    build() {
+      Column() {
+        MyChild()
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn ColorFilter的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  let g_colorFilter: ColorFilter = null;
+
+  export function createColorFilterDynamic(colorFilter: any) {
+    g_colorFilter = colorFilter;
+  }
+
+  @Component
+  export struct MyChild {
+    @State colorFilter_: any = null;
+
+    build() {
+      Column({ space: 5 }) {
+        Button('更新图片')
+          .onClick(() => {
+            let colorFilter = g_colorFilter;
+            if (colorFilter) {
+              this.colorFilter_ = colorFilter;
+            }
+          })
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .colorFilter(this.colorFilter_)
+      }
+    }
+  }
+  ```
+  ![image](figures/colorFilterTransferDyn.png)
+
+ArkTS-Sta中使用ArkTS-Dyn的ColorFilter对象。
+
+- 在ArkTS-Sta主模块得到ArkTS-Dyn子模块`library`创建的ArkTS-Dyn ColorFilter对象。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  import { Entry, Column, Component, Button, Image, Row, ColorFilter, $r, FlexAlign } from '@ohos.arkui.component';
+  import transfer from '@ohos.transfer';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { getColorFilterDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    @State colorFilter_: ColorFilter | undefined = undefined;
+
+    aboutToAppear() {
+      let moduleName = ESValue.load("@normalized:N&entry&com.example.myApplication&library/Index&1.0.0");
+      let colorFilterMapFunc = moduleName.getProperty('getColorFilterDynamic');
+      let colorFilterDynamic = colorFilterMapFunc.invoke();
+      try {
+        let colorFilterStatic = transfer.transferStatic(colorFilterDynamic, "ArkUI.ColorFilter");
+        this.colorFilter_ = colorFilterStatic as ColorFilter;
+      } catch (e: Error) {
+        console.log('transferStatic catch error：-----------' + e.message);
+      }
+    }
+
+    build() {
+      Column() {
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .colorFilter(this.colorFilter_)
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-Dyn ColorFilter的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  export function getColorFilterDynamic() {
+    let colorFilterMatrix: number[] = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.8, 0];
+    let colorFilter = new ColorFilter(colorFilterMatrix);
+    return colorFilter;
+  }
+  ```
+  ![image](figures/colorFilterTransferSta.png)
 
 ## CustomBuilder<sup>8+</sup>
 
@@ -572,11 +839,32 @@ type CustomBuilderT\<T> = @Builder ((t: T) => void)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
 | {number}vp\|number | 需要指定数字或vp像素单位，如10或'10vp'。 |
+
+## VP<sup>20+</sup>
+
+type VP = string | double
+
+长度类型，用于描述以vp像素单位为单位的长度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+| string | 需要指定vp像素单位，如'10vp'。 |
+| double | 需要指定数字，如10。 |
 
 ## FP<sup>10+</sup>
 
@@ -1021,10 +1309,14 @@ setTextSelection选中文字时的配置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 | 参数名   | 类型     | 描述             |
 | ----- | ------ | -------------- |
-| horizontal | number | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
-| vertical     | number | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
+| horizontal | ArkTS-Dyn: number<br>ArkTS-Sta: double | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
+| vertical     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
 
 ## Configuration
 

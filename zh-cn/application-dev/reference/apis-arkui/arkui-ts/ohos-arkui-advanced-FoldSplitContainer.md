@@ -162,8 +162,56 @@ onHoverStatusChange事件处理。
 
 该示例实现了折叠屏二分栏在展开态、悬停态以及折叠态的区域控制。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FoldSplitContainer } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TwoColumns {
+  @Builder
+  privateRegion() {
+    Text("Primary")
+      .backgroundColor('rgba(255, 0, 0, 0.1)')
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .height('100%')
+      .width('100%')
+  }
+
+  @Builder
+  secondaryRegion() {
+    Text("Secondary")
+      .backgroundColor('rgba(0, 255, 0, 0.1)')
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .height('100%')
+      .width('100%')
+  }
+
+  build() {
+    RelativeContainer() {
+      FoldSplitContainer({
+        primary: () => {
+          this.privateRegion()
+        },
+        secondary: () => {
+          this.secondaryRegion()
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { FoldSplitContainer } from '@ohos.arkui.advanced.FoldSplitContainer';
+import { Column, Component, Text, Entry, Builder, TextAlign, RelativeContainer } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -213,8 +261,69 @@ struct TwoColumns {
 
 该示例实现了折叠屏三分栏在展开态、悬停态以及折叠态的区域控制。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FoldSplitContainer } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ThreeColumns {
+  @Builder
+  privateRegion() {
+    Text("Primary")
+      .backgroundColor('rgba(255, 0, 0, 0.1)')
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .height('100%')
+      .width('100%')
+  }
+
+  @Builder
+  secondaryRegion() {
+    Text("Secondary")
+      .backgroundColor('rgba(0, 255, 0, 0.1)')
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .height('100%')
+      .width('100%')
+  }
+
+  @Builder
+  extraRegion() {
+    Text("Extra")
+      .backgroundColor('rgba(0, 0, 255, 0.1)')
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .height('100%')
+      .width('100%')
+  }
+
+  build() {
+    RelativeContainer() {
+      FoldSplitContainer({
+        primary: () => {
+          this.privateRegion()
+        },
+        secondary: () => {
+          this.secondaryRegion()
+        },
+        extra: () => {
+          this.extraRegion()
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { FoldSplitContainer } from '@ohos.arkui.advanced.FoldSplitContainer';
+import { Column, Component, Text, Entry, Builder, TextAlign, RelativeContainer } from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -276,6 +385,8 @@ struct ThreeColumns {
 ### 示例3（展开态布局信息）
 
 该示例通过配置ExpandedRegionLayoutOptions实现折叠屏展开态的布局信息。
+
+ArkTS-Dyn示例：
 
 ```ts
 import {
@@ -640,6 +751,412 @@ struct Index {
                 }
               },
             ]
+          })
+        }
+      }
+      .constraintSize({ minHeight: "100%" })
+    }
+  }
+
+  build() {
+    Column() {
+      FoldSplitContainer({
+        primary: () => {
+          this.MajorRegion()
+        },
+        secondary: () => {
+          this.MinorRegion()
+        },
+        extra: () => {
+          this.ExtraRegion()
+        },
+        expandedLayoutOptions: this.expandedRegionLayoutOptions,
+        hoverModeLayoutOptions: this.foldingRegionLayoutOptions,
+        foldedLayoutOptions: this.foldedRegionLayoutOptions,
+      })
+    }
+    .width("100%")
+    .height("100%")
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { FoldSplitContainer, PresetSplitRatio, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions, ExtraRegionPosition } from '@ohos.arkui.advanced.FoldSplitContainer';
+import { Column, Component, Text, Entry, Builder, TextAlign, RelativeContainer,
+  BuilderParam, Scroll, Row, Blank, Toggle, ToggleType, ForEach, Radio,
+  HorizontalAlign, VerticalAlign, Color } from '@ohos.arkui.component';
+import { State, Prop, Watch, PropRef } from '@ohos.arkui.stateManagement';
+
+@Component
+struct Region {
+  @Builder
+  builder(value: string) {
+
+  }
+  @PropRef title: string;
+  @BuilderParam content: (value: string) => void = this.builder;
+  @PropRef compBackgroundColor: string;
+
+  build() {
+    Column() {
+      Text(this.title)
+        .fontSize("24fp")
+        .fontWeight(600)
+
+      Scroll() {
+        this.content('111')
+      }
+      .layoutWeight(1)
+      .width("100%")
+    }
+    .backgroundColor(this.compBackgroundColor)
+    .width("100%")
+    .height("100%")
+    .padding(12)
+  }
+}
+
+const noop = () => {
+};
+
+@Component
+struct SwitchOption {
+  @PropRef label: string = "";
+  @PropRef value: boolean = false;
+  public onChange: (checked: boolean) => void = noop;
+
+  build() {
+    Row() {
+      Text(this.label)
+      Blank()
+      Toggle({ type: ToggleType.Switch, isOn: this.value })
+        .onChange((isOn) => {
+          this.onChange(isOn);
+        })
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(8)
+    .padding(8)
+    .width("100%")
+  }
+}
+
+interface RadioOptions {
+  label: string;
+  value: Object | undefined | null;
+  onChecked: () => void;
+}
+
+@Component
+struct RadioOption {
+  @PropRef label: string;
+  @PropRef value: Object | undefined | null;
+  @PropRef options: Array<RadioOptions>;
+
+  build() {
+    Row() {
+      Text(this.label)
+      Blank()
+      Column() {
+        ForEach(this.options, (option: RadioOptions) => {
+          Row() {
+            Radio({
+              group: this.label,
+              value: JSON.stringify(option.value),
+            })
+              .checked(this.value === option.value)
+              .onChange((checked) => {
+                if (checked) {
+                  option.onChecked();
+                }
+              })
+            Text(option.label)
+          }
+        },(item:RadioOptions)=>{return item.label})
+      }
+      .alignItems(HorizontalAlign.Start)
+    }
+    .alignItems(VerticalAlign.Top)
+    .backgroundColor(Color.White)
+    .borderRadius(8)
+    .padding(8)
+    .width("100%")
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State expandedRegionLayoutOptions: ExpandedRegionLayoutOptions = {
+    horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
+    verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1,
+    isExtraRegionPerpendicular: true,
+    extraRegionPosition: ExtraRegionPosition.TOP
+  } as ExpandedRegionLayoutOptions;
+  @State foldingRegionLayoutOptions: HoverModeRegionLayoutOptions = {
+    horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
+    showExtraRegion: false,
+    extraRegionPosition: ExtraRegionPosition.TOP
+  } as HoverModeRegionLayoutOptions;
+  @State foldedRegionLayoutOptions: FoldedRegionLayoutOptions = {
+    verticalSplitRatio: PresetSplitRatio.LAYOUT_3V2
+  } as FoldedRegionLayoutOptions;
+
+  @State majorRegionOptions:Array<RadioOptions> = [
+    {
+      label: "1:1",
+      value: PresetSplitRatio.LAYOUT_1V1,
+      onChecked: () => {
+        this.foldedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_1V1;
+      }
+    } as RadioOptions,
+    {
+      label: "2:3",
+      value: PresetSplitRatio.LAYOUT_2V3,
+      onChecked: () => {
+        this.foldedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_2V3;
+      }
+    } as RadioOptions,
+    {
+      label: "3:2",
+      value: PresetSplitRatio.LAYOUT_3V2,
+      onChecked: () => {
+        this.foldedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_3V2;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.foldedRegionLayoutOptions.verticalSplitRatio = undefined;
+      }
+    } as RadioOptions
+  ]
+
+  @State minorRegionOptions:Array<RadioOptions> = [
+    {
+      label: "1:1",
+      value: PresetSplitRatio.LAYOUT_1V1,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_1V1;
+      }
+    } as RadioOptions,
+    {
+      label: "2:3",
+      value: PresetSplitRatio.LAYOUT_2V3,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_2V3;
+      }
+    } as RadioOptions,
+    {
+      label: "3:2",
+      value: PresetSplitRatio.LAYOUT_3V2,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_3V2;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.horizontalSplitRatio = undefined;
+      }
+    } as RadioOptions,
+  ]
+
+  @State minorRegionOptions1:Array<RadioOptions> = [
+    {
+      label: "顶部",
+      value: ExtraRegionPosition.TOP,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.TOP;
+      }
+    } as RadioOptions,
+    {
+      label: "底部",
+      value: ExtraRegionPosition.BOTTOM,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.BOTTOM;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.foldingRegionLayoutOptions.extraRegionPosition = undefined;
+      }
+    } as RadioOptions,
+  ]
+
+  @State extraRegionOptions:Array<RadioOptions> =[
+    {
+      label: "1:1",
+      value: PresetSplitRatio.LAYOUT_1V1,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_1V1;
+      }
+    } as RadioOptions,
+    {
+      label: "2:3",
+      value: PresetSplitRatio.LAYOUT_2V3,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_2V3;
+      }
+    } as RadioOptions,
+    {
+      label: "3:2",
+      value: PresetSplitRatio.LAYOUT_3V2,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_3V2;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.horizontalSplitRatio = undefined;
+      }
+    } as RadioOptions,
+  ]
+
+  @State extraRegionOptions1:Array<RadioOptions> = [
+    {
+      label: "1:1",
+      value: PresetSplitRatio.LAYOUT_1V1,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_1V1;
+      }
+    } as RadioOptions,
+    {
+      label: "2:3",
+      value: PresetSplitRatio.LAYOUT_2V3,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_2V3;
+      }
+    } as RadioOptions,
+    {
+      label: "3:2",
+      value: PresetSplitRatio.LAYOUT_3V2,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.verticalSplitRatio = PresetSplitRatio.LAYOUT_3V2;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.verticalSplitRatio = undefined;
+      }
+    } as RadioOptions,
+  ]
+
+  @State extraRegionOptions2:Array<RadioOptions> = [
+    {
+      label: "顶部",
+      value: ExtraRegionPosition.TOP,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.TOP;
+      }
+    } as RadioOptions,
+    {
+      label: "底部",
+      value: ExtraRegionPosition.BOTTOM,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.BOTTOM;
+      }
+    } as RadioOptions,
+    {
+      label: "未定义",
+      value: undefined,
+      onChecked: () => {
+        this.expandedRegionLayoutOptions.extraRegionPosition = undefined;
+      }
+    } as RadioOptions,
+  ]
+  @Builder
+  MajorRegion() {
+    Region({
+      title: "折叠态配置",
+      compBackgroundColor: "rgba(255, 0, 0, 0.1)",
+    }) {
+      Column() {
+        RadioOption({
+          label: "折叠态垂直高度度比",
+          value: this.foldedRegionLayoutOptions.verticalSplitRatio,
+          options:this.majorRegionOptions})
+      }
+      .constraintSize({ minHeight: "100%" })
+    }
+  }
+
+  @Builder
+  MinorRegion() {
+    Region({
+      title: "悬停态配置",
+      compBackgroundColor: "rgba(0, 255, 0, 0.1)"
+    }) {
+      Column() {
+        RadioOption({
+          label: "悬停态水平宽度比",
+          value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
+          options: this.minorRegionOptions
+        })
+
+        SwitchOption({
+          label: "悬停态是否显示扩展区",
+          value: this.foldingRegionLayoutOptions.showExtraRegion,
+          onChange: (checked: Boolean) => {
+            this.foldingRegionLayoutOptions.showExtraRegion = checked;
+          }
+        })
+
+        if (this.foldingRegionLayoutOptions.showExtraRegion) {
+          RadioOption({
+            label: "悬停态扩展区位置",
+            value: this.foldingRegionLayoutOptions.extraRegionPosition,
+            options: this.minorRegionOptions1
+          })
+        }
+      }
+      .constraintSize({ minHeight: "100%" })
+    }
+  }
+
+  @Builder
+  ExtraRegion() {
+    Region({
+      title: "展开态配置",
+      compBackgroundColor: "rgba(0, 0, 255, 0.1)"
+    }) {
+      Column() {
+        RadioOption({
+          label: "展开态水平宽度比",
+          value: this.expandedRegionLayoutOptions.horizontalSplitRatio,
+          options: this.extraRegionOptions
+        })
+
+        RadioOption({
+          label: "展开态垂直高度度比",
+          value: this.expandedRegionLayoutOptions.verticalSplitRatio,
+          options: this.extraRegionOptions1
+        })
+
+        SwitchOption({
+          label: "展开态扩展区是否上下贯穿",
+          value: this.expandedRegionLayoutOptions.isExtraRegionPerpendicular,
+          onChange: (checked: Boolean) => {
+            this.expandedRegionLayoutOptions.isExtraRegionPerpendicular = checked;
+          }
+        })
+
+        if (!this.expandedRegionLayoutOptions.isExtraRegionPerpendicular) {
+          RadioOption({
+            label: "展开态扩展区位置",
+            value: this.expandedRegionLayoutOptions.extraRegionPosition,
+            options: this.extraRegionOptions2
           })
         }
       }

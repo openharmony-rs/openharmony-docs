@@ -9,6 +9,8 @@
 >  - 本模块接口依据[CLDR](https://cldr.unicode.org) 国际化数据库进行处理，随着CLDR演进，本模块接口处理结果可能发生变化。其中，API version 12对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)，具体数据变化请参考官方链接。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
+>
+>  - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 
 ## 导入模块
@@ -795,8 +797,8 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 | 名称  | 类型   | 只读   | 可选   | 说明                |
 | ---- | ---- | ---- | ---- | ----------------- |
 | type | string | 否    | 否    | 实体的类型，当前支持phone_number和date类型。phone_number表示实体类型是电话号码，date表示实体类型是时间日期。 |
-| begin | number | 否    | 否    | 实体在输入字符串中的起始位置。 |
-| end | number | 否    | 否    | 实体在输入字符串中的终止位置。 |
+| begin | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 实体在输入字符串中的起始位置。 |
+| end | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 实体在输入字符串中的终止位置。 |
 
 ## Calendar<sup>8+</sup>
 
@@ -826,7 +828,9 @@ setTime(date: Date): void
 
 ### setTime<sup>8+</sup>
 
-setTime(time: number): void
+ArkTS-Dyn: setTime(time: number): void
+
+ArkTS-Sta: setTime(time: double): void
 
 设置日历对象内部的时间、日期。
 
@@ -838,7 +842,7 @@ setTime(time: number): void
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
-| time | number | 是    | Unix时间戳，表示从1970.1.1&nbsp;00:00:00&nbsp;GMT逝去的毫秒数。 |
+| time | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | Unix时间戳，表示从1970.1.1&nbsp;00:00:00&nbsp;GMT逝去的毫秒数。 |
 
 **示例：**
   ```ts
@@ -848,7 +852,9 @@ setTime(time: number): void
 
 ### set<sup>8+</sup>
 
-set(year: number, month: number, date:number, hour?: number, minute?: number, second?: number): void
+ArkTS-Dyn: set(year: number, month: number, date:number, hour?: number, minute?: number, second?: number): void
+
+ArkTS-Sta: set(year: int, month: int, date:int, hour?: int, minute?: int, second?: int): void
 
 设置日历对象的年、月、日、时、分、秒。
 
@@ -860,12 +866,12 @@ set(year: number, month: number, date:number, hour?: number, minute?: number, se
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| year   | number | 是    | 设置的年。  |
-| month  | number | 是    | 设置的月。说明：月份从0开始计数，例如0表示一月。  |
-| date   | number | 是    | 设置的日。  |
-| hour   | number | 否    | 设置的小时。默认值：系统当前时间。 |
-| minute | number | 否    | 设置的分钟。默认值：系统当前时间。 |
-| second | number | 否    | 设置的秒。默认值：系统当前时间。 |
+| year   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的年。  |
+| month  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的月。说明：月份从0开始计数，例如0表示一月。  |
+| date   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 设置的日。  |
+| hour   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的小时。默认值：系统当前时间。 |
+| minute | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的分钟。默认值：系统当前时间。 |
+| second | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 设置的秒。默认值：系统当前时间。 |
 
 **示例：**
   ```ts
@@ -922,7 +928,9 @@ getTimeZone(): string
 
 ### getFirstDayOfWeek<sup>8+</sup>
 
-getFirstDayOfWeek(): number
+ArkTS-Dyn: getFirstDayOfWeek(): number
+
+ArkTS-Sta: getFirstDayOfWeek(): int
 
 获取日历对象的周起始日。
 
@@ -934,18 +942,20 @@ getFirstDayOfWeek(): number
 
 | 类型     | 说明                    |
 | ------ | --------------------- |
-| number | 周起始日，1代表周日，7代表周六。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 周起始日，1代表周日，7代表周六。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
-  let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 1
+  let calendar = i18n.getCalendar('en-US', 'gregory');
+  let firstDayOfWeek = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 1
   ```
 
 
 ### setFirstDayOfWeek<sup>8+</sup>
 
-setFirstDayOfWeek(value: number): void
+ArkTS-Dyn: setFirstDayOfWeek(value: number): void
+
+ArkTS-Sta: setFirstDayOfWeek(value: int): void
 
 设置日历对象的周起始日。
 
@@ -957,18 +967,20 @@ setFirstDayOfWeek(value: number): void
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | --------------------- |
-| value | number | 是    | 一周的起始日，1代表周日，7代表周六。 |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 一周的起始日，1代表周日，7代表周六。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
+  let calendar = i18n.getCalendar('zh-Hans');
   calendar.setFirstDayOfWeek(3);
-  let firstDayOfWeek: number = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 3
+  let firstDayOfWeek = calendar.getFirstDayOfWeek(); // firstDayOfWeek = 3
   ```
 
 ### getMinimalDaysInFirstWeek<sup>8+</sup>
 
-getMinimalDaysInFirstWeek(): number
+ArkTS-Dyn: getMinimalDaysInFirstWeek(): number
+
+ArkTS-Sta: getMinimalDaysInFirstWeek(): int
 
 获取日历对象一年中第一周的最小天数。
 
@@ -980,18 +992,20 @@ getMinimalDaysInFirstWeek(): number
 
 | 类型     | 说明           |
 | ------ | ------------ |
-| number | 一年中第一周的最小天数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 一年中第一周的最小天数。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
-  let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 1
+  let calendar = i18n.getCalendar('zh-Hans');
+  let minimalDaysInFirstWeek = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 1
   ```
 
 
 ### setMinimalDaysInFirstWeek<sup>8+</sup>
 
-setMinimalDaysInFirstWeek(value: number): void
+ArkTS-Dyn: setMinimalDaysInFirstWeek(value: number): void
+
+ArkTS-Sta: setMinimalDaysInFirstWeek(value: int): void
 
 设置日历对象一年中第一周的最小天数。
 
@@ -1003,19 +1017,21 @@ setMinimalDaysInFirstWeek(value: number): void
 
 | 参数名   | 类型     | 必填   | 说明           |
 | ----- | ------ | ---- | ------------ |
-| value | number | 是    | 一年中第一周的最小天数。 |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 一年中第一周的最小天数。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
+  let calendar = i18n.getCalendar('zh-Hans');
   calendar.setMinimalDaysInFirstWeek(3);
-  let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 3
+  let minimalDaysInFirstWeek = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 3
   ```
 
 
 ### get<sup>8+</sup>
 
-get(field: string): number
+ArkTS-Dyn: get(field: string): number
+
+ArkTS-Sta: get(field: string): int
 
 获取日历对象中日历属性的值。
 
@@ -1059,13 +1075,13 @@ get(field: string): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 日历属性的值，如当前Calendar对象的内部日期的年份为1990，get('year')返回1990。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 日历属性的值，如当前Calendar对象的内部日期的年份为1990，get('year')返回1990。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
+  let calendar = i18n.getCalendar('zh-Hans');
   calendar.set(2021, 10, 1, 8, 0, 0); // 设置时间日期为2021.11.1 08:00:00
-  let hourOfDay: number = calendar.get('hour_of_day'); // hourOfDay = 8
+  let hourOfDay = calendar.get('hour_of_day'); // hourOfDay = 8
   ```
 
 
@@ -1132,7 +1148,9 @@ isWeekend(date?: Date): boolean
 
 ### add<sup>11+</sup>
 
-add(field: string, amount: number): void
+ArkTS-Dyn: add(field: string, amount: number): void
+
+ArkTS-Sta: add(field: string, amount: int): void
 
 对日历对象中的表示时间日期的日历属性值进行加减操作。
 
@@ -1145,7 +1163,7 @@ add(field: string, amount: number): void
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
 | field | string | 是    | 指定的日历属性，目前支持的属性值有&nbsp;year,&nbsp;month,&nbsp;week_of_year,&nbsp;week_of_month,&nbsp;date,&nbsp;day_of_year,&nbsp;day_of_week,&nbsp;day_of_week_in_month,&nbsp;hour,&nbsp;hour_of_day,&nbsp;minute,&nbsp;second,&nbsp;millisecond。<br>各取值代表的含义请参考[get](#get8)。 |
-| amount | number | 是    | 进行加减操作的具体数值。 |
+| amount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 进行加减操作的具体数值。 |
 
 **错误码：**
 
@@ -1161,12 +1179,12 @@ add(field: string, amount: number): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
+    let calendar = i18n.getCalendar('zh-Hans');
     calendar.set(2021, 11, 11, 8, 0, 0); // 设置时间日期为2021.12.11 08:00:00
     calendar.add('year', 8); // 2021 + 8
-    let year: number = calendar.get('year'); // year = 2029
+    let year = calendar.get('year'); // year = 2029
   } catch (error) {
-    let err: BusinessError = error as BusinessError;
+    let err = error as BusinessError;
     console.error(`call Calendar.add failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
@@ -1174,7 +1192,9 @@ add(field: string, amount: number): void
 
 ### getTimeInMillis<sup>11+</sup>
 
-getTimeInMillis(): number
+ArkTS-Dyn: getTimeInMillis(): number
+
+ArkTS-Sta: getTimeInMillis(): long
 
 获取当前日历对象的时间戳。
 
@@ -1186,19 +1206,21 @@ getTimeInMillis(): number
 
 | 类型      | 说明                                  |
 | ------- | ----------------------------------- |
-| number | Unix时间戳，表示从1970.1.1&nbsp;00:00:00&nbsp;GMT逝去的毫秒数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | Unix时间戳，表示从1970.1.1&nbsp;00:00:00&nbsp;GMT逝去的毫秒数。 |
 
 **示例：**
   ```ts
-  let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
+  let calendar = i18n.getCalendar('zh-Hans');
   calendar.setTime(5000);
-  let millisecond: number = calendar.getTimeInMillis(); // millisecond = 5000
+  let millisecond = calendar.getTimeInMillis(); // millisecond = 5000
   ```
 
 
 ### compareDays<sup>11+</sup>
 
-compareDays(date: Date): number
+ArkTS-Dyn: compareDays(date: Date): number
+
+ArkTS-Sta: compareDays(date: Date): int
 
 比较日历对象当前日期和指定日期相差的天数。
 
@@ -1216,7 +1238,7 @@ compareDays(date: Date): number
 
 | 类型      | 说明                                  |
 | ------- | ----------------------------------- |
-| number | 相差的天数，正数表示日历时间更早，负数表示指定时间更早。<br>按毫秒级的精度，不足一天按一天计。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 相差的天数，正数表示日历时间更早，负数表示指定时间更早。<br>按毫秒级的精度，不足一天按一天计。 |
 
 **错误码：**
 
@@ -1233,10 +1255,10 @@ compareDays(date: Date): number
   try {
     let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
     calendar.setTime(5000);
-    let date: Date = new Date(6000);
-    let diff: number = calendar.compareDays(date); // diff = 1
+    let date = new Date(6000);
+    let diff = calendar.compareDays(date); // diff = 1
   } catch (error) {
-    let err: BusinessError = error as BusinessError;
+    let err = error as BusinessError;
     console.error(`call Calendar.compareDays failed, error code: ${err.code}, message: ${err.message}.`);
   }
   ```
@@ -1269,7 +1291,7 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 ### isValidNumber<sup>8+</sup>
 
-isValidNumber(number: string): boolean
+isValidNumber(phoneNumber: string): boolean
 
 判断电话号码是否为当前电话号码格式化对象中国家的有效号码。
 
@@ -1281,7 +1303,7 @@ isValidNumber(number: string): boolean
 
 | 参数名    | 类型     | 必填   | 说明        |
 | ------ | ------ | ---- | --------- |
-| number | string | 是    | 待判断的电话号码。 |
+| phoneNumber | string | 是    | 待判断的电话号码。 |
 
 **返回值：**
 
@@ -1298,7 +1320,7 @@ isValidNumber(number: string): boolean
 
 ### format<sup>8+</sup>
 
-format(number: string): string
+format(phoneNumber: string): string
 
 对电话号码进行格式化。
 
@@ -1313,7 +1335,7 @@ format(number: string): string
 
 | 参数名    | 类型     | 必填   | 说明         |
 | ------ | ------ | ---- | ---------- |
-| number | string | 是    | 待格式化的电话号码。 |
+| phoneNumber | string | 是    | 待格式化的电话号码。 |
 
 **返回值：**
 
@@ -1340,7 +1362,7 @@ format(number: string): string
 
 ### getLocationName<sup>9+</sup>
 
-getLocationName(number: string, locale: string): string
+getLocationName(phoneNumber: string, locale: string): string
 
 获取电话号码归属地。
 
@@ -1352,7 +1374,7 @@ getLocationName(number: string, locale: string): string
 
 | 参数名    | 类型     | 必填   | 说明   |
 | ------ | ------ | ---- | ---- |
-| number | string | 是    | 电话号码。获取其他地区电话号码的归属地时，需要在电话号码前加00+国际区号。 |
+| phoneNumber | string | 是    | 电话号码。获取其他地区电话号码的归属地时，需要在电话号码前加00+国际区号。 |
 | locale | string | 是    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。 |
 
 **返回值：**
@@ -1583,7 +1605,9 @@ getLineBreakText(): string
 
 ### current<sup>8+</sup>
 
-current(): number
+ArkTS-Dyn: current(): number
+
+ArkTS-Sta: current(): int
 
 获取换行迭代器在当前处理文本中的位置。
 
@@ -1595,19 +1619,21 @@ current(): number
 
 | 类型     | 说明                          |
 | ------ | --------------------------- |
-| number | 获取换行迭代器在当前处理的文本中的位置。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 获取换行迭代器在当前处理的文本中的位置。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let currentPos: number = iterator.current(); // currentPos = 0
+  let currentPos = iterator.current(); // currentPos = 0
   ```
 
 
 ### first<sup>8+</sup>
 
-first(): number
+ArkTS-Dyn: first(): number
+
+ArkTS-Sta: first(): int
 
 将换行迭代器移动到第一个可换行点。第一个可换行点总是在被处理文本的起始位置。
 
@@ -1619,19 +1645,21 @@ first(): number
 
 | 类型     | 说明                |
 | ------ | ----------------- |
-| number | 被处理文本的第一个可换行点的偏移量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 被处理文本的第一个可换行点的偏移量。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let firstPos: number = iterator.first(); // firstPos = 0
+  let firstPos = iterator.first(); // firstPos = 0
   ```
 
 
 ### last<sup>8+</sup>
 
-last(): number
+ArkTS-Dyn: last(): number
+
+ArkTS-Sta: last(): int
 
 将换行迭代器移动到最后一个可换行点。最后一个可换行点总是在被处理文本末尾的下一个位置。
 
@@ -1643,19 +1671,21 @@ last(): number
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 被处理文本的最后一个可换行点的偏移量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 被处理文本的最后一个可换行点的偏移量。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let lastPos: number = iterator.last(); // lastPos = 27
+  let lastPos = iterator.last(); // lastPos = 27
   ```
 
 
 ### next<sup>8+</sup>
 
-next(index?: number): number
+ArkTS-Dyn: next(index?: number): number
+
+ArkTS-Sta: next(index?: int): int
 
 将换行迭代器向后移动index个可换行点。
 
@@ -1667,19 +1697,19 @@ next(index?: number): number
 
 | 参数名   | 类型     | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| index | number | 否    | 换行迭代器将要移动的可换行点数，取值为整数。<br>正数表示向后移动index个可换行点，负数表示向前移动index个可换行点。<br>默认值：1。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 换行迭代器将要移动的可换行点数，取值为整数。<br>正数表示向后移动index个可换行点，负数表示向前移动index个可换行点。<br>默认值：1。 |
 
 **返回值：**
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 移动index个可换行点后，当前换行迭代器在文本中的位置。<br>若移动index个可换行点后超出了所处理的文本的长度范围，返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 移动index个可换行点后，当前换行迭代器在文本中的位置。<br>若移动index个可换行点后超出了所处理的文本的长度范围，返回-1。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let pos: number = iterator.first(); // pos = 0
+  let pos = iterator.first(); // pos = 0
   pos = iterator.next(); // pos = 6
   pos = iterator.next(10); // pos = -1
   ```
@@ -1687,7 +1717,9 @@ next(index?: number): number
 
 ### previous<sup>8+</sup>
 
-previous(): number
+ArkTS-Dyn: previous(): number
+
+ArkTS-Dyn: previous(): int
 
 将换行迭代器向前移动一个可换行点。
 
@@ -1699,13 +1731,13 @@ previous(): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 移动到前一个可换行点后，当前换行迭代器在文本中的位置。<br>若移动后超出了所处理的文本的长度范围，返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 移动到前一个可换行点后，当前换行迭代器在文本中的位置。<br>若移动后超出了所处理的文本的长度范围，返回-1。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let pos: number = iterator.first(); // pos = 0
+  let pos = iterator.first(); // pos = 0
   pos = iterator.next(3); // pos = 12
   pos = iterator.previous(); // pos = 9
   ```
@@ -1713,7 +1745,9 @@ previous(): number
 
 ### following<sup>8+</sup>
 
-following(offset: number): number
+ArkTS-Dyn: following(offset: number): number
+
+ArkTS-Sta: following(offset: int): int
 
 将换行迭代器移动到指定位置后面一个可换行点。
 
@@ -1725,19 +1759,19 @@ following(offset: number): number
 
 | 参数名    | 类型     | 必填   | 说明                                       |
 | ------ | ------ | ---- | ---------------------------------------- |
-| offset | number | 是    | 将换行迭代器移动到文本指定位置的后面一个可换行点。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 将换行迭代器移动到文本指定位置的后面一个可换行点。 |
 
 **返回值：**
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 换行迭代器移动后的位置。若offset所指定位置的下一个可换行点超出了文本的范围，则返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 换行迭代器移动后的位置。若offset所指定位置的下一个可换行点超出了文本的范围，则返回-1。 |
 
 **示例：**
   ```ts
-  let iterator: i18n.BreakIterator = i18n.getLineInstance('en');
+  let iterator = i18n.getLineInstance('en');
   iterator.setLineBreakText('Apple is my favorite fruit.');
-  let pos: number = iterator.following(0); // pos = 6
+  let pos = iterator.following(0); // pos = 6
   pos = iterator.following(100); // pos = -1
   pos = iterator.current(); // pos = 27
   ```
@@ -1745,7 +1779,9 @@ following(offset: number): number
 
 ### isBoundary<sup>8+</sup>
 
-isBoundary(offset: number): boolean
+ArkTS-Dyn: isBoundary(offset: number): boolean
+
+ArkTS-Sta: isBoundary(offset: int): boolean
 
 判断指定位置是否为可换行点。
 
@@ -1757,7 +1793,7 @@ isBoundary(offset: number): boolean
 
 | 参数名    | 类型     | 必填   | 说明          |
 | ------ | ------ | ---- | ----------- |
-| offset | number | 是    | 文本指定位置。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 文本指定位置。 |
 
 **返回值：**
 
@@ -1858,7 +1894,9 @@ getDisplayName(locale?: string, isDST?: boolean): string
 
 ### getRawOffset
 
-getRawOffset(): number
+ArkTS-Dyn: getRawOffset(): number
+
+ArkTS-Sta: getRawOffset(): int
 
 获取时区对象所表示时区的原始偏移量。
 
@@ -1870,18 +1908,20 @@ getRawOffset(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 时区的原始偏移量，单位是毫秒。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的原始偏移量，单位是毫秒。 |
 
 **示例：**
   ```ts
-  let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
-  let offset: number = timezone.getRawOffset(); // offset = 28800000
+  let timezone = i18n.getTimeZone('Asia/Shanghai');
+  let offset = timezone.getRawOffset(); // offset = 28800000
   ```
 
 
 ### getOffset
 
-getOffset(date?: number): number
+ArkTS-Dyn: getOffset(date?: number): number
+
+ArkTS-Sta: getOffset(date?: double): int
 
 获取某一时刻时区对象所表示时区的偏移量。
 
@@ -1893,18 +1933,18 @@ getOffset(date?: number): number
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | number | 否    | 待计算时区偏移量的时刻，单位是毫秒。默认值：系统时间。 |
+| date | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否    | 待计算时区偏移量的时刻，单位是毫秒。默认值：系统时间。 |
 
 **返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| number | 时区的偏移量，单位是毫秒。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 时区的偏移量，单位是毫秒。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
 
 **示例：**
   ```ts
-  let timezone: i18n.TimeZone = i18n.getTimeZone('Asia/Shanghai');
-  let offset: number = timezone.getOffset(1234567890); // offset = 28800000
+  let timezone = i18n.getTimeZone('Asia/Shanghai');
+  let offset = timezone.getOffset(1234567890); // offset = 28800000
   ```
 
 
@@ -2011,7 +2051,9 @@ static getTimezoneFromCity(cityID: string): TimeZone
 
 ### getTimezonesByLocation<sup>10+</sup>
 
-static getTimezonesByLocation(longitude: number, latitude: number): Array&lt;TimeZone&gt;
+ArkTS-Dyn: static getTimezonesByLocation(longitude: number, latitude: number): Array&lt;TimeZone&gt;
+
+ArkTS-Sta: static getTimezonesByLocation(longitude: double, latitude: double): Array&lt;TimeZone&gt;
 
 创建地理位置对应的时区对象数组。
 
@@ -2023,8 +2065,8 @@ static getTimezonesByLocation(longitude: number, latitude: number): Array&lt;Tim
 
 | 参数名     | 类型     | 必填   | 说明     |
 | --------- | ------ | ---- | ------ |
-| longitude | number | 是    | 经度，范围[-180, 179.9)，东经取正值，西经取负值。 |
-| latitude  | number | 是    | 纬度，范围[-90, 89.9)，北纬取正值，南纬取负值。 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 经度，范围[-180, 179.9)，东经取正值，西经取负值。 |
+| latitude  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 纬度，范围[-90, 89.9)，北纬取正值，南纬取负值。 |
 
 **返回值：**
 
@@ -2679,7 +2721,9 @@ static getDateOrder(locale: string): string
 
 ### getTimePeriodName<sup>11+</sup>
 
-static getTimePeriodName(hour:number, locale?: string): string
+ArkTS-Dyn: static getTimePeriodName(hour:number, locale?: string): string
+
+ArkTS-Sta: static getTimePeriodName(hour:int, locale?: string): string
 
 获取指定时间在某区域的本地化表达。
 
@@ -2691,7 +2735,7 @@ static getTimePeriodName(hour:number, locale?: string): string
 
 | 参数名    | 类型     | 必填   | 说明                        |
 | ------ | ------ | ---- | ------------------------- |
-| hour | number | 是    | 指定的时间，例如16。 |
+| hour | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 指定的时间，例如16。 |
 | locale | string | 否    | [表示区域ID的字符串](../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区组成。如：zh-Hans-CN。<br>默认值：系统当前区域ID。|
 
 **返回值：**
@@ -3149,7 +3193,9 @@ isHoliday(date?: Date): boolean
 
 ### getHolidayInfoItemArray<sup>11+</sup>
 
-getHolidayInfoItemArray(year?: number): Array&lt;[HolidayInfoItem](#holidayinfoitem11)&gt;
+ArkTS-Dyn: getHolidayInfoItemArray(year?: number): Array&lt;[HolidayInfoItem](#holidayinfoitem11)&gt;
+
+ArkTS-Sta: getHolidayInfoItemArray(year?: int): Array&lt;[HolidayInfoItem](#holidayinfoitem11)&gt;
 
 获取指定年的节假日信息列表。
 
@@ -3161,7 +3207,7 @@ getHolidayInfoItemArray(year?: number): Array&lt;[HolidayInfoItem](#holidayinfoi
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | -------------  | ---- | ------------- |
-| year      | number         | 否   | 年，例如2023。<br>默认值：当前年份。|
+| year      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 年，例如2023。<br>默认值：当前年份。|
 
 **返回值：**
 
@@ -3203,9 +3249,9 @@ getHolidayInfoItemArray(year?: number): Array&lt;[HolidayInfoItem](#holidayinfoi
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | baseName        | string          |   否    |   否    | 节假日的英文名称。              |
-| year            | number          |   否    |   否    | 节假日所在年。                   |
-| month           | number          |   否    |   否    | 节假日所在月。          |
-| day             | number          |   否    |   否    | 节假日所在日。                         |
+| year            | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否    |   否    | 节假日所在年。                   |
+| month           | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否    |   否    | 节假日所在月。          |
+| day             | ArkTS-Dyn: number<br>ArkTS-Sta: int |   否    |   否    | 节假日所在日。                         |
 | localNames      | Array&lt;[HolidayLocalName](#holidaylocalname11)&gt;          |   否    |   是    | 节假日的本地名称列表。          |
 
 ## HolidayLocalName<sup>11+</sup>
@@ -3547,7 +3593,9 @@ try {
 
 ### format<sup>18+</sup>
 
-format(value: number): string
+ArkTS-Dyn: format(value: number): string
+
+ArkTS-Sta: format(value: double): string
 
 对数字进行格式化。
 
@@ -3559,7 +3607,7 @@ format(value: number): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| value | number | 是    | 数字对象。 |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 数字对象。 |
 
 **返回值：**
 
@@ -3637,7 +3685,9 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 ### format<sup>18+</sup>
 
-format(value: number): StyledString
+ArkTS-Dyn: format(value: number): StyledString
+
+ArkTS-Sta: format(value: double): StyledString
 
 使用数字格式化对象对数字进行格式化，返回富文本对象。
 
@@ -3649,7 +3699,7 @@ format(value: number): StyledString
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
-| value | number | 是 | 需要格式化的数字。  |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 需要格式化的数字。  |
 
 **返回值：**
 

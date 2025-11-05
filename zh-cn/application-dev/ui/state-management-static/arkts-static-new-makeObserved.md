@@ -37,6 +37,8 @@ makeObserved支持以下类型的变量：
 - makeObserved转换的数据具备可观察能力，即使不使用状态变量装饰器，也能观察其内部属性变化。
 
   ```ts
+  'use static'
+  
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { UIUtils } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -61,6 +63,8 @@ makeObserved支持以下类型的变量：
 - makeObserved支持观察嵌套场景。
 
   ```ts
+  'use static'
+  
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { UIUtils } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -88,6 +92,8 @@ makeObserved支持以下类型的变量：
 - 当makeObserved的返回值被状态变量装饰器装饰时，观察能力以makeObserved为准。
 
   ```ts
+  'use static'
+  
   import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
   import { State, UIUtils } from '@ohos.arkui.stateManagement';
   interface Info {
@@ -148,6 +154,8 @@ makeObserved支持以下类型的变量：
 ### makeObserved与Array配合使用
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 @Entry
@@ -177,6 +185,8 @@ struct Index {
 ### makeObserved与Map配合使用
 
 ```ts
+'use static'
+
 import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 @Entry
@@ -215,6 +225,8 @@ struct MapSample {
 ### makeObserved与Set配合使用
 
 ```ts
+'use static'
+
 import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 @Entry
@@ -249,6 +261,8 @@ struct SetSample {
 ### makeObserved与Date配合使用
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 @Entry
@@ -282,6 +296,8 @@ struct DateExample {
 ### makeObserved与interface字面量配合使用
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
 import { UIUtils } from '@ohos.arkui.stateManagement';
 interface Info {

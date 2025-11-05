@@ -188,6 +188,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
 
+  ArkTS-Dyn示例：
+
   ```ts
   // xxx.ets
   @Entry
@@ -305,12 +307,162 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  
+  import {
+    Entry,
+    Component,
+    NavPathStack,
+    Builder,
+    Navigation,
+    List,
+    ListItem,
+    Button,
+    Axis,
+    NavigationMode,
+    Stack,
+    NavDestination,
+    Column,
+    Text,
+    NavDestinationContext,
+    NavPathInfo,
+    PopInfo
+  } from '@kit.ArkUI';
+  
+  interface pams {
+    data: string
+  }
+  
+  class NavigationParam {
+    info_: string = '';
+    params: pams = {
+      data: 'test'
+    }
+    constructor(info: string) {
+      this.info_ = info;
+    }
+  }
+  
+  let pathStack: NavPathStack = new NavPathStack()
+  
+  @Entry
+  @Component
+  struct ButtonCase1 {
+  
+    @Builder
+    PageMap(name: string) {
+      if (name === 'first_page') {
+        pageOneTmp()
+      } else if (name === 'second_page') {
+        pageTwoTmp()
+      } else if (name === 'third_page') {
+        pageThreeTmp()
+      }
+    }
+  
+    build() {
+      Navigation(pathStack) {
+        List({ space: 4 }) {
+          ListItem() {
+            Button('First').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('first_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+  
+          ListItem() {
+            Button('Second').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('second_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+  
+          ListItem() {
+            Button('Third').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('third_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+        }
+        .listDirection(Axis.Vertical)
+        .backgroundColor(0xDCDCDC).padding(20)
+      }
+      .mode(NavigationMode.Stack)
+      .navDestination(this.PageMap)
+    }
+  }
+  
+  // pageOne
+  @Component
+  export struct pageOneTmp {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text('first_page')
+        }.width('100%').height('100%')
+      }.title("pageOne")
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true); 
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  
+  // pageTwo
+  @Component
+  export struct pageTwoTmp {
+    build() {
+      NavDestination() {
+        Column() {
+          Text('second_page')
+        }.width('100%').height('100%')
+      }.title('pageTwo')
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true); 
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  
+  // pageThree
+  @Component
+  export struct pageThreeTmp {
+    build() {
+      NavDestination() {
+        Column() {
+          Text('third_page')
+        }.width('100%').height('100%')
+      }.title('pageThree')
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true);
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  ```
+  
   ![zh-cn_image_0000001562700393](figures/zh-cn_image_0000001562940814.gif)
 
 
 - 用于提交表单。
 
   在用户登录/注册页面，使用按钮进行登录或注册操作。
+
+  ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -322,6 +474,38 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
         TextInput({ placeholder: 'input your username' }).margin({ top: 20 })
         TextInput({ placeholder: 'input your password' }).type(InputType.Password).margin({ top: 20 })
         Button('Register').width(300).margin({ top: 20 })
+          .onClick(() => {
+            // 需要执行的操作
+          })
+      }.padding(20)
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  // xxx.ets
+  
+  import {
+    Entry,
+    Component,
+    Column,
+    TextInput,
+    InputType,
+    Button,
+    Margin,
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct ButtonCase2 {
+    build() {
+      Column() {
+        TextInput({ placeholder: 'input your username' }).margin({ top: 20 } as Margin)
+        TextInput({ placeholder: 'input your password' }).type(InputType.Password).margin({ top: 20 } as Margin)
+        Button('Register').width(300).margin({ top: 20 } as Margin)
           .onClick(() => {
             // 需要执行的操作
           })

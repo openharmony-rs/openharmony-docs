@@ -38,7 +38,7 @@ Button('click for Menu')
 
 ArkTS-Sta示例：
 
-在ArkTS-Sta上，通过配置菜单项图标和文本的数组弹出菜单时，需要先构造类型为MenuElement的数组：
+在ArkTS-Sta上，通过配置菜单项图标和文本的数组弹出菜单时，需要先构造类型为MenuElement的数组。
 
 ```ts
 import { MenuElement } from '@ohos.arkui.component';
@@ -135,7 +135,7 @@ struct menuExample {
 
 ArkTS-Sta示例：
 
-在ArkTS-Sta上使用@Builder自定义菜单内容时，需先导入Builder：
+在ArkTS-Sta上使用@Builder自定义菜单内容时，需先导入Builder。
 
 ```ts
 'use static'
@@ -239,7 +239,7 @@ Button('click for Menu')
 
   ArkTS-Sta示例：
 
-  ArkTS-Sta上使用右键弹出菜单时，需先导入ResponseType：
+  ArkTS-Sta上使用右键弹出菜单时，需先导入ResponseType。
 
   ```ts
   import { ResponseType } from '@kit.ArkUI'
@@ -271,10 +271,10 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 
-ArkTS-Sta上使用右键弹出菜单并想要实现触控反馈时，需先导入ResponseType、HapticFeedbackMode和用来指定参数类型的ContextMenuOptions：
+ArkTS-Sta上使用右键弹出菜单并想要实现触控反馈时，需先导入ResponseType、HapticFeedbackMode和用来指定参数类型的ContextMenuOptions。
 
   ```ts
-  import { ResponseType } from '@ohos.arkui.component';
+  import { ResponseType, HapticFeedbackMode, ContextMenuOptions } from '@ohos.arkui.component';
   Button('click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED } as ContextMenuOptions)
   ```

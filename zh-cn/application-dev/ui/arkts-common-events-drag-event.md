@@ -182,12 +182,12 @@
     .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK, uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
     ```
 
-   在实现onDrop回调的情况下，还可以通过在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标显示。如下代码将移动时的角标强制设置为“MOVE”。
+   在实现onDrop回调的情况下，还可以通过在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标显示。如下代码将移动时的角标强制设置为“COPY”。
 
     ```ts
     .onDragMove((event: DragEvent) => {
         event.setResult(DragResult.DROP_ENABLED);
-        event.dragBehavior = DragBehavior.MOVE;
+        event.dragBehavior = DragBehavior.COPY;
     })
     ```
 
@@ -279,9 +279,8 @@
       pixelMapBuilder() {
         Column() {
           Image($r('app.media.startIcon'))
-            .width(120)
-            .height(120)
-            .backgroundColor(Color.Yellow)
+            .width(100)
+            .height(100)
         }
       }
 
@@ -388,10 +387,10 @@
                 .draggable(true)
                 .margin({ left: 15 })
                 .border({ color: Color.Black, width: 1 })
-                // 控制角标显示类型为MOVE，即不显示角标
+                // 控制角标显示类型为COPY，即显示角标
                 .onDragMove((event: DragEvent) => {
                   event.setResult(DragResult.DROP_ENABLED)
-                  event.dragBehavior = DragBehavior.MOVE
+                  event.dragBehavior = DragBehavior.COPY
                 })
                 .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
                 .onDrop((dragEvent?: DragEvent) => {
@@ -420,7 +419,7 @@
 2. ArkTs-Sta示例：
 
     ```ts
-    import { Entry, Column, Row, Component, Builder, Color, Text, Rectangle, Image, DragEvent, DragItemInfo, DragResult, DragBehavior, LongPressGesture, GestureEvent, Margin, Visibility, UnifiedData, PreDragStatus } from '@ohos.arkui.component';
+    import { Entry, Column, Row, Component, Builder, Color, Text, Rectangle, Image, DragEvent, DragItemInfo, DragResult, DragBehavior, LongPressGesture, GestureEvent, Margin, Visibility, UnifiedData, PreDragStatus, OnDragEventCallback, DropOptions, $r } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
     import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
     import { promptAction } from '@kit.ArkUI';
@@ -439,10 +438,9 @@
       @Builder
       pixelMapBuilder() {
         Column() {
-          Image('app.media.startIcon')
-            .width(120)
-            .height(120)
-            .backgroundColor(Color.Yellow)
+          Image($r('app.media.startIcon'))
+            .width(100)
+            .height(100)
         }
       }
 
@@ -500,7 +498,7 @@
               .margin(10)
               .backgroundColor('#008888')
             Row() {
-              Image('app.media.app_icon')
+              Image($r('app.media.startIcon'))
                 .width(100)
                 .height(100)
                 .draggable(true)
@@ -549,12 +547,25 @@
                 .draggable(true)
                 .margin({ left: 15 } as Margin)
                 .border({ color: Color.Black, width: 1 })
-                // 控制角标显示类型为MOVE，即不显示角标
+                // 控制角标显示类型为COPY，即显示角标
                 .onDragMove((event: DragEvent) => {
                   event.setResult(DragResult.DROP_ENABLED)
-                  event.dragBehavior = DragBehavior.MOVE
+                  event.dragBehavior = DragBehavior.COPY
                 })
                 .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent: DragEvent, extraParam?: string) => {
+                  // 获取拖拽数据
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = rect.width as Number;
+                    this.imageHeight = rect.height as Number;
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  })
+                } as OnDragEventCallback, { disableDataPrefetch: false } as DropOptions)
             }
           }
           .width('100%')
@@ -706,7 +717,7 @@
 
       onPageShow(): void {
         let i: number = 0
-        for(i=0;i<100;i++){
+        for (i = 0; i < 100; i++) {
           this.numbers.push(i)
           this.isSelectedGrid.push(false)
           this.previewData.push({})
@@ -776,32 +787,24 @@
 2. ArkTs-Sta示例：
 
     ```ts
-    import { Entry, Column, Component, Grid, GridItem, ForEach, Color, ClickEvent, DragEvent, DragItemInfo, ColumnOptions, Margin, Builder, CustomStyles, BusinessError, CommonMethod, Array } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Grid, GridItem, ForEach, Color, ClickEvent, DragEvent, DragItemInfo, ColumnOptions, Margin, Builder, BusinessError, CommonMethod, Array, PreviewConfiguration } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
-    import { image } from "@ohos.multimedia.image";
+    import { image } from '@kit.ImageKit';
 
     @Entry
     @Component
     struct GridEts {
-      @State pixmap: image.PixelMap|undefined = undefined;
-      @State numbers:Int[] = [0];
-      @State isSelectedGrid: boolean[] = [false];
-      @State previewData: DragItemInfo[] = [{} as DragItemInfo];
+      @State pixmap: image.PixelMap | undefined = undefined;
+      @State numbers: Int[] = [ 0 ];
+      @State isSelectedGrid: boolean[] = [ false ];
+      @State previewData: DragItemInfo[] = [ {} as DragItemInfo ];
       @State numberBadge: Int = 0;
 
-      normalStyles: CustomStyles = (instance: CommonMethod): void => {
-        instance.opacity(1.0);
-      }
-
-      selectStyles: CustomStyles = (instance: CommonMethod): void => {
-        instance.opacity(0.4);
-      }
-
-      onPageShow(): void {
+      aboutToAppear(): void {
         let i: Int = 1
-        for(i=1;i<100;i++){
+        for(i = 1; i < 100; i++){
           this.numbers.push(i)
-          this.isSelectedGrid.push()
+          this.isSelectedGrid.push(false)
           this.previewData.push({} as DragItemInfo)
         }
       }
@@ -828,14 +831,11 @@
                   .opacity(1.0)
                   .id('grid'+idx)
               }
-              .dragPreview(this.previewData[idx])
+              .dragPreview(this.previewData[idx], {} as PreviewConfiguration)
               .selectable(true)
               .selected(this.isSelectedGrid[idx])
               // 设置多选显示效果
-              .stateStyles({
-                normal : this.normalStyles,
-                selected: this.selectStyles
-              })
+              .opacity(this.isSelectedGrid[idx]? 0.4: 1)
               .onClick((event: ClickEvent)=>{
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
                 if (this.isSelectedGrid[idx]) {
@@ -1011,8 +1011,7 @@
 2. ArkTs-Sta示例：
 
     ```ts
-    import { Entry, Column, Row, Component, Image, Text, TextAlign, Color, Rectangle, DragEvent, DragItemInfo, DragResult,
-    Margin, Curve, PlayMode, Visibility, $r } from '@ohos.arkui.component';
+    import { Entry, Column, Row, Component, Image, Text, TextAlign, Color, Rectangle, DragEvent, DragItemInfo, DragResult, Margin, Curve, PlayMode, Visibility, OnDragEventCallback, DropOptions, $r } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
     import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
     import { promptAction } from '@kit.ArkUI';
@@ -1080,7 +1079,7 @@
               this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
               dragEvent.useCustomDropAnimation = true;
               dragEvent.executeDropAnimation(this.customDropAnimation);
-            })
+            } as OnDragEventCallback, { disableDataPrefetch: false } as DropOptions)
             .width(this.imageWidth)
             .height(this.imageHeight)
           }.width('45%')
@@ -1381,9 +1380,7 @@
 2. ArkTs-Sta示例：
 
     ```ts
-    import { Entry, Column, ColumnOptions, Component, Image, Grid, GridItem, Button, Color, Rectangle, DragEvent,
-    DragItemInfo, DragResult, Margin, ClickEvent, PreDragStatus, UnifiedData, ForEach, CustomStyles, CommonMethod,
-    Builder, BusinessError } from '@ohos.arkui.component';
+    import { Entry, Column, ColumnOptions, Component, Image, Grid, GridItem, Button, Color, Rectangle, DragEvent, DragItemInfo, DragResult, Margin, ClickEvent, PreDragStatus, UnifiedData, ForEach, Builder, BusinessError, PreviewConfiguration } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
     import { image } from '@kit.ImageKit';
     import { unifiedDataChannel as UDC } from '@kit.ArkData';
@@ -1392,27 +1389,19 @@
     @Entry
     @Component
     struct GridEts {
-      @State pixmap: image.PixelMap|undefined = undefined;
-      @State numbers: Int[] = [0];
-      @State isSelectedGrid: boolean[] = [false];
-      @State previewData: DragItemInfo[] = [{} as DragItemInfo];
+      @State pixmap: image.PixelMap | undefined = undefined;
+      @State numbers: Int[] = [ 0] ;
+      @State isSelectedGrid: boolean[] = [ false ];
+      @State previewData: DragItemInfo[] = [ {} as DragItemInfo ];
       @State numberBadge: number = 0;
       unifiedData: UnifiedData = new UDC.UnifiedData();
       timeout: Int = 1;
       finished: boolean = false;
-      dragEvent: DragEvent|undefined;
+      dragEvent: DragEvent | undefined;
 
-      normalStyles: CustomStyles = (instance: CommonMethod): void => {
-        instance.opacity(1.0);
-      }
-
-      selectStyles: CustomStyles = (instance: CommonMethod): void => {
-        instance.opacity(0.4);
-      }
-
-      onPageShow(): void {
+      aboutToAppear(): void {
         let i: Int = 1
-        for(i=1;i<500;i++){
+        for(i = 1; i < 500; i++){
           this.numbers.push(i)
           this.isSelectedGrid.push(false)
           this.previewData.push({})
@@ -1474,14 +1463,11 @@
                   .opacity(1.0)
                   .id('grid'+idx)
               }
-              .dragPreview(this.previewData[idx])
+              .dragPreview(this.previewData[idx], {} as PreviewConfiguration)
               .selectable(true)
               .selected(this.isSelectedGrid[idx])
               // 设置多选显示效果
-              .stateStyles({
-                normal : this.normalStyles,
-                selected: this.selectStyles
-              })
+              .opacity(this.isSelectedGrid[idx]? 0.4: 1)
               .onClick((event: ClickEvent)=>{
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {

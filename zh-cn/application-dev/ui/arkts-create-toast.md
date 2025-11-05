@@ -94,7 +94,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-在ArkTS1.2上弹出Toast时，需先导入promptAction，即可指定showToast的参数类型为promptAction.ShowToastOptions：
+在ArkTS1.2上弹出Toast时，需先导入promptAction，即可指定showToast的参数类型为promptAction.ShowToastOptions。
 
 ```ts
 'use static'
