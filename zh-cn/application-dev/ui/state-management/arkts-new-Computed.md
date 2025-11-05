@@ -350,3 +350,73 @@ get varName(): T {
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
   <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  
+  ``` TypeScript
+  @ObservedV2
+  class Article {
+    @Trace public quantity: number = 0;
+    public unitPrice: number = 0;
+  
+    constructor(quantity: number, unitPrice: number) {
+      this.quantity = quantity;
+      this.unitPrice = unitPrice;
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct ComputingInitParam {
+    @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
+  
+    @Computed
+    get total(): number {
+      return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
+    }
+  
+    @Computed
+    get qualifiesForDiscount(): boolean {
+      return this.total >= 100;
+    }
+  
+    build() {
+      Column() {
+        Text(`Shopping List: `)
+          .fontSize(30)
+        ForEach(this.shoppingBasket, (item: Article) => {
+          Row() {
+            Text(`unitPrice: ${item.unitPrice}`)
+            Button('-')
+              .onClick(() => {
+                if (item.quantity > 0) {
+                  item.quantity--;
+                }
+              })
+            Text(`quantity: ${item.quantity}`)
+            Button('+')
+              .onClick(() => {
+                item.quantity++;
+              })
+          }
+  
+          Divider()
+        })
+        Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
+      }.alignItems(HorizontalAlign.Start)
+    }
+  }
+  
+  @ComponentV2
+  struct Child {
+    @Param total: number = 0;
+    @Param qualifiesForDiscount: boolean = false;
+  
+    build() {
+      Row() {
+        Text(`Total: ${this.total} `)
+          .fontSize(30)
+        Text(`Discount: ${this.qualifiesForDiscount} `)
+          .fontSize(30)
+      }
+    }
+  }
+  ```
