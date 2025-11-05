@@ -1,4 +1,4 @@
-# \@Track Decorator: Implementing Class Object Property-level Updates
+# \@Track Decorator: Implementing Class Object Property-Level Updates
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->

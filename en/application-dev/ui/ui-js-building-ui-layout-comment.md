@@ -1,16 +1,16 @@
-# Adding a Comment
+# Adding a Comment Area
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The comment component allows users to input messages and submit them by clicking the confirm button. Submitted comments are displayed in the comment area, where users can delete individual comments by clicking the delete button and then enter new messages.
 
 
-After a user enters a comment and clicks the submit button, the content is displayed in the comment area. The user can click the delete button to delete the current comment and enter another comment again.
+This implementation combines **\<div>**, **\<text>**, and **\<input>** components with click event handling. The **\<input>** component handles message entry, while the **\<text>** components manage comment submission and deletion. The **commentText** state variable controls component visibility through conditional rendering (using the **if** attribute). Click events on the submission and deletion buttons update both the **commentText** state and **inputValue** content. The implementation example is as follows:
 
-
-To set such a comment area on a page, you need to associate a click event with **\<div>**, **Text**, and **\<input>**. You can use the **\<input>** component to obtain the comment entered by a user, use the **Text** component to display the comment, and use commentText to mark the **Text** component (controlled by the if attribute). Associate the click event with the **Text** component that contains Done and Delete to update the **commentText** and **inputValue**. The following is an example:
 
 ```html
 <!-- xxx.hml -->
