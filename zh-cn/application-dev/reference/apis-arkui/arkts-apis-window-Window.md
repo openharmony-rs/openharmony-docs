@@ -6903,8 +6903,8 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
-| presentation  | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay  | boolean | 否 | 该参数用于控制折叠态下主窗口在最大化时的瀑布流状态。默认值为undefined。当参数为true时，折叠态调用接口后窗口将直接进入瀑布流状态，展开态调用接口后窗口进入最大化，并在折叠态下保持瀑布流状态；当参数为false时，折叠态调用接口后窗口退出瀑布流状态，展开态调用接口后进入折叠态时是否退出瀑布流状态由系统规格决定。该参数仅在具备折叠功能的2in1设备主窗口上生效。 |
+| presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
+| acrossDisplay | boolean | 否 | 该参数用于控制半折态下主窗口在最大化时的瀑布流状态。仅在具备折叠功能的2in1设备主窗口上生效；在非主窗口调用时，将返回错误码`1300004`；在不具备折叠功能的2in1设备上主窗设置该参数无实际作用。<br/>如为`true`，半折态调用接口后，窗口将直接进入瀑布流状态；展开态调用接口后，窗口进入最大化，并在半折态下保持瀑布流状态。<br/>如为`false`，半折态调用接口后，窗口将退出瀑布流状态，进入单面最大化；展开态调用接口后，窗口进入最大化，并在半折态下退出瀑布流状态。<br/>默认值为`undefined`，表示不修改窗口瀑布流状态。|
 
 **返回值：**
 
@@ -6926,28 +6926,24 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 **示例：**
 
 ```ts
-// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
-      windowClass = data;
-      let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true);
-      promise.then(() => {
-        console.info('Succeeded in maximizing the window.');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-      });
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
     });
   }
 };
