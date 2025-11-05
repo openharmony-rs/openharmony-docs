@@ -1289,6 +1289,78 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[navigation_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/NodeContainer/CustomComponent.ets) -->
 
+``` TypeScript
+// CustomComponent.ets
+// 自定义占位节点，跨容器迁移能力
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function cardBuilder() {
+  // 图片使用Resource资源，需用户自定义
+  Image($r('app.media.card'))
+    .width('100%')
+    .id('card')
+}
+
+export class MyNodeController extends NodeController {
+  private cardNode: BuilderNode<[]> | null = null;
+  private wrapBuilder: WrappedBuilder<[]> = wrapBuilder(cardBuilder);
+  private needCreate: boolean = false;
+  private isRemove: boolean = false;
+
+  constructor(create: boolean) {
+    super();
+    this.needCreate = create;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.isRemove === true) {
+      return null;
+    }
+    if (this.needCreate && this.cardNode === null) {
+      this.cardNode = new BuilderNode(uiContext);
+      this.cardNode.build(this.wrapBuilder);
+    }
+    if (this.cardNode === null) {
+      return null;
+    }
+    return this.cardNode!.getFrameNode()!;
+  }
+
+  getNode(): BuilderNode<[]> | null {
+    return this.cardNode;
+  }
+
+  setNode(node: BuilderNode<[]> | null) {
+    this.cardNode = node;
+    this.rebuild();
+  }
+
+  onRemove() {
+    this.isRemove = true;
+    this.rebuild();
+    this.isRemove = false;
+  }
+
+  init(uiContext: UIContext) {
+    this.cardNode = new BuilderNode(uiContext);
+    this.cardNode.build(this.wrapBuilder);
+  }
+}
+
+let myNode: MyNodeController | undefined;
+
+export const createMyNode =
+  (uiContext: UIContext) => {
+    myNode = new MyNodeController(false);
+    myNode.init(uiContext);
+  }
+
+export const getMyNode = (): MyNodeController | undefined => {
+  return myNode;
+}
+```
+
 ![zh-cn_image_NavigationNodeTransfer](figures/zh-cn_image_NavigationNodeTransfer.gif)
 
 ### 结合BindSheet使用
