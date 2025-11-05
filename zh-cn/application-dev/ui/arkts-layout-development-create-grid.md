@@ -157,6 +157,37 @@ Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
 <!-- @[build_a_office_services_meeting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
 
+``` TypeScript
+  Grid() {
+    GridItem() {
+      // app.string.Meeting资源文件中的value值为‘会议’
+      Text($r('app.string.Meeting'))
+    // ···
+    }
+
+    GridItem() {
+      // app.string.Check_in资源文件中的value值为‘投票’
+      Text($r('app.string.Check_in'))
+    // ···
+    }
+
+    GridItem() {
+      // app.string.Voting资源文件中的value值为‘签到’
+      Text($r('app.string.Voting'))
+    // ···
+    }
+
+    GridItem() {
+      // app.string.Printing资源文件中的value值为‘打印’
+      Text($r('app.string.Printing'))
+    // ···
+    }
+  }
+// ···
+  .rowsTemplate('1fr 1fr')
+  .columnsTemplate('1fr 1fr')
+```
+
 
 对于内容结构相似的多个GridItem，通常更推荐使用ForEach语句中嵌套GridItem的形式，来减少重复代码。
 
