@@ -149,6 +149,25 @@ export default class EnvAbility1 extends UIAbility {
 
 <!-- @[env_setlang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility5.ets) --> 
 
+``` TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+export default class EnvAbility5 extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content.');
+        return;
+      }
+      let applicationContext = this.context.getApplicationContext();
+      applicationContext.setLanguage('zh-cn');
+    });
+  }
+}
+```
+
 ## 订阅环境变量
 
 系统配置的变化通常由“设置”中的选项或“控制中心”中的图标触发。订阅环境变量变化，可以使应用程序更加智能地响应系统环境变化，从而提供更好的用户体验。查看当前支持订阅变化的环境变量，参见[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
