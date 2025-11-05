@@ -14086,5 +14086,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-type.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"DataModel",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"NewType",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
