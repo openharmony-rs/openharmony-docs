@@ -64,5 +64,63 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 <!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
 
+``` TypeScript
+// xxx.ets
+import { promptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct RadioExample {
+  @State rst: promptAction.ShowToastOptions = { 'message': 'Ringing mode.' };
+  @State vst: promptAction.ShowToastOptions = { 'message': 'Vibration mode.' };
+  @State sst: promptAction.ShowToastOptions = { 'message': 'Silent mode.' };
+
+  build() {
+    // ···
+      Row() {
+        Column() {
+          Radio({ value: 'Ringing', group: 'radioGroup' }).checked(true)
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为响铃模式
+                this.getUIContext().getPromptAction().openToast(this.rst);
+              }
+            })
+          Text('Ringing')
+        }
+
+        Column() {
+          Radio({ value: 'Vibration', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为振动模式
+                this.getUIContext().getPromptAction().openToast(this.vst);
+              }
+            })
+          Text('Vibration')
+        }
+
+        Column() {
+          Radio({ value: 'Silent', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为静音模式
+                this.getUIContext().getPromptAction().openToast(this.sst);
+              }
+            })
+          Text('Silent')
+        }
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    // ···
+  }
+}
+```
+
 
 ![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
