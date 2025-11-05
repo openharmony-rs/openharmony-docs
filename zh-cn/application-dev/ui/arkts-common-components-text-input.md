@@ -224,15 +224,6 @@ TextArea()
     text: $r('app.string.i_am_current_text_content')
   })
   ```
-  
-  ``` TypeScript
-  // 'app.string.i_am_placeholder'资源文件中的value值为"我是提示文本"
-  // 'app.string.i_am_current_text_content'资源文件中的value值为"我是当前文本内容"
-  TextInput({
-    placeholder: $r('app.string.i_am_placeholder'),
-    text: $r('app.string.i_am_current_text_content')
-  })
-  ```
 
   ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
 
@@ -364,21 +355,13 @@ struct TextInputEventAdd {
 输入框中的文字被选中时会弹出包含剪切、复制、翻译、搜索的菜单。
 
 TextInput:
+
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
-
-``` TypeScript
-// 'app.string.show_selected_menu'资源文件中的value值为"这是一段文本，用来展示选中菜单"
-TextInput({ text: $r('app.string.show_selected_menu') })
-<!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
-
-``` TypeScript
-// 'app.string.show_selected_menu'资源文件中的value值为"这是一段文本，用来展示选中菜单"
-TextArea({ text: $r('app.string.show_selected_menu') })
-```
 
 ![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
 TextArea:
+
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
