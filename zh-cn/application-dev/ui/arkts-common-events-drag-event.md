@@ -1288,7 +1288,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
         .width('80%')
         .borderWidth(1)
         .borderColor(Color.Black)
-        .padding({ bottom: 5 })
+        // ···
         .onChange((value: string) => {
           if (value.length == 0) {
             this.isSearchDone = false;
@@ -1298,7 +1298,8 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
           this.isSearchDone = true;
         })
       if (this.isSearchDone) {
-        Text(this.searchResult).fontSize(20).textAlign(TextAlign.Start).width('80%')
+        Text(this.searchResult).fontSize(20)
+        // ···
       }
     }.width('100%').height('100%')
   }
