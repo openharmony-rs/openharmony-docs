@@ -203,6 +203,11 @@ TextArea()
 - 设置无输入时的提示文本。
 
   <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.i_am_placeholder'资源文件中的value值为"我是提示文本"
+  TextInput({ placeholder: $r('app.string.i_am_placeholder') })
+  ```
 
   ![zh-cn_image_0000001511900400](figures/zh-cn_image_0000001511900400.png)
 
