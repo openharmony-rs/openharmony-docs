@@ -628,7 +628,7 @@ class NetworkHttpInterceptor implements http.HttpInterceptor {
     hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
     hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
 
-    reqContext.url = EXAMPLE_NETWORK_URL;
+    reqContext.url = EXAMPLE_URL;
     reqContext.header = { 'content-type': 'text/xml' };
     reqContext.body = { 'context': 'NETWORK_CONNECT' };
 
@@ -657,7 +657,7 @@ class FinalHttpInterceptor implements http.HttpInterceptor {
     hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
     hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
 
-    reqContext.url = EXAMPLE_INITIAL_URL;
+    reqContext.url = EXAMPLE_Final_URL;
     reqContext.header = { 'content-type': 'text/html' };
     reqContext.body = { 'context': 'FINAL_RESPONSE' };
 
