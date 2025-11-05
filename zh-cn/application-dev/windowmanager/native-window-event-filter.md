@@ -171,7 +171,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 #include "napi/native_api.h"
 
 static napi_value injectEvent(napi_env env, napi_callback_info info) {
-  size_t argc = 1;
+  size_t argc = 10;
   napi_value args[10] = {nullptr};
   napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
   
