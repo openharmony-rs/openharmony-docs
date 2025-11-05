@@ -193,6 +193,45 @@ Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
 <!-- @[build_a_office_services_grid_of_foreach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct DataInGrid {
+// ···
+
+  @State services: Array<string> = [
+    // app.string.Meeting资源文件中的value值为‘会议’
+    this.context!.resourceManager.getStringSync($r('app.string.Meeting').id),
+    // app.string.Check_in资源文件中的value值为‘投票’
+    this.context!.resourceManager.getStringSync($r('app.string.Check_in').id),
+    // app.string.Voting资源文件中的value值为‘签到’
+    this.context!.resourceManager.getStringSync($r('app.string.Voting').id),
+    // app.string.Printing资源文件中的value值为‘打印’
+    this.context!.resourceManager.getStringSync($r('app.string.Printing').id)
+  ];
+// ···
+
+  build() {
+    // ···
+      Column() {
+        // ···
+          Grid() {
+            ForEach(this.services, (service: string) => {
+              GridItem() {
+                Text(service)
+              }
+            // ···
+            }, (service: string): string => service)
+          }
+          .rowsTemplate(('1fr 1fr') as string)
+          .columnsTemplate(('1fr 1fr') as string)
+        // ···
+      }
+    // ···
+  }
+}
+```
+
 
 ## 设置行列间距
 
