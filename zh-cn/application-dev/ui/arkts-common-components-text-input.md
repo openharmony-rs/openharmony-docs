@@ -179,6 +179,11 @@ TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.
 默认风格的输入框，在编辑态和非编辑态，样式没有区别。
 <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
 
+``` TypeScript
+TextArea()
+  .style(TextContentStyle.DEFAULT)
+```
+
 ![textArea_style_default](figures/textArea_style_default.gif)
 
 ### 内联模式
