@@ -196,6 +196,11 @@ TextInput({ text: $r('app.string.SelectMenu_textContent_1') })
 
 TextArea:
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+
+``` TypeScript
+// 'app.string.SelectMenu_textContent_1'资源文件中的value值为"这是一段文本，用来展示选中菜单"
+TextArea({ text: $r('app.string.SelectMenu_textContent_1') })
+```
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ## 禁用系统服务类菜单
