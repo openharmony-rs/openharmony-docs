@@ -106,81 +106,11 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@Monitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@Monitor可以同时监听多个状态变量，这些变量名之间用","隔开。
 
-<!-- @[monitor_decorator_multi_watch_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets) -->
-
-``` TypeScript
-@Entry
-@ComponentV2
-struct Index {
-  @Local message: string = 'Hello World';
-  @Local name: string = 'Tom';
-  @Local age: number = 24;
-
-  @Monitor('message','name')
-  onStrChange(monitor: IMonitor) {
-    monitor.dirty.forEach((path: string) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s',
-        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-    });
-  }
-
-  build() {
-    Column() {
-      Button('change string')
-        .onClick(() => {
-          this.message += '!';
-          this.name = 'Jack';
-        })
-    }
-  }
-}
-```
+  <!-- @[monitor_decorator_multi_watch_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets) -->
 
 - \@Monitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰。
 
-<!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) -->
-
-``` TypeScript
-class Info {
-  public name: string;
-  public age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local info: Info = new Info('Tom', 25);
-
-  @Monitor('info')
-  infoChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `info change`);
-  }
-
-  @Monitor('info.name')
-  infoPropertyChange(monitor: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `info name change`);
-  }
-
-  build() {
-    Column() {
-      Text(`name: ${this.info.name}, age: ${this.info.age}`)
-      Button('change info')
-        .onClick(() => {
-          this.info = new Info('Lucy', 18); // 能够监听到
-        })
-      Button('change info.name')
-        .onClick(() => {
-          this.info.name = 'Jack'; // 监听不到
-        })
-    }
-  }
-}
-```
+  <!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) -->
 
 ### 在\@ObservedV2装饰的类中使用\@Monitor
 
