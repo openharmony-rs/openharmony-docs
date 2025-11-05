@@ -682,7 +682,7 @@ build() {
 1. 组件拖拽设置。
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
-    
+   
    ``` TypeScript
    Image($r('app.media.app_icon'))
      .width(100)
