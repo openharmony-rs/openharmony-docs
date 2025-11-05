@@ -18,6 +18,13 @@ get sum() {
 ```
 <!-- @[computed_property_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
+``` TypeScript
+Text(`${this.count1 + this.count2 + this.count3}`) // 计算this.count1 + this.count2 + this.count3
+Text(`${this.count1 + this.count2 + this.count3}`) // 重复计算this.count1 + this.count2 + this.count3
+Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
+Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
+```
+
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
 
 >**说明：**
