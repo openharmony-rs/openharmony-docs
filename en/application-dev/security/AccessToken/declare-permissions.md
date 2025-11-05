@@ -26,7 +26,8 @@ Declare the permissions required by your application under **requestPermissions*
 ## Example
 
 > **NOTE**<br>
-> The values **ohos.permission.PERMISSION1** and **ohos.permission.PERMISSION2** are only examples and do not exist. Set permissions to match your case.
+>
+> "ohos.permission.PERMISSION1" and "ohos.permission.PERMISSION2" in the following example are for reference only. Set permissions to match your case.
 
 ```json
 {

@@ -492,6 +492,8 @@ With this permission, the application can detect information such as the user's 
 
 **Authorization mode**: system_grant
 
+**Supported devices**: general devices
+
 **Valid since**: 20
 
 ## ohos.permission.kernel.NET_RAW
