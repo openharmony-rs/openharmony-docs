@@ -249,6 +249,33 @@
    - 触发controller弹窗。
 
      <!-- @[controller_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     
+     ``` C++
+     bool g_isShown = false;
+     
+     void OnButtonClicked(ArkUI_NodeEvent *event)
+     {
+         if (!event || !g_buttonNode) {
+             return;
+         }
+         auto eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
+         if (eventId == BUTTON_CLICK_ID) {
+             ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+                 OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+             if (g_isShown) {
+                 g_isShown = false;
+                 ArkUI_AttributeItem labelItem = {.string = "显示弹窗"};
+                 nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 CloseDialog();
+             } else {
+                 g_isShown = true;
+                 ArkUI_AttributeItem labelItem = {.string = "关闭弹窗"};
+                 nodeAPI->setAttribute(g_buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 ShowDialog();
+             }
+         }
+     }
+     ```
 
    - 触发dialogOptions弹窗。
 
