@@ -29,6 +29,46 @@
     在UIAbility类的OnCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
     <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility1.ets) -->  
+    
+    ``` TypeScript
+    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    const DOMAIN_NUMBER = 0xF811;
+    const TAG  = '[Sample_UnexpExit]';
+    const MAX_RSS_THRESHOLD: number = 100000;
+    const MAX_PSS_THRESHOLD: number = 100000;
+    
+    function doSomething() {
+      hilog.info(DOMAIN_NUMBER, TAG, 'do Something');
+    }
+    
+    function doAnotherThing() {
+      hilog.info(DOMAIN_NUMBER, TAG, 'do Another Thing');
+    }
+    
+    export default class ExitAbility1 extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        // 获取退出原因
+        let reason: number = launchParam.lastExitReason;
+        let subReason: number = -1;
+        if (launchParam.lastExitDetailInfo) {
+          subReason = launchParam.lastExitDetailInfo.exitSubReason;
+        }
+        let exitMsg: string = launchParam.lastExitMessage;
+    
+        if (launchParam.lastExitDetailInfo) {
+          // 获取Ability上次退出时所在进程的信息
+          let pid = launchParam.lastExitDetailInfo.pid;
+          let processName: string = launchParam.lastExitDetailInfo.processName;
+          let rss: number = launchParam.lastExitDetailInfo.rss;
+          let pss: number = launchParam.lastExitDetailInfo.pss;
+          // 其他信息
+          let uid: number = launchParam.lastExitDetailInfo.uid;
+          let timestamp: number = launchParam.lastExitDetailInfo.timestamp;
+        }
+      }
+    }
+    ```
 
 
 2. 根据上次退出的信息做相应的业务处理。
