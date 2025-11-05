@@ -173,6 +173,36 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 
 <!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER = 0xF811;
+const TAG  = '[Sample_AppLinking]';
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('start link', { type: ButtonType.Capsule, stateEffect: true })
+      .width('87%')
+      .height('5%')
+      .margin({ bottom: '12vp' })
+      .onClick(() => {
+        let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let link: string = 'https://www.example.com/programs?action=showall';
+        // 仅以App Linking的方式打开应用
+        context.openLink(link, { appLinkingOnly: true })
+          .then(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+          })
+          .catch((error: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+          });
+      })
+  }
+}
+```
+
 
 在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
 
