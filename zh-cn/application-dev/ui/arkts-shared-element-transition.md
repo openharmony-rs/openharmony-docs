@@ -423,6 +423,152 @@ class AnimationProperties {
 
 <!-- @[stack_post_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/PostNode.ets) -->
 
+``` TypeScript
+// PostNode.ets
+// 跨容器迁移能力
+import { UIContext, curves, NodeController, BuilderNode, FrameNode } from '@kit.ArkUI';
+import resource from '../../../common/resource';
+
+class Data {
+  public item: string | null = null;
+  public isExpand: boolean = false;
+}
+
+@Builder
+function postBuilder(data: Data) {
+  // 跨容器迁移组件置于@Builder内
+  Column() {
+    Row() {
+      Row()
+        .backgroundColor(Color.Pink)
+        .borderRadius(20)
+        .width(80)
+        .height(80)
+      Column() {
+        // 'app.string.shareTransition_text5'资源文件中的value值为'点击展开 Item '
+        Text(resource.resourceToString($r('app.string.shareTransition_text5')) + data.item)
+          .fontSize(20)
+        // 'app.string.shareTransition_text6'资源文件中的value值为'共享元素转场'
+        Text($r('app.string.shareTransition_text6'))
+          .fontSize(12)
+          .fontColor(0x909399)
+      }
+      .alignItems(HorizontalAlign.Start)
+      .justifyContent(FlexAlign.SpaceAround)
+      .margin({ left: 10 })
+      .height(80)
+    }
+    .width('90%')
+    .height(100)
+
+    // 展开后显示细节内容
+    if (data.isExpand) {
+      Row() {
+        // 'app.string.shareTransition_text7'资源文件中的value值为'展开态'
+        Text($r('app.string.shareTransition_text7'))
+          .fontSize(28)
+          .fontColor(0x909399)
+          .textAlign(TextAlign.Center)
+          .transition(TransitionEffect.OPACITY.animation({ curve: curves.springMotion(0.6, 0.9) }))
+      }
+      .width('90%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  .width('90%')
+  .height('100%')
+  .alignItems(HorizontalAlign.Center)
+  .borderRadius(10)
+  .margin({ top: 15 })
+  .backgroundColor(Color.White)
+  .shadow({
+    radius: 20,
+    color: 0x909399,
+    offsetX: 20,
+    offsetY: 10
+  })
+}
+
+class InternalValue {
+  public flag: boolean = false;
+};
+
+export class PostNode extends NodeController {
+  private node: BuilderNode<Data[]> | null = null;
+  private isRemove: InternalValue = new InternalValue();
+  private callback: Function | undefined = undefined;
+  private data: Data | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (this.isRemove.flag === true) {
+      return null;
+    }
+    if (this.node != null) {
+      return this.node.getFrameNode();
+    }
+
+    return null;
+  }
+
+  init(uiContext: UIContext, id: string, isExpand: boolean) {
+    if (this.node != null) {
+      return;
+    }
+    // 创建节点，需要uiContext
+    this.node = new BuilderNode(uiContext);
+    // 创建离线组件
+    this.data = { item: id, isExpand: isExpand };
+    this.node.build(wrapBuilder<Data[]>(postBuilder), this.data);
+  }
+
+  update(id: string, isExpand: boolean) {
+    if (this.node !== null) {
+      // 调用update进行更新。
+      this.data = { item: id, isExpand: isExpand };
+      this.node.update(this.data);
+    }
+  }
+
+  setCallback(callback: Function | undefined) {
+    this.callback = callback;
+  }
+
+  callCallback() {
+    if (this.callback != undefined) {
+      this.callback();
+    }
+  }
+
+  onRemove() {
+    this.isRemove.flag = true;
+    // 组件迁移出节点时触发重建
+    this.rebuild();
+    this.isRemove.flag = false;
+  }
+}
+
+let gNodeMap: Map<string, PostNode | undefined> = new Map();
+
+export const createPostNode =
+  (uiContext: UIContext, id: string, isExpand: boolean): PostNode | undefined => {
+    let node = new PostNode();
+    node.init(uiContext, id, isExpand);
+    gNodeMap.set(id, node);
+    return node;
+  }
+
+export const getPostNode = (id: string): PostNode | undefined => {
+  if (!gNodeMap.has(id)) {
+    return undefined;
+  }
+  return gNodeMap.get(id);
+}
+
+export const deleteNode = (id: string) => {
+  gNodeMap.delete(id);
+}
+```
+
 ![zh_cn_image_sharedElementsNodeTransfer](figures/zh-cn_image_sharedElementsNodeTransfer.gif)
 
 ### 结合Navigation使用
