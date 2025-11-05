@@ -2444,7 +2444,7 @@ if (store != undefined) {
 
 executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;):void
 
-执行指定的SQL语句，支持传入SQL语句的参数，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+执行指定的SQL语句，支持传入SQL语句中参数的值，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
