@@ -11945,7 +11945,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## HdrMode<sup>22+</sup>
 
-枚举，图片的HDR类型。
+枚举，媒体资产的HDR模式。
 
 **系统接口**：此接口为系统接口。
 
