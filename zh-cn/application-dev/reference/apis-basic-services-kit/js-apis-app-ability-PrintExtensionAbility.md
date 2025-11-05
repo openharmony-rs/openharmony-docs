@@ -27,7 +27,7 @@ onCreate(want: Want): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| want | Want | 是 | 表示调用打印页面需要参数 |
+| want | Want | 是 | 表示调用打印页面需要参数。 |
 
 **示例：**
 
@@ -95,7 +95,9 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onConnectPrinter
 
-onConnectPrinter(printerId: int): void
+ArkTS-Dyn: onConnectPrinter(printerId: number): void
+
+ArkTS-Sta: onConnectPrinter(printerId: int): void
 
 连接到特定打印机时调用。
 
@@ -108,10 +110,23 @@ onConnectPrinter(printerId: int): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | int | 是 | 表示打印机ID |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
+```ts
+import { PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onConnectPrinter(printerId: number): void {
+        console.log('onConnectPrinter enter');
+        // ...
+    }
+}
+```
+
+ArkTS-Sta示例:
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
@@ -125,7 +140,9 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onDisconnectPrinter
 
-onDisconnectPrinter(printerId: int): void
+ArkTS-Dyn: onDisconnectPrinter(printerId: number): void
+
+ArkTS-Sta: onDisconnectPrinter(printerId: int): void
 
 断开与特定打印机的连接时调用。
 
@@ -138,10 +155,23 @@ onDisconnectPrinter(printerId: int): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | int | 是 | 表示打印机ID |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
+```ts
+import { PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onDisconnectPrinter(printerId: number): void {
+        console.log('onDisconnectPrinter enter');
+        // ...
+    }
+}
+```
+
+ArkTS-Sta示例:
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 

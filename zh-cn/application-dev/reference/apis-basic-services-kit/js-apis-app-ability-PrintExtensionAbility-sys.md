@@ -28,7 +28,7 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务的信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
 **错误码：**
 
@@ -67,7 +67,7 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务的信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
 **错误码：**
 
@@ -93,7 +93,9 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onRequestPrinterCapability
 
-onRequestPrinterCapability(printerId: int): print.PrinterCapability
+ArkTS-Dyn: onRequestPrinterCapability(printerId: number): print.PrinterCapability
+
+ArkTS-Sta: onRequestPrinterCapability(printerId: int): print.PrinterCapability
 
 请求打印机能力时调用。
 
@@ -106,12 +108,12 @@ onRequestPrinterCapability(printerId: int): print.PrinterCapability
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| printerId | int | 是 | 表示打印机ID |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| print.PrinterCapability | 表示打印能力 |
+| print.PrinterCapability | 表示打印能力。 |
 
 **错误码：**
 
@@ -123,6 +125,26 @@ onRequestPrinterCapability(printerId: int): print.PrinterCapability
 
 **示例：**
 
+ArkTS-Dyn示例:
+```ts
+import { PrintExtensionAbility } from '@kit.BasicServicesKit';
+import { print } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+        console.log('onRequestPrinterCapability enter');
+        // ...
+        let tmp : print.PrinterCapability = {
+            colorMode : 1,
+            duplexMode : 1,
+            pageSize : []
+        };
+        return tmp;
+    }
+}
+```
+
+ArkTS-Sta示例:
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 import { print } from '@kit.BasicServicesKit';
@@ -156,12 +178,12 @@ onRequestPreview(jobInfo: print.PrintJob): string
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务信息。 |
 
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| string | 返回的预览结果 |
+| string | 返回的预览结果。 |
 
 **错误码：**
 
