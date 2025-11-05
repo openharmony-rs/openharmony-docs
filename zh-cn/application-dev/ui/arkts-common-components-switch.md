@@ -134,6 +134,55 @@ Toggle用于切换蓝牙开关状态。
 
 <!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) --> 
 
+``` TypeScript
+// xxx.ets
+import { promptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct ToggleSample {
+  @State message: string = 'off';
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    // ···
+      Column({ space: 8 }) {
+        Column({ space: 8 }) {
+          Text('Bluetooth Mode: ' + this.message)
+            .id('message')
+          Row() {
+            Text('Bluetooth')
+            Blank()
+            Toggle({ type: ToggleType.Switch })
+              .id('toggle') // 请开发者替换为实际的id
+              .onChange((isOn: boolean) => {
+                if (isOn) {
+                  this.message = 'on';
+                  promptAction.openToast({ 'message': 'Bluetooth is on.' });
+                } else {
+                  this.message = 'off';
+                  promptAction.openToast({ 'message': 'Bluetooth is off.' });
+                }
+              })
+          }.width('100%')
+        }
+        .alignItems(HorizontalAlign.Start)
+        .backgroundColor('#fff')
+        .borderRadius(12)
+        .padding(12)
+        .width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    // ···
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.ToggleCaseExample_title'))
+  }
+}
+```
+
 
 ![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
   
