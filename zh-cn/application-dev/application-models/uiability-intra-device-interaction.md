@@ -123,7 +123,7 @@
     
       build() {
         Column() {
-          Button($r('app.string.Stop_AbilityA')) //'app.string.Stop_AbilityA'为用户自定义字符串资源
+          Button($r('app.string.Stop_AbilityA')) // 'app.string.Stop_AbilityA'为用户自定义字符串资源
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // context为需要停止的UIAbility实例的AbilityContext
@@ -255,7 +255,7 @@
                     moduleName: 'entry', // moduleName非必选
                     abilityName: 'FuncAbilityA',
                     parameters: {
-                      info: $r('app.string.ability_return_info') //'app.string.ability_return_info'为用户自定义字符串资源
+                      info: $r('app.string.ability_return_info') // 'app.string.ability_return_info'为用户自定义字符串资源
                     },
                   },
                 };
