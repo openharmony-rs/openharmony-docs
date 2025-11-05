@@ -291,6 +291,57 @@ get varName(): T {
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
   <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_Textcomponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'Textcomponent_';
+  
+  @Entry
+  @ComponentV2
+  struct ComputedPropertyResolution {
+    @Local celsius: number = 20;
+  
+    @Computed
+    get fahrenheit(): number {
+      return this.celsius * 9 / 5 + 32; // C -> F
+    }
+  
+    @Computed
+    get kelvin(): number {
+      return (this.fahrenheit - 32) * 5 / 9 + 273.15; // F -> K
+    }
+  
+    @Monitor('kelvin')
+    onKelvinMonitor(mon: IMonitor) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'kelvin changed from' + mon.value()?.before + ' to ' + mon.value()?.now);
+    }
+  
+    build() {
+      Column({ space: 20 }) {
+        Row({ space: 20 }) {
+          Button('-')
+            .onClick(() => {
+              this.celsius--;
+            })
+  
+          Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(40)
+  
+          Button('+')
+            .onClick(() => {
+              this.celsius++;
+            })
+        }
+  
+        Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
+        Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
+      }
+      .width('100%')
+    }
+  }
+  ```
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
