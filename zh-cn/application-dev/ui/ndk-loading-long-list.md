@@ -452,6 +452,49 @@ private:
 
 1. ListItem设置NODE_LIST_ITEM_SWIPE_ACTION属性，将ArkUI_ListItemSwipeActionOption对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
+   
+   ``` C
+   // ArkUIListItemNode.h
+   // 提供列表项的封装类。
+   #ifndef MYAPPLICATION_ARKUILISTITEMNODE_H
+   #define MYAPPLICATION_ARKUILISTITEMNODE_H
+   #include "ArkUINode.h"
+   namespace NativeModule {
+   class ArkUIListItemNode : public ArkUINode {
+   public:
+       ArkUIListItemNode()
+           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST_ITEM)) {}
+       ~ArkUIListItemNode() override
+       {
+           if (swipeAction_) {
+               OH_ArkUI_ListItemSwipeActionOption_Dispose(swipeAction_);
+           }
+           if (swipeItem_) {
+               OH_ArkUI_ListItemSwipeActionItem_Dispose(swipeItem_);
+           }
+       }
+       void SetSwiperAction(std::shared_ptr<ArkUINode> node)
+       {
+           swipeContent_ = node;
+           swipeItem_ = OH_ArkUI_ListItemSwipeActionItem_Create();
+           OH_ArkUI_ListItemSwipeActionItem_SetContent(swipeItem_, node->GetHandle());
+           swipeAction_ = OH_ArkUI_ListItemSwipeActionOption_Create();
+           OH_ArkUI_ListItemSwipeActionOption_SetEnd(swipeAction_, swipeItem_);
+           ArkUI_AttributeItem Item = {.object = swipeAction_};
+           nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_SWIPE_ACTION, &Item);
+       }
+       std::shared_ptr<ArkUINode> GetSwipeContent() const { return swipeContent_; }
+       std::list<std::shared_ptr<ArkUIBaseNode>> &GetChildren() { return children_; }
+   
+   private:
+       ArkUI_ListItemSwipeActionOption *swipeAction_ = nullptr;
+       ArkUI_ListItemSwipeActionItem *swipeItem_ = nullptr;
+       std::shared_ptr<ArkUINode> swipeContent_ = nullptr;
+       std::list<std::shared_ptr<ArkUIBaseNode>> children_;
+   };
+   } // namespace NativeModule
+   #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
+   ```
 
 2. 创建ListItem时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
