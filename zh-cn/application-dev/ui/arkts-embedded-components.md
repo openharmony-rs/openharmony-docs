@@ -55,42 +55,6 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
-``` TypeScript
-import { Want } from '@kit.AbilityKit';
-
-@Component
-export struct Embedded {
-  @State message: string = 'Message: ';
-  private want: Want = {
-    bundleName: 'com.samples.uiextensionandaccessibility',
-    abilityName: 'ExampleEmbeddedAbility',
-  };
-  build() {
-    // ···
-      Row() {
-        Column() {
-          Text(this.message).fontSize(30)
-          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-            .width('100%')
-            .height('90%')
-            .onTerminated((info) => {
-              // 点击extension页面内的terminateSelfWithResult按钮后触发onTerminated回调，文本框显示如下信息
-              this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
-            })
-            .onError((error) => {
-              // 失败或异常触发onError回调，文本框显示如下报错内容
-              this.message = `Error: code = ${error.code}`;
-            })
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
-    // ···
-  }
-}
-```
-
 在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
@@ -116,45 +80,6 @@ export struct Embedded {
 提供方应用是指提供嵌入式UI扩展能力的应用。以下是提供方应用生命周期实现的代码示例：
 
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
-
-``` TypeScript
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[ExampleEmbeddedAbility]'
-
-export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
-  onCreate() {
-    hilog.info(0x0000, TAG, '%{public}s', `onCreate`);
-  }
-
-  onForeground() {
-    hilog.info(0x0000, TAG, '%{public}s',  `onForeground`);
-  }
-
-  onBackground() {
-    hilog.info(0x0000, TAG, '%{public}s', `onBackground`);
-  }
-
-  onDestroy() {
-    hilog.info(0x0000, TAG, '%{public}s', `onDestroy`);
-  }
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
-    let param: Record<string, UIExtensionContentSession> = {
-      'session': session
-    };
-    let storage: LocalStorage = new LocalStorage(param);
-    // 加载 Extension.ets 页面内容
-    session.loadContent('pages/EmbeddedComponent/Extension', storage);
-  }
-
-  onSessionDestroy(session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG , '%{public}s',  `onSessionDestroy`);
-  }
-}
-```
 
 关键实现说明：
 
@@ -183,37 +108,6 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
 <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
-
-``` TypeScript
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-
-let storage = LocalStorage.getShared();
-
-@Entry(storage)
-@Component
-struct Extension {
-  @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
-        // 点击按钮后调用terminateSelfWithResult退出
-        this.session?.terminateSelfWithResult({
-          resultCode: 1,
-          want: {
-            bundleName: 'com.samples.uiextensionandaccessibility',
-            abilityName: 'ExampleEmbeddedAbility',
-          }
-        });
-      })
-    }.width('100%').height('100%')
-  }
-}
-```
 
 在实现入口页面时，开发者需要注意以下几点：
 
@@ -244,14 +138,6 @@ struct Extension {
   在module.json5配置文件的"extensionAbilities"标签下增加ExampleEmbeddedAbility配置，以注册ExampleEmbeddedAbility嵌入式UI扩展能力。
 
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "name": "ExampleEmbeddedAbility",
-  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
-  "type": "embeddedUI"
-},
-```
 
 **预期效果**
 
