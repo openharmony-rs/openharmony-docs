@@ -236,4 +236,102 @@ export struct OverlayManagerAlertDialog {
 从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
 
 <!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->
+
+``` TypeScript
+import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+
+class Params {
+  public text: string = '';
+  public offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+@Builder
+function builderTopText(params: Params) {
+  Column() {
+    Stack() {
+      Text(params.text)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width(300)
+    .height(200)
+    .padding(5)
+    .backgroundColor('#F7F7F7')
+    .alignContent(Alignment.Top)
+  }.offset(params.offset)
+}
+
+@Builder
+function builderNormalText(params: Params) {
+  Column() {
+    Stack() {
+      Text(params.text)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width(300)
+    .height(400)
+    .padding(5)
+    .backgroundColor('#D5D5D5')
+    .alignContent(Alignment.Top)
+  }.offset(params.offset)
+}
+
+@Entry
+@Component
+export struct OverlayManagerWithOrder {
+  private ctx: UIContext = this.getUIContext();
+  private overlayManager: OverlayManager = this.ctx.getOverlayManager();
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private manager = this.context.resourceManager;
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+  @StorageLink('componentContentIndex') componentContentIndex: number = 0;
+  @StorageLink('arrayIndex') arrayIndex: number = 0;
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
+
+  build() {
+    // ···
+      Row() {
+        Column({ space: 5 }) {
+          // 'app.string.Demo_topDialogButton'资源文件中的value值为'点击打开置顶弹窗'
+          Button($r('app.string.Demo_topDialogButton'))
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.ctx, wrapBuilder<[Params]>(builderTopText),
+                // 'Demo_topDialog'资源文件中的value值为'我是置顶弹窗'
+                new Params(this.manager.getStringByNameSync('Demo_topDialog'), this.componentOffset)
+              );
+              this.contentArray.push(componentContent);
+              this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
+            })
+          // 'app.string.Demo_normalDialogButton'资源文件中的value值为'点击打开普通弹窗'
+          Button($r('app.string.Demo_normalDialogButton'))
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.ctx, wrapBuilder<[Params]>(builderNormalText),
+                // 'Demo_normalDialog'资源文件中的value值为'我是普通弹窗'
+                new Params(this.manager.getStringByNameSync('Demo_normalDialog'), this.componentOffset)
+              );
+              this.contentArray.push(componentContent);
+              this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
+            })
+          // 'app.string.Demo_removeDialogButton'资源文件中的value值为'点击移除弹窗'
+          Button($r('app.string.Demo_removeDialogButton')).onClick(() => {
+            if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+              let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+              this.overlayManager.removeComponentContent(componentContent.pop());
+            }
+          })
+        }.width('100%')
+      }
+    // ···
+  }
+}
+```
 ![overlayManager-demo3](figures/overlaymanager-demo_3.gif)
