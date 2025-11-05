@@ -105,3 +105,7 @@
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
     
     <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    
+    ``` TypeScript
+    hilog.info(DOMAIN_NUMBER,TAG,`App ${uid} terminated at ${timestamp}.`);
+    ```
