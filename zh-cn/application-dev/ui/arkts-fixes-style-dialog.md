@@ -103,6 +103,60 @@ export struct ShowActionMenuExample {
 
 <!-- @[show_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets) -->
 
+``` TypeScript
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+export struct ShowDialogExample {
+  build() {
+    // ···
+      Column({ space: 12 }) {
+        Column() {
+          Button('ShowDialog')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showDialog({
+                  title: 'showDialog Title Info',
+                  message: 'Message Info',
+                  buttons: [
+                    {
+                      text: 'button1',
+                      color: '#000000'
+                    },
+                    {
+                      text: 'button2',
+                      color: '#000000'
+                    }
+                  ]
+                }, (err, data) => {
+                  if (err) {
+                    console.error('showDialog err: ' + err);
+                    return;
+                  }
+                  console.info('showDialog success callback, click button: ' + data.index);
+                });
+              } catch (error) {
+                let message = (error as BusinessError).message;
+                let code = (error as BusinessError).code;
+                console.error(`showdialog args error code is ${code}, message is ${message}`);
+              }
+            })
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    // ···
+  }
+}
+```
+
 ![image](figures/UIShowDialog.gif)
 
 ## 选择器弹窗 (PickerDialog)
