@@ -37,7 +37,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
 2. 导入ohos.bundle.bundleManager模块。 
 3. 调用canOpenLink接口。
 
-    <!-- @[can_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/OpenAppPage2.ets) -->
+    <!-- @[can_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/OpenAppPage2.ets) -->  
 
 ### 目标方操作步骤
 在module.json5文件中配置[uris](../quick-start/module-configuration-file.md#skills标签)属性。
