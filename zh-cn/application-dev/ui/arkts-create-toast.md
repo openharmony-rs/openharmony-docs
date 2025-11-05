@@ -110,6 +110,41 @@ export struct DefaultAndTopToastExample {
 
 <!-- @[toast_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/CreateToast.ets) -->
 
+``` TypeScript
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
+
+@Entry
+@Component
+export struct CreateToastExample {
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
+  build() {
+    // ···
+      Column() {
+        Button('Show toast').fontSize(20)
+          .onClick(() => {
+            try {
+              this.promptAction.showToast({
+                message: 'Hello World',
+                duration: 2000
+              });
+            } catch (error) {
+              let message = (error as BusinessError).message;
+              let code = (error as BusinessError).code;
+              hilog.error(DOMAIN, TAG, '%{public}s', 'showToast args error code is $\{code}, message is $\{message}');
+            }
+          })
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    // ···
+  }
+}
+```
+
 ![image](figures/UIToast1.gif)
 
 ## 显示关闭即时反馈
