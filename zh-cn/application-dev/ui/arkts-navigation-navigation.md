@@ -262,7 +262,6 @@ NavPathStack通过Replace相关接口去实现页面替换功能。
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
-
 ### 页面删除
 
 NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的功能。
