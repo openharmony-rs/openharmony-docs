@@ -49,7 +49,7 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
 **示例:**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -73,7 +73,7 @@ async function WritePixelsFromBuffer(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -93,7 +93,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -124,27 +124,26 @@ function WritePixelsFromBufferFunc(auxPicture: image.AuxiliaryPicture): void {
 
 ## readPixelsToBuffer<sup>13+</sup>
 
-ArkTS-Dyn: readPixelsToBuffer(): Promise\<ArrayBuffer>
-
-ArkTS-Sta: readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
+readPixelsToBuffer(): Promise\<ArrayBuffer>
 
 读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[readPixelsToBuffer](#readpixelstobuffer22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
-
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise\<ArrayBuffer><br/>ArkTS-Sta: Promise\<ArrayBuffer \| undefined> | Promise对象。返回辅助图像素数据。 |
+| Promise\<ArrayBuffer> | Promise对象。返回辅助图像素数据。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -171,7 +170,28 @@ async function ReadPixelsToBuffer(context: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+## readPixelsToBuffer<sup>22+</sup>
+
+readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
+
+读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[readPixelsToBuffer](#readpixelstobuffer13)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta版本：** 22
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise\<ArrayBuffer \| undefined> | Promise对象。返回辅助图像素数据。 |
+
+**示例：**
+
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -191,7 +211,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -221,27 +241,26 @@ function ReadPixelsToBufferFunc(auxPicture: image.AuxiliaryPicture): void {
 
 ## getType<sup>13+</sup>
 
-ArkTS-Dyn: getType(): AuxiliaryPictureType
-
-ArkTS-Sta: getType(): AuxiliaryPictureType | undefined
+getType(): AuxiliaryPictureType
 
 获取辅助图的类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getType](#gettype22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
-
 **返回值：**
 
 | 类型                                            | 说明                         |
 | ----------------------------------------------- | ---------------------------- |
-| ArkTS-Dyn: [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)<br/>ArkTS-Sta: [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) \| undefined | 操作成功，返回辅助图的类型。 |
+| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 操作成功，返回辅助图的类型。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -255,7 +274,28 @@ async function GetAuxiliaryPictureType() {
 }
 ```
 
-ArkTS-Sta示例:
+## getType<sup>22+</sup>
+
+getType(): AuxiliaryPictureType | undefined
+
+获取辅助图的类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getType](#gettype13)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta版本：** 22
+
+**返回值：**
+
+| 类型                                            | 说明                         |
+| ----------------------------------------------- | ---------------------------- |
+| [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) \| undefined | 操作成功，返回辅助图的类型。 |
+
+**示例：**
+
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -275,7 +315,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -339,7 +379,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -373,7 +413,7 @@ async function SetAuxPictureObjMetadata(exifContext: Context) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -393,7 +433,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_exif_image.jpg'仅作示例，请开发者自行替换支持hdr且包含exif metadata的图片，否则会导致执行失败。
+  // 此处'hdr_exif_image.jpg'仅作示例，请开发者自行替换支持hdr且包含exif metadata的图片，否则会导致执行失败。
   const rawFile = await resourceMgr.getRawFileContent("hdr_exif_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -433,18 +473,17 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
 
 ## getMetadata<sup>13+</sup>
 
-ArkTS-Dyn: getMetadata(metadataType: MetadataType): Promise\<Metadata>
-
-ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 从辅助图中获取元数据。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getMetadata](#getmetadata22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn版本：** 13
-
-**ArkTS-Sta版本：** 20
-
 
 **参数：**
 
@@ -456,7 +495,7 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| ArkTS-Dyn: Promise<[Metadata](arkts-apis-image-Metadata.md)><br/>ArkTS-Sta: Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md)> | 返回元数据对象。 |
 
 **错误码：**
 
@@ -469,7 +508,6 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -488,7 +526,42 @@ async function GetAuxPictureObjMetadata() {
 }
 ```
 
-ArkTS-Sta示例:
+## getMetadata<sup>22+</sup>
+
+getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+
+从辅助图中获取元数据。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dya接口是[getMetadata](#getmetadata13)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta版本：** 22
+
+**参数：**
+
+| 参数名       | 类型                            | 必填 | 说明                                   |
+| ------------ | ------------------------------- | ---- | -------------------------------------- |
+| metadataType | [MetadataType](arkts-apis-image-e.md#metadatatype13) | 是   | 元数据类型，用于获取对应类型的元数据。 |
+
+**返回值：**
+
+| 类型                             | 说明             |
+| -------------------------------- | ---------------- |
+| Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
+
+**示例：**
+
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -508,7 +581,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -541,27 +614,26 @@ function GetMetadataFunc(auxPicture: image.AuxiliaryPicture): void {
 
 ## getAuxiliaryPictureInfo<sup>13+</sup>
 
-ArkTS-Dyn: getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
-
-ArkTS-Sta: getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
+getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
 获取有关此辅助图的图像信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAuxiliaryPictureInfo](#getauxiliarypictureinfo22)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
-
 **返回值：**
 
 | 类型                                            | 说明                              |
 | ----------------------------------------------- | --------------------------------- |
-| ArkTS-Dyn: [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13)<br/>ArkTS-Sta: [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) \| undefined | Promise对象，返回辅助图图像信息。 |
+| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | Promise对象，返回辅助图图像信息。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -578,7 +650,28 @@ async function GetAuxiliaryPictureInfo() {
 }
 ```
 
-ArkTS-Sta示例:
+## getAuxiliaryPictureInfo<sup>22+</sup>
+
+getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
+
+获取有关此辅助图的图像信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dya接口是[getAuxiliaryPictureInfo](#getauxiliarypictureinfo13)
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Sta版本：** 22
+
+**返回值：**
+
+| 类型                                            | 说明                              |
+| ----------------------------------------------- | --------------------------------- |
+| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) \| undefined | Promise对象，返回辅助图图像信息。 |
+
+**示例：**
+
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -598,7 +691,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -657,7 +750,7 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
@@ -677,7 +770,7 @@ async function SetAuxiliaryPictureInfo() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -697,7 +790,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {
@@ -747,7 +840,7 @@ release():void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -766,7 +859,7 @@ async function Release() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import common from '@ohos.app.ability.common'
 import hilog from '@ohos.hilog'
@@ -785,7 +878,7 @@ if (context != undefined) {
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
-  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  // 此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
   const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
   try {

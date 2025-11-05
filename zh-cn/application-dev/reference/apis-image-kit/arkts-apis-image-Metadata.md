@@ -190,7 +190,7 @@ ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefine
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -248,6 +248,7 @@ function GetAllPropertiesFunc(metadata: image.Metadata): void {
 ## clone<sup>13+</sup>
 
 ArkTS-Dyn: clone(): Promise\<Metadata>
+
 ArkTS-Sta: clone(): Promise\<Metadata | undefined>
 
 对元数据进行克隆，用Promise形式返回结果。
@@ -256,7 +257,7 @@ ArkTS-Sta: clone(): Promise\<Metadata | undefined>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

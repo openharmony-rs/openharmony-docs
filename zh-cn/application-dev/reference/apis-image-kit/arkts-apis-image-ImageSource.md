@@ -2,8 +2,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过[createImageSource](arkts-apis-image-f.md#imagecreateimagesource)构建一个ImageSource实例。
 
@@ -18,6 +18,7 @@ import { image } from '@kit.ImageKit';
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 6
+
 **ArkTS-Sta起始版本：** 20
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
@@ -40,7 +41,7 @@ ArkTS-Sta: getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefin
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -51,7 +52,7 @@ ArkTS-Sta: getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefin
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -64,7 +65,7 @@ imageSourceApi.getImageInfo(0, (error: BusinessError, imageInfo: image.ImageInfo
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -100,7 +101,7 @@ ArkTS-Sta: getImageInfo(callback: AsyncCallback\<ImageInfo | undefined>): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -110,7 +111,7 @@ ArkTS-Sta: getImageInfo(callback: AsyncCallback\<ImageInfo | undefined>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -123,7 +124,7 @@ imageSourceApi.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => 
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -159,7 +160,7 @@ ArkTS-Sta: getImageInfo(index?: int): Promise\<ImageInfo | undefined>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -175,7 +176,7 @@ ArkTS-Sta: getImageInfo(index?: int): Promise\<ImageInfo | undefined>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -187,7 +188,7 @@ imageSourceApi.getImageInfo(0)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -214,7 +215,7 @@ ArkTS-Sta: getImageInfoSync(index?: int): ImageInfo | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -230,7 +231,7 @@ ArkTS-Sta: getImageInfoSync(index?: int): ImageInfo | undefined
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -251,7 +252,7 @@ if (imageInfo == undefined) {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 import hilog from '@ohos.hilog'
@@ -269,7 +270,7 @@ function GetImageInfoSyncFunc(imageSource: image.ImageSource) {
 
 ## getImageProperty<sup>11+</sup>
 
-getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<string>
+getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise\<string>
 
 获取图片中给定索引处图像的指定属性键的值，用Promise形式返回结果，仅支持JPEG、PNG和HEIF<sup>12+</sup>（不同硬件设备支持情况不同）文件，且需要包含exif信息。其中可以通过supportedFormats属性查询是否支持HEIF格式的exif读写。
 
@@ -313,7 +314,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -326,7 +327,7 @@ imageSourceApi.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options)
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -380,7 +381,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -393,7 +394,7 @@ imageSourceApi.getImageProperties(key).then((data) => {
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -411,7 +412,7 @@ function GetImagePropertiesFunc(imageSource: image.ImageSource): void {
 
 ## getImagePropertySync<sup>20+</sup>
 
-getImagePropertySync(key:PropertyKey): string
+getImagePropertySync(key: PropertyKey): string
 
 获取图片exif指定属性键的值，用String形式返回结果。
 
@@ -423,6 +424,8 @@ getImagePropertySync(key:PropertyKey): string
 
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -509,7 +512,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -524,7 +527,7 @@ imageSourceApi.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120").then(()
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -583,7 +586,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -604,7 +607,7 @@ imageSourceApi.modifyImageProperties(keyValues).then(() => {
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -653,7 +656,7 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -665,7 +668,7 @@ imageSourceApi.updateData(array, false, 0, 10).then(() => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -708,7 +711,7 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -722,7 +725,7 @@ imageSourceApi.updateData(array, false, 0, 10, (err: BusinessError) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -746,17 +749,17 @@ function UpdateDataFunc(imageSource: image.ImageSource): void {
 
 ## createPicture<sup>13+</sup>
 
-ArkTS-Dyn: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
-
-ArkTS-Sta: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
+createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
 通过图片解码参数创建Picture对象,使用Promise形式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPicture](#createPicture22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -781,7 +784,6 @@ ArkTS-Sta: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture 
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -798,7 +800,42 @@ async function CreatePicture() {
 }
 ```
 
-ArkTS-Sta示例:
+## createPicture<sup>22+</sup>
+
+createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
+
+通过图片解码参数创建Picture对象,使用Promise形式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPicture](#createPicture13)
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名  | 类型                                                   | 必填 | 说明       |
+| ------- | ------------------------------------------------------ | ---- | ---------- |
+| options | [DecodingOptionsForPicture](arkts-apis-image-i.md#decodingoptionsforpicture13) | 否   | 解码参数。 |
+
+**返回值：**
+
+| 类型                         | 说明                       |
+| ---------------------------- | -------------------------- |
+| ArkTS-Dyn: Promise\<[Picture](arkts-apis-image-Picture.md)><br/>ArkTS-Sta: Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象，返回Picture。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7700301  | Failed to decode image.                                      |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -818,11 +855,13 @@ function CreatePictureFunc(imageSource: image.ImageSource): void {
 
 ArkTS-Dyn: createPixelMap(options?: DecodingOptions): Promise\<PixelMap>
 
-ArkTS-Sta: createPixelMap(options?: DecodingOptions): Promise\<PixelMap | undefined>
-
 通过图片解码参数创建PixelMap对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMap](#createpixelmap22)
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -848,7 +887,6 @@ ArkTS-Sta: createPixelMap(options?: DecodingOptions): Promise\<PixelMap | undefi
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -859,31 +897,17 @@ imageSourceApi.createPixelMap().then((pixelMap: image.PixelMap) => {
 })
 ```
 
-ArkTS-Sta示例:
-```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+## createPixelMap<sup>22+</sup>
 
-function CreatePixelMapFunc(imageSource: image.ImageSource): void {
-  try {
-    let pixelMap = await imageSource.createPixelMap();
-    hilog.info(0x00000, 'CreatePixelMapFunc', 'createPixelMap success!');
-  } catch (err) {
-    hilog.info(0x00000, 'CreatePixelMapFunc', 'CreatePixelMapFunc failed: ' + err);
-  }
-}
+createPixelMap(options?: DecodingOptions): Promise\<PixelMap | undefined>
 
-```
-
-## createPixelMap<sup>7+</sup>
-
-ArkTS-Dyn: createPixelMap(callback: AsyncCallback\<PixelMap>): void
-
-ArkTS-Sta: createPixelMap(callback: AsyncCallback\<PixelMap | undefined>): void
-
-通过默认参数创建PixelMap对象，使用callback形式返回结果。
+通过图片解码参数创建PixelMap对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMap](#createpixelmap7)
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -897,13 +921,60 @@ ArkTS-Sta: createPixelMap(callback: AsyncCallback\<PixelMap | undefined>): void
 
 **参数：**
 
+| 参数名  | 类型                                 | 必填 | 说明       |
+| ------- | ------------------------------------ | ---- | ---------- |
+| options | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| ArkTS-Dyn: Promise\<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function CreatePixelMapFunc(imageSource: image.ImageSource): void {
+  try {
+    let pixelMap = await imageSource.createPixelMap();
+    hilog.info(0x00000, 'CreatePixelMapFunc', 'createPixelMap success!');
+  } catch (err) {
+    hilog.info(0x00000, 'CreatePixelMapFunc', 'CreatePixelMapFunc failed: ' + err);
+  }
+}
+```
+
+## createPixelMap<sup>7+</sup>
+
+createPixelMap(callback: AsyncCallback\<PixelMap>): void
+
+通过默认参数创建PixelMap对象，使用callback形式返回结果。
+
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMap](#createpixelmap22-1)
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
 | 参数名     | 类型                                  | 必填 | 说明                       |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | callback | ArkTS-Dyn: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | 是   | 回调函数，当创建PixelMap对象成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -916,7 +987,34 @@ imageSourceApi.createPixelMap((err: BusinessError, pixelMap: image.PixelMap) => 
 })
 ```
 
-ArkTS-Sta示例:
+## createPixelMap<sup>22+</sup>
+
+createPixelMap(callback: AsyncCallback\<PixelMap | undefined>): void
+
+通过默认参数创建PixelMap对象，使用callback形式返回结果。
+
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMap](#createpixelmap7-1)
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名     | 类型                                  | 必填 | 说明                       |
+| -------- | ------------------------------------- | ---- | -------------------------- |
+| callback | ArkTS-Dyn: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | 是   | 回调函数，当创建PixelMap对象成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -934,18 +1032,19 @@ function CreatePixelMapFunc(imageSource: image.ImageSource): void {
     hilog.info(0x00000, 'CreatePixelMapFunc', 'CreatePixelMapFunc failed: ' + err);
   }
 }
-
 ```
 
 ## createPixelMap<sup>7+</sup>
 
-ArkTS-Dyn: createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): void
-
-ArkTS-Sta: createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap | undefined>): void
+createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): void
 
 通过图片解码参数创建PixelMap对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMap](#createpixelmap22-2)
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -954,8 +1053,6 @@ ArkTS-Sta: createPixelMap(options: DecodingOptions, callback: AsyncCallback\<Pix
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -966,7 +1063,6 @@ ArkTS-Sta: createPixelMap(options: DecodingOptions, callback: AsyncCallback\<Pix
 
 **示例：**
 
-ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -989,7 +1085,35 @@ imageSourceApi.createPixelMap(decodingOptions, (err: BusinessError, pixelMap: im
 })
 ```
 
-ArkTS-Sta示例:
+## createPixelMap<sup>22+</sup>
+
+createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap | undefined>): void
+
+通过图片解码参数创建PixelMap对象。
+
+从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMap](#createpixelmap7-2)
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明                       |
+| -------- | ------------------------------------- | ---- | -------------------------- |
+| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 是   | 解码参数。                 |
+| callback | ArkTS-Dyn: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: AsyncCallback<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | 是   | 回调函数，当创建PixelMap对象成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1021,19 +1145,19 @@ function CreatePixelMapFunc(imageSource: image.ImageSource): void {
 
 ## createPixelMapSync<sup>12+</sup>
 
-ArkTS-Dyn: createPixelMapSync(options?: DecodingOptions): PixelMap
-
-ArkTS-Sta: createPixelMapSync(options?: DecodingOptions): PixelMap | undefined
+createPixelMapSync(options?: DecodingOptions): PixelMap
 
 通过图片解码参数同步创建PixelMap对象。
 
 从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMapSync](#createpixelmapsync22)
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1049,7 +1173,6 @@ ArkTS-Sta: createPixelMapSync(options?: DecodingOptions): PixelMap | undefined
 
 **示例：**
 
-ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1078,8 +1201,36 @@ if (pixelmap != undefined) {
 }
 ```
 
-ArkTS-Sta示例:
-<!--code_no_check-->
+## createPixelMapSync<sup>22+</sup>
+
+createPixelMapSync(options?: DecodingOptions): PixelMap | undefined
+
+通过图片解码参数同步创建PixelMap对象。
+
+从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMapSync](#createpixelmapsync12)
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明                       |
+| -------- | ------------------------------------- | ---- | -------------------------- |
+| options  | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7)  | 否   | 解码参数。                 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| ArkTS-Dyn: [PixelMap](arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1107,7 +1258,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1119,7 +1270,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise<Array<[PixelMap](arkts-apis-image-PixelMap.md)>> | 异步返回PixeMap数组。 |
+| Promise<Array<[PixelMap](arkts-apis-image-PixelMap.md)>> | 异步返回PixelMap数组。 |
 
 **错误码：**
 
@@ -1143,7 +1294,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1162,7 +1313,7 @@ imageSourceApi.createPixelMapList(decodeOpts).then((pixelMapList: Array<image.Pi
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1198,7 +1349,7 @@ createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1228,7 +1379,7 @@ createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1241,7 +1392,7 @@ imageSourceApi.createPixelMapList((err: BusinessError, pixelMapList: Array<image
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1274,7 +1425,7 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<Pixe
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1305,7 +1456,7 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<Pixe
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1326,7 +1477,7 @@ imageSourceApi.createPixelMapList(decodeOpts, (err: BusinessError, pixelMapList:
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1356,17 +1507,17 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
 
 ## createPixelMapUsingAllocator<sup>15+</sup>
 
-ArkTS-Dyn: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
-
-ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
+createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
 使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMapUsingAllocator](#createpixelmapusingallocator22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1398,7 +1549,6 @@ ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType
 
 **示例：**
 
-ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1426,8 +1576,49 @@ if (pixelmap != undefined) {
 }
 ```
 
-ArkTS-Sta示例:
-<!--code_no_check-->
+## createPixelMapUsingAllocator<sup>22+</sup>
+
+createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
+
+使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMapUsingAllocator](#createpixelmapusingallocator15)
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名        | 类型                                 | 必填 | 说明                     |
+| ------------- | ------------------------------------ | ---- | ------------------------ |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
+
+**返回值：**
+
+| 类型                             | 说明                        |
+| -------------------------------- | --------------------------- |
+| ArkTS-Dyn: Promise\<[PixelMap](arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7700101  | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| 7700102  | Unsupported mimetype.                                        |
+| 7700103  | Image too large.  This status code is thrown when an error occurs during the process of checking size. |
+| 7700201  | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
+| 7700203  | Unsupported options, e.g., cannot convert image into desired pixel format. |
+| 7700301  | Failed to decode image.                                      |
+| 7700302  | Failed to allocate memory.                                   |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1452,17 +1643,17 @@ function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource): void 
 
 ## createPixelMapUsingAllocatorSync<sup>15+</sup>
 
-ArkTS-Dyn: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
-
-ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap \| undefined
+createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync22)
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1494,7 +1685,6 @@ ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocator
 
 **示例：**
 
-ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1522,8 +1712,51 @@ if (pixelmap != undefined) {
 }
 ```
 
-ArkTS-Sta示例:
-<!--code_no_check-->
+## createPixelMapUsingAllocatorSync<sup>22+</sup>
+
+ArkTS-Dyn: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
+
+ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap \| undefined
+
+根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名        | 类型                                 | 必填 | 说明                     |
+| ------------- | ------------------------------------ | ---- | ------------------------ |
+| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
+
+**返回值：**
+
+| 类型                   | 说明                   |
+| ---------------------- | ---------------------- |
+| ArkTS-Dyn: [PixelMap](arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7700101  | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| 7700102  | Unsupported mimetype.                                        |
+| 7700103  | Image too large.  This status code is thrown when an error occurs during the process of checking size. |
+| 7700201  | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
+| 7700203  | Unsupported options, e.g., cannot convert image into desired pixel format. |
+| 7700301  | Failed to decode image.                                      |
+| 7700302  | Failed to allocate memory.                                   |
+
+**示例：**
+
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1558,7 +1791,7 @@ ArkTS-Sta: getDelayTimeList(callback: AsyncCallback<Array\<int>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1583,7 +1816,7 @@ ArkTS-Sta: getDelayTimeList(callback: AsyncCallback<Array\<int>>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1596,7 +1829,7 @@ imageSourceApi.getDelayTimeList((err: BusinessError, delayTimes: Array<number>) 
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1628,7 +1861,7 @@ ArkTS-Sta: getDelayTimeList(): Promise<Array\<int>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1653,7 +1886,7 @@ ArkTS-Sta: getDelayTimeList(): Promise<Array\<int>>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1664,7 +1897,7 @@ imageSourceApi.getDelayTimeList().then((delayTimes: Array<number>) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1691,7 +1924,7 @@ ArkTS-Sta: getFrameCount(callback: AsyncCallback\<int>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1717,7 +1950,7 @@ ArkTS-Sta: getFrameCount(callback: AsyncCallback\<int>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1730,7 +1963,7 @@ imageSourceApi.getFrameCount((err: BusinessError, frameCount: number) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1762,7 +1995,7 @@ ArkTS-Sta: getFrameCount(): Promise\<int>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1788,7 +2021,7 @@ ArkTS-Sta: getFrameCount(): Promise\<int>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1799,7 +2032,7 @@ imageSourceApi.getFrameCount().then((frameCount: number) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1847,7 +2080,7 @@ ArkTS-Sta: getDisposalTypeList(): Promise\<Array\<int>>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 imageSourceApi.getDisposalTypeList().then((disposalTypes: Array<number>) => {
@@ -1857,7 +2090,7 @@ imageSourceApi.getDisposalTypeList().then((disposalTypes: Array<number>) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1884,7 +2117,7 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1894,7 +2127,7 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1907,7 +2140,7 @@ imageSourceApi.release((err: BusinessError) => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1940,7 +2173,7 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1950,7 +2183,7 @@ ArkTS有内存回收机制，ImageSource对象不调用release方法，内存最
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1961,7 +2194,7 @@ imageSourceApi.release().then(() => {
 })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
@@ -1986,7 +2219,11 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 >
 > 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2024,7 +2261,11 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 >
 > 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2057,7 +2298,11 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 >
 > 从API version 11开始不再维护，建议使用[getImageProperty](#getimageproperty11)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2094,7 +2339,11 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 >
 > 从API version 11开始不再维护，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2137,7 +2386,11 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 > 
 >从API version 11开始不再维护，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 

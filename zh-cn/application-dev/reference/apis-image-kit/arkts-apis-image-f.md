@@ -1052,7 +1052,7 @@ ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 **ArkTS-Dyn版本：** 6
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1095,7 +1095,7 @@ if (context != undefined) {
 function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
   let imageSource: image.ImageSource | undefined;
   try {
-    //此处'test_image.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+    // 此处'test_image.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
     const sendBoxPath: string = context.filesDir + "/test_image.jpg";
     imageSource = image.createImageSource(sendBoxPath);
     if (imageSource != undefined) {
@@ -1125,7 +1125,7 @@ ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource |
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1199,7 +1199,7 @@ ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 **ArkTS-Dyn版本：** 7
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1276,7 +1276,7 @@ ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | und
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1356,7 +1356,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1418,7 +1418,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSou
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1480,7 +1480,7 @@ ArkTS-Sta: createImageSource(rawfile: resourceManager.RawFileDescriptor, options
 
 **ArkTS-Dyn版本：** 11
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1568,7 +1568,7 @@ ArkTS-Sta: createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -1648,7 +1648,7 @@ ArkTS-Sta: createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): I
 
 **ArkTS-Dyn版本：** 9
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 

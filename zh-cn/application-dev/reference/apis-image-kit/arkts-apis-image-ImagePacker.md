@@ -18,6 +18,7 @@ import { image } from '@kit.ImageKit';
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **ArkTS-Dyn版本：** 6
+
 **ArkTS-Sta版本：** 20
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
@@ -36,7 +37,7 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -132,7 +133,7 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -422,7 +423,7 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 **ArkTS-Dyn版本：** 6
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -480,7 +481,7 @@ ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最
 
 **ArkTS-Dyn版本：** 6
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **返回值：**
 
@@ -530,7 +531,7 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, call
 
 **ArkTS-Dyn版本：** 11
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -632,7 +633,7 @@ ArkTS-Sta: packToFile (source: ImageSource, fd: int, options: PackingOption): Pr
 
 **ArkTS-Dyn版本：** 11
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -722,9 +723,9 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
 
 ## packToFile<sup>11+</sup>
 
-ArkTS-Dyn: packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: AsyncCallback\<void>): void
+ArkTS-Dyn: packToFile(source: PixelMap, fd: number, options: PackingOption,  callback: AsyncCallback\<void>): void
 
-ArkTS-Sta: packToFile (source: PixelMap, fd: int, options: PackingOption,  callback: AsyncCallback\<void>): void
+ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callback: AsyncCallback\<void>): void
 
 指定编码参数，将PixelMap直接编码进文件。使用callback形式返回结果。
 
@@ -735,7 +736,7 @@ ArkTS-Sta: packToFile (source: PixelMap, fd: int, options: PackingOption,  callb
 
 **ArkTS-Dyn版本：** 11
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -831,9 +832,9 @@ function PackToFileFunc(context: common.UIAbilityContext): void {
 
 ## packToFile<sup>11+</sup>
 
-ArkTS-Dyn: packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void>
+ArkTS-Dyn: packToFile(source: PixelMap, fd: number, options: PackingOption): Promise\<void>
 
-ArkTS-Sta: packToFile (source: PixelMap, fd: int, options: PackingOption): Promise\<void>
+ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption): Promise\<void>
 
 指定编码参数，将PixelMap直接编码进文件。使用Promise形式返回结果。
 
@@ -844,7 +845,7 @@ ArkTS-Sta: packToFile (source: PixelMap, fd: int, options: PackingOption): Promi
 
 **ArkTS-Dyn版本：** 11
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 
@@ -949,7 +950,7 @@ ArkTS-Sta: packToFile(picture: Picture, fd: int, options: PackingOption): Promis
 
 **ArkTS-Dyn版本：** 13
 
-**ArkTS-Sta版本：** 20
+**ArkTS-Sta版本：** 22
 
 **参数：**
 

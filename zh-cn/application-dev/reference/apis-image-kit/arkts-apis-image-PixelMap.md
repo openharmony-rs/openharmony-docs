@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 7开始支持。
 
@@ -589,7 +590,7 @@ import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
 
 function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   try {
     await pixelMap.writeBufferToPixels(color);
     hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
@@ -653,7 +654,7 @@ import hilog from '@ohos.hilog'
 import image from '@ohos.multimedia.image'
 
 function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   try {
     pixelMap.writeBufferToPixels(color, (err: BusinessError | null) => {
       if (err) {

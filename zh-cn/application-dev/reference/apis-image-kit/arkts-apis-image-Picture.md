@@ -26,7 +26,7 @@ ArkTS-Sta: getMainPixelmap(): PixelMap | undefined
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -87,7 +87,7 @@ ArkTS-Sta: getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -452,7 +452,7 @@ ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefine
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
