@@ -308,6 +308,12 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 | arrayLike | Iterable\<number> | 是 | 用于构造的可迭代对象。   |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | 否 | 映射函数。如果省略，则不对元素进行加工处理。|
 
+**返回值：**
+
+| 类型         | 说明      |
+| ------------ | --------- |
+| Uint8ClampedArray | 新创建的ArkTS Uint8ClampedArray对象。|
+
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
@@ -315,12 +321,6 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 | 错误码ID | 错误信息                                                  |
 | -------- | -------------------------------------------------------  |
 | 401      | Parameter error.                                         |
-
-**返回值：**
-
-| 类型         | 说明      |
-| ------------ | --------- |
-| Uint8ClampedArray | 新创建的ArkTS Uint8ClampedArray对象。|
 
 **示例：**
 
