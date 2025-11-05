@@ -108,25 +108,25 @@
    ``` TypeScript
    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
    // ···
-                 // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-                 Image($r('app.media.app_icon'))
-                   .width(100)
-                   .height(100)
-                   .draggable(true)
-                   // ···
-                   .onDragStart((event) => {
-                     let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-                     data.imageUri = 'common/pic/img.png';
-                     let unifiedData = new unifiedDataChannel.UnifiedData(data);
-                     event.setData(unifiedData);
+   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+   Image($r('app.media.app_icon'))
+       .width(100)
+       .height(100)
+       .draggable(true)
+       // ···
+       .onDragStart((event) => {
+           let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+           data.imageUri = 'common/pic/img.png';
+           let unifiedData = new unifiedDataChannel.UnifiedData(data);
+           event.setData(unifiedData);
    
-                     let dragItemInfo: DragItemInfo = {
-                       pixelMap: this.pixmap,
-                       extraInfo: 'this is extraInfo',
-                     };
-                     // onDragStart回调函数中返回自定义拖拽背板图
-                     return dragItemInfo;
-                   })
+           let dragItemInfo: DragItemInfo = {
+           pixelMap: this.pixmap,
+           extraInfo: 'this is extraInfo',
+           };
+           // onDragStart回调函数中返回自定义拖拽背板图
+           return dragItemInfo;
+       })
    ```
 
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
@@ -160,32 +160,32 @@
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-     @Builder
-     pixelMapBuilder() {
-       Column() {
-         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-         Image($r('app.media.startIcon'))
-           .width(120)
-           .height(120)
-           // ···
-       }
+   @Builder
+   pixelMapBuilder() {
+     Column() {
+       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+       Image($r('app.media.startIcon'))
+         .width(120)
+         .height(120)
+         // ···
      }
+   }
    
    // ···
    
-     // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-     private getComponentSnapshot(): void {
-       this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-         this.pixelMapBuilder()
-       },
-         (error: Error, pixmap: image.PixelMap) => {
-           if (error) {
-             hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-             return;
-           }
-           this.pixmap = pixmap;
-         })
-     }
+   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+   private getComponentSnapshot(): void {
+     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+       this.pixelMapBuilder()
+     },
+       (error: Error, pixmap: image.PixelMap) => {
+         if (error) {
+           hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+           return;
+         }
+         this.pixmap = pixmap;
+       })
+   }
    ```
 
 
