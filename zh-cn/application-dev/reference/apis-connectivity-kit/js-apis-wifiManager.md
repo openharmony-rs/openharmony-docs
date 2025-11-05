@@ -4130,7 +4130,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
 
-## wifiManager.offP2pDiscoveryChange('p2pDiscoveryChange')<sup>22+</sup>
+## wifiManager.offP2pDiscoveryChange<sup>22+</sup>
 
 offP2pDiscoveryChange(callback?: Callback&lt;int&gt;): void
 
