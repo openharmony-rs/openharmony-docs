@@ -297,6 +297,28 @@ struct Son {
   \@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
   <!-- @[build_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct MyComponent {
+    build() {
+      // 根节点唯一且必要，必须为容器组件
+      Row() {
+        ChildComponent()
+      }
+    }
+  }
+  
+  @Component
+  struct ChildComponent {
+    build() {
+      // 根节点唯一且必要，可为非容器组件
+      // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+      Image($r('app.media.startIcon'))
+    }
+  }
+  ```
 
 - 不允许声明本地变量，反例如下。
 
