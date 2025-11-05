@@ -97,6 +97,11 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 <!-- @[set_number_input_type_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.Number)
+```
+
 ![text_input_type_number](figures/text_input_type_number.PNG)
 
 ### 电话号码输入模式
