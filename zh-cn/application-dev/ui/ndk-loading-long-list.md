@@ -498,6 +498,71 @@ private:
 
 2. 创建ListItem时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
+   
+   ``` C
+   // ArkUIListItemAdapter
+   // ···
+   class ArkUIListItemAdapter {
+       // ···
+       // 需要新的Item显示在可见区域。
+       void OnNewItemAttached(ArkUI_NodeAdapterEvent *event)
+       {
+           auto index = OH_ArkUI_NodeAdapterEvent_GetItemIndex(event);
+           ArkUI_NodeHandle handle = nullptr;
+           if (!cachedItems_.empty()) {
+               // 使用并更新回收复用的缓存。
+               auto recycledItem = cachedItems_.top();
+               auto textItem = std::dynamic_pointer_cast<ArkUITextNode>(recycledItem->GetChildren().back());
+               textItem->SetTextContent(data_[index]);
+               handle = recycledItem->GetHandle();
+               auto swipeContent = recycledItem->GetSwipeContent();
+               swipeContent->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
+                   auto it = std::find(data_.begin(), data_.end(), data);
+                   if (it != data_.end()) {
+                       auto index = std::distance(data_.begin(), it);
+                       RemoveItem(index);
+                   }
+               });
+               // 释放缓存池的引用。
+               cachedItems_.pop();
+           } else {
+               // 创建新的元素。
+               auto listItem = std::make_shared<ArkUIListItemNode>();
+               auto textNode = std::make_shared<ArkUITextNode>();
+               textNode->SetTextContent(data_[index]);
+               textNode->SetFontSize(NUMBER_16);
+               textNode->SetPercentWidth(1);
+               textNode->SetHeight(NUMBER_100);
+               textNode->SetBackgroundColor(0xFFfffacd);
+               textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
+               listItem->AddChild(textNode);
+               // 创建ListItem划出菜单。
+               auto swipeNode = std::make_shared<ArkUITextNode>();
+               swipeNode->SetTextContent("del");
+               swipeNode->SetFontSize(NUMBER_16);
+               swipeNode->SetFontColor(0xFFFFFFFF);
+               swipeNode->SetWidth(NUMBER_100);
+               swipeNode->SetHeight(NUMBER_100);
+               swipeNode->SetBackgroundColor(0xFFFF0000);
+               swipeNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
+               swipeNode->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
+                   auto it = std::find(data_.begin(), data_.end(), data);
+                   if (it != data_.end()) {
+                       auto index = std::distance(data_.begin(), it);
+                       RemoveItem(index);
+                   }
+               });
+               listItem->SetSwiperAction(swipeNode);
+               handle = listItem->GetHandle();
+               // 保持文本列表项的引用。
+               items_.emplace(handle, listItem);
+           }
+           // 设置需要展示的元素。
+           OH_ArkUI_NodeAdapterEvent_SetItem(event, handle);
+       }
+       // ···
+   };
+   ```
 3. ArkUIListItemAdapter中新增RemoveItem，用于删除数据源并且调用OH_ArkUI_NodeAdapter_RemoveItem接口通知框架刷新UI。
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
 ## 使用分组列表 
