@@ -14061,5 +14061,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-custom-attribute-animation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template1/Index.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"Animation_AnimatableProperty",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template2/Index.ets",
+				"functions":[
+					{
+						"end_line":153,
+						"name":"Animation_AnimatableProperty",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
