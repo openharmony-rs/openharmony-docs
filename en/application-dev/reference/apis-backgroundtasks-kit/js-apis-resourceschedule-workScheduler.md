@@ -1,4 +1,5 @@
 # @ohos.resourceschedule.workScheduler (Deferred Task Scheduling)
+
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
@@ -6,7 +7,7 @@
 <!--Tester: @fenglili18-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **workScheduler** module provides the APIs for registering, canceling, and querying deferred tasks. You can use the APIs to register tasks that do not have high requirements on real-time performance as deferred tasks. The system schedules and executes the deferred tasks at an appropriate time, subject to the storage space, power consumption, and more.
+The **workScheduler** module provides the APIs for registering, canceling, and querying deferred tasks. You can use the APIs to register tasks that do not have high requirements on real-time performance as deferred tasks. The system schedules and executes the deferred tasks at an appropriate time, subject to the storage space, power consumption, and more. For details, see [Deferred Task Scheduling](../../task-management/work-scheduler.md).
 
 >  **NOTE**
 >
@@ -24,7 +25,7 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 startWork(work: WorkInfo): void
 
-Starts a deferred task.
+Requests a deferred task. Upon successful request, the deferred task is added to the execution queue and will be executed by the system once the trigger conditions are met.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -32,7 +33,7 @@ Starts a deferred task.
 
 | Name | Type                   | Mandatory  | Description            |
 | ---- | --------------------- | ---- | -------------- |
-| work | [WorkInfo](#workinfo) | Yes   | Deferred task to start.|
+| work | [WorkInfo](#workinfo) | Yes   | Deferred task information, such as the task ID and trigger condition.|
 
 **Error codes**
 
@@ -51,6 +52,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
   
   let workInfo: workScheduler.WorkInfo = {
       workId: 1,
@@ -105,6 +107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   let workInfo: workScheduler.WorkInfo = {
       workId: 1,
@@ -159,6 +162,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
     if (error) {
@@ -205,6 +209,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
     console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
@@ -274,6 +279,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
     if (error) {
@@ -313,6 +319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
     console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
@@ -344,6 +351,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   try{
     workScheduler.stopAndClearWorks();
@@ -419,6 +427,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) =>{
     if (error) {
@@ -465,6 +474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { workScheduler } from '@kit.BackgroundTasksKit';
 
   workScheduler.isLastWorkTimeOut(500)
     .then((res: boolean) => {
@@ -477,32 +487,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## WorkInfo
 
-Defines the information about the deferred task.
+Represents the deferred task information, which is used to set the trigger condition.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
-| Name            | Type                               | Mandatory  | Description              |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | Yes   | ID of the deferred task.         |
-| bundleName      | string                            | Yes   | Bundle name of the application where the deferred task is located.          |
-| abilityName     | string                            | Yes   | Ability name in the bundle.|
-| networkType     | [NetworkType](#networktype)       | No   | Network type.            |
-| isCharging      | boolean                           | No   | Whether the device needs to enter the charging state.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false** (default): The device does not need to enter the charging state to trigger deferred task scheduling.|
-| chargerType     | [ChargingType](#chargingtype)     | No   | Charging type.            |
-| batteryLevel    | number                            | No   | Battery level.             |
-| batteryStatus   | [BatteryStatus](#batterystatus)   | No   | Battery status.            |
-| storageRequest  | [StorageRequest](#storagerequest) | No   | Storage status.            |
-| isRepeat        | boolean                           | No   | Whether the task is repeated.<br>- **true**: The task is repeated.<br>- **false** (default): The task is not repeated.|
-| repeatCycleTime | number                            | No   | Repeat interval, in milliseconds.            |
-| repeatCount     | number                            | No   | Number of repeat times.            |
-| isPersisted     | boolean                           | No   | Whether the registered deferred task can be saved in the system.<br>- **true**: The task can be saved. That is, the task can be restored after the system restarts.<br>- **false** (default): The task cannot be saved.|
-| isDeepIdle      | boolean                           | No   | Whether the device needs to enter the idle state to trigger deferred task scheduling.<br>- **true**: The device needs to enter the idle state to trigger deferred task scheduling.<br>- **false** (default): The device does not need to enter the idle state to trigger deferred task scheduling.  |
-| idleWaitTime    | number                            | No   | Time to wait in the idle state before triggering deferred task scheduling, in milliseconds.          |
-| parameters      | Record<string, number \| string \| boolean>  | No   | Carried parameters.|
+| Name            | Type                               | Read-Only  | Optional  | Description              |
+| --------------- | --------------------------------- | ---- | ---- | ---------------- |
+| workId          | number                            | No   | No   |ID of the deferred task.         |
+| bundleName      | string                            | No   | No   |Bundle name of the application where the deferred task is located.          |
+| abilityName     | string                            | No   | No   |Ability name in the bundle.|
+| networkType     | [NetworkType](#networktype)       | No   | Yes   |Network type.            |
+| isCharging      | boolean                           | No   | Yes   |Whether the device needs to enter the charging state.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the charging state to trigger deferred task scheduling.|
+| chargerType     | [ChargingType](#chargingtype)     | No   | Yes   |Charging type.            |
+| batteryLevel    | number                            | No   | Yes   |Battery level.             |
+| batteryStatus   | [BatteryStatus](#batterystatus)   | No   | Yes   |Battery status.            |
+| storageRequest  | [StorageRequest](#storagerequest) | No   | Yes   |Storage status.            |
+| isRepeat        | boolean                           | No   | Yes   |Whether the task is repeated.<br>- **true**: The task is repeated.<br>- **false** (default): The task is not repeated.|
+| repeatCycleTime | number                            | No   | Yes   |Repeat interval, in milliseconds.            |
+| repeatCount     | number                            | No   | Yes   |Number of repeat times.            |
+| isPersisted     | boolean                           | No   | Yes   |Whether the registered deferred task can be saved in the system.<br>- **true**: The task can be saved. That is, the task can be restored after the system restarts.<br>- **false** (default): The task cannot be saved.|
+| isDeepIdle      | boolean                           | No   | Yes   |Whether the device needs to enter the idle state to trigger deferred task scheduling.<br>- **true**: The device needs to enter the idle state to trigger deferred task scheduling.<br>- **false** (default): The device does not need to enter the idle state to trigger deferred task scheduling.  |
+| idleWaitTime    | number                            | No   | Yes   |Time to wait in the idle state before triggering deferred task scheduling, in milliseconds.          |
+| parameters      | Record<string, number \| string \| boolean>  | No   | Yes   |Carried parameters.|
+| earliestStartTime<sup>22+</sup> | number | No   | Yes   |Interval between the earliest task execution time and the task request time, in milliseconds. The default value is **0**, and the value must be greater than or equal to 0.|
 
 ## NetworkType
 
-Enumerates the network types that can trigger deferred task scheduling.
+Enumerates the network types that trigger deferred task callback.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -517,7 +528,7 @@ Enumerates the network types that can trigger deferred task scheduling.
 
 ## ChargingType
 
-Enumerates the charging types that can trigger deferred task scheduling.
+Enumerates the charging types that trigger deferred task callback.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -530,7 +541,7 @@ Enumerates the charging types that can trigger deferred task scheduling.
 
 ## BatteryStatus
 
-Enumerates the battery statuses that can trigger deferred task scheduling.
+Enumerates the battery status that triggers the deferred task callback.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -542,7 +553,7 @@ Enumerates the battery statuses that can trigger deferred task scheduling.
 
 ## StorageRequest
 
-Enumerates the storage statuses that can trigger deferred task scheduling.
+Enumerates the storage status that triggers the deferred task callback.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -1,4 +1,10 @@
 # @ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **usageStatistics** module provides APIs for collecting statistics on device usage. For example, you can use the APIs to query whether an application is commonly used and an application's priority group, usage duration, system events (hibernation, wakeup, unlocking, and screen locking), application events (foreground, background, and start and end of continuous tasks), and the number of notifications.
 
@@ -55,7 +61,7 @@ usageStatistics.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean
   if (err) {
     console.error('BUNDLE_ACTIVE isIdleState callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -104,7 +110,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.isIdleState("com.ohos.camera").then((res: boolean) => {
-  console.log('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -176,7 +182,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -192,7 +197,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryAppGroup().then((res: number) => {
-  console.log('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -241,7 +246,7 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE queryAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -270,7 +275,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -334,7 +338,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = "com.ohos.camera";
 usageStatistics.queryAppGroup(bundleName).then((res: number) => {
-  console.log('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -385,7 +389,7 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE queryAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryAppGroup callback succeeded. result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -485,7 +489,7 @@ let bundleName: string = "com.example.deviceUsageStatistics";
 let newGroup = usageStatistics.GroupType.DAILY_GROUP;
 
 usageStatistics.setAppGroup(bundleName, newGroup).then( () => {
-  console.log('BUNDLE_ACTIVE setAppGroup promise succeeded.');
+  console.info('BUNDLE_ACTIVE setAppGroup promise succeeded.');
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE setAppGroup promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -538,7 +542,7 @@ usageStatistics.setAppGroup(bundleName, newGroup, (err: BusinessError) => {
   if(err) {
     console.error('BUNDLE_ACTIVE setAppGroup callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE setAppGroup callback succeeded.');
+    console.info('BUNDLE_ACTIVE setAppGroup callback succeeded.');
   }
 });
 ```
@@ -587,8 +591,8 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, re
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStatsInfos callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStatsInfos callback success.');
-    console.log('BUNDLE_ACTIVE queryBundleStatsInfos callback result ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryBundleStatsInfos callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStatsInfos callback result ' + JSON.stringify(res));
   }
 });
 ```
@@ -639,8 +643,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatistics.BundleStatsMap) => {
-  console.log('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
-  console.log('BUNDLE_ACTIVE queryBundleStatsInfos promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -650,7 +654,7 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
 
 queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
-Queries the application usage duration statistics based on the specified start time and end time, with the minimum granularity of a day. This API uses a promise to return the result.
+Queries the usage duration of an application (including cloned applications) based on the specified start time and end time, with the minimum granularity of a day. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -692,8 +696,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryAppStatsInfos(0, 20000000000000).then((res:usageStatistics.AppStatsMap) => {
-  console.log('queryAppStatsInfos promise success.');
-  console.log('queryAppStatsInfos promise result ' + JSON.stringify(res));
+  console.info('queryAppStatsInfos promise success.');
+  console.info('queryAppStatsInfos promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('queryAppStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -745,8 +749,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Replace com.ohos.camera with the actual bundle name.
 usageStatistics.queryLastUseTime({"com.ohos.camera": [0]}).then((res:usageStatistics.AppStatsMap) => {
-  console.log('queryLastUseTime promise success.');
-  console.log('queryLastUseTime promise result ' + JSON.stringify(res));
+  console.info('queryLastUseTime promise success.');
+  console.info('queryLastUseTime promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('queryLastUseTime promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -797,10 +801,10 @@ usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: Busin
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -853,10 +857,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: Array<usageStatistics.BundleStatsInfo>) => {
-  console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -907,10 +911,10 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleEvents callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleEvents callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleEvents callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleEvents callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleEvents callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleEvents callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleEvents callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -962,10 +966,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
-  console.log('BUNDLE_ACTIVE queryBundleEvents promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleEvents promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleEvents promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleEvents promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -1013,10 +1017,10 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
   if (err) {
     console.error('BUNDLE_ACTIVE queryCurrentBundleEvents callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleEvents callback success.');
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryCurrentBundleEvents callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryCurrentBundleEvents callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleEvents callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleEvents callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -1065,10 +1069,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
-  console.log('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
+  console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleEvents promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryCurrentBundleEvents promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryCurrentBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -1121,8 +1125,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-  console.log('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-  console.log('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
+  console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1172,8 +1176,8 @@ usageStatistics.queryDeviceEventStats(0, 20000000000000, (err: BusinessError, re
   if(err) {
     console.error('BUNDLE_ACTIVE queryDeviceEventStats callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryDeviceEventStats callback success.');
-    console.log('BUNDLE_ACTIVE queryDeviceEventStats callback result ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryDeviceEventStats callback success.');
+    console.info('BUNDLE_ACTIVE queryDeviceEventStats callback result ' + JSON.stringify(res));
   }
 });
 ```
@@ -1224,8 +1228,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-  console.log('BUNDLE_ACTIVE queryNotificationEventStats promise success.');
-  console.log('BUNDLE_ACTIVE queryNotificationEventStats promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryNotificationEventStats promise success.');
+  console.info('BUNDLE_ACTIVE queryNotificationEventStats promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryNotificationEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1275,8 +1279,8 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
   if(err) {
     console.error('BUNDLE_ACTIVE queryNotificationEventStats callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryNotificationEventStats callback success.');
-    console.log('BUNDLE_ACTIVE queryNotificationEventStats callback result ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryNotificationEventStats callback success.');
+    console.info('BUNDLE_ACTIVE queryNotificationEventStats callback result ' + JSON.stringify(res));
   }
 });
 ```
@@ -1323,10 +1327,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapModuleInfo>) => {
-  console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
+  console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryModuleUsageRecords promise failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -1355,6 +1359,10 @@ For details about the error codes, see [DeviceUsageStatistics Error Codes](error
 
 | ID       | Error Message                      |
 | ---------- | ----------------------------       |
+| 201  | Permission denied. |
+| 202  | Not System App. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
@@ -1371,10 +1379,10 @@ usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageSta
   if(err) {
     console.error('BUNDLE_ACTIVE queryModuleUsageRecords callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback succeeded.');
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback succeeded.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -1425,10 +1433,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
-  console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
+  console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryModuleUsageRecords promise failed. code is: ' + err.code + ',message is: ' + err.message);
@@ -1478,10 +1486,10 @@ usageStatistics.queryModuleUsageRecords(1000, (err: BusinessError, res: Array<us
   if(err) {
     console.error('BUNDLE_ACTIVE queryModuleUsageRecords callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback succeeded.');
+    console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback succeeded.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryModuleUsageRecords callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryModuleUsageRecords callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -1532,15 +1540,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result userId is : ' + res.userId);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result bundleName is : ' + res.bundleName);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result userId is : ' + res.userId);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result bundleName is : ' + res.bundleName);
 };
 usageStatistics.registerAppGroupCallBack(onBundleGroupChanged).then( () => {
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack promise succeeded.');
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack promise succeeded.');
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE registerAppGroupCallBack promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1586,18 +1594,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
-  console.log('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result userId is : ' + res.userId);
-  console.log('BUNDLE_ACTIVE registerAppGroupCallBack result bundleName is : ' + res.bundleName);
+  console.info('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result userId is : ' + res.userId);
+  console.info('BUNDLE_ACTIVE registerAppGroupCallBack result bundleName is : ' + res.bundleName);
 };
 usageStatistics.registerAppGroupCallBack(onBundleGroupChanged, (err: BusinessError) => {
   if(err) {
     console.error('BUNDLE_ACTIVE registerAppGroupCallBack callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE registerAppGroupCallBack callback success.');
+    console.info('BUNDLE_ACTIVE registerAppGroupCallBack callback success.');
   }
 });
 ```
@@ -1640,7 +1648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 usageStatistics.unregisterAppGroupCallBack().then( () => {
-  console.log('BUNDLE_ACTIVE unregisterAppGroupCallBack promise succeeded.');
+  console.info('BUNDLE_ACTIVE unregisterAppGroupCallBack promise succeeded.');
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE unregisterAppGroupCallBack promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
@@ -1687,7 +1695,7 @@ usageStatistics.unregisterAppGroupCallBack((err: BusinessError) => {
   if(err) {
     console.error('BUNDLE_ACTIVE unregisterAppGroupCallBack callback failed. code is: ' + err.code + ',message is: ' + err.message);
   } else {
-    console.log('BUNDLE_ACTIVE unregisterAppGroupCallBack callback success.');
+    console.info('BUNDLE_ACTIVE unregisterAppGroupCallBack callback success.');
   }
 });
 ```
@@ -1698,21 +1706,21 @@ Defines the information about the usage record in the FA model.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| Name                 | Type                                      | Mandatory  | Description                           |
-| -------------------- | ---------------------------------------- | ---- | ----------------------------- |
-| deviceId             | string                                   | No   | Device ID.                |
-| bundleName           | string                                   | Yes   | Bundle name.            |
-| moduleName           | string                                   | Yes   | Name of the module to which the FA belongs.                 |
-| abilityName          | string                                   | No   | **MainAbility** name of the FA.             |
-| appLabelId           | number                                   | No   | Application label ID of the FA.                |
-| labelId              | number                                   | No   | Label ID of the module to which the FA belongs.          |
-| descriptionId        | number                                   | No   | Description ID of the application to which the FA belongs.        |
-| abilityLableId       | number                                   | No   | **MainAbility** label ID of the FA.      |
-| abilityDescriptionId | number                                   | No   | **MainAbility** description ID of the FA.|
-| abilityIconId        | number                                   | No   | **MainAbility** icon ID of the FA.       |
-| launchedCount        | number                                   | Yes   | Number of FA startup times.                     |
-| lastModuleUsedTime   | number                                   | Yes   | Last time when the FA was used.                  |
-| formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | Yes   | Array of widget usage records in the FA.                  |
+| Name                 | Type                                      | Read-Only  | Optional  | Description                           |
+| -------------------- | ---------------------------------------- | ----| ---- | ----------------------------- |
+| deviceId             | string                                   | No   | Yes   | Device ID.                |
+| bundleName           | string                                   | No   | No   | Bundle name.            |
+| moduleName           | string                                   | No   | No   | Name of the module to which the FA belongs.                 |
+| abilityName          | string                                   | No   | Yes   | **MainAbility** name of the FA.             |
+| appLabelId           | number                                   | No   | Yes   | Application label ID of the FA.                |
+| labelId              | number                                   | No   | Yes   | Label ID of the module to which the FA belongs.          |
+| descriptionId        | number                                   | No   | Yes   | Description ID of the application to which the FA belongs.        |
+| abilityLableId       | number                                   | No   | Yes   | **MainAbility** label ID of the FA.      |
+| abilityDescriptionId | number                                   | No   | Yes   | **MainAbility** description ID of the FA.|
+| abilityIconId        | number                                   | No   | Yes   | **MainAbility** icon ID of the FA.       |
+| launchedCount        | number                                   | No   | No   | Number of FA startup times.                     |
+| lastModuleUsedTime   | number                                   | No   | No   | Last time when the FA was used.                  |
+| formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | No   | No   | Array of widget usage records in the FA.                  |
 
 ## HapFormInfo
 
@@ -1720,13 +1728,13 @@ Defines the information about the usage record of FA widgets.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| Name             | Type    | Mandatory  | Description         |
-| ---------------- | ------ | ---- | ----------- |
-| formName         | string | Yes   | Widget name.      |
-| formDimension    | number | Yes   | Widget dimensions.      |
-| formId           | number | Yes   | Widget ID.      |
-| formLastUsedTime | number | Yes   | Last time when the widget was clicked.|
-| count            | number | Yes   | Number of clicks on the widget.   |
+| Name             | Type    | Read-Only  | Optional  | Description         |
+| ---------------- | ------ | ---- | ---- | ----------- |
+| formName         | string | No   | No   | Widget name.      |
+| formDimension    | number | No   | No   | Widget dimensions.      |
+| formId           | number | No   | No   | Widget ID.      |
+| formLastUsedTime | number | No   | No   | Last time when the widget was clicked.|
+| count            | number | No   | No   | Number of clicks on the widget.   |
 
 ## AppGroupCallbackInfo
 
@@ -1734,13 +1742,13 @@ Provides the application group changes returned through a callback.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
-| Name          | Type  | Mandatory| Description            |
-| ---------------- | ------ | ---- | ---------------- |
-| appOldGroup | number | Yes  | Application group before the change.|
-| appNewGroup | number | Yes  | Application group after the change.|
-| userId           | number | Yes  | User ID.          |
-| changeReason     | number | Yes  | Reason for the group change.<br>- 256 (default): A record is initially created.<br>- 512: An exception occurs when the priority group is calculated.<br>- 768: The usage duration changes.<br>- 1024: Another application forcibly sets a priority group for the current application.|
-| bundleName       | string | Yes  | Bundle name.        |
+| Name          | Type  | Read-Only| Optional| Description            |
+| ---------------- | ------ | ---- | ---- | ---------------- |
+| appOldGroup | number | No  | No  | Application group before the change.|
+| appNewGroup | number | No  | No  | Application group after the change.|
+| userId           | number | No  | No  | User ID.          |
+| changeReason     | number | No  | No  | Reason for the group change.<br>- 256 (default): A record is initially created.<br>- 512: An exception occurs when the priority group is calculated.<br>- 768: The usage duration changes.<br>- 1024: Another application forcibly sets a priority group for the current application.|
+| bundleName       | string | No  | No  | Bundle name.        |
 
 ## BundleStatsInfo
 
@@ -1748,19 +1756,19 @@ Provides the usage duration information of an application.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| Name                     | Type    | Mandatory  | Description                                      |
-| ------------------------ | ------ | ---- | ---------------------------------------- |
-| bundleName               | string | No   | Bundle name of the application.                                   |
-| abilityPrevAccessTime    | number | No   | Last time when the application was used.                            |
-| abilityInFgTotalTime     | number | No   | Total time that the application runs in the foreground.                            |
-| id                       | number | Yes   | User ID.|
-| abilityPrevSeenTime      | number | No   | Last time when the application was visible in the foreground.|
-| abilitySeenTotalTime     | number | No   | Total time that the application is visible in the foreground.|
-| fgAbilityAccessTotalTime | number | No   | Total time that the application accesses the foreground.|
-| fgAbilityPrevAccessTime  | number | No   | Last time when the application accessed the foreground.|
-| infosBeginTime           | number | No   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
-| infosEndTime             | number | No   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
-| appIndex<sup>15+</sup>                 | number | No   | Application index.|
+| Name                     | Type    | Read-Only  | Optional  | Description                                      |
+| ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
+| bundleName               | string | No   | Yes   | Bundle name of the application.                                   |
+| abilityPrevAccessTime    | number | No   | Yes   | Last time when the application was used.                            |
+| abilityInFgTotalTime     | number | No   | Yes   | Total time that the application runs in the foreground.                            |
+| id                       | number | No   | No   | User ID.|
+| abilityPrevSeenTime      | number | No   | Yes   | Last time when the application was visible in the foreground.|
+| abilitySeenTotalTime     | number | No   | Yes   | Total time that the application is visible in the foreground.|
+| fgAbilityAccessTotalTime | number | No   | Yes   | Total time that the application accesses the foreground.|
+| fgAbilityPrevAccessTime  | number | No   | Yes   | Last time when the application accessed the foreground.|
+| infosBeginTime           | number | No   | Yes   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
+| infosEndTime             | number | No   | Yes   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
+| appIndex<sup>15+</sup>                 | number | No   | Yes   | Application index.|
 
 ## BundleEvents
 
@@ -1768,14 +1776,14 @@ Provides information about an application event.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| Name                  | Type    | Mandatory  | Description                                      |
-| --------------------- | ------ | ---- | ---------------------------------------- |
-| bundleName            | string | No   | Bundle name of the application.                                   |
-| eventId             | number | No   | Application event type.                                 |
-| eventOccurredTime     | number | No   | Timestamp when the application event occurs.                             |
-| appGroup | number | No   | Group of the application by usage priority.|
-| indexOfLink           | string | No   | Shortcut ID.|
-| nameOfClass           | string | No   | Class name.|
+| Name                  | Type    | Read-Only  | Optional  | Description                                      |
+| --------------------- | ------ | ---- | ---- | ---------------------------------------- |
+| bundleName            | string | No   | Yes   | Bundle name of the application.                                   |
+| eventId             | number | No   | Yes   | Application event type.                                 |
+| eventOccurredTime     | number | No   | Yes   | Timestamp when the application event occurs.                             |
+| appGroup | number | No   | Yes   | Group of the application by usage priority.|
+| indexOfLink           | string | No   | Yes   | Shortcut ID.|
+| nameOfClass           | string | No   | Yes   | Class name.|
 
 ## BundleStatsMap
 
@@ -1803,11 +1811,11 @@ Provides statistics about notifications and system events.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
 
-| Name    | Type    | Mandatory  | Description               |
-| ------- | ------ | ---- | ----------------- |
-| name    | string | Yes   | Bundle name of the notification sending application or system event name.   |
-| eventId | number | Yes   | Type of the notification or system event.       |
-| count   | number | Yes   | Number of application notifications or system event triggering times.|
+| Name    | Type    | Read-Only  | Optional  | Description               |
+| ------- | ------ | ---- | ---- | ----------------- |
+| name    | string | No   | No   | Bundle name of the notification sending application or system event name.   |
+| eventId | number | No   | No   | Type of the notification or system event.       |
+| count   | number | No   | No   | Number of application notifications or system event triggering times.|
 
 ## IntervalType
 
