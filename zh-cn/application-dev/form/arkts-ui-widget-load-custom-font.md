@@ -6,7 +6,7 @@
 <!--Tester: @lucuicui-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkTS卡片开放了使用自定义字体的能力，在卡片上可以通过[ohos.graphics.text](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)模块中的FontCollection对象加载自定义字体，如下示例代码实现了加载自定义字体的功能。
+ArkTS卡片支持使用自定义字体。通过[ohos.graphics.text](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)模块中的FontCollection对象可以加载自定义字体。示例代码如下：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -43,5 +43,5 @@ struct loadFontSyncCard {
 注意：
 1、同一应用的所有卡片共用一个本地字体集实例，加载、卸载自定义字体后所有卡片都会生效。
 
-运行效果如下图所示。  
+运行效果如下图所示。
 ![WidgetCustomFontDemo](figures/WidgetCustomFontDemo.gif)
