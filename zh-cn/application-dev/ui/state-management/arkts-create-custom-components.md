@@ -411,6 +411,21 @@ struct Son {
   }
   ```
   <!-- @[switch_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/If.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
+      // 正例：使用if
+      if (this.expression == 1) {
+        Text('...')
+      } else if (this.expression == 2) {
+        Image('...')
+      } else {
+        Text('...')
+      }
+    }
+  }
+  ```
 
 
 - 不允许使用表达式，请使用if组件，示例如下。
