@@ -523,6 +523,28 @@ struct Son {
 
 <!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->
 
+``` TypeScript
+@Component
+struct ChildComponent {
+  build() {
+    Button(`Hello World`)
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  build() {
+    Row() {
+      ChildComponent()
+        .width(200)
+        .height(300)
+        .backgroundColor(Color.Red)
+    }
+  }
+}
+```
+
 > **说明：**
 >
 > ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
