@@ -115,6 +115,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
        Column() {
          Text(this.text)
            .margin({bottom:20})
+         //app.string.button资源文件中的value值为'按钮'
          Button($r('app.string.button'))
            .responseRegion([
              {
