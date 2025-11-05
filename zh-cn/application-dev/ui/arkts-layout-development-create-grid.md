@@ -322,6 +322,32 @@ private scroller: Scroller = new Scroller();
 在日历页面中，用户在点击“下一页”按钮时，应用响应点击事件，通过指定scrollPage方法的参数next为true，滚动到下一页。
 
  <!-- @[Control_scrolling_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSideToSide.ets) -->
+ 
+ ``` TypeScript
+ Column({ space: 5 }){
+   Grid(this.scroller) {
+   // ···
+   }
+   .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+   // ···
+   Row({ space: 20 }) {
+     // app.string.Previous_Page资源文件中的value值为‘上一页’
+     Button($r('app.string.Previous_Page'))
+       .onClick(() => {
+         this.scroller.scrollPage({
+           next: false
+         });
+       })
+     // app.string.Next_page资源文件中的value值为‘下一页’
+     Button($r('app.string.Next_page'))
+       .onClick(() => {
+         this.scroller.scrollPage({
+           next: true
+         });
+       })
+   }
+ }
+ ```
 
 ## 添加外置滚动条
 
