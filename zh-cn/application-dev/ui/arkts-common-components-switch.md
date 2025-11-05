@@ -97,6 +97,15 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 - 通过switchPointColor属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
   <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Switch, isOn: false })
+    .switchPointColor(Color.Pink)
+    // ···
+  Toggle({ type: ToggleType.Switch, isOn: true })
+    .switchPointColor(Color.Pink)
+    // ···
+  ```
 
   ![zh-cn_image_0000001511421232](figures/zh-cn_image_0000001511421232.png)
 
