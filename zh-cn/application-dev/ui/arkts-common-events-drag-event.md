@@ -450,6 +450,26 @@ struct Index {
    创建GridItem子组件并绑定onDragStart回调函数。同时设置GridItem组件的状态为可选中。
 
    <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   
+   ``` TypeScript
+   Grid() {
+     ForEach(this.numbers, (idx: number) => {
+       GridItem() {
+         Column()
+           .backgroundColor(Color.Blue)
+           .width(50)
+           .height(50)
+           .opacity(1.0)
+           .id('grid' + idx)
+       }
+       // ···
+       .onDragStart(() => {
+       })
+       .selectable(true)
+       // ···
+     }, (idx: string) => idx)
+   }
+   ```
 
    多选拖拽功能默认处于关闭状态。若要启用此功能，需在[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)接口的DragInteractionOptions参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，DragInteractionOptions还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
 
