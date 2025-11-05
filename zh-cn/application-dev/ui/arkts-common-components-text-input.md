@@ -512,6 +512,16 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   从API version 20开始，输入框可以通过[strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20)和[strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20)属性设置文本的描边宽度及颜色。
 
   <!-- @[set_stroke_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
+  
+  ``` TypeScript
+  TextInput({ text: 'Text with stroke' })
+    .width('100%')
+    .height(60)
+    .borderWidth(1)
+    .fontSize(40)
+    .strokeWidth(LengthMetrics.px(3.0))
+    .strokeColor(Color.Red)
+  ```
   ![TextInput_stroke](figures/TextInput_stroke.jpg)
 
 ## 设置文本行间距
