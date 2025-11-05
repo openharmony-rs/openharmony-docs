@@ -26,7 +26,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有设置过媒体信息且注册控制回调的会话的相关描述。结果通过Promise异步回调方式返回。
+获取所有设置过媒体信息且注册控制回调的会话的相关描述。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -93,7 +93,7 @@ avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescr
 
 getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void
 
-获取所有设置过媒体信息且注册控制回调的会话的相关描述。结果通过callback异步回调方式返回。
+获取所有设置过媒体信息且注册控制回调的会话的相关描述。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -166,7 +166,7 @@ ArkTS-Dyn: getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Re
 
 ArkTS-Sta: getHistoricalSessionDescriptors(maxSize?: int): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有已被销毁的会话相关描述。结果通过Promise异步回调方式返回。
+获取所有已被销毁的会话相关描述。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -245,7 +245,7 @@ ArkTS-Dyn: getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallb
 
 ArkTS-Sta: getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void
 
-获取所有已被销毁的会话相关描述。结果通过callback异步回调方式返回。
+获取所有已被销毁的会话相关描述。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
 
@@ -323,7 +323,7 @@ ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Prom
 
 ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<Array\<Readonly\<AVQueueInfo>>>
 
-获取全部的历史播放歌单。结果通过Promise异步回调方式返回。
+获取全部的历史播放歌单。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -389,7 +389,7 @@ ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callba
 
 ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: AsyncCallback\<Array\<Readonly\<AVQueueInfo>>>): void;
 
-获取全部的历史播放歌单。结果通过callback异步回调方式返回。
+获取全部的历史播放歌单。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
 
@@ -454,7 +454,7 @@ avSession.getHistoricalAVQueueInfos(3, 5, (err: BusinessError | null, avQueueInf
 
 createController(sessionId: string): Promise\<AVSessionController>
 
-根据会话ID创建会话控制器，可以创建多个会话控制器。结果通过Promise异步回调方式返回。
+根据会话ID创建会话控制器，可以创建多个会话控制器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -523,7 +523,7 @@ avSession.createController(sessionId).then((avcontroller: avSession.AVSessionCon
 
 createController(sessionId: string, callback: AsyncCallback\<AVSessionController>): void
 
-根据会话ID创建会话控制器，可以创建多个会话控制器。结果通过callback异步回调方式返回。
+根据会话ID创建会话控制器，可以创建多个会话控制器。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -591,7 +591,7 @@ avSession.createController(sessionId, (err: BusinessError | null, avcontroller: 
 
 castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>): Promise\<void>
 
-投播会话到指定设备列表。结果通过Promise异步回调方式返回。
+投播会话到指定设备列表。使用Promise异步回调。
 
 调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
@@ -659,11 +659,13 @@ if (audioDevices !== undefined) {
 
 castAudioSessionAll(audioDevices: Array<audio.AudioDeviceDescriptor>): Promise\<void>
 
-投播会话到指定设备列表。结果通过Promise异步回调方式返回。
+投播会话到指定设备列表。使用Promise异步回调。
 
 调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -725,11 +727,13 @@ if (audioDevices !== undefined) {
 
 castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback\<void>): void
 
-投播会话到指定设备列表。结果通过callback异步回调方式返回。
+投播会话到指定设备列表。使用callback异步回调。
 
 需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -790,11 +794,13 @@ if (audioDevices !== undefined) {
 
 castAudioSession(session: SessionToken, audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback\<void>): void
 
-投播会话到指定设备列表。结果通过callback异步回调方式返回。
+投播会话到指定设备列表。使用callback异步回调。
 
 需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -858,7 +864,7 @@ if (audioDevices !== undefined) {
 
 startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
-启动媒体播放应用程序。结果通过Promise异步回调方式返回。
+启动媒体播放应用程序。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -926,7 +932,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>
 
-根据远端会话类型，获取远端分布式会话控制器。结果通过Promise异步回调方式返回。
+根据远端会话类型，获取远端分布式会话控制器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -1011,9 +1017,11 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 
 on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): void
 
-会话的创建监听事件。
+会话的创建监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1054,9 +1062,11 @@ avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
 
 onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
-会话的创建监听事件。
+会话的创建监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1095,9 +1105,11 @@ avSession.onSessionCreate((descriptor: avSession.AVSessionDescriptor) => {
 
 on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void
 
-会话的销毁监听事件。
+会话的销毁监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1138,9 +1150,11 @@ avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
 
 onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 
-会话的销毁监听事件。
+会话的销毁监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1179,9 +1193,11 @@ avSession.onSessionDestroy((descriptor: avSession.AVSessionDescriptor) => {
 
 on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void
 
-最新会话变更的监听事件。
+最新会话变更的监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1222,9 +1238,11 @@ avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => 
 
 onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 
-最新会话变更的监听事件。
+最新会话变更的监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1263,9 +1281,11 @@ avSession.onTopSessionChange((descriptor: avSession.AVSessionDescriptor) => {
 
 off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void
 
-取消会话创建事件监听，取消后，不再进行该事件的监听。
+取消会话创建事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1302,9 +1322,11 @@ avSession.off('sessionCreate');
 
 offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
-取消会话创建事件监听，取消后，不再进行该事件的监听。
+取消会话创建事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1339,9 +1361,11 @@ avSession.offSessionCreate();
 
 off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): void
 
-取消会话销毁事件监听，取消后，不再进行该事件的监听。
+取消会话销毁事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1378,9 +1402,11 @@ avSession.off('sessionDestroy');
 
 offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 
-取消会话销毁事件监听，取消后，不再进行该事件的监听。
+取消会话销毁事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1415,9 +1441,11 @@ avSession.offSessionDestroy();
 
 off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void
 
-取消最新会话变更事件监听，取消后，不再进行该事件的监听。
+取消最新会话变更事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1454,9 +1482,11 @@ avSession.off('topSessionChange');
 
 offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
-取消最新会话变更事件监听，取消后，不再进行该事件的监听。
+取消最新会话变更事件监听，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1491,7 +1521,9 @@ avSession.offTopSessionChange();
 
 on(type: 'sessionServiceDie', callback: () => void): void
 
-监听会话的服务死亡事件。通知应用清理资源。
+监听会话的服务死亡事件。通知应用清理资源。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1530,7 +1562,9 @@ avSession.on('sessionServiceDie', () => {
 
 onSessionServiceDie(callback: NoParamCallback): void
 
-监听会话的服务死亡事件。通知应用清理资源。
+监听会话的服务死亡事件。通知应用清理资源。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1567,7 +1601,9 @@ avSession.onSessionServiceDie(() => {
 
 off(type: 'sessionServiceDie', callback?: () => void): void
 
-取消会话服务死亡监听，取消后，不再进行服务死亡监听。
+取消会话服务死亡监听，取消后，不再进行服务死亡监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1604,7 +1640,9 @@ avSession.off('sessionServiceDie');
 
 offSessionServiceDie(callback?: NoParamCallback): void
 
-取消会话服务死亡监听，取消后，不再进行服务死亡监听。
+取消会话服务死亡监听，取消后，不再进行服务死亡监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1635,13 +1673,13 @@ ArkTS-Sta示例：
 avSession.offSessionServiceDie();
 ```
 
-
-
 ## avSession.on('distributedSessionChange')<sup>18+</sup>
 
 on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionType, callback: Callback<Array\<AVSessionController>>): void
 
-最新分布式远端会话变更的监听事件。
+最新分布式远端会话变更的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -1682,9 +1720,11 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 
 onDistributedSessionChange(distributedSessionType: DistributedSessionType, callback: Callback<Array\<AVSessionController>>): void
 
-最新分布式远端会话变更的监听事件。
+最新分布式远端会话变更的监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1723,9 +1763,11 @@ avSession.onDistributedSessionChange(avSession.DistributedSessionType.TYPE_SESSI
 
 off(type: 'distributedSessionChange', distributedSessionType: DistributedSessionType, callback?: Callback<Array\<AVSessionController>>): void
 
-取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。
+取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1762,9 +1804,11 @@ avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_
 
 offDistributedSessionChange(distributedSessionType: DistributedSessionType, callback?: Callback<Array\<AVSessionController>>): void
 
-取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。
+取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
@@ -1800,7 +1844,7 @@ avSession.offDistributedSessionChange(avSession.DistributedSessionType.TYPE_SESS
 
 sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
-发送按键事件给置顶会话。结果通过callback异步回调方式返回。
+发送按键事件给置顶会话。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1873,7 +1917,7 @@ avSession.sendSystemAVKeyEvent(event, (err: BusinessError | null) => {
 
 sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
-发送按键事件给置顶会话。结果通过Promise异步回调方式返回。
+发送按键事件给置顶会话。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1947,7 +1991,7 @@ avSession.sendSystemAVKeyEvent(event).then(() => {
 
 sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): void
 
-发送控制命令给置顶会话。结果通过callback异步回调方式返回。
+发送控制命令给置顶会话。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -2040,7 +2084,7 @@ avSession.sendSystemControlCommand(avcommand, (err) => {
 
 sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 
-发送控制命令给置顶会话。结果通过Promise异步回调方式返回。
+发送控制命令给置顶会话。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -2148,7 +2192,7 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 
 startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
-开始设备搜索发现。结果通过callback异步回调方式返回。
+开始设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2218,7 +2262,7 @@ ArkTS-Dyn: startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<voi
 
 ArkTS-Sta: startCastDeviceDiscovery(filter: int, callback: AsyncCallback\<void>): void
 
-指定过滤条件，开始设备搜索发现。结果通过callback异步回调方式返回。
+指定过滤条件，开始设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2281,7 +2325,7 @@ ArkTS-Dyn: startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>
 
 ArkTS-Sta: startCastDeviceDiscovery(filter?: int, drmSchemes?: Array\<string>): Promise\<void>
 
-开始设备搜索发现。结果通过Promise异步回调方式返回。
+开始设备搜索发现。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2347,7 +2391,7 @@ avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
 
 stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
-结束设备搜索发现。结果通过callback异步回调方式返回。
+结束设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2397,7 +2441,7 @@ avSession.stopCastDeviceDiscovery((err: BusinessError | null) => {
 
 stopCastDeviceDiscovery(): Promise\<void>
 
-结束设备搜索发现。结果通过Promise异步回调方式返回。
+结束设备搜索发现。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2443,7 +2487,7 @@ avSession.stopCastDeviceDiscovery().then(() => {
 
 setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 
-设置设备是否可被发现，用于投播接收端。结果通过callback异步回调方式返回。
+设置设备是否可被发现，用于投播接收端。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2502,7 +2546,7 @@ avSession.setDiscoverable(true, (err: BusinessError | null) => {
 
 setDiscoverable(enable: boolean): Promise\<void>
 
-设置设备是否可被发现，用于投播接收端。结果通过Promise异步回调方式返回。
+设置设备是否可被发现，用于投播接收端。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2562,7 +2606,9 @@ avSession.setDiscoverable(true).then(() => {
 
 on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
-设备发现回调监听。
+设备发现回调监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2602,7 +2648,9 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 
 onDeviceAvailable(callback: Callback\<OutputDeviceInfo>): void
 
-设备发现回调监听。
+设备发现回调监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2640,7 +2688,9 @@ avSession.onDeviceAvailable((device: avSession.OutputDeviceInfo) => {
 
 off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): void
 
-取消设备发现回调的监听。
+取消设备发现回调的监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2676,7 +2726,9 @@ avSession.off('deviceAvailable');
 
 offDeviceAvailable(callback?: Callback\<OutputDeviceInfo>): void
 
-取消设备发现回调的监听。
+取消设备发现回调的监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2710,7 +2762,9 @@ avSession.offDeviceAvailable();
 
 on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 
-设备下线回调监听。
+设备下线回调监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2750,7 +2804,9 @@ avSession.on('deviceOffline', (deviceId: string) => {
 
 onDeviceOffline(callback: Callback\<string>): void
 
-设备下线回调监听。
+设备下线回调监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2788,9 +2844,11 @@ avSession.onDeviceOffline((deviceId: string) => {
 
 off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
-取消设备下线回调的监听。
+取消设备下线回调的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2827,9 +2885,11 @@ avSession.off('deviceOffline');
 
 offDeviceOffline(callback?: Callback\<string>): void
 
-取消设备下线回调的监听。
+取消设备下线回调的监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2864,7 +2924,7 @@ avSession.offDeviceOffline();
 
 getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController>): void
 
-设备建立连接后，获取投播控制器。结果通过callback异步回调方式返回。
+设备建立连接后，获取投播控制器。使用callback异步回调。
 
 此功能在本端和远端都可以使用，通过该接口可以获取一个相同的控制器，进行投播音频的播放控制。
 
@@ -2974,7 +3034,7 @@ struct Index {
 
 getAVCastController(sessionId: string): Promise\<AVCastController>
 
-设备建立连接后，获取投播控制器。结果通过Promise方式返回。
+设备建立连接后，获取投播控制器。使用Promise异步回调。
 
 此功能在本端和远端都可以使用，通过该接口可以获取一个相同的控制器，进行投播音频的播放控制。
 
@@ -3085,7 +3145,7 @@ struct Index {
 
 startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCallback\<void>): void
 
-启动投播。结果通过callback异步回调方式返回。
+启动投播。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -3170,7 +3230,7 @@ if (castDevice !== undefined) {
 
 startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 
-启动投播。结果通过Promise异步回调方式返回。
+启动投播。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -3256,7 +3316,7 @@ if (castDevice !== undefined) {
 
 stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 
-结束投播。结果通过callback异步回调方式返回。
+结束投播。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3322,7 +3382,7 @@ avSession.stopCasting(myToken, (err: BusinessError | null) => {
 
 stopCasting(session: SessionToken): Promise\<void>
 
-结束投播。结果通过Promise异步回调方式返回。
+结束投播。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3391,7 +3451,7 @@ ArkTS-Dyn: startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 
 ArkTS-Sta: startDeviceLogging(url: string, maxSize?: int): Promise\<void>
 
-开始将设备日志写入文件。结果通过Promise异步回调方式返回。
+开始将设备日志写入文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3461,7 +3521,7 @@ avSession.startDeviceLogging(url, 2048).then(() => {
 
 stopDeviceLogging(): Promise\<void>
 
-停止当前设备日志写入。结果通过Promise异步回调方式返回。
+停止当前设备日志写入。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3557,7 +3617,9 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
 
 onDeviceLogEvent(callback: Callback\<DeviceLogEventCode>): void
 
-监听日志事件的回调。
+监听日志事件的回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3595,7 +3657,9 @@ avSession.onDeviceLogEvent((eventCode: avSession.DeviceLogEventCode) => {
 
 off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 
-取消监听日志事件的回调。
+取消监听日志事件的回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3633,7 +3697,9 @@ avSession.off('deviceLogEvent');
 
 offDeviceLogEvent(callback?: Callback\<DeviceLogEventCode>): void
 
-取消监听日志事件的回调。
+取消监听日志事件的回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3673,7 +3739,7 @@ avSession.offDeviceLogEvent();
 
 setDisplaySurface(surfaceId: string): Promise\<void>
 
-设置播放的surfaceId，在投播sink端使用。结果通过Promise异步回调方式返回。
+设置播放的surfaceId，在投播sink端使用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3750,7 +3816,7 @@ aVCastController.setDisplaySurface(surfaceID).then(() => {
 
 setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
-设置播放的surfaceId，在投播sink端使用。结果通过callback异步回调方式返回。
+设置播放的surfaceId，在投播sink端使用。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3833,7 +3899,9 @@ aVCastController.setDisplaySurface(surfaceID, (err: BusinessError | null) => {
 
 on(type: 'videoSizeChange', callback: (width:number, height:number) => void): void
 
-设置video尺寸更改监听事件。
+设置video尺寸更改监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3872,7 +3940,9 @@ aVCastController.on('videoSizeChange', (width: number, height: number) => {
 
 onVideoSizeChange(callback: VideoSizeEvent): void
 
-设置video尺寸更改监听事件。
+设置video尺寸更改监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3911,6 +3981,8 @@ off(type: 'videoSizeChange'): void
 
 取消设置video尺寸更改监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
@@ -3945,6 +4017,8 @@ aVCastController.off('videoSizeChange');
 offVideoSizeChange(): void
 
 取消设置video尺寸更改监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

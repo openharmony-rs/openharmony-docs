@@ -179,7 +179,9 @@ async function avCastPicker(context: common.Context) {
 
 on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
-设置半模态窗口变化的监听事件。
+设置半模态窗口变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -223,7 +225,9 @@ async function onPickerStateChange(context: common.Context) {
 
 onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
-设置半模态窗口变化的监听事件。
+设置半模态窗口变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -267,6 +271,8 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 取消半模态窗口变化的监听事件，关闭后，不再进行该事件回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -307,6 +313,8 @@ async function onPickerStateChange(context: common.Context) {
 offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 
 取消半模态窗口变化的监听事件，关闭后，不再进行该事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

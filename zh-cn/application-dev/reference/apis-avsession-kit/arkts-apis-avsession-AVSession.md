@@ -2551,9 +2551,11 @@ currentAVSession.destroy((err: BusinessError | null) => {
 
 on(type: 'play', callback: () => void): void
 
-设置播放命令监听事件。注册该监听，说明应用支持播放指令。
+设置播放命令监听事件。注册该监听，说明应用支持播放指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2592,9 +2594,11 @@ currentAVSession.on('play', () => {
 
 onPlay(callback: NoParamCallback): void
 
-设置播放命令监听事件。注册该监听，说明应用支持播放指令。
+设置播放命令监听事件。注册该监听，说明应用支持播放指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2631,9 +2635,11 @@ currentAVSession.onPlay(() => {
 
 on(type: 'pause', callback: () => void): void
 
-设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。
+设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2672,9 +2678,11 @@ currentAVSession.on('pause', () => {
 
 onPause(callback: NoParamCallback): void
 
-设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。
+设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2711,9 +2719,11 @@ currentAVSession.onPause(() => {
 
 on(type:'stop', callback: () => void): void
 
-设置停止命令监听事件。注册该监听，说明应用支持停止指令。
+设置停止命令监听事件。注册该监听，说明应用支持停止指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2752,9 +2762,11 @@ currentAVSession.on('stop', () => {
 
 onStop(callback: NoParamCallback): void;
 
-设置停止命令监听事件。注册该监听，说明应用支持停止指令。
+设置停止命令监听事件。注册该监听，说明应用支持停止指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2791,9 +2803,11 @@ currentAVSession.onStop(() => {
 
 on(type:'playNext', callback: () => void): void
 
-设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
+设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2832,9 +2846,11 @@ currentAVSession.on('playNext', () => {
 
 onPlayNext(callback: NoParamCallback): void
 
-设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
+设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2871,9 +2887,11 @@ currentAVSession.onPlayNext(() => {
 
 on(type:'playPrevious', callback: () => void): void
 
-设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
+设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2912,9 +2930,11 @@ currentAVSession.on('playPrevious', () => {
 
 onPlayPrevious(callback: NoParamCallback): void
 
-设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
+设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2951,9 +2971,11 @@ currentAVSession.onPlayPrevious(() => {
 
 on(type: 'fastForward', callback: (time?: number) => void): void
 
-设置快进命令监听事件。注册该监听，说明应用支持快进指令。
+设置快进命令监听事件。注册该监听，说明应用支持快进指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2992,9 +3014,11 @@ currentAVSession.on('fastForward', (time?: number) => {
 
 onFastForward(callback: Callback<long>): void
 
-设置快进命令监听事件。注册该监听，说明应用支持快进指令。
+设置快进命令监听事件。注册该监听，说明应用支持快进指令。使用callback异步回调。
 
 每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3031,7 +3055,9 @@ currentAVSession.onFastForward((time?: long) => {
 
 on(type:'rewind', callback: (time?: number) => void): void
 
-设置快退命令监听事件。
+设置快退命令监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3070,7 +3096,9 @@ currentAVSession.on('rewind', (time?: number) => {
 
 onRewind(callback: Callback\<long>): void
 
-设置快退命令监听事件。
+设置快退命令监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3108,7 +3136,7 @@ currentAVSession.onRewind((time?: long) => {
 
 on(type:'playWithAssetId', callback: Callback\<string>): void
 
-设置指定资源id进行播放的监听事件。
+设置指定资源id进行播放的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3187,7 +3215,9 @@ currentAVSession.off('playWithAssetId');
 
 on(type: 'seek', callback: (time: number) => void): void
 
-设置跳转节点监听事件。
+设置跳转节点监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3226,7 +3256,9 @@ currentAVSession.on('seek', (time: number) => {
 
 onSeek(callback: Callback<long>): void
 
-设置跳转节点监听事件。
+设置跳转节点监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3263,7 +3295,9 @@ currentAVSession.onSeek((time: long) => {
 
 on(type: 'setSpeed', callback: (speed: number) => void): void
 
-设置播放速率的监听事件。
+设置播放速率的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3302,7 +3336,9 @@ currentAVSession.on('setSpeed', (speed: number) => {
 
 onSetSpeed(callback: Callback<double>): void;
 
-设置播放速率的监听事件。
+设置播放速率的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3339,7 +3375,9 @@ currentAVSession.onSetSpeed((speed: double) => {
 
 on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
-设置循环模式的监听事件。
+设置循环模式的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3378,7 +3416,9 @@ currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
 
 onSetLoopMode(callback: Callback\<LoopMode>): void
 
-设置循环模式的监听事件。
+设置循环模式的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3415,7 +3455,7 @@ currentAVSession.onSetLoopMode((mode: avSession.LoopMode) => {
 
 on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
-设置目标循环模式的监听事件。
+设置目标循环模式的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3455,7 +3495,7 @@ currentAVSession.on('setTargetLoopMode', (mode: avSession.LoopMode) => {
 
 onSetTargetLoopMode(callback: Callback\<LoopMode>): void
 
-设置目标循环模式的监听事件。
+设置目标循环模式的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -3494,7 +3534,9 @@ currentAVSession.onSetTargetLoopMode((mode: avSession.LoopMode) => {
 
 on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
-设置是否收藏的监听事件
+设置是否收藏的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3533,7 +3575,9 @@ currentAVSession.on('toggleFavorite', (assetId: string) => {
 
 onToggleFavorite(callback: Callback\<string>): void
 
-设置是否收藏的监听事件
+设置是否收藏的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3570,7 +3614,9 @@ currentAVSession.onToggleFavorite((assetId: string) => {
 
 on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
-设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
+设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3609,7 +3655,9 @@ currentAVSession.on('skipToQueueItem', (itemId: number) => {
 
 onSkipToQueueItem(callback: Callback\<int>): void
 
-设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
+设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3646,7 +3694,9 @@ currentAVSession.onSkipToQueueItem((itemId: int) => {
 
 on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
-设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
+设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3687,7 +3737,9 @@ currentAVSession.on('handleKeyEvent', (event: KeyEvent) => {
 
 onHandleKeyEvent(callback: Callback\<KeyEvent>): void
 
-设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
+设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3726,7 +3778,9 @@ currentAVSession.onHandleKeyEvent((event: KeyEvent) => {
 
 on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: OutputDeviceInfo) => void): void
 
-设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3765,7 +3819,9 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 
 onOutputDeviceChange(callback: ConnectionEvent): void
 
-设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3802,7 +3858,9 @@ currentAVSession.onOutputDeviceChange((state: avSession.ConnectionState, device:
 
 on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
 
-设置自定义控制命令变化的监听器。
+设置自定义控制命令变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3871,13 +3929,15 @@ struct Index {
 
 onCommonCommand(callback: EventProcess): void
 
-设置自定义控制命令变化的监听器。
+设置自定义控制命令变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3942,6 +4002,8 @@ off(type: 'play', callback?: () => void): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3981,6 +4043,8 @@ offPlay(callback?: NoParamCallback): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4015,6 +4079,8 @@ off(type: 'pause', callback?: () => void): void
 取消会话暂停事件监听，关闭后，不再进行该事件回调。
 
 取消回调时，需要更新支持的命令列表。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4055,6 +4121,8 @@ offPause(callback?: NoParamCallback): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4091,6 +4159,8 @@ off(type: 'stop', callback?: () => void): void
 取消会话停止事件监听，关闭后，不再进行该事件回调。
 
 取消回调时，需要更新支持的命令列表。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4131,6 +4201,8 @@ offStop(callback?: NoParamCallback): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4167,6 +4239,8 @@ off(type: 'playNext', callback?: () => void): void
 取消会话播放下一首事件监听，关闭后，不再进行该事件回调。
 
 取消回调时，需要更新支持的命令列表。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4244,6 +4318,8 @@ off(type: 'playPrevious', callback?: () => void): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4320,6 +4396,8 @@ off(type: 'fastForward', callback?: () => void): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4394,6 +4472,8 @@ off(type: 'rewind', callback?: () => void): void
 
 取消会话快退事件监听，关闭后，不再进行该事件回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4465,6 +4545,8 @@ currentAVSession.offRewind();
 off(type: 'seek', callback?: (time: number) => void): void
 
 取消监听跳转节点事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4538,6 +4620,8 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 取消监听播放速率变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4609,6 +4693,8 @@ currentAVSession.offSetSpeed();
 off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 取消监听循环模式变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4757,6 +4843,8 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 取消监听是否收藏的事件
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4829,6 +4917,8 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 取消监听播放列表单项选中的事件
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4900,6 +4990,8 @@ currentAVSession.offSkipToQueueItem();
 off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 取消监听按键事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4974,6 +5066,8 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 取消监听播放设备变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5046,6 +5140,8 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 
 取消监听自定义控制命令的变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5115,7 +5211,9 @@ currentAVSession.offCommonCommand();
 
 on(type: 'answer', callback: Callback\<void>): void
 
-设置通话接听的监听事件。
+设置通话接听的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5154,7 +5252,7 @@ currentAVSession.on('answer', () => {
 
 onAnswer(callback: NoParamCallback): void
 
-设置通话接听的监听事件。
+设置通话接听的监听事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5192,6 +5290,8 @@ currentAVSession.onAnswer(() => {
 off(type: 'answer', callback?: Callback\<void>): void
 
 取消通话接听事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5263,7 +5363,9 @@ currentAVSession.offAnswer();
 
 on(type: 'hangUp', callback: Callback\<void>): void
 
-设置通话挂断的监听事件。
+设置通话挂断的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5302,7 +5404,7 @@ currentAVSession.on('hangUp', () => {
 
 onHangUp(callback: NoParamCallback): void
 
-设置通话挂断的监听事件。
+设置通话挂断的监听事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5340,6 +5442,8 @@ currentAVSession.onHangUp(() => {
 off(type: 'hangUp', callback?: Callback\<void>): void
 
 取消通话挂断事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5411,7 +5515,9 @@ currentAVSession.offHangUp();
 
 on(type: 'toggleCallMute', callback: Callback\<void>): void
 
-设置通话静音的监听事件。
+设置通话静音的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5450,7 +5556,7 @@ currentAVSession.on('toggleCallMute', () => {
 
 onToggleCallMute(callback: NoParamCallback): void
 
-设置通话静音的监听事件。
+设置通话静音的监听事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5489,6 +5595,8 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 取消通话静音事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5526,6 +5634,8 @@ offToggleCallMute(callback?: NoParamCallback): void
 
 取消通话静音事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5559,7 +5669,9 @@ currentAVSession.offToggleCallMute();
 
 on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
-设置扩展屏投播显示设备变化的监听事件。
+设置扩展屏投播显示设备变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5604,7 +5716,9 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 onCastDisplayChange(callback: Callback\<CastDisplayInfo>): void
 
-设置扩展屏投播显示设备变化的监听事件。
+设置扩展屏投播显示设备变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5649,6 +5763,8 @@ off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
 
 取消扩展屏投播显示设备变化事件监听，关闭后，不再进行该事件回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
@@ -5685,6 +5801,8 @@ currentAVSession.off('castDisplayChange');
 offCastDisplayChange(callback?: Callback\<CastDisplayInfo>): void
 
 取消扩展屏投播显示设备变化事件监听，关闭后，不再进行该事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5947,7 +6065,7 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
 
 on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
-设置媒体id播放监听事件。
+设置媒体id播放监听事件。使用callback异步回调。
 
 > **说明：**
 > 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[on('playWithAssetId')](#onplaywithassetid20)设置媒体id播放监听事件。

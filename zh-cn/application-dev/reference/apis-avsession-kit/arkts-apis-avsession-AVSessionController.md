@@ -2002,7 +2002,9 @@ if (controller !== undefined) {
 
 on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
 
-设置元数据变化的监听事件。
+设置元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2046,7 +2048,9 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 
 onMetadataChange(filter: Array\<string>, callback: Callback\<AVMetadata>): void
 
-设置元数据变化的监听事件。
+设置元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2084,7 +2088,9 @@ avsessionController.onMetadataChange(['assetId', 'title', 'description'], (metad
 
 onMetadataChangeAll(callback: Callback\<AVMetadata>): void
 
-设置元数据变化的监听事件。
+设置元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2123,6 +2129,8 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 媒体控制器取消监听元数据变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2160,6 +2168,8 @@ offMetadataChange(callback?: Callback\<AVMetadata>): void
 
 媒体控制器取消监听元数据变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2193,7 +2203,9 @@ avsessionController.offMetadataChange();
 
 on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void)
 
-设置播放状态变化的监听事件。
+设置播放状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2237,7 +2249,9 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 
 onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void
 
-设置播放状态变化的监听事件。
+设置播放状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2275,7 +2289,9 @@ avsessionController.onPlaybackStateChange(['state', 'speed', 'loopMode'], (playb
 
 onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 
-设置播放状态变化的监听事件。
+设置播放状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2314,6 +2330,8 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 媒体控制器取消监听播放状态变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2351,6 +2369,8 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 
 媒体控制器取消监听播放状态变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2384,7 +2404,9 @@ avsessionController.offPlaybackStateChange();
 
 on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callback: Callback\<CallMetadata>): void
 
-设置通话元数据变化的监听事件。
+设置通话元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2428,7 +2450,9 @@ avsessionController.on('callMetadataChange', ['name'], (callmetadata: avSession.
 
 onCallMetadataChange(filter: Array\<string>, callback: Callback\<CallMetadata>): void
 
-设置通话元数据变化的监听事件。
+设置通话元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2466,7 +2490,9 @@ avsessionController.onCallMetadataChange(['name'], (callmetadata: avSession.Call
 
 onCallMetadataChangeAll(callback: Callback<CallMetadata>): void
 
-设置通话元数据变化的监听事件。
+设置通话元数据变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2505,6 +2531,8 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 
 取消设置通话元数据变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2542,6 +2570,8 @@ offCallMetadataChange(callback?: Callback\<CallMetadata>): void
 
 取消设置通话元数据变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2575,7 +2605,9 @@ avsessionController.offCallMetadataChange();
 
 on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
 
-设置通话状态变化的监听事件。
+设置通话状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2619,7 +2651,9 @@ avsessionController.on('callStateChange', ['state'], (callstate: avSession.AVCal
 
 onCallStateChange(filter: Array<string>, callback: Callback<AVCallState>): void
 
-设置通话状态变化的监听事件。
+设置通话状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2657,7 +2691,9 @@ avsessionController.onCallStateChange(['state'], (callstate: avSession.AVCallSta
 
 onCallStateChangeAll(callback: Callback<AVCallState>): void
 
-设置通话状态变化的监听事件。
+设置通话状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2696,6 +2732,8 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 取消设置通话状态变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2733,6 +2771,8 @@ offCallStateChange(callback?: Callback\<AVCallState>): void
 
 取消设置通话状态变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2766,7 +2806,9 @@ avsessionController.offCallStateChange();
 
 on(type: 'sessionDestroy', callback: () => void)
 
-会话销毁的监听事件。
+会话销毁的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2805,7 +2847,9 @@ avsessionController.on('sessionDestroy', () => {
 
 onSessionDestroy(callback: NoParamCallback): void
 
-会话销毁的监听事件。
+会话销毁的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2844,6 +2888,8 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 媒体控制器取消监听会话的销毁事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2881,6 +2927,8 @@ offSessionDestroy(callback?: NoParamCallback): void
 
 媒体控制器取消监听会话的销毁事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2914,7 +2962,9 @@ avsessionController.offSessionDestroy();
 
 on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
-会话的激活状态的监听事件。
+会话的激活状态的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2953,7 +3003,9 @@ avsessionController.on('activeStateChange', (isActive: boolean) => {
 
 onActiveStateChange(callback: Callback<boolean>): void
 
-会话的激活状态的监听事件。
+会话的激活状态的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2992,6 +3044,8 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 媒体控制器取消监听会话激活状态变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3029,6 +3083,8 @@ offActiveStateChange(callback?: Callback\<boolean>): void
 
 媒体控制器取消监听会话激活状态变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3062,7 +3118,9 @@ avsessionController.offActiveStateChange();
 
 on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void)
 
-会话支持的有效命令变化监听事件。
+会话支持的有效命令变化监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3102,7 +3160,9 @@ avsessionController.on('validCommandChange', (validCommands: avSession.AVControl
 
 onValidCommandChange(callback: Callback<Array\<AVControlCommandType>>): void
 
-会话支持的有效命令变化监听事件。
+会话支持的有效命令变化监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3142,6 +3202,8 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 媒体控制器取消监听会话有效命令变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3179,6 +3241,8 @@ offValidCommandChange(callback?: Callback<Array\<AVControlCommandType>>): void
 
 媒体控制器取消监听会话有效命令变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3213,7 +3277,9 @@ avsessionController.offValidCommandChange();
 
 on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: OutputDeviceInfo) => void): void
 
-设置播放设备变化的监听事件。
+设置播放设备变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3252,7 +3318,9 @@ avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, 
 
 onOutputDeviceChange(callback: ConnectionEvent): void
 
-设置播放设备变化的监听事件。
+设置播放设备变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3291,6 +3359,8 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 媒体控制器取消监听分布式设备变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3328,6 +3398,8 @@ offOutputDeviceChange(callback?: ConnectionEvent): void
 
 媒体控制器取消监听分布式设备变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3361,7 +3433,9 @@ avsessionController.offOutputDeviceChange();
 
 on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: Object}) => void): void
 
-媒体控制器设置会话自定义事件变化的监听器。
+媒体控制器设置会话自定义事件变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3416,7 +3490,9 @@ if (controller !== undefined) {
 
 onSessionEvent(callback: EventProcess): void
 
-媒体控制器设置会话自定义事件变化的监听器。
+媒体控制器设置会话自定义事件变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3471,6 +3547,8 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 
 媒体控制器取消监听会话事件的变化通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3508,6 +3586,8 @@ offSessionEvent(callback?: EventProcess): void
 
 媒体控制器取消监听会话事件的变化通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3541,7 +3621,9 @@ avsessionController.offSessionEvent();
 
 on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>) => void): void
 
-媒体控制器设置会话自定义播放列表变化的监听器。
+媒体控制器设置会话自定义播放列表变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3580,7 +3662,9 @@ avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
 
 onQueueItemsChange(callback: Callback<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>>): void
 
-媒体控制器设置会话自定义播放列表变化的监听器。
+媒体控制器设置会话自定义播放列表变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3619,6 +3703,8 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 
 媒体控制器取消监听播放列表变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3656,6 +3742,8 @@ offQueueItemsChange(callback?: Callback<Array<[AVQueueItem](arkts-apis-avsession
 
 媒体控制器取消监听播放列表变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3689,7 +3777,9 @@ avsessionController.offQueueItemsChange();
 
 on(type: 'queueTitleChange', callback: (title: string) => void): void
 
-媒体控制器设置会话自定义播放列表的名称变化的监听器。
+媒体控制器设置会话自定义播放列表的名称变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3728,7 +3818,9 @@ avsessionController.on('queueTitleChange', (title: string) => {
 
 onQueueTitleChange(callback: Callback\<string>): void
 
-媒体控制器设置会话自定义播放列表的名称变化的监听器。
+媒体控制器设置会话自定义播放列表的名称变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3767,6 +3859,8 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 
 媒体控制器取消监听播放列表名称变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3804,6 +3898,8 @@ offQueueTitleChange(callback?: Callback\<string>): void
 
 媒体控制器取消监听播放列表名称变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3837,7 +3933,9 @@ avsessionController.offQueueTitleChange();
 
 on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): void
 
-媒体控制器设置自定义媒体数据包事件变化的监听器。
+媒体控制器设置自定义媒体数据包事件变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3892,7 +3990,9 @@ if (controller !== undefined) {
 
 onExtrasChange(callback: Callback<Record<string, Object>>): void
 
-媒体控制器设置自定义媒体数据包事件变化的监听器。
+媒体控制器设置自定义媒体数据包事件变化的监听器。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3947,6 +4047,8 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 
 媒体控制器取消监听自定义媒体数据包变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -3983,6 +4085,8 @@ avsessionController.off('extrasChange');
 offExtrasChange(callback?: Callback<Record<string, Object>>): void
 
 媒体控制器取消监听自定义媒体数据包变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
