@@ -45,6 +45,18 @@ type为RouteType.None表示对页面栈的push、pop操作均生效，type的默
 
 <!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
 
+``` TypeScript
+// page A
+pageTransition() {
+  // 定义页面进入时的效果，从左侧滑入，时长为1200ms，无论页面栈发生push还是pop操作均可生效
+  PageTransitionEnter({ type: RouteType.None, duration: 1200 })
+    .slide(SlideEffect.Left)
+  // 定义页面退出时的效果，向左侧滑出，时长为1000ms，无论页面栈发生push还是pop操作均可生效
+  PageTransitionExit({ type: RouteType.None, duration: 1000 })
+    .slide(SlideEffect.Left)
+}
+```
+
 <!-- -->
 
 <!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
