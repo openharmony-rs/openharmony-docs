@@ -781,6 +781,105 @@ export struct PageOne {
 
 <!-- @[navigation_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/PageTwo.ets) -->
 
+``` TypeScript
+// PageTwo.ets
+import { CustomTransition } from '../../../CustomTransition/CustomNavigationUtils';
+import { AnimationProperties } from '../../../CustomTransition/AnimationProperties';
+import { RectInfoInPx } from '../../../utils/ComponentAttrUtils';
+import { getMyNode, MyNodeController } from '../../../NodeContainer/CustomComponent';
+
+@Builder
+export function PageTwoBuilder() {
+  PageTwo();
+}
+
+@Component
+export struct PageTwo {
+  @State pageInfos: NavPathStack = new NavPathStack();
+  @State animationProperties: AnimationProperties = new AnimationProperties(this.getUIContext());
+  @State myNodeController: MyNodeController | undefined = new MyNodeController(false);
+  private pageId: number = -1;
+  private shouldDoDefaultTransition: boolean = false;
+  private prePageDoFinishTransition: () => void = () => {};
+  private cardItemInfo: RectInfoInPx = new RectInfoInPx();
+  @StorageProp('windowSizeChanged') @Watch('unRegisterNavParam') windowSizeChangedTime: number = 0;
+  @StorageProp('onConfigurationUpdate') @Watch('unRegisterNavParam') onConfigurationUpdateTime: number = 0;
+
+  aboutToAppear(): void {
+    // 迁移自定义节点至当前页面
+    this.myNodeController = getMyNode();
+  }
+
+  private unRegisterNavParam(): void {
+    this.shouldDoDefaultTransition = true;
+  }
+
+  private onBackPressed(): boolean {
+    if (this.shouldDoDefaultTransition) {
+      CustomTransition.getInstance().unRegisterNavParam(this.pageId);
+      this.pageInfos.pop();
+      this.prePageDoFinishTransition();
+      this.shouldDoDefaultTransition = false;
+      return true;
+    }
+    this.pageInfos.pop();
+    return true;
+  }
+
+  build() {
+    NavDestination() {
+      // Stack需要设置alignContent为TopStart，否则在高度变化过程中，截图和内容都会随高度重新布局位置
+      Stack({ alignContent: Alignment.TopStart }) {
+        Stack({ alignContent: Alignment.TopStart }) {
+          Column({ space: 20 }) {
+            NodeContainer(this.myNodeController);
+            if (this.animationProperties.showDetailContent) {
+              // 'app.string.shareTransition_text8'资源文件中的value值为'展开态内容'
+              Text($r('app.string.shareTransition_text8'))
+                .fontSize(20)
+                .transition(TransitionEffect.OPACITY)
+                .margin(30)
+            }
+          }
+          .alignItems(HorizontalAlign.Start)
+        }
+        .position({ y: this.animationProperties.positionValue });
+      }
+      .scale({ x: this.animationProperties.scaleValue, y: this.animationProperties.scaleValue })
+      .translate({ x: this.animationProperties.translateX, y: this.animationProperties.translateY })
+      .width(this.animationProperties.clipWidth)
+      .height(this.animationProperties.clipHeight)
+      .borderRadius(this.animationProperties.radius)
+      // expandSafeArea使得Stack做沉浸式效果，向上扩到状态栏，向下扩到导航条
+      .expandSafeArea([SafeAreaType.SYSTEM])
+      // 对高度进行裁切
+      .clip(true)
+    }
+    .backgroundColor(this.animationProperties.navDestinationBgColor)
+    .hideTitleBar(true)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      this.pageId = this.pageInfos.getAllPathName().length - 1;
+      let param = context.pathInfo?.param as Record<string, Object>;
+      this.prePageDoFinishTransition = param['doDefaultTransition'] as () => void;
+      this.cardItemInfo = param['cardItemInfo'] as RectInfoInPx;
+      CustomTransition.getInstance().registerNavParam(this.pageId,
+        (isPush: boolean, isExit: boolean, transitionProxy: NavigationTransitionProxy) => {
+          this.animationProperties.doAnimation(
+            this.cardItemInfo, isPush, isExit, transitionProxy, 0,
+            this.prePageDoFinishTransition, this.myNodeController);
+        }, 500);
+    })
+    .onBackPressed(() => {
+      return this.onBackPressed();
+    })
+    .onDisAppear(() => {
+      CustomTransition.getInstance().unRegisterNavParam(this.pageId);
+    })
+  }
+}
+```
+
 <!-- @[custom_navigation_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/CustomTransition/CustomNavigationUtils.ets) -->
 
 <!-- -->
