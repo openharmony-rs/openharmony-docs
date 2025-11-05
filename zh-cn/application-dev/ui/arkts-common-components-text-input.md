@@ -99,6 +99,11 @@ TextInput()
 以下示例是Password密码输入模式的输入框。
 <!-- @[set_password_input_type_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.Password)
+```
+
 ![zh-cn_image_0000001511580840](figures/zh-cn_image_0000001511580840.png)
 
 ### 邮箱地址输入模式
