@@ -173,6 +173,57 @@ export struct ShowDialogExample {
 
 <!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
 
+``` TypeScript
+// xxx.ets
+
+@Entry
+@Component
+export struct CalendarDialog {
+  private selectedDate: Date = new Date('2024-04-23');
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('Show CalendarPicker Dialog')
+            .margin(20)
+            .onClick(() => {
+              console.info('CalendarDialog.show');
+              CalendarPickerDialog.show({
+                selected: this.selectedDate,
+                acceptButtonStyle: {
+                  fontColor: '#2787d9',
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                cancelButtonStyle: {
+                  fontColor: Color.Red,
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                onAccept: (date: Date)=>{
+                  // 当弹出框再次弹出时显示选中的是上一次确定的日期
+                  this.selectedDate = date;
+                }
+              })
+            })
+        }.width('100%')
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ···
+    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.CustomDialog_calender'))
+  }
+}
+```
+
 
 ![image](figures/UIContextShowCalendarpickerDialog.gif)
 
