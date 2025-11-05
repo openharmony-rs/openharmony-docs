@@ -351,6 +351,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
     // ···
     namespace NativeModule {
     // ···
+    #define SIZE_150 150
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
