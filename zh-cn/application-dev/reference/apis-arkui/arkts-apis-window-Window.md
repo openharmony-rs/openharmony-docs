@@ -1555,6 +1555,10 @@ getWindowSystemBarProperties(): SystemBarProperties
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -1575,6 +1579,8 @@ getWindowSystemBarProperties(): SystemBarProperties
 
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1598,6 +1604,36 @@ export default class EntryAbility extends UIAbility {
         console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
       } catch (err) {
         console.error(`Failed to get system bar properties. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause: ${err}`);
+        return;
+      }
+      windowClass = data;
+      try {
+        let systemBarProperty = windowClass.getWindowSystemBarProperties();
+        console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+      } catch (err) {
+        console.error(`Failed to get system bar properties. Cause: ${err}`);
       }
     });
   }
@@ -8175,6 +8211,10 @@ isGestureBackEnabled(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -8195,6 +8235,8 @@ isGestureBackEnabled(): boolean
 | 1300004  | Unauthorized operation.                                                                                |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -8221,6 +8263,39 @@ export default class EntryAbility extends UIAbility {
         console.info(`Succeeded in obtaining gesture back enabled status: ${gestureBackEnabled}`);
       } catch (exception) {
         console.error(`Failed to get gesture back enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause: ${err}`);
+        return;
+      }
+      windowClass = data;
+
+      // 获取当前窗口是否禁用返回手势功能
+      try {
+        let gestureBackEnabled: boolean = windowClass.isGestureBackEnabled();
+        console.info(`Succeeded in obtaining gesture back enabled status: ${gestureBackEnabled}`);
+      } catch (exception) {
+        console.error(`Failed to get gesture back enabled status. Cause: ${exception}`);
       }
     });
   }
