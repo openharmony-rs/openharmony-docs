@@ -115,9 +115,9 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-	   console.log("该设备支持SystemCapability.ArkUI.ArkUI.Full");
+	   console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
     } else {
-       console.log("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
+       console.info("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
     }
     ```
 
@@ -128,7 +128,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
 	try {
 	geolocationManager.getCurrentLocation((location) => {
-		console.log('current location: ' + JSON.stringify(location));
+		console.info('current location: ' + JSON.stringify(location));
 	});
 	} catch(err) {
 	    console.error('该设备不支持位置信息' + err);
@@ -174,7 +174,7 @@ const widgetParam :userAuth.WidgetParam = {
 try {
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   userAuthInstance.start();
-    console.log('设备认证成功');
+    console.info('设备认证成功');
 } catch (error) {
     console.error('auth catch error: ' + JSON.stringify(error));
 }
