@@ -161,6 +161,31 @@
 3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
 
    <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window, UIContext } from '@kit.ArkUI';
+   
+   export default class EntryAbility extends UIAbility {
+   // ···
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       windowStage.loadContent('pages/Index', (err, data) => {
+         if (err.code) {
+           return;
+         }
+         windowStage.getMainWindow((err, data) => {
+           if (err.code) {
+             return;
+           }
+           let windowClass: window.Window = data;
+           let uiContext: UIContext = windowClass.getUIContext();
+           uiContext.getDragController().setDragEventStrictReportingEnabled(true);
+         });
+       });
+     }
+   // ···
+   }
+   ```
 
 4. 拖拽过程显示角标样式。
 
