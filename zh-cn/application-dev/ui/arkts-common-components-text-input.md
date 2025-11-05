@@ -600,6 +600,49 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 <!-- @[cursor_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CursorAvoidance.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct CursorAvoid {
+  @State caretPosition: number = 600;
+  areaController: TextAreaController = new TextAreaController();
+  text = 'Most of us compare ourselves with anyone we think is happier — a relative, someone we know a lot,' +
+    ' or someone we hardly know. As a result, what we do remember is anything that makes others happy, ' +
+    'anything that makes ourselves unhappy,' +
+    ' totally forgetting that there is something happy in our own life.\
+    So the best way to destroy happiness is to look at something and focus on even the smallest flaw. ' +
+    'It is the smallest flaw that would make us complain. And it is the complaint that leads to us becoming unhappy.\
+    If one chooses to be happy, he will be blessed; if he chooses to be unhappy, he will be cursed. ' +
+    'Happiness is just what you think will make you happy.' +
+    'Most of us compare ourselves with anyone we think is happier — a relative, someone we know a lot, ' +
+    'or someone we hardly know. As a result, what we do remember is anything that makes others happy, ' +
+    'anything that makes ourselves unhappy, totally forgetting that there is something happy in our own life.\
+  ';
+
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Button('CaretPosition++: ' + this.caretPosition).onClick(() => {
+            this.caretPosition += 1;
+          }).fontSize(10)
+          Button('CaretPosition--: ' + this.caretPosition).onClick(() => {
+            this.caretPosition -= 1;
+          }).fontSize(10)
+          Button('SetCaretPosition: ').onClick(() => {
+            this.areaController.caretPosition(this.caretPosition);
+          }).fontSize(10)
+        }
+
+        TextArea({ text: this.text, controller: this.areaController })
+          .width('100%')
+          .fontSize('20fp')
+      }
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
 ## 相关实例
