@@ -85,6 +85,11 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 <!-- @[set_password_input_type_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
+``` TypeScript
+TextInput()
+  .type(InputType.Normal)
+```
+
 ![zh-cn_image_0000001562820765](figures/zh-cn_image_0000001562820765.png)
 
 ### 密码模式
