@@ -126,7 +126,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
@@ -165,7 +165,7 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror11)。
 
@@ -201,7 +201,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
@@ -230,7 +230,7 @@ offError(callback?: ErrorCallback): void
 
 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror11)。
 
@@ -264,7 +264,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
 
@@ -307,7 +307,7 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('focusStateChange')](#onfocusstatechange11)。
 
@@ -347,7 +347,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
 
@@ -378,7 +378,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('focusStateChange')](#offfocusstatechange11)。
 
@@ -412,7 +412,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
 
@@ -455,7 +455,7 @@ onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('smoothZoomInfoAvailable')](#onsmoothzoominfoavailable11)。
 
@@ -495,7 +495,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
 
@@ -524,7 +524,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 注销监听相机平滑变焦的状态变化。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('smoothZoomInfoAvailable')](#offsmoothzoominfoavailable11)。
 
@@ -558,7 +558,7 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onAutoDeviceSwitchStatusChange](#onautodeviceswitchstatuschange22)。
 
@@ -601,7 +601,7 @@ onAutoDeviceSwitchStatusChange(callback: AsyncCallback\<AutoDeviceSwitchStatus\>
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('autoDeviceSwitchStatusChange')](#onautodeviceswitchstatuschange13)。
 
@@ -641,7 +641,7 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offAutoDeviceSwitchStatusChange](#offautodeviceswitchstatuschange22)。
 
@@ -668,7 +668,7 @@ offAutoDeviceSwitchStatusChange(callback?: AsyncCallback\<AutoDeviceSwitchStatus
 
 注销监听相机自动切换镜头状态变化。
 
-**ArkTS模式：**该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('autoDeviceSwitchStatusChange')](#offautodeviceswitchstatuschange13)。
 
