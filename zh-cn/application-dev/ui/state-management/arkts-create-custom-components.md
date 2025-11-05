@@ -507,6 +507,14 @@ struct Son {
     })
     ```
     <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) -->
+    
+    ``` TypeScript
+    // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
+    ForEach(this.arr.filter((item, index) => index >= 2).sort(),
+      (item: number) => {
+        // ...
+      });
+    ```
 
 
 ## 自定义组件通用样式
