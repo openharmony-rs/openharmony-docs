@@ -74,6 +74,23 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 - 通过selectedColor属性设置Toggle打开选中后的背景颜色。
 
   <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
+  
+  ``` TypeScript
+    Toggle({ type: ToggleType.Button, isOn: true }) {
+      Text('status button')
+        .fontColor('#182431')
+        .fontSize(12)
+    }.width(100)
+    .selectedColor(Color.Pink)
+  // ···
+  
+    Toggle({ type: ToggleType.Checkbox, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
+    Toggle({ type: ToggleType.Switch, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
+  ```
 
   ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
 
