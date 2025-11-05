@@ -178,38 +178,6 @@
 
    【正例】
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
-   
-   ``` TypeScript
-   @Component
-   struct Child {
-     @Consume num: number;
-     // 从API version 20开始，@Consume装饰的变量支持设置默认值
-     @Consume num1: number = 17;
-   
-     build() {
-       Column() {
-         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
-         // $r('app.string.provide_consume_proper_demo_text_02') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_02', this.num1))
-       }
-     }
-   }
-   
-   @Entry
-   @Component
-   struct Parent {
-     @Provide num: number = 10;
-   
-     build() {
-       Column() {
-         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
-         Child()
-       }
-     }
-   }
-   ```
 
 3. \@Provide的key重复定义时，框架会抛出运行时错误，提醒开发者重复定义key，如果开发者需要重复key，可以使用[allowoverride](#provide支持allowoverride参数)。
 
@@ -257,39 +225,6 @@
    【正例】
 
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
-   
-   ``` TypeScript
-   @Component
-   struct Child {
-     @Consume num: number;
-     // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
-     @Consume numWithDefaultValue: number = 6;
-   
-     build() {
-       Column() {
-         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
-         // $r('app.string.provide_consume_proper_demo_text_03') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_03', this.numWithDefaultValue))
-       }
-     }
-   }
-   
-   @Entry
-   @Component
-   struct Parent {
-     // 正确写法
-     @Provide num: number = 10;
-   
-     build() {
-       Column() {
-         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
-         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
-         Child()
-       }
-     }
-   }
-   ```
 
 5. \@Provide与\@Consume不支持装饰Function类型的变量，框架会抛出运行时错误。
 
@@ -1071,65 +1006,6 @@ struct CustomWidgetChild {
 正确示例：
 
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets) -->
-
-``` TypeScript
-class Tmp {
-  public name: string = '';
-}
-
-@Entry
-@Component
-struct HomePage {
-  // 修正点1：将@Provide声明在Entry组件（根作用域），确保子组件能正确消费
-  @Provide('name') name: string = 'abc';
-
-  @Builder
-  builder2($$: Tmp) {
-    // $r('app.string.provide_consume_provide_error_text') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.provide_consume_provide_error_text', $$.name))
-  }
-
-  build() {
-    Column() {
-      Button($r('app.string.provide_and_consume_text_1')).onClick(() => {
-        if (this.name == 'ddd') {
-          this.name = 'abc';
-        } else {
-          this.name = 'ddd';
-        }
-      })
-      // 修正点2：CustomWidget不再声明@Provide，仅作为容器传递builder
-      CustomWidget() {
-        CustomWidgetChild({ builder: this.builder2 })
-      }
-    }
-  }
-}
-
-@Component
-struct CustomWidget {
-  @BuilderParam
-  builder: () => void;
-
-  build() {
-    this.builder()
-  }
-}
-
-@Component
-struct CustomWidgetChild {
-  // 修正点3：@Consume从根作用域（HomePage）获取@Provide('name')，作用域正确
-  @Consume('name') name: string;
-  @BuilderParam
-  builder: ($$: Tmp) => void;
-
-  build() {
-    Column() {
-      this.builder({ name: this.name })
-    }
-  }
-}
-```
 
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
 
