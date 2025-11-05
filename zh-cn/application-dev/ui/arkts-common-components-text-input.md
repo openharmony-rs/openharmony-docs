@@ -61,7 +61,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .width(300)
   ```
 
-![zh-cn_image_0000001511580836](figures/zh-cn_image_0000001511580836.png)
+  ![zh-cn_image_0000001511580836](figures/zh-cn_image_0000001511580836.png)
 
 - 搜索框。
 
@@ -137,11 +137,6 @@ TextInput()
 
 <!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
-``` TypeScript
-TextInput({ text: '+86 123-0123-0456' })
-  .type(InputType.PhoneNumber)
-```
-
 ![text_input_type_phone_number](figures/text_input_type_phone_number.PNG)
 
 ### 带小数点的数字输入模式
@@ -203,11 +198,6 @@ TextArea()
 - 设置无输入时的提示文本。
 
   <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  // 'app.string.CustomTextInputStyle_textContent_1'资源文件中的value值为"我是提示文本"
-  TextInput({ placeholder: $r('app.string.CustomTextInputStyle_textContent_1') })
-  ```
 
   ![zh-cn_image_0000001511900400](figures/zh-cn_image_0000001511900400.png)
 
@@ -215,31 +205,12 @@ TextArea()
 - 设置输入框当前的文本内容。
 
   <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  // 'app.string.CustomTextInputStyle_textContent_1'资源文件中的value值为"我是提示文本"
-  // 'app.string.CustomTextInputStyle_textContent_2'资源文件中的value值为"我是当前文本内容"
-  TextInput({
-    placeholder: $r('app.string.CustomTextInputStyle_textContent_1'),
-    text: $r('app.string.CustomTextInputStyle_textContent_2')
-  })
-  ```
 
   ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
 
 - 添加backgroundColor改变输入框的背景颜色。
 
   <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-  
-  ``` TypeScript
-  // 'app.string.CustomTextInputStyle_textContent_1'资源文件中的value值为"我是提示文本"
-  // 'app.string.CustomTextInputStyle_textContent_2'资源文件中的value值为"我是当前文本内容"
-  TextInput({
-    placeholder: $r('app.string.CustomTextInputStyle_textContent_1'),
-    text: $r('app.string.CustomTextInputStyle_textContent_2')
-  })
-    .backgroundColor(Color.Pink)
-  ```
 
   ![zh-cn_image_0000001511740444](figures/zh-cn_image_0000001511740444.png)
 
@@ -357,19 +328,11 @@ struct TextInputEventAdd {
 TextInput:
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
-``` TypeScript
-// 'app.string.SelectMenu_textContent_1'资源文件中的value值为"这是一段文本，用来展示选中菜单"
-TextInput({ text: $r('app.string.SelectMenu_textContent_1') })
-```
 ![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
 TextArea:
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
-``` TypeScript
-// 'app.string.SelectMenu_textContent_1'资源文件中的value值为"这是一段文本，用来展示选中菜单"
-TextArea({ text: $r('app.string.SelectMenu_textContent_1') })
-```
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ## 禁用系统服务类菜单
@@ -574,6 +537,7 @@ struct KeyboardAvoid {
 ## 光标避让
 
 [keyBoardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
+
 对于滚动容器更推荐使用RESIZE_WITH_CARET，非滚动容器应该使用OFFSET_WITH_CARET。
 
 <!-- @[cursor_avoid_part1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
