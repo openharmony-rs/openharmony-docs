@@ -26,6 +26,24 @@ ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还
 
 <!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct ComponentDemo {
+  build() {
+    Row() {
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+        .select(true)
+        .shape(CheckBoxShape.CIRCLE)
+        .size({ width: 50, height: 50 })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 
 ![zh-cn_image_0000001649338585](figures/zh-cn_image_0000001649338585.gif)
 
