@@ -29,6 +29,26 @@
 1. 创建TransitionEffect。
   
    <!-- @[transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template6/Index.ets) -->
+   
+   ``` TypeScript
+   // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
+   // 说明各个effect跟随的动画参数
+   private effect: object =
+     TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
+       // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
+       .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))
+       // 添加旋转转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 1.2)
+       .combine(TransitionEffect.rotate({ angle: 90 }))
+       // 添加平移转场效果，动画参数会跟随其之上带animation的TransitionEffect，也就是springMotion(0.6, 1.2)
+       .combine(TransitionEffect.translate({ x: 150, y: 150 }))
+       // 添加move转场效果，并指定了springMotion曲线
+       .combine(TransitionEffect.move(TransitionEdge.END)).animation({curve: curves.springMotion()})
+       // 添加非对称的转场效果，由于这里没有设置animation，会跟随上面的TransitionEffect的animation效果，也就是springMotion
+       .combine(TransitionEffect.asymmetric(TransitionEffect.scale({
+         x: 0,
+         y: 0
+       }), TransitionEffect.rotate({ angle: 90 })));
+   ```
 
 2. 将转场效果通过[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口设置到组件。
   
