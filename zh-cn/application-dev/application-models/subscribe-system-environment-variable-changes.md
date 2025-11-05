@@ -360,3 +360,18 @@ export default class EnvAbility9 extends UIAbility {
 以[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)为例说明。例如，在[onConfigurationUpdate()](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonconfigurationupdate)回调方法中实现环境变量的变化。
 
 <!-- @[envconf_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility10.ets) --> 
+
+``` TypeScript
+import { FormExtensionAbility } from '@kit.FormKit';
+import { Configuration } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[EntryAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+export default class EnvAbility10 extends FormExtensionAbility {
+  onConfigurationUpdate(newConfig: Configuration) {
+    hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate: ' + JSON.stringify(newConfig));
+  }
+}
+```
