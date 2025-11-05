@@ -94,7 +94,7 @@
 
 ### 设置弹出菜单样式
    
-   通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
+   通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
    
    ```ts
    private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
@@ -102,7 +102,7 @@
 
 ## 更新菜单样式
 
-通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
+从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
    
    ```ts
    promptAction.updateMenu(contentNode, {
@@ -118,7 +118,7 @@
 
 ## 关闭菜单
 
-通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
+从API version 18开始，通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
    
    ```ts
    promptAction.closeMenu(contentNode)
