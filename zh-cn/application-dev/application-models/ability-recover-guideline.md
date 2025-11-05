@@ -71,6 +71,7 @@ export default class EntryAbility extends UIAbility {
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
 
 const DOMAIN = 0x0000;
 
