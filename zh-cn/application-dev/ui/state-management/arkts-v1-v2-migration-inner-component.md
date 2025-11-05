@@ -507,8 +507,8 @@ struct Parent14 {
 在V1中，子组件可以修改\@Prop的变量，且只会在本地更新，不会同步回父组件。父组件数据源更新时，会通知子组件更新，并覆写子组件本地\@Prop的值。
 
 V1：
-- 改变子组件`Child`的`localValue`，不会同步回父组件`Parent`。
-- 父组件更新`value`，通知子组件`Child`更新，并覆写本地子组件`localValue`的值。
+- 改变子组件`Child15`的`localValue`，不会同步回父组件`Parent15`。
+- 父组件更新`value`，通知子组件`Child15`更新，并覆写本地子组件`localValue`的值。
 
 <!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
 
@@ -550,9 +550,9 @@ struct Parent15 {
 V2中，\@Param本地不可写，与\@Once搭配使用时只同步一次。若要实现子组件本地可写，且父组件后续更新仍能通知子组件，可借助\@Monitor实现。
 
 V2实现：
-- 父组件`Parent`更新通知子组件`value`的刷新，并回调\@Monitor修饰的`onValueChange`回调方法，`onValueChange`将更新后的值赋值给`localValue`。
-- 子组件`Child`改变`localValue`的值，不会同步给父组件`Parent`。
-- 父组件`Parent`中再次改变`value`，将会继续通知给子组件，并覆写子组件本地`localValue`的值。
+- 父组件`Parent16`更新通知子组件`value`的刷新，并回调\@Monitor修饰的`onValueChange`回调方法，`onValueChange`将更新后的值赋值给`localValue`。
+- 子组件`Child16`改变`localValue`的值，不会同步给父组件`Parent16`。
+- 父组件`Parent16`中再次改变`value`，将会继续通知给子组件，并覆写子组件本地`localValue`的值。
 
 <!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
 
