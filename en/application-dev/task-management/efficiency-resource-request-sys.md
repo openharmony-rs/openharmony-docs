@@ -1,4 +1,11 @@
-# Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)
+# Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)
+
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
