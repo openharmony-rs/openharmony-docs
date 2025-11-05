@@ -877,8 +877,8 @@ type Nullable\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-|  T   | 表示该类型申明的对象是自定义类型。 |
-| undefined | 该类型申明的对象是undefined。 |
+|  T   | 表示该类型声明的对象是自定义类型。 |
+| undefined | 表示该类型声明的对象是undefined。 |
 
 ## WordBreak<sup>11+</sup>
 
