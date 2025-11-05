@@ -32,6 +32,16 @@
   [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
 该方法返回ArkUI_NativeDialogHandle类型的数据。
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  
+  ``` C++
+  ArkUI_NativeDialogHandle g_dialogController = nullptr;
+  // ···
+      ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+          OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+      if (!g_dialogController) {
+          g_dialogController = dialogAPI->create();
+      }
+  ```
 
 - 当不再需要弹窗操作时，需要主动调用dispose接口销毁弹窗控制器对象。
   <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
