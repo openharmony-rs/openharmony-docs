@@ -95,6 +95,29 @@ Grid() {
 
 <!-- @[Set_numberrows_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridCalculator.ets) -->
 
+``` TypeScript
+  layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    onGetRectByIndex: (index: number) => {
+    // ···
+
+      if (index == key1) { // key1是“0”按键对应的index
+        return [6, 0, 1, 2];
+      } else if (index == key2) { // key2是“=”按键对应的index
+        return [5, 3, 2, 1];
+      }
+    // ···
+      // 这里需要根据具体布局返回其他item的位置
+    }
+  }
+// ···
+          Grid(undefined, this.layoutOptions) {
+            // ···
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr')
+          .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+```
+
 ### 设置主轴方向
 
 使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过layoutDirection设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合minCount和maxCount属性来约束主轴方向上的网格数量。
