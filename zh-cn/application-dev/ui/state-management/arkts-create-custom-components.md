@@ -196,6 +196,14 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   > 从API version 10开始，该装饰器支持在ArkTS卡片中使用。
 
   <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) -->
+  
+  ``` TypeScript
+  @Reusable
+  @Component
+  struct MyComponent {
+  // ···
+  }
+  ```
 
 ## 成员函数/变量
 
