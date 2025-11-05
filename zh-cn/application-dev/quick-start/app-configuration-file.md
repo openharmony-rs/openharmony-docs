@@ -9,7 +9,7 @@
 ## 配置文件示例
 
 
-先通过一个示例，整体认识一下app.json5配置文件。
+先通过一个示例，了解app.json5配置文件的结构和内容。
 
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
