@@ -15,9 +15,11 @@
 
   在下面的示例中，在Web组件的onAppear中对要加载的页面进行预连接。
 
-```ts
-// xxx.ets
+<!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
+// ···
 
 @Entry
 @Component
@@ -72,10 +74,11 @@ export default class EntryAbility extends UIAbility {
 
 在下面的示例中，在onPageEnd的时候触发下一个要访问的页面的预加载。
   
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
 @Entry
 @Component
 struct WebComponent {
@@ -99,10 +102,11 @@ struct WebComponent {
 
   以下示例，在Web组件onAppear中，对要加载页面中的post请求进行预获取。在onPageEnd中，可以清除预获取的post请求缓存。
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
 @Entry
 @Component
 struct WebComponent {
@@ -110,24 +114,24 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: "https://www.example.com/", controller: this.webviewController })
+      Web({ src: 'https://www.example.com/', controller: this.webviewController })
         .onAppear(() => {
-          // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          // 预获取时，需要将'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
           webview.WebviewController.prefetchResource(
             {
-              url: "https://www.example1.com/post?e=f&g=h",
-              method: "POST",
-              formData: "a=x&b=y",
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
             },
             [{
-              headerKey: "c",
-              headerValue: "z",
+              headerKey: 'c',
+              headerValue: 'z',
             },],
-            "KeyX", 500);
+            'KeyX', 500);
         })
         .onPageEnd(() => {
           // 清除后续不再使用的预获取资源缓存。
-          webview.WebviewController.clearPrefetchedResource(["KeyX",]);
+          webview.WebviewController.clearPrefetchedResource(['KeyX',]);
         })
     }
   }
@@ -138,10 +142,11 @@ struct WebComponent {
 
   以下示例，在onPageEnd中，触发预获取一个要访问页面的post请求。
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+// ···
 @Entry
 @Component
 struct WebComponent {
@@ -151,18 +156,18 @@ struct WebComponent {
     Column() {
       Web({ src: 'https://www.example.com/', controller: this.webviewController })
         .onPageEnd(() => {
-          // 预获取时，需要将"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
+          // 预获取时，需要将'https://www.example1.com/post?e=f&g=h'替换成真实要访问的网站地址。
           webview.WebviewController.prefetchResource(
             {
-              url: "https://www.example1.com/post?e=f&g=h",
-              method: "POST",
-              formData: "a=x&b=y",
+              url: 'https://www.example1.com/post?e=f&g=h',
+              method: 'POST',
+              formData: 'a=x&b=y',
             },
             [{
-              headerKey: "c",
-              headerValue: "z",
+              headerKey: 'c',
+              headerValue: 'z',
             },],
-            "KeyX", 500);
+            'KeyX', 500);
         })
     }
   }
@@ -232,41 +237,42 @@ export default class EntryAbility extends UIAbility {
 
 2. 编写动态组件所需基础代码。
 
-   ```ts
-   // DynamicComponent.ets
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->
+   
+   ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
-
+   
    export interface BuilderData {
      url: string;
      controller: WebviewController;
      context: UIContext;
    }
-
+   
    let storage : LocalStorage | undefined = undefined;
-
+   
    export class NodeControllerImpl extends NodeController {
      private rootNode: BuilderNode<BuilderData[]> | null = null;
      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
-
+   
      constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
        storage = context.getSharedLocalStorage();
        super();
        this.wrappedBuilder = wrappedBuilder;
      }
-
+   
      makeNode(): FrameNode | null {
        if (this.rootNode != null) {
          return this.rootNode.getFrameNode();
        }
        return null;
      }
-
+   
      initWeb(url: string, controller: WebviewController) {
        if(this.rootNode != null) {
          return;
        }
-
-       const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+   
+       const uiContext: UIContext = storage!.get<UIContext>('uiContext') as UIContext;
        if (!uiContext) {
          return;
        }
@@ -274,7 +280,7 @@ export default class EntryAbility extends UIAbility {
        this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
      }
    }
-
+   
    export const createNode = (wrappedBuilder: WrappedBuilder<BuilderData[]>, data: BuilderData) => {
      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
      baseNode.initWeb(data.url, data.controller);
@@ -284,39 +290,40 @@ export default class EntryAbility extends UIAbility {
 
 3. 编写用于生成字节码缓存的组件，本例中的本地Javascript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
-   ```ts
-   // PrecompileWebview.ets
-   import { BuilderData } from "./DynamicComponent";
-   import { Config, configs } from "./PrecompileConfig";
-
+   <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
+   
+   ``` TypeScript
+   import { BuilderData } from './DynamicComponent';
+   import { Config, configs } from './PrecompileConfig';
+   
    @Builder
-   function WebBuilder(data: BuilderData) {
+   function webBuilder(data: BuilderData) {
      Web({ src: data.url, controller: data.controller })
        .onControllerAttached(() => {
          precompile(data.controller, configs, data.context);
        })
        .fileAccess(true)
    }
-
-   export const precompileWebview = wrapBuilder<BuilderData[]>(WebBuilder);
-
+   
+   export const precompileWebview = wrapBuilder<BuilderData[]>(webBuilder);
+   
    export const precompile = async (controller: WebviewController, configs: Array<Config>, context: UIContext) => {
      for (const config of configs) {
        let content = await readRawFile(config.localPath, context);
-
+   
        try {
          controller.precompileJavaScript(config.url, content, config.options)
            .then(errCode => {
-             console.error("precompile successfully! " + errCode);
+             console.error('precompile successfully! ' + errCode);
            }).catch((errCode: number) => {
-             console.error("precompile failed. " + errCode);
+             console.error('precompile failed. ' + errCode);
          });
        } catch (err) {
-         console.error("precompile failed. " + err.code + " " + err.message);
+         console.error('precompile failed. ' + err.code + ' ' + err.message);
        }
      }
    }
-
+   
    async function readRawFile(path: string, context: UIContext) {
      try {
        return await context.getHostContext()!.resourceManager.getRawFileContent(path);
@@ -330,40 +337,42 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 
 4. 编写业务用组件代码。
 
-   ```ts
-   // BusinessWebview.ets
-   import { BuilderData } from "./DynamicComponent";
-
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->
+   
+   ``` TypeScript
+   import { BuilderData } from './DynamicComponent';
+   
    @Builder
-   function WebBuilder(data: BuilderData) {
+   function webBuilder(data: BuilderData) {
      // 此处组件可根据业务需要自行扩展
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
-
-   export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
+   
+   export const businessWebview = wrapBuilder<BuilderData[]>(webBuilder);
    ```
 
 5. 编写资源配置信息。
 
-   ```ts
-   // PrecompileConfig.ets
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb'
-
+   
    export interface Config {
      url:  string,
      localPath: string, // 本地资源路径
      options: webview.CacheOptions
    }
-
-   export let configs: Array<Config> = [
+   
+   export let configs: Config[] = [
      {
-       url: "https://www.example.com/example.js",
-       localPath: "example.js",
+       url: 'https://www.example.com/example.js',
+       localPath: 'example.js',
        options: {
          responseHeaders: [
-           { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
-           { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+           { headerKey: 'E-Tag', headerValue: 'aWO42N9P9dG/5xqYQCxsx+vDOoU='},
+           { headerKey: 'Last-Modified', headerValue: 'Wed, 21 Mar 2025 10:38:41 GMT'}
          ]
        }
      }
@@ -372,13 +381,14 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 
 6. 在页面中使用。
 
-   ```ts
-   // Index.ets
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
-   import { createNode } from "./DynamicComponent"
-   import { precompileWebview } from "./PrecompileWebview"
-   import { businessWebview } from "./BusinessWebview"
+   import { createNode } from './DynamicComponent';
+   import { precompileWebview } from './PrecompileWebview';
+   import { businessWebview } from './BusinessWebview';
    
    @Entry
    @Component
@@ -392,16 +402,16 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
      aboutToAppear(): void {
        // 初始化用于注入本地资源的Web组件
        this.precompileNode = createNode(precompileWebview,
-         { url: "https://www.example.com/empty.html", controller: this.precompileController, context: this.getUIContext()});
+         { url: 'https://www.example.com/empty.html', controller: this.precompileController, context: this.getUIContext()});
      }
-
+   
      build() {
        Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
-         Button("加载页面")
+         Button('加载页面')
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
-               url:  "https://www.example.com/business.html",
+               url: 'https://www.example.com/business.html',
                controller: this.businessController,
                context: this.getUIContext()
              });
@@ -446,41 +456,42 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 
 2. 编写动态组件所需基础代码。
 
-   ```ts
-   // DynamicComponent.ets
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
+   
+   ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
-
+   
    export interface BuilderData {
      url: string;
      controller: WebviewController;
      context: UIContext;
    }
-
+   
    let storage : LocalStorage | undefined = undefined;
-
+   
    export class NodeControllerImpl extends NodeController {
      private rootNode: BuilderNode<BuilderData[]> | null = null;
      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
-
+   
      constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>,  context: UIContext) {
-      storage = context.getSharedLocalStorage();
+     storage = context.getSharedLocalStorage();
        super();
        this.wrappedBuilder = wrappedBuilder;
      }
-
+   
      makeNode(): FrameNode | null {
        if (this.rootNode != null) {
          return this.rootNode.getFrameNode();
        }
        return null;
      }
-
+   
      initWeb(url: string, controller: WebviewController) {
        if(this.rootNode != null) {
          return;
        }
-
-       const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+   
+       const uiContext: UIContext = storage!.get<UIContext>('uiContext') as UIContext;
        if (!uiContext) {
          return;
        }
@@ -488,7 +499,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
        this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
      }
    }
-
+   
    export const createNode = (wrappedBuilder: WrappedBuilder<BuilderData[]>, data: BuilderData) => {
      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
      baseNode.initWeb(data.url, data.controller);
@@ -498,38 +509,38 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
-   <!--code_no_check-->
-   ```ts
-   // InjectWebview.ets
+   <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
-   import { resourceConfigs } from "./Resource";
-   import { BuilderData } from "./DynamicComponent";
-
+   import { resourceConfigs } from './Resource';
+   import { BuilderData } from './DynamicComponent';
+   
    @Builder
-   function WebBuilder(data: BuilderData) {
+   function webBuilder(data: BuilderData) {
      Web({ src: data.url, controller: data.controller })
        .onControllerAttached(async () => {
          try {
            data.controller.injectOfflineResources(await getData (data.context));
          } catch (err) {
-           console.error("error: " + err.code + " " + err.message);
+           console.error('error: ' + err.code + ' ' + err.message);
          }
        })
        .fileAccess(true)
    }
-
-   export const injectWebview = wrapBuilder<BuilderData[]>(WebBuilder);
-
+   
+   export const injectWebview = wrapBuilder<BuilderData[]>(webBuilder);
+   
    export async function getData(context: UIContext) {
-     const resourceMapArr: Array<webview.OfflineResourceMap> = [];
-
+     const resourceMapArr: webview.OfflineResourceMap[] = [];
+   
      // 读取配置，从rawfile目录中读取文件内容
      for (let config of resourceConfigs) {
        let buf: Uint8Array = new Uint8Array(0);
        if (config.localPath) {
          buf = await readRawFile(config.localPath, context);
        }
-
+   
        resourceMapArr.push({
          urlList: config.urlList,
          resource: buf,
@@ -537,10 +548,10 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
          type: config.type,
        })
      }
-
+   
      return resourceMapArr;
    }
-
+   
    export async function readRawFile(url: string, context: UIContext) {
      try {
        return await context.getHostContext()!.resourceManager.getRawFileContent(url);
@@ -552,93 +563,95 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
 
 4. 编写业务用组件代码。
 
-   <!--code_no_check-->
-   ```ts
-   // BusinessWebview.ets
-   import { BuilderData } from "./DynamicComponent";
-
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
+   
+   ``` TypeScript
+   import { BuilderData } from './DynamicComponent';
+   
    @Builder
-   function WebBuilder(data: BuilderData) {
+   function webBuilder(data: BuilderData) {
      // 此处组件可根据业务需要自行扩展
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.Default)
    }
-
-   export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
+   
+   export const businessWebview = wrapBuilder<BuilderData[]>(webBuilder);
    ```
 
 5. 编写资源配置信息。
 
-   ```ts
-   // Resource.ets
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
-
+   
    export interface ResourceConfig {
      urlList: Array<string>,
      type: webview.OfflineResourceType,
      responseHeaders: Array<Header>,
      localPath: string, // 本地资源存放在rawfile目录下的路径
    }
-
-   export const resourceConfigs: Array<ResourceConfig> = [
+   
+   export const resourceConfigs: ResourceConfig[] = [
      {
-       localPath: "example.png",
+       localPath: 'example.png',
        urlList: [
-         "https://www.example.com/",
-         "https://www.example.com/path1/example.png",
-         "https://www.example.com/path2/example.png",
+         'https://www.example.com/',
+         'https://www.example.com/path1/example.png',
+         'https://www.example.com/path2/example.png',
        ],
        type: webview.OfflineResourceType.IMAGE,
        responseHeaders: [
-         { headerKey: "Cache-Control", headerValue: "max-age=1000" },
-         { headerKey: "Content-Type", headerValue: "image/png" },
+         { headerKey: 'Cache-Control', headerValue: 'max-age=1000' },
+         { headerKey: 'Content-Type', headerValue: 'image/png' },
        ]
      },
      {
-       localPath: "example.js",
+       localPath: 'example.js',
        urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
-         "https://www.example.com/example.js",
+         'https://www.example.com/example.js',
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
        responseHeaders: [
-         // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头
-         { headerKey: "Cross-Origin", headerValue:"anonymous" }
+         // 以<script crossorigin='anonymous' />方式使用，提供额外的响应头
+         { headerKey: 'Cross-Origin', headerValue:'anonymous' }
        ]
      },
    ];
    ```
 
 6. 在页面中使用。
-   ```ts
-   // Index.ets
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
-   import { createNode } from "./DynamicComponent"
-   import { injectWebview } from "./InjectWebview"
-   import { businessWebview } from "./BusinessWebview"
-
+   import { createNode } from './DynamicComponent';
+   import { injectWebview } from './InjectWebview';
+   import { businessWebview } from './BusinessWebview';
+   
    @Entry
    @Component
    struct Index {
      @State injectNode: NodeController | undefined = undefined;
      injectController: webview.WebviewController = new webview.WebviewController();
-
+   
      @State businessNode: NodeController | undefined = undefined;
      businessController: webview.WebviewController = new webview.WebviewController();
-
+   
      aboutToAppear(): void {
        // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
        this.injectNode = createNode(injectWebview,
-           { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
+         { url: 'https://www.example.com/empty.html', controller: this.injectController, context: this.getUIContext()});
      }
-
+   
      build() {
        Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
-         Button("加载页面")
+         Button('加载页面')
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
-               url: "https://www.example.com/business.html",
+               url: 'https://www.example.com/business.html',
                controller: this.businessController,
                context: this.getUIContext()
              });
