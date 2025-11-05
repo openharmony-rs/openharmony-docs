@@ -28,6 +28,29 @@
 
 <!-- @[animationBlur_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct BlurEffectsExample {
+  build() {
+    Column({ space: 10 }) {
+      Text('backdropBlur')
+        .width('90%')
+        .height('90%')
+        .fontSize(20)
+        .fontColor(Color.White)
+        .textAlign(TextAlign.Center)
+        .backdropBlur(10)// 对背景进行模糊
+        .backgroundImage($r('app.media.bg'))
+        .backgroundImageSize({ width: 400, height: 300 })
+    }
+    .width('100%')
+    .height('50%')
+    .margin({ top: 20 })
+  }
+}
+```
+
 
 ![zh-cn_image_0000001599812870](figures/zh-cn_image_0000001599812870.png)
 
