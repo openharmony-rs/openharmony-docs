@@ -22,6 +22,24 @@
 
 <!-- @[HelloComponent_Hello](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
 
+``` TypeScript
+@Component
+struct HelloComponent {
+  @State message: string = 'Hello, World!';
+
+  build() {
+    // HelloComponent自定义组件组合系统组件Row和Text
+    Row() {
+      Text(this.message)
+        .onClick(() => {
+          // 状态变量message的改变驱动UI刷新，UI从'Hello, World!'刷新为'Hello, ArkUI!'
+          this.message = 'Hello, ArkUI!';
+        })
+    }
+  }
+}
+```
+
 > **注意：**
 >
 > 如果在其他文件中引用自定义组件，需要使用`export`关键字导出组件，并在使用的页面`import`该自定义组件。
