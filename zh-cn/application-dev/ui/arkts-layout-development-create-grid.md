@@ -363,6 +363,13 @@ private scroller: Scroller = new Scroller();
 2. 然后，通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-grid.md#接口)参数绑定滚动控制器。
    
    <!-- @[Add_external_scrollbar1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   
+   ``` TypeScript
+   // gridScroller初始化Grid组件的scroller参数，绑定gridScroller与网格。
+   Grid( this.gridScroller) {
+   // ···
+   }
+   ```
 
 
 3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
