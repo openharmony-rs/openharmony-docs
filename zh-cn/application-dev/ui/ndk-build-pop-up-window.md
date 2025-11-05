@@ -178,6 +178,15 @@
    - 通过controller关闭弹窗。
 
      <!-- @[close_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     
+     ``` C++
+     void CloseDialog()
+     {
+         ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+         dialogAPI->close(g_dialogController);
+     }
+     ```
 
    - 通过dialogOptions关闭弹窗。
 
