@@ -100,6 +100,13 @@ struct ParentComponent {
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
   <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct MyComponent {
+  // ···
+  }
+  ```
 
 
  **freezeWhenInactive<sup>11+</sup>**
