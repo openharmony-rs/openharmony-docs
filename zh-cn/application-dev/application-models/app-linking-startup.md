@@ -52,6 +52,53 @@
 
 <!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "abilities": [
+      {
+        // ···
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          },
+          {
+            "entities": [
+              // entities须包含"entity.system.browsable"
+              "entity.system.browsable"
+            ],
+            "actions": [
+              // actions须包含"ohos.want.action.viewData"
+              "ohos.want.action.viewData"
+            ],
+            "uris": [
+              {
+                // scheme须配置为https
+                "scheme": "https",
+                // host须配置关联的域名
+                "host": "www.example.com",
+                // path可选，为了避免匹配到多个应用，建议配置该字段
+                "path": "path1"
+              }
+            ],
+            // domainVerify须设置为true
+            "domainVerify": true
+          } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
+        ]
+      },
+    // ···
+    ],
+    // ···
+  }
+}
+```
+
 ### 在开发者网站上关联应用
 
 在开发者的网站上做如下配置，以关联应用。
