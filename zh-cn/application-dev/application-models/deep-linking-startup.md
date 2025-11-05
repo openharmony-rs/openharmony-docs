@@ -31,6 +31,46 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 <!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "abilities": [
+    // ···
+      {
+        // ···
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          },
+          {
+            "actions": [
+              // actions不能为空，actions为空会造成目标方匹配失败。
+              "ohos.want.action.viewData"
+            ],
+            "uris": [
+              {
+                // scheme必选，可以自定义，以link为例，需要替换为实际的scheme
+                "scheme": "link",
+                // host必选，配置待匹配的域名
+                "host": "www.example.com"
+              }
+            ]
+          } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
+        ]
+      },
+    // ···
+    ],
+    // ···
+  }
+}
+```
+
 ### 获取并解析拉起方传入的应用链接
 
 在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
