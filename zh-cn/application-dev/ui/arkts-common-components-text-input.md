@@ -161,6 +161,11 @@ TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.
 内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
 <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
 
+``` TypeScript
+TextArea()
+  .style(TextContentStyle.INLINE)
+```
+
 ![textArea_style_inline](figures/textArea_style_inline.gif)
 
 ## 自定义样式
