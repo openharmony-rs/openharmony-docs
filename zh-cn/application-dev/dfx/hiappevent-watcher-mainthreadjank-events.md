@@ -44,16 +44,18 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 > **注意：**
 >
-> log_type参数为必选项；log_type=0或2时，不设置其他参数。
+> log_type参数为必选项。
 >
-> log_type=1时，仅需配置以下参数：sample_interval、ignore_startup_time、sample_count和report_times_per_app。
+> log_type=0或2时，不设置其他参数。
+>
+> log_type=1时，所有参数均需设置。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| log_type | string | 是 | 采集MAIN_THREAD_JANK事件日志类型。<br/>log_type=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>log_type=1：仅采集调用栈，触发检测的阈值由用户自定义。<br/>log_type=2：仅采集trace。 |
-| sample_interval | string | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的interval进行超时检测判断，并使用该interval作为周期性任务检测的间隔。 |
+| log_type | string | 是 | 采集MAIN_THREAD_JANK事件日志类型。<br/>log_type=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>log_type=1：仅采集调用栈。<br/>log_type=2：仅采集trace。 |
+| sample_interval | string | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的sample_interval进行超时检测判断，并使用该sample_interval作为周期性任务检测的间隔。 |
 | ignore_startup_time | string | 否 | 忽略启动时间内的主线程超时检测。单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
-| sample_count | string | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务超过采样限制后，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集sample_count次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的sample_interval进行动态计算，计算公式：sample_count &lt;= (2500 / sample_interval - 4)。 |
+| sample_count | string | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集sample_count次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的sample_interval进行动态计算，计算公式：sample_count &lt;= (2500 / sample_interval - 4)。 |
 | report_times_per_app | string | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
 
 1. sample_count说明：
@@ -68,7 +70,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    
    展示setEventConfig接口中log_type分别为0，1，2三种类型：
 
-   (1)log_type=0，用于采样栈或采样trace。
+   （1）log_type=0，用于采样栈或采样trace。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -84,7 +86,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    });
    ```
 
-   (2)log_type=1，仅用于采集调用栈。
+   （2）log_type=1，仅用于采集调用栈。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -104,7 +106,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    });
    ```
 
-   (3)log_type=2，仅用于采集trace。
+   （3）log_type=2，仅用于采集trace。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,15 +140,17 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 > **注意：**
 >
-> 所有参数均为可选项，不设置或为空时取默认值。
+> 所有参数均为可选项，不设置时取默认值。
 >
-> logType为0时，其他参数无论是否存在，均取默认值；logType为2时，其他参数的值均不生效。
+> logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。
+>
+> logType=2时，其他参数均不生效，无需设置。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | logType | number | 否 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值用户自定义。<br/>logType=2：仅采集trace。 |
-| ignoreStartupTime | number | 否 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
 | sampleInterval | number | 否 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| ignoreStartupTime | number | 否 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
 | sampleCount | number | 否 | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
 | reportTimesPerApp | number | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
 | autoStopSampling | boolean | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
@@ -163,7 +167,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
    展示configEventPolicy接口中logType分别为0，1，2三种类型：
 
-   (1)logType=0，用于采样栈或采样trace。
+   （1）logType=0，用于采样栈或采样trace。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -172,10 +176,6 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    let policy: hiAppEvent.EventPolicy = {
      "mainThreadJankPolicy" : {
        "logType": 0,
-       "ignoreStartupTime": 11,
-       "sampleInterval": 70,
-       "sampleCount": 20,
-       "reportTimesPerApp": 3,
        "autoStopSampling": true
      }
    };
@@ -186,7 +186,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    });
    ```
 
-   (2)logType=1，仅用于采集调用栈。
+   （2）logType=1，仅用于采集调用栈。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -195,8 +195,8 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    let policy: hiAppEvent.EventPolicy = {
      "mainThreadJankPolicy" : {
        "logType": 1,
-       "ignoreStartupTime": 11,
        "sampleInterval": 70,
+       "ignoreStartupTime": 11,
        "sampleCount": 20,
        "reportTimesPerApp": 3,
        "autoStopSampling": true
@@ -205,11 +205,11 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    hiAppEvent.configEventPolicy(policy).then(() => {
      hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
    }).catch((err: BusinessError) => {
-   hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+     hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
-   (3)logType=2，仅用于采集trace。
+   （3）logType=2，仅用于采集trace。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -226,6 +226,226 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
      hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
    });
    ```
+
+### OH_HiAppEvent_SetEventConfig接口说明
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig) | 设置主线程采样栈参数接口。 |
+
+### OH_HiAppEvent_SetEventConfig接口参数设置说明
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| name | const char\* | 是 | 主线程超时事件名称，此处为预定义的宏EVENT_MAIN_THREAD_JANK或EVENT_MAIN_THREAD_JANK_V2。|
+| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
+
+**name为EVENT_MAIN_THREAD_JANK**
+
+接口不提供主线程超时结束自动停止采样栈的功能，config参数作如下配置。
+
+> **注意：**
+>
+> MAIN_THREAD_JANK_PARAM_LOG_TYPE为必选配置项。
+>
+> MAIN_THREAD_JANK_PARAM_LOG_TYPE为"0"或"2"时，无其他配置项。
+>
+> MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，所有配置项均需设置。
+>
+> 配置项的值均为可转换为整型的字符串字面量或字符指针。
+
+对于API version 21及之前的版本，配置项名称只可使用相关字符串。
+
+对于API version 22及之后的版本，配置项名称可使用预定义的宏及相关字符串。更推荐使用宏，避免开发者手写字符串造成非预期结果。
+
+下文中值的取值范围说明均按转换后的变量类型进行阐述。
+
+| 配置项名称 | 类型 | 必须配置 | 说明 |
+| -------- | -------- | -------- | -------- |
+| 宏：MAIN_THREAD_JANK_PARAM_LOG_TYPE<br/>字符串：log_type | const char\* | 是 | 采集日志的类型。<br/>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>值为"1"：仅采集调用栈。<br/>值为"2"：仅采集trace。 |
+| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL<br/>字符串：sample_interval | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
+| 宏：MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME<br/>字符串：ignore_startup_time | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br/>单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
+| 宏：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT<br/>字符串：sample_count | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
+| 宏：MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP<br/>字符串：report_times_per_app | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
+
+1. MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT说明：
+
+   （1）2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT的设置值不能超过系统按计算公式得出的最大值。
+
+   （2）4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。
+
+   （3）开发者要结合需求场景，进行合理的设置。
+
+2. 参数设置示例
+   
+   展示OH_HiAppEvent_SetEventConfig接口中config参数的配置项MAIN_THREAD_JANK_PARAM_LOG_TYPE分别为"0"，"1"，"2"三种类型：
+
+   （1）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"0"时，用于采样栈或采样trace。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+   if (ret == HIAPPEVENT_SUCCESS) {
+       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```
+
+   （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
+
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+   if (ret == HIAPPEVENT_SUCCESS) {
+       OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```
+
+   （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
+
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+   if (ret == HIAPPEVENT_SUCCESS) {
+       OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```  
+
+**name为EVENT_MAIN_THREAD_JANK_V2**
+
+从API VERSION 22开始，name可以为EVENT_MAIN_THREAD_JANK_V2，接口提供主线程超时结束自动停止采样栈的功能，config参数作如下配置。
+
+> **注意：**
+> 
+> 配置项名称为相关预定义的宏。
+>
+> config的所有配置项均为可选项，不配置或者为空时取默认值。
+>
+> MAIN_THREAD_JANK_PARAM_LOG_TYPE为"0"时，仅需设置MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING，其他配置项均取默认值，无需设置。
+>
+> MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，其他配置项均不生效，无需设置。
+>
+>  MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING为"true"或"false"，转换为布尔类型；其他配置项的值均为可转换为整型的字符串字面量或字符指针。
+
+下文中值的取值范围说明均按转换后的变量类型进行阐述。
+
+| 配置项名称 | 类型 | 必须配置 | 说明 |
+| -------- | -------- | -------- | -------- |
+| MAIN_THREAD_JANK_PARAM_LOG_TYPE | const char\* | 否 | 采集日志的类型。<br/>值为"0"：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>值为"1"：仅采集调用栈。<br/>值为"2"：仅采集trace。 |
+| MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL | const char\* | 否 | 主线程超时检测间隔和采样间隔。<br/>单位为ms，默认值：150，取值范围为[50, 500]。<br/>系统根据开发者设置的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL的值进行超时检测判断，并使用该值作为周期性任务检测的间隔。 |
+| MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME | const char\* | 否 | 忽略启动时间内的主线程超时检测。<br/>单位为s，最小值：3，默认值：10。<br/>线程启动一定时间内，不进行超时检测。一些进程启动时间较长，此时抓全的超时采样栈，分析意义不大。因此，在开发者定义启动时间间隔内，不进行超时检测。 |
+| MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT | const char\* | 否 | 主线程超时采样次数。系统检测到当前主线程执行任务时长达到可采样阈值时，系统检测到当前主线程执行任务超过采样限制后，开始周期性采集堆栈，每个间隔采集一次堆栈，共采集MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT次。<br/>默认值：10次。<br/>最小值：1次，最大值需要结合自定义的MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL进行动态计算，计算公式：MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT &lt;= (2500 / MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL - 4)。 |
+| MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP | const char\* | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1次，单位：次。<br/>开发者选项打开，每小时范围：[1, 3]。<br/>开发者选项关闭，每天上报次数范围：[1, 3]。 |
+| MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING | const char\* | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+
+1. MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT说明：
+
+   （1）2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT的设置值不能超过系统按计算公式得出的最大值。
+
+   （2）4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。
+
+   （3）开发者要结合需求场景，进行合理的设置。
+
+2. 参数设置示例
+   
+   展示OH_HiAppEvent_SetEventConfig接口中config参数的配置项MAIN_THREAD_JANK_PARAM_LOG_TYPE分别为"0"，"1"，"2"三种类型：
+
+   （1）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"0"时，用于采样栈或采样trace。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+   if (ret == HIAPPEVENT_SUCCESS) {
+       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```
+
+   （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
+
+   int ret == OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+   if (ret == HIAPPEVENT_SUCCESS) {{
+       OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```
+
+   （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
+
+   ```c++
+   #include "napi/native_api.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
+
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+   if (ret == HIAPPEVENT_SUCCESS) {
+       OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
+   }
+   OH_HiAppEvent_DestroyConfig(config);
+   ```  
 
 ## 事件字段说明
 
