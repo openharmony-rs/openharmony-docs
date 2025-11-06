@@ -147,6 +147,61 @@ PersistentStorage支持联合类型和undefined和null，在下面的示例中�
 
 <!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->
 
+``` TypeScript
+PersistentStorage.persistProp('persistedDate', new Date());
+
+@Entry
+@Component
+struct PersistedDate {
+  @StorageLink('persistedDate') persistedDate: Date = new Date();
+
+  updateDate() {
+    this.persistedDate = new Date();
+  }
+
+  build() {
+    List() {
+      ListItem() {
+        Column() {
+          Text(`Persisted Date is ${this.persistedDate.toString()}`)
+            .margin(20)
+
+          Text(`Persisted Date year is ${this.persistedDate.getFullYear()}`)
+            .margin(20)
+
+          Text(`Persisted Date hours is ${this.persistedDate.getHours()}`)
+            .margin(20)
+
+          Text(`Persisted Date minutes is ${this.persistedDate.getMinutes()}`)
+            .margin(20)
+
+          Text(`Persisted Date time is ${this.persistedDate.toLocaleTimeString()}`)
+            .margin(20)
+
+          Button() {
+            Text('Update Date')
+              .fontSize(25)
+              .fontWeight(FontWeight.Bold)
+              .fontColor(Color.White)
+          }
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('60%')
+          .height('5%')
+          .onClick(() => {
+            this.updateDate();
+          })
+
+        }.width('100%')
+      }
+    }
+  }
+}
+```
+
 
 ### 持久化Map类型变量
 
