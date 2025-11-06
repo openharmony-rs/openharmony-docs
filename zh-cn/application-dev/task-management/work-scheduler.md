@@ -79,8 +79,8 @@
 以下是延迟任务回调开发使用的相关接口，更多接口及使用方式请见[延迟任务调度回调](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)文档。
 | 接口名 | 接口描述 |
 | -------- | -------- |
-| [onWorkStart(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstart) | 延迟调度任务开始的回调 |
-| [onWorkStop(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstop) | 延迟调度任务结束的回调 |
+| [onWorkStart(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstart) | 延迟调度任务开始的回调。 |
+| [onWorkStop(work: workScheduler.WorkInfo): void](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md#onworkstop) | 延迟调度任务结束的回调。 |
 
 
 ## 开发步骤

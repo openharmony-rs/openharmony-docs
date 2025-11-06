@@ -220,8 +220,9 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
-> **说明**
-> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代
+> **说明：**
+>
+> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -490,7 +491,9 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 延迟任务的具体信息, 用于设置延迟任务的触发条件等。
 
 >  **说明：**
+>
 >  WorkInfo参数设置时需遵循以下规则：
+>
 >  1. workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
 >  2. 携带参数信息仅支持number、string、boolean三种类型。
 >  3. 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
