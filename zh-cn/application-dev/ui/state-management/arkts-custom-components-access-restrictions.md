@@ -99,6 +99,52 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【正例】
     <!-- @[LlinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateCorrectCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct LinkAccessRestrictions {
+      @Builder
+      buildTest() {
+        Text('Parent builder')
+      }
+    
+      build() {
+        Column() {
+          LinkComponentChild({
+            stateValue: 'Hello',
+            propValue: 'Hello',
+            provideValue: 'Hello',
+            builderValue: this.buildTest,
+            regularValue: 'Hello'
+          })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Component
+    struct LinkComponentChild {
+      @State stateValue: string = 'Hello';
+      @Prop propValue: string = 'Hello';
+      @Provide provideValue: string = 'Hello';
+      @BuilderParam builderValue: () => void = this.buildTest;
+      regularValue: string = 'Hello';
+    
+      @Builder
+      buildTest() {
+        Text('Child builder')
+      }
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
