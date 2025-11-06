@@ -62,7 +62,7 @@ export struct OnClickGesture {
       .justifyContent(FlexAlign.Center)
     }
     .backgroundColor('#f1f2f3')
-    //$r('app.string.singlegesture_Index_Click_title')需要替换为开发者所需的字符串资源文件
+    // $r('app.string.singlegesture_Index_Click_title')资源文件中的value值为'点击事件'
     .title($r('app.string.singlegesture_Index_Click_title'))
   }
 }
@@ -114,6 +114,7 @@ export struct Tap {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // app.string.singlegesture_TapGesture_title资源文件中的value值为'点击手势'
     .title($r('app.string.singlegesture_TapGesture_title'))
   }
 }
@@ -172,6 +173,7 @@ export struct LongPress {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // app.string.singlegesture_LongPressGesture_title资源文件中的value值为'长按手势'
     .title($r('app.string.singlegesture_LongPressGesture_title'))
   }
 }
@@ -234,7 +236,7 @@ export struct VolumeControlDemo {
     NavDestination() {
       Column() {
         Row() {
-          //$r('app.string.video')需要替换为开发者所需的字符串资源文件
+          // $r('app.string.video')资源文件中的value值为'音量'
           Text($r('app.string.video'))
           Text(`： ${this.currentVolume}`).fontSize(20)
         }.margin(10)
@@ -275,7 +277,7 @@ export struct VolumeControlDemo {
       .padding(20)
     }
     .backgroundColor('#f1f2f3')
-    //$r('app.string.singlegesture_Index_Pancom_title')需要替换为开发者所需的字符串资源文件
+    // $r('app.string.singlegesture_Index_Pancom_title')资源文件中的value值为'滑动手势'
     .title($r('app.string.singlegesture_Index_Pancom_title'))
   }
 }
@@ -355,6 +357,7 @@ export struct Pinch {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // app.string.singlegesture_PinchGesture_title资源文件中的value值为'捏合手势'
     .title($r('app.string.singlegesture_PinchGesture_title'))
   }
 }
@@ -424,6 +427,7 @@ export struct Rotation {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // app.string.singlegesture_RotationGesture_title资源文件中的value值为'旋转手势'
     .title($r('app.string.singlegesture_RotationGesture_title'))
   }
 }
@@ -485,6 +489,7 @@ export struct Swipe {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // app.string.singlegesture_SwipeGesture_title资源文件中的value值为'快滑手势'
     .title($r('app.string.singlegesture_SwipeGesture_title'))
   }
 }
