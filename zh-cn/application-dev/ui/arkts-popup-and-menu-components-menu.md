@@ -81,6 +81,49 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[eventTrans_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct EventTransSubWindowMenuExample {
+  build() {
+    NavDestination() {
+      Column() {
+      }
+      .id('click')
+      .bindContextMenu(this.contextMenuBuilder, ResponseType.RightClick, {
+        modalMode: ModalMode.TARGET_WINDOW
+      })
+      .onClick(() => {
+        this.getUIContext().getPromptAction().showToast({
+          message: 'Clicked!'
+        })
+      })
+      .width('100%')
+      .height('100%')
+    }.backgroundColor('#f1f2f3')
+    // ···
+  }
+
+  @Builder
+  bindMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'bindMenu item' }) {
+
+      }
+    }
+  }
+
+  @Builder
+  contextMenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'contextMenu item' }) {
+
+      }
+    }
+  }
+}
+```
+
 ## 基于绑定组件指定位置弹出菜单
 
 菜单从API version 20开始支持基于绑定组件在指定位置弹出。通过设置水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置。与单独使用offset接口不同，此方法可使菜单覆盖显示在绑定组件上。需要指定弹出位置时，可使用[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的anchorPosition属性进行设置。
