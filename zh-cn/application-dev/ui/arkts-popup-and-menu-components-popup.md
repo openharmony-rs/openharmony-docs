@@ -21,6 +21,39 @@ Popup属性可绑定在组件上显示气泡弹窗提示，设置弹窗内容、
 
 <!-- @[text_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct TextPopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('PopupOptions')
+            .id('PopupOptions')
+            .margin({ top: 300 })
+            .onClick(() => {
+              this.handlePopup = !this.handlePopup;
+            })
+            .bindPopup(this.handlePopup, {
+              message: 'This is a popup with PopupOptions',
+            })
+        }.width('100%').padding({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 ![zh-cn_image_0000001511740524](figures/zh-cn_image_0000001511740524.png)
 
 ## 添加气泡状态变化的事件
