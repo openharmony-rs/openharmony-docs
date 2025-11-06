@@ -52,4 +52,28 @@
 以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)方法的text参数为例：
 <!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
+``` TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ![TextInputDouble](figures/TextInputDouble.gif)
