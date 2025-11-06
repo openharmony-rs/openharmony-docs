@@ -240,3 +240,45 @@ struct Parent {
 在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(MyBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(MyBuilderSecond)`将不会生效。
 
 <!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
+@Builder
+function myBuilderFirst(value: string, size: number) {
+  Text('MyBuilderFirst：' + value)
+    .fontSize(size)
+}
+
+@Builder
+function myBuilderSecond(value: string, size: number) {
+  Text('MyBuilderSecond：' + value)
+    .fontSize(size)
+}
+
+interface BuilderModel {
+  globalBuilder: WrappedBuilder<[string, number]>;
+}
+
+@Entry
+@Component
+struct TestBuilderIndex {
+  @State message: string = 'Hello World';
+  @State builderObj: BuilderModel = { globalBuilder: wrapBuilder(myBuilderFirst) };
+
+  aboutToAppear(): void {
+    setTimeout(() => {
+      // wrapBuilder(myBuilderSecond) 不会生效
+      this.builderObj.globalBuilder = wrapBuilder(myBuilderSecond);
+    }, 1000);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        this.builderObj.globalBuilder.builder(this.message, 20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
