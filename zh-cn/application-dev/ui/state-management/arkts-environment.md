@@ -31,27 +31,22 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 
 - 使用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)将设备运行的环境变量存入AppStorage中。
 
-  ```ts
-  // 将设备的languageCode存入AppStorage，默认值为en
-  Environment.envProp('languageCode', 'en');
-  ```
+  <!-- @[showfirst_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
 
 - 在自定义组件中通过@StorageProp获取languageCode的值。
 
-  ```ts
-  @StorageProp('languageCode') lang: string = 'en';
-  ```
+  <!-- @[showsecond_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
 
 设备环境到Component的更新链：Environment --&gt; AppStorage --&gt; Component。
 
 > **说明：**
 >
 > 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
-<!-- @[languageCode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/UiEnvironment.ets) -->
 
 ### 应用逻辑使用Environment
-<!-- @[languageCode_AppStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/AppliedLogic.ets) -->
 ## 限制条件
 
 Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
-<!-- @[Environment和UIContext相关联](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @[limiting_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/entryability/EntryAbility.ets) -->
