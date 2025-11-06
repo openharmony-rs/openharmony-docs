@@ -199,6 +199,27 @@ struct Parent {
 组件Parent将\@State修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
 <!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Parent {
+  @State label: string = 'Hello';
+
+  @LocalBuilder
+  citeLocalBuilder(paramA1: string) {
+    Row() {
+      Text(`UseStateVarByValue: ${paramA1}`)
+    }
+  }
+
+  build() {
+    Column() {
+      this.citeLocalBuilder(this.label)
+    }
+  }
+}
+```
+
 ## 使用场景
 
 ### \@LocalBuilder在\@ComponentV2修饰的自定义组件中使用
