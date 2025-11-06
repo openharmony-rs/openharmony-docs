@@ -373,6 +373,58 @@ V2迁移策略：使用深拷贝。
 
 <!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Fruit {
+  @Trace public  apple: number = 5;
+  @Trace public orange: number = 10;
+
+  // 实现深拷贝，子组件不会修改父组件的数据
+  clone(): Fruit {
+    let newFruit: Fruit = new Fruit();
+    newFruit.apple = this.apple;
+    newFruit.orange = this.orange;
+    return newFruit;
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param fruit: Fruit = new Fruit();
+
+  build() {
+    Column() {
+      Text('child')
+      Text(this.fruit.apple.toString())
+      Text(this.fruit.orange.toString())
+      Button('apple+1')
+        .onClick(() => {
+          this.fruit.apple++;
+        })
+      Button('orange+1')
+        .onClick(() => {
+          this.fruit.orange++;
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent {
+  @Local parentFruit: Fruit = new Fruit();
+
+  build() {
+    Column() {
+      Text('parent')
+      Text(this.parentFruit.apple.toString())
+      Text(this.parentFruit.orange.toString())
+      Child({ fruit: this.parentFruit.clone() })
+    }
+  }
+}
+```
+
 
 **子组件修改变量**
 
