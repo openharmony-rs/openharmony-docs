@@ -1013,7 +1013,7 @@ struct GridEts {
 
   build() {
     Column({ space: 5 }) {
-      // $r('app.string.Select_All')需要替换为开发者所需的文本资源文件
+      // app.string.Select_All资源文件中的value值为'全选'
       Button($r('app.string.Select_All'))
         .onClick(() => {
           for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1235,6 +1235,34 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过`bindSheet`实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
+    // ···
+        Column() {
+          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
+          Text($r('app.string.DoubleClick_Text'))
+            .fontSize(30)
+            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
+        }.padding({ bottom: 30 })
+  
+        // app.string.Search_Device资源文件中的value值为'搜索设备'
+        Button($r('app.string.Search_Device'))
+          .width('80%')
+          .height('80vp')
+          .fontSize(30)
+          .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
+            detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
+            preferType: SheetType.BOTTOM,
+            // app.string.Search_Device资源文件中的value值为'搜索设备'
+            title: { title: $r('app.string.Search_Device') },
+          })
+        // ···
+    }.width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+  ```
 
 2.实现SheetBuilder
 
@@ -1247,7 +1275,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   SheetBuilder() {
     Column() {
       // 输入框
-      // $r('app.string.Push_Here')需要替换为开发者所需的文本资源文件
+      // app.string.Push_Here资源文件中的value值为'拖入此处'
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
@@ -1337,7 +1365,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 export struct SpringLoadingPage {
   context1 = this.getUIContext().getHostContext()
   @Local isShowSheet: boolean = false;
-  // $r('app.string.Select_Result')需要替换为开发者所需的文本资源文件
+  // app.string.Select_Result资源文件中的value值为'搜索结果：\n  设备 1\n  设备 2\n  设备 3\n  ... ...'
   private searchResult: string = this.context1?.resourceManager.getStringSync($r('app.string.Select_Result').id)!;
   @Local isSearchDone: boolean = false;
   private reminderColor: Color = Color.Green;
@@ -1348,7 +1376,7 @@ export struct SpringLoadingPage {
   SheetBuilder() {
     Column() {
       // 输入框
-      // $r('app.string.Push_Here')需要替换为开发者所需的文本资源文件
+      // app.string.Push_Here资源文件中的value值为'拖入此处'
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
@@ -1438,13 +1466,13 @@ export struct SpringLoadingPage {
     Column() {
     // ···
         Column() {
-          // $r('app.string.DoubleClick_Text')需要替换为开发者所需的文本资源文件
+          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
           Text($r('app.string.DoubleClick_Text'))
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
         }.padding({ bottom: 30 })
 
-        // $r('app.string.Search_Device')需要替换为开发者所需的文本资源文件
+        // app.string.Search_Device资源文件中的value值为'搜索设备'
         Button($r('app.string.Search_Device'))
           .width('80%')
           .height('80vp')
@@ -1452,7 +1480,7 @@ export struct SpringLoadingPage {
           .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
             detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
             preferType: SheetType.BOTTOM,
-            // $r('app.string.Search_Device')需要替换为开发者所需的文本资源文件
+            // app.string.Search_Device资源文件中的value值为'搜索设备'
             title: { title: $r('app.string.Search_Device') },
           })
           .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
