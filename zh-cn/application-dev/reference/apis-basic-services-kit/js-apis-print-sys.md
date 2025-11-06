@@ -29,10 +29,10 @@ import { print } from '@kit.BasicServicesKit';
 <br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| top | number | 否 | 表示页面上边距。默认值为0。 |
-| bottom | number | 否 | 表示页面下边距。默认值为0。 |
-| left | number | 否 | 表示页面左边距。默认值为0。 |
-| right | number | 否 | 表示页面右边距。默认值为0。 |
+| top | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示页面上边距。默认值为0。 |
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示页面下边距。默认值为0。 |
+| left | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示页面左边距。默认值为0。 |
+| right | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示页面右边距。默认值为0。 |
 
 ## PrinterRange
 
@@ -50,9 +50,9 @@ import { print } from '@kit.BasicServicesKit';
 <br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| startPage | number | 否 | 表示起始页。默认值为1。 |
-| endPage | number | 否 | 表示结束页。默认值为待打印文件的最大页数。 |
-| pages | Array&lt;number&gt; | 否 | 表示待打印的页面范围的集合。默认值为空。 |
+| startPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示起始页。默认值为1。 |
+| endPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示结束页。默认值为待打印文件的最大页数。 |
+| pages | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 表示待打印的页面范围的集合。默认值为空。 |
 
 ## PreviewAttribute
 
@@ -71,7 +71,7 @@ import { print } from '@kit.BasicServicesKit';
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | previewRange | [PrinterRange](#printerrange) | 是 | 表示预览页面范围。 |
-| result | number | 否 | 表示预览文件结果。默认值为-1。 |
+| result | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示预览文件结果。默认值为-1。 |
 
 ## PrintResolution
 
@@ -90,8 +90,8 @@ import { print } from '@kit.BasicServicesKit';
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | id | string | 是 | 表示分辨率ID。 |
-| horizontalDpi | number | 是 | 表示水平DPI。 |
-| verticalDpi | number | 是 | 表示垂直DPI。 |
+| horizontalDpi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示水平DPI。 |
+| verticalDpi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示垂直DPI。 |
 
 
 
@@ -110,8 +110,8 @@ import { print } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| colorMode | number | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
-| duplexMode | number | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| colorMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| duplexMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | 是 | 表示打印机支持的页面尺寸列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | resolution | Array&lt;[PrintResolution](#printresolution)&gt; | 否 | 表示打印机支持的分辨率列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | minMargin | [PrintMargin](#printmargin) | 否 | 表示打印机最小边距。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
@@ -136,7 +136,7 @@ import { print } from '@kit.BasicServicesKit';
 | printerId | string | 是 | 表示打印机ID。 |
 | printerName | string | 是 | 表示打印机名称。 |
 | printerState | [PrinterState](./js-apis-print.md#printerstate14) | 是 | 表示当前打印机状态。 |
-| printerIcon | number | 否 | 表示打印机图标的资源ID。默认值为-1。 |
+| printerIcon | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示打印机图标的资源ID。默认值为-1。 |
 | description | string | 否 | 表示打印机说明。 |
 | capability | [PrinterCapability](#printercapability) | 否 | 表示打印机功能。 |
 | options | Object | 否 | 表示JSON对象字符串。 |
@@ -156,18 +156,18 @@ import { print } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| fdList | Array&lt;number&gt; | 是 | 表示待打印文件fd列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| fdList | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 是 | 表示待打印文件fd列表。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | jobId | string | 是 | 表示打印任务ID。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | printerId | string | 是 | 表示负责打印的打印机ID。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | 是 | 表示当前打印任务状态。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | 是 | 表示当前打印任务子状态。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
-| copyNumber | number | 是 | 表示文件列表副本。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示文件列表副本。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | pageRange | [PrinterRange](#printerrange) | 是 | 表示打印范围大小。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | isSequential | boolean | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 是 | 表示选定的页面尺寸。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | isLandscape | boolean | 是 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
-| colorMode | number | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
-| duplexMode | number | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| colorMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示色彩模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
+| duplexMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示单双面打印模式。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | margin | [PrintMargin](#printmargin) | 否 | 表示当前页边距设置。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | preview | [PreviewAttribute](#previewattribute) | 否 | 表示预览设置。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
 | options | Object | 否 | 表示JSON对象字符串。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20 |
@@ -191,7 +191,7 @@ import { print } from '@kit.BasicServicesKit';
 | extensionId | string | 是 | 表示打印机扩展的扩展ID。 |
 | vendorId | string | 是 | 表示扩展的供应商ID。 |
 | vendorName | string | 是 | 表示供应商名称。 |
-| vendorIcon | number | 是 | 表示供应商图标。 |
+| vendorIcon | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示供应商图标。 |
 | version | string | 是 | 表示当前打印机扩展的版本。 |
 
 ## print.queryAllPrinterExtensionInfos
@@ -1031,7 +1031,9 @@ print.cancelPrintJob(jobId).then((data : void) => {
 
 ## print.requestPrintPreview
 
-requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
+ArkTS-Dyn: requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
+
+ArkTS-Sta: requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;int&gt;): void
 
 请求预览打印数据，使用callback回调。
 
@@ -1049,7 +1051,7 @@ requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | jobInfo | [PrintJob](#printjob) | 是 | 打印任务信息。 |
-| callback | Callback&lt;number&gt; | 是 | 请求预览打印数据之后的回调。 |
+| callback | ArkTS-Dyn: Callback&lt;number&gt;<br>ArkTS-Sta: Callback&lt;int&gt; | 是 | 请求预览打印数据之后的回调。 |
 
 **错误码：**
 
@@ -1063,6 +1065,7 @@ requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { print } from '@kit.BasicServicesKit';
 
@@ -1089,9 +1092,38 @@ print.requestPrintPreview(jobInfo, (num : number) => {
 })
 ```
 
+ArkTS-Sta示例:
+```ts
+import { print } from '@kit.BasicServicesKit';
+
+let jobInfo : print.PrintJob = {
+    fdList : [0,1],
+    jobId : 'jobId_12',
+    printerId : 'printerId_32',
+    jobState : 3,
+    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
+    copyNumber : 1,
+    pageRange : {},
+    isSequential : false,
+    pageSize : {id : '', name : '', width : 10, height : 20},
+    isLandscape : false,
+    colorMode : 6,
+    duplexMode : 6,
+    margin : undefined,
+    preview : undefined,
+    options : undefined
+};
+print.requestPrintPreview(jobInfo, (num : int) => {
+    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
+
+})
+```
+
 ## print.requestPrintPreview
 
-requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
+ArkTS-Dyn: requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
+
+ArkTS-Sta: requestPrintPreview(jobInfo: PrintJob): Promise&lt;int&gt;
 
 请求预览打印数据，使用Promise异步回调。
 
@@ -1113,7 +1145,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 **返回值：**
 | **类型** | **说明** |
 | -------- | -------- |
-| Promise&lt;number&gt; | 请求预览打印数据完成结果。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | 请求预览打印数据完成结果。 |
 
 **错误码：**
 
@@ -1127,6 +1159,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
@@ -1149,6 +1182,35 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.requestPrintPreview(jobInfo).then((num: number) => {
+    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
+}).catch((error: BusinessError) => {
+    console.error('requestPrintPreview failed, because : ' + JSON.stringify(error));
+})
+```
+
+ArkTS-Sta示例:
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+
+let jobInfo : print.PrintJob = {
+    fdList : [0,1],
+    jobId : 'jobId_12',
+    printerId : 'printerId_32',
+    jobState : 3,
+    jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
+    copyNumber : 1,
+    pageRange : {},
+    isSequential : false,
+    pageSize : {id : '', name : '', width : 10, height : 20},
+    isLandscape : false,
+    colorMode : 6,
+    duplexMode : 6,
+    margin : undefined,
+    preview : undefined,
+    options : undefined
+};
+print.requestPrintPreview(jobInfo).then((num: int) => {
     console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
 }).catch((error: BusinessError) => {
     console.error('requestPrintPreview failed, because : ' + JSON.stringify(error));
@@ -2627,7 +2689,9 @@ print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
 
 ## print.startGettingPrintFile<sup>11+</sup>
 
-startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: number, onFileStateChanged: Callback&lt;PrintFileCreationState&gt;): void
+ArkTS-Dyn: startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: number, onFileStateChanged: Callback&lt;PrintFileCreationState&gt;): void
+
+ArkTS-Sta: startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int, onFileStateChanged: Callback&lt;PrintFileCreationState&gt;): void
 
 开始获取打印文件，使用Callback异步回调。
 
@@ -2646,7 +2710,7 @@ startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: numbe
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | printAttributes | [PrintAttributes](./js-apis-print.md#printattributes11) | 是 | 表示打印参数。 |
-| fd | number | 是 | 表示打印文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印文件描述符。 |
 | onFileStateChanged | Callback&lt;[PrintFileCreationState](./js-apis-print.md#printfilecreationstate11)&gt; | 是 | 表示更新文件状态的回调。 |
 
 **错误码：**
@@ -2661,6 +2725,7 @@ startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: numbe
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
@@ -2700,6 +2765,51 @@ printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_MONOCHROME;
 printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
 
 let fd : number = 1;
+print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileCreationState) => {
+    console.log('onFileStateChanged success, data : ' + JSON.stringify(state));
+})
+```
+
+ArkTS-Sta示例:
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+
+let jobId : string= '1';
+class MyPrintAttributes implements print.PrintAttributes {
+    copyNumber?: number;
+    pageRange?: print.PrintPageRange;
+    pageSize?: print.PrintPageSize | print.PrintPageType;
+    directionMode?: print.PrintDirectionMode;
+    colorMode?: print.PrintColorMode;
+    duplexMode?: print.PrintDuplexMode;
+}
+
+class MyPrintPageRange implements print.PrintPageRange {
+    startPage?: number;
+    endPage?: number;
+    pages?: Array<number>;
+}
+
+class MyPrintPageSize implements print.PrintPageSize {
+    id: string = '0';
+    name: string = '0';
+    width: number = 210;
+    height: number = 297;
+}
+
+let printAttributes = new MyPrintAttributes();
+printAttributes.copyNumber = 2;
+printAttributes.pageRange = new MyPrintPageRange();
+printAttributes.pageRange.startPage = 0;
+printAttributes.pageRange.endPage = 5;
+printAttributes.pageRange.pages = [1, 3];
+printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
+printAttributes.directionMode = print.PrintDirectionMode.DIRECTION_MODE_AUTO;
+printAttributes.colorMode = print.PrintColorMode.COLOR_MODE_MONOCHROME;
+printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
+
+let fd : int = 1;
 print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileCreationState) => {
     console.log('onFileStateChanged success, data : ' + JSON.stringify(state));
 })

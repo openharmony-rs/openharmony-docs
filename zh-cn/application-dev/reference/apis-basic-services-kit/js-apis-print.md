@@ -830,7 +830,9 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 ### onStartLayoutWrite
 
-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
+ArkTS-Dyn: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
+
+ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
 打印服务会通过本接口将一个空的pdf文件的文件描述符传给三方应用，由三方应用使用新的打印参数更新待打印文件，更新文件完成后通过本接口的回调方法writeResultCallback通知打印服务。 
 
@@ -848,7 +850,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
 | newAttrs | [PrintAttributes](#printattributes11) | 是 | 表示新打印参数。 |
-| fd | number | 是 | 表示打印文件传给接口调用方的pdf文件的文件描述符。 |
+| fd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印文件传给接口调用方的pdf文件的文件描述符。 |
 | writeResultCallback | (jobId: string, writeResult: [PrintFileCreationState](#printfilecreationstate11)) => void | 是 | 表示三方应用使用新的打印参数更新待打印文件完成后的回调。 |
 
 **错误码：**
@@ -862,12 +864,39 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
+    };
+    onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
+        if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
+            console.log('PREVIEW_DESTROY');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
+            console.log('PRINT_TASK_SUCCEED');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
+            console.log('PRINT_TASK_FAIL');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
+            console.log('PRINT_TASK_CANCEL');
+        } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
+            console.log('PRINT_TASK_BLOCK');
+        }
+    }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+
+class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
+    onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: int,
         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
     };
@@ -1279,7 +1308,7 @@ struct Index {
 <br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| copyNumber | number | 否 | 表示文件打印份数。默认值为1。 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示文件打印份数。默认值为1。 |
 | pageRange | [PrintPageRange](#printpagerange11) | 否 | 表示待打印文件的页面范围。 |
 | pageSize | [PrintPageSize](#printpagesize11) \| [PrintPageType](#printpagetype11) | 否 | 表示待打印文件的纸张类型。 |
 | directionMode | [PrintDirectionMode](#printdirectionmode11) | 否 | 表示待打印文件的方向。 |
@@ -1300,9 +1329,9 @@ struct Index {
 <br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| startPage | number | 否 | 表示起始页。默认值为1。 |
-| endPage | number | 否 | 表示结束页。默认值为待打印文件的最大页数。 |
-| pages | Array&lt;number&gt; | 否 | 表示待打印的页面范围的集合。默认值为空。|
+| startPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示起始页。默认值为1。 |
+| endPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示结束页。默认值为待打印文件的最大页数。 |
+| pages | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 否 | 表示待打印的页面范围的集合。默认值为空。|
 
 
 ## PrintPageSize<sup>11+</sup>
@@ -1321,8 +1350,8 @@ struct Index {
 | -------- | -------- | -------- | -------- |
 | id | string | 是 | 表示纸张类型ID。 |
 | name | string | 是 | 表示纸张类型名称。 |
-| width | number | 是 | 表示页面宽度，单位：毫米。 |
-| height | number | 是 | 表示页面高度，单位：毫米。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示页面宽度，单位：毫米。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示页面高度，单位：毫米。 |
 
 
 
