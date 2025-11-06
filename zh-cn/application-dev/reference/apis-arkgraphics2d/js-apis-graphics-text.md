@@ -449,6 +449,8 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -457,10 +459,46 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
-      Button("get fontDesciptors")
+      Button("get fontDescriptors")
         .onClick(async () => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
+            for (let index = 0; index < fontFullDescriptors.length; index++) {
+              console.info("Path:" + fontFullDescriptors[index].path +
+                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
+                          "\nfullName:" + fontFullDescriptors[index].fullName +
+                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
+                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
+                          "\nweight:" + fontFullDescriptors[index].weight +
+                          "\nwidth:" + fontFullDescriptors[index].width +
+                          "\nitalic:" + fontFullDescriptors[index].italic +
+                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
+                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent, FlexAlign } from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontDescriptorsFromPathTest {
+  build() {
+    Column() {
+      Button("get fontDescriptors")
+        .onClick((e: ClickEvent) => {
+          let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          promise.then((fontFullDescriptors: Array<text.FontDescriptor>) => {
             for (let index = 0; index < fontFullDescriptors.length; index++) {
               console.info("Path:" + fontFullDescriptors[index].path +
                           "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
