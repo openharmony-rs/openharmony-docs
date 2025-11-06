@@ -301,6 +301,13 @@ struct MyComponent {
 1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
 
     <!-- @[state_scene_type_class_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
+    
+    ``` TypeScript
+    // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
+    MyComponent({ count: 1, increaseBy: 2 })
+    // increaseBy没有外部传入，使用本地的值1进行初始化
+    MyComponent({ title: new Model('Hello World 2'), count: 7 })
+    ```
 
 2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
 
