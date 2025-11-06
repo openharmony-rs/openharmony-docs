@@ -38,7 +38,7 @@ constructor(webTag?: string)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -222,7 +222,7 @@ static setHttpDns(secureDnsMode:SecureDnsMode, secureDnsConfig:string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -298,7 +298,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1099,7 +1099,7 @@ ArkTS-Sta: accessStep(step: int): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1192,7 +1192,7 @@ clearHistory(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -1277,7 +1277,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1563,7 +1563,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1704,7 +1704,7 @@ runJavaScript(script: string): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2244,7 +2244,7 @@ deleteJavaScriptRegister(name: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2415,7 +2415,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2508,7 +2508,7 @@ searchAllAsync(searchString: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2617,7 +2617,7 @@ clearMatches(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2696,7 +2696,7 @@ searchNext(forward: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2782,7 +2782,7 @@ clearSslCache(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -2859,7 +2859,7 @@ clearClientAuthenticationCache(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -3176,7 +3176,7 @@ zoomIn(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -3256,7 +3256,7 @@ zoomOut(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -3421,7 +3421,7 @@ getUserAgent(): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3676,7 +3676,7 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback\<st
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3780,7 +3780,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3987,7 +3987,7 @@ ArkTS-Sta: backOrForward(step: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4075,7 +4075,7 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4203,7 +4203,7 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4328,13 +4328,13 @@ ArkTS-Dyn: scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
-将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。当属性没有显式调用时，默认当前网页不可以滑动。
+将页面滚动指定的偏移量，返回值表示此次滚动是否执行成功。若未显式调用该属性，默认当前网页不可以滑动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4460,7 +4460,7 @@ ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4673,7 +4673,7 @@ setNetworkAvailable(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4780,7 +4780,7 @@ hasImage(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4878,7 +4878,7 @@ hasImage(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4976,7 +4976,7 @@ removeCache(clearRom: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5064,7 +5064,7 @@ static removeAllCache(clearRom: boolean): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5147,7 +5147,7 @@ pageUp(top: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5231,7 +5231,7 @@ pageDown(bottom: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5319,7 +5319,7 @@ getBackForwardEntries(): BackForwardList
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5402,7 +5402,7 @@ serializeWebState(): Uint8Array
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 **返回值：**
@@ -6006,7 +6006,7 @@ setAudioMuted(mute: boolean): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6205,7 +6205,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6480,7 +6480,7 @@ ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6560,7 +6560,7 @@ setCustomUserAgent(userAgent: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6648,7 +6648,7 @@ setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6733,7 +6733,7 @@ startDownload(url: string): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6837,7 +6837,7 @@ getCustomUserAgent(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7039,7 +7039,7 @@ ArkTS-Sta: static setConnectionTimeout(timeout: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7136,7 +7136,7 @@ static warmupServiceWorker(url: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7206,7 +7206,7 @@ enableSafeBrowsing(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7291,7 +7291,7 @@ isSafeBrowsingEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7358,7 +7358,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7449,7 +7449,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7539,7 +7539,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7629,7 +7629,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7719,7 +7719,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7794,7 +7794,7 @@ static getDefaultUserAgent(): string
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7848,7 +7848,7 @@ enableAdsBlock(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7939,7 +7939,7 @@ isAdsBlockEnabled() : boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8029,7 +8029,7 @@ isAdsBlockEnabledForCurPage() : boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8118,7 +8118,7 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 **参数：**
@@ -8202,7 +8202,7 @@ static getRenderProcessMode(): RenderProcessMode
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8274,7 +8274,7 @@ terminateRenderProcess(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8533,7 +8533,7 @@ isIncognitoMode(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8618,7 +8618,7 @@ getSecurityLevel(): SecurityLevel
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8694,7 +8694,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8832,7 +8832,7 @@ setPrintBackground(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8914,7 +8914,7 @@ getPrintBackground(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9141,7 +9141,7 @@ pauseAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9243,7 +9243,7 @@ resumeAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9367,7 +9367,7 @@ stopAllMedia(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9446,7 +9446,7 @@ pauseAllMedia(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9525,7 +9525,7 @@ resumeAllMedia(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9604,7 +9604,7 @@ closeAllMediaPresentations(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -9683,7 +9683,7 @@ getMediaPlaybackState(): MediaPlaybackState
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9768,7 +9768,7 @@ setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9899,7 +9899,7 @@ setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): voi
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9985,7 +9985,7 @@ clearServiceWorkerWebSchemeHandler(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -10044,7 +10044,7 @@ startCamera(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -10259,7 +10259,7 @@ stopCamera(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -10283,7 +10283,7 @@ closeCamera(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -10825,6 +10825,10 @@ onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -10833,6 +10837,7 @@ onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -11039,6 +11044,214 @@ function shouldHandle(mediaInfo: webview.MediaInfo) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Observed, State, AppStorage, ObjectLink } from '@ohos.arkui.stateManagement';
+import { XComponent, XComponentType, XComponentController, Text, Alignment, Resource, ForEach, Area, XComponentOptions,
+  TouchEvent, Stack, Entry, Color, Component, Column, Row, Button, VideoController, Builder, ClickEvent, Web, wrapBuilder,
+  FrameNode, NodeContainer, FlexAlign } from "@ohos.arkui.component"
+import { NodeController, NodeRenderType, BuilderNode } from '@ohos.arkui.node';
+import webview from '@ohos.web.webview';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+class ActualNativeMediaPlayerListener {
+  handler: webview.NativeMediaPlayerHandler;
+
+  constructor(handler: webview.NativeMediaPlayerHandler) {
+    this.handler = handler;
+  }
+
+  onPlaying() {
+    // 本地播放器开始播放。
+    this.handler.handleStatusChanged(webview.PlaybackStatus.PLAYING);
+  }
+  onPaused() {
+    // 本地播放器暂停播放。
+    this.handler.handleStatusChanged(webview.PlaybackStatus.PAUSED);
+  }
+  onSeeking() {
+    // 本地播放器开始执行跳转到目标时间点。
+    this.handler.handleSeeking();
+  }
+  onSeekDone() {
+    // 本地播放器 seek 完成。
+    this.handler.handleSeekFinished();
+  }
+  onEnded() {
+    // 本地播放器播放完成。
+    this.handler.handleEnded();
+  }
+  onVolumeChanged() {
+    // 获取本地播放器的音量。
+    let volume: number = getVolume();
+    this.handler.handleVolumeChanged(volume);
+  }
+  onCurrentPlayingTimeUpdate() {
+    // 更新播放时间。
+    let currentTime: number = getCurrentPlayingTime();
+    // 将时间单位换算成秒。
+    let currentTimeInSeconds = convertToSeconds(currentTime);
+    this.handler.handleTimeUpdate(currentTimeInSeconds);
+  }
+  onBufferedChanged() {
+    // 缓存发生了变化。
+    // 获取本地播放器的缓存时长。
+    let bufferedEndTime: number = getCurrentBufferedTime();
+    // 将时间单位换算成秒。
+    let bufferedEndTimeInSeconds = convertToSeconds(bufferedEndTime);
+    this.handler.handleBufferedEndTimeChanged(bufferedEndTimeInSeconds);
+
+    // 检查缓存状态。
+    // 如果缓存状态发生了变化，则向 ArkWeb 内核通知缓存状态。
+    let lastReadyState: webview.ReadyState = getLastReadyState();
+    let currentReadyState:  webview.ReadyState = getCurrentReadyState();
+    if (lastReadyState != currentReadyState) {
+      this.handler.handleReadyStateChanged(currentReadyState);
+    }
+  }
+  onEnterFullscreen() {
+    // 本地播放器进入了全屏状态。
+    let isFullscreen: boolean = true;
+    this.handler.handleFullscreenChanged(isFullscreen);
+  }
+  onExitFullscreen() {
+    // 本地播放器退出了全屏状态。
+    let isFullscreen: boolean = false;
+    this.handler.handleFullscreenChanged(isFullscreen);
+  }
+  onUpdateVideoSize(width: number, height: number) {
+    // 当本地播放器解析出视频宽高时， 通知 ArkWeb 内核。
+    this.handler.handleVideoSizeChanged(width, height);
+  }
+  onDurationChanged(duration: number) {
+    // 本地播放器解析到了新的媒体时长， 通知 ArkWeb 内核。
+    this.handler.handleDurationChanged(duration);
+  }
+  onError(error: webview.MediaError, errorMessage: string) {
+    // 本地播放器出错了，通知 ArkWeb 内核。
+    this.handler.handleError(error, errorMessage);
+  }
+  onNetworkStateChanged(state: webview.NetworkState) {
+    // 本地播放器的网络状态发生了变化， 通知 ArkWeb 内核。
+    this.handler.handleNetworkStateChanged(state);
+  }
+  onPlaybackRateChanged(playbackRate: number) {
+    // 本地播放器的播放速率发生了变化， 通知 ArkWeb 内核。
+    this.handler.handlePlaybackRateChanged(playbackRate);
+  }
+  onMutedChanged(muted: boolean) {
+    // 本地播放器的静音状态发生了变化， 通知 ArkWeb 内核。
+    this.handler.handleMutedChanged(muted);
+  }
+
+  // ... 监听本地播放器其他的状态 ...
+}
+
+class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge {
+  constructor(handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo) {
+    // 1. 创建一个本地播放器的状态监听。
+    let listener: ActualNativeMediaPlayerListener = new ActualNativeMediaPlayerListener(handler);
+    // 2. 创建一个本地播放器。
+    // 3. 监听该本地播放器。
+    // ...
+  }
+
+  updateRect: webview.UpdateRectFn = (x: double, y: double, width: double, height: double) : void=> {
+    // <video> 标签的位置和大小发生了变化。
+    // 根据该信息变化，作出相应的改变。
+  }
+
+  play: webview.ZeroParamFn = () : void=> {
+    // 启动本地播放器播放。
+  }
+
+  pause: webview.ZeroParamFn = () : void=> {
+    // 暂停本地播放器播放。
+  }
+
+  seek: webview.OneParamFn<double> = (targetTime: double) : void=> {
+    // 本地播放器跳转到指定的时间点。
+  }
+
+  release: webview.ZeroParamFn = () : void=> {
+    // 销毁本地播放器。
+  }
+
+  setVolume: webview.OneParamFn<double> = (volume: double) : void=> {
+    // ArkWeb 内核要求调整本地播放器的音量。
+    // 设置本地播放器的音量。
+  }
+
+  setMuted: webview.OneParamFn<boolean> = (muted: boolean) : void=> {
+    // 将本地播放器静音或取消静音。
+  }
+
+  setPlaybackRate: webview.OneParamFn<double> = (playbackRate: double) : void=> {
+    // 调整本地播放器的播放速度。
+  }
+
+  enterFullscreen: webview.ZeroParamFn = () : void=> {
+    // 将本地播放器设置为全屏播放。
+  }
+
+  exitFullscreen: webview.ZeroParamFn = () : void=> {
+    // 将本地播放器退出全屏播放。
+  }
+
+  resumePlayer?: webview.ResumePlayerFn = () : void=> {
+    // 重新创建应用内播放器。
+    // 恢复应用内播放器的状态信息。
+  }
+
+  suspendPlayer?: webview.SuspendPlayerFn = (type: webview.SuspendType) : void=> {
+    // 记录应用内播放器的状态信息。
+    // 销毁应用内播放器。
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined)
+  build() {
+    Column(undefined) {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .enableNativeMediaPlayer({enable: true, shouldOverlay: false})
+        .onControllerAttached((): void => {
+          this.controller.onCreateNativeMediaPlayer((handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo): webview.NativeMediaPlayerBridge => {
+            let nativePlayer: webview.NativeMediaPlayerBridge = new NativeMediaPlayerImpl(handler, mediaInfo);
+            return nativePlayer;
+          });
+        })
+    }
+  }
+}
+
+// stub
+function getVolume() {
+  return 1;
+}
+function getCurrentPlayingTime() {
+  return 1;
+}
+function getCurrentBufferedTime() {
+  return 1;
+}
+function convertToSeconds(input: number) {
+  return input;
+}
+function getLastReadyState() {
+  return webview.ReadyState.HAVE_NOTHING;
+}
+function getCurrentReadyState() {
+  return webview.ReadyState.HAVE_NOTHING;
+}
+function shouldHandle(mediaInfo: webview.MediaInfo) {
+  return true;
+}
+```
+
 ## enableWholeWebPageDrawing<sup>12+</sup>
 
 static enableWholeWebPageDrawing(): void
@@ -11049,7 +11262,7 @@ static enableWholeWebPageDrawing(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -11124,7 +11337,7 @@ webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback\<SnapshotResult>): v
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11760,7 +11973,7 @@ ArkTS-Sta: static setHostIP(hostName: string, address: string, aliveTime: int): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11792,7 +12005,7 @@ static clearHostIP(hostName: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11893,7 +12106,7 @@ getSurfaceId(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -12094,7 +12307,7 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -12254,7 +12467,7 @@ ArkTS-Sta: static enableBackForwardCache(features?: BackForwardCacheSupportedFea
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -12455,7 +12668,7 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -12823,7 +13036,7 @@ getScrollOffset(): ScrollOffset
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值**
 
@@ -13011,7 +13224,7 @@ getLastHitTest(): HitTestValue
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -13100,7 +13313,7 @@ getAttachState(): ControllerAttachState
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -13395,7 +13608,7 @@ ArkTS-Sta: waitForAttached(timeout: int):Promise&lt;ControllerAttachState&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13499,7 +13712,7 @@ ArkTS-Sta: static setWebDebuggingAccess(webDebuggingAccess: boolean, port: int):
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -14035,7 +14248,7 @@ ArkTS-Sta: static setBlanklessLoadingCacheCapacity(capacity: int): int
 
 **ArkTS-Dyn起始版本：**  20
 
-**ArkTS-Sta起始版本：**  20
+**ArkTS-Sta起始版本：**  22
 
 **参数：**
 

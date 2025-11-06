@@ -12,23 +12,32 @@ ConsoleMessage的信息级别。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
-| Debug | 1 | 调试级别。 |
-| Error | 4 | 错误级别。 |
-| Info  | 2 | 消息级别。 |
-| Log   | 5 | 日志级别。 |
-| Warn  | 3 | 警告级别。 |
+| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 1 | 调试级别。 |
+| ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO| 2 | 消息级别。 |
+| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 3 | 警告级别。 |
+| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 4 | 错误级别。 |
+| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 5 | 日志级别。 |
 
 ## MixedMode
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+
 | 名称        | 值 | 说明                                 |
 | ---------- | -- | ---------------------------------- |
-| All        | 0 | 宽松模式：允许加载HTTP和HTTPS混合内容。所有不安全的内容都可以被加载。 |
-| Compatible | 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
-| None       | 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
+| ArkTS-Dyn: All <br>ArkTS-Sta: ALL| 0 | 宽松模式：允许加载HTTP和HTTPS混合内容。所有不安全的内容都可以被加载。 |
+| ArkTS-Dyn: Compatible <br>ArkTS-Sta: COMPATIBLE| 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
+| ArkTS-Dyn: None  <br>ArkTS-Sta: NONE| 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
 
 ## HitTestType
 
@@ -51,11 +60,10 @@ ConsoleMessage的信息级别。
 
 | 名称      | 值 | 说明                                   |
 | ------- | -- | ------------------------------------ |
-| Default<sup>9+</sup> | 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。 |
-| None    | 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。     |
-| Online  | 2 | 强制从网络获取最新资源，不使用任何cache。               |
-| Only    | 3 | 仅使用本地cache加载资源。                        |
-
+| ArkTS-Dyn: Default<sup>9+</sup> <br>ArkTS-Sta: DEFAULT| 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: None  <br> ArkTS-Sta: NONE| 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: Online <br>ArkTS-Sta: ONLINE| 2 | 强制从网络获取最新资源，不使用任何cache。<br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: Only <br>ArkTS-Sta: ONLY| 3 | 仅使用本地cache加载资源。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
 
 ## OverScrollMode<sup>11+</sup>
 
@@ -87,11 +95,15 @@ Web深色模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 值 | 说明           |
 | ---- | -- | ------------ |
-| Off  | 0 | Web深色模式关闭。   |
-| On   | 1 | Web深色模式开启。   |
-| Auto | 2 | Web深色模式跟随系统。 |
+| ArkTS-Dyn: Off <br>ArkTS-Sta: OFF| 0 | Web深色模式关闭。   |
+| ArkTS-Dyn: On  <br>ArkTS-Sta: ON| 1 | Web深色模式开启。   |
+| ArkTS-Dyn: Auto <br>ArkTS-Sta: AUTO| 2 | Web深色模式跟随系统。 |
 
 ## WebCaptureMode<sup>10+</sup>
 
@@ -128,13 +140,17 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出。         |
-| ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
-| ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
-| ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因。             |
+| ArkTS-Dyn: ProcessAbnormalTermination <br>ArkTS-Sta: PROCESS_ABNORMAL_TERMINATION| 0 | 渲染进程异常退出。         |
+| ArkTS-Dyn: ProcessWasKilled <br>ArkTS-Sta: PROCESS_WAS_KILLED| 1 | 收到SIGKILL，或被手动终止。 |
+| ArkTS-Dyn: ProcessCrashed <br>ArkTS-Sta: PROCESS_CRASHED| 2 | 渲染进程崩溃退出，如段错误。    |
+| ArkTS-Dyn: ProcessOom <br>ArkTS-Sta: PROCESS_OOM| 3 | 程序内存不足。           |
+| ArkTS-Dyn: ProcessExitUnknown <br>ArkTS-Sta: PROCESS_EXIT_UNKNOWN| 4 | 其他原因。             |
 
 ## SslError<sup>9+</sup>
 
@@ -142,12 +158,16 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称           | 值 | 说明          |
 | ------------ | -- | ----------- |
-| Invalid      | 0 | 一般错误。       |
-| HostMismatch | 1 | 主机名不匹配。     |
-| DateInvalid  | 2 | 证书日期无效。     |
-| Untrusted    | 3 | 证书颁发机构不受信任。 |
+| ArkTS-Dyn: Invalid <br>ArkTS-Sta: INVALID| 0 | 一般错误。       |
+| ArkTS-Dyn: HostMismatch <br>ArkTS-Sta: HOST_MISMATCH| 1 | 主机名不匹配。     |
+| ArkTS-Dyn: DateInvalid <br>ArkTS-Sta: DATE_INVALID| 2 | 证书日期无效。     |
+| ArkTS-Dyn: Untrusted <br>ArkTS-Sta: UNTRUSTED| 3 | 证书颁发机构不受信任。 |
 
 ## FileSelectorMode<sup>9+</sup>
 
@@ -190,10 +210,10 @@ Web布局模式的配置。
 
 | 名称                          | 值 | 说明            |
 | --------------------------- | --------------- | ------------- |
-| MidiSysex                   | TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。 |
-| VIDEO_CAPTURE<sup>10+</sup> | TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。  |
-| AUDIO_CAPTURE<sup>10+</sup> | TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。 |
-| SENSOR<sup>12+</sup>        | TYPE_SENSOR | 传感器资源，例如加速度传感器。 |
+| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
 
 ## ContextMenuSourceType<sup>9+</sup>
 
