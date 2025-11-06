@@ -981,7 +981,9 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 
 ## window.getSnapshot<sup>12+</sup>
 
-getSnapshot(windowId: number): Promise<image.PixelMap>
+ArkTS-Dyn: getSnapshot(windowId: number): Promise<image.PixelMap>
+
+ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置），截图结果为白屏。
 
@@ -996,7 +998,7 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
 | -------- | ------ | ----- | ------------ |
-| windowId | number | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
 
 **返回值：**
 | 类型                    | 说明                            |
@@ -1050,11 +1052,11 @@ try {
   promise.then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
     pixelMap.release();
-  }).catch((err: BusinessError) =>{
-    console.error(`Failed to get snapshot. Cause code: ${err}, message: ${err}`);
+  }).catch((err) =>{
+    console.error(`Failed to get snapshot. Cause: ${err}, ${err}`);
   });
 } catch (exception) {
-  console.error(`Failed to get snapshot. Cause code: ${exception}, message: ${exception}`);
+  console.error(`Failed to get snapshot. Cause: ${exception}, ${exception}`);
 }
 ```
 
