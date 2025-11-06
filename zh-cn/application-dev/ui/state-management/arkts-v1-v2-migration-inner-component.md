@@ -203,6 +203,37 @@ V1实现：
 
 <!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  // @Link可以双向同步数据
+  @Link val: number;
+
+  build() {
+    Column() {
+      Text('child: ' + this.val.toString())
+      Button('+1')
+        .onClick(() => {
+          this.val++;
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State myVal: number = 10;
+
+  build() {
+    Column() {
+      Text('parent: ' + this.myVal.toString())
+      Child({ val: this.myVal })
+    }
+  }
+}
+```
+
 
 V2迁移策略：使用\@Param和\@Event。
 
