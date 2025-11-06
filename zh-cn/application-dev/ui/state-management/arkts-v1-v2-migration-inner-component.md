@@ -106,6 +106,30 @@ V2迁移策略：使用\@ObservedV2和\@Trace。
 
 <!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Child {
+  @Trace public value: number = 10;
+}
+
+@ComponentV2
+@Entry
+struct Example {
+  @Local child: Child = new Child();
+
+  build() {
+    Column() {
+      Text(this.child.value.toString())
+      // @Local只能观察自身，需要给Child加上@ObservedV2和@Trace
+      Button('value+1')
+        .onClick(() => {
+          this.child.value++;
+        })
+    }
+  }
+}
+```
+
 
 
 **外部初始化状态变量**
