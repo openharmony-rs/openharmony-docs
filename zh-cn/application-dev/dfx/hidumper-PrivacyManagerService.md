@@ -1,4 +1,4 @@
-# PrivacyManagerService（访问控制基础信息显示）
+# PrivacyManagerService
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-访问控制基于[hidumper](hidumper.md)增强开发了获取敏感权限使用记录的能力。
+PrivacyManagerService是访问控制基于[hidumper](hidumper.md)增强开发的命令行能力，可显示访问控制基础信息，获取敏感权限使用记录。
 
 ## 环境准备
 根据hidumper工具指导，完成[环境准备](hidumper.md#环境要求)。

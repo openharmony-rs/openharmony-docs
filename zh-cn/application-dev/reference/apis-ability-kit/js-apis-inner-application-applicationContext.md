@@ -221,7 +221,8 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 > **说明：**
 >
-> 使用[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)也可以实现对系统环境变量的监听。相较于Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口，当前接口的使用场景更加灵活，不仅可以在应用组件中使用，还可以在页面中使用，但是支持订阅的环境变量与Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口存在差异，如不支持订阅direction、screenDensity、displayId，详见[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)中各个环境变量的说明。
+> - 使用[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)也可以实现对系统环境变量的监听。相较于Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口，当前接口的使用场景更加灵活，不仅可以在应用组件中使用，还可以在页面中使用，但是支持订阅的环境变量与Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口存在差异，如不支持订阅direction、screenDensity、displayId，详见[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)中各个环境变量的说明。
+> - 当前接口在实际触发时存在一定限制。例如如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发当前接口的[callback](js-apis-app-ability-environmentCallback.md)回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -826,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 
@@ -866,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 
@@ -947,6 +954,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -963,10 +971,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }

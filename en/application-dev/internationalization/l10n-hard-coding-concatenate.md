@@ -1,10 +1,17 @@
 # Hard Coding and Concatenation Prevention
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Use Cases
 
 A key part of localization is the translation of resource files. To improve the translation efficiency, avoid hard coding and concatenation during development.
 
-Different from obtaining data from external systems or generating data during operation, hard coding means to directly embedding data, parameters, and constants into programs to implement specific functions. Hard coding content displayed on the UI, including text in images, audios, and subtitles, is prohibited as this can increase the difficulty and workload in localization. In addition, a complete piece of text on the UI should not be concatenated by multiple segments. Concatenation makes it difficult to obtain the complete sentence, resulting in translation errors or semantic errors. For example, in the following figure, when **Rain tomorrow** and **Bring an umbrella** are directly concatenated, a capitalization error will arise.
+Different from obtaining data from external systems or generating data during runtime, hard coding means to directly embed data, parameters, and constants into programs to implement specific functions. Hard-coded content displayed on the UI, including text in images, audios, and subtitles, is prohibited as this can increase the difficulty and workload in localization. In addition, a complete piece of text on the UI should not be concatenated from multiple segments. Concatenation makes it difficult to obtain the complete sentence, potentially resulting in translation errors or semantic errors. For example, in the following figure, when **Rain tomorrow** and **Bring an umbrella** are directly concatenated, a capitalization error will occur.
 
 ![image_0000001784263061](figures/image_0000001784263061.png)
 

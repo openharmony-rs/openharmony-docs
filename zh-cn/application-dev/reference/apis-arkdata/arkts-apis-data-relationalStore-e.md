@@ -29,14 +29,15 @@
 
 ## EncryptionAlgo<sup>14+</sup>
 
-数据库的加密算法枚举。请使用枚举名称而非枚举值。
+数据库的加密方式枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| AES_256_GCM |  0    | AES_256_GCM加密算法。     |
-| AES_256_CBC |  1    | AES_256_CBC加密算法。     |
+| AES_256_GCM |  0    | 数据库使用AES_256_GCM加密。     |
+| AES_256_CBC |  1    | 数据库使用AES_256_CBC加密。     |
+| PLAIN_TEXT<sup>22+</sup> | 2 | 数据库不进行加密。 |
 
 ## HmacAlgo<sup>14+</sup>
 

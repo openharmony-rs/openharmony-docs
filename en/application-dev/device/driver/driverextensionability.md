@@ -33,151 +33,161 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
 
 4. Import the related kit, and define the request code.
 
-    ```ts
-    import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
-    import { Want } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
+    <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
 
-    const REQUEST_CODE = 99; // Negotiate the request code with the peripheral client.
-    ```
+``` TypeScript
+import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+import { Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+
+const REQUEST_CODE = 99; // Negotiate the request code with the peripheral client.
+```
+
 
 5. Open the **DriverExtAbility.ets** file, import the [RPC module](../../reference/apis-ipc-kit/js-apis-rpc.md), and overload the **onRemoteMessageRequest()** method to receive messages from the application and return the processing result to the application. **REQUEST_CODE** is used to verify the service request code sent by the application.
 
-    ```ts
-    class StubTest extends rpc.RemoteObject {
-      // Receive a message from the application and return the processing result to the client.
-      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-        option: rpc.MessageOption) {
-        if (code === REQUEST_CODE) {
-          // Receive the data sent from the application.
-          // When the application calls data.writeString() multiple times to write data, the driver can receive the corresponding data by calling data.readString() for multiple times.
-          let optFir: string = data.readString();
-          // The driver returns the data processing result to the application.
-          // In the example, Hello is received and Hello World is returned to the application.
-          reply.writeString(optFir + ` World`);
-        }
-        return true;
-      }
+    <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
+
+``` TypeScript
+class StubTest extends rpc.RemoteObject {
+  // Receive a message from the application and return the processing result to the client.
+  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    option: rpc.MessageOption) {
+    if (code === REQUEST_CODE) {
+      // Receive the data sent from the application.
+      // When the application calls data.writeString() multiple times to write data, the driver can receive the corresponding data by calling data.readString() for multiple times.
+      let optFir: string = data.readString();
+      // The driver returns the data processing result to the application.
+      // In the example, Hello is received and Hello World is returned to the application.
+      reply.writeString(optFir + ` World`);
     }
-    ```
+    return true;
+  }
+}
+```
+
 
 6. In the **DriverExtAbility.ets** file, import the dependency package [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md), which provides the **onInit()**, **onRelease()**, **onConnect()**, and **onDisconnect()** lifecycle callbacks. Then, customize a class to inherit from [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) and override the lifecycle callbacks as required.
 
-    ```ts
-    export default class DriverExtAbility extends DriverExtensionAbility {
-      onInit(want: Want) {
-        console.info('testTag', `onInit, want: ${want.abilityName}`);
-      }
+    <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) -->
 
-      onRelease() {
-        console.info('testTag', `onRelease`);
-      }
+``` TypeScript
+export default class DriverExtAbility extends DriverExtensionAbility {
+  onInit(want: Want) {
+    console.info('testTag', `onInit, want: ${want.abilityName}`);
+  }
 
-      onConnect(want: Want) {
-        console.info('testTag', `onConnect, want: ${want.abilityName}`);
-        return new StubTest("test");
-      }
+  onRelease() {
+    console.info('testTag', `onRelease`);
+  }
 
-      onDisconnect(want: Want) {
-        console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
-      }
+  onConnect(want: Want) {
+    console.info('testTag', `onConnect, want: ${want.abilityName}`);
+    return new StubTest('test');
+  }
 
-      onDump(params: Array<string>) {
-        console.info('testTag', `onDump, params:` + JSON.stringify(params));
-        return ['params'];
-      }
-    }
-    ```
+  onDisconnect(want: Want) {
+    console.info('testTag', `onDisconnect, want: ${want.abilityName}`);
+  }
+
+  onDump(params: Array<string>) {
+    console.info('testTag', `onDump, params:` + JSON.stringify(params));
+    return ['params'];
+  }
+}
+```
+
 
 7. Register **DriverExtensionAbility** in the [**module.json5** file](../../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **service** and **srcEntry** to the code path of **DriverExtensionAbility**.
 
-    ```json
-    {
-      "module": {
-        "name": "entry",
-        "type": "entry",
-        "description": "$string:module_desc",
-        "mainElement": "EntryAbility",
-        "deviceTypes": [
-          "default",
-          "tablet"
-        ],
-        "requestPermissions": [
+    <!-- @[driver_service_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // Peripheral-specific permission, which is mandatory.
+      }
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
           {
-            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // Peripheral-specific permission, which is mandatory.
-          },
-          {
-            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // Peripheral access permission, which is mandatory in API version 18 or later.
-          }
-        ],
-        "deliveryWithInstall": true,
-        "installationFree": false,
-        "pages": "$profile:main_pages",
-        "abilities": [
-          {
-            "name": "EntryAbility",
-            "srcEntry": "./ets/entryability/EntryAbility.ets",
-            "description": "$string:EntryAbility_desc",
-            "icon": "$media:startIcon",
-            "label": "$string:EntryAbility_label",
-            "startWindowIcon": "$media:startIcon",
-            "startWindowBackground": "$color:start_window_background",
-            "exported": true,
-            "skills": [
-              {
-                "entities": [
-                  "entity.system.home"
-                ],
-                "actions": [
-                  "ohos.want.action.home"
-                ]
-              }
-            ]
-          }
-        ],
-        "extensionAbilities": [
-          {
-            "name": "DriverExtAbility",
-            "icon": "$media:startIcon",
-            "description": "driver",
-            "type": "driver",
-            "exported": true,
-            "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
-            "metadata": [
-              {
-                "name": "bus", // Bus, which is mandatory.
-                "value": "USB"
-              },
-              {
-                "name": "desc", // Driver description, which is optional.
-                "value": "the sample of driverExtensionAbility"
-              },
-              {
-                "name": "vendor", // Driver vendor name, which is optional.
-                "value": "string"
-              },
-              {
-                "name": "vid," // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
-                "value": "0x12D1"
-              },
-              {
-                "name": "pid," // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
-                "value": "0x10A2"
-              },
-              {
-                "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and the value false indicates immediate startup. The value is false by default if the specified value is incorrect or the value is left unspecified.
-                "value": "true"
-              },
-              {
-                "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value true indicates that DDK access is allowed, and the value false indicates the opposite. The default value is false.
-                "value": "true"
-              }
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
             ]
           }
         ]
       }
-    }
-    ```
+    ],
+    "extensionAbilities": [
+      {
+        "name": "DriverExtAbility",
+        "icon": "$media:startIcon",
+        "description": "driver",
+        "type": "driver",
+        "exported": true,
+        "srcEntry": "./ets/driverextability/DriverExtAbility.ets",
+        "metadata": [
+          {
+            "name": "bus", // Bus, which is mandatory.
+            "value": "USB"
+          },
+          {
+            "name": "desc", // Driver description, which is optional.
+            "value": "the sample of driverExtensionAbility"
+          },
+          {
+            "name": "vendor", // Driver vendor name, which is optional.
+            "value": "string"
+          },
+          {
+            "name": "vid," // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
+            "value": "0x12D1"
+          },
+          {
+            "name": "pid," // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
+            "value": "0x10A2"
+          },
+          {
+            "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and the value false indicates immediate startup. The value is false by default if the specified value is incorrect or the value is left unspecified.
+            "value": "true"
+          },
+          {
+            "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value true indicates that DDK access is allowed, and the value false indicates the opposite. The default value is false.
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 
 8. After completing development of the client and driver sample code, import the HAP to the device by following instructions in [Running Your App/Atomic Service on a Local Real Device](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-device), and run **Hello** in the HAP to check whether **Hello world** is displayed. If yes, the IPC communication is ready for use.
 

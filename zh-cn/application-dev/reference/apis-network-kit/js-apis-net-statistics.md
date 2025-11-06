@@ -816,7 +816,8 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 > **说明：**
 >
->本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天以上，会抛出错误码2103019。
+>- 当前只支持获取蜂窝和Wi-Fi流量使用情况。<br>
+>- 当前只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天，会返回错误码2103019。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -887,7 +888,7 @@ type NetBearType = connection.NetBearType
 | type      | [NetBearType](#netbeartype12) | 否  | 否|网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
 | startTime | number                                               | 否  |否| 开始时间戳(单位：秒)。 |
 | endTime   | number                                               | 否  |否 |结束时间戳(单位：秒)。 |
-| simId     | number                                               | 否  | 是|SIM 卡 ID。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
+| simId     | number                                               | 否  | 是|SIM卡ID。默认值为uint32_t类型最大值。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
 
 ## NetStatsInfo<sup>22+</sup>
 

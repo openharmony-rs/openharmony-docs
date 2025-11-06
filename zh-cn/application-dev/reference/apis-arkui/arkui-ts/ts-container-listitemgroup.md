@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 该组件用来展示列表item分组，宽度默认充满[List](ts-container-list.md)组件，必须配合List组件来使用。
 
@@ -339,7 +339,7 @@ interface ArrObject {
 
 该示例通过ComponentContent设置Header/Footer。
 
-ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
 
 <!--code_no_check-->
 ```ts

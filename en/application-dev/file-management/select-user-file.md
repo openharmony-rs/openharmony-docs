@@ -1,8 +1,8 @@
 # Selecting User Files
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -39,15 +39,17 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    documentSelectOptions.maxSelectNumber = 5;
    // Optional. Specify the path of the files or folder to select.
    documentSelectOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
+   // Optional. Set the type of the documents to select. The default value is FILE. This parameter can be used on 2-in-1 devices but does not take effect on other devices.
+   documentSelectOptions.selectMode = picker.DocumentSelectMode.FILE;
    // (Optional. If this parameter is not transferred, all files are displayed by default.) Set the file name extension types ['File name extension description|File name extension type'] that can be selected. (Optional) Use a comma to separate multiple file name extensions, which cannot exceed 100. The wildcard ['All files (*.*)|.*'] is available for 2-in-1 devices (for mobile phones since API version 17).
     documentSelectOptions.fileSuffixFilters = ['Image(.png, .jpg)|.png, .jpg', 'Document|.txt', 'Video|.mp4', '.pdf'];
-   // Whether to grant the permission for the specified files or directory. The value true means to grant the permission, and the value false (default) means the opposite. If this parameter is true, defaultFilePathUri is mandatory and the file management authorization page is displayed. If this parameter is false, a common file management page is displayed. This parameter is optional and only 2-in-1 devices are supported.
+   // Whether to grant the permission for the specified files or directory. The value true means to grant the permission, and the value false (default) means the opposite. If this parameter is true, defaultFilePathUri is mandatory and the file management authorization page is displayed. If this parameter is false, a common file management page is displayed. This parameter can be used on 2-in-1 devices but does not take effect on other devices.
    documentSelectOptions.authMode = false;
-   // Whether to enable the batch authorization mode. The value true means to enable the batch authorization mode, and the value false (default) means the opposite. When multAuthMode is set to true, only the multiUriArray parameter takes effect. Only mobile phones are supported.
+   // Whether to enable the batch authorization mode. The value true means to enable the batch authorization mode, and the value false (default) means the opposite. When multiAuthMode is set to true, only the multiUriArray parameter takes effect. This parameter can be used on smartphones but does not take effect on other devices.
    documentSelectOptions.multiAuthMode = false;
-   // Whether to pass the URIs for batch authorization. (Only files are supported and folders are not supported.) This parameter does not take effect when multAuthMode is set to false. Only mobile phones are supported.
+   // Whether to pass the URIs for batch authorization. (Only files are supported and folders are not supported.) This parameter does not take effect when multiAuthMode is set to false. This parameter can be used on smartphones but does not take effect on other devices.
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means that this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect. Only mobile phones are supported.
+   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means that this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect. This parameter can be used on smartphones but does not take effect on other devices.
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    // Whether to support encryption (only files are supported). The default value is false. If this parameter is set to true, files can be encrypted on the Picker page. Note that this parameter is supported since API version 19.
    documentSelectOptions.isEncryptionSupported = false;
@@ -56,7 +58,7 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) to start the FilePicker application page for the user to select documents.
 
    ```ts
-   let uris: Array<string> = [];
+   let uris: string[] = [];
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
    // Create a DocumentViewPicker instance.
@@ -72,18 +74,20 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
    > **NOTE**
    >
-   > - The permission for the URI returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker is a temporary read-only permission. The temporary permission will be invalidated once the application exits.<br>
-   > - You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
-   > - Further operations can be performed on the documents based on the file URIs returned in the result set. You are advised to define a global variable to save the URI.<br>
-   > - If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
+   > The permission for the URI returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker is a temporary read-only permission. The temporary permission will be invalidated once the application exits.<br>
+   > You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
+   > Further operations can be performed on the documents based on the file URIs returned in the result set. You are advised to define a global variable to save the URI.<br>
+   > If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
 
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The file descriptor (FD) is returned after the document is opened.
 
    ```ts
-   let uri: string = '';
-   // Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
-   let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	// Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
+   	let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. Call [fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync) to read data from the document based on the FD.
@@ -120,13 +124,13 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5) to start the AudioPicker application page for the user to select audio clips.
 
    ```ts
-   let uris: string = '';
+   let uris: string[] = [];
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
    const audioViewPicker = new picker.AudioViewPicker(context);
    audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
      // After the files are selected, a result set containing the URIs of the audio files selected is returned.
-     uris = audioSelectResult[0];
+     uris = audioSelectResult;
      console.info('audioViewPicker.select to file succeed and uri is:' + uris);
    }).catch((err: BusinessError) => {
      console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
@@ -142,10 +146,12 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 4. After the application UI is returned from AudioPicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
 
    ```ts
-   let uri: string = '';
-   // Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
-   let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	// Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
+  		let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. Call [fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync) to read data from the audio clip based on the FD.

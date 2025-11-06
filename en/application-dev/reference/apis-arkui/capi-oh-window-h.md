@@ -24,25 +24,32 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 ### Functions
 
-| Name| Description|
-| -- | -- |
-| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | Sets whether to display the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | Sets the color of the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | Sets whether to display the navigation bar in a window.|
-| [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | Obtains the avoid area of a window.|
-| [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | Checks whether a window is displayed.|
-| [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | Shows a window.|
-| [int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)](#oh_windowmanager_setwindowtouchable) | Sets whether a window is touchable.|
-| [int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)](#oh_windowmanager_setwindowfocusable) | Sets whether a window is focusable.|
-| [int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)](#oh_windowmanager_setwindowbackgroundcolor) | Sets the background color of a window.|
-| [int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)](#oh_windowmanager_setwindowbrightness) | Sets the screen brightness of a window.|
-| [int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)](#oh_windowmanager_setwindowkeepscreenon) | Sets whether to always keep the screen on for a window.|
-| [int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)](#oh_windowmanager_setwindowprivacymode) | Sets whether to enable privacy mode for a window.|
-| [int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)](#oh_windowmanager_getwindowproperties) | Obtains the properties of a window.|
-| [int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)](#oh_windowmanager_snapshot) | Obtains the snapshot of a window.|
-| [int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)](#oh_windowmanager_getallwindowlayoutinfolist) | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.|
-| [void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)](#oh_windowmanager_releaseallwindowlayoutinfolist) | Releases the memory occupied by a window layout information array.|
-| [int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](#oh_windowmanager_injecttouchevent) | Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.|
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | Sets whether to display the status bar in a window.|
+| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | Sets the color of the status bar in a window.|
+| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | Sets whether to display the navigation bar in a window.|
+| [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | - | Obtains the avoid area of a window.|
+| [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | - | Checks whether a window is displayed.|
+| [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | - | Shows a window.|
+| [int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)](#oh_windowmanager_setwindowtouchable) | - | Sets whether a window is touchable.|
+| [int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)](#oh_windowmanager_setwindowfocusable) | - | Sets whether a window is focusable.|
+| [int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)](#oh_windowmanager_setwindowbackgroundcolor) | - | Sets the background color of a window.|
+| [int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)](#oh_windowmanager_setwindowbrightness) | - | Sets the screen brightness of a window.|
+| [int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)](#oh_windowmanager_setwindowkeepscreenon) | - | Sets whether to always keep the screen on for a window.|
+| [int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)](#oh_windowmanager_setwindowprivacymode) | - | Sets whether to enable privacy mode for a window.|
+| [int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)](#oh_windowmanager_getwindowproperties) | - | Obtains the properties of a window.|
+| [int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)](#oh_windowmanager_snapshot) | - | Obtains the snapshot of a window.|
+| [int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)](#oh_windowmanager_getallwindowlayoutinfolist) | - | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.|
+| [void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)](#oh_windowmanager_releaseallwindowlayoutinfolist) | - | Releases the memory occupied by a window layout information array.|
+| [int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)](#oh_windowmanager_injecttouchevent) | - | Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.|
+| [int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)](#oh_windowmanager_getallmainwindowinfo) | - | Obtains the information about all main windows.|
+| [void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)](#oh_windowmanager_releaseallmainwindowinfo) | - | Releases the memory used by the main window information list.|
+| [typedef void (\*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)](#oh_windowmanager_windowsnapshotcallback) | OH_WindowManager_WindowSnapshotCallback | Defines the callback used for receiving the main window screenshot list.|
+| [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | Obtains the screenshots of one or more main windows specified by **windowId**.|
+| [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | Releases the memory used by the main window screenshot list.|
+| [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - |  Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.|
+| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | Clears the mouse cursor mode previously set for the window.|
 
 ## Function Description
 
@@ -405,7 +412,7 @@ Obtains the snapshot of a window.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.<br>If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required.<br>You can obtain a valid window ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object.|
+| int32_t windowId | Window ID. The default value is **0**. The value is an integer.<br>If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required.<br>You can obtain a valid window ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object|
 | [OH_PixelmapNative](capi-struct.md)* pixelMap | Pointer to the snapshot.|
 
 **Return value**
@@ -431,7 +438,7 @@ Obtains the layout information array of all windows visible on a display. The la
 
 | Parameter| Description|
 | -- | -- |
-| int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object.|
+| int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object|
 | [WindowManager_Rect](capi-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible.|
 | size_t* windowLayoutInfoSize | Pointer to the length of the layout information array.|
 
@@ -485,3 +492,171 @@ Injects a multimodal touch event into the target window. This function is limite
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
+
+### OH_WindowManager_GetAllMainWindowInfo()
+
+```
+int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)
+```
+
+**Description**
+
+Obtains the information about all main windows.
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**Since**: 21
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list.|
+| size_t* mainWindowInfoSize | Pointer to the size of the main window information list.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: The permission verification fails.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The feature is not supported by the device.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
+
+### OH_WindowManager_ReleaseAllMainWindowInfo()
+
+```
+void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)
+```
+
+**Description**
+
+Releases the memory used by the main window information list.
+
+**Since**: 21
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | Pointer to the main window information list.|
+
+### OH_WindowManager_WindowSnapshotCallback()
+
+```
+typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)
+```
+
+**Description**
+
+Defines the callback used for receiving the main window screenshot list.
+
+**Since**: 21
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | Double pointer to the window screenshot list.|
+|  size_t snapshotListSize | Size of the window screenshot list.|
+
+### OH_WindowManager_GetMainWindowSnapshot()
+
+```
+int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)
+```
+
+**Description**
+
+Obtains the screenshots of one or more main windows specified by **windowId**.
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**Since**: 21
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t* windowIdList | Pointer to the main window ID list.|
+| size_t windowIdListSize | Size of the main window ID list.|
+| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) config | Configuration for obtaining the window screenshot.|
+| [OH_WindowManager_WindowSnapshotCallback](capi-oh-window-h.md#oh_windowmanager_windowsnapshotcallback) callback | Callback used to return the lists of window screenshots, in the order of the provided window ID array.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: The permission verification fails.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The feature is not supported by the device.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
+
+### OH_WindowManager_ReleaseMainWindowSnapshot()
+
+```
+void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)
+```
+
+**Description**
+
+Releases the memory used by the main window screenshot list.
+
+**Since**: 21
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_PixelmapNative](capi-struct.md)* snapshotPixelMapList | Pointer to the list of window screenshots.|
+
+### OH_WindowManager_LockCursor()
+
+```
+int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)
+```
+
+**Description**
+
+Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.
+
+**Required permissions**: ohos.permission.LOCK_WINDOW_CURSOR
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID. The value is an integer.|
+| bool isCursorFollowMovement | Behavior of the mouse cursor when locked. If it is set to **true**, the cursor moves along with the mouse. If it is set to **false**, the cursor remains stationary and does not follow mouse movements.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: You do not have the permission to call the API.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device is not supported.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
+
+### OH_WindowManager_UnlockCursor()
+
+```
+int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
+```
+
+**Description**
+
+Clears the mouse cursor mode previously set for the window.
+
+**Required permissions**: ohos.permission.LOCK_WINDOW_CURSOR
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID. The value is an integer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: You do not have the permission to call the API.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device is not supported.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|

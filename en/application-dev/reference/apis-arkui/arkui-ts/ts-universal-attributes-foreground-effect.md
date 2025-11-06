@@ -1,4 +1,10 @@
 # Foreground Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can apply different visual effects to foreground subjects.
 
@@ -35,9 +41,9 @@ Describes the foreground effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       |   Type        |   Mandatory|  Description                       |
-| ----         |  ----         |   ---- | --------------------------  |
-| radius       | number        |   Yes  |   Blur radius.<br>Value range: [0, +∞).<br>Default value: **0**.<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
+| Name       |   Type        |   Read-Only|   Optional|  Description                       |
+| ----         |  ----         |   ---- |   ---- | --------------------------  |
+| radius       | number        |   No  |   No  |   Blur radius.<br>Value range: [0, +∞).<br>Default value: **0**.<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
 
 ## Example
 
@@ -50,6 +56,7 @@ This example demonstrates how to set the foreground effect using **foregroundEff
 struct Index {
   build() {
     Row() {
+      // Replace $r("app.media.icon") with the image resource file you use.
       Image($r('app.media.icon'))
           .width(100)
           .height(100)

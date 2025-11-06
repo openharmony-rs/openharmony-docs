@@ -69,7 +69,13 @@ Obtains a **CalendarManager** object based on the context.
 // The file is auto-generated: entry/src/main/ets/entryability/EntryAbility.ets
 import {
   abilityAccessCtrl,
-  AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+  AbilityConstant, 
+  common, 
+  PermissionRequestResult, 
+  Permissions, 
+  UIAbility, 
+  Want 
+} from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
@@ -855,6 +861,8 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 Deletes an event with the specified ID. This API uses an asynchronous callback to return the result.
 
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -961,6 +969,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 Deletes a batch of events with the specified IDs. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1613,10 +1623,10 @@ Describes an **Event** object, including the event title, start time, and end ti
 | type           | [EventType](#eventtype)           | No  | No | Event type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                            |
 | title          | string                            | No  | Yes | Event title, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                  |
 | location       | [Location](#location)             | No  | Yes | Event location. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
-| startTime      | number                            | No  | No | Start time of the event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                   |
-| endTime        | number                            | No  | No | End time of the event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
+| startTime      | number                            | No  | No | Start time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                   |
+| endTime        | number                            | No  | No | End time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
 | isAllDay       | boolean                           | No  | Yes | Whether the event is an all-day event. The value **true** means that the event is an all-day event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                           |
-| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees of a conference event. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
+| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees in a meeting. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
 | timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, enter the corresponding time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | reminderTime   | number[]                          | No  | Yes | Amount of time that the reminder occurs before the start of the event, in minutes. For example, if the value is 5, the reminder occurs 5 minutes before the event starts. If this parameter is not set, no reminder is set. A negative value indicates the delay time for sending a notification.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                        |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | No  | Yes | Recurrence rule of an event. If this parameter is not set, the value does not recur.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                               |
@@ -1624,8 +1634,8 @@ Describes an **Event** object, including the event title, start time, and end ti
 | service        | [EventService](#eventservice)     | No  | Yes | <!--RP1-->Event service. If this parameter is not set, no service is available. This function is not supported currently.<!--RP1End-->   <br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                |
 | identifier<sup>12+</sup>     | string                            | No  | Yes | Unique ID of an event, with a maximum of 5000 characters. If this parameter is not specified, the default value is **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                           |
 | isLunar<sup>12+</sup>     | boolean                            | No  | Yes | Whether it is a lunar calendar event. The value **true** means that the event is a lunar calendar event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                           |
-| instanceStartTime<sup>18+</sup> | number                            | No  | Yes | Start time of the event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                |
-| instanceEndTime<sup>18+</sup>   | number                            | No  | Yes | End time of the event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                               |
+| instanceStartTime<sup>18+</sup> | number                            | No  | Yes | Start time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                |
+| instanceEndTime<sup>18+</sup>   | number                            | No  | Yes | End time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                               |
 
 ## CalendarType
 
@@ -1900,7 +1910,7 @@ Enumerates the types of the event recurrence rule.
 
 ## Attendee
 
-Describes the attendee information in a conference event.
+Describes the attendee information in a meeting.
 
 **System capability**: SystemCapability.Applications.CalendarData
 

@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -156,14 +156,14 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 | COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 ### of
 
@@ -438,18 +438,6 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
-## SelectDataDetectorConfig<sup>22+</sup>对象说明
-
-文本选择分词识别配置项。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型  | 只读 | 可选 | 说明  |
-| ------ | -------- | ---- | ---- | ------------------------------------------- |
-| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined | 否 | 否  | 设置文本识别的实体类型。设置types为undefined或者[]时，识别所有类型的实体，否则只识别指定类型的实体。 |
-
 ## PreviewText<sup>12+</sup>
 
 预上屏信息。
@@ -658,7 +646,7 @@ getCaretOffset(): number
 
 setCaretOffset(offset: number): boolean
 
-设置光标位置。
+设置光标偏移位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -995,6 +983,8 @@ constructor(color: ResourceColor)
 
 输入控件绑定输入法客户端类型。
 
+### 属性
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1002,6 +992,22 @@ constructor(color: ResourceColor)
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nodeId  | number | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
+
+### setExtraConfig<sup>22+</sup>
+
+setExtraConfig(config: InputMethodExtraConfig): void
+
+设置输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | 是   | 输入法扩展信息。 |
 
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
@@ -1164,3 +1170,17 @@ constructor(options?: NumericTextTransitionOptions)
 | --------------------- | -------  | ------------------- |
 | LTR                   | 0  | 从左到右。 |
 | RTL                | 1  | 从右到左。 |
+
+## InputMethodExtraConfig<sup>22+</sup>
+
+type InputMethodExtraConfig = InputMethodExtraConfig
+
+输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |

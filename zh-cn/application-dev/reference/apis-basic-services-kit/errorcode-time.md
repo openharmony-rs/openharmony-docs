@@ -1,4 +1,10 @@
 # 时间时区服务错误码
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Time-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -40,7 +46,7 @@ Network connection error or OS error.
 
 网络或操作系统异常。确认网络连接是否成功，系统资源是否足够。
 
-
+<!--Del-->
 ## 13000002 未更新NTP时间
 
 **错误信息**
@@ -58,3 +64,4 @@ The local NTP time of the system is invalid.
 **处理步骤**
 
 系统本地NTP时间无效。调用updateNtpTime()更新NTP时间。
+<!--DelEnd-->

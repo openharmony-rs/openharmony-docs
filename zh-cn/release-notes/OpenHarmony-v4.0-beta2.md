@@ -312,9 +312,9 @@ OpenHarmony 4.0版本标准系统能力持续完善：ArkUI进一步增强基础
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -325,7 +325,7 @@ OpenHarmony 4.0版本标准系统能力持续完善：ArkUI进一步增强基础
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -334,18 +334,18 @@ OpenHarmony 4.0版本标准系统能力持续完善：ArkUI进一步增强基础
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Beta2 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Beta2 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Beta2 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.0-Beta2 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -356,14 +356,14 @@ OpenHarmony 4.0版本标准系统能力持续完善：ArkUI进一步增强基础
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-4.0-Beta2 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-4.0-Beta2 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Beta2 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.0-Beta2 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -391,7 +391,7 @@ OpenHarmony 4.0版本标准系统能力持续完善：ArkUI进一步增强基础
 
 ### API 
 
-OpenHarmony 4.0 Beta2的API范围相比4.0 Beta1，API变更的清单请参见“[API差异报告](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Beta2/zh-cn/release-notes/api-diff/v4.0-beta2/Readme-CN.md)”。极少量接口的变更可能影响到已开发的应用（使用API 9或更早版本API开发的应用），变更影响的说明和接口的适配指导请参见“[changelogs](https://gitee.com/openharmony/docs/blob/OpenHarmony-4.0-Beta2/zh-cn/release-notes/changelogs/v4.0-beta2/Readme-CN.md)”。
+OpenHarmony 4.0 Beta2的API范围相比4.0 Beta1，API变更的清单请参见“[API差异报告](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Beta2/zh-cn/release-notes/api-diff/v4.0-beta2/Readme-CN.md)”。极少量接口的变更可能影响到已开发的应用（使用API 9或更早版本API开发的应用），变更影响的说明和接口的适配指导请参见“[changelogs](https://gitcode.com/openharmony/docs/blob/OpenHarmony-4.0-Beta2/zh-cn/release-notes/changelogs/v4.0-beta2/Readme-CN.md)”。
 
 
 ### 特性变更
@@ -400,7 +400,7 @@ OpenHarmony 4.0 Beta2的API范围相比4.0 Beta1，API变更的清单请参见�
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -409,18 +409,18 @@ OpenHarmony 4.0 Beta2的API范围相比4.0 Beta1，API变更的清单请参见�
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| 网络与连接 | [上传和下载](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Connectivity/UploadAndDownLoad) | 本示例使用\@ohos.request接口创建上传和下载任务，实现上传、下载功能，hfs作为服务器，实现了文件的上传和下载和任务的查询功能。 | ArkTS |
-| 文件管理 | [应用接入数据备份恢复](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/FileManagement/FileBackupExtension)<br/>（Full SDK） | 应用接入数据备份恢复需要通过配置BackupExtensionAbility实现。<br/>BackupExtensionAbility，是Stage模型中扩展组件ExtensionAbility的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。<br/>本sample主要给备份流程提供应用，用于生成数据和显示数据。 | ArkTS |
-| 事件通知 | [自定义通知角标](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Notification/CustomNotificationBadge) | 本示例主要展示了设定应用的桌面图标角标的功能，使用\@ohos.notificationManager 接口，进行桌面角标的设置，通知的发送，获取等。 | ArkTS |
-| 事件通知 | [自定义通知推送](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Notification/CustomNotificationPush)<br/>（Full SDK） | 本示例主要展示了通知过滤回调管理的功能，使用\@ohos.notificationManager 接口，进行通知监听回调，决定应用通知是否发送。 | ArkTS |
-| NDK | [Native Xcomponent](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent)<br/>（Native SDK） | 本示例中主要介绍开发者如何使用Native XComponent接口来获取NativeWindow实例、获取布局/事件信息、注册事件回调并通过OpenGL/EGL实现在页面上绘制形状。功能主要包括点击按钮绘制一个五角星，并可以通过点击XComponent区域改变五角星的颜色。 | Native C++ |
-| 应用模型 | [数据代理卡片-数据库刷新](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/PersistentProxyForm)<br/>（Full SDK） | 本示例主要展示了数据代理卡片的功能，使用\@ohos.application.DataShareExtensionAbility、\@ohos.data.dataShare、\@ohos.data.dataSharePredicates等接口，实现了修改卡片订阅信息后，当rdb数据库中的数据发生变化时，卡片中对应信息也发生相应变化的功能。 | ArkTS |
-| 应用模型 | [数据代理卡片-仿push应用刷新](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/ProcessProxyForm)<br/>（Full SDK） | 本示例主要展示了使用push应用形式的数据代理卡片功能，使用\@ohos.data.dataShare等接口，实现了数据代理卡片的修改订阅条件功能及卡片的发布数据功能。 | ArkTS |
-| 应用模型 | [编辑应用](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Receiver) | 本示例主要实现了基于UIExtension实现简单的分享功能。支持取消分享，点击“返回Share”按钮，返回调用方应用；支持完成分享，点击“留在编辑应用”按钮，留在当前接收分享结果应用。 | ArkTS |
-| 应用模型 | [发起分享应用](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Share)<br/>（Full SDK） | 本示例主要实现了点击“分享”按钮发起分享，显示出分享文本应用图标和分享编辑应用图标，点击相对应应用图标可以发起分享并跳转到其对应应用显示。 | ArkTS |
-| 应用模型 | [文本应用](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Template)<br/>（Full SDK） | 本示例主要实现了基于UIExtension实现简单的分享功能。支持取消分享，点击“返回Share”按钮，返回调用方应用；支持完成分享，点击“留在文本应用”按钮，留在当前文本应用。 | ArkTS |
+| 网络与连接 | [上传和下载](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Connectivity/UploadAndDownLoad) | 本示例使用\@ohos.request接口创建上传和下载任务，实现上传、下载功能，hfs作为服务器，实现了文件的上传和下载和任务的查询功能。 | ArkTS |
+| 文件管理 | [应用接入数据备份恢复](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/FileManagement/FileBackupExtension)<br/>（Full SDK） | 应用接入数据备份恢复需要通过配置BackupExtensionAbility实现。<br/>BackupExtensionAbility，是Stage模型中扩展组件ExtensionAbility的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。<br/>本sample主要给备份流程提供应用，用于生成数据和显示数据。 | ArkTS |
+| 事件通知 | [自定义通知角标](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Notification/CustomNotificationBadge) | 本示例主要展示了设定应用的桌面图标角标的功能，使用\@ohos.notificationManager 接口，进行桌面角标的设置，通知的发送，获取等。 | ArkTS |
+| 事件通知 | [自定义通知推送](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/BasicFeature/Notification/CustomNotificationPush)<br/>（Full SDK） | 本示例主要展示了通知过滤回调管理的功能，使用\@ohos.notificationManager 接口，进行通知监听回调，决定应用通知是否发送。 | ArkTS |
+| NDK | [Native Xcomponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent)<br/>（Native SDK） | 本示例中主要介绍开发者如何使用Native XComponent接口来获取NativeWindow实例、获取布局/事件信息、注册事件回调并通过OpenGL/EGL实现在页面上绘制形状。功能主要包括点击按钮绘制一个五角星，并可以通过点击XComponent区域改变五角星的颜色。 | Native C++ |
+| 应用模型 | [数据代理卡片-数据库刷新](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/PersistentProxyForm)<br/>（Full SDK） | 本示例主要展示了数据代理卡片的功能，使用\@ohos.application.DataShareExtensionAbility、\@ohos.data.dataShare、\@ohos.data.dataSharePredicates等接口，实现了修改卡片订阅信息后，当rdb数据库中的数据发生变化时，卡片中对应信息也发生相应变化的功能。 | ArkTS |
+| 应用模型 | [数据代理卡片-仿push应用刷新](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/ProcessProxyForm)<br/>（Full SDK） | 本示例主要展示了使用push应用形式的数据代理卡片功能，使用\@ohos.data.dataShare等接口，实现了数据代理卡片的修改订阅条件功能及卡片的发布数据功能。 | ArkTS |
+| 应用模型 | [编辑应用](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Receiver) | 本示例主要实现了基于UIExtension实现简单的分享功能。支持取消分享，点击“返回Share”按钮，返回调用方应用；支持完成分享，点击“留在编辑应用”按钮，留在当前接收分享结果应用。 | ArkTS |
+| 应用模型 | [发起分享应用](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Share)<br/>（Full SDK） | 本示例主要实现了点击“分享”按钮发起分享，显示出分享文本应用图标和分享编辑应用图标，点击相对应应用图标可以发起分享并跳转到其对应应用显示。 | ArkTS |
+| 应用模型 | [文本应用](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Beta2/code/SystemFeature/ApplicationModels/Template)<br/>（Full SDK） | 本示例主要实现了基于UIExtension实现简单的分享功能。支持取消分享，点击“返回Share”按钮，返回调用方应用；支持完成分享，点击“留在文本应用”按钮，留在当前文本应用。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 
 ## 修复缺陷列表

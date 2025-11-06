@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 信息标记组件，可以附加在单个组件上用于信息提醒的容器组件。
 
@@ -21,6 +21,8 @@
 >
 >  子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
 >  自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
+>  
+>  不影响子组件布局，即不会主动规避子组件内容。
 
 
 ## 接口
@@ -141,7 +143,7 @@ Badge的样式。
 | borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | 否   | 是   | 底板描边粗细。<br/>默认值：1<br/>单位：vp<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板外描边颜色。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
 | outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | 否   | 是   | 底板外描边粗细。<br/>默认值：0<br/>单位：vp<br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 增加角标文本延伸显示时是否避让。<br/>true表示避让，false表示不避让。<br/>默认值：false<br/> **说明：** <br/>当position设置为具体的坐标值时不避让。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 增加角标文本延伸显示时是否避让。<br/>true表示避让，false表示不避让。<br/>默认值：false<br/> **说明：** <br/>1. 避让效果为角标文本向组件内部延伸显示。<br/>2. 当外描边的宽度大于0时，角标的延伸起点为外描边的内侧。<br/>3. 当position设置为具体坐标值时，角标不进行避让处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 > 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如需实现相关场景，建议使用[Text](ts-basic-components-text.md)组件设置[outline](ts-universal-attributes-outline.md)代替Badge组件。
@@ -381,6 +383,7 @@ struct Index {
         },
         position:BadgePosition.RightTop
       }) {
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
         Image($r("app.media.startIcon"))
           .width(80)
           .height(80)

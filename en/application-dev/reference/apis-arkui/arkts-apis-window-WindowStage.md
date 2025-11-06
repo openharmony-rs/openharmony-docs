@@ -28,6 +28,8 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 Obtains the main window of this WindowStage. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1).
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -61,15 +63,22 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${errCode}, message: ${err.message}`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
         return;
       }
-      windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to obtain the main window. Cause code: ${errCode}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info(`Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
+      });
     });
   }
 };
@@ -80,6 +89,8 @@ export default class EntryAbility extends UIAbility {
 getMainWindow(): Promise&lt;Window&gt;
 
 Obtains the main window of this WindowStage. This API uses a promise to return the result.
+
+Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -114,13 +125,20 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    let promise = windowStage.getMainWindow();
-    promise.then((data) => {
-      windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let promise = windowStage.getMainWindow();
+      promise.then((data) => {
+        windowClass = data;
+        console.info('Succeeded in obtaining the main window.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+      });
     });
   }
 };
@@ -130,7 +148,9 @@ export default class EntryAbility extends UIAbility {
 
 getMainWindowSync(): Window
 
-Obtains the main window of this WindowStage.
+Obtains the main window of this WindowStage. This API returns the result synchronously.
+
+Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -164,11 +184,18 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    try {
-      let windowClass = windowStage.getMainWindowSync();
-    } catch (exception) {
-      console.error(`Failed to obtain the main window. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+      } catch (exception) {
+        console.error(`Failed to obtain the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
   }
 };
 ```
@@ -224,7 +251,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         if (!windowClass) {
           console.info('Failed to load the content. Cause: windowClass is null');
         }
@@ -291,7 +318,7 @@ export default class EntryAbility extends UIAbility {
       let promise = windowStage.createSubWindow('mySubWindow');
       promise.then((data) => {
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
         console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -363,7 +390,7 @@ export default class EntryAbility extends UIAbility {
       let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
       promise.then((data) => {
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
         console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -420,7 +447,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      console.info('Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+      console.info(`Succeeded in obtaining the subwindow. Data: ${JSON.stringify(data)}`);
     });
   }
 };
@@ -468,7 +495,7 @@ export default class EntryAbility extends UIAbility {
     let promise = windowStage.getSubWindow();
     promise.then((data) => {
       windowClass = data;
-      console.info('Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+      console.info(`Succeeded in obtaining the subwindow. Data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`Failed to obtain the subwindow. Cause code: ${err.code}, message: ${err.message}`);
     });
@@ -948,8 +975,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     try {
       windowStage.on('windowStageEvent', (data) => {
-        console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-        JSON.stringify(data));
+        console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
       });
     } catch (exception) {
       console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -963,6 +989,10 @@ export default class EntryAbility extends UIAbility {
 off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&gt;): void
 
 Unsubscribes from the WindowStage lifecycle change event.
+
+This API stops the listener for WindowStage lifecycle changes that was started with the [on('windowStageEvent')](#onwindowstageevent9) API.
+
+If you call this API without having previously called [on('windowStageEvent')](#onwindowstageevent9), the call does not cause an error and the program keeps running as usual.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -998,21 +1028,28 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    const callback = (windowStageEventType: window.WindowStageEventType) => {
-      // ...
-    }
-    try {
-      windowStage.on('windowStageEvent', callback);
-    } catch (exception) {
-      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-    try {
-      windowStage.off('windowStageEvent', callback);
-      // Unregister all the callbacks that have been registered through on().
-      windowStage.off('windowStageEvent');
-    } catch (exception) {
-      console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
+    windowStage.loadContent('page/Index', (err) =>{
+      if(err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      const callback = (windowStageEventType: window.WindowStageEventType) => {
+        // ...
+      }
+      try {
+        windowStage.on('windowStageEvent', callback);
+      } catch (exception) {
+        console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+      try {
+        windowStage.off('windowStageEvent', callback);
+        // Unregister all the callbacks that have been registered through on().
+        windowStage.off('windowStageEvent');
+      } catch (exception) {
+        console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
   }
 };
 ```
@@ -1066,8 +1103,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     const callback = (data: window.WindowStageLifecycleEventType) => {
-      console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-        JSON.stringify(data));
+      console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
       // Process services based on the event status.
       if (data === window.WindowStageLifecycleEventType.SHOWN) {
         console.info('current window stage event is SHOWN');
@@ -1772,7 +1808,7 @@ export default class EntryAbility extends UIAbility {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
-Sets the supported window modes of the main window. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets the supported window modes of the main window. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1780,7 +1816,11 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+
+Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1838,13 +1878,17 @@ export default class EntryAbility extends UIAbility {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
 
-Sets the supported window modes for the main window and optionally disables the maximize button. This API uses a promise to return the result. It takes effect only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets the supported window modes for the main window and optionally disables the maximize button. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+
+Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 

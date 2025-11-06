@@ -11,7 +11,7 @@ LiteOS-A当前支持ARMv7-a指令集架构，如果三方芯片为ARMv7-a架构�
 
 ### 目录规范
 
-LiteOS-A目录规范参考[LiteOS-A 简介](https://gitee.com/openharmony/kernel_liteos_a)。
+LiteOS-A目录规范参考[LiteOS-A 简介](https://gitcode.com/openharmony/kernel_liteos_a)。
 
 
 ## 基础适配

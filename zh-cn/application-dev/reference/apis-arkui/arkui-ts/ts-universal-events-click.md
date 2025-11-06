@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件被点击时触发的事件。
 
@@ -154,7 +154,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourcetype:' + event.source);
+              console.info('sourceType:' + event.source);
             }
           }, 20)
         Button('Click').width(200).height(50).id('click2')
@@ -165,7 +165,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
-              console.info('sourcetype:' + event.source);
+              console.info('sourceType:' + event.source);
             }
           }, 20)
       }.margin(20)

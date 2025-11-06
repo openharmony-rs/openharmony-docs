@@ -45,8 +45,8 @@ Enumerates the conflict resolution policies.
 | Enum Item               | Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
 | RDB_CONFLICT_NONE = 1 | No operation is performed when a conflict occurs.                                  |
-| RDB_CONFLICT_ROLLBACK | Throw an error and roll back the transaction.                      |
-| RDB_CONFLICT_ABORT    | Throw an error and roll back the current change.                      |
-| RDB_CONFLICT_FAIL     | Throw an error and abort the current change without rolling back the modifications before the conflict.    |
-| RDB_CONFLICT_IGNORE   | Ignore the conflicted data and resolve the conflict later.                |
-| RDB_CONFLICT_REPLACE  | Delete the data and then insert the data. If the conflict persists, apply **RDB_CONFLICT_ABORT**.|
+| RDB_CONFLICT_ROLLBACK | Throws an error and rolls back the transaction.                      |
+| RDB_CONFLICT_ABORT    | Throws an error and rolls back the current change.                      |
+| RDB_CONFLICT_FAIL     | Throws an error and aborts the current change without rolling back the modifications before the conflict.    |
+| RDB_CONFLICT_IGNORE   | Ignores the conflicted data and resolves the conflict later.                |
+| RDB_CONFLICT_REPLACE  | Deletes the data and then inserts the data. If the conflict persists, applies **RDB_CONFLICT_ABORT**.|

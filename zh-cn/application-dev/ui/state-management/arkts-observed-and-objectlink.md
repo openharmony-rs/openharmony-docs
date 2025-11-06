@@ -8,7 +8,7 @@
 
 上文所述的装饰器（包括[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@Provide和\@Consume](./arkts-provide-and-consume.md)装饰器）仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如二维数组、对象数组、嵌套类场景，无法观察到第二层的属性变化。因此，为了实现对嵌套数据结构中深层属性变化的观察，引入了\@Observed和\@ObjectLink装饰器。
 
-\@Observed/\@ObjectLink适用于观察嵌套对象属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 
 ## 概述
 
-\@ObjectLink和\@Observed类装饰器用于在涉及嵌套对象或数组的场景中进行双向数据同步：
+\@ObjectLink和\@Observed类装饰器用于嵌套对象或数组的场景中进行双向数据同步：
 
 - 使用new创建被\@Observed装饰的类，可以观察到类中属性的变化。
 
@@ -37,7 +37,7 @@
 | \@ObjectLink变量装饰器 | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | 装饰器参数             | 无。                                       |
-| 允许装饰的变量类型         | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以上支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB, ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以上，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化。<br/>支持类型的场景请参考[观察变化](#观察变化)。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
+| 允许装饰的变量类型         | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以上支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以上，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。如果需要观察变化，请参考[观察变化](#观察变化)。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
 | 被装饰变量的初始值         | 禁止本地初始化。                                     |
 
 \@ObjectLink的属性可以被改变，但不允许整体赋值，即\@ObjectLink装饰的变量是只读的。
@@ -62,24 +62,21 @@ this.objLink= ...
 
 | \@ObjectLink传递/访问 | 说明                                       |
 | ----------------- | ---------------------------------------- |
-| 从父组件初始化           | 必须指定。<br/>初始化\@ObjectLink装饰的变量必须同时满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
+| 从父组件初始化           | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class或[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)返回值。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
 | 与源对象同步            | 双向。                                      |
 | 可以初始化子组件          | 允许，可用于初始化常规变量、\@State、\@Link、\@Prop、\@Provide |
 
 
   **图1** 初始化规则图示  
 
-
-![zh-cn_image_0000001502255262](figures/zh-cn_image_0000001502255262.png)
+  ![zh-cn_image_0000001502255261](figures/zh-cn_image_0000001502255261.png)
 
 
 ## 观察变化和行为表现
 
-
 ### 观察变化
 
 \@Observed装饰的类，如果其属性为非简单类型，比如class、Object或者数组，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化。
-
 
 ```ts
 class Child {
@@ -116,7 +113,11 @@ this.parent.count = 5;
 this.parent.child.num = 5;
 ```
 
-\@ObjectLink：\@ObjectLink只能接收被\@Observed装饰class的实例，推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象（属性是对象的对象称为嵌套对象）需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
+\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
+
+\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)处理的返回值。示例请参考[嵌套对象](#嵌套对象)。
+
+\@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
 - 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考[嵌套对象](#嵌套对象)。
 
@@ -348,6 +349,53 @@ struct Parent {
 
 ## 使用场景
 
+### 对象类型
+
+该场景包含built-in类型（Array、Map、Set和Date）和普通class。\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
+
+```ts
+class Book {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State book: Book = new Book('JS');
+
+  build() {
+    Column() {
+      BookCard({ book: this.book })
+    }
+  }
+}
+```
+
 ### 嵌套对象
 
 ```ts
@@ -506,7 +554,11 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick(() => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
+            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -1802,3 +1854,353 @@ struct Child {
   }
 }
 ```
+
+### @Observed装饰的类，在构造函数中使用this赋值属性，不触发UI更新
+
+@Observed类的构造函数中对成员变量进行赋值或者修改时，此修改不会经过代理，无法被观测到。
+
+【反例】
+
+```ts
+@Observed
+class DataDownloader {
+  state: number;
+  constructor() {
+    this.state = 0;
+    setInterval(() => {
+      // 从构造函数修改成员变量，不触发UI更新
+      this.state += 1;
+    }, 2000);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State dataDownloader: DataDownloader = new DataDownloader();
+  build() {
+    Column() {
+      Text(`Download state is ${this.dataDownloader.state}`)
+    }
+  }
+}
+```
+
+【正例】
+
+```ts
+@Observed
+class DataDownloader {
+  state: number;
+  constructor() {
+    this.state = 0;
+  }
+  startIntervalUpdate() {
+    setInterval(() => {
+      this.state += 1;
+    }, 2000);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State dataDownloader: DataDownloader = new DataDownloader()
+  aboutToAppear() {
+    this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI.
+  }
+  build() {
+    Column() {
+      Text(`Download state is ${this.dataDownloader.state}`)
+    }
+  }
+}
+```
+
+![observed_constructor_no_update_ui.gif](./figures/observed_constructor_no_update_ui.gif)
+
+### LazyForEach和@ObjectLink一起使用时，替换数组数据后UI不刷新
+
+@Observed装饰的类的数组，用[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)展开显示的时候，可能会出现替换数组数据后，修改数组数据不刷新UI的问题。改变数组数据后，需要调用`onDataChange`通知LazyForEach组件重新绑定状态变量，否则就会出现上述问题。
+
+【反例】
+
+```ts
+// LazyForEach遍历数据基类
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: StringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): StringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+}
+
+// LazyForEach遍历数据类型
+class MyDataSource extends BasicDataSource {
+  public dataArray: StringData[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): StringData {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: StringData): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Observed
+class StringData {
+  message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
+  helloCount: number = 4;
+
+  aboutToAppear() {
+    for (let i = 0; i <= 3; i++) {
+      this.data.pushData(new StringData(`Hello ${i}`));
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 3 }) {
+        // 使用LazyForEach懒加载遍历数据
+        LazyForEach(this.data, (item: StringData, index: number) => {
+          ListItem() {
+            ChildComponent({ data: item })
+          }
+        }, (item: StringData, index: number) => index.toString() + item.message)
+      }.cachedCount(3)
+      Button('替换第一个元素')
+        .onClick(() => {
+          // 替换数组元素不刷新UI，此时新替换的值还未绑定到LazyForEach组件上。
+          this.data.dataArray[0] = new StringData('Hello ' + this.helloCount++)
+        })
+      Button('修改第一个元素的数据')
+        .onClick(() => {
+          // 替换数组元素后修改元素值也不会刷新UI。
+          this.data.dataArray[0].message += '1';
+        })
+    }
+  }
+}
+
+// 使用@Reusable实现组件复用
+@Reusable
+@Component
+struct ChildComponent {
+  // 使用@ObjectLink接收@Observed装饰的类的数据
+  @ObjectLink data: StringData;
+
+  aboutToAppear(): void {
+    console.info(`aboutToAppear: ${this.data.message}`);
+  }
+
+  aboutToRecycle(): void {
+    console.info(`aboutToRecycle: ${this.data.message}`);
+  }
+
+  // 对复用的组件进行数据更新
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.data.message = (params.data as StringData).message;
+    console.info(`aboutToReuse: ${this.data.message}`);
+  }
+
+  build() {
+    Row() {
+      Text(this.data.message)
+        .fontSize(50)
+        .onAppear(() => {
+          console.info(`appear: ${this.data.message}`);
+        })
+    }.margin({ left: 10, right: 10 })
+  }
+}
+```
+
+【正例】
+
+```ts
+// LazyForEach遍历数据基类
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: StringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): StringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  // 通知LazyForEach处理数据替换
+  notifyDataChanged(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+}
+
+// LazyForEach遍历数据类型
+class MyDataSource extends BasicDataSource {
+  public dataArray: StringData[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): StringData {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: StringData): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Observed
+class StringData {
+  message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private data: MyDataSource = new MyDataSource();
+  helloCount: number = 4;
+
+  aboutToAppear() {
+    for (let i = 0; i <= 2; i++) {
+      this.data.pushData(new StringData(`Hello ${i}`));
+    }
+  }
+
+  build() {
+    Column({ space: 3 }) {
+      List({ space: 3 }) {
+        // 使用LazyForEach懒加载遍历数据
+        LazyForEach(this.data, (item: StringData, index: number) => {
+          ListItem() {
+            ChildComponent({ data: item })
+          }.width('100%')
+          //LazyForEach的key从index和message构建，每次替换元素时，需要修改key才能触发UI刷新。
+        }, (item: StringData, index: number) => index.toString() + item.message)
+      }.cachedCount(3)
+      Button('替换第一个元素')
+        .onClick(() => {
+          this.data.dataArray[0] = new StringData('Hello ' + this.helloCount++);
+          //替换元素后通知LazyForEach，可以刷新UI。
+          this.data.notifyDataChanged(0);
+        })
+      Button('修改第一个元素的数据')
+        .onClick(() => {
+          // 替换元素后由于重新建立绑定，后续修改元素值也能刷新UI。
+          this.data.dataArray[0].message += '1';
+        })
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+// 使用Reusable使能组件复用
+@Reusable
+@Component
+struct ChildComponent {
+  // 使用@ObjectLink接受@Observed类数据
+  @ObjectLink data: StringData;
+
+  aboutToAppear(): void {
+    console.info(`aboutToAppear: ${this.data.message}`);
+  }
+
+  aboutToRecycle(): void {
+    console.info(`aboutToRecycle: ${this.data.message}`);
+  }
+
+  // 对复用的组件进行数据更新
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.data.message = (params.data as StringData).message;
+    console.info(`aboutToReuse: ${this.data.message}`);
+  }
+
+  build() {
+    Row() {
+      Text(this.data.message)
+        .fontSize(50)
+        .onAppear(() => {
+          console.info(`appear: ${this.data.message}`);
+        })
+    }.margin({ left: 10, right: 10 })
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)

@@ -4,7 +4,7 @@
 <!--Owner: @dutie123-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
 

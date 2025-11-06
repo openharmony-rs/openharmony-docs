@@ -36,6 +36,7 @@ The APIs of this module are supported since API version 20.
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. Define the callback used to receive the age group detection result.
 
@@ -44,6 +45,7 @@ The APIs of this module are supported since API version 20.
      console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. Enable the age group detection function.
 
@@ -56,6 +58,7 @@ The APIs of this module are supported since API version 20.
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. Disable the age group detection function.
 
@@ -68,3 +71,4 @@ The APIs of this module are supported since API version 20.
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->

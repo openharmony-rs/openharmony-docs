@@ -1,5 +1,12 @@
 # @ohos.WorkSchedulerExtensionAbility (Deferred Task Scheduling Callbacks)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The WorkSchedulerExtensionAbility module provides callbacks for deferred task scheduling. You can override the APIs provided by this module. When a deferred task is triggered, the system calls back the application through the APIs and processes the task logic in the callback.
 
 >  **NOTE**
@@ -52,10 +59,12 @@ Called when the system starts scheduling the deferred task.
 
   ```ts
   import { workScheduler } from '@kit.BackgroundTasksKit';
+  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStart(workInfo: workScheduler.WorkInfo) {
-        console.log('MyWorkSchedulerExtensionAbility onWorkStart' + JSON.stringify(workInfo));
+        console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
+            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
     }
   }
   ```
@@ -79,10 +88,12 @@ Called when the system stops scheduling the deferred task. This callback is trig
 
   ```ts
   import { workScheduler } from '@kit.BackgroundTasksKit';
+  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStop(workInfo: workScheduler.WorkInfo) {
-        console.log('MyWorkSchedulerExtensionAbility onWorkStop' + JSON.stringify(workInfo));
+        console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
+            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
     }
   }
   ```

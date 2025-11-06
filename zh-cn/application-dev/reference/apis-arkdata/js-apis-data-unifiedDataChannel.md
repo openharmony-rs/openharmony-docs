@@ -874,7 +874,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-纯文本类型数据，是[Text](#text)的子类，用于描述纯文本类数据。
+[Text](#text)的子类，用于描述纯文本类数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -895,7 +895,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-超链接类型数据，是[Text](#text)的子类，用于描述超链接类型数据。
+[Text](#text)的子类，用于描述超链接类型数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。
 
@@ -293,6 +293,8 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。highlightBorder设置为false，则不显示红色边框，计数器默认显示红色边框。内联模式下字符计数器不显示。
 
+[示例2（设置计数器）](#示例2设置计数器)展示了设置showCounter的效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -384,7 +386,7 @@ maxLines(value: number)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3，非内联模式下，默认值为+∞，不限制最大行数。 <br/>取值范围：(0, +∞) |
+| value  | number | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3，非内联模式下，默认值为UINT32_MAX。 <br/>取值范围：(0, UINT32_MAX] |
 
 ### maxLines<sup>20+</sup>
 
@@ -502,7 +504,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
-当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -513,25 +515,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
-
-### selectedDataDetectorConfig<sup>22+</sup>
-
-selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
-
-设置选中文本的识别配置，可配置识别类型。
-
-需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。相关示例可以参考[示例7设置文本识别](ts-basic-components-text.md#示例7设置文本识别)。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
 
 ### contentType<sup>12+</sup>
 
@@ -1335,6 +1319,27 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | callback  | Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> | 是   | 在文本内容将要发生变化时的回调。<br/>返回true时，表示正常修改。返回false时，表示拦截此次触发。 |
+
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> | undefined)
+
+在输入框将要绑定输入法前触发该回调。
+
+<!--Del-->
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在输入框将要绑定输入法前触发该回调。 |
 
 ## TextAreaController<sup>8+</sup>
 
@@ -2693,3 +2698,28 @@ struct TextAreaExample {
 }
 ```
 ![textAreaPlaceholder](figures/textAreaPlaceholder.jpg)
+
+### 示例26（设置输入法扩展信息）
+
+从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Column() {
+      TextArea({ text: '拉起输入法前执行onWillAttachIME回调' })
+        .onWillAttachIME((client: IMEClient) => {
+          client.setExtraConfig({
+            customSettings: {
+              name: "TextArea", // 自定义属性
+              id: client.nodeId // 自定义属性
+            }
+          })
+        })
+    }.height('100%')
+  }
+}
+```

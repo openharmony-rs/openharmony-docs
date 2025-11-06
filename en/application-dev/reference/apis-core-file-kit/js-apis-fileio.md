@@ -731,30 +731,6 @@ Opens a file. This API returns the result synchronously.
   | ------ | ----------- |
   | number | File descriptor of the file opened.|
 
-**Example**
-
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  ```
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o666);
-  fileio.writeSync(fd, 'hello world');
-  let fd1 = fileio.openSync(filePath, 0o2002);
-  fileio.writeSync(fd1, 'hello world');
-  class Option {
-    offset: number = 0;
-    length: number = 4096;
-    position: number = 0;
-  }
-  let option = new Option();
-  option.position = 0;
-  let buf = new ArrayBuffer(4096)
-  let num = fileio.readSync(fd1, buf, option);
-  console.info("num == " + num);
-  ```
-
 
 ## fileio.read
 
@@ -782,24 +758,6 @@ Reads data from a file. This API uses a promise to return the result.
   | ---------------------------------- | ------ |
   | Promise&lt;[ReadOut](#readout)&gt; | Promise that returns the data read.|
 
-**Example**
-
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  import buffer from '@ohos.buffer';
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileio.read(fd, arrayBuffer).then((readResult: fileio.ReadOut) => {
-    console.info("Read file data successfully");
-    let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-    console.log(`The content of file: ${buf.toString()}`);
-    fileio.closeSync(fd);
-  }).catch((err: BusinessError) => {
-    console.error("read file data failed with error:" + err);
-  });
-  ```
-
 
 ## fileio.read
 
@@ -821,24 +779,6 @@ Reads data from a file. This API uses an asynchronous callback to return the res
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file data read.                       |
   | options  | Object                                   | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | Yes   | Callback invoked when the data is read asynchronously.                            |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  import buffer from '@ohos.buffer';
-  let filePath = pathDir + "/test.txt";
-  let fd = fileio.openSync(filePath, 0o102, 0o640);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileio.read(fd, arrayBuffer, (err: BusinessError, readResult: fileio.ReadOut) => {
-    if (readResult) {
-      console.info("Read file data successfully");
-      let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-      console.info(`The content of file: ${buf.toString()}`);
-    }
-    fileio.closeSync(fd);
-  });
-  ```
 
 
 ## fileio.readSync
@@ -2012,7 +1952,7 @@ Synchronizes a file. This API uses an asynchronous callback to return the result
   | Name     | Type                       | Mandatory  | Description             |
   | -------- | ------------------------- | ---- | --------------- |
   | fd       | number                    | Yes   | File descriptor of the file to synchronize.   |
-  | Callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the file is synchronized in asynchronous mode.|
+  | callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the file is synchronized in asynchronous mode.|
 
 **Example**
 
@@ -2967,13 +2907,17 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 Listens for file or directory changes. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is deprecated since API version 10.
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
 
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| filePath | string                            | Yes  | Application sandbox path of the file.                                  |
+| filename | string                            | Yes  | Application sandbox path of the file.                                  |
 | events   | number                            | Yes  | - **1**: The file or directory is renamed.<br>- **2**: The file or directory is modified.<br>- **3**: The file or directory is modified and renamed.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Called each time a change is detected.                            |
 
@@ -3224,12 +3168,19 @@ Checks whether this file is a symbolic link.
 
 Listens for file change. You can call the **Watcher.stop()** method synchronously or asynchronously to stop the listening.
 
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 ### stop<sup>7+</sup>
 
 stop(): Promise&lt;void&gt;
 
 Stops the **watcher** instance. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3251,6 +3202,10 @@ Stops the **watcher** instance. This API uses a promise to return the result.
 stop(callback: AsyncCallback&lt;void&gt;): void
 
 Stops the **watcher** instance. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is deprecated since API version 10.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 

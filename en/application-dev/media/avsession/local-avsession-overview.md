@@ -52,7 +52,6 @@ The code snippet below shows how the provider creates an AVSession object by usi
  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 
 @Entry

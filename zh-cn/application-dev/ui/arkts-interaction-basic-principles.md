@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 对于[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)、[鼠标事件](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)、[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)等指向性事件的交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
 
@@ -102,13 +102,42 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
-
-   ```ts
-   Button("按钮")
-     .responseRegion([
-        { x: 0, y: 0, width: '30%', height: '100%' },      // 第一个热区为按钮的左侧1/3区域
-        { x: '70%', y: 0, width: '30%', height: '100%' },  // 第二个热区为按钮的右侧1/3区域
-      ])
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = ''
+     @State number:number = 0
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({bottom:20})
+         Button($r('app.string.button'))
+           .responseRegion([
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             }, // 第一个热区为按钮的左侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             },// 第二个热区为按钮的右侧1/3区域
+           ])
+           .onClick(() => {
+             this.number++;
+             this.text = 'button' + this.number + 'clicked'
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
    ```
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。

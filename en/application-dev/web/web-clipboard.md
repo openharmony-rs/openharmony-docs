@@ -28,7 +28,7 @@ When a device has a physical keyboard, a user can also use keyboard shortcuts **
 
 ```javascript
 // Write text content to the clipboard.
-await navigator.clipboard.writeText ("Text content");
+await navigator.clipboard.writeText("Text content");
 ```
 
 - Use **write** to write content of any type to the system clipboard.
@@ -152,7 +152,7 @@ Loaded HTML:
                 return;
             }
         }
-        document.getElementById ('result').innerText = "No HTML content on the clipboard.";
+        document.getElementById('result').innerText = "No HTML content on the clipboard.";
     }
 
     function clearOutput() {

@@ -26,7 +26,9 @@ Enumerates the window types.
 
 ## AvoidAreaType<sup>7+</sup>
 
-Enumerates the types of areas that window content should avoid.
+Enumerates the types of areas to avoid for window content.
+
+When adapting window content for an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding [AvoidArea](arkts-apis-window-i.md#avoidarea7) specified by **AvoidAreaType**.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -35,9 +37,9 @@ Enumerates the types of areas that window content should avoid.
 | Name                            | Value  | Description                                                        |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
 | TYPE_SYSTEM                      | 0    | Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | Notch area.                                                             |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Gesture area. Currently, no device has this type of avoid area.                                   |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Soft keyboard area.                                                             |
+| TYPE_CUTOUT                      | 1    | Cutout area.                                                             |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.                                   |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.                                                             |
 | TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End-->                             |
 
 ## Orientation<sup>9+</sup>
@@ -184,15 +186,15 @@ Enumerates the window anchor points.
 
 | Name      | Value  | Description                         |
 | ---------- | ---- | ----------------------------- |
-| TOP_START  | 0    | Top left corner of the window.|
+| TOP_START  | 0    | Top-left corner of the window.|
 | TOP  | 1    | Horizontal center point along the top edge of the window.|
-| TOP_END  | 2    | Top right corner of the window.|
+| TOP_END  | 2    | Top-right corner of the window.|
 | START  | 3    | Vertical center point along the left edge of the window.|
 | CENTER  | 4    | Center point of the window, both horizontally and vertically.|
 | END  | 5    | Vertical center point along the right edge of the window.|
-| BOTTOM_START  | 6    | Bottom left corner of the window.|
+| BOTTOM_START  | 6    | Bottom-left corner of the window.|
 | BOTTOM  | 7    | Horizontal center point along the bottom edge of the window.|
-| BOTTOM_END  | 8    | Bottom right corner of the window.|
+| BOTTOM_END  | 8    | Bottom-right corner of the window.|
 
 ## RotationChangeType<sup>19+</sup>
 
@@ -235,9 +237,21 @@ Enumerates the window modes.
 | FLOAT   | 1 << 2  | Floating window. The third binary bit from right to left is 1.|
 | PIP   | 1 << 3  | PiP window. The fourth binary bit from right to left is 1.|
 
+## OcclusionState<sup>22+</sup>
+
+Enumerates the window visibility states.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name  | Value| Description                  |
+| ------ | ---- | --------------------- |
+| NO_OCCLUSION | 0 | The window is entirely visible, with no parts obscured by other non-transparent windows.|
+| PARTIAL_OCCLUSION | 1 | The window is partially visible, with some parts obscured by other non-transparent windows.|
+| FULL_OCCLUSION | 2 | The window is completely invisible, either fully obscured by other non-transparent windows, minimized, or hidden.|
+
 ## WindowStageEventType<sup>9+</sup>
 
-Enumerates the lifecycle events of a WindowStage.
+Enumerates the lifecycle event types of a WindowStage.
 
 **Model restriction**: This API can be used only in the stage model.
 

@@ -1,7 +1,7 @@
 # @ohos.app.ability.contextConstant (Context-related Constants)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @wangkailong; @yangxuguang-huawei; @Luobniz21-->
+<!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->

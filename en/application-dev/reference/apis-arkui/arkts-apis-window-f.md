@@ -843,7 +843,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -924,12 +924,190 @@ import { ColorMetrics, window } from '@kit.ArkUI';
 try {
   let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
   promise.then(() => {
-    console.log('Succeeded in setting the starting window color.');
+    console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the starting window color. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to set the starting window color. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.getAllMainWindowInfo<sup>21+</sup>
+
+getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
+
+Obtains the information about all main windows. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise used to return an array of main window information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                      |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Succeeded in loading the content');
+    });
+    try {
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // User granted permission.
+      } else {
+        // User denied permission.
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
+## window.getMainWindowSnapshot<sup>21+</sup>
+
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+
+Obtains the screenshots of one or more main windows specified by **windowId**. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name   | Type   | Mandatory| Description                                         |
+| --------- | ------- | ---- | --------------------------------------------- |
+| windowId | Array&lt;number&gt; | Yes  | Array of main window IDs. These IDs can be obtained using [window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21).|
+| config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | Yes| Configuration for obtaining the window screenshot.|
+
+**Return value**
+
+| Type| Description|
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined&gt;&gt; | Promise used to return an array of PixelMap objects of the screenshots, representing the screenshots, in the order of the provided window ID array. If a window ID is valid but the corresponding main window cannot be found, undefined is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                      |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowIds: number[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap | undefined>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // User granted permission.
+      } else {
+        // User denied permission.
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
 }
 ```
 

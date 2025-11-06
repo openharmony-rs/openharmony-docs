@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
 
@@ -26,7 +26,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
-设置系统深色模式。
+设置系统深色模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -73,7 +73,7 @@ try {
 
 setDarkMode(mode: DarkMode): Promise\<void>;
 
-设置系统深色模式。
+设置系统深色模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 

@@ -80,7 +80,7 @@ USB Host DDK为开发者提供了普通模式和专家模式，普通模式下�
 
 ### 接口说明
 
-USB主机端驱动程序开发相关接口（普通模式）如下，具体接口定义[见源码](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_ddk_interface.h)。
+USB主机端驱动程序开发相关接口（普通模式）如下，具体接口定义[见源码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_ddk_interface.h)。
 
   **表1** USB主机端驱动程序开发相关接口（普通模式）
 
@@ -94,7 +94,7 @@ USB主机端驱动程序开发相关接口（普通模式）如下，具体接�
 | int32_t&nbsp;UsbFillRequest(const&nbsp;struct&nbsp;UsbRequest<br/>\*request,&nbsp;const&nbsp;UsbInterfaceHandle&nbsp;\*interfaceHandle,<br/>const&nbsp;struct&nbsp;UsbRequestParams&nbsp;\*params); | 填充请求 |
 | int32_t&nbsp;UsbSubmitRequestSync(const&nbsp;struct&nbsp;UsbRequest<br/>\*request); | 发送同步请求 |
 
-USB主机端驱动程序开发相关接口（专家模式）如下，具体接口定义[见源码](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_raw_api.h)。
+USB主机端驱动程序开发相关接口（专家模式）如下，具体接口定义[见源码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_raw_api.h)。
 
   **表2** USB主机端驱动程序开发相关接口（专家模式）
 
@@ -112,7 +112,7 @@ USB主机端驱动程序开发相关接口（专家模式）如下，具体接�
 | int32_t&nbsp;UsbRawCancelRequest(const&nbsp;struct&nbsp;UsbRawRequest<br/>\*request); | 取消一个传输请求 |
 | int32_t&nbsp;UsbRawHandleRequests(const&nbsp;UsbRawHandle<br/>\*devHandle); | 传输请求事件完成处理 |
 
-USB设备端用于管理USB设备的相关接口如下，具体接口定义[见源码](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_device.h)。
+USB设备端用于管理USB设备的相关接口如下，具体接口定义[见源码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_device.h)。
 
   **表3** USB设备端用于管理USB设备的相关接口
 
@@ -122,7 +122,7 @@ USB设备端用于管理USB设备的相关接口如下，具体接口定义[见�
 | int32_t&nbsp;UsbFnRemoveDevice(struct&nbsp;UsbFnDevice<br/>\*fnDevice); | 删除USB设备 |
 | const&nbsp;struct&nbsp;UsbFnDevice&nbsp;\*UsbFnGetDevice(const&nbsp;char<br/>\*udcName); | 获取USB设备 |
 
-USB设备端用于USB接口定义的相关接口如下，具体接口定义[见源码](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_interface.h)。
+USB设备端用于USB接口定义的相关接口如下，具体接口定义[见源码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_interface.h)。
 
   **表4** USB设备端用于USB接口定义的相关接口
 
@@ -135,7 +135,7 @@ USB设备端用于USB接口定义的相关接口如下，具体接口定义[见�
 | int32_t&nbsp;UsbFnGetInterfacePipeInfo(struct&nbsp;UsbFnInterface<br/>\*interface,&nbsp;uint8_t&nbsp;pipeId,&nbsp;struct&nbsp;UsbFnPipeInfo&nbsp;\*info); | 获取管道信息 |
 | int32_t&nbsp;UsbFnSetInterfaceProp(const&nbsp;struct&nbsp;UsbFnInterface<br/>\*interface,&nbsp;const&nbsp;char&nbsp;\*name,&nbsp;const&nbsp;char&nbsp;\*value); | 设置自定义属性 |
 
-USB设备端用于管理USB数据请求的相关接口如下，具体接口定义[见源码](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_request.h)。
+USB设备端用于管理USB数据请求的相关接口如下，具体接口定义[见源码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_request.h)。
 
   **表5** USB设备端用于管理USB数据请求的相关接口
 
@@ -1696,11 +1696,11 @@ USB ACM设备核心代码路径为drivers\peripheral\usb\gadget\function\acm\cdc
 
 - 代码仓库如下：
 
-  **[drivers\_hdf\_core](https://gitee.com/openharmony/drivers_hdf_core)**
+  **[drivers\_hdf\_core](https://gitcode.com/openharmony/drivers_hdf_core)**
 
-  [drivers\_peripheral](https://gitee.com/openharmony/drivers_peripheral)
+  [drivers\_peripheral](https://gitcode.com/openharmony/drivers_peripheral)
 
-  [drivers\_interface](https://gitee.com/openharmony/drivers_interface)
+  [drivers\_interface](https://gitcode.com/openharmony/drivers_interface)
 
 - 代码路径如下：
 

@@ -1,4 +1,10 @@
 # SideBarContainer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **SideBarContainer** component contains a sidebar and content area as its child components. The sidebar is the first child component and can be shown or hidden as needed. The content area is the second child component.
 
@@ -16,7 +22,7 @@ Supported
 >  - Built-in components and custom components are allowed, without support for ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)) rendering control.
 >  - This component must contain two child components.
 >  - If there are three or more child components, only the first and second child components are displayed. If there is only one child component, the sidebar is displayed, and the content area is blank.
-
+>  - When the focus moves to the SideBarContainer, the focus moves to the content area and then to the sidebar.
 
 ## APIs
 
@@ -44,8 +50,8 @@ Enumerates the types of sidebars in a container.
 
 | Name| Description|
 | -------- | -------- |
-| Embed | The sidebar is embedded in the component and displayed side by side with the content area.<br>When the component size is less than the sum of **minContentWidth** and **minSideBarWidth** and **showSideBar** is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
-| Overlay | The sidebar is displayed overlaid on the content area.|
+| Embed | The sidebar is embedded in the component and displayed side by side with the content area.<br>If the size of the container remains unchanged, the sidebar will be displayed, and the content area will be reduced. If the sidebar is hidden, the content area will be expanded.<br>If the component size is less than the value of minContentWidth plus the value of minSideBarWidth and showSideBar is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
+| Overlay | The sidebar is displayed above the content area, which does not affect the size of the content area.|
 | AUTO<sup>10+</sup> | The sidebar is displayed in Embed mode when the component size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**<br>and in Overlay mode otherwise.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation. If the calculation result is less than 600 vp, 600 vp will be used as the breakpoint value for mode switching.|
 
 ## Attributes
@@ -102,11 +108,17 @@ Specifies whether to display the sidebar control button.
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | Yes  | Whether to display the sidebar control button.<br>**true**: The sidebar control button is displayed.<br>**false**: The sidebar control button is not displayed.<br>Default value: **true**|
 
+> **NOTE**
+>
+> The sidebar display or hiding animation is triggered when the sidebar is switched on or off by using the control button.
+
 ### sideBarWidth
 
 sideBarWidth(value: number)
 
 Sets the width of the sidebar. If a value less than 0 is set, the default value is used. The value must comply with the width constraints. If it is not within the valid range, the valid value closest to the set one is used.
+
+Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -122,7 +134,9 @@ Sets the width of the sidebar. If a value less than 0 is set, the default value 
 
 sideBarWidth(value: Length)
 
-Sets the width of the sidebar. If a value less than 0 is set, the default value is used. The value must comply with the width constraints. If it is not within the valid range, the valid value closest to the set one is used. Compared with [sideBarWidth](#sidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
+Sets the width of the sidebar. If a value less than 0 is set, the default value is used. The value must comply with the width constraints. If it is not within the valid range, the valid value closest to the set one is used. Compared to [sideBarWidth](#sidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
+
+Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -132,7 +146,7 @@ Sets the width of the sidebar. If a value less than 0 is set, the default value 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the sidebar.<br>Default value: **240vp**.<br>Unit: vp.<br>Value range: [0, +∞).<br>**NOTE**<br>The default value is **200vp** in API version 9 and **240vp** in API version 10.|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the sidebar.<br>Default value: **240vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>The default value is **200vp** in API version 9 and **240vp** in API version 10.|
 
 ### minSideBarWidth
 
@@ -156,7 +170,7 @@ Sets the minimum width of the sidebar. If a value less than 0 is set, the defaul
 
 minSideBarWidth(value: Length)
 
-Sets the minimum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container itself. Otherwise, the width of the sidebar container itself is used. Compared with [minSideBarWidth](#minsidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
+Sets the minimum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container itself. Otherwise, the width of the sidebar container itself is used. Compared to [minSideBarWidth](#minsidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
 
 **minSideBarWidth**, whether it is specified or kept at the default value, takes precedence over **minWidth** of the sidebar child components.
 
@@ -293,27 +307,31 @@ Describes the style of the sidebar control button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| left | number | No| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| top | number | No| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| width | number | No| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| height | number | No| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| icons | [ButtonIconOptions<sup>14+</sup>](#buttoniconoptions14) | No| Icons of the sidebar control button.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| left | number | No| Yes| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18)| No| Yes| Icons of the sidebar control button.|
 
-## ButtonIconOptions<sup>14+</sup>
+## ButtonIconOptions<sup>18+</sup>
 
 Describes the icons of the sidebar control button.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                          | Mandatory| Description                                       |
-| --------- | -------------------------------| ---- | ------------------------------------------ |
-| shown<sup>8+</sup>     | string \| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) \| [Resource](ts-types.md#resource) | Yes  | Icon of the control button when the sidebar is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
-| hidden<sup>8+</sup>    | string \| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) \| [Resource](ts-types.md#resource) | Yes  | Icon of the control button when the sidebar is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
-| switching<sup>8+</sup> | string \| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) \| [Resource](ts-types.md#resource) | No  | Icon of the control button when the sidebar is switching between the shown and hidden states.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name      | Type                          | Read-Only| Optional| Description                                       |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
+| shown<sup>8+</sup>     | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
+| hidden<sup>8+</sup>    | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
+| switching<sup>8+</sup> | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| Yes  | Icon of the control button when the sidebar is switching between the shown and hidden states.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 >
@@ -340,12 +358,12 @@ Sets the divider style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type     | Mandatory| Description                                    |
-| ----------- | ------------- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | Yes  | Stroke width of the divider.<br>Default value: **1vp**|
-| color       | [ResourceColor](ts-types.md#resourcecolor) | No  | Color of the divider.<br>Default value: **#000000, 3%**  |
-| startMargin | [Length](ts-types.md#length)        | No  | Distance between the divider and the top of the sidebar.<br>Default value: **0**|
-| endMargin   | [Length](ts-types.md#length)        | No  | Distance between the divider and the bottom of the sidebar.<br>Default value: **0**|
+| Name       | Type     | Read-Only| Optional| Description                                    |
+| ----------- | ------------- | ---- | ---- | ---------------------------------------- |
+| strokeWidth | [Length](ts-types.md#length)        | No| No  | Stroke width of the divider.<br>Default value: 1 vp<br>Value range: [0, +∞).<br>**NOTE**<br>The width of the divider cannot be set in percentage. The priority is lower than that of the general attribute height (ts-universal-attributes-size.md#height). If the divider width exceeds the value of height, the divider is cropped according to the value of height. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#000000, 3%**  |
+| startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>The default value is **0**.<br>Value range: [0, +∞)|
+| endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>The default value is **0**.<br>Value range: [0, +∞)|
 >  **NOTE**
 >
 >  The settings of the [universal size attributes](ts-universal-attributes-size.md) **width** and **height** do not take effect for the sidebar child component.
@@ -394,10 +412,10 @@ This example demonstrates how to use the **SideBarContainer** component and impl
 @Entry
 @Component
 struct SideBarContainerExample {
-  normalIcon: Resource = $r("app.media.icon")
-  selectedIcon: Resource = $r("app.media.icon")
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
+  normalIcon: Resource = $r("app.media.icon");
+  selectedIcon: Resource = $r("app.media.icon");
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
@@ -411,7 +429,7 @@ struct SideBarContainerExample {
               .fontFamily('source-sans-pro,cursive,sans-serif')
           }
           .onClick(() => {
-            this.current = item
+            this.current = item;
           })
         }, (item: string) => item)
       }.width('100%')
@@ -436,7 +454,7 @@ struct SideBarContainerExample {
     .maxSideBarWidth(300)
     .minContentWidth(0)
     .onChange((value: boolean) => {
-      console.info('status:' + value)
+      console.info('status:' + value);
     })
     .divider({ strokeWidth: '1vp', color: Color.Gray, startMargin: '4vp', endMargin: '4vp' })
   }

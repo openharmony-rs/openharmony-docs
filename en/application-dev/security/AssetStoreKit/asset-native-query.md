@@ -1,14 +1,22 @@
 # Querying Assets (C/C++)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
-You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query asset information.
+You can use [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) to query an asset.
 
 The following table describes the attributes for querying an asset.
 
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+> In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> It takes a long time to query the plaintext of the asset attribute **ASSET_TAG_SECRET** due to the need of decryption. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ATTRIBUTES**.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -60,25 +68,30 @@ For details about how to query the plaintext of an asset in a group, see [Queryi
 
    #include "asset/asset_api.h"
 
-   void QueryAsset() {
-      static const char *ALIAS = "demo_alias";
-      Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-      Asset_Attr attr[] = {
-         { .tag = ASSET_TAG_ALIAS, .value.blob = alias },  // Specify the alias of the asset to query.
-         { .tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL }, // Return all asset information, including the attributes and asset plaintext.
-      };
+   static napi_value QueryAsset(napi_env env, napi_callback_info info) 
+   {
+       static const char *ALIAS = "demo_alias";
+       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // Return all asset information, including the attributes and asset plaintext. The plaintext needs to be decrypted, so the query takes a long time.
+       };
 
-      Asset_ResultSet resultSet = {0};
-      int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-      if (ret == ASSET_SUCCESS) {
-         // Parse the resultSet.
-         for (uint32_t i = 0; i < resultSet.count; i++) {
-               // Parse the secret: the data is secret->blob.data, the size is secret->blob.size.
+       Asset_ResultSet resultSet = {0};
+       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+       if (queryResult == ASSET_SUCCESS) {
+           // Parse resultSet.
+           for (uint32_t i = 0; i < resultSet.count; i++) {
+               // Parse the secret attribute. The data corresponds to secret->blob.data, and the size corresponds to secret->blob.size.
                Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_SECRET);
-         }
-      }
-      OH_Asset_FreeResultSet(&resultSet);
-   }
+           }
+       }
+       OH_Asset_FreeResultSet(&resultSet);
+    
+       napi_value ret;
+       napi_create_int32(env, queryResult, &ret);
+       return ret;
+    }
    ```
 
 ### Querying Attributes of an Asset
@@ -98,24 +111,29 @@ For details about how to query the attributes of an asset in a group, see [Query
 
    #include "asset/asset_api.h"
 
-   void QueryAttributes() {
-      static const char *ALIAS = "demo_alias";
-      Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-      Asset_Attr attr[] = {
-         { .tag = ASSET_TAG_ALIAS, .value.blob = alias },  // Specify the alias of the asset to query.
-         { .tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES }, // Return only the asset attributes, that is, the result does not include the asset plaintext.
-      };
+   static napi_value QueryAttributes(napi_env env, napi_callback_info info) 
+   {
+       static const char *ALIAS = "demo_alias";
+       Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // Return only the asset attributes, excluding the asset plaintext. The attributes do not need to be decrypted, so the query takes a short time.
+       };
 
-      Asset_ResultSet resultSet = {0};
-      int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-      if (ret == ASSET_SUCCESS) {
-         // Parse the result.
-         for (uint32_t i = 0; i < resultSet.count; i++) {
-         // Parse the data label: the data is label->blob.data, the size is label->blob.size.
+       Asset_ResultSet resultSet = {0};
+       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+       if (queryResult == ASSET_SUCCESS) {
+           // Parse the result
+           for (uint32_t i = 0; i < resultSet.count; i++) {
+               // Parse the data label. The data corresponds to label->blob.data, and the size corresponds to label->blob.size.
                Asset_Attr *label = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_DATA_LABEL_NORMAL_1);
-         }
-      }
-      OH_Asset_FreeResultSet(&resultSet);
+           }
+       }
+       OH_Asset_FreeResultSet(&resultSet);
+    
+       napi_value ret;
+       napi_create_int32(env, queryResult, &ret);
+       return ret;
    }
    ```
 
@@ -134,27 +152,31 @@ Query attributes of assets with the tag of **demo_label** and return a total of 
 
    #include "asset/asset_api.h"
 
-   void BatchQuery() {
-      static const char *LABEL = "demo_label";
-      Asset_Blob label = { (uint32_t)(strlen(LABEL)), (uint8_t *)LABEL };
+   static napi_value BatchQuery(napi_env env, napi_callback_info info) 
+   {
+       static const char *LABEL = "demo_label";
+       Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
 
-      Asset_Attr attr[] = {
-         { .tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES },
-         { .tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label },
-         { .tag = ASSET_TAG_RETURN_OFFSET, .value.u32 = 5 },
-         { .tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 10 },
-         { .tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = ASSET_TAG_DATA_LABEL_NORMAL_1 },
-      };
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES},
+           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+           {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 10},
+           {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = ASSET_TAG_DATA_LABEL_NORMAL_1},
+       };
 
-      Asset_ResultSet resultSet = { 0 };
-      int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-      if (ret == ASSET_SUCCESS) {
-         // Parse the result.
-         for (uint32_t i = 0; i < resultSet.count; i++) {
-               // Parse the data alias: the data is alias->blob.data, the size is alias->blob.size.
+       Asset_ResultSet resultSet = { 0 };
+       int32_t queryResult = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
+       if (queryResult == ASSET_SUCCESS) {
+           // Parse the result
+           for (uint32_t i = 0; i < resultSet.count; i++) {
+               // Parse the data alias. The alias corresponds to label->blob.data, and the size corresponds to label->blob.size.
                Asset_Attr *alias = OH_Asset_ParseAttr(resultSet.results + i, ASSET_TAG_ALIAS);
-         }
-      }
-      OH_Asset_FreeResultSet(&resultSet);
+           }
+       }
+       OH_Asset_FreeResultSet(&resultSet);
+    
+       napi_value ret;
+       napi_create_int32(env, queryResult, &ret);
+       return ret;
    }
    ```

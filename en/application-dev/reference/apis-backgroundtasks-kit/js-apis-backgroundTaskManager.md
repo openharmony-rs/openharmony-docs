@@ -1,5 +1,12 @@
 # @ohos.backgroundTaskManager (Background Task Management)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **BackgroundTaskManager** module provides APIs to manage background tasks.
 
 If a service needs to be continued when the application or service module is running in the background (not visible to users), the application or service module can request a transient task to delay the suspension or a continuous task to prevent the suspension.
@@ -96,9 +103,9 @@ Obtains the remaining duration before the application is suspended. This API use
   let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
   backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessError, res: number) => {
       if(err) {
-          console.log('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+          console.info('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
       } else {
-          console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+          console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
       }
   })
   ```
@@ -135,9 +142,9 @@ import { BusinessError } from '@ohos.base';
 
 let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
     backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
-    console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((err : BusinessError) => {
-    console.log('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
+    console.info('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
 })
 ```
 
@@ -497,11 +504,10 @@ Provides the information about the suspension delay.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-| Name            | Type    | Mandatory  | Description                                      |
-| --------------- | ------ | ---- | ---------------------------------------- |
-| requestId       | number | Yes   | ID of the suspension delay request.                              |
-| actualDelayTime | number | Yes   | Actual suspension delay duration of the application, in milliseconds.<br>The default duration is 180000 when the battery level is higher than or equal to the broadcast low battery level and 60000 when the battery level is lower than the broadcast low battery level.|
-
+| Name            | Type    | Read-Only  | Optional  | Description                                      |
+| --------------- | ------ | ---- | ---- | ---------------------------------------- |
+| requestId       | number | No   | No   | ID of the suspension delay request.                              |
+| actualDelayTime | number | No   | No   | Actual suspension delay duration of the application, in milliseconds.<br>The default duration is 180000 when the battery level is higher than or equal to the broadcast low battery level and 60000 when the battery level is lower than the broadcast low battery level.|
 
 ## BackgroundMode<sup>(deprecated)</sup>
 

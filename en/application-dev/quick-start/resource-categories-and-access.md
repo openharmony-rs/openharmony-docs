@@ -61,7 +61,7 @@ Table 2 Resource group directories
 
 | Directory   | Description                                    | Resource File                                    |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | Element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows:<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
+| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows:<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
 | media   | Indicates media resources, including non-text files such as images, audios, and videos. (Only files are supported in this directory.)<br>Table 3 and Table 4 describe the types of images, audios, and videos.             | The file name can be customized, for example, **icon.png**.                    |
 | profile  | Indicates a custom configuration file. You can obtain the file content by using the [getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) API. (Only JSON files are supported in this directory.)      | The file name can be customized, for example, **test_profile.json**.          |
 
@@ -244,7 +244,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean | Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated. |
+| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated.|
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
@@ -286,13 +286,13 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through **$r()** or **$rawfile()**.<br>Resources of the color, float, string, plural, media and profile types are accessed through **$r('app.type.name')**, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, **%1$s** and **%2$d** in a value, use the **$r('app.string.label', 'aaa', 444)** format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the **$rawfile('filename')** format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+ - Access resources through `$r()` or `$rawfile()`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
    > For details about how to use native APIs to access raw files, see [Raw File Development](../napi/rawfile-guidelines.md).
 
-[Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
+  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
 
   ```ts
     // Access through $r('app.type.name').
@@ -337,7 +337,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 - Create the context of the corresponding module through the [createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) API. After obtaining the **resourceManager** object, call different APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
 
-- Access resources through **$r()** or **$rawfile()**. Specifically, perform either of the following:
+- Access resources through `$r` or `$rawfile`. Specifically, perform either of the following:
 
   1. Add dependencies to the **oh-package.json5** file in the **entry** directory. For example, **"dependencies": {"library": "file:../library"}**.
 
@@ -377,7 +377,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
    ```
   > **NOTE**
   >
-  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, **$rawfile('[hsp].oneDir/twoDir/icon.png')**. When **$r** or **$rawfile** is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
+  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, `$rawfile('[hsp].oneDir/twoDir/icon.png')`. When `$r` or `$rawfile` is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
 
 
 ### System Resources
@@ -385,7 +385,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 You can obtain system icon resources from [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/) and system color, spacing, and rounded corner resources from the [system resource layer design table](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/design-resources.md). In addition, you can obtain system color resources from [full table of basic and semantic tokens](https://developer.huawei.com/consumer/en/doc/design-guides/color-0000001776857164#section17672143841113). The resources in this table do not overlap with those in the system resource layer design table. Both are recommended system color resources.
 You can further set the icon colors through [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md).
 
-To access system resources, use the **$r('sys.type.name')** format, where **sys** indicates the system resource, **type** indicates the resource type, such as color, float, string, media, or symbol, and **name** indicates the resource name.
+To access system resources, use the `$r('sys.type.name')` format, where **sys** indicates the system resource, **type** indicates the resource type, such as color, float, string, media, or symbol, and **name** indicates the resource name.
 
 > **NOTE**
 > - Other system resources that are not listed in the mentioned tables are system component and underlying capability parameters. You are advised to use the system resources provided in the preceding tables.
@@ -394,7 +394,7 @@ To access system resources, use the **$r('sys.type.name')** format, where **sys*
 >
 > - The use of system resources is only supported in the declarative development paradigm.
 >
-> - Currently, the default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the `system/etc/fontconfig.json` configuration file on the device.
+> - Currently, the default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **system/etc/fontconfig.json** configuration file on the device.
 
 ```ts
 Text('Hello')
@@ -648,5 +648,4 @@ If the **module.json5** file of a module contains the **targetModuleName** and *
 
 <!--Del-->
 <!--DelEnd-->
-
- <!--no_check--> 
+<!--no_check-->

@@ -15,11 +15,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 ## How to Develop
 
-1. Construct the parameters.
-   - Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
-   - Set the [property tags](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) required for querying a key. By default, this parameter is left empty.
+1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Call [OH_Huks_IsKeyItemExist](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist) to check whether the key exists.
+2. Initialize the key property set to specify the [key property tag](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) for query. By default, this parameter is left empty.
+
+3. Call [OH_Huks_IsKeyItemExist](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist) to check whether the key exists.
 
 ```c++
 #include "huks/native_huks_api.h"

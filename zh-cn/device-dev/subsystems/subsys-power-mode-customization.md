@@ -21,7 +21,7 @@ OpenHarmony支持的可定制的电源模式如下，每种模式对应了不同
 
 ### 约束与限制
 
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -37,11 +37,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以定制[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)的电源模式为例介绍电源模式的定制方法:
+本文以定制[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)的电源模式为例介绍电源模式的定制方法:
 
-1. 在[vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)下创建power_manager文件夹。
+1. 在[vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)下创建power_manager文件夹。
 
-2. 参考[默认电源模式配置文件夹](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到//vendor/hihope/rk3568/power_manager，文件格式如下：
+2. 参考[默认电源模式配置文件夹](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile)创建目标文件夹，并安装到//vendor/hihope/rk3568/power_manager，文件格式如下：
      
     ```text
     profile
@@ -49,7 +49,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── power_mode_config.xml
     ```
 
-3. 参考[默认电源模式配置文件夹中的power_mode_config.xml](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml)编写定制的power_mode_config.xml：
+3. 参考[默认电源模式配置文件夹中的power_mode_config.xml](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml)编写定制的power_mode_config.xml：
 
     proxy节点的说明是电源模式：
 
@@ -87,7 +87,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
         </proxy>
     ``` 
 
-4. 参考[默认电源模式配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_mode_config.xml打包到 `/vendor/etc/power_config`目录下，例如： 
+4. 参考[默认电源模式配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将power_mode_config.xml打包到 `/vendor/etc/power_config`目录下，例如： 
 
     ```shell
     import("//base/powermgr/power_manager/powermgr.gni") 
@@ -107,7 +107,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```
 
-5. 将编译目标添加到[rk3568默认的ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+5. 将编译目标添加到[rk3568默认的ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
  
     ```json
     {
@@ -278,8 +278,8 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ## 参考 
 
-开发过程中可参考的配置文件路径：[系统默认电源模式配置源码路径](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile) 
+开发过程中可参考的配置文件路径：[系统默认电源模式配置源码路径](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile) 
 
-[默认配置](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml) 
+[默认配置](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml) 
 
 打包路径：`/system/etc/power_config/power_mode_config.xml`

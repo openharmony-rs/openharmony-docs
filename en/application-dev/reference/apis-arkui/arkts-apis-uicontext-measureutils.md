@@ -26,7 +26,11 @@ Provides APIs for measuring text metrics, such as text height and width.
 
 measureText(options: MeasureOptions): number
 
-Measures the width of the given single-line text.
+Measures the single-line display width of the specified text. For multi-line text (separated by newline characters **\n**), this API returns the width of the longest line.
+
+> **NOTE**
+>
+> **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**, **maxLines**, and more) do not affect results. For layout-constrained width measurement, use [measureTextSize](#measuretextsize12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -352,4 +356,4 @@ struct Index {
   }
 }
 ```
-
+![](figures/styledString_15.png)

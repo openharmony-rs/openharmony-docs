@@ -585,7 +585,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -723,7 +723,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -1189,7 +1189,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务通知信息，包括长时任务Id等。 |
 
 **错误码**：
 
@@ -1289,7 +1289,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回更新后的长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回更新后的长时任务通知信息，包括长时任务Id等。 |
 
 **错误码**：
 
@@ -1448,14 +1448,14 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| DATA_TRANSFER           | 1    | 数据传输。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
-| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
-| AUDIO_RECORDING         | 3    | 录制。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                    |
+| DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
+| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
+| AUDIO_RECORDING         | 3    | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                    |
 | LOCATION                | 4    | 定位导航。                  |
-| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。                  |
-| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| VOIP<sup>13+</sup> | 8    | 音视频通话。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
-| TASK_KEEPING            | 9    | 计算任务（仅对2in1设备开放）。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
+| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。                  |
+| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
+| VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
+| TASK_KEEPING            | 9    | 计算任务（仅对2in1设备开放）。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 
@@ -1591,6 +1591,7 @@ export default class EntryAbility extends UIAbility {
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
 6. 通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
+7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 ### 属性
 
@@ -1651,6 +1652,104 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+### requestAuthFromUser<sup>22+</sup>
+
+requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
+
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于[特殊场景类型长时任务](#backgroundtaskmode21)。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+    console.info("Operation requestAuthFromUser success. auth result: " + JSON.stringify(authResult));
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+    let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
+    continuousTaskRequest.backgroundTaskModes = modeList;
+    let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
+    continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+    try {
+      continuousTaskRequest.requestAuthFromUser(callbackAuth);
+    } catch (error) {
+      console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+### checkSpecialScenarioAuth<sup>22+</sup>
+
+checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
+
+查询用户是否授权能在后台长时间运行。使用Promise异步回调。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**返回值：**
+
+| 类型             | 说明                |
+| -------------- |-------------------|
+| Promise&lt;[UserAuthResult](#userauthresult22)&gt; | Promise对象，返回用户授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+      continuousTaskRequest.checkSpecialScenarioAuth().then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info("Operation checkSpecialScenarioAuth succeeded. data: " + JSON.stringify(res));
+      }).catch((error: BusinessError) => {
+        console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation checkSpecialScenarioAuth failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## BackgroundTaskMode<sup>21+</sup>
 
 长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的[申请](#backgroundtaskmanagerstartbackgroundrunning21)、[更新](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。
@@ -1659,14 +1758,16 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
-| MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
-| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。              |
-| MODE_AUDIO_RECORDING            | 3         | 录制。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
+| MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
+| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。              |
+| MODE_AUDIO_RECORDING            | 3         | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
 | MODE_LOCATION                   | 4         | 定位导航。                  |
-| MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。            |
-| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。            |
-| MODE_VOIP                       | 8         | 音视频通话。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
-| MODE_TASK_KEEPING               | 9         | 计算任务（仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。|
+| MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。            |
+| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。          |
+| MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
+| MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>使用场景举例：应用在后台导出媒体文件导出、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1676,14 +1777,22 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型通知。       |
-| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通通知。                  |
+| SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
+| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。                  |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。            |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，通知类型为普通文本类型。            |
+| SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。            |
+| SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。            |
+| SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
+| SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台导出媒体文件，通知类型为普通文本通知。    |
+| SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。  |
 
-**长时任务主类型与子类型对照表：** 
+**长时任务主类型与子类型对照表：**
+
 | [长时任务主类型](#backgroundtaskmode21) | [长时任务子类型](#backgroundtasksubmode21)  |
 | --------------------------------- | ----------------------------------- |
-| MODE_DATA_TRANSFER                | SUBMODE_LIVE_VIEW_NOTIFICATION        |
+| MODE_DATA_TRANSFER                | SUBMODE_LIVE_VIEW_NOTIFICATION      |
 | MODE_AUDIO_PLAYBACK               | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_AUDIO_RECORDING              | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_LOCATION                     | SUBMODE_NORMAL_NOTIFICATION         |
@@ -1691,3 +1800,19 @@ export default class EntryAbility extends UIAbility {
 | MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  |
+
+## UserAuthResult<sup>22+</sup>
+
+用户授权结果。
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+| 名称           | 值 | 说明     |
+| ------------ |---|--------|
+| NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |
+| NOT_DETERMINED | 1 | 用户未操作。 |
+| DENIED  | 2 | 拒绝。    |
+| GRANTED_ONCE | 3 | 本次允许。  |
+| GRANTED_ALWAYS | 4 | 始终允许。  |

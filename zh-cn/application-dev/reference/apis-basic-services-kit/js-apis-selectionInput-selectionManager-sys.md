@@ -107,10 +107,11 @@ getSelectionContent(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[划词服务错误码](errorcode-selection.md)。
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
+| 202 | Permission denied. Called by non-system application. |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
 | 33600005   | The interface is called at the wrong time. |

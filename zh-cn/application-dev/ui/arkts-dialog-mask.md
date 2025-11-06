@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 开发者对弹出框的定制不仅限于弹出框里的内容，对弹出框蒙层的定制需求也逐渐增加。本文介绍ArkUI弹出框的蒙层控制，包括点击蒙层时是否消失、蒙层区域、蒙层颜色和蒙层动画等特性。
 
@@ -36,7 +36,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 >
 > - 设置isModal参数，可定制弹出框的模态状态：非模态弹出框无蒙层，支持与周围组件交互；模态弹出框有蒙层，禁止与周围组件交互。
 >
-> - 当levelMode属性设置为LevelMode.EMBEDDED时，设置immersiveMode参数，可定制弹出框蒙层是否延伸至状态栏及导航栏。
+> - 从API version 15开始，当levelMode属性设置为LevelMode.EMBEDDED时，设置immersiveMode参数，可定制弹出框蒙层是否延伸至状态栏及导航栏。
 
 | 接口&组件                                                    | maskColor | transition                                      | maskTransition |
 | ------------------------------------------------------------ | --------- | ----------------------------------------------- | -------------- |
@@ -64,7 +64,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 >
 > - 设置transition参数，可定制弹出框的进入和退出动画，同时影响蒙层动画。
 >
-> - 设置maskTransition参数，可定制弹出框的蒙层动画。
+> - 从API version 19开始，设置maskTransition参数，可定制弹出框的蒙层动画。
 
 
 ## 弹出框蒙层显隐控制

@@ -277,14 +277,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             this.width1 = 10;
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             this.height1 = 10;
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -341,14 +341,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })

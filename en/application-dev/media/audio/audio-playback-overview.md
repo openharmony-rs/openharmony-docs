@@ -18,7 +18,7 @@ The system provides a variety of APIs for you to develop audio playback applicat
 
 - [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md): provides a set of native APIs for audio output. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only. They are suitable for playback applications that implement audio output at the native layer.<!--Del-->
 
-- [TonePlayer](using-toneplayer-for-playback.md): provides ArkTS and JS APIs to implement the playback of dialing tones and ringback tones. It can be used to play the content selected from a fixed type range, without requiring the input of media assets or audio data. This class is applicable to specific scenarios where dialing tones and ringback tones are played. It is available only to system applications.<!--DelEnd-->
+- [TonePlayer](using-toneplayer-for-playback-sys.md): provides ArkTS and JS APIs to implement the playback of dialing tones and ringback tones. It can be used to play the content selected from a fixed type range, without requiring the input of media assets or audio data. This class is applicable to specific scenarios where dialing tones and ringback tones are played. It is available only to system applications.<!--DelEnd-->
 
 In addition to the preceding classes, you can also use **AVPlayer** and **SoundPool** in Media Kit to implement audio playback.
 

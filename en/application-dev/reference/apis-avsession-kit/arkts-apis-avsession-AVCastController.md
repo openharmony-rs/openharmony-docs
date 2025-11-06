@@ -369,7 +369,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102 | The session does not exist. |
 
 **Example**
 

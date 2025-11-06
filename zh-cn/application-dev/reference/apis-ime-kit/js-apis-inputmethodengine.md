@@ -4562,6 +4562,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 | gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
+| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。|
 
 ## KeyEvent
 
@@ -5171,7 +5172,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 | -------- | -------- | -------- | -------- |
 | text | string | 是 | 文本。 |
 
-**返回值：**  
+**返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |

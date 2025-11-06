@@ -35,10 +35,14 @@ ArkUI提供了[手势绑定](../ui/arkts-gesture-events-binding.md)，Web组件�
 > **说明：**
 >
 > 该示例仅用于说明ArkUI手势和ArkWeb手势的区别，不建议使用此方法进行Web组件的缩放。
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebGestureInteraction]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebGestureInteraction_';
 @Entry
 @Component
 struct Index {
@@ -50,26 +54,26 @@ struct Index {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
       // 在组件上绑定缩放比例，可以通过修改缩放比例来实现组件的缩小或者放大
-      .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
-      .zoomAccess(true)
-      .gesture(
-        // 在组件上绑定三指触发的捏合手势
-        PinchGesture({ fingers: 3 })
-          .onActionStart((event: GestureEvent|undefined) => {
-            console.info('Pinch start');
-          })
+        .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
+        .zoomAccess(true)
+        .gesture(
+          // 在组件上绑定三指触发的捏合手势
+          PinchGesture({ fingers: 3 })
+            .onActionStart((event: GestureEvent|undefined) => {
+              hilog.info(DOMAIN, TAG, BUNDLE, 'Pinch start');
+            })
             // 当捏合手势触发时，可以通过回调函数获取缩放比例，从而修改组件的缩放比例
-          .onActionUpdate((event: GestureEvent|undefined) => {
-            if(event){
-              this.scaleValue = this.pinchValue * event.scale;
-              console.info('Pinch update');
-            }
-          })
-          .onActionEnd(() => {
-            this.pinchValue = this.scaleValue;
-            console.info('Pinch end');
-          })
-      )
+            .onActionUpdate((event: GestureEvent|undefined) => {
+              if(event){
+                this.scaleValue = this.pinchValue * event.scale;
+                hilog.info(DOMAIN, TAG, BUNDLE, `Pinch update: ${this.scaleValue}`);
+              }
+            })
+            .onActionEnd(() => {
+              this.pinchValue = this.scaleValue;
+              hilog.info(DOMAIN, TAG, BUNDLE, 'Pinch end');
+            })
+        )
     }
   }
 }
@@ -100,13 +104,15 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-```ts
-import web_webview from '@ohos.web.webview';
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
@@ -119,10 +125,10 @@ struct Index {
     if (this.controller.accessStep(-1)) {
       this.controller.backward(); // 返回上一个web页
       // 执行用户自定义返回逻辑
-      return true
+      return true;
     } else {
       // 执行系统默认返回逻辑，返回上一个page页
-      return false
+      return false;
     }
   }
 }
@@ -132,24 +138,26 @@ struct Index {
 
 网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在Web组件中设置自定义User-Agent，例如：
 
-```ts
-import { webview } from '@kit.ArkWeb'
+<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-    private webController: webview.WebviewController = new webview.WebviewController()
-    build(){
-      Column() {
-        Web({
-          src: 'https://www.example.com',
-          controller: this.webController,
-        }).onControllerAttached(() => {
-          // 自定义User-Agent
-          let customUA = 'Mozilla/5.0 (Phone; Android; OpenHarmony 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36'
-          this.webController.setCustomUserAgent(customUA)
-        })
-      }
+  private webController: webview.WebviewController = new webview.WebviewController();
+  build(){
+    Column() {
+      Web({
+        src: 'https://www.example.com',
+        controller: this.webController,
+      }).onControllerAttached(() => {
+        // 自定义User-Agent
+        let customUA = 'Mozilla/5.0 (Phone; Android; HarmonyOS 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36';
+        this.webController.setCustomUserAgent(customUA);
+      })
     }
+  }
 }
 ```

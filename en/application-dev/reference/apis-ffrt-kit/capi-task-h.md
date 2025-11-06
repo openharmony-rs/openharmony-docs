@@ -78,7 +78,7 @@ Initializes a task attribute.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the task attribute is initialized;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the task attribute is initialized; returns **-1** otherwise.|
 
 ### ffrt_task_attr_set_name()
 
@@ -123,7 +123,7 @@ Obtains a task name.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API const char* | Returns a non-null pointer to the task name if the name is obtained;<br>          returns a null pointer otherwise.|
+| FFRT_C_API const char* | Returns a non-null pointer to the task name if the name is obtained; returns a null pointer otherwise.|
 
 ### ffrt_task_attr_destroy()
 
@@ -159,8 +159,8 @@ Sets the task QoS.
 
 **Parameters**
 
-| Name                                                    | Description|
-|---------------------------------------------------------| -- |
+| Name| Description|
+| -- | -- |
 | [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md)* attr | Pointer to the task attribute.|
 | [ffrt_qos_t](capi-type-def-h.md#variables) qos                | Task QoS.|
 
@@ -275,8 +275,8 @@ Obtains the task priority in the queue.
 
 **Returns**
 
-| Type                                                     | Description|
-|---------------------------------------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_queue_priority_t](capi-type-def-h.md#ffrt_queue_priority_t) | Returns the task priority.|
 
 ### ffrt_task_attr_set_stack_size()
@@ -347,7 +347,7 @@ Updates the task QoS.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the QoS is updated;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the QoS is updated; returns **-1** otherwise.|
 
 ### ffrt_this_task_get_qos()
 
@@ -408,7 +408,7 @@ Applies for memory for the task execution function struct.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API void * | Returns a non-null pointer if the memory is allocated;<br>          returns a null pointer otherwise.|
+| FFRT_C_API void * | Returns a non-null pointer if the memory is allocated; returns a null pointer otherwise.|
 
 ### ffrt_submit_base()
 
@@ -456,8 +456,8 @@ Submits a task, and obtains the task handle.
 
 **Returns**
 
-| Type                               | Description|
-|-----------------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted;<br>          returns a null pointer otherwise.|
 
 ### ffrt_submit_f()
@@ -515,7 +515,7 @@ Submits a task, and obtains the task handle. It is a simplified wrapper of **ffr
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted;<br>          returns a null pointer otherwise.|
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted; returns a null pointer otherwise.|
 
 **References**
 

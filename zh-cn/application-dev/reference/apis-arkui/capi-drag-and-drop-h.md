@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -214,9 +214,9 @@ enum ArkUI_DragStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_DRAG_STATUS_STARTED | Started。 |
-| ARKUI_DRAG_STATUS_ENDED | Ended。 |
+| ARKUI_DRAG_STATUS_UNKNOWN = -1 | 未知的拖拽状态。 |
+| ARKUI_DRAG_STATUS_STARTED | 拖拽开始。 |
+| ARKUI_DRAG_STATUS_ENDED | 拖拽结束。 |
 
 
 ## 函数说明
@@ -912,7 +912,7 @@ int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* ke
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         ARKUI_ERROR_CODE_OPERATION_FAILED 当前没有进行中的数据同步任务。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_DisableDropDataPrefetchOnNode()
 

@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+> **NOTE**
+>
+> The IME tool is supported since API version 20.
+
 **How to Use**<br>
 
 hdc shell ime [option] [parameter]
@@ -13,16 +17,16 @@ hdc shell ime [option] [parameter]
 **Commands**
 | Option| Parameter      | Description                                                        |
 | ---- | ---------- | ------------------------------------------------------------ |
-| -e | bundle [-b /-f] | Enables an input method as a specified mode. If **-b** or **-f** is not set, **-b** defaults to the basic mode, and **-f** defaults to the full mode.<br>**NOTE**<br>The enabling status of the preset default input method cannot be changed.|
-| -d | bundle | Disables a specified input method.<br>**NOTE**<br>The preset default input method cannot be disabled.|
-| -s   | bundle     | Switches to a specified input method.<br>**NOTE**<br>You are not allowed to switch to another input method when the screen is locked or the password is being entered.|
+| -e | bundle [-b /-f] | Enables an input method as a specified mode. If **-b** or **-f** is not set, **-b** defaults to the basic mode, and **-f** indicates the full experience mode.<br>**Note**: The enabling status of the preset default input method cannot be changed.|
+| -d | bundle | Disables a specified input method.<br>**Note**: The preset default input method cannot be disabled.|
+| -s   | bundle     | Switches to a specified input method.<br>**Note**: You are not allowed to switch to another input method when the screen is locked or the password is being entered.|
 | -g   | NA         | Obtains the current input method.|
 | -l   | NA         | Lists all input methods.|
 | -h   | NA         | Displays the help information.|
 
 ## Managing Input Methods Using IME Tool
 
-1. Enabling an input method. You can enable a third-party input method as basic mode or full mode.
+1. Enabling an input method. You can enable a third-party input method as basic mode or full experience mode.
 
    ```shell
     # Input: Use an hdc command to enable an input method.
@@ -30,7 +34,7 @@ hdc shell ime [option] [parameter]
     # Output: The effect is equivalent to a direct API call.
     # Basic mode
     hdc shell ime -e com.xxx.yyy 
-    # Full mode
+    # Full experience mode
     hdc shell ime -e com.xxx.yyy -f
    ```
 

@@ -1,4 +1,10 @@
 # Click Feedback Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can set the click feedback effect for a component to define its visual response when it is clicked.
 
@@ -52,12 +58,16 @@ Sets the click feedback effect of the component. Compared with [clickEffect](#cl
 
 ## ClickEffect
 
+Defines the click effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name | Type                                                   | Mandatory| Description                                                        |
-| ----- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | Yes  | Click feedback effect of the component.<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
-| scale | number                                                      | No  | Custom scaling ratio for fine-tuning the click feedback effect.<br>**NOTE**<br>The default value varies depending on the value of **level**:<br>**ClickEffectLevel.LIGHT**: **0.90**.<br>**ClickEffectLevel.MIDDLE** or **ClickEffectLevel.HEAVY**: **0.95**.<br>**undefined** or **null** (treated as **ClickEffectLevel.LIGHT**): **0.90**.<br>When **scale** is set to **undefined** or **null**, the default scaling ratio for the current **level** is used.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type                                                 | Read-Only   | Optional  |  Description                                                        |
+| ----- | ----------------------------------------------------------- | ---- | --------- | --------------------------------------------------------- |
+| level | [ClickEffectLevel](ts-appendix-enums.md#clickeffectlevel10) | No  | No |Click feedback effect of the component.<br>**NOTE**<br>When **level** is **undefined** or **null**, **ClickEffect** uses the effect corresponding to **ClickEffectLevel.LIGHT** with a scaling ratio as described below.|
+| scale | number                                                      | No  | Yes |Custom scaling ratio for fine-tuning the click feedback effect.<br>**NOTE**<br>The default value varies depending on the value of **level**:<br>**ClickEffectLevel.LIGHT**: **0.90**.<br>**ClickEffectLevel.MIDDLE** or **ClickEffectLevel.HEAVY**: **0.95**.<br>**undefined** or **null** (treated as **ClickEffectLevel.LIGHT**): **0.90**.<br>When **scale** is set to **undefined** or **null**, the default scaling ratio for the current **level** is used.|
 
 ## Example
 

@@ -144,3 +144,69 @@ struct Index {
   }
 }
 ```
+
+## avSession.getAVSession<sup>21+</sup>
+
+getAVSession(context: Context): Promise\<AVSession>
+
+获取会话对象。使用Promise异步回调。
+
+该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                            | 必填 | 说明                           |
+| ------ | ------------------------------- | ---- | ------------------------------ |
+| context| [Context](../apis-ability-kit/js-apis-inner-app-context.md) | 是| 需要使用UIAbilityContext，用于系统获取应用组件的相关信息。 |
+
+**返回值：**
+
+| 类型                              | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ |
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // 供后续函数入参使用。
+            let sessionTag: string;
+
+            avSession.getAVSession(context).then(async (data: avSession.AVSession) => {
+              currentAVSession = data;
+              sessionId = currentAVSession.sessionId;
+              sessionTag = currentAVSession.sessionTag;
+              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
+            }).catch((err: BusinessError) => {
+              console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

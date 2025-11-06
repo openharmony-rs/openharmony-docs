@@ -1,4 +1,10 @@
 # Video (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Video** component is used to play a video and control its playback.
 
@@ -24,4 +30,4 @@ Sets the background color of the **SurfaceNode** in the **Video** component.
 
 | Name|       Type   | Mandatory|           Description               |
 | ------ | ------------ | ---- | ---------------------------- |
-| color  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the **SurfaceNode** in the **Video** component. Only black and transparent colors are supported. Any other color will default to black.<br>Default value: **Color.Black**|
+| color  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the **SurfaceNode** in the **Video** component. Only black and transparent colors are supported. Other values default to black.<br>Default value: **Color.Black**|

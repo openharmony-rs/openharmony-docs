@@ -147,6 +147,7 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 **Description**
 
 Manages listening events on a loop.
+You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
 
@@ -177,6 +178,7 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 **Description**
 
 Starts the timer on a loop.
+You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
 

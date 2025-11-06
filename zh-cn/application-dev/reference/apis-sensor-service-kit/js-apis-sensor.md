@@ -10,7 +10,7 @@ sensor模块提供了获取传感器数据的能力，包括获取传感器属�
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见[getSingleSensor](#sensorgetsinglesensor9)错误码说明；订阅传感器数据时确保on订阅和off取消订阅成对出现。
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见[getSingleSensor](#sensorgetsinglesensor9)错误码说明，具体使用方法可参考[指南开发步骤](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#开发步骤)；订阅传感器数据时确保on订阅和off取消订阅成对出现。
 
 
 ## 导入模块
@@ -6553,8 +6553,8 @@ try {
 | 名称                            | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | intensity                       | number | 否   | 否   | 光强（单位：勒克斯）。                                       |
-| colorTemperature<sup>12+</sup>  | number | 否   | 是   | 色温（单位：开尔文），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。 |
-| infraredLuminance<sup>12+</sup> | number | 否   | 是   | 红外亮度（单位：cd/m²），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。 |
+| colorTemperature<sup>12+</sup>  | number | 否   | 是   | 色温（单位：开尔文），可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。 |
+| infraredLuminance<sup>12+</sup> | number | 否   | 是   | 红外亮度（单位：cd/m²），可选参数，如果该参数不支持则返回固定值（固定值由传感器自定义），支持则返回正常数值。 |
 
 
 ## HallResponse

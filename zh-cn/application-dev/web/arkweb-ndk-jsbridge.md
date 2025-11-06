@@ -44,25 +44,28 @@
 
 * ArkTS侧
 
-  ```js
-  // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
+  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   webTag: string = 'ArkWeb1';
   controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-
-  // 在aboutToAppear方法中，通过Node-API接口将webTag传入C++侧，C++侧使用webTag作为ArkWeb组件的唯一标识
+  @State testObjtest: testObj = new testObj();
+  
   aboutToAppear() {
-    console.info("aboutToAppear")
-    //初始化web ndk
+    console.info('aboutToAppear');
+    //初始化web Native Development Kit
     testNapi.nativeWebInit(this.webTag);
-  }
   ```
 
 * C++侧
 
-  ```c++
+  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  
+  ``` C++
   // 解析存储webTag
-  static napi_value NativeWebInit(napi_env env, napi_callback_info info) {
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit start");
+  static napi_value NativeWebInit(napi_env env, napi_callback_info info)
+  {
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit NativeWebInit start");
       size_t argc = 1;
       napi_value args[1] = {nullptr};
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -72,12 +75,14 @@
       char *webTagValue = new (std::nothrow) char[webTagSize + 1];
       size_t webTagLength = 0;
       napi_get_value_string_utf8(env, args[0], webTagValue, webTagSize + 1, &webTagLength);
-      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit webTag:%{public}s", webTagValue);
-
+      OH_LOG_Print(
+          LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb",
+          "Native Development Kit NativeWebInit webTag:%{public}s", webTagValue);
+  
       // 将webTag保存在实例对象中
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
-      // ...
-  }
+      if (jsbridge_object_ptr)
+          jsbridge_object_ptr->Init();
   ```
 
 ### 使用Native接口获取API结构体
@@ -96,31 +101,30 @@
 
 通过[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)注册组件生命周期回调，调用接口前，建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体中是否存在对应函数指针，以避免SDK与设备ROM不匹配导致crash问题。
 
-  ```c++
+  <!-- @[the_native_side_registers_the_callback_of_the_component_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  
+  ``` C++
   if (!ARKWEB_MEMBER_MISSING(component, onControllerAttached)) {
-      component->onControllerAttached(webTagValue, ValidCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onControllerAttached(
+          webTagValue, ValidCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onControllerAttached func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onPageBegin)) {
-      component->onPageBegin(webTagValue, LoadStartCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onPageBegin(webTagValue, LoadStartCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onPageBegin func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onPageEnd)) {
-      component->onPageEnd(webTagValue, LoadEndCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onPageEnd(webTagValue, LoadEndCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onPageEnd func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onDestroy)) {
-      component->onDestroy(webTagValue, DestroyCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onDestroy(webTagValue, DestroyCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onDestroy func not exist");
   }
@@ -130,17 +134,21 @@
 
 通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，推荐在[onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached)回调中注册应用侧函数，如果在其它时机注册，需要手动调用[refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh)才能生效。
 
-  ```c++
+  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->
+  
+  ``` C++
   // 注册对象
-  OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk registerJavaScriptProxyEx begin");
-  ArkWeb_ProxyMethodWithResult method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
-  ArkWeb_ProxyMethodWithResult method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  OH_LOG_Print(
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+  ArkWeb_ProxyMethodWithResult method1 = {
+      "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
+  ArkWeb_ProxyMethodWithResult method2 = {
+      "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
-  // 调用ndk接口注册对象
-  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method2调用此文件下的ProxyMethod1和ProxyMethod2方法了
+  // 调用Native Development Kit接口注册对象
+  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
   ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
-  // 参数permission为空，表示不进行权限管控
-  controller->registerJavaScriptProxyEx(webTag, &proxyObject, /*permission*/"");
+  controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
   ```
 
   - 参数permission是一个JSON字符串，示例如下：
@@ -346,8 +354,9 @@
 
 * Node-API侧暴露ArkTS接口
 
-  ```javascript
-  // entry/src/main/cpp/types/libentry/index.d.ts
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->
+  
+  ``` TypeScript
   export const nativeWebInit: (webName: string) => void;
   export const runJavaScript: (webName: string, jsCode: string) => void;
   ```

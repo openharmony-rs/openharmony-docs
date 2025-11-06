@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能C接口。
+提供远端对象创建、销毁、数据发送、远端对象死亡状态监听等功能的C接口。
 
 **库：** libipc_capi.so
 
@@ -219,7 +219,7 @@ IPC消息发送函数。
 
 | 类型 | 说明 |
 | ---- | ---- |
-| int | 发送成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 远端OHIPCRemoteStub对象死亡返回[OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> code超出范围返回[OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 其它返回[OH_IPC_ErrorCode#OH_IPC_INNER_ERRORT](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码。 |
+| int | 发送成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 远端OHIPCRemoteStub对象死亡返回[OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> code超出范围返回[OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 其它返回[OH_IPC_ErrorCode#OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)或用户自定义错误码。 |
 
 ### OH_IPCRemoteProxy_GetInterfaceDescriptor()
 

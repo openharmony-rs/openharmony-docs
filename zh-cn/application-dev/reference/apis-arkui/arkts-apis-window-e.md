@@ -26,7 +26,9 @@
 
 ## AvoidAreaType<sup>7+</sup>
 
-窗口内容需要规避区域的类型枚举。
+窗口内容的避让区域的类型枚举。
+
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -35,9 +37,9 @@
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
 | TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | 表示刘海屏区域。                                                              |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示手势区域。当前，各设备均无此类型避让区域。                                    |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示软键盘区域。                                                              |
+| TYPE_CUTOUT                      | 1    | 表示挖孔区域。                                                              |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。                                    |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。                                                              |
 | TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                             |
 
 ## Orientation<sup>9+</sup>
@@ -249,7 +251,7 @@
 
 ## WindowStageEventType<sup>9+</sup>
 
-WindowStage生命周期。
+WindowStage生命周期状态枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -259,10 +261,10 @@ WindowStage生命周期。
 
 | 名称       | 值 | 说明       |
 | ---------- | ------ | ---------- |
-| SHOWN      | 1      | 切到前台，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。 |
+| SHOWN      | 1      | 前台状态，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。 |
 | ACTIVE     | 2      | 获焦状态，例如应用窗口处理点击事件后的状态、应用启动后的状态。 |
 | INACTIVE   | 3      | 失焦状态，例如打开新应用或点击其他窗口后，原获焦窗口的状态。 |
-| HIDDEN     | 4      | 切到后台，例如应用上滑退出、应用窗口关闭。 |
+| HIDDEN     | 4      | 后台状态，例如应用上滑退出、应用窗口关闭。 |
 | RESUMED<sup>11+</sup> | 5      | 前台可交互状态，例如打开应用后，应用处于前台，且可以与用户交互的状态。 |
 | PAUSED<sup>11+</sup>  | 6      | 前台不可交互状态，例如应用在前台时，进入多任务界面，应用依然处于前台但不可以与用户交互的状态。 |
 

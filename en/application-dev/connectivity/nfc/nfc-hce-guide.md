@@ -1,5 +1,12 @@
 # HCE Development
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Introduction
 Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
 
@@ -8,7 +15,7 @@ An application emulates a card and communicates with an NFC card reader through 
 - HCE foreground card swiping<br>
 In the foreground mode, the user has to start a specific application that communicates with the NFC card reader. Specifically, the user starts the application, opens the application page, and taps the device on the NFC card reader. In this case, the transaction data is distributed only to the foreground application. When the application switches to the background or exits, the foreground priority is also suspended.
 - HCE background card swiping<br>
-The user taps the device on an NFC card reader without starting any HCE application. Then, the device selects an HCE application based on the Applet ID (AID) provided by the NFC card reader, and completes the card swiping transaction. If multiple HCE applications are matched, an application selector will be displayed, listing all the available applications. In this case, the user needs to open the desired HCE application and tap the device on the NFC card reader again to trigger the card swiping transaction.
+The user taps the device on an NFC card reader without starting any HCE application. Then, the device selects an HCE application based on the Applet ID (AID, which complies with ISO/IEC 7816-4) provided by the NFC card reader, and completes the card swiping transaction. If multiple HCE applications are matched, an application selector will be displayed, listing all the available applications. In this case, the user needs to open the desired HCE application and tap the device on the NFC card reader again to trigger the card swiping transaction.
 
 ## Constraints
 1. For security reasons, regardless of whether the HCE application performs card swiping in the foreground or background, the device does not support HCE card swiping operations when it is in the screen-off state.<br>
@@ -34,7 +41,7 @@ The following table describes the APIs for implementing HCE.
 ### Selecting Foreground or Background Card Swiping
 HCE application developers can choose to implement either foreground or background card swiping based on service requirements. These two methods differ in their code implementation.
 - HCE Foreground Card Swiping<br>
-1. In the **module.json5** configuration file, there is no need to statically declare the AID selected by the NFC card reader. Instead, dynamically register an AID by using [start](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#start9).
+1. In the **module.json5** configuration file, there is no need to statically declare the Applet ID (AID, which complies with ISO/IEC 7816-4) selected by the NFC card reader. Instead, dynamically register an AID by using [start](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#start9).
 2. When the card swiping page of the HCE application exits,  explicitly called [stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9) to release the dynamically registered AID.
 - HCE Background Card Swiping<br>
 1. In the **module.json5** configuration file, statically declare the AID selected by the NFC card reader. Based on service requirements, specify whether the declared AID belongs to the **Payment** type or the **Other** type.
@@ -103,9 +110,9 @@ import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit
 let hceElementName: bundleManager.ElementName;
 let hceService: cardEmulation.HceService;
 
-const hceCommandCb : AsyncCallback<number[]> = (error : BusinessError, hceCommand : number[]) => {
+const hceCommandCb: AsyncCallback<number[]> = (error: BusinessError, hceCommand: number[]) => {
   if (!error) {
-    if (hceCommand == null || hceCommand == undefined) {
+    if (hceCommand == null) {
       hilog.error(0x0000, 'testTag', 'hceCommandCb has invalid hceCommand.');
       return;
     }
@@ -136,7 +143,7 @@ export default class EntryAbility extends UIAbility {
       return;
     }
 
-    // Initialize the correct value based on the application information.
+    // hceElementName cannot be empty. You can obtain elementName of the application through Want or fill in elementName based on the application information.
     hceElementName = {
       bundleName: want.bundleName ?? '',
       abilityName: want.abilityName ?? '',
@@ -239,17 +246,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let hceElementName : bundleManager.ElementName;
+let hceElementName: bundleManager.ElementName;
 let hceService: cardEmulation.HceService;
 
-const hceCommandCb : AsyncCallback<number[]> = (error : BusinessError, hceCommand : number[]) => {
+const hceCommandCb: AsyncCallback<number[]> = (error: BusinessError, hceCommand: number[]) => {
   if (!error) {
-    if (hceCommand == null || hceCommand == undefined) {
+    if (hceCommand == null) {
       hilog.error(0x0000, 'testTag', 'hceCommandCb has invalid hceCommand.');
       return;
     }
 
-    // The application checks the content of the received command and sends the matching response based on its own service implementation.
+    // The application checks the content of the received command and sends the matching response data based on its own service implementation.
     hilog.info(0x0000, 'testTag', 'hceCommand = %{public}s', JSON.stringify(hceCommand));
     let responseData = [0x90, 0x00]; // Change the response data based on the received command.
     hceService.transmit(responseData).then(() => {

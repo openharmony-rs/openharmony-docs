@@ -24,6 +24,8 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 | void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char\* name, int32_t taskId) | 结束一个异步时间片跟踪事件，分级控制跟踪输出。<br/>level、name和taskId必须与流程开始的OH_HiTrace_StartAsyncTraceEx()对应参数值保持一致。<br/>**说明**：从API version 19开始，支持该接口。 |
 | void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char\* name, int64_t count) | 整数跟踪事件，分级控制跟踪输出。<br/>name、count两个参数分别用来标记一个跟踪的整数变量名及整数值。<br/>**说明**：从API version 19开始，支持该接口。 |
 | bool OH_HiTrace_IsTraceEnabled(void) | 判断当前是否开启应用trace捕获。<br/>使用hitrace命令行工具等方式开启采集时返回true，未开启采集或停止采集后返回false，此时调用HiTraceMeter性能跟踪打点接口无效。<br/>**说明**：从API version 19开始，支持该接口。 |
+| int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback) | 注册应用trace捕获开关通知回调，使用callback异步回调。<br/>注册成功后，立即执行一次回调函数，后续回调函数由应用trace捕获开关状态变化触发执行。<br/>**说明**：从API version 22开始，支持该接口。 |
+| int32_t OH_HiTrace_UnregisterTraceListener(int32_t index); | 注销应用trace捕获开关通知回调。<br/>**说明**：从API version 22开始，支持该接口。 |
 
 > **注意：**
 >
@@ -62,6 +64,8 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
 | count | int64_t | 整数变量的值。 |
 | customCategory | const char\* | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br/>若不需要聚类，可传入一个空字符串。 |
 | customArgs | const char\* | 自定义键值对，若有多组键值对，使用逗号进行分隔，例"key1=value1,key2=value2"。<br/>若不需要该参数，可传入一个空字符串。 |
+| callback | void (*)(bool) | 注册的回调函数。 |
+| index | int32_t | OH_HiTrace_RegisterTraceListener()返回的回调索引。 |
 
 
 > **说明：**
@@ -121,114 +125,120 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
 
 3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，在Add函数中调用HiTraceMeter NDK_C接口进行性能打点跟踪，完整的示例代码如下。
 
-   ```c++
-   #include <cstdio>
-   #include <cstring>
-   
-   #include "hilog/log.h"
-   #include "hitrace/trace.h"
-   #include "napi/native_api.h"
-   
-   #undef LOG_TAG
-   #define LOG_TAG "traceTest"
-   
-   static napi_value Add(napi_env env, napi_callback_info info)
-   {
-       // 第一个异步跟踪任务开始
-       OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1001, "categoryTest", "key=value");
-       // 开始计数任务
-       int64_t traceCount = 0;
-       traceCount++;
-       OH_HiTrace_CountTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestCountTrace", traceCount);
-       // 业务流程
-       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
-   
-       // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
-       OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1002, "categoryTest", "key=value");
-       // 开始计数任务
-       traceCount++;
-       OH_HiTrace_CountTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestCountTrace", traceCount);
-       // 业务流程
-       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
-   
-       // 结束taskId为1001的异步跟踪任务
-       OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1001);
-       // 结束taskId为1002的异步跟踪任务
-       OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1002);
-   
-       // 开始同步跟踪任务
-       OH_HiTrace_StartTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestSyncTrace", "key=value");
-       // 业务流程
-       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, synchronizing trace");
-       // 结束同步跟踪任务
-       OH_HiTrace_FinishTraceEx(HITRACE_LEVEL_COMMERCIAL);
-   
-       // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
-       // 在未开启应用trace捕获时，避免该部分性能损耗
-       if (OH_HiTrace_IsTraceEnabled()) {
-           char customArgs[128] = "key0=value0";
-           for (int index = 1; index < 10; index++) {
-               char buffer[16];
-               snprintf(buffer, sizeof(buffer), ",key%d=value%d", index, index);
-               strncat(customArgs, buffer, sizeof(customArgs) - strlen(customArgs) - 1);
-           }
-           OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003, "categoryTest", customArgs);
-           OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
-           OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003);
-       } else {
-           OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
-       }
-   
-       size_t requireArgc = 2;
-       size_t argc = 2;
-       napi_value args[2] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-   
-       napi_valuetype valuetype0;
-       napi_typeof(env, args[0], &valuetype0);
-   
-       napi_valuetype valuetype1;
-       napi_typeof(env, args[1], &valuetype1);
-   
-       double value0;
-       napi_get_value_double(env, args[0], &value0);
-   
-       double value1;
-       napi_get_value_double(env, args[1], &value1);
-   
-       napi_value sum;
-       napi_create_double(env, value0 + value1, &sum);
-   
-       return sum;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+   <!-- @[hitracemeter_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include <cstdio>
+#include <cstring>
+
+#include "hilog/log.h"
+#include "hitrace/trace.h"
+#include "napi/native_api.h"
+
+#undef LOG_TAG
+#define LOG_TAG "traceTest"
+
+static napi_value Add(napi_env env, napi_callback_info info)
+{
+    // 第一个异步跟踪任务开始
+    HiTrace_Output_Level level = HITRACE_LEVEL_COMMERCIAL;
+    constexpr int64_t taskIdOne = 1001;
+    OH_HiTrace_StartAsyncTraceEx(level, "myTestAsyncTrace", taskIdOne, "categoryTest", "key=value");
+    // 开始计数任务
+    int64_t traceCount = 0;
+    traceCount++;
+    OH_HiTrace_CountTraceEx(level, "myTestCountTrace", traceCount);
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
+    // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
+    constexpr int64_t taskIdTwo = 1002;
+    OH_HiTrace_StartAsyncTraceEx(level, "myTestAsyncTrace", taskIdTwo, "categoryTest", "key=value");
+    // 开始计数任务
+    traceCount++;
+    OH_HiTrace_CountTraceEx(level, "myTestCountTrace", traceCount);
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
+
+    // 结束taskId为1001的异步跟踪任务
+    OH_HiTrace_FinishAsyncTraceEx(level, "myTestAsyncTrace", taskIdOne);
+    // 结束taskId为1002的异步跟踪任务
+    OH_HiTrace_FinishAsyncTraceEx(level, "myTestAsyncTrace", taskIdTwo);
+
+    // 开始同步跟踪任务
+    OH_HiTrace_StartTraceEx(level, "myTestSyncTrace", "key=value");
+    // 业务流程
+    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, synchronizing trace");
+    // 结束同步跟踪任务
+    OH_HiTrace_FinishTraceEx(level);
+
+    // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
+    // 在未开启应用trace捕获时，避免该部分性能损耗
+    constexpr int64_t taskIdThree = 1003;
+    constexpr int loopTime = 10;
+    if (OH_HiTrace_IsTraceEnabled()) {
+        char customArgs[128] = "key0=value0";
+        for (int index = 1; index < loopTime; index++) {
+            char buffer[16];
+            snprintf(buffer, sizeof(buffer), ",key%d=value%d", index, index);
+            strncat(customArgs, buffer, sizeof(customArgs) - strlen(customArgs) - 1);
+        }
+        OH_HiTrace_StartAsyncTraceEx(level, "myTestAsyncTrace", taskIdThree, "categoryTest", customArgs);
+        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
+        OH_HiTrace_FinishAsyncTraceEx(level, "myTestAsyncTrace", taskIdThree);
+    } else {
+        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
+    }
+
+    size_t requireArgc = 2;
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+
+    napi_valuetype valuetype1;
+    napi_typeof(env, args[1], &valuetype1);
+
+    double value0;
+    napi_get_value_double(env, args[0], &value0);
+
+    double value1;
+    napi_get_value_double(env, args[1], &value1);
+
+    napi_value sum;
+    napi_create_double(env, value0 + value1, &sum);
+
+    return sum;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "entry",
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&demoModule);
+}
+```
 
 
 ### 步骤二：采集trace信息并查看

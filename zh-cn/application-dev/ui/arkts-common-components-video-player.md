@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Video组件用于播放视频文件并控制其播放状态，常用于短视频和应用内部视频的列表页面。当视频完整出现时会自动播放，用户点击视频区域则会暂停播放，同时显示播放进度条，通过拖动播放进度条指定视频播放到具体位置。具体用法请参考[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)。
@@ -31,14 +31,17 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
   再使用资源访问符$rawfile()引用视频资源。
 
-  ```ts
+  <!-- @[local_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/LocalVideo.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
+  // ···
   @Component
-  export struct VideoPlayer {
-    private controller: VideoController = new VideoController()
-    private previewUris: Resource = $r('app.media.preview')
-    private innerResource: Resource = $rawfile('videoTest.mp4')
-
+  export struct LocalVideo {
+    private controller: VideoController = new VideoController();
+    private previewUris: Resource = $r('app.media.preview');
+    private innerResource: Resource = $rawfile('videoTest.mp4');
+  
     build() {
       Column() {
         Video({
@@ -54,14 +57,17 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 - [Data Ability](../application-models/dataability-overview.md)提供的视频路径带有dataability://前缀，使用时确保对应视频资源存在。
 
-  ```ts
+  <!-- @[data_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
+  // ···
   @Component
-  export struct VideoPlayer {
-    private controller: VideoController = new VideoController()
-    private previewUris: Resource = $r('app.media.preview')
-    private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10'
-
+  export struct LocalVideoTwo {
+    private controller: VideoController = new VideoController();
+    private previewUris: Resource = $r('app.media.preview');
+    private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
+  
     build() {
       Column() {
         Video({
@@ -78,12 +84,15 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 支持file://路径前缀的字符串，用于读取应用沙箱路径内的资源，需要确保应用沙箱目录路径下的文件存在并且有可读权限。
 
-```ts
+<!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4'
+export struct Sandbox {
+  private controller: VideoController = new VideoController();
+  private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4';
 
   build() {
     Column() {
@@ -102,13 +111,16 @@ export struct VideoPlayer {
 加载网络视频时，需要申请ohos.permission.INTERNET权限，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Video的src属性为网络视频的链接。
 
 
-```ts
+<!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private previewUris: Resource = $r('app.media.preview')
-  private videoSrc: string = 'https://www.example.com/example.mp4' // 使用时请替换为实际视频加载网址
+export struct OnlineVideo {
+  private controller: VideoController = new VideoController();
+  private previewUris: Resource = $r('app.media.preview');
+  private videoSrc: string = 'www.example.com/example.mp4'; // 使用时请替换为实际视频加载网址
 
   build() {
     Column() {
@@ -128,11 +140,14 @@ export struct VideoPlayer {
 Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
 
 
-```ts
+<!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
+export struct AttributeVideo {
+  private controller: VideoController = new VideoController();
 
   build() {
     Column() {
@@ -154,14 +169,16 @@ export struct VideoPlayer {
 
   Video组件回调事件主要包括播放开始、播放暂停、播放结束、播放失败、播放停止、视频准备和操作进度条等事件，除此之外，Video组件也支持通用事件的调用，如点击、触摸等事件的调用。详细事件请参考[事件说明](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#事件)。
 
-```ts
+<!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
-struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private previewUris: Resource = $r('app.media.preview')
-  private innerResource: Resource = $rawfile('videoTest.mp4')
+struct EventCall {
+  private controller: VideoController = new VideoController();
+  private previewUris: Resource = $r('app.media.preview');
+  private innerResource: Resource = $rawfile('videoTest.mp4');
 
   build() {
     Column() {
@@ -171,16 +188,12 @@ struct VideoPlayer {
         controller: this.controller
       })
         .onUpdate((event) => { // 更新事件回调
-          console.info("Video update.");
         })
         .onPrepared((event) => { // 准备事件回调
-          console.info("Video prepared.");
         })
         .onError(() => { // 失败事件回调
-          console.error("Video error.");
         })
         .onStop(() => { // 停止事件回调
-          console.info("Video stopped.");
         })
     }
   }
@@ -196,15 +209,17 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
   默认的控制器支持视频的开始、暂停、进度调整、全屏显示四项基本功能。
 
-  ```ts
+  <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct VideoGuide {
-    @State videoSrc: Resource = $rawfile('videoTest.mp4')
-    @State previewUri: string = 'common/videoIcon.png'
-    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
-
+    @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    @State previewUri: string = 'common/videoIcon.png';
+    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+  
     build() {
       Row() {
         Column() {
@@ -225,17 +240,21 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
   使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
 
-  ```ts
+  <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->
+
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
-  struct VideoGuide {
-    @State videoSrc: Resource = $rawfile('videoTest.mp4')
-    @State previewUri: string = 'common/videoIcon.png'
-    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
-    @State currentTime: number = 0
-    @State durationTime: number = 0
-    controller: VideoController = new VideoController()
+  struct CustomizedControl {
+    @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    @State previewUri: string = 'common/videoIcon.png';
+    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+    // 初始化当前时间为0
+    @State currentTime: number = 0;
+    // 初始化持续时间为0
+    @State durationTime: number = 0;
+    controller: VideoController = new VideoController();
 
     build() {
       Row() {
@@ -268,11 +287,11 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
               .onChange((value: number, mode: SliderChangeMode) => {
                 this.controller.setCurrentTime(value); // 设置视频播放的进度跳转到value处
               })
-              .width("90%")
+              .width('90%')
             Text(JSON.stringify(this.durationTime) + 's')
           }
           .opacity(0.8)
-          .width("100%")
+          .width('100%')
         }
         .width('100%')
       }

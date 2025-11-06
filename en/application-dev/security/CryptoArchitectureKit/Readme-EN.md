@@ -1,5 +1,12 @@
 # Crypto Architecture Kit (Crypto Architecture Kit)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 - [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
@@ -61,6 +68,8 @@
     - [Encryption and Decryption with an RSA Asymmetric Key Pair (PKCS1_OAEP)](crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
     - [Encryption and Decryption with an SM2 Asymmetric Key Pair (ArkTS)](crypto-sm2-asym-encrypt-decrypt.md)
     - [Encryption and Decryption with an SM2 Asymmetric Key Pair (C/C++)](crypto-sm2-asym-encrypt-decrypt-ndk.md)
+    - [Encryption and Decryption of Symmetric Keys with AES-WRAP (ArkTS)](crypto-aes-wrap-encrypt-decrypt.md)
+    - [Encryption and Decryption of Symmetric Keys with AES-WRAP (C/C++)](crypto-aes-wrap-encrypt-decrypt-ndk.md)
     - [Converting SM2 Ciphertext (ArkTS)](crypto-sm2-ciphertext-conversion.md)
     - [Converting SM2 Ciphertext (C/C++)](crypto-sm2-ciphertext-conversion-ndk.md)
 - Signing and Signature Verification<!--crypto-sign-sig-verify-->
@@ -96,14 +105,19 @@
     - [Generating an MD Using SHA-256 (C/C++)](crypto-generate-message-digest-ndk.md)
     - [Generating an MD Using MD5 (ArkTS)](crypto-generate-message-digest-md5.md)
     - [Generating an MD Using MD5 (C/C++)](crypto-generate-message-digest-md5-ndk.md)
+    - [Generating an MD Using SHA-3 (ArkTS)](crypto-generate-message-digest-md5.md)
+    - [Generating an MD Using SHA3-256 (C/C++)](crypto-generate-message-digest-md5-ndk.md)
 - MAC<!--crypto-compute-mac-->
   - [MAC Overview and Algorithm Specifications](crypto-compute-mac-overview.md)
   - [Generating an HMAC (ArkTS)](crypto-compute-hmac.md)
   - [Generating an HMAC (C/C++)](crypto-compute-hmac-ndk.md)
   - [Generating a CMAC (ArkTS)](crypto-compute-cmac.md)
   - [Generating a CMAC (C/C++)](crypto-compute-cmac-ndk.md)
-- [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
-- [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+- Random Numbers<!--crypto-compute-rand-->
+  - [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
+  - [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (ArkTS)](crypto-generate-random-number-hardware.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (C/C++)](crypto-generate-random-number-hardware-ndk.md)
 - Key Derivation<!--crypto-key-derivation-->
   - [Key Derivation Overview and Algorithm Specifications](crypto-key-derivation-overview.md)
   - [Key Derivation Using PBKDF2 (ArkTS)](crypto-key-derivation-using-pbkdf2.md)
@@ -112,3 +126,5 @@
   - [Key Derivation Using HKDF (C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [Key Derivation Using Scrypt (ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-scrypt.md)
+  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)

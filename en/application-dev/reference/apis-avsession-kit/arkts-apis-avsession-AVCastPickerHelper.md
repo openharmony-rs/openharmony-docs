@@ -47,8 +47,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -60,7 +60,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
-          .onClick(()=>{
+          .onClick(() => {
             let context = this.getUIContext().getHostContext() as Context;
             let avCastPicker = new avSession.AVCastPickerHelper(context);
           })
@@ -122,9 +122,9 @@ async function avCastPicker(context: common.Context) {
 }
 ```
 
-## restoreDefaultCommunicationDevice<sup>21+</sup>
+## resetCommunicationDevice<sup>21+</sup>
 
-restoreDefaultCommunicationDevice(): Promise\<void>
+resetCommunicationDevice(): Promise\<void>
 
 Restores the communication device of an application to the default device. For example, during a voice call, the communication device of the mobile phone is restored to the earpiece. This API uses a promise to return the result.
 
@@ -146,8 +146,8 @@ import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.restoreDefaultCommunicationDevice().then(() => {
-    console.info('restoreDefaultCommunicationDevice successfully');
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
   });
 }
 ```

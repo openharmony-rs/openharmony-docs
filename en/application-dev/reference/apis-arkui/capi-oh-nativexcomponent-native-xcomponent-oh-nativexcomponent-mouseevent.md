@@ -1,4 +1,10 @@
 # OH_NativeXComponent_MouseEvent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -21,5 +27,5 @@ Defines a mouse event.
 | float screenX | X coordinate of the click point relative to the upper left corner of the application screen where the XComponent is located.|
 | float screenY | Y coordinate of the click point relative to the upper left corner of the application screen where the XComponent is located.|
 | int64_t timestamp | Timestamp of the mouse event. It is interval between the time when the event is triggered and the time when the system starts, in nanoseconds.|
-| OH_NativeXComponent_MouseEventAction action | Action of the mouse event.|
-| OH_NativeXComponent_MouseEventButton button | Button of the mouse event.|
+| [OH_NativeXComponent_MouseEventAction](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_mouseeventaction) action | Action of the mouse event.|
+| [OH_NativeXComponent_MouseEventButton](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_mouseeventbutton) button | Button of the mouse event.|

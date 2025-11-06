@@ -1,10 +1,16 @@
 # Class (FrameCallback)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 Implements the API for setting the task that needs to be executed during the next frame rendering.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >

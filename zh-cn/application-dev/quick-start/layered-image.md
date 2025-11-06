@@ -49,43 +49,52 @@
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  ```json
-  {
-    "app": {
-      "icon": "$media:app_icon",
-      "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
-      // ...
-    }
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+	// ···
+    "icon": "$media:app_icon",
+    "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
   }
-  ```
+}
+```
+
 
 - **方式二：配置module.json5**
 
   除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-  ```json
-  {
-    "module": {
-      // ...
-      "abilities": [
-        {
-          "icon": "$media:icon",
-          "label": "$string:EntryAbility_label", // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
-          "skills": [
-            {
-              "entities": [
-                "entity.system.home"
-              ],
-              "actions": [
-                "ohos.want.action.home"
-              ]
-            }
-          ],
-        }
-      ]
-    }
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
+      {
+		// ···
+        "icon": "$media:icon",
+        // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+        "label": "$string:EntryAbility_label",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ],
+	// ···
   }
-  ```
+}
+```
+
 
 ## 配置分层图标和应用名称
 
@@ -109,15 +118,18 @@
       }
       ```
   3. 在[app.json5配置文件](app-configuration-file.md)中引用分层图标资源文件。示例如下：
-      ```json
-          {
-            "app": {
-              "icon": "$media:app_layered_image",
-              "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
-              // ...
-            }
-          }
-      ```
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+	// ···
+    "icon": "$media:layered_image",
+    "label": "$string:app_name" // 需要在AppScope/resources/base/element/string.json配置name为app_name的资源，已存在可以忽略
+  }
+}
+```
+
 
 - **方式二：配置module.json5**
 
@@ -139,32 +151,37 @@
 
   3. 如果需要在桌面显示UIAbility图标，除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-      ```json
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
       {
-        "module": {
-          "abilities": [
-            {
-              "name": "EntryAbility",
-              // ...
-              "icon": "$media:layered_image", // icon配置为分层图标资源文件的索引
-              "label": "$string:EntryAbility_label", // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
-              "skills": [
-                {
-                  "entities": [
-                    "entity.system.home"
-                  ],
-                  "actions": [
-                    "ohos.want.action.home"
-                  ]
-                }
-              ],
-              // ...
-            }
-          ]
-          // ...
-        }
+		// ···
+        // icon配置为分层图标资源文件的索引
+        "icon": "$media:layered_image",
+        // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+        "label": "$string:EntryAbility_label",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
       }
-      ```
+    ],
+	// ···
+  }
+}
+```
+
+
 
 >
 > **说明：**

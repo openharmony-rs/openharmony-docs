@@ -1,4 +1,10 @@
 # Hyperlink
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 The **Hyperlink** component implements a link from a location in the component to another location.
 
@@ -9,7 +15,7 @@ The **Hyperlink** component implements a link from a location in the component t
 
 ## Required Permissions
 
-If Internet access is required, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+If Internet access is required, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ## Child Components
 
@@ -62,6 +68,7 @@ struct HyperlinkExample {
     Column() {
       Column() {
         Hyperlink('https://example.com/') {
+          // Replace $r('app.media.bg') with the image resource file you use.
           Image($r('app.media.bg'))
             .width(200)
             .height(100)

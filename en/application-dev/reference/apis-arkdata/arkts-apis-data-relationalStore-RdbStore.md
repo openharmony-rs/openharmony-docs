@@ -12,7 +12,7 @@
 
 Provides APIs for managing data in an RDB store.
 
-Before using the following APIs, you should obtain a **RdbStore** instance by calling the [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1) method and then call the corresponding method through the instance.
+Before using the following APIs, you should obtain an **RdbStore** instance by calling the [getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1) method and then call the corresponding method through the instance.
 
 In addition, use [execute](arkts-apis-data-relationalStore-RdbStore.md#execute12) to initialize the database table structure and related data first, ensuring that the prerequisites for related API calls are met.
 
@@ -2323,7 +2323,7 @@ let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vec
 
 querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySqlSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3226,7 +3226,7 @@ if (store != undefined) {
 
 commit(txId : number):Promise&lt;void&gt;
 
-Commits the executed SQL statement. This API must be used with [beginTrans](#begintrans12).
+Commits an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
 This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
 
@@ -3363,7 +3363,7 @@ if (store != undefined) {
 
 rollback(txId : number):Promise&lt;void&gt;
 
-Rolls back the executed SQL statement. This API must be used with [beginTrans](#begintrans12).
+Rolls back an executed SQL statement. This API is used together with [beginTrans](#begintrans12) and uses a promise to return the result.
 
 This API is available only to [vector stores](arkts-apis-data-relationalStore-i.md#storeconfig).
 
@@ -5301,7 +5301,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-Clears the dirty data whose cursor is smaller than the specified cursor from the local device. The dirty data is the data that has been deleted from the cloud. If **cursor** is not specified, all the dirty data will be cleared.
+Cleans the dirty data whose cursor is smaller than the specified cursor from the local device. The dirty data is the data that has been deleted from the cloud. This API uses a promise to return the result. If **cursor** is not specified, all the dirty data will be cleared.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5363,7 +5363,7 @@ if (store != undefined) {
 
 attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement. This API uses a promise to return the result.
 
 The RDB store is attached via a database file. This API cannot be used for encrypted RDB stores. After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may affect the performance.
 
@@ -5435,7 +5435,7 @@ if (store != undefined) {
 
 attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Attaches an RDB store to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+Attaches an RDB store of the current application to this RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement. This API uses a promise to return the result.
 
 This API cannot be used to attach a non-encrypted RDB store to an encrypted RDB store. After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may affect the performance.
 
@@ -5550,7 +5550,7 @@ relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: r
 
 detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-Detaches an RDB store from this RDB store.
+Detaches an RDB store from this RDB store. This API uses a promise to return the result.
 
 After all attached RDB stores are detached, the RDB is switched to the WAL mode.
 
@@ -5834,7 +5834,7 @@ Closes this RDB store. This API uses a promise to return the result.
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 

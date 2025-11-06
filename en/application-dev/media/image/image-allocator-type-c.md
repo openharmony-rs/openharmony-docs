@@ -41,7 +41,7 @@ You can call [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference
   When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
 
   - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
-  - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
+  - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4 ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
 - **Reduced CPU load**
 
   DMA_ALLOC allows the GPU to directly access decoded data, reducing the load caused by memory copying.
@@ -208,3 +208,26 @@ OH_PixelmapNative* TestStrideWithAllocatorType() {
     return newPixelmap;
 }
 ```
+
+## Memory Restrictions for Decoding a Single Image
+
+To prevent system crashes from memory overflow, the system enforces memory restrictions on processes. For details, see [Application-Killed Issues Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-runtime-appkilled-detection).
+
+The image framework imposes a 2 GB memory limit for decoding a single image. Processes should actively manage their memory usage. To avoid process termination, you are advised to release [OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) when it is no longer needed.
+
+Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
+
+The calculation rule for PixelMap memory allocation is as follows:
+```
+pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
+```
+
+For images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
+
+For images with original pixel memory exceeding 2 GB and supporting downsampling, you are advised to use [OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) or [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) and set **desiredSize** in [OH_DecodingOptions](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md) for downsampling decoding.
+
+The table below lists the downsampling decoding support for different image formats in the image framework.
+| Support for Downsampling| Image Format                                                 |
+| ------------ | --------------------------------------------------------- |
+| Supported         | .jpg, .png, .heic (Refer to the device specification document for specific support.)|
+| Not supported       | .gif, .bmp, .webp, .dng, .svg, .ico|

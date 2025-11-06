@@ -408,9 +408,8 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.|
+| type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure. |
 | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
-
 
 **Error codes**
 
@@ -2456,7 +2455,7 @@ The upload and download SA has the ohos.permission.SEND_TASK_COMPLETE_EVENT perm
 Use the **CommonEventData** type to transmit data related to common events. The members in **CommonEventData** are different from those described in [CommonEventData](js-apis-inner-commonEvent-commonEventData.md). Specifically, **CommonEventData.code** indicates the task status, which is **0x40 COMPLETE** or **0x41 FAILED**, and **CommonEventData.data** indicates the task ID.
 
 <!--Del-->
-For details about how to obtain the event configuration and configure the level-2 configuration file, see [Subscribing to Common Events in Static Mode (for System Applications Only)](../../basic-services/common-event/common-event-static-subscription.md).<!--DelEnd-->
+For details about how to obtain the event configuration and configure the level-2 configuration file, see [Subscribing to Common Events in Static Mode (for System Applications Only)](../../basic-services/common-event/common-event-static-subscription-sys.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -2652,7 +2651,8 @@ Describes the custom information of the notification bar.
 |------|--------|----|----|-------------------------------|
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
-| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on agent [constants](#constants). If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
+| visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed. |
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped.|
 
 
 **Example**
@@ -2660,9 +2660,26 @@ Describes the custom information of the notification bar.
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
 
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.example.request',
+        abilityName: 'EntryAbility',
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {}
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
   let config: request.agent.Config = {
     action: request.agent.Action.DOWNLOAD,
     url: 'http://127.0.0.1', // Replace the URL with the HTTP address of the real server.
@@ -2675,7 +2692,8 @@ Describes the custom information of the notification bar.
     network: request.agent.Network.ANY,
     gauge: true,
     notification: {
-      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: await wantAgent.getWantAgent(wantAgentInfo),
     }
   };
   let createOnCallback = (progress: request.agent.Progress) => {
@@ -5713,4 +5731,3 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     console.error(`Failed to delete the download group, Code: ${err.code}, message: ${err.message}`);
   });
   ```
-

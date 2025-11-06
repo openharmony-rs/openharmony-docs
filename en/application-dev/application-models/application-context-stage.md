@@ -302,6 +302,7 @@ The [base class Context](../reference/apis-ability-kit/js-apis-inner-application
   | distributedFilesDir | Distributed file directory.| \<Path prefix>/el2/distributedFiles| \<Path prefix>/el2/distributedFiles/|
   | resourceDir<sup>11+<sup> | Resource directory.<br>**NOTE**<br> You are required to manually create the **resfile** directory in **\<module-name>\resource**.| N/A| \<Path prefix>/el1/bundle/**\<module-name>**/resources/resfile|
   | cloudFileDir<sup>12+</sup> | Cloud file directory.| \<Path prefix>/el2/cloud| \<Path prefix>/el2/cloud/|
+  | logFileDir<sup>22+</sup> | Directory for storing log files.| \<Path prefix>/el2/log| \<Path prefix>/el2/log/|
 
 This section uses ApplicationContext to obtain **cacheDir** and **filesDir** as an example to describe how to obtain the application cache directory and application file directory, and how to use these paths to create and read/write files.
 

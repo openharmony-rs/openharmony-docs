@@ -42,8 +42,8 @@
 | [Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)](#oh_camerainput_openconcurrentcameras) | - | 根据指定并发类型打开相机。 |
 | [Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)](#oh_camerainput_close) | - | 关闭相机。 |
 | [Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)](#oh_camerainput_release) | - | 释放相机输入实例。<br> 和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。 |
-| [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | 查询不同折叠状态下相机物理镜头角度是否可变。 |
-| [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | 获取当前折叠状态下的物理镜头角度。 |
+| [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | 查询设备不同折叠状态下，相机物理镜头角度是否可变。 |
+| [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | 获取设备当前折叠状态下的物理镜头角度。 |
 | [Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)](#oh_camerainput_usephysicalcameraorientation) | - | 选择是否使用物理镜头角度。 |
 
 ## 函数说明
@@ -266,9 +266,9 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 
 **描述**
 
-查询不同折叠状态下相机物理镜头角度是否可变。
+查询设备不同折叠状态下，相机物理镜头角度是否可变。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
@@ -276,7 +276,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
-| bool* isVariable | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
+| bool* isVariable | 查询设备不同折叠状态下，相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
 
 **返回：**
 
@@ -292,9 +292,9 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 **描述**
 
-获取当前折叠状态下的物理镜头角度。
+获取设备当前折叠状态下的物理镜头角度。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
@@ -302,7 +302,7 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
-| uint32_t* orientation | 如果方法调用成功，将返回当前折叠状态下的物理镜头角度。 |
+| uint32_t* orientation | 如果方法调用成功，将返回设备当前折叠状态下的物理镜头角度。 |
 
 **返回：**
 
@@ -320,7 +320,7 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 
 选择是否使用物理镜头角度。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**

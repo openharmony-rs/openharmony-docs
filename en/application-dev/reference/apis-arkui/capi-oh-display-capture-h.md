@@ -44,7 +44,7 @@ Takes a screenshot of the entire screen. This function can be used to capture a 
 
 **Since**: 14
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

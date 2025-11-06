@@ -1,7 +1,7 @@
 # Gesture Blocking Enhancement
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -108,21 +108,24 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 Represents a custom gesture recognizer judgment callback type.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes  | Information about the current basic gesture event.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | Yes  | Gesture recognizer object that is about to respond.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | Yes  | Other gesture recognizer objects in the response chain.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | No  | Touch recognizers in the response chain. The default value is **null**, indicating no responsive touch recognizers in the current gesture-bound component and its descendants.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes  | Information about the current basic gesture event.|
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | Yes  | Gesture recognizer object that is about to respond.|
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | Yes  | Other gesture recognizer objects in the response chain.|
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | No  | Touch recognizers in the response chain. The default value is **null**, indicating no responsive touch recognizers in the current gesture-bound component and its descendants.|
+
 **Return value**
 
 | Type    | Description       |
 | ------ | --------- |
-| [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult12) | Judgment result indicating whether gesture recognition succeeds.|
+| [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | Judgment result indicating whether gesture recognition succeeds.|
 
 ## onTouchTestDone<sup>20+</sup>
 

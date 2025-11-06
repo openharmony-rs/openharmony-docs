@@ -1156,7 +1156,7 @@ int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* con
 | 参数项 | 描述 |
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
-| const char* configName |  数据处理者的配置名称。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。 |
+| const char* configName |  <!--RP1-->数据处理者的配置名称。只能包含大小写字母、数字、下划线和$，不能以数字开头，长度非空且不超过256个字符。<!--RP1End--> |
 
 **返回：**
 

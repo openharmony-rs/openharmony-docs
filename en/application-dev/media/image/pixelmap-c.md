@@ -150,4 +150,50 @@ Image_ErrorCode PixelmapTest()
     OH_PixelmapInitializationOptions_Release(createOpts);
     return IMAGE_SUCCESS;
 }
+
+// Example of converting between premultiplied and non-premultiplied formats in PixelMap.
+Image_ErrorCode PixelmapConverAlphaTypeTest()
+{
+    uint8_t data[96];
+    size_t dataSize = 96;
+    for (int i = 0; i < dataSize; i++) {
+        data[i] = i + 1;
+    }
+
+    // Create a parameter structure instance and set parameters.
+    OH_Pixelmap_InitializationOptions *createOpts;
+    OH_PixelmapInitializationOptions_Create(&createOpts);
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, 4);
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED);
+
+    // Create a Pixelmap instance in non-premultiplied format.
+    OH_PixelmapNative *SrcPixelmap = nullptr;
+    Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &SrcPixelmap);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
+    }
+
+    // Create a Pixelmap instance in premultiplied format. DstPixelmap is used to store the data after the alpha type of SrcPixelmap is converted.
+    OH_PixelmapNative *DstPixelmap = nullptr;
+    OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
+    errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &DstPixelmap);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
+    }
+
+    // Convert the alpha type. The data of SrcPixelmap is converted to premultiplied format and saved to DstPixelmap.
+    errCode = OH_PixelmapNative_ConvertAlphaFormat(SrcPixelmap, DstPixelmap, true);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
+    }
+
+    // Release the Pixelmap and InitializationOptions instances.
+    OH_PixelmapNative_Release(SrcPixelmap);
+    OH_PixelmapNative_Release(DstPixelmap);
+    OH_PixelmapInitializationOptions_Release(createOpts);
+    return errCode;
+}
 ```

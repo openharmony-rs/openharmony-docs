@@ -45,8 +45,8 @@ Describes the input method application attributes.
 | iconId<sup>9+</sup>    | number | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the resource ID of the **icon** field.|
 | enabledState<sup>20+</sup>    | [EnabledState](js-apis-inputmethod.md#enabledstate15) | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates whether the input method is enabled.|
 | extra<sup>9+</sup>    | object | No| Yes| Extra information about the input method. This parameter is reserved and currently has no specific meaning.<br>- API version 10 and later: optional<br>- API version 9: mandatory|
-| packageName<sup>(deprecated)</sup> | string | Yes| No| Name of the input method package. Mandatory.<br>**NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use **name** instead.|
-| methodId<sup>(deprecated)</sup> | string | Yes| No| Unique ID of the input method. Mandatory.<br>**NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use **id** instead.|
+| packageName<sup>(deprecated)</sup> | string | Yes| No| Name of the input method package. Mandatory.<br>**Note**: This API is supported since API version 8 and deprecated since API version 9. You are advised to use **name** instead.|
+| methodId<sup>(deprecated)</sup> | string | Yes| No| Unique ID of the input method. Mandatory.<br>**Note**: This API is supported since API version 8 and deprecated since API version 9. You are advised to use **id** instead.|
 
 ## CapitalizeMode<sup>20+</sup>
 
@@ -86,7 +86,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-let inputMethodController = inputMethod.getController();
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 ```
 
 ## inputMethod.getDefaultInputMethod<sup>11+</sup>
@@ -114,11 +114,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  let defaultIme = inputMethod.getDefaultInputMethod();
-} catch(err) {
-  console.error(`Failed to getDefaultInputMethod: ${JSON.stringify(err)}`);
-}
+let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
 ```
 
 ## inputMethod.getSystemInputMethodConfigAbility<sup>11+</sup>
@@ -146,11 +142,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();
-} catch(err) {
-  console.error(`Failed to get getSystemInputMethodConfigAbility: ${JSON.stringify(err)}`);
-}
+import { bundleManager } from '@kit.AbilityKit';
+
+let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility();
 ```
 
 ## inputMethod.getSetting<sup>9+</sup>
@@ -178,7 +172,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-let inputMethodSetting = inputMethod.getSetting();
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 ```
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
@@ -215,27 +209,23 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme = inputMethod.getCurrentInputMethod();
-try{
-  inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) => {
-    if (err) {
-      console.error(`Failed to switchInputMethod: ${JSON.stringify(err)}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching input method.');
-    } else {
-      console.error('Failed to switch input method.');
-    }
-  });
-} catch(err) {
-  console.error(`Failed to switchInputMethod: ${JSON.stringify(err)}`);
-}
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching input method.');
+  } else {
+    console.error('Failed to switch input method.');
+  }
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
@@ -275,25 +265,21 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme = inputMethod.getCurrentInputMethod();
-try {
-  inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching input method.');
-    } else {
-      console.error('Failed to switch input method.');
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to switchInputMethod: ${JSON.stringify(err)}`);
-  })
-} catch (err) {
-  console.error(`Failed to switchInputMethod: ${JSON.stringify(err)}`);
-}
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching input method.');
+  } else {
+    console.error('Failed to switch input method.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
@@ -312,7 +298,7 @@ Obtains the current input method. This API returns the result synchronously.
 **Example**
 
 ```ts
-let currentIme = inputMethod.getCurrentInputMethod();
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
 ```
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
@@ -351,37 +337,33 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let extra: Record<string, string> = {}
-  inputMethod.switchCurrentInputMethodSubtype({
-    id: "ServiceExtAbility",
-    label: "",
-    name: "com.example.kikakeyboard",
-    mode: "upper",
-    locale: "",
-    language: "",
-    icon: "",
-    iconId: 0,
-    extra: extra
-  }, (err: BusinessError, result: boolean) => {
-    if (err) {
-      console.error(`Failed to switchCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodSubtype');
-    }
-  });
-} catch(err) {
-  console.error(`Failed to switchCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-}
+let extra: Record<string, string> = {}
+inputMethod.switchCurrentInputMethodSubtype({
+  id: "ServiceExtAbility",
+  label: "",
+  name: "com.example.keyboard",
+  mode: "upper",
+  locale: "",
+  language: "",
+  icon: "",
+  iconId: 0,
+  extra: extra
+}, (err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodSubtype');
+  }
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -424,35 +406,31 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let extra: Record<string, string> = {}
-  inputMethod.switchCurrentInputMethodSubtype({
-    id: "ServiceExtAbility",
-    label: "",
-    name: "com.example.kikakeyboard",
-    mode: "upper",
-    locale: "",
-    language: "",
-    icon: "",
-    iconId: 0,
-    extra: extra
-  }).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodSubtype.');
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to switchCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to switchCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-}
+let extra: Record<string, string> = {}
+inputMethod.switchCurrentInputMethodSubtype({
+  id: "ServiceExtAbility",
+  label: "",
+  name: "com.example.keyboard",
+  mode: "upper",
+  locale: "",
+  language: "",
+  icon: "",
+  iconId: 0,
+  extra: extra
+}).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodSubtype.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.getCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -471,7 +449,9 @@ Obtains the current input method subtype.
 **Example**
 
 ```ts
-let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
 ```
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
@@ -508,30 +488,27 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme = inputMethod.getCurrentInputMethod();
-let imSubType = inputMethod.getCurrentInputMethodSubtype();
-try {
-  inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError, result: boolean) => {
-    if (err) {
-      console.error(`Failed to switchCurrentInputMethodAndSubtype: ${JSON.stringify(err)}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodAndSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodAndSubtype.');
-    }
-  });
-} catch (err) {
-  console.error(`Failed to switchCurrentInputMethodAndSubtype: ${JSON.stringify(err)}`);
-}
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+let imSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
+inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodAndSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodAndSubtype.');
+  }
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
 
@@ -572,28 +549,25 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme = inputMethod.getCurrentInputMethod();
-let imSubType = inputMethod.getCurrentInputMethodSubtype();
-try {
-  inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodAndSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodAndSubtype.');
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to switchCurrentInputMethodAndSubtype: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to switchCurrentInputMethodAndSubtype: ${JSON.stringify(err)}`);
-}
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+let imSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
+inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodAndSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodAndSubtype.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 > **NOTE**
 >
-> Since API version 11, the error code `201 permissions check fails` is removed.
+> In API version 11, the error code `201 permissions check fails.` is removed.
 
 ## inputMethod.getInputMethodController<sup>(deprecated)</sup>
 
@@ -616,7 +590,7 @@ Obtains an [InputMethodController](#inputmethodcontroller) instance.
 **Example**
 
 ```ts
-let inputMethodController = inputMethod.getInputMethodController();
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getInputMethodController();
 ```
 
 ## inputMethod.getInputMethodSetting<sup>(deprecated)</sup>
@@ -627,7 +601,7 @@ Obtains an [InputMethodSetting](#inputmethodsetting8) instance.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getSetting()](#inputmethodgetsetting9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSetting()](#inputmethodgetsetting9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -640,7 +614,7 @@ Obtains an [InputMethodSetting](#inputmethodsetting8) instance.
 **Example**
 
 ```ts
-let inputMethodSetting = inputMethod.getInputMethodSetting();
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getInputMethodSetting();
 ```
 
 ## inputMethod.setSimpleKeyboardEnabled<sup>20+</sup>
@@ -660,7 +634,7 @@ Enables or disables the simple keyboard.
 **Example**
 
 ```ts
-  let enable = false;
+  let enable: boolean = false;
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
@@ -778,7 +752,7 @@ Describes the configuration of the edit box.
 | inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
 | cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
 | selection<sup>10+</sup>  | [Range](#range10) | No| Yes| Text selection range.|
-| windowId<sup>10+</sup>  | number | No| Yes| ID of the window where the edit box is located.|
+| windowId<sup>10+</sup>  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | newEditBox<sup>20+</sup> | boolean | No| Yes| Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
 
@@ -790,10 +764,10 @@ Represents the cursor information.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| left  | number | No| No| Left coordinate of the cursor.|
-| top  | number | No| No| Top coordinate of the cursor.|
-| width  | number | No| No| Width of the cursor.|
-| height  | number | No| No| Height of the cursor.|
+| left  | number | No| No| Horizontal coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
+| top  | number | No| No| Vertical coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| width  | number | No| No| Width of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
+| height  | number | No| No| Height of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 
 ## Range<sup>10+</sup>
 
@@ -803,8 +777,8 @@ Describes the range of the selected text.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| start  | number | No| No| Index of the first selected character in the text box.|
-| end  | number | No| No| Index of the last selected character in the text box.|
+| start  | number | No| No| Index of the first selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length.|
+| end  | number | No| No| Index of the last selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length. The **end** value must be greater than the **start** value.|
 
 ## Movement<sup>10+</sup>
 
@@ -825,10 +799,10 @@ Describes the window information of the input method keyboard.
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | name  | string | No| No| Name of the input method keyboard window.|
-| left  | number | No| No| Horizontal coordinate of the upper left corner of the input method keyboard window, in px.|
-| top  | number | No| No| Vertical coordinate of the upper left corner of the input method keyboard window, in px.|
-| width  | number | No| No| Width of the input method keyboard window, in px.|
-| height  | number | No| No| Height of the input method keyboard window, in px.|
+| left  | number | No| No| Horizontal coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
+| top  | number | No| No| Vertical coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| width  | number | No| No| Width of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
+| height  | number | No| No| Height of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 
 ## EnabledState<sup>15+</sup>
 
@@ -844,7 +818,7 @@ Indicates whether the input method is enabled.
 
 ## RequestKeyboardReason<sup>15+</sup>
 
-Describes the reason for keyboard request.
+Enumerates the reasons for requesting the keyboard.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -891,22 +865,17 @@ Receives custom data sent by the input method application.
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 
-let inputMethodController = inputMethod.getController();
-try {
-    let messageHandler: inputMethod.MessageHandler = {
-        onTerminated(): void {
-            console.info('OnTerminated.');
-        },
-        onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-            console.info('recv message.');
-        }
-    }
-    inputMethodController.recvMessage(messageHandler);
-} catch(err) {
-  console.error(`Failed to recvMessage: ${JSON.stringify(err)}`);
-}
+let messageHandler: inputMethod.MessageHandler = {
+  onTerminated(): void {
+    console.info('OnTerminated.');
+  },
+  onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+    console.info('recv message.');
+  }
+};
+inputMethodController.recvMessage(messageHandler);
 ```
 
 ### onTerminated<sup>15+</sup>
@@ -926,22 +895,17 @@ Listens for MessageHandler termination.
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 
-let inputMethodController = inputMethod.getController();
-try {
-    let messageHandler: inputMethod.MessageHandler = {
-        onTerminated(): void {
-            console.info('OnTerminated.');
-        },
-        onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-            console.info('recv message.');
-        }
-    }
-    inputMethodController.recvMessage(messageHandler);
-} catch(err) {
-  console.error(`Failed to recvMessage: ${JSON.stringify(err)}`);
-}
+let messageHandler: inputMethod.MessageHandler = {
+  onTerminated(): void {
+    console.info('OnTerminated.');
+  },
+  onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+    console.info('recv message.');
+  }
+};
+inputMethodController.recvMessage(messageHandler);
 ```
 
 ## SetPreviewTextCallback<sup>17+</sup>
@@ -951,6 +915,8 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 Callback triggered when the input method framework needs to display the text preview.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
 
 | Name      | Type         | Mandatory| Description                         |
 | ------- | ----------------- | ---- | ----------------------------- |
@@ -970,6 +936,8 @@ Attaches a self-drawing component to the input method. This API uses an asynchro
 > **NOTE**
 >
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+>
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -988,7 +956,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -996,23 +964,18 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: 0,
-      enterKeyType: 1
-    }
-  };
-  inputMethodController.attach(true, textConfig, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to attach: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in attaching the inputMethod.');
-  });
-} catch(err) {
-  console.error(`Failed to attach: ${JSON.stringify(err)}`);
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
 }
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in attaching the inputMethod.');
+});
 ```
 
 ### attach<sup>10+</sup>
@@ -1024,6 +987,8 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > **NOTE**
 >
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+>
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1047,7 +1012,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1055,21 +1020,16 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: 0,
-      enterKeyType: 1
-    }
-  };
-  inputMethodController.attach(true, textConfig).then(() => {
-    console.info('Succeeded in attaching inputMethod.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to attach: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to attach: ${JSON.stringify(err)}`);
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
 }
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+inputMethod.getController().attach(true, textConfig).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### attach<sup>15+</sup>
@@ -1081,6 +1041,8 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > **NOTE**
 >
 > An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+>
+> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1090,7 +1052,7 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 | -------- | -------- | -------- | -------- |
 | showKeyboard | boolean | Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
 | textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for keyboard request.|
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for requesting the keyboard.|
 
 **Return value**
 
@@ -1105,7 +1067,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1113,24 +1075,18 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: 0,
-      enterKeyType: 1
-    }
-  };
-
-  let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
-
-  inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
-    console.info('Succeeded in attaching inputMethod.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to attach: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to attach: ${JSON.stringify(err)}`);
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
 }
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
+
+inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### discardTypingText<sup>20+</sup>
@@ -1157,7 +1113,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached. |
 | 12800015 | the other side does not accept the request. |
 
@@ -1165,12 +1121,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { inputMethod } from '@kit.IMEKit';
 
 inputMethod.getController().discardTypingText().then(() => {
   console.info('Succeeded discardTypingText.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to discardTypingText errCode:${err.code}, errMsg:${err.message}`);
+  console.error(`Failed to discardTypingText, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1198,7 +1153,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1207,9 +1162,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.showTextInput((err: BusinessError) => {
+inputMethod.getController().showTextInput((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to showTextInput: ${JSON.stringify(err)}`);
+    console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in showing the inputMethod.');
@@ -1240,7 +1195,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1249,10 +1204,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.showTextInput().then(() => {
+inputMethod.getController().showTextInput().then(() => {
   console.info('Succeeded in showing text input.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to showTextInput: ${JSON.stringify(err)}`);
+  console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1272,7 +1227,7 @@ Enters the text editing mode. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for keyboard request.|
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for requesting the keyboard.|
 
 **Return value**
 
@@ -1286,7 +1241,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1295,12 +1250,12 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let requestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
+let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 
-inputMethodController.showTextInput(requestKeyboardReason).then(() => {
+inputMethod.getController().showTextInput(requestKeyboardReason).then(() => {
   console.info('Succeeded in showing text input.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to showTextInput: ${JSON.stringify(err)}`);
+  console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1330,7 +1285,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -1339,9 +1294,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.hideTextInput((err: BusinessError) => {
+inputMethod.getController().hideTextInput((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to hideTextInput: ${JSON.stringify(err)}`);
+    console.error(`Failed to hideTextInput, code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in hiding text input.');
@@ -1374,7 +1329,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1383,10 +1338,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.hideTextInput().then(() => {
+inputMethod.getController().hideTextInput().then(() => {
   console.info('Succeeded in hiding inputMethod.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hideTextInput: ${JSON.stringify(err)}`);
+  console.error(`Failed to hideTextInput, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1410,7 +1365,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1418,9 +1373,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.detach((err: BusinessError) => {
+inputMethod.getController().detach((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to detach: ${JSON.stringify(err)}`);
+    console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in detaching inputMethod.');
@@ -1447,7 +1402,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1455,10 +1410,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.detach().then(() => {
+inputMethod.getController().detach().then(() => {
   console.info('Succeeded in detaching inputMethod.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to detach: ${JSON.stringify(err)}`);
+  console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1478,7 +1433,7 @@ Sets the window to be avoided by the input method. This API uses an asynchronous
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowId | number | Yes| Window ID of the application bound to the input method.|
+| windowId | number | Yes| Window ID of the application bound to the input method. The value must be an integer.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1488,7 +1443,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -1497,18 +1452,14 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let windowId: number = 2000;
-  inputMethodController.setCallingWindow(windowId, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to setCallingWindow: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in setting callingWindow.');
-  });
-} catch(err) {
-  console.error(`Failed to setCallingWindow: ${JSON.stringify(err)}`);
-}
+let windowId: number = 2000;
+inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting callingWindow.');
+});
 ```
 
 ### setCallingWindow<sup>10+</sup>
@@ -1527,7 +1478,7 @@ Sets the window to be avoided by the input method. This API uses a promise to re
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowId | number | Yes| Window ID of the application bound to the input method.|
+| windowId | number | Yes| Window ID of the application bound to the input method. The value must be an integer.|
 
 **Return value**
 
@@ -1542,7 +1493,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1551,16 +1502,12 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let windowId: number = 2000;
-  inputMethodController.setCallingWindow(windowId).then(() => {
-    console.info('Succeeded in setting callingWindow.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to setCallingWindow: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to setCallingWindow: ${JSON.stringify(err)}`);
-}
+let windowId: number = 2000;
+inputMethod.getController().setCallingWindow(windowId).then(() => {
+  console.info('Succeeded in setting callingWindow.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### updateCursor<sup>10+</sup>
@@ -1585,7 +1532,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -1594,18 +1541,20 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
-  inputMethodController.updateCursor(cursorInfo, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to updateCursor: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in updating cursorInfo.');
-  });
-} catch(err) {
-  console.error(`Failed to updateCursor: ${JSON.stringify(err)}`);
-}
+let cursorInfo: inputMethod.CursorInfo = {
+  left: 0,
+  top: 0,
+  width: 600,
+  height: 800
+};
+inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in updating cursorInfo.');
+});
+
 ```
 
 ### updateCursor<sup>10+</sup>
@@ -1635,7 +1584,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1644,16 +1593,17 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
-  inputMethodController.updateCursor(cursorInfo).then(() => {
-    console.info('Succeeded in updating cursorInfo.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to updateCursor: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to updateCursor: ${JSON.stringify(err)}`);
-}
+let cursorInfo: inputMethod.CursorInfo = {
+  left: 0,
+  top: 0,
+  width: 600,
+  height: 800
+};
+inputMethod.getController().updateCursor(cursorInfo).then(() => {
+  console.info('Succeeded in updating cursorInfo.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### changeSelection<sup>10+</sup>
@@ -1669,8 +1619,8 @@ Updates the information about the selected text in this edit box, to notify the 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | text | string | Yes| All input text.|
-| start | number | Yes| Start position of the selected text.|
-| end | number | Yes| End position of the selected text.|
+| start | number | Yes| Start position of the selected text. The value is an integer greater than or equal to 0.|
+| end | number | Yes| End position of the selected text. The value is an integer greater than or equal to 0.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1680,7 +1630,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -1689,17 +1639,13 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.changeSelection('text', 0, 5, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to changeSelection: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in changing selection.');
-  });
-} catch(err) {
-  console.error(`Failed to changeSelection: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in changing selection.');
+});
 ```
 
 ### changeSelection<sup>10+</sup>
@@ -1715,8 +1661,8 @@ Updates the information about the selected text in this edit box, to notify the 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | text | string | Yes| All input text.|
-| start | number | Yes| Start position of the selected text.|
-| end | number | Yes| End position of the selected text.|
+| start | number | Yes| Start position of the selected text. The value is an integer greater than or equal to 0.|
+| end | number | Yes| End position of the selected text. The value is an integer greater than or equal to 0.|
 
 **Return value**
 
@@ -1731,7 +1677,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1740,15 +1686,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.changeSelection('test', 0, 5).then(() => {
-    console.info('Succeeded in changing selection.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to changeSelection: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to changeSelection: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().changeSelection('test', 0, 5).then(() => {
+  console.info('Succeeded in changing selection.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### updateAttribute<sup>10+</sup>
@@ -1773,7 +1715,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
 
@@ -1782,18 +1724,14 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let inputAttribute: inputMethod.InputAttribute = { textInputType: 0, enterKeyType: 1 };
-  inputMethodController.updateAttribute(inputAttribute, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to updateAttribute: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in updating attribute.');
-  });
-} catch(err) {
-  console.error(`Failed to updateAttribute: ${JSON.stringify(err)}`);
-}
+let inputAttribute: inputMethod.InputAttribute = { textInputType: 0, enterKeyType: 1 };
+inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in updating attribute.');
+});
 ```
 
 ### updateAttribute<sup>10+</sup>
@@ -1823,7 +1761,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
 
@@ -1832,16 +1770,12 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let inputAttribute: inputMethod.InputAttribute = { textInputType: 0, enterKeyType: 1 };
-  inputMethodController.updateAttribute(inputAttribute).then(() => {
-    console.info('Succeeded in updating attribute.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to updateAttribute: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to updateAttribute: ${JSON.stringify(err)}`);
-}
+let inputAttribute: inputMethod.InputAttribute = { textInputType: 0, enterKeyType: 1 };
+inputMethod.getController().updateAttribute(inputAttribute).then(() => {
+  console.info('Succeeded in updating attribute.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### stopInputSession<sup>9+</sup>
@@ -1868,7 +1802,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1876,21 +1810,17 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.stopInputSession((err: BusinessError, result: boolean) => {
-    if (err) {
-      console.error(`Failed to stopInputSession: ${JSON.stringify(err)}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in stopping inputSession.');
-    } else {
-      console.error('Failed to stopInputSession.');
-    }
-  });
-} catch(err) {
-  console.error(`Failed to stopInputSession: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().stopInputSession((err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to stopInputSession, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in stopping inputSession.');
+  } else {
+    console.error('Failed to stopInputSession.');
+  }
+});
 ```
 
 ### stopInputSession<sup>9+</sup>
@@ -1917,7 +1847,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1925,19 +1855,15 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.stopInputSession().then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in stopping inputSession.');
-    } else {
-      console.error('Failed to stopInputSession.');
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to stopInputSession: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to stopInputSession: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().stopInputSession().then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in stopping inputSession.');
+  } else {
+    console.error('Failed to stopInputSession.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stopInputSession, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### showSoftKeyboard<sup>9+</sup>
@@ -1967,7 +1893,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -1975,13 +1901,13 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.showSoftKeyboard((err: BusinessError) => {
+inputMethod.getController().showSoftKeyboard((err: BusinessError) => {
   if (!err) {
     console.info('Succeeded in showing softKeyboard.');
   } else {
-    console.error(`Failed to show softKeyboard: ${JSON.stringify(err)}`);
+    console.error(`Failed to show softKeyboard, ${err.code}, message: ${err.message}`);
   }
-})
+});
 ```
 
 ### showSoftKeyboard<sup>9+</sup>
@@ -2011,7 +1937,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -2019,10 +1945,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.showSoftKeyboard().then(() => {
+inputMethod.getController().showSoftKeyboard().then(() => {
   console.info('Succeeded in showing softKeyboard.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show softKeyboard: ${JSON.stringify(err)}`);
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2053,7 +1979,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -2061,11 +1987,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.hideSoftKeyboard((err: BusinessError) => {
+inputMethod.getController().hideSoftKeyboard((err: BusinessError) => {
   if (!err) {
     console.info('Succeeded in hiding softKeyboard.');
   } else {
-    console.error(`Failed to hide softKeyboard: ${JSON.stringify(err)}`);
+    console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
   }
 })
 ```
@@ -2097,7 +2023,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                            |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -2105,10 +2031,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.hideSoftKeyboard().then(() => {
+inputMethod.getController().hideSoftKeyboard().then(() => {
   console.info('Succeeded in hiding softKeyboard.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide softKeyboard: ${JSON.stringify(err)}`);
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2146,7 +2072,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
 | 12800015 | the other side does not accept the request. |
@@ -2159,10 +2085,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let msgId: string = "testMsgId";
 let msgParam: ArrayBuffer = new ArrayBuffer(128);
-inputMethodController.sendMessage(msgId, msgParam).then(() => {
+inputMethod.getController().sendMessage(msgId, msgParam).then(() => {
   console.info('Succeeded send message.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to send message: ${JSON.stringify(err)}`);
+  console.error(`Failed to send message, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2198,15 +2124,18 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let messageHandler: inputMethod.MessageHandler = {
-    onTerminated(): void {
-        console.info('OnTerminated.');
-    },
-    onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-        console.info('recv message.');
-    }
-}
+  onTerminated(): void {
+    console.info('OnTerminated.');
+  },
+  onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+    console.info('recv message.');
+  }
+};
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.recvMessage(messageHandler);
+// Unregister the MessageHandler.
 inputMethodController.recvMessage();
 ```
 
@@ -2235,9 +2164,9 @@ Ends this input session. This API uses an asynchronous callback to return the re
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.stopInput((err: BusinessError, result: boolean) => {
+inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to stopInput: ${JSON.stringify(err)}`);
+    console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
     return;
   }
   if (result) {
@@ -2273,14 +2202,14 @@ Ends this input session. This API uses a promise to return the result.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodController.stopInput().then((result: boolean) => {
+inputMethod.getController().stopInput().then((result: boolean) => {
   if (result) {
     console.info('Succeeded in stopping input.');
   } else {
     console.error('Failed to stopInput.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stopInput: ${JSON.stringify(err)}`);
+  console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -2311,24 +2240,22 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-function callback1(text: string) {
-  console.info('Succeeded in getting callback1 data: ' + JSON.stringify(text));
+function callback1(text: string): void {
+  console.info(`Succeeded in getting callback1, data: ${text}`);
 }
 
-function callback2(text: string) {
-  console.info('Succeeded in getting callback2 data: ' + JSON.stringify(text));
+function callback2(text: string): void {
+  console.info(`Succeeded in getting callback2, data: ${text}`);
 }
 
-try {
-  inputMethodController.on('insertText', callback1);
-  inputMethodController.on('insertText', callback2);
-  // Cancel only callback1 of insertText.
-  inputMethodController.off('insertText', callback1);
-  // Cancel all callbacks of insertText.
-  inputMethodController.off('insertText');
-} catch(err) {
-  console.error(`Failed to subscribe insertText: ${JSON.stringify(err)}`);
-}
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+// Register a callback.
+inputMethodController.on('insertText', callback1);
+inputMethodController.on('insertText', callback2);
+// Cancel only callback1 of insertText.
+inputMethodController.off('insertText', callback1);
+// Cancel all callbacks of insertText.
+inputMethodController.off('insertText');
 ```
 
 ### off('insertText')<sup>10+</sup>
@@ -2349,9 +2276,13 @@ Disables listening for the text insertion event of the input method.
 **Example**
 
 ```ts
-let onInsertTextCallback = (text: string) => {
-    console.info(`Succeeded in subscribing insertText: ${text}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onInsertTextCallback: Callback<string> = (text: string): void => {
+  console.info(`Succeeded in subscribing insertText: ${text}`);
 };
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('insertText', onInsertTextCallback);
 inputMethodController.off('insertText');
 ```
@@ -2383,13 +2314,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('deleteLeft', (length: number) => {
-    console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe deleteLeft: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('deleteLeft', (length: number) => {
+  console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
+});
 ```
 
 ### off('deleteLeft')<sup>10+</sup>
@@ -2410,9 +2337,13 @@ Disables listening for the leftward delete event.
 **Example**
 
 ```ts
-let onDeleteLeftCallback = (length: number) => {
-    console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onDeleteLeftCallback: Callback<number> = (length: number): void => {
+  console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
 };
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('deleteLeft', onDeleteLeftCallback);
 inputMethodController.off('deleteLeft');
 ```
@@ -2444,13 +2375,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('deleteRight', (length: number) => {
-    console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe deleteRight: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('deleteRight', (length: number) => {
+  console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
+});
 ```
 
 ### off('deleteRight')<sup>10+</sup>
@@ -2471,9 +2398,12 @@ Disables listening for the rightward delete event.
 **Example**
 
 ```ts
-let onDeleteRightCallback = (length: number) => {
-    console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onDeleteRightCallback: Callback<number> = (length: number): void => {
+  console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
 };
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('deleteRight', onDeleteRightCallback);
 inputMethodController.off('deleteRight');
 ```
@@ -2505,20 +2435,16 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('sendKeyboardStatus', (keyboardStatus: inputMethod.KeyboardStatus) => {
-    console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sendKeyboardStatus: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('sendKeyboardStatus', (keyboardStatus: inputMethod.KeyboardStatus) => {
+  console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
+});
 ```
 
 ### off('sendKeyboardStatus')<sup>10+</sup>
 
 off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => void): void
 
-Disables listening for the soft keyboard status event of the input method.
+Disables listening for the input method soft keyboard status event of the input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2532,9 +2458,13 @@ Disables listening for the soft keyboard status event of the input method.
 **Example**
 
 ```ts
-let onSendKeyboardStatus = (keyboardStatus: inputMethod.KeyboardStatus) => {
-    console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onSendKeyboardStatus: Callback<inputMethod.KeyboardStatus> = (keyboardStatus: inputMethod.KeyboardStatus): void => {
+  console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
 };
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('sendKeyboardStatus', onSendKeyboardStatus);
 inputMethodController.off('sendKeyboardStatus');
 ```
@@ -2566,13 +2496,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('sendFunctionKey', (functionKey: inputMethod.FunctionKey) => {
-    console.info(`Succeeded in subscribing sendFunctionKey, functionKey.enterKeyType: ${functionKey.enterKeyType}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sendFunctionKey: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('sendFunctionKey', (functionKey: inputMethod.FunctionKey) => {
+  console.info(`Succeeded in subscribing sendFunctionKey, functionKey.enterKeyType: ${functionKey.enterKeyType}`);
+});
 ```
 
 ### off('sendFunctionKey')<sup>10+</sup>
@@ -2593,9 +2519,13 @@ Disables listening for the function key sending event of the input method.
 **Example**
 
 ```ts
-let onSendFunctionKey = (functionKey: inputMethod.FunctionKey) => {
-    console.info(`Succeeded in subscribing sendFunctionKey, functionKey: ${functionKey.enterKeyType}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onSendFunctionKey: Callback<inputMethod.FunctionKey> = (functionKey: inputMethod.FunctionKey): void => {
+  console.info(`Succeeded in subscribing sendFunctionKey, functionKey: ${functionKey.enterKeyType}`);
 };
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('sendFunctionKey', onSendFunctionKey);
 inputMethodController.off('sendFunctionKey');
 ```
@@ -2627,13 +2557,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('moveCursor', (direction: inputMethod.Direction) => {
-    console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe moveCursor: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('moveCursor', (direction: inputMethod.Direction) => {
+  console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
+});
 ```
 
 ### off('moveCursor')<sup>10+</sup>
@@ -2654,9 +2580,13 @@ Disables listening for the cursor movement event of the input method.
 **Example**
 
 ```ts
-let onMoveCursorCallback = (direction: inputMethod.Direction) => {
-    console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
+import { Callback } from '@kit.BasicServicesKit';
+
+let onMoveCursorCallback: Callback<inputMethod.Direction> = (direction: inputMethod.Direction): void => {
+  console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
 };
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.off('moveCursor', onMoveCursorCallback);
 inputMethodController.off('moveCursor');
 ```
@@ -2688,13 +2618,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('handleExtendAction', (action: inputMethod.ExtendAction) => {
-    console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe handleExtendAction: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('handleExtendAction', (action: inputMethod.ExtendAction) => {
+  console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
+});
 ```
 
 ### off('handleExtendAction')<sup>10+</sup>
@@ -2715,15 +2641,15 @@ Disables listening for the extended action handling event of the input method. T
 **Example**
 
 ```ts
-try {
-  let onHandleExtendActionCallback = (action: inputMethod.ExtendAction) => {
-    console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
-  };
-  inputMethodController.off('handleExtendAction', onHandleExtendActionCallback);
-  inputMethodController.off('handleExtendAction');
-} catch(err) {
-  console.error(`Failed to subscribe handleExtendAction: ${JSON.stringify(err)}`);
-}
+import { Callback } from '@kit.BasicServicesKit';
+
+let onHandleExtendActionCallback: Callback<inputMethod.ExtendAction> = (action: inputMethod.ExtendAction): void => {
+  console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('handleExtendAction', onHandleExtendActionCallback);
+inputMethodController.off('handleExtendAction');
 ```
 
 ### on('selectByRange')<sup>10+</sup>
@@ -2752,13 +2678,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('selectByRange', (range: inputMethod.Range) => {
-    console.info(`Succeeded in subscribing selectByRange: start: ${range.start} , end: ${range.end}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe selectByRange: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('selectByRange', (range: inputMethod.Range) => {
+  console.info(`Succeeded in subscribing selectByRange: start: ${range.start} , end: ${range.end}`);
+});
 ```
 
 ### off('selectByRange')<sup>10+</sup>
@@ -2779,15 +2701,15 @@ Disables listening for the select-by-range event. This API uses an asynchronous 
 **Example**
 
 ```ts
-try {
-  let onSelectByRangeCallback = (range: inputMethod.Range) => {
-    console.info(`Succeeded in subscribing selectByRange, start: ${range.start} , end: ${range.end}`);
-  };
-  inputMethodController.off('selectByRange', onSelectByRangeCallback);
-  inputMethodController.off('selectByRange');
-} catch(err) {
-  console.error(`Failed to subscribe selectByRange: ${JSON.stringify(err)}`);
-}
+import { Callback } from '@kit.BasicServicesKit';
+
+let onSelectByRangeCallback: Callback<inputMethod.Range> = (range: inputMethod.Range): void => {
+  console.info(`Succeeded in subscribing selectByRange, start: ${range.start} , end: ${range.end}`);
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('selectByRange', onSelectByRangeCallback);
+inputMethodController.off('selectByRange');
 ```
 
 ### on('selectByMovement')<sup>10+</sup>
@@ -2816,13 +2738,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('selectByMovement', (movement: inputMethod.Movement) => {
-    console.info('Succeeded in subscribing selectByMovement: direction: ' + movement.direction);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe selectByMovement: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('selectByMovement', (movement: inputMethod.Movement) => {
+  console.info('Succeeded in subscribing selectByMovement: direction: ' + movement.direction);
+});
 ```
 
 ### off('selectByMovement')<sup>10+</sup>
@@ -2843,15 +2761,15 @@ Disables listening for the select-by-cursor-movement event. This API uses an asy
 **Example**
 
 ```ts
-try {
-  let onSelectByMovementCallback = (movement: inputMethod.Movement) => {
-    console.info(`Succeeded in subscribing selectByMovement, movement.direction: ${movement.direction}`);
-  };
-  inputMethodController.off('selectByMovement', onSelectByMovementCallback);
-  inputMethodController.off('selectByMovement');
-} catch(err) {
-  console.error(`Failed to unsubscribing selectByMovement: ${JSON.stringify(err)}`);
-}
+import { Callback } from '@kit.BasicServicesKit';
+
+let onSelectByMovementCallback: Callback<inputMethod.Movement> = (movement: inputMethod.Movement): void => {
+  console.info(`Succeeded in subscribing selectByMovement, movement.direction: ${movement.direction}`);
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('selectByMovement', onSelectByMovementCallback);
+inputMethodController.off('selectByMovement');
 ```
 
 ### on('getLeftTextOfCursor')<sup>10+</sup>
@@ -2881,15 +2799,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('getLeftTextOfCursor', (length: number) => {
-    console.info(`Succeeded in subscribing getLeftTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  });
-} catch(err) {
-  console.error(`Failed to unsubscribing getLeftTextOfCursor. err: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('getLeftTextOfCursor', (length: number) => {
+  console.info(`Succeeded in subscribing getLeftTextOfCursor, length: ${length}`);
+  let text: string = "";
+  return text;
+});
 ```
 
 ### off('getLeftTextOfCursor')<sup>10+</sup>
@@ -2910,17 +2824,15 @@ Disables listening for the event of obtaining the length of text deleted leftwar
 **Example**
 
 ```ts
-try {
-  let getLeftTextOfCursorCallback = (length: number) => {
-    console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  };
-  inputMethodController.off('getLeftTextOfCursor', getLeftTextOfCursorCallback);
-  inputMethodController.off('getLeftTextOfCursor');
-} catch(err) {
-  console.error(`Failed to unsubscribing getLeftTextOfCursor. err: ${JSON.stringify(err)}`);
-}
+let getLeftTextOfCursorCallback: (length: number) => string = (length: number): string => {
+  console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
+  let text: string = "";
+  return text;
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('getLeftTextOfCursor', getLeftTextOfCursorCallback);
+inputMethodController.off('getLeftTextOfCursor');
 ```
 
 ### on('getRightTextOfCursor')<sup>10+</sup>
@@ -2950,15 +2862,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('getRightTextOfCursor', (length: number) => {
-    console.info(`Succeeded in subscribing getRightTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  });
-} catch(err) {
-  console.error(`Failed to subscribe getRightTextOfCursor. err: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('getRightTextOfCursor', (length: number) => {
+  console.info(`Succeeded in subscribing getRightTextOfCursor, length: ${length}`);
+  let text: string = "";
+  return text;
+});
 ```
 
 ### off('getRightTextOfCursor')<sup>10+</sup>
@@ -2979,17 +2887,15 @@ Disables listening for the event of obtaining the length of text deleted rightwa
 **Example**
 
 ```ts
-try {
-  let getRightTextOfCursorCallback = (length: number) => {
-    console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  };
-  inputMethodController.off('getRightTextOfCursor', getRightTextOfCursorCallback);
-  inputMethodController.off('getRightTextOfCursor');
-} catch(err) {
-  console.error(`Failed to unsubscribing getRightTextOfCursor. err: ${JSON.stringify(err)}`);
-}
+let getRightTextOfCursorCallback: (length: number) => string = (length: number): string => {
+  console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
+  let text: string = "";
+  return text;
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('getRightTextOfCursor', getRightTextOfCursorCallback);
+inputMethodController.off('getRightTextOfCursor');
 ```
 
 ### on('getTextIndexAtCursor')<sup>10+</sup>
@@ -3019,15 +2925,11 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  inputMethodController.on('getTextIndexAtCursor', () => {
-    console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
-    let index:number = 0;
-    return index;
-  });
-} catch(err) {
-  console.error(`Failed to subscribe getTextIndexAtCursor. err: ${JSON.stringify(err)}`);
-}
+inputMethod.getController().on('getTextIndexAtCursor', () => {
+  console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
+  let index: number = 0;
+  return index;
+});
 ```
 
 ### off('getTextIndexAtCursor')<sup>10+</sup>
@@ -3048,17 +2950,15 @@ Disables listening for the event of obtaining the index of text at the cursor. T
 **Example**
 
 ```ts
-try {
-  let getTextIndexAtCursorCallback = () => {
-    console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
-    let index:number = 0;
-    return index;
-  };
-  inputMethodController.off('getTextIndexAtCursor', getTextIndexAtCursorCallback);
-  inputMethodController.off('getTextIndexAtCursor');
-} catch(err) {
-  console.error(`Failed to unsubscribing getTextIndexAtCursor. err: ${JSON.stringify(err)}`);
-}
+let getTextIndexAtCursorCallback: () => number = (): number => {
+  console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
+  let index: number = 0;
+  return index;
+};
+
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.off('getTextIndexAtCursor', getTextIndexAtCursorCallback);
+inputMethodController.off('getTextIndexAtCursor');
 ```
 
 ### on('setPreviewText')<sup>17+</sup>
@@ -3091,28 +2991,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let setPreviewTextCallback1: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range) => {
+let setPreviewTextCallback1: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range): void => {
   console.info(`SetPreviewTextCallback1: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range) => {
+let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range): void => {
   console.info(`setPreviewTextCallback2: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-try {
-  inputMethodController.on('setPreviewText', setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-  inputMethodController.on('setPreviewText', setPreviewTextCallback2);
-  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-  // Cancel only the callback1 of setPreviewText.
-  inputMethodController.off('setPreviewText', setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-  // Cancel all callbacks of setPreviewText.
-  inputMethodController.off('setPreviewText');
-  console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch(err) {
-  console.error(`Failed to operate on setPreviewText: ${JSON.stringify(err)}`);
-}
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.on('setPreviewText', setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+inputMethodController.on('setPreviewText', setPreviewTextCallback2);
+console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+// Cancel only the callback1 of setPreviewText.
+inputMethodController.off('setPreviewText', setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+// Cancel all callbacks of setPreviewText.
+inputMethodController.off('setPreviewText');
+console.info(`All callbacks unsubscribed from setPreviewText`);
 ```
 
 ### off('setPreviewText')<sup>17+</sup>
@@ -3133,28 +3030,25 @@ Unsubscribes from the event for text preview operations in an input method appli
 **Example**
 
 ```ts
-let setPreviewTextCallback1: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range) => {
+let setPreviewTextCallback1: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range): void => {
   console.info(`SetPreviewTextCallback1: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range) => {
+let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range): void => {
   console.info(`setPreviewTextCallback2: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-try {
-  inputMethodController.on('setPreviewText', setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-  inputMethodController.on('setPreviewText', setPreviewTextCallback2);
-  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-  // Cancel only the callback1 of setPreviewText.
-  inputMethodController.off('setPreviewText', setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-  // Cancel all callbacks of setPreviewText.
-  inputMethodController.off('setPreviewText');
-  console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch(err) {
-  console.error(`Failed to operate on setPreviewText: ${JSON.stringify(err)}`);
-}
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.on('setPreviewText', setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+inputMethodController.on('setPreviewText', setPreviewTextCallback2);
+console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+// Cancel only the callback1 of setPreviewText.
+inputMethodController.off('setPreviewText', setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+// Cancel all callbacks of setPreviewText.
+inputMethodController.off('setPreviewText');
+console.info(`All callbacks unsubscribed from setPreviewText`);
 ```
 
 ### on('finishTextPreview')<sup>17+</sup>
@@ -3187,27 +3081,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let finishTextPreviewCallback1 = () => {
+import { Callback } from '@kit.BasicServicesKit';
+
+let finishTextPreviewCallback1: Callback<void> = (): void => {
   console.info(`FinishTextPreviewCallback1: finishTextPreview event triggered`);
 };
-let finishTextPreviewCallback2 = () => {
+let finishTextPreviewCallback2: Callback<void> = (): void => {
   console.info(`FinishTextPreviewCallback2: finishTextPreview event triggered`);
 };
 
-try {
-  inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
-  inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
-  console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-  // Cancel only the callback1 of finishTextPreview.
-  inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-  // Cancel all callbacks of finishTextPreview.
-  inputMethodController.off('finishTextPreview');
-  console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch(err) {
-  console.error(`Failed to operate on finishTextPreview (subscribe/off): ${JSON.stringify(err)}`);
-}
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
+inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
+console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
+// Cancel only the callback1 of finishTextPreview.
+inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
+// Cancel all callbacks of finishTextPreview.
+inputMethodController.off('finishTextPreview');
+console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
 ### off('finishTextPreview')<sup>17+</sup>
@@ -3228,27 +3121,26 @@ Unsubscribes from the event of finishing text preview. This API uses an asynchro
 **Example**
 
 ```ts
-let finishTextPreviewCallback1 = () => {
+import { Callback } from '@kit.BasicServicesKit';
+
+let finishTextPreviewCallback1: Callback<void> = (): void => {
   console.info(`FinishTextPreviewCallback1: finishTextPreview event triggered`);
 };
-let finishTextPreviewCallback2 = () => {
+let finishTextPreviewCallback2: Callback<void> = (): void => {
   console.info(`FinishTextPreviewCallback2: finishTextPreview event triggered`);
 };
 
-try {
-  inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
-  inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
-  console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-  // Cancel only the callback1 of finishTextPreview.
-  inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-  // Cancel all callbacks of finishTextPreview.
-  inputMethodController.off('finishTextPreview');
-  console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch(err) {
-  console.error(`Failed to operate on finishTextPreview (subscribe/off): ${JSON.stringify(err)}`);
-}
+let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
+inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
+inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
+console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
+// Cancel only the callback1 of finishTextPreview.
+inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
+// Cancel all callbacks of finishTextPreview.
+inputMethodController.off('finishTextPreview');
+console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
 ## InputMethodSetting<sup>8+</sup>
@@ -3274,13 +3166,12 @@ Enables listening for the input method and subtype change event. This API uses a
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-try {
-  inputMethodSetting.on('imeChange', (inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
-    console.info('Succeeded in subscribing imeChange: inputMethodProperty: ' + JSON.stringify(inputMethodProperty) + " , inputMethodSubtype: " + JSON.stringify(inputMethodSubtype));
+
+inputMethod.getSetting()
+  .on('imeChange', (inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name} ` +
+      `, inputMethodSubtype.id: ${inputMethodSubtype.id}`);
   });
-} catch(err) {
-  console.error(`Failed to subscribing imeChange. Code: ${err.code}, Message: ${err.message}`);
-}
 ```
 
 ### off('imeChange')<sup>9+</sup>
@@ -3301,7 +3192,7 @@ Disables listening for the input method and subtype change event. This API uses 
 **Example**
 
 ```ts
-inputMethodSetting.off('imeChange');
+inputMethod.getSetting().off('imeChange');
 ```
 
 ### listInputMethodSubtype<sup>9+</sup>
@@ -3336,23 +3227,21 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodProperty: inputMethod.InputMethodProperty = {
-  name: 'com.example.kikakeyboard',
+  name: 'com.example.keyboard',
   id: 'propertyId',
-  packageName: 'com.example.kikakeyboard',
+  packageName: 'com.example.keyboard',
   methodId: 'propertyId',
 }
-let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err: BusinessError, data: Array<InputMethodSubtype>) => {
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+
+inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
+  (err: BusinessError, data: Array<InputMethodSubtype>) => {
     if (err) {
-      console.error(`Failed to listInputMethodSubtype: ${JSON.stringify(err)}`);
+      console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in listing inputMethodSubtype.');
   });
-} catch (err) {
-  console.error(`Failed to listInputMethodSubtype: ${JSON.stringify(err)}`);
-}
 ```
 
 ### listInputMethodSubtype<sup>9+</sup>
@@ -3392,21 +3281,18 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodProperty: inputMethod.InputMethodProperty = {
-  name: 'com.example.kikakeyboard',
+  name: 'com.example.keyboard',
   id: 'propertyId',
-  packageName: 'com.example.kikakeyboard',
+  packageName: 'com.example.keyboard',
   methodId: 'propertyId',
 }
-let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
-    console.info('Succeeded in listing inputMethodSubtype.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to listInputMethodSubtype: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to listInputMethodSubtype: ${JSON.stringify(err)}`);
-}
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+
+inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing inputMethodSubtype.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### listCurrentInputMethodSubtype<sup>9+</sup>
@@ -3438,18 +3324,14 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Array<InputMethodSubtype>) => {
-    if (err) {
-      console.error(`Failed to listCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in listing currentInputMethodSubtype.');
-  });
-} catch(err) {
-  console.error(`Failed to listCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-}
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Array<InputMethodSubtype>) => {
+  if (err) {
+    console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in listing currentInputMethodSubtype.');
+});
 ```
 
 ### listCurrentInputMethodSubtype<sup>9+</sup>
@@ -3481,16 +3363,14 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
-    console.info('Succeeded in listing currentInputMethodSubtype.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to listCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to listCurrentInputMethodSubtype: ${JSON.stringify(err)}`);
-}
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+
+inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing currentInputMethodSubtype.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
+
 ```
 
 ### getInputMethods<sup>9+</sup>
@@ -3529,17 +3409,13 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getInputMethods(true, (err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-    if (err) {
-      console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in getting inputMethods.');
-  });
-} catch (err) {
-  console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-}
+inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+  if (err) {
+    console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting inputMethods.');
+});
 ```
 
 ### getInputMethods<sup>9+</sup>
@@ -3583,15 +3459,12 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
-    console.info('Succeeded in getting inputMethods.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-  })
-} catch(err) {
-  console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-}
+inputMethod.getSetting().getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in getting inputMethods.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
+})
+
 ```
 
 ### getInputMethodsSync<sup>11+</sup>
@@ -3633,11 +3506,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  let imeProperty = inputMethodSetting.getInputMethodsSync(true);
-} catch(err) {
-  console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-}
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true);
 ```
 
 ### getAllInputMethods<sup>11+</sup>
@@ -3668,17 +3537,13 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getAllInputMethods((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-    if (err) {
-      console.error(`Failed to getAllInputMethods: ${JSON.stringify(err)}`);
-      return;
-    }
-    console.info('Succeeded in getting all inputMethods.');
-  });
-} catch (err) {
-  console.error(`Failed to getAllInputMethods: ${JSON.stringify(err)}`);
-}
+inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+  if (err) {
+    console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting all inputMethods.');
+});
 ```
 
 ### getAllInputMethods<sup>11+</sup>
@@ -3709,10 +3574,10 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
+inputMethod.getSetting().getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
   console.info('Succeeded in getting all inputMethods.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getAllInputMethods: ${JSON.stringify(err)}`);
+  console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -3742,11 +3607,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 **Example**
 
 ```ts
-try {
-  let imeProperty = inputMethodSetting.getAllInputMethodsSync();
-} catch(err) {
-  console.error(`Failed to getAllInputMethodsSync: ${JSON.stringify(err)}`);
-}
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync();
 ```
 
 ### showOptionalInputMethods<sup>(deprecated)</sup>
@@ -3779,17 +3640,17 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.showOptionalInputMethods((err: BusinessError, data: boolean) => {
-    if (err) {
-      console.error(`Failed to showOptionalInputMethods: ${JSON.stringify(err)}`);
-      return;
-    }
+inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to showOptionalInputMethods, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
     console.info('Succeeded in showing optionalInputMethods.');
-  });
-} catch (err) {
-  console.error(`Failed to showOptionalInputMethods: ${JSON.stringify(err)}`);
-}
+  } else {
+    console.error(`Failed to showOptionalInputMethods.`);
+  }
+});
 ```
 
 ### showOptionalInputMethods<sup>(deprecated)</sup>
@@ -3823,10 +3684,14 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.showOptionalInputMethods().then((data: boolean) => {
-  console.info('Succeeded in showing optionalInputMethods.');
+inputMethod.getSetting().showOptionalInputMethods().then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in showing optionalInputMethods.');
+  } else {
+    console.error(`Failed to showOptionalInputMethods.`);
+  }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to showOptionalInputMethods: ${JSON.stringify(err)}`);
+  console.error(`Failed to showOptionalInputMethods, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -3853,13 +3718,13 @@ Obtains a list of installed input methods. This API uses an asynchronous callbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
   if (err) {
-    console.error(`Failed to listInputMethod: ${JSON.stringify(err)}`);
+    console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in listing inputMethod.');
- });
+});
 ```
 
 ### listInputMethod<sup>(deprecated)</sup>
@@ -3885,10 +3750,10 @@ Obtains a list of installed input methods. This API uses a promise to return the
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
+inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
   console.info('Succeeded in listing inputMethod.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to listInputMethod: ${JSON.stringify(err)}`);
+  console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -3915,9 +3780,9 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.displayOptionalInputMethod((err: BusinessError) => {
+inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to displayOptionalInputMethod: ${JSON.stringify(err)}`);
+    console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in displaying optionalInputMethod.');
@@ -3947,10 +3812,10 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.displayOptionalInputMethod().then(() => {
+inputMethod.getSetting().displayOptionalInputMethod().then(() => {
   console.info('Succeeded in displaying optionalInputMethod.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to displayOptionalInputMethod: ${JSON.stringify(err)}`);
+  console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -3982,9 +3847,9 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodSetting.getInputMethodState().then((status: inputMethod.EnabledState) => {
+inputMethod.getSetting().getInputMethodState().then((status: inputMethod.EnabledState) => {
   console.info(`Succeeded in getInputMethodState, status: ${status}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getInputMethodState: ${JSON.stringify(err)}`);
+  console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 })
 ```

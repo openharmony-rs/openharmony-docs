@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -1258,6 +1258,42 @@ A DLP file is passed in the Want.
 Check whether the Want carries a DLP file.
 <!--DelEnd-->
 
+## 16000130 UIAbility Does Not Belong to the Caller
+
+**Error Message**
+
+The UIAbility not belong to caller.
+
+**Description**
+
+This error code is reported when target UIAbility does not belong to the caller.
+
+**Possible Causes**
+
+Attempting to launch a UIAbility that belongs to another application.
+
+**Solution**
+
+Verify that the target UIAbility belongs to the caller.
+
+## 16000131 UIAbility Already Started
+
+**Error Message**
+
+The UIAbility is already exist, can not start again.
+
+**Description**
+
+This error code is reported when the UIAbility is already running and cannot be started again.
+
+**Possible Causes**
+
+**startSelfUIAbilityInCurrentProcess** is designed for cold-starting a new UIAbility instance. This error occurs when attempting to launch a UIAbility instance that has already been started.
+
+**Solution**
+
+Check whether the UIAbility has already been launched.
+
 ## 16000135 UIAbility Main Window Does Not Exist
 
 **Error Message**
@@ -1891,23 +1927,26 @@ The specified application is not installed under the user with **userId** of 1.
 Install the specified application under the user with **userId** of 1.
 <!--DelEnd-->
 
-## 16000115 Process Is Not Running the Component with isolationProcess Set to true
+## 16000115 Current Process Cannot Be Set as Candidate Master Process
 
 **Error Message**
 
-The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process.
+The current process cannot be set as a candidate master process.
 
 **Description**
 
-This error code is reported when you attempt to set a process, which is not running any component configured with **isolationProcess**, as a candidate master process.
+The current process does not meet the requirements to be configured as a candidate master process.
 
 **Possible Causes**
 
-The current process is not running any component configured with **isolationProcess** and therefore cannot be designated as a candidate master process.
+The process fails to satisfy at least one of the following conditions:
+
+1. It is running a component with **isolationProcess** set to **true**.
+2. It has previously served as the master process.
 
 **Solution**
 
-No action can be taken. Since the current process is not running any component with **isolationProcess** set to **true**, it cannot be set as a candidate master process.
+No workaround is available. A process can only be set as a candidate master process if it is currently running a component with **isolationProcess** set to **true**, or if it has previously functioned as the master process.
 
 ## 16000116 Process Is Already a Master Process
 
@@ -1963,23 +2002,26 @@ The current process is not the master process and cannot relinquish its master-p
 
 No action can be taken. The current process is not the master process and cannot relinquish its master-process role.
 
-## 16000119 Unfinished onNewProcessRequest Request Exists
+## 16000119 Pending Request Exists
 
 **Error Message**
 
-Cannot exit because there is an unfinished onNewProcessRequest.
+Cannot exit because there is an unfinished request.
 
 **Description**
 
-This error code is reported when you attempt to relinquish the master-process role of the current process while it has an unfinished onNewProcessRequest request.
+The attempt to relinquish the current process's master process status has failed due to pending requests.
 
 **Possible Causes**
 
-The current process has an unfinished onNewProcessRequest request.
+The current process contains unfinished requests:
+
+1. There are pending [onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11) calls in the process
+2. When a UIAbility with [specified](../../application-models/uiability-launch-type.md#specified) launch mode runs in an isolated process, there are pending [onAcceptWant](js-apis-app-ability-abilityStage.md#onacceptwant) requests
 
 **Solution**
 
-Wait for the onNewProcessRequest request in the current process to complete, and then relinquish the master-process role of the current process.
+Wait for all current requests in the process to complete before attempting to relinquish master process status.
 
 ## 16000205 API Not Called in Main Thread
 

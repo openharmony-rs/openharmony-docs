@@ -43,7 +43,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    {
        // Create a CameraManager object.
        Camera_ErrorCode ret = OH_Camera_GetCameraManager(cameraManager);
-       if (cameraManager == nullptr || ret != CAMERA_OK) {
+       if (*cameraManager == nullptr || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
        }
        return ret;
@@ -64,6 +64,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
        if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
        }
+       // If cameras are no longer needed, call delete[] to release the memory.
        for (uint32_t index = 0; index < size; index++) {
           OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", (*cameras)[index].cameraId);              // Obtain the camera ID.
           OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", (*cameras)[index].cameraPosition);  // Obtain the camera position.
@@ -79,7 +80,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
 During camera application development, you can listen for the camera status, including the appearance of a new camera, removal of a camera, and availability of a camera. The camera ID and camera status are included in the callback function. When a new camera appears, the new camera can be added to the supported camera list.
 
-Register the **'cameraStatus'** event and return the listening result through a callback, which carries the **Camera_StatusInfo** parameter. For details about the parameter, see [Camera_StatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-statusinfo.md).
+Call [OH_CameraManager_RegisterCallback()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_registercallback) to register the **'cameraStatus'** event and return the listening result through a callback, which carries the **Camera_StatusInfo** parameter. For details about the parameter, see [Camera_StatusInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-statusinfo.md).
 
   ```c++
   void CameraStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)

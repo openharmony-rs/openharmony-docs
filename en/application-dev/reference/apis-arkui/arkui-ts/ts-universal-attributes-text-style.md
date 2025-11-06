@@ -109,6 +109,22 @@ This API does not work when the text is being dragged.
 | ----- | -------- |
 | number| New cursor position after insertion.|
 
+### setStyledPlaceholder<sup>22+</sup>
+
+setStyledPlaceholder(styledString: StyledString): void
+
+Binds or updates the styled placeholder string.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description |
+| ------- | ------ | ---- | ----- |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | Yes| Styled string for the placeholder. This takes precedence over the plain text **placeholder** attribute.<br>The placeholder does not support gesture events or hyperlink navigation within styled strings.|
+
 ### deleteText<sup>15+</sup>
 
 deleteText(range?: TextRange): void
@@ -158,14 +174,14 @@ Notifies the input method to clear the current preview text.
 
 Provides configuration options for the character counter.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
-| thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]<br>If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.|
-| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. The value **true** (default) means to highlight the text box border and character counter subscript in red.|
+| thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]. If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. The value **true** (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter in the component. When the number of characters entered is greater than the maximum number of characters multiplied by the percentage value, the counter displays the number of characters entered, and the color of the counter is the color specified by counterTextColor. If counterTextColor is not set, the default color (black) is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter when the counter overflows. When the number of characters entered by the user exceeds the maximum length of the counter, the text color and border color of the counter are switched to the color specified by counterTextOverflowColor to remind the user that the input has exceeded the limit. If counterTextOverflowColor is not set, the text color of the counter and border is the default color (red) when the overflow occurs.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## CaretOffset<sup>11+</sup>
 
@@ -233,7 +249,7 @@ Defines custom icon symbol configurations.
 
 | Type | Description      |
 | ----- | -------- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | Returns the current **SymbolGlyphModifier** instance.|
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | Returns the current **SymbolGlyphModifier** instance.|
 
 ## TextContentControllerOptions<sup>15+</sup>
 

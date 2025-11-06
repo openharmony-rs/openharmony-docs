@@ -16,7 +16,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.html”， 在应用侧代码构建响应资源，实现自定义页面响应场景。
 
 
-- 前端页面index.html代码。
+- 前端页面index1.html代码。
 
   ```html
   <!DOCTYPE html>
@@ -32,11 +32,11 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   ```
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -52,10 +52,10 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
       '<h1>intercept ok</h1>\n' +
       '</body>\n' +
       '</html>'
-
+  
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index1.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             if (event) {
               console.info('url:' + event.request.getRequestUrl());
@@ -85,7 +85,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.js”， 应用侧代码构建响应资源，在响应头中添加“ResponseDataID”字段，开启生成CodeCache的功能。
 
-- 前端页面index.html代码。
+- 前端页面index2.html代码。
 
   ```html
   <!DOCTYPE html>
@@ -113,11 +113,11 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   ```
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -147,10 +147,9 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
       'element9.innerHTML = text_msg;\n' +
       'element10.innerHTML = text_msg;\n' +
       'element11.innerHTML = text_msg;\n';
-
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index2.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             // 拦截页面请求
             if (event?.request.getRequestUrl() == 'https://www.example.com/test.js') {
@@ -158,8 +157,8 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
               this.responseResource.setResponseHeader([
                 {
                   // 格式：不超过13位纯数字。js识别码，Js有更新时必须更新该字段
-                  headerKey: "ResponseDataID",
-                  headerValue: "0000000000001"
+                  headerKey: 'ResponseDataID',
+                  headerValue: '0000000000001'
                 }]);
               this.responseResource.setResponseData(this.jsData);
               this.responseResource.setResponseEncoding('utf-8');

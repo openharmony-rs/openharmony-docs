@@ -19,8 +19,11 @@
 + [scrollTo](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollto)：在指定时间内，将页面滚动到指定的绝对位置。
 
   返回页面顶部。
-  ```ts
-  this.controller.scrollTo(0, 0);
+
+  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
+  
+  ``` TypeScript
+  this.webController.scrollTo(0, 0);
   ```
 + [scrollBy](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollby)：在指定时间内将页面滚动指定的偏移量。
 

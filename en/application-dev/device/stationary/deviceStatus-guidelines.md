@@ -44,6 +44,7 @@ The device must support accelerometers.
    ```ts
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
+   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. Subscribe to steady standing state change events.
 
@@ -56,6 +57,7 @@ The device must support accelerometers.
       console.error('on failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. Unsubscribe from all callbacks of steady standing state change events.
 
@@ -66,6 +68,7 @@ The device must support accelerometers.
       console.error('off failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. Unsubscribe from the specific callback of steady standing state change events.
 
@@ -87,3 +90,4 @@ The device must support accelerometers.
       console.error('off failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->

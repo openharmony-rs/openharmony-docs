@@ -279,9 +279,9 @@ struct MyComponent {
 
 ![Video-state](figures/Video-state.gif)
 
-从该示例中，我们可以了解到\@State变量的初始化机制：
+从上述示例中，我们可以了解到\@State变量的初始化机制：
 
-1. 没有外部传入的情况下，使用默认的值进行本地初始化：
+1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
 
    ```ts
    // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
@@ -290,7 +290,7 @@ struct MyComponent {
    MyComponent({ title: new Model('Hello World 2'), count: 7 })
    ```
 
-2. 在有外部传入的情况下，使用外部传入的值进行初始化：
+2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
 
    ```ts
    // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
@@ -466,7 +466,7 @@ struct MyComponent {
 
 箭头函数体内的`this`对象，就是定义该函数时所在的作用域指向的对象，而不是使用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是被装饰器\@State代理的状态变量。
 
-反例：
+【反例】
 
 ```ts
 
@@ -965,7 +965,7 @@ struct Index {
 框架识别到在build里改变状态变量会打error日志，error日志为：
 
 ```ts
-FIX THIS APPLICATION ERROR: @Component 'Index'[4]: State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
+FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 ```
 
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。

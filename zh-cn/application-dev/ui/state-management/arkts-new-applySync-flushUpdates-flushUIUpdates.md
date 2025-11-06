@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现状态管理V2与animateTo等动效的同步刷新，开发者可以使用applySync、flushUpdates或flushUIUpdates接口。
+为了实现状态管理V2与animateTo等动效的同步刷新，开发者可以使用[applySync](../../reference/apis-arkui/js-apis-StateManagement.md#applysync22)、[flushUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushupdates22)或[flushUIUpdates](../../reference/apis-arkui/js-apis-StateManagement.md#flushuiupdates22)接口。
 
 > **说明：**
 >
@@ -53,7 +53,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello World';
             })
   
-            animateTo({
+            this.getUIContext().animateTo({
               duration: 1000
             }, () => {
               console.log(`pikalov2 in-animateTo(in ) this.w=${this.w}, h=${this.h}`)
@@ -97,7 +97,7 @@ import { UIUtils } from '@kit.ArkUI';
             this.message = 'Hello World';
             UIUtils.flushUpdates();
   
-            animateTo({
+            this.getUIContext().animateTo({
               duration: 1000
             }, () => {
               console.log(`pikalov2 in-animateTo(in ) this.w=${this.w}, h=${this.h}`)
@@ -147,7 +147,7 @@ import { UIUtils } from '@kit.ArkUI';
             this.h = 100;
             UIUtils.flushUpdates(); //会生效
   
-            animateTo({
+            this.getUIContext().animateTo({
               duration: 1000
             }, () => {
               console.log(`pikalov2 in-animateTo(in ) this.w=${this.w}, h=${this.h}`)
@@ -275,7 +275,7 @@ struct Example {
             this.wid=200;
           })
 
-          animateTo({
+          this.getUIContext().animateTo({
             iterations:-1,//设置-1表示动画无限循环
             playMode:PlayMode.Alternate,
           },()=>{

@@ -1,4 +1,10 @@
 # Telephony Error Codes
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -209,6 +215,83 @@ This error code is reported if an internal system error occurs.
 **Possible Causes**
 
 The possible cause is that data read/write has failed because the network is abnormal.
+
+**Procedure**
+
+Operation error. Try again later.
+
+## 8800001 Input Parameter Value Out of Range
+
+**Error Message**
+
+The input parameter value is out of range.
+
+**Description**
+
+This error code is reported if the value of the input parameter (for example, **slotId**) is not within the valid range. In this case, the API call will fail and the corresponding operation cannot be performed.
+
+**Possible Causes**
+
+The input parameter value is invalid.
+
+**Procedure**
+
+Enter a valid parameter value.
+
+
+
+## 8800002 Service Connection Error
+
+**Error Message**
+
+Service connection failed.
+
+**Description**
+
+This error code is reported if the attempt to connect to a service fails.
+
+**Possible Causes**
+
+Service startup or IPC connection has failed.
+
+**Procedure**
+
+Operation error. Try again later.
+
+
+
+## 8800003 System Internal Error
+
+**Error Message**
+
+System internal error.
+
+**Description**
+
+This error code is reported if an internal system error occurs.
+
+**Possible Causes**
+
+The possible cause is that data read/write has failed because the network is abnormal.
+
+**Procedure**
+
+Operation error. Try again later.
+
+
+## 8800999 Internal Error
+
+**Error Message**
+
+Internal error.
+
+**Description**
+
+This error code is reported if an internal error occurs.
+
+**Possible Causes**
+
+The problem may arise due to insufficient memory, memory operation errors, or null pointers.
 
 **Procedure**
 

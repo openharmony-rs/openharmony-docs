@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 搜索框组件，适用于浏览器的搜索内容输入框等应用场景。
 
@@ -74,7 +74,7 @@ Wearable设备上默认字体大小为18fp。
 | 参数名 | 类型                                                  | 必填 | 说明                         |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr)                | 是   | 搜索框末尾搜索按钮文本内容。 <br>从API version 20开始，支持Resource类型。|
-| option | [SearchButtonOptions](#searchbuttonoptions10对象说明) | 否   | 配置搜索框文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}         |
+| option | [SearchButtonOptions](#searchbuttonoptions10对象说明) | 否   | 配置搜索框末尾搜索按钮文本样式。<br />默认值：<br />{<br />fontSize: '16fp',<br />fontColor: '#ff3f97e9'<br />}         |
 
 ### placeholderColor
 
@@ -356,7 +356,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
-当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -367,25 +367,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
-
-### selectedDataDetectorConfig<sup>22+</sup>
-
-selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
-
-设置选中文本的识别配置，可配置识别类型。
-
-需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。相关示例可以参考[示例7设置文本识别](ts-basic-components-text.md#示例7设置文本识别)。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
 
 ### lineHeight<sup>12+</sup>
 
@@ -1098,6 +1080,8 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 <!--Del-->
 在搜索框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2181,3 +2165,28 @@ struct SearchExample {
 }
 ```
 ![searchPlaceholder](figures/searchPlaceholder.jpg)
+
+### 示例23（设置输入法扩展信息）
+
+从API version 22开始，该示例通过[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig设置输入法扩展信息。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SearchExample {
+  build() {
+    Column() {
+      Search({ value: '拉起输入法前执行onWillAttachIME回调' })
+        .onWillAttachIME((client: IMEClient) => {
+          client.setExtraConfig({
+            customSettings: {
+              name: "Search", // 自定义属性
+              id: client.nodeId // 自定义属性
+            }
+          })
+        })
+    }.height('100%')
+  }
+}
+```

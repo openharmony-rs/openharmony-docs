@@ -877,7 +877,7 @@ OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandl
 
 获取NNRt任务优先级，仅NNRt设备可用。
 
-**起始版本：** 10
+**起始版本：** 22
 
 
 **参数：**

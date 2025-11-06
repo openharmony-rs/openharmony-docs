@@ -15,12 +15,15 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 
 ## MovingPhotoViewOptions
 
+Describes the options of a moving photo view.
 
-| Name     | Type                                                                                        | Mandatory| Description                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhotoFormat<sup>14+</sup>  | [PixelMapFormat](#pixelmapformat14)    | No  | Decoding format of the cover image of the **MovingPhotoView** component.                 |
-| dynamicRangeMode<sup>14+</sup>  | [DynamicRangeMode](#dynamicrangemode14) | No  | Range mode of the cover image of the **MovingPhotoView** component.|
-| playWithMask<sup>19+</sup>  | boolean | No  | Whether the watermark is shown when a moving photo with a watermark is playing.<br>The default value is **false**.<br>**false**: The moving photo fills the component while keeping its aspect ratio; the watermark is hidden.<br>**true**: The watermark is shown.|
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                     | Type                    | Read-Only| Optional| Description                                                  |
+| ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
+| movingPhotoFormat<sup>14+</sup>               | [PixelMapFormat](#pixelmapformat14)                   | No  | Yes  | Decoding format of the cover image of the **MovingPhotoView** component.<br>**System API**: This is a system API.         |
+| dynamicRangeMode<sup>14+</sup>               | [DynamicRangeMode](#dynamicrangemode14)                   | No  | Yes  | Range mode of the cover image of the **MovingPhotoView** component.<br>**System API**: This is a system API.          |
+| playWithMask<sup>19+</sup>               | boolean                   | No  | Yes  | Whether the watermark is shown when a moving photo with a watermark is playing.<br>The default value is **false**.<br>**false**: The moving photo fills the component while keeping its aspect ratio; the watermark is hidden.<br>**true**: The watermark is shown.<br>**System API**: This is a system API.       |
 
 ## PixelMapFormat<sup>14+</sup>
 
@@ -53,7 +56,9 @@ Enumerates the extended range modes available for the cover image of the **Movin
 | CONSTRAINT         | 1      | Allows limited extended range for the image content.|
 | STANDARD            | 2      | Keeps the image content within the standard dynamic range for SDR effects. The recommended decoding formats are UNKNOWN and RGBA_8888.|
 
-## Example: Setting the Decoding Format and Range Mode for Moving Photos in a System Application
+**Example**
+
+Set the decoding format and HDR effect format for moving photos in a system application.
 
 ```ts
 // This example illustrates how to use the parameters. For detailed implementation, check the public API documentation for moving photos.

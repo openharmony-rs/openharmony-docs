@@ -23,7 +23,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 ## Detection Principles
 
-1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md)
+1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles)
 
 2. Service thread stuck events:
    (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the application periodically performs activation detection on service threads. If the activation detection is not executed within 3 seconds, a **BUSSINESS_THREAD_BLOCK_3S** warning event is reported. If the activation detection is not executed within 6 seconds, a **BUSSINESS_THREAD_BLOCK_6S** stuck event is reported. The two events constitute AppFreeze fault logs based on system matching rules.
@@ -34,7 +34,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (seconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
 
-2. For details about the **OH_HiCollie_Init_StuckDetection** log specifications, see [Main Thread Jank Event Log Specifications](hiappevent-watcher-mainthreadjank-events.md).
+2. For details about the log specifications of **OH_HiCollie_Init_StuckDetection**, see [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications).
 
 ## How to Develop
 
@@ -74,7 +74,6 @@ The following describes how to add a button in the application and click the but
    #include <thread>
    #include <string>
    #include <unistd.h>
-   #include <atomic>
    #include "napi/native_api.h"
    #include "hilog/log.h"
    #include "hicollie/hicollie.h"
@@ -174,6 +173,7 @@ The following describes how to add a button in the application and click the but
    #include "napi/native_api.h"
    #include "hilog/log.h"
    #include "hicollie/hicollie.h"
+   #include <atomic>
    #include <thread>
    #include <string>
    #include <unistd.h>

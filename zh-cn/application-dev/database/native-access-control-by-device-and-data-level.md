@@ -68,13 +68,19 @@
 
 2. 导入头文件。
 
-    ```c
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     #include "database/rdb/relational_store.h"
     ```
 
+
+
 3. 调用OH_Rdb_SetSecurityLevel接口设置数据库的安全等级。
 
-    ```ts
+    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
     OH_Rdb_SetStoreName(config, "RdbTest.db");
@@ -84,8 +90,12 @@
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetEncrypted(config, false);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    
+        
     int errCode = 0;
     OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
     OH_Rdb_CloseStore(store_);
+    store_ = nullptr;
+    OH_Rdb_DestroyConfig(config);
+    config = nullptr;
     ```
+

@@ -1,4 +1,10 @@
 # Geometric Shape Drawing Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu; @hehongyang3-->
+<!--Designer: @sunbees; @CCFFWW-->
+<!--Tester: @liuli0427; @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 There are two methods for drawing geometric shapes: (1) by directly drawing them using the [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) component; (2) by clipping a component into a geometric shape using the shape clipping attribute [clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12).
 

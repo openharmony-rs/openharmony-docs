@@ -1,4 +1,10 @@
 # @ohos.arkui.performanceMonitor (Performance Monitoring) (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 The **performanceMonitor** module provides APIs for monitoring performance metrics related to user scenes. By calling the **begin** and **end** APIs at the start and end of a scene respectively, you can obtain relevant performance metrics such as response latency, completion latency, and frame drops.
 
@@ -108,6 +114,14 @@ Records the trigger event type and time before the start of the animation scene.
 | type | [ActionType](#actiontype)| Yes| Trigger mode of the user scene.|
 | sourceType | [SourceType](#sourcetype12) | Yes| Trigger source of the user scene.|
 | time | number | Yes| Scenario trigger timestamp (in ms), for example, **1751508570794**. Values equal to or less than 0 will be automatically converted to the current system time, while positive values will be used as-is. Incorrect parameters may cause abnormal response latency metrics.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | not system application.                     |
 
 **Example**
 

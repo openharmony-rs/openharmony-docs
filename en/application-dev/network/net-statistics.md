@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Overview
+## Introduction
 
 The traffic management module allows you to query real-time or historical data traffic by the specified network interface card (NIC) or user ID (UID).
 
@@ -17,7 +17,6 @@ Its functions include:
 - Subscribing to traffic change events by NIC or UID
 
 > **NOTE**
->
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-statistics.md).
 
 The following describes the development procedure specific to each application scenario.
@@ -26,102 +25,128 @@ The following describes the development procedure specific to each application s
 
 1. Import the **statistics**, **socket**, and **BusinessError** modules.
 
-    ```ts
-    import { statistics, socket } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
+<!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { socket, statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
 2. Obtain the real-time data traffic of the specified NIC. 
 
     Call **getIfaceRxBytes** with the NIC name specified to obtain the real-time downlink data traffic.
 
-    ```ts
-    // Obtain the real-time downlink data traffic of the primary Wi-Fi NIC. wlan0 is the name of the primary Wi-Fi NIC.
-    statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
+<!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
-    // Obtain the real-time uplink data traffic of the primary Wi-Fi NIC. wlan0 is the name of the primary Wi-Fi NIC.
-    statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+``` TypeScript
+// Obtain the real-time downlink data traffic of the primary Wi-Fi NIC. wlan0 is the name of the primary Wi-Fi NIC.
+statistics.getIfaceRxBytes('wlan0').then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+// Obtain the real-time uplink data traffic of the primary Wi-Fi NIC. wlan0 is the name of the primary Wi-Fi NIC.
+statistics.getIfaceTxBytes('wlan0').then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+```
 3. Obtain the real-time data traffic of the cellular network.
 
     Call **getCellularRxBytes** to obtain the real-time uplink and downlink data traffic of the cellular network.
 
-    ```ts
-    // Obtain the real-time downlink data traffic of the cellular network.
-    statistics.getCellularRxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
+<!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
-    // Obtain the real-time uplink data traffic of the cellular network.
-    statistics.getCellularTxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+``` TypeScript
+// Obtain the real-time downlink data traffic of the cellular network.
+statistics.getCellularRxBytes().then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+// Obtain the real-time uplink data traffic of the cellular network.
+statistics.getCellularTxBytes().then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+```
 4. Obtain the real-time data traffic of all NICs.
 
     Call **getAllRxBytes** to obtain the real-time uplink and downlink data traffic of all NICs.
 
-    ```ts
-    // Obtain the real-time downlink data traffic of all NICs. 
-    statistics.getAllRxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
+<!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
-    // Obtain the real-time uplink data traffic of all NICs. 
-    statistics.getAllTxBytes().then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+``` TypeScript
+// Obtain the real-time downlink data traffic of all NICs. 
+statistics.getAllRxBytes().then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+// Obtain the real-time uplink data traffic of all NICs. 
+statistics.getAllTxBytes().then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+```
 5. Obtain the real-time data traffic of the specified application.
 
     Call **getUidRxBytes** with the UID specified to obtain the real-time uplink and downlink data traffic of the specified application.
+  ```ts
+   let UID = 20010038;
+  ```
+<!-- @[flow_management_getUidRxBytes_and_getUidTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    // Obtain the real-time downlink data traffic of the specified application. 
-    let uid = 20010038;
-    statistics.getUidRxBytes(uid).then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-
-    // Obtain the real-time uplink data traffic of the specified application. 
-    let uid = 20010038;
-    statistics.getUidTxBytes(uid).then((stats: number) => {
-      console.info(JSON.stringify(stats));
-    });
-    ```
-
+``` TypeScript
+// Obtain the real-time downlink data traffic of the specified application. 
+// ···
+statistics.getUidRxBytes(UID).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+// Obtain the real-time uplink data traffic of the specified application. 
+// ···
+statistics.getUidTxBytes(UID).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+// ···
+})
+// ···
+```
 6. Obtains the real-time data traffic of the specified socket.
 
     Call **getSockfdRxBytes** with **sockFd** specified to obtain the real-time uplink and downlink data traffic of the specified socket.
 
-    ```ts
-    // Obtain the real-time downlink data traffic of the specified socket. 
-    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-    tcp.getSocketFd().then((sockfd: number) => {
-      statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-        console.info(JSON.stringify(stats));
-      }).catch((err: BusinessError) => {
-        console.error(JSON.stringify(err));
-      });
-    });
+<!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
 
-    // Obtain the real-time uplink data traffic of the specified socket. 
-    tcp.getSocketFd().then((sockfd: number) => {
-      statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-        console.info(JSON.stringify(stats));
-      }).catch((err: BusinessError) => {
-        console.error(JSON.stringify(err));
-      });
-    });
-    ```
-
+``` TypeScript
+// Obtain the real-time downlink data traffic of the specified socket. 
+let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+// ···
+tcp.getSocketFd().then((sockfd: number) => {
+  statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
+    console.info(JSON.stringify(stats));
+    // ···
+  }).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+    // ···
+  });
+})
+// ···
+// Obtain the real-time uplink data traffic of the specified socket. 
+tcp.getSocketFd().then((sockfd: number) => {
+  statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
+    console.info(JSON.stringify(stats));
+    // ···
+  }).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+    // ···
+  });
+})
+// ···
+```
 <!--Del-->
 ## Obtaining Historical Traffic Data by NIC or UID
 
@@ -139,19 +164,19 @@ class IfaceInfo {
 }
 // Obtain the historical data traffic of the specified NIC. 
 statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info(
+  console.log(
     "getTrafficStatsByIface bytes of received = " +
     JSON.stringify(statsInfo.rxBytes)
   );
-  console.info(
+  console.log(
     "getTrafficStatsByIface bytes of sent = " +
     JSON.stringify(statsInfo.txBytes)
   );
-  console.info(
+  console.log(
     "getTrafficStatsByIface packets of received = " +
     JSON.stringify(statsInfo.rxPackets)
   );
-  console.info(
+  console.log(
     "getTrafficStatsByIface packets of sent = " +
     JSON.stringify(statsInfo.txPackets)
   );
@@ -166,10 +191,10 @@ let uidInfo = new UidInfo()
 
 // Obtain the historical data traffic of the specified application. 
 statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+  console.log("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.log("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.log("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.log("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
 })
 ```
 
@@ -187,7 +212,7 @@ class Data {
 }
 
 let callback = (data: Data) => {
-  console.info('on netStatsChange, data:' + JSON.stringify(data));
+  console.log('on netStatsChange, data:' + JSON.stringify(data));
 };
 // Subscribe to traffic change events.
 statistics.on('netStatsChange', callback);

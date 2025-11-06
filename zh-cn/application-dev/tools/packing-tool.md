@@ -169,7 +169,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --pack-res-path    | 否     | NA          | pack.res快照文件路径。                                 |
 | --force            | 否     | true或者false | 默认值为false。如果为true，表示当目标文件存在时，强制删除。                           |
 | --encrypt-path     | 否     | NA          | 文件名必须为encrypt.json 。                           |
-| --pac-json-path     | 否     | NA          | pac.json文件路径，文件名必须为pac.json。<br/>从API Version 20开始支持该参数。|
+| --pac-json-path     | 否     | NA          | <!--RP1-->pac.json<!--RP1End-->文件路径，文件名必须为pac.json。<br/>从API Version 20开始支持该参数。|
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --replace-pack-info    | 否     | true或者false          | 打包APP时，是否使用由--pack-info-path参数指定的pack.info文件替换HAP、HSP包中的pack.info文件。如果为true表示替换，false表示不替换，默认值为true。<br/>从API Version 22开始支持该参数。 |
@@ -215,7 +215,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --out-path | 是     | NA | 目标文件路径，文件名必须以.app为后缀。 |
 | --force    | 否     | true或者false | 默认值为false。如果为true，表示当目标文件存在时，强制删除。                                                                  |
 | --encrypt-path | 否     | encrypt.json的路径 | 文件名必须为encrypt.json。                                                                  |
-| --pac-json-path | 否     | NA          | pac.json文件路径，文件名必须为pac.json。<br/>最终app产物中pac.json文件只来源于该参数，不配置的话，最终app产物不包含该文件。<br/>--app-list参数指定的app包中的pac.json不会打包进最终app。<br/>从API Version 20开始支持该参数。|
+| --pac-json-path | 否     | NA          | <!--RP1-->pac.json<!--RP1End-->文件路径，文件名必须为pac.json。<br/>最终app产物中pac.json文件只来源于该参数，不配置的话，最终app产物不包含该文件。<br/>--app-list参数指定的app包中的pac.json不会打包进最终app。<br/>从API Version 20开始支持该参数。|
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 
@@ -223,7 +223,11 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 
 ## HQF打包指令
 
-HQF包适用于应用存在一些问题，需要紧急修复的场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
+HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging)场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
+
+> **说明：** 
+>
+> - HQF包不支持上架应用市场，仅用于增量调试。
 
 示例:
 
@@ -407,7 +411,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --pack-res-path    | 否     | NA         | pack.res快照文件路径。                   |
 | --force            | 否     | true或者false | 默认值为false。如果为true，表示当目标文件存在时，强制删除。           |
 | --encrypt-path     | 否     | NA         | 文件名必须为encrypt.json。           |
-| --pac-json-path     | 否     | NA          | pac.json文件路径，文件名必须为pac.json。<br/>从API Version 20开始支持该参数。|
+| --pac-json-path     | 否     | NA          | <!--RP1-->pac.json<!--RP1End-->文件路径，文件名必须为pac.json。<br/>从API Version 20开始支持该参数。|
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                      |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 
@@ -691,7 +695,7 @@ Check deduplicateHar field failed.
 
 **错误描述**
 
-打包HSP/HAP时，校验module.json文件中的deduplicateHar属性（是否HAR去重）失败。
+打包HSP/HAP时，校验[deduplicateHar](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)属性失败。
 
 **可能原因**
 

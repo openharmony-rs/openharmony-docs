@@ -46,7 +46,7 @@ import { childProcessManager } from '@kit.AbilityKit';
 
 startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 
-启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)，使用Promise异步回调。
+启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。
 
 
 > **说明：**
@@ -122,7 +122,7 @@ try {
 
 startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback&lt;number&gt;): void
 
-启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)，使用callback异步回调。
+启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。
 
 > **说明：**
 > 
@@ -193,7 +193,7 @@ try {
 
 startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
 
-启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)，使用Promise异步回调。
+启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。
 
 
 > **说明：**
@@ -308,7 +308,7 @@ struct Index {
 
 startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
 
-启动[Native子进程](../../application-models/ability-terminology.md#native子进程)，使用Promise异步回调。
+启动[Native子进程](../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。
 
 > **说明：**
 > 

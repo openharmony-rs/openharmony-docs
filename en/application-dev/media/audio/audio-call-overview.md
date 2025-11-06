@@ -17,8 +17,8 @@ When developing the audio call service, you must use a proper audio processing s
 ## Audio Scene
 
 When an application uses the audio call service, the system switches to the call-related audio scene (specified by [AudioScene](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioscene8)). The system has preset multiple audio scenes, including ringing, cellular call, and voice chat, and uses a scene-specific strategy to process audio.
-<!--Del-->
-For example, in the cellular call audio scene, the system prioritizes voice clarity. To deliver a crystal clear voice during calls, the system uses the 3A algorithm to preprocess audio data, suppress echoes, eliminates background noise, and adjusts the volume range. The 3A algorithm refers to three audio processing algorithms: Acoustic Echo Cancellation (AEC), Active Noise Control (ANC), and Automatic Gain Control (AGC).<!--DelEnd-->
+
+For example, in the call audio scene, the system prioritizes voice clarity. To deliver a crystal clear voice during calls, the system uses the 3A algorithm to preprocess audio data, suppress echoes, eliminates background noise, and adjusts the volume range. The 3A algorithm refers to three audio processing algorithms: Acoustic Echo Cancellation (AEC), Active Noise Control (ANC), and Automatic Gain Control (AGC).
 
 Currently, the following audio scenes are preset:
 

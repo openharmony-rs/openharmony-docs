@@ -289,7 +289,7 @@ struct ResourceWebComponent {
 
   build() {
     Column() {
-      Button ('Load resources')
+      Button('Load resources')
         .onClick(() => {
           try {
             // Load the index1.html file in resources/rawfile through using the resource protocol.

@@ -129,7 +129,7 @@ For details about more APIs and their usage, see [Pasteboard](../../reference/ap
    // 1. Create a pasteboard instance.
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
    // 2. Check whether the pasteboard contains text data.
-   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
+   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, PASTEBOARD_MIMETYPE_TEXT_PLAIN);
    if (hasPlainTextData) {
      // 3. Obtain the unified data OH_UdmfData from the pasteboard.
      int ret = 0;

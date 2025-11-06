@@ -59,44 +59,44 @@ For details about basic encoding functionality, see [Video Encoding](video-encod
 ### Surface Mode
 
 
-1. Call **OH_VideoEncoder_RegisterParameterCallback()** to register the frame-specific parameter callback.
+Call [OH_VideoEncoder_RegisterParameterCallback()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback) to register the frame-specific parameter callback.
 
-    ```c++
-    // 1. Implement the OH_VideoEncoder_OnNeedInputParameter callback function.
-    static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
-    {
-        /**
-        * Configure two ROI areas and specify the corresponding deltaQp.
-        * ROI1 has its top-left corner at (0, 0) and bottom-right corner at (64, 128), with a QP adjustment of -4.
-        * ROI2 has its top-left corner at (200, 100) and bottom-right corner at (400, 300), with a QP adjustment of +3.
-        **/
-        const char *roiInfo = "0,0-128,64=-4;100,200-300,400=3";
-        OH_AVFormat_SetStringValue(parameter, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo);
-        OH_VideoEncoder_PushInputParameter(codec, index);
-    }
-    // 2. Register the frame channel callback functions.
-    OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
-    OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr); // nullptr: userData is null.
-    ```
+```c++
+// 1. Implement the OH_VideoEncoder_OnNeedInputParameter callback function.
+static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
+{
+    /**
+    * Configure two ROI areas and specify the corresponding deltaQp.
+    * ROI1 has its top-left corner at (0, 0) and bottom-right corner at (64, 128), with a QP adjustment of -4.
+    * ROI2 has its top-left corner at (200, 100) and bottom-right corner at (400, 300), with a QP adjustment of +3.
+    **/
+    const char *roiInfo = "0,0-128,64=-4;100,200-300,400=3";
+    OH_AVFormat_SetStringValue(parameter, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo);
+    OH_VideoEncoder_PushInputParameter(codec, index);
+}
+// 2. Register the frame channel callback functions.
+OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
+OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr); // nullptr: userData is null.
+```
 
 ### Buffer Mode
+   
+Call [OH_AVBuffer_SetParameter()](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_setparameter) to configure frame-specific parameters.
 
-1. Call **OH_AVBuffer_SetParameter()** to configure frame-specific parameters.
+```c++
+void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    /**
+    * Configure two ROI areas and specify the corresponding deltaQp.
+    * ROI1 has its top-left corner at (0, 0) and bottom-right corner at (64, 128), with a QP adjustment of -4.
+    * ROI2 has its top-left corner at (200, 100) and bottom-right corner at (400, 300), with a QP adjustment of +3.
+    **/
+    const char *roiInfo = "0,0-128,64=-4;100,200-300,400=3";
+    OH_AVFormat *parameter = OH_AVBuffer_GetParameter(buffer);
+    OH_AVFormat_SetStringValue(parameter, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo);
+    OH_AVBuffer_SetParameter(buffer, parameter);
+    OH_AVFormat_Destroy(parameter);
 
-    ```c++
-    void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-    {
-        /**
-        * Configure two ROI areas and specify the corresponding deltaQp.
-        * ROI1 has its top-left corner at (0, 0) and bottom-right corner at (64, 128), with a QP adjustment of -4.
-        * ROI2 has its top-left corner at (200, 100) and bottom-right corner at (400, 300), with a QP adjustment of +3.
-        **/
-        const char *roiInfo = "0,0-128,64=-4;100,200-300,400=3";
-        OH_AVFormat *parameter = OH_AVBuffer_GetParameter(buffer);
-        OH_AVFormat_SetStringValue(parameter, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo);
-        OH_AVBuffer_SetParameter(buffer, parameter);
-        OH_AVFormat_Destroy(parameter);
-
-        inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
-    }
-    ```
+    inQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
+}
+```

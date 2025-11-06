@@ -88,6 +88,9 @@ If the relative stationary and absolute stationary capabilities are required, yo
       console.error('stationary on failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 2. Obtain the event indicating entering the absolute still state.
 
@@ -104,6 +107,9 @@ If the relative stationary and absolute stationary capabilities are required, yo
       console.error('stationary once failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 3. Unsubscribe from the event indicating entering the absolute still state.
 
@@ -120,3 +126,6 @@ If the relative stationary and absolute stationary capabilities are required, yo
       console.error('stationary off failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->

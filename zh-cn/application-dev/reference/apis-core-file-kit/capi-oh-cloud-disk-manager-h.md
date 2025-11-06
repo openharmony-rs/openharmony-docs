@@ -414,7 +414,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 | 参数项 | 描述 |
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 待更新别名的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
-| const char *customAlias | 用户定义的新别名，不能包含字符：[\/:*?<>|"]，不能以"."、".."以及纯空格作为完整名称。 |
+| const char *customAlias | 用户定义的别名，不能包含字符：\\\/\*\?\<\>\|\:\"，以及不能以"."、".."和纯空格作为完整名称。 |
 | size_t customAliasLength | 用户定义的别名长度，范围：[0, 255]。 |
 
 **返回：**

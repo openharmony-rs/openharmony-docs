@@ -1,5 +1,12 @@
 # Universal Keystore Kit (Key Management Service)
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 - [Introduction to Universal Keystore Kit](huks-overview.md)
 - [Basic Concepts of HUKS](huks-concepts.md)
 - Key Generation and Import<!--huks-key-generation-import-->
@@ -56,8 +63,8 @@
     - [Anonymous Key Attestation (ArkTS)](huks-key-anon-attestation-arkts.md)
     - [Anonymous Key Attestation (C/C++)](huks-key-anon-attestation-ndk.md)
     <!--Del-->
-    - [Non-anonymous Key Attestation (ArkTS)](huks-key-attestation-arkts.md)
-    - [Non-anonymous Key attestation (C/C++)](huks-key-attestation-ndk.md)
+    - [Non-anonymous Key Attestation (for System Applications Only) (ArkTS)](huks-key-attestation-arkts-sys.md)
+    - [Non-anonymous Key Attestation (for System Applications Only) (C/C++)](huks-key-attestation-ndk-sys.md)
     <!--DelEnd-->
 - Other Operations<!--huks-other-operations-->
   - Checking Key Existence<!--huks-check-key-->

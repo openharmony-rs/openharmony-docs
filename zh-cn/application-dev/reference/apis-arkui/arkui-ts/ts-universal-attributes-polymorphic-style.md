@@ -1,10 +1,10 @@
 # 多态样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件不同状态下的样式。
 
@@ -36,7 +36,7 @@ stateStyles(value: StateStyles): T
 
 | 参数名 | 类型                                | 必填 | 说明                     |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | [StateStyles](#statestyles) | 是   | 设置组件不同状态的样式。 |
+| value  | [StateStyles](#statestyles-1) | 是   | 设置组件不同状态的样式。 |
 
 **返回值：**
 

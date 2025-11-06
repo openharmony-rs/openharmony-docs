@@ -1,4 +1,11 @@
 # @ohos.wifiManager (WLAN) (System API)
+
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with devices over WLAN.
 
 > **NOTE**
@@ -9,42 +16,6 @@ The **WLAN** module provides basic wireless local area network (WLAN) functions,
 
 ```ts
 import { wifiManager } from '@kit.ConnectivityKit';
-```
-
-## wifiManager.disableWifi<sup>9+</sup>
-
-disableWifi(): void
-
-Disables WLAN. This is an asynchronous API. You need to register a callback for the **wifiStateChange** event to check whether WLAN is successfully disabled.
-
-**System API**: This is a system API.
-
-**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
-
-**System capability**: SystemCapability.Communication.WiFi.STA
-
-**Error codes**
-
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
-
-| **ID**| **Error Message**|
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-| 2501004  | Operation failed because the service is being opened. |
-
-**Example**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.disableWifi();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
 ```
 
 ## wifiManager.enableSemiWifi<sup>12+</sup>
@@ -79,41 +50,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 	try {
 		wifiManager.enableSemiWifi();
 	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
-```
-
-## wifiManager.startScan<sup>10+</sup>
-
-startScan(): void
-
-**System API**: This is a system API.
-
-Starts a scan for WLAN.
-
-**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
-
-**System capability**: SystemCapability.Communication.WiFi.STA
-
-**Error codes**
-
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
-
-| **ID**| **Error Message**|
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**Example**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.startScan();
-	}catch(error){
 		console.error("failed:" + JSON.stringify(error));
 	}
 ```
@@ -210,17 +146,17 @@ Represents the WLAN configuration.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | Yes| Yes| ID of the creator.<br> **System API**: This is a system API.|
-| disableReason | number | Yes| Yes| Reason for disabling Wi-Fi.<br> **-1**: unknown reason<br>**0**: not disabled<br>**1**: association refused<br>**2**: authentication failed<br> **3**: DHCP failure<br>**4**: no Internet connection<br> **5**: no authentication credentials<br>**6**: no Internet connection permanently<br> **7**: disabled by Wi-Fi manager<br>**8**: disabled due to incorrect password<br> **9**: authentication without subscription<br>**10**: private EAP authentication error<br> **11**: network not found<br>**12**: consecutive failures<br> **13**: disabled by the system<br>**14**: EAP-AKA authentication failed<br> **15**: association removed<br>**16**: maximum number of forbidden network selections<br> **System API**: This is a system API.|
-| netId | number | Yes| Yes| Network ID.<br> **System API**: This is a system API.|
-| randomMacType | number | Yes| Yes| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.<br> **System API**: This is a system API.|
-| randomMacAddr | string | Yes| Yes| MAC address.<br> **System API**: This is a system API.|
-| ipType | [IpType](#iptype9) | Yes| Yes| IP address type.<br> **System API**: This is a system API.|
-| staticIp | [IpConfig](#ipconfig9) | Yes| Yes| Static IP address information.<br> **System API**: This is a system API.|
-| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | Yes| Yes| Proxy configuration.<br> **System API**: This is a system API.|
-| configStatus<sup>12+</sup> | number | Yes| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | Yes| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
-| isSecureWifi<sup>20+</sup> | boolean | Yes| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
+| creatorUid | number | No| Yes| ID of the creator.<br> **System API**: This is a system API.|
+| disableReason | number | No| Yes| Reason for disabling Wi-Fi.<br> **-1**: unknown reason<br>**0**: not disabled<br>**1**: association refused<br>**2**: authentication failed<br> **3**: DHCP failure<br>**4**: no Internet connection<br> **5**: no authentication credentials<br>**6**: no Internet connection permanently<br> **7**: disabled by Wi-Fi manager<br>**8**: disabled due to incorrect password<br> **9**: authentication without subscription<br>**10**: private EAP authentication error<br> **11**: network not found<br>**12**: consecutive failures<br> **13**: disabled by the system<br>**14**: EAP-AKA authentication failed<br> **15**: association removed<br>**16**: maximum number of forbidden network selections<br> **System API**: This is a system API.|
+| netId | number | No| Yes| Network ID.<br> **System API**: This is a system API.|
+| randomMacType | number | No| Yes| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.<br> **System API**: This is a system API.|
+| randomMacAddr | string | No| Yes| MAC address.<br> **System API**: This is a system API.|
+| ipType | [IpType](#iptype9) | No| Yes| IP address type.<br> **System API**: This is a system API.|
+| staticIp | [IpConfig](#ipconfig9) | No| Yes| Static IP address information.<br> **System API**: This is a system API.|
+| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | No| Yes| Proxy configuration.<br> **System API**: This is a system API.|
+| configStatus<sup>12+</sup> | number | No| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | No| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
+| isSecureWifi<sup>20+</sup> | boolean | No| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 
 ## IpType<sup>9+</sup>
 
@@ -248,11 +184,11 @@ Represents IP configuration information.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | Yes| No| IP address.|
-| gateway | number | Yes| No| Gateway.|
-| prefixLength | number | Yes| No| Subnet mask.|
-| dnsServers | number[] | Yes| No| Domain name server (DNS) information.|
-| domains | Array&lt;string&gt; | Yes| No| Domain information.|
+| ipAddress | number | No| No| IP address.|
+| gateway | number | No| No| Gateway.|
+| prefixLength | number | No| No| Subnet mask.|
+| dnsServers | number[] | No| No| Domain name server (DNS) information.|
+| domains | Array&lt;string&gt; | No| No| Domain information.|
 
 
 ## WifiProxyConfig<sup>10+</sup>
@@ -265,11 +201,11 @@ Represents the Wi-Fi proxy configuration.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | Yes| Yes| Proxy method.|
-| pacWebAddress | string | Yes| Yes| PAC web address of the proxy automatically configured.|
-| serverHostName | string | Yes| Yes| Server host name of the proxy manually configured.|
-| serverPort | number | Yes| Yes| Server port of the proxy manually configured.|
-| exclusionObjects | string | Yes| Yes| Excluded objects of the manually configured proxy. Multiple objects are separated by commas (,).|
+| proxyMethod | ProxyMethod | No| Yes| Proxy method.|
+| pacWebAddress | string | No| Yes| PAC web address of the proxy automatically configured.|
+| serverHostName | string | No| Yes| Server host name of the proxy manually configured.|
+| serverPort | number | Yes| No| Server port of the proxy manually configured.|
+| exclusionObjects | string | No| Yes| Excluded objects of the manually configured proxy. Multiple objects are separated by commas (,).|
 
 ## ProxyMethod<sup>10+</sup>
 
@@ -342,10 +278,11 @@ Represents the WLAN connection information.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | Yes| No| Network configuration ID.<br> **System API**: This is a system API.|
-| chload | number | Yes| No| Channel load. A larger value indicates a higher load.<br> **System API**: This is a system API.|
-| snr | number | Yes| No| Signal-to-noise ratio (SNR).<br> **System API**: This is a system API.|
-| suppState | [SuppState](#suppstate9) | Yes| No| Supplicant state.<br> **System API**: This is a system API.|
+| networkId | number | No| No| Network configuration ID.<br> **System API**: This is a system API.|
+| chload | number | No| No| Channel load. A larger value indicates a higher load.<br> **System API**: This is a system API.|
+| snr | number | No| No| Signal-to-noise ratio (SNR).<br> **System API**: This is a system API.|
+| suppState | [SuppState](#suppstate9) | No| No| Supplicant state.<br> **System API**: This is a system API.|
+| isHiLinkProNetwork<sup>20+</sup> | boolean | No| Yes| Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 
 
 
@@ -419,60 +356,17 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getSupportedFeatures();
-		console.info("supportedFeatures:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-
-```
-
-
-## wifiManager.getDeviceMacAddress<sup>15+</sup>
-
-getDeviceMacAddress(): string[]
-
-Obtains the device MAC address.
-
-**System API**: This is a system API.
-
-**Required permissions**: ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO (available only to system applications)
-
-**System capability**: SystemCapability.Communication.WiFi.STA
-
-**Return value**
-
-  | **Type**| **Description**|
-  | -------- | -------- |
-  | string[] | MAC address.|
-
-**Error codes**
-
-For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
-
-| **ID**| **Error Message**|
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
-
-**Example**
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		let ret = wifiManager.getDeviceMacAddress();
-		console.info("deviceMacAddress:" + JSON.stringify(ret));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    let ret = wifiManager.getSupportedFeatures();
+    console.info("supportedFeatures:" + ret);
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 
 ```
+
 
 ## wifiManager.getWifiDetailState<sup>12+</sup>
 
@@ -505,14 +399,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getWifiDetailState();
-		console.info("wifiDetailState:" + ret);
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    let ret = wifiManager.getWifiDetailState();
+    console.info("wifiDetailState:" + ret);
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 
 ```
 
@@ -561,13 +455,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reassociate();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.reassociate();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.reconnect<sup>9+</sup>
@@ -596,13 +490,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.reconnect();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.reconnect();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.updateNetwork<sup>9+</sup>
@@ -644,19 +538,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 3
-		}
-		let ret = wifiManager.updateNetwork(config);
-		console.info("ret:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.WifiDeviceConfig = {
+		ssid : "****",
+		preSharedKey : "****",
+		securityType : 3
 	}
+	let ret = wifiManager.updateNetwork(config);
+	console.info("ret:" + ret);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.disableNetwork<sup>9+</sup>
@@ -692,14 +586,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let netId = 0;
-		wifiManager.disableNetwork(netId);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let netId = 0;
+	wifiManager.disableNetwork(netId);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.removeAllNetwork<sup>9+</sup>
@@ -728,13 +622,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.removeAllNetwork();		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.removeAllNetwork();		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.get5GChannelList<sup>10+</sup>
@@ -768,14 +662,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let channelList = wifiManager.get5GChannelList();
-		console.info("channelList:" + JSON.stringify(channelList));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let channelList = wifiManager.get5GChannelList();
+	console.info("channelList:" + JSON.stringify(channelList));		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 ## wifiManager.getDisconnectedReason<sup>10+</sup>
 
@@ -807,14 +701,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let disconnectedReason = wifiManager.getDisconnectedReason();	
-        console.info("disconnectedReason:" + disconnectedReason);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let disconnectedReason = wifiManager.getDisconnectedReason();	
+    console.info("disconnectedReason:" + disconnectedReason);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## DisconnectedReason <sup>10+</sup>
@@ -858,13 +752,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.startPortalCertification();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.startPortalCertification();
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.enableHiLinkHandshake<sup>12+</sup>
@@ -903,21 +797,21 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	// You can obtain config data by using getScanInfoList, which can be used only when WifiScanInfo.isHiLinkNetwork is true.
-	let config:wifiManager.WifiDeviceConfig = {
-		ssid : "****",
-		preSharedKey : "****",
-		securityType : 0,
-		bssid : "38:37:8b:80:bf:cc",
-		bssidType : 1,
-		isHiddenSsid : false
-	}	
-	try {
-		wifiManager.enableHiLinkHandshake(true, config.bssid, config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+import { wifiManager } from '@kit.ConnectivityKit';
+// You can obtain config data by using getScanInfoList, which can be used only when WifiScanInfo.isHiLinkNetwork is true.
+let config:wifiManager.WifiDeviceConfig = {
+	ssid : "****",
+	preSharedKey : "****",
+	securityType : 0,
+	bssid : "38:37:8b:80:bf:cc",
+	bssidType : 1,
+	isHiddenSsid : false
+}	
+try {
+	wifiManager.enableHiLinkHandshake(true, config.bssid, config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.factoryReset<sup>11+</sup>
@@ -946,13 +840,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.factoryReset();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.factoryReset();
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 ## wifiManager.enableHotspot<sup>9+</sup>
 
@@ -979,13 +873,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.enableHotspot();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+    wifiManager.enableHotspot();
+} catch (error) {
+    console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.disableHotspot<sup>9+</sup>
@@ -1013,13 +907,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.disableHotspot();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	wifiManager.disableHotspot();	
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.isHotspotDualBandSupported<sup>9+</sup>
@@ -1053,14 +947,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isHotspotDualBandSupported();
-		console.info("result:" + ret);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let ret = wifiManager.isHotspotDualBandSupported();
+	console.info("result:" + ret);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.isOpenSoftApAllowed<sup>18+</sup>
@@ -1094,14 +988,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isOpenSoftApAllowed();
-		console.info("result:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let ret = wifiManager.isOpenSoftApAllowed();
+	console.info("result:" + ret);
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.setHotspotConfig<sup>9+</sup>
@@ -1136,22 +1030,22 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.HotspotConfig = {
-			ssid: "****",
-			securityType: 3,
-			band: 0,
-			channel: 0,
-			preSharedKey: "****",
-			maxConn: 0
-		}
-		let ret = wifiManager.setHotspotConfig(config);
-		console.info("result:" + ret);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.HotspotConfig = {
+		ssid: "****",
+		securityType: 3,
+		band: 0,
+		channel: 0,
+		preSharedKey: "****",
+		maxConn: 0
 	}
+	let ret = wifiManager.setHotspotConfig(config);
+	console.info("result:" + ret);		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## HotspotConfig<sup>9+</sup>
@@ -1164,13 +1058,13 @@ Represents the hotspot configuration.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| SSID of the hotspot, in UTF-8 format.|
-| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| Yes| No| Security type.|
-| band | number | Yes| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
-| channel<sup>10+</sup> | number | Yes| Yes| Hotspot channel (channels 1 to 14 for 2.4 GHz, and channels 7 to 196 for 5 GHz)|
+| ssid | string | No| No| SSID of the hotspot, in UTF-8 format.|
+| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| No| No| Security type.|
+| band | number | No| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
+| channel<sup>10+</sup> | number | No| Yes| Hotspot channel (channels 1 to 14 for 2.4 GHz, and channels 7 to 196 for 5 GHz)|
 | preSharedKey | string | No| No| PSK of the hotspot.|
-| maxConn | number | Yes| No| Maximum number of connections allowed.|
-| ipAddress | string | Yes| Yes| DHCP server IP address|
+| maxConn | number | No| No| Maximum number of connections allowed.|
+| ipAddress | string | No| Yes| DHCP server IP address|
 
 ## wifiManager.getHotspotConfig<sup>9+</sup>
 
@@ -1203,14 +1097,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config = wifiManager.getHotspotConfig();
-		console.info("result:" + JSON.stringify(config));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let config = wifiManager.getHotspotConfig();
+	console.info("result:" + JSON.stringify(config));		
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.getStations<sup>9+</sup>
@@ -1248,14 +1142,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let stations = wifiManager.getStations();
-		console.info("result:" + JSON.stringify(stations));		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let stations = wifiManager.getStations();
+	console.info("result:" + JSON.stringify(stations));		
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## StationInfo<sup>9+</sup>
@@ -1268,10 +1162,10 @@ Represents the station information.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | Yes| No| Device name.|
-| macAddress | string | Yes| No| MAC address.|
-| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | Yes| Yes| MAC address type.|
-| ipAddress | string | Yes| No| IP address.|
+| name | string | No| No| Device name.|
+| macAddress | string | No| No| MAC address.|
+| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | No| Yes| MAC address type.|
+| ipAddress | string | No| No| IP address.|
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
@@ -1306,19 +1200,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.StationInfo = {
-			name : "testSsid",
-			macAddress : "11:22:33:44:55:66",
-			ipAddress : "192.168.1.111"
-		}
-		// The device can be added to the block list only after the hotspot is enabled.
-		wifiManager.addHotspotBlockList(config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.StationInfo = {
+		name : "testSsid",
+		macAddress : "11:22:33:44:55:66",
+		ipAddress : "192.168.1.111"
 	}
+	// The device can be added to the block list only after the hotspot is enabled.
+	wifiManager.addHotspotBlockList(config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
@@ -1354,19 +1248,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.StationInfo = {
-			name : "testSsid",
-			macAddress : "11:22:33:44:55:66",
-			ipAddress : "192.168.1.111"
-		}
-		wifiManager.delHotspotBlockList(config);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
+try {
+	let config:wifiManager.StationInfo = {
+		name : "testSsid",
+		macAddress : "11:22:33:44:55:66",
+		ipAddress : "192.168.1.111"
 	}
-```
+	wifiManager.delHotspotBlockList(config);
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
+ ```
 
 ## wifiManager.getHotspotBlockList<sup>11+</sup>
 
@@ -1401,14 +1295,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let data = wifiManager.getHotspotBlockList();
-		console.info("result:" + JSON.stringify(data));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let data = wifiManager.getHotspotBlockList();
+	console.info("result:" + JSON.stringify(data));
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.deletePersistentGroup<sup>9+</sup>
@@ -1445,14 +1339,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let netId = 0;
-		wifiManager.deletePersistentGroup(netId);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let netId = 0;
+	wifiManager.deletePersistentGroup(netId);	
+}catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 ## wifiManager.getP2pGroups<sup>9+</sup>
@@ -1490,19 +1384,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
-    if (err) {
-        console.error("get P2P groups error");
-        return;
-    }
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+if (err) {
+    console.error("get P2P groups error");
+    return;
+}
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 
-	wifiManager.getP2pGroups().then(data => {
-		console.info("get P2P groups: " + JSON.stringify(data));
-	});
+wifiManager.getP2pGroups().then(data => {
+	console.info("get P2P groups: " + JSON.stringify(data));
+});
 	
 ```
 
@@ -1574,14 +1468,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let name = "****";
-		wifiManager.setDeviceName(name);	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+try {
+	let name = "****";
+	wifiManager.setDeviceName(name);	
+} catch (error) {
+	console.error("failed:" + JSON.stringify(error));
+}
 ```
 
 
@@ -1662,6 +1556,7 @@ wifi.on("streamChange", recvStreamChangeFunc);
 wifi.off("streamChange", recvStreamChangeFunc);
 
 ```
+
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
@@ -1895,3 +1790,13 @@ wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
+
+## WifiScanInfo<sup>9+</sup>
+
+Represents the WLAN connection information.
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+| Name| Type| Read-only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | No| Yes| Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|

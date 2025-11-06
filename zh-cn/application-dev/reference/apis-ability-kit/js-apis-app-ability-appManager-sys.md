@@ -495,7 +495,7 @@ try {
 
 getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -547,7 +547,7 @@ try {
 
 getForegroundApplications(): Promise\<Array\<AppStateData>>
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -771,7 +771,7 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
 
-通过Bundle名称终止进程。
+通过Bundle名称终止进程。使用callback异步回调。
 
 **需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -826,7 +826,7 @@ try {
 
 killProcessesByBundleName(bundleName: string): Promise\<void>
 
-通过Bundle名称终止进程。
+通过Bundle名称终止进程。使用Promise异步回调。
 
 **需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -882,7 +882,7 @@ try {
 
 clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
 
-通过Bundle名称清除应用数据。
+通过Bundle名称清除应用数据。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -937,7 +937,7 @@ try {
 
 clearUpApplicationData(bundleName: string): Promise\<void>
 
-通过Bundle名称清除应用数据。
+通过Bundle名称清除应用数据。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -993,7 +993,7 @@ try {
 
 getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
-通过pid查询对应进程占用的内存大小。
+通过pid查询对应进程占用的内存大小。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1044,7 +1044,7 @@ try {
 
 getProcessMemoryByPid(pid: number): Promise\<number>
 
-通过pid查询对应进程占用的内存大小。
+通过pid查询对应进程占用的内存大小。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1097,7 +1097,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName获取有关运行进程的信息。
+通过bundleName获取有关运行进程的信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1148,7 +1148,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessInformation>>
 
-通过bundleName获取有关运行进程的信息。
+通过bundleName获取有关运行进程的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1201,7 +1201,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName和userId获取有关运行进程的信息。
+通过bundleName和userId获取有关运行进程的信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1254,7 +1254,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<Array\<ProcessInformation>>
 
-通过bundleName和userId获取有关运行进程的信息。
+通过bundleName和userId获取有关运行进程的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1549,7 +1549,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息，使用Promise异步回调。
+根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 

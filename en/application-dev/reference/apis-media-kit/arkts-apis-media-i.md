@@ -18,11 +18,11 @@ Describes an audio and video file asset. It is used to specify a particular asse
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name  | Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| fd     | number | Yes  | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).   |
-| offset | number | No  | Resource offset, which needs to be entered based on the preset asset information. The default value is **0**. An invalid value causes a failure to parse audio and video assets.|
-| length | number | No  | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse audio and video assets.|
+| Name  | Type  | Read-Only| Optional | Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| fd     | number | No | No | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).   |
+| offset | number | No | Yes | Resource offset, which needs to be entered based on the preset asset information. The default value is **0**. An invalid value causes a failure to parse audio and video assets.|
+| length | number | No | Yes | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse audio and video assets.|
 
 ## AVDataSrcDescriptor<sup>10+</sup>
 
@@ -32,10 +32,10 @@ Defines the descriptor of an audio and video file, which is used in DataSource p
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
-| Name  | Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| fileSize     | number | Yes  | Size of the file to play, in bytes. The value **-1** indicates that the size is unknown. If **fileSize** is set to **-1**, the playback mode is similar to the live mode. In this mode, the **seek** and **setSpeed** operations cannot be performed, and the **loop** property cannot be set, indicating that loop playback is unavailable.|
-| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | Yes  | Callback used to fill in data.<br>- Function: callback: (buffer: ArrayBuffer, length: number, pos?:number) => number;<br>- **buffer**: memory to be filled. The value is of the ArrayBuffer type. This parameter is mandatory.<br>- **length**: maximum length of the memory to be filled. The value is of the number type. This parameter is mandatory.<br>- **pos**: position of the data to be filled in the file. The value is of the number type. This parameter is optional. When **fileSize** is set to **-1**, this parameter cannot be used.<br>- Return value: length of the data filled, which is of the number type. If **-1** is returned, the end of stream is reached. If **-2** is returned, an unrecoverable error occurs.|
+| Name  | Type  | Read-Only| Optional | Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| fileSize     | number | No | No | Size of the file to play, in bytes. The value **-1** indicates that the size is unknown. If **fileSize** is set to **-1**, the playback mode is similar to the live mode. In this mode, the **seek** and **setSpeed** operations cannot be performed, and the **loop** property cannot be set, indicating that loop playback is unavailable.|
+| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | No | No | Callback used to fill in data.<br>- **buffer**: memory to be filled. This parameter is mandatory.<br>- **length**: maximum length of the memory to be filled. This parameter is mandatory.<br>- **pos**: position of the data to be filled in the file. This parameter is optional. When **fileSize** is set to **-1**, this parameter cannot be used.<br>- Return value: length of the data filled, which is of the number type. If **-1** is returned, the end of stream is reached. If **-2** is returned, an unrecoverable error occurs.|
 
 ## SubtitleInfo<sup>12+</sup>
 
@@ -45,11 +45,11 @@ Describes the external subtitle information. When a subtitle update event is sub
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name  | Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| text | string | No | Text information of the subtitle.|
-| startTime | number | No | Start time for displaying the subtitle, in milliseconds.|
-| duration | number | No| Duration for displaying the subtitle, in milliseconds.|
+| Name  | Type  | Read-Only| Optional | Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| text | string | No | Yes | Text information of the subtitle.|
+| startTime | number | No | Yes | Start time for displaying the subtitle, in milliseconds.|
+| duration | number | No | Yes | Duration for displaying the subtitle, in milliseconds.|
 
 ## SeiMessage<sup>18+</sup>
 
@@ -72,9 +72,9 @@ Defines media information in key-value mode.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name         | Type  | Mandatory| Description                                                        |
-| ------------- | ------ | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | Yes  | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
+| Name         | Type  | Read-Only| Optional | Description                                                        |
+| ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| [key: string] | Object | No | No | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
 
 **Example**
 
@@ -114,9 +114,9 @@ Defines the playback information in key-value pairs.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name         | Type  | Mandatory| Description                                                        |
-| ------------- | ------ | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | Yes  | For details about the key range supported and the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
+| Name         | Type  | Read-Only| Optional | Description                                                        |
+| ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| [key: string]| Object | No | No | For details about the value range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).<br>For details about the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -179,10 +179,10 @@ Describes the geographical location of the recorded video.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name     | Type  | Mandatory| Description            |
-| --------- | ------ | ---- | ---------------- |
-| latitude  | number | Yes  | Latitude of the geographical location. The value range is [-90, 90].|
-| longitude | number | Yes  | Longitude of the geographical location. The value range is [-180, 180].|
+| Name     | Type  | Read-Only| Optional| Description            |
+| --------- | ------ | ---- | ---- | ---------------- |
+| latitude  | number | No  | No  | Latitude of the geographical location. The value range is [-90, 90].|
+| longitude | number | No  | No  | Longitude of the geographical location. The value range is [-180, 180].|
 
 ## EncoderInfo<sup>11+</sup>
 
@@ -220,14 +220,14 @@ Describes the video transcoding parameters.
 
 | Name           | Type                                   | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1 - 500000]. The default value is 48 kbit/s.|
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.                  |
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.|
-| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.|
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.|
-| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240 - 3840]. The default value is the width of the source video frame.|
-| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240 - 2160]. The default value is the height of the source video frame.|
-| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
+| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## AVMetadata<sup>11+</sup>
@@ -326,11 +326,11 @@ Defines a media data loader, which needs to be implemented by applications.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name  | Type    | Mandatory| Description                |
-| -------- | -------- | ---- | -------------------- |
-| open | [SourceOpenCallback](arkts-apis-media-t.md#sourceopencallback18) | Yes | Callback function implemented by applications to handle resource open requests.|
-| read | [SourceReadCallback](arkts-apis-media-t.md#sourcereadcallback18) | Yes | Callback function implemented by applications to handle resource read requests.|
-| close | [SourceCloseCallback](arkts-apis-media-t.md#sourceclosecallback18) | Yes | Callback function implemented by applications to handle resource close requests.|
+| Name  | Type    | Read-Only| Optional | Description                |
+| -------- | -------- | ---- | ---- | -------------------- |
+| open | [SourceOpenCallback](arkts-apis-media-t.md#sourceopencallback18) | No  | No  | Callback function implemented by applications to handle resource open requests.|
+| read | [SourceReadCallback](arkts-apis-media-t.md#sourcereadcallback18) | No  | No  | Callback function implemented by applications to handle resource read requests.|
+| close | [SourceCloseCallback](arkts-apis-media-t.md#sourceclosecallback18) | No  | No  | Callback function implemented by applications to handle resource close requests.|
 
 **Example**
 
@@ -343,18 +343,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // Clear resources related to the current UUID.
     requests.remove(uuid);
   }
@@ -377,20 +377,20 @@ Describes the playback strategy.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
-| Name | Type    | Mandatory| Description                |
-| -------- | -------- | ---- | -------------------- |
-| preferredWidth| number | No  | Preferred width, in px. The value is an integer greater than 0, for example, 1080.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferredHeight | number | No  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferredBufferDuration | number | No | Preferred buffer duration, in seconds. The value ranges from 1 to 20.<br>For details, see [Minimizing Stuttering in Online Video Playback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-online-video-playback-lags-practice).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferredHdr | boolean | No  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableSuperResolution<sup>18+</sup> | boolean | No  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 x 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
-| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | No| Type of the media to mute.<br>From API version 12 to 19, only **MediaType.MEDIA_TYPE_AUD** can be set. Starting from API version 20, **MediaType.MEDIA_TYPE_VID** is added.|
-| preferredAudioLanguage<sup>13+</sup> | string | No| Preferred audio track language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| preferredSubtitleLanguage<sup>13+</sup> | string | No| Preferred subtitle language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| preferredBufferDurationForPlaying<sup>18+</sup> | number | No| Preferred buffer duration for playback. The playback starts once the buffering time exceeds this value. The value ranges from 0 to 20, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| thresholdForAutoQuickPlay<sup>18+</sup> | number | No| Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [speedDone](arkts-apis-media-AVPlayer.md#onspeeddone9) event is invoked with a value of 100, indicating that smart frame catching has started successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| keepDecodingOnMute<sup>20+</sup>  | boolean | No| Whether the decoder continues to run when the video media is muted, which helps in quickly opening the media. Currently, this feature is available only for videos. The default value is **false**, indicating that the decoder stops running when the media is muted, reducing power consumption.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| Name | Type    | Read-Only| Optional | Description                |
+| -------- | -------- | ---- | ---- | -------------------- |
+| preferredWidth| number | No  | Yes  | Preferred width, in px. The value is an integer greater than 0, for example, 1080.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferredHeight | number | No  | Yes  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>For details, see [Minimizing Stuttering in Online Video Playback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-online-video-playback-lags-practice).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferredHdr | boolean | No  | Yes  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 x 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Yes  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
+| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | No  | Yes  | Type of the media to mute.<br>From API version 12 to 19, only **MediaType.MEDIA_TYPE_AUD** can be set. Starting from API version 20, **MediaType.MEDIA_TYPE_VID** is added.|
+| preferredAudioLanguage<sup>13+</sup> | string | No  | Yes  | Preferred audio track language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| preferredSubtitleLanguage<sup>13+</sup> | string | No  | Yes  | Preferred subtitle language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| preferredBufferDurationForPlaying<sup>18+</sup> | number | No  | Yes  | Preferred buffer duration for playback, in seconds. The playback starts once the buffering time exceeds this value. The value range is [0, 20].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| thresholdForAutoQuickPlay<sup>18+</sup> | number | No  | Yes  | Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [speedDone](arkts-apis-media-AVPlayer.md#onspeeddone9) event is invoked with a value of 100, indicating that smart frame catching has started successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| keepDecodingOnMute<sup>20+</sup>  | boolean | No  | Yes  | Whether the decoder continues to run when the video media is muted, which helps in quickly opening the media. Currently, this feature is available only for videos. The default value is **false**, indicating that the decoder stops running when the media is muted, reducing power consumption.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## AVScreenCaptureStrategy<sup>20+</sup>
 

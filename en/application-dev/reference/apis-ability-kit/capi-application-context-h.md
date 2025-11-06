@@ -37,12 +37,13 @@ The file declares the APIs related to the application-level context.
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetbundlecodedir) | Obtains the application-level installation file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetdistributedfilesdir) | Obtains the application-level distributed file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetcloudfiledir) | Obtains the application-level cloud file directory of the application.|
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | Obtains the application-level log file directory of the application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetresourcedir) | Obtains the application-level resource directory of the application.    |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)](#oh_abilityruntime_startselfuiability) | Starts the UIAbility of the current application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want,AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | Starts the UIAbility of the current application using **StartOptions**.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int64_t* versionCode)](#oh_abilityruntime_applicationcontextgetversioncode) | Obtains the application version code.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.|
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | Obtains **WantParams** passed for the intial launch of the UIAbility of the current application.|
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | Obtains **WantParams** passed for the initial launch of the UIAbility of the current application.|
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter)| Obtains **WantParams** passed for the most recent launch of the UIAbility of the current application.|
 
 ## Function Description
@@ -305,6 +306,32 @@ Obtains the application-level cloud file directory of the application.
 | -- | -- |
 | [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
 
+### OH_AbilityRuntime_ApplicationContextGetLogFileDir()
+
+```
+AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the application-level log file directory of the application.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| char* buffer | Pointer to the buffer, which is used to receive the log file directory.|
+| const int32_t bufferSize | Buffer size, in bytes.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer (measured in bytes) when [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>**ABILITY_RUNTIME_ERROR_CODE_NO_ERROR**: The operation is successful.<br>**ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID**: The passed-in value of **buffer** or **writeLength** is null, or the buffer size is less than the size of the string to be written.<br>**ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST**: The application context does not exist. For example, the application-level context does not exist in the [child process](capi-childprocess.md) created by the application.|
+
 ### OH_AbilityRuntime_ApplicationContextGetResourceDir()
 
 ```
@@ -557,7 +584,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 
 **Description**
 
-Obtains **WantParams** passed for the intial launch of the UIAbility of the current application. For details about **WantParams**, see [parameters in Want](js-apis-inner-ability-want.md).
+Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see [parameters in Want](js-apis-inner-ability-want.md).
 
 **Since**: 21
 

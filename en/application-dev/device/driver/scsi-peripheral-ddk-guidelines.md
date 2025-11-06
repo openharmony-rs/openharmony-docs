@@ -113,185 +113,168 @@ libscsi.z.so
 
     Use **OH_ScsiPeripheral_Init** in **scsi_peripheral_api.h** to initialize the SCSI Peripheral DDK.
 
-    ```c++
+    <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // Initialize the SCSI Peripheral DDK.
     int32_t ret = OH_ScsiPeripheral_Init();
-    ```
+```
+
 
 2. Open the device.
 
     After the SCSI Peripheral DDK is initialized, use **OH_ScsiPeripheral_Open** in **scsi_peripheral_api.h** to open the SCSI device.
 
-    ```c++
-    uint64_t deviceId = 0x100000003;
-    uint8_t interfaceIndex = 0;
-    ScsiPeripheral_Device *dev = NULL;
-    // Open the SCSI device specified by deviceId and interfaceIndex.
-    ret = OH_ScsiPeripheral_Open(deviceId, interfaceIndex, &dev);
-    ```
+    <!-- @[driver_scsi_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        ret = OH_ScsiPeripheral_Open(g_devHandle, interfaceIndex, &g_scsiPeripheralDevice);
+```
+
 
 3. (Optional) Create a buffer.
 
     Use **OH_ScsiPeripheral_CreateDeviceMemMap** in **scsi_peripheral_api.h** to create the memory buffer **devMmap**.
 
-    ```c++
-    constexpr size_t DEVICE_MEM_MAP_SIZE = 1024;
-    ScsiPeripheral_DeviceMemMap *g_scsiDeviceMemMap = nullptr;
-    ret = OH_ScsiPeripheral_CreateDeviceMemMap(dev, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
-    ```
+    <!-- @[driver_scsi_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        ret = OH_ScsiPeripheral_CreateDeviceMemMap(g_scsiPeripheralDevice, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
+```
+
 
 4. (Optional) Check whether the logical unit is ready.
 
     Use **OH_ScsiPeripheral_TestUnitReady** in **scsi_peripheral_api.h** to check whether the logical unit is ready.
 
-    ```c++
-    ScsiPeripheral_TestUnitReadyRequest testUnitReadyRequest = {0};
-    testUnitReadyRequest.timeout = 5000;
-    ScsiPeripheral_Response testUnitReadyResponse = {0};
-    ret = OH_ScsiPeripheral_TestUnitReady(dev, &testUnitReadyRequest, &testUnitReadyResponse);
-    ```
+    <!-- @[driver_scsi_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        int32_t ret = OH_ScsiPeripheral_TestUnitReady(g_scsiPeripheralDevice, &request, &response);
+```
+
 
 5. (Optional) Query the basic information about the SCSI device.
 
     Use **OH_ScsiPeripheral_Inquiry** in **scsi_peripheral_api.h** to obtain the basic information about the SCSI device.
 
-    ```c++
-    ScsiPeripheral_InquiryRequest inquiryRequest = {0};
-    inquiryRequest.allocationLength = 512;
-    inquiryRequest.timeout = 5000;
-    ScsiPeripheral_InquiryInfo inquiryInfo = {0};
-    inquiryInfo.data = g_scsiDeviceMemMap;
-    ScsiPeripheral_Response inquiryResponse = {0};
-    ret = OH_ScsiPeripheral_Inquiry(dev, &inquiryRequest, &inquiryInfo, &inquiryResponse);
-    ```
+    <!-- @[driver_scsi_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    int32_t ret = OH_ScsiPeripheral_Inquiry(g_scsiPeripheralDevice, &inquiryRequest, &inquiryInfo, &response);
+```
+
 
 6. (Optional) Obtain the capacity information of the SCSI device.
 
     Use **OH_ScsiPeripheral_ReadCapacity10** in **scsi_peripheral_api.h** to obtain the SCSI device capacity information.
 
-    ```c++
-    ScsiPeripheral_ReadCapacityRequest readCapacityRequest = {0};
-    readCapacityRequest.lbAddress = 0;
-    readCapacityRequest.control = 0;
-    readCapacityRequest.byte8 = 0;
-    readCapacityRequest.timeout = 5000;
-    ScsiPeripheral_CapacityInfo capacityInfo = {0};
-    ScsiPeripheral_Response readCapacityResponse = {0};
-    ret = OH_ScsiPeripheral_ReadCapacity10(dev, &readCapacityRequest, &capacityInfo, &readCapacityResponse);
-    ```
+    <!-- @[driver_scsi_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    ret = OH_ScsiPeripheral_ReadCapacity10(g_scsiPeripheralDevice, &readCapacityRequest, &capacityInfo, &response);
+```
+
 
 7. (Optional) Obtain sense data.
 
     Use **OH_ScsiPeripheral_RequestSense** in **scsi_peripheral_api.h** to obtain sense data.
 
-    ```c++
-    ScsiPeripheral_RequestSenseRequest senseRequest = {0};
-    senseRequest.allocationLength = SCSIPERIPHERAL_MAX_SENSE_DATA_LEN + 1;
-    senseRequest.control = 0;
-    senseRequest.byte1 = 0;
-    senseRequest.timeout = 5000;
-    ScsiPeripheral_Response senseResponse = {0};
-    // Information returned by the SCSI device to the host, used to report the device status, error information, and diagnosis information.
-    ret = OH_ScsiPeripheral_RequestSense(dev, &senseRequest, &senseResponse);
-    ```
+    <!-- @[driver_scsi_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    int32_t ret = OH_ScsiPeripheral_RequestSense(g_scsiPeripheralDevice, &senseRequest, &response);
+```
+
 
 8. (Optional) Parse sense data.
 
     Use **OH_ScsiPeripheral_ParseBasicSenseInfo** in **scsi_peripheral_api.h** to parse basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
 
-    ```c++
-    ScsiPeripheral_BasicSenseInfo senseInfo = {0};
-    ret = OH_ScsiPeripheral_ParseBasicSenseInfo(senseResponse.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN, &senseInfo); 
-    ```
+    <!-- @[driver_scsi_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        int32_t ret = OH_ScsiPeripheral_ParseBasicSenseInfo(response.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN,
+            &senseInfo);
+```
+
 
 9. (Optional) Read data.
 
     Use **OH_ScsiPeripheral_Read10** in **scsi_peripheral_api.h** to read data from a specified logical block.
 
-    ```c++
-    ScsiPeripheral_IORequest readRequest = {0};
-    readRequest.lbAddress = 1;
-    readRequest.transferLength = 1;
-    readRequest.control = 0;
-    readRequest.byte1 = 0;
-    readRequest.byte6 = 0;
-    readRequest.timeout = 20000;
-    readRequest.data = g_scsiDeviceMemMap;
-    ScsiPeripheral_Response readResponse = {0};
-    ret = OH_ScsiPeripheral_Read10(dev, &readRequest, &readResponse);
-    ```
+    <!-- @[driver_scsi_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    int32_t ret = OH_ScsiPeripheral_Read10(g_scsiPeripheralDevice, &request, &response);
+```
+
 
 10. (Optional) Write data.
 
     Use **OH_ScsiPeripheral_Write10** in **scsi_peripheral_api.h** to write data to a specified logical block of the device.
 
-    ```c++
-    ScsiPeripheral_IORequest writeRequest = {0};
-    writeRequest.lbAddress = 1;
-    writeRequest.transferLength = 1;
-    writeRequest.control = 0;
-    writeRequest.byte1 = 0;
-    writeRequest.byte6 = 0;
-    writeRequest.timeout = 5000;
-    writeRequest.data = g_scsiDeviceMemMap;
-    ScsiPeripheral_Response writeResponse = {0};
-    ret = OH_ScsiPeripheral_Write10(dev, &writeRequest, &writeResponse);
-    ```
+    <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        int32_t ret = OH_ScsiPeripheral_Write10(g_scsiPeripheralDevice, &request, &response);
+```
+
 
 11. (Optional) Verify a specified logical block.
 
     Use **OH_ScsiPeripheral_Verify10** in **scsi_peripheral_api.h** to verify a specified logical block.
 
-    ```c++
-    ScsiPeripheral_VerifyRequest verifyRequest = {0};
-    verifyRequest.lbAddress = 1;
-    verifyRequest.verificationLength = 1;
-    verifyRequest.timeout = 5000;
-    ScsiPeripheral_Response verifyResponse = {0};
-    ret = OH_ScsiPeripheral_Verify10(dev, &verifyRequest, &verifyResponse);
-    ```
+    <!-- @[driver_scsi_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        int32_t ret = OH_ScsiPeripheral_Verify10(g_scsiPeripheralDevice, &request, &response);
+```
+
 
 12. (Optional) Send SCSI commands in CDB mode.
 
     Use **OH_SCSIPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
 
-    ```c++
-    ScsiPeripheral_Request sendRequest = {0};
-    uint8_t cdbData[SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN] = {0x28, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-    memcpy(sendRequest.commandDescriptorBlock, cdbData, SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN); // You need to import the header file using #include <cstring>.
-    sendRequest.cdbLength = 10;
-    sendRequest.dataTransferDirection = -3;
-    sendRequest.timeout = 5000;
-    sendRequest.data = g_scsiDeviceMemMap;
-    ScsiPeripheral_Response sendResponse = {0};
-    ret = OH_ScsiPeripheral_SendRequestByCdb(dev, &sendRequest, &sendResponse);
-    ```
+    <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    int32_t ret = OH_ScsiPeripheral_SendRequestByCdb(g_scsiPeripheralDevice, &request, &response);
+```
+
 
 13. (Optional) Destroy the buffer.
 
     After all requests are processed and before the program exits, use **OH_ScsiPeripheral_DestroyDeviceMemMap** in **scsi_peripheral_api.h** to destroy the buffer.
 
-    ```c++
-    ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
-    ```
+    <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+            ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
+```
+
 
 14. Close the HID device.
 
     After the buffer is destroyed, use **OH_ScsiPeripheral_Close** in **scsi_peripheral_api.h** to close the device.
 
-    ```c++
-    // Stop the SCSI device.
-    ret = OH_ScsiPeripheral_Close(&dev);
-    ```
+    <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+            ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
+```
+
 
 15. Release the SCSI Peripheral DDK.
 
     After the SCSI device is closed, use **OH_ScsiPeripheral_Release** in **scsi_peripheral_api.h** to release the SCSI Peripheral DDK.
 
-    ```c++
-    // Release the SCSI Peripheral DDK.
-    ret = OH_ScsiPeripheral_Release();
-    ```
+    <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        ret = OH_ScsiPeripheral_Release();
+```
+
 
 ### Debugging and Verification
 

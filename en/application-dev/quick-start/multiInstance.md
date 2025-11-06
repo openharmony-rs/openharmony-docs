@@ -22,17 +22,20 @@ Application multi-instance can run on only 2-in-1 devices.
 1. Configure the multi-instance.
 
     Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **App/app.json5** configuration file in the project. The code snippet is as follows:
-    ```json
-    {
-      "app": {
-        //  ...
-        "multiAppMode": {
-          "multiAppModeType": "multiInstance",
-          "maxCount": 5
-        }
-      }
+    <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+	// ···
+    "multiAppMode": {
+      "multiAppModeType": "multiInstance",
+      "maxCount": 5
     }
-    ```
+  }
+}
+```
+
 
 2. Create a multi-instance.
 

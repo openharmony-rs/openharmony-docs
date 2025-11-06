@@ -91,152 +91,156 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
 3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
 
-   ```cpp
-   #include <thread>
-   
-   #include "hilog/log.h"
-   #include "hitrace/trace.h"
-   #include "napi/native_api.h"
-   
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   void Print2(HiTraceId id)
-   {
-       // 为当前线程设置HiTraceId
-       OH_HiTrace_SetId(&id);
-       // 生成分支标识spanId
-       id = OH_HiTrace_CreateSpan();
-       // 为当前线程设置带spanId的HiTraceId
-       OH_HiTrace_SetId(&id);
-       OH_LOG_INFO(LogType::LOG_APP, "Print2");
-       // 结束当前线程分布式跟踪，功能同OH_HiTrace_EndChain()
-       OH_HiTrace_ClearId();
-       OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
-   }
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
 
-   void Print1(HiTraceId id)
-   {
-       // 为当前线程设置HiTraceId
-       OH_HiTrace_SetId(&id);
-       // 生成分支标识spanId
-       id = OH_HiTrace_CreateSpan();
-       // 为当前线程设置带spanId的HiTraceId
-       OH_HiTrace_SetId(&id);
-       OH_LOG_INFO(LogType::LOG_APP, "Print1");
-       std::thread(Print2, OH_HiTrace_GetId()).detach();
-       // 结束当前线程分布式跟踪
-       OH_HiTrace_EndChain();
-       OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
-   }
-   
-   static napi_value Add(napi_env env, napi_callback_info info)
-   {
-       // 任务开始，开启分布式跟踪
-       HiTraceId hiTraceId = OH_HiTrace_BeginChain("testTag: hiTraceChain begin", HiTrace_Flag::HITRACE_FLAG_DEFAULT);
-       // 判断生成的hiTraceId是否有效，有效则输出一行hilog日志
-       if (OH_HiTrace_IsIdValid(&hiTraceId)) {
-           OH_LOG_INFO(LogType::LOG_APP, "HiTraceId is valid");
-       }
-       // 使能HITRACE_FLAG_INCLUDE_ASYNC标志位，表示会在系统支持的异步机制里自动传递HiTraceId
-       OH_HiTrace_EnableFlag(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC);
-       // 判断hitraceId的HITRACE_FLAG_INCLUDE_ASYNC标志位是否已经使能，使能则把hiTraceId设置到当前线程TLS中
-       if (OH_HiTrace_IsFlagEnabled(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC)) {
-           OH_HiTrace_SetId(&hiTraceId);
-           OH_LOG_INFO(LogType::LOG_APP, "HITRACE_FLAG_INCLUDE_ASYNC is enabled");
-       }
-       size_t argc = 2;
-       napi_value args[2] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-   
-       napi_valuetype valuetype0;
-       napi_typeof(env, args[0], &valuetype0);
-   
-       napi_valuetype valuetype1;
-       napi_typeof(env, args[1], &valuetype1);
-   
-       double value0;
-       napi_get_value_double(env, args[0], &value0);
-   
-       double value1;
-       napi_get_value_double(env, args[1], &value1);
-   
-       napi_value sum;
-       napi_create_double(env, value0 + value1, &sum);
-   
-       // 创建线程执行打印任务，传递当前线程的HiTraceId
-       std::thread(Print1, OH_HiTrace_GetId()).detach();
-       // 任务结束，结束分布式跟踪
-       OH_HiTrace_EndChain();
-       OH_LOG_INFO(LogType::LOG_APP, "Add, HiTraceChain end");
-   
-       return sum;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+``` C++
+#include <thread>
 
+#include "hilog/log.h"
+#include "hitrace/trace.h"
+#include "napi/native_api.h"
+
+#undef LOG_TAG
+#define LOG_TAG "testTag"
+
+void Print2(HiTraceId id)
+{
+    // 为当前线程设置HiTraceId
+    OH_HiTrace_SetId(&id);
+    // 生成分支标识spanId
+    id = OH_HiTrace_CreateSpan();
+    // 为当前线程设置带spanId的HiTraceId
+    OH_HiTrace_SetId(&id);
+    OH_LOG_INFO(LogType::LOG_APP, "Print2");
+    // 结束当前线程分布式跟踪，功能同OH_HiTrace_EndChain()
+    OH_HiTrace_ClearId();
+    OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
+}
+
+void Print1(HiTraceId id)
+{
+    // 为当前线程设置HiTraceId
+    OH_HiTrace_SetId(&id);
+    // 生成分支标识spanId
+    id = OH_HiTrace_CreateSpan();
+    // 为当前线程设置带spanId的HiTraceId
+    OH_HiTrace_SetId(&id);
+    OH_LOG_INFO(LogType::LOG_APP, "Print1");
+    std::thread(Print2, OH_HiTrace_GetId()).detach();
+    // 结束当前线程分布式跟踪
+    OH_HiTrace_EndChain();
+    OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
+}
+
+static napi_value Add(napi_env env, napi_callback_info info)
+{
+    // 任务开始，开启分布式跟踪
+    HiTraceId hiTraceId = OH_HiTrace_BeginChain("testTag: hiTraceChain begin", HiTrace_Flag::HITRACE_FLAG_DEFAULT);
+    // 判断生成的hiTraceId是否有效，有效则输出一行hilog日志
+    if (OH_HiTrace_IsIdValid(&hiTraceId)) {
+        OH_LOG_INFO(LogType::LOG_APP, "HiTraceId is valid");
+    }
+    // 使能HITRACE_FLAG_INCLUDE_ASYNC标志位，表示会在系统支持的异步机制里自动传递HiTraceId
+    OH_HiTrace_EnableFlag(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC);
+    // 判断hitraceId的HITRACE_FLAG_INCLUDE_ASYNC标志位是否已经使能，使能则把hiTraceId设置到当前线程TLS中
+    if (OH_HiTrace_IsFlagEnabled(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC)) {
+        OH_HiTrace_SetId(&hiTraceId);
+        OH_LOG_INFO(LogType::LOG_APP, "HITRACE_FLAG_INCLUDE_ASYNC is enabled");
+    }
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+
+    napi_valuetype valuetype1;
+    napi_typeof(env, args[1], &valuetype1);
+
+    double value0;
+    napi_get_value_double(env, args[0], &value0);
+
+    double value1;
+    napi_get_value_double(env, args[1], &value1);
+
+    napi_value sum;
+    napi_create_double(env, value0 + value1, &sum);
+
+    // 创建线程执行打印任务，传递当前线程的HiTraceId
+    std::thread(Print1, OH_HiTrace_GetId()).detach();
+    // 任务结束，结束分布式跟踪
+    OH_HiTrace_EndChain();
+    OH_LOG_INFO(LogType::LOG_APP, "Add, HiTraceChain end");
+
+    return sum;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "entry",
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&demoModule);
+}
+```
+   
    编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
+   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   
-   const DOMAIN = 0x0000;
-   
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = "clickTime=0";
-     @State clickTime: number = 0;
-   
-     build() {
-       Row() {
-         Column() {
-           Button(this.message)
-             .fontSize(20)
-             .margin(5)
-             .width(350)
-             .height(60)
-             .fontWeight(FontWeight.Bold)
-             .onClick(() => {
-               this.clickTime++;
-               this.message = "clickTime=" + this.clickTime;
-               hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
 
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'clickTime=0';
+  @State clickTime: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(20)
+          .margin(5)
+          .width(350)
+          .height(60)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.clickTime++;
+            this.message = 'clickTime=' + this.clickTime;
+            hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+   
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程。然后点击设备上“clickTime=0”按钮，触发业务逻辑。
 
 5. 在DevEco Studio Log窗口查看分布式跟踪的相关信息。

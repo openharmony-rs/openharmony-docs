@@ -40,25 +40,28 @@ Third-party applications can use the metadata binding function to map the App Li
    import { BusinessError } from '@kit.BasicServicesKit';
    import { Callback } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
-2. Define the callback used to return the encoded metadata.
+2. Define the callback used to return the encoded metadata and the bundle name.  
 
    ```
    let callback : Callback<number> = (event: number) => {};
+   let bundleName: string = '';
    ```
+   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 3. Subscribe to system events that are used to obtain the encoded metadata.
 
    ```
-   let bundleName: string = '';
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, this.callback);  
+      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
    } catch (err) {
       let error = err as BusinessError;
       console.error("Register event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 4. Configure the App Linking link.
 
@@ -71,15 +74,17 @@ Third-party applications can use the metadata binding function to map the App Li
       console.error("Submit metadata error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
 
 5. Unsubscribe from system events that are used to obtain the encoded metadata.
 
    ```
    try {
-     metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
      console.info("off succeeded");
    } catch (err) {
      let error = err as BusinessError;
      console.error("Unregister event error and err code is " + error.code);
    }
    ```
+   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->

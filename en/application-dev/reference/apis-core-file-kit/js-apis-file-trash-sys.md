@@ -1,12 +1,12 @@
 # @ohos.file.trash (Trash) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-The **file.trash** module provides APIs for querying, recovering, or permanently deleting the files or directories in **Recently deleted** (trash). Currently, only local files and directories are supported.
+The **file.trash** module provides APIs for querying, recovering, or permanently deleting the files or directories in Recently deleted (trash). Currently, only local files and directories are supported.
 
 You can use **delete()** of [@ohos.file.fileAccess](js-apis-fileAccess-sys.md) to move a file or directory to the trash.
 
@@ -19,7 +19,7 @@ You can use **delete()** of [@ohos.file.fileAccess](js-apis-fileAccess-sys.md) t
 ## Modules to Import
 
 ```js
-import trash from '@ohos.file.trash';
+import { trash } from '@kit.CoreFileKit';
 ```
 
 ## trash.listFile
@@ -30,11 +30,11 @@ Lists the files and directories in the **Recently deleted** list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Return value**
 
@@ -69,17 +69,17 @@ Recovers a file or directory from the trash.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file or directory to recover.|
+| uri   | string | Yes  | URI of the file or directory.|
 
 **Error codes**
 
@@ -101,17 +101,17 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file or directory to delete.|
+| uri   | string | Yes  | URI of the file or directory.|
 
 **Error codes**
 
@@ -130,6 +130,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 Represents information about a file or directory in the **Recently deleted** list.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 

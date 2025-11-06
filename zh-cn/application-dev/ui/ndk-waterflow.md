@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自身的排列规则，将不同大小的"项目"自上而下如瀑布般紧密布局。
 
@@ -20,7 +20,9 @@ NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForeach功能，用于按�
 
 使用FlowItemAdapter类管理懒加载适配器。在类的构造函数中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
 
-```c++
+<!-- @[flow_item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/FlowItemAdapter.h) -->
+
+``` C
 // FlowItemAdapter.h
 // 懒加载功能代码。
 
@@ -34,18 +36,18 @@ NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForeach功能，用于按�
 #include <arkui/native_interface.h>
 
 namespace NativeModule {
-
+const int NUM = 100;
 class FlowItemAdapter {
 public:
-    FlowItemAdapter(){
-        
+    FlowItemAdapter()
+    {
         // 初始化函数指针结构体
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeApi_);
         // 创建Adapter对象
         adapter_ = OH_ArkUI_NodeAdapter_Create();
         
         // 初始化懒加载数据。
-        for (int32_t i = 0; i < 100; i++) {
+        for (int32_t i = 0; i < NUM; i++) {
             data_.emplace_back(std::to_string(i));
         }
         // 设置懒加载数据。
@@ -54,7 +56,8 @@ public:
         OH_ArkUI_NodeAdapter_RegisterEventReceiver(adapter_, this, OnStaticAdapterEvent);
     }
 
-    ~FlowItemAdapter() {
+    ~FlowItemAdapter()
+    {
         // 释放创建的组件。
         while (!cachedItems_.empty()) {
             cachedItems_.pop();
@@ -66,7 +69,8 @@ public:
 
     ArkUI_NodeAdapterHandle GetAdapter() const { return adapter_; }
 
-    void RemoveItem(int32_t index) {
+    void RemoveItem(int32_t index)
+    {
         // 删除第index个数据。
         data_.erase(data_.begin() + index);
         // 如果index会导致可视区域元素发生可见性变化，则会回调NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER事件删除元素，
@@ -76,7 +80,8 @@ public:
         OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter_, data_.size());
     }
 
-    void InsertItem(int32_t index, const std::string &value) {
+    void InsertItem(int32_t index, const std::string &value)
+    {
         data_.insert(data_.begin() + index, value);
         // 如果index会导致可视区域元素发生可见性变化，则会回调NODE_ADAPTER_EVENT_ON_GET_NODE_ID和NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER事件，
         // 根据是否有删除元素回调NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER事件。
@@ -85,7 +90,8 @@ public:
         OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter_, data_.size());
     }
 
-    void MoveItem(int32_t oldIndex, int32_t newIndex) {
+    void MoveItem(int32_t oldIndex, int32_t newIndex)
+    {
         auto temp = data_[oldIndex];
         data_.insert(data_.begin() + newIndex, temp);
         data_.erase(data_.begin() + oldIndex);
@@ -93,14 +99,16 @@ public:
         OH_ArkUI_NodeAdapter_MoveItem(adapter_, oldIndex, newIndex);
     }
 
-    void ReloadItem(int32_t index, const std::string &value) {
+    void ReloadItem(int32_t index, const std::string &value)
+    {
         data_[index] = value;
         // 如果index位于可视区域内，先回调NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER删除老元素，
         // 再回调NODE_ADAPTER_EVENT_ON_GET_NODE_ID和NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER事件。
         OH_ArkUI_NodeAdapter_ReloadItem(adapter_, index, 1);
     }
 
-    void ReloadAllItem() {
+    void ReloadAllItem()
+    {
         std::reverse(data_.begin(), data_.end());
         // 全部重新加载场景下，会回调NODE_ADAPTER_EVENT_ON_GET_NODE_ID接口获取新的组件ID，
         // 根据新的组件ID进行对比，ID不发生变化的进行复用，
@@ -110,37 +118,41 @@ public:
     }
 
 private:
-    static void OnStaticAdapterEvent(ArkUI_NodeAdapterEvent *event) {
+    static void OnStaticAdapterEvent(ArkUI_NodeAdapterEvent *event)
+    {
         // 获取实例对象，回调实例事件。
         auto itemAdapter = reinterpret_cast<FlowItemAdapter *>(OH_ArkUI_NodeAdapterEvent_GetUserData(event));
         itemAdapter->OnAdapterEvent(event);
     }
 
-    void OnAdapterEvent(ArkUI_NodeAdapterEvent *event) {
+    void OnAdapterEvent(ArkUI_NodeAdapterEvent *event)
+    {
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(event);
         switch (type) {
-        case NODE_ADAPTER_EVENT_ON_GET_NODE_ID:
-            OnGetChildId(event);
-            break;
-        case NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER:
-            OnCreateNewChild(event);
-            break;
-        case NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER:
-            OnDisposeChild(event);
-            break;
-        default:
-            break;
+            case NODE_ADAPTER_EVENT_ON_GET_NODE_ID:
+                OnGetChildId(event);
+                break;
+            case NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER:
+                OnCreateNewChild(event);
+                break;
+            case NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER:
+                OnDisposeChild(event);
+                break;
+            default:
+                break;
         }
     }
     
-    void OnGetChildId(ArkUI_NodeAdapterEvent *event) {
+    void OnGetChildId(ArkUI_NodeAdapterEvent *event)
+    {
         auto index = OH_ArkUI_NodeAdapterEvent_GetItemIndex(event);
         // 设置生成组件的唯一标识符。
         auto hash = std::hash<std::string>();
         OH_ArkUI_NodeAdapterEvent_SetNodeId(event, hash(data_[index]));
     }
     
-    void OnCreateNewChild(ArkUI_NodeAdapterEvent *event) {
+    void OnCreateNewChild(ArkUI_NodeAdapterEvent *event)
+    {
         auto index = OH_ArkUI_NodeAdapterEvent_GetItemIndex(event);
         ArkUI_NodeHandle flowItem = nullptr;
         if (!cachedItems_.empty()) {
@@ -172,7 +184,8 @@ private:
         OH_ArkUI_NodeAdapterEvent_SetItem(event, flowItem);
     }
     
-    void OnDisposeChild(ArkUI_NodeAdapterEvent *event) {
+    void OnDisposeChild(ArkUI_NodeAdapterEvent *event)
+    {
         auto *node = OH_ArkUI_NodeAdapterEvent_GetRemovedNode(event);
         // 缓存节点
         cachedItems_.emplace(node);
@@ -189,12 +202,15 @@ private:
 } // namespace NativeModule
 
 #endif //MYAPPLICATION_FLOWITEMADAPTER_H
-
 ```
+
 ## 创建分组
 使用WaterflowSection类管理waterflow中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建ArkUI_WaterFlowSectionOption对象，在析构函数中将其销毁。
 
-```c++
+
+<!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
+
+``` C
 //WaterflowSection.h
 
 #ifndef MYAPPLICATION_WATERFLOWSECTION_H
@@ -220,11 +236,13 @@ class WaterflowSection {
 public:
     WaterflowSection() : sectionOptions_(OH_ArkUI_WaterFlowSectionOption_Create()){};
     
-    ~WaterflowSection(){
+    ~WaterflowSection()
+    {
         OH_ArkUI_WaterFlowSectionOption_Dispose(sectionOptions_);
     }
 
-    void SetSection(ArkUI_WaterFlowSectionOption *sectionOptions, int32_t index, SectionOption section) {
+    void SetSection(ArkUI_WaterFlowSectionOption *sectionOptions, int32_t index, SectionOption section)
+    {
         OH_ArkUI_WaterFlowSectionOption_SetItemCount(sectionOptions, index, section.itemsCount);
         OH_ArkUI_WaterFlowSectionOption_SetCrossCount(sectionOptions, index, section.crossCount);
         OH_ArkUI_WaterFlowSectionOption_SetColumnGap(sectionOptions, index, section.columnsGap);
@@ -235,17 +253,19 @@ public:
                                                                                section.onGetItemMainSizeByIndex);
     }
     
-    ArkUI_WaterFlowSectionOption *GetSectionOptions() const {
+    ArkUI_WaterFlowSectionOption *GetSectionOptions() const
+    {
         return sectionOptions_;
     }
     
-    void PrintSectionOptions() {
+    void PrintSectionOptions()
+    {
         int32_t sectionCnt = OH_ArkUI_WaterFlowSectionOption_GetSize(sectionOptions_);
         for (int32_t i = 0; i < sectionCnt; i++) {
             ArkUI_Margin margin = OH_ArkUI_WaterFlowSectionOption_GetMargin(sectionOptions_, i);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "CreateWaterflowExample",
-                        "Section[%{public}d].margin:{%{public}f, %{public}f, %{public}f, %{public}f}", i, margin.top,
-                        margin.right, margin.bottom, margin.left);
+                         "Section[%{public}d].margin:{%{public}f, %{public}f, %{public}f, %{public}f}", i, margin.top,
+                         margin.right, margin.bottom, margin.left);
         }
     }
 
@@ -255,92 +275,89 @@ private:
 } // namespace NativeModule
 
 #endif // MYAPPLICATION_WATERFLOWSECTION_H
-
 ```
+
 
 ## 创建瀑布流
 使用ArkUIWaterflowNode类管理Waterflow。支持通过SetLazyAdapter为其设置一个FlowItemAdapter，通过SetSection为其设置分段。
 
-```c++
-//waterflow.h
+<!-- @[waterflow_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/waterflow.h) -->
 
+``` C
+// waterflow.h
 #ifndef MYAPPLICATION_WATERFLOW_H
 #define MYAPPLICATION_WATERFLOW_H
-
+  
 #include "FlowItemAdapter.h"
 #include "WaterflowSection.h"
-
+#include "ArkUINode.h"
+  
 namespace NativeModule {
-class ArkUIWaterflowNode {
+  
+class ArkUIWaterflowNode : public ArkUINode {
 public:
-     
-    ArkUIWaterflowNode() {
-        
-        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeApi_);
-        // 创建Waterflow
-        waterflow_ = nodeApi_->createNode(ARKUI_NODE_WATER_FLOW);
-        
-    }
-
-    ~ArkUIWaterflowNode() {
-        nodeApi_->disposeNode(waterflow_);
-
-        // 销毁adapter
-        adapter_.reset();
-        
+    ArkUIWaterflowNode()
+        : ArkUINode(CreateWaterflowNode()) {}
+  
+    ~ArkUIWaterflowNode() override
+    {
+        // 先卸载 adapter
+        if (adapter_ && nativeModule_) {
+            nativeModule_->resetAttribute(handle_, NODE_WATER_FLOW_NODE_ADAPTER);
+            adapter_.reset();
+        }
         // 销毁分段
         section_.reset();
+        // 基类会自动 dispose handle_
     }
-    
-    void SetWidth(float width) {
-        ArkUI_NumberValue value[] = {{.f32 = width}};
-        ArkUI_AttributeItem item = {value, 1};
-        nodeApi_->setAttribute(waterflow_, NODE_WIDTH, &item);
+
+    void SetLazyAdapter(const std::shared_ptr<FlowItemAdapter> &adapter)
+    {
+        ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter->GetAdapter()};
+        nativeModule_->setAttribute(handle_, NODE_WATER_FLOW_NODE_ADAPTER, &item);
+        adapter_ = adapter;
     }
-    
-    void SetHeight(float height) {
-        ArkUI_NumberValue value[] = {{.f32 = height}};
-        ArkUI_AttributeItem item = {value, 1};
-        nodeApi_->setAttribute(waterflow_, NODE_HEIGHT, &item);
-    }
-    
-    void SetLazyAdapter(const std::shared_ptr<FlowItemAdapter> &adapter) {
-        ArkUI_AttributeItem item{nullptr,0, nullptr, adapter->GetAdapter()}; 
-        nodeApi_->setAttribute(waterflow_, NODE_WATER_FLOW_NODE_ADAPTER, &item); 
-        adapter_ = adapter; 
-    } 
-    
-    void SetSection(const std::shared_ptr<WaterflowSection> &section) {
-        ArkUI_NumberValue start[] = {{.i32 = 0}};
-        ArkUI_AttributeItem optionsItem = {start, 1, nullptr, section->GetSectionOptions()};
-        if(!section->GetSectionOptions()){
+  
+    void SetSection(const std::shared_ptr<WaterflowSection> &section)
+    {
+        if (!section->GetSectionOptions()) {
             return;
         }
-        nodeApi_->setAttribute(waterflow_, NODE_WATER_FLOW_SECTION_OPTION, &optionsItem);
+        ArkUI_NumberValue start[] = {{.i32 = 0}};
+        ArkUI_AttributeItem optionsItem = {start, 1, nullptr, section->GetSectionOptions()};
+        nativeModule_->setAttribute(handle_, NODE_WATER_FLOW_SECTION_OPTION, &optionsItem);
         section_ = section;
-    } 
-
-    ArkUI_NodeHandle GetWaterflow() { return waterflow_; }
-
+    }
+  
     std::shared_ptr<WaterflowSection> GetWaterflowSection() { return section_; }
-
-public:
-    ArkUI_NativeNodeAPI_1 *nodeApi_ = nullptr;
-    ArkUI_NodeHandle waterflow_ = nullptr;
-    
+  
+private:
+    static ArkUI_NodeHandle CreateWaterflowNode()
+    {
+        ArkUI_NativeNodeAPI_1* api = nullptr;
+        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, api);
+        if (!api) {
+            return nullptr;
+        }
+        return api->createNode(ARKUI_NODE_WATER_FLOW);
+    }
+  
     std::shared_ptr<WaterflowSection> section_ = nullptr;
-    
     std::shared_ptr<FlowItemAdapter> adapter_;
 };
-}// namespace NativeModule
-
+  
+} // namespace NativeModule
+  
 #endif // MYAPPLICATION_WATERFLOW_H
 ```
+
 
 ## 使用瀑布流
 创建一个ArkUIWaterflowNode类的实例，设置其宽高，并绑定NodeAdapter和分段。
 
-```c++
+<!-- @[create_waterflow_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/CreateWaterflowExample.h) -->
+
+``` C
 // CreateWaterflowExample.h
 
 #ifndef MYAPPLICATION_CREATEWATERFLOWEXAMPLE_H
@@ -348,28 +365,36 @@ public:
 #include "waterflow.h"
 
 namespace NativeModule {
-std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample() {
-    // 创建Waterflow组件。
-    auto waterflow = std::make_shared<ArkUIWaterflowNode>();
-    waterflow->SetHeight(600);
-    waterflow->SetWidth(400);
-    
-    // 绑定Adapter
-    waterflow->SetLazyAdapter(std::make_shared<FlowItemAdapter>());
-    
-    // 设置分段
-    auto sections = std::make_shared<WaterflowSection>();
+const int UI_WIDTH = 400;
+const int UI_HEIGHT = 600;
+const int SECTION_COUNT = 10;
+const int SECTION_2_ID = 2;
+
+inline void SetupSections(std::shared_ptr<WaterflowSection> sections)
+{
     SectionOption MARGIN_GAP_SECTION_1 = {10, 2, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
     SectionOption MARGIN_GAP_SECTION_2 = {10, 4, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
-    for (int i = 0; i < 10; i++) {
-        sections->SetSection(sections->GetSectionOptions(), i, i % 2 ? MARGIN_GAP_SECTION_1 : MARGIN_GAP_SECTION_2);
+    for (int i = 0; i < SECTION_COUNT; i++) {
+        sections->SetSection(sections->GetSectionOptions(), i,
+                             i % SECTION_2_ID ? MARGIN_GAP_SECTION_1 : MARGIN_GAP_SECTION_2);
     }
-    waterflow->SetSection(sections);
+}
 
+inline std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample(napi_env env)
+{
+    auto waterflow = std::make_shared<ArkUIWaterflowNode>();
+    waterflow->SetHeight(UI_HEIGHT);
+    waterflow->SetWidth(UI_WIDTH);
+    waterflow->SetLazyAdapter(std::make_shared<FlowItemAdapter>());
+    auto sections = std::make_shared<WaterflowSection>();
+    SetupSections(sections);
+    waterflow->SetSection(sections);
     return waterflow;
 }
 } // namespace NativeModule
 
 #endif // MYAPPLICATION_CREATEWATERFLOWEXAMPLE_H
-
 ```
+
+
+![image](figures/UIWaterflow.gif)

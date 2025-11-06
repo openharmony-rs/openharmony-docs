@@ -86,7 +86,6 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    
    ```ts
    import { UIAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
    import { window } from '@kit.ArkUI';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 

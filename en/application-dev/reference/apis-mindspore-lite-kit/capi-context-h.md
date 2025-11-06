@@ -877,7 +877,7 @@ OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandl
 
 Obtains the priority of an NNRt task. This function is available only for NNRt devices.
 
-**Since**: 10
+**Since**: 22
 
 
 **Parameters**

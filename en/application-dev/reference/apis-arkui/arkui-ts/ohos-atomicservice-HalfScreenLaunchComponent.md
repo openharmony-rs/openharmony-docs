@@ -1,5 +1,12 @@
 # HalfScreenLaunchComponent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 **HalfScreenLaunchComponent** is a component designed for launching atomic services in half screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in half-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 > **NOTE**
@@ -56,7 +63,7 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  appId: string = "5765880207853275489"; // Application ID of the atomic service.
+  appId: string = "576****************"; // Application ID of the atomic service.
 
   build() {
     Column() {
@@ -77,7 +84,7 @@ struct Index {
           Image($r('app.media.app_icon'))
           Text('Start top-up')
         }.width("80vp").height("80vp").margin({bottom:30})
-      } // Content is passed as a trailing closure.
+      } // Pass content through the trailing closure.
     }
   }
 

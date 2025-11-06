@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
 
@@ -290,7 +290,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
-例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr。
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1370,7 +1370,7 @@ struct WaterFlowDemo {
 
   // 组件生命周期：初始化数据和恢复上次的列数设置
   aboutToAppear() {
-    // 读取上次最后切换到到列数
+    // 读取上次最后切换到的列数
     let lastCount = AppStorage.get<number>('columnsCount');
     if (typeof lastCount != 'undefined') {
       this.columns = lastCount;
@@ -1651,7 +1651,7 @@ struct WaterFlowDemo {
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
 
-该示例通过footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
+从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1921,14 +1921,114 @@ struct WaterFlowDemo {
   }
 }
 ```
-WaterFlow宽度相当于sm及以下时显示2列。
+WaterFlow宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
 
-WaterFlow宽度相当于md时显示3列。
+WaterFlow宽度属于md断点区间时显示3列。
 
 ![md_waterflow](figures/waterFlow_itemFillPolicy_MD.png)
 
-WaterFlow宽度相当于lg及以上时显示5列。
+WaterFlow宽度属于lg及更大的断点区间时显示5列。
 
 ![lg_waterflow](figures/waterFlow_itemFillPolicy_LG.png)
+
+
+### 示例10（WaterFlow组件实现获取内容高度）
+
+从API version 22 开始，该示例通过WaterFlow组件，实现了获取内容高度。
+
+WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowContentSizeDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear() {
+    this.setItemSizeArray();
+  }
+
+  @Builder
+  itemFoot() {
+    Column() {
+      Text(`到底啦...`)
+        .fontSize(10)
+        .backgroundColor(Color.Red)
+        .width(50)
+        .height(50)
+        .align(Alignment.Center)
+        .margin({ top: 2 })
+    }
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      // 点击按钮来调用contentSize函数获取内容尺寸
+      Button('GetContentSize')
+        .onClick(() => {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
+          this.contentWidth = this.scroller.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
+          this.contentHeight = this.scroller.contentSize().height;
+        }).margin(5)
+      // 将获取到的内容尺寸信息通过文本进行呈现
+      Text('Width:' + this.contentWidth)
+        .fontColor(Color.Red)
+        .height(30)
+      Text('Height:' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(30)
+
+      WaterFlow({ scroller: this.scroller, footer: this.itemFoot() }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text("N" + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[item % 100])
+          .backgroundColor(this.colors[item % this.colors.length])
+        }, (item: string) => item)
+      }
+      .columnsTemplate("1fr 1fr") // 设置2列等宽布局
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('80%')
+    }
+  }
+}
+```
+
+![waterFlow_refresh](figures/waterFlow_contentsize.gif)

@@ -1,18 +1,40 @@
 # Matrix2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 **Matrix2D** allows you to perform matrix transformation, such as scaling, rotating, and translating.
 
 >  **NOTE**
 > 
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
-## APIs
+## Constructor
 
-Matrix2D(unit?: LengthMetricsUnit)
+### constructor<sup>10+</sup>
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+constructor()
+
+Constructs a two-dimensional transformation matrix object. The default value is a matrix whose attributes are all 0.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### constructor<sup>12+</sup>
+
+constructor(unit: LengthMetricsUnit)
+
+Constructs a two-dimensional transformation matrix object. The default value is a matrix whose attributes are all 0. The unit mode of the Matrix2D object can be configured.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +42,7 @@ Matrix2D(unit?: LengthMetricsUnit)
 
 | Name| Type| Mandatory| Description                             |
 | ------ | -------- | ---- | ------------------------------------- |
-| unit<sup>12+</sup>  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No  | Unit mode of the **Matrix2D** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md#lengthmetricsunit12).<br>Default value: **DEFAULT**|
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  | Unit mode of the **Matrix2D** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>For abnormal values NaN and Infinity, the default values are used.<br>Default value: DEFAULT|
 
 ## Attributes
 
@@ -32,12 +54,12 @@ Matrix2D(unit?: LengthMetricsUnit)
 
 | Name| Type| Read Only| Optional  | Description|
 | ----- | ----- | --------------- | ------ | ------------------------ |
-| scaleX         | number | No| Yes| Horizontal scale factor.          |
-| scaleY         | number | No| Yes| Vertical scale factor.          |
-| rotateX       | number | No| Yes| Horizontal tilt coefficient.          |
-| rotateY       | number | No| Yes| Vertical tilt coefficient.          |
-| translateX | number | No| Yes| Distance to translate on the x-axis.<br>Default unit: vp.|
-| translateY | number | No| Yes| Distance to translate on the y-axis.<br>Default unit: vp.|
+| scaleX         | number | No| Yes| Horizontal scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
+| scaleY         | number | No| Yes| Vertical scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
+| rotateX       | number | No| Yes| Horizontal skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
+| rotateY       | number | No| Yes| Vertical skew coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
+| translateX | number | No| Yes| Horizontal translation distance. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.<br>Default unit: vp.|
+| translateY | number | No| Yes| Vertical translation distance. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.<br>Default unit: vp.|
 
 >  **NOTE**
 >  
@@ -50,9 +72,9 @@ Matrix2D(unit?: LengthMetricsUnit)
 @Entry
 @Component
 struct Parameter {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -99,7 +121,7 @@ Creates an identity matrix.
 
 | Type                 | Description      |
 | --------------------- | ---------- |
-| [Matrix2D](#matrix2d) | Identity matrix.|
+| Matrix2D | Identity matrix.|
 
 **Example**
 
@@ -108,9 +130,9 @@ Creates an identity matrix.
 @Entry
 @Component
 struct Identity {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -150,7 +172,7 @@ Obtains an inverse of this matrix.
 
 | Type                 | Description        |
 | --------------------- | ------------ |
-| [Matrix2D](#matrix2d) | Inverse of the current matrix.|
+| Matrix2D | Inverse of the current matrix.|
 
 **Example**
 
@@ -159,9 +181,9 @@ Obtains an inverse of this matrix.
 @Entry
 @Component
 struct Invert {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -191,7 +213,7 @@ struct Invert {
 ![matrix-invert.png](figures/matrix-invert.png)
 
 
-### multiply<sup>(deprecated) </sup>
+### multiply<sup>(deprecated)</sup>
 
 multiply(other?: Matrix2D): Matrix2D
 
@@ -205,15 +227,15 @@ This API is deprecated since API version 10, and does not provide any actual ren
 
 | Name | Type    | Mandatory|  Description  |
 | ----- | -------- | ---- | ---------- |
-| other | Matrix2D | No| Target matrix.<br>Default value: **null**|
+| other | Matrix2D | No| Target matrix.<br>Invalid values **undefined** and **null** are treated as invalid inputs.<br>Default value: **null**.|
 
 **Return value**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [Matrix2D](#matrix2d) | Matrix of the multiplication result.|
+| Matrix2D | Matrix of the multiplication result.|
 
-### rotate<sup>(deprecated) </sup>
+### rotate<sup>(deprecated)</sup>
 
 rotate(rx?: number, ry?: number): Matrix2D
 
@@ -227,14 +249,14 @@ This API is deprecated since API version 10. You are advised to use [rotate](#ro
 
 | Name| Type  | Mandatory| Description                         |
 | ---- | ------ | ---- | -------------------------------- |
-| rx   | number | No  | Horizontal coordinate of the rotation point.<br>Default unit: vp.|
-| ry   | number | No  | Vertical coordinate of the rotation point.<br>Default unit: vp.|
+| rx   | number | No  | Horizontal coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.|
+| ry   | number | No  | Vertical coordinate of the rotation point. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.|
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [Matrix2D](#matrix2d) | Matrix of the rotation result.|
+| Matrix2D | Matrix of the rotation result.|
 
 **Example**
 
@@ -243,9 +265,9 @@ This API is deprecated since API version 10. You are advised to use [rotate](#ro
 @Entry
 @Component
 struct Rotate {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -291,15 +313,15 @@ Performs a right multiplication rotation operation on this matrix, with the spec
 
 | Name  | Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| degree | number | Yes | Rotation angle. Positive angles represent clockwise rotation. You can convert the angle to radians using the following formula: degree * Math.PI/180.<br>Default unit: radian.|
-| rx     | number | No | Horizontal coordinate of the rotation point.<br>Default unit: vp.<br>Default value: **0**   |
-| ry     | number | No | Vertical coordinate of the rotation point.<br>Default unit: vp.<br>Default value: **0**   |
+| degree | number | Yes | Rotation angle. The value range is not limited. Positive angles represent clockwise rotation. You can convert the angle to radians using the following formula: degree * Math.PI/180.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: radian|
+| rx     | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**.   |
+| ry     | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Default unit: vp.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **0**.   |
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [Matrix2D](#matrix2d) | Matrix of the rotation result.|
+| Matrix2D | Matrix of the rotation result.|
 
 **Example**
 
@@ -308,9 +330,9 @@ Performs a right multiplication rotation operation on this matrix, with the spec
 @Entry
 @Component
 struct Rotate {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -356,14 +378,14 @@ Performs a left multiplication translation operation on this matrix.
 
 | Name| Type  | Mandatory| Description                 |
 | ---- | ------ | ---- | ---------------------------- |
-| tx   | number | No  | Distance to translate on the X axis.<br>Default unit: vp.<br>Default value: **0**|
-| ty   | number | No  | Distance to translate on the Y axis.<br>Default unit: vp.<br>Default value: **0**|
+| tx   | number | No  | Horizontal translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.<br>Default value: **0**.|
+| ty   | number | No  | Vertical translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default unit: vp.<br>Default value: **0**.|
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [Matrix2D](#matrix2d) | Matrix of the translation result.|
+| Matrix2D | Matrix of the translation result.|
 
 **Example**
 
@@ -372,9 +394,9 @@ Performs a left multiplication translation operation on this matrix.
 @Entry
 @Component
 struct Translate {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -420,14 +442,14 @@ Performs a right multiplication scaling operation on this matrix.
 
 | Parameter| Type  | Mandatory| Description              |
 | ---- | ------ | ---- | ------------------ |
-| sx   | number | No  | Horizontal scale factor.<br>Default value: **1.0**.|
-| sy   | number | No  | Vertical scale factor.<br>Default value: **1.0**.|
+| sx   | number | No  | Horizontal scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**.|
+| sy   | number | No  | Vertical scaling ratio coefficient. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions.<br>Default value: **1.0**.|
 
 **Return value**
 
 | Type                 | Description              |
 | --------------------- | ------------------ |
-| [Matrix2D](#matrix2d) | Matrix of the scale result.|
+| Matrix2D | Matrix of the scale result.|
 
 **Example**
 
@@ -436,9 +458,9 @@ Performs a right multiplication scaling operation on this matrix.
 @Entry
 @Component
 struct Scale {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private matrix: Matrix2D = new Matrix2D()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private matrix: Matrix2D = new Matrix2D();
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

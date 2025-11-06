@@ -1,8 +1,8 @@
 # Persisting Vector Store Data (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @cuile44; @baijidong-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @htt1997-->
+<!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -142,23 +142,18 @@ The following lists only the APIs for persisting vector store data. For details 
 
 1. Check whether the current system supports vector stores. The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // Import the relationalStore module.
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';     
-   // In this example, Ability is used to obtain an RdbStore instance. You can use other implementations as required.
-   class EntryAbility extends UIAbility {
-     async onWindowStageCreate(windowStage: window.WindowStage) {
-        // Check whether the current system supports vector stores.
-       let ret = relationalStore.isVectorSupported();
-       if (!ret) {
-         console.error(`vectorDB is not supported .`);
-         return;
-       }
-       // Open the database, and add, delete, and modify data.
-     }
-   }
+
+    // Check whether the current system supports vector stores.
+    let ret = relationalStore.isVectorSupported();
+    if (!ret) {
+      console.error(`vectorDB is not supported.`);
+      return;
+    }
    ```
 
 2. If the system supports vector stores, obtain an **RdbStore** instance. Call **getRdbStore()** to create a database and create a table.
@@ -173,23 +168,26 @@ The following lists only the APIs for persisting vector store data. For details 
 
    The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
+   let context = getContext(); // Obtain the context.
    const STORE_CONFIG :relationalStore.StoreConfig= {
      name: 'VectorTest.db', // Database file name.
      securityLevel: relationalStore.SecurityLevel.S1, // Database security level.
      vector: true // Optional. This parameter must be true for a vector store.
    };   
    
-   relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+   relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
      store = rdbStore;
      // Create a table. floatvector (2) indicates that repr is 2-dimensional.
      const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
      // The second parameter indicates that transaction is not enabled. The third parameter undefined indicates that parameter binding is not used.
-     await store!.execute(SQL_CREATE_TABLE, 0, undefined); 
+     await store!.execute(SQL_CREATE_TABLE, 0, undefined);
    }).catch((err: BusinessError) => {
      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
-   });  
+   });
    ```
 
 3. Call **execute()** to insert data to the vector store.
@@ -200,11 +198,13 @@ The following lists only the APIs for persisting vector store data. For details 
    
    The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    try {
      // Use parameter binding.
      const vectorValue: Float32Array = Float32Array.from([1.2, 2.3]);
-     await store!.execute("insert into test VALUES(?, ?);", 0, [0, vectorValue]);
+     await store!.execute('insert into test VALUES(?, ?);', 0, [0, vectorValue]);
      // Do not use parameter binding.
      await store!.execute("insert into test VALUES(1, '[1.3, 2.4]');", 0, undefined);
    } catch (err) {
@@ -214,12 +214,14 @@ The following lists only the APIs for persisting vector store data. For details 
 
 4. Call **execute()** to modify or delete data. The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    // Modify data.
    try {
      // Use parameter binding.
      const vectorValue1: Float32Array = Float32Array.from([2.1, 3.2]);
-     await store!.execute("update test set repr = ? where id = ?", 0, [vectorValue1, 0]);
+     await store!.execute('update test set repr = ? where id = ?', 0, [vectorValue1, 0]);
      // Do not use parameter binding.
      await store!.execute("update test set repr = '[5.1, 6.1]' where id = 0", 0, undefined);
    } catch (err) {
@@ -229,9 +231,9 @@ The following lists only the APIs for persisting vector store data. For details 
    // Delete data.
    try {
      // Use parameter binding.
-     await store!.execute("delete from test where id = ?", 0, [0]);
+     await store!.execute('delete from test where id = ?', 0, [0]);
      // Do not use parameter binding.
-     await store!.execute("delete from test where id = 0", 0, undefined);
+     await store!.execute('delete from test where id = 0', 0, undefined);
    } catch (err) {
      console.error(`execute delete failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -245,11 +247,13 @@ The following lists only the APIs for persisting vector store data. For details 
 
    The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    // Perform single-table queries.
    try {
      // Use parameter binding.
-     const QUERY_SQL = "select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;";
+     const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
      let resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
      while (resultSet!.goToNextRow()) {
@@ -269,9 +273,9 @@ The following lists only the APIs for persisting vector store data. For details 
    // Perform subqueries.
    try {
      // Create the second table.
-     let CREATE_SQL = "CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);";
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
      await store!.execute(CREATE_SQL);
-     let resultSet = await store!.querySql("select * from test where id in (select id from test1);");
+     let resultSet = await store!.querySql('select * from test where id in (select id from test1);');
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -297,12 +301,14 @@ The following lists only the APIs for persisting vector store data. For details 
 
 6. Create a view and query data. The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    // Perform view queries.
    try {
      // Create a view.
-     await store!.execute("CREATE VIEW v1 as select * from test where id > 0;");
-     let resultSet = await store!.querySql("select * from v1;");
+     await store!.execute('CREATE VIEW v1 as select * from test where id > 0;');
+     let resultSet = await store!.querySql('select * from v1;');
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -359,13 +365,15 @@ The following lists only the APIs for persisting vector store data. For details 
 
    The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    // Basic syntax
    try {
      // Create an index using the basic syntax. The index name is diskann_l2_idx, index column is repr, type is gsdiskann, and the distance metric is L2.
-     await store!.execute("CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2);");
+     await store!.execute('CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2);');
      // Delete the diskann_l2_idx index from the test table.
-     await store!.execute("DROP INDEX test.diskann_l2_idx;");
+     await store!.execute('DROP INDEX test.diskann_l2_idx;');
    } catch (err) {
      console.error(`create index failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -373,7 +381,7 @@ The following lists only the APIs for persisting vector store data. For details 
    // Extended syntax
    try {
      // Set QUEUE_SIZE to 20 and OUT_DEGREE to 50.
-     await store!.execute("CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2) WITH (queue_size=20, out_degree=50);");
+     await store!.execute('CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2) WITH (queue_size=20, out_degree=50);');
    } catch (err) {
      console.error(`create ext index failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -400,10 +408,12 @@ The following lists only the APIs for persisting vector store data. For details 
 
     The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    try {
      // Manually trigger asynchronous deletion and sorting to execute disk defragmentation for all GSDiskANN indexes in the vector store.
-     await store!.execute("PRAGMA DISKANN_ASYNC_COLLECTING;");
+     await store!.execute('PRAGMA DISKANN_ASYNC_COLLECTING;');
    } catch (err) {
      console.error(`diskann async collecting failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -442,7 +452,9 @@ The following lists only the APIs for persisting vector store data. For details 
 
    The sample code is as follows:
 
-   ```ts
+<!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
    try {
      // The write operation performed every 5 minutes will trigger a data aging task.
      await store!.execute("CREATE TABLE test2(rec_time integer not null) WITH (time_col = 'rec_time', interval = '5 minute');");
@@ -465,27 +477,31 @@ The following lists only the APIs for persisting vector store data. For details 
 
     The sample code is as follows:
 
-    ```ts
-    try {
-      // Data compression and data aging are configured for the content column.
-      await store!.execute("CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');");
-    } catch (err) {
-       console.error(`configure data compress failed, code is ${err.code}, message is ${err.message}`);
-    }
-    ```
+<!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
+   try {
+     // Data compression and data aging are configured for the content column.
+     await store!.execute("CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');");
+   } catch (err) {
+     console.error(`configure data compress failed, code is ${err.code}, message is ${err.message}`);
+   }
+   ```
 
 11. Delete the database.
 
     Call **deleteRdbStore()** to delete the vector store and related database files. The sample code is as follows:
 
-    ```ts
-    try {
-      // Close the store object before deleting the database. Otherwise, the next call to getRdbStore() will fail.
-      await store!.close();
-      await relationalStore.deleteRdbStore(this.context, STORE_CONFIG);
-    } catch (err) {
-      console.error(`delete rdbStore failed, code is ${err.code},message is ${err.message}`);
-    }
-    ```
+<!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
+   try {
+     // Close the store object before deleting the database. Otherwise, the next call to getRdbStore() will fail.
+     await store!.close();
+     await relationalStore.deleteRdbStore(context, STORE_CONFIG);
+   } catch (err) {
+     console.error(`delete rdbStore failed, code is ${err.code},message is ${err.message}`);
+   }
+   ```
 
    
