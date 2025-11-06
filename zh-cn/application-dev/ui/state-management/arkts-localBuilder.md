@@ -143,6 +143,34 @@ struct Parent {
 组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
 <!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) -->
 
+``` TypeScript
+class ReferenceType {
+  paramString: string = '';
+}
+
+@Entry
+@Component
+struct Parent {
+  @State variableValue: string = 'Hello World';
+
+  @LocalBuilder
+  citeLocalBuilder(params: ReferenceType) {
+    Row() {
+      Text(`UseStateVarByReference: ${params.paramString}`)
+    }
+  };
+
+  build() {
+    Column() {
+      this.citeLocalBuilder({ paramString: this.variableValue })
+      Button('Click me').onClick(() => {
+        this.variableValue = 'Hi World';
+      })
+    }
+  }
+}
+```
+
 按引用传递参数时，如果在\@LocalBuilder函数内调用自定义组件，ArkUI提供`$$`作为按引用传递参数的范式。
 
 组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会随之更新。
