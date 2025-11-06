@@ -43,6 +43,11 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[bind_menu_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
 
+``` TypeScript
+Button('click for Menu')
+  .bindMenu(this.MyMenu)
+```
+
 ![zh-cn_image_0000001511580924](figures/zh-cn_image_0000001511580924.png)
 
 ## 创建支持右键或长按的菜单
