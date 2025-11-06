@@ -1046,7 +1046,50 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
 
-```ts
+<!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
+
+``` TypeScript
+class Balloon {
+  public volume: number;
+
+  constructor(volume: number) {
+    this.volume = volume;
+  }
+
+  static increaseVolume(balloon: Balloon) {
+    balloon.volume += 2;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State balloon: Balloon = new Balloon(10);
+
+  reduceVolume(balloon: Balloon) {
+    balloon.volume -= 1;
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
+        .fontSize(30)
+      Button(`increaseVolume`)
+        .onClick(() => {
+          // 通过静态方法调用，无法触发UI刷新
+          Balloon.increaseVolume(this.balloon);
+        })
+      Button(`reduceVolume`)
+        .onClick(() => {
+          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
+          this.reduceVolume(this.balloon);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 @Entry
 @Component
 struct Index {
