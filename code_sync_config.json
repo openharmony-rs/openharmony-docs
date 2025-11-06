@@ -17871,5 +17871,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-dialog-levelorder.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"normal_custom_dialog",
+						"start_line":29
+					},
+					{
+						"end_line":68,
+						"name":"top_custom_dialog",
+						"start_line":41
+					},
+					{
+						"end_line":87,
+						"name":"open_top_custom_dialog",
+						"start_line":78
+					},
+					{
+						"end_line":95,
+						"name":"dialog_box",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
