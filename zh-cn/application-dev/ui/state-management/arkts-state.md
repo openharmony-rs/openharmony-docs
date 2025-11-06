@@ -776,6 +776,52 @@ struct Test {
 ### 复杂类型常量重复赋值给状态变量触发刷新
 <!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->
 
+``` TypeScript
+class DataObj {
+  public name: string = 'default name';
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  list: DataObj[] = [new DataObj('a'), new DataObj('b'), new DataObj('c')];
+  @State dataObjFromList: DataObj = this.list[0];
+
+  build() {
+    Column() {
+      ConsumerChild({ dataObj: this.dataObjFromList })
+      Button('change to self').onClick(() => {
+        this.dataObjFromList = this.list[0];
+      })
+    }
+  }
+}
+
+@Component
+struct ConsumerChild {
+  @Link @Watch('onDataObjChange') dataObj: DataObj;
+
+  onDataObjChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+  }
+
+  getContent() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `this.dataObj.name change: ${this.dataObj.name}`);
+    return this.dataObj.name;
+  }
+
+  build() {
+    Column() {
+      Text(this.getContent()).fontSize(30)
+    }
+  }
+}
+```
+
 以上示例每次点击Button('change to self')，把相同的类常量赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。原因是在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。  
 当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。 
 为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。  
