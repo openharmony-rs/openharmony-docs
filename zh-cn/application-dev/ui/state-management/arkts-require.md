@@ -32,166 +32,21 @@
 
 当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
 
-<!-- @[scene_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
+<!-- @[scene_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-struct SceneRequire {
-  @State message: string = 'Hello World';
-
-  @Builder
-  buildTest() {
-    Row() {
-      Text('Hello, world')
-        .fontSize(30)
-    }
-  }
-
-  build() {
-    Row() {
-      // 构造Child时需传入所有@Require对应参数，否则编译失败。
-      Child({
-        regularValue: this.message,
-        stateValue: this.message,
-        provideValue: this.message,
-        initMessage: this.message,
-        message: this.message,
-        buildTest: this.buildTest,
-        initBuildTest: this.buildTest
-      })
-    }
-  }
-}
-
-@Component
-struct Child {
-  @Require regularValue: string;
-  @Require @State stateValue: string;
-  @Require @Provide provideValue: string;
-  @Require @BuilderParam buildTest: () => void;
-  @Require @BuilderParam initBuildTest: () => void;
-  @Require @Prop initMessage: string;
-  @Require @Prop message: string;
-
-  build() {
-    Column() {
-      Text(this.initMessage)
-        .fontSize(30)
-      Text(this.message)
-        .fontSize(30)
-      this.initBuildTest();
-      this.buildTest();
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 
 
 使用[\@ComponentV2](./arkts-new-componentV2.md)修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
 
-<!-- @[parent_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
+<!-- @[parent_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
 
-``` TypeScript
-@ObservedV2
-class Info {
-  @Trace public name: string = '';
-  @Trace public age: number = 0;
-}
-
-@ComponentV2
-struct ChildPage {
-  @Require @Param childInfo: Info;
-  @Require @Param stateValue: string;
-
-  build() {
-    Column() {
-      Text(`ChildPage childInfo name :${this.childInfo.name}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-      Text(`ChildPage childInfo age :${this.childInfo.age}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-      Text(`ChildPage stateValue age :${this.stateValue}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct ParentPage {
-  info1: Info = { name: 'Tom', age: 25 };
-  label1: string = 'Hello World';
-  @Local info2: Info = { name: 'Tom', age: 25 };
-  @Local label2: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
-      // 为ChildPage中被@Require @Param装饰的childInfo和stateValue属性传入了值。
-      ChildPage({ childInfo: this.info1, stateValue: this.label1 }) // 创建自定义组件。
-      Line()
-        .width('100%')
-        .height(5)
-        .backgroundColor('#000000').margin(10)
-      Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2。
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-      // 同上，在父组件创建子组件的过程中进行构造赋值。
-      ChildPage({ childInfo: this.info2, stateValue: this.label2 }) // 创建自定义组件。
-      Line()
-        .width('100%')
-        .height(5)
-        .backgroundColor('#000000').margin(10)
-      Button('change info1&info2')
-        .onClick(() => {
-          this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没有装饰器装饰，监听不到值的改变。
-          this.info2 = { name: 'Cat', age: 18 }; // Text2会刷新，原因是info2有装饰器装饰，能够监听到值的改变。
-          this.label1 = 'Luck'; // 不会刷新，原因是label1没有装饰器装饰，监听不到值的改变。
-          this.label2 = 'Luck'; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
-        })
-    }
-  }
-}
-```
 
 
 从API version 18开始，使用\@Require装饰\@State、\@Prop、\@Provide装饰的状态变量，可以在无本地初始值的情况下直接在组件内使用，不会编译报错。
 
-<!-- @[page_one_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
+<!-- @[page_one_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-struct PageOne {
-  message: string = 'Hello World';
-
-  build() {
-    Column() {
-      Child_V1({ message: this.message })
-    }
-  }
-}
-
-@Component
-struct Child_V1 {
-  @Require @State message: string;
-
-  build() {
-    Column() {
-      Text(this.message) // 从API version 18开始，可以编译通过。
-    }
-  }
-}
-```
 
 
 ## 常见问题
@@ -254,8 +109,9 @@ struct ChildV2 {
 }
 ```
 
-当父组件Explame在构造ChildV1与ChildV2时传递了相应的参数，则编译通过。
+当父组件Example在构造ChildV1与ChildV2时传递了相应的参数，则编译通过。
 
 【正例】
 
-<!-- @[explame_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/Explame.ets) -->
+<!-- @[example_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/Example.ets) -->
+
