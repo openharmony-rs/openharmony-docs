@@ -224,7 +224,37 @@
 
    【反例】
 
-    ```ts
+   <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Child {
+     @Consume num: number;
+     // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
+     @Consume numWithDefaultValue: number = 6;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Text(`num_with_defaultValue value: ${this.numWithDefaultValue}`)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     // 正确写法
+     @Provide num: number = 10;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Child()
+       }
+     }
+   }
+   ```
     @Component
     struct Child {
       @Consume num: number;
