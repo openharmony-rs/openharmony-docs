@@ -293,4 +293,3 @@ V2:
 使用V2中的\@Computed，每次改变`lastName`仅会触发一次计算。
 
 <!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
-
