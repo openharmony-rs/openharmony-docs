@@ -1,16 +1,22 @@
 # Animation Smoothing
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 When running animations, the UI is also interacting with users in real time. It must respond immediately to changes in user behavior. For example, if the user swipes up to exit in the midst of an application launch process, the UI should immediately transit from the startup animation to the exit animation, rather than finishing the startup animation before exiting. In the scenario where the animation triggered when the user lifts their fingers off the screen, the initial velocity of the animation must inherit the gesture speed, so as to avoid pauses caused by speed disconnection. For the preceding and similar scenarios, the system provides efficient APIs for smoothing between animations and between animations and gestures.
 
 Assume that there is a running animation for an animatable property. If the end value of the property changes due to an operation on the UI, you can create a new animation for it, by changing the property value in the [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) closure or by changing the input parameter value of the [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) API. The system then automatically connects the previous animation with the new animation.
 
-The following is an example: By clicking **click**, you change the **scale** property of the red square. When you click **click** repeatedly, the end value of the **scale** property changes continuously, and the current animation smoothly moves towards the new end value of the **scale** property.
+The following example demonstrates how clicking the **Click** button changes the scale property of the red square. When you click **Click** repeatedly, the target value of the **scale** property changes continuously, and the animation smoothly moves toward the new target value.
 
 ```ts
 import { curves } from '@kit.ArkUI';
 
-class SetSlt {
+class SetAnimationVariables {
   isAnimation: boolean = true
 
   set(): void {
@@ -22,7 +28,7 @@ class SetSlt {
 @Component
 struct AnimationToAnimationDemo {
   // Step 1: Declare the related state variable.
-  @State SetAnimation: SetSlt = new SetSlt();
+  @State animationController: SetAnimationVariables = new SetAnimationVariables();
 
   build() {
     Column() {
@@ -37,16 +43,16 @@ struct AnimationToAnimationDemo {
         .height(100)
         .scale({
           // Step 2: Set the declared state variable to the related animatable property.
-          x: this.SetAnimation.isAnimation ? 2 : 1,
-          y: this.SetAnimation.isAnimation ? 2 : 1
+          x: this.animationController.isAnimation ? 2 : 1,
+          y: this.animationController.isAnimation ? 2 : 1
         })
-        .animation({ curve: curves.springMotion(0.4, 0.8) }) // Step 4: Enable implicit animation. When the scale values change, the system automatically applies the animation curve.
+        .animation({ curve: curves.springMotion(0.4, 0.8) }) // Step 4: Enable animation. When the animation target value changes, the system automatically applies smooth transition.
 
       Button('Click')
         .margin({ top: 200 })
         .onClick(() => {
-          // Step 3: Change the state variable value through the click event, which then changes the property value.
-          this.SetAnimation.set()
+          // Step 3: Change the state variable value through the click event, which updates the property value.
+          this.animationController.set()
         })
     }
     .width('100%')
@@ -119,7 +125,7 @@ struct SpringMotionDemo {
       .width("100%")
 
       Row() {
-        Text('Click position: [x: ' + Math.round(this.positionX) + ', y:' + Math.round(this.positionY) + ']').fontSize(16)
+        Text('Clicked at: [x: ' + Math.round(this.positionX) + ', y:' + Math.round(this.positionY) + ']').fontSize(16)
       }
       .padding(10)
       .width("100%")

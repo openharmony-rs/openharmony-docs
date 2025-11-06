@@ -1,9 +1,24 @@
 # Integrating with ArkTS Pages
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Placeholder Components
 
 When building a UI with NDK APIs, you need to create placeholder components in the ArkTS page for mounting components created by the NDK APIs. The placeholder component type is [ContentSlot](../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md), which can bind a [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) object. This object can be passed to the native side through the Node-API for mounting and displaying native components.
+
+- The NDK configuration file **entry/src/main/cpp/types/libentry/oh-package.json5** must include the following content:
+  ```ts
+  {
+    "name": "libentry.so",
+    "types": "./index.d.ts",
+    "version": "",
+    "description": "Please describe the basic information."
+  }
+  ```
 
 - The usage of placeholder components is the same as other built-in ArkTS components. For the sample code, see [Example](#example).
   ```ts
@@ -58,7 +73,11 @@ When building a UI with NDK APIs, you need to create placeholder components in t
 
 ## NDK Component Module
 
-The UI component capabilities provided by the NDK, including component creation, tree operations, attribute setting, and event registration, are exposed using the function pointer structs (such as [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md)), which can be obtained through the [module query API](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_getmoduleinterface).
+The UI component capabilities provided by the NDK, including component creation, tree operations, attribute setting, and event registration, are exposed using the function pointer structs (such as [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)), which can be obtained through the [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface).
+
+> **NOTE**
+>
+> The [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) handles NDK initialization. It is recommended that you call this API for global initialization before constructing UIs with the NDK.
 
 ```
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
@@ -75,7 +94,7 @@ After obtaining a function pointer struct, use the functions within the struct t
   arkUINativeNodeApi->disposeNode(listNode);
   ```
 
-  You can query the range of components supported by the NDK API through the [ArkUI_NodeType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodetype) API.
+  To query the component types supported by the NDK API, use the [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) API.
 
 - Perform component tree operations.
   ```
@@ -91,12 +110,12 @@ After obtaining a function pointer struct, use the functions within the struct t
   ArkUI_NumberValue value[] = {{.f32 = 100}};
   ArkUI_AttributeItem item = {value, 1};
   arkUINativeNodeApi->setAttribute(stack, NODE_WIDTH, &item);
-  ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
-  ArkUI_AttributeItem item = {value, 1};
+  ArkUI_NumberValue value_color[] = {{.u32 = 0xff112233}};
+  ArkUI_AttributeItem item_color = {value_color, 1};
   arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item);
   ```
 
-  You can query the range of attributes supported by the NDK API through the [ArkUI_NodeAttributeType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeattributetype) API.
+  To query the attribute types supported by the NDK API, use the [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) API.
 
 - Register events.
   ```
@@ -107,14 +126,39 @@ After obtaining a function pointer struct, use the functions within the struct t
   arkUINativeNodeApi->registerNodeEvent(stack, NODE_ON_CLICK, 0, nullptr);
   ```
 
-  You can query the range of events supported by the NDK API through the [ArkUI_NodeEventType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeeventtype) API.
+  To query the event types supported by the NDK API, use the [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) API.
 
 
 ## Example
 
 The following example demonstrates how to use **ContentSlot** to mount a native text list.
 
-**Figure 1** Native text list 
+Sample code directory structure:
+
+```
+.
+|——cpp
+|    |——types
+|    |	  |——libentry
+|    |	  |	   |——index.d.ts Bridge methods between native and ArkTS sides.
+|    |——napi_init.cpp Native bridge definitions.
+|    |——NativeEntry.cpp Native bridge implementation.
+|    |——NativeEntry.h Native bridge method definitions.
+|    |——CMakeList.txt C library reference file.
+|    |——ArkUIBaseNode.h Base node encapsulation class.
+|    |——ArkUINode.h Extended node encapsulation class.
+|    |——ArkUIListNode.h List component encapsulation class.
+|    |——ArkUIListItemNode.h List item component encapsulation class.
+|    |——ArkUITextNode.h Text component encapsulation class.
+|    |——NormalTextListExample.h Sample implementation.
+| 
+|——ets
+|    |——pages
+|         |——entry.ets Application entry page hosting native components.
+|
+```
+
+**Figure 1** Native text list
 
 ![text_list](figures/text_list.gif)
 
@@ -205,7 +249,6 @@ The following example demonstrates how to use **ContentSlot** to mount a native 
    #include <ArkUIBaseNode.h>
    #include <arkui/native_type.h>
    #include <js_native_api_types.h>
-   #include <memory.h>
    
    namespace NativeModule {
    
@@ -254,6 +297,7 @@ The following example demonstrates how to use **ContentSlot** to mount a native 
    #include <hilog/log.h>
    #include <js_native_api.h>
    #include "NativeEntry.h"
+   #include "NormalTextListExample.h"
    
    namespace NativeModule {
    
@@ -286,15 +330,16 @@ The following example demonstrates how to use **ContentSlot** to mount a native 
    ```
    
    
-   When using the C APIs provided by the NDK, you need to add a reference to **libace_ndk.z.so** in the **CMakeLists.txt** file, as shown below. Here, **entry** is the name of the dynamic library exported by the project, such as the default name **libentry.so** used in this example.
+   To use the C APIs provided by the NDK, add references to the required libraries (such as **libace_ndk.z.so**) in **CMakeLists.txt**. The example uses **libentry.so** as the default dynamic library name. When adding new .cpp files, ensure that they are included in **CMakeLists.txt**. Files not listed in **CMakeLists.txt** will not be compiled.
    
    ```
+   add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so)
    ```
 
 4. Since the NDK provides C APIs, to simplify programming and project management in an object-oriented manner, it is recommended that you use C++ for secondary encapsulation. The following example shows the encapsulation classes required for the list and text components on the example page.
    
-   (1) Obtain the entry module of ArkUI in the NDK API [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md), which provides a series of function pointers for component creation, tree construction, attribute setting, and event registration.
+   (1) Obtain the entry module of ArkUI in the NDK API [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md), which provides a series of function pointers for component creation, tree construction, attribute setting, and event registration.
    
    ```c
    // NativeModule.h
@@ -303,8 +348,8 @@ The following example demonstrates how to use **ContentSlot** to mount a native 
    #ifndef MYAPPLICATION_NATIVEMODULE_H
    #define MYAPPLICATION_NATIVEMODULE_H
    
+   #include "napi/native_api.h"
    #include <arkui/native_node.h>
-   #include <functional>
    #include <cassert>
    
    #include <arkui/native_interface.h>
