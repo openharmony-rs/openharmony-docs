@@ -676,19 +676,16 @@ export class Model {
 
 【正例】
 <!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
-
 上文示例代码将状态变量的修改放在类的普通方法中，界面开始时显示“failed”，点击后显示“success”。
 
 ### 状态变量只能影响其直接绑定的UI组件的刷新
 
 【示例1】
 <!-- @[state_problem_state_ui_refresh_example_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample01.ets) -->
-
 点击`Button('change')`只会触发第二个`Text`组件的刷新，因为`message`是字符串类型。字符串是值类型，点击按钮时，改变的是`info`中的`address`值，而不会影响`this.message`的值，因此第一个Text组件不会刷新。
 
 【示例2】
 <!-- @[state_problem_state_ui_refresh_example_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets) -->
-
 在`aboutToAppear`中，`info`的引用被赋值给了`user`的成员属性`info`。因此，点击按钮改变`info`中的属性时，会触发第一个`Text`组件的刷新。第二个`Text`组件由于观测能力仅有一层，无法检测到二层属性的变化，所以不会刷新。
 
 【示例3】
@@ -976,7 +973,6 @@ struct Index {
 
 【反例】
 <!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
-
 状态变量观察类属性变化是通过代理捕获其变化的，当使用a.b(this.object)调用时，框架会将代理对象转换为原始对象。修改原始对象属性，无法观察，因此UI不会刷新。开发者可以使用如下方法修改：
 
 1. 先将this.balloon赋值给临时变量。
