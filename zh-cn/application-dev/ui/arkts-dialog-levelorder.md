@@ -75,6 +75,17 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
 
     <!-- @[open_top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
     
+    ``` TypeScript
+    this.getUIContext().getPromptAction().openCustomDialog({
+      builder: () => {
+        this.topCustomDialog();
+      },
+      levelOrder: LevelOrder.clamp(100000)
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
+    });
+    ```
+    
  
 
 ## 完整示例
