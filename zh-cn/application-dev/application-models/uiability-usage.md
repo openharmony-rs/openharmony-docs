@@ -54,7 +54,6 @@ export default class EntryAbility extends UIAbility {
   // ···
 
   export default class EntryAbility extends UIAbility {
-    // [StartExclude onWindowStageCreate]
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // 获取UIAbility实例的上下文
       let context = this.context;
@@ -96,13 +95,12 @@ export default class EntryAbility extends UIAbility {
   <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
 
   ``` TypeScript
-  // [Start terminateSelf]
   import { common, Want } from '@kit.AbilityKit';
-
+  // ···
+  
   @Entry
   @Component
   struct BasicUsage {
-    // [StartExclude terminateSelf]
     startAbilityTest(): void {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
@@ -110,14 +108,12 @@ export default class EntryAbility extends UIAbility {
       };
       context.startAbility(want);
     }
-    // [EndExclude terminateSelf]
 
     // 页面展示
     build() {
       // ···
     }
   }
-  // [End terminateSelf]
   ```
 
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
@@ -161,9 +157,10 @@ export default class EntryAbility extends UIAbility {
                 hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
               }
             })
+            // ···
         }
-      }
-    }
+        // ···
+     }
   }
   ```
 
