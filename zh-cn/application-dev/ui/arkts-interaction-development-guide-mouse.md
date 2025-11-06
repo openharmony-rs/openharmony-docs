@@ -34,23 +34,23 @@ onMouse(event: (event?: MouseEvent) => void)
 >**说明：**
 >
 >按键（MouseButton）的值：Left/Right/Middle/Back/Forward 均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示无按键，会出现在鼠标没有按键按下或松开的状态下，移动鼠标所触发的事件中。
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 @Entry
 @Component
-struct MouseExample {
+struct MouseMove {
   @State buttonText: string = '';
   @State columnText: string = '';
   @State text: string = 'OnMouse Sample Button';
-  @State Color: Color = Color.Gray;
+  @State color: Color = Color.Gray;
 
   build() {
     Column() {
       Button(this.text, { type: ButtonType.Capsule })
         .width(200)
         .height(100)
-        .backgroundColor(this.Color)
+        .backgroundColor(this.color)
         .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
           if (event) {
             this.buttonText = 'Button onMouse:\n' + '' +
@@ -96,23 +96,23 @@ struct MouseExample {
 ![onMouse1](figures/onMouse_1.gif)
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
+<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 @Entry
 @Component
-struct MouseExample {
+struct StopPropagation {
   @State buttonText: string = '';
   @State columnText: string = '';
   @State text: string = 'OnMouse Sample Button';
-  @State Color: Color = Color.Gray;
+  @State color: Color = Color.Gray;
 
   build() {
     Column() {
       Button(this.text, { type: ButtonType.Capsule })
         .width(200)
         .height(100)
-        .backgroundColor(this.Color)
+        .backgroundColor(this.color)
         .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
           if (event) {
             event.stopPropagation(); // 在Button的onMouse事件中设置阻止冒泡
@@ -162,28 +162,27 @@ onHover(event: (isHover: boolean) => void)
 
 若组件绑定了该接口，当鼠标指针从组件外部进入到该组件的瞬间会触发事件回调，参数isHover等于true；鼠标指针离开组件的瞬间也会触发该事件回调，参数isHover等于false。
 
+<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 @Entry
 @Component
-struct MouseExample {
+struct OnHover {
   @State hoverText: string = 'Not Hover';
-  @State Color: Color = Color.Gray;
+  @State color: Color = Color.Gray;
 
   build() {
     Column() {
       Button(this.hoverText)
         .width(200).height(100)
-        .backgroundColor(this.Color)
+        .backgroundColor(this.color)
         .onHover((isHover?: boolean) => { // 使用onHover接口监听鼠标是否悬浮在Button组件上
           if (isHover) {
             this.hoverText = 'Hovered!';
-            this.Color = Color.Green;
-          }
-          else {
+            this.color = Color.Green;
+          } else {
             this.hoverText = 'Not Hover';
-            this.Color = Color.Gray;
+            this.color = Color.Gray;
           }
         })
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
@@ -206,7 +205,9 @@ struct MouseExample {
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-```typescript
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+
+``` TypeScript
 class ListDataSource implements IDataSource {
   private list: number[] = [];
   private listeners: DataChangeListener[] = [];
@@ -264,7 +265,7 @@ struct ListExample {
 
   isItemSelected(item: number): boolean {
     for (let i = 0; i < this.allSelectedItems.length; i++) {
-      if (this.allSelectedItems[i] == item) {
+      if (this.allSelectedItems[i] === item) {
         this.isSelected[item] = true;
         return true;
       }
@@ -293,7 +294,7 @@ struct ListExample {
           })
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
-            if (event.button == MouseButton.Left && event.action == MouseAction.Press) {
+            if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // 判断之前是否已经时选中状态
               let isSelected: boolean = this.isItemSelected(index)
               // 判断修饰键状态
@@ -309,7 +310,7 @@ struct ListExample {
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item != index)
+                this.allSelectedItems.filter(item => item !== index)
                 this.isSelected[index] = false
               } else {
                 this.allSelectedItems.push(index)
@@ -354,8 +355,9 @@ struct ListExample {
 
 以下是纵向和横向的List响应滚轮的示例：
 
-```ts
-// ListDataSource.ets
+<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
+
+``` TypeScript
 export class ListDataSource implements IDataSource {
   private list: number[] = [];
   private listeners: DataChangeListener[] = [];
@@ -413,12 +415,14 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-```ts
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+
+``` TypeScript
 import { ListDataSource } from './ListDataSource';
 
 @Entry
 @Component
-struct ListExample {
+struct MouseWheel {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   @State dir1: Axis = Axis.Vertical;
 
@@ -427,7 +431,7 @@ struct ListExample {
       Button('Click to Change ListDirection')
         .margin(20)
         .onClick(() => {
-          if (this.dir1 == Axis.Vertical) {
+          if (this.dir1 === Axis.Vertical) {
             this.dir1 = Axis.Horizontal
           } else {
             this.dir1 = Axis.Vertical
@@ -448,10 +452,8 @@ struct ListExample {
           // 为ListItem绑定滑动手势，当在ListItem上滚动鼠标滚轮时，会优先触发ListItem的滑动手势
           .gesture(PanGesture({ direction: PanDirection.Vertical })
             .onActionStart(() => {
-              console.info('Vertical PanGesture start is called');
             })
             .onActionUpdate(() => {
-              console.info('Vertical PanGesture update is called');
             }))
         }, (item: number) => item.toString())
       }
@@ -475,4 +477,5 @@ struct ListExample {
   }
 }
 ```
+
 ![ListAxis](figures/listAxis.gif)

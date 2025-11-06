@@ -77,32 +77,34 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
-  ```ts
-    export default class EntryAbility extends UIAbility {
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            // 注册scheme的配置。
-            testNapi.registerCustomSchemes();
-            // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
-            webview.WebviewController.initializeWebEngine();
-            // 创建并设置ArkWeb_SchemeHandler。
-            testNapi.setSchemeHandler();
-        }
-        ...
-    };
-  ```
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 注册三方协议的配置。
+    testNapi.registerCustomSchemes();
+    // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
+    webview.WebviewController.initializeWebEngine();
+    // 设置SchemeHandler。
+    testNapi.setSchemeHandler();
+  }
+```
 
 testNapi.registerCustomSchemes的C++实现：
 
-  ```c++
-    // 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
-    OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
-    // 注册“custom-local” scheme到Web组件，并指定该scheme需要遵循与“file” scheme一样的规则。
-    OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
-    // 注册“custom-csp-bypassing”到Web组件，并指定该scheme需要遵循标准的scheme规则，允许忽略CSP检查。
-    OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
-    // 注册“custom-isolated”到Web组件，并指定该scheme的请求必须从相同scheme加载的网页中发起。
-    OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
-  ```
+<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+// 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
+OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
+// 注册“custom-local” scheme到Web组件，并指定该scheme需要遵循与“file” scheme一样的规则。
+OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
+// 注册“custom-csp-bypassing”到Web组件，并指定该scheme需要遵循标准的scheme规则，允许忽略CSP检查。
+OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
+// 注册“custom-isolated”到Web组件，并指定该scheme的请求必须从相同scheme加载的网页中发起。
+OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
+```
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 

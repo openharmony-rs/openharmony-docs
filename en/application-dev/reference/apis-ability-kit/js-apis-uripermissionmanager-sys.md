@@ -31,7 +31,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
-> If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -99,7 +100,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
-> If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -172,6 +174,7 @@ Grants the URI permission to an application. If the call is successful, the appl
 > 
 >- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
 >- This API can be used to grant URI access permission to a cloned application. You need to specify the application bundle name and index of the cloned application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -265,7 +268,8 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 
 > **NOTE**
 > 
-> This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -317,7 +321,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
 > **NOTE**
 > 
-> This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -375,6 +380,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
 > 
 >- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
 >- This API can be used to revoke the URI permissions granted to a cloned application. You need to specify the application bundle name and index of the cloned application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 

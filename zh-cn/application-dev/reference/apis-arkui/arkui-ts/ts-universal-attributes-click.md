@@ -21,8 +21,6 @@ touchable(value: boolean): T
 
 设置当前组件是否可以响应点击事件、触摸事件等手指交互事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

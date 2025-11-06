@@ -2240,12 +2240,15 @@ struct ListExample {
         }, (item: string) => item)
       }
       .width('90%').height('90%')
-
+      // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(()=> {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
           this.contentWidth=this.scrollerForList.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
           this.contentHeight=this.scrollerForList.contentSize().height;
         })
+      // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
         .fontColor(Color.Red)
         .height(50)

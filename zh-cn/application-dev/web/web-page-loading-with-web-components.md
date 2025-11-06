@@ -178,9 +178,10 @@ struct WebComponent {
    
      build() {
        Column() {
-         Text('loading success');
+       // ···
          // 加载沙箱路径文件。
-         Web({ src: url, controller: this.controller });
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true);
        }
      }
    }
@@ -279,8 +280,9 @@ struct WebComponent {
 ## resource协议加载本地资源
 
 resource协议允许访问应用资源目录中的文件。
+<!-- @[resource_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -290,19 +292,18 @@ struct ResourceWebComponent {
 
   build() {
     Column() {
-      Button('加载Resource资源')
+      Button('LoadResource')
         .onClick(() => {
           try {
-            // 通过resource加载resources/rawfile目录下的index1.html文件
+            // 通过resource加载resources/rawfile目录下的index1.html文件。
             this.controller.loadUrl('resource://rawfile/index1.html');
           } catch (error) {
             console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
           }
         })
 
-      // 组件创建时直接使用resource协议加载资源
-      Web({
-        src: 'resource://rawfile/index.html', controller: this.controller})
+      // 组件创建时直接使用resource协议加载资源。
+      Web({ src: 'resource://rawfile/index.html', controller: this.controller });
     }
   }
 }

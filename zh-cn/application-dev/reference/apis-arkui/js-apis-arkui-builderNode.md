@@ -1383,6 +1383,10 @@ inheritFreezeOptions(enabled: boolean): void
 
 查询当前BuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则BuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
+> **说明：**
+>
+> BuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1643,6 +1647,9 @@ build(builder: WrappedBuilder\<Args>, options: BuildOptions, ...args: Args): voi
 | ...args     | Args    | 否   | builder的入参，用于构造WrappedBuilder对象封装的builder函数。支持多个入参。默认值为undefined。                                                     |
 
 **示例：**
+
+该示例演示了如何使用ReactiveBuilderNode的build接口动态创建响应式UI组件树，通过数据绑定实现UI内容的动态更新。
+
 ```ts
 import { ReactiveBuilderNode, NodeContent, Binding, MutableBinding, UIUtils} from '@kit.ArkUI';
 
@@ -1680,7 +1687,7 @@ struct Index {
               UIUtils.makeBinding<number>(() => {
                 return this.age
               }),
-              UIUtils.makeBinding<string>(() => 'liming'),
+              UIUtils.makeBinding<string>(() => 'Hello World'),
               this.grades
             );
             // 将构建好的FrameNode添加到内容容器中显示
@@ -1717,6 +1724,8 @@ getFrameNode(): FrameNode | null
 
 **示例：**
 
+该示例演示了如何使用getFrameNode接口获取ReactiveBuilderNode构建的FrameNode节点，并通过NodeContent动态管理UI节点。
+
 ```ts
 import { ReactiveBuilderNode, NodeContent, Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
 
@@ -1745,7 +1754,7 @@ struct Index {
   private content: NodeContent = new NodeContent();  // 动态节点内容容器
   @State params: GeneratedObjectLiteralInterface_1 = {  // 状态数据对象
     age: 10,
-    name: 'liming',
+    name: 'Hello World',
     count: 100
   };
 
@@ -1986,34 +1995,41 @@ function buildComponent() {
   TestComponent()
 }
 
+// 自定义节点控制器，管理ReactiveBuilderNode和FrameNode
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private builderNode: ReactiveBuilderNode<[]> | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
+    // 创建根FrameNode
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new ReactiveBuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
+    // 构建ReactiveBuilderNode内容
     this.builderNode.build(new WrappedBuilder(buildComponent), {});
 
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.size = { width: 200, height: 200 };
       rootRenderNode.backgroundColor = 0xff666666;
+      // 将ReactiveBuilderNode的RenderNode添加到根节点
       rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
 
     return this.rootNode;
   }
 
+  // 释放资源的方法
   dispose() {
     if (this.builderNode !== null) {
-      this.builderNode.dispose();
+      this.builderNode.dispose(); // 释放ReactiveBuilderNode资源
     }
   }
 
+  // 移除BuilderNode的方法
   removeBuilderNode() {
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      // 从根节点移除BuilderNode的RenderNode
       rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
   }
@@ -2027,6 +2043,7 @@ struct Index {
   build() {
     Column({ space: 4 }) {
       NodeContainer(this.myNodeController)
+      // 移除并释放ReactiveBuilderNode
       Button('ReactiveBuilderNode dispose')
         .onClick(() => {
           this.myNodeController.removeBuilderNode();
@@ -2078,6 +2095,8 @@ ReactiveBuilderNode通过[reuse](#reuse22)和recycle完成其内外自定义组�
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+该示例展示了在长列表场景下，如何使用ReactiveBuilderNode的reuse和recycle接口实现组件复用机制，优化列表滚动的性能表现。
 
 ```ts
 import { FrameNode, NodeController, ReactiveBuilderNode, UIContext } from '@kit.ArkUI';
@@ -2276,6 +2295,8 @@ updateConfiguration(): void
 
 **示例：**
 
+该示例展示了如何使用updateConfiguration接口响应系统环境变化，实现ReactiveBuilderNode构建的UI节点的动态更新。
+
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, UIContext, FrameCallback, Binding, UIUtils } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, ConfigurationConstant, EnvironmentCallback } from '@kit.AbilityKit';
@@ -2444,6 +2465,9 @@ flushState(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+该示例展示了flushState接口在V1和V2装饰器下的不同使用方式，演示了ReactiveBuilderNode在不同数据响应机制下的更新策略。
+
 ```ts
 import { ReactiveBuilderNode, NodeContent, Binding, UIUtils } from '@kit.ArkUI';
 
@@ -2454,6 +2478,7 @@ function buildText(age: Binding<number>) {
   }
 }
 
+// 使用V2装饰器的类，支持自动状态更新
 @ObservedV2
 class GeneratedObjectLiteralInterface_1 {
   constructor(age: number) {
@@ -2462,6 +2487,7 @@ class GeneratedObjectLiteralInterface_1 {
   @Trace age: number = 0;
 }
 
+// 使用普通类（V1装饰器风格），需要手动触发更新
 class GeneratedObjectLiteralInterface_2 {
   constructor(age: number ) {
     this.age = age;
@@ -2482,6 +2508,7 @@ struct Index {
     Row() {
       Scroll() {
         Column({ space: 12 }) {
+          // 创建使用V2装饰器的ReactiveBuilderNode
           Button('绑定参数由V2装饰器装饰').onClick(
             () => {
               let node =
@@ -2495,6 +2522,7 @@ struct Index {
               );
               this.content.addFrameNode(node.getFrameNode());
             })
+          // 创建使用V1装饰器的ReactiveBuilderNode
           Button('绑定参数由V1装饰器装饰').onClick(
             () => {
               this.node1 =
@@ -2509,12 +2537,14 @@ struct Index {
               this.content.addFrameNode(this.node1.getFrameNode());
             })
           Button('change age - V2可自动更新').onClick(() => {
-            this.params.age += 1;
+            this.params.age += 1; // V2装饰器会自动检测变化并更新UI
           })
           Button('change age - V1需手动更新').onClick(() => {
             this.params2.age += 1;
+            // 对于V1装饰器的数据，需要手动调用flushState来触发UI更新
             this.node1?.flushState();
           })
+          // 显示动态创建的内容
           ContentSlot(this.content)
         }
         .id("column")
@@ -2588,6 +2618,10 @@ inheritFreezeOptions(enabled: boolean): void
 
 查询当前ReactiveBuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ReactiveBuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
+> **说明：**
+>
+> ReactiveBuilderNode设置inheritFreezeOptions为true，且父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，会继承父组件的冻结策略。当子组件为自定义组件时，其冻结策略不会传递给子组件。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -2616,15 +2650,18 @@ function buildText(count: Binding<number>) {
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: ReactiveBuilderNode<[Binding<number>]> | null = null;
-  private count: number = 0;
+  private count: number = 0; // 内部计数状态
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
     this.textNode = new ReactiveBuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
+    // 构建节点内容
     this.textNode.build(wrapBuilder<[Binding<number>]>(buildText), {}, UIUtils.makeBinding<number>(() => {
       return this.count
     }));
+    // 启用冻结继承选项，当父组件冻结时自动冻结
     this.textNode.inheritFreezeOptions(true);
+    // 将ReactiveBuilderNode添加到根节点
     if (this.rootNode !== null) {
       this.rootNode.appendChild(this.textNode.getFrameNode());
     }
@@ -2633,7 +2670,7 @@ class TextNodeController extends NodeController {
 
   update(): void {
     if (this.textNode !== null) {
-      this.count += 1;
+      this.count += 1; // 增加计数
       this.textNode.flushState();
     }
   }
@@ -2773,7 +2810,7 @@ struct pageTwoStack { // 页面二
   }
 }
 
-@Component({ freezeWhenInactive: true })
+@Component({ freezeWhenInactive: true }) // 启用非活动时冻结
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -2789,6 +2826,7 @@ struct NavigationContentMsgStack {
   }
 }
 
+// 文本构建器组件，支持冻结
 @Component({ freezeWhenInactive: true })
 struct TextBuilder {
   @Prop @Watch('info') message: number = 0;
@@ -2872,30 +2910,34 @@ function buildComponent() {
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private builderNode: ReactiveBuilderNode<[]> | null = null;
+  private rootNode: FrameNode | null = null; // 根FrameNode容器
+  private builderNode: ReactiveBuilderNode<[]> | null = null; // ReactiveBuilderNode实例
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new ReactiveBuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
+    // 构建ReactiveBuilderNode内容，使用WrappedBuilder包装Builder函数
     this.builderNode.build(new WrappedBuilder(buildComponent),{});
 
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.size = { width: 300, height: 50 };
       rootRenderNode.backgroundColor = 0xffd5d5d5;
+      // 将ReactiveBuilderNode的RenderNode添加到根节点
       rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
 
     return this.rootNode;
   }
 
+  // 释放资源的方法
   dispose() {
     if (this.builderNode !== null) {
-      this.builderNode.dispose();
+      this.builderNode.dispose(); // 释放ReactiveBuilderNode资源
     }
   }
 
+  // 检查节点是否已释放的方法
   isDisposed() : string{
     if (this.builderNode !== null) {
       if (this.builderNode.isDisposed()) {
@@ -2911,6 +2953,7 @@ class MyNodeController extends NodeController {
   removeBuilderNode() {
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      // 从根节点移除BuilderNode的RenderNode
       rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
   }
@@ -2919,7 +2962,7 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State text: string = ''
+  @State text: string = '' // 状态变量，用于显示节点状态信息
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -2928,7 +2971,7 @@ struct Index {
       Button('BuilderNode dispose')
         .onClick(() => {
           this.myNodeController.removeBuilderNode();
-          this.myNodeController.dispose();
+          this.myNodeController.dispose(); // 释放资源
           this.text = '';
         })
         .width(200)
@@ -2939,6 +2982,7 @@ struct Index {
         })
         .width(200)
         .height(50)
+      // 显示节点状态信息
       Text(this.text)
         .fontSize(20)
     }
@@ -4372,6 +4416,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
       .width('45%')
       .height('30%')
       .offset({ y: 70 })
+      // 鼠标事件处理
       .onMouse((event) => {
         let promptAction: PromptAction = uiContext!.getPromptAction();
         promptAction.showToast({
@@ -4380,6 +4425,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
         });
         console.info('onMouse')
       })
+      // 触摸事件处理
       .onTouch((event) => {
         let promptAction: PromptAction = uiContext!.getPromptAction();
         promptAction.showToast({
@@ -4410,10 +4456,12 @@ class MyNodeController extends NodeController {
       return false;
     }
     let node: FrameNode | null = this.rootNode.getFrameNode();
+    // 获取节点相对于父组件的偏移量
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
 
     let mouseEvent = event as MouseEvent;
+    // 坐标转换：将事件坐标转换为节点坐标系
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
       mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x)
       mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y)
@@ -4422,19 +4470,23 @@ class MyNodeController extends NodeController {
       mouseEvent.x = uiContext.vp2px(mouseEvent.x)
       mouseEvent.y = uiContext.vp2px(mouseEvent.y)
     }
+    // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
 
+  // 处理触摸事件的方法
   postTouchEvent(event: InputEventType, uiContext: UIContext): boolean {
     if (this.rootNode == null) {
       return false;
     }
     let node: FrameNode | null = this.rootNode.getFrameNode();
+    // 获取节点相对于父组件的偏移量
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
 
     let touchEvent = event as TouchEvent;
+    // 转换changedTouches数组中的所有触摸点坐标
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
@@ -4444,6 +4496,7 @@ class MyNodeController extends NodeController {
         touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
+    // 转换touches数组中的所有触摸点坐标
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
@@ -4453,6 +4506,7 @@ class MyNodeController extends NodeController {
         touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
+    // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -4473,11 +4527,13 @@ struct MyComponent {
         .height(300)
         .margin({ top: 500 })
         .backgroundColor(Color.Transparent)
+        // 捕获鼠标事件并传递给自定义节点
         .onMouse((event) => {
           if (event != undefined) {
             this.nodeController.postMouseEvent(event, this.getUIContext());
           }
         })
+        // 捕获触摸事件并传递给自定义节点
         .onTouch((event) => {
           if (event != undefined) {
             this.nodeController.postTouchEvent(event, this.getUIContext());
@@ -4510,6 +4566,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
       .width('45%')
       .height('30%')
       .offset({ y: 70 })
+      // 触摸事件处理
       .onTouch((event) => {
         let promptAction: PromptAction = uiContext!.getPromptAction();
         promptAction.showToast({
@@ -4531,6 +4588,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
+    // 构建ReactiveBuilderNode，传递按钮文本和UI上下文
     this.rootNode.build(this.wrapBuilder, {}, 'onTouch', uiContext)
     return this.rootNode.getFrameNode();
   }
@@ -4540,11 +4598,13 @@ class MyNodeController extends NodeController {
       return false;
     }
     let node: FrameNode | null = this.rootNode.getFrameNode();
+    // 获取节点相对于父组件的偏移量
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
 
     if (event.source == SourceType.TouchScreen) {
       let touchEvent = event as TouchEvent;
+      // 转换changedTouches数组中的所有触摸点坐标
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
@@ -4554,6 +4614,7 @@ class MyNodeController extends NodeController {
           touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
+      // 转换touches数组中的所有触摸点坐标
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
@@ -4565,6 +4626,7 @@ class MyNodeController extends NodeController {
       }
     }
 
+    // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -4585,6 +4647,7 @@ struct MyComponent {
         .height(300)
         .margin({ top: 600 })
         .backgroundColor(Color.Transparent)
+        // 捕获触摸事件并传递给自定义节点
         .onTouch((event) => {
           if (event != undefined) {
             this.nodeController.postInputEvent(event, this.getUIContext());
@@ -4620,7 +4683,7 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
       .onAxisEvent((event) => {
         let promptAction: PromptAction = uiContext!.getPromptAction();
         promptAction.showToast({
-          message: 'onAxisEvent',
+          message: 'onAxisEvent', // 显示轴事件触发提示
           duration: 3000
         });
         console.info('onAxisEvent')
@@ -4637,10 +4700,12 @@ class MyNodeController extends NodeController {
   private wrapBuilder: WrappedBuilder<[text: string, uiContext: UIContext]> = wrapBuilder<[text: string, uiContext: UIContext]>(ButtonBuilder);
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
+    // 构建ReactiveBuilderNode，传递按钮文本和UI上下文
     this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext )
     return this.rootNode.getFrameNode();
   }
 
+  // 轴事件处理方法
   postInputEvent(event: InputEventType, uiContext: UIContext): boolean {
     if (this.rootNode == null) {
       return false;
@@ -4659,6 +4724,7 @@ class MyNodeController extends NodeController {
       axisEvent.x = uiContext.vp2px(axisEvent.x)
       axisEvent.y = uiContext.vp2px(axisEvent.y)
     }
+    // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -4677,8 +4743,10 @@ struct MyComponent {
         .height(300)
         .margin({ top: 600 })
         .backgroundColor(Color.Transparent)
+        // 捕获轴事件并传递给自定义节点
         .onAxisEvent((event) => {
           if (event != undefined) {
+            // 调用轴事件处理方法
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })

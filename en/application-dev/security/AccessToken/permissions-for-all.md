@@ -492,6 +492,8 @@ With this permission, the application can detect information such as the user's 
 
 **Authorization mode**: system_grant
 
+**Supported devices**: general devices
+
 **Valid since**: 20
 
 ## ohos.permission.kernel.NET_RAW
@@ -607,7 +609,7 @@ With this permission, the application prevents the device from locking by defaul
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 22
+**Since**: 22
 
 ## ohos.permission.LOCK_WINDOW_CURSOR
 
@@ -619,6 +621,6 @@ With this permission, the application can lock the mouse cursor within the windo
 
 **Authorization mode**: system_grant
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 22

@@ -92,9 +92,13 @@ List组件主轴默认是垂直方向，即默认情况下不需要手动设置L
 若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
-```ts
-List() {
-  // ...
+<!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
 .listDirection(Axis.Horizontal)
 ```
@@ -107,9 +111,13 @@ List组件的交叉轴布局可以通过lanes和alignListItem属性进行设置�
 List组件的lanes属性通常用于在不同尺寸的设备自适应构建不同行数或列数的列表，即一次开发、多端部署的场景。lanes属性的取值类型是"number | [LengthConstrain](../reference/apis-arkui/arkui-ts/ts-types.md#lengthconstrain)"，即整数或者LengthConstrain类型。以垂直列表为例，如果将lanes属性设为2，表示构建的是一个两列的垂直列表，如图2中右图所示。lanes的默认值为1，即默认情况下，垂直列表的列数是1。
 
 
-```ts
-List() {
-  // ...
+<!-- @[lanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
 .lanes(2)
 ```
@@ -117,16 +125,22 @@ List() {
 当其取值为LengthConstrain类型时，表示会根据LengthConstrain与List组件的尺寸自适应决定行或列数。
 
 
-```ts
+<!-- @[egLanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct EgLanes {
+export struct ListLayout {
   @State egLanes: LengthConstrain = { minLength: 200, maxLength: 300 };
   build() {
-    List() {
-      // ...
-    }
-    .lanes(this.egLanes)
+    // ···
+          List(
+            // ···
+          ) {
+            // ···
+          }
+          .lanes(this.egLanes)
+        // ···
   }
 }
 ```
@@ -140,10 +154,15 @@ struct EgLanes {
 同样以垂直列表为例，当alignListItem属性设置为ListItemAlign.Center表示列表项在水平方向上居中对齐。alignListItem的默认值是ListItemAlign.Start，即列表项在列表交叉轴方向上默认按首部对齐。
 
 
-```ts
-List() {
-  // ...
+<!-- @[build_list_with_align_horizontally_in_the_center](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
+// ···
 .alignListItem(ListItemAlign.Center)
 ```
 
@@ -192,26 +211,36 @@ List组件创建时，所有ListItem均被创建。显示区域内的ListItem在
 
 ![zh-cn_image_0000001563060761](figures/zh-cn_image_0000001563060761.png)
 
-```ts
+<!-- @[list_statically_creates_the_contents_of_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct CityList {
+export struct DataInList {
   build() {
-    List() {
-      ListItem() {
-        Text('北京').fontSize(24)
-      }
+    // ···
+          List() {
+            ListItem() {
+              // app.string.city_beijing 资源文件中的value值为'北京'
+              Text($r('app.string.city_beijing'))
+                .fontSize(24)
+            }
 
-      ListItem() {
-        Text('杭州').fontSize(24)
-      }
+            ListItem() {
+              // app.string.city_hangzhou 资源文件中的value值为'杭州'
+              Text($r('app.string.city_hangzhou'))
+                .fontSize(24)
+            }
 
-      ListItem() {
-        Text('上海').fontSize(24)
-      }
-    }
-    .backgroundColor('#FFF1F3F5')
-    .alignListItem(ListItemAlign.Center)
+            ListItem() {
+              // app.string.city_shanghai 资源文件中的value值为'上海'
+              Text($r('app.string.city_shanghai'))
+                .fontSize(24)
+            }
+          }
+          .backgroundColor('#FFF1F3F5')
+          .alignListItem(ListItemAlign.Center)
+        // ···
   }
 }
 ```
@@ -225,7 +254,9 @@ struct CityList {
 如上图所示，联系人列表的列表项中，每个联系人都有头像和名称。此时，需要将Image和Text封装到一个Row容器内。
 
 
-```ts
+<!-- @[encapsulate_the_image_and_text_into_a_row](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+
+``` TypeScript
 List() {
   ListItem() {
     Row() {
@@ -235,7 +266,8 @@ List() {
         .height(40)
         .margin(10)
 
-      Text('小明')
+      // app.string.peopleOne 资源文件中的value值为'小明'
+      Text($r('app.string.peopleOne'))
         .fontSize(20)
     }
   }
@@ -248,13 +280,13 @@ List() {
         .height(40)
         .margin(10)
 
-      Text('小红')
+      // app.string.peopleTwo 资源文件中的value值为'小红'
+      Text($r('app.string.peopleTwo'))
         .fontSize(20)
     }
   }
 }
 ```
-
 
 ## 迭代列表内容
 
@@ -263,15 +295,17 @@ List() {
 ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)提供了组件的循环渲染能力。以简单形式的联系人列表为例，将联系人名称和头像数据以Contact类结构存储到contacts数组，使用ForEach中嵌套ListItem的形式来代替多个平铺的、内容相似的ListItem，从而减少重复代码。
 
 
-```ts
+<!-- @[use_foreach_to_replace_similar_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListIteration.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 
 class Contact {
-  key: string = util.generateRandomUUID(true);
-  name: string;
-  icon: Resource;
+  public key: string = util.generateRandomUUID(true);
+  public name: ResourceStr;
+  public icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: ResourceStr, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
@@ -279,29 +313,34 @@ class Contact {
 
 @Entry
 @Component
-struct SimpleContacts {
+export struct ListIteration {
   private contacts: Array<object> = [
-    new Contact('小明', $r("app.media.iconA")),
-    new Contact('小红', $r("app.media.iconB")),
+
+    // app.string.peopleOne 资源文件中的value值为'小明'，app.media.iconA为自定义资源
+    new Contact($r('app.string.peopleOne'), $r('app.media.iconA')),
+    // app.string.peopleTwo 资源文件中的value值为'小红'，app.media.iconB为自定义资源
+    new Contact($r('app.string.peopleTwo'), $r('app.media.iconB'))
   ];
 
   build() {
-    List() {
-      ForEach(this.contacts, (item: Contact) => {
-        ListItem() {
-          Row() {
-            Image(item.icon)
-              .width(40)
-              .height(40)
-              .margin(10)
-            Text(item.name).fontSize(20)
+    // ···
+          List() {
+            ForEach(this.contacts, (item: Contact) => {
+              ListItem() {
+                Row() {
+                  Image(item.icon)
+                    .width(40)
+                    .height(40)
+                    .margin(10)
+                  Text(item.name).fontSize(20)
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Start)
+              }
+            }, (item: Contact) => JSON.stringify(item))
           }
           .width('100%')
-          .justifyContent(FlexAlign.Start)
-        }
-      }, (item: Contact) => JSON.stringify(item))
-    }
-    .width('100%')
+        // ···
   }
 }
 ```
@@ -317,12 +356,13 @@ struct SimpleContacts {
 在初始化列表时，如需在列表项之间添加间距，可以使用space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
 
 
-```ts
+<!-- @[set_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
 List({ space: 10 }) {
-  // ...
+  // ···
 }
 ```
-
 
 ### 添加分隔线
 
@@ -337,12 +377,14 @@ List提供了divider属性用于给列表项之间添加分隔线。在设置div
 startMargin和endMargin属性分别用于设置分隔线距离列表侧边起始端的距离和距离列表侧边结束端的距离。
 
 
-```ts
+<!-- @[set_the_divider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
 class DividerTmp {
-  strokeWidth: Length = 1;
-  startMargin: Length = 60;
-  endMargin: Length = 10;
-  color: ResourceColor = '#ffe9f0f0';
+  public strokeWidth: Length = 1;
+  public startMargin: Length = 60;
+  public endMargin: Length = 10;
+  public color: ResourceColor = '#ffe9f0f0';
 
   constructor(strokeWidth: Length, startMargin: Length, endMargin: Length, color: ResourceColor) {
     this.strokeWidth = strokeWidth;
@@ -351,15 +393,21 @@ class DividerTmp {
     this.color = color;
   }
 }
+
 @Entry
 @Component
-struct EgDivider {
+export struct CustomListStyle {
   @State egDivider: DividerTmp = new DividerTmp(1, 60, 10, '#ffe9f0f0');
+
   build() {
-    List() {
-      // ...
-    }
-    .divider(this.egDivider)
+    // ···
+          List(
+            // ···
+          ) {
+            // ···
+          }
+          .divider(this.egDivider)
+        // ···
   }
 }
 ```
@@ -386,10 +434,15 @@ struct EgDivider {
 在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为[BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate)，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
 
 scrollBar属性API version 9及以下版本默认值为BarState.Off，从API version 10版本开始默认值为BarState.Auto。
-```ts
-List() {
-  // ...
+<!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
+// ···
 .scrollBar(BarState.Auto)
 ```
 
@@ -399,24 +452,30 @@ List() {
 
 1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象listScroller。
 
-   ```ts
+   <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+   
+   ``` TypeScript
    private listScroller: Scroller = new Scroller();
    ```
 
 2. 然后，列表通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18对象说明)参数绑定滚动控制器。
 
-   ```ts
+   <!-- @[respond_to_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+   
+   ``` TypeScript
    // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
    List({ scroller: this.listScroller }) {
-   // ...
+   // ···
    }
    ```
 
 3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
 
-   ```ts
-   // listScroller初始化ScrollBar组件的scroller参数，绑定listScroller与列表。
-   ScrollBar({ scroller: this.listScroller })
+   <!-- @[scroller_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+   
+   ``` TypeScript
+   // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
+   List({ scroller: this.listScroller }) {
    ```
 
   **图15** 列表的外置滚动条 
@@ -440,12 +499,14 @@ List() {
 在List组件中可以直接使用一个或者多个ListItemGroup组件，ListItemGroup的宽度默认充满List组件。在初始化ListItemGroup时，可通过header参数设置列表分组的头部组件。
 
 
-```ts
+<!-- @[set_the_head_component_of_the_list_grouping_by_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/GroupedList.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ContactsList {
-  
-  @Builder itemHead(text: string) {
+export struct GroupedList {
+  @Builder
+  itemHead(text: string) {
     // 列表分组的头部组件，对应联系人分组A、B等位置的组件
     Text(text)
       .fontSize(20)
@@ -455,15 +516,21 @@ struct ContactsList {
   }
 
   build() {
-    List() {
-      ListItemGroup({ header: this.itemHead('A') }) {
-        // 循环渲染分组A的ListItem
-      }
+    // ···
+          List(
+            // ···
+          ) {
+            ListItemGroup({ header: this.itemHead('A') }) {
+              // 循环渲染分组A的ListItem
+            // ···
+            }
 
-      ListItemGroup({ header: this.itemHead('B') }) {
-        // 循环渲染分组B的ListItem
-      }
-    }
+            ListItemGroup({ header: this.itemHead('B') }) {
+              // 循环渲染分组B的ListItem
+            // ···
+            }
+          }
+        // ···
   }
 }
 ```
@@ -485,23 +552,26 @@ List组件的sticky属性配合ListItemGroup组件使用，用于设置ListItemG
 通过给List组件设置sticky属性为StickyStyle.Header，即可实现列表的粘性标题效果。如果需要支持吸底效果，可以通过footer参数初始化ListItemGroup的底部组件，并将sticky属性设置为StickyStyle.Footer。
 
 
-```ts
+<!-- @[add_sticky_titles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/StickyHeaderList.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 
 class Contact {
-  key: string = util.generateRandomUUID(true);
-  name: string;
-  icon: Resource;
+  public key: string = util.generateRandomUUID(true);
+  public name: string | Resource;
+  public icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: string | Resource, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
 }
-export class ContactsGroup {
-  title: string = '';
-  contacts: Array<object> | null = null;
-  key: string = "";
+
+class ContactsGroup {
+  public title: string = '';
+  public contacts: Array<object> | null = null;
+  public key: string = '';
 }
 
 export class ContactsGroupDataSource implements IDataSource {
@@ -530,8 +600,11 @@ export let contactsGroups: object[] = [
   {
     title: 'A',
     contacts: [
-      new Contact('艾佳', $r('app.media.iconA')),
-      new Contact('安安', $r('app.media.iconB')),
+      // app.string.contacts_A_one 资源文件中的value值为'艾佳'，app.media.iconA为自定义资源
+      new Contact($r('app.string.contacts_A_one'), $r('app.media.iconA')),
+      // app.string.contacts_A_two 资源文件中的value值为'安安'，app.media.iconB为自定义资源
+      new Contact($r('app.string.contacts_A_two'), $r('app.media.iconB')),
+      // app.media.iconC为自定义资源
       new Contact('Angela', $r('app.media.iconC')),
     ],
     key: util.generateRandomUUID(true)
@@ -539,20 +612,22 @@ export let contactsGroups: object[] = [
   {
     title: 'B',
     contacts: [
-      new Contact('白叶', $r('app.media.iconD')),
-      new Contact('伯明', $r('app.media.iconE')),
+      // app.string.contacts_B_one 资源文件中的value值为'白叶'，app.media.iconD为自定义资源
+      new Contact($r('app.string.contacts_B_one'), $r('app.media.iconD')),
+      // app.string.contacts_B_three 资源文件中的value值为'伯明'，app.media.iconE为自定义资源
+      new Contact($r('app.string.contacts_B_three'), $r('app.media.iconE'))
     ],
     key: util.generateRandomUUID(true)
-  } as ContactsGroup,
-  // ...
-]
+  } as ContactsGroup
+];
 export let contactsGroupsDataSource: ContactsGroupDataSource = new ContactsGroupDataSource(contactsGroups);
 
 @Entry
 @Component
-struct ContactsList {
+export struct StickyHeaderList {
   // 定义分组联系人数据集合contactsGroups数组
-  @Builder itemHead(text: string) {
+  @Builder
+  itemHead(text: string) {
     // 列表分组的头部组件，对应联系人分组A、B等位置的组件
     Text(text)
       .fontSize(20)
@@ -560,22 +635,26 @@ struct ContactsList {
       .width('100%')
       .padding(5)
   }
+
   build() {
-    List() {
-      // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
-      LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
-        ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
-          // 懒加载ListItem
-          if (itemGroup.contacts) {
-            LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
-              ListItem() {
-                // ...
+    // ···
+          List() {
+            // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
+            LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
+              ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
+                // 循环渲染ListItem
+                if (itemGroup.contacts) {
+                  LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
+                    ListItem() {
+                    // ···
+                    }
+                  }, (item: Contact) => JSON.stringify(item))
+                }
               }
-            }, (item: Contact) => JSON.stringify(item))
+            }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
-        }
-      }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
-    }.sticky(StickyStyle.Header)  // 设置吸顶，实现粘性标题效果
+          .sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
+        // ···
   }
 }
 ```
@@ -593,24 +672,28 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../ref
 
 首先，需要创建一个Scroller的对象listScroller。
 
-
-```ts
-private listScroller: Scroller = new Scroller();
-```
+   <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+   
+   ``` TypeScript
+   private listScroller: Scroller = new Scroller();
+   ```
 
 然后，通过将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。在需要跳转的位置指定scrollToIndex的参数为0，表示返回列表顶部。
 
 
-```ts
+<!-- @[control_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.Bottom }) {
   // 将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。
   List({ space: 20, scroller: this.listScroller }) {
-    // ...
+  // ···
   }
 
   Button() {
-    // ...
+  // ···
   }
+  // ···
   .onClick(() => {
     // 点击按钮时，指定跳转位置，返回列表顶部
     this.listScroller.scrollToIndex(0);
@@ -634,29 +717,42 @@ Stack({ alignContent: Alignment.Bottom }) {
 在列表滚动时，根据列表此时所在的索引值位置firstIndex，重新计算字母索引栏对应字母的位置selectedIndex。由于AlphabetIndexer组件通过selected属性设置了选中项索引值，当selectedIndex变化时会触发AlphabetIndexer组件重新渲染，从而显示为选中对应字母的状态。
 
 
-```ts
+<!-- @[respond_to_scroll_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+
+``` TypeScript
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+// ···
+
 @Entry
 @Component
-struct ContactsList {
+export struct ResponsiveScrollPositionList {
   @State selectedIndex: number = 0;
   private listScroller: Scroller = new Scroller();
+// ···
 
   build() {
-    Stack({ alignContent: Alignment.End }) {
-      List({ scroller: this.listScroller }) {}
-      .onScrollIndex((firstIndex: number) => {
-        // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
-      })
+    // ···
+          Stack({ alignContent: Alignment.End }) {
+            // 此为响应滚动位置示例List容器
+            // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
+            List({ scroller: this.listScroller }) {
+            // ···
+            }
+            .onScrollIndex((firstIndex: number) => {
+              // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
+            // ···
+            })
 
-      // 字母表索引组件
-      AlphabetIndexer({ arrayValue: alphabets, selected: 0 })
-        .selected(this.selectedIndex)
-        .onSelect((index: number) => {
-          this.listScroller.scrollToIndex(index);
-        })
-    }
+            // 字母表索引组件
+            AlphabetIndexer({ arrayValue: alphabets, selected: 0 })
+              .selected(this.selectedIndex)
+              .onSelect((index: number) => {
+                this.listScroller.scrollToIndex(index);
+              })
+          }
+        // ···
   }
 }
 ```
@@ -680,35 +776,42 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
 
 1. 实现尾端滑出组件的构建。
 
-    ```ts
-    @Builder itemEnd(index: number) {
-      // 构建尾端滑出组件
-      Button({ type: ButtonType.Circle }) {
-        Image($r('app.media.ic_public_delete_filled'))
-          .width(20)
-          .height(20)
-      }
-      .onClick(() => {
-        // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
-        this.messages.splice(index, 1);
-      })
-    }
-    ```
+   <!-- @[build_the_tail_slide_out_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   itemEnd(index: number) {
+     // 构建尾端滑出组件
+     Button({ type: ButtonType.Circle }) {
+       Image($r('sys.media.ohos_ic_bottomsheet_close'))
+         .width(40)
+         .height(40)
+     }
+     // ···
+     .onClick(() => {
+       // this.messages为列表数据源，可根据实际场景构造。点击后从数据源删除指定数据项。
+       this.arr.splice(index, 1);
+     })
+   }
+   ```
 
 2. 绑定swipeAction属性到可左滑的ListItem上。
 
-    ```ts
-    // 构建List时，通过ForEach基于数据源this.messages循环渲染ListItem。
-    ListItem() {
-      // ...
-    }
-    .swipeAction({
-      end: {
-        // index为该ListItem在List中的索引值。
-        builder: () => { this.itemEnd(index) },
-      }
-    }) // 设置侧滑属性.
-    ```
+   <!-- @[bind_the_swipeAction_property_to_left_swipe_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   
+   ``` TypeScript
+   // 构建List时，通过ForEach基于数据源this.messages循环渲染ListItem。
+   ListItem() {
+     // ···
+   }.swipeAction({
+     end: {
+       // index为该ListItem在List中的索引值。
+       builder: () => {
+         // ···
+         this.itemEnd(this.index);
+       },
+     } // 设置侧滑属性.
+   ```
 
 ## 给列表项添加标记
 
@@ -725,17 +828,18 @@ ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-lis
 在Badge组件中，count和position参数用于设置需要展示的消息数量和提示点显示位置，还可以通过style参数灵活设置标记的样式。
 
 
-```ts
+<!-- @[add_tags_to_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/TaggedListItems.ets) -->
+
+``` TypeScript
 ListItem() {
+  // Badge组件实现消息右上角添加标记功能
   Badge({
     count: 1,
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-    // Image组件实现消息联系人头像
-    // ...
+  // ···
   }
-}
 ```
 
 
@@ -780,14 +884,16 @@ ListItem() {
 
 1. 定义列表项数据结构，以待办事项管理为例，首先定义待办数据结构。
 
-   ```ts
+   <!-- @[define_the_data_to_be_done](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDo.ets) -->
+   
+   ``` TypeScript
    //ToDo.ets
    import { util } from '@kit.ArkTS';
-
+   
    export class ToDo {
-     key: string = util.generateRandomUUID(true);
-     name: string;
-
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+   
      constructor(name: string) {
        this.name = name;
      }
@@ -796,99 +902,127 @@ ListItem() {
 
 2. 构建列表整体布局和列表项。
 
-   ```ts
-   //ToDoListItem.ets
+   <!-- @[build_the_overall_list_layout_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDoListItem.ets) -->
+   
+   ``` TypeScript
    import { ToDo } from './ToDo';
-
+   
    @Component
    export struct ToDoListItem {
      @Link isEditMode: boolean;
      @Link selectedItems: ToDo[];
-     private toDoItem: ToDo = new ToDo("");
-
+     private toDoItem: ToDo = new ToDo('');
+   
      build() {
-      Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-        // ...
-      }
-      .width('100%')
-      .height(80)
-      //.padding() 根据具体使用场景设置
-      .borderRadius(24)
-      //.linearGradient() 根据具体使用场景设置
-      .gesture(
-        GestureGroup(GestureMode.Exclusive,
-        LongPressGesture()
-          .onAction(() => {
-            // ...
-          })
-        )
-      )
+       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+       // ···
+       }
+       // ···
+       .width('100%')
+       .height(80)
+       // .padding() 根据具体使用场景设置
+       .borderRadius(24)
+       // .linearGradient() 根据具体使用场景设置
+       .gesture(
+         GestureGroup(GestureMode.Exclusive,
+           LongPressGesture()
+             .onAction(() => {
+             })
+         )
+       )
      }
    }
    ```
 
 3. 初始化待办列表数据和可选事项，最后，构建列表布局和列表项。
 
-   ```ts
-   //ToDoList.ets
+   <!-- @[build_list_layouts_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/AddListItem.ets) -->
+   
+   ``` TypeScript
    import { ToDo } from './ToDo';
    import { ToDoListItem } from './ToDoListItem';
    
    @Entry
    @Component
-   struct ToDoList {
+   export struct AddListItem {
      @State toDoData: ToDo[] = [];
      @Watch('onEditModeChange') @State isEditMode: boolean = false;
      @State selectedItems: ToDo[] = [];
-    private availableThings: string[] = ['读书', '运动', '旅游', '听音乐', '看电影', '唱歌'];
+     private availableThings: string [] = [];
+   
+     aboutToAppear(): void {
+       const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       const reading = context.resourceManager.getStringByNameSync('Reading')
+       this.availableThings.push(reading)
+       const exercise = context.resourceManager.getStringByNameSync('Exercise')
+       this.availableThings.push(exercise)
+       const travel = context.resourceManager.getStringByNameSync('Travel')
+       this.availableThings.push(travel)
+       const listening = context.resourceManager.getStringByNameSync('Listening_Music')
+       this.availableThings.push(listening)
+       const watching = context.resourceManager.getStringByNameSync('Watching_Films')
+       this.availableThings.push(watching)
+       const singing = context.resourceManager.getStringByNameSync('Singing')
+       this.availableThings.push(singing)
+     }
    
      onEditModeChange() {
        if (!this.isEditMode) {
          this.selectedItems = [];
        }
-    }
+     }
    
      build() {
-       Column() {
-         Row() {
-           if (this.isEditMode) {
-             Text('X')
-               .fontSize(20)
-               .onClick(() => {
-                 this.isEditMode = false;
-               })
-               .margin({ left: 20, right: 20 })
-           } else {
-             Text('待办')
-               .fontSize(36)
-               .margin({ left: 40 })
-             Blank()
-             Text('+') //提供新增列表项入口，即给新增按钮添加点击事件
-               .onClick(() => {
-                 this.getUIContext().showTextPickerDialog({
-                   range: this.availableThings,
-                   onAccept: (value: TextPickerResult) => {
-                     let arr = Array.isArray(value.index) ? value.index : [value.index];
-                     for (let i = 0; i < arr.length; i++) {
-                       this.toDoData.push(new ToDo(this.availableThings[arr[i]])); // 新增列表项数据toDoData(可选事项)
-                     }
-                   },
-                 })
-               })
-           }
-           List({ space: 10 }) {
-             ForEach(this.toDoData, (toDoItem: ToDo) => {
-               ListItem() {
-                 // 将toDoData的每个数据放入到以model的形式放进ListItem里
-                 ToDoListItem({
-                   isEditMode: this.isEditMode,
-                   toDoItem: toDoItem,
-                   selectedItems: this.selectedItems })
+       // ···
+         Column(
+           // ···
+         ) {
+           // ···
+               Row() {
+                 if (this.isEditMode) {
+                   Text('X')
+                     .fontSize(20)
+                     .onClick(() => {
+                       this.isEditMode = false;
+                     })
+                     .margin({ left: 20, right: 20 })
+                 } else {
+                   // app.string.TodoItem 资源文件中的value值为'待办'
+                   Text($r('app.string.TodoItem'))
+                     .fontSize(36)
+                     .margin({ left: 40 })
+                   Blank()
+                   Text('+')// 提供新增列表项入口，即给新增按钮添加点击事件
+                   // ···
+                     .onClick(() => {
+                       this.getUIContext().showTextPickerDialog({
+                         range: this.availableThings,
+                         onAccept: (value: TextPickerResult) => {
+                           let arr = Array.isArray(value.index) ? value.index : [value.index];
+                           for (let i = 0; i < arr.length; i++) {
+                             this.toDoData.push(new ToDo(this.availableThings[arr[i]])); // 新增列表项数据toDoData(可选事项)
+                           }
+                         },
+                       })
+                     })
+                 }
+               // ···
+   
+               List({ space: 10 }) {
+                 ForEach(this.toDoData, (toDoItem: ToDo) => {
+                   ListItem() {
+                     // 将toDoData的每个数据放入到以model的形式放进ListItem里
+                     ToDoListItem({
+                       isEditMode: this.isEditMode,
+                       toDoItem: toDoItem,
+                       selectedItems: this.selectedItems
+                     })
+                   }
+                 }, (toDoItem: ToDo) => toDoItem.name.toString())
                }
-             }, (toDoItem: ToDo) => toDoItem.key.toString())
+             }
            }
-         }
-       }
+           // ···
      }
    }
    ```
@@ -907,97 +1041,115 @@ ListItem() {
 1. 列表的删除功能一般进入编辑模式后才可使用，所以需要提供编辑模式的入口。
    以待办列表为例，通过监听列表项的长按事件，当用户长按列表项时，进入编辑模式。
 
-    ```ts
-    // 结构参考
-    export class ToDo {
-      key: string = util.generateRandomUUID(true);
-      name: string;
-      toDoData: ToDo[] = [];
-
-      constructor(name: string) {
-        this.name = name;
-      }
-    }
-    ```
-    ```ts
-    // 实现参考
-    Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-      // ...
-    }
-    .gesture(
-    GestureGroup(GestureMode.Exclusive,
-      LongPressGesture()
-        .onAction(() => {
-          if (!this.isEditMode) {
-            this.isEditMode = true; //进入编辑模式
-          }
-        })
-      )
-    )
-    ```
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
    
-2. 需要响应用户的选择交互，记录要删除的列表项数据。
-   在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
-
-    ```ts
-   // 结构参考
+   ``` TypeScript
    import { util } from '@kit.ArkTS';
-
+   
+   // 结构参考
    export class ToDo {
-     key: string = util.generateRandomUUID(true);
-     name: string;
-     toDoData: ToDo[] = [];
-
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
      constructor(name: string) {
        this.name = name;
      }
    }
-    ```
-    ```ts
-    // 实现参考
-    if (this.isEditMode) {
-      Checkbox()
-        .onChange((isSelected) => {
-          if (isSelected) {
-            this.selectedItems.push(toDoList.toDoItem); // this.selectedItems为勾选时，记录选中的列表项，可根据实际场景构造
-          } else {
-            let index = this.selectedItems.indexOf(toDoList.toDoItem);
-            if (index !== -1) {
-              this.selectedItems.splice(index, 1); // 取消勾选时，则将此项从selectedItems中删除
-            }
-          }
-        })
-    }
-    ```
+   ```
+
+   实现参考：
+   <!-- @[enter_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
    
+   ``` TypeScript
+   Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+   // ···
+   }
+   // ···
+   .gesture(
+     GestureGroup(GestureMode.Exclusive,
+       LongPressGesture()
+         .onAction(() => {
+           if (!this.isEditMode) {
+             this.isEditMode = true; //进入编辑模式
+           }
+         })
+     )
+   )
+   ```
+
+2. 需要响应用户的选择交互，记录要删除的列表项数据。
+   在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
+
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   import { util } from '@kit.ArkTS';
+   
+   // 结构参考
+   export class ToDo {
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
+     constructor(name: string) {
+       this.name = name;
+     }
+   }
+   ```
+
+   实现参考：
+   <!-- @[is_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   if (this.isEditMode) {
+     Checkbox()
+       .onChange((isSelected) => {
+         if (isSelected) {
+           this.selectedItems.push(new ToDo(this.toDoItem.name)); // this.selectedItems为勾选时，记录选中的列表项，可根据实际场景构造
+         } else {
+           let index = this.selectedItems.indexOf(new ToDo(this.toDoItem.name));
+           if (index !== -1) {
+             this.selectedItems.splice(index, 1); // 取消勾选时，则将此项从selectedItems中删除
+           }
+         }
+       })
+   }
+   ```
+
 3. 需要响应用户点击删除按钮事件，删除列表中对应的选项。
 
-    ```ts
-    // 结构参考
-    import { util } from '@kit.ArkTS';
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   import { util } from '@kit.ArkTS';
+   
+   // 结构参考
+   export class ToDo {
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
+     constructor(name: string) {
+       this.name = name;
+     }
+   }
+   ```
 
-    export class ToDo {
-      key: string = util.generateRandomUUID(true);
-      name: string;
-      toDoData: ToDo[] = [];
-
-      constructor(name: string) {
-        this.name = name;
-      }
-    }
-    ```
-    ```ts
-    // 实现参考
-    Button('删除')
-      .onClick(() => {
-        // this.toDoData为待办的列表项，可根据实际场景构造。点击后删除选中的列表项对应的toDoData数据
-        let leftData = this.toDoData.filter((item) => {
-          return !this.selectedItems.find((selectedItem) => selectedItem == item);
-        })
-        this.toDoData = leftData;
-        this.isEditMode = false;
-      })
-    ```
+   实现参考：
+   <!-- @[implement_deletion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   // app.string.delete 资源文件中的value值为'删除'
+   Button($r('app.string.delete'))
+   // ···
+     .onClick(() => {
+       // this.toDoData为待办的列表项，可根据实际场景构造。点击后删除选中的列表项对应的toDoData数据
+       this.toDoData = this.toDoData.filter(toDoItem =>
+       !this.selectedItems.some(selectedItem => selectedItem.name === toDoItem.name));
+       this.isEditMode = false;
+     })
+   ```
 
 
 ## 长列表的处理
@@ -1009,9 +1161,13 @@ ListItem() {
 当使用懒加载方式渲染列表时，为了更好的列表滚动体验，减少列表滑动时出现白块，List组件提供了cachedCount参数用于设置列表项缓存数，懒加载方式只会预加载List显示区域外cachedCount的内容，而非懒加载会全部加载。无论懒加载还是非懒加载都只布局List显示区域+List显示区域外cachedCount的内容。
 
 
-```ts
-List() {
-  // ...
+<!-- @[implement_cached_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+
+``` TypeScript
+List(
+// ···
+) {
+// ···
 }.cachedCount(3)
 ```
 
@@ -1040,168 +1196,189 @@ List() {
 
 1. 定义列表项数据结构。
 
-    ```ts
-    import { curves } from '@kit.ArkUI';
-
-    interface ItemInfo {
-      index: number,
-      name: string,
-      label: ResourceStr,
-      type?: string,
-    }
-
-    interface ItemGroupInfo extends ItemInfo {
-      children: ItemInfo[]
-    }
-    ```
+   <!-- @[data_structures_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+   import { curves } from '@kit.ArkUI';
+   
+   interface ItemInfo {
+     index: number,
+     name: ResourceStr,
+     label: ResourceStr,
+     type?: string,
+   }
+   
+   interface ItemGroupInfo extends ItemInfo {
+     children: ItemInfo[]
+   }
+   ```
 
 2. 构造列表结构。
 
-    ```ts
-    @State routes: ItemGroupInfo[] = [
-      {
-        index: 0,
-        name: 'basicInfo',
-        label: '个人基本资料',
-        children: [
-          {
-            index: 0,
-            name: '昵称',
-            label: 'xxxx',
-            type: 'Text'
-          },
-          {
-            index: 1,
-            name: '头像',
-            label: $r('sys.media.ohos_user_auth_icon_face'),
-            type: 'Image'
-          },
-          {
-            index: 2,
-            name: '年龄',
-            label: 'xxxx',
-            type: 'Text'
-          },
-          {
-            index: 3,
-            name: '生日',
-            label: 'xxxxxxxxx',
-            type: 'Text'
-          },
-          {
-            index: 4,
-            name: '性别',
-            label: 'xxxxxxxx',
-            type: 'Text'
-          },
-        ]
-      },
-      {
-        index: 1,
-        name: 'equipInfo',
-        label: '设备信息',
-        children: []
-      },
-      {
-        index: 2,
-        name: 'appInfo',
-        label: '应用使用信息',
-        children: []
-      },
-      {
-        index: 3,
-        name: 'uploadInfo',
-        label: '您主动上传的数据',
-        children: []
-      },
-      {
-        index: 4,
-        name: 'tradeInfo',
-        label: '交易与资产信息',
-        children: []
-      },
-      {
-        index: 5,
-        name: 'otherInfo',
-        label: '其他资料',
-        children: []
-      },
-    ];
-    @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
-    @State selection: string | null = null;
-    build() {
-      Column() {
-        // ...
-
-        List({ space: 10 }) {
-          ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
-            ListItemGroup({
-              header: this.ListItemGroupHeader(itemGroup),
-              style: ListItemGroupStyle.CARD,
-            }) {
-              if (this.expandedItems[itemGroup.index] && itemGroup.children) {
-                ForEach(itemGroup.children, (item: ItemInfo) => {
-                  ListItem({ style: ListItemStyle.CARD }) {
-                    Row() {
-                      Text(item.name)
-                      Blank()
-                      if (item.type === 'Image') {
-                        Image(item.label)
-                          .height(20)
-                          .width(20)
-                      } else {
-                        Text(item.label)
-                      }
-                      Image($r('sys.media.ohos_ic_public_arrow_right'))
-                        .fillColor($r('sys.color.ohos_id_color_fourth'))
-                        .height(30)
-                        .width(30)
-                    }
-                    .width("100%")
-                  }
-                  .width("100%")
-                  .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
-                })
-              }
-            }.clip(true)
-          })
-        }
-        .width("100%")
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Start)
-      .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-    }
-    ```
+   <!-- @[list_item_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+     @State routes: ItemGroupInfo[] = [
+       {
+         index: 0,
+         name: 'basicInfo',
+         // app.string.Personal_Basic_Information 资源文件中的value值为'个人基本资料'
+         label: $r('app.string.Personal_Basic_Information'),
+         children: [
+           {
+             index: 0,
+             // app.string.nick_name 资源文件中的value值为'昵称'
+             name: $r('app.string.nick_name'),
+             label: 'xxxx',
+             type: 'Text'
+           },
+           {
+             index: 1,
+             // app.string.avatar 资源文件中的value值为'头像'
+             name: $r('app.string.avatar'),
+             label: $r('sys.media.ohos_user_auth_icon_face'),
+             type: 'Image'
+           },
+           {
+             index: 2,
+             // app.string.age 资源文件中的value值为'年龄'
+             name: $r('app.string.age'),
+             label: 'xxxx',
+             type: 'Text'
+           },
+           {
+             index: 3,
+             // app.string.birthday 资源文件中的value值为'性别'
+             name: $r('app.string.birthday'),
+             label: 'xxxxxxxxx',
+             type: 'Text'
+           },
+           {
+             index: 4,
+             // app.string.gender 资源文件中的value值为''
+             name: $r('app.string.gender'),
+             label: 'xxxxxxxx',
+             type: 'Text'
+           },
+         ]
+       },
+       {
+         index: 1,
+         name: 'equipInfo',
+         // app.string.Device_Information 资源文件中的value值为'设备信息'
+         label: $r('app.string.Device_Information'),
+         children: []
+       },
+       {
+         index: 2,
+         name: 'appInfo',
+         // app.string.Application_usage_information 资源文件中的value值为'应用使用信息'
+         label: $r('app.string.Application_usage_information'),
+         children: []
+       },
+       {
+         index: 3,
+         name: 'uploadInfo',
+         // app.string.data_you_voluntarily_uploaded 资源文件中的value值为'您主动上传的数据'
+         label: $r('app.string.data_you_voluntarily_uploaded'),
+         children: []
+       },
+       {
+         index: 4,
+         name: 'tradeInfo',
+         // app.string.Trading_and_asset_information 资源文件中的value值为'交易与资产信息'
+         label: $r('app.string.Trading_and_asset_information'),
+         children: []
+       },
+       {
+         index: 5,
+         name: 'otherInfo',
+         // app.string.Other_materials 资源文件中的value值为'其他资料'
+         label: $r('app.string.Other_materials'),
+         children: []
+       },
+     ];
+     @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
+     @State selection: string | null = null;
+   
+   // ···
+   
+     build() {
+       // ···
+             Column() {
+               List({ space: 10 }) {
+                 ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
+                   ListItemGroup({
+                     header: this.ListItemGroupHeader(itemGroup),
+                     style: ListItemGroupStyle.CARD,
+                   }) {
+                     if (this.expandedItems[itemGroup.index] && itemGroup.children) {
+                       ForEach(itemGroup.children, (item: ItemInfo) => {
+                         ListItem({ style: ListItemStyle.CARD }) {
+                           Row() {
+                             Text(item.name)
+                             Blank()
+                             if (item.type === 'Image') {
+                               Image(item.label)
+                                 .height(20)
+                                 .width(20)
+                             } else {
+                               Text(item.label)
+                             }
+                             Image($r('sys.media.ohos_ic_public_arrow_right'))
+                               .fillColor($r('sys.color.ohos_id_color_fourth'))
+                               .height(30)
+                               .width(30)
+                           }
+                           .width("100%")
+                         }
+                         .width("100%")
+                         .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
+                       })
+                     }
+                   }.clip(true)
+                 })
+               }
+               .width("100%")
+             }
+             .width('100%')
+             .height('100%')
+             .justifyContent(FlexAlign.Start)
+             .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
+           // ···
+     }
+   }
+   ```
 
 3. 通过改变ListItem的状态，来控制每个列表项是否展开，并通过animation和animateTo来实现展开与折叠过程中的动效效果。
 
-    ```ts
-    @Builder
-    ListItemGroupHeader(itemGroup: ItemGroupInfo) {
-      Row() {
-        Text(itemGroup.label)
-        Blank()
-        Image($r('sys.media.ohos_ic_public_arrow_down'))
-          .fillColor($r('sys.color.ohos_id_color_fourth'))
-          .height(30)
-          .width(30)
-          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 0 : 180) : 180 })
-          .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
-      }
-      .width("100%")
-      .padding(10)
-      .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
-      .onClick(() => {
-        if (itemGroup.children.length) {
-          this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 528, 39) }, () => {
-            this.expandedItems[itemGroup.index] = !this.expandedItems[itemGroup.index];
-          })
-        }
-      })
-    }
-    ```
+   <!-- @[list_item_data_group_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   ListItemGroupHeader(itemGroup: ItemGroupInfo) {
+     Row() {
+       Text(itemGroup.label)
+       Blank()
+       Image($r('sys.media.ohos_ic_public_arrow_down'))
+         .fillColor($r('sys.color.ohos_id_color_fourth'))
+         .height(30)
+         .width(30)
+         .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
+         .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
+     }
+     .width("100%")
+     .padding(10)
+     .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
+     .onClick(() => {
+       if (itemGroup.children.length) {
+         this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 528, 39) }, () => {
+           this.expandedItems[itemGroup.index] = !this.expandedItems[itemGroup.index];
+         })
+       }
+     })
+   }
+   ```
 
 ## 切换布局方向
 
@@ -1213,39 +1390,52 @@ List() {
 
 1. 定义列表项数据结构。
 
-    ```ts
-    interface Message {
-      id: number
-      content: string
-      sender: string
-    }
-    ```
+   <!-- @[listitem_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   
+   ``` TypeScript
+   interface Message {
+     id: number
+     content: ResourceStr
+     sender: ResourceStr
+   }
+   ```
 
 2. 构造列表结构，同时把stackFromEnd接口值设置为true，即可实现list列表在底部插入数据时，内容向上滚动。
 
-    ```ts
-    @State messages: Message[] = [
-        { id: 1, content: '欢迎来到直播间！', sender: '系统' },
-        { id: 2, content: '大家好啊~', sender: '主播' }
-    ];
-    build() {
-      Column() {
-        List({ space: 10 }) {
-          ForEach(this.messages, (item: Message) => {
-            ListItem() {
-              this.MessageItem(item)
-            }
-          }, (item: Message) => item.id.toString())
-        }
-        .stackFromEnd(true)
-        .layoutWeight(1)
-        .alignListItem(ListItemAlign.Center)
-        // ...
-      }
-      .width('100%')
-      .height('100%')
-    }
-    ```
+   <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   
+   ``` TypeScript
+   @State messages: Message[] = [
+     // app.string.welcome_live_room 资源文件中的value值为'欢迎来到直播间'
+     // app.string.system 资源文件中的value值为'系统'
+     { id: 1, content: $r('app.string.welcome_live_room'), sender: $r('app.string.system') },
+     // app.string.hello_everyone 资源文件中的value值为'大家好啊~'
+     // app.string.anchors 资源文件中的value值为'主播'
+     { id: 2, content: $r('app.string.hello_everyone'), sender: $r('app.string.anchors') }
+   ];
+   
+   build() {
+     // ···
+           Column() {
+             // 聊天消息区域
+             List({ space: 10 }) {
+               ForEach(this.messages, (item: Message) => {
+                 ListItem() {
+                   this.MessageItem(item)
+                 }
+               }, (item: Message) => item.id.toString())
+             }
+             .stackFromEnd(true)
+             .layoutWeight(1)  // 占据剩余空间
+             .alignListItem(ListItemAlign.Center)
+   
+             // ···
+           }
+           .width('100%')
+           .height('100%')
+         // ···
+   }
+   ```
 
 ## 支持滑动离手事件
 
@@ -1257,71 +1447,82 @@ List() {
 
 1. 定义新闻条目数据结构。
 
-    ```ts
-    // 结构参考
-    class news {
-      public id: string;
-      public title: string;
-      public content: string;
-      public type: string;
-
-      constructor(id: string, title: string, content: string, type: string) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.type = type;
-      }
-    }
-    ```
+   <!-- @[class_news_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   
+   ``` TypeScript
+   class News {
+     public id: string;
+     public title: ResourceStr;
+     public content: ResourceStr;
+     public type: string;
+   
+     constructor(id: string, title: ResourceStr, content: ResourceStr, type: string) {
+       this.id = id;
+       this.title = title;
+       this.content = content;
+       this.type = type;
+     }
+   }
+   ```
 
 2. 构造新闻条目结构，通过type属性来区分长新闻，短新闻。
 
-    ```ts
-    // 实现参考
-    @State newsData: Array<news> = [
-      new news('1', '新闻标题1', '这是第一条短新闻，内容较少，快速滑动切换', 'short'),
-      new news('2', '新闻标题2', '这是第一条短新闻，内容较少，快速滑动切换', 'short'),
-      new news('3', '新闻标题3', '这是第二条长新闻，内容较多，可以自由滑动查看完整内容。'.repeat(20), 'long'),
-      new news('4', '新闻标题4', '这是第三条短新闻，内容较少，快速滑动切换', 'short'),
-      new news('5', '新闻标题5', '这是第四条长新闻，内容较多，可以自由滑动查看完整内容。', 'long')
-    ];
-    ```
+   <!-- @[news_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   
+   ``` TypeScript
+   @State newsData: Array<News> = [
+     // app.string.new_title 资源文件中的value值为'新闻标题'
+     // app.string.new_short 资源文件中的value值为'这是第一条短新闻，内容较少，快速滑动切换'
+     new News('1', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     new News('2', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     // app.string.new_long 资源文件中的value值为'这是第二条长新闻，内容较多，可以自由滑动查看完整内容。'
+     new News('3', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
+     new News('4', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     new News('5', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
+   ];
+   ```
 
 3. 滑动离手事件onWillStopDragging及新闻处理逻辑：
    - 上报离手瞬间滑动速度，支持正负方向速度检测，向上滑动为正，向下滑动为负。
 
-     ```ts
-     // 实现参考
-     onWillStopDragging((velocity: number) => {
+     <!-- @[scroll_index_scroller_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     .onWillStopDragging((velocity: number) => {
        if (velocity < 0) {
          // 向下滑动处理
        } else {
          // 向上滑动处理
        }
+     // ···
      })
      ```
 
    - 通过getItemRect接口方法获取当前项位置信息。
 
-     ```ts
-     // 实现参考
+     <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
      ```
-     
+
    - 处理短新闻：直接跳转相邻项。
+
+     <!-- @[scroll_to_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
      
-     ```ts
-     // 实现参考
+     ``` TypeScript
      if (velocity > 10) {
-       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START)
      } else if (velocity < -10) {
-       this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+       this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START)
      }
      ```
 
    - 处理长新闻：计算剩余显示范围决定滚动终点。
    
-     ```ts
+     <!-- @[scroller_for_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
      if (velocity < -30) {
        if (rect) {

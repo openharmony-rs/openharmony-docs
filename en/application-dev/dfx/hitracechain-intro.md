@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -36,6 +36,8 @@ HiTraceChain is a lightweight implementation of the distributed call chain traci
 
 
 ## Constraints
+
+If [asynchronous call flag](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceflag) is enabled, **HiTraceId** can be automatically passed in the mechanism that supports HiTraceChain automatic transfer.
 
 The following table lists some common mechanisms that support and do not support HiTraceChain automatic transfer. If it is not supported, **HiTraceId** cannot be passed to the created asynchronous tasks, threads, or processes. As a result, the HiTraceChain tracing is interrupted. In this case, you need to manually pass and set **HiTraceId** to implement complete tracing.
 

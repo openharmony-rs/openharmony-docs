@@ -134,14 +134,17 @@ struct Index {
     private navId: string = "page_1"; // 假设当前页面的导航id为page_1，详见PiPConfiguration定义，具体导航名称由开发者自行定义。
     private contentWidth: number = 800; // 假设当前内容宽度800px。
     private contentHeight: number = 600; // 假设当前内容高度600px。
+    private pageId: number = this.getUniqueId(); // 获取当前页面Id。
     private para: Record<string, number> = { 'PropA': 47 };
     private localStorage: LocalStorage = new LocalStorage(this.para);
     private res: boolean = this.localStorage.setOrCreate('PropB', 121);
     private defaultWindowSizeType: number = 1; // 指定画中画第一次拉起窗口为小窗口。
+    private cornerAdsorptionEnabled: boolean = true;
     private config: PiPWindow.PiPConfiguration = {
         context: this.getUIContext().getHostContext() as Context,
         componentController: this.mXComponentController,
         navigationId: this.navId,
+        handleId: this.pageId,
         templateType: PiPWindow.PiPTemplateType.VIDEO_PLAY,
         contentWidth: this.contentWidth,
         contentHeight: this.contentHeight,
@@ -149,6 +152,7 @@ struct Index {
         customUIController: this.nodeController, // 可选，如果需要在画中画显示内容上方展示自定义UI，可设置该参数。
         localStorage: this.localStorage, // 可选，如果需要跟踪主窗实例，可设置此参数。
         defaultWindowSizeType: this.defaultWindowSizeType, // 可选，如果需要配置默认启动窗口档位，可设置此参数。
+        cornerAdsorptionEnabled: this.cornerAdsorptionEnabled, // 可选，默认为true，如果不需要画中画窗口四角吸附，可设置此参数为false。
     };
 
     createPiP() {
@@ -266,6 +270,7 @@ struct Index {
 | context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否  | 否 | 表示上下文环境。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
 | componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | 否  | 否 | 表示原始[XComponent](arkui-ts/ts-basic-components-xcomponent.md)控制器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
 | navigationId        | string                                                           | 否  | 是 | 当前page导航id，不传值则默认不需要缓存页面。<br/>1、UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。<br/>2、UIAbility使用[Router](js-apis-router.md)管理页面时，无需设置navigationId。<br/>3、UIAbility只有单页面时，无需设置navigationId，还原场景下也能够从画中画窗口恢复到原页面。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| handleId<sup>22+</sup>        | number                                                                     | 否  | 是 | 画中画还原的页面ID，点击["恢复全屏窗口"](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/pipwindow-overview#section13787164103315)按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](arkui-ts/ts-basic-components-navigation.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12)获取页面ID。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | templateType        | [PiPTemplateType](#piptemplatetype)                                        | 否  | 是 | 模板类型，用以区分视频播放、视频通话或视频会议，不传值则默认为视频播放模板。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
 | contentWidth        | number                                                                     | 否  | 是 | 原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
 | contentHeight       | number                                                           | 否  | 是 | 原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](#pipwindowcreate12)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](#pipwindowcreate)创建PiPController时，不传值则默认为[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件的高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                             |
@@ -273,6 +278,7 @@ struct Index {
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 用于实现在画中画界面内容上方展示自定义UI功能，不传值则默认不使用自定义UI功能。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                          |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                                                                          |
 | defaultWindowSizeType<sup>19+</sup>| number                                                                     | 否   | 是  |  应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上次画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                 |
+| cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。当开启画中画四角吸附功能后，屏幕将被划分为四个热区：以屏幕的上下中线和左右中线为界，形成左上、右上、左下、右下四个区域。用户拖动画中画窗口并松手后，系统将根据窗口中心点所处的热区，自动将窗口吸附到对应角落。<br/>true：表示开启画中画四角吸附功能。<br/>false：表示关闭画中画四角吸附功能。<br/>不传值则为默认值true。<br/>**设备行为差异：** 该接口在Phone、Tablet设备上可正常调用，在其他设备上不生效。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                                 |
 
 ## PiPWindowSize<sup>15+</sup>
 
@@ -1192,4 +1198,56 @@ try {
 } catch (exception) {
   console.error(`Failed to disable the listener for pip window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+```
+
+### on('activeStatusChange')<sup>22+</sup>
+
+on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
+
+开启画中画窗口隐藏状态变化事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|---------------------------------------------|-------|---------------------------------------------------|
+| type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
+| callback | Callback\<boolean\> | 是 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.on('activeStatusChange', callback);
+```
+
+### off('activeStatusChange')<sup>22+</sup>
+
+off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
+
+关闭画中画窗口隐藏状态变化事件的监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|----------|------------|----|---------------------------------------------------------------------|
+| type | string | 是 | 监听事件，固定为'activeStatusChange'，即画中画隐藏状态变化事件。 |
+| callback | Callback\<boolean\> | 否 | 返回当前画中画的隐藏状态。true表示前台可见，false表示前台不可见（收入侧边栏）。如果未传入参数，解除type为'activeStatusChange'的所有回调。 |
+
+**示例：**
+
+```ts
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+this.pipController.off('activeStatusChange', callback);
 ```

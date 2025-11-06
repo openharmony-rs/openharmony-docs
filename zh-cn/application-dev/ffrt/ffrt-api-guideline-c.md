@@ -191,6 +191,7 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 描述
 
 - 设置任务的调度时延，任务会在时延间隔之后才调度执行。不设置的情况下，默认时延为零。
+- 目前通过此接口设置任务的调度时延后，该任务不支持设置输入输出依赖关系。
 
 **ffrt_task_attr_get_delay**
 

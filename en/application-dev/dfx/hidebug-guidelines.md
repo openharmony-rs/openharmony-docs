@@ -15,7 +15,7 @@ For details about the APIs, see [ArkTS API Reference](../reference/apis-performa
 
 ## Constraints
 
-API calls of this module are time-consuming. Some API calls take seconds, which may cause thread freezes. It is recommended that the APIs of the HiDebug module be used only in the application debugging and optimization phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
+API calls of this module are time-consuming. Some API calls take seconds, causing thread freeze. In addition, it is recommended that the APIs in the HiDebug module be used only in the application debugging and optimization phases. If the APIs are required in other scenarios, evaluate the impact of the APIs on application performance.
 
 ## Obtaining Memory Information
 
@@ -28,16 +28,15 @@ HiDebug can obtain the system memory, application process memory usage, applicat
 | hidebug.getNativeHeapSize | Obtains the total number of bytes occupied by the total space (**uordblks** and **fordblks**, which are obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
 | hidebug.getNativeHeapAllocatedSize | Obtains the total number of bytes occupied by the total allocated space (**uordblks**, which is obtained through **mallinfo**) held by a process, which is measured by the memory allocator.|
 | hidebug.getNativeHeapFreeSize | Obtains the total number of bytes occupied by the total free space (**fordblks**, which is obtained from **mallinfo**) held by a process, which is measured by the memory allocator.|
-| hidebug.getPss | Obtains the size of the physical memory actually used by the application process. This API is implemented by reading and summing up the values of **Pss** and **SwapPss** in the **/proc/{pid}/smaps_rollup** node.|
+| hidebug.getPss | Obtains the size of the physical memory actually used by the application process. This API is implemented by reading and summing up the values of <b class="+ topic/ph hi-d/b " id="b7835135125313">Pss</b> and <b class="+ topic/ph hi-d/b " id="b188351351155317">SwapPss</b> in the <b class="+ topic/ph hi-d/b " id="b183595116532">/proc/{pid}/smaps_rollup</b> node.|
 | hidebug.getVss | Obtains the virtual set size used by the application process. This API is implemented by reading the value of **size** (number of memory pages) from the **/proc/{pid}/statm** node and calculating the value using the following formula: **vss** = **size** × page size (4 KB/page).|
 | hidebug.getSharedDirty | Obtains the size of the shared dirty memory of a process. This API is implemented by reading the value of **Shared_Dirty** in **/proc/{pid}/smaps_rollup**.|
 | hidebug.getPrivateDirty | Obtains the size of the private dirty memory of a process. This API is implemented by reading the value of **Private_Dirty** in the **/proc/{pid}/smaps_rollup** node.|
 | hidebug.getAppNativeMemInfo | Obtains the memory information of the application process. This API is implemented by reading data from the **/proc/{pid}/smaps_rollup and /proc/{pid}/statm** node.|
-| hidebug.getAppNativeMemInfoAsync | Obtains the memory information of an application process in asynchronous mode.<br>**Note**: This API is supported since API version 20.|
-| hidebug.getAppNativeMemInfoWithCache | Obtains the memory information of an application process. This API has a cache mechanism to improve its performance.<br>**Note**: This API is supported since API version 20.|
+| hidebug.getAppNativeMemInfoAsync | Obtains the memory information of an application process in asynchronous mode.<br>Note: This API is supported since API version 20.|
+| hidebug.getAppNativeMemInfoWithCache | Obtains the memory information of an application process. This API has a cache mechanism to improve its performance.<br>Note: This API is supported since API version 20.|
 | hidebug.getSystemMemInfo | Obtains system memory information. This API is implemented by reading data from the **/proc/meminfo** node.|
 | hidebug.getAppMemoryLimit | Obtains the memory limit of an application process. **rsslimit** and **vsslimit** are the values of **RLIMIT_RSS** and **RLIMIT_AS** obtained through the **getrlimit** API, respectively.|
-| hidebug.setJsRawHeapTrimLevel | Sets the trimming level of the original heap snapshot stored by the current process.<br>**Note**: This API is supported since API version 20.|
 
 ### APIs (C/C++)
 
@@ -45,33 +44,35 @@ HiDebug can obtain the system memory, application process memory usage, applicat
 | -------- | -------- |
 | OH_HiDebug_GetSystemMemInfo | Obtains system memory information. This API is implemented by reading data from the **/proc/meminfo** node.|
 | OH_HiDebug_GetAppNativeMemInfo | Obtains the memory information of the application process. This API is implemented by reading data from the **/proc/{pid}/smaps_rollup and /proc/{pid}/statm** node.|
-| OH_HiDebug_GetAppNativeMemInfoWithCache | Obtains the memory information of an application process. This API has a cache mechanism to improve its performance.<br>**Note**: This API is supported since API version 20.|
-| OH_HiDebug_GetAppMemoryLimit | Obtains the memory limit of an application process. **rsslimit** and **vsslimit** are the values of **RLIMIT_RSS** and **RLIMIT_AS** obtained through the getrlimit API, respectively.|
+| OH_HiDebug_GetAppNativeMemInfoWithCache | Obtains the memory information of an application process. This API has a cache mechanism to improve its performance.<br>Note: This API is supported since API version 20.|
+| OH_HiDebug_GetAppMemoryLimit | Obtains the memory limit of an application process. **rsslimit** and **vsslimit** are the values of **RLIMIT_RSS** and **RLIMIT_AS** obtained through the **getrlimit** API, respectively.|
 
 ## Obtaining GPU Memory Information
 
 HiDebug can obtain the GPU memory information of an application. In graphics-intensive applications, GPU memory management is critical. Misuse of GPU memory resources will cause severe frame freezes and affect user experience. GPU memory resources include:
 
-1. Memory tracked by MemoryTracker, which is directly allocated by the GPU driver using the physical page allocator. Its size depends on the implementation of the GPU hardware driver.
+1. **graph**: DMA memory usage of the process, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.
 
-2. Memory occupied by RenderService for loading required resources, such as images and textures.
+2. **gl**: Memory occupied by RenderService for loading required resources, such as images and textures.
 
 ### APIs (ArkTS)
 
-| Name| Description  |
-| -------- | -------- |
-| hidebug.getGraphicsMemory | Obtains the GPU memory size of an application in asynchronous mode.|
-| hidebug.getGraphicsMemorySync | Obtains the GPU memory size of an application in synchronous mode.|
+| Name| Description                                                |
+| -------- |----------------------------------------------------|
+| hidebug.getGraphicsMemory | Obtains the total GPU memory size (**graph** + **gl**) of an application in asynchronous mode.                     |
+| hidebug.getGraphicsMemorySync | Obtains the total GPU memory size (**graph** + **gl**) of an application in synchronous mode.|                   
+| hidebug.getGraphicsMemorySummary | Obtains the GPU memory data of an application in asynchronous mode.<br>Note: This API is supported since API version 21.|
 
 ### APIs (C/C++)
 
-| Name| Description  |
-| -------- | -------- |
-| OH_HiDebug_GetGraphicsMemory | Obtains the GPU memory size of an application.|
+| Name| Description                                            |
+| -------- |------------------------------------------------|
+| OH_HiDebug_GetGraphicsMemory | Obtains the total GPU memory size (**graph** + **gl**) of an application.                   |
+| OH_HiDebug_GetGraphicsMemorySummary | Obtains the GPU memory data of an application.<br>Note: This API is supported since API version 21.|
 
 ## Obtaining CPU Usage
 
-Monitoring the CPU usage is critical to performance analysis during application development. It helps optimize application performance and ensure smooth running. HiDebug provides multiple APIs to obtain the CPU usage.
+Monitoring the CPU usage is critical to performance analysis during application development. To help you optimize application performance and ensure smooth running of applications, the HiDebug module provides multiple APIs for obtaining the CPU usage.
 
 ### Implementation Principles
 
@@ -89,27 +90,27 @@ cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
 
 Fields in the CPU indicator:
 
-The CPU statistics from left to right are as follows (**cpu** indicates the total running data of the CPU):
+The CPU statistics from left to right are as follows (**cpu** indicates the total running data of all CPUs, in jiffies):
 
-- **user**: user-mode time, in jiffies
+- **user**: user-mode time occupied by non-low-priority processes (**nice** ≤ 0).
 
-- **nice**: nice user-mode time, in jiffies
+- **nice**: user-mode time occupied by low-priority processes (**nice** > 0).
 
-- **system**: kernel-mode time, in jiffies
+- **system**: kernel-mode time.
 
-- **idle**: idle time, in jiffies (excluding the I/O wait time)
+- **idle**: idle time (excluding the I/O waiting time).
 
-- **iowait**: I/O wait time, in jiffies
+- **iowait**: I/O waiting time.
 
-- **irq**: hard interrupt time, in jiffies
+- **irq**: hard interrupt time.
 
-- **softirq**: soft interrupt time, in jiffies
+- **softirq**: soft interrupt time.
 
-- **steal**: stolen time (time spent running other operating systems in a virtual environment)
+- **steal**: time when a process that is not running on the VM is running in the virtualization environment.
 
-- **guest**: guest time (time spent running virtual CPUs by the operating system)
+- **guest**: time when non-low-priority processes (**nice** ≤ 0) are running on the VM (included in the **user** field).
 
-- **guest_nice**: nice guest time (time spent running a guest with a **nice** value)
+- **guest_nice**: time when low-priority processes (**nice** > 0) are running on the VM (included in the **nice** field).
 
 2. Process/Thread CPU usage data
 
@@ -176,9 +177,11 @@ HiDebug can obtain VM memory data, GC statistics, and VM heap dump data.
 | hidebug.getAppVMMemoryInfo | Obtains VM memory information.|
 | hidebug.getVMRuntimeStats | Obtains the system [GC](../arkts-utils/gc-introduction.md) statistics.|
 | hidebug.getVMRuntimeStat | Obtains the specified system [GC](../arkts-utils/gc-introduction.md) statistics based on parameters.|
-| hidebug.dumpJsRawHeapData | Dumps the original VM heap snapshot for the current thread in asynchronous mode. This API is used for JavaScript memory leak analysis.|
-| hidebug.dumpJsHeapData | Dumps the VM heap data in synchronous mode. This API is used for JavaScript memory leak analysis.|
+| hidebug.dumpJsRawHeapData | Dumps the original VM heap snapshot for the current thread in asynchronous mode. This API is used for JavaScript memory leak analysis.<br>Note: This API is supported since API version 18.|
+| hidebug.setJsRawHeapTrimLevel | Sets the trimming level of the original heap snapshot stored by the current process.<br>Note: This API is supported since API version 20.|
+| hidebug.dumpJsHeapData | Dumps the VM heap data in synchronous mode. This API is used for [JavaScript memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).|
 | hidebug.getAppMemoryLimit | Obtains the memory limit of an application process. **vmHeapLimit** is the VM heap size limit of the current thread, and **vmTotalHeapSize** is the total size limit of all VM heaps in the current process.|
+| hidebug.getAppVMObjectUsedSize | Obtains the VM memory size occupied by ArkTS objects.<br>Note: This API is supported since API version 21.|
 
 ## Obtaining Application Trace Records
 
@@ -237,6 +240,76 @@ As shown in the preceding figure, the address adjacent to the FP stores the FP a
 | OH_HiDebug_BacktraceFromFp | Obtains the backtrace frame starting from the specified stack frame pointer.<br>Note: This API is supported since API version 20.|
 | OH_HiDebug_SymbolicAddress | Obtains detailed symbol information based on the specified program counter (PC).<br>Note: This API is supported since API version 20.|
 
+## Thread Stack Perf Sampling
+
+HiDebug provides the Perf sampling functionality for the thread stack. This API periodically collects the running status of threads, accurately captures performance hotspots and hotspot functions at low performance overhead, and analyzes the call chain relationships of hotspot functions.
+
+### Sampling Stack Specifications
+
+The following is an example of the Perf sampling result:
+
+   ```text
+Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
+42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)
+  42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)
+    42 #02 pc 000000000003b428 /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::Worker::ExecuteInThread(void const*)+460)(40aaf52f6b737f011eed52936860111f)
+      42 #03 pc 0000000000018794 /system/lib64/platformsdk/libuv.so(uv_run+420)(eed416babeadbcffb483fd111b5effe6)
+        42 #04 pc 0000000000029bec /system/lib64/platformsdk/libuv.so(uv__io_poll+1060)(eed416babeadbcffb483fd111b5effe6)
+          42 #05 pc 0000000000018180 /system/lib64/platformsdk/libuv.so(uv__async_io+364)(eed416babeadbcffb483fd111b5effe6)
+            42 #06 pc 000000000003c724 /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::Worker::PerformTask(uv_async_s const*)+1408)(40aaf52f6b737f011eed52936860111f)
+              42 #07 pc 00000000000540e0 /system/lib64/platformsdk/libace_napi.z.so(napi_call_function+184)(61530eabcb1b8bae5c105ebcb2151bc1)
+                42 #08 pc 000000000078fab8 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+940)(bc704f4139f03a59a1d34448f7b59fd0)
+                  42 #09 pc 00000000001e5170 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+268)(bc704f4139f03a59a1d34448f7b59fd0)
+                    42 #10 at AddThread (entry|entry|1.0.0|src/main/ets/pages/Index.ts:13:21)
+                      42 #11 pc 00000000004494b0 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis2Imm8V8V8V8StwCopy+396)
+                        42 #12 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+                          42 #13 pc 000000000005ad2c /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+224)(61530eabcb1b8bae5c105ebcb2151bc1)
+                            42 #14 pc 000000000000a498 /data/storage/el1/bundle/libs/arm64/libentry.so(94ed3a52d7ef751a94358709d11c99545960cdd4)
+                              41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+                              1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+   ```
+The first line contains the thread ID, thread name, CPU time occupied by the target thread during API calling, and the number of samplings of the thread. (The CPU time occupied by the target thread is slightly greater than the actual CPU time during sampling because the API consumes performance.) The number of thread samplings is less than or equal to the number of samplings (Sampling frequency (Hz) × Sampling time (ms) × Unit conversion (1s/1000ms)).
+
+Except the first line, each line indicates a piece of stack information. The following describes the meaning of a line of stack frame information:
+
+Native frame:
+
+   ```text
+   41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
+   ^   ^       ^                                                      ^              ^                   ^ 
+   1   2       3                                                      4              5                   6
+   
+   1 indicates the number of times that the frame is sampled. The value is less than or equal to the number of thread samplings.
+   2 indicates the call level of the frame, which corresponds to the line indentation size. The number of samplings of the current level is the sum of the number of samplings of the next level.
+   3 indicates the Program Counter (PC) value of the native frame.
+   4 indicates the path of the called file.
+   5 indicates the name of the called function and the code line offset.
+   6 indicates the MD5 value of the .so file.
+   ```
+
+JS frame:
+
+   ```text
+   42 #10 at AddThread (entry|entry|1.0.0|src/main/ets/pages/Index.ts:13:21)
+   ^   ^         ^                                             ^
+   1   2         3                                             4
+   
+   1 indicates the number of times that the frame is sampled, which is the same as that of the native frame.
+   2 indicates the invoking level of the frame, which is the same as that of the native frame.
+   3 indicates the name of the called function.
+   4 indicates the path, file, row number, and column number of the called function.
+   ```
+
+> **NOTE**
+>
+> When Perf is used to sample the kernel stack backtrace, the sampling stack depth is less than 50, and the frame-pointer is required. If the collected call stack is interrupted in a third-party library, check whether the stack pointer functionality is enabled for the third-party library.
+
+### APIs (C/C++)
+
+| Name| Description      |
+| -------- |----------|
+| OH_HiDebug_RequestThreadLiteSampling | Applies for thread stack sampling.<br>Note: This API is supported since API version 22.|
+
 ## Setting Resource Leak Detection Threshold
 
 HiDebug provides APIs for setting the threshold of system resource leak detection. You can customize this threshold as required. This API is used to assist in memory leak detection and feature development. For details, see [Analyzing Resource Leaks](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines).
@@ -247,17 +320,17 @@ HiDebug provides APIs for setting the threshold of system resource leak detectio
 | -------- | -------- |
 | hidebug.setAppResourceLimit | Sets the threshold for triggering resource leak detection based on the number of file descriptors (FDs), number of threads, JavaScript memory, or native memory of an application.|
 
-## Managing GWP-Asan
+## Managing GWP-ASan
 
-HiDebug provides the capabilities of enabling and disabling GWP-Asan and querying the number of days when GWP-Asan is enabled.
+HiDebug provides the capabilities of enabling and disabling GWP-ASan and querying the number of days when GWP-ASan is enabled.
 
 ### APIs (ArkTS)
 
 | Name| Description|
 | -------- | -------- |
-| hidebug.enableGwpAsanGrayscale | Enables GWP-Asan to detect illegal behaviors in heap memory usage.|
-| hidebug.disableGwpAsanGrayscale | Disables GWP-Asan.|
-| hidebug.getGwpAsanGrayscaleState | Obtains the number of remaining days for enabling GWP-Asan.|
+| hidebug.enableGwpAsanGrayscale | Enables GWP-ASan to detect illegal behaviors in heap memory usage.<br>Note: This API is supported since API version 20.|
+| hidebug.disableGwpAsanGrayscale | Disables GWP-ASan.<br>Note: This API is supported since API version 20.|
+| hidebug.getGwpAsanGrayscaleState | Obtains the remaining days for which GWP-ASan is enabled.<br>Note: This API is supported since API version 20.|
 
 ## Others
 
@@ -276,7 +349,7 @@ What should I do if the **OH_HiDebug_StartAppTraceCapture** and **startAppTraceC
 
 The returned path is the real physical path on the device. If you need to access the path in the application, convert the real physical path to the sandbox path by referring to [Mappings Between Application Sandbox Paths and Physical Paths](../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).
 
-Example: **/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace** -> **/data/storage/el2/base/trace/com.example.myapplication_20250604_173158.trace**
+Example: **/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace** -> **/data/storage/el2/log/trace/com.example.myapplication_20250604_173158.trace**
 
 What should I do if the **OH_HiDebug_GetAppThreadCpuUsage** and **getAppThreadCpuUsage** APIs report that the CPU usage of a newly created thread is 0?
 

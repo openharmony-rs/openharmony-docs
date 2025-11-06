@@ -15,37 +15,37 @@ Process exit is treated as the default exception handling method. However, if us
 
 If the [application recovery](#available-apis) functionality is enabled in [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#abilitystage) and temporary data is saved, the previous application state and data will be restored upon next startup in the case of an abnormal exit, providing more consistent user experience. The application state includes two parts, namely, the page stack and the data saved in **onSaveState**.
 
-In API version 9, application recovery is supported only for a single ability of the application developed using the stage model. Application state saving and automatic restart are performed when a JsError occurs.
+In API version 9, application recovery is supported only for single-UIAbility applications developed using the stage model. Application state saving and automatic restart are performed when a JsError occurs.
 
-In API version 10, application recovery is applicable to multiple abilities of an application developed using the stage model. Application state storage and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
+In API version 10, application recovery is supported for multi-UIAbility applications developed using the stage model. Application state storage and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
 
 ## Available APIs
 
 The application recovery APIs are provided by the appRecovery module, which can be imported via **import**. For details, see [How to Develop](#how-to-develop).
 
-### Available APIs
+### Application Recovery APIs
 
 | API| Description|
 | -------- | -------- |
-| enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void | Enables application recovery. After this API is called, the first ability that is displayed when the application is started from the initiator can be restored.|
-| saveAppState(): boolean | Saves the state of the ability that supports recovery in the current application.|
-| restartApp(): void | Restarts the current process and starts the ability specified by **setRestartWant**. If no ability is specified, a foreground ability that supports recovery is restarted.|
-| saveAppState(context?: UIAbilityContext): boolean | Saves the ability state specified by **Context**.|
-| setRestartWant(want: Want): void | Sets the abilities to restart when **restartApp** is actively called and **RestartFlag** is not **NO_RESTART**. The abilities must be under the same bundle name and must be a **UIAbility**.|
+| enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFlag, saveMode?: SaveModeFlag) : void | Enables the application recovery functionality.|
+| saveAppState(): boolean | Saves the state of the UIAbility that supports recovery in the current application.|
+| restartApp(): void | Restarts the current process and starts the UIAbility specified by **setRestartWant**. If no UIAbility is specified, a foreground UIAbility that supports recovery is restarted.|
+| saveAppState(context?: UIAbilityContext): boolean | Saves the UIAbility state specified by **Context**.|
+| setRestartWant(want: Want): void | Sets the UIAbility to be restarted when **restartApp** is called and **RestartFlag** is not set to **NO_RESTART**. (**abilityName** of **want** can be set to the name of the UIAbility.) The UIAbility must be under the same bundle name.|
 
 No error will be thrown if the preceding APIs are used in the troubleshooting scenario. The following are some notes on API usage: For details about the parameters, see [@ohos.app.ability.appRecovery (Application Recovery)](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md).
 
-**enableAppRecovery**: This API should be called during application initialization. For example, you can call this API in **onCreate** of **AbilityStage**.
+**enableAppRecovery**: This API should be called during application initialization. For example, you can call this API in **onCreate** of **AbilityStage**. After this API is called, the application will be recovered based on the first UIAbility that supports recovery.
 
-**saveAppState**: After this API is called, the recovery framework invokes **onSaveState** for all abilities that support recovery in the current process. If you choose to save data in **onSaveState**, the related data and ability page stack are persistently stored in the local cache of the application. To save data of the specified ability, you need to specify the context corresponding to that ability.
+**saveAppState**: After this API is called, the recovery framework invokes **onSaveState** for all UIAbilities that support recovery in the current process. If you choose to save data in **onSaveState**, the related data and UIAbility page stack are persistently stored in the local cache of the application. To save data of the specified UIAbility, you need to specify the context corresponding to that UIAbility.
 
-**setRestartWant**: This API specifies the ability to be restarted by **appRecovery**.
+**setRestartWant**: This API specifies the UIAbility to be restarted by **appRecovery**.
 
-**restartApp**: After this API is called, the recovery framework kills the current process and restarts the ability specified by **setRestartWant**, with **APP_RECOVERY** set as the startup cause.
+**restartApp**: After this API is called, the recovery framework kills the current process and restarts the UIAbility specified by **setRestartWant**, with **APP_RECOVERY** set as the startup cause.
 
-In API version 9 and scenarios where an ability is not specified by **setRestartWant**, the last foreground ability that supports recovery is started. If the no foreground ability supports recovery, the application crashes.
+In API version 9 and scenarios where a UIAbility is not specified by **setRestartWant**, the last foreground UIAbility that supports recovery is started. If the no foreground UIAbility supports recovery, the application crashes.
 
-If a saved state is available for the restarted ability, the saved state is passed as the **wantParam** attribute in the **want** parameter of the ability's **onCreate** callback. The interval between two restarts must be greater than 1 minute. If this API is called repeatedly within 1 minute, the application exits but does not restart. The behavior of automatic restart is the same as that of proactive restart.
+If a saved state is available for the restarted UIAbility, the saved state is passed as the **wantParam** attribute in the **want** parameter of the UIAbility's **onCreate** callback. The interval between two restarts must be greater than 1 minute. If this API is called repeatedly within 1 minute, the application exits but does not restart. The behavior of automatic restart is the same as that of proactive restart.
 
 ### Application State Management
 
@@ -83,7 +83,7 @@ You are advised to handle application exceptions using errorManager. After the e
 
 If you do not register ErrorObserver or enable application recovery, the process exits according to the default system logic. Users can restart the application from the home screen.
 
-If you have enabled application recovery, the recovery framework first checks whether application state saving is supported and whether the application state saving is enabled. If so, the recovery framework calls [onSaveState](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate) of the ability. Finally, the application is restarted.
+If you have enabled application recovery, the recovery framework first checks whether application state saving is supported and whether the application state saving is enabled. If so, the recovery framework calls [onSaveState](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate) of the UIAbility. Finally, the application is restarted.
 
 ### Supported Application Recovery Scenarios
 
@@ -95,7 +95,7 @@ Common fault types include JavaScript application crash, application freezing, a
 | [APP_FREEZE](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | This fault is supported since API version 18.| Supported| Supported| Supported|
 | [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | Not supported| Not supported| Not supported| Supported|
 
-**State Saving** in the table header means saving of the application state when a fault occurs. To protect user data as much as possible when an AppFreeze occurs, you can adopt either the periodic or automatic way, and the latter will save user data when an ability is switched to the background.
+**State Saving** in the table header means to save the application state when a fault occurs. To protect user data as much as possible when an AppFreeze occurs, you can adopt either the periodic or automatic way, and the latter will save user data when a UIAbility is switched to the background.
 
 ## How to Develop
 
@@ -116,9 +116,9 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### Enabling Application Recovery for the Specified Abilities
+### Configuring the Recoverable UIAbility
 
-Generally, the ability configuration list is named **module.json5**.
+Generally, the UIAbility configuration list is named **module.json5**.
 
 ```json
 {
@@ -132,7 +132,7 @@ Generally, the ability configuration list is named **module.json5**.
 
 ### Saving and Restoring Data
 
-After enabling **appRecovery**, you can use this function by either actively or passively saving the application state and restoring data in the ability.
+After enabling **appRecovery**, you can use this functionality by either actively or passively saving the status and restoring data in a UIAbility.
 
 The following is an example of **EntryAbility**:
 
@@ -167,8 +167,8 @@ export default class EntryAbility extends UIAbility {
 
     windowStage.loadContent("pages/index", (err, data) => {
         if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-        return;
+            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            return;
         }
         console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
     })
@@ -185,7 +185,7 @@ import { AbilityConstant, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // The ability is called to save application data.
+        // The UIAbility is called to save application data.
         console.log("[Demo] EntryAbility onSaveState");
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
@@ -264,7 +264,7 @@ export default class EntryAbility extends UIAbility {
     }
 
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // The ability is called to save application data.
+        // The UIAbility is called to save application data.
         console.log("[Demo] EntryAbility onSaveState");
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
@@ -272,9 +272,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-**Restart flag for the failed ability**
+**Restart flag for the failed UIAbility**
 
-If the failed ability is restarted again, the [ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) flag will be added as a **parameters** member for the **want** parameter in **onCreate** and its value is **true**.
+If the failed UIAbility is restarted again, the [ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) flag will be added as a **parameters** member for the **want** parameter in **onCreate** and its value is **true**.
 
 ```ts
 import { AbilityConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';

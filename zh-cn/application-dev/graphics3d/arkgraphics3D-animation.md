@@ -10,82 +10,153 @@
 
 ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活地控制动画的状态，达到预期的渲染效果。
 
+## 开发步骤
+  1. 导入相关模块。
 
-## 动画资源的创建
-动画资源是模型资源制作者在制作模型的过程中制作并保存到模型文件中的。ArkGraphics 3D提供从glTF模型资源中提取并播放动画的能力，进而使得开发者可以进行动画状态的控制。
-```ts
-import { Animation, Scene } from '@kit.ArkGraphics3D';
+     在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。
 
-function createAnimation(): void {
-  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result && result.animations && result.animations[0]) {
-      // 获取动画资源
-      let anim: Animation = result.animations[0];
-    }
-  });
-}
-```
+     <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     ```
 
+  2. 加载场景资源。
 
-## 动画状态的控制
-ArkGraphics 3D提供的动画状态控制操作主要包含如下几种：
-- 开始（start）：基于当前进度开始播放一个动画。
-- 停止（stop）：停止播放一个动画，并将动画的进度设置到未开始状态。
-- 结束（finish）：直接跳转到动画的最后，并将动画的进度设置到已结束状态。
-- 暂停（pause）：将动画暂停，动画的播放进度保持在当前状态。
-- 重启（restart）：从动画的起点开始播放动画。
+     调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。
 
-示例代码如下：
-```ts
-import { Animation, Scene } from '@kit.ArkGraphics3D';
+     <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
+       .then(async (result: Scene) => {
+         this.scene = result;
+         let rf: SceneResourceFactory = this.scene.getResourceFactory();
+       // ···
+       }).catch((err: string) => {
+         console.error(err);
+     });
+     ```
 
-function animationControl(): void {
-  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result && result.animations && result.animations[0]) {
-      let anim: Animation = result.animations[0];
-      // 动画状态控制方法示例，仅用于展示接口，非实际播放流程
-      anim.start();
-      anim.pause();
-      anim.stop();
-      anim.restart();
-      anim.finish();
-    }
-  });
-}
-```
+  3. 获取动画并注册回调。
 
+     从scene.animations[0]获取动画资源，启用并注册onStarted()、onFinished()回调，用于监听动画播放状态或触发逻辑。
+     ArkGraphics 3D提供以下动画回调接口：
+      - onStarted()：动画开始播放时触发，start与restart操作均会调用。
+      - onFinished()：动画播放完成或执行finish操作时触发。
 
-## 动画回调的使用
-动画回调指的是在动画执行到某些状态时执行的函数，用于帮助开发者以动画状态为基础做触发式的逻辑控制工作。ArkGraphics 3D提供给开发者如下回调：
-- onStarted()：当动画开始播放时执行的回调函数，start操作以及restart操作也会触发这个回调。
-- onFinished()：动画播放结束时执行的回调函数，动画播放完成或者finish操作会触发这个回调。
+     <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     this.anim = this.scene.animations[0];
+     if (this.anim) {
+       this.anim.enabled = true;
+       // Register callback function
+       this.anim.onStarted(() => {
+       // ···
+         this.animationCallbackInvoked = 'animation on start';
+       });
+     
+       this.anim.onFinished(() => {
+       // ···
+         this.animationCallbackInvoked = 'animation on finish';
+       });
+       // ···
+     } else {
+       console.error('No animation found in scene.');
+     }
+     ```
 
-示例代码如下：
-```ts
-import { Animation, Scene } from '@kit.ArkGraphics3D';
+  4. 创建相机与设置场景渲染参数。
 
-function callBacks(): void {
-  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {
-    if (result && result.animations && result.animations[0]) {
-      let anim: Animation = result.animations[0];
-      // 注册回调函数
-      anim.onFinished(()=>{
-        console.info("onFinished");
-      });
-      anim.onStarted(()=>{
-        console.info("onStarted");
-      });
-    }
-  });
-}
-```
+     通过SceneResourceFactory.createCamera()创建相机并调整观察位置。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，以便通过Component3D在界面上进行渲染。
 
+     <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     // create a new camera.
+     this.cam = await rf.createCamera({ 'name': 'Camera' });
+     // set the camera.
+     this.cam.enabled = true;
+     this.cam.position.z = 5;
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     ```
+
+  5. 构建界面与动画控制。
+
+     通过Component3D渲染3D场景，并在界面中添加按钮以控制动画播放状态。
+     ArkGraphics 3D提供的动画状态控制操作主要包含如下几种：
+      - 开始（start）：基于当前进度开始播放一个动画。
+      - 停止（stop）：停止播放一个动画，并将动画的进度设置到未开始状态。
+      - 结束（finish）：直接跳转到动画的最后，并将动画的进度设置到已结束状态。
+      - 暂停（pause）：将动画暂停，动画的播放进度保持在当前状态。
+      - 重启（restart）：从动画的起点开始播放动画。
+      - 跳转（seek）：按比例跳转动画进度（例如seek(0.3)跳至总时长的30%）。
+
+     <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+     
+     ``` TypeScript
+     Button('start')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.start();
+       });
+     
+     Button('pause')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.pause();
+       });
+     
+     Button('stop')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.stop();
+       });
+     
+     Button('finish')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.finish();
+       });
+     
+     Button('restart')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         this.anim.restart();
+       });
+     
+     Button('seek to 30% progress')
+     // ···
+       .onClick(async () => {
+         if (!this.scene || !this.scene.animations[0]) {
+           return;
+         }
+         this.anim = this.scene.animations[0];
+         // seek to 30%
+         this.anim.seek(0.3);
+       });
+     ```
 
 <!--RP1-->
 ## 相关实例

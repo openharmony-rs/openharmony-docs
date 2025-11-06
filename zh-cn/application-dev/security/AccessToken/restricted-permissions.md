@@ -902,3 +902,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1
 
 **起始版本**：22
+
+## ohos.permission.GET_IP_MAC_INFO
+
+允许应用获取网络设备的IP和MAC地址。
+
+<!--RP58--><!--RP58End-->
+
+用于网络连接或者识别，不支持用于设备定位。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22

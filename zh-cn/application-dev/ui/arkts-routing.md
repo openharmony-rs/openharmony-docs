@@ -41,131 +41,161 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 
 - 场景一：有一个主页（Home）和一个详情页（Detail），希望从主页点击一个商品，跳转到详情页。同时，需要保留主页在页面栈中，以便返回时恢复状态。这种场景下，可以使用pushUrl方法，并且使用Standard实例模式（或者省略）。
 
-  ```ts
+  <!-- @[jump_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Index.ets) -->
+  
+  ``` TypeScript
   import { router } from '@kit.ArkUI';
-
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
   @Entry
   @Component
   struct Index {
     // 在Home页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().pushUrl({
-        url: 'pages/Detail' // 目标url
+        url: 'pages/pageRouter/jumpPage/Detail' // 目标url
       }, router.RouterMode.Standard, (err) => {
         if (err) {
-          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.info('Invoke pushUrl succeeded.');
+        hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
       });
     }
-
+  
     build() {
+      // ···
     }
   }
   ```
-
+  
   >**说明：**
   >
   >多实例模式下，router.RouterMode.Standard参数可以省略。
 
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
-  ```ts
+  <!-- @[login_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Login.ets) -->
+  
+  ``` TypeScript
   import { router } from '@kit.ArkUI';
-
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
   @Entry
   @Component
-  struct Index {
+  struct Login {
     // 在Login页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/Profile' // 目标url
+        url: 'pages/pageRouter/jumpPage/Profile' // 目标url
       }, router.RouterMode.Standard, (err) => {
         if (err) {
-          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.info('Invoke replaceUrl succeeded.');
+        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
       })
     }
-
+  
     build() {
+      // ···
     }
   }
   ```
-
+    
   >**说明：**
   >
   >多实例模式下，router.RouterMode.Standard参数可以省略。
 
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
-  ```ts
+  <!-- @[setting_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Setting.ets) -->
+  
+  ``` TypeScript
   import { router } from '@kit.ArkUI';
-
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
   @Entry
   @Component
-  struct Index {
+  struct Login {
     // 在Setting页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().pushUrl({
-        url: 'pages/Theme' // 目标url
+        url: 'pages/pageRouter/jumpPage/SetTheme' // 目标url
       }, router.RouterMode.Single, (err) => {
         if (err) {
-          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.info('Invoke pushUrl succeeded.');
+        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
       });
     }
-
+  
     build() {
-    }
+      // ···
   }
   ```
-
+    
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
-  ```ts
+  <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
+  
+  ``` TypeScript
   import { router } from '@kit.ArkUI';
-
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_ArkTSRouter]';
+  
   @Entry
   @Component
-  struct Index {
+  struct SearchResult {
     // 在SearchResult页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/SearchDetail' // 目标url
+        url: 'pages/pageRouter/jumpPage/SearchDetail' // 目标url
       }, router.RouterMode.Single, (err) => {
         if (err) {
-          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          hilog.error(DOMAIN, TAG, `Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        console.info('Invoke replaceUrl succeeded.');
+        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
       })
     }
-
+  
     build() {
-    }
+      // ···
   }
   ```
+  
 
 以上是不带参数传递的场景。
 
 如果需要在跳转时传递一些数据给目标页面，则可以在调用Router模块的方法时，添加一个params属性，并指定一个对象作为参数。例如：
 
+<!-- @[home_param1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/IndexPara.ets) -->
 
-```ts
+``` TypeScript
 class DataModelInfo {
-  age: number = 0;
+  public age: number = 0;
 }
 
 class DataModel {
-  id: number = 0;
-  info: DataModelInfo | null = null;
+  public id: number = 0;
+  public info: DataModelInfo | null = null;
 }
+```
 
+
+
+<!-- @[home_param2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/IndexPara.ets) -->
+
+``` TypeScript
 onJumpClick(): void {
   // 在Home页面中
   let paramsInfo: DataModel = {
@@ -176,35 +206,43 @@ onJumpClick(): void {
   };
 
   this.getUIContext().getRouter().pushUrl({
-    url: 'pages/Detail', // 目标url
+    url: 'pages/pageRouter/jumpPage/DetailPara', // 目标url
     params: paramsInfo // 添加params属性，传递自定义参数
   }, (err) => {
     if (err) {
-      console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+      hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    console.info('Invoke pushUrl succeeded.');
-  })
+    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+  });
 }
 ```
 
 在目标页面中，可以通过调用Router模块的[getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams)方法来获取传递过来的参数。例如：
 
+<!-- @[detail_param1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/DetailPara.ets) -->
 
-```ts
+``` TypeScript
 class InfoTmp {
-  age: number = 0;
+  public age: number = 0;
 }
 
 class RouTmp {
-  id: object = () => {
-  };
-  info: InfoTmp = new InfoTmp();
+  // id: object = () => {
+  // };
+  public id: number = 0;
+  public info: InfoTmp = new InfoTmp();
 }
+```
 
-const params: RouTmp = this.getUIContext().getRouter().getParams() as RouTmp; // 获取传递过来的参数对象
-const id: object = params.id; // 获取id属性的值
-const age: number = params.info.age; // 获取age属性的值
+
+
+<!-- @[detail_param2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/DetailPara.ets) -->
+
+``` TypeScript
+private params: RouTmp = (this.getUIContext().getRouter().getParams()) as RouTmp; // 获取传递过来的参数对象
+// private id: number = this.params.id; // 获取id属性的值
+private age: number = this.params.info.age; // 获取age属性的值
 ```
 
 
@@ -223,9 +261,11 @@ const age: number = params.info.age; // 获取age属性的值
 - 方式一：返回到上一个页面。
 
 
-  ```ts
-  this.getUIContext().getRouter().back();
-  ```
+<!-- @[back_detail1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+
+``` TypeScript
+this.getUIContext().getRouter().back();
+```
 
   这种方式会返回到上一个页面，即上一个页面在页面栈中的位置。但是，上一个页面必须存在于页面栈中才能够返回，否则该方法将无效。
 
@@ -234,15 +274,19 @@ const age: number = params.info.age; // 获取age属性的值
 
   返回普通页面。
 
-  ```ts
+  <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  
+  ``` TypeScript
   this.getUIContext().getRouter().back({
-    url: 'pages/Home'
+    url: 'pages/pageRouter/jumpPage/BackHome'
   });
   ```
 
   返回命名路由页面。
 
-  ```ts
+  <!-- @[back_detail22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+
+  ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage' // myPage为返回的命名路由页面别名
   });
@@ -255,22 +299,28 @@ const age: number = params.info.age; // 获取age属性的值
 
   返回到普通页面。
 
-  ```ts
+  <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  
+  ``` TypeScript
   this.getUIContext().getRouter().back({
-    url: 'pages/Home',
+    url: 'pages/pageRouter/jumpPage/BackHome',
     params: {
-      info: '来自Home页'
+      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
   ```
 
   返回命名路由页面。
 
-  ```ts
+  <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  
+  ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage为返回的命名路由页面别名
     params: {
-      info: '来自Home页'
+      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
   ```
@@ -283,7 +333,9 @@ const age: number = params.info.age; // 获取age属性的值
 > 
 > 直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
-```ts
+<!-- @[home_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/backPage/Home.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Home {
@@ -296,9 +348,10 @@ struct Home {
     }
   }
 
-  // ...
+// ···
 }
 ```
+
 
 >**说明：**
 >
@@ -316,24 +369,29 @@ struct Home {
 
 - [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)：当用户点击返回按钮时触发。
 
-```ts
+<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 // Index.ets
 @Entry
 @Component
 struct MyComponent {
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageShow() {
-    console.info('Index onPageShow');
+    hilog.info(DOMAIN, TAG, 'Index onPageShow');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageHide() {
-    console.info('Index onPageHide');
+    hilog.info(DOMAIN, TAG, 'Index onPageHide');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onBackPress() {
-    console.info('Index onBackPress');
+    hilog.info(DOMAIN, TAG, 'Index onBackPress');
     // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理
     return true;
   }
@@ -343,13 +401,18 @@ struct MyComponent {
       // push到Page页面，执行onPageHide
       Button('push to next page')
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/pageRouter/lifeCycle/Page' });
         })
     }
   }
 }
 ```
-```ts
+
+
+
+<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->
+
+``` TypeScript
 // Page.ets
 @Entry
 @Component
@@ -377,7 +440,7 @@ struct Page {
 
   build() {
     Column() {
-      Text(`num 的值为：${this.num}`)
+      Text(`num is：${this.num}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .fontColor(this.textColor)
@@ -419,20 +482,31 @@ router自定义转场可以通过[pageTransition](../reference/apis-arkui/arkui-
 
 如果想要在目标界面开启页面返回询问框，需要在调用[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)方法之前，通过调用[showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[page_showAlert1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+```
+
+
+
+<!-- @[page_showAlert2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
+
+``` TypeScript
 // 定义一个返回按钮的点击事件处理函数
-function onBackClick(): void {
+onBackClick(): void {
   // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
-      message: '您还没有完成支付，确定要返回吗？' // 设置询问框的内容
+      message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
-    console.error(`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
+    hilog.error(DOMAIN, TAG,`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
   }
 
   // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
@@ -455,38 +529,50 @@ message：string类型，表示询问框的内容。
 
 在事件回调中，调用弹窗的[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)方法：
 
-```ts
+<!-- @[page_showDialog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
+
+``` TypeScript
 import { promptAction} from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+```
 
+
+
+<!-- @[page_showDialog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
+
+``` TypeScript
 onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
-    message: '您还没有完成支付，确定要返回吗？',
+    // 您还没有完成支付，确定要返回吗？
+    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
     buttons: [
       {
-        text: '取消',
+        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
         color: '#FF0000'
       },
       {
-        text: '确认',
+        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
         color: '#0099FF'
       }
     ]
   }).then((result: promptAction.ShowDialogSuccessResponse) => {
     if (result.index === 0) {
       // 用户点击了“取消”按钮
-      console.info('User canceled the operation.');
+      hilog.info(DOMAIN, TAG, 'User canceled the operation.');
     } else if (result.index === 1) {
       // 用户点击了“确认”按钮
-      console.info('User confirmed the operation.');
+      hilog.info(DOMAIN, TAG, 'User confirmed the operation.');
       // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
       this.getUIContext().getRouter().back();
     }
   }).catch((err: Error) => {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
-    console.error(`Invoke showDialog failed, code is ${code}, message is ${message}`);
+    hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
   })
 }
 ```
@@ -504,13 +590,17 @@ onBackClick() {
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
 
-```ts
+<!-- @[page_router_hsp1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
+
+``` TypeScript
 import { router } from '@kit.ArkUI';
 ```
 
 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给[@Entry](../ui/state-management/arkts-create-custom-components.md#entry)修饰的自定义组件EntryOptions命名：
 
-```ts
+<!-- @[page_router_hsp2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
+
+``` TypeScript
 // library/src/main/ets/pages/Index.ets
 // library为新建共享包自定义的名字
 @Entry({ routeName: 'myPage' })
@@ -543,9 +633,14 @@ export struct MyComponent {
 > }
 >```
 
-```ts
+<!-- @[page_router_hsp3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp3.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import '@ohos/library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 @Entry
 @Component
@@ -571,7 +666,7 @@ struct Index {
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;
-            console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+            hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
           }
         })
     }
@@ -581,8 +676,9 @@ struct Index {
 }
 ```
 
+
 ## 相关实例
 
 针对页面路由开发，有以下相关实例可供参考：
 
-- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)
+- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)

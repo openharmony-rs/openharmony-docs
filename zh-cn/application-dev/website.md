@@ -528,8 +528,8 @@
           - [弹窗概述](ui/arkts-dialog-overview.md)
           - 弹出框 (Dialog)<!--arkts-use-dialogs-->
             - [弹出框概述](ui/arkts-base-dialog-overview.md)
-            - [不依赖UI组件的全局自定义弹出框 (openCustomDialog) (推荐)](ui/arkts-uicontext-custom-dialog.md)
-            - [基础自定义弹出框 (CustomDialog) (不推荐)](ui/arkts-common-components-custom-dialog.md)
+            - [不依赖UI组件的全局自定义弹出框 (openCustomDialog)](ui/arkts-uicontext-custom-dialog.md)
+            - [基础自定义弹出框 (CustomDialog)](ui/arkts-common-components-custom-dialog.md)
             - [固定样式弹出框](ui/arkts-fixes-style-dialog.md)
             - [页面级弹出框](ui/arkts-embedded-dialog.md)
             - [弹出框层级管理](ui/arkts-dialog-levelorder.md)
@@ -976,7 +976,6 @@
           - 本地化名称<!--i18n-name-localization-->
               - [概述](internationalization/i18n-display-overview.md)
               - [本地化语言与地区名称](internationalization/i18n-language-region-display.md)
-              - [本地化时区名称](internationalization/i18n-time-zone-display.md)
       - 应用本地化<!--l10n-->
           - [提供多语言资源](internationalization/l10n-multilingual-resources.md)
           - 提升可翻译性<!--l10n-translation-->
@@ -1368,7 +1367,7 @@
         - 账号管理<!--account-management-->
           <!--Del-->
           - [账号管理概述](basic-services/account/account-overview-sys.md)
-          - 系统账号 <!--os-account-->
+          - 系统账号（仅对系统应用开放）<!--os-account-->
             - [管理系统账号](basic-services/account/manage-os-account-sys.md)
             - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints-sys.md)
             - [管理系统账号凭据](basic-services/account/manage-os-account-credential-sys.md)
@@ -3531,6 +3530,7 @@
           - [OH_ArkUI_SurfaceHolder](reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
           - [OH_ArkUI_SurfaceCallback](reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
           - [OHNativeWindow](reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+          - [ArkUI_XComponentSurfaceConfig](reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
           - [ArkUI_AttributeItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md)
           - [ArkUI_NodeComponentEvent](reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecomponentevent.md)
           - [ArkUI_StringAsyncEvent](reference/apis-arkui/capi-arkui-nativemodule-arkui-stringasyncevent.md)
@@ -3624,7 +3624,6 @@
           - [ArkUI_Vector2AnimatablePropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
           - [ArkUI_ContentTransitionEffect](reference/apis-arkui/capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
-          - [ArkUI_SelectedDataDetectorConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
           - [ArkUI_CoastingAxisEvent](reference/apis-arkui/capi-arkui-nativemodule-arkui-coastingaxisevent.md)
           - [ArkUI_GridItemRect](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)
           - [ArkUI_GridItemSize](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemsize.md)
@@ -5394,6 +5393,7 @@
           - [OH_AVScreenCapture_ContentFilter](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-contentfilter.md)
           - [OH_AVScreenCapture_CaptureStrategy](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-capturestrategy.md)
           - [OH_AVScreenCapture_UserSelectionInfo](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)
+          - [OH_AVScreenCaptureHighlightConfig](reference/apis-media-kit/capi-avscreencapture-oh-avscreencapturehighlightconfig.md)
           - [OH_LowPowerAudioSink](reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
           - [OH_LowPowerAudioSinkCallback](reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
           - [OH_AVSamplesBuffer](reference/apis-media-kit/capi-avsinkbase-oh-avsamplesbuffer.md)
@@ -5700,7 +5700,7 @@
     - Calendar Kit（日历服务）<!--calendar-api-->
       - ArkTS API<!--calendar-arkts-->
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
-    - Contacts Kit（联系人服务）<!--contacts-->
+    - Contacts Kit（联系人服务）<!--contacts-api-->
       - ArkTS API<!--contacts-arkts-->
         - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
       - 错误码<!--contacts-arkts-errcode-->

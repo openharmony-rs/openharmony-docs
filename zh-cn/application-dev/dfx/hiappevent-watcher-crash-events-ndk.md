@@ -145,12 +145,12 @@
       static napi_value RegisterWatcherCrashEvent(napi_env env, napi_callback_info info)
       {
           // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
-          systemEventWatcherR = OH_HiAppEvent_CreateWatcher("AppCrashWatcherCrash");
+          systemEventWatcherR = OH_HiAppEvent_CreateWatcher("AppCrashWatcherR");
           // 设置订阅的事件名称为EVENT_APP_CRASH，即崩溃事件。
           const char *names[] = {EVENT_APP_CRASH};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcherR, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceiveCrashEvent回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcherR, OnReceiveCrashEvent);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcherR);
@@ -225,14 +225,14 @@
       static napi_value RegisterWatcherClickCrash(napi_env env, napi_callback_info info)
       {
           // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
-          systemEventWatcherT = OH_HiAppEvent_CreateWatcher("onTriggerWatcher");
-          // 设置订阅的事件名称为click。
+          systemEventWatcherT = OH_HiAppEvent_CreateWatcher("AppCrashWatcherT");
+          // 设置订阅的事件为EVENT_APP_CRASH。
           const char *names[] = {EVENT_APP_CRASH};
-          // 开发者订阅感兴趣的应用事件，此处订阅了button相关事件。
+          // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcherT, DOMAIN_OS, 0, names, 1);
           // 开发者设置已实现的回调函数，需OH_HiAppEvent_SetTriggerCondition设置的条件满足方可触发。
           OH_HiAppEvent_SetWatcherOnTrigger(systemEventWatcherT, OnTriggerCrash);
-          // 开发者可以设置订阅触发回调的条件，此处是设置新增事件打点数量为1个时，触发onTrigger回调。
+          // 开发者可以设置订阅触发回调的条件，此处是设置新增事件打点数量为1个时，触发OnTriggerCrash回调。
           OH_HiAppEvent_SetTriggerCondition(systemEventWatcherT, 1, 0, 0);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcherT);
@@ -316,7 +316,7 @@
 
 若应用未主动捕获崩溃异常，则系统处理崩溃后应用将退出。**应用下次启动时**，HiAppEvent将崩溃事件上报给已注册的监听，完成回调。
 
-若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
+从API version 21开始，若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 **应用主动捕获崩溃异常场景**
 

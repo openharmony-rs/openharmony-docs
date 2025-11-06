@@ -82,7 +82,6 @@
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|定义组件的像素取整策略结构体。|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|内容过渡效果。|
 |[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|ArkUI_ShowCounterConfig|定义文本输入框的计数器配置。|
-|[ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)|ArkUI_SelectedDataDetectorConfig|定义选中文本识别配置结构体。|
 
 ### 枚举
 
@@ -504,10 +503,6 @@
 |[void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend)|设置PixelRoundPolicy属性对象的尾部方向值。|
 |[int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend)|获取PixelRoundPolicy属性对象的尾部方向值。|
 |[ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create)|创建ContentTransitionEffect属性对象。|
-|[ArkUI_SelectedDataDetectorConfig* OH_ArkUI_SelectedDataDetectorConfig_Create()](#oh_arkui_selecteddatadetectorconfig_create)|创建SelectedDataDetectorConfig属性对象。|
-|[void OH_ArkUI_SelectedDataDetectorConfig_Dispose(ArkUI_SelectedDataDetectorConfig* config)](#oh_arkui_selecteddatadetectorconfig_dispose)|释放SelectedDataDetectorConfig属性对象。|
-|[void OH_ArkUI_SelectedDataDetectorConfig_SetTypes(ArkUI_SelectedDataDetectorConfig* config, uint32_t* types, uint32_t length)](#oh_arkui_selecteddatadetectorconfig_settypes)|设置SelectedDataDetectorConfig属性对象的识别类型值。|
-|[int32_t OH_ArkUI_SelectedDataDetectorConfig_GetTypes(ArkUI_SelectedDataDetectorConfig* config, uint32_t* types, uint32_t length)](#oh_arkui_selecteddatadetectorconfig_gettypes)|获取SelectedDataDetectorConfig属性对象的识别类型值。|
 |[ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | 创建Grid布局选项。 |
 |[void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | 销毁Grid布局选项。 |
 |[int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | 设置Grid中不规则GridItem的索引数组。 |
@@ -10027,7 +10022,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
-| uint32_t color | 文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB，默认值为0x66182431。 |
+| uint32_t color | 文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB。 |
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor()
 
@@ -10048,7 +10043,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
-| uint32_t color | 文本输入框超出最大字符数时计数器的颜色，格式为0xARGB，默认值为0x99FA2A2D。 |
+| uint32_t color | 文本输入框超出最大字符数时计数器的颜色，格式为0xARGB。 |
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
 
@@ -10074,7 +10069,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t  | 返回文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB。 |
+| uint32_t  | 返回文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB，如果未通过[OH_ArkUI_ShowCounterConfig_SetCounterTextColor](#oh_arkui_showcounterconfig_setcountertextcolor)接口设置计数器颜色，则返回0。 |
 
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
@@ -10101,86 +10096,4 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回文本输入框超出最大字符数时计数器的颜色，格式为0xARGB。 |
-
-### OH_ArkUI_SelectedDataDetectorConfig_Create()
-
-```
-ArkUI_SelectedDataDetectorConfig* OH_ArkUI_SelectedDataDetectorConfig_Create()
-```
-
-**描述：**
-
-创建SelectedDataDetectorConfig属性对象。
-
-**起始版本：** 22
-
-**返回：**
-
-| 类型                                                         | 说明                             |
-| ------------------------------------------------------------ | -------------------------------- |
-| [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)* | 指向SelectedDataDetectorConfig对象的指针。 |
-
-### OH_ArkUI_SelectedDataDetectorConfig_Dispose()
-
-```
-void OH_ArkUI_SelectedDataDetectorConfig_Dispose(ArkUI_SelectedDataDetectorConfig* config)
-```
-
-**描述：**
-
-释放SelectedDataDetectorConfig属性对象。
-
-**起始版本：** 22
-
-**参数：**
-
-| 参数项                                                       | 描述                                     |
-| ------------------------------------------------------------ | ---------------------------------------- |
-| [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)* config | 指向要释放的SelectedDataDetectorConfig对象的指针。 |
-
-### OH_ArkUI_SelectedDataDetectorConfig_SetTypes()
-
-```
-void OH_ArkUI_SelectedDataDetectorConfig_SetTypes(ArkUI_SelectedDataDetectorConfig* config, uint32_t* types, uint32_t length)
-```
-
-**描述：**
-
-设置SelectedDataDetectorConfig属性对象的识别类型值。
-
-**起始版本：** 22
-
-**参数：**
-
-| 参数项                                                       | 描述                                 |
-| ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)* config | 指向SelectedDataDetectorConfig对象的指针。     |
-| uint32_t* types | 设置要配置的识别类型数组，识别类型为[ArkUI_TextDataDetectorType](#arkui_textdatadetectortype)。 |
-| uint32_t length | 识别类型数组的长度。 |
-
-### OH_ArkUI_SelectedDataDetectorConfig_GetTypes()
-
-```
-int32_t OH_ArkUI_SelectedDataDetectorConfig_GetTypes(ArkUI_SelectedDataDetectorConfig* config, uint32_t* types, uint32_t length)
-```
-
-**描述：**
-
-获取SelectedDataDetectorConfig属性对象的识别类型值。
-
-**起始版本：** 22
-
-**参数：**
-
-| 参数项                                                       | 描述                                 |
-| ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)* config | 指向SelectedDataDetectorConfig对象的指针。     |
-| uint32_t* types | 设置要接收识别类型信息的数组，识别类型为[ArkUI_TextDataDetectorType](#arkui_textdatadetectortype)。 |
-| uint32_t length | 接收识别类型数组的长度。 |
-
-**返回：**
-
-| 类型    | 说明                                                         |
-| ------- | ------------------------------------------------------------ |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数无效。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 提供的数组长度不足。|
+| uint32_t | 返回文本输入框超出最大字符数时计数器的颜色，格式为0xARGB，如果未通过[OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](#oh_arkui_showcounterconfig_setcountertextoverflowcolor)接口设置计数器颜色，则返回0。 |

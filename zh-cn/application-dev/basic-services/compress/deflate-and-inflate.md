@@ -235,7 +235,7 @@ struct Index {
         let inFile = fs.openSync(path + '/data.bin', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         let outFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         inflateFile(inFile, outFile).then(() => {
-          console.info('deflateFile success');
+          console.info('inflateFile success');
           fs.closeSync(inFile.fd);
           fs.closeSync(outFile.fd);
         })

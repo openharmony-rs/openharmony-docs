@@ -62,6 +62,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -121,6 +122,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 
@@ -170,10 +172,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **Example**
 
@@ -226,10 +225,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **Example**
 
@@ -291,7 +287,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100007 | The service is abnormal. |
-| 12100009 | Common inner error. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
 
 **Example**
 
@@ -385,7 +381,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -415,7 +411,7 @@ When an application starts to use a permission, the privacy service notifies the
 
 For a multi-process application, you can specify the process ID (PID) of the application when reporting the permission usage. If no PID is specified, the privacy service responds by application. When the application exits, the privacy service notifies the privacy indicator and clears the cache.
 
-If a PID is specified, the privacy service responds by process. when the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
+If a PID is specified, the privacy service responds by process. When the process exits, the privacy service notifies the privacy indicator and clears the cache. In this case, the PID must be that of the application corresponding to the token ID.
 
 **Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
 
@@ -446,7 +442,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or usedType is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -519,7 +514,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -574,7 +569,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -630,7 +624,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -689,7 +682,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -845,6 +837,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 12100001 | Invalid parameter. PermissionName exceeds 256 characters. |
 | 12100002 | The input tokenId does not exist. |
 | 12100003 | The input permissionName does not exist. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **Example**
 

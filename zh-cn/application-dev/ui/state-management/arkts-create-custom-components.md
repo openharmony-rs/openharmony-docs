@@ -20,7 +20,9 @@
 
 以下示例展示了自定义组件的基本用法。
 
-```ts
+<!-- @[HelloComponent_Hello](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
+
+``` TypeScript
 @Component
 struct HelloComponent {
   @State message: string = 'Hello, World!';
@@ -37,26 +39,30 @@ struct HelloComponent {
   }
 }
 ```
+
 > **注意：**
 >
 > 如果在其他文件中引用自定义组件，需要使用`export`关键字导出组件，并在使用的页面`import`该自定义组件。
 
 可以在其他自定义组件的`build()`函数中多次创建`HelloComponent`，以实现自定义组件的重用。
 
-```ts
+<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ParentComponent {
   build() {
     Column() {
       Text('ArkUI message')
-      HelloComponent({ message: 'Hello World!' });
+      HelloComponent({ message: 'Hello World!' })
       Divider()
-      HelloComponent({ message: '你好，世界!' });
+      HelloComponent({ message: 'Hello ArkTS!' })
     }
   }
 }
 ```
+
 
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 
@@ -93,11 +99,15 @@ struct ParentComponent {
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  ```ts
+  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->
+  
+  ``` TypeScript
   @Component
   struct MyComponent {
+  // ···
   }
   ```
+
 
  **freezeWhenInactive<sup>11+</sup>**
   [组件冻结](arkts-custom-components-freeze.md)选项。
@@ -106,9 +116,12 @@ struct ParentComponent {
   | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
   | freezeWhenInactive | boolean | 否 | 否 | 是否开启组件冻结。默认值false。true表示开启组件冻结，false表示不开启组件冻结。 |
 
-  ```ts
+  <!-- @[freezeWhenInactive_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/FreezeWhenInactive.ets) -->
+  
+  ``` TypeScript
   @Component({ freezeWhenInactive: true })
   struct MyComponent {
+  // ···
   }
   ```
 
@@ -116,10 +129,13 @@ struct ParentComponent {
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
-  ```ts
+  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->
+  
+  ``` TypeScript
   @Component
   struct MyComponent {
     build() {
+      // ···
     }
   }
   ```
@@ -136,10 +152,13 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  ```ts
+  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct MyComponent {
+  // ···
   }
   ```
 
@@ -157,12 +176,16 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   >
   > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
-  ```ts
-  @Entry({ routeName : 'myPage' })
+  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
+  
+  ``` TypeScript
+  @Entry({ routeName: 'myPage' })
   @Component
   struct MyComponent {
+  // ···
   }
   ```
+
 
 ### \@Reusable
 
@@ -172,10 +195,13 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   >
   > 从API version 10开始，该装饰器支持在ArkTS卡片中使用。
 
-  ```ts
+  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) -->
+  
+  ``` TypeScript
   @Reusable
   @Component
   struct MyComponent {
+  // ···
   }
   ```
 
@@ -196,13 +222,16 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 以下示例展示了如何在build方法里创建自定义组件，并在创建自定义组件的过程中，根据装饰器的规则来初始化自定义组件的参数。
 
-```ts
+<!-- @[Parameter_specification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets) -->
+
+``` TypeScript
 @Component
 struct MyComponent {
   private countDownFrom: number = 0;
   private color: Color = Color.Blue;
 
   build() {
+    // ···
   }
 }
 
@@ -222,14 +251,16 @@ struct ParentComponent {
 
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
-```ts
+<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  -->
+
+``` TypeScript
 @Entry
 @Component
 struct Parent {
-  @State cnt: number = 0
+  @State cnt: number = 0;
   submit: () => void = () => {
     this.cnt++;
-  }
+  };
 
   build() {
     Column() {
@@ -241,7 +272,7 @@ struct Parent {
 
 @Component
 struct Son {
-  submitArrow?: () => void
+  submitArrow?: () => void;
 
   build() {
     Row() {
@@ -265,14 +296,16 @@ struct Son {
 - \@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。
   \@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
-  ```ts
+  <!-- @[build_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct MyComponent {
     build() {
       // 根节点唯一且必要，必须为容器组件
       Row() {
-        ChildComponent() 
+        ChildComponent()
       }
     }
   }
@@ -281,7 +314,8 @@ struct Son {
   struct ChildComponent {
     build() {
       // 根节点唯一且必要，可为非容器组件
-      Image('test.jpg')
+      // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+      Image($r('app.media.startIcon'))
     }
   }
   ```
@@ -322,27 +356,39 @@ struct Son {
   struct ParentComponent {
     doSomeCalculations() {
     }
-
-    calcTextValue(): string {
-      return 'Hello World';
-    }
-
-    @Builder doSomeRender() {
-      Text(`Hello World`)
-    }
-
     build() {
       Column() {
         // 反例：不能调用没有用@Builder装饰的方法
         this.doSomeCalculations();
+      }
+    }
+  }
+  ```
+  <!-- @[Builder_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuilderMethod.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct ParentComponent {
+    calcTextValue(): string {
+      return 'Hello World';
+    }
+  
+    @Builder
+    doSomeRender() {
+      Text(`Hello World`)
+    }
+  
+    build() {
+      Column() {
         // 正例：可以调用
-        this.doSomeRender();
+        this.doSomeRender()
         // 正例：参数可以为调用TS方法的返回值
         Text(this.calcTextValue())
       }
     }
   }
   ```
+
 
 - 不允许使用switch语法，当需要使用条件判断时，请使用[if](../rendering-control/arkts-rendering-control-ifelse.md)。示例如下。
 
@@ -361,10 +407,18 @@ struct Son {
           Text('...')
           break;
       }
+    }
+  }
+  ```
+  <!-- @[switch_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/If.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
       // 正例：使用if
-      if(expression == 1) {
+      if (this.expression == 1) {
         Text('...')
-      } else if(expression == 2) {
+      } else if (this.expression == 2) {
         Image('...')
       } else {
         Text('...')
@@ -372,6 +426,7 @@ struct Son {
     }
   }
   ```
+
 
 - 不允许使用表达式，请使用if组件，示例如下。
 
@@ -380,9 +435,16 @@ struct Son {
     Column() {
       // 反例：不允许使用表达式
       (this.aVar > 10) ? Text('...') : Image('...')
-
+    }
+  }
+  ```
+  <!-- @[if_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ModuleComponent.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
       // 正例：使用if判断
-      if(this.aVar > 10) {
+      if (this.aVar > 10) {
         Text('...')
       } else {
         Image('...')
@@ -390,6 +452,7 @@ struct Son {
     }
   }
   ```
+
 
 - 不允许直接改变状态变量，反例如下。详细分析见[\@State常见问题：不允许在build里改状态变量](./arkts-state.md#不允许在build里改状态变量)。
 
@@ -442,18 +505,25 @@ struct Son {
       item => { 
       // ...
     })
-    // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
-    ForEach(this.arr.filter(...).sort(), 
-      item => { 
-      // ...
-    })
     ```
+    <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) -->
+    
+    ``` TypeScript
+    // 正确的执行方式为：filter返回一个新数组，后面的sort方法才不会改变原数组this.arr
+    ForEach(this.arr.filter((item, index) => index >= 2).sort(),
+      (item: number) => {
+        // ...
+      });
+    ```
+
 
 ## 自定义组件通用样式
 
 自定义组件通过“.”链式调用设置通用样式。
 
-```ts
+<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->
+
+``` TypeScript
 @Component
 struct ChildComponent {
   build() {
@@ -486,7 +556,9 @@ struct MyComponent {
 静态代码块用于初始化静态属性。
 - 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。
 
-  ```ts
+  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
+  
+  ``` TypeScript
   @Component
   struct MyComponent {
     static a: string = '';
@@ -494,19 +566,25 @@ struct MyComponent {
     static {
       this.a = 'hello world';
     }
+  // ···
   }
   ```
 
+
 - 在\@ComponentV2装饰的自定义组件中支持使用。
 
-  ```ts
+  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->
+  
+  ``` TypeScript
   @ComponentV2
-  struct MyComponentV2 {
+  struct MyComponent {
     static a: string = '';
     // 静态代码块生效，a的值变为'hello world'
     static {
       this.a = 'hello world';
     }
+  // ···
   }
   ```
+
 <!--no_check-->
