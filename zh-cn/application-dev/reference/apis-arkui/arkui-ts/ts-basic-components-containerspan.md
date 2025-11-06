@@ -84,7 +84,16 @@ struct Index {
             .height('40vp')
             .verticalAlign(ImageSpanAlignment.CENTER)
           Span('   Hello World !   ').fontSize('16fp').fontColor(Color.White)
-        }.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" })
+        }
+        .textBackgroundStyle({
+          color: "#7F007DFF",
+          radius: {
+            topLeft: 12,
+            topRight: 12,
+            bottomLeft: 12,
+            bottomRight: 12
+          }
+        })
       }
     }.width('100%').alignItems(HorizontalAlign.Center)
   }
