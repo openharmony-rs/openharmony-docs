@@ -2895,7 +2895,7 @@ print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileC
 })
 ```
 
-## print.notifyPrintService<sup>11+</sup><sup>(deprecated)</sup>
+## print.notifyPrintService<sup>(deprecated)</sup>
 
 notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started', callback: AsyncCallback&lt;void&gt;): void
 
@@ -2958,7 +2958,7 @@ notifyPrintServiceSpoolerCloseForCancelled(jobId: string, callback: AsyncCallbac
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservice11deprecated)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservicedeprecated)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -3008,7 +3008,7 @@ notifyPrintServiceSpoolerCloseForStarted(jobId: string, callback: AsyncCallback&
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservice11deprecated)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservicedeprecated)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -3050,7 +3050,7 @@ print.notifyPrintServiceSpoolerCloseForStarted(jobId, (err: BusinessError, data 
 })
 ```
 
-## print.notifyPrintService<sup>11+</sup><sup>(deprecated)</sup>
+## print.notifyPrintService<sup>(deprecated)</sup>
 
 notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spooler_closed_for_started'): Promise&lt;void&gt;
 
@@ -3115,7 +3115,7 @@ notifyPrintServiceSpoolerCloseForCancelled(jobId: string): Promise&lt;void&gt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservice11deprecated-1)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservicedeprecated-1)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -3167,7 +3167,7 @@ notifyPrintServiceSpoolerCloseForStarted(jobId: string): Promise&lt;void&gt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservice11deprecated-1)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.notifyPrintService](#printnotifyprintservicedeprecated-1)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
