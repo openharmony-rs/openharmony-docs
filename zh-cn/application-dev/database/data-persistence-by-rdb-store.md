@@ -86,6 +86,7 @@
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
+     tokenType = relationalStore.Tokenizer.NONE_TOKENIZER;
      hilog.error(DOMAIN, 'rdbDataPersistence', `ICU_TOKENIZER is not supported on this platform.`);
    }
    const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -100,65 +101,77 @@
      // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
      isReadOnly: false,
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
-     tokenizer: tokenType
+     tokenizer: tokenType,
    };
    // ···
      // 判断数据库版本，如果不匹配则需进行升降级操作
      // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
      // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
      const SQL_CREATE_TABLE =
-       'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
-   
-     relationalStore.getRdbStore(context, STORE_CONFIG, async (err, store) => {
-       if (err) {
+       'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
+     if (store === undefined) {
+       try {
+         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+       } catch (e) {
+         const err = e as BusinessError;
          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
          return;
        }
-       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
-       let storeVersion = store.version;
+     }
+     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
+     if (store !== undefined) {
+       let transaction = await store.createTransaction({});
+       let storeVersion = await transaction.execute('PRAGMA user_version');
        // 当数据库创建时，数据库默认版本为0
+       // 示例应用升级流程较短，所以使用单个事务。如果实际业务中升级逻辑较多，建议拆分多个独立事务串行执行。
        if (storeVersion === 0) {
          try {
-           await store.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
-           storeVersion = 3;
+           await transaction.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
+           storeVersion = 1;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 0 to 1 success.');
            // 设置数据库的版本，入参为大于0的整数
          } catch (e) {
            const err = e as BusinessError;
+           await transaction.rollback();
            hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+           return;
          }
        }
-   
        // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
        // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
        if (storeVersion === 1) {
-         // version = 1：表结构：EMPLOYEE (NAME, SALARY, CODES, ADDRESS)
-         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+         // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
          try {
-           await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
-           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.')
+           await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.');
          } catch (e) {
            const err = e as BusinessError;
+           await transaction.rollback();
            hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+           return;
          }
        }
-   
        // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
        if (storeVersion === 2) {
-         // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) 
-         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
+         // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
          try {
-           await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
+           await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;
+           await transaction.execute('PRAGMA user_version = 3');
            hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
          } catch (e) {
            const err = e as BusinessError;
+           await transaction.rollback();
            hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+           return;
          }
        }
-       store.version = storeVersion;
+       await transaction.commit();
        // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
-     });
+     }
    ```
 
    FA模型示例：
@@ -256,7 +269,6 @@
      CODES: value4,
      IDENTITY: value5,
    };
-   
    if (store !== undefined) {
      try {
        const rowId = await store.insert('EMPLOYEE', valueBucket);
@@ -329,7 +341,7 @@
    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates2.equalTo('NAME', 'Rose');
    if (store !== undefined) {
-     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'IDENTITY'], (err: BusinessError, resultSet) => {
+     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES', 'IDENTITY'], (err: BusinessError, resultSet) => {
        if (err) {
          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
          return;
@@ -361,7 +373,7 @@
    
    ``` TypeScript
    // 中文关键字检索，查找数据
-   if (store !== undefined) {
+   if (store !== undefined && tokenTypeSupported) {
      // 创建全文检索表
      const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
      try {
@@ -409,7 +421,8 @@
              NAME: 'Lisa',
              AGE: 18,
              SALARY: 100.5,
-             CODES: new Uint8Array([1, 2, 3, 4, 5])
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
@@ -423,7 +436,8 @@
              NAME: 'Rose',
              AGE: 22,
              SALARY: 200.5,
-             CODES: new Uint8Array([1, 2, 3, 4, 5])
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            predicates,
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
