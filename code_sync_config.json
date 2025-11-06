@@ -18056,5 +18056,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-blur-effect.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"animationBlur_template1_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"animationBlur_template2_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets",
+				"functions":[
+					{
+						"end_line":277,
+						"name":"animationBlur_template3_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template4/ForegroundBlurStyleDemo.ets",
+				"functions":[
+					{
+						"end_line":277,
+						"name":"animationBlur_template4_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template5/MotionBlurTest.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"animationBlur_template5_start",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
