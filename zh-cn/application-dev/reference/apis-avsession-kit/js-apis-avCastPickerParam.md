@@ -16,7 +16,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
@@ -33,7 +33,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
@@ -50,7 +50,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |

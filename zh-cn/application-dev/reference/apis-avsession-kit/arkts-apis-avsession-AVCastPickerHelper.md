@@ -26,7 +26,7 @@ constructor(context: Context)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -113,7 +113,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -315,8 +315,6 @@ offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 取消半模态窗口变化的监听事件，关闭后，不再进行该事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

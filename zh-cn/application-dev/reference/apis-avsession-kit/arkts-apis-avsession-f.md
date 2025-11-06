@@ -23,7 +23,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -128,7 +128,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

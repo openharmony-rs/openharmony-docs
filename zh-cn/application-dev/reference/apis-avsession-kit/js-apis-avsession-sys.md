@@ -36,7 +36,7 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -103,7 +103,7 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -176,7 +176,7 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize?: int): Promise\<Array\<Reado
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -255,7 +255,7 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -333,7 +333,7 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<A
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -399,7 +399,7 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: As
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -464,7 +464,7 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -533,7 +533,7 @@ createController(sessionId: string, callback: AsyncCallback\<AVSessionController
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -655,7 +655,7 @@ if (audioDevices !== undefined) {
 }
 ```
 
-## avSession.castAudioSessionAll
+## avSession.castAudioSessionAll<sup>22+</sup>
 
 castAudioSessionAll(audioDevices: Array<audio.AudioDeviceDescriptor>): Promise\<void>
 
@@ -790,7 +790,7 @@ if (audioDevices !== undefined) {
 }
 ```
 
-## avSession.castAudioSession
+## avSession.castAudioSession<sup>22+</sup>
 
 castAudioSession(session: SessionToken, audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback\<void>): void
 
@@ -874,7 +874,7 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -942,7 +942,7 @@ getDistributedSessionController(distributedSessionType: DistributedSessionType):
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1005,7 +1005,7 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   | 必填 | 说明         |
 | :-------- | :----- | :--- | :----------- |
@@ -1038,7 +1038,7 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1082,7 +1082,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1126,7 +1126,7 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1170,7 +1170,7 @@ onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1214,7 +1214,7 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1258,7 +1258,7 @@ onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1302,7 +1302,7 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1342,7 +1342,7 @@ offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1382,7 +1382,7 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1422,7 +1422,7 @@ offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1462,7 +1462,7 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1502,7 +1502,7 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1699,7 +1699,7 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID   | 错误信息                                                                                              |
 |---------|---------------------------------------------------------------------------------------------------|
@@ -1741,7 +1741,7 @@ onDistributedSessionChange(distributedSessionType: DistributedSessionType, callb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID   | 错误信息                                                                                              |
 |---------|---------------------------------------------------------------------------------------------------|
@@ -1785,7 +1785,7 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID   | 错误信息                                                                                              |
 |---------|---------------------------------------------------------------------------------------------------|
@@ -1825,7 +1825,7 @@ offDistributedSessionChange(distributedSessionType: DistributedSessionType, call
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID   | 错误信息                                                                                              |
 |---------|---------------------------------------------------------------------------------------------------|
@@ -1854,7 +1854,7 @@ sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1927,7 +1927,7 @@ sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2001,7 +2001,7 @@ sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2094,7 +2094,7 @@ sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2186,7 +2186,7 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_CAST_PLUS_MIRROR      | 1    | Cast+的镜像模式。 <br> **系统接口：** 该接口为系统接口。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| TYPE_CAST_PLUS_MIRROR      | 1    | Cast+的镜像模式。 <br> **系统接口：** 该接口为系统接口。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22 |
 
 ## avSession.startCastDeviceDiscovery<sup>10+</sup>
 
@@ -2200,7 +2200,7 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2248,7 +2248,7 @@ avSession.startCastDeviceDiscovery((err: BusinessError | null) => {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                     | 值 | 说明                        |
 |----------------------------------------|---|---------------------------|
@@ -2270,7 +2270,7 @@ ArkTS-Sta: startCastDeviceDiscovery(filter: int, callback: AsyncCallback\<void>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2281,7 +2281,7 @@ ArkTS-Sta: startCastDeviceDiscovery(filter: int, callback: AsyncCallback\<void>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2333,7 +2333,7 @@ ArkTS-Sta: startCastDeviceDiscovery(filter?: int, drmSchemes?: Array\<string>): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2350,7 +2350,7 @@ ArkTS-Sta: startCastDeviceDiscovery(filter?: int, drmSchemes?: Array\<string>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2399,7 +2399,7 @@ stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2449,7 +2449,7 @@ stopCastDeviceDiscovery(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2495,7 +2495,7 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2506,7 +2506,7 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2554,7 +2554,7 @@ setDiscoverable(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2564,7 +2564,7 @@ setDiscoverable(enable: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2625,7 +2625,7 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2666,7 +2666,7 @@ onDeviceAvailable(callback: Callback\<OutputDeviceInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2707,7 +2707,7 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2744,7 +2744,7 @@ offDeviceAvailable(callback?: Callback\<OutputDeviceInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2781,7 +2781,7 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2822,7 +2822,7 @@ onDeviceOffline(callback: Callback\<string>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2865,7 +2865,7 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2905,7 +2905,7 @@ offDeviceOffline(callback?: Callback\<string>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2936,7 +2936,7 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3046,7 +3046,7 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3155,7 +3155,7 @@ startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3240,7 +3240,7 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3324,7 +3324,7 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3390,7 +3390,7 @@ stopCasting(session: SessionToken): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3459,7 +3459,7 @@ ArkTS-Sta: startDeviceLogging(url: string, maxSize?: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3529,7 +3529,7 @@ stopDeviceLogging(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3747,7 +3747,7 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3824,7 +3824,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4050,7 +4050,7 @@ aVCastController.offVideoSizeChange();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 类型                      | 必填 | 说明                                                                  |
 | --------------- |-------------------------| ---- |---------------------------------------------------------------------|
@@ -4066,7 +4066,7 @@ aVCastController.offVideoSizeChange();
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 类型                      | 必填 | 说明                                                                  |
 | --------------- |-------------------------| ---- |--------------------------------------------------------------------- |
@@ -4082,10 +4082,10 @@ aVCastController.offVideoSizeChange();
 
 | 名称       | 类型           | 必填 | 说明                   |
 | ---------- | -------------- | ---- | ---------------------- |
-| ipAddress | string | 否   | 播放设备的ip地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20    |
-| providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20   |
-| authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20   |
-| networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：20|
+| ipAddress | string | 否   | 播放设备的ip地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22    |
+| providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22   |
+| authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22   |
+| networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：22|
 
 ## AVSessionDescriptor
 
@@ -4097,7 +4097,7 @@ aVCastController.offVideoSizeChange();
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型              | 只读 | 可选 | 说明  |
 | --------------| ---------------- | ---------------- | ---------------- |------|
@@ -4119,7 +4119,7 @@ aVCastController.offVideoSizeChange();
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |

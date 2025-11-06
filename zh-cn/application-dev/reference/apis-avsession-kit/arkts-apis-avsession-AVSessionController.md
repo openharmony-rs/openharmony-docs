@@ -22,7 +22,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                    |
 | :-------- | :----- | :--- | :--- | :-------------------------------------- |
@@ -77,7 +77,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -137,7 +137,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -191,7 +191,7 @@ getAVMetadata(): Promise\<AVMetadata>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -243,7 +243,7 @@ getAVMetadata(callback: AsyncCallback\<AVMetadata>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -303,7 +303,7 @@ getAVQueueTitle(): Promise\<string>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -355,7 +355,7 @@ getAVQueueTitle(callback: AsyncCallback\<string>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -415,7 +415,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -467,7 +467,7 @@ getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -529,7 +529,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -592,7 +592,7 @@ ArkTS-Sta: skipToQueueItem(itemId: int, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -656,7 +656,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -707,7 +707,7 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -766,7 +766,7 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -839,7 +839,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -910,7 +910,7 @@ getLaunchAbility(): Promise\<WantAgent>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -962,7 +962,7 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1024,7 +1024,7 @@ ArkTS-Sta: getRealPlaybackPositionSync(): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1067,7 +1067,7 @@ isActive(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1119,7 +1119,7 @@ isActive(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1179,7 +1179,7 @@ destroy(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1230,7 +1230,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1289,7 +1289,7 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1341,7 +1341,7 @@ getValidCommands(callback: AsyncCallback\<Array\<AVControlCommandType>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1405,7 +1405,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1473,7 +1473,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1542,7 +1542,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>): Pro
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1641,7 +1641,7 @@ ArkTS-Sta: sendCommonCommand(command: string, args: Record<string, Object>, call
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1738,7 +1738,7 @@ ArkTS-Sta: getExtras(): Promise<Record<string, Object>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1824,7 +1824,7 @@ ArkTS-Sta: getExtras(callback: AsyncCallback<Record<string, Object>>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1912,7 +1912,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2052,8 +2052,6 @@ onMetadataChange(filter: Array\<string>, callback: Callback\<AVMetadata>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -2091,8 +2089,6 @@ onMetadataChangeAll(callback: Callback\<AVMetadata>): void
 设置元数据变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2253,8 +2249,6 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -2292,8 +2286,6 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 设置播放状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2454,8 +2446,6 @@ onCallMetadataChange(filter: Array\<string>, callback: Callback\<CallMetadata>):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -2493,8 +2483,6 @@ onCallMetadataChangeAll(callback: Callback<CallMetadata>): void
 设置通话元数据变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2655,8 +2643,6 @@ onCallStateChange(filter: Array<string>, callback: Callback<AVCallState>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -2694,8 +2680,6 @@ onCallStateChangeAll(callback: Callback<AVCallState>): void
 设置通话状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2851,8 +2835,6 @@ onSessionDestroy(callback: NoParamCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -3006,8 +2988,6 @@ onActiveStateChange(callback: Callback<boolean>): void
 会话的激活状态的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3164,8 +3144,6 @@ onValidCommandChange(callback: Callback<Array\<AVControlCommandType>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -3321,8 +3299,6 @@ onOutputDeviceChange(callback: ConnectionEvent): void
 设置播放设备变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3494,8 +3470,6 @@ onSessionEvent(callback: EventProcess): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -3666,8 +3640,6 @@ onQueueItemsChange(callback: Callback<Array<[AVQueueItem](arkts-apis-avsession-i
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -3821,8 +3793,6 @@ onQueueTitleChange(callback: Callback\<string>): void
 媒体控制器设置会话自定义播放列表的名称变化的监听器。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3994,8 +3964,6 @@ onExtrasChange(callback: Callback<Record<string, Object>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -4129,7 +4097,7 @@ getAVPlaybackStateSync(): AVPlaybackState;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4187,7 +4155,7 @@ getAVMetadataSync(): AVMetadata
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4243,7 +4211,7 @@ getAVCallState(): Promise\<AVCallState>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4297,7 +4265,7 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4355,7 +4323,7 @@ getCallMetadata(): Promise\<CallMetadata>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4409,7 +4377,7 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4469,7 +4437,7 @@ getAVQueueTitleSync(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4527,7 +4495,7 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4585,7 +4553,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4642,7 +4610,7 @@ isActiveSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4700,7 +4668,7 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

@@ -25,7 +25,7 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -83,7 +83,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -137,7 +137,7 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -197,7 +197,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -260,7 +260,7 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -306,7 +306,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
     console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
   }
 }).catch(async(err: BusinessError) => {
-  console.error(`getSupportdHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -324,7 +324,7 @@ ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -385,7 +385,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -448,7 +448,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -510,7 +510,7 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -585,7 +585,7 @@ let playItem: avSession.AVQueueItem = {
     appName: 'MyMusic'
   }
 };
-// 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
+// 此时会进行加载和缓冲，不会触发实际的播放。
 aVCastController.prepare(playItem, (err: BusinessError | null) => {
   if (err) {
     console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -608,7 +608,7 @@ prepare(item: AVQueueItem): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -656,7 +656,7 @@ let playItem: avSession.AVQueueItem = {
     appName: 'MyMusic'
   }
 };
-// 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
+// 此时会进行加载和缓冲，不会触发实际的播放。
 aVCastController.prepare(playItem).then(() => {
   console.info('prepare successfully');
 }).catch((err: BusinessError) => {
@@ -704,7 +704,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -803,7 +803,7 @@ start(item: AVQueueItem): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -899,7 +899,7 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -957,7 +957,7 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1009,7 +1009,7 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1065,7 +1065,7 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1119,7 +1119,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1181,7 +1181,7 @@ release(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1239,7 +1239,7 @@ release(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1335,8 +1335,6 @@ onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackStat
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -1374,8 +1372,6 @@ onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
 设置播放状态变化的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1450,8 +1446,6 @@ offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
 媒体控制器取消监听播放状态变化的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1528,8 +1522,6 @@ onMediaItemChange(callback: Callback\<AVQueueItem>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -1603,8 +1595,6 @@ offMediaItemChange(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -1673,8 +1663,6 @@ onPlayNext(callback: NoParamCallback): void
 设置播放下一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1749,8 +1737,6 @@ offPlayNext(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -1818,8 +1804,6 @@ onPlayPrevious(callback: NoParamCallback): void
 设置播放上一首资源的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1893,8 +1877,6 @@ offPlayPrevious(): void
 取消设置播放上一首资源的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2224,7 +2206,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
-| callback |  Callback\<int\> | 是   | 回调函数，返回seek后播放的位置。                             |
+| callback |  Callback\<number\> | 是   | 回调函数，返回seek后播放的位置。                             |
 
 **错误码：**
 
@@ -2252,8 +2234,6 @@ onSeekDone(callback: Callback\<int>): void
 设置seek结束的监听事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2327,8 +2307,6 @@ offSeekDone(): void
 取消设置seek结束的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2517,7 +2495,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: int, height: int) => void | 是   | 回调函数。                                                   |
+| callback | (width: int, height: int) => void | 是   | 回调函数。返回视频尺寸。                                                   |
 
 **错误码：**
 
@@ -2554,7 +2532,7 @@ onVideoSizeChange(callback: VideoSizeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | VideoSizeEvent | 是   | 回调函数。                                                   |
+| callback | VideoSizeEvent | 是   | 回调函数。返回视频尺寸。                                               |
 
 **错误码：**
 
@@ -2693,8 +2671,6 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -2782,8 +2758,6 @@ offError(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -2860,8 +2834,6 @@ onKeyRequest(callback: KeyRequestCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -2937,8 +2909,6 @@ offKeyRequest(callback?: KeyRequestCallback): void
 取消监听许可证请求的事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3027,8 +2997,6 @@ onCastControlGenericError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3113,8 +3081,6 @@ offCastControlGenericError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3196,8 +3162,6 @@ onCastControlIoError(callback: ErrorCallback): void
 监听投播输入/输出的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3286,8 +3250,6 @@ offCastControlIoError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3364,8 +3326,6 @@ onCastControlParsingError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3441,8 +3401,6 @@ offCastControlParsingError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3513,8 +3471,6 @@ onCastControlDecodingError(callback: ErrorCallback): void
 监听投播解码的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3592,8 +3548,6 @@ offCastControlDecodingError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3664,8 +3618,6 @@ onCastControlAudioRendererError(callback: ErrorCallback): void
 监听投播音频渲染器的错误事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -3742,8 +3694,6 @@ offCastControlAudioRendererError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3819,8 +3769,6 @@ onCastControlDrmError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 22
@@ -3893,15 +3841,13 @@ ArkTS-Dyn示例：
 aVCastController.off('castControlDrmError');
 ```
 
-## off('castControlDrmError')<sup>22+</sup>
+## offCastControlDrmError<sup>22+</sup>
 
 offCastControlDrmError(callback?: ErrorCallback): void
 
 取消监听投播drm的错误事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
