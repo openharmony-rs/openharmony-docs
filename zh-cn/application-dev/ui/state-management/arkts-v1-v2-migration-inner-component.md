@@ -619,6 +619,34 @@ V1实现：
 
 <!-- @[Parent17_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  // alias和属性名都为key，alias和属性名都可以匹配
+  @Consume('text') childMessage: string;
+  @Consume message: string;
+
+  build() {
+    Column() {
+      Text(this.childMessage)
+      Text(this.message) // Text是Hello World
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Provide('text') message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Child()
+    }
+  }
+}
+```
+
 
 V2迁移策略：确保alias一致，没有指定alias的情况下，依赖属性名进行匹配。
 
