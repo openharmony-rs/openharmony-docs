@@ -676,6 +676,52 @@ export class Model {
 
 【正例】
 <!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State viewModel: TestModel = new TestModel();
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.viewModel.isSuccess ? 'success' : 'failed')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.viewModel.query();
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+
+export class TestModel {
+  public isSuccess: boolean = false;
+  public model: Model = new Model(() => {
+  })
+
+  query() {
+    this.model.callback = () => {
+      this.isSuccess = true;
+    }
+    this.model.query();
+  }
+}
+
+export class Model {
+  public callback: () => void
+
+  constructor(cb: () => void) {
+    this.callback = cb;
+  }
+
+  query() {
+    this.callback();
+  }
+}
+```
 上文示例代码将状态变量的修改放在类的普通方法中，界面开始时显示“failed”，点击后显示“success”。
 
 ### 状态变量只能影响其直接绑定的UI组件的刷新
