@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;list&gt;** component provides a list container that presents a series of list items arranged in a column with the same width. Lists can be used for presenting the same type of data in a multiple and coherent row style. For details, see [list](../reference/apis-arkui/arkui-js/js-components-container-list.md).
 

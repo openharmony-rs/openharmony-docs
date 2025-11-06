@@ -36,7 +36,7 @@ let mTop:Record<string,number> = { 'top': 50 }
 
 @Entry
 @Component
-struct StackExample {
+struct StackLayoutExample {
   build() {
     Column(){
       Stack({ }) {
@@ -67,7 +67,7 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 // xxx.ets
 @Entry
 @Component
-struct StackExample {
+struct StackAlignContentExample {
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Text('Stack').width('90%').height('100%').backgroundColor('#e1dede').align(Alignment.BottomEnd)
@@ -89,17 +89,17 @@ Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../referenc
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    //$r('app.string.stack_num1')需要替换为开发者所需的资源文件
+    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
     Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306)
 
   Column() {
-    //$r('app.string.stack_num2')需要替换为开发者所需的资源文件
+    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink)
 
   Column() {
-    //$r('app.string.stack_num3')需要替换为开发者所需的资源文件
+    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
@@ -115,17 +115,17 @@ Stack({ alignContent: Alignment.BottomStart }) {
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    //$r('app.string.stack_num1')需要替换为开发者所需的资源文件
+    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
     Text($r('app.string.stack_num1')).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
 
   Column() {
-    //$r('app.string.stack_num2')需要替换为开发者所需的资源文件
+    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
 
   Column() {
-    //$r('app.string.stack_num3')需要替换为开发者所需的资源文件
+    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
@@ -163,11 +163,11 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        //$r('app.string.contacts')需要替换为开发者所需的资源文件
+        //'app.string.contacts'资源文件中的value值为'联系人'
         Text($r('app.string.contacts')).fontSize(16)
-        //$r('app.string.setting')需要替换为开发者所需的资源文件
+        //'app.string.setting'资源文件中的value值为'设置'
         Text($r('app.string.setting')).fontSize(16)
-        //$r('app.string.text_message')需要替换为开发者所需的资源文件
+        //'app.string.text_message'资源文件中的value值为'短信'
         Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')

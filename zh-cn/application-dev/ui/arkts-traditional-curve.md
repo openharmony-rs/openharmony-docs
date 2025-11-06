@@ -16,8 +16,10 @@ ArkUI提供了贝塞尔曲线、阶梯曲线等传统曲线接口，开发者可
 
 
 
-```ts
-class MyCurve {
+<!-- @[traditional_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/traditionalCurve/template1/CurveDemo.ets) -->
+
+``` TypeScript
+class TraditionalCurve {
   public title: string;
   public curve: Curve;
   public color: Color | string;
@@ -29,13 +31,13 @@ class MyCurve {
   }
 }
 
-const myCurves: MyCurve[] = [
-  new MyCurve(' Linear', Curve.Linear, '#317AF7'),
-  new MyCurve(' Ease', Curve.Ease, '#D94838'),
-  new MyCurve(' EaseIn', Curve.EaseIn, '#DB6B42'),
-  new MyCurve(' EaseOut', Curve.EaseOut, '#5BA854'),
-  new MyCurve(' EaseInOut', Curve.EaseInOut, '#317AF7'),
-  new MyCurve(' FastOutSlowIn', Curve.FastOutSlowIn, '#D94838')
+const traditionalCurves: TraditionalCurve[] = [
+  new TraditionalCurve(' Linear', Curve.Linear, '#317AF7'),
+  new TraditionalCurve(' Ease', Curve.Ease, '#D94838'),
+  new TraditionalCurve(' EaseIn', Curve.EaseIn, '#DB6B42'),
+  new TraditionalCurve(' EaseOut', Curve.EaseOut, '#5BA854'),
+  new TraditionalCurve(' EaseInOut', Curve.EaseInOut, '#317AF7'),
+  new TraditionalCurve(' FastOutSlowIn', Curve.FastOutSlowIn, '#D94838')
 ]
 
 @Entry
@@ -47,7 +49,7 @@ struct CurveDemo {
     Column() {
       // 曲线图例
       Grid() {
-        ForEach(myCurves, (item: MyCurve) => {
+        ForEach(traditionalCurves, (item: TraditionalCurve) => {
           GridItem() {
             Column() {
               Row()
@@ -81,7 +83,7 @@ struct CurveDemo {
             radius: 145
           })
 
-        ForEach(myCurves, (item: MyCurve) => {
+        ForEach(traditionalCurves, (item: TraditionalCurve) => {
           // 小球
           Column() {
             Row()

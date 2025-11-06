@@ -4,331 +4,445 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The NDK provides third-party platforms accessed through **XComponent** with APIs for integrating accessibility, allowing components of these platforms to be accessible within ArkUI.
+For third-party framework platforms that are accessed through XComponent, the NDK provides functions for interoperability with accessibility services, enabling third-party framework components to support basic accessibility features in ArkUI. These include focus acquisition, accessibility node retrieval, and operation response.
 
-First, use the [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) of XComponent to obtain the accessibility access provider. Then, call [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) to register the required callback functions for accessibility: [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md).
+For single-instance scenarios, use [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) to obtain the accessibility provider, and then register the required callback functions [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) via [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback).
 
-To deliver a smooth accessibility service experience, third-party applications must adapt to the [actions](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) sent by the accessibility subsystem and send [accessibility events](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) to the accessibility subsystem in response to component interactions.
+For multi-instance scenarios, register callback functions [ArkUI_AccessibilityProviderCallbacksWithInstance](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) using [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance).
+
+In these callbacks, third-party frameworks must handle accessibility [actions](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) from the accessibility system and send appropriate accessibility [events](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) based on component interactions.
 
 > **NOTE**
 >
-> - Accessibility capability: refers to the capability of developers to create accessible app UIs to meet the requirements of users with visual, auditory, motor, and cognitive disabilities.
-> - When the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) callback query API is implemented, the element memory is allocated for each accessibility node information queried through [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo) and added to the specified element list.
-> - When using [OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_sendaccessibilityasyncevent) to send events, you need to use [OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityeventinfo) to create [ArkUI_AccessibilityEventInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityeventinfo.md), use [OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityelementinfo) to create [ArkUI_AccessibilityElementInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md), and call [OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityeventinfo) and [OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityelementinfo) to destroy the memory.
+> - Accessibility capability enables you to create accessible application UIs for users with visual, auditory, motor, and cognitive disabilities.
+> - When implementing query APIs ([OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)), use [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo) to create and manage accessibility node information.
+> - When sending events with [OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_sendaccessibilityasyncevent), create event and element info objects using the appropriate creation functions and destroy them after use. Specifically, create an [ArkUI_AccessibilityEventInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityeventinfo.md) object using [OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityeventinfo) and an [ArkUI_AccessibilityElementInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object using [OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityelementinfo), and then destroy the objects after use with [OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityeventinfo) and [OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityelementinfo).
 > - When logging within callback functions, include the provided **requestId** parameter to link logs to a specific interaction process. This practice facilitates indexing and querying and aids in troubleshooting and pinpointing issues.
 
-## Integrating Accessibility
 
-The following example shows how to integrate accessibility capabilities. After integration, when accessibility features are enabled, third-party rendering components of the **XComponent** can be integrated to achieve accessible interactions.
+This example demonstrates accessibility integration. For the complete implementation, see [AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi). Once integrated, third-party framework components in **XComponent** will support accessibility interactions when accessibility features are enabled.
 
-1. Create a pre-engineering project based on the scenario of using OH_ArkUI_SurfaceHolder to manage the surface lifecycle of the customized rendering (XComponent). For details, see napi-xcomponent-guidelines.md#use-oh_arkui_surfaceholder-to-manage-the-surface-lifecycle.
+1. Create a project based on [OH_ArkUI_SurfaceHolder for surface lifecycle management](napi-xcomponent-guidelines.md#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder) in custom rendering (XComponent).
 
-2. Implement callback functions based on the API definition.
+2. Obtain the accessibility provider and register callbacks (the following uses the multi-instance scenario as an example).
 
-```c
-int32_t FindAccessibilityNodeInfosById(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
-{
-    // Query the element information list based on mode.
-	if (elementList == nullptr) {
-        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
-    }
-	
-    // Call the API of the third-party platform to search for the nodes that meet the mode requirements.
-    //...
-    // nodes is the search result.
-    int size = sizeof(nodes) / sizeof(nodes[0]);
-    for (int i = 0; i < size; i++) {
-        // Obtain the element structure.
-        element = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
-        // Set the element member content.
-        OH_ArkUI_AccessibilityElementInfoSetElementId(element, nodes[i].id);
-        OH_ArkUI_AccessibilityElementInfoSetComponentType(element, nodes[i].type);
-        // ...
-    }
-	// ...
-}
-```
+   <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   #include <arkui/native_interface_accessibility.h>
+   #include <string>
+   #include "common/common.h"
+   // For details about the complete implementation, see AccessibilityCapiSample.
+   #include "fakenode/fake_node.h"
+   // For details about the complete implementation, see AccessibilityCapiSample.
+   #include "AccessibilityManager.h"
+   
+   // ···
+   // [StartExclude abilitycap_six_start]
+   AccessibilityManager::AccessibilityManager()
+   {
+   // Multi-instance scenario
+       accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction = ExecuteAccessibilityAction;
+       accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   // Single-instance scenario
+       accessibilityProviderCallbacks_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       accessibilityProviderCallbacks_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       accessibilityProviderCallbacks_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       accessibilityProviderCallbacks_.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       accessibilityProviderCallbacks_.executeAccessibilityAction = ExecuteAccessibilityAction;
+       accessibilityProviderCallbacks_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       accessibilityProviderCallbacks_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   }
+   
+   void AccessibilityManager::Initialize(const std::string &id, OH_NativeXComponent *nativeXComponent)
+   {
+       int32_t ret = OH_NativeXComponent_GetNativeAccessibilityProvider(nativeXComponent, &provider);
+       if (provider == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "get provider is null");
+           return;
+       }
+       // 2. Register callbacks.
+       ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(), provider,
+           &accessibilityProviderCallbacksWithInstance_);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "InterfaceDesignTest OH_ArkUI_AccessibilityProviderRegisterCallback failed");
+           return;
+       }
+       g_provider = provider;
+   }
+   
+   // ···
+   ```
 
+3. Third-party frameworks must implement the following callbacks:
 
-
-```c
-int32_t FindNextFocusAccessibilityNode(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementinfo)
-{
-    // Query the element information list based on mode. For details, see the API description.
-	if (elementinfo == nullptr) {
-        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
-    }
-	
-    // Call the API of the third-party platform to search for the nodes that meet the search criteria.
-    //...
-    // nodes is the search result.
-    // Set the element member content.
-    OH_ArkUI_AccessibilityElementInfoSetElementId(element, nodes[i].id);
-    OH_ArkUI_AccessibilityElementInfoSetComponentType(element, nodes[i].type);
-    // ...
-}
-```
-
-
-
-```c
-int32_t FindAccessibilityNodeInfosByText(int64_t elementId, const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
-{
-    if (elementList == nullptr) {
-        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
-    }
-    
-    ArkUI_AccessibilityElementInfo *elementInfo = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
-    
-    // The third-party platform needs to set elementInfo.
-    
-    if (elementInfo == nullptr) {
-        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
-    }
-    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-}
-```
-
-
-
-```c
-int32_t FindFocusedAccessibilityNode(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
-{   
-    if (elementInfo == nullptr) {
-        return OH_NATIVEXCOMPONENT_RESULT_FAILED;
-    }
-    
-    // The third-party platform needs to set elementInfo.
-    
-    return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-}
-```
-
-
-
-```C
-int32_t ExecuteAccessibilityAction(int64_t elementId, ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
-{
-    // ...
-    // Obtain action argument content and combine it with action to determine the operation to be processed.
-    char* actionArgumentValue;
-    OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, key.c_str(), &actionArgumentValue);
-    
-    // Perform operations on the specified component node.
-    ret = doAction(elementId, action, actionArgumentValue);
-    if (ret != 0) {
-        return;
-    }
-    // Determine the current operation type and return the corresponding event result. Each operation corresponds to a unique event. For details, see the ArkUI_AccessibilityEventType description.
-    // ...
-    // Specify that the component node that reports the event is node.
-    // 1. Call OH_ArkUI_CreateAccessibilityEventInfo to create an ArkUI_AccessibilityEventInfo instance.
-    ArkUI_AccessibilityEventInfo *eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
-    if (eventInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "[requestId: %{public}d]DispatchTouchEventCB: Unable to create accessibility eventInfo", requestId);
-        return;
-    }
-    // 2. Call OH_ArkUI_CreateAccessibilityElementInfo to create an ArkUI_AccessibilityElementInfo instance.
-    ArkUI_AccessibilityElementInfo *elementInfo = OH_ArkUI_CreateAccessibilityElementInfo();
-    if (elementInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "[requestId: %{public}d]DispatchTouchEventCB: Unable to create accessibility elementInfo", requestId);
-        return;
-    }
-    // 3. Enter the element content.
-    // Set the element member content.
-    OH_ArkUI_AccessibilityElementInfoSetElementId(element, nodes[i].id);
-    OH_ArkUI_AccessibilityElementInfoSetComponentType(element, nodes[i].type);
- 
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "[requestId: %{public}d]DispatchTouchEventCB: send accessibility event", requestId);
-    // 4. Set eventType based on the current action.
-    // ...
-    SendAccessibilityAsyncEvent(eventInfo, elementInfo, eventType);
-    // 5. Destroy the memory for eventInfo and elementInfo.
-    OH_ArkUI_DestoryAccessibilityElementInfo(elementInfo);
-    OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
-    // ...
-}
-void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo, ArkUI_AccessibilityEventType eventType) 
-{
-    if (eventInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_TEXT, "eventInfo is null");
-        return;
-    }
-    if (elementInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_TEXT, "elementInfo is null");
-        return;
-    }
-    OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
-    
-    OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
-    
-}
-void SendAccessibilityAsyncEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo, ArkUI_AccessibilityEventType eventType)
-{
-    // 1. Enter the event content.
-    FillEvent(eventInfo, elementInfo, ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE);
-    // 2. Callback
-    auto callback = [](int32_t errorCode){
-         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
-    };
-    // 3. Call the API to send the event to the OpenHarmony side.
-    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback);
-}
-```
-
-
-
-```C
-int32_t ClearFocusedFocusAccessibilityNode()
-{
-	// Find the currently focused component and clear its focus state.
-    // ...
-    // Accessibility focus state
-    node.accessibilityFocused = false;
-    // Component focus state
-    node.focused = false;
-    // ...
-}
-```
-
-
-
-```C
-int32_t GetAccessibilityNodeCursorPosition(int64_t elementId, int32_t requestId, int32_t* index)
-{	
-	// Obtain the cursor position of the text component and return it.
-    // Search for the corresponding component node.
-    // ...
-    *index = node.cursorPosition;
-    // ...
-}
-```
-
-
-
-3. Register the accessibility callback functions using the **XComponent** handle.
-
-```C
-void PluginRender::RegisterAccessibility(OH_NativeXComponent* nativeXComponent)
-{
-	//...
-    // 1. Obtain the provider instance and provide it to the function for return.
-    int32_t ret = OH_NativeXComponent_GetNativeAccessibilityProvider(nativeXComponent, &provider_);
-    if (provider_ == nullptr) {
-        return;
-    }
-    // 2. Register the callback functions, such as FindAccessibilityNodeInfosById, which need to be implemented by the third party.
-    accessibilityProviderCallbacks_ = new ArkUI_AccessibilityProviderCallbacks();
-    accessibilityProviderCallbacks_->findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
-    accessibilityProviderCallbacks_->findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
-    accessibilityProviderCallbacks_->findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
-    accessibilityProviderCallbacks_->findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
-    accessibilityProviderCallbacks_->executeAccessibilityAction = ExecuteAccessibilityAction;
-    accessibilityProviderCallbacks_->clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
-    accessibilityProviderCallbacks_->getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
-    ret = OH_ArkUI_AccessibilityProviderRegisterCallback(provider_, accessibilityProviderCallbacks_);
-    if (ret != 0) {
-        return;
-    }
-}
-```
+   <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId,
+       ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindAccessibilityNodeInfosById start,instanceId %{public}s elementId: %{public}ld, "
+                    "requestId: %{public}d, mode: %{public}d", instanceId,
+                    elementId, requestId, static_cast<int32_t>(mode));
+       if (elementList == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "FindAccessibilityNodeInfosById elementList is null");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       int ret = 0;
+       const int parentOfRoot = -2100000;
+       if (elementId == -1) {
+           elementId = 0;
+       }
+       
+       if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN) {
+           // Third-party frameworks must implement custom search logic in this method and return accessibility node information to the accessibility service. The following implementation serves as a reference example only.
+           // Special constant defined for ArkUI framework compatibility. Root node parent ID must be set to this specific value.
+           auto rootNode = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           if (!rootNode) {
+               return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+           }
+           OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
+           FakeWidget::Instance().fillAccessibilityElement(rootNode);
+   
+           ArkUI_AccessibleRect rect;
+           rect.leftTopX = NUMBER_ZERO;
+           rect.leftTopY = NUMBER_ZERO;
+           rect.rightBottomX = NUMBER_THIRD;
+           rect.rightBottomY = NUMBER_THIRD;
+           ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
+           auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+           int64_t childNodes[1024];
+           for (int i = 0; i < objects.size(); i++) {
+               int elementId = i + 1;
+   
+               childNodes[i] = elementId;
+           }
+           for (int i = 0; i < objects.size(); i++) {
+               int elementId = i + 1;
+               childNodes[i] = elementId;
+               auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+               OH_ArkUI_AccessibilityElementInfoSetElementId(child, elementId);
+               OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+               OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
+               objects[i]->fillAccessibilityElement(child);
+   
+               ArkUI_AccessibleRect rect;
+               rect.leftTopX = i * NUMBER_FIRST;
+               rect.leftTopY = NUMBER_FIRST;
+               rect.rightBottomX = i * NUMBER_FIRST + NUMBER_FIRST;
+               rect.rightBottomY = NUMBER_SECOND;
+               OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &rect);
+               if (objects[i]->ObjectType() == "FakeSlider") {
+                   auto rangeInfo = objects[i]->GetRangeInfo();
+                   OH_ArkUI_AccessibilityElementInfoSetRangeInfo(child, &rangeInfo);
+               }
+               if (objects[i]->ObjectType() == "FakeList") {
+                   auto gridInfo = objects[i]->GetGridInfo();
+                   OH_ArkUI_AccessibilityElementInfoSetGridInfo(child, &gridInfo);
+               }
+               if (objects[i]->ObjectType() == "FakeSwiper") {
+                   auto gridItemInfo = objects[i]->GetGridItemInfo();
+                   OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(child, &gridItemInfo);
+               }
+           }
+   
+           ret = OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(rootNode, objects.size(), childNodes);
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "FindAccessibilityNodeInfosById child count: %{public}ld %{public}d",
+                        objects.size(), ret);
+       } else if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CURRENT) {
+           auto &widget = FakeWidget::Instance();
+           AccessibleObject *obj = nullptr;
+           if (elementId == 0) {
+               obj = &widget;
+           } else {
+               obj = widget.GetChild(elementId);
+           }
+           if (!obj) {
+               return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+           }
+           auto node = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           OH_ArkUI_AccessibilityElementInfoSetElementId(node, elementId);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(node, elementId == 0 ? parentOfRoot : 0);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(node, elementId == 0 ?  "no" : "yes");
+           obj->fillAccessibilityElement(node);
+           ArkUI_AccessibleRect rect;
+           if (elementId == 0) {
+               rect.leftTopX = NUMBER_ZERO;
+               rect.leftTopY = NUMBER_ZERO;
+               rect.rightBottomX = NUMBER_THIRD;
+               rect.rightBottomY = NUMBER_THIRD;
+           } else {
+               int i = elementId - 1;
+               rect.leftTopX = i * NUMBER_FIRST;
+               rect.leftTopY = NUMBER_FIRST;
+               rect.rightBottomX = i * NUMBER_FIRST + NUMBER_FIRST;
+               rect.rightBottomY = NUMBER_SECOND;
+           }
+   
+           OH_ArkUI_AccessibilityElementInfoSetScreenRect(node, &rect);
+           if (elementId == 0) {
+               auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+               int64_t childNodes[1024];
+   
+               for (int i = 0; i < objects.size(); i++) {
+                   int elementId = i + 1;
+   
+                   childNodes[i] = elementId;
+                   auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+                   OH_ArkUI_AccessibilityElementInfoSetElementId(child, elementId);
+                   OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+   
+                   objects[i]->fillAccessibilityElement(child);
+   
+                   ArkUI_AccessibleRect rect;
+                   rect.leftTopX = i * NUMBER_FIRST;
+                   rect.leftTopY = NUMBER_ZERO;
+                   rect.rightBottomX = i * NUMBER_FIRST + NUMBER_FIRST;
+                   rect.rightBottomY = NUMBER_SECOND;
+                   OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &rect);
+               }
+               ret = OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(node, objects.size(), childNodes);
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                            "FindAccessibilityNodeInfosById child2 count: %{public}ld", objects.size());
+           }
+       }
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
-4. When components change, proactively send events. For details, see the [ArkUI_AccessibilityEventType](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) description.
+   <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
+       ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindNextFocusAccessibilityNode instanceId %{public}s "
+                    "elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
+                    instanceId, elementId, requestId, static_cast<int32_t>(direction));
+       auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "objects.size() %{public}d", objects.size());
+       // object.size does not contain the root node.
+       if ((elementId < 0) || (elementId > objects.size())) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "elementId invalid");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       int64_t nextElementId = -1;
+       if (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_FORWARD) {
+           nextElementId = elementId + 1;
+       } else {
+           nextElementId = elementId - 1;
+       }
+       
+       // Screen reader constraint: If it is the root node and navigating backward, return to the last node.
+       if ((nextElementId == -1) && (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD)) {
+           nextElementId = objects.size();
+       }
+       
+       if (nextElementId >  objects.size()) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "nextElementId invalid");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       
+       if (nextElementId <=  0) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "nextElementId less than zero");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
+       OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
+       // The ID is 1 greater than the object index.
+       objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
+       ArkUI_AccessibleRect rect;
+       rect.leftTopX = nextElementId * NUMBER_FIRST;
+       rect.leftTopY = NUMBER_ZERO;
+       rect.rightBottomX = nextElementId * NUMBER_FIRST + NUMBER_FIRST;
+       rect.rightBottomY = NUMBER_SECOND;
+       OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
-If a touch event causes a page change, send the following events: **ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE** (page change event) and **ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_FOCUS_NODE_UPDATE** (focus position change event).
 
-```C
-// Define the DispatchTouchEventCB() function, which is triggered to respond to a touch event.
-void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
-{
-	// ...
-	// Obtain the ID of the XComponent.
-	char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = { '\0' };
-	uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
-	if (OH_NativeXComponent_GetXComponentId(component, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
-		OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Callback",
-			"DispatchTouchEventCB: Unable to get XComponent id");
-		return;
-	}
 
-    // Check whether an accessibility provider has been registered.
-    if (provider_ != nullptr) {
-        
-        // Check whether the current touch event causes any change in the page and the position of the focused component. If changes occur, report accessibility events to notify accessibility services and applications.
-        // ...
-        // Specify that the component node that reports the event is node.
-        // 1. Call OH_ArkUI_CreateAccessibilityEventInfo to create an ArkUI_AccessibilityEventInfo instance.
-        ArkUI_AccessibilityEventInfo *eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
-        if (eventInfo == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Callback",
-			"DispatchTouchEventCB: Unable to create accessibility eventInfo");
-            return;
-        }
-        // 2. Call OH_ArkUI_CreateAccessibilityElementInfo to create an ArkUI_AccessibilityElementInfo instance.
-        ArkUI_AccessibilityElementInfo *elementInfo = OH_ArkUI_CreateAccessibilityElementInfo();
-        if (elementInfo == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Callback",
-			"DispatchTouchEventCB: Unable to create accessibility elementInfo");
-            return;
-        }
-        // 3. Enter the element content.
-        // Set the element member content.
-    	OH_ArkUI_AccessibilityElementInfoSetElementId(element, nodes[i].id);
-    	OH_ArkUI_AccessibilityElementInfoSetComponentType(element, nodes[i].type);
-        // ...
-        
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Callback",
-			"DispatchTouchEventCB: send accessibility event");
-        // 4. Send the page update event.
-        SendAccessibilityAsyncEvent(eventInfo, elementInfo, ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE);
-        // 5. If the current processing has caused a change in the position of the focused component, send the focus position change event.
-        SendAccessibilityAsyncEvent(eventInfo, elementInfo, ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_FOCUS_NODE_UPDATE);
-        // 6. Destroy the memory for eventInfo and elementInfo.
-        OH_ArkUI_DestoryAccessibilityElementInfo(elementInfo);
-        OH_ArkUI_DestoryAccessibilityEventInfo(eventInfo);
-    }
-    
-	std::string id(idStr);
-	PluginRender *render = PluginRender::GetInstance(id);
-	if (render != nullptr) {
-		// Encapsulate the OnTouchEvent method.
-		render->OnTouchEvent(component, window);
-	}
-}
+   <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
+       const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       // Third-party frameworks need to implement the logic for querying accessibility nodes based on text content.
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindAccessibilityNodeInfosByText start,instanceId %{public}s elementId: %{public}ld, "
+                    "requestId: %{public}d, text: %{public}s.", instanceId,
+                    elementId, requestId, text);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
-void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo, ArkUI_AccessibilityEventType eventType) 
-{
-    if (eventInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_TEXT, "eventInfo is null");
-        return;
-    }
-    if (elementInfo == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_TEXT, "elementInfo is null");
-        return;
-    }
-    // 1. Set the event type.
-    OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
-    // 2. Set the node component information for the event being sent.
-    OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
-    
-}
-void SendAccessibilityAsyncEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo, ArkUI_AccessibilityEventType eventType)
-{
-    // 1. Enter the event content.
-    FillEvent(eventInfo, elementInfo, ArkUI_AccessibilityEventType::ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE);
-    // 2. Create a callback function to obtain the event sending result.
-    auto callback = [](int32_t errorCode){
-         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
-    };
-    // 3. Call the API to send the event to the accessibility subsystem.
-    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback);
-}
-```
 
-5. When the integration is successful, the accessibility features can be enabled.
 
-![accessibility](./figures/accessibility-pic.png)
+   <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       // Third-party frameworks need to implement the logic for obtaining the focus element information based on a specified node.
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindFocusedAccessibilityNode start instanceId %{public}s, "
+                    "elementId: %{public}ld, requestId: %{public}d, focusType: %{public}d",
+                    instanceId, elementId, requestId, static_cast<int32_t>(focusType));
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
+
+
+
+   <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
+                  ArkUI_AccessibilityEventType eventType, std::string announcedText)
+   {
+       if (eventInfo == nullptr) {
+           return;
+       }
+       if (elementInfo == nullptr) {
+           return;
+       }
+       OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
+   
+       OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
+       
+       if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
+       }
+   }
+   
+   // ···
+   
+   void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
+                                                          ArkUI_AccessibilityEventType eventType,
+                                                          std::string announcedText)
+   {
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       // 1. Enter the event content.
+       FillEvent(eventInfo, elementInfo, eventType, announcedText);
+       // 2. Callback
+       auto callback = [](int32_t errorCode) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
+       };
+       // 3. Call the API to send the event to the OpenHarmony side.
+       OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
+   }
+   // [EndExclude abilitycap_one_start]
+   // ···
+   
+   int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
+       ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "ExecuteAccessibilityAction instanceId %{public}s elementId: %{public}ld, "
+                    "action: %{public}d, requestId: %{public}d",
+                    instanceId, elementId, action, requestId);
+       auto object = FakeWidget::Instance().GetChild(elementId);
+       if (!object) {
+           return 0;
+       }
+       auto announcedText = object->GetAnnouncedForAccessibility();
+       auto element = OH_ArkUI_CreateAccessibilityElementInfo();
+       OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
+       const char *actionKey = "some_key";
+       char *actionValue = nullptr;
+       OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
+       switch (action) {
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
+               if (object) {
+                   object->OnClick();
+                   object->fillAccessibilityElement(element);
+               }
+               AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(true);
+   
+                   object->fillAccessibilityElement(element);
+               }
+               // Send the specified event to the accessibility service.
+               AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
+                   announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(false);
+                   object->fillAccessibilityElement(element);
+               }
+               AccessibilityManager::SendAccessibilityAsyncEvent(
+                   element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED,
+                   announcedText);
+               break;
+           default:
+               // Handle unsupported action types.
+               break;
+       }
+       OH_ArkUI_DestoryAccessibilityElementInfo(element);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
+
+
+
+   <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
+   {
+       // Third-party frameworks need to implement the logic for clearing the currently focused node.
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
+
+
+
+   <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
+       int32_t requestId, int32_t *index)
+   {
+       // Third-party frameworks need to implement the logic for obtaining the cursor position within the current text component.
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "GetAccessibilityNodeCursorPosition, instanceId %{public}s "
+                    "elementId: %{public}ld, requestId: %{public}d, index: %{public}d",
+                    instanceId, elementId, requestId, index);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
+
+4. After successful integration, enable accessibility features in system settings.

@@ -184,7 +184,7 @@ import { UIExtensionContentSession } from '@kit.AbilityKit';
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
   private localStorage: LocalStorage|undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined = this.localStorage.get<UIExtensionContentSession>('session');
+  private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {

@@ -86,7 +86,10 @@
 
 ### V1->V2
 - V1的状态变量传递给V2的[\@Param](./arkts-new-param.md)，调用`UIUtils.enableV2Compatibility`使V1的状态变量可在\@ComponentV2中有观察能力。完整示例见[常见场景](#常见场景)。
-```ts
+
+<!-- @[state_manage_mixed_paradigm_v1_to_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV1ToV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
@@ -113,6 +116,7 @@ struct CompV2 {
   }
 }
 ```
+
 - V1状态变量可观察第一层属性，在调用`UIUtils.enableV2Compatibility`传递给\@Param后，\@Param也可观察第一层属性的变化。
 
 具体场景能力可见下表。
@@ -132,16 +136,20 @@ struct CompV2 {
 
 在V2->V1时，推荐使用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`。如果当前对象已经是V1的可观察数据了，则仅调用`UIUtils.enableV2Compatibility`即可，完整例子见[常见场景](#常见场景)。
 
-```ts
+<!-- @[state_manage_mixed_paradigm_v2_to_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV2ToV1.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
-class ObservedClass {}
+class ObservedClass {
+}
 
 @Entry
 @ComponentV2
 struct CompV2 {
   @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+
   build() {
     Column() {
       CompV1({ observedClass: this.observedClass })
@@ -152,6 +160,7 @@ struct CompV2 {
 @Component
 struct CompV1 {
   @ObjectLink observedClass: ObservedClass;
+
   build() {
   }
 }
@@ -216,12 +225,14 @@ arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态
 
 **推荐写法**
 
-```ts
+<!-- @[state_mixed_scene_js_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2Recommend.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
 class ObservedClass {
-  name: string = 'Tom';
+  public name: string = 'Tom';
 }
 
 @Entry
@@ -254,14 +265,17 @@ struct CompV2 {
   }
 }
 ```
+
 **不推荐写法**
 
 在下面的例子中，V1的状态变量在传递给V2时，未调用`enableV2Compatibility`接口，未使能V2的观察能力，则`observedClass`在CompV2中无法观察属性`name`的变化。同一个状态变量在`CompV1`和`CompV2`中观察能力不一致。
 
-```ts
+<!-- @[state_mixed_scene_js_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2NotRecommend.ets) -->
+
+``` TypeScript
 @Observed
 class ObservedClass {
-  name: string = 'Tom';
+  public name: string = 'Tom';
 }
 
 @Entry
@@ -294,17 +308,20 @@ struct CompV2 {
   }
 }
 ```
+
 **V2->V1**
 
 **推荐写法**
 
 在V2->V1传递的场景中，为了拉齐V2和V1的观察能力，需要在V2中调用makeV1Observed接口，同时也需要使能V2的观察能力，调用enableV2Compatibility接口，所以推荐写法如下。
 
-```ts
+<!-- @[state_mixed_scene_js_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1Recommend.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class ObservedClass {
-  name: string = 'Tom';
+  public name: string = 'Tom';
 }
 
 @Entry
@@ -345,9 +362,11 @@ struct CompV1 {
 
 因为V1和V2观察能力不同，如果不调用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`直接进行数据传递，则会造成不刷新或者刷新行为不一致的问题。
 
-```ts
+<!-- @[state_mixed_scene_js_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1NotRecommend.ets) -->
+
+``` TypeScript
 class ObservedClass {
-  name: string = 'Tom';
+  public name: string = 'Tom';
 }
 
 @Entry
@@ -391,6 +410,7 @@ struct CompV1 {
   }
 }
 ```
+
 ### \@Observed装饰的class
 
 **V1->V2**
@@ -402,27 +422,28 @@ struct CompV1 {
     - 在V1中，如果将非`@Track`装饰的属性使用在UI中，是非法行为，会有运行时报错。
     - 在V2中，非`@Track`装饰的属性使用在UI不会有运行时报错，但不会响应更新。
 
-```ts
+<!-- @[state_mixed_scene_observed_class_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
 class ObservedClass {
-  @Track name: string = 'a';
-  count: number = 0;
+  @Track public name: string = 'a';
+  public count: number = 0;
 }
 
 @Entry
 @Component
 struct CompV1 {
   @State observedClass: ObservedClass = new ObservedClass();
+
   build() {
     Column() {
       Text(`name: ${this.observedClass.name}`).onClick(() => {
         // 触发刷新
         this.observedClass.name += 'a';
       })
-      // 使用非@Track的变量在V1中会崩溃
-      // Text(`count: ${this.observedClass.count}`)
 
       CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
     }
@@ -432,6 +453,7 @@ struct CompV1 {
 @ComponentV2
 struct CompV2 {
   @Param observedClass: ObservedClass = new ObservedClass();
+
   build() {
     // 使用非@Track的变量在V2中不会崩溃，但不会响应更新
     Text(`count: ${this.observedClass.count}`).onClick(() => {
@@ -441,17 +463,21 @@ struct CompV2 {
   }
 }
 ```
+
 **V2->V1**
 
 - `ObservedClass`是\@Observed装饰的class，所以传递给V1调用`UIUtils.enableV2Compatibility`时，无需再调用`UIUtils.makeV1Observed`。
 - 只有\@Track装饰的变量在V1和V2中可观察。非\@Track的变量在V1中使用在UI上会有运行时报错，在V2中不会报错，但不会响应刷新。
-```ts
+
+<!-- @[state_mixed_scene_observed_class_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Observed
 class ObservedClass {
-  @Track name: string = 'a';
-  count: number = 0;
+  @Track public name: string = 'a';
+  public count: number = 0;
 }
 
 @Entry
@@ -485,8 +511,6 @@ struct CompV2 {
         // 触发刷新
         this.observedClass.name += 'a';
       })
-      // 使用非@Track的变量在V1中会崩溃
-      // Text(`count: ${this.observedClass.count}`)
     }
   }
 }
@@ -499,7 +523,9 @@ struct CompV2 {
 
 **推荐写法**
 
-```ts
+<!-- @[state_mixed_scene_built_type_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2Recommend.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -536,10 +562,14 @@ struct ArrayCompV2 {
   }
 }
 ```
+
 **不推荐写法**
 
 在下面的例子中，没有调用enableV2Compatibility和makeV1Observed，则有V1和V2双重代理的问题。
-```ts
+
+<!-- @[state_mixed_scene_built_type_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2NotRecommend.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ArrayCompV1 {
@@ -573,11 +603,14 @@ struct ArrayCompV2 {
   }
 }
 ```
+
 **V2->V1**
 
 **推荐写法**
 
-```ts
+<!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -611,13 +644,16 @@ struct ArrayCompV1 {
     }
   }
 }
-
 ```
+
 **不推荐写法**
 
 在下面的例子中，没有调用enableV2Compatibility和makeV1Observed，且对\@ObjectLink非法初始化，使其无法观察属性的变化。
 但因为传递给\@ObjectLink是V2的状态变量，所以可以触发V2的刷新。
-```ts
+
+<!-- @[state_mixed_scene_built_type_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1NotRecommend.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct ArrayCompV2 {
@@ -652,6 +688,7 @@ struct ArrayCompV1 {
   }
 }
 ```
+
 ### 二维数组
 
 **V1->V2**
@@ -660,7 +697,9 @@ struct ArrayCompV1 {
 - 使用makeV1Observed将二维数组的内层数组变成V1的状态变量。
 - 在传递给V2子组件时，调用enableV2Compatibility，使其具有V2的观察能力，也避免V1V2的双重代理。
 
-```ts
+<!-- @[state_mixed_scene_two_bit_array_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV1V2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ComponentV2
@@ -723,7 +762,9 @@ struct IndexPage {
 - 使用makeV1Observed将二维数组的内层数组变成V1的状态变量。调用enableV2Compatibility，使其具有V2的观察能力，也避免V1V2的双重代理。
 - 在V1中，使用\@ObjectLink接收二维数组的内层数组，因为其为makeV1Observed的返回值，所以点击`Button('@ObjectLink push')`，会正常响应刷新。
 
-```ts
+<!-- @[state_mixed_scene_two_bit_array_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Component
@@ -797,11 +838,14 @@ struct IndexPage {
 NestedClassV2({ outer: this.outer })
 ```
 完整例子如下。
-```ts
+
+<!-- @[state_mixed_scene_nested_type_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV1V2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class ArrayItem {
-  value: number = 0;
+  public value: number = 0;
 
   constructor(value: number) {
     this.value = value;
@@ -809,8 +853,8 @@ class ArrayItem {
 }
 
 class Inner {
-  innerValue: string = 'inner';
-  arr: Array<ArrayItem>;
+  public innerValue: string = 'inner';
+  public arr: Array<ArrayItem>;
 
   constructor(arr: Array<ArrayItem>) {
     this.arr = arr;
@@ -818,8 +862,8 @@ class Inner {
 }
 
 class Outer {
-  @Track outerValue: string = 'outer';
-  @Track inner: Inner;
+  @Track public outerValue: string = 'outer';
+  @Track public inner: Inner;
 
   constructor(inner: Inner) {
     this.inner = inner;
@@ -922,11 +966,13 @@ struct NestedClassV2 {
 - 下面的例子中，`NestedClassV2`中`outer`调用了`UIUtils.enableV2Compatibility`，且每一层都是`UIUtils.makeV1Observed`的返回值，所以`outer`在V2中有了深度观察的能力。
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
-```ts
+<!-- @[state_mixed_scene_nested_type_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV2V1.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class ArrayItem {
-  value: number = 0;
+  public value: number = 0;
 
   constructor(value: number) {
     this.value = value;
@@ -934,8 +980,8 @@ class ArrayItem {
 }
 
 class Inner {
-  innerValue: string = 'inner';
-  arr: Array<ArrayItem>;
+  public innerValue: string = 'inner';
+  public arr: Array<ArrayItem>;
 
   constructor(arr: Array<ArrayItem>) {
     this.arr = arr;
@@ -943,8 +989,8 @@ class Inner {
 }
 
 class Outer {
-  @Track outerValue: string = 'out';
-  @Track inner: Inner;
+  @Track public outerValue: string = 'out';
+  @Track public inner: Inner;
 
   constructor(inner: Inner) {
     this.inner = inner;
@@ -1035,5 +1081,4 @@ struct NestedClassV1ObjectLinkArrayItem {
     Text(`@ObjectLink outer.inner.arr item: ${this.item.value}`)
   }
 }
-
 ```

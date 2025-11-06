@@ -1,11 +1,18 @@
 # Creating an Arc Carousel Component (ArcSwiper) (Recommended for Circular Screens)
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **ArcSwiper** is an arc carousel component designed specifically for circular screens, allowing you to display content in an arc layout. For details, see [ArcSwiper](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md).
 
-Before using the **ArcSwiper** component, you need to import the **ArcSwiper** module in your code:
+Before using the **ArcSwiper** component, import the **ArcSwiper** module in your code:
 
-```ts
+<!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+
+``` TypeScript
 import {
   ArcSwiper,
   ArcSwiperAttribute,
@@ -23,7 +30,9 @@ Using the **indicator** attribute, you can set the direction of the arc-shaped n
 
 - Example of using the navigation point indicator in its default style:
 
-  ```ts
+  <!-- @[styles_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  
+  ``` TypeScript
   ArcSwiper() {
     Text('0')
       .width(233)
@@ -31,14 +40,14 @@ Using the **indicator** attribute, you can set the direction of the arc-shaped n
       .backgroundColor(Color.Gray)
       .textAlign(TextAlign.Center)
       .fontSize(30)
-
+  
     Text('1')
       .width(233)
       .height(233)
       .backgroundColor(Color.Green)
       .textAlign(TextAlign.Center)
       .fontSize(30)
-
+  
     Text('2')
       .width(233)
       .height(233)
@@ -53,9 +62,11 @@ Using the **indicator** attribute, you can set the direction of the arc-shaped n
 
   In this example, the navigation dots are positioned at the 6 o'clock direction of the **ArcSwiper** component, with the dot color set to red and the selected point color set to blue.
 
-  ```ts
+  <!-- @[styles_customize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  
+  ``` TypeScript
   ArcSwiper() {
-    // ...
+    // ···
   }
   .indicator(
     new ArcDotIndicator()
@@ -72,7 +83,9 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
 
 - Using a controller to switch between pages
 
-  ```ts
+  <!-- @[toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  
+  ``` TypeScript
   // Import the ArcButton and ArcSwiper modules.
   import {
     ArcButton,
@@ -81,53 +94,61 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
     ArcButtonStyleMode,
     ArcButtonPosition,
     ArcSwiper,
-    ArcSwiperAttribute,
-    ArcDotIndicator,
-    ArcDirection,
-    ArcSwiperController
+    ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
+    ArcSwiperController,
+  // ···
   } from '@kit.ArkUI';
-
+  // ···
   @Entry
   @Component
-  struct SwiperCustomAnimationExample {
+  export struct ArcSwiperToggle {
     private wearableSwiperController: ArcSwiperController = new ArcSwiperController();
-
+  
     build() {
-      Column() {
-        Stack() {
-          ArcSwiper(this.wearableSwiperController) {
-            // ...
-          }
-          .vertical(true)
-          .indicator(false)
-
-          Column() {
-            ArcButton({
-              options: new ArcButtonOptions({
-                label: 'previous',
-                position: ArcButtonPosition.TOP_EDGE,
-                styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
-                onClick: () => {
-                  this.wearableSwiperController.showPrevious(); // Switch to the previous page using the controller.
-                }
-              })
-            })
-
-            Blank()
-
-            ArcButton({
-              options: new ArcButtonOptions({
-                label: 'next',
-                position: ArcButtonPosition.BOTTOM_EDGE,
-                styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
-                onClick: () => {
-                  this.wearableSwiperController.showNext(); // Switch to the next page using the controller.
-                }
-              })
-            })
-          }.width('100%').height('100%')
+      // ···
+        Column({ space: 12 }) {
+          // ···
+            Stack() {
+              ArcSwiper(
+                this.wearableSwiperController
+              ) {
+              // ···
+              }
+              .vertical(true)
+              .indicator(false)
+  
+              // ···
+  
+  
+              Column() {
+                ArcButton({
+                  options: new ArcButtonOptions({
+                    label: 'previous',
+                    position: ArcButtonPosition.TOP_EDGE,
+                    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+                    onClick: () => {
+                      this.wearableSwiperController.showPrevious(); // Switch to the previous page using the controller.
+                    }
+                  })
+                })
+  
+                Blank()
+  
+                ArcButton({
+                  options: new ArcButtonOptions({
+                    label: 'next',
+                    position: ArcButtonPosition.BOTTOM_EDGE,
+                    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+                    onClick: () => {
+                      this.wearableSwiperController.showNext(); // Switch to the next page using the controller.
+                    }
+                  })
+                })
+              }.width('100%').height('100%')
+            }
+          // ···
         }
-      }
+      // ···
     }
   }
   ```
@@ -138,10 +159,16 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
 
   When the **ArcSwiper** component is focused, it can respond to digital crown rotations. Users can scroll through the **ArcSwiper** component by rotating the crown to browse content.
 
-  ```ts
-  ArcSwiper() {
-    // ...
+  <!-- @[toggle_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper(
+  // ···
+  ) {
+  // ···
   }
+  // ···
+  
   .focusable(true)
   .focusOnTouch(true)
   .defaultFocus(true)
@@ -149,10 +176,16 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
 
   You can also adjust the sensitivity of the digital crown to events using the [digitalCrownSensitivity](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md#digitalcrownsensitivity) attribute to adapt to different scales of data. For large datasets, you can increase the sensitivity; for smaller datasets, you can decrease it.
 
-  ```ts
-  ArcSwiper() {
-    // ...
+  <!-- @[toggle_sensitivity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper(
+  // ···
+  ) {
+  // ···
   }
+  // ···
+  
   .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
   ```
 
@@ -164,9 +197,11 @@ When **vertical** is set to **true**, swiping occurs in the vertical direction. 
 
 - Example of using horizontal swiping:
 
-  ```ts
+  <!-- @[horizontal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperHorizontal.ets) -->
+  
+  ``` TypeScript
   ArcSwiper() {
-    // ...
+    // ···
   }
   .indicator(true)
   .vertical(false)
@@ -176,12 +211,14 @@ When **vertical** is set to **true**, swiping occurs in the vertical direction. 
 
 - Example of using vertical swiping with dots at the 3 o'clock direction:
 
-  ```ts
+  <!-- @[vertical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperVertical.ets) -->
+  
+  ``` TypeScript
   ArcSwiper() {
-    // ...
+    // ···
   }
   .indicator(new ArcDotIndicator()
-      .arcDirection(ArcDirection.THREE_CLOCK_DIRECTION))
+    .arcDirection(ArcDirection.THREE_CLOCK_DIRECTION))
   .vertical(true)
   ```
   ![vertical2](figures/arcswiper_vertical.png)
@@ -190,19 +227,22 @@ When **vertical** is set to **true**, swiping occurs in the vertical direction. 
 
 Use the [customContentTransition](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md#customcontenttransition) attribute to set a custom transition animation for **ArcSwiper**. Define the animation by adjusting opacity, scale, translation, and rendering layer for all pages within the viewport frame by frame in the callback.
 
-```ts
+<!-- @[action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperAction.ets) -->
+
+``` TypeScript
 import { Decimal } from '@kit.ArkTS';
 import {
   ArcSwiper,
-  ArcSwiperAttribute,
+  ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// ···
 
 @Entry
 @Component
-struct SwiperCustomAnimationExample {
+export struct ArcSwiperAction {
   private MIN_SCALE: number = 0.1;
   @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
   @State opacityList: number[] = [];
@@ -216,35 +256,40 @@ struct SwiperCustomAnimationExample {
   }
 
   build() {
-    Column() {
-      ArcSwiper() {
-        ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
-          Text(index.toString())
-            .width(233)
-            .height(233)
-            .fontSize(50)
-            .textAlign(TextAlign.Center)
-            .backgroundColor(backgroundColor)
-            .opacity(this.opacityList[index])
-            .scale({ x: this.scaleList[index], y: this.scaleList[index] })
-        })
-      }
-      .customContentTransition({
-        timeout: 1000,
-        transition: (proxy: SwiperContentTransitionProxy) => {
-          if (proxy.position <= -1 || proxy.position >= 1) {
-            // When a group of pages is completely scrolled out of the viewport, reset the attribute values.
-            this.opacityList[proxy.index] = 1.0;
-            this.scaleList[proxy.index] = 1.0;
-          } else {
-            let position: number = Decimal.abs(proxy.position).toNumber();
-            this.opacityList[proxy.index] = 1 - position;
-            this.scaleList[proxy.index] =
-              this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - position);
+    // ···
+      Column({ space: 12 }) {
+        // ···
+          ArcSwiper() {
+            ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+              Text(index.toString())
+                .width(233)
+                .height(233)
+                .fontSize(50)
+                .textAlign(TextAlign.Center)
+                .backgroundColor(backgroundColor)
+                .opacity(this.opacityList[index])
+                .scale({ x: this.scaleList[index], y: this.scaleList[index] })
+            })
           }
-        }
-      })
-    }.width('100%')
+          .customContentTransition({
+            timeout: 1000,
+            transition: (proxy: SwiperContentTransitionProxy) => {
+              if (proxy.position <= -1 || proxy.position >= 1) {
+                // When a group of pages is completely scrolled out of the viewport, reset the attribute values.
+                this.opacityList[proxy.index] = 1.0;
+                this.scaleList[proxy.index] = 1.0;
+              } else {
+                let position: number = Decimal.abs(proxy.position).toNumber();
+                this.opacityList[proxy.index] = 1 - position;
+                this.scaleList[proxy.index] =
+                  this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - position);
+              }
+            }
+          })
+        // ···
+      }
+      .width('100%')
+    // ···
   }
 }
 ```
@@ -255,54 +300,62 @@ struct SwiperCustomAnimationExample {
 
 The swipe gesture of the **ArcSwiper** component may conflict with the swipe-to-return functionality. To resolve this, you can use [gesture judgment](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin) to determine whether **ArcSwiper** has scrolled to the beginning. This allows you to intercept the swipe gesture and enable the swipe-to-return functionality.
 
-```ts
+<!-- @[side_slip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets) -->
+
+``` TypeScript
 import {
   ArcSwiper,
-  ArcSwiperAttribute,
+  ArcSwiperAttribute, // Required import. The ArcSwiper component's attributes rely on the ArcSwiperAttribute object. Do not remove this import.
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// ···
 
 @Entry
 @Component
-struct SwiperCustomAnimationExample {
+export struct ArcSwiperSideSlip {
   @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
   innerSelectedIndex: number = 0;
 
   build() {
-    Column() {
-      ArcSwiper() {
-        ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
-          Text(index.toString())
-            .width(233)
-            .height(233)
-            .fontSize(50)
-            .textAlign(TextAlign.Center)
-            .backgroundColor(backgroundColor)
-        })
-      }
-      .onAnimationStart((index: number, targetIndex: number) => {
-        this.innerSelectedIndex = targetIndex;
-      })
-      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
-        others: Array<GestureRecognizer>): GestureJudgeResult => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
-        if (current) {
-          let target = current.getEventTargetInfo();
-          if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
-            let swiperTarget = target as ScrollableTargetInfo;
-            if (swiperTarget instanceof ScrollableTargetInfo &&
-              (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) { // Check whether the ArcSwiper has scrolled to the beginning: swiperTarget.isBegin() or innerSelectedIndex === 0.
-              let panEvent = event as PanGestureEvent;
-              if (panEvent && panEvent.offsetX > 0 && (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
-                return GestureJudgeResult.REJECT;
+    // ···
+      Column({ space: 12 }) {
+        // ···
+          ArcSwiper() {
+            ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+              Text(index.toString())
+                .width(233)
+                .height(233)
+                .fontSize(50)
+                .textAlign(TextAlign.Center)
+                .backgroundColor(backgroundColor)
+            })
+          }
+          .onAnimationStart((index: number, targetIndex: number) => {
+            this.innerSelectedIndex = targetIndex;
+          })
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+            others: Array<GestureRecognizer>): GestureJudgeResult => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
+            if (current) {
+              let target = current.getEventTargetInfo();
+              if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+                let swiperTarget = target as ScrollableTargetInfo;
+                if (swiperTarget instanceof ScrollableTargetInfo &&
+                  (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) { // Check whether the ArcSwiper has scrolled to the beginning: swiperTarget.isBegin() or innerSelectedIndex === 0.
+                  let panEvent = event as PanGestureEvent;
+                  if (panEvent && panEvent.offsetX > 0 && (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
+                    return GestureJudgeResult.REJECT;
+                  }
+                }
               }
             }
-          }
-        }
-        return GestureJudgeResult.CONTINUE;
-      })
-    }.width('100%')
+            return GestureJudgeResult.CONTINUE;
+          })
+        // ···
+      }
+      .width('100%')
+    // ···
   }
 }
 ```

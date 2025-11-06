@@ -1,5 +1,12 @@
 # TransientTask
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 The TransientTask module provides C APIs for transient tasks.

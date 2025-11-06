@@ -571,7 +571,7 @@ Dialog关闭的信息。
 
 ## 示例
 
-该示例实现了在promptAction.DialogController中调用getState获取弹窗当前状态。
+从API version 20开始，该示例实现了在promptAction.DialogController中调用getState获取弹窗当前状态。
 
 ```ts
 // xxx.ets
@@ -891,7 +891,7 @@ try {
 
 ![zh-cn_image_0002_showinsubwindow](figures/zh-cn_image_0002_showinsubwindow.jpg)
 
-以下示例展示了弹窗生命周期的相关接口的使用方法。
+从API version 19开始，该示例通过调用[ShowDialogOptions](#showdialogoptions)中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
 
 ```ts
 // xxx.ets
@@ -1025,7 +1025,7 @@ try {
 
 **示例：2**
 
-该示例为showActionMenu配置生命周期回调。
+从API version 19开始，该示例通过调用[ActionMenuOptions](#actionmenuoptions)中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了操作菜单生命周期相关接口的使用方法。
 
 ```ts
 import { promptAction } from '@kit.ArkUI';

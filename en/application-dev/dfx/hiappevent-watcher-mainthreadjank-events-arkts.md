@@ -1,5 +1,12 @@
 # Subscribing to Main Thread Jank Events (ArkTS)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to main thread jank events. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
@@ -20,10 +27,12 @@ The following describes how to subscribe to the main thread jank event, which is
 1. Create an ArkTS application project. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules. The sample code is as follows:
 
    ```ts
-   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    import { buffer, util } from '@kit.ArkTS'
+    import { fileIo as fs } from '@kit.CoreFileKit';
    ```
 
-2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add a watcher in **onForeground()** to subscribe to system events. The sample code is as follows:
+2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in APIs such as **onCreate()** and **onForeground()** at a proper position. The sample code is as follows:
 
    ```ts
     hiAppEvent.addWatcher({
@@ -59,20 +68,31 @@ The following describes how to subscribe to the main thread jank event, which is
             // Obtain the begin time and end time on the main thread.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+            // Obtain the start time of the task when the main thread jank event occurs. (Parameter of the main thread timeout event collection stack.)
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
+            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread timeout event collection stack.)
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
+
             // Obtain the error log file generated when the main thread jank event occurs.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the start time of the task when the main thread jank event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
-            // Obtain the call stack that is printed most frequently in the generated log file.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
+            // Move the file to a new directory.
+            let path: string = String(eventInfo.params['external_log']);
+            // Customize the new storage path.
+            let targetPath: string = "";
+            if (path.endsWith(".txt")) {
+              targetPath= "/data/storage/el2/base/mainThreadJank.txt";
+            } else if (path.endsWith(".trace")) {
+              targetPath= "/data/storage/el2/base/mainThreadJank.trace";
+            }
+            fs.copyFileSync(path.toString(), targetPath.toString());
           }
         }
       }
     });
    ```
 
-3. Simulate a main thread jank event.
+3. Simulate a main thread timeout stack sampling event.
 
    Edit the **entry/src/main/ets/pages/Index.ets** file. The sample code is as follows:
 
@@ -165,7 +185,29 @@ The following describes how to subscribe to the main thread jank event, which is
                .onClick(() => {
                  wait150ms();
                })
-             // The button for triggering the event that times out for 500 ms.
+           }.width('100%')
+         }
+         .height('100%')
+         .width('100%')
+       }
+     }
+   ```
+
+5. Simulate a main thread timeout trace sampling event.
+
+   In the **entry/src/main/ets/pages/Index.ets** file of the project, add a button in **onClick()** to trigger the timeout trace capture. The sample code is as follows:
+
+   > **NOTE**
+   >
+   > To enable the main thread checker to capture trace data when a task times out, ensure that the nolog version is used and **Developer Options** is disabled.
+
+   ```ts
+     @Entry
+     @Component
+     struct Index {
+       build() {
+         RelativeContainer() {
+           Column() {
              Button("timeOut500", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -173,7 +215,8 @@ The following describes how to subscribe to the main thread jank event, which is
                .fontSize(20)
                .fontWeight(FontWeight.Bold)
                .onClick(() => {
-                 wait500ms();
+                 let t = Date.now();
+                 while (Date.now() - t <= 500) {}
                })
            }.width('100%')
          }
@@ -183,7 +226,9 @@ The following describes how to subscribe to the main thread jank event, which is
      }
    ```
 
-5. In DevEco Studio, click the **Run** button to run the application project. Click the button twice consecutively to trigger a main thread jank event.
+6. Click the **Run** button in DevEco Studio to run the project.
+
+  The main thread jank event can be captured only when two timeout events are detected consecutively. You can click the timeout trigger button twice consecutively to trigger the main thread jank event.
 
 ### Verifying the Subscription
 
@@ -202,7 +247,7 @@ The following describes how to subscribe to the main thread jank event, which is
     HiAppEvent eventInfo.params.uid=20020150
     HiAppEvent eventInfo.params.begin_time=1717593620016
     HiAppEvent eventInfo.params.end_time=1717593620518
-    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/watchdog/MAIN_THREAD_JANK_20240613211739_40986.txt"]
+    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/watchdog/MAIN_THREAD_JANK_20240613211739_40986.XXX"]
     HiAppEvent eventInfo.params.log_over_limit=false
     HiAppEvent eventInfo.params.app_start_jiffies_time=XXXX
     HiAppEvent eventInfo.params.heaviest_stack=XXXX

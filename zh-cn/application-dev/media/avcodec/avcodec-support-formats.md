@@ -49,7 +49,11 @@
 
 当前支持的解码能力：
 
-AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE、G711a<!--RP1--><!--RP1End-->。
+AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE<!--RP1--><!--RP1End-->。
+
+从API version 20开始支持：G711a。
+
+从API version 22开始支持：ALAC、AC3、WMA(V1、V2、PRO)、GSM、GSM_MS。
 
 具体开发指导请参考[音频解码](audio-decoding.md)。
 
@@ -58,7 +62,7 @@ AAC、MPEG(MP3)、Flac、Vorbis、AMR(amrnb、amrwb)、G711mu、APE、G711a<!--R
 
 当前支持的编码能力：
 
-AAC、Flac、MP3、G711mu<!--RP3--><!--RP3End-->。
+<!--RP3-->AAC、Flac、MPEG(MP3)、G711mu<!--RP3End-->。
 
 具体开发指导请参考[音频编码](audio-encoding.md)。
 

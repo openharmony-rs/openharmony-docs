@@ -31,29 +31,35 @@
 
 ## 接口定义
 
-```ts
-declare interface AttributeModifier<T> {
+  <!-- @[Common_AttributeModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
+  ``` TypeScript
+  declare interface AttributeModifier<T> {
+  
+    applyNormalAttribute?(instance: T): void;
+  
+    applyPressedAttribute?(instance: T): void;
+  
+    applyFocusedAttribute?(instance: T): void;
+  
+    applyDisabledAttribute?(instance: T): void;
+  
+    applySelectedAttribute?(instance: T): void;
+  
+  }
+  ```
 
-  applyNormalAttribute?(instance: T): void;
-  
-  applyPressedAttribute?(instance: T): void;
-  
-  applyFocusedAttribute?(instance: T): void;
-  
-  applyDisabledAttribute?(instance: T): void;
-  
-  applySelectedAttribute?(instance: T): void;
-
-}
-```
 
 `AttributeModifier`是一个接口，开发者需要实现其中的`applyXxxAttribute`方法来实现对应场景的属性设置。`Xxx`表示多态的场景，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。`T`是组件的属性类型，开发者可以在回调中获取到属性对象，通过该对象设置属性。
 
-```ts
-declare class CommonMethod<T> {
-  attributeModifier(modifier: AttributeModifier<T>): T;
-}
-```
+  <!-- @[Common_CommonMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
+  ``` TypeScript
+  declare class CommonMethod<T> {
+    attributeModifier(modifier: AttributeModifier<T>): T;
+  }
+  ```
+
 
 组件的通用方法增加了`attributeModifier`方法，支持传入自定义的Modifier。由于组件在实例化时会明确`T`的类型，所以调用该方法时，`T`必须指定为组件对应的Attribute类型，或者是`CommonAttribute`。
 
@@ -73,17 +79,18 @@ declare class CommonMethod<T> {
 
 AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编写，并且通过状态变量触发刷新。
 
-  ```ts
-  // button_modifier.ets
+  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
+  ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
     // 可以实现一个Modifier，定义私有的成员变量，外部可动态修改
-    isDark: boolean = false
-
+    public isDark: boolean = false
+  
     // 通过构造函数，创建时传参
     constructor(dark?: boolean) {
       this.isDark = dark ?? false
     }
-
+  
     applyNormalAttribute(instance: ButtonAttribute): void {
       // instance为Button的属性对象，可以通过instance对象对属性进行修改
       if (this.isDark) { // 支持业务逻辑的编写
@@ -98,20 +105,24 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  ```ts
-  // demo.ets
-  import { MyButtonModifier } from './button_modifier'
 
+  <!-- @[main_button1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button1.ets) -->
+  
+  ``` TypeScript
+  
+  // pages/Button1.ets
+  import { MyButtonModifier } from '../Common/ButtonModifier01'
+  
   @Entry
   @Component
-  struct attributeDemo {
+  struct Button1 {
     // 支持用状态装饰器修饰，行为和普通的对象一致
     @State modifier: MyButtonModifier = new MyButtonModifier(true);
-
+  
     build() {
       Row() {
         Column() {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
             .onClick(() => {
               // 对象的一层属性被修改时，会触发UI刷新，重新执行applyNormalAttribute
@@ -124,23 +135,30 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
+
   ![AttributeModifier](figures/AttributeModifier01.gif)
 
 当一个组件上同时使用属性方法和`applyNormalAttribute`设置相同的属性时，遵循属性覆盖原则，即后设置的属性生效。
 
-  ```ts
-  // button_modifier.ets
+  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
+  ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-    isDark: boolean = false
-
+    // 可以实现一个Modifier，定义私有的成员变量，外部可动态修改
+    public isDark: boolean = false
+  
+    // 通过构造函数，创建时传参
     constructor(dark?: boolean) {
       this.isDark = dark ?? false
     }
-
+  
     applyNormalAttribute(instance: ButtonAttribute): void {
-      if (this.isDark) {
+      // instance为Button的属性对象，可以通过instance对象对属性进行修改
+      if (this.isDark) { // 支持业务逻辑的编写
+        // 属性变化触发apply函数时，变化前已设置并且变化后未设置的属性会恢复为默认值
         instance.backgroundColor('#707070')
       } else {
+        // 支持属性的链式调用
         instance.backgroundColor('#17A98D')
           .borderColor('#707070')
           .borderWidth(2)
@@ -148,20 +166,23 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  ```ts
-  // demo.ets
-  import { MyButtonModifier } from './button_modifier';
-
+  <!-- @[main_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button2.ets) -->
+  
+  ``` TypeScript
+  
+  // pages/Button2.ets
+  import { MyButtonModifier2 } from '../Common/ButtonModifier02'
+  
   @Entry
   @Component
-  struct attributeDemo {
-    @State modifier: MyButtonModifier = new MyButtonModifier(true);
-
+  struct Button2 {
+    @State modifier: MyButtonModifier2 = new MyButtonModifier2(true);
+  
     build() {
       Row() {
         Column() {
           // 先设置属性，后设置modifier，按钮颜色会跟随modifier的值改变
-          Button("Button")
+          Button('Button')
             .backgroundColor('#2787D9')
             .attributeModifier(this.modifier)
             .onClick(() => {
@@ -174,19 +195,21 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
+
   ![AttributeModifier](figures/AttributeModifier03.gif) 
 
 当一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例时，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，遵循属性覆盖原则，即后设置的属性生效。
 
-  ```ts
-  // button_modifier.ets
-  export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-    isDark: boolean = false
-
+  <!-- @[Common_MyButtonModifier2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier02.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
+    public isDark: boolean = false
+  
     constructor(dark?: boolean) {
       this.isDark = dark ?? false
     }
-
+  
     applyNormalAttribute(instance: ButtonAttribute): void {
       if (this.isDark) {
         instance.backgroundColor(Color.Black)
@@ -198,15 +221,16 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  ```ts
-  // button_modifier2.ets
-  export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
-    isDark2: boolean = false
-
+  <!-- @[Common_MyButtonModifier3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier03.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier3 implements AttributeModifier<ButtonAttribute> {
+    public isDark2: boolean = false
+  
     constructor(dark?: boolean) {
       this.isDark2 = dark ? dark : false
     }
-
+  
     applyNormalAttribute(instance: ButtonAttribute): void {
       if (this.isDark2) {
         instance.backgroundColor('#2787D9')
@@ -216,21 +240,24 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  ```ts
-  // demo.ets
-  import { MyButtonModifier } from './button_modifier';
-  import { MyButtonModifier2 } from './button_modifier2';
-
+  <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
+  
+  ``` TypeScript
+  
+  // pages/Button3.ets
+  import { MyButtonModifier2 } from '../Common/ButtonModifier02';
+  import { MyButtonModifier3 } from '../Common/ButtonModifier03';
+  
   @Entry
   @Component
-  struct attributeDemo {
-    @State modifier: MyButtonModifier = new MyButtonModifier(true);
-    @State modifier2: MyButtonModifier2 = new MyButtonModifier2(true);
-
+  struct Button3 {
+    @State modifier: MyButtonModifier2 = new MyButtonModifier2(true);
+    @State modifier2: MyButtonModifier3 = new MyButtonModifier3(true);
+  
     build() {
       Row() {
         Column() {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
             .attributeModifier(this.modifier2)
             .onClick(() => {
@@ -250,16 +277,17 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
 
 使用`AttributeModifier`设置多态样式、事件，实现事件逻辑的复用，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现`applyPressedAttribute`方法完成。
 
-  ```ts
-  // button_modifier.ets
-  export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  <!-- @[Common_MyButtonModifier4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier04.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
     applyNormalAttribute(instance: ButtonAttribute): void {
       // instance为Button的属性对象，设置正常状态下属性值
       instance.backgroundColor('#17A98D')
         .borderColor('#707070')
         .borderWidth(2)
     }
-
+  
     applyPressedAttribute(instance: ButtonAttribute): void {
       // instance为Button的属性对象，设置按压状态下属性值
       instance.backgroundColor('#2787D9')
@@ -268,19 +296,22 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  ```ts
-  // demo.ets
-  import { MyButtonModifier } from './button_modifier'
-
+  <!-- @[main_button4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button4.ets) -->
+  
+  ``` TypeScript
+  
+  // pages/Button4.ets
+  import { MyButtonModifier4 } from '../Common/ButtonModifier04'
+  
   @Entry
   @Component
-  struct attributeDemo {
-    @State modifier: MyButtonModifier = new MyButtonModifier();
-
+  struct Button4 {
+    @State modifier: MyButtonModifier4 = new MyButtonModifier4();
+  
     build() {
       Row() {
         Column() {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
         }
         .width('100%')
@@ -288,6 +319,5 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
       .height('100%')
     }
   }
-
   ```
   ![AttributeModifier](figures/AttributeModifier02.gif) 

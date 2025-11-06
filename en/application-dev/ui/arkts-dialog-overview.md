@@ -1,5 +1,15 @@
 # Popup Window Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 A popup window is a UI element that automatically appears when an application is launched or when a user performs a specific action. It is designed to present important information or actions that require the user's attention within a short timeframe.
+
+In the ArkUI component tree, regular overlays, popup windows, modals, and ordered overlays are all mounted under the root node Popup windows, modals, and ordered overlays are displayed in layers based on their assigned z-order values, appearing above all regular overlays. The figure below illustrates the structure.
+
+![image](figures/dialogLevelorder.png)
 
 ## Types of Popup Windows
 
@@ -11,15 +21,21 @@ Popup windows can be categorized based on the level of user interaction required
 > **NOTE**
 >
 > A modal popup window can be converted to a non-modal one through specific attributes. For example, setting [isModal](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
+>
+> Avoid calling popup window display APIs when the application runs in the background.
+>
+> System popup windows are managed by the system and do not support style customization for security reasons.
+>
+> When a system popup window is active, do not call non-system popup window display APIs (such as **openCustomDialog** of **promptAction** or **open** of **CustomDialogController**).
 
-## When to Use
+## Use Cases
 
 Choose the appropriate component based on your specific requirements.
 
 Popup Window Name| Use Case|
 | --- | --- |
 | [Dialog](arkts-base-dialog-overview.md)| Use this popup window when you need to display information or actions that require the user's attention, such as when exiting the application for the second time.|
-| [Menu (Menu/openMenu)](arkts-menu-overview.md)  | Opt for this popup window when you need to bind an action to a specific component, such as displaying operation options when an icon is long-pressed.|
+| [Menu (Menu/openMenu)](arkts-menu-overview.md)  | Use this popup window to bind actions to specified components, such as displaying operation options when an icon is long-pressed.|
 | [Popup (Popup/openPopup)](arkts-popup-overview.md)  | Use this popup window to display a hint for a specific component, for example, a tooltip when a question mark is clicked.|
 | [Modal page (bindContentCover/bindSheet)](arkts-modal-overview.md) | Choose this popup window when a new page needs to overlay the old one without making the old page disappear, such as viewing a large image by clicking a thumbnail.|
 |  [Toast](arkts-create-toast.md) | Use this popup window to provide simple feedback on the user's current action in a small window, like displaying a message that a file has been saved successfully.|

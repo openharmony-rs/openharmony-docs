@@ -59,7 +59,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回空，失败返回错误码、错误信息。        |
 
 **错误码：**
@@ -105,7 +105,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **错误码：**
 
@@ -1677,7 +1677,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。失败返回错误、错误信息。                   |
 
 **错误码：**
@@ -1728,7 +1728,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
@@ -2398,7 +2398,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+  address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2440,7 +2441,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+    address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -4260,7 +4262,7 @@ bind(address: LocalAddress): Promise\<void\>;
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [LocalAddress](#localaddress11) | 是   | 目标地址信息，参考[LocalAddress](#localaddress11)。 |
+| address  | [LocalAddress](#localaddress11) | 是   | 本端地址信息，参考[LocalAddress](#localaddress11)。 |
 
 **返回值：**
 
@@ -6164,7 +6166,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码、错误信息。|
 
 **错误码：**
@@ -6215,7 +6217,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress)          | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress)          | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
@@ -6819,7 +6821,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+    address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -6885,7 +6888,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // 双向认证
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7017,7 +7021,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7087,7 +7092,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // 双向认证
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // 绑定指定网络接口
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -8673,7 +8679,7 @@ getLocalAddress(): Promise\<NetAddress\>
 import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tlsServer: socket.TLSSocket = socket.constructTLSSocketServerInstance();
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
 tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.info("Get success: " + JSON.stringify(localAddress));
 }).catch((err: BusinessError) => {

@@ -1,5 +1,12 @@
 # Transient Task (C/C++)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## When to Use
 
 An application is suspended after it runs in the background for a short period of time. If the application needs to execute a short-time task in the background, for example, saving the status, it can request a transient task to extend the running time in the background.
@@ -159,7 +166,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
 ### Declaring the Functions in the index.d.ts File
 
    ```ts
-   import backgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManager';
+   import backgroundTaskManager from '@kit.BackgroundTasksKit';
 
    export const RequestSuspendDelay: () => number;
    export const GetRemainingDelayTime: () => number;
@@ -203,22 +210,22 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
-       console.log("The return requestId is " + requestId);
+       console.info("The return requestId is " + requestId);
      }
 
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
-       console.log("The time is " + time);
+       console.info("The time is " + time);
      }
 
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
-       console.log("The ret is " + ret);
+       console.info("The ret is " + ret);
      }
 
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
-       console.log("The ret is " + JSON.stringify(ret));
+       console.info("The ret is " + JSON.stringify(ret));
      }
    }
 

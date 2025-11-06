@@ -48,6 +48,7 @@ struct MagnifierExample {
 
   build() {
     Column() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.startIcon'))
         .draggable(false)
         .width(200)
@@ -80,7 +81,11 @@ struct MagnifierExample {
 
 show(x: number, y: number): void
 
-设置放大镜显示的组件内容相对于组件左上角的位置，放大镜会对以该坐标点为中心的区域内容进行放大显示。
+设置放大镜显示的组件内容相对于组件左上角的位置，设置成功后放大镜会对以该坐标点为中心的区域内容进行放大显示。
+
+> **说明：** 
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

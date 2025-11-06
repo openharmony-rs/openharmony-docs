@@ -242,6 +242,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
 
+<!--deprecated_code_no_check-->
 ``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';

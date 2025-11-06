@@ -76,7 +76,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct ParentRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -125,7 +125,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct SiblingRefRelativeContainer {
     build() {
       RelativeContainer() {
         Row() {
@@ -163,7 +163,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct ChildRefRelativeContainer {
     build() {
       Row() {
         RelativeContainer() {
@@ -235,7 +235,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct ChildComponentOffsetExample {
     build() {
       Row() {
         RelativeContainer() {
@@ -359,7 +359,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct RelativeContainerExample {
     @State value: number = 0
   
     build() {
@@ -440,7 +440,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeAlignRulesExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -546,7 +546,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeChainModeExample {
   build() {
     Row() {
       RelativeContainer() {
@@ -705,7 +705,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct RelativeGuideLineExample {
   build() {
     Row() {
       RelativeContainer() {

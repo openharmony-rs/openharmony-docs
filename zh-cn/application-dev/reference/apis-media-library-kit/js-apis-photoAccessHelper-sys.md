@@ -3239,6 +3239,120 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### getClonedAssetUris<sup>22+</sup>
+ 
+getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后URI组成的Map列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+ 
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAssetUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/Photo/1/IMG_datetime_0001/displayName1.jpg',
+        'file://media/Photo/2/IMG_datetime_0002/displayName2.jpg',
+        'file://media/Photo/3/IMG_datetime_0003/displayName3.jpg'
+    ];
+    try {
+        let assets: Map<string, string> = await phAccessHelper.getClonedAssetUris(uris);
+        console.info(`Assets: ${assets}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
+}
+```
+
+### getClonedAlbumUris<sup>22+</sup>
+ 
+getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
+
+通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------- | --------------------------- |
+| Promise&lt;Map&lt;string, string&gt;&gt; | Promise对象，返回由克隆后的URI组成的Map列表。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| **错误码ID** | **错误信息** |
+| ----------------- | --------------------------------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：** 
+
+phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+    console.info('getClonedAlbumUrisDemo');
+    // 以下是URI媒体文件。
+    let uris: Array<string> = [
+        'file://media/PhotoAlbum/1',
+        'file://media/PhotoAlbum/2',
+        'file://media/AnalysisAlbum/3'
+    ];
+    try {
+        let albums: Map<string, string> = await phAccessHelper.getClonedAlbumUris(uris);
+        console.info(`Albums: ${albums}`);
+    } catch (error) {
+        console.error(`Error thrown: ${error}`);
+    }
+}
+```
+
 ### batchGetPhotoAssetParams<sup>21+</sup>
 
 batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams
@@ -5969,11 +6083,11 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
 
 ### 属性
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读 | 可选 | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| compatibleFormat | string | 是    | 是    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
-| formatVersion | string | 是    | 是   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
-| data | string | 是    | 是   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
+| compatibleFormat | string | 否   | 否    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
+| formatVersion | string | 否   | 否   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
+| data | string | 否   | 否   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
 
 ### constructor<sup>11+</sup>
 
@@ -10101,8 +10215,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.pauseDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -10154,8 +10267,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.resumeDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -10207,8 +10319,7 @@ async function example(context: Context) {
        'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
+    await cloudMediaAssetManagerInstance.cancelDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -10997,11 +11108,11 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subtype           | [PhotoSubtype](#photosubtype) | 否  | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。   |
-| userId<sup>19+</sup>           | number | 否  | 用户id。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| subtype           | [PhotoSubtype](#photosubtype) | 否 | 是 | 图片或者视频的子类型。  |
+| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。   |
+| userId<sup>19+</sup>           | number | 否 | 是 | 用户id。  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -11011,10 +11122,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否  | 获取缩略图的尺寸。  |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否  | 获取的操作类型。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。  |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。  |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -11026,10 +11137,10 @@ async function example(context: Context) {
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
-| bundleName           | string | 是  | 是  |需保存图片/视频文件的应用bundle name。  |
-| appName    | string | 是  | 是  |需保存图片/视频文件的app name。  |
-| appId    | string | 是  | 是  |需保存图片/视频文件的app id。  |
-| tokenId    | number | 是  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
+| bundleName           | string | 否  | 是  |需保存图片/视频文件的应用bundle name。  |
+| appName    | string | 否  | 是  |需保存图片/视频文件的app name。  |
+| appId    | string | 否  | 是  |需保存图片/视频文件的app id。  |
+| tokenId    | number | 否  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -11037,9 +11148,9 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                              | 可读 | 可写 | 说明                                              |
+| 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
-| sourceMode           | [SourceMode](#sourcemode11)     | 是   | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件，或是编辑后的文件。**系统接口**：此接口为系统接口。 |
+| sourceMode           | [SourceMode](#sourcemode11)     | 否  | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件或编辑后的文件。<br>**系统接口**：此接口为系统接口。 |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -11065,10 +11176,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId       |string  |是 | 卡片的ID，由图库创建卡片时提供。 |
-|uri          |string  |是 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId       |string  | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|uri          |string  | 否 |否 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -11078,10 +11189,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId             |string               |是 | 卡片的ID，由图库创建卡片时提供。 |
-|assetUris          |Array&lt;string&gt;  |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId             |string               | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|assetUris          |Array&lt;string&gt;  | 否 |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
 
 ## ResourceType<sup>11+</sup>
 
@@ -11943,3 +12054,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ---- | ------- | ---- |  ---- | ----- |
 | taskInfos | string[]  | 是 | 否 | 批量下载任务信息。 |
 
+## HdrMode<sup>22+</sup>
+
+枚举，媒体资产的HDR模式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。|
+| HDR_ISO_SINGLE |  1 |  符合ISO标准的单层HDR图片。  |
+| HDR_ISO_DUAL |  2 |  符合ISO标准的双层HDR图片。  |
+| HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
+| HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
+| HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |

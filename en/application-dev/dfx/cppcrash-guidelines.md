@@ -24,6 +24,18 @@ After a process crashes, the system detects the crash, captures crash informatio
 
   Program Counter (PC) stores the address of the instruction that is being executed by the program.
 
+- **lr**
+
+  Link Register stores the return address of the subprogram.
+
+- **sp**
+
+  Stack Pointer stores the address of the top of the stack for the current function.
+
+- **fp**
+
+  Frame Pointer stores the address of the bottom of the stack for the current function.
+
 - **Call stack**
 
   Records the sequence of function calls for each thread, from its start up to the current point (such as the crash site).
@@ -126,7 +138,7 @@ The **SIGFPE** signal indicates a floating-point exception or an arithmetic exce
 
 ### Signal Causes
 
-In addition to the preceding classification by **signo**, signals can also be classified by causes as follows.
+In addition to the preceding classification by **signo**, signals can also be classified by causes. The code values classified by causes are as follows.
 
 | Error Code (**code**)| Value| Description| Trigger Cause|
 | -------- | -------- | -------- | -------- |
@@ -147,7 +159,7 @@ In addition to the preceding classification by **signo**, signals can also be cl
 
 - The system has registered signal handlers for the preceding crash signals and signals **35**, **38**, and **42**. It is recommended that you do not register signal handlers for these signals in applications. Otherwise, the system detection capability may fail.
 
-- The asynchronous thread stack tracing and maintenance functionality is enabled only in the ARM 64-bit system in debug mode. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
+- By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system. For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through [libuv](../reference/native-lib/libuv.md) and [ffrt](../reference/apis-ffrt-kit/capi-ffrt.md) is enabled only in the debug version by default. Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version. For details about the crash log specifications, see [Asynchronous Thread Stack Tracing Faults](#asynchronous-thread-stack-tracing-faults).
 
 ## Obtaining Logs
 
@@ -176,10 +188,10 @@ The following table describes the fields in a fault log.
 | Enabled app log configs | List of enabled configuration parameters.| 20 | No| This field is displayed when only when it is configured by users. For details, see [Application Crash Log Configured by HiAppEvent](#application-crash-log-configured-by-hiappevent).|
 | Module name | Module name.| 8 | Yes| - |
 | Version | Application version (in dotted format).| 8 | No| This field is displayed only for application processes.|
-| Version Code | Application version (in integer format).| 8 | No| This field is displayed only for application processes.|
+| VersionCode | Application version (in integer format).| 8 | No| This field is displayed only for application processes.|
 | PreInstalled | Whether the application is pre-installed.| 8 | No| This field is displayed only for application processes.|
 | Foreground | Foreground/Background status.| 8 | No| This field is displayed only for application processes.|
-| Page switch history | Page switching history.| 21 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed. For details, see [Implementation Principles](#implementation-principles).|
+| Page switch history | Page switching history.| 20 | No| If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed. For details, see [Implementation Principles](#implementation-principles).|
 | Timestamp | Fault occurrence timestamp.| 8 | Yes| - |
 | Pid | Process ID.| 8 | Yes| - |
 | Uid | User ID.| 8 | Yes| - |
@@ -191,8 +203,8 @@ The following table describes the fields in a fault log.
 | Reason | Fault cause.| 8 | Yes| - |
 | LastFatalMessage | Last **Fatal** log recorded by the application.| 8 | No| This field is displayed when the process is aborted and the last **Fatal** log is printed in HiLog.|
 | Fault thread info | Fault thread information.| 8 | Yes| - |
-| SubmitterStacktrace | Submitter thread stack.| 12 | No| The asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system.|
-| Register | Fault register.| 8 | Yes| - |
+| SubmitterStacktrace | Submitter thread stack.| 12 | No| By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.<br>For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through **libuv** and **ffrt** is enabled only in the debug version by default.<br>Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.|
+| Registers | Fault register.| 8 | Yes| - |
 | Other thread info | Other thread information.| 8 | Yes| - |
 | Memory near registers | Memory value near the fault register.| 8 | Yes| - |
 | FaultStack | Fault thread stack memory information.| 8 | Yes| - |
@@ -200,6 +212,10 @@ The following table describes the fields in a fault log.
 | OpenFiles | File handle information held by the process when the fault occurs.| 12 | Yes| - |
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 8 | Yes| - |
 | [truncated] | Fault log truncation flag.| 20 | No| This field is displayed when the fault log truncation size is configured and truncation occurs.|
+
+> **NOTE**
+>
+> Since API version 20, the **cpsr** register is added to the ARM32 architecture, the **pstate** and **esr** registers are added to the AArch64 architecture.
 
 The log specifications vary slightly according to different fault scenarios. The following lists log specifications of seven scenarios:
 
@@ -313,7 +329,7 @@ pc(/system/lib/ld-musl-arm.so.1):
     f7bb0404 e59f1024
     ...
 FaultStack: <- Stack of the crashed thread
-    ffc09810 00000001 
+    ffc09810 00000001
     ffc09814 00000001
     ...
 sp0:ffc09850 7467a186 <- #00 stack
@@ -409,7 +425,7 @@ The following describes the content of a three-layer call stack in detail:
 >
 >   - The length of the function name saved in the binary file exceeds 256 bytes.
 >
-> - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter **--enable-linker-build-id** to the compilation options. Do not add **--build-id=none**.
+> - If **BuildID** is not printed, you can run the **readelf -n xxx.so** command to check whether the binary file has **BuildID**. If not, add the compilation parameter <b class="+ topic/ph hi-d/b " id="b0166624191214">--enable-linker-build-id</b> to the compilation options. Do not add <b class="+ topic/ph hi-d/b " id="b1911913393125">--build-id=none</b>.
 
 **JS hybrid stack frame**
 
@@ -561,7 +577,11 @@ When an asynchronous thread crashes, the stack of the thread that submits the as
 
 > **NOTE**
 >
-> The asynchronous thread stack tracing functionality is enabled only for debug-type applications in the ARM 64-bit system.
+> By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.
+>
+> For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through **libuv** and **ffrt** is enabled only in the debug version by default.
+>
+> Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.
 
 ```text
 Generated by HiviewDFX@OpenHarmony
@@ -630,7 +650,7 @@ pc(/system/lib/ld-musl-arm.so.1): <- Memory value near the PC.
     f7f19938 e3a03008 <- When extend_pc_lr_printing is set to false, the memory value is printed forward to this point.
     f7f1993c ef000000
     f7f19940 e51b0014 <- Memory value (e51b0014) of the PC (f7f19940).
-    ... 
+    ...
     f7f199b4 e2b52000 <- When extend_pc_lr_printing is set to false, the memory value is printed backward to this point.
     f7f199b8 03530000
     f7f199bc 0a000003
@@ -649,7 +669,7 @@ OpenFiles:
 
 ### Faults with Page Switching History
 
-Since API version 21, the maintenance and debugging process records the application switching history for applications that involve page switching. After an application fault occurs, the generated fault file contains the page switching history.
+Since API version 20, the maintenance and debugging process records the application switching history for applications that involve page switching. After an application fault occurs, the generated fault file contains the page switching history.
 
 A maximum of 10 latest history records can be recorded in a fault log file.
 

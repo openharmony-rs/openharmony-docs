@@ -399,7 +399,6 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 ```ts
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component

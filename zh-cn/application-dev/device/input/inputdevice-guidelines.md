@@ -49,14 +49,15 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
-  @State message: string = "点击获取设备列表并监听设备热拔插";
+  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
 
 // ···
 
   build() {
     RelativeContainer() {
       Column() {
-		// ···
+        // ···
 
         Text(this.message)
           .onClick(() => {
@@ -68,6 +69,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // 物理键盘已连接
                       this.isPhysicalKeyboardExist = true;
+                      this.keyBoards.set(data[i], type);
                     }
                   });
                 }
@@ -77,28 +79,32 @@ struct Index {
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 inputDevice.getKeyboardType(data.deviceId).then((type) => {
                   hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
-                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // 物理键盘已插入
                     this.isPhysicalKeyboardExist = true;
-                  } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-                    // 物理键盘已拔掉
-                    this.isPhysicalKeyboardExist = false;
+                    this.keyBoards.set(data.deviceId, type);
                   }
                 });
+                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                  data.type === 'remove') {
+                  // 物理键盘已拔掉
+                  this.isPhysicalKeyboardExist = false;
+                  this.keyBoards.delete(data.deviceId);
+                }
               });
-              this.message = "开启设备监听成功"
+              this.message = "Device monitoring enabled successfully"
             } catch (error) {
               hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
-              this.message = `开启设备监听成功失败，点击重试。错误信息为${JSON.stringify(error, ["code", "message"])}`
+              this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
+                ["code", "message"])}`
             }
           })
-		// ···
+        // ···
       }
-	// ···
+    // ···
     }
   }
 }
-
 ```
 

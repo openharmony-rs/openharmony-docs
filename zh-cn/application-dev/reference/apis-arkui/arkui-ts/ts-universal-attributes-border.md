@@ -140,7 +140,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
 ## borderRadius<sup>22+</sup>
 
-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: CornerApplyType): T
+borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
 
 设置边框的圆角半径和绘制圆角的模式。圆角大小受组件尺寸限制，最大值为组件宽或高的一半。
 
@@ -155,7 +155,7 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: Co
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。|
-| type  | [CornerApplyType](ts-appendix-enums.md#cornerapplytype22) | 否   |设置组件绘制圆角的模式。<br/>默认值：CornerApplyType.FAST|
+| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
 
 **返回值：**
 
@@ -279,3 +279,78 @@ struct BorderExample {
 从右至左显示语言示例图
 
 ![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+
+### 示例3（设置离屏圆角）
+
+从API version 22开始，该示例支持设置组件绘制圆角的模式。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RenderStrategyExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon')).width('100%').height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.FAST)
+          .clip(true)
+        }
+
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon')).width('100%').height('200%')
+              }
+
+              Column()
+                .blur(50)
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.OFFSCREEN)
+          .clip(true)
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+设置在线绘制模式（上方）以及离屏绘制模式（下方）的示例图如下：
+
+![离屏绘制](figures/renderStrategy.jpg)

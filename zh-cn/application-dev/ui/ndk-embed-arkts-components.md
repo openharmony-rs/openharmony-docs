@@ -252,12 +252,14 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
 3. Native侧通过Node-API保存创建和更新函数，用于后续调用。
-   ```c
-   // ArkUIMixedRefresh.h
+   <!-- @[arkui_mixed_refresh_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h) -->
+   
+   ``` C
+   
    // 混合模式交互类。
    
-   #ifndef MYAPPLICATION_ARKUIMIXEDREFRESH_H
-   #define MYAPPLICATION_ARKUIMIXEDREFRESH_H
+   #ifndef MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
+   #define MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
    
    #include "ArkUIMixedNode.h"
    
@@ -275,14 +277,18 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    } // namespace NativeModule
    
-   #endif // MYAPPLICATION_ARKUIMIXEDREFRESH_H
+   #endif // MYAPPLICATION_ARKUIMIXEDREFRESHTEMPLATE_H
    ```
 
-   ```cpp
-   // ArkUIMixedRefresh.cpp
+   相关实现类说明：
+
+   <!-- @[arkui_mixed_refresh_template_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp) -->
+   
+   ``` C++
+   
    // 混合模式交互类。
    
-   #include "ArkUIMixedRefresh.h"
+   #include "ArkUIMixedRefreshTemplate.h"
    
    namespace NativeModule {
    namespace {
@@ -291,7 +297,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    napi_ref g_updateRefresh;
    } // namespace
    
-   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info)
+   {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
    
@@ -309,9 +316,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    } // namespace NativeModule
    ```
 
+   相关的CMakeLists的配置：
+
    ```cpp
      # CMakeLists.txt
- 
+    
      # the minimum version of CMake.
      cmake_minimum_required(VERSION 3.4.1)
      project(testndk)
@@ -501,9 +510,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
    相关实现类说明：
 
-   ```c
+   <!-- @[arkui_mixed_refresh_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp) -->
+   
+   ``` C++
    // ArkUIMixedRefresh.cpp
-
+   
    #include "ArkUIMixedRefresh.h"
    #include <hilog/log.h>
    
@@ -512,53 +523,51 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    napi_env g_env;
    napi_ref g_createRefresh;
    napi_ref g_updateRefresh;
+   const int REFRESH_OFFSET_INDEX0 = 0;
+   const int REFRESH_OFFSET_INDEX1 = 1;
+   const int REFRESH_OFFSET_INDEX2 = 2;
+   const int REFRESH_OFFSET_INDEX3 = 3;
+   const int REFRESH_OFFSET_INDEX4 = 4;
+   const int REFRESH_OFFSET_INDEX5 = 5;
+   const int REFRESH_OFFSET_INDEX6 = 6;
+   const int REFRESH_OFFSET_INDEX7 = 7;
    } // namespace
    
-   // 使用Napi接口创建与ArkTS侧交互的数据结构，用于Refresh组件的创建和更新。
-   napi_value ArkUIMixedRefresh::CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData) {
-       napi_property_descriptor desc[] = {
-           {"width", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"height", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"backgroundColor", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"pullToRefresh", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"isRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"refreshOffset", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"onRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-           {"onOffsetChange", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
-       };
+   void ArkUIMixedRefresh::Attribute2Descriptor(const NativeRefreshAttribute &attribute, napi_property_descriptor *desc)
+   {
        if (attribute.width) {
            napi_value width;
            napi_create_double(g_env, attribute.width.value(), &width);
-           desc[0].value = width;
+           desc[REFRESH_OFFSET_INDEX0].value = width;
        }
        if (attribute.height) {
            napi_value height;
            napi_create_double(g_env, attribute.height.value(), &height);
-           desc[1].value = height;
+           desc[REFRESH_OFFSET_INDEX1].value = height;
        }
        if (attribute.backgroundColor) {
            napi_value backgroundColor;
            napi_create_uint32(g_env, attribute.backgroundColor.value(), &backgroundColor);
-           desc[2].value = backgroundColor;
+           desc[REFRESH_OFFSET_INDEX2].value = backgroundColor;
        }
        if (attribute.pullToRefresh) {
            napi_value pullToRefresh;
            napi_create_int32(g_env, attribute.pullToRefresh.value(), &pullToRefresh);
-           desc[3].value = pullToRefresh;
+           desc[REFRESH_OFFSET_INDEX3].value = pullToRefresh;
        }
        if (attribute.isRefreshing) {
            napi_value isRefreshing;
            napi_create_int32(g_env, attribute.isRefreshing.value(), &isRefreshing);
-           desc[4].value = isRefreshing;
+           desc[REFRESH_OFFSET_INDEX4].value = isRefreshing;
        }
        if (attribute.refreshOffset) {
            napi_value refreshOffset;
            napi_create_double(g_env, attribute.refreshOffset.value(), &refreshOffset);
-           desc[5].value = refreshOffset;
+           desc[REFRESH_OFFSET_INDEX5].value = refreshOffset;
        }
        if (attribute.onRefreshing) {
            OH_LOG_INFO(LOG_APP, "onRefreshing start");
-           desc[6].method = [](napi_env env, napi_callback_info info) -> napi_value {
+           desc[REFRESH_OFFSET_INDEX6].method = [](napi_env env, napi_callback_info info) -> napi_value {
                OH_LOG_INFO(LOG_APP, "onRefreshing callback");
                size_t argc = 0;
                napi_value args[0];
@@ -571,9 +580,25 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
                return nullptr;
            };
        }
+   }
+   
+   // 使用Napi接口创建与ArkTS侧交互的数据结构，用于Refresh组件的创建和更新。
+   napi_value ArkUIMixedRefresh::CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData)
+   {
+       napi_property_descriptor desc[] = {
+           {"width", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"height", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"backgroundColor", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"pullToRefresh", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"isRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"refreshOffset", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"onRefreshing", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+           {"onOffsetChange", nullptr, nullptr, nullptr, nullptr, nullptr, napi_default, userData},
+       };
+       Attribute2Descriptor(attribute, desc);
        if (attribute.onOffsetChange) {
            OH_LOG_INFO(LOG_APP, "onOffsetChange start");
-           desc[7].method = [](napi_env env, napi_callback_info info) -> napi_value {
+           desc[REFRESH_OFFSET_INDEX7].method = [](napi_env env, napi_callback_info info) -> napi_value {
                OH_LOG_INFO(LOG_APP, "onOffsetChange callback");
                size_t argc = 1;
                napi_value args[1] = {nullptr};
@@ -597,7 +622,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    }
    
    // 创建ArkTS侧的组件并保存在Native侧的封装对象中。
-   const std::shared_ptr<ArkUIMixedRefresh> ArkUIMixedRefresh::Create(const NativeRefreshAttribute &attribute) {
+   const std::shared_ptr<ArkUIMixedRefresh> ArkUIMixedRefresh::Create(const NativeRefreshAttribute &attribute)
+   {
        napi_handle_scope scope;
        napi_open_handle_scope(g_env, &scope);
        auto refresh = std::make_shared<ArkUIMixedRefresh>();
@@ -618,13 +644,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_get_named_property(g_env, result, "content", &componentContent);
        ArkUI_NodeHandle handle;
        OH_ArkUI_GetNodeHandleFromNapiValue(g_env, componentContent, &handle);
-       assert(handle);
        // 获取ArkTS的Refresh组件的子组件插槽。
        napi_value nodeContent = nullptr;
        napi_get_named_property(g_env, result, "childSlot", &nodeContent);
        ArkUI_NodeContentHandle contentHandle;
        OH_ArkUI_GetNodeContentFromNapiValue(g_env, nodeContent, &contentHandle);
-       assert(contentHandle);
        // 保存ArkTS的ComponentContent用于防止ArkTS侧对象释放以及后续的更新。
        napi_ref componentContentRef;
        napi_create_reference(g_env, componentContent, 1, &componentContentRef);
@@ -641,7 +665,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        return refresh;
    }
    // 更新函数实现。
-   void ArkUIMixedRefresh::FlushMixedModeCmd() {
+   void ArkUIMixedRefresh::FlushMixedModeCmd()
+   {
        napi_handle_scope scope;
        napi_open_handle_scope(g_env, &scope);
        // 创建调用ArkTS接口入参。
@@ -661,39 +686,40 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_get_reference_value(g_env, g_updateRefresh, &updateRefresh);
        // 调用ArkTS的Update函数进行更新。
        napi_value result = nullptr;
-       napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
+       napi_call_function(g_env, nullptr, updateRefresh, sizeof(argv) / sizeof(argv[0]), argv, &result);
    }
-
-   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
-        size_t argc = 1;
-        napi_value args[1] = {nullptr};
-
-        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-        g_env = env;
-        napi_ref refer;
-        napi_create_reference(env, args[0], 1, &refer);
-
-        g_createRefresh = refer;
-        return nullptr;
-    }
    
-   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info)
+   {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
-
+   
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+   
        g_env = env;
        napi_ref refer;
        napi_create_reference(env, args[0], 1, &refer);
-
+   
+       g_createRefresh = refer;
+       return nullptr;
+   }
+   
+   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       g_env = env;
+       napi_ref refer;
+       napi_create_reference(env, args[0], 1, &refer);
+   
        g_updateRefresh = refer;
        return nullptr;
    }
    
    } // namespace NativeModule
-   
    ```
 
 6. 定时器模块相关简单实现。

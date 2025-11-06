@@ -1375,9 +1375,9 @@ type Nullable\<T> = T | undefined
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
-## CornerApplyType<sup>22+</sup>
+## RenderStrategy<sup>22+</sup>
 
-定义组件如何绘制圆角。
+定义组件绘制圆角的模式。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1387,5 +1387,5 @@ type Nullable\<T> = T | undefined
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| FAST | 0 | 在线裁切绘制，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线裁切绘制，在部分场景下可能会有显示效果异常，例如：圆角组件多层露线，圆角组件内叠加模糊效果会晕染背景色。|
-| OFFSCREEN | 1 | 离屏模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏模式绘制效果更好，可以解决在线裁切显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏模式。  |
+| FAST | 0 | 在线绘制模式，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
+| OFFSCREEN | 1 | 离屏绘制模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式效果更好，可以解决在线绘制模式显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |

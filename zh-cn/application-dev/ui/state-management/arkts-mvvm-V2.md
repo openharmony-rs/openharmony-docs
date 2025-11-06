@@ -376,7 +376,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
+    console.info('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
   }
 
   build() {
@@ -481,7 +481,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
+    console.info('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
   }
 
   build() {
@@ -616,7 +616,7 @@ struct SettingPage {
 import { AppStorageV2, PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { Setting } from './SettingPage';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 
 @ObservedV2
 class Task {
@@ -655,7 +655,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
+    console.info('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
   }
 
   build() {
@@ -769,7 +769,7 @@ JSON文件存放在src/main/resources/rawfile/defaultTasks.json路径下。
 import { AppStorageV2, PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { Setting } from './SettingPage';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 
 @ObservedV2
 class Task {
@@ -814,7 +814,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
+    console.info('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
   }
 
   build() {
@@ -960,7 +960,7 @@ export default class TaskModel {
 // src/main/ets/model/TaskListModel.ets
 
 import { common } from '@kit.AbilityKit';
-import util from '@ohos.util';
+import { util } from '@kit.ArkTS';
 import TaskModel from'./TaskModel';
 
 export default class TaskListModel {
@@ -1094,7 +1094,7 @@ struct TaskItem {
   @Event deleteTask: () => void = () => {};
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    console.log('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
+    console.info('任务' + this.task.taskName + '的完成状态从' + mon.value()?.before + '变为了' + mon.value()?.now);
   }
 
   build() {

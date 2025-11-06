@@ -211,7 +211,7 @@ int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)
 
 | 类型 | 说明 |
 | ---- | ---- |
-| int | 返回可读字节数大小，参数不合法时时返回-1。 |
+| int | 返回可读字节数大小，参数不合法时返回-1。 |
 
 ### OH_IPCParcel_GetReadPosition()
 
@@ -716,7 +716,7 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 ### OH_IPCParcel_ReadBuffer()
 
 ```C
-const unit8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
+const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 ```
 
 **描述：**
@@ -875,7 +875,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 ### OH_IPCParcel_ReadFileDescriptor()
 
 ```C
-const unit8_t* OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
+const uint8_t* OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 ```
 
 **描述：**
@@ -902,7 +902,7 @@ const unit8_t* OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_
 ### OH_IPCParcel_Append()
 
 ```C
-const unit8_t* OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
+const uint8_t* OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 ```
 
 **描述：**
@@ -971,7 +971,7 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 | 参数项 | 描述 |
 | ------ | ---- |
 | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
-| char **token | token 用于存储接口描述符信息的内存地址，该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放，不能为空。接口返回失败时，用户依然需要判断该内存是否为空，并主动释放，否则辉造成内存泄漏。 |
+| char **token | token 用于存储接口描述符信息的内存地址，该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放，不能为空。接口返回失败时，用户依然需要判断该内存是否为空，并主动释放，否则会造成内存泄漏。 |
 | int32_t *len | len 存储读取接口描述符的长度，包括结束符，不能为空。 |
 | [OH_IPC_MemAllocator](#oh_ipc_memallocator) allocator | allocator 用户指定的用来分配token的内存分配器，不能为空。 |
 

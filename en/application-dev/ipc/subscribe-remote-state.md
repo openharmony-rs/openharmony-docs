@@ -2,8 +2,9 @@
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
-<!--SE: @zhaopeng_gitee-->
-<!--TSE: @maxiaorong2-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
 
 IPC/RPC allows you to subscribe to the state changes of a remote stub object. When the remote stub object dies, a death notification will be sent to your local proxy. To subscribe to death notifications, you need to call the [registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1) API. To unsubscribe from death notifications, call the [unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1) API.
 
@@ -76,6 +77,10 @@ When the proxy detects the death of the remote stub object, proxy objects and cl
 
     let dmInstance: distributedDeviceManager.DeviceManager | undefined;
     let proxy: rpc.IRemoteObject | undefined;
+    let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
+    let networkId: string | undefined;
+    let want: Want | undefined;
+    let connect: common.ConnectOptions | undefined;
 
     try{
       dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
@@ -86,26 +91,32 @@ When the proxy detects the death of the remote stub object, proxy objects and cl
 
     // Use distributedDeviceManager to obtain the network ID of the target device.
     if (dmInstance != undefined) {
-      let deviceList = dmInstance.getAvailableDeviceListSync();
-      let networkId = deviceList[0].networkId;
-      let want: Want = {
-        bundleName: "ohos.rpc.test.server",
-        abilityName: "ohos.rpc.test.service.ServiceAbility",
-        deviceId: networkId,
-      };
-
-      let connect: common.ConnectOptions = {
-        onConnect: (elementName, remoteProxy) => {
-          hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
-          proxy = remoteProxy;
-        },
-        onDisconnect: (elementName) => {
-          hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
-        },
-        onFailed: () => {
-          hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
+      try {
+        deviceList = dmInstance.getAvailableDeviceListSync();
+        if (deviceList.length !== 0) {
+          networkId = deviceList[0].networkId;
+          want = {
+            bundleName: "ohos.rpc.test.server",
+            abilityName: "ohos.rpc.test.service.ServiceAbility",
+            deviceId: networkId,
+          };
+          connect = {
+            onConnect: (elementName, remoteProxy) => {
+              hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
+              proxy = remoteProxy;
+            },
+            onDisconnect: (elementName) => {
+              hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
+            },
+            onFailed: () => {
+              hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
+            }
+          };
         }
-      };
+      }catch(error) {
+        let err: BusinessError = error as BusinessError;
+        hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
+      }
     }
   ```
 
@@ -120,7 +131,7 @@ When the proxy detects the death of the remote stub object, proxy objects and cl
   ```
 
   In the stage model, the [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) API of **common.UIAbilityContext** is used to connect to an ability.
-  In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+  In the sample code provided in this topic, **this.getUIContext().getHostContext()** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
   <!--code_no_check-->
   ```ts
@@ -144,7 +155,7 @@ When the proxy detects the death of the remote stub object, proxy objects and cl
   }
   let deathRecipient = new MyDeathRecipient();
   if (proxy != undefined) {
-    // The value 0 is a reserved flag for the death notification of the death listener. It has no actual meaning.
+    // The value 0 is a reserved flag for the death notification of the death listener and has no actual meaning. The removal of the listener provided here is only an example. The actual removal time is determined by the service.
     proxy.registerDeathRecipient(deathRecipient, 0);
     proxy.unregisterDeathRecipient(deathRecipient, 0);
   }

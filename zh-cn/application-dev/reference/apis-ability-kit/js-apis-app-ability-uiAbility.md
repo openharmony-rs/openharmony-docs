@@ -538,7 +538,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
 > **说明：**
 >
-> 从API version 12 开始，UIAbility.onContinue生命周期新增支持返回值为Promise\<[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)\>形式。
+> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

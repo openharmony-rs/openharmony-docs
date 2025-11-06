@@ -13,10 +13,12 @@
 onClick与其他手势类型相同，也会参与命中测试、响应链收集等过程。可以使用[干预手势处理](./arkts-interaction-development-guide-support-gesture.md#干预手势处理)机制对onClick的响应进行动态决策。
 
 
-```typescript
+<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) -->
+
+``` TypeScript
 @Entry
-@ComponentV2
-struct Index {
+@Component
+export struct OnClickGesture {
   private judgeCount: number = 0
 
   increaseJudgeGuard(): void {
@@ -24,39 +26,44 @@ struct Index {
   }
 
   build() {
-    Column() {
+    NavDestination() {
       Column() {
-        Column()
-          .width('60%')
-          .height('50%')
-          .backgroundColor(Color.Grey)
-          .onClick(() => { // 1. 子组件上注册了点击事件，正常情况下点击在子组件上时，优先得到响应
-            console.info('Clicked on child')
-            this.increaseJudgeGuard()
-          })
-          .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-            // 3. 当数字增长为5的倍数时禁用子组件上的点击手势，这样父组件上的点击可以得到响应
-            if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
-              return GestureJudgeResult.REJECT
-            } else {
-              return GestureJudgeResult.CONTINUE
-            }
-          })
+        Column() {
+          Column()
+            .width('60%')
+            .height('50%')
+            .backgroundColor(Color.Grey)
+            .onClick(() => { // 1. 子组件上注册了点击事件，正常情况下点击在子组件上时，优先得到响应
+              console.info('Clicked on child')
+              this.increaseJudgeGuard()
+            })
+            .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+              // 3. 当数字增长为5的倍数时禁用子组件上的点击手势，这样父组件上的点击可以得到响应
+              if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
+                return GestureJudgeResult.REJECT
+              } else {
+                return GestureJudgeResult.CONTINUE
+              }
+            })
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor(Color.Green)
+        .gesture(
+          TapGesture() // 2. 父组件上注册了点击手势，正常情况下点击在子组件区域时，父组件上的手势优先级低于子组件
+            .onAction(() => {
+              console.info('Clicked on parent')
+              this.increaseJudgeGuard()
+            }))
       }
-      .width('80%')
-      .height('80%')
+      .height('100%')
+      .width('100%')
       .justifyContent(FlexAlign.Center)
-      .backgroundColor(Color.Green)
-      .gesture(
-        TapGesture() // 2. 父组件上注册了点击手势，正常情况下点击在子组件区域时，父组件上的手势优先级低于子组件
-          .onAction(() => {
-            console.info('Clicked on parent')
-            this.increaseJudgeGuard()
-          }))
     }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
+    .backgroundColor('#f1f2f3')
+    //$r('app.string.singlegesture_Index_Click_title')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.singlegesture_Index_Click_title'))
   }
 }
 ```
@@ -73,34 +80,44 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势支持单次点击和多次点击，参数定义参考[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct Index {
-    @State value: string = "";
-    
-    build() {
-      Column() {
-        Text('Click twice').fontSize(28)
-          .gesture(
-            // 绑定count为2的TapGesture
-            TapGesture({ count: 2 })
-              .onAction((event: GestureEvent|undefined) => {
-              if(event){
-                this.value = JSON.stringify(event.fingerList[0]);
-              }
-              }))
-        Text(this.value)
+<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct Tap {
+  @State value: string = '';
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Text('Click twice').fontSize(28)
+            .gesture(
+              // 绑定count为2的TapGesture
+              TapGesture({ count: 2 })
+                .onAction((event: GestureEvent|undefined) => {
+                  if(event){
+                    this.value = JSON.stringify(event.fingerList[0]);
+                  }
+                }))
+          Text(this.value)
+        }
+        .height(200)
+        .width(250)
+        .padding(20)
+        .border({ width: 3 })
+        .margin(30)
       }
-      .height(200)
-      .width(250)
-      .padding(20)
-      .border({ width: 3 })
-      .margin(30)
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_TapGesture_title'))
   }
-  ```
+}
+```
 
   ![tap](figures/tap.gif)
 
@@ -116,36 +133,46 @@ LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
 
 以在Text组件上绑定可以重复触发的长按手势为例：
 
-```ts
-// xxx.ets
+<!-- @[catch_long_press_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/LongPressGesture.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct LongPress {
   @State count: number = 0;
 
   build() {
-    Column() {
-      Text('LongPress OnAction:' + this.count).fontSize(28)
-        .gesture(
-          // 绑定可以重复触发的LongPressGesture
-          LongPressGesture({ repeat: true })
-           .onAction((event: GestureEvent|undefined) => {
-              if(event){
-                if (event.repeat) {
-                  this.count++;
-                }
-              }
-            })
-            .onActionEnd(() => {
-              this.count = 0;
-            })
-        )
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Text('LongPress OnAction:' + this.count).fontSize(28)
+            .gesture(
+              // 绑定可以重复触发的LongPressGesture
+              LongPressGesture({ repeat: true })
+                .onAction((event: GestureEvent | undefined) => {
+                  if (event) {
+                    if (event.repeat) {
+                      this.count++;
+                    }
+                  }
+                })
+                .onActionEnd(() => {
+                  this.count = 0;
+                })
+            )
+        }
+        .height(200)
+        .width(250)
+        .padding(20)
+        .border({ width: 3 })
+        .margin(30)
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
-    .height(200)
-    .width(250)
-    .padding(20)
-    .border({ width: 3 })
-    .margin(30)
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_LongPressGesture_title'))
   }
 }
 ```
@@ -171,11 +198,12 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 4、单指按住触控板上下滑动；
 5、使用触控板双指滑动。
 
-```ts
-// xxx.ets
+<!-- @[sliding_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PanCombinationGesture.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct VolumeControlDemo {
+export struct VolumeControlDemo {
   @State currentVolume: number = 50;
   private readonly MAX_VOLUME: number = 100;
   private readonly MIN_VOLUME: number = 0;
@@ -200,53 +228,55 @@ struct VolumeControlDemo {
       this.MAX_VOLUME,
       Math.max(this.MIN_VOLUME, this.currentVolume + delta)
     )
-
   }
 
   build() {
-    Column() {
-      // 状态显示
-      Row() {
-        Text(`音量： ${this.currentVolume}`).fontSize(20)
-      }.margin(10)
-
-      // 手势识别区域
-      Column()
-        .width('100%')
-        .height(250)
-        .backgroundColor('#F5F5F5')
-        .borderRadius(12)
-        .gesture(
-          PanGesture()
-            .onActionStart(() => {
-              console.info("Pan start");
-            })
-            .onActionUpdate((event: GestureEvent) => {
-              // 单指上下滑动
-              if (event.source === SourceType.TouchScreen) {
-                console.info("finger move triggered PanGesture");
-                this.handlePanUpdate(event);
-              }
-              if (event.source === SourceType.Mouse && event.sourceTool === SourceTool.MOUSE) {
-                // 鼠标左键按住上下滑动或者触控板单指按住上下滑动
-                if (event.axisHorizontal === 0 && event.axisVertical === 0) {
-                  console.info("mouse move with left button pressed triggered PanGesture");
+    NavDestination() {
+      Column() {
+        Row() {
+          //$r('app.string.video')需要替换为开发者所需的字符串资源文件
+          Text($r('app.string.video'))
+          Text(`： ${this.currentVolume}`).fontSize(20)
+        }.margin(10)
+        Column()
+          .width('100%')
+          .height(250)
+          .backgroundColor('#F5F5F5')
+          .borderRadius(12)
+          .gesture(
+            PanGesture()
+              .onActionStart(() => {
+                console.info('Pan start');
+              })
+              .onActionUpdate((event: GestureEvent) => {
+                if (event.source === SourceType.TouchScreen) {
+                  console.info('finger move triggered PanGesture');
                   this.handlePanUpdate(event);
-                } else { // 鼠标滚轮滚动
-                  console.info("mouse wheel triggered PanGesture");
-                  this.handleWheelEvent(event);
                 }
-              }
-              if (event.sourceTool === SourceTool.TOUCHPAD && (event.axisHorizontal !== 0 || event.axisVertical !== 0)) {
-                console.info("touchpad double finger move triggered PanGesture");
-                this.handleTouchPadScroll(event);
-              }
-            })
-        )
+                if (event.source === SourceType.Mouse && event.sourceTool === SourceTool.MOUSE) {
+                  if (event.axisHorizontal === 0 && event.axisVertical === 0) {
+                    console.info('mouse move with left button pressed triggered PanGesture');
+                    this.handlePanUpdate(event);
+                  } else { 
+                    console.info('mouse wheel triggered PanGesture');
+                    this.handleWheelEvent(event);
+                  }
+                }
+                if (event.sourceTool === SourceTool.TOUCHPAD &&
+                  (event.axisHorizontal !== 0 || event.axisVertical !== 0)) {
+                  console.info('touchpad double finger move triggered PanGesture');
+                  this.handleTouchPadScroll(event);
+                }
+              })
+          )
+      }
+      .width('100%')
+      .height('100%')
+      .padding(20)
     }
-    .width('100%')
-    .height('100%')
-    .padding(20)
+    .backgroundColor('#f1f2f3')
+    //$r('app.string.singlegesture_Index_Pancom_title')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.singlegesture_Index_Pancom_title'))
   }
 }
 ```
@@ -275,48 +305,57 @@ PinchGesture(value?: { fingers?: number; distance?: number })
 
 以在Column组件上绑定三指捏合手势为例，可以通过在捏合手势的函数回调中获取缩放比例，实现对组件的缩小或放大：
 
-```ts
-// xxx.ets
+<!-- @[catch_pinch_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PinchGesture.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct Pinch {
   @State scaleValue: number = 1;
   @State pinchValue: number = 1;
   @State pinchX: number = 0;
   @State pinchY: number = 0;
 
   build() {
-    Column() {
-      Column() {
-        Text('PinchGesture scale:\n' + this.scaleValue)
-        Text('PinchGesture center:\n(' + this.pinchX + ',' + this.pinchY + ')')
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Column() {
+            Text('PinchGesture scale:\n' + this.scaleValue)
+            Text('PinchGesture center:\n(' + this.pinchX + ',' + this.pinchY + ')')
+          }
+          .height(200)
+          .width(300)
+          .border({ width: 3 })
+          .margin({ top: 100 })
+          // 在组件上绑定缩放比例，可以通过修改缩放比例来实现组件的缩小或者放大
+          .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
+          .gesture(
+            // 在组件上绑定三指触发的捏合手势
+            PinchGesture({ fingers: 3 })
+              .onActionStart((event: GestureEvent | undefined) => {
+                console.info('Pinch start');
+              })// 当捏合手势触发时，可以通过回调函数获取缩放比例，从而修改组件的缩放比例
+              .onActionUpdate((event: GestureEvent | undefined) => {
+                if (event) {
+                  this.scaleValue = this.pinchValue * event.scale;
+                  this.pinchX = event.pinchCenterX;
+                  this.pinchY = event.pinchCenterY;
+                }
+              })
+              .onActionEnd(() => {
+                this.pinchValue = this.scaleValue;
+                console.info('Pinch end');
+              })
+          )
+        }
       }
-      .height(200)
-      .width(300)
-      .border({ width: 3 })
-      .margin({ top: 100 })
-      // 在组件上绑定缩放比例，可以通过修改缩放比例来实现组件的缩小或者放大
-      .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
-      .gesture(
-        // 在组件上绑定三指触发的捏合手势
-        PinchGesture({ fingers: 3 })
-          .onActionStart((event: GestureEvent|undefined) => {
-            console.info('Pinch start');
-          })
-            // 当捏合手势触发时，可以通过回调函数获取缩放比例，从而修改组件的缩放比例
-          .onActionUpdate((event: GestureEvent|undefined) => {
-            if(event){
-              this.scaleValue = this.pinchValue * event.scale;
-              this.pinchX = event.pinchCenterX;
-              this.pinchY = event.pinchCenterY;
-            }
-          })
-          .onActionEnd(() => {
-            this.pinchValue = this.scaleValue;
-            console.info('Pinch end');
-          })
-      )
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_PinchGesture_title'))
   }
 }
 ```
@@ -336,46 +375,56 @@ RotationGesture(value?: { fingers?: number; angle?: number })
 
 以在Text组件上绑定旋转手势实现组件的旋转为例，可以通过在旋转手势的回调函数中获取旋转角度，从而实现组件的旋转：
 
-```ts
-// xxx.ets
+<!-- @[catch_rotation_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/RotationGesture.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct Rotation {
   @State angle: number = 0;
   @State rotateValue: number = 0;
 
   build() {
-    Column() {
-      Text('RotationGesture angle:' + this.angle).fontSize(28)
-        // 在组件上绑定旋转布局，可以通过修改旋转角度来实现组件的旋转
-        .rotate({ angle: this.angle })
-        .gesture(
-          RotationGesture()
-           .onActionStart((event: GestureEvent|undefined) => {
-              console.info('RotationGesture is onActionStart');
-            })
-              // 当旋转手势生效时，通过旋转手势的回调函数获取旋转角度，从而修改组件的旋转角度
-            .onActionUpdate((event: GestureEvent|undefined) => {
-              if(event){
-                this.angle = this.rotateValue + event.angle;
-              }
-              console.info('RotationGesture is onActionUpdate');
-            })
-              // 当旋转结束抬手时，固定组件在旋转结束时的角度
-            .onActionEnd(() => {
-              this.rotateValue = this.angle;
-              console.info('RotationGesture is onActionEnd');
-            })
-            .onActionCancel(() => {
-              console.info('RotationGesture is onActionCancel');
-            })
-        )
-        .height(200)
-        .width(300)
-        .padding(20)
-        .border({ width: 3 })
-        .margin(100)
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Text('RotationGesture angle:' + this.angle).fontSize(28)
+            // 在组件上绑定旋转布局，可以通过修改旋转角度来实现组件的旋转
+            .rotate({ angle: this.angle })
+            .gesture(
+              RotationGesture()
+                .onActionStart((event: GestureEvent|undefined) => {
+                  console.info('RotationGesture is onActionStart');
+                })
+                  // 当旋转手势生效时，通过旋转手势的回调函数获取旋转角度，从而修改组件的旋转角度
+                .onActionUpdate((event: GestureEvent|undefined) => {
+                  if(event){
+                    this.angle = this.rotateValue + event.angle;
+                  }
+                  console.info('RotationGesture is onActionEnd');
+                })
+                  // 当旋转结束抬手时，固定组件在旋转结束时的角度
+                .onActionEnd(() => {
+                  this.rotateValue = this.angle;
+                  console.info('RotationGesture is onActionEnd');
+                })
+                .onActionCancel(() => {
+                  console.info('RotationGesture is onActionCancel');
+                })
+            )
+            .height(200)
+            .width(300)
+            .padding(20)
+            .border({ width: 3 })
+            .margin(100)
+        }
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_RotationGesture_title'))
   }
 }
 ```
@@ -395,38 +444,48 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 以在Column组件上绑定快滑手势实现组件的旋转为例：
 
-```ts
-// xxx.ets
+<!-- @[catch_swipe_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct Swipe {
   @State rotateAngle: number = 0;
   @State speed: number = 1;
 
   build() {
-    Column() {
-      Column() {
-        Text("SwipeGesture speed\n" + this.speed)
-        Text("SwipeGesture angle\n" + this.rotateAngle)
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column() {
+          Column() {
+            Text('SwipeGesture speed\n' + this.speed)
+            Text('SwipeGesture angle\n' + this.rotateAngle)
+          }
+          .border({ width: 3 })
+          .width(300)
+          .height(200)
+          .margin(100)
+          // 在Column组件上绑定旋转，通过滑动手势的滑动速度和角度修改旋转的角度
+          .rotate({ angle: this.rotateAngle })
+          .gesture(
+            // 绑定滑动手势且限制仅在竖直方向滑动时触发
+            SwipeGesture({ direction: SwipeDirection.Vertical })
+              // 当滑动手势触发时，获取滑动的速度和角度，实现对组件的布局参数的修改
+              .onAction((event: GestureEvent|undefined) => {
+                if(event){
+                  this.speed = event.speed;
+                  this.rotateAngle = event.angle;
+                }
+              })
+          )
+        }
       }
-      .border({ width: 3 })
-      .width(300)
-      .height(200)
-      .margin(100)
-      // 在Column组件上绑定旋转，通过快滑手势的滑动速度和角度修改旋转的角度
-      .rotate({ angle: this.rotateAngle })
-      .gesture(
-        // 绑定快滑手势且限制仅在竖直方向滑动时触发
-        SwipeGesture({ direction: SwipeDirection.Vertical })
-          // 当快滑手势触发时，获取滑动的速度和角度，实现对组件的布局参数的修改
-          .onAction((event: GestureEvent|undefined) => {
-            if(event){
-              this.speed = event.speed;
-              this.rotateAngle = event.angle;
-            }
-          })
-      )
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.singlegesture_SwipeGesture_title'))
   }
 }
 ```

@@ -6047,3 +6047,355 @@ try {
   console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## rekeyEx<sup>22+</sup>
+
+rekeyEx(cryptoParam: CryptoParam): Promise\<void>
+
+手动更新数据库的密钥或加密参数，使用Promise异步回调。
+
+不支持对非WAL模式的数据库进行密钥更新。
+
+手动更新时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会导致更新失败。
+
+支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。
+
+数据库越大，执行更新所需的时间越长。
+
+> **说明：**
+>
+> 加密参数变更需谨慎，在完成rekeyEx操作后，getRdbStore时必须使用新的参数来打开数据库，否则可能会导致开库失败。
+> 
+> 如果rekey过程因设备断电等原因中断，操作可能成功也可能失败。因此，建议业务方做好兜底保障（使用RekeyEx前后的参数进行冗余重试），确保不会错误地判断数据库的状态，从而避免出现数据库无法打开的问题。
+> 
+> 如果有加密参数变更，不建议getRdbStore时使用AllowedRebuild参数，防止因为传入的错误加密参数导致数据库发生重建。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| cryptoParam  | [CryptoParam](arkts-apis-data-relationalStore-i.md#cryptoparam14) | 是   | 指定用户自定义的加密参数。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 801          | Capability not supported.                                               |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | Failed to open the database because it is corrupted.                    |
+| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800023     | SQLite: Access permission denied.                                       |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800026     | SQLite: The database is out of memory.                                  |
+| 14800027     | SQLite: Attempt to write a readonly database.                           |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                           |
+| 14800029     | SQLite: The database is full.                                           |
+
+**示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.PLAIN_TEXT
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: false,
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+        iterationCount: 1000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        cryptoPageSize: 1024
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```

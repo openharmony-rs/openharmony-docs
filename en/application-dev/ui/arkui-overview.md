@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI provides a comprehensive infrastructure for application UI development, including simple UI syntax, a diverse array of UI features (components, layouts, animations, and interaction events), and powerful preview tools.
 
@@ -32,7 +32,7 @@ The declarative development paradigm is a better choice for building new applica
 
 - **Future proof**: The declarative development paradigm will continue to develop as the preferred development paradigm, providing increasingly diverse and powerful capabilities.
 
-  **Figure 1** ArkUI framework 
+  **Figure 1** ArkUI framework
 
   ![arkui-framework](figures/arkui-framework.png)
 
