@@ -35,6 +35,46 @@ V1实现：
 V2迁移策略：使用\@ObservedV2和\@Trace。
 <!-- @[Migration_Nested_Object_Properties_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Address {
+  @Trace public city: string;
+
+  constructor(city: string) {
+    this.city = city;
+  }
+}
+
+@ObservedV2
+class User {
+  @Trace public name: string;
+  @Trace public address: Address;
+
+  constructor(name: string, address: Address) {
+    this.name = name;
+    this.address = address;
+  }
+}
+
+@Entry
+@ComponentV2
+struct UserProfile {
+  @Local user: User = new User('Alice', new Address('New York'));
+
+  build() {
+    Column() {
+      Text(`Name: ${this.user.name}`)
+      // 通过@ObservedV2和@Trace可以直接观察嵌套属性
+      Text(`City: ${this.user.address.city}`)
+      Button('city +a')
+        .onClick(() => {
+          this.user.address.city += 'a';
+        })
+    }
+  }
+}
+```
+
 **类属性变化观测**
 
 在V1中，\@Observed用于观察类实例及其属性的变化，\@Track用于类对象的属性级的观察。在V2中，\@Trace实现了观察和更新属性级别变化的能力，搭配\@ObservedV2实现高效的UI更新。
