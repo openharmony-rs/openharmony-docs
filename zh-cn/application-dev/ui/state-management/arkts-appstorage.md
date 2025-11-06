@@ -60,7 +60,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
   **图1** \@StorageProp初始化规则图示  
 
-![zh-cn_image_0000001552978157](figures/zh-cn_image_0000001552978157.png)
+![storageprop-initialization](figures/storageprop-initialization.png)
 
 ### 观察变化和行为表现
 
@@ -113,7 +113,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
   **图2** \@StorageLink初始化规则图示  
 
-![zh-cn_image_0000001501938718](figures/zh-cn_image_0000001501938718.png)
+![storagelink-initialization](figures/storagelink-initialization.png)
 
 ### 观察变化和行为表现
 
