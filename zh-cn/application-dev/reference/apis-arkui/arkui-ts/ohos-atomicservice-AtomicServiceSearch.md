@@ -107,7 +107,7 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | cancelIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10对象说明) | 否 | 是 | 右侧清除按钮样式。默认值：`{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src: ' '}}`。<br/>当style为CancelButtonStyle.CONSTANT时，默认显示清除样式。   |
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 |  输入文本的字体颜色。默认值：`$r('sys.color.ohos_id_color_text_secondary')`。 |
 | caretStyle               | [CaretStyle](ts-text-common.md#caretstyle10) | 否 | 是 | 光标样式。默认值：`{width: '1.5vp', color: '#007DFF'}`。   |
-| enableKeyboardOnFocus    | boolean | 否 | 是 | Search获焦时，是否主动拉起软键盘。默认值：`true`。   |
+| enableKeyboardOnFocus    | boolean | 否 | 是 | Search获焦时，是否主动拉起软键盘。true表示Search获焦时主动拉起软键盘。默认值：`true`。   |
 | hideSelectionMenu        | boolean | 否 | 是 |是否不弹出系统文本选择菜单。<br />设置为true时，单击输入框光标、长按输入框、双击输入框、三击输入框或者右键输入框，不弹出系统文本选择菜单。设置为false时，弹出系统文本选择菜单。默认值：`false`。   |
 | type                     | [SearchType](ts-basic-components-search.md#searchtype11枚举说明) | 否 | 是 | 输入框类型。默认值：`SearchType.Normal`。   |
 | maxLength                | number | 否 | 是 | 设置文本的最大输入字符数。默认不设置最大输入字符数限制。到达文本最大字符限制，将无法继续输入字符。默认值：`-1`。  |
