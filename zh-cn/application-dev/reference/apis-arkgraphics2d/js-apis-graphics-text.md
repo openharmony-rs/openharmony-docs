@@ -433,6 +433,8 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -887,6 +889,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 21
+
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
 | FONT_SIZE | 0 | 以字号大小作为缩放基数。最终行高为[TextStyle](#textstyle).fontSize * [TextStyle](#textstyle).heightScale。 |
@@ -1063,6 +1067,8 @@ static getLocalInstance(): FontCollection
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
 
 **返回值：**
 
