@@ -893,11 +893,14 @@ try {
 
 setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
-设置除应用市场外，受信任开发者的扩展程序的运行开关管控策略。
-- 设置为DEFAULT时，表示无管控策略，受信任开发者的扩展程序开关保持设备当前设置状态，用户可操作开关开启或关闭。
-开关开启时，扩展程序可正常运行。开关关闭，扩展程序不可运行。
-- 设置为DISALLOW时，表示禁用策略，受信任开发者的扩展程序开关强制关闭，扩展程序不可运行。
-- 设置为FORCE_OPEN时，表示强制开启策略，受信任开发者的扩展程序开关强制开启，扩展程序可正常运行。
+设置外部来源扩展程序的管控策略。
+- DEFAULT：
+默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。
+- DISALLOW：
+禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启
+“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+- FORCE_OPEN：
+强制打开。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -949,7 +952,7 @@ try {
 
 getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
-获取除应用市场外，已设置受信任开发者的扩展程序的运行开关管控策略。
+获取外部来源扩展程序的管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -969,7 +972,7 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-|  [ManagedPolicy](#managedpolicy22) | 返回ManagedPolicy枚举类型的除应用市场外，已设置受信任开发者的扩展程序的运行开关管控策略。 |
+|  [ManagedPolicy](#managedpolicy22) | 返回ManagedPolicy枚举类型的外部来源扩展程序的运行管控策略。 |
 
 **错误码：**
 
@@ -1067,13 +1070,13 @@ try {
 
 ## ManagedPolicy<sup>22+</sup>
 
-管理除应用市场外，来自受信任开发者的扩展程序的运行开关策略。
+管控外部来源扩展程序的运行开关，设置并下发管控策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 默认，表示无管控策略，受信任开发者的扩展程序开关保持设备当前设置状态。|
-| DISALLOW | 1  | 禁用受信任开发者的扩展程序的运行开关。|
-| FORCE_OPEN | 2  | 强制打开受信任开发者的扩展程序的运行开关。|
+| DEFAULT | 0  | 无管控策略，外部来源扩展程序的运行开关保持设备当前设置状态。|
+| DISALLOW | 1  | 禁用外部来源的扩展程序运行开关。|
+| FORCE_OPEN | 2  | 强制打开外部来源的扩展程序运行开关。|
 
