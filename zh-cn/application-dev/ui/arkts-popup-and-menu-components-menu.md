@@ -53,6 +53,11 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 - 确认菜单的弹出方式，并使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
 
   <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
+  
+  ``` TypeScript
+  Button('click for Menu')
+    .bindContextMenu(this.MyMenu, ResponseType.RightClick)
+  ```
 
 ## 菜单弹出时振动效果
 
