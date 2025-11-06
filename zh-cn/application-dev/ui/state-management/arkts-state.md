@@ -114,6 +114,11 @@
 
   嵌套属性的赋值观察不到。
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    
+    ``` TypeScript
+    // 嵌套的属性赋值观察不到
+    this.title.name.value = 'ArkUI';
+    ```
 
 - 当装饰的对象是array时，可以观察到数组本身的赋值和添加、删除、更新数组的变化。例子如下。
   声明Model类。
