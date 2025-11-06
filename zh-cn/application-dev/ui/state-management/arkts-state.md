@@ -623,6 +623,55 @@ struct PlayDetailPage {
 【反例】
 <!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State viewModel: TestModel = new TestModel();
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.viewModel.isSuccess ? 'success' : 'failed')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.viewModel.query();
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+
+export class TestModel {
+  public isSuccess: boolean = false;
+  public model: Model
+
+  constructor() {
+    this.model = new Model(() => {
+      this.isSuccess = true;
+      hilog.info(DOMAIN, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
+    })
+  }
+
+  query() {
+    this.model.query();
+  }
+}
+
+export class Model {
+  public callback: () => void
+
+  constructor(cb: () => void) {
+    this.callback = cb;
+  }
+
+  query() {
+    this.callback();
+  }
+}
+```
+
 上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
 
 【正例】
