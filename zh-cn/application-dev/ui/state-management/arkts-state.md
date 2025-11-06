@@ -90,6 +90,11 @@
 
   \@State装饰的类型是Model。
     <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    
+    ``` TypeScript
+    // class类型
+    @State title: Model = new Model('Hello', new Person('World'));
+    ```
 
   对\@State装饰变量的赋值。
     <!-- @[state_decorate_object_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
