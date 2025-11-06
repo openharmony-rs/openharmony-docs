@@ -70,6 +70,61 @@ export struct TextPopupExample {
 
 <!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = 'DialogProject';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+export struct ButtonPopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('PopupOptions').margin({ top: 300 })
+            .id('PopupOptions')
+            .onClick(() => {
+              this.handlePopup = !this.handlePopup;
+            })
+            .bindPopup(this.handlePopup, {
+              message: 'This is a popup with PopupOptions',
+              primaryButton: {
+                value: 'Confirm',
+                action: () => {
+                  this.handlePopup = !this.handlePopup;
+                  hilog.info(DOMAIN_NUMBER, TAG, 'confirm Button click');
+                }
+              },
+              secondaryButton: {
+                value: 'Cancel',
+                action: () => {
+                  this.handlePopup = !this.handlePopup;
+                }
+              },
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.handlePopup = false;
+                }
+              }
+            })
+        }.width('100%').padding({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 ![zh-cn_other_0000001500740342](figures/zh-cn_other_0000001500740342.jpeg)
 
 ## 气泡的动画
