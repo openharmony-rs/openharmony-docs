@@ -110,6 +110,48 @@ export struct TextPopupExample {
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
+``` TypeScript
+// xxx.ets
+@Entry
+@Component
+export struct AvoidSoftKeyboardPopupExample {
+  @State handlePopup: boolean = false;
+
+  @Builder
+  popupBuilder() {
+    Column({ space: 2 }) {
+      Text('Custom Popup').fontSize(20)
+        .borderWidth(2)
+      TextInput()
+    }.width(200).padding(5)
+  }
+
+  build() {
+    NavDestination() {
+      Column({ space: 100 }) {
+        TextInput()
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup!!, {
+            width: 200,
+            builder: this.popupBuilder(),
+            placement: Placement.Bottom,
+            mask: false,
+            autoCancel: false,
+            keyboardAvoidMode: KeyboardAvoidMode.DEFAULT
+          })
+          .position({ x: 100, y: 300 })
+      }
+      .width('100%')
+    }.backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 ![image](figures/avoidKeyboard.gif)
 
 
