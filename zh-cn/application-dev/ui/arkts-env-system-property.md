@@ -88,7 +88,7 @@
       }
     }
     ```
-- \@Env装饰的变量类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`类型。\@Env当前仅支持`SystemProperties.BREAK_POINT`参数，所以其装饰类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`。
+- \@Env装饰的变量类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`类型。\@Env当前仅支持`SystemProperties.BREAK_POINT`参数，所以其装饰类型仅能为`uiObserver.WindowSizeLayoutBreakpointInfo`，否则会有编译时报错。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
