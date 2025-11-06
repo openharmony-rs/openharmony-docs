@@ -32,6 +32,59 @@
 V1实现：
 <!-- @[Migration_Nested_Object_Properties_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV1.ets) -->
 
+``` TypeScript
+@Observed
+class Address {
+  public city: string;
+
+  constructor(city: string) {
+    this.city = city;
+  }
+}
+
+@Observed
+class User {
+  public name: string;
+  public address: Address;
+
+  constructor(name: string, address: Address) {
+    this.name = name;
+    this.address = address;
+  }
+}
+
+@Component
+struct AddressView {
+  // 子组件中@ObjectLink装饰的address从父组件初始化，接收被@Observed装饰的Address实例
+  @ObjectLink address: Address;
+
+  build() {
+    Column() {
+      Text(`City: ${this.address.city}`)
+      Button('city +a')
+        .onClick(() => {
+          this.address.city += 'a';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct UserProfile {
+  @State user: User = new User('Alice', new Address('New York'));
+
+  build() {
+    Column() {
+      Text(`Name: ${this.user.name}`)
+      // 无法直接观察嵌套对象的属性变化，例如this.user.address.city
+      // 只能观察到对象第一层属性变化，所以需要将嵌套的对象Address抽取到自定义组件AddressView
+      AddressView({ address: this.user.address })
+    }
+  }
+}
+```
+
 V2迁移策略：使用\@ObservedV2和\@Trace。
 <!-- @[Migration_Nested_Object_Properties_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV2.ets) -->
 
