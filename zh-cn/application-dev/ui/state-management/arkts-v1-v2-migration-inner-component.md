@@ -293,6 +293,27 @@ V1实现：
 
 <!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  @Prop value: number;
+
+  build() {
+    Text(this.value.toString())
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  build() {
+    Column() {
+      Child({ value: 30 })
+    }
+  }
+}
+```
+
 
 V2迁移策略：直接替换。
 
