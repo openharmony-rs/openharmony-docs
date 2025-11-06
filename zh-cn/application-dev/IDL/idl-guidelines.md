@@ -151,10 +151,8 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 其中<*formal_param_attr*>的值为“in”，“out”，“inout”,分别表示该参数是输入参数，输出参数或输入输出参数。需要注意的是，如果一个方法被声明为oneway，则该方法不允许有输出类型的参数（及输入输出类型）和返回值。
 
-## 开发步骤
-
-### 获取IDL工具
-#### 方法一（推荐）：
+## 获取IDL工具
+### 方法一（推荐）：
 1. 在linux系统，下载OpenHarmony的两个仓：[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓、[third_party_bounds_checking_function](https://gitcode.com/openharmony/third_party_bounds_checking_function)代码仓。
 2. 进入[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令（**注意修改MakefileLinux中关于bounds_checking_function的相对位置**）。
 3. make执行完成后，在当前目录下会生成idl-gen可执行文件，可用于idl文件本地调试。
