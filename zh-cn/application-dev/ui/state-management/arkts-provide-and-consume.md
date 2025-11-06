@@ -673,11 +673,9 @@ allowOverride：\@Provide重写选项。
 struct MyComponent {
   @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
 
-  // [StartExclude Provide_Consume_Provide_AllowOverride]
   build() {
   }
 
-  // [EndExclude Provide_Consume_Provide_AllowOverride]
 }
 ```
 
