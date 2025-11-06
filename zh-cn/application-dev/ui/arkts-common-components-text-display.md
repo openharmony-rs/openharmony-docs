@@ -1395,7 +1395,7 @@ struct TextExample {
   static getEmojiImg(emojis: string[]): Resource[] { // 根据正则匹配结果返回自定义表情资源
     let emojisImg: Resource[] = []
     for (let i = 0; i < emojis.length; i++) {
-      switch (emojis[i]) {
+      switch (emojis[i]) { // $r("...")需要替换为开发者所需的图像资源
         case 'rolling_on_the_floor_laughing':
           emojisImg.push($r("app.media.rolling_on_the_floor_laughing"))
         case 'slightly_smiling_face':
