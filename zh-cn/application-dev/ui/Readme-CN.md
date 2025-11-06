@@ -137,8 +137,8 @@
      - [弹窗概述](arkts-dialog-overview.md)
      - 弹出框 (Dialog)<!--arkts-use-dialogs-->
        - [弹出框概述](arkts-base-dialog-overview.md)
-       - [不依赖UI组件的全局自定义弹出框 (openCustomDialog) (推荐)](arkts-uicontext-custom-dialog.md)
-       - [基础自定义弹出框 (CustomDialog) (不推荐)](arkts-common-components-custom-dialog.md)
+       - [不依赖UI组件的全局自定义弹出框 (openCustomDialog)](arkts-uicontext-custom-dialog.md)
+       - [基础自定义弹出框 (CustomDialog)](arkts-common-components-custom-dialog.md)
        - [固定样式弹出框](arkts-fixes-style-dialog.md)
        - [页面级弹出框](arkts-embedded-dialog.md)
        - [弹出框层级管理](arkts-dialog-levelorder.md)
