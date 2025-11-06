@@ -217,11 +217,11 @@ struct Child {
   }
 
   // 使用@Require必须构造时传参。
-  @Require regular_value: string = 'Hello';
-  @Require @State state_value: string = 'Hello';
-  @Require @Provide provide_value: string = 'Hello';
+  @Require regular_value: string;
+  @Require @State state_value: string;
+  @Require @Provide provide_value: string;
   @Require @BuilderParam initBuildTest: () => void = this.buildFunction;
-  @Require @Prop initMessage: string = 'Hello';
+  @Require @Prop initMessage: string;
 
   build() {
     Column() {
