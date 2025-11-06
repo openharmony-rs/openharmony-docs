@@ -326,6 +326,48 @@ V1实现：
 
 <!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->
 
+``` TypeScript
+class Fruit {
+  public apple: number = 5;
+  public orange: number = 10;
+}
+
+@Component
+struct Child {
+  // @Prop传递Fruit类，当子类修改属性，父类不受影响
+  @Prop fruit: Fruit;
+
+  build() {
+    Column() {
+      Text('child apple: ' + this.fruit.apple.toString())
+      Text('child orange: ' + this.fruit.orange.toString())
+      Button('apple+1')
+        .onClick(() => {
+          this.fruit.apple++;
+        })
+      Button('orange+1')
+        .onClick(() => {
+          this.fruit.orange++;
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State parentFruit: Fruit = new Fruit();
+
+  build() {
+    Column() {
+      Text('parent apple: ' + this.parentFruit.apple.toString())
+      Text('parent orange: ' + this.parentFruit.orange.toString())
+      Child({ fruit: this.parentFruit })
+    }
+  }
+}
+```
+
 
 V2迁移策略：使用深拷贝。
 
