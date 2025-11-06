@@ -376,6 +376,39 @@ struct DatePickerExample {
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 <!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct SetSample {
+  @State message: Set<number> = new Set([0, 1, 2, 3, 4]);
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`).fontSize(30)
+          Divider()
+        })
+        Button('init set').onClick(() => {
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+        Button('set new one').onClick(() => {
+          this.message.add(5);
+        })
+        Button('clear').onClick(() => {
+          this.message.clear();
+        })
+        Button('delete the first one').onClick(() => {
+          this.message.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
