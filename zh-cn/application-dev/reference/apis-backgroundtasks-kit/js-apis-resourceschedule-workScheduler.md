@@ -220,11 +220,12 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+
+获取当前应用所有的延迟任务，使用Callback异步回调。
+
 > **说明：**
 >
 > 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
-
-获取当前应用所有的延迟任务，使用Callback异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
