@@ -652,6 +652,34 @@ V2迁移策略：确保alias一致，没有指定alias的情况下，依赖属�
 
 <!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child {
+  // alias是唯一匹配的key，有alias情况下无法通过属性名匹配
+  @Consumer('text') childMessage: string = 'default';
+  @Consumer() message: string = 'default';
+
+  build() {
+    Column() {
+      Text(this.childMessage)
+      Text(this.message) // Text是default
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent {
+  @Provider('text') message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Child()
+    }
+  }
+}
+```
+
 
 **V1的\@Consume不支持本地初始化，V2支持**
 
