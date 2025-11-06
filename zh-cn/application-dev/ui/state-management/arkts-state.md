@@ -1048,6 +1048,49 @@ struct Index {
 【反例】
 <!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
 
+``` TypeScript
+class Balloon {
+  public volume: number;
+
+  constructor(volume: number) {
+    this.volume = volume;
+  }
+
+  static increaseVolume(balloon: Balloon) {
+    balloon.volume += 2;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State balloon: Balloon = new Balloon(10);
+
+  reduceVolume(balloon: Balloon) {
+    balloon.volume -= 1;
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
+        .fontSize(30)
+      Button(`increaseVolume`)
+        .onClick(() => {
+          // 通过静态方法调用，无法触发UI刷新
+          Balloon.increaseVolume(this.balloon);
+        })
+      Button(`reduceVolume`)
+        .onClick(() => {
+          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
+          this.reduceVolume(this.balloon);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 状态变量观察类属性变化是通过代理捕获其变化的，当使用a.b(this.object)调用时，框架会将代理对象转换为原始对象。修改原始对象属性，无法观察，因此UI不会刷新。开发者可以使用如下方法修改：
 
 1. 先将this.balloon赋值给临时变量。
