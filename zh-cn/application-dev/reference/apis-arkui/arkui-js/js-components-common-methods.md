@@ -21,7 +21,7 @@ animate( keyframes: Keyframes, options: Options)：void
 | 参数名       | 类型      | 必填   | 说明                                   |
 | --------- | --------- | ---- | ------------------------------------ |
 | keyframes | keyframes | 是    | 设置动画样式。                               |
-| options   | Options   | 是    | 用于设置动画属性的对象列表。options请见表3 Options说明。 |
+| options   | Options   | 是    | 用于设置动画属性的对象列表。具体参数说明请参见表3 Options说明。 |
 
   **表1** keyframes
 
@@ -36,18 +36,18 @@ animate( keyframes: Keyframes, options: Options)：void
 | width              | number                                   | -                    | 动画执行过程中设置到组件上的宽度值。                       |
 | height             | number                                   | -                    | 动画执行过程中设置到组件上的高度值。                       |
 | backgroundColor    | &lt;color&gt;                            | none                 | 动画执行过程中设置到组件上的背景颜色。                      |
-| opacity            | number                                   | 1                    | 设置到组件上的透明度，介于0到1之间。                      |
+| opacity            | number                                   | 1                    | 设置到组件上的透明度，取值范围在0到1之间。                      |
 | backgroundPosition | string                                   | -                    | 格式为"x&nbsp;y"，单位为百分号或者px。<br/>第一个值是水平位置，第二个值是垂直位置。<br/>如果仅规定了一个值，另一个值为&nbsp;50%。 |
 | transformOrigin    | string                                   | 'center&nbsp;center' | 变换对象的中心点。<br/>第一个参数表示x轴的值，可以设置为left、center、right、长度值或百分比值。<br/>第二个参数表示y轴的值，可以设置为top、center、bottom、长度值或百分比值。 |
 | transform          | [Transform](js-components-common-animation.md) | -                    | 设置到变换对象上的类型。                             |
-| offset             | number                                   | -                    | -&nbsp;offset值（如果提供）必须在0.0到1.0（含）之间，并以升序排列。<br/>-&nbsp;若只有两帧，可以不填offset。<br/>-&nbsp;若超过两帧，offset必填。 |
+| offset             | number                                   | -                    | -&nbsp;offset值（如果提供）必须在0.0到1.0（含）之间，并以升序排列。<br/>-&nbsp;若仅有两帧，offset参数可省略。<br/>-&nbsp;若超过两帧，offset必填。 |
 
   **表3** Options说明
 
 | 参数                     | 类型                         | 默认值    | 说明                                       |
 | ---------------------- | -------------------------- | ------ | ---------------------------------------- |
 | duration               | number                     | 0      | 指定当前动画的运行时长，单位毫秒。有效取值范围为[0, +∞)，小于0时取默认值。                        |
-| easing                 | string                     | linear | 描述动画的时间曲线，支持类型见表4 easing有效值说明。           |
+| easing                 | string                     | linear | 描述动画的时间曲线，支持的具体类型参数请参见表4 easing有效值。           |
 | delay                  | number                     | 0      | 设置动画执行的延迟时间，默认值表示无延迟。                    |
 | iterations             | number&nbsp;\|&nbsp;string | 1      | 设置动画执行的次数。number表示固定次数，Infinity枚举表示无限次数播放。 |
 | direction<sup>6+</sup> | string                     | normal | 指定动画的播放模式：<br/>normal：&nbsp;动画正向循环播放；<br/>reverse：&nbsp;动画反向循环播放；<br/>alternate：动画交替循环播放，奇数次正向播放，偶数次反向播放；<br/>alternate-reverse：动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
