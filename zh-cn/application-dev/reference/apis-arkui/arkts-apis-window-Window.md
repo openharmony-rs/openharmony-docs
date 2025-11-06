@@ -1709,7 +1709,7 @@ export default class EntryAbility extends UIAbility {
           }
         });
       } catch (exception) {
-        console.error(`Failed to set the status bar color. Cause code: ${exception.code}, message: ${exception.message}`);
+        console.error(`Failed to set the status bar color. Cause ${exception}`);
       }
     });
   }
