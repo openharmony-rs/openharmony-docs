@@ -106,6 +106,13 @@
         // ···
             this.getUIContext()?.postFrameCallback(new MyFrameCallback());
         // ···
+        if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+          // 当前为浅色模式，资源初始化逻辑
+          this.colorText == 'light';
+        } else {
+          // 当前为深色模式，资源初始化逻辑
+          this.colorText == 'dark';
+        }
       }
     ```
 
@@ -120,7 +127,7 @@
     ``` TypeScript
     onCreate(): void {
       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-      AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
+      // ···
     }
     ```
 
@@ -223,7 +230,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 ``` TypeScript
 onCreate(): void {
   this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-  AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
+  // ···
 }
 ```
 
