@@ -64,7 +64,7 @@
 >
 > 在指定群组中更新一条关键资产的使用示例详见[更新群组关键资产](asset-js-group-access-control.md#更新群组关键资产)。
 >
-> 在更新前，需确保已有关键资产，可参考[指南文档](./asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+> 在更新前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属属性更新成demo_label_new。
 
