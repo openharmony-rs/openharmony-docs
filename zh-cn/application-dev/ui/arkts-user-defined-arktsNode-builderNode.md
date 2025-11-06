@@ -224,10 +224,10 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -250,7 +250,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }
   }
   
@@ -424,7 +424,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
         .height('200vp')
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
-          // 触摸绿色Column，蓝色Row的触摸事件不触发。
+          // 触摸绿色Column，蓝色Row的触摸事件不触发
           hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
         })
       }
@@ -449,13 +449,13 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   
   @Builder
   function buildBlueRow() {
-    // Builder直接挂载自定义组件，生成BuilderProxyNode。
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
     BlueRowComponent()
   }
   
   @Builder
   function buildGreenColumn() {
-    // Builder直接挂载自定义组件，生成BuilderProxyNode。
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
     GreenColumnComponent()
   }
   
@@ -469,7 +469,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
   
-      // greenColumnNode覆盖在blueRowNode上。
+      // greenColumnNode覆盖在blueRowNode上
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
   
@@ -508,7 +508,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
         .height('200vp')
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
-          // 触摸绿色Column，蓝色Row的触摸事件触发。
+          // 触摸绿色Column，蓝色Row的触摸事件触发
           hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
         })
       }
@@ -532,13 +532,13 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   
   @Builder
   function buildBlueRow() {
-    // Builder直接挂载自定义组件，生成BuilderProxyNode。
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
     BlueRowComponent()
   }
   
   @Builder
   function buildGreenColumn() {
-    // Builder根节点为容器组件，不会生成BuilderProxyNode，可以设置属性。
+    // Builder根节点为容器组件，不会生成BuilderProxyNode，可以设置属性
     Stack() {
       GreenColumnComponent()
     }
@@ -555,7 +555,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
   
-      // greenColumnNode覆盖在blueRowNode上。
+      // greenColumnNode覆盖在blueRowNode上
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
   
@@ -595,7 +595,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
         .height('200vp')
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
-          // 触摸绿色Column，蓝色Row的触摸事件触发。
+          // 触摸绿色Column，蓝色Row的触摸事件触发
           hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
         })
       }
@@ -619,13 +619,13 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   
   @Builder
   function buildBlueRow() {
-    // Builder直接挂载自定义组件，生成BuilderProxyNode。
+    // Builder直接挂载自定义组件，生成BuilderProxyNode
     BlueRowComponent()
   }
   
   @Builder
   function buildGreenColumn() {
-    // 给自定义组件设置属性生成__Common__节点，Builder根节点为__Common__节点，不会生成BuilderProxyNode。
+    // 给自定义组件设置属性生成__Common__节点，Builder根节点为__Common__节点，不会生成BuilderProxyNode
     GreenColumnComponent()
       .hitTestBehavior(HitTestMode.Transparent)
   }
@@ -640,7 +640,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
   
-      // greenColumnNode覆盖在blueRowNode上。
+      // greenColumnNode覆盖在blueRowNode上
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
   
@@ -717,7 +717,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   function buildNode(param: Params = new Params('hello')) {
     Row() {
       Text(`C${param.item} -- `)
-      ChildComponent2({ item: param.item }) //该自定义组件在BuilderNode中无法被正确复用。
+      ChildComponent2({ item: param.item }) //该自定义组件在BuilderNode中无法被正确复用
     }
   }
   
@@ -734,7 +734,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     }
   }
   
-  // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程。
+  // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程
   @Reusable
   @Component
   struct ReusableChildComponent {
@@ -749,7 +749,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     aboutToRecycle(): void {
       hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
   
-      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用。
+      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用
       if (this.switch === 'open') {
         this.controller?.builderNode?.recycle();
       }
@@ -758,7 +758,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     aboutToReuse(params: object): void {
       hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
   
-      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用。
+      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用
       if (this.switch === 'open') {
         this.controller?.builderNode?.reuse(params);
       }
@@ -836,7 +836,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
             ListItem() {
               ReusableChildComponent({
                 item: item,
-                switch: 'open' // 将open改为close可观察到，BuilderNode不通过reuse和recycle接口传递复用时，BuilderNode内部的自定义组件的行为表现。
+                switch: 'open' // 将open改为close可观察到，BuilderNode不通过reuse和recycle接口传递复用时，BuilderNode内部的自定义组件的行为表现
               })
             }
           }, (item: string) => item)
@@ -897,7 +897,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 标记了@Reusable的自定义组件，无法直接被BuilderNode挂载为子节点。
+  // 标记了@Reusable的自定义组件，无法直接被BuilderNode挂载为子节点
   @Reusable
   @Component
   struct ReusableChildComponent {
@@ -917,7 +917,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 未标记@Reusable的自定义组件。
+  // 未标记@Reusable的自定义组件
   @Component
   struct ChildComponent2 {
     @Prop item: string = '';
@@ -974,10 +974,10 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -1002,7 +1002,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
         .fontColor($r(`app.color.text_color`))
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }.backgroundColor($r(`app.color.start_window_background`))
   }
   
@@ -1038,12 +1038,12 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 记录创建的自定义节点对象。
+  // 记录创建的自定义节点对象
   const builderNodeMap: BuilderNode<[Params]>[] = [];
   
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
-      // 通知BuilderNode环境变量改变。
+      // 通知BuilderNode环境变量改变
       value.updateConfiguration();
     })
   }
@@ -1065,14 +1065,14 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
           updateColorMode();
         }
       }
-      // 注册监听回调。
+      // 注册监听回调
       this.getUIContext().getHostContext()?.getApplicationContext().on('environment', environmentCallback);
-      //创建自定义节点并添加至map。
+      //创建自定义节点并添加至map
       this.textNodeController.createNode(this.getUIContext());
     }
   
     aboutToDisappear(): void {
-      //移除map中的引用，并将自定义节点释放。
+      //移除map中的引用，并将自定义节点释放
       this.textNodeController.deleteNode();
     }
   
@@ -1111,7 +1111,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
   
   @Builder
   function buildText() {
-    // @Builder中使用语法节点生成BuilderProxyNode。
+    // @Builder中使用语法节点生成BuilderProxyNode
     if (true) {
       MyComponent()
     }
@@ -1141,7 +1141,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
       this.rootNode = new FrameNode(context);
   
       if (AppStorage.has('textNode')) {
-        // 复用AppStorage中的BuilderNode。
+        // 复用AppStorage中的BuilderNode
         this.textNode = AppStorage.get<BuilderNode<[]>>('textNode') as BuilderNode<[]>;
         const parent = this.textNode.getFrameNode()?.getParent();
         if (parent) {
@@ -1150,7 +1150,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
       } else {
         this.textNode = new BuilderNode(context);
         this.textNode.build(wrapBuilder<[]>(buildText));
-        // 将创建的BuilderNode存入AppStorage。
+        // 将创建的BuilderNode存入AppStorage
         AppStorage.setOrCreate<BuilderNode<[]>>('textNode', this.textNode);
       }
       this.rootNode.appendChild(this.textNode.getFrameNode());
@@ -1174,9 +1174,9 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
             .backgroundColor('#FFF0F0F0')
           Button('Router pageTwo')
             .onClick(() => {
-              // 改变AppStorage中的状态变量触发Text节点的重新创建。
+              // 改变AppStorage中的状态变量触发Text节点的重新创建
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // 将BuilderNode从AppStorage中移除。
+              // 将BuilderNode从AppStorage中移除
               AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
@@ -1198,7 +1198,7 @@ PageTwo的实现如下：
   
   ``` TypeScript
   // ets/pages/RouterPage2.ets
-  // 该页面中存在一个按钮，可跳转回主页面，回到主页面后，原有的文字消失。
+  // 该页面中存在一个按钮，可跳转回主页面，回到主页面后，原有的文字消失
   import 'ets/pages/RouterPage1';
   
   @Entry({ routeName: 'pageTwo' })
@@ -1234,7 +1234,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   
   @Builder
   function buildText() {
-    // @Builder中使用语法节点生成BuilderProxyNode。
+    // @Builder中使用语法节点生成BuilderProxyNode
     if (true) {
       MyComponent()
     }
@@ -1264,7 +1264,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
       this.rootNode = new FrameNode(context);
   
       if (AppStorage.has('textNode')) {
-        // 复用AppStorage中的BuilderNode。
+        // 复用AppStorage中的BuilderNode
         this.textNode = AppStorage.get<BuilderNode<[]>>('textNode') as BuilderNode<[]>;
         const parent = this.textNode.getFrameNode()?.getParent();
         if (parent) {
@@ -1273,7 +1273,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
       } else {
         this.textNode = new BuilderNode(context);
         this.textNode.build(wrapBuilder<[]>(buildText));
-        // 将创建的BuilderNode存入AppStorage。
+        // 将创建的BuilderNode存入AppStorage
         AppStorage.setOrCreate<BuilderNode<[]>>('textNode', this.textNode);
       }
       this.rootNode.appendChild(this.textNode.getFrameNode());
@@ -1297,9 +1297,9 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
             .backgroundColor('#FFF0F0F0')
           Button('Router pageTwo')
             .onClick(() => {
-              // 改变AppStorage中的状态变量触发Text节点的重新创建。
+              // 改变AppStorage中的状态变量触发Text节点的重新创建
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // 将BuilderNode从AppStorage中移除。
+              // 将BuilderNode从AppStorage中移除
               AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
@@ -1344,7 +1344,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
           Text(this.propA)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // 使用LocalStorage 实例localStorage2。
+          // 使用LocalStorage 实例localStorage2
           Child({ count: this.count }, localStorage2)
           NodeContainer(this.controller)
         }
@@ -1362,7 +1362,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   
   @Builder
   function createChild(params: Params) {
-    //构造过程中传递localStorage。
+    //构造过程中传递localStorage
     Child({ count: params.count }, params.localStorage)
   }
   
@@ -1378,7 +1378,7 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
   
     makeNode(uiContext: UIContext): FrameNode | null {
       let builderNode = new BuilderNode<[Params]>(uiContext);
-      //构造过程中传递localStorage。
+      //构造过程中传递localStorage
       builderNode.build(wrapBuilder(createChild), { count: this.count, localStorage: this.localStorage });
       return builderNode.getFrameNode();
     }
@@ -1427,19 +1427,19 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
       this.builderNode = new BuilderNode<[]>(uiContext);
       this.builderNode.build(wrapBuilder<[]>(buildText));
   
-      // 挂载BuilderNode。
+      // 挂载BuilderNode
       this.rootNode.appendChild(this.builderNode.getFrameNode());
       return this.rootNode;
     }
   
     disposeBuilderNode() {
-      // 解除BuilderNode与后端实体节点的引用关系。
+      // 解除BuilderNode与后端实体节点的引用关系
       this.builderNode?.dispose();
     }
   
     isDisposed(): string {
       if (this.builderNode !== null) {
-        // 查询BuilderNode是否解除引用。
+        // 查询BuilderNode是否解除引用
         if (this.builderNode.isDisposed()) {
           return 'builderNode isDisposed is true';
         } else {
@@ -1538,9 +1538,9 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
       this.rootNode = new FrameNode(context);
       this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
       this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.count));
-      this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true。
+      this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true
       if (this.rootNode !== null) {
-        this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树。
+        this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树
       }
       return this.rootNode;
     }
@@ -1548,7 +1548,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     update(): void {
       if (this.textNode !== null) {
         this.count += 1;
-        this.textNode.update(new Params(this.count)); // 更新BuilderNode中的数据，可以触发Log。
+        this.textNode.update(new Params(this.count)); // 更新BuilderNode中的数据，可以触发Log
       }
   
     }
@@ -1574,7 +1574,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   
     build() {
       Column() {
-        Button('update builderNode') // 点击更新BuildrNode。
+        Button('update builderNode') // 点击更新BuildrNode
           .onClick(() => {
             textNodeController.update();
           })
@@ -1585,7 +1585,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
               .height(40)
               .margin(20)
               .onClick(() => {
-                this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈。
+                this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
               })
           }
         }.title('NavIndex')
@@ -1660,7 +1660,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   }
   
   @Component({ freezeWhenInactive: true })
-    // 设置冻结策略为不活跃冻结。
+    // 设置冻结策略为不活跃冻结
   struct NavigationContentMsgStack {
     @Link message: number;
     @Link index: number;
@@ -1676,13 +1676,13 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   }
   
   @Component({ freezeWhenInactive: true })
-    // 设置冻结策略为不活跃冻结。
+    // 设置冻结策略为不活跃冻结
   struct TextBuilder {
     @Prop @Watch('info') message: number = 0;
   
     info(): void {
       hilog.info(0xF811, 'testTag', '%{public}s',
-        `freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结。
+        `freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结
     }
   
     build() {
@@ -2456,7 +2456,7 @@ struct FreezeBuildNode {
     <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, ConfigurationConstant, UIAbility,   Want } from '@kit.AbilityKit';
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { createNWeb } from '../Common/CommonIndex';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
@@ -2486,13 +2486,13 @@ struct FreezeBuildNode {
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
     <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->
-
+    
     ``` TypeScript
     import { UIContext } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
+    import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     // @Builder中为动态组件的具体组件内容。
     // Data为入参封装类。
     class Data{
@@ -2525,7 +2525,7 @@ struct FreezeBuildNode {
     // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
@@ -2538,7 +2538,7 @@ struct FreezeBuildNode {
       }
       // 当布局大小发生变化时进行回调。
       aboutToResize(size: Size) {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToResize   width   : ' + size.width  +  ' height : ' + size.height );
+        hilog.info(0xF811,'testTag','%{public}s','aboutToResize width : ' + size.width  +  ' height : ' + size.height );
       }
       // 当controller对应的NodeContainer在Appear的时候进行回调。
       aboutToAppear() {
@@ -2585,12 +2585,12 @@ struct FreezeBuildNode {
 3. 通过NodeContainer使用已经预渲染的页面。
 
     <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) -->
-
+    
     ``` TypeScript
     // 使用NodeController的Page页。
     // pages/ArkWebPage.ets
     import { createNWeb, getNWeb } from '../Common/CommonIndex';
-
+    
     @Entry
     @Component
     struct Index {
