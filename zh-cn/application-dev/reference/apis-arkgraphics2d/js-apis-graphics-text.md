@@ -1194,7 +1194,8 @@ paragraph.layoutSync(100);
 
 ### layout<sup>18+</sup>
 
-ArkTS-Dyn: layout(width: number): Promise\<void>  
+ArkTS-Dyn: layout(width: number): Promise\<void>
+
 ArkTS-Sta: layout(width: double): Promise\<void>
 
 进行排版并计算所有字形位置，使用Promise异步回调。
@@ -1305,7 +1306,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Image, Button, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing, text } from '@kit.ArkGraphics2D'
@@ -1388,7 +1388,8 @@ struct Index {
 
 ### paint
 
-ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void  
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
+
 ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以 (x, y) 为左上角绘制文本。
@@ -1421,7 +1422,8 @@ paragraph.paint(canvas, 0, 0);
 
 ### paintOnPath
 
-ArkTS-Dyn: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void  
+ArkTS-Dyn: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void
+
 paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
 
 在画布上沿路径绘制文本。
@@ -1457,7 +1459,8 @@ paragraph.paintOnPath(canvas, path, 0, 0);
 
 ### getMaxWidth
 
-ArkTS-Dyn: getMaxWidth(): number  
+ArkTS-Dyn: getMaxWidth(): number
+
 ArkTS-Sta: getMaxWidth(): double
 
 获取文本最大行宽。
@@ -1484,7 +1487,8 @@ let maxWidth = paragraph.getMaxWidth();
 
 ### getHeight
 
-ArkTS-Dyn: getHeight(): number  
+ArkTS-Dyn: getHeight(): number
+
 ArkTS-Sta: getHeight(): double
 
 获取文本总高度。
@@ -1511,7 +1515,8 @@ let height = paragraph.getHeight();
 
 ### getLongestLine
 
-ArkTS-Dyn: getLongestLine(): number  
+ArkTS-Dyn: getLongestLine(): number
+
 ArkTS-Sta: getLongestLine(): double
 
 获取文本最长行宽。
@@ -1538,7 +1543,8 @@ let longestLine = paragraph.getLongestLine();
 
 ### getLongestLineWithIndent<sup>13+</sup>
 
-ArkTS-Dyn: getLongestLineWithIndent(): number  
+ArkTS-Dyn: getLongestLineWithIndent(): number
+
 ArkTS-Sta: getLongestLineWithIndent(): double
 
 获取文本最长一行的宽度（包含缩进），建议向上取整。文本内容为空时返回0。
@@ -1565,7 +1571,8 @@ let longestLineWithIndent = paragraph.getLongestLineWithIndent();
 
 ### getMinIntrinsicWidth
 
-ArkTS-Dyn: getMinIntrinsicWidth(): number  
+ArkTS-Dyn: getMinIntrinsicWidth(): number
+
 ArkTS-Sta: getMinIntrinsicWidth(): double
 
 获取段落最小固有宽度。
@@ -1592,7 +1599,8 @@ let minIntrinsicWidth = paragraph.getMinIntrinsicWidth();
 
 ### getMaxIntrinsicWidth
 
-ArkTS-Dyn: getMaxIntrinsicWidth(): number  
+ArkTS-Dyn: getMaxIntrinsicWidth(): number
+
 ArkTS-Sta: getMaxIntrinsicWidth(): double
 
 获取段落最大固有宽度。
@@ -1619,7 +1627,8 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 ### getAlphabeticBaseline
 
-ArkTS-Dyn: getAlphabeticBaseline(): number  
+ArkTS-Dyn: getAlphabeticBaseline(): number
+
 ArkTS-Sta: getAlphabeticBaseline(): double
 
 获取拉丁字母基线位置。
@@ -1646,7 +1655,8 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 ### getIdeographicBaseline
 
-ArkTS-Dyn: getIdeographicBaseline(): number  
+ArkTS-Dyn: getIdeographicBaseline(): number
+
 ArkTS-Sta: getIdeographicBaseline(): double
 
 获取表意字（如CJK（中文，日文，韩文））下的基线位置。
@@ -1734,7 +1744,8 @@ let placeholderRects = paragraph.getRectsForPlaceholders();
 
 ### getGlyphPositionAtCoordinate
 
-ArkTS-Dyn: getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity  
+ArkTS-Dyn: getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
+
 ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity
 
 获取与给定坐标最接近的字形位置信息。
@@ -1768,7 +1779,8 @@ let positionWithAffinity = paragraph.getGlyphPositionAtCoordinate(0, 0);
 
 ### getWordBoundary
 
-ArkTS-Dyn: getWordBoundary(offset: number): Range  
+ArkTS-Dyn: getWordBoundary(offset: number): Range
+
 ArkTS-Sta: getWordBoundary(offset: int): Range
 
 返回给定offset的字形所在单词的索引区间。
@@ -1801,7 +1813,8 @@ let wordRange = paragraph.getWordBoundary(0);
 
 ### getLineCount
 
-ArkTS-Dyn: getLineCount(): number  
+ArkTS-Dyn: getLineCount(): number
+
 ArkTS-Sta: getLineCount(): int
 
 返回文本行数。
@@ -1828,7 +1841,8 @@ let lineCount = paragraph.getLineCount();
 
 ### getLineHeight
 
-ArkTS-Dyn: getLineHeight(line: number): number  
+ArkTS-Dyn: getLineHeight(line: number): number
+
 ArkTS-Sta: getLineHeight(line: int): double
 
 返回指定行的行高。
@@ -1861,7 +1875,8 @@ let lineHeight = paragraph.getLineHeight(0);
 
 ### getLineWidth
 
-ArkTS-Dyn: getLineWidth(line: number): number  
+ArkTS-Dyn: getLineWidth(line: number): number
+
 ArkTS-Sta: getLineWidth(line: int): double
 
 返回指定行的行宽。
@@ -1946,7 +1961,8 @@ let lines = paragraph.getTextLines();
 
 ### getActualTextRange
 
-ArkTS-Dyn: getActualTextRange(lineNumber: number, includeSpaces: boolean): Range  
+ArkTS-Dyn: getActualTextRange(lineNumber: number, includeSpaces: boolean): Range
+
 ArkTS-Sta: getActualTextRange(lineNumber: int, includeSpaces: boolean): Range
 
 获取指定行的实际可见文本范围，不包括溢出的省略号。
@@ -2007,7 +2023,8 @@ let arrLineMetric =  paragraph.getLineMetrics();
 
 ### getLineMetrics
 
-ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics | undefined  
+ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics | undefined
+
 ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 获取特定行号的行度量信息。
@@ -2103,7 +2120,8 @@ paragraph.updateDecoration({
 
 ### getLineBreak<sup>18+</sup>
 
-ArkTS-Dyn: getLineBreak(startIndex: number, width: number): number  
+ArkTS-Dyn: getLineBreak(startIndex: number, width: number): number
+
 ArkTS-Sta: getLineBreak(startIndex: int, width: double): int
 
 计算在限定宽度下，从指定位置开始可以排版的字符数。
@@ -2147,7 +2165,8 @@ let count = lineTypeset.getLineBreak(startIndex, width);
 
 ### createLine<sup>18+</sup>
 
-ArkTS-Dyn: createLine(startIndex: number, count: number): TextLine  
+ArkTS-Dyn: createLine(startIndex: number, count: number): TextLine
+
 ArkTS-Sta: createLine(startIndex: int, count: int): TextLine
 
 根据指定的排版区间生成文本行对象。 
@@ -2356,7 +2375,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D";
 
@@ -2452,7 +2470,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
@@ -2543,7 +2560,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
@@ -2640,7 +2656,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
