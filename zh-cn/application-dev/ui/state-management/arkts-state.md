@@ -67,6 +67,26 @@
   
   声明Person和Model类。
   <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+  
+  ``` TypeScript
+  class Person {
+    public value: string;
+  
+    constructor(value: string) {
+      this.value = value;
+    }
+  }
+  
+  class Model {
+    public value: string;
+    public name: Person;
+  
+    constructor(value: string, person: Person) {
+      this.value = value;
+      this.name = person;
+    }
+  }
+  ```
 
   \@State装饰的类型是Model。
     <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
