@@ -766,6 +766,43 @@ struct Test {
 【示例3】
 <!-- @[state_problem_state_ui_refresh_example_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample03.ets) -->
 
+``` TypeScript
+class Info {
+  public address: string = '杭州';
+
+  constructor(address: string) {
+    this.address = address;
+  }
+}
+
+class User {
+  public info: Info = new Info('天津');
+}
+
+@Entry
+@Component
+struct Test {
+  @State info: Info = new Info('上海');
+  @State user: User = new User();
+
+  aboutToAppear(): void {
+    this.user.info = this.info;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.info.address}`);
+      Text(`${this.user.info.address}`);
+      Button('change')
+        .onClick(() => {
+          this.user.info = new Info('广州');
+          this.user.info.address = '北京';
+        })
+    }
+  }
+}
+```
+
 在上述示例中，点击按钮后有以下变化：
 
 - 第一个`Text`组件不会刷新。这是因为在点击事件中执行`this.user.info = new Info('广州')`，该变化使得`this.user.info`不再引用`this.info`，而是重新赋值了一个`Info`实例，因此再改变`this.user.info`的属性不会被`this.info`观察，第一个`Text`组件不会刷新。
