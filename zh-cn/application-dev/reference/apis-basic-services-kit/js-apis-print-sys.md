@@ -233,7 +233,7 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[PrinterExtensionInfo](#printerextensioninfo)&gt;&gt; | 是 | 异步查询所有已安装的打印机扩展服务之后的回调。 |
+| callback | AsyncCallback&lt;Array&lt;[PrinterExtensionInfo](#printerextensioninfo)&gt;&gt; | 是 | 回调函数。异步查询所有已安装的打印机扩展服务之后的回调。 |
 
 **错误码：**
 
@@ -323,7 +323,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | extensionList | Array&lt;string&gt; | 是 | 要加载的打印机扩展列表。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步开始发现打印机之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步开始发现打印机之后的回调。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步停止发现具有特定打印机扩展的打印机之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步停止发现具有特定打印机扩展的打印机之后的回调。 |
 
 **错误码：**
 
@@ -535,7 +535,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步连接特定打印机之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步连接特定打印机之后的回调。 |
 
 **错误码：**
 
@@ -645,7 +645,7 @@ disconnectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步断开特定打印机的连接之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步断开特定打印机的连接之后的回调。 |
 
 **错误码：**
 
@@ -743,7 +743,7 @@ queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步查询打印机能力之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步查询打印机能力之后的回调。 |
 
 **错误码：**
 
@@ -841,7 +841,7 @@ startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobInfo | [PrintJob](#printjob) | 是 | 打印任务信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步开始打印任务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步开始打印任务之后的回调。 |
 
 **错误码：**
 
@@ -971,7 +971,7 @@ cancelPrintJob(jobId: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 打印任务ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步取消已发送到打印机的打印任务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步取消已发送到打印机的打印任务之后的回调。 |
 
 **错误码：**
 
@@ -1071,7 +1071,7 @@ ArkTS-Sta: requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;int&gt;)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobInfo | [PrintJob](#printjob) | 是 | 打印任务信息。 |
-| callback | ArkTS-Dyn: Callback&lt;number&gt;<br>ArkTS-Sta: Callback&lt;int&gt; | 是 | 请求预览打印数据之后的回调。 |
+| callback | ArkTS-Dyn: Callback&lt;number&gt;<br>ArkTS-Sta: Callback&lt;int&gt; | 是 | 回调函数。请求预览打印数据之后的回调。 |
 
 **错误码：**
 
@@ -1245,7 +1245,7 @@ on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.onPrinterStateChange](#printonprinterstatechange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.onPrinterStateChange](#printonprinterstatechange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1263,7 +1263,7 @@ on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerStateChange' | 是 | 表示打印机状态改变。 |
-| callback | (state: [PrinterState](./js-apis-print.md#printerstate14), info: [PrinterInfo](#printerinfo)) => void | 是 | 打印机状态改变之后的回调。 |
+| callback | (state: [PrinterState](./js-apis-print.md#printerstate14), info: [PrinterInfo](#printerinfo)) => void | 是 | 回调函数。打印机状态改变之后的回调。 |
 
 **错误码：**
 
@@ -1332,7 +1332,7 @@ onPrinterStateChange(callback: PrinterStateChangeCallback): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [PrinterStateChangeCallback](#printprinterstatechangecallback22) | 是 | 打印机状态改变之后的回调。 |
+| callback | [PrinterStateChangeCallback](#printprinterstatechangecallback22) | 是 | 回调函数。打印机状态改变之后的回调。 |
 
 **错误码：**
 
@@ -1368,7 +1368,7 @@ off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.offPrinterStateChange](#printoffprinterstatechange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.offPrinterStateChange](#printoffprinterstatechange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1386,7 +1386,7 @@ off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerStateChange' | 是 | 表示打印机状态改变。 |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1429,7 +1429,7 @@ offPrinterStateChange(callback?: Callback&lt;boolean&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印机状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1459,7 +1459,7 @@ on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => vo
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.onJobStateChange](#printonjobstatechange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.onJobStateChange](#printonjobstatechange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1477,7 +1477,7 @@ on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => vo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'jobStateChange' | 是 | 表示打印任务状态改变。 |
-| callback | (state: [PrintJobState](./js-apis-print.md#printjobstate14), job: [PrintJob](#printjob)) => void | 是 | 打印任务状态改变之后的回调。 |
+| callback | (state: [PrintJobState](./js-apis-print.md#printjobstate14), job: [PrintJob](#printjob)) => void | 是 | 回调函数。打印任务状态改变之后的回调。 |
 
 **错误码：**
 
@@ -1540,7 +1540,7 @@ onJobStateChange(callback: PrintJobStateChangeCallback): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [PrintJobStateChangeCallback](#printprintjobstatechangecallback22) | 是 | 打印任务状态改变之后的回调。 |
+| callback | [PrintJobStateChangeCallback](#printprintjobstatechangecallback22) | 是 | 回调函数。打印任务状态改变之后的回调。 |
 
 **错误码：**
 
@@ -1570,7 +1570,7 @@ off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.offJobStateChange](#printoffjobstatechange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.offJobStateChange](#printoffjobstatechange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1588,7 +1588,7 @@ off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'jobStateChange' | 是 | 表示打印任务状态改变。 |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1631,7 +1631,7 @@ offJobStateChange(callback?: Callback&lt;boolean&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印任务状态变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1661,7 +1661,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.onExtInfoChange](#printonextinfochange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.onExtInfoChange](#printonextinfochange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1679,7 +1679,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | (extensionId: string, info: string) => void | 是 | 打印扩展信息改变之后的回调。 |
+| callback | (extensionId: string, info: string) => void | 是 | 回调函数。打印扩展信息改变之后的回调。 |
 
 **错误码：**
 
@@ -1742,7 +1742,7 @@ onExtInfoChange(callback: ExtInfoChangeCallback): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ExtInfoChangeCallback](#printextinfochangecallback22) | 是 | 打印扩展信息改变之后的回调。 |
+| callback | [ExtInfoChangeCallback](#printextinfochangecallback22) | 是 | 回调函数。打印扩展信息改变之后的回调。 |
 
 **错误码：**
 
@@ -1772,7 +1772,7 @@ off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.offExtInfoChange](#printoffextinfochange22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[print.offExtInfoChange](#printoffextinfochange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1790,7 +1790,7 @@ off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | 是 | 表示打印扩展信息改变。 |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1833,7 +1833,7 @@ offExtInfoChange(callback?: Callback&lt;boolean&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;boolean&gt; | 否 | 表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
+| callback | Callback&lt;boolean&gt; | 否 | 回调函数。表示取消注册打印扩展信息变化事件是否成功。true表示成功，false表示失败。 |
 
 **错误码：**
 
@@ -1875,7 +1875,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;void&
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | 是 | 表示新到达的打印机列表。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步添加打印机之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步添加打印机之后的回调。 |
 
 **错误码：**
 
@@ -1989,7 +1989,7 @@ removePrinters(printerIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerIds | Array&lt;string&gt; | 是 | 表示需移除的打印机列表。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步移除打印机之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步移除打印机之后的回调。 |
 
 **错误码：**
 
@@ -2087,7 +2087,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;vo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | 是 | 表示待更新的打印机列表。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印机信息之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步更新打印机信息之后的回调。 |
 
 **错误码：**
 
@@ -2202,7 +2202,7 @@ updatePrinterState(printerId: string, state: PrinterState, callback: AsyncCallba
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示打印机ID。 |
 | state | [PrinterState](./js-apis-print.md#printerstate14) | 是 | 表示打印机状态。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印机状态之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步更新打印机状态之后的回调。 |
 
 **错误码：**
 
@@ -2305,7 +2305,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintJobState](./js-apis-print.md#printjobstate14) | 是 | 表示打印任务状态。 |
 | subState | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | 是 | 表示打印任务子状态。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印任务状态之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步更新打印任务状态之后的回调。 |
 
 **错误码：**
 
@@ -2409,7 +2409,7 @@ updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | info | string | 是 | 表示打印扩展变更信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印扩展状态之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步更新打印扩展状态之后的回调。 |
 
 **错误码：**
 
@@ -2509,7 +2509,7 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -2600,7 +2600,7 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[PrintJob](#printjob)&gt;&gt; | 是 | 异步查询所有打印任务之后的回调。 |
+| callback | AsyncCallback&lt;Array&lt;[PrintJob](#printjob)&gt;&gt; | 是 | 回调函数。异步查询所有打印任务之后的回调。 |
 
 **错误码：**
 
@@ -2689,7 +2689,7 @@ queryPrintJobById(jobId: string, callback: AsyncCallback&lt;PrintJob&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
-| callback | AsyncCallback&lt;[PrintJob](#printjob)&gt; | 是 | 异步按打印任务ID查询打印任务之后的回调。 |
+| callback | AsyncCallback&lt;[PrintJob](#printjob)&gt; | 是 | 回调函数。异步按打印任务ID查询打印任务之后的回调。 |
 
 **错误码：**
 
@@ -2903,7 +2903,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.notifyPrintServiceSpoolerCloseForCancelled](#printnotifyprintservicespoolercloseforcancelled22)、[print.notifyPrintServiceSpoolerCloseForStarted](#printnotifyprintservicespoolercloseforstarted22)替代。
+> 从API version 11开始支持，从API version 22开始废弃，建议使用[print.notifyPrintServiceSpoolerCloseForCancelled](#printnotifyprintservicespoolercloseforcancelled22)、[print.notifyPrintServiceSpoolerCloseForStarted](#printnotifyprintservicespoolercloseforstarted22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2922,7 +2922,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示spooler关闭信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步将spooler关闭信息通知打印服务之后的回调。 |
 
 **错误码：**
 
@@ -2972,7 +2972,7 @@ notifyPrintServiceSpoolerCloseForCancelled(jobId: string, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步将spooler关闭信息通知打印服务之后的回调。 |
 
 **错误码：**
 
@@ -3022,7 +3022,7 @@ notifyPrintServiceSpoolerCloseForStarted(jobId: string, callback: AsyncCallback&
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。异步将spooler关闭信息通知打印服务之后的回调。 |
 
 **错误码：**
 
@@ -3058,7 +3058,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.notifyPrintServiceSpoolerCloseForCancelled](#printnotifyprintservicespoolercloseforcancelled22-1)、[print.notifyPrintServiceSpoolerCloseForStarted](#printnotifyprintservicespoolercloseforstarted22-1)替代。
+> 从API version 11开始支持，从API version 22开始废弃，建议使用[print.notifyPrintServiceSpoolerCloseForCancelled](#printnotifyprintservicespoolercloseforcancelled22-1)、[print.notifyPrintServiceSpoolerCloseForStarted](#printnotifyprintservicespoolercloseforstarted22-1)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 

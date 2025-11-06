@@ -23,7 +23,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onBlock](#printtaskonblock22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.onBlock](#printtaskonblock22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -39,7 +39,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -124,7 +124,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onSucceed](#printtaskonsucceed22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.onSucceed](#printtaskonsucceed22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -141,7 +141,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印成功。 |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -189,7 +189,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 注册打印完成后的监听，使用callback回调。
 
 > **说明：**
->从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onFail](#printtaskonfail22)替代。
+>从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.onFail](#printtaskonfail22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -241,7 +241,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印失败。 |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -289,7 +289,7 @@ onFail(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onCancel](#printtaskoncancel22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.onCancel](#printtaskoncancel22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -342,7 +342,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印取消。 |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -390,7 +390,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。打印完成后处于响应状态的回调。 |
 
 **错误码：**
 
@@ -427,7 +427,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offBlock](#printtaskoffblock22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.offBlock](#printtaskoffblock22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -443,7 +443,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -491,7 +491,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -528,7 +528,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offSucceed](#printtaskoffsucceed22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.offSucceed](#printtaskoffsucceed22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -544,7 +544,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：succeed，<br/>表示打印成功。 |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -592,7 +592,7 @@ offSucceed(callback?: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -629,7 +629,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offFail](#printtaskofffail22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.offFail](#printtaskofffail22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -645,7 +645,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：fail，<br/>表示打印失败。 |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -693,7 +693,7 @@ offFail(callback?: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -730,7 +730,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offCancel](#printtaskoffcancel22)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[PrintTask.offCancel](#printtaskoffcancel22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -746,7 +746,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：cancel，<br/>表示打印取消。 |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -794,7 +794,7 @@ offCancel(callback?: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。取消相应状态监听成功后的回调。 |
 
 **错误码：**
 
@@ -989,7 +989,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
-| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
+| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 回调函数。异步获取打印完成之后的回调。 |
 
 **错误码：**
 
@@ -1092,7 +1092,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
-| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
+| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 回调函数。异步获取打印完成之后的回调。 |
 
 **错误码：**
 
@@ -1819,10 +1819,6 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Dyn起始版本**：14
-
-**ArkTS-Sta起始版本**：20
-
 **属性：**
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
@@ -2032,7 +2028,7 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 | event | [PrinterEvent](#printerevent18) | 是 | 表示打印机事件。 |
 | printerInformation | PrinterInformation | 是 | 表示打印机信息。 |
 
-## print.on<sup>18+</sup><sup>(deprecated)</sup>
+## print.on<sup>(deprecated)</sup>
 
 on(type: 'printerChange', callback: PrinterChangeCallback): void
 
@@ -2040,7 +2036,7 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.onPrinterChange](#printonprinterchange22)替代。
+> 从API version 18开始支持，从API version 22开始废弃，建议使用[print.onPrinterChange](#printonprinterchange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2056,7 +2052,7 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
-| callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 回调函数。打印机变动之后的回调。 |
 
 **错误码：**
 
@@ -2088,7 +2084,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.on](#printon18deprecated)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.on](#printondeprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2099,7 +2095,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 回调函数。打印机变动之后的回调。 |
 
 **错误码：**
 
@@ -2123,7 +2119,7 @@ let onPrinterChange =
 print.onPrinterChange(onPrinterChange);
 ```
 
-## print.off<sup>18+</sup><sup>(deprecated)</sup>
+## print.off<sup>(deprecated)</sup>
 
 off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
@@ -2131,7 +2127,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 18开始废弃。系统不再开放相关功能。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2147,7 +2143,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
-| callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 回调函数。表示取消注册打印机变动事件后的回调。 |
 
 **错误码：**
 
@@ -2179,7 +2175,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.off](#printoff18deprecated)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.off](#printoffdeprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2190,7 +2186,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
+| callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 回调函数。表示取消注册打印机变动事件后的回调。 |
 
 **错误码：**
 
