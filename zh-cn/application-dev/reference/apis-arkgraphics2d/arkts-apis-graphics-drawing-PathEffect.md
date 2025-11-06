@@ -1,8 +1,13 @@
 # Class (PathEffect)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
->
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -32,7 +37,7 @@ static createDashPathEffect(intervals:  Array\<number>, phase: number): PathEffe
 
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
-| intervals  | Array\<number> | 是      | 表示虚线的ON和OFF长度的数组，数组个数必须是偶数，且>=2，该参数为正整数。|
+| intervals  | Array\<number> | 是      | 表示虚线的ON（实线部分）和OFF（空白部分）长度的数组，数组个数必须是偶数，且>=2，该参数为正整数。|
 | phase      | number         | 是      | 绘制时的偏移量，该参数为浮点数。                                     |
 
 **返回值：**
@@ -215,31 +220,25 @@ class DrawingRenderNode extends RenderNode {
 
 ## createDiscretePathEffect<sup>18+</sup>
 
-ArkTS-Dyn: static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect
-
-ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedAssist?: int): PathEffect | undefined
+static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect
 
 创建一种将路径打散，并且在路径上产生不规则分布的效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名     | 类型           | 必填    | 说明                                               |
 | ---------- | ------------- | ------- | -------------------------------------------------- |
-| segLength  | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 路径中每进行一次打散操作的长度，该长度为浮点数，负数和0时无效果。 |
-| dev        | ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 是      | 绘制时的末端点的最大移动偏离量，该偏移量为浮点数。 |
-| seedAssist | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 否      | ArkTS-Dyn: 生成效果伪随机种子辅助变量。当seedAssist传入undefined时，该方法将抛错误码。不传该参数时，默认值为0，该参数为32位无符号整数。<br/>ArkTS-Sta: 生成效果伪随机种子辅助变量。当不传该参数，或者seedAssist传入undefined时，默认值为0，该参数为32位无符号整数。 |
+| segLength  | number        | 是      | 路径中每进行一次打散操作的长度，该长度为浮点数，负数和0时无效果。 |
+| dev        | number        | 是      | 绘制时的末端点的最大移动偏离量，该偏移量为浮点数。 |
+| seedAssist | number        | 否      | 生成效果伪随机种子辅助变量，默认值为0，该参数为32位无符号整数。 |
 
 **返回值：**
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| ArkTS-Dyn: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md)<br/>ArkTS-Sta: [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| undefined | 返回创建的路径效果对象。创建失败时返回undefined。 |
+| [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 返回创建的路径效果对象。 |
 
 **示例：**
 

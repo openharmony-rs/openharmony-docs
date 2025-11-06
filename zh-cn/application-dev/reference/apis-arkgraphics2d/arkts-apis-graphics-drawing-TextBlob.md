@@ -1,5 +1,12 @@
 # Class (TextBlob)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -151,17 +158,11 @@ class DrawingRenderNode extends RenderNode {
 
 ## makeFromRunBuffer
 
-ArkTS-Dyn: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob
+static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob
 
-ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob | undefined
-
-基于RunBuffer信息创建Textblob对象。
+基于RunBuffer信息创建TextBlob对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -169,13 +170,13 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 | ------ | -------------------------------------------------- | ---- | ------------------------------ |
 | pos    | Array\<[TextBlobRunBuffer](arkts-apis-graphics-drawing-i.md#textblobrunbuffer)>    | 是   | TextBlobRunBuffer数组。        |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md)                                      | 是   | 字型对象。   |
-| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | ArkTS-Dyn: 可选，当bounds传入undefined时，该方法将抛错误码。不传该参数时，则无边界框。<br/>ArkTS-Sta: 可选，当不传该参数，或者bounds传入undefined时，则无边界框。 |
+| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 可选，如果不设置，则无边界框。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
+| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob对象。 |
 
 **错误码：**
 
@@ -187,7 +188,6 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -209,41 +209,6 @@ class DrawingRenderNode extends RenderNode {
     brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     canvas.attachBrush(brush);
     canvas.drawTextBlob(textBlob, 20, 20);
-    canvas.detachBrush();
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context: DrawContext) {
-    const canvas = context.canvas;
-    const font = new drawing.Font();
-    font.setSize(20);
-    let runBuffer: Array<drawing.TextBlobRunBuffer> = [
-      { glyph: 65, positionX: 0.0, positionY: 0.0 },
-      { glyph: 227, positionX: 14.9, positionY: 0.0 },
-      { glyph: 283, positionX: 25.84, positionY: 0.0 },
-      { glyph: 283, positionX: 30.62, positionY: 0.0 },
-      { glyph: 299, positionX: 35.4, positionY: 0.0 }
-    ];
-    const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font);
-    if (textBlob == undefined) {
-      return;
-    }
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
-    });
-    canvas.attachBrush(brush);
-    canvas.drawTextBlob(textBlob, 20.0, 20.0);
     canvas.detachBrush();
   }
 }
