@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -456,7 +457,10 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
-shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTs-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+
+ArkTs-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
@@ -468,12 +472,16 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。            |
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。             |
+| sourceWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。            |
+| targetWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。             |
 
 **返回值：**
 
@@ -494,6 +502,8 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 | 1300004 | Unauthorized operation.                       |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // ets/pages/Index.ets
@@ -520,6 +530,43 @@ struct Index {
                 });
               } catch (exception) {
                 console.error(`Failed to shift app pointer event. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }.width('100%')
+    }.height('100%').width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// ets/pages/Index.ets
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type === TouchType.Down) {
+              try {
+                let sourceWindowId = 1;
+                let targetWindowId = 2;
+                let promise = window.shiftAppWindowPointerEvent(sourceWindowId, targetWindowId);
+                promise.then(() => {
+                  console.info('Succeeded in shifting app window pointer event');
+                }).catch((err) => {
+                  console.error(`Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to shift app pointer event. Cause code: ${err.code}, message: ${err.message}`);
               }
             }
           })
