@@ -28,7 +28,7 @@
 
     在UIAbility类的onCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
-    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
@@ -75,7 +75,7 @@
 
     - 对于不同的退出原因，开发者可以增加不同的处理逻辑，例如：
 
-    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
@@ -92,7 +92,7 @@
 
     - 根据进程信息感知应用内存占用异常，例如：
 
-    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
@@ -104,7 +104,7 @@
 
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
     
-    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility2.ets) -->
+    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     hilog.info(DOMAIN_NUMBER,TAG,`App ${uid} terminated at ${timestamp}.`);
