@@ -75,6 +75,111 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
 
+``` TypeScript
+// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+@Entry
+@Component
+export struct SupportAvoidCentralAxisMenuExample {
+  @State message: string = 'Hello World';
+  @State upScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
+  @State middleAxle: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Middle_axle') as string;
+  @State lowerScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Lower_half_screen') as string;
+  @State zone: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
+  @State hoverModeStart: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+  private iconStr: Resource = $r('app.media.startIcon');
+  @State index: number = 0;
+  @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
+  @State enableHoverMode: boolean | undefined = true;
+  @State showInSubwindow: boolean = false;
+  @State placement: Placement | undefined = undefined;
+
+  @Builder
+  MyMenu1() {
+    Menu() {
+      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+    }
+  }
+
+  @State isShow: boolean = false;
+
+  build() {
+    NavDestination() {
+      RelativeContainer() {
+        Column() {
+          Button(this.zone + this.arrayStr[this.index])
+            .onClick(() => {
+              if (this.index < 2) {
+                this.index++
+              } else {
+                this.index = 0
+              }
+            })
+
+          Button(this.hoverModeStart + this.enableHoverMode)
+            .id('hoverMode_start')
+            .onClick(() => {
+              if (this.enableHoverMode === undefined) {
+                this.enableHoverMode = true
+              } else if (this.enableHoverMode === true) {
+                this.enableHoverMode = false
+              } else {
+                this.enableHoverMode = undefined
+              }
+            })
+
+          Button('MenuPlacement:' + this.placement)
+            .onClick(() => {
+              if (this.placement === undefined) {
+                this.placement = Placement.Bottom
+              } else if (this.placement === Placement.Bottom) {
+                this.placement = Placement.Top
+              } else {
+                this.placement = undefined
+              }
+            })
+        }
+
+        Row() {
+          Button('Menu')
+            .fontWeight(FontWeight.Bold)
+            .bindMenu(this.MyMenu1(), {
+              enableHoverMode: this.enableHoverMode,
+              showInSubWindow: this.showInSubwindow,
+              placement: this.placement
+            })
+
+          Select([{ value: 'text1' }, { value: 'text2' }, { value: 'text3' }, { value: 'text4' }, { value: 'text5' },
+            { value: 'text6' }, { value: 'text7' }, { value: 'text8' }, { value: 'text9' }, { value: 'text10' },
+            { value: 'text11' },
+            { value: 'text12' }])
+            .value('Select')
+
+        }
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .margin({
+          top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
+          bottom: this.index === 0 ? 330 : 0
+        })
+      }
+      .height('100%')
+      .width('100%')
+    }
+    .backgroundColor('#f1f2f3')
+    // ···
+```
+
 ## 控制子窗菜单的事件透传
 
 当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
