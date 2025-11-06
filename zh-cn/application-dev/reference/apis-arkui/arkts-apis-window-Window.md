@@ -1705,7 +1705,7 @@ export default class EntryAbility extends UIAbility {
         }).catch((err: BusinessError<void> | null) => {
           const errCode = err?.code;
           if (errCode) {
-            console.error(`Set the status bar color failed. Cause code: ${err.code}, message: ${err.message}`);
+            console.error(`Set the status bar color failed. Cause code: ${err?.code}, message: ${err?.message}`);
           }
         });
       } catch (exception) {
