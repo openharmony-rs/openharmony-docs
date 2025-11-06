@@ -44,6 +44,24 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    <!-- @[dialog_my_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
+   ``` TypeScript
+   @Component
+   struct MyComponent {
+     build() {
+       Column({ space: 5 }) {
+         // 'app.string.closeDialog_by_custom'资源文件中的value值为'点我关闭弹窗：通过自定义组件自带的DialogController'。
+         Button($r('app.string.closeDialog_by_custom'))
+           .onClick(() => {
+             let dialogController: promptAction.DialogController = this.getDialogController();
+             if (dialogController !== undefined) {
+               dialogController.close();
+             }
+           })
+       }
+     }
+   }
+   ```
+   
    
 
 3. 初始化另一自定义弹出框内容区，其中包含一个Text组件和一个按钮，该按钮通过外部传递的弹出框控制器用于关闭弹出框，并且该内容区还包含前一个自定义弹出框内容区。
