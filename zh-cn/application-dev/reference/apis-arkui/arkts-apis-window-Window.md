@@ -808,6 +808,10 @@ getWindowDensityInfo(): WindowDensityInfo
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -827,6 +831,16 @@ getWindowDensityInfo(): WindowDensityInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
+```ts
+try {
+  let densityInfo = windowClass.getWindowDensityInfo();
+} catch (exception) {
+  console.error(`Failed to obtain the window densityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
 ```ts
 try {
   let densityInfo = windowClass.getWindowDensityInfo();
@@ -1684,6 +1698,10 @@ getStatusBarProperty(): StatusBarProperty
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -1703,6 +1721,7 @@ getStatusBarProperty(): StatusBarProperty
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1720,6 +1739,33 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
+      try {
+        let statusBarProperty = windowClass.getStatusBarProperty();
+        console.info('Succeeded in obtaining system bar properties. Property: ' + JSON.stringify(statusBarProperty));
+      } catch (err) {
+        console.error(`Failed to get system bar properties. Code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass: window.Window) => {
+      const errCode: number = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
       try {
         let statusBarProperty = windowClass.getStatusBarProperty();
         console.info('Succeeded in obtaining system bar properties. Property: ' + JSON.stringify(statusBarProperty));
