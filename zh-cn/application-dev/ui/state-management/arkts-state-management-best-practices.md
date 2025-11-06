@@ -164,6 +164,34 @@ struct MyComponent {
 
 <!-- @[force_update_positive_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdatePositiveCase.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct CompA {
+  @State realStateArr: Array<number> = [4, 1, 3, 2];
+  @State realState: Color = Color.Yellow;
+  build() {
+    Column({ space: 20 }) {
+      ForEach(this.realStateArr,
+        (item: number) => {
+          Text(`${item}`)
+        })
+      Text('add item')
+        .onClick(() => {
+          // 改变realStateArr触发UI视图更新。
+          this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
+        })
+      Text('chg color')
+        .onClick(() => {
+          // 改变realState触发UI视图更新。
+          this.realState = this.realState == Color.Yellow ? Color.Red : Color.Yellow;
+        })
+    }.backgroundColor(this.realState)
+    .width(200).height(500)
+  }
+}
+```
+
 ## 精准控制状态变量关联的组件数
 
 建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。
