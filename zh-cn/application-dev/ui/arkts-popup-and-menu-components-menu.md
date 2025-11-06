@@ -94,5 +94,48 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
 
+``` TypeScript
+// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+@Entry
+@Component
+export struct BindComponentMenuExample {
+  @Builder
+  MenuBuilder() {
+    Column() {
+      Menu() {
+        MenuItemGroup() {
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })
+        }
+      }
+    }
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text()
+          .borderRadius(10)
+          .width(200)
+          .height(150)
+          .borderWidth(1)
+          .backgroundColor(Color.White)
+          .borderColor(Color.Red)
+          .margin({ top: 200, left: 125 })
+          .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
+            anchorPosition: { x: 45, y: 50 },
+          })
+      }
+      .alignItems(HorizontalAlign.Start)
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#F5F5F5')
+    }.backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 ![AnchorPosition](figures/AnchorPosition.gif)
 
