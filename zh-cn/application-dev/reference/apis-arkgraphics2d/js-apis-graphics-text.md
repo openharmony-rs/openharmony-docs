@@ -2356,7 +2356,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
@@ -2453,7 +2452,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit';
@@ -2541,7 +2539,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from '@kit.ArkGraphics2D'
 
@@ -2571,7 +2568,8 @@ struct Index {
 
 ### addSymbol
 
-ArkTS-Dyn: addSymbol(symbolId: number): void  
+ArkTS-Dyn: addSymbol(symbolId: number): void
+
 ArkTS-Sta: addSymbol(symbolId: int): void
 
 向正在构建的文本段落中插入具体符号。
@@ -2629,7 +2627,6 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D";
 
@@ -2697,7 +2694,8 @@ struct Index {
 
 ## CaretOffsetsCallback<sup>18+</sup>
 
-ArkTS-Dyn: type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean) => boolean  
+ArkTS-Dyn: type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean) => boolean
+
 ArkTS-Sta: type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean
 
 将文本行中每个字符的偏移量和索引值作为参数的回调方法。
@@ -2730,7 +2728,9 @@ ArkTS-Sta: type CaretOffsetsCallback = (offset: double, index: int, leadingEdge:
 下列API示例中都需先使用[Paragraph](#paragraph)类的[getTextLines()](#gettextlines)接口或者[LineTypeset](#linetypeset18)类的[createLine()](#createline18)接口获取到TextLine对象实例，再通过此实例调用对应方法。
 ### getGlyphCount
 
-ArkTS-Dyn: getGlyphCount(): number  ArkTS-Sta: getGlyphCount(): int
+ArkTS-Dyn: getGlyphCount(): number
+
+ArkTS-Sta: getGlyphCount(): int
 
 获取文本行中字形的数量。
 
@@ -2808,7 +2808,8 @@ let runs = lines[0].getGlyphRuns();
 
 ### paint
 
-ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void  
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
+
 ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以坐标点(x, y)为左上角位置绘制该文本行。
@@ -2869,7 +2870,6 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
@@ -2908,7 +2908,8 @@ struct Index {
 
 ### createTruncatedLine<sup>18+</sup>
 
-ArkTS-Dyn: createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string): TextLine  
+ArkTS-Dyn: createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string): TextLine
+
 ArkTS-Sta: createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined
 
 创建一个截断的文本行对象。
@@ -2974,7 +2975,6 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
@@ -3086,7 +3086,8 @@ let imageBounds = lines[0].getImageBounds();
 
 ### getTrailingSpaceWidth<sup>18+</sup>
 
-ArkTS-Dyn: getTrailingSpaceWidth(): number  
+ArkTS-Dyn: getTrailingSpaceWidth(): number
+
 ArkTS-Sta: getTrailingSpaceWidth(): double
 
 获取文本行尾部空白字符的宽度。
@@ -3113,7 +3114,8 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 
 ### getStringIndexForPosition<sup>18+</sup>
 
-ArkTS-Dyn: getStringIndexForPosition(point: common2D.Point): number  
+ArkTS-Dyn: getStringIndexForPosition(point: common2D.Point): number
+
 ArkTS-Sta: getStringIndexForPosition(point: common2D.Point): int
 
 获取给定位置在原始字符串中的字符索引。
@@ -3147,7 +3149,8 @@ let index = lines[0].getStringIndexForPosition(point);
 
 ### getOffsetForStringIndex<sup>18+</sup>
 
-ArkTS-Dyn: getOffsetForStringIndex(index: number): number  
+ArkTS-Dyn: getOffsetForStringIndex(index: number): number
+
 ArkTS-Sta: getOffsetForStringIndex(index: int): double
 
 获取文本行中给定字符串索引处的偏移量。
@@ -3219,7 +3222,8 @@ lines[0].enumerateCaretOffsets(callback);
 
 ### getAlignmentOffset<sup>18+</sup>
 
-ArkTS-Dyn: getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number  
+ArkTS-Dyn: getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
+
 ArkTS-Sta: getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
 
 获取文本行根据对齐因子和对齐宽度计算的对齐所需偏移量。
@@ -3259,7 +3263,8 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ### getGlyphCount
 
-ArkTS-Dyn: getGlyphCount(): number  
+ArkTS-Dyn: getGlyphCount(): number
+
 ArkTS-Sta: getGlyphCount(): int
 
 获取该排版单元中字形的数量。
@@ -3286,7 +3291,8 @@ let glyphs = runs[0].getGlyphCount();
 
 ### getGlyphs
 
-ArkTS-Dyn: getGlyphs(): Array\<number>  
+ArkTS-Dyn: getGlyphs(): Array\<number>
+
 ArkTS-Sta: getGlyphs(): Array\<int>
 
 获取该排版单元中每个字符的字形序号。
@@ -3313,7 +3319,8 @@ let glyph = runs[0].getGlyphs();
 
 ### getGlyphs<sup>18+</sup>
 
-ArkTS-Dyn: getGlyphs(range: Range): Array\<number>  
+ArkTS-Dyn: getGlyphs(range: Range): Array\<number>
+
 ArkTS-Sta: getGlyphs(range: Range): Array\<int> | undefined
 
 获取该排版单元指定范围内每个字符的字形序号。
@@ -3373,7 +3380,6 @@ ArkTS-Sta示例：
 
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D"
 
@@ -3426,6 +3432,7 @@ let positions = runs[0].getPositions();
 ### getPositions<sup>18+</sup>
 
 ArkTS-Dyn: getPositions(range: Range): Array<common2D.Point>
+
 ArkTS-Sta: getPositions(range: Range): Array<common2D.Point> | undefined
 
 获取该排版单元指定范围内每个字形相对于每行的字形位置数组。
@@ -3485,7 +3492,6 @@ ArkTS-Sta示例：
 
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D";
 
@@ -3565,7 +3571,8 @@ let font = runs[0].getFont();
 
 ### paint
 
-ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void  
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
+
 ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以(x, y)为左上角位置绘制排版单元。
@@ -3628,7 +3635,6 @@ ArkTS-Sta示例：
 
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
@@ -3696,7 +3702,8 @@ let length = runStringRange.end;
 
 ### getStringIndices<sup>18+</sup>
 
-ArkTS-Dyn: getStringIndices(range?: Range): Array\<number>  
+ArkTS-Dyn: getStringIndices(range?: Range): Array\<number>
+
 ArkTS-Sta: getStringIndices(range?: Range): Array\<int> | undefined;
 
 获取排版单元指定范围内字形的字符索引，该索引是相对于整个段落的偏移。
@@ -3756,7 +3763,6 @@ ArkTS-Sta示例：
 
 <!--code_no_check-->
 ```ts
-'use static'
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { text } from "@kit.ArkGraphics2D";
@@ -3884,6 +3890,7 @@ let textDirection = runs[0].getTextDirection();
 ### getAdvances<sup>20+</sup>
 
 ArkTS-Dyn: getAdvances(range: Range): Array<common2D.Point>
+
 ArkTS-Sta: getAdvances(range: Range): Array<common2D.Point> | undefined
 
 获取该排版单元指定范围内每个字形的字形宽度数组。
