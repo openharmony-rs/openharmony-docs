@@ -26,9 +26,9 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -101,15 +101,15 @@ ArkTS-Sta: getWhiteBalanceRange(): Array\<int\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<double\> | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。 |
+| ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\> | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。 |
 
 **错误码：**
 

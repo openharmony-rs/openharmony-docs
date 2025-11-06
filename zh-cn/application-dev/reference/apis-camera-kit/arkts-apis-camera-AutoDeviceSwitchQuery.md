@@ -26,7 +26,7 @@ isAutoDeviceSwitchSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

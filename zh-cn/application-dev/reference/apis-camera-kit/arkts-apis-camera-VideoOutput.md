@@ -25,7 +25,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -86,9 +86,9 @@ start(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -148,7 +148,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -202,7 +202,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -686,7 +686,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -722,7 +722,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -772,7 +772,7 @@ getActiveFrameRate(): FrameRateRange
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -801,7 +801,7 @@ getActiveProfile(): VideoProfile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -845,9 +845,9 @@ isMirrorSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -878,9 +878,9 @@ enableMirror(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -952,13 +952,13 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 设备旋转角度（单位：度）。 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度（单位：度）。 |
 
 **返回值：**
 
@@ -995,7 +995,7 @@ function getVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation
     return videoRotation;
 }
 
-//获取deviceDegree。
+// 获取deviceDegree。
 function getDeviceDegree(): number {
     let deviceDegree: number = -1;
     try {
@@ -1040,7 +1040,7 @@ function getVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation
   return videoRotation;
 }
 
-//获取deviceDegree。
+// 获取deviceDegree。
 function getDeviceDegree(): int {
   let deviceDegree: int = -1;
   try {

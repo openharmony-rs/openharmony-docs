@@ -24,9 +24,9 @@ isMacroSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

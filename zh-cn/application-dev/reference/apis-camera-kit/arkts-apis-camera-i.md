@@ -15,13 +15,13 @@
 
 | 名称                            | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | --------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| cameraId                        | string                                                    | 是   | 否   | 相机ID。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否   | 相机位置。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否   | 相机类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否   | 相机连接类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 否   | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
-| hostDeviceName<sup>15+</sup>    | string                                                    | 是   | 否   | 远端设备名称。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 20 |
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否   | 远端设备类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 20 |
+| cameraId                        | string                                                    | 是   | 否   | 相机ID。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否   | 相机位置。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否   | 相机类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否   | 相机连接类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 否   | 相机安装角度，不受屏幕旋转影响，取值范围为[0, 360]，单位：度。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| hostDeviceName<sup>15+</sup>    | string                                                    | 是   | 否   | 远端设备名称。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否   | 远端设备类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## CameraStatusInfo
 
@@ -33,7 +33,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -50,7 +50,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -67,7 +67,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明         |
 | -------- | ----------------------------- |---- | ---- | ------------- |
@@ -84,7 +84,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
@@ -101,7 +101,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
@@ -117,7 +117,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
@@ -136,13 +136,13 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 类型       | 只读 | 可选 | 说明        |
 | ---------------- | ---------- | ---- | ---- | ----------- |
 | isTorchAvailable | boolean    | 是   | 否   | 手电筒是否可用。true表示手电筒可用，false表示手电筒不可用。|
 | isTorchActive    | boolean    | 是   | 否   | 手电筒是否被激活。true表示手电筒被激活，false表示手电筒未被激活。 |
-| torchLevel       | ArkTS-Dyn:  number<br/>ArkTS-Sta:  double | 是   | 否   | 手电筒亮度等级，取值范围为[0,1]，越靠近1，亮度越大。  |
+| torchLevel       | ArkTS-Dyn:  number<br/>ArkTS-Sta:  double | 是   | 否   | 手电筒亮度等级，取值范围为[0, 1]，越靠近1，亮度越大。  |
 
 ## Size
 
@@ -154,12 +154,12 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
-| height | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸高(像素)。 |
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸宽(像素)。 |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸高（像素）。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸宽（像素）。 |
 
 ## Point
 
@@ -171,7 +171,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 类型   | 只读   | 可选   | 说明         |
 | ------ | ------ | ------ | ------ | ------------ |
@@ -188,7 +188,7 @@
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
@@ -207,13 +207,13 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型   | 只读 | 可选  |说明         |
 | ------------ | ------ | ---- |-----|------------ |
-| latitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |纬度(度)。    |
-| longitude    | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |经度(度)。    |
-| altitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |海拔(米)。    |
+| latitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |纬度（度）。    |
+| longitude    | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |经度（度）。    |
+| altitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |海拔（米）。    |
 
 ## PhotoCaptureSetting
 
@@ -225,7 +225,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
@@ -244,7 +244,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型   | 只读 | 可选 | 说明        |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -261,7 +261,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -277,7 +277,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | --------- |
@@ -294,7 +294,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | ---------|
@@ -311,7 +311,7 @@
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型      | 只读 | 可选 | 说明                      |
 | ---------- |---------| ---- | ---- |-------------------------|
@@ -328,7 +328,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   |  只读  | 可选  |           说明         |
 | -------- | ------ | ------ |-----| --------------------- |
@@ -347,7 +347,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
@@ -365,7 +365,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |

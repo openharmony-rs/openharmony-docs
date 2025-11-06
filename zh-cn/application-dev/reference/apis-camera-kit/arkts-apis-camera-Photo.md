@@ -20,6 +20,11 @@ import { camera } from '@kit.CameraKit';
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+
 | 名称   | 类型                            |     必填     | 说明       |
 | ------ | ----------------------------- | -------------- | ---------- |
 | main<sup>11+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md) |        是       | 全质量图Image。 |
@@ -36,7 +41,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

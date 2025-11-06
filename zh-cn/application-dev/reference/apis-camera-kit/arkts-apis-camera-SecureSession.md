@@ -33,7 +33,7 @@ addSecureOutput(previewOutput: PreviewOutput): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -109,7 +109,7 @@ function registerSessionError(secureSession: camera.SecureSession): void {
 
 ## onError<sup>22+</sup>
 
-on(callback: ErrorCallback): void
+onError(callback: ErrorCallback): void
 
 监听安全相机会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
 
