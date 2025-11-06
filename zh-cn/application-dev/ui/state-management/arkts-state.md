@@ -912,6 +912,55 @@ struct ConsumerChild {
 方法二：使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象
 <!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@ohos.arkui.StateManagement';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class DataObj {
+  public name: string = 'default name';
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  list: DataObj[] = [new DataObj('a'), new DataObj('b'), new DataObj('c')];
+  @State dataObjFromList: DataObj = this.list[0];
+
+  build() {
+    Column() {
+      ConsumerChild({ dataObj: this.dataObjFromList })
+      Button('change to self').onClick(() => {
+        // 获取原始对象来和新值做对比
+        if (UIUtils.getTarget(this.dataObjFromList) !== this.list[0]) {
+          this.dataObjFromList = this.list[0];
+        }
+      })
+    }
+  }
+}
+
+@Component
+struct ConsumerChild {
+  @Link @Watch('onDataObjChange') dataObj: DataObj;
+
+  onDataObjChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+  }
+
+  build() {
+    Column() {
+      Text(this.dataObj.name).fontSize(30)
+    }
+  }
+}
+```
+
 以上示例，在赋值前，使用getTarget获取了对应状态变量的原始对象，经过对比后，如果和当前对象一样，就不赋值，不触发刷新。
 
 ### 不允许在build里改状态变量
