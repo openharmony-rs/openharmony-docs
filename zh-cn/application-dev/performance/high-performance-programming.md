@@ -1,4 +1,10 @@
 # TS&JS高性能编程实践及使用工具的指导
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
