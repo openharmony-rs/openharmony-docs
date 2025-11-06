@@ -754,11 +754,9 @@ struct GrandParent {
 struct MyComponent {
   @Consume('withDefault') defaultValue: number = 10;
 
-  // [StartExclude Provide_Consume_Decorated_Variable]
   build() {
   }
 
-  // [EndExclude Provide_Consume_Decorated_Variable]
 }
 ```
 
