@@ -1009,6 +1009,24 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
 <!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: number = 20;
+
+  build() {
+    Column() {
+      Text(`${this.message++}`)
+
+      Text(`${this.message++}`)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 上面示例的渲染过程为：
 
 1. 创建第一个Text组件，触发this.message改变。
