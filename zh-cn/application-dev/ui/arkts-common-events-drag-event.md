@@ -1251,6 +1251,34 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过`bindSheet`实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  
+  ``` TypeScript
+  build() {
+    Column() {
+    // ···
+        Column() {
+          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
+          Text($r('app.string.DoubleClick_Text'))
+            .fontSize(30)
+            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
+        }.padding({ bottom: 30 })
+  
+        // app.string.Search_Device资源文件中的value值为'搜索设备'
+        Button($r('app.string.Search_Device'))
+          .width('80%')
+          .height('80vp')
+          .fontSize(30)
+          .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
+            detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
+            preferType: SheetType.BOTTOM,
+            // app.string.Search_Device资源文件中的value值为'搜索设备'
+            title: { title: $r('app.string.Search_Device') },
+          })
+        // ···
+    }.width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+  ```
 
 2.实现SheetBuilder
 
