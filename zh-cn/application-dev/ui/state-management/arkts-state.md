@@ -1041,6 +1041,51 @@ struct Index {
 【正例】
 <!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) -->
 
+``` TypeScript
+class Balloon {
+  public volume: number;
+
+  constructor(volume: number) {
+    this.volume = volume;
+  }
+
+  static increaseVolume(balloon: Balloon) {
+    balloon.volume += 2;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State balloon: Balloon = new Balloon(10);
+
+  reduceVolume(balloon: Balloon) {
+    balloon.volume -= 1;
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
+        .fontSize(30)
+      Button(`increaseVolume`)
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let balloon1 = this.balloon;
+          Balloon.increaseVolume(balloon1);
+        })
+      Button(`reduceVolume`)
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let balloon2 = this.balloon;
+          this.reduceVolume(balloon2);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 用注册回调的方式更改状态变量需要执行解注册
 
 开发者可以在aboutToAppear中注册箭头函数，以此改变组件中的状态变量。
