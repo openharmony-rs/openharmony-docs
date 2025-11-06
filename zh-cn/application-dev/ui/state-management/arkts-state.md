@@ -123,6 +123,16 @@
 - 当装饰的对象是array时，可以观察到数组本身的赋值和添加、删除、更新数组的变化。例子如下。
   声明Model类。
     <!-- @[state_change_observation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
+    
+    ``` TypeScript
+    class Model {
+      public value: number;
+    
+      constructor(value: number) {
+        this.value = value;
+      }
+    }
+    ```
 
   \@State装饰的对象为Model类型数组时。
     <!-- @[state_decorate_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
