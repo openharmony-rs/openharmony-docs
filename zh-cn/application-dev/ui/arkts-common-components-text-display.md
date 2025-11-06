@@ -325,57 +325,13 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
 - 通过[baselineOffset](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#baselineoffset)属性设置文本基线的偏移量。
 
-  ```ts
-  Text('This is the text content with baselineOffset 0.')
-    .baselineOffset(0)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  Text('This is the text content with baselineOffset 30.')
-    .baselineOffset(30)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  Text('This is the text content with baselineOffset -20.')
-    .baselineOffset(-20)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  ```
+  <!-- @[custom_text_baseline_offset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
 
   ![zh-cn_image_0000001562820789](figures/zh-cn_image_0000001562820789.png)
 
 - 通过[letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing)属性设置文本字符间距。
 
-  ```ts
-  Text('This is the text content with letterSpacing 0.')
-    .letterSpacing(0)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  Text('This is the text content with letterSpacing 3.')
-    .letterSpacing(3)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  Text('This is the text content with letterSpacing -1.')
-    .letterSpacing(-1)
-    .fontSize(12)
-    .border({ width: 1 })
-    .padding(10)
-    .width('100%')
-    .margin(5)
-  ```
+  <!-- @[custom_text_letter_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
 
   ![zh-cn_image_0000001562940513](figures/zh-cn_image_0000001562940513.png)
 
@@ -383,211 +339,49 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   minFontSize用于设置文本的最小显示字号，maxFontSize用于设置文本的最大显示字号。这两个属性必须同时设置才能生效，并且需要与[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性或布局大小限制配合使用，单独设置任一属性将不会产生效果。
 
-  ```ts
-  Text('我的最大字号为30，最小字号为5，宽度为250，maxLines为1')
-    .width(250)
-    .maxLines(1)
-    .maxFontSize(30)
-    .minFontSize(5)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  Text('我的最大字号为30，最小字号为5，宽度为250，maxLines为2')
-    .width(250)
-    .maxLines(2)
-    .maxFontSize(30)
-    .minFontSize(5)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  Text('我的最大字号为30，最小字号为15，宽度为250,高度为50')
-    .width(250)
-    .height(50)
-    .maxFontSize(30)
-    .minFontSize(15)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  Text('我的最大字号为30，最小字号为15，宽度为250,高度为100')
-    .width(250)
-    .height(100)
-    .maxFontSize(30)
-    .minFontSize(15)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  ```
+  <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
 
   ![zh-cn_image_0000001511740472](figures/zh-cn_image_0000001511740472.png)
 
 - 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase)属性设置文本大小写。
 
-  ```ts
-  Text('This is the text content with textCase set to Normal.')
-    .textCase(TextCase.Normal)
-    .padding(10)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  // 文本全小写展示
-  Text('This is the text content with textCase set to LowerCase.')
-    .textCase(TextCase.LowerCase)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  // 文本全大写展示
-  Text('This is the text content with textCase set to UpperCase.')
-    .textCase(TextCase.UpperCase)
-    .border({ width: 1 })
-    .padding(10)
-    .margin(5)
-  ```
-
+  <!-- @[custom_the_text_by_text_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
   ![zh-cn_image_0000001562940529](figures/zh-cn_image_0000001562940529.png)
 
 - 通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性设置文本是否可复制粘贴。
 
-  ```ts
-  Text("这是一段可复制文本")
-    .fontSize(30)
-    .copyOption(CopyOptions.InApp)
-  ```
+  <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
 
   ![zh-cn_image_0000001511580868](figures/zh-cn_image_0000001511580868.png)
 
 - 通过[fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily)属性设置字体列表。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../reference/apis-arkui/js-apis-font.md)。
 
-  ```ts
-  Text("This is the text content with fontFamily")
-    .fontSize(30)
-    .fontFamily('HarmonyOS Sans')
-  ```
+  <!-- @[custom_the_text_fontFamily](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
 
   ![Text_font_family](figures/Text_font_family.png)
 
 - 从API version 20开始，支持通过[contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20)属性设置数字翻牌效果。
 
-  ```ts
-  @Entry
-  @Component
-  struct demo {
-    @State number: number = 98;
-    @State numberTransition: NumericTextTransition =
-      new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
-
-    build() {
-      Column() {
-        Text(this.number + "")
-          .borderWidth(1)
-          .fontSize(40)
-          .contentTransition(this.numberTransition)
-        Button("chang number")
-          .onClick(() => {
-            this.number++
-          })
-          .margin(10)
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-  ```
+  <!-- @[Content_Transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ContentTransition.ets) -->
   ![Text_content_transition](figures/Text_content_transition.gif)
 
 - 从API version 20开始，支持通过[optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20)设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
 
-  ```ts
-  Column() {
-    //启用优化行尾空格功能
-    Text("Trimmed space enabled     ")
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
-      .margin({ top: 20 })
-      .optimizeTrailingSpace(true)
-      .textAlign(TextAlign.Center)
-    //不启用优化行尾空格功能
-    Text("Trimmed space disabled     ")
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
-      .margin({ top: 20 })
-      .optimizeTrailingSpace(false)
-      .textAlign(TextAlign.Center)
-  }
-  ```
+  <!-- @[Last_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+
   ![Text_optimize_trailing_space](figures/Text_optimize_trailing_space.jpg)
 
 - 从API version 20开始，支持通过[lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20)设置文本的行间距。当不配置[LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20对象说明)时，首行上方和尾行下方默认会有行间距，当onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外的行间距。
 
-  ```ts
-  import { LengthMetrics } from '@kit.ArkUI';
-  
-  @Extend(Text)
-  function style() {
-    .width(250)
-    .height(100)
-    .maxFontSize(30)
-    .minFontSize(15)
-    .border({ width: 1 })
-  }
-  
-  @Entry
-  @Component
-  struct demo {
-    build() {
-      Column() {
-        Text('The line spacing of this context is set to 20_px, and the spacing is effective only between the lines.')
-          .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
-          .style()
-      }
-    }
-  }
-  ```
+  <!-- @[Line_Spacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets) -->
+
   ![Text_line_spacing](figures/Text_line_spacing.jpg)
 
 - 从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enableautospacing20)设置是否开启中文与西文的自动间距。
 
-  ```ts
-  @Entry
-  @Component
-  struct TextExample {
-    @State enableSpacing: boolean = false;
-  
-    build() {
-      Column() {
-        Row({ space: 20 }) {
-          Button("开启自动间距")
-            .onClick(() => this.enableSpacing = true)
-            .backgroundColor(this.enableSpacing ? '#4CAF50' : '#E0E0E0')
-            .fontColor(this.enableSpacing ? Color.White : Color.Black)
-  
-          Button("关闭自动间距")
-            .onClick(() => this.enableSpacing = false)
-            .backgroundColor(!this.enableSpacing ? '#F44336' : '#E0E0E0')
-            .fontColor(!this.enableSpacing ? Color.White : Color.Black)
-        }
-        .width('100%')
-        .justifyContent(FlexAlign.Center)
-        .margin({ top: 30, bottom: 20 })
-  
-        Text(this.enableSpacing ? "当前状态：已开启自动间距" : "当前状态：已关闭自动间距")
-          .fontSize(16)
-          .fontColor(this.enableSpacing ? '#4CAF50' : '#F44336')
-          .margin({ bottom: 20 })
-  
-        // 设置是否应用中西文自动间距
-        Text('中西文Auto Spacing自动间距')
-          .fontSize(24)
-          .padding(15)
-          .backgroundColor('#F5F5F5')
-          .width('90%')
-          .enableAutoSpacing(this.enableSpacing)
-      }
-      .width('100%')
-      .height('100%')
-      .padding(20)
-    }
-  }
-  ```
+  <!-- @[Enable_AutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets) -->
+
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
