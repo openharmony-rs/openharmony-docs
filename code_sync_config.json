@@ -15011,5 +15011,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-watch.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"count_modifier",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"basket_modifier",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"parent_component",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"use_property_name",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
