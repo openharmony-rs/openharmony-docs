@@ -411,7 +411,43 @@ export class Model {
 ``` TypeScript
 class Info {
   public address: string = '杭州';
+<!-- @[state_problem_state_ui_refresh_example_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets) -->
+
+``` TypeScript
+class Info {
+  public address: string = '杭州';
+
+  constructor(address: string) {
+    this.address = address;
+  }
 }
+
+class User {
+  public info: Info = new Info('天津');
+}
+
+@Entry
+@Component
+struct Test {
+  @State info: Info = new Info('上海');
+  @State user: User = new User();
+
+  aboutToAppear(): void {
+    this.user.info = this.info;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.info.address}`);
+      Text(`${this.user.info.address}`);
+      Button('change')
+        .onClick(() => {
+          this.user.info.address = '北京';
+        })
+    }
+  }
+}
+```
 
 @Entry
 @Component
