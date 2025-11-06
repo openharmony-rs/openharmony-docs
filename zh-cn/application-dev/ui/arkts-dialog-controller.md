@@ -468,6 +468,27 @@ export struct DialogController {
 
 <!-- @[dialog_component_get_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
 
+``` TypeScript
+@Builder
+customDialogComponentGetState(dialogController: promptAction.DialogController) {
+  Column({ space: 5 }) {
+    Text(this.message)
+      .fontSize(30)
+    if (dialogController !== undefined) {
+      // 'app.string.click_check_status'资源文件中的value值为'点我查询弹窗状态'。
+      Button($r('app.string.click_check_status'))
+        .onClick(() => {
+          hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+        })
+    }
+  }
+  .height(200)
+  .padding(5)
+  .justifyContent(FlexAlign.SpaceBetween)
+  .backgroundColor('#FFF0F0F0')
+}
+```
+
 
 
 
