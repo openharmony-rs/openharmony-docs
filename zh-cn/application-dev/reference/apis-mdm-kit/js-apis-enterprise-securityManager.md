@@ -915,7 +915,7 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
-| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy22)                     | 是   | 管控策略。                                                                                                                                                    |
+| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy)                     | 是   | 管控策略。                                                                                                                                                    |
 
 **错误码：**
 
@@ -972,7 +972,7 @@ getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy22) | 返回ManagedPolicy枚举类型的管控策略。 |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | 返回ManagedPolicy枚举类型的管控策略。 |
 
 **错误码：**
 
