@@ -4281,6 +4281,8 @@ offPlayNext(callback?: NoParamCallback): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4358,6 +4360,8 @@ offPlayPrevious(callback?: NoParamCallback): void
 取消会话播放上一首事件监听，关闭后，不再进行该事件回调。
 
 取消回调时，需要更新支持的命令列表。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4437,6 +4441,8 @@ offFastForward(callback?: NoParamCallback): void
 
 取消回调时，需要更新支持的命令列表。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4510,6 +4516,8 @@ currentAVSession.off('rewind');
 offRewind(callback?: NoParamCallback): void
 
 取消会话快退事件监听，关闭后，不再进行该事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4585,6 +4593,8 @@ offSeek(callback?: Callback\<long>): void
 
 取消监听跳转节点事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4659,6 +4669,8 @@ offSetSpeed(callback: Callback\<double>): void
 
 取消监听播放速率变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4732,6 +4744,8 @@ currentAVSession.off('setLoopMode');
 offSetLoopMode(callback?: Callback\<LoopMode>): void
 
 取消监听循环模式变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4882,6 +4896,8 @@ offToggleFavorite(callback?: Callback\<string>): void
 
 取消监听是否收藏的事件
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -4956,6 +4972,8 @@ offSkipToQueueItem(callback?: Callback\<int>): void
 
 取消监听播放列表单项选中的事件
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5029,6 +5047,8 @@ currentAVSession.off('handleKeyEvent');
 offHandleKeyEvent(callback?: Callback\<KeyEvent>): void
 
 取消监听按键事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5105,6 +5125,8 @@ offOutputDeviceChange(callback: ConnectionEvent): void
 
 取消监听播放设备变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5177,6 +5199,8 @@ currentAVSession.off('commonCommand');
 offCommonCommand(callback?: EventProcess): void
 
 取消监听自定义控制命令的变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5254,6 +5278,8 @@ onAnswer(callback: NoParamCallback): void
 
 设置通话接听的监听事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5329,6 +5355,8 @@ currentAVSession.off('answer');
 offAnswer(callback?: NoParamCallback): void
 
 取消通话接听事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5406,6 +5434,8 @@ onHangUp(callback: NoParamCallback): void
 
 设置通话挂断的监听事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5482,6 +5512,8 @@ offHangUp(callback?: NoParamCallback): void
 
 取消通话挂断事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -5557,6 +5589,8 @@ currentAVSession.on('toggleCallMute', () => {
 onToggleCallMute(callback: NoParamCallback): void
 
 设置通话静音的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
