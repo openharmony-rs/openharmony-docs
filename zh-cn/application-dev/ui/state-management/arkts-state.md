@@ -226,6 +226,31 @@
 
 <!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
 
+``` TypeScript
+import PlayDetailViewModel from './PlayDetailViewModel';
+
+@Entry
+@Component
+struct PlayDetailPage {
+  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
+
+  build() {
+    Stack() {
+      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Row() {
+        Button('Change Color')
+          .onClick(() => {
+            this.vm.changeCoverUrl();
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .alignContent(Alignment.Top)
+  }
+}
+```
+
 将当前this.vm传入，调用代理状态变量的属性赋值。
 
 正例：
