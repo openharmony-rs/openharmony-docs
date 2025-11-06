@@ -434,30 +434,10 @@ ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```
 
 **ArkTS-Sta版本签名：**  
-  `function get(target: object, propertyKey: string): NullishType`
-
-**参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | target | object | 是 | 目标对象。 |
-  | propertyKey | string | 是 | 属性键。 |
-
-**返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | NullishType | 返回属性值、null或undefined。 |
-
-**示例：**
-  ```typescript
-  class C {
-      a: number = 1;
-  }
-  let a = new C()
-  Reflect.get(a, "a") // 1
-  ```
+  不支持。
  
 **适配建议：** 
-  不使用泛型参数，属性名只能是字符串，不支持receiver参数。
+  不使用反射，直接操作对象的属性。
 
 #### Reflect-has方法变更
 
@@ -484,30 +464,10 @@ ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```
 
 **ArkTS-Sta版本签名：**  
-  `function has(target: object, propertyKey: string): boolean`
-
-**参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | target | object | 是 | 目标对象。 |
-  | propertyKey | string | 是 | 属性键。 |
-
-**返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示是否包含属性，true表示是，false表示不包含属性。 |
-
-**示例：**
-  ```typescript
-  class C{
-      a: number=1;
-  }
-  let a = new C()
-  Reflect.has(a, "a")
-  ```
+  不支持。
  
 **适配建议：** 
-  只使用字符串作为属性名。
+  不使用反射。
 
 #### Reflect-ownKeys方法变更
 
@@ -533,29 +493,10 @@ ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```
 
 **ArkTS-Sta版本签名：**  
-  `function ownKeys(target: object): string[]`
-
-**参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | target | object | 是 | 目标对象。 |
-
-**返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | string[] | 属性键数组。 |
-
-**示例：**
-  ```typescript
-  class C{
-      a: number=1;
-  }
-  let a = new C();
-  console.info(Reflect.ownKeys(a));
-  ```
+  不支持。
  
 **适配建议：** 
-  只使用字符串作为属性名。
+  使用Object自带的方法: Object.keys(a)。
 
 #### Reflect-set方法变更
 
@@ -584,32 +525,10 @@ ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```
 
 **ArkTS-Sta版本签名：**  
-  `function set(target: object, propertyKey: string, value: object): boolean`
-
-**参数：**
-  | 参数名 | 类型 | 必填 | 说明 |
-  |--------|------|------|------|
-  | target | object | 是 | 目标对象。 |
-  | propertyKey | string | 是 | 属性键。 |
-  | value | object | 是 | 属性值。 |
-
-**返回值：**
-  | 类型 | 说明 |
-  |------|------|
-  | boolean | 表示设置是否成功，true表示成功，false表示不成功。 |
-
-**示例：**
-  ```typescript
-  class C {
-      a: number=1;
-  }
-  let a = new C()
-  Reflect.set(a, "a", Number(2))
-  console.info(a.a)
-  ```
+ 不支持。
  
 **适配建议：** 
-  不使用泛型参数，属性名只能是字符串，值必须是对象类型。
+  直接操作对象属性，避免使用反射。
 
 #### Reflect-方法新增
 

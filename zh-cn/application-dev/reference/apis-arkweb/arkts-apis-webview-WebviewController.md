@@ -8276,6 +8276,10 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -8299,6 +8303,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8325,6 +8330,55 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import print from '@ohos.print'
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+const myPrintAttributes: print.PrintAttributes = {
+  copyNumber: 1 as int,
+  pageRange: {
+    startPage: 1 as int,
+    endPage: 1 as int,
+    pages: [1] as Array<int>
+  },
+  pageSize: {
+    id: 'PAGE_ISO_A4',
+    name: 'A4',
+    width: 210 as int,
+    height: 297 as int
+  },
+  directionMode: print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT,
+  colorMode: print.PrintColorMode.COLOR_MODE_COLOR,
+  duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('createWebPrintDocumentAdapter')
+        .onClick(() => {
+          try {
+            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_jobid', webPrintDocadapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## isIncognitoMode<sup>11+</sup>
 
 isIncognitoMode(): boolean
@@ -11777,6 +11831,10 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                                    | 必填 | 说明                    |
@@ -11795,6 +11853,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -11847,6 +11906,61 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import fs from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(
+            this.pdfConfig,
+            (error, result: webview.PdfData | undefined) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
+                fs.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fs.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            });
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
 ## createPdf<sup>14+</sup>
 
 createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
@@ -11854,6 +11968,10 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 以Promise方式异步获取指定网页的数据流。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -11878,6 +11996,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -11913,6 +12032,59 @@ struct Index {
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeed and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fs.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+              }
+            })
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import fs from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
+import webview from "@ohos.web.webview";
+import { BusinessError, AsyncCallback } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(this.pdfConfig)
+            .then((result: webview.PdfData) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {

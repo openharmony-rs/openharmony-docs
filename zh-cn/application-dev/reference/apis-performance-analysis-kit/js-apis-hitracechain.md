@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -17,6 +19,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 跟踪标志组合类型枚举。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiTrace。
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -35,6 +41,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiTrace。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CS       | 0 | 客户端发送类型，标识client侧的发送埋点。        |
@@ -49,6 +59,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiTrace。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT  | 0 | 缺省通信类型。    |
@@ -62,27 +76,37 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.HiviewDFX.HiTrace。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | chainId      | bigint | 是 | 跟踪链标识。   |
-| spanId      | number | 否 | 分支标识，默认值为0。     |
-| parentSpanId | number | 否 | 父分支标识，默认值为0。   |
-| flags        | number | 否 | 跟踪标志组合，默认值为0。 |
+| spanId      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 分支标识，默认值为0。     |
+| parentSpanId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 父分支标识，默认值为0。   |
+| flags        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 跟踪标志组合，默认值为0。 |
 
 ## hiTraceChain.begin
 
-begin(name: string, flags?: number): HiTraceId
+ArkTS-Dyn: begin(name: string, flags?: number): HiTraceId
+
+ArkTS-Sta: begin(name: string, flags?: int): HiTraceId
 
 开始跟踪，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name  | string | 是 | 跟踪业务名。 |
-| flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
+| flags | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**
 
@@ -107,6 +131,10 @@ end(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -129,6 +157,10 @@ getId(): HiTraceId
 获取跟踪标识，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -159,6 +191,10 @@ setId(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -182,6 +218,10 @@ clearId(): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **示例：**
 
 ```ts
@@ -200,6 +240,10 @@ createSpan(): HiTraceId
 创建跟踪分支，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -230,6 +274,10 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -257,6 +305,10 @@ isValid(id: HiTraceId): boolean
 判断HiTraceId对象是否有效，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -292,6 +344,10 @@ isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -326,6 +382,10 @@ enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 置位HiTraceId对象中指定的跟踪标志，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 

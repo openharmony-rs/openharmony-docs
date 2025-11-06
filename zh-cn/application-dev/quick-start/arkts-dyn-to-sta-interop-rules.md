@@ -487,7 +487,7 @@ export class X {
 // file2.ets  ArkTS-Sta
 'use static'
 import { X } from './file1';
-let x1: X = {name: 'hello'}   //编译报错
+let x1: X = {name: 'hello'}   // 编译报错
 let x2: X = new X('hello')    // OK
 ```
 
@@ -539,8 +539,8 @@ export interface Y {
 // file2.ets  ArkTS-Sta
 'use static'
 import { X, Y } from './file1';
-let x: X | Y = { name: 'hello' }; //编译报错
-let x: X | Y = new X('hello'); // OK
+let x1: X | Y = { name: 'hello' };   // 编译报错
+let x2: X | Y = new X('hello') as X; // OK
 ```
 
 ### ArkTS-Sta创建ArkTS-Dyn的类的对象字面量
@@ -585,9 +585,9 @@ export class A {
 // file2.ets ArkTS-Sta
 'use static'
 import { A } from './file1';
-let a: A = { name: 'hello' }; // a是创建的对象
-
-a instanceof A; // true
+let a: A = { name: 'hello' }; // 编译报错
+let a: A = new A('hello');
+a.name = 'hello';             // OK
 ```
 
 ## ArkTS-Sta中使用ArkTS-Dyn
@@ -1738,7 +1738,7 @@ export let foo = {name: "123"}
 let mod = ESValue.load('./file1')
 let foo = mod.getProperty('foo')
 foo.getProperty('name')
-foo.setProperty('name', ESValue.wrap("456")）
+foo.setProperty('name', ESValue.wrap("456"))
 ```
 
 ### ArkTS-Sta调用js方法和传参

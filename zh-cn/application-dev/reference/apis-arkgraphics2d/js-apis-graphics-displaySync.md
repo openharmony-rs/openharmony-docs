@@ -1,8 +1,8 @@
 #  @ohos.graphics.displaySync (可变帧率)
 可变帧率支持让开发者以指定帧率来运行UI业务，一般用于开发者自绘制UI，并且对于帧率有特定诉求的场景。
 
-> **说明：**
->
+> **说明：**<br>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。<br>
 > 本模块首批接口和数据定义从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -18,6 +18,10 @@ create(): DisplaySync
 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -35,6 +39,10 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 开发者可以从订阅函数中获取帧绘制的时间戳信息，包含当前帧到达的时间timestamp和下一帧预期到达的时间targetTimestamp。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
@@ -54,6 +62,10 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 设置期望的帧率范围。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -88,7 +100,13 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 
 订阅每一帧的变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrame](#onframe22)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -109,13 +127,52 @@ let callback = (frameInfo: displaySync.IntervalInfo) => {
 backDisplaySync?.on("frame", callback)
 ```
 
+### onFrame()<sup>22+</sup>
+
+onFrame(callback: Callback\<IntervalInfo\>): void
+
+订阅每一帧的变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[on('frame')](#onframe)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名           | 类型                                       | 必填 | 说明                          |
+| --------------- | ------------------------------------------ | ---- | -----------------------------|
+| callback    | Callback<[IntervalInfo](#intervalinfo)>| 是   | 订阅函数。|
+
+
+**示例：**
+
+```ts
+let callback = (frameInfo: displaySync.IntervalInfo) => {
+    console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
+}
+
+// 注册订阅函数
+backDisplaySync?.onFrame(callback)
+```
+
+
 ### off('frame')
 
 off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 取消订阅每一帧的变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrame](#offframe22)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -138,6 +195,39 @@ backDisplaySync?.on("frame", callback)
 backDisplaySync?.off("frame", callback)
 ```
 
+### offFrame()<sup>22+</sup>
+
+offFrame(callback\?: Callback\<IntervalInfo\>): void
+
+取消订阅每一帧的变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[off('frame')](#offframe)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名           | 类型                                       | 必填 | 说明                          |
+| --------------- | ------------------------------------------ | ---- | -----------------------------|
+| callback    | Callback<[IntervalInfo](#intervalinfo)>| 否   | 订阅函数，参数不填时，默认取消全部订阅函数。|
+
+
+**示例：**
+```ts
+let callback = (frameInfo: displaySync.IntervalInfo) => {
+    console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
+}
+
+backDisplaySync?.onFrame(callback)
+
+// 取消订阅函数
+backDisplaySync?.offFrame(callback)
+```
+
 ### start
 
 start(): void
@@ -145,6 +235,10 @@ start(): void
 开始每帧回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 
@@ -210,6 +304,9 @@ stop(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 

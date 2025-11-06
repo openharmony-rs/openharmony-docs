@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+>- 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>- UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 
 ## 导入模块
@@ -158,10 +160,14 @@ RouterPageInfo包含的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称    | 类型                                      | 必填 | 说明                                   |
 | ------- | ----------------------------------------- | ---- | -------------------------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 屏幕像素密度变化时页面对应的上下文信息。 |
-| density | number                                    | 是   | 变化后的屏幕像素密度。<br/>取值范围：[0, +∞)                 |
+| density | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是   | 变化后的屏幕像素密度。<br/>取值范围：[0, +∞)                 |
 
 ## NavDestinationSwitchInfo<sup>12+</sup>
 

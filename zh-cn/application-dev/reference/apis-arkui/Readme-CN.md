@@ -52,6 +52,7 @@
       - [AttributeUpdater](js-apis-arkui-AttributeUpdater.md)
       - [Content](js-apis-arkui-Content.md)
       - [NodeContent](js-apis-arkui-NodeContent.md)
+      - [Resource](js-apis-arkui-resource.md)
   - 窗口管理<!--window-manager-api-->
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     - @ohos.window (窗口)<!--js-apis-window-->
@@ -413,6 +414,8 @@
       - @Reusable
       - @ReusableV2
       - @Styles（ArkTS-DT）
+      - [applyStyles：定义组件重用样式（ArkTS-Sta）](arkui-ts/ts-universal-applyStyles.md)
+      - [wrapBuilder：封装全局@Builder (ArkTS-Sta)](arkui-ts/ts-universal-wrapBuilder-static.md)
   - 互操作
     - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
     - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)

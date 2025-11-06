@@ -23,6 +23,10 @@ EventResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 ## setGestureEventResult<sup>12+</sup>
 
 setGestureEventResult(result: boolean): void

@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.file.environment (目录环境能力)](js-apis-file-environment-sys.md)。
 
@@ -20,6 +21,10 @@ getStorageDataDir():Promise&lt;string&gt;
 异步方法获取内存存储根目录，以promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 
@@ -40,6 +45,8 @@ getStorageDataDir():Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   Environment.getStorageDataDir().then((path: string) => {
@@ -49,6 +56,18 @@ getStorageDataDir():Promise&lt;string&gt;
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getStorageDataDir().then((path: string) => {
+    console.info(`Succeeded in getStorageDataDir, Path: ${path}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+    console.error(`Failed to getStorageDataDir. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## environment.getStorageDataDir
 
 getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
@@ -56,6 +75,10 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 异步方法获取内存存储根目录，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 
@@ -76,6 +99,8 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   Environment.getStorageDataDir((err: BusinessError, path: string) => {
@@ -87,6 +112,19 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getStorageDataDir((err: BusinessError | null, path: string | undefined) => {
+  if (err) {
+    console.error(`Failed to getStorageDataDir. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getStorageDataDir, Path: ${path}`);
+  }
+});
+```
+
 ## environment.getUserDataDir
 
 getUserDataDir():Promise&lt;string&gt;
@@ -94,6 +132,10 @@ getUserDataDir():Promise&lt;string&gt;
 异步方法获取公共文件根目录，以promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 
@@ -114,6 +156,8 @@ getUserDataDir():Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   Environment.getUserDataDir().then((path: string) => {
@@ -121,7 +165,20 @@ getUserDataDir():Promise&lt;string&gt;
   }).catch((err: BusinessError) => {
     console.error("getUserDataDir failed with error message: " + err.message + ", error code: " + err.code);
   });
+
   ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getUserDataDir().then((path: string) => {
+  console.info(`Succeeded in getUserDataDir, Path: ${path}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to getUserDataDir. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## environment.getUserDataDir
 
@@ -130,6 +187,10 @@ getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
 异步方法获取公共文件根目录，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 
@@ -150,6 +211,8 @@ getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   Environment.getUserDataDir((err: BusinessError, path: string) => {
@@ -161,6 +224,19 @@ getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
   });
   ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getUserDataDir((err: BusinessError | null, path: string | undefined) => {
+  if (err) {
+    console.error(`Failed to getUserDataDir. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getUserDataDir, Path: ${path}`);
+  }
+});
+```
+
 ## environment.getExternalStorageDir<sup>11+</sup>
 
 getExternalStorageDir(): string
@@ -170,6 +246,10 @@ getExternalStorageDir(): string
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 
@@ -213,6 +293,10 @@ getUserHomeDir(): string
 **需要权限**：ohos.permission.FILE_ACCESS_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **系统接口**：此接口为系统接口。
 

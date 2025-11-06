@@ -466,7 +466,7 @@ ArkTS-Sta示例：
 
 overviewModeAccess(overviewModeAccess: boolean)
 
-设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。未显式调用时默认启用概览模式加载网页。
+设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。若未显式调用该属性，默认启用概览模式加载网页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1883,7 +1883,7 @@ forceDarkAccess(access: boolean)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
