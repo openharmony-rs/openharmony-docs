@@ -48,7 +48,7 @@ setTextHighContrast(action: TextHighContrast): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -81,7 +81,7 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -107,7 +107,7 @@ matchFontDescriptors(desc: FontDescriptor): Promise&lt;Array&lt;FontDescriptor&g
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -217,7 +217,7 @@ getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;stri
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -329,7 +329,7 @@ getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -532,7 +532,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                               | 值   | 说明                                            |
 | ---------------------------------- | ---- | ---------------------------------------------- |
@@ -550,7 +550,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 值   | 说明                                 |
 | -------------- | ---- | ------------------------------------ |
@@ -567,7 +567,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
@@ -588,7 +588,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
@@ -607,7 +607,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 值   | 说明              |
 | -------- | ---- | ---------------- |
@@ -624,7 +624,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值   | 说明                                            |
 | ------------- | ---- | ---------------------------------------------- |
@@ -642,14 +642,10 @@ struct GetFontDescriptorsFromPathTest {
 
 | 名称                          | 值   | 说明                                                                                                                  |
 |-----------------------------| ---- | -------------------------------------------------------------------------------------------------------------------- |
-| NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。                                                                  |
-| BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。|
-| BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。|
-| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br/>使用此断词策略时，需与[TextStyle](#textstyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。                        |
-| NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 20|
+| NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                                                                  |
+| BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br/>使用此断词策略时，需与[TextStyle](#textstyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22                        |
 
 ## Decoration
 
@@ -661,7 +657,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 类型                                                  | 只读 | 可选 | 说明                                         |
 | ------------------------- | --------------------------------------------------- | ---- | ---- | -------------------------------------------- |
@@ -680,7 +676,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 值 | 说明        |
 | -------------- | - | ----------- |
@@ -699,7 +695,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 值 | 说明   |
 | ------ | - | ------ |
@@ -719,7 +715,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称  | 值 | 说明   |
 | ----- | - | ------- |
@@ -743,7 +739,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值 | 说明       |
 | ---------------- | - | ---------- |
@@ -767,7 +763,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 值 | 说明                                                 |
 | ------- | - | ---------------------------------------------------- |
@@ -785,7 +781,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                  |  值 | 说明                                                  |
 | --------------------- | --- | ---------------------------------------------------- |
@@ -804,7 +800,7 @@ struct GetFontDescriptorsFromPathTest {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值 | 说明 |
 | ----------- | - | ---- |
@@ -823,7 +819,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
@@ -841,7 +837,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
@@ -859,7 +855,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称               | 类型                                                 | 只读 | 可选 | 说明                                      |
 | -----------------  | ---------------------------------------------------- | --  | ---  | ---------------------------------------- |
@@ -879,7 +875,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
@@ -896,7 +892,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
@@ -913,7 +909,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
@@ -946,28 +942,28 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称                      | 类型                                     | 只读 | 可选 | 说明                                                   |
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
-| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20             |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                         |
-| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                         |
+| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22             |
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                         |
+| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                         |
 | fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。<br>**ArkTS-Dyn起始版本：** 21                          |
-| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                          |
-| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20               |
-| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                    |
-| fontSize      | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20  |
-| letterSpacing | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| wordSpacing   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                 |
-| heightScale   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20              |
-| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20       |
-| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                       |
-| locale        | string                                               | 否 | 是 | 语言类型，如字段为'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。具体请参照ISO 639-1规范，默认为空字符串。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| baselineShift | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                 |
-| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20|
+| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                          |
+| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22               |
+| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                    |
+| fontSize      | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22  |
+| letterSpacing | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| wordSpacing   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                 |
+| heightScale   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22              |
+| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22       |
+| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                       |
+| locale        | string                                               | 否 | 是 | 语言类型，如字段为'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。具体请参照ISO 639-1规范，默认为空字符串。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| baselineShift | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                 |
+| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
 | lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。<br>**ArkTS-Dyn起始版本：** 21 |
 | lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。<br>**ArkTS-Dyn起始版本：** 21 |
 | lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。<br>**ArkTS-Dyn起始版本：** 21 |
@@ -982,7 +978,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 类型                                       | 只读 | 可选 | 说明                                                                 |
 | -------------  | ---------------------------------------------------- | ---- | -- | --------------------------------------------------------------------- |
@@ -1008,7 +1004,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | -  | - | - |
@@ -1039,7 +1035,7 @@ static getGlobalInstance(): FontCollection
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1139,7 +1135,7 @@ loadFontSync(name: string, path: string | Resource): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1237,7 +1233,7 @@ loadFont(name: string, path: string | Resource): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1338,7 +1334,7 @@ unloadFontSync(name: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1435,7 +1431,7 @@ unloadFont(name: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1531,7 +1527,7 @@ clearCaches(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -1582,18 +1578,18 @@ struct Index {
 
 | 名称                 | 类型                                        | 只读 | 可选 | 说明                                          |
 | -------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------- |
-| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                          |
-| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                    |
-| maxLines             | ArkTS-Dyn: number<br>ArkTS-Sta: int                                     | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                  |
-| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                        |
-| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20               |
-| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20                              |
-| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 20 |
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20|
-| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20 |
+| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                          |
+| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                    |
+| maxLines             | ArkTS-Dyn: number<br>ArkTS-Sta: int                                     | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                  |
+| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                        |
+| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22               |
+| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22                              |
+| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
+| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 | lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**ArkTS-Dyn起始版本：** 21 |
 
 ## PlaceholderAlignment
@@ -1606,13 +1602,13 @@ struct Index {
 
 | 名称                | 值 | 说明                   |
 | ------------------- | - | ---------------------- |
-| OFFSET_AT_BASELINE  | 0 | 基线与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20     |
-| ABOVE_BASELINE      | 1 | 底部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| BELOW_BASELINE      | 2 | 顶部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| TOP_OF_ROW_BOX      | 3 | 顶部与文本顶部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| BOTTOM_OF_ROW_BOX   | 4 | 底部与文本底部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| CENTER_OF_ROW_BOX   | 5 | 居中对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20|
-| FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20|
+| OFFSET_AT_BASELINE  | 0 | 基线与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22     |
+| ABOVE_BASELINE      | 1 | 底部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22   |
+| BELOW_BASELINE      | 2 | 顶部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22   |
+| TOP_OF_ROW_BOX      | 3 | 顶部与文本顶部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22   |
+| BOTTOM_OF_ROW_BOX   | 4 | 底部与文本底部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22   |
+| CENTER_OF_ROW_BOX   | 5 | 居中对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
+| FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
 
 ![zh-ch_image_PlaceholderAlignment.png](figures/zh-ch_image_PlaceholderAlignment.png)
 
@@ -1632,7 +1628,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                                           | 只读 | 可选 | 说明                         |
 | -------------- | --------------------------------------------- | ---- | --- | --------------------------- |
@@ -1652,7 +1648,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型   | 只读 | 可选 | 说明            |
 | ----- | ------ | ---- | --- | --------------- |
@@ -1679,7 +1675,7 @@ ArkTS-Sta: layoutSync(width: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
