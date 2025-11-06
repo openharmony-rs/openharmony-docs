@@ -537,6 +537,15 @@ struct PlayDetailPage {
 
 <!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) -->
 
+``` TypeScript
+export default class PlayDetailViewModel {
+  public coverUrl: string = '#00ff00';
+  public changeCoverUrl = (model: PlayDetailViewModel) => {
+    model.coverUrl = '#00F5FF';
+  }
+}
+```
+
 <!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
 
 ``` TypeScript
