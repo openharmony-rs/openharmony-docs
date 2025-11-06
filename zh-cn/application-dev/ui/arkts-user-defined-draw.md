@@ -226,10 +226,6 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
        }
    
    private:
-       int32_t NUM_2 = 2;
-       int32_t NUM_3 = 3;
-       int32_t NUM_4 = 4;
-       int32_t NUM_5 = 5;
        // ···
        static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
        {
