@@ -103,9 +103,9 @@
     }
     // ···
       aboutToAppear(): void {
-        // ···
+            // ···
             this.getUIContext()?.postFrameCallback(new MyFrameCallback());
-        // ···
+            // ···
       }
     ```
 
