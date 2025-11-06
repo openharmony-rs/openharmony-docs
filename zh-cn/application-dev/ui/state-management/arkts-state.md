@@ -142,6 +142,11 @@
 
   数组项的赋值可以观察到。
     <!-- @[state_decorate_array_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
+    
+    ``` TypeScript
+    // 数组项赋值
+    this.title[0] = new Model(2);
+    ```
 
   删除数组项可以观察到。
     <!-- @[state_decorate_array_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
