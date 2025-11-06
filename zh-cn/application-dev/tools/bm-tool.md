@@ -912,7 +912,7 @@ error: install releaseType target not same.
 
 **处理步骤**
 
-* 场景一：请先卸载设备上已安装的HAP，再安装新的HAP。
+* 场景一：请先卸载设备上已安装的HAP（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP。
 * 场景二：使用相同版本的SDK对HAP重新打包，保证多HAP的releaseType值一致。
 
 
@@ -949,7 +949,7 @@ error: install entry already exist.
 
 **处理步骤**
 
-1. 请先卸载设备上已安装的HAP，再安装新的HAP。
+1. 请先卸载设备上已安装的HAP（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP。
 2. 检查并确保待安装包的entry模块名称与已安装的entry模块名相同，或把待安装模块的类型改为feature后重试。
 
 
@@ -1053,7 +1053,7 @@ error: install provision type not same.
 **处理步骤**
 
 1. 确保设备上已安装应用签名证书profile文件中的类型与待安装应用的类型一致，使用相同类型的profile文件签名，再安装新的HAP。
-2. 卸载设备上已安装的应用，再安装新的HAP。
+2. 卸载设备上已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP。
 
 
 ### 9568288 磁盘空间不足导致安装失败
@@ -1102,7 +1102,7 @@ error: install failed due to grant request permissions failed.<br>
 
 * 如果不存在，需要查看需要该权限的API接口的文档说明，以确保权限支持申请。例如：[setDevicePairingConfirmation](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionsetdevicepairingconfirmation)接口所需权限中，ohos.permission.MANAGE_BLUETOOTH仅系统应用支持申请，此时请更换为ohos.permission.ACCESS_BLUETOOTH权限。
 
-* 如果存在，请查看对应的权限文档的要求申请权限，同时请关注权限是否支持申请。例如：[受限开放权限](../security/AccessToken/restricted-permissions.md)请参考文档<!--RP2-->[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->。[企业类应用可用权限](../security/AccessToken/permissions-for-enterprise-apps.md)仅企业类应用支持申请，三方应用不支持。
+* 如果存在，请查看对应的权限文档的要求，申请权限，同时请关注权限是否支持申请。例如：[受限开放权限](../security/AccessToken/restricted-permissions.md)请参考文档<!--RP2-->[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->。[企业类应用可用权限](../security/AccessToken/permissions-for-enterprise-apps.md)仅企业类应用支持申请，三方应用不支持。
 
 ### 9568290 更新HAP token失败导致安装失败
 **错误信息**
@@ -1144,7 +1144,7 @@ error: install failed due to singleton not same.
 
 **处理步骤**
 
-方案1：卸载已安装的应用包，再安装新的应用包。
+方案1：卸载已安装的应用包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的应用包。
 
 方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。<!--DelEnd-->
 
@@ -1164,7 +1164,7 @@ error: install failed due to apptype not same.
 
 **处理步骤**
 
-* 方案1：卸载已安装的HAP包，再安装新的HAP包。
+* 方案1：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
 * 方案2：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
 
 ### 9568297 由于设备sdk版本较低导致安装失败
@@ -1231,7 +1231,7 @@ error: install sign info inconsistent.
 
 **处理步骤**
 
-1. 请卸载设备上已安装的应用，或取消勾选“Keep Application Data”后，重新安装新的应用。
+1. 请卸载设备上已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），或取消勾选“Keep Application Data”后，重新安装新的应用。
 2. 如果是因不同团队提供的HSP导致签名不一致问题，可以采用[集成态HSP](../quick-start/integrated-hsp.md)的方式统一提供HSP；在多HAP包的情况下，必须确保所有HAP包的签名一致。
 3. 如果某个应用被卸载但是保留了数据，后面安装相同包名但签名信息不一致的应用时，安装失败。如果出现这种情况，则需要把之前已卸载掉的应用重新安装之后，执行不保留数据地卸载，这样相同包名但签名信息不一致的应用才能安装成功。
 
@@ -1358,7 +1358,7 @@ error: install debug type not same.
 
 **处理步骤**
 
-1. 卸载已安装的应用，重新安装新应用。
+1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
 
 
 ### 9568296 包类型错误
@@ -1376,7 +1376,7 @@ bundleType错误导致应用安装失败。
 
 **处理步骤**
 
-* 方法一：卸载已安装的应用，重新安装新应用。
+* 方法一：卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
 
 * 方法二：修改应用的bundleType，与已安装应用保持一致。
 
@@ -1417,7 +1417,7 @@ error: install version downgrade.
 
 **处理步骤**
 
-1. 卸载已安装的应用，重新安装新应用。
+1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
 
 
 ### 9568301 模块类型不一致
@@ -1613,7 +1613,7 @@ error: compatible policy not same.
 
 **处理步骤**
 
-1. 卸载已安装的应用或应用间共享库，再安装新包。
+1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）或应用间共享库，再安装新包。
 
 
 ### 9568391 包管理服务已停止
@@ -1763,7 +1763,7 @@ error: remove sign profile failed.
 
 **处理步骤**
 
-1. 重启手机后再次尝试卸载应用。
+1. 重启手机后再次尝试卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）。
 
 2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
@@ -1843,7 +1843,7 @@ error: install version not compatible.
 
 **处理步骤**
 
-1. 卸载版本信息不匹配的HAP，再安装HSP。
+1. 卸载版本信息不匹配的HAP（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装HSP。
 2. 修改HSP版本信息与HAP一致，再安装HSP。
 
 ### 9568287 安装包entry模块数量不合规
@@ -1879,7 +1879,7 @@ app.json5文件中app的vendor字段配置不一致。
 
 **处理步骤**
 
-1. 若只有一个HAP，要求与已安装应用vendor字段一致，卸载重装即可。
+1. 若只有一个HAP，要求与已安装应用vendor字段一致，卸载重装即可（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）。
 2. 若包含集成态HSP，要求集成态HSP与使用方HAP的vendor字段保持一致。
 
 ### 9568272 安装包体积大小无效
@@ -1914,7 +1914,7 @@ error: install generate uid error.
 
 **处理步骤**
 
-卸载不必要的应用后重试。
+卸载不必要的应用后重试（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）。
 
 ### 9568274 安装服务错误
 **错误信息**
@@ -2453,7 +2453,7 @@ error: install version code not same.
 2. 安装多个包中存在版本号（versionCode）不一致。
 
 **处理步骤**
-1. 调整安装包的版本和设备中已存在的应用包的版本号（versionCode）一致，或者卸载设备中的应用，再去安装新的应用包。
+1. 调整安装包的版本和设备中已存在的应用包的版本号（versionCode）一致，或者卸载设备中的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再去安装新的应用包。
 2. 调整安装的多个包的版本号（versionCode），所有的包都需要保持版本号（versionCode）一致。
 
 ### 9568421 签名证书profile文件中的类型被限制，不允许安装到当前设备中，导致安装失败
@@ -2927,7 +2927,7 @@ error: install failed due to U1Enabled can not change.
 **处理步骤**
 
 方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
-方案二：先卸载设备上已安装的应用，再尝试安装待安装应用。
+方案二：先卸载设备上已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再尝试安装待安装应用。
 
 ### 9568442 U1Enable配置不一致
 **错误信息**
