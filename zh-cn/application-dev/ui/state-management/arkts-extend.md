@@ -30,6 +30,21 @@
 
 - 和\@Styles不同，\@Extend支持封装指定组件的私有属性、私有事件和自身定义的全局方法。
   <!-- @[Extend_Global_Function_Extension_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/GlobalFunctionExtension.ets) -->
+  
+  ``` TypeScript
+  // @Extend(Text)可以支持Text的私有属性fontColor
+  @Extend(Text)
+  function fancy() {
+    .fontColor(Color.Red)
+  }
+  
+  // superFancyText可以调用预定义的fancy
+  @Extend(Text)
+  function superFancyText(size: number) {
+    .fontSize(size)
+    .fancy()
+  }
+  ```
 
 - 和\@Styles不同，\@Extend装饰的方法支持参数，开发者可以在调用时传递参数，调用遵循TS方法传值调用。
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
