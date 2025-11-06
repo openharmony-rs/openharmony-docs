@@ -309,7 +309,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
-## 在index.ets文件中调用函数
+## 在Index.ets文件中调用函数
 
 <!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
