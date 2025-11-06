@@ -198,6 +198,39 @@ struct MyComponent {
 
 <!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  build() {
+    Column() {
+      Button('Click to print log')
+        .onClick(() => {
+          let logMessage: string = this.message;
+          for (let i = 0; i < 10; i++) {
+            hilog.info(0x0000, 'TAG', '%{public}s', logMessage);
+          }
+        })
+        .width('90%')
+        .backgroundColor(Color.Blue)
+        .fontColor(Color.White)
+        .margin({
+          top: 10
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .alignItems(HorizontalAlign.Center)
+    .margin({
+      top: 15
+    })
+  }
+}
+```
+
 ## 建议使用临时变量替换状态变量
 
 在应用开发中，应尽量减少对状态变量的直接赋值，通过临时变量完成数据计算操作。
