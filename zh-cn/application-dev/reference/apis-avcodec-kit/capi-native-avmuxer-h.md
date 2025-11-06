@@ -42,7 +42,7 @@
 | [OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)](#oh_avmuxer_start) | 开始封装。该接口必须在[OH_AVMuxer_AddTrack](#oh_avmuxer_addtrack)后，[OH_AVMuxer_WriteSample](#oh_avmuxer_writesample)前调用。 |
 | [OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr info)](#oh_avmuxer_writesample) | 将sample写入封装器。 该接口必须在[OH_AVMuxer_Start](#oh_avmuxer_start)后，[OH_AVMuxer_Stop](#oh_avmuxer_stop)前调用。调用者需要按info中的时间顺序将sample写入正确的音视频轨。 |
 | [OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex, const OH_AVBuffer *sample)](#oh_avmuxer_writesamplebuffer) | 将sample写入封装器。该接口必须在[OH_AVMuxer_Start](#oh_avmuxer_start)后，[OH_AVMuxer_Stop](#oh_avmuxer_stop)前调用。调用者需要按sample中的时间顺序将sample写入正确的音视频轨。 |
-| [OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)](#oh_avmuxer_stop) | 停止封装。停止封装。封装器停止后不支持重新开始。 |
+| [OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)](#oh_avmuxer_stop) | 停止封装。封装器停止后不支持重新开始。 |
 | [OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)](#oh_avmuxer_destroy) | 清理内部资源，销毁OH_AVMuxer实例。<br> 注意不能重复销毁，否则会导致程序崩溃。 |
 
 ## 函数说明
@@ -260,7 +260,7 @@ OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 
 **描述**
 
-停止封装。停止封装。封装器停止后不支持重新开始。
+停止封装。封装器停止后不支持重新开始。
 
 **系统能力：** SystemCapability.Multimedia.Media.Muxer
 
