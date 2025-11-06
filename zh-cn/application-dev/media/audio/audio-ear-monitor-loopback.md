@@ -248,7 +248,7 @@ async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   }
 }
 
-// 设置音频返听的混响模式。
+// 设置音频返听的均衡器类型。
 async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {
