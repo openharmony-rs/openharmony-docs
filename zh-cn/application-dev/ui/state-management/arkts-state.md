@@ -982,6 +982,23 @@ struct ConsumerChild {
     4. Text最终显示为2。
 <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State count: number = 1;
+
+  build() {
+    Column() {
+      // 应避免直接在Text组件内改变count的值
+      Text(`${this.count++}`)
+        .width(50)
+        .height(50)
+    }
+  }
+}
+```
+
 在首次创建的过程中，Text组件被多渲染了一次，最终显示为2。
 
 框架识别到在build里改变状态变量会打error日志，error日志为：
