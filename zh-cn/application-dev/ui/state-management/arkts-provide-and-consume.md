@@ -258,13 +258,13 @@
 
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
    需要注意类型不相等判断，包括类实例的判断，比如：
-```ts
-class A {}
-class B {}
-// 两个message都为object类型，但其构造函数不同，属于不同类型
-@Provide message: A = new A();
-@Consume message: B = new B();
-```
+   ```ts
+   class A {}
+   class B {}
+   // 两个message都为object类型，但其构造函数不同，属于不同类型
+   @Provide message: A = new A();
+   @Consume message: B = new B();
+   ```
 在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 
 <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
