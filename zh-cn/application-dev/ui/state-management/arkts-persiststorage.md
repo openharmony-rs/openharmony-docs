@@ -154,6 +154,52 @@ PersistentStorage支持联合类型和undefined和null，在下面的示例中�
 
 <!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->
 
+``` TypeScript
+PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
+
+@Entry
+@Component
+struct PersistedMap {
+  @StorageLink('persistedMapString') persistedMapString: Map<number, string> = new Map<number, string>([]);
+
+  persistMapString() {
+    this.persistedMapString = new Map<number, string>([[3, 'one'], [6, 'two'], [9, 'three']]);
+  }
+
+  build() {
+    List() {
+      ListItem() {
+        Column() {
+          Text(`Persisted Map String is `)
+            .margin(20)
+          ForEach(Array.from(this.persistedMapString.entries()), (item: [number, string]) => {
+            Text(`${item[0]} ${item[1]}`)
+          })
+
+          Button() {
+            Text('Persist Map String')
+              .fontSize(20)
+              .fontWeight(FontWeight.Bold)
+              .fontColor(Color.White)
+          }
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('60%')
+          .height('5%')
+          .onClick(() => {
+            this.persistMapString();
+          })
+
+        }.width('100%')
+      }
+    }
+  }
+}
+```
+
 ### 持久化Set类型变量
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
