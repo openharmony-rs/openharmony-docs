@@ -4,7 +4,7 @@
 <!--Owner: @huanleima-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供公共interface或枚举能力。
 
@@ -30,6 +30,6 @@ import { common } from '@kit.MDMKit';
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 无管控策略。|
+| DEFAULT | 0  | 默认，无管控策略。|
 | DISALLOW | 1  | 禁用。|
 | FORCE_OPEN | 2  | 强制开启。|
