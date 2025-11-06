@@ -362,6 +362,32 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【正例】
     <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct ProtectedCorrectAccessRestrictions {
+      build() {
+        Column() {
+          ProtectedCorrectComponentChild({ regularValue: 'Hello' })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Component
+    struct ProtectedCorrectComponentChild {
+      regularValue: string = 'Hello';
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 
 5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰，并且通过父组件初始化赋值时，ArkTS会进行校验并产生告警日志。
