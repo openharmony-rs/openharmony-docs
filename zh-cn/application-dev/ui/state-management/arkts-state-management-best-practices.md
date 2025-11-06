@@ -265,6 +265,53 @@ struct Page {
 
 <!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) -->
 
+``` TypeScript
+@Observed
+class PageTranslate {
+  public translateX: number = 20;
+}
+@Component
+struct PageTitle {
+  build() {
+    Row() {
+      // $r('app.media.background')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.background'))
+        .width(50)
+        .height(50)
+      Text('Title')
+        .fontSize(20)
+    }
+  }
+}
+@Entry
+@Component
+struct Page1 {
+  @State translateObj: PageTranslate = new PageTranslate();
+
+  build() {
+    Column() {
+      PageTitle()
+      Stack() {
+      }
+      .backgroundColor('black')
+      .width(200)
+      .height(400)
+      Button('move')
+        .onClick(() => {
+          this.getUIContext().animateTo({
+            duration: 50
+          },()=>{
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
+          })
+        })
+    }
+    .translate({ // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
+      x: this.translateObj.translateX
+    })
+  }
+}
+```
+
 ## 合理控制对象类型状态变量关联的组件数量
 
 如果将一个复杂对象定义为状态变量，需要合理控制其关联的组件数。当对象中某个成员属性发生变化时，会导致该对象关联的所有组件刷新，即使这些组件并未直接使用该属性。为了避免这种“冗余刷新”对性能产生影响，建议合理拆分该复杂对象，控制对象关联的组件数量。具体可参考[精准控制组件的更新范围](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/precisely-control-render-scope.md)和[状态管理合理使用开发指导](properly-use-state-management-to-develope.md)两篇文章。
