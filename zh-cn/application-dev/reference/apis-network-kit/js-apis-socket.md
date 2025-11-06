@@ -7873,7 +7873,7 @@ TLS连接的操作。
 | ALPNProtocols  | Array\<string\>                         | 否   | 是 | ALPN协议，支持["spdy/1", "http/1.1"]，默认为[]。      |
 | skipRemoteValidation<sup>12+</sup>  | boolean                         | 否   | 是 | 是否跳过对服务端进行证书认证，默认为false。true：跳过对服务端进行证书认证；false：不跳过对服务端进行证书认证。      |
 | proxy<sup>18+</sup>   | [ProxyOptions](#proxyoptions18) | 否   | 是  | 使用的代理信息，默认不使用代理。 |
-| timeout<sup>22+</sup>   | number | 否   | 是  |TLSSocket连接在超时后会失败。 连接超时时间。单位：ms，默认为0。传入值需为0-4294967295范围内的整数。 |
+| timeout<sup>22+</sup>   | number | 否   | 是  |TLSSocket连接在超时后会失败。 连接超时时间，单位：ms，默认为0。传入值需为0-4294967295范围内的整数。 |
 
 ## TLSSecureOptions<sup>9+</sup>
 
