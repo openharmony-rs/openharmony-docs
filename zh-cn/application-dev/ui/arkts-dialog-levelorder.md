@@ -91,6 +91,78 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
 ## 完整示例
  <!-- @[dialog_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
  
+ ``` TypeScript
+ import { LevelOrder } from '@kit.ArkUI';
+ import { BusinessError } from '@kit.BasicServicesKit';
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+ const INDEX: number = 0;
+ const DOMAIN = 0x0000;
+ 
+ @Entry
+ @Component
+ export struct DialogBoxLayer {
+   @StorageLink('dialogIndex') dialogIndex: number = INDEX;
+ 
+   @Builder
+   normalCustomDialog(index: number) {
+     Column() {
+       // 'open_normal_dialog'资源文件中的value值为'我是普通弹窗'。
+       Text(this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('open_normal_dialog') as string +
+         index).fontSize(30)
+     }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+ 
+ 
+   @Builder
+   topCustomDialog() {
+     Column() {
+       // 'app.string.top_dialog'资源文件中的value值为'我是置顶弹窗'。
+       Text($r('app.string.top_dialog')).fontSize(30)
+       Row({ space: 50 }) {
+         // 'app.string.open_dialog'资源文件中的value值为'点我打开普通弹窗'。
+         Button($r('app.string.open_dialog'))
+           .onClick(() => {
+             this.getUIContext().getPromptAction().openCustomDialog({
+               builder: () => {
+                 this.normalCustomDialog(this.dialogIndex);
+               },
+               levelOrder: LevelOrder.clamp(0),
+             })
+               .catch((err: BusinessError) => {
+                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+               });
+             this.dialogIndex++;
+           })
+       }
+     }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+   }
+ 
+ 
+   build() {
+     NavDestination() {
+       Row() {
+         Column({ space: 5 }) {
+           // 'app.string.click_dialog'资源文件中的value值为'点击弹窗'。
+           Button($r('app.string.click_dialog'))
+             .fontSize(20)
+             .onClick(() => {
+               this.getUIContext().getPromptAction().openCustomDialog({
+                 builder: () => {
+                   this.topCustomDialog();
+                 },
+                 levelOrder: LevelOrder.clamp(100000)
+               }).catch((err: BusinessError) => {
+                 hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + ' ' + err.message);
+               });
+             })
+         }.width('100%')
+       }
+     }
+   }
+ }
+ ```
+ 
  
  
 ![dialog-levelorder-demo1](figures/dialog-levelorder-demo1.gif)
