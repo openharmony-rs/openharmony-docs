@@ -1,4 +1,4 @@
-# @ohos.enterprise.common（公共管理）
+# @ohos.enterprise.common（Enterprise公共模块）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供公共interface或枚举能力。
+本模块提供企业设备管理的公共接口或枚举类型。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@
 import { common } from '@kit.MDMKit';
 ```
 
-## ManagedPolicy<sup>22+</sup>
+## ManagedPolicy
 
 企业设备管控策略。
 
