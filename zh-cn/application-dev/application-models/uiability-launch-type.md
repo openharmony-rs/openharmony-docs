@@ -36,21 +36,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 如果需要使用singleton启动模式，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`singleton`即可。
 
 
-<!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/singleton.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        "launchType": "singleton",
-        // ...
-      }
-    ]
-  }
-}
-```
+<!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
 
 ## multiton启动模式
@@ -63,21 +49,7 @@ multiton启动模式为多实例模式，每次调用[startAbility()](../referen
 multiton启动模式的开发使用，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`multiton`即可。
 
 
-<!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/multiton.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        "launchType": "multiton",
-        // ...
-      }
-    ]
-  }
-}
-```
+<!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
 
 ## specified启动模式
@@ -100,21 +72,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 
 1. 在SpecifiedAbility中，需要将[module.json5配置文件](../quick-start/module-configuration-file.md)的`launchType`字段配置为`specified`。
    
-    <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/specified.json5) -->
-
-    ``` JSON5
-    {
-      "module": {
-        // ...
-        "abilities": [
-          {
-            "launchType": "specified",
-            // ...
-          }
-        ]
-      }
-    }
-    ```
+    <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
 2. 在EntryAbility中，调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，可以在[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
 
