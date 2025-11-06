@@ -42,6 +42,36 @@ V2迁移策略：使用\@ObservedV2和\@Trace。
 V1实现：
 <!-- @[Migration_Class_Attribute_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV1.ets) -->
 
+``` TypeScript
+@Observed
+class User {
+  @Track public name: string;
+  @Track public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Entry
+@Component
+struct UserProfile {
+  @State user: User = new User('Alice', 30);
+
+  build() {
+    Column() {
+      Text(`Name: ${this.user.name}`)
+      Text(`Age: ${this.user.age}`)
+      Button('increase age')
+        .onClick(() => {
+          this.user.age++;
+        })
+    }
+  }
+}
+```
+
 V2迁移策略：使用\@ObservedV2和\@Trace。
 <!-- @[Migration_Class_Attribute_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV2.ets) -->
 
