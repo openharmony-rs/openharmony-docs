@@ -200,6 +200,65 @@ struct CompA {
 
 <!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
 
+``` TypeScript
+@Observed
+class Translate {
+  public translateX: number = 20;
+}
+@Component
+struct Title {
+  @ObjectLink translateObj: Translate;
+  build() {
+    Row() {
+      // $r('app.media.background')需要替换为开发者所需的资源文件。
+      Image($r('app.media.background'))
+        .width(50)
+        .height(50)
+        .translate({
+          x:this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
+        })
+      Text('Title')
+        .fontSize(20)
+        .translate({
+          x: this.translateObj.translateX
+        })
+    }
+  }
+}
+@Entry
+@Component
+struct Page {
+  @State translateObj: Translate = new Translate();
+
+  build() {
+    Column() {
+      Title({
+        translateObj: this.translateObj
+      })
+      Stack() {
+      }
+      .backgroundColor('black')
+      .width(200)
+      .height(400)
+      .translate({
+        x:this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
+      })
+      Button('move')
+        .translate({
+          x:this.translateObj.translateX
+        })
+        .onClick(() => {
+          this.getUIContext().animateTo({
+            duration: 50
+          },()=>{
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
+          })
+        })
+    }
+  }
+}
+```
+
 在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有子组件均位于Page组件的Column下，因此将所有子组件相同的translate属性统一到Column上，来实现精准控制状态变量关联的组件数。
 
 【正例】
