@@ -79,6 +79,32 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
  <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->
+ 
+ ``` TypeScript
+ @Builder
+ function myBuilder(value: string, size: number) {
+   Text(value)
+     .fontSize(size)
+ }
+ 
+ let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
+ 
+ @Entry
+ @Component
+ struct TestIndex {
+   @State message: string = 'Hello World';
+ 
+   build() {
+     Row() {
+       Column() {
+         globalBuilder.builder(this.message, 50)
+       }
+       .width('100%')
+     }
+     .height('100%')
+   }
+ }
+ ```
 
 ## @Builder方法赋值给变量在UI语法中使用
 
