@@ -27,6 +27,7 @@
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
 当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+
 图示如下：
 
 ![freezeInPage](./figures/freezeInPage.png)
@@ -103,15 +104,15 @@ struct Page2 {
 
 在上面的示例中：
 
-1. 在页面1中点击`changeBookName`，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
+1.在页面1中点击`changeBookName`，bookTest变量的name属性改变，@Monitor中注册的方法onMessageChange会被调用。
 
-2. 在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
+2.在页面1中点击`go to next page`，跳转到页面2，然后延迟1s更新状态变量bookTest。在更新bookTest的时候，已经跳转到页面2，页面1处于inactive状态，[@Local](./arkts-new-local.md)装饰的状态变量bookTest将不响应更新，其@Monitor不会调用，关联的节点不会刷新。
 
 Trace如下：
 
 ![Example Image](./figures/freeze1.png)
 
-3. 点击`Back`，页面2被销毁，页面1的状态由inactive变为active。状态变量bookTest的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
+3.点击`Back`，页面2被销毁，页面1的状态由inactive变为active。状态变量bookTest的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
 
 ![freezeV2Page](./figures/freezeV2page.gif)
 
