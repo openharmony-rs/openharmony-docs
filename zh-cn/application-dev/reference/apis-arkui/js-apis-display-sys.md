@@ -1,4 +1,10 @@
 # @ohos.display (屏幕属性)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 屏幕属性提供管理显示设备的一些基础能力，包括获取默认显示设备的信息，获取所有显示设备的信息以及监听显示设备的插拔行为。
 
@@ -28,7 +34,7 @@ hasPrivateWindow(displayId: number): boolean
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId    | number                    | 是   | 显示设备的id，该参数仅支持整数输入。该参数大于等于0。 |
+| displayId    | number                    | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
 
 **返回值：**
 
@@ -59,18 +65,18 @@ try {
   try {
     ret = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
-    console.error('Failed to check has privateWindow or not. Code: ' + JSON.stringify(exception));
+    console.error(`Failed to check has privateWindow or not. Code: ${exception.code} , message : ${exception.message}`);
   }
   if (ret == undefined) {
-    console.log("Failed to check has privateWindow or not.");
+    console.error("Failed to check has privateWindow or not.");
   }
   if (ret) {
-    console.log("There has privateWindow.");
+    console.info("There has privateWindow.");
   } else if (!ret) {
-    console.log("There has no privateWindow.");
+    console.info("There has no privateWindow.");
   }
 } catch (exception) {
-  console.error('Failed to obtain the default display object. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to obtain the default display object. Code: ${exception.code} , message : ${exception.message}`);
 }
 ```
 
@@ -106,12 +112,12 @@ on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<boolean> = (data: boolean) => {
-  console.info('Listening enabled. Data: ' + JSON.stringify(data));
+  console.info(`Listening enabled. Data: ${data}`);
 };
 try {
   display.on("privateModeChange", callback);
 } catch (exception) {
-  console.error('Failed to register callback. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to register callback. Code: ${exception.code} , message : ${exception.message}`);
 }
 ```
 
@@ -147,18 +153,20 @@ off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 try {
   display.off("privateModeChange");
 } catch (exception) {
-  console.error('Failed to unregister callback. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to unregister callback. Code: ${exception.code} , message : ${exception.message}`);
 }
 ```
 
 ## display.setFoldDisplayMode<sup>10+</sup>
 setFoldDisplayMode(mode: FoldDisplayMode): void
 
-更改可折叠设备的显示模式，不适用于2in1设备。
+更改可折叠设备的显示模式。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备上调用不生效不报错，在其他设备中可正常调用。
 
 **参数：**
 
@@ -185,7 +193,7 @@ try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
   display.setFoldDisplayMode(mode);
 } catch (exception) {
-  console.error('Failed to change the fold display mode. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to change the fold display mode. Code: ${exception.code} , message : ${exception.message}`);
 }
 ```
 
@@ -203,7 +211,7 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | mode     | [FoldDisplayMode](js-apis-display.md#folddisplaymode10)    | 是   | 可折叠设备的显示模式。 |
-| reason     | string    | 否   | 更改显示模式的原因。不设置，则默认为空字符串。 |
+| reason     | string    | 是   | 更改显示模式的原因。不设置，则默认为空字符串。 |
 
 **错误码：**
 
@@ -261,7 +269,7 @@ try {
   let locked: boolean = false;
   display.setFoldStatusLocked(locked);
 } catch (exception) {
-  console.error('Failed to change the fold status locked mode. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to change the fold status locked mode. Code: ${exception.code} , message : ${exception.message}`);
 }
 ```
 
@@ -314,7 +322,7 @@ export default class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error('Failed to add virtual screen blocklist. Code: ' + JSON.stringify(err));
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
     })
   }
 }
@@ -369,14 +377,14 @@ export default class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error('Failed to add virtual screen blocklist. Code: ' + JSON.stringify(err));
+      console.error(`Failed to add virtual screen blocklist. Code: ${err.code} , message : ${err.message}`);
     })
 
     promise = display.removeVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in removing virtual screen blocklist.');
     }).catch((err: BusinessError) => {
-      console.error('Failed to remove virtual screen blocklist. Code: ' + JSON.stringify(err));
+      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code} , message: ${err.message}`);
     })
   }
 }
@@ -409,7 +417,7 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 801 | Capability not supported on this device. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -424,10 +432,10 @@ displayClass = display.getDefaultDisplaySync();
 displayClass.hasImmersiveWindow((err: BusinessError, data) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error('Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
+      console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message : ${err.message}`);
       return;
     }
-    console.info('Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
+    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 });
 ```
 ### hasImmersiveWindow<sup>11+</sup>
@@ -452,7 +460,7 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 801 | Capability not supported on this device. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -466,8 +474,8 @@ let displayClass: display.Display | null = null;
 displayClass = display.getDefaultDisplaySync();
 let promise = displayClass.hasImmersiveWindow();
 promise.then((data) => {
-  console.info('Succeeded in checking whether there is immersive window. data: ' + JSON.stringify(data));
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error('Failed to check whether there is immersive window. Code: ' + JSON.stringify(err));
+  console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message: ${err.message}`);
 })
 ```
