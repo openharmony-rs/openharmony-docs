@@ -159,3 +159,71 @@ PersistentStorage支持联合类型和undefined和null，在下面的示例中�
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
 <!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->
+
+``` TypeScript
+PersistentStorage.persistProp('persistedSet', new Set<number>([]));
+
+@Entry
+@Component
+struct PersistedSet {
+  @StorageLink('persistedSet') persistedSet: Set<number> = new Set<number>([]);
+
+  persistSet() {
+    this.persistedSet = new Set<number>([33, 1, 3]);
+  }
+
+  clearSet() {
+    this.persistedSet.clear();
+  }
+
+  build() {
+    List() {
+      ListItem() {
+        Column() {
+          Text(`Persisted Set is `)
+            .margin(20)
+          ForEach(Array.from(this.persistedSet.entries()), (item: [number, number]) => {
+            Text(`${item[1]}`)
+          })
+
+          Button() {
+            Text('Persist Set')
+              .fontSize(25)
+              .fontWeight(FontWeight.Bold)
+              .fontColor(Color.White)
+          }
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('60%')
+          .height('5%')
+          .onClick(() => {
+            this.persistSet();
+          })
+
+          Button() {
+            Text('Persist Clear')
+              .fontSize(25)
+              .fontWeight(FontWeight.Bold)
+              .fontColor(Color.White)
+          }
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('60%')
+          .height('5%')
+          .onClick(() => {
+            this.clearSet();
+          })
+
+        }
+        .width('100%')
+      }
+    }
+  }
+}
+```
