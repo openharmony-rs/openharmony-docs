@@ -30,165 +30,18 @@
 在V1中，无法直接观察嵌套对象的属性变化，只能观察到第一层属性的变化。必须通过创建自定义组件并使用\@ObjectLink来实现对嵌套属性的观察。V2中使用\@ObservedV2和\@Trace，可以直接对嵌套对象的属性进行深度观察，减少复杂度。
 
 V1实现：
-
-```ts
-@Observed
-class Address {
-  city: string;
-
-  constructor(city: string) {
-    this.city = city;
-  }
-}
-
-@Observed
-class User {
-  name: string;
-  address: Address;
-
-  constructor(name: string, address: Address) {
-    this.name = name;
-    this.address = address;
-  }
-}
-
-@Component
-struct AddressView {
-  // 子组件中@ObjectLink装饰的address从父组件初始化，接收被@Observed装饰的Address实例
-  @ObjectLink address: Address;
-
-  build() {
-    Column() {
-      Text(`City: ${this.address.city}`)
-      Button("city +a")
-        .onClick(() => {
-          this.address.city += "a";
-        })
-    }
-  }
-}
-
-@Entry
-@Component
-struct UserProfile {
-  @State user: User = new User("Alice", new Address("New York"));
-
-  build() {
-    Column() {
-      Text(`Name: ${this.user.name}`)
-      // 无法直接观察嵌套对象的属性变化，例如this.user.address.city
-      // 只能观察到对象第一层属性变化，所以需要将嵌套的对象Address抽取到自定义组件AddressView
-      AddressView({ address: this.user.address })
-    }
-  }
-}
-```
+<!-- @[Migration_Nested_Object_Properties_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV1.ets) -->
 
 V2迁移策略：使用\@ObservedV2和\@Trace。
+<!-- @[Migration_Nested_Object_Properties_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV2.ets) -->
 
-```ts
-@ObservedV2
-class Address {
-  @Trace city: string;
-
-  constructor(city: string) {
-    this.city = city;
-  }
-}
-
-@ObservedV2
-class User {
-  @Trace name: string;
-  @Trace address: Address;
-
-  constructor(name: string, address: Address) {
-    this.name = name;
-    this.address = address;
-  }
-}
-
-@Entry
-@ComponentV2
-struct UserProfile {
-  @Local user: User = new User("Alice", new Address("New York"));
-
-  build() {
-    Column() {
-      Text(`Name: ${this.user.name}`)
-      // 通过@ObservedV2和@Trace可以直接观察嵌套属性
-      Text(`City: ${this.user.address.city}`)
-      Button("city +a")
-        .onClick(() => {
-          this.user.address.city += "a";
-        })
-    }
-  }
-}
-```
 **类属性变化观测**
 
 在V1中，\@Observed用于观察类实例及其属性的变化，\@Track用于类对象的属性级的观察。在V2中，\@Trace实现了观察和更新属性级别变化的能力，搭配\@ObservedV2实现高效的UI更新。
 
 V1实现：
-
-```ts
-@Observed
-class User {
-  @Track name: string;
-  @Track age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-
-@Entry
-@Component
-struct UserProfile {
-  @State user: User = new User('Alice', 30);
-
-  build() {
-    Column() {
-      Text(`Name: ${this.user.name}`)
-      Text(`Age: ${this.user.age}`)
-      Button("increase age")
-        .onClick(() => {
-          this.user.age++;
-        })
-    }
-  }
-}
-```
+<!-- @[Migration_Class_Attribute_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV1.ets) -->
 
 V2迁移策略：使用\@ObservedV2和\@Trace。
+<!-- @[Migration_Class_Attribute_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV2.ets) -->
 
-```ts
-@ObservedV2
-class User {
-  @Trace name: string;
-  @Trace age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-
-@Entry
-@ComponentV2
-struct UserProfile {
-  @Local user: User = new User('Alice', 30);
-
-  build() {
-    Column() {
-      Text(`Name: ${this.user.name}`)
-      Text(`Age: ${this.user.age}`)
-      Button("Increase age")
-        .onClick(() => {
-          this.user.age++;
-        })
-    }
-  }
-}
-```
