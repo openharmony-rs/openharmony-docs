@@ -203,6 +203,36 @@ struct Child {
 
 <!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->
 
+``` TypeScript
+class Tmp {
+  public paramA2: string = 'hello';
+}
+
+@Builder
+function overBuilder(param: Tmp) {
+  Column() {
+    Text(`wrapBuildervalue:${param.paramA2}`)
+  }
+}
+
+const wBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
+
+@Entry
+@Component
+struct Parent {
+  @State label: Tmp = new Tmp();
+
+  build() {
+    Column() {
+      wBuilder.builder({ paramA2: this.label.paramA2 })
+      Button('Click me').onClick(() => {
+        this.label.paramA2 = 'ArkUI';
+      })
+    }
+  }
+}
+```
+
 ## 常见问题
 
 ### 重复定义wrapBuilder失效
