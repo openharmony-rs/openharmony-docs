@@ -1692,9 +1692,9 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
-      const errCode: number = err.code;
+      const errCode = err?.code;
       if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err}`);
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       windowClass = data;
@@ -1702,11 +1702,14 @@ export default class EntryAbility extends UIAbility {
         let promise = windowClass.setStatusBarColor(ColorMetrics.numeric(0x112233));
         promise.then(() => {
           console.info('Succeeded in setting the status bar color.');
-        }).catch((err: BusinessError) => {
-          console.error(`Set the status bar color failed. Cause code: ${err}`);
+        }).catch((err: BusinessError<void> | null) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Set the status bar color failed. Cause code: ${err.code}, message: ${err.message}`);
+          }
         });
       } catch (exception) {
-        console.error(`Failed to set the status bar color. Cause code: ${exception}`);
+        console.error(`Failed to set the status bar color. Cause code: ${exception.code}, message: ${exception.message}`);
       }
     });
   }

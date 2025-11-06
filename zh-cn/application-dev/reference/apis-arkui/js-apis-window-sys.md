@@ -2970,8 +2970,9 @@ export default class EntryAbility extends UIAbility {
     // 获取应用主窗口。
     let mainWindow: window.Window | undefined = undefined;
     windowStage.getMainWindow((err, data) => {
-      if (err) {
-        console.error(`Failed to obtain the main window. Cause code: ${err}`);
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: Cause code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       mainWindow = data;
@@ -2981,8 +2982,9 @@ export default class EntryAbility extends UIAbility {
       try {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
         mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
-          if (err) {
-            console.error(`Failed to hide the non-system floating windows. Cause code: ${err}`);
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in hiding the non-system floating windows.');
