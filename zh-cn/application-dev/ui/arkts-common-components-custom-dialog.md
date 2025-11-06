@@ -1,4 +1,4 @@
-# 基础自定义弹出框 (CustomDialog)(不推荐)
+# 基础自定义弹出框 (CustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
