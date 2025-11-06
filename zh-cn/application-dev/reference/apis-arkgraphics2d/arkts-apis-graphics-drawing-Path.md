@@ -1,8 +1,13 @@
 # Class (Path)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
->
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -24,6 +29,8 @@ constructor()
 
 构造一个路径。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **示例：**
@@ -39,6 +46,8 @@ let path: drawing.Path = new drawing.Path();
 constructor(path: Path)
 
 构造一个已有路径的副本。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -67,6 +76,8 @@ set(src: Path): void
 
 使用另一个路径对当前路径进行更新。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -93,6 +104,8 @@ path1.set(path);
 moveTo(x: number, y: number) : void
 
 设置自定义路径的起始点位置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -126,6 +139,8 @@ lineTo(x: number, y: number) : void
 
 添加一条从路径的最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -158,6 +173,8 @@ path.lineTo(10, 15);
 arcTo(x1: number, y1: number, x2: number, y2: number, startDeg: number, sweepDeg: number): void
 
 给路径添加一段弧线，绘制弧线的方式为角度弧，该方式首先会指定一个矩形边框，取其内切椭圆，然后会指定一个起始角度和扫描度数，从起始角度扫描截取的椭圆周长一部分即为绘制的弧线。另外会默认添加一条从路径的最后点位置到弧线起始点位置的线段。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -196,6 +213,8 @@ quadTo(ctrlX: number, ctrlY: number, endX: number, endY: number): void
 
 添加从路径最后点位置（若路径没有内容则为 (0, 0)）到目标点位置的二阶贝塞尔曲线。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -231,6 +250,8 @@ conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: number
 
 在当前路径上添加一条路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线，其控制点为 (ctrlX, ctrlY)，结束点为 (endX, endY)。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -265,6 +286,8 @@ path.conicTo(200, 400, 100, 200, 0);
 cubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: number, endY: number): void
 
 添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔圆滑曲线。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -303,6 +326,8 @@ rMoveTo(dx: number, dy: number): void
 
 设置一个相对于当前路径终点（若路径没有内容则默认为 (0, 0)）的路径起始点位置。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -335,6 +360,8 @@ rLineTo(dx: number, dy: number): void
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -366,6 +393,8 @@ path.rLineTo(400, 200);
 rQuadTo(dx1: number, dy1: number, dx2: number, dy2: number): void
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的二阶贝塞尔曲线。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -401,6 +430,8 @@ rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: numbe
 
 使用相对位置在当前路径上添加一条路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的圆锥曲线。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -435,6 +466,8 @@ path.rConicTo(200, 400, 100, 200, 0);
 rCubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: number, endY: number): void
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的三阶贝塞尔曲线。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -506,26 +539,20 @@ path.addArc(rect, 90, 180);
 
 ## addCircle<sup>12+</sup>
 
-ArkTS-Dyn: addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): void
-
-ArkTS-Sta: addCircle(x: double, y: double, radius: double, pathDirection?: PathDirection): void
+addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): void
 
 按指定方向，向路径添加圆形，圆的起点位于(x + radius, y)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
-| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
-| radius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
+| x   | number | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
+| y   | number | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
+| radius   | number | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -547,25 +574,19 @@ path.addCircle(100, 200, 50, drawing.PathDirection.CLOCKWISE);
 
 ## addOval<sup>12+</sup>
 
-ArkTS-Dyn: addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
-
-ArkTS-Sta: addOval(rect: common2D.Rect, start: int, pathDirection?: PathDirection): void
+addOval(rect: common2D.Rect, start: number, pathDirection?: PathDirection): void
 
 按指定方向，将矩形的内切椭圆添加到路径中。
 
 **系统能力：** SystemCapability.Graphics.Drawing
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 椭圆的矩形边界。      |
-| start   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示椭圆初始点的索引，0，1，2，3分别对应椭圆的上端点，右端点，下端点，左端点，该参数为不小于0的整数，大于等于4时会对4取余。 |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
+| start   | number | 是   | 表示椭圆初始点的索引，0，1，2，3分别对应椭圆的上端点，右端点，下端点，左端点，该参数为不小于0的整数，大于等于4时会对4取余。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -593,16 +614,12 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 向路径中添加的矩形轮廓。      |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -630,16 +647,12 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | roundRect        | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是    | 圆角矩形对象。      |
-| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | ArkTS-Dyn: 表示路径方向。当pathDirection传入undefined时，该方法将抛错误码。不传该参数时，默认为顺时针方向。<br/>ArkTS-Sta: 表示路径方向。当不传该参数，或者pathDirection传入undefined时，默认为顺时针方向。 |
+| pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
 
 **错误码：**
 
@@ -668,16 +681,12 @@ addPath(path: Path, matrix?: Matrix | null): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | path        | [Path](arkts-apis-graphics-drawing-Path.md) | 是    | 表示源路径对象。      |
-| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)\|null  | 否   | ArkTS-Dyn: 表示矩阵对象。当matrix传入undefined时，该方法将抛错误码。不传该参数时，默认为单位矩阵。<br/>ArkTS-Sta: 表示矩阵对象。当不传该参数，或者matrix传入undefined时，默认为单位矩阵。 |
+| matrix   | [Matrix](arkts-apis-graphics-drawing-Matrix.md)\|null  | 否   | 表示矩阵对象，默认为单位矩阵。 |
 
 **错误码：**
 
@@ -806,6 +815,7 @@ path.reset();
 isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
 path.setLastPoint(50, 50);
+isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
 ```
 

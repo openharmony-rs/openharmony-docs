@@ -1,4 +1,10 @@
 # @ohos.graphics.common2D (2D图形通用数据类型)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 本模块定义了一些2D图形领域的通用数据类型。
 
@@ -18,6 +24,8 @@ import { common2D } from '@kit.ArkGraphics2D';
 
 ARGB格式的颜色描述。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
@@ -31,6 +39,8 @@ ARGB格式的颜色描述。
 
 矩形区域，通过2个坐标点可以描述出一个矩形区域，这2个点分别认为是矩形区域的左上角点与右下角点。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称   | 类型   | 只读 | 可选 | 说明                           |
@@ -43,6 +53,8 @@ ARGB格式的颜色描述。
 ## Point<sup>12+</sup>
 
 坐标点。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
