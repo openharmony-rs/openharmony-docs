@@ -351,5 +351,5 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
-- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-api-->
-- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-api-->
+- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
+- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
