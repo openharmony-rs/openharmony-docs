@@ -29,6 +29,53 @@
 
 <!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateTrack]';
+class Info {
+  public name: string = 'Jack';
+  public age: number = 12;
+}
+
+@Entry
+@Component
+struct Index {
+  @State info: Info = new Info();
+
+  // 借助getFontSize的日志打印，可以分辨哪个组件触发了渲染
+  getFontSize(id: number): number {
+    hilog.info(DOMAIN_NUMBER, TAG, `Component ${id} render`);
+    return 30;
+  }
+
+  build() {
+    Column() {
+      Text(`name: ${this.info.name}`)
+        .fontSize(this.getFontSize(1))
+      Text(`age: ${this.info.age}`)
+        .fontSize(this.getFontSize(2))
+
+      // 点击当前Button，可以发现当前虽然仅改变了name属性
+      // 但是依旧会触发两个Text的刷新
+      // Text(`age: ${this.info.age}`)是冗余刷新
+      Button('change name').onClick(() => {
+        this.info.name = 'Jane';
+      })
+
+      // 点击当前Button，可以发现当前虽然仅改变了age属性
+      // 但是依旧会触发两个Text的刷新
+      // Text(`name: ${this.info.name}`)是冗余刷新
+      Button('change age').onClick(() => {
+        this.info.age++;
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 > **说明：**
 >
