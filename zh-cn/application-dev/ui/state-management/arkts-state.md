@@ -494,6 +494,15 @@ struct MyComponent {
 【反例】
 <!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) -->
 
+``` TypeScript
+export default class PlayDetailViewModel {
+  public coverUrl: string = '#00ff00';
+  public changeCoverUrl = () => {
+    this.coverUrl = '#00F5FF';
+  }
+}
+```
+
 
 <!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
 
