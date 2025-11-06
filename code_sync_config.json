@@ -16946,5 +16946,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-page-custom-components-lifecycle.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"nested_custom_components",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
