@@ -33,6 +33,28 @@
 
 - 和\@Styles不同，\@Extend装饰的方法支持参数，开发者可以在调用时传递参数，调用遵循TS方法传值调用。
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Extend(Text)
+  function fancy(fontSize: number) {
+    .fontColor(Color.Red)
+    .fontSize(fontSize)
+  }
+  
+  @Entry
+  @Component
+  struct FancyUse {
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(16)
+        Text('Fancy')
+          .fancy(24)
+      }
+    }
+  }
+  ```
 
 - \@Extend装饰的方法的参数可以为function，作为Event事件的句柄。
   <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) -->
