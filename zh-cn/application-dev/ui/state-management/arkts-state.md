@@ -1050,4 +1050,53 @@ struct Index {
 > 需要在aboutToDisappear中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->
 
+``` TypeScript
+class Model {
+  private callback: (() => void) | undefined = () => {
+  };
+
+  add(callback: () => void): void {
+    this.callback = callback;
+  }
+
+  delete(): void {
+    this.callback = undefined;
+  }
+
+  call(): void {
+    if (this.callback) {
+      this.callback();
+    }
+  }
+}
+
+let model: Model = new Model();
+
+@Entry
+@Component
+struct Test {
+  @State count: number = 10;
+
+  aboutToAppear(): void {
+    model.add(() => {
+      this.count++;
+    })
+  }
+
+  build() {
+    Column() {
+      Text(`count值: ${this.count}`)
+      Button('change')
+        .onClick(() => {
+          model.call();
+        })
+    }
+  }
+
+  aboutToDisappear(): void {
+    model.delete();
+  }
+}
+```
+
 此外，也可以使用 LocalStorage在[自定义组件外改变状态变量](./arkts-localstorage.md#自定义组件外改变状态变量)。
