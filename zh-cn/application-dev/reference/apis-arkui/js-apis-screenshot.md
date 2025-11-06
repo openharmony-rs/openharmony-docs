@@ -1,4 +1,10 @@
 # @ohos.screenshot (屏幕截图)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供屏幕截图的能力。
 
@@ -31,13 +37,12 @@ import { screenshot } from '@kit.ArkUI';
 
 设置截取图像的信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| displayId | number |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。 |
+| displayId | number |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| blackWindowIds<sup>21+</sup> | Array\<number>        | 否  | 是 | 表示截取图像时不显示的窗口ID列表，默认为空。窗口ID应为大于0的整数，目前仅[闪控球窗口](js-apis-floatingBall.md)生效，窗口ID为非闪控球窗口、非整数、小于等于0、或者不存在的窗口ID时报参数错误，错误码为401。推荐使用[getFloatingBallWindowInfo()](js-apis-floatingBall.md#getfloatingballwindowinfo)方法获取闪控球窗口ID属性。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## PickInfo
 
@@ -56,11 +61,13 @@ import { screenshot } from '@kit.ArkUI';
 
 pick(): Promise&lt;PickInfo&gt;
 
-获取屏幕截图。此接口仅可在2in1设备上使用。当前仅支持获取displayId为0的屏幕截图。使用Promise异步回调。
+获取屏幕截图，当前仅支持获取displayId为0的屏幕截图。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -85,11 +92,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.log('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.log('pick Rect: ' + pickInfo.pickRect);
+    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
+    console.info('pick Rect: ' + pickInfo.pickRect);
     pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.log(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to pick Code: ' + Code: ${exception.code}, message: ${exception.message}`);
@@ -100,20 +107,22 @@ try {
 
 capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
-获取屏幕全屏截图，此接口仅支持在平板和2in1设备上使用。使用Promise异步回调。
+获取屏幕全屏截图，使用Promise异步回调。
 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](#screenshotpick)接口可实现区域截屏。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CUSTOM_SCREEN_CAPTURE
+**设备行为差异：** 在API version 21之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。
 
 **参数：**
 
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [CaptureOption](#captureoption14) | 否 |  截取图像的相关信息。可包含设备ID，即displayId。 此参数不填时，默认截取displayId为0的屏幕截图。|
+| options | [CaptureOption](#captureoption14) | 否 |  截取图像的相关信息。此参数不填时，默认截取displayId为0的屏幕截图。|
 
 **返回值：**
 
@@ -144,7 +153,7 @@ let captureOption: screenshot.CaptureOption = {
 try {
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.log('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);

@@ -1,9 +1,14 @@
 # Enums
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## WindowType<sup>7+</sup>
 
@@ -21,7 +26,9 @@
 
 ## AvoidAreaType<sup>7+</sup>
 
-窗口内容需要规避区域的类型枚举。
+窗口内容的避让区域的类型枚举。
+
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -30,14 +37,14 @@
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
 | TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | 表示刘海屏区域。                                                              |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示手势区域。当前，各设备均无此类型避让区域。                                    |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示软键盘区域。                                                              |
+| TYPE_CUTOUT                      | 1    | 表示挖孔区域。                                                              |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。                                    |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。                                                              |
 | TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                             |
 
 ## Orientation<sup>9+</sup>
 
-窗口显示方向类型枚举。
+窗口显示方向类型枚举。<!--Del-->不同枚举值之间的区别可查询[窗口Orientation枚举值8\~10或12和枚举值13\~16的区别(API9)](../../faqs/faqs-window-manager.md#窗口orientation枚举值810或12和枚举值1316的区别api9)。<!--DelEnd-->
 
 | 名称                                  | 值   | 说明                          |
 | ------------------------------------- | ---- | ----------------------------- |
@@ -67,10 +74,6 @@
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 | 名称                  | 值   | 说明                                                         |
 | --------------------- | ---- | ------------------------------------------------------------ |
@@ -117,10 +120,6 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 20
-
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | 表示APP未定义窗口模式。       |
@@ -138,10 +137,10 @@
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
-| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20       |
-| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20             |
-| ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20   |
+| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
+| ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
+| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。   |
 
 ## WindowAnimationCurve<sup>20+</sup>
 
@@ -155,6 +154,7 @@
 | ------------------- | ---- | ------------------------------------------------------------ |
 | LINEAR              | 0    | 表示动画从头到尾的速度都是相同的。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中duration必填。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中param选填，且不生效。 |
 | INTERPOLATION_SPRING | 1    | 表示插值器弹簧曲线，一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中的duration参数控制。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中duration选填，且不生效。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中param必填。 |
+| CUBIC_BEZIER | 2 | 表示贝塞尔曲线。<br/>使用该曲线类型时[WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20)中的param和duration为必填项。 |
 
 ## WindowTransitionType<sup>20+</sup>
 
@@ -167,6 +167,34 @@
 | 名称    | 值   | 说明                       |
 | ------- | ---- | -------------------------- |
 | DESTROY | 0    | 表示窗口销毁时的转场动画。 |
+
+## AnimationType<sup>20+</sup>
+
+窗口动画类型枚举。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称    | 值   | 说明                       |
+| ------- | ---- | -------------------------- |
+| FADE_IN_OUT | 0    | 表示窗口动画类型为淡入淡出。淡入动画在窗口显示过程中生效，淡出动画在窗口隐藏过程中生效。 |
+
+## WindowAnchor<sup>20+</sup>
+
+窗口锚点枚举。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称       | 值   | 说明                          |
+| ---------- | ---- | ----------------------------- |
+| TOP_START  | 0    | 窗口左上角。|
+| TOP  | 1    | 窗口上边界横向居中点。|
+| TOP_END  | 2    | 窗口右上角。|
+| START  | 3    | 窗口左边界纵向居中点。|
+| CENTER  | 4    | 窗口横向和纵向居中点。|
+| END  | 5    | 窗口右边界纵向居中点。|
+| BOTTOM_START  | 6    | 窗口左下角。|
+| BOTTOM  | 7    | 窗口下边界横向居中点。|
+| BOTTOM_END  | 8    | 窗口右下角。|
 
 ## RotationChangeType<sup>19+</sup>
 
@@ -209,9 +237,21 @@
 | FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
 
+## OcclusionState<sup>22+</sup>
+
+窗口可见性状态枚举。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   | 值 | 说明                   |
+| ------ | ---- | --------------------- |
+| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他非透明窗口遮挡）。|
+| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他非透明窗口遮挡）。|
+| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他非透明窗口遮挡，或窗口最小化，或窗口隐藏）。|
+
 ## WindowStageEventType<sup>9+</sup>
 
-WindowStage生命周期。
+WindowStage生命周期状态枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -221,12 +261,27 @@ WindowStage生命周期。
 
 | 名称       | 值 | 说明       |
 | ---------- | ------ | ---------- |
-| SHOWN      | 1      | 切到前台，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。 |
+| SHOWN      | 1      | 前台状态，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。 |
 | ACTIVE     | 2      | 获焦状态，例如应用窗口处理点击事件后的状态、应用启动后的状态。 |
 | INACTIVE   | 3      | 失焦状态，例如打开新应用或点击其他窗口后，原获焦窗口的状态。 |
+| HIDDEN     | 4      | 后台状态，例如应用上滑退出、应用窗口关闭。 |
+| RESUMED<sup>11+</sup> | 5      | 前台可交互状态，例如打开应用后，应用处于前台，且可以与用户交互的状态。 |
+| PAUSED<sup>11+</sup>  | 6      | 前台不可交互状态，例如应用在前台时，进入多任务界面，应用依然处于前台但不可以与用户交互的状态。 |
+
+## WindowStageLifecycleEventType<sup>20+</sup>
+
+WindowStage生命周期的状态类型枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 值 | 说明       |
+| ---------- | ------ | ---------- |
+| SHOWN      | 1      | 切到前台，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。 |
+| RESUMED    | 2      | 前台可交互状态，例如打开应用后，应用处于前台，且可以与用户交互的状态。 |
+| PAUSED     | 3      | 前台不可交互状态，例如应用在前台时，进入多任务界面，应用依然处于前台但不可以与用户交互的状态。 |
 | HIDDEN     | 4      | 切到后台，例如应用上滑退出、应用窗口关闭。 |
-| RESUMED<sup>11+</sup> | 5      | 前台可交互状态，例如应用打开后，可以与用户交互的状态。 |
-| PAUSED<sup>11+</sup>  | 6      | 前台不可交互状态，例如从屏幕底部上划，应用进入到多任务界面后的状态。 |
 
 ## ModalityType<sup>14+</sup>
 
@@ -239,7 +294,7 @@ WindowStage生命周期。
 | 名称                 | 值      | 说明       |
 | -------------------- | ------ | ---------- |
 | WINDOW_MODALITY      | 0      | 模态子窗类型为模窗口子窗，当仅需要其父级窗口不响应用户操作时，可选此参数。 |
-| APPLICATION_MODALITY | 1      | 模态子窗类型为模应用子窗，除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> 此接口仅支持在2in1设备下使用。 |
+| APPLICATION_MODALITY | 1      | 模态子窗类型为模应用子窗，该窗口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。<br> 除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在2in1设备、Tablet设备中可正常调用，在其他设备类型中作为入参使用时，对应接口返回801错误码。 |
 
 ## ScreenshotEventType<sup>20+</sup>
 
