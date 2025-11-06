@@ -65,6 +65,12 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[popVibrate_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/PopVibrateMenu.ets) -->
 
+``` TypeScript
+Button('click for Menu')
+  .id('click for Menu')
+  .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
+```
+
 ## 菜单支持避让中轴
 
 从API version 18起，菜单支持中轴避让功能。从API version 20开始，在2in1设备上默认启用（仅在窗口处于瀑布模式时产生避让）。开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)中的enableHoverMode属性，控制菜单是否启用中轴避让。
