@@ -6244,7 +6244,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":80,
 						"name":"testRelativeContainerComponentBarrier_start",
 						"start_line":15
 					}
