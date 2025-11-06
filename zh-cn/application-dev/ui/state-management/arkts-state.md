@@ -274,7 +274,53 @@ struct PlayDetailPage {
 ``` TypeScript
 @Entry
 @Component
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
 struct Index {
+  @State viewModel: TestModel = new TestModel();
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.viewModel.isSuccess ? 'success' : 'failed')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.viewModel.query();
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+
+export class TestModel {
+  public isSuccess: boolean = false;
+  public model: Model = new Model(() => {
+  })
+
+  query() {
+    this.model.callback = () => {
+      this.isSuccess = true;
+    }
+    this.model.query();
+  }
+}
+
+export class Model {
+  public callback: () => void
+
+  constructor(cb: () => void) {
+    this.callback = cb;
+  }
+
+  query() {
+    this.callback();
+  }
+}
+```
   @State viewModel: TestModel = new TestModel();
 
   build() {
