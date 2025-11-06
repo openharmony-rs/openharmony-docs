@@ -150,6 +150,43 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【反例】
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PublicErrorAccessRestrictions {
+      @Provide consumeValue: string = 'Hello';
+    
+      build() {
+        Column() {
+          PublicErrorComponentChild()
+        }
+        .width('100%')
+      }
+    }
+    
+    @Component
+    struct PublicErrorComponentChild {
+      // 此处使用public修饰符时会出现告警日志
+      @LocalStorageProp('sessionLocalProp') public localPropValue: string = 'Hello';
+      // 此处使用public修饰符时会出现告警日志
+      @LocalStorageLink('sessionLocalLink') public localLinkValue: string = 'Hello';
+      // 此处使用public修饰符时会出现告警日志
+      @StorageProp('sessionProp') public storagePropValue: string = 'Hello';
+      // 此处使用public修饰符时会出现告警日志
+      @StorageLink('sessionLink') public storageLinkValue: string = 'Hello';
+      // 此处使用public修饰符时会出现告警日志
+      @Consume public consumeValue: string;
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 
    编译告警日志如下：
