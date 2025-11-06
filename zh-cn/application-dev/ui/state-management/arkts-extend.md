@@ -83,3 +83,22 @@ struct FancyUse {
 
 通过\@Extend组合样式后，使得代码更加简洁，增强可读性。
 <!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct FancyUse {
+  @State label: string = 'Hello World';
+
+  build() {
+    Row({ space: 10 }) {
+      Text(`${this.label}`)
+        .fancyText(100, Color.Blue)
+      Text(`${this.label}`)
+        .fancyText(200, Color.Pink)
+      Text(`${this.label}`)
+        .fancyText(300, Color.Orange)
+    }.margin('20%')
+  }
+}
+```
