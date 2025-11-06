@@ -20,7 +20,7 @@
   - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
-  - [低时延音频播放](audio-fast-playback.md)
+  - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
   - [使用AudioHaptic开发音振协同播放功能](using-audiohaptic-for-playback.md)
   - [播放音量管理](volume-management.md)
@@ -41,7 +41,7 @@
   - [音频录制开发概述](audio-recording-overview.md)
   - [使用AudioCapturer开发音频录制功能](using-audiocapturer-for-recording.md)
   - [使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
-  - [低时延音频录制](audio-fast-recording.md)
+  - [低时延音频录制(C/C++)](audio-fast-recording.md)
   - [管理麦克风](mic-management.md)
   - [音频录制流管理](audio-recording-stream-management.md)
   - [管理全局音频输入设备](audio-input-device-management.md)
