@@ -116,7 +116,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
     @Local name: string = 'Tom';
     @Local age: number = 24;
   
-    @Monitor('message','name')
+    @Monitor('message', 'name')
     onStrChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(DOMAIN, 'testTag', '%{public}s',
