@@ -106,11 +106,9 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -133,7 +131,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
 指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源，使用Promise方式返回结果。
 
@@ -153,7 +151,7 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 | 参数名      | 类型                                                         | 必填 | 说明                       |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | 是   | 创建的图片或者视频文件名。 |
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | 是   | 图片或视频的创建选项。     |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | 是   | 图片或视频的创建选项。     |
 
 **返回值：**
 
@@ -167,11 +165,9 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -317,7 +313,6 @@ requestSource(): Promise&lt;number&gt;
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
