@@ -939,6 +939,34 @@ V2迁移策略：直接替换。
 
 <!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@Entry
+@ComponentV2
+struct MonitorExample {
+  @Local apple: number = 0;
+
+  @Monitor('apple')
+  onFruitChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, TAG, `apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`apple count: ${this.apple}`)
+      Button('add apple')
+        .onClick(() => {
+          this.apple++;
+        })
+    }
+  }
+}
+```
+
 
 **多变量监听**
 
