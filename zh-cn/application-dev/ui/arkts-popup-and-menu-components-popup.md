@@ -119,6 +119,104 @@ export struct TextPopupExample {
 
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
+``` TypeScript
+// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+@Entry
+@Component
+export struct PolymorphicEffectPopupExample {
+  @State scan: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
+  @State createGroupChat: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Create_group_chat') as string;
+  @State electronicWorkCard: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Electronic_work_card') as string;
+  private menus: Array<string> = [this.scan, this.createGroupChat, this.electronicWorkCard];
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupItemBuilder(name: string, action: string) {
+    PopupItemChild({ childName: name, childAction: action })
+  }
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
+    Column() {
+      ForEach(
+        this.menus,
+        (item: string, index) => {
+          this.popupItemBuilder(item, String(index))
+        },
+        (item: string, index) => {
+          return item
+        })
+    }
+    .padding(8)
+  }
+
+  @State customPopup: boolean = false;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .id('click me')
+          .onClick(() => {
+            this.customPopup = !this.customPopup
+          })
+          .bindPopup(
+            this.customPopup,
+            {
+              builder: this.popupBuilder, // 气泡的内容
+              placement: Placement.Bottom, // 气泡的弹出位置
+              popupColor: Color.White, // 气泡的背景色
+              onStateChange: (event) => {
+                if (!event.isVisible) {
+                  this.customPopup = false
+                }
+              }
+            })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+    }.backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+
+@Component
+struct PopupItemChild {
+  @Prop childName: string = '';
+  @Prop childAction: string = '';
+  @State selected: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Selected') as string;
+
+  build() {
+    Row({ space: 8 }) {
+      Image($r('app.media.startIcon'))
+        .width(24)
+        .height(24)
+      Text(this.childName)
+        .fontSize(16)
+    }
+    .width(130)
+    .height(50)
+    .padding(8)
+    .onClick(() => {
+      this.getUIContext().getPromptAction().showToast({ message: this.selected + this.childName })
+    })
+    .stateStyles({
+      normal: {
+        .backgroundColor(Color.White)
+      },
+      pressed: {
+        .backgroundColor('#1fbb7d')
+      }
+    })
+  }
+}
+```
+
 ![popupStateStyle](figures/popupStateStyle.gif)
 
 ## 气泡支持避让中轴
