@@ -157,24 +157,33 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Column, Component } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
     let storage = new LocalStorage();
     storage.setOrCreate('PropA', 48);
-    
-    @Entry
+    let storageFunc = (): LocalStorage => {
+      return storage;
+    }
+
+
+    @Entry({ storage: 'storageFunc' })
     @Component
     struct Index {
       // 错误写法，编译报错
-      // @LocalStoragePropRef() localStorageProp: number = 1;
-      // @LocalStorageLink() localStorageLink: number = 2;
-      
-      // 正确写法
-      @LocalStoragePropRef('PropA') localStorageProp: number = 1;
-      @LocalStorageLink('PropA') localStorageLink: number = 2;
+      // @LocalStoragePropRef() localStorageProp: int = 1;
+      // @LocalStorageLink() localStorageLink: int = 2;
 
-      build() {}
+      // 正确写法
+      @LocalStoragePropRef('PropA') localStorageProp: int = 1;
+      @LocalStorageLink('PropA') localStorageLink: int = 2;
+
+      build() {
+        Column() {
+          Text(`localStorageProp ${this.localStorageProp}`)
+          Text(`localStorageLink ${this.localStorageLink}`)
+        }
+      }
     }
     ```
 

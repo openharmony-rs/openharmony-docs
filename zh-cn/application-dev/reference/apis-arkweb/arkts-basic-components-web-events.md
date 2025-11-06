@@ -278,7 +278,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
-  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithButtons } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from '@kit.ArkUI';
 
@@ -298,8 +298,14 @@ ArkTS-Sta示例：
 
               this.uiContext.showAlertDialog({
                 title: 'onConfirm',
-                message: event.message,
-                confirm: {
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
                   value: 'ok',
                   action: () => {
                     event.result.handleConfirm();
@@ -308,7 +314,7 @@ ArkTS-Sta示例：
                 cancel: () => {
                   event.result.handleCancel();
                 }
-              } as AlertDialogParamWithConfirm);
+              } as AlertDialogParamWithButtons)
             }
             return true;
           })
@@ -4146,6 +4152,10 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -4154,6 +4164,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 
@@ -4207,6 +4218,61 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    // API12新增：开启同层渲染BFCache开关
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+```
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4288,6 +4354,96 @@ export default class EntryAbility extends UIAbility {
               console.log("width = " + event.info.width);
               console.log("height = " + event.info.height);
               console.log("url = " + event.info.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile,State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    @State embedStatus: string = '';
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 默认行为：点击按钮跳转页面，关闭index页面，使同层标签销毁。
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮跳转页面，关闭index页面，使同层标签进入BFCache。
+        Button('Destroy')
+          .onClick(() => {
+            try {
+              this.controller.loadUrl("www.example.com");
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮返回页面，使同层标签离开BFCache。
+        Button('backward')
+          .onClick(() => {
+            try {
+              this.controller.backward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮前进页面，使同层标签进入BFCache。
+        Button('forward')
+          .onClick(() => {
+            try {
+              this.controller.forward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+
+        // API12新增同层标签进入离开BFCache状态：非http与https协议加载的网页，Web内核不支持进入BFCache;
+        // 因此如果要测试ENTER_BFCACHE/LEAVE_BFCACHE状态，需要将index.html放到Web服务器上，使用http或者https协议加载，如：
+        // Web({ src: "http://xxxx/index.html", controller: this.controller })
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((event:NativeEmbedDataInfo):void => {
+            // 当加载页面中有同层标签会触发Create。
+            if (event.status == NativeEmbedStatus.CREATE) {
+              this.embedStatus = 'Create';
+            }
+            // 当页面中同层标签移动或者缩放时会触发Update。
+            if (event.status == NativeEmbedStatus.UPDATE) {
+              this.embedStatus = 'Update';
+            }
+            // 退出页面时会触发Destroy。
+            if (event.status == NativeEmbedStatus.DESTROY) {
+              this.embedStatus = 'Destroy';
+            }
+            // 同层标签所在的页面进入BFCache时，会触发Enter BFCache。
+            if (event.status == NativeEmbedStatus.ENTER_BFCACHE) {
+              this.embedStatus = 'Enter BFCache';
+            }
+            // 同层标签所在的页面离开BFCache时，会触发Leave BFCache。
+            if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
+              this.embedStatus = 'Leave BFCache';
+            }
+            console.log("status = " + this.embedStatus);
+            console.log("surfaceId = " + event.surfaceId);
+            console.log("embedId = " + event.embedId);
+            if (event.info) {
+              console.log("id = " + event.info?.id);
+              console.log("type = " + event.info?.type);
+              console.log("src = " + event.info?.src);
+              console.log("width = " + event.info?.width);
+              console.log("height = " + event.info?.height);
+              console.log("url = " + event.info?.url);
             }
           })
       }
@@ -4623,7 +4779,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
             } else if (viewportFit === ViewportFit.CONTAINS) {
               // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
             } else {
-              // 默认值，可不作处理
+              // 默认值，可不作处理。
             }
           })
       }
@@ -4654,7 +4810,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
           } else if (viewportFit === ViewportFit.CONTAINS) {
             // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
           } else {
-            // 默认值，可不作处理
+            // 默认值，可不作处理。
           }
         })
       }

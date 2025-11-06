@@ -116,15 +116,20 @@ createPdf函数输入参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
+
 | 名称                  | 类型    | 必填 | 说明                                                         |
 | --------------------- | ------- | ---- | ------------------------------------------------------------ |
-| width                 | number  | 是   | 页面宽度。<br>单位：英寸。<br />推荐值：A4纸页面宽度8.27英寸。   |
-| height                | number  | 是   | 页面高度。<br>单位：英寸。<br />推荐值：A4纸页面高度11.69英寸。  |
-| scale                 | number  | 否   | 放大倍数。<br>取值范围：[0.0, 2.0]。如果不在取值范围内，小于0.0设置为0.0，大于2.0设置为2.0。<br>默认值：1.0。 |
-| marginTop             | number  | 是   | 上边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginBottom          | number  | 是   | 下边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginRight           | number  | 是   | 右边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
-| marginLeft            | number  | 是   | 左边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| width                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 页面宽度。<br>单位：英寸。<br />推荐值：A4纸页面宽度8.27英寸。   |
+| height                | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 页面高度。<br>单位：英寸。<br />推荐值：A4纸页面高度11.69英寸。  |
+| scale                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 放大倍数。<br>取值范围：[0.0, 2.0]。如果不在取值范围内，小于0.0设置为0.0，大于2.0设置为2.0。<br>默认值：1.0。 |
+| marginTop             | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 上边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginBottom          | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 下边距。<br>取值范围：[0.0, 页面高度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginRight           | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 右边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
+| marginLeft            | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是   | 左边距。<br>取值范围：[0.0, 页面宽度的一半)。如果不在取值范围内，则设置为0.0。<br>单位：英寸。 |
 | shouldPrintBackground | boolean | 否   | true表示打印背景颜色，false表示不打印背景颜色。<br>默认值：false。                            |
 
 ## ScrollOffset<sup>13+</sup>

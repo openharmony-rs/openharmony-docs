@@ -345,7 +345,7 @@
 
 #### Error构造函数入参变更
 
-**规则：** ``
+**规则：** `arkts-builtin-cotr`
 
 **ArkTS-Dyn版本签名：**  
   `constructor(message?: string): Error`
@@ -742,10 +742,10 @@
 
 **示例：**  
   ```typescript
-  class C<T> implements Iterable<T> {
-    $_iterator(): Iterator<T> {
-      //....
-    }
+  const m: Map<string, string> = new Map<string, string>();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of m) {
+    console.info(iter);
   }
   ```
 

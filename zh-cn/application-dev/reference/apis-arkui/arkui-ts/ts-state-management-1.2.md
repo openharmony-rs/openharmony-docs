@@ -838,6 +838,32 @@ let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA')
 ref1?.info(); //  ref1.info()='PropA'
 ```
 
+### onChange
+onChange(onChangeFunc: OnChangeType\<T\> | undefined): void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化的事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明                              |
+| -------- | ---- | ---- | ------------------------------------- |
+| onChangeFunc | [OnChangeType\<T\>](#onchangetype) \| undefined    | 否   | 属性变化回调函数。</br>如果传入有效值，则添加到监听属性变化的函数列表中。</br>如果传入undefined，则清除所有监听回调。 |
+
+**示例：**
+
+```ts
+'use static'
+import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
+
+AppStorage.setOrCreate<number>('PropA', 47);
+let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+ref1?.onChange((propertyName: string, value: number) => {
+  console.info(`ref for ${propertyName} has changed to ${value}.`);
+});
+```
+
 ## SubscribedAbstractProperty
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1230,3 +1256,15 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | LTR   | 0    | 从左向右布局。 |
 | RTL   | 1    | 从右向左布局。 |
 | AUTO  | 2    | 自动布局，跟随系统。 |
+
+## OnChangeType
+type OnChangeType\<T\> = (propertyName: string, newValue: T) => void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化事件的回调函数类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数名 | 类型                                          | 必填 | 说明                             |
+| ------ | --------------------------------------------- | ---- | ------------------------------------ |
+| propertyName  | string | 是   | 修改的属性名称。 |
+| newValue      | T      | 是   | 修改后属性的值。 |

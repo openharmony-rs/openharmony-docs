@@ -78,21 +78,42 @@ type AsyncOrVoidMethod = () => Promise<void> | void;
 
 // ArkTS-Dyn应用代码
 const syncFunction: AsyncOrVoidMethod = () => {
-  console.log("This is a sync function");
-  // 隐式返回void
+  console.info("This is a sync function");
+  // 隐式返回void
 };
+
+const asyncFunction: AsyncOrVoidMethod = async () => {
+  console.info("This is an async function");
+  // 隐式返回void
+};
+
+async function test() {
+  syncFunction();
+  await asyncFunction();
+}
 ```
 
 **ArkTS-Sta**
 ```typescript
 // ArkTS-Sta API定义
-type AsyncOrVoidMethod = () => Promise<void> | undefined;
+type SyncOrVoidMethod = () => undefined; 
+type AsyncOrVoidMethod = () => Promise<void>; 
 
 // ArkTS-Sta应用代码
-const syncFunction: AsyncOrVoidMethod = () => {
-  console.log("This is a sync function");
-  return undefined;
+const syncFunction: SyncOrVoidMethod = () => {
+  console.info("This is a sync function");
+  return undefined; // 必须明确返回undefined
 };
+
+const asyncFunction: AsyncOrVoidMethod = async () => {
+  console.info("This is an async function");
+  return undefined; // 必须明确返回undefined
+};
+
+async function test() {
+  syncFunction();
+  await asyncFunction();
+}
 ```
 
 ## 对象名称不可以重复

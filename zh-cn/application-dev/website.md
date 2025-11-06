@@ -65,9 +65,12 @@
         - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
         - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](ui/arkts-sta-interop-dyn-observed.md)
         - 状态管理V2互操作
-          - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](ui/arkts-sta-interop-dyn-storages-v2.md)
+          - [ArkTS-Sta使用ArkTS-Dyn的AppStorageV2进行状态存储](ui/arkts-sta-interop-dyn-storages-v2.md)
+          - [ArkTS-Dyn使用ArkTS-Sta的AppStorageV2进行状态存储](ui/arkts-dyn-interop-sta-storages-v2.md)
           - [ArkTS-Sta使用ArkTS-Dyn @ObservedV2数据和@Trace数据互操作](ui/arkts-sta-interop-dyn-observedv2.md)
           - [ArkTS-Dyn使用ArkTS-Sta @ObservedV2数据和@Trace数据互操作](ui/arkts-dyn-interop-sta-observedv2.md)
+          - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](ui/arkts-sta-interop-dyn-builder-v2.md)
+          - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](ui/arkts-dyn-interop-sta-builder-v2.md)
         - 状态管理V1V2混用互操作
         - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
         - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](ui/arkts-sta-interop-dyn-navigation.md)
@@ -2594,7 +2597,23 @@
         - [智慧数据平台错误码](reference/apis-arkdata/errorcode-intelligence.md)
     - ArkTS（方舟编程语言）<!--arkts-api-->
       - ArkTS API<!--arkts-arkts-->
-        - [@arkts.collections (ArkTS容器集)](reference/apis-arkts/js-apis-arkts-collections.md)
+        - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
+          - [模块描述](reference/apis-arkts/arkts-apis-arkts-collections.md)
+          - [Class (Array)](reference/apis-arkts/arkts-apis-arkts-collections-Array.md)
+          - [Class (Map)](reference/apis-arkts/arkts-apis-arkts-collections-Map.md)
+          - [Class (Set)](reference/apis-arkts/arkts-apis-arkts-collections-Set.md)
+          - [Class (ArrayBuffer)](reference/apis-arkts/arkts-apis-arkts-collections-ArrayBuffer.md)
+          - [Class (Int8Array)](reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md)
+          - [Class (Uint8Array)](reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md)
+          - [Class (Int16Array)](reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md)
+          - [Class (Uint16Array)](reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md)
+          - [Class (Int32Array)](reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md)
+          - [Class (Uint32Array)](reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md)
+          - [Class (Uint8ClampedArray)](reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md)
+          - [Class (Float32Array)](reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md)
+          - [Class (BitVector)](reference/apis-arkts/arkts-apis-arkts-collections-BitVector.md)
+          - [Interface (ConcatArray)](reference/apis-arkts/arkts-apis-arkts-collections-ConcatArray.md)
+          - [Types](reference/apis-arkts/arkts-apis-arkts-collections-Types.md)
         - [@arkts.lang (ArkTS语言基础能力)](reference/apis-arkts/js-apis-arkts-lang.md)
         - [@arkts.math.Decimal (高精度数学库Decimal)](reference/apis-arkts/js-apis-arkts-decimal.md)
         - @arkts.utils (ArkTS工具库)<!--js-apis-arkts-utils-->
@@ -2690,6 +2709,7 @@
             - [AttributeUpdater](reference/apis-arkui/js-apis-arkui-AttributeUpdater.md)
             - [Content](reference/apis-arkui/js-apis-arkui-Content.md)
             - [NodeContent](reference/apis-arkui/js-apis-arkui-NodeContent.md)
+            - [Resource](reference/apis-arkui/js-apis-arkui-resource.md)
         - 窗口管理<!--window-manager-api-->
           - [@ohos.PiPWindow (画中画窗口)](reference/apis-arkui/js-apis-pipWindow.md)
           - @ohos.window (窗口)<!--js-apis-window-->
@@ -4413,11 +4433,13 @@
           - [@ohos.multimodalAwareness.deviceStatus (设备状态感知)](reference/apis-multimodalawareness-kit/js-apis-awareness-deviceStatus.md)
           <!--Del-->
           - [@js-apis-awareness-metadataBinding (回旋镖)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md)
+          - [@ohos.multimodalawareness.roomLocation (房间级定位)(系统接口)](js-apis-awareness-roomLocation.md)
           <!--DelEnd-->
         - 错误码<!--ultimodal-awareness-arkts-errcode-->
           - [行为动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
           - [回旋镖错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
           - [设备状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-deviceStatus.md)
+          - [房间级定位错误码](reference/apis-multimodalawareness-kit/errorcode-roomLocation.md)
       - Sensor Service Kit（传感器服务）<!--sensor-service-api-->
         - ArkTS API<!--sensor-service-arkts-->
           - [@ohos.sensor(传感器)](reference/apis-sensor-service-kit/js-apis-sensor.md)
@@ -5368,6 +5390,7 @@
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-api-->
       - ArkTS API<!--mindspore-lite-arkts-->
         - [@ohos.ai.mindSporeLite (端侧AI框架)](reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)
+        - [ArkTS API错误码](reference/apis-mindspore-lite-kit/errorcode-mindSporeLite.md)
       - C API<!--mindspore-lite-c-->
         - 模块<!--mindspore-lite-module-->
           - [MindSpore](reference/apis-mindspore-lite-kit/capi-mindspore.md)
