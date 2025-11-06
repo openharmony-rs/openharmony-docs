@@ -157,13 +157,13 @@ export struct ListLayout {
 <!-- @[build_list_with_align_horizontally_in_the_center](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
 
 ``` TypeScript
-List(
-  // ···
-) {
-  // ···
-}
+  List(
+    // ···
+  ) {
+    // ···
+  }
 // ···
-.alignListItem(ListItemAlign.Center)
+  .alignListItem(ListItemAlign.Center)
 ```
 
 ## ListItem生命周期
@@ -437,13 +437,13 @@ scrollBar属性API version 9及以下版本默认值为BarState.Off，从API ver
 <!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
 
 ``` TypeScript
-List(
-  // ···
-) {
-  // ···
-}
+  List(
+    // ···
+  ) {
+    // ···
+  }
 // ···
-.scrollBar(BarState.Auto)
+  .scrollBar(BarState.Auto)
 ```
 
 ## 添加外置滚动条
