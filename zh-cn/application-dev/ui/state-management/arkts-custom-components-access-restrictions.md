@@ -34,6 +34,57 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【反例】
     <!-- @[LlinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateErrorCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct LinkErrorAccessRestrictions {
+      @Builder
+      buildTest() {
+        Text('Parent builder')
+      }
+    
+      build() {
+        Column() {
+          LinkErrorComponentChild({
+            stateValue: 'Hello',
+            propValue: 'Hello',
+            provideValue: 'Hello',
+            builderValue: this.buildTest,
+            regularValue: 'Hello'
+          })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Component
+    struct LinkErrorComponentChild {
+      // 此处使用private修饰符时会出现告警日志
+      @State private stateValue: string = 'Hello';
+      // 此处使用private修饰符时会出现告警日志
+      @Prop private propValue: string = 'Hello';
+      // 此处使用private修饰符时会出现告警日志
+      @Provide private provideValue: string = 'Hello';
+      // 此处使用private修饰符时会出现告警日志
+      @BuilderParam private builderValue: () => void = this.buildTest;
+      // 此处使用private修饰符时会出现告警日志
+      private regularValue: string = 'Hello';
+    
+      @Builder
+      buildTest() {
+        Text('Child builder')
+      }
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 
     编译告警日志如下：
