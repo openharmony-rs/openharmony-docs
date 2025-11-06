@@ -15901,5 +15901,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-inspector-component-observer.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h",
+				"functions":[
+					{
+						"end_line":134,
+						"name":"arkUITestNode_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NormalTextListExample.h",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"normalTextListExample_start",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
