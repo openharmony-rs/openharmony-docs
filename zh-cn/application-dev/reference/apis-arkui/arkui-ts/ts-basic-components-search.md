@@ -48,7 +48,7 @@ Search初始化参数。
 | ----------- | ------------- | ---- | ---- | ------------- |
 | value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | 否   | 是 | 设置当前显示的搜索文本内容。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。|
 | placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 设置无输入时的提示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持本地图片和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon<sup>8+</sup>        | string                                               | 否   | 是 | 设置搜索图标路径，默认使用系统搜索图标。<br/>**说明：** <br/>icon的数据源支持[使用相对路径显示图片](./ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。<br/>-&nbsp;支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。<br/>-&nbsp;支持Base64字符串。格式data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。<br/>如果与属性searchIcon同时设置，则searchIcon优先。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | controller<sup>8+</sup>  | [SearchController](#searchcontroller) | 否   | 是 | 设置Search组件控制器。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 
 ## 属性
@@ -691,7 +691,7 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-设置输入框拉起的键盘样式。
+设置输入框拉起的键盘样式，如果键盘样式设置为沉浸式模式将以半透明的方式和背景融合。只提供接口能力，具体实现以输入法应用为主。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1541,10 +1541,36 @@ struct SearchExample {
 
 ### 示例9（支持插入和删除回调）
 
-从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。
+从API version 12开始，该示例通过[onWillInsert](#onwillinsert12)、[onDidInsert](#ondidinsert12)、[onWillDelete](#onwilldelete12)、[onDidDelete](#ondiddelete12)接口实现了插入和删除的效果。从API version 15开始，通过[onWillChange](#onwillchange15)接口展示了文本内容将要发生变化时的具体信息。
 
 ```ts
 // xxx.ets
+class ChangeState {
+  changeContent: string = "";
+  changePreviewOffset: number | undefined = 0;
+  changePreviewValue: string | undefined = "";
+  changeTextChangeRangeBeforeX: number | undefined = 0;
+  changeTextChangeRangeBeforeY: number | undefined = 0;
+  changeTextChangeRangeAfterX: number | undefined = 0;
+  changeTextChangeRangeAfterY: number | undefined = 0;
+  changeTextChangeOldContent: string | undefined = "";
+  changeTextChangechangePreviewOffset: number | undefined = 0;
+  changeTextChangechangePreviewValue: string | undefined = "";
+
+  SetInfo(info: EditableTextChangeValue) {
+    this.changeContent = info.content;
+    this.changePreviewOffset = info.previewText?.offset;
+    this.changePreviewValue = info.previewText?.value;
+    this.changeTextChangeRangeBeforeX = info.options?.rangeBefore.start;
+    this.changeTextChangeRangeBeforeY = info.options?.rangeBefore.end;
+    this.changeTextChangeRangeAfterX = info.options?.rangeAfter.start;
+    this.changeTextChangeRangeAfterY = info.options?.rangeAfter.end;
+    this.changeTextChangeOldContent = info.options?.oldContent;
+    this.changeTextChangechangePreviewOffset = info.options?.oldPreviewText.offset;
+    this.changeTextChangechangePreviewValue = info.options?.oldPreviewText.value;
+  }
+}
+
 @Entry
 @Component
 struct SearchExample {
@@ -1553,6 +1579,8 @@ struct SearchExample {
   @State insertOffset: number = 0;
   @State deleteOffset: number = 0;
   @State deleteDirection: number = 0;
+  @State changeState1: ChangeState = new ChangeState();
+  @State changeState2: ChangeState = new ChangeState();
 
   build() {
     Row() {
@@ -1563,11 +1591,28 @@ struct SearchExample {
             this.insertValue = info.insertValue;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState1.SetInfo(info);
+            return true;
+          })
           .onDidInsert((info: InsertValue) => {
             this.insertOffset = info.insertOffset;
           })
 
-        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(30)
+        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState1.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState1.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState1.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState1.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState1.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState1.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState1.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState1.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState1.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState1.changeTextChangechangePreviewValue).height(20)
 
         Search({ value: "Search支持删除回调文本b" })
           .height(60)
@@ -1576,13 +1621,30 @@ struct SearchExample {
             this.deleteDirection = info.direction;
             return true;
           })
+          .onWillChange((info: EditableTextChangeValue) => {
+            this.changeState2.SetInfo(info);
+            return true;
+          })
           .onDidDelete((info: DeleteValue) => {
             this.deleteOffset = info.deleteOffset;
             this.deleteDirection = info.direction;
           })
 
-        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(30)
-        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(30)
+        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(20)
+        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(20)
+
+        Blank(30)
+
+        Text("context:" + this.changeState2.changeContent).height(20)
+        Text("previewText-offset:" + this.changeState2.changePreviewOffset).height(20)
+        Text("previewText-value:" + this.changeState2.changePreviewValue).height(20)
+        Text("options-rangeBefore-start:" + this.changeState2.changeTextChangeRangeBeforeX).height(20)
+        Text("options-rangeBefore-end:" + this.changeState2.changeTextChangeRangeBeforeY).height(20)
+        Text("options-rangeAfter-start:" + this.changeState2.changeTextChangeRangeAfterX).height(20)
+        Text("options-rangeAfter-end:" + this.changeState2.changeTextChangeRangeAfterY).height(20)
+        Text("options-oldContent:" + this.changeState2.changeTextChangeOldContent).height(20)
+        Text("options-oldPreviewText-offset:" + this.changeState2.changeTextChangechangePreviewOffset).height(20)
+        Text("options-oldPreviewText-value:" + this.changeState2.changeTextChangechangePreviewValue).height(20)
 
       }.width('100%')
     }
@@ -1591,7 +1653,7 @@ struct SearchExample {
 }
 ```
 
-![SearchInsertAndDelete](figures/SearchInsertAndDelete.PNG)
+![SearchInsertAndDelete](figures/SearchInsertAndDelete-2.PNG)
 
 ### 示例10（文本扩展自定义菜单）
 
@@ -1618,6 +1680,10 @@ struct SearchExample {
     };
     menuItems.push(item1);
     menuItems.unshift(item2);
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -1671,7 +1737,7 @@ struct SearchExample {
 }
 ```
 
-![searchEditMenuOptions](figures/searchEditMenuOptions.gif)
+![searchEditMenuOptions](figures/searchEditMenuOptions-2.gif)
 
 ### 示例11（设置symbol类型清除按钮）
 
@@ -1972,7 +2038,7 @@ struct SearchExample {
 
 ### 示例19（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。
+从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
 
 ```json
 // 开启应用缩放跟随系统
@@ -2007,23 +2073,40 @@ struct SearchExample {
 @Entry
 @Component
 struct SearchExample {
-  @State minFontScale: number = 0.85;
-  @State maxFontScale: number = 2;
+  @State minFontScale: number = 1.0;
+  @State maxFontScale: number = 1.0;
+  @State minFontScale2: number = 0.5;
+  @State maxFontScale2: number = 2.0;
 
   build() {
     Column() {
-      Column({ space: 30 }) {
+      Column() {
         Text("系统字体变大变小，变大变小aaaaaaaAAAAAA")
+        Blank(30)
+        Text("minFontScale = " + this.minFontScale)
+        Text("maxFontScale = " + this.maxFontScale)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
-          .maxFontScale(this.maxFontScale)// 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+
+        Blank(30)
+
+        Text("minFontScale = " + this.minFontScale2)
+        Text("maxFontScale = " + this.maxFontScale2)
+        Search({
+          placeholder: 'The text area can hold an unlimited amount of text. input your word...',
+        })
+          .minFontScale(this.minFontScale2) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .maxFontScale(this.maxFontScale2) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
     }
   }
 }
 ```
+
+![](figures/big-FontScale.png) ![](figures/small-FontScale.png) 
 
 ### 示例20（设置文本描边）
 
