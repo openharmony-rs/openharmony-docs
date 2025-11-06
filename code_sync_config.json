@@ -7099,9 +7099,9 @@
 						"start_line":22
 					},
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"net_resource",
-						"start_line":28
+						"start_line":29
 					},
 					{
 						"end_line":36,
@@ -7114,9 +7114,9 @@
 						"start_line":38
 					},
 					{
-						"end_line":47,
+						"end_line":48,
 						"name":"fileLibrary_format",
-						"start_line":43
+						"start_line":44
 					}
 				]
 			},
@@ -7124,9 +7124,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":70,
 						"name":"media_libraryfile",
-						"start_line":15
+						"start_line":16
 					}
 				]
 			},
@@ -7134,9 +7134,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":66,
 						"name":"multimedia_pixel",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7144,9 +7144,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets",
 				"functions":[
 					{
-						"end_line":131,
+						"end_line":133,
 						"name":"drawable_descriptor",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7159,9 +7159,9 @@
 						"start_line":23
 					},
 					{
-						"end_line":35,
+						"end_line":36,
 						"name":"local_svg",
-						"start_line":30
+						"start_line":31
 					},
 					{
 						"end_line":42,
@@ -7174,9 +7174,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets",
 				"functions":[
 					{
-						"end_line":88,
+						"end_line":95,
 						"name":"image_objectfit",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7184,9 +7184,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":65,
 						"name":"image_interpolation",
-						"start_line":15
+						"start_line":16
 					}
 				]
 			},
@@ -7194,9 +7194,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":58,
 						"name":"image_repetitionstyle",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7204,9 +7204,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"image_renderingmode",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7214,9 +7214,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":53,
 						"name":"image_decodingsize",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -7224,9 +7224,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"image_filtereffect",
-						"start_line":15
+						"start_line":17
 					}
 				]
 			},
@@ -7234,9 +7234,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":61,
 						"name":"event_invocation",
-						"start_line":19
+						"start_line":20
 					}
 				]
 			}
