@@ -39,6 +39,30 @@
 
 - \@Extend的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常的被刷新渲染。
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) -->
+  
+  ``` TypeScript
+  @Extend(Text)
+  function fancy(fontSize: number) {
+    .fontColor(Color.Red)
+    .fontSize(fontSize)
+  }
+  
+  @Entry
+  @Component
+  struct FancyUse {
+    @State fontSizeValue: number = 20;
+  
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(this.fontSizeValue)
+          .onClick(() => {
+            this.fontSizeValue = 30;
+          })
+      }
+    }
+  }
+  ```
 
 ## 限制条件
 
