@@ -196,7 +196,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
    #include <native_drawing/drawing_path.h>
    
    #include "ArkUINode.h"
-
+   
    namespace NativeModule {
    class ArkUICustomNode : public ArkUINode {
    public:
@@ -226,10 +226,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
        }
    
    private:
-       int32_t NUM_2 = 2;
-       int32_t NUM_3 = 3;
-       int32_t NUM_4 = 4;
-       int32_t NUM_5 = 5;
+       // ···
        static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
        {
            // 获取组件实例对象，调用相关实例方法。
