@@ -396,7 +396,7 @@ struct Child {
 
 - \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
   <!-- @[Param_Restrict_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictV2.ets) -->
-
+  
   ``` TypeScript
   @ComponentV2
   struct MyComponent {
