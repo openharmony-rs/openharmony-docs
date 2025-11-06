@@ -112,6 +112,48 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 <!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->
 
+``` TypeScript
+@Builder
+function myBuilder0(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+    .fontColor(Color.Blue)
+}
+
+@Builder
+function yourBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+    .fontColor(Color.Pink)
+}
+
+const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
+
+
+@Entry
+@Component
+struct IndexItem {
+  @Builder
+  IndexItem() {
+    ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
+      item.builder('Hello World', 30)
+    }
+
+    )
+  }
+
+  build() {
+    Row() {
+      Column() {
+        this.IndexItem()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 
 ## @Builder方法赋值给类或者接口的属性
 
