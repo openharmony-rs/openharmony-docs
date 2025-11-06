@@ -160,6 +160,11 @@
 
   删除数组项可以观察到。
     <!-- @[state_decorate_array_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
+    
+    ``` TypeScript
+    // 数组项更改
+    this.title.pop();
+    ```
 
   新增数组项可以观察到。
     <!-- @[state_decorate_array_change_04](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
