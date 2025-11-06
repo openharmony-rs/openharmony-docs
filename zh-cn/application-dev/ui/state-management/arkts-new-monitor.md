@@ -921,6 +921,41 @@ property path:name change from John to Johny
 将myAge变为状态变量：
 <!-- @[monitor_problem_param_positive_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  // 给myAge添加@Computed成为状态变量
+  @Computed
+  get myAge() {
+    return this.age;
+  }
+
+  // 监听@Computed装饰的getter访问器
+  @Monitor('myAge')
+  onPropertyChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'age changed');
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age')
+        .onClick(() => {
+          this.info.age = 25; // 状态变量age改变
+        })
+    }
+  }
+}
+```
+
 或直接监听状态变量本身：
 <!-- @[monitor_problem_param_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamStateVariables.ets) -->
 
