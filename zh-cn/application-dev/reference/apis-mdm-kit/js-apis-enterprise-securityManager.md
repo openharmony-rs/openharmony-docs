@@ -891,7 +891,7 @@ try {
 
 ## securityManager.setExternalSourceExtensionsPolicy<sup>22+</sup>
 
-setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
+setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
 
 设置外部来源扩展程序的管控策略。
 - DEFAULT：
@@ -900,7 +900,7 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启
 “设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 - FORCE_OPEN：
-强制打开。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -915,7 +915,7 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
-| policy     | [ManagedPolicy](#managedpolicy22)                     | 是   | 管控策略。                                                                                                                                                    |
+| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy22)                     | 是   | 管控策略。                                                                                                                                                    |
 
 **错误码：**
 
@@ -950,7 +950,7 @@ try {
 
 ## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
 
-getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
 
 获取外部来源扩展程序的管控策略。
 
@@ -972,7 +972,7 @@ getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-|  [ManagedPolicy](#managedpolicy22) | 返回ManagedPolicy枚举类型的外部来源扩展程序的运行管控策略。 |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy22) | 返回ManagedPolicy枚举类型的管控策略。 |
 
 **错误码：**
 
@@ -1068,15 +1068,4 @@ try {
 | GRANTED | 0  | 已静默授予。 |
 | DENIED | -1  | 已静默拒绝。 |
 
-## ManagedPolicy<sup>22+</sup>
-
-管控外部来源扩展程序的运行开关，设置并下发管控策略。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 值 | 说明                            |
-| ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 无管控策略，外部来源扩展程序的运行开关保持设备当前设置状态。|
-| DISALLOW | 1  | 禁用外部来源的扩展程序运行开关。|
-| FORCE_OPEN | 2  | 强制打开外部来源的扩展程序运行开关。|
 
