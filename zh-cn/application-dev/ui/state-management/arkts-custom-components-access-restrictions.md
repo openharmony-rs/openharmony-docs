@@ -238,6 +238,43 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【反例】
     <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PrivateWithLinkErrorAccessRestrictions {
+      @State linkValue: string = 'Hello';
+      @State objectLinkValue: PrivateErrorComponentObj = new PrivateErrorComponentObj();
+    
+      build() {
+        Column() {
+          PrivateWithLinkErrorComponentChild({ linkValue: this.linkValue, objectLinkValue: this.objectLinkValue })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Observed
+    class PrivateErrorComponentObj {
+      public count: number = 0;
+    }
+    
+    @Component
+    struct PrivateWithLinkErrorComponentChild {
+      // 此处使用private修饰符时会出现告警日志
+      @Link private linkValue: string;
+      // 此处使用private修饰符时会出现告警日志
+      @ObjectLink private objectLinkValue: PrivateErrorComponentObj;
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
    编译告警日志如下：
 
