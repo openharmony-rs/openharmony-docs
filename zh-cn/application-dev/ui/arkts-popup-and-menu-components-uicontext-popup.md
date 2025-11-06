@@ -79,7 +79,7 @@
      })
    }
    
-   let contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
+   private contentNode: ComponentContent<Object> = new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
    ```
 
 
