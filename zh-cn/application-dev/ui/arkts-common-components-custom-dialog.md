@@ -341,7 +341,7 @@ export struct DialogAnimationNew {
       delay: 500,
       playMode: PlayMode.Alternate,
       onFinish: () => {
-        hilog.info(DOMAIN, 'testTag', 'play end')
+        hilog.info(DOMAIN, 'testTag', 'play end');
       }
     },
     autoCancel: true,
@@ -750,15 +750,15 @@ struct CustomDialogExample {
       Button($r('app.string.search_by_dialog'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
-            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState())
+            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState());
           } else {
-            hilog.info(DOMAIN, 'testTag', 'state: no exist')
+            hilog.info(DOMAIN, 'testTag', 'state: no exist');
           }
         }).margin(20)
       // $r('app.string.search_by_dialog_controller')资源文件中的value为'点我查询弹窗状态:通过CustomDialogController'
       Button($r('app.string.search_by_dialog_controller'))
         .onClick(() => {
-          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState())
+          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
         }).margin(20)
       // $r('app.string.close_widows')资源文件中的value为'点我关闭弹窗'
       Button($r('app.string.close_widows'))
