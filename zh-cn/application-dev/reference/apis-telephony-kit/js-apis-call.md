@@ -6,7 +6,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,7 +29,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -42,7 +44,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -59,7 +61,7 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -78,7 +80,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -94,7 +96,7 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -118,7 +120,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.log(`dial success, promise: data->${JSON.stringify(data)}`);
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -132,7 +134,7 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**系统能力：** SystemCapability.Applications.Contacts
 
 **参数：**
 
@@ -162,7 +164,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`makeCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`makeCall success`);
+        console.info(`makeCall success`);
     }
 });
 ```
@@ -176,7 +178,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**系统能力：** SystemCapability.Applications.Contacts
 
 **参数：**
 
@@ -208,7 +210,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -222,7 +224,7 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**系统能力：** SystemCapability.Applications.Contacts
 
 **参数：**
 
@@ -260,7 +262,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = this.getUIContext().getHostContext() as Context;
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall(context, "138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -272,7 +274,11 @@ hasCall\(callback: AsyncCallback\<boolean\>\): void
 
 判断是否存在通话。使用callback异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -282,14 +288,32 @@ hasCall\(callback: AsyncCallback\<boolean\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`hasCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hasCall success, data->${JSON.stringify(data)}`);
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.hasCall((err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`hasCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -301,7 +325,11 @@ hasCall\(\): Promise\<boolean\>
 
 判断是否存在通话。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -311,14 +339,32 @@ hasCall\(\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall().then(() => {
-    console.log(`hasCall success`);
+    console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
     console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+try {
+    let data: boolean = await call.hasCall();
+    console.info(`call.hasCall promise success, data is: ${JSON.stringify(data)}`);
+} catch (error: Error) {
+    let err = error as BusinessError;
+    console.error(`call.hasCall promise ERROR  err->${JSON.stringify(err)}`);
+}
 ```
 
 ## call.hasCallSync<sup>10+</sup>
@@ -327,7 +373,11 @@ hasCallSync\(\): boolean
 
 判断是否存在通话。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -337,9 +387,22 @@ hasCallSync\(\): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
+
 let hasCall: boolean = call.hasCallSync();
-console.log(`hasCallSync success, has call is ` + hasCall);
+console.info(`hasCallSync success, has call is ${JSON.stringify(hasCall)}`);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+
+let hasCall: boolean = call.hasCallSync();
+console.info(`hasCallSync success, has call is ${JSON.stringify(hasCall)}`);
 ```
 
 
@@ -349,7 +412,11 @@ getCallState\(callback: AsyncCallback\<CallState\>\): void
 
 获取当前通话状态。使用callback异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -359,14 +426,32 @@ getCallState\(callback: AsyncCallback\<CallState\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
         console.error(`getCallState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallState success, data->${JSON.stringify(data)}`);
+        console.info(`getCallState success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallState((error: BusinessError | null, data: call.CallState | undefined) => {
+    if (err?.code) {
+        console.error(`getCallState fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCallState success, data is: ${data}`);
     }
 });
 ```
@@ -378,7 +463,11 @@ getCallState\(\): Promise\<CallState\>
 
 获取当前通话状态。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -388,14 +477,32 @@ getCallState\(\): Promise\<CallState\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState().then((data: call.CallState) => {
-    console.log(`getCallState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+try {
+    let data: call.CallState = await call.getCallState();
+    console.info(`call.getCallState promise success, data is: ${data}`);
+} catch (error: Error) {
+    let err = error as BusinessError;
+    console.error(`call.getCallState promise err->${JSON.stringify(err)}`);
+}
 ```
 
 ## call.getCallStateSync<sup>10+</sup>
@@ -404,7 +511,11 @@ getCallStateSync\(\): CallState
 
 获取当前通话状态。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -414,9 +525,22 @@ getCallStateSync\(\): CallState
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
+
 let callState: call.CallState = call.getCallStateSync();
-console.log(`the call state is:` + callState);
+console.info(`the call state is: ${JSON.stringify(callState)}`);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+
+let callState: call.CallState = call.getCallStateSync();
+console.info(`the call state is: ${callState}`);
 ```
 
 ## call.hasVoiceCapability<sup>7+</sup>
@@ -425,7 +549,11 @@ hasVoiceCapability\(\): boolean
 
 检查当前设备是否具备语音通话能力。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -433,9 +561,24 @@ hasVoiceCapability\(\): boolean
 | ------- | ------------------------------------------------------------ |
 | boolean | 返回true表示设备具备语音通话能力，返回false表示设备不具备语音通话能力。 |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
+
 let result: boolean = call.hasVoiceCapability();
-console.log(`hasVoiceCapability: ${JSON.stringify(result)}`);
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+
+let result: boolean = call.hasVoiceCapability();
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
 
 ## call.isEmergencyPhoneNumber<sup>7+</sup>
@@ -444,7 +587,11 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 判断是否是紧急电话号码。使用callback异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -467,14 +614,32 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isEmergencyPhoneNumber("138xxxxxxxx", (error: BusinessError | null, data: boolean | undefined) => {
+    if (error?.code) {
+        console.error(`call.isEmergencyPhoneNumber callback test err->${JSON.stringify(err)}`);      
+    } else {
+        console.info(`call.isEmergencyPhoneNumber callback test success, data is: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -486,7 +651,11 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 根据电话号码参数，判断是否是紧急电话号码。使用callback异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -510,7 +679,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
@@ -518,7 +690,23 @@ call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) 
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let options: call.EmergencyNumberOptions = {slotId: 1}
+call.isEmergencyPhoneNumber("112", options, (err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -530,7 +718,11 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 根据电话号码参数，判断是否是紧急电话号码。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -559,13 +751,31 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
-    console.log(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let options: call.EmergencyNumberOptions = {slotId: 1}
+call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -578,7 +788,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -608,7 +818,7 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -621,7 +831,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -655,7 +865,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -669,7 +879,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -705,7 +915,7 @@ let options: call.NumberFormatOptions = {
     countryCode: "CN"
 }
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.log(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -719,7 +929,11 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 待格式化的电话号码需要与传入的国家码相匹配，如中国电话号码需要传入国家码CN，否则格式化后的电话号码为null。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -743,14 +957,32 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -766,7 +998,11 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 支持所有国家码。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -795,12 +1031,29 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.log(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -809,17 +1062,17 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 拨打电话的可选参数。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|        名称              | 类型                               | 必填 | 说明                                                                                             |
-| ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| extras                   | boolean                            | 否   | 根据extras的值判断是否为视频通话，默认为语音通话。<br/>- true：视频通话。<br/>- false：语音通话。   | 
+|        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
+| ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
+| extras                   | boolean                            | 否   | 是   | 根据extras的值判断是否为视频通话，默认为语音通话。<br/>- true：视频通话。<br/>- false：语音通话。   | 
 
 ## CallState
 
 通话状态码。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 | 名称               | 值   | 说明                                                         |
 | ------------------ | ---- | ------------------------------------------------------------ |
@@ -833,18 +1086,26 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 判断是否是紧急电话号码的可选参数。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|  名称  | 类型   | 必填 | 说明                                           |
-| ------ | ------ | ---- | ---------------------------------------------- |
-| slotId | number | 否   | 卡槽ID：<br/>- 卡槽1：`0`。<br/>- 卡槽2：`1`。 |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+|  名称  | 类型   | 只读 | 可选 | 说明                                           |
+| ------ | ------ | ---- | ---- | ---------------------------------------------- |
+| slotId | ArkTS-Dyn:number <br/>ArkTS-Sta:int | 否   | 是   | 卡槽ID：<br/>- 卡槽1：`0`。<br/>- 卡槽2：`1`。 |
 
 ## NumberFormatOptions<sup>7+</sup>
 
 格式化号码的可选参数。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|    名称     | 类型   | 必填 | 说明                                                       |
-| ----------- | ------ | ---- | ---------------------------------------------------------- |
-| countryCode | string | 否   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+|    名称     | 类型   | 只读 | 可选 | 说明                                                       |
+| ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| countryCode | string | 否   | 是   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |

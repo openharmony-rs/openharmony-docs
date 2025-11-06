@@ -6,8 +6,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.call (拨打电话)](js-apis-call.md)。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.call (拨打电话)](js-apis-call.md)。
 
 
 ## 导入模块
@@ -24,9 +27,13 @@ dialCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -53,6 +60,8 @@ dialCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -60,7 +69,22 @@ call.dialCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.dialCall("138xxxxxxxx", (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`dialCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -74,9 +98,13 @@ dialCall\(phoneNumber: string, options: DialCallOptions, callback: AsyncCallback
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -104,6 +132,8 @@ dialCall\(phoneNumber: string, options: DialCallOptions, callback: AsyncCallback
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -117,7 +147,28 @@ call.dialCall("138xxxxxxxx", dialCallOptions, (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let dialCallOptions: call.DialCallOptions = {
+    accountId: 0,
+    videoState: 0,
+    dialScene: 0,
+    dialType: 0
+}
+call.dialCall("138xxxxxxxx", dialCallOptions, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`dialCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -131,9 +182,13 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -166,6 +221,8 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -176,8 +233,28 @@ let dialCallOptions: call.DialCallOptions = {
     dialType: 0
 }
 call.dialCall("138xxxxxxxx", dialCallOptions).then(() => {
-    console.log(`dialCall success.`);
+    console.info(`dialCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`dialCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let dialCallOptions: call.DialCallOptions = {
+    accountId: 0,
+    videoState: 0,
+    dialScene: 0,
+    dialType: 0
+}
+call.dialCall("138xxxxxxxx", dialCallOptions).then(() => {
+    console.info(`dialCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`dialCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -191,9 +268,13 @@ muteRinger\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -217,6 +298,8 @@ muteRinger\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -224,7 +307,22 @@ call.muteRinger((err: BusinessError) => {
     if (err) {
         console.error(`muteRinger fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`muteRinger success.`);
+        console.info(`muteRinger success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.muteRinger((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`muteRinger fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`muteRinger success.`);
     }
 });
 ```
@@ -238,9 +336,13 @@ muteRinger\(\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -262,12 +364,28 @@ muteRinger\(\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.muteRinger().then(() => {
-    console.log(`muteRinger success.`);
+    console.info(`muteRinger success.`);
 }).catch((err: BusinessError) => {
+    console.error(`muteRinger fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.muteRinger().then(() => {
+    console.info(`muteRinger success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`muteRinger fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -275,21 +393,27 @@ call.muteRinger().then(() => {
 
 ## call.answerCall<sup>9+</sup>
 
-answerCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: answerCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: answerCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 接听来电。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
-| callId   | number                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回接听电话的结果。            |
 
 **错误码：**
@@ -308,6 +432,8 @@ answerCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -315,7 +441,22 @@ call.answerCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.answerCall(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -323,21 +464,27 @@ call.answerCall(1, (err: BusinessError) => {
 
 ## call.answerCall<sup>9+</sup>
 
-answerCall(callId?: number\): Promise\<void\>
+ArkTS-Dyn: answerCall(callId?: number\): Promise\<void\>
+
+ArkTS-Sta: answerCall(callId?: int): Promise\<void\>
 
 接听来电。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
 
 **返回值：**
 
@@ -361,12 +508,27 @@ answerCall(callId?: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.answerCall(1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((error: Error) => {
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -380,9 +542,13 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -406,6 +572,8 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -413,7 +581,22 @@ call.answerCall((err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.answerCall((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -421,21 +604,27 @@ call.answerCall((err: BusinessError) => {
 
 ## call.hangUpCall<sup>9+</sup>
 
-hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: hangUpCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 挂断电话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
-| callId   | number                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回挂断电话的结果。            |
 
 **错误码：**
@@ -454,6 +643,8 @@ hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -461,7 +652,22 @@ call.hangUpCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hangUpCall success.`);
+        console.info(`hangUpCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.hangUpCall(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hangUpCall success.`);
     }
 });
 ```
@@ -469,21 +675,27 @@ call.hangUpCall(1, (err: BusinessError) => {
 
 ## call.hangUpCall<sup>9+</sup>
 
-hangUpCall\(callId?: number\): Promise\<void\>
+ArkTS-Dyn: hangUpCall\(callId?: number\): Promise\<void\>
+
+ArkTS-Sta: hangUpCall\(callId?: int\): Promise\<void\>
 
 挂断电话。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
 
 **返回值：**
 
@@ -507,12 +719,28 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hangUpCall(1).then(() => {
-    console.log(`hangUpCall success.`);
+    console.info(`hangUpCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`hangUpCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.hangUpCall(1).then(() => {
+    console.info(`hangUpCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`hangUpCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -526,9 +754,13 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -553,6 +785,8 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -560,7 +794,22 @@ call.hangUpCall((err: BusinessError) => {
     if (err) {
         console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hangUpCall success.`);
+        console.info(`hangUpCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.hangUpCall((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hangUpCall success.`);
     }
 });
 ```
@@ -568,21 +817,27 @@ call.hangUpCall((err: BusinessError) => {
 
 ## call.rejectCall<sup>9+</sup>
 
-rejectCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: rejectCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: rejectCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 拒绝来电。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
-| callId   | number                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回拒接电话的结果。                           |
 
 **错误码：**
@@ -602,6 +857,8 @@ rejectCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -609,7 +866,22 @@ call.rejectCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.rejectCall(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -617,21 +889,27 @@ call.rejectCall(1, (err: BusinessError) => {
 
 ## call.rejectCall<sup>9+</sup>
 
-rejectCall\(callId: number, options: RejectMessageOptions, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: rejectCall\(callId: number, options: RejectMessageOptions, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: rejectCall\(callId: int, options: RejectMessageOptions, callback: AsyncCallback\<void\>\): void
 
 拒绝来电。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                           | 必填 | 说明                                            |
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
-| callId   | number                                         | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int            | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
 | options  | [RejectMessageOptions](#rejectmessageoptions7) | 是   | 拒绝消息选项。                                  |
 | callback | AsyncCallback&lt;void&gt;                      | 是   | 以回调函数的方式返回拒接电话的结果。            |
 
@@ -651,6 +929,8 @@ rejectCall\(callId: number, options: RejectMessageOptions, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -661,7 +941,25 @@ call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let rejectMessageOptions : call.RejectMessageOptions = {
+    messageContent: "拦截陌生号码"
+}
+call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
+    if (err?.code) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -669,21 +967,27 @@ call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
 
 ## call.rejectCall<sup>9+</sup>
 
-rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
+ArkTS-Dyn: rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
+
+ArkTS-Sta: rejectCall\(callId?: int, options?: RejectMessageOptions\): Promise\<void\>
 
 拒绝来电。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名  | 类型                                           | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
+| callId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int            | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
 | options | [RejectMessageOptions](#rejectmessageoptions7) | 否   | 拒绝消息选项。不填该参数则不会发送拒接短信。|
 
 **返回值：**
@@ -708,6 +1012,8 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -715,8 +1021,25 @@ let rejectMessageOptions: call.RejectMessageOptions = {
     messageContent: "拦截陌生号码"
 }
 call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.log(`rejectCall success.`);
+    console.info(`rejectCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let rejectMessageOptions: call.RejectMessageOptions = {
+    messageContent: "拦截陌生号码"
+}
+call.rejectCall(1, rejectMessageOptions).then(() => {
+    console.info(`rejectCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -730,9 +1053,13 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -756,6 +1083,8 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -763,11 +1092,25 @@ call.rejectCall((err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.rejectCall((err: BusinessError | null) => {
+    if (err?.code) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```
 
 ## call.rejectCall<sup>9+</sup>
 
@@ -777,9 +1120,13 @@ rejectCall\(options: RejectMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -804,6 +1151,8 @@ rejectCall\(options: RejectMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -814,7 +1163,25 @@ call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let rejectMessageOptions: call.RejectMessageOptions = {
+    messageContent: "拦截陌生号码"
+}
+call.rejectCall(rejectMessageOptions, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -822,21 +1189,27 @@ call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
 
 ## call.holdCall<sup>7+</sup>
 
-holdCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: holdCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: holdCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 保持通话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 7
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回保持电话的结果。 |
 
 **错误码：**
@@ -855,6 +1228,8 @@ holdCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -862,29 +1237,49 @@ call.holdCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`holdCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`holdCall success.`);
+        console.info(`holdCall success.`);
     }
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.holdCall(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`holdCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`holdCall success.`);
+    }
+});
+```
 
 ## call.holdCall<sup>7+</sup>
 
-holdCall\(callId: number\): Promise\<void\>
+ArkTS-Dyn: holdCall\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: holdCall\(callId: int\): Promise\<void\>
 
 保持通话。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -908,33 +1303,55 @@ holdCall\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.holdCall(1).then(() => {
-    console.log(`holdCall success.`);
+    console.info(`holdCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.holdCall(1).then(() => {
+    console.info(`holdCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.unHoldCall<sup>7+</sup>
 
-unHoldCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: unHoldCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: unHoldCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 取消保持通话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 7
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回取消保持电话的结果。 |
 
 **错误码：**
@@ -953,6 +1370,8 @@ unHoldCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -960,7 +1379,22 @@ call.unHoldCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`unHoldCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`unHoldCall success.`);
+        console.info(`unHoldCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.unHoldCall(1, (err: BusinessError | data: undefined) => {
+    if (err?.code) {
+        console.error(`unHoldCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`unHoldCall success.`);
     }
 });
 ```
@@ -968,21 +1402,27 @@ call.unHoldCall(1, (err: BusinessError) => {
 
 ## call.unHoldCall<sup>7+</sup>
 
-unHoldCall\(callId: number\): Promise\<void\>
+ArkTS-Dyn: unHoldCall\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: unHoldCall\(callId: int\): Promise\<void\>
 
 取消保持通话。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1006,33 +1446,55 @@ unHoldCall\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.unHoldCall(1).then(() => {
-    console.log(`unHoldCall success.`);
+    console.info(`unHoldCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.unHoldCall(1).then(() => {
+    console.info(`unHoldCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.switchCall<sup>7+</sup>
 
-switchCall\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: switchCall\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: switchCall\(callId: int, callback: AsyncCallback\<void\>\): void
 
 切换呼叫。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回交换电话的结果。 |
 
 **错误码：**
@@ -1051,6 +1513,8 @@ switchCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1058,7 +1522,22 @@ call.switchCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`switchCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`switchCall success.`);
+        console.info(`switchCall success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.switchCall(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`switchCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`switchCall success.`);
     }
 });
 ```
@@ -1066,21 +1545,23 @@ call.switchCall(1, (err: BusinessError) => {
 
 ## call.switchCall<sup>7+</sup>
 
-switchCall\(callId: number\): Promise\<void\>
+ArkTS-Dyn: switchCall\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: switchCall\(callId: int\): Promise\<void\>
 
 切换呼叫。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1104,31 +1585,53 @@ switchCall\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.switchCall(1).then(() => {
-    console.log(`switchCall success.`);
+    console.info(`switchCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.switchCall(1).then(() => {
+    console.info(`switchCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.combineConference<sup>11+</sup>
 
-combineConference\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: combineConference\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: combineConference\(callId: int, callback: AsyncCallback\<void\>\): void
 
 合并通话，将两通电话合并成会议电话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回合并会议的结果。 |
 
 **错误码：**
@@ -1147,6 +1650,8 @@ combineConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1154,7 +1659,22 @@ call.combineConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`combineConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`combineConference success.`);
+        console.info(`combineConference success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.combineConference(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`combineConference fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`combineConference success.`);
     }
 });
 ```
@@ -1162,19 +1682,25 @@ call.combineConference(1, (err: BusinessError) => {
 
 ## call.combineConference<sup>11+</sup>
 
-combineConference\(callId: number\): Promise\<void\>
+ArkTS-Dyn: combineConference\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: combineConference\(callId: int\): Promise\<void\>
 
 合并通话，将两通电话合并成会议电话。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1198,33 +1724,55 @@ combineConference\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.combineConference(1).then(() => {
-    console.log(`combineConference success.`);
+    console.info(`combineConference success.`);
 }).catch((err: BusinessError) => {
+    console.error(`combineConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.combineConference(1).then(() => {
+    console.info(`combineConference success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`combineConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.kickOutFromConference<sup>10+</sup>
 
-kickOutFromConference\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: kickOutFromConference\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: kickOutFromConference\(callId: int, callback: AsyncCallback\<void\>\): void
 
 移出电话会议，将指定通话从会议电话中挂断。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                   | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回移出会议的结果。 |
 
 **错误码：**
@@ -1243,6 +1791,8 @@ kickOutFromConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1250,28 +1800,49 @@ call.kickOutFromConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`kickOutFromConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`kickOutFromConference success.`);
+        console.info(`kickOutFromConference success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.kickOutFromConference(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`kickOutFromConference fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`kickOutFromConference success.`);
     }
 });
 ```
 
 ## call.kickOutFromConference<sup>10+</sup>
 
-kickOutFromConference\(callId: number\): Promise\<void\>
+ArkTS-Dyn: kickOutFromConference\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: kickOutFromConference\(callId: int\): Promise\<void\>
 
 移出电话会议，将指定通话从会议电话中挂断。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1295,32 +1866,54 @@ kickOutFromConference\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.kickOutFromConference(1).then(() => {
-    console.log(`kickOutFromConference success.`);
+    console.info(`kickOutFromConference success.`);
 }).catch((err: BusinessError) => {
+    console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.kickOutFromConference(1).then(() => {
+    console.info(`kickOutFromConference success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getMainCallId<sup>7+</sup>
 
-getMainCallId\(callId: number, callback: AsyncCallback\<number\>\): void
+ArkTS-Dyn: getMainCallId\(callId: number, callback: AsyncCallback\<number\>\): void
+
+ArkTS-Sta: getMainCallId\(callId: int, callback: AsyncCallback\<int\>\): void
 
 获取主呼叫Id。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
-| callId   | number                      | 是   | 呼叫Id。                 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回主呼叫Id。 |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                      | 是   | 呼叫Id。                 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br/> ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回主呼叫Id。 |
 
 **错误码：**
 
@@ -1337,6 +1930,8 @@ getMainCallId\(callId: number, callback: AsyncCallback\<number\>\): void
 
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1345,7 +1940,22 @@ call.getMainCallId(1, (err: BusinessError, data: number) => {
     if (err) {
         console.error(`getMainCallId fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getMainCallId success, data->${JSON.stringify(data)}`);
+        console.info(`getMainCallId success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getMainCallId(1, (err: BusinessError | null, data: int | undefined) => {
+    if (err?.code) {
+        console.error(`getMainCallId fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getMainCallId success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1353,25 +1963,31 @@ call.getMainCallId(1, (err: BusinessError, data: number) => {
 
 ## call.getMainCallId<sup>7+</sup>
 
-getMainCallId\(callId: number\): Promise\<number\>
+ArkTS-Dyn: getMainCallId\(callId: number\): Promise\<number\>
+
+ArkTS-Sta: getMainCallId\(callId: int\): Promise\<int\>
 
 获取主呼叫Id。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | 以Promise形式异步返回主呼叫Id。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br/>ArkTS-Dyn: Promise&lt;int&gt; | 以Promise形式异步返回主呼叫Id。 |
 
 **错误码：**
 
@@ -1389,25 +2005,49 @@ getMainCallId\(callId: number\): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getMainCallId(1).then((data: number) => {
-    console.log(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getMainCallId(1).then((data: int) => {
+    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getSubCallIdList<sup>7+</sup>
 
-getSubCallIdList\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): void
+ArkTS-Dyn: getSubCallIdList\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): void
+
+ArkTS-Sta: getSubCallIdList\(callId: int, callback: AsyncCallback\<Array\<string\>\>\): void
 
 获取子呼叫Id列表。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1431,6 +2071,8 @@ getSubCallIdList\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1438,7 +2080,22 @@ call.getSubCallIdList(1, (err: BusinessError, data: Array<string>) => {
     if (err) {
         console.error(`getSubCallIdList fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getSubCallIdList success, data->${JSON.stringify(data)}`);
+        console.info(`getSubCallIdList success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getSubCallIdList(1, (err: BusinessError | null, data: Array<string> | undefined) => {
+    if (err?.code) {
+        console.error(`getSubCallIdList fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getSubCallIdList success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1446,19 +2103,25 @@ call.getSubCallIdList(1, (err: BusinessError, data: Array<string>) => {
 
 ## call.getSubCallIdList<sup>7+</sup>
 
-getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
+ArkTS-Dyn: getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
+
+ArkTS-Sta: getSubCallIdList\(callId: int\): Promise\<Array\<string\>\>
 
 获取子呼叫Id列表。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1481,31 +2144,53 @@ getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getSubCallIdList(1).then((data: Array<string>) => {
-    console.log(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getSubCallIdList fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getSubCallIdList(1).then((data: Array<string>) => {
+    console.info(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getSubCallIdList fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getCallIdListForConference<sup>7+</sup>
 
-getCallIdListForConference\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): void
+ArkTS-Dyn: getCallIdListForConference\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): void
+
+ArkTS-Sta: getCallIdListForConference\(callId: int, callback: AsyncCallback\<Array\<string\>\>\): void
 
 获取会议的呼叫Id列表。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                             |
 | -------- | ----------------------------------- | ---- | -------------------------------- |
-| callId   | number                              | 是   | 呼叫Id。                         |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。                         |
 | callback | AsyncCallback&lt;Array<string\>&gt; | 是   | 回调函数。返回会议的呼叫Id列表。 |
 
 **错误码：**
@@ -1523,6 +2208,8 @@ getCallIdListForConference\(callId: number, callback: AsyncCallback\<Array\<stri
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1530,7 +2217,22 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
     if (err) {
         console.error(`getCallIdListForConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
+        console.info(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallIdListForConference(1, (err: BusinessError | null, data: Array<string> | undefined) => {
+    if (err?.code) {
+        console.error(`getCallIdListForConference fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1538,19 +2240,25 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
 
 ## call.getCallIdListForConference<sup>7+</sup>
 
-getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
+ArkTS-Dyn: getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
+
+ArkTS-Sta: getCallIdListForConference\(callId: int\): Promise\<Array\<string\>\>
 
 获取会议的呼叫Id列表。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1573,33 +2281,55 @@ getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallIdListForConference(1).then((data: Array<string>) => {
-    console.log(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallIdListForConference(1).then((data: Array<string>) => {
+    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getCallWaitingStatus<sup>7+</sup>
 
-getCallWaitingStatus\(slotId: number, callback: AsyncCallback\<CallWaitingStatus\>\): void
+ArkTS-Dyn: getCallWaitingStatus\(slotId: number, callback: AsyncCallback\<CallWaitingStatus\>\): void
+
+ArkTS-Sta: getCallWaitingStatus\(slotId: int, callback: AsyncCallback\<CallWaitingStatus\>\): void
 
 获取呼叫等待状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| slotId   | number                                                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
 | callback | AsyncCallback&lt;[CallWaitingStatus](#callwaitingstatus7)\> | 是   | 回调函数。<br/>返回呼叫等待状态。<br/>- 0：禁用呼叫等待。 <br/>- 1：启用呼叫等待。 |
 
 **错误码：**
@@ -1618,6 +2348,8 @@ getCallWaitingStatus\(slotId: number, callback: AsyncCallback\<CallWaitingStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1625,7 +2357,22 @@ call.getCallWaitingStatus(0, (err: BusinessError, data: call.CallWaitingStatus) 
     if (err) {
         console.error(`getCallWaitingStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallWaitingStatus(0, (err: BusinessError | null, data: call.CallWaitingStatus | undefined) => {
+    if (err?.code) {
+        console.error(`getCallWaitingStatus fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCallWaitingStatus success, data->${data}`);
     }
 });
 ```
@@ -1633,21 +2380,27 @@ call.getCallWaitingStatus(0, (err: BusinessError, data: call.CallWaitingStatus) 
 
 ## call.getCallWaitingStatus<sup>7+</sup>
 
-getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
+ArkTS-Dyn: getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
+
+ArkTS-Sta: getCallWaitingStatus\(slotId: int\): Promise\<CallWaitingStatus\>
 
 获取呼叫等待状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1671,33 +2424,54 @@ getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
-    console.log(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
+    console.info(`getCallWaitingStatus success, promise: data->${data}`);
+}).catch((error: Error) => {
     console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setCallWaiting<sup>7+</sup>
 
-setCallWaiting\(slotId: number, activate: boolean, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setCallWaiting\(slotId: number, activate: boolean, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setCallWaiting\(slotId: int, activate: boolean, callback: AsyncCallback\<void\>\): void
 
 设置呼叫等待。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| slotId   | number               | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int               | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
 | activate | boolean              | 是   | 呼叫等待是否处于启用状态。<br/>- false：禁用呼叫等待。<br/>- true：启用呼叫等待。 |
 | callback | AsyncCallback<void\> | 是   | 以回调函数的方式返回设置呼叫等待的结果。                     |
 
@@ -1717,6 +2491,8 @@ setCallWaiting\(slotId: number, activate: boolean, callback: AsyncCallback\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1724,7 +2500,22 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
     if (err) {
         console.error(`setCallWaiting fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallWaiting success.`);
+        console.info(`setCallWaiting success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setCallWaiting(0, true, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setCallWaiting fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setCallWaiting success.`);
     }
 });
 ```
@@ -1732,21 +2523,27 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
 
 ## call.setCallWaiting<sup>7+</sup>
 
-setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
+ArkTS-Dyn: setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
+
+ArkTS-Sta: setCallWaiting\(slotId: int, activate: boolean\): Promise\<void\>
 
 设置呼叫等待。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| slotId   | number  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
 | activate | boolean | 是   | 呼叫等待是否处于启用状态。<br/>- false：禁用呼叫等待。<br/>- true：启用呼叫等待。 |
 
 **返回值：**
@@ -1771,31 +2568,53 @@ setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallWaiting(0, true).then(() => {
-    console.log(`setCallWaiting success.`);
+    console.info(`setCallWaiting success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setCallWaiting(0, true).then(() => {
+    console.info(`setCallWaiting success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.startDTMF<sup>7+</sup>
 
-startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: startDTMF\(callId: int, character: string, callback: AsyncCallback\<void\>\): void
 
 启动双音多频。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名    | 类型                 | 必填 | 说明       |
 | --------- | -------------------- | ---- | ---------- |
-| callId    | number               | 是   | 呼叫Id。   |
+| callId    | ArkTS-Dyn: number <br/>ArkTS-Sta: int               | 是   | 呼叫Id。   |
 | character | string               | 是   | DTMF码。   |
 | callback  | AsyncCallback<void\> | 是   | 以回调函数的方式返回启动双音多频的结果。 |
 
@@ -1814,6 +2633,8 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1821,27 +2642,47 @@ call.startDTMF(1, "0", (err: BusinessError) => {
     if (err) {
         console.error(`startDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`startDTMF success.`);
+        console.info(`startDTMF success.`);
     }
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.startDTMF(1, "0", (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`startDTMF fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`startDTMF success.`);
+    }
+});
+```
 
 ## call.startDTMF<sup>7+</sup>
 
-startDTMF\(callId: number, character: string\): Promise\<void\>
+ArkTS-Dyn: startDTMF\(callId: number, character: string\): Promise\<void\>
+
+ArkTS-Sta: startDTMF\(callId: int, character: string\): Promise\<void\>
 
 启动双音多频。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明     |
 | --------- | ------ | ---- | -------- |
-| callId    | number | 是   | 呼叫Id。 |
+| callId    | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 | character | string | 是   | DTMF码。 |
 
 **返回值：**
@@ -1865,31 +2706,52 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.startDTMF(1, "0").then(() => {
-    console.log(`startDTMF success.`);
+    console.info(`startDTMF success.`);
 }).catch((err: BusinessError) => {
+    console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.startDTMF(1, "0").then(() => {
+    console.info(`startDTMF success.`);
+}).catch((error: Error) => {
     console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.stopDTMF<sup>7+</sup>
 
-stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: stopDTMF\(callId: int, callback: AsyncCallback\<void\>\): void
 
 停止双音多频。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回停止双音多频的结果。 |
 
 **错误码：**
@@ -1907,6 +2769,8 @@ stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1914,7 +2778,22 @@ call.stopDTMF(1, (err: BusinessError) => {
     if (err) {
         console.error(`stopDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`stopDTMF success.`);
+        console.info(`stopDTMF success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.stopDTMF(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`stopDTMF fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`stopDTMF success.`);
     }
 });
 ```
@@ -1922,19 +2801,25 @@ call.stopDTMF(1, (err: BusinessError) => {
 
 ## call.stopDTMF<sup>7+</sup>
 
-stopDTMF\(callId: number\): Promise\<void\>
+ArkTS-Dyn: stopDTMF\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: stopDTMF\(callId: int\): Promise\<void\>
 
 停止双音多频。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -1957,19 +2842,37 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.stopDTMF(1).then(() => {
-    console.log(`stopDTMF success.`);
+    console.info(`stopDTMF success.`);
 }).catch((err: BusinessError) => {
+    console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.stopDTMF(1).then(() => {
+    console.info(`stopDTMF success.`);
+}).catch((error: Error) => {
+    let err: BusinessError = error;
     console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.postDialProceed<sup>11+</sup>
 
-postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: postDialProceed\(callId: int, proceed: boolean, callback: AsyncCallback\<void\>\): void
 
 继续进行通话。使用callback异步回调。
 
@@ -1978,15 +2881,19 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                           |
 | -------- | ------------------------- | ---- | -------------------------------------------------------------- |
-| callId   | number                    | 是   | 呼叫Id。                                                       |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。                                                       |
 | proceed  | boolean                   | 是   | 用户选择是否发送DTMF(Dual Tone Multi Frequency，双音多频)音，默认为false。<br/>-true：是<br/>-false：否|
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回继续进行通话的结果。                    |
 
@@ -2006,18 +2913,37 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.postDialProceed(1, true, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`postDialProceed success.`);
+    }
 });
 ```
 
 
 ## call.postDialProceed<sup>11+</sup>
 
-postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
+ArkTS-Dyn: postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
+
+ArkTS-Sta: postDialProceed\(callId: int, proceed: boolean\): Promise\<void\>
 
 继续进行通话。使用Promise异步回调。
 
@@ -2026,15 +2952,19 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                    |
 | -------- | ------------------------- | ---- | ----------------------- |
-| callId   | number                    | 是   | 呼叫Id。                |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。                |
 | proceed  | boolean                   | 是   | 用户选择是否发送DTMF音，默认为false。<br/>-true：是<br/>-false：否|
 
 **返回值：**
@@ -2059,12 +2989,28 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true).then(() => {
-    console.log(`postDialProceed success.`);
+    console.info(`postDialProceed success.`);
 }).catch((err: BusinessError) => {
+    console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.postDialProceed(1, true).then(() => {
+    console.info(`postDialProceed success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -2077,9 +3023,13 @@ isInEmergencyCall\(callback: AsyncCallback\<boolean\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2103,6 +3053,8 @@ isInEmergencyCall\(callback: AsyncCallback\<boolean\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2110,7 +3062,22 @@ call.isInEmergencyCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isInEmergencyCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
+        console.info(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isInEmergencyCall((err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`isInEmergencyCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2124,9 +3091,13 @@ isInEmergencyCall\(\): Promise\<boolean\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2148,12 +3119,28 @@ isInEmergencyCall\(\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isInEmergencyCall().then((data: boolean) => {
-    console.log(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`isInEmergencyCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isInEmergencyCall().then((data: boolean) => {
+    console.info(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`isInEmergencyCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -2166,9 +3153,9 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2195,7 +3182,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2207,9 +3194,9 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2236,7 +3223,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2248,9 +3235,9 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2277,7 +3264,7 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 ```ts
 call.on('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2289,9 +3276,9 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2318,7 +3305,7 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 ```ts
 call.on('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2330,9 +3317,9 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2359,7 +3346,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2371,9 +3358,9 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2400,7 +3387,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2412,9 +3399,9 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2441,7 +3428,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2453,9 +3440,9 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2482,7 +3469,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2495,9 +3482,9 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2524,7 +3511,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2537,9 +3524,9 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2566,7 +3553,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2578,9 +3565,9 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2607,7 +3594,7 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 ```ts
 call.on('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2619,9 +3606,9 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -2648,7 +3635,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 ```ts
 call.off('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2660,7 +3647,11 @@ isNewCallAllowed\(callback: AsyncCallback\<boolean\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2690,7 +3681,7 @@ call.isNewCallAllowed((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isNewCallAllowed fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
+        console.info(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2704,7 +3695,11 @@ isNewCallAllowed\(\): Promise\<boolean\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2725,31 +3720,53 @@ isNewCallAllowed\(\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isNewCallAllowed().then((data: boolean) => {
-    console.log(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`isNewCallAllowed fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isNewCallAllowed().then((data: boolean) => {
+    console.info(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`isNewCallAllowed fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.separateConference<sup>11+</sup>
 
-separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: separateConference\(callId: int, callback: AsyncCallback\<void\>\): void
 
 分离会议电话。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callId   | number                    | 是   | 呼叫Id。   |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 呼叫Id。   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回分离会议电话的结果。 |
 
 **错误码：**
@@ -2768,6 +3785,8 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2775,7 +3794,22 @@ call.separateConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`separateConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`separateConference success.`);
+        console.info(`separateConference success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.separateConference(1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`separateConference fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`separateConference success.`);
     }
 });
 ```
@@ -2783,19 +3817,25 @@ call.separateConference(1, (err: BusinessError) => {
 
 ## call.separateConference<sup>11+</sup>
 
-separateConference\(callId: number\): Promise\<void\>
+ArkTS-Dyn: separateConference\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: separateConference\(callId: int\): Promise\<void\>
 
 分离会议电话。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| callId | number | 是   | 呼叫Id。 |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 
 **返回值：**
 
@@ -2819,33 +3859,55 @@ separateConference\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.separateConference(1).then(() => {
-    console.log(`separateConference success.`);
+    console.info(`separateConference success.`);
 }).catch((err: BusinessError) => {
+    console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.separateConference(1).then(() => {
+    console.info(`separateConference success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getCallRestrictionStatus<sup>8+</sup>
 
-getCallRestrictionStatus\(slotId: number, type: CallRestrictionType, callback: AsyncCallback\<RestrictionStatus\>\): void
+ArkTS-Dyn: getCallRestrictionStatus\(slotId: number, type: CallRestrictionType, callback: AsyncCallback\<RestrictionStatus\>\): void
+
+ArkTS-Sta: getCallRestrictionStatus\(slotId: int, type: CallRestrictionType, callback: AsyncCallback\<RestrictionStatus\>\): void
 
 获取呼叫限制状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                          | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | type     | [CallRestrictionType](#callrestrictiontype8)                 | 是   | 呼叫限制类型。                        |
 | callback | AsyncCallback&lt;[RestrictionStatus](#restrictionstatus8)&gt; | 是   | 回调函数。返回限制状态。               |
 
@@ -2865,6 +3927,8 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType, callback: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2872,7 +3936,22 @@ call.getCallRestrictionStatus(0, 1, (err: BusinessError, data: call.RestrictionS
     if (err) {
         console.error(`getCallRestrictionStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallRestrictionStatus(0, call.CallRestrictionType.RESTRICTION_ENABLE, (err: BusinessError | null, data: call.RestrictionStatus | undefined) => {
+    if (err?.code) {
+        console.error(`getCallRestrictionStatus fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCallRestrictionStatus success, data->${data}`);
     }
 });
 ```
@@ -2880,21 +3959,27 @@ call.getCallRestrictionStatus(0, 1, (err: BusinessError, data: call.RestrictionS
 
 ## call.getCallRestrictionStatus<sup>8+</sup>
 
-getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<RestrictionStatus\>
+ArkTS-Dyn: getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<RestrictionStatus\>
+
+ArkTS-Sta: getCallRestrictionStatus\(slotId: int, type: CallRestrictionType\): Promise\<RestrictionStatus\>
 
 获取呼叫限制状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                   |
 | ------ | -------------------------------------------- | ---- | -------------------------------------- |
-| slotId | number                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int          | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | type   | [CallRestrictionType](#callrestrictiontype8) | 是   | 呼叫限制类型。                        |
 
 **返回值：**
@@ -2919,33 +4004,55 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallRestrictionStatus(0, 1).then((data: call.RestrictionStatus) => {
-    console.log(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallRestrictionStatus(0, call.CallRestrictionType.RESTRICTION_ENABLE).then((data: call.RestrictionStatus) => {
+    console.info(`getCallRestrictionStatus success, promise: data->${data}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setCallRestriction<sup>8+</sup>
 
-setCallRestriction\(slotId: number, info: CallRestrictionInfo, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setCallRestriction\(slotId: number, info: CallRestrictionInfo, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setCallRestriction\(slotId: int, info: CallRestrictionInfo, callback: AsyncCallback\<void\>\): void
 
 设置呼叫限制状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                   |
 | -------- | ------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | info     | [CallRestrictionInfo](#callrestrictioninfo8) | 是   | 呼叫限制信息。                         |
 | callback | AsyncCallback&lt;void&gt;                   | 是   | 以回调函数的方式返回设置呼叫限制状态的结果。 |
 
@@ -2965,6 +4072,8 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2977,7 +4086,27 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestriction fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestriction success.`);
+        console.info(`setCallRestriction success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callRestrictionInfo: call.CallRestrictionInfo = {
+    type: call.CallRestrictionType.RESTRICTION_TYPE_ALL_OUTGOING,
+    password: "123456",
+    mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
+}
+call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setCallRestriction fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setCallRestriction success.`);
     }
 });
 ```
@@ -2985,21 +4114,27 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
 
 ## call.setCallRestriction<sup>8+</sup>
 
-setCallRestriction\(slotId: number, info: CallRestrictionInfo\): Promise\<void\>
+ArkTS-Dyn: setCallRestriction\(slotId: number, info: CallRestrictionInfo\): Promise\<void\>
+
+ArkTS-Sta: setCallRestriction\(slotId: int, info: CallRestrictionInfo\): Promise\<void\>
 
 设置呼叫限制状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                         | 必填 | 说明                                   |
 | ------ | -------------------------------------------- | ---- | -------------------------------------- |
-| slotId | number                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int          | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | info   | [CallRestrictionInfo](#callrestrictioninfo8) | 是   | 呼叫限制信息。                         |
 
 **返回值：**
@@ -3024,6 +4159,8 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3033,29 +4170,54 @@ let callRestrictionInfo: call.CallRestrictionInfo = {
     mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
 }
 call.setCallRestriction(0, callRestrictionInfo).then(() => {
-    console.log(`setCallRestriction success.`);
+    console.info(`setCallRestriction success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callRestrictionInfo: call.CallRestrictionInfo = {
+    type: call.CallRestrictionType.RESTRICTION_TYPE_ALL_INCOMING,
+    password: "123456",
+    mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
+}
+call.setCallRestriction(0, callRestrictionInfo).then(() => {
+    console.info(`setCallRestriction success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setCallRestrictionPassword<sup>10+</sup>
 
-setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: string, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: string, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setCallRestrictionPassword\(slotId: int, oldPassword: string, newPassword: string, callback: AsyncCallback\<void\>\): void
 
 修改呼叫限制密码。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名          | 类型                                        | 必填 | 说明                                   |
 | --------------- | ------------------------------------------- | ---- | ------------------------------------ |
-| slotId          | number                                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId          | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | oldPassword     | string                                      | 是   | 呼叫限制旧密码。                       |
 | newPassword     | string                                      | 是   | 呼叫限制新密码。                       |
 | callback        | AsyncCallback&lt;void&gt;                   | 是   | 以回调函数的方式返回修改呼叫限制密码的结果。    |
@@ -3076,6 +4238,8 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3083,28 +4247,49 @@ call.setCallRestrictionPassword(0, "123456", "654321", (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestrictionPassword fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestrictionPassword success.`);
+        console.info(`setCallRestrictionPassword success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setCallRestrictionPassword(0, "123456", "654321", (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setCallRestrictionPassword fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setCallRestrictionPassword success.`);
     }
 });
 ```
 
 ## call.setCallRestrictionPassword<sup>10+</sup>
 
-setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: string\): Promise\<void\>
+ArkTS-Dyn: setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: string\): Promise\<void\>
+
+ArkTS-Sta: setCallRestrictionPassword\(slotId: int, oldPassword: string, newPassword: string\): Promise\<void\>
 
 修改呼叫限制密码。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名          | 类型                                        | 必填 | 说明                                   |
 | --------------- | ------------------------------------------- | ---- | ------------------------------------ |
-| slotId          | number                                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId          | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | oldPassword     | string                                      | 是   | 呼叫限制旧密码。                       |
 | newPassword     | string                                      | 是   | 呼叫限制新密码。                       |
 
@@ -3130,33 +4315,54 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallRestrictionPassword(0, "123456", "654321").then(() => {
-    console.log(`setCallRestrictionPassword success.`);
+    console.info(`setCallRestrictionPassword success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setCallRestrictionPassword fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setCallRestrictionPassword(0, "123456", "654321").then(() => {
+    console.info(`setCallRestrictionPassword success.`);
+}).catch((error: Error) => {
     console.error(`setCallRestrictionPassword fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.getCallTransferInfo<sup>8+</sup>
 
-getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCallback\<CallTransferResult\>\): void
+ArkTS-Dyn: getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCallback\<CallTransferResult\>\): void
+
+ArkTS-Sta: getCallTransferInfo\(slotId: int, type: CallTransferType, callback: AsyncCallback\<CallTransferResult\>\): void
 
 获取呼叫转移信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                          | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | type     | [CallTransferType](#calltransfertype8)                       | 是   | 呼叫转移类型。                         |
 | callback | AsyncCallback&lt;[CallTransferResult](#calltransferresult8)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
 
@@ -3176,6 +4382,8 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3183,7 +4391,22 @@ call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: Busi
     if (err) {
         console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: BusinessError | null, data: call.CallTransferResult | undefined) => {
+    if (err?.code) {
+        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3191,21 +4414,27 @@ call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: Busi
 
 ## call.getCallTransferInfo<sup>8+</sup>
 
-getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTransferResult\>
+ArkTS-Dyn: getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTransferResult\>
+
+ArkTS-Sta: getCallTransferInfo\(slotId: int, type: CallTransferType\): Promise\<CallTransferResult\>
 
 获取呼叫转移信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明                                   |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
-| slotId | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | type   | [CallTransferType](#calltransfertype8) | 是   | 呼叫转移类型。                         |
 
 **返回值：**
@@ -3230,33 +4459,55 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.log(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
+    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setCallTransfer<sup>8+</sup>
 
-setCallTransfer\(slotId: number, info: CallTransferInfo, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setCallTransfer\(slotId: number, info: CallTransferInfo, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setCallTransfer\(slotId: int, info: CallTransferInfo, callback: AsyncCallback\<void\>\): void
 
 设置呼叫转移信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                   |
 | -------- | ------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int   | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | info     | [CallTransferInfo](#calltransferinfo8) | 是   | 呼叫转移信息。                        |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 以回调函数的方式返回设置呼叫转移信息的结果。      |
 
@@ -3276,6 +4527,8 @@ setCallTransfer\(slotId: number, info: CallTransferInfo, callback: AsyncCallback
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3288,7 +4541,27 @@ call.setCallTransfer(0, callTransferInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallTransfer fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallTransfer success.`);
+        console.info(`setCallTransfer success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callTransferInfo: call.CallTransferInfo = {
+    transferNum: "111",
+    type: call.CallTransferType.TRANSFER_TYPE_BUSY,
+    settingType: call.CallTransferSettingType.CALL_TRANSFER_ENABLE
+}
+call.setCallTransfer(0, callTransferInfo, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setCallTransfer fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setCallTransfer success.`);
     }
 });
 ```
@@ -3296,21 +4569,27 @@ call.setCallTransfer(0, callTransferInfo, (err: BusinessError) => {
 
 ## call.setCallTransfer<sup>8+</sup>
 
-setCallTransfer\(slotId: number, info: CallTransferInfo\): Promise\<void\>
+ArkTS-Dyn: setCallTransfer\(slotId: number, info: CallTransferInfo\): Promise\<void\>
+
+ArkTS-Sta: setCallTransfer\(slotId: int, info: CallTransferInfo\): Promise\<void\>
 
 设置呼叫转移信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                  | 必填 | 说明                                   |
 | ------ | ------------------------------------- | ---- | -------------------------------------- |
-| slotId | number                                | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int   | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | info   | [CallTransferInfo](#calltransferinfo8) | 是   | 呼叫转移信息。                        |
 
 **返回值：**
@@ -3335,6 +4614,8 @@ setCallTransfer\(slotId: number, info: CallTransferInfo\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3344,8 +4625,27 @@ let callTransferInfo: call.CallTransferInfo = {
     settingType: call.CallTransferSettingType.CALL_TRANSFER_ENABLE
 }
 call.setCallTransfer(0, callTransferInfo).then(() => {
-    console.log(`setCallTransfer success.`);
+    console.info(`setCallTransfer success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setCallTransfer fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callTransferInfo: call.CallTransferInfo = {
+    transferNum: "111",
+    type: call.CallTransferType.TRANSFER_TYPE_BUSY,
+    settingType: call.CallTransferSettingType.CALL_TRANSFER_ENABLE
+}
+call.setCallTransfer(0, callTransferInfo).then(() => {
+    console.info(`setCallTransfer success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setCallTransfer fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3358,9 +4658,13 @@ isRinging\(callback: AsyncCallback\<boolean\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3384,6 +4688,8 @@ isRinging\(callback: AsyncCallback\<boolean\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3391,7 +4697,22 @@ call.isRinging((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isRinging fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isRinging success, data->${JSON.stringify(data)}`);
+        console.info(`isRinging success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isRinging((err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`isRinging fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`isRinging success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3405,9 +4726,13 @@ isRinging\(\): Promise\<boolean\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3429,12 +4754,28 @@ isRinging\(\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isRinging().then((data: boolean) => {
-    console.log(`isRinging success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isRinging().then((data: boolean) => {
+    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3447,7 +4788,11 @@ setMuted\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3470,6 +4815,8 @@ setMuted\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3477,7 +4824,22 @@ call.setMuted((err: BusinessError) => {
     if (err) {
         console.error(`setMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setMuted success.`);
+        console.info(`setMuted success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setMuted((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setMuted fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setMuted success.`);
     }
 });
 ```
@@ -3491,7 +4853,11 @@ setMuted\(\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3512,12 +4878,28 @@ setMuted\(\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setMuted().then(() => {
-    console.log(`setMuted success.`);
+    console.info(`setMuted success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setMuted fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setMuted().then(() => {
+    console.info(`setMuted success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setMuted fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3530,7 +4912,11 @@ cancelMuted\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3553,6 +4939,8 @@ cancelMuted\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3560,7 +4948,22 @@ call.cancelMuted((err: BusinessError) => {
     if (err) {
         console.error(`cancelMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`cancelMuted success.`);
+        console.info(`cancelMuted success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.cancelMuted((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`cancelMuted fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`cancelMuted success.`);
     }
 });
 ```
@@ -3574,7 +4977,11 @@ cancelMuted\(\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3595,12 +5002,28 @@ cancelMuted\(\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelMuted().then(() => {
-    console.log(`cancelMuted success.`);
+    console.info(`cancelMuted success.`);
 }).catch((err: BusinessError) => {
+    console.error(`cancelMuted fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.cancelMuted().then(() => {
+    console.info(`cancelMuted success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`cancelMuted fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3613,9 +5036,13 @@ setAudioDevice\(device: AudioDevice, callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3640,6 +5067,8 @@ setAudioDevice\(device: AudioDevice, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3650,7 +5079,25 @@ call.setAudioDevice(audioDevice, (err: BusinessError) => {
     if (err) {
         console.error(`setAudioDevice fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setAudioDevice success.`);
+        console.info(`setAudioDevice success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let audioDevice: call.AudioDevice = {
+    deviceType: call.AudioDeviceType.DEVICE_EARPIECE
+}
+call.setAudioDevice(audioDevice, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setAudioDevice fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setAudioDevice success.`);
     }
 });
 ```
@@ -3663,9 +5110,13 @@ setAudioDevice\(device: AudioDevice): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3695,6 +5146,8 @@ setAudioDevice\(device: AudioDevice): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3702,27 +5155,50 @@ let audioDevice: call.AudioDevice = {
     deviceType: call.AudioDeviceType.DEVICE_EARPIECE
 }
 call.setAudioDevice(audioDevice).then(() => {
-    console.log(`setAudioDevice success.`);
+    console.info(`setAudioDevice success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let audioDevice: call.AudioDevice = {
+    deviceType: call.AudioDeviceType.DEVICE_EARPIECE
+}
+call.setAudioDevice(audioDevice).then(() => {
+    console.info(`setAudioDevice success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.joinConference<sup>8+</sup>
 
-joinConference\(mainCallId: number, callNumberList: Array\<string\>, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: joinConference\(mainCallId: number, callNumberList: Array\<string\>, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: joinConference\(mainCallId: int, callNumberList: Array\<string\>, callback: AsyncCallback\<void\>\): void
 
 加入会议。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名         | 类型                      | 必填 | 说明            |
 | -------------- | ------------------------- | ---- | --------------- |
-| mainCallId     | number                    | 是   | 主通话Id。      |
+| mainCallId     | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 主通话Id。      |
 | callNumberList | Array<string\>            | 是   | 呼叫号码列表。 |
 | callback       | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回加入会议的结果。      |
 
@@ -3741,6 +5217,8 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>, callback: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3751,26 +5229,50 @@ call.joinConference(1, callNumberList, (err: BusinessError) => {
     if (err) {
         console.error(`joinConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`joinConference success.`);
+        console.info(`joinConference success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callNumberList: Array<string> = [
+    "138XXXXXXXX"
+];
+call.joinConference(1, callNumberList, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`joinConference fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`joinConference success.`);
     }
 });
 ```
 
 ## call.joinConference<sup>8+</sup>
 
-joinConference\(mainCallId: number, callNumberList: Array\<string\>\): Promise\<void\>
+ArkTS-Dyn: joinConference\(mainCallId: number, callNumberList: Array\<string\>\): Promise\<void\>
+
+ArkTS-Sta: joinConference\(mainCallId: int, callNumberList: Array\<string\>\): Promise\<void\>
 
 加入会议。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名         | 类型           | 必填 | 说明            |
 | -------------- | -------------- | ---- | --------------- |
-| mainCallId     | number         | 是   | 主通话Id。      |
+| mainCallId     | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 主通话Id。      |
 | callNumberList | Array<string\> | 是   | 呼叫号码列表。 |
 
 **返回值：**
@@ -3794,6 +5296,8 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>\): Promise\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3801,27 +5305,50 @@ let callNumberList: Array<string> = [
     "138XXXXXXXX"
 ];
 call.joinConference(1, callNumberList).then(() => {
-    console.log(`joinConference success.`);
+    console.info(`joinConference success.`);
 }).catch((err: BusinessError) => {
+    console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+let callNumberList: Array<string> = [
+    "138XXXXXXXX"
+];
+call.joinConference(1, callNumberList).then(() => {
+    console.info(`joinConference success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.updateImsCallMode<sup>8+</sup>
 
-updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: updateImsCallMode\(callId: int, mode: ImsCallMode, callback: AsyncCallback\<void\>\): void
 
 更新Ims呼叫模式。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明           |
 | -------- | ---------------------------- | ---- | -------------- |
-| callId   | number                       | 是   | 呼叫Id。       |
+| callId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。       |
 | mode     | [ImsCallMode](#imscallmode8) | 是   | Ims呼叫模式。 |
 | callback | AsyncCallback&lt;void&gt;    | 是   | 以回调函数的方式返回更新Ims呼叫模式的结果。     |
 
@@ -3840,6 +5367,8 @@ updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3847,26 +5376,47 @@ call.updateImsCallMode(1, 1, (err: BusinessError) => {
     if (err) {
         console.error(`updateImsCallMode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`updateImsCallMode success.`);
+        console.info(`updateImsCallMode success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.updateImsCallMode(1, 1, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`updateImsCallMode fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`updateImsCallMode success.`);
     }
 });
 ```
 
 ## call.updateImsCallMode<sup>8+</sup>
 
-updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
+ArkTS-Dyn: updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
+
+ArkTS-Sta: updateImsCallMode\(callId: int, mode: ImsCallMode\): Promise\<void\>
 
 更新Ims呼叫模式。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。       |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。       |
 | mode   | [ImsCallMode](#imscallmode8) | 是   | Ims呼叫模式。 |
 
 **返回值：**
@@ -3890,33 +5440,55 @@ updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.updateImsCallMode(1, 1).then(() => {
-    console.log(`updateImsCallMode success.`);
+    console.info(`updateImsCallMode success.`);
 }).catch((err: BusinessError) => {
+    console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.updateImsCallMode(1, 1).then(() => {
+    console.info(`updateImsCallMode success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.enableImsSwitch<sup>8+</sup>
 
-enableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: enableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: enableImsSwitch\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 启用Ims开关。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
-| slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回启用Ims开关的结果。          |
 
 **错误码：**
@@ -3935,6 +5507,8 @@ enableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3942,28 +5516,49 @@ call.enableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`enableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`enableImsSwitch success.`);
+        console.info(`enableImsSwitch success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.enableImsSwitch(0, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`enableImsSwitch fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`enableImsSwitch success.`);
     }
 });
 ```
 
 ## call.enableImsSwitch<sup>8+</sup>
 
-enableImsSwitch\(slotId: number\): Promise\<void\>
+ArkTS-Dyn: enableImsSwitch\(slotId: number\): Promise\<void\>
+
+ArkTS-Sta: enableImsSwitch\(slotId: int\): Promise\<void\>
 
 启用Ims开关。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -3987,33 +5582,54 @@ enableImsSwitch\(slotId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.enableImsSwitch(0).then(() => {
-    console.log(`enableImsSwitch success.`);
+    console.info(`enableImsSwitch success.`);
 }).catch((err: BusinessError) => {
+    console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.enableImsSwitch(0).then(() => {
+    console.info(`enableImsSwitch success.`);
+}).catch((error: Error) => {
     console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.disableImsSwitch<sup>8+</sup>
 
-disableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: disableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: disableImsSwitch\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 禁用Ims开关。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
-| slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回禁用Ims开关的结果。               |
 
 **错误码：**
@@ -4032,6 +5648,8 @@ disableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4039,28 +5657,49 @@ call.disableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`disableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`disableImsSwitch success.`);
+        console.info(`disableImsSwitch success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.disableImsSwitch(0, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`disableImsSwitch fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`disableImsSwitch success.`);
     }
 });
 ```
 
 ## call.disableImsSwitch<sup>8+</sup>
 
-disableImsSwitch\(slotId: number\): Promise\<void\>
+ArkTS-Dyn: disableImsSwitch\(slotId: number\): Promise\<void\>
+
+ArkTS-Sta: disableImsSwitch\(slotId: int\): Promise\<void\>
 
 禁用Ims开关。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
 
 **返回值：**
 
@@ -4084,31 +5723,53 @@ disableImsSwitch\(slotId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.disableImsSwitch(0).then(() => {
-    console.log(`disableImsSwitch success.`);
+    console.info(`disableImsSwitch success.`);
 }).catch((err: BusinessError) => {
+    console.error(`disableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.disableImsSwitch(0).then(() => {
+    console.info(`disableImsSwitch success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`disableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.isImsSwitchEnabled<sup>8+</sup>
 
-isImsSwitchEnabled\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+ArkTS-Dyn: isImsSwitchEnabled\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+
+ArkTS-Sta: isImsSwitchEnabled\(slotId: int, callback: AsyncCallback\<boolean\>\): void
 
 判断Ims开关是否启用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                   |
 | -------- | ---------------------------- | ---- | -------------------------------------- |
-| slotId   | number                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 以回调函数的方式返回判断Ims开关是否启用的结果。true表示Ims开关启用，false表示未启用。 |
 
 **错误码：**
@@ -4126,6 +5787,8 @@ isImsSwitchEnabled\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4133,26 +5796,47 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isImsSwitchEnabled fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
+        console.info(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isImsSwitchEnabled(0, (err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`isImsSwitchEnabled fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
     }
 });
 ```
 
 ## call.isImsSwitchEnabled<sup>8+</sup>
 
-isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
+ArkTS-Dyn: isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
+
+ArkTS-Sta: isImsSwitchEnabled\(slotId: int\): Promise\<boolean\>
 
 判断Ims开关是否启用。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -4175,31 +5859,53 @@ isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isImsSwitchEnabled(0).then((data: boolean) => {
-    console.log(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.isImsSwitchEnabled(0).then((data: boolean) => {
+    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.isImsSwitchEnabledSync<sup>12+</sup>
 
-isImsSwitchEnabledSync\(slotId: number\): boolean
+ArkTS-Dyn: isImsSwitchEnabledSync\(slotId: number\): boolean
+
+ArkTS-Sta: isImsSwitchEnabledSync\(slotId: int\): boolean
 
 判断Ims开关是否启用。调用此API返回结果。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -4222,13 +5928,27 @@ isImsSwitchEnabledSync\(slotId: number\): boolean
 
 **示例：**
 
+ArkTS-Dyn
+
 <!--code_no_check-->
 
 ```ts
 let slotId: number = 0;
 try {
     let isEnabled: boolean = call.isImsSwitchEnabledSync(slotId);
-    console.log(`isImsSwitchEnabledSync success : ${isEnabled}`);
+    console.info(`isImsSwitchEnabledSync success : ${isEnabled}`);
+} catch (error) {
+    console.error(`isImsSwitchEnabledSync fail : err->${JSON.stringify(error)}`);  
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let slotId: int = 0;
+try {
+    let isEnabled: boolean = call.isImsSwitchEnabledSync(slotId);
+    console.info(`isImsSwitchEnabledSync success : ${JSON.stringify(isEnabled)}`);
 } catch (error) {
     console.error(`isImsSwitchEnabledSync fail : err->${JSON.stringify(error)}`);  
 }
@@ -4236,21 +5956,27 @@ try {
 
 ## call.closeUnfinishedUssd<sup>10+</sup>
 
-closeUnfinishedUssd\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: closeUnfinishedUssd\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: closeUnfinishedUssd\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 取消未激活完成的非结构化补充数据业务。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                    |
 | -------- | ------------------------- | ---- | -------------------------------------- |
-| slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
 | callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回取消未激活完成的非结构化补充数据业务的结果。                              |
 
 **错误码：**
@@ -4269,6 +5995,8 @@ closeUnfinishedUssd\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4277,28 +6005,50 @@ call.closeUnfinishedUssd(slotId, (err: BusinessError) => {
     if (err) {
         console.error(`closeUnfinishedUssd fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`closeUnfinishedUssd success.`);
+        console.info(`closeUnfinishedUssd success.`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+call.closeUnfinishedUssd(slotId, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`closeUnfinishedUssd fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`closeUnfinishedUssd success.`);
     }
 });
 ```
 
 ## call.closeUnfinishedUssd<sup>10+</sup>
 
-closeUnfinishedUssd\(slotId: number\): Promise\<void\>
+ArkTS-Dyn: closeUnfinishedUssd\(slotId: number\): Promise\<void\>
+
+ArkTS-Sta: closeUnfinishedUssd\(slotId: int\): Promise\<void\>
 
 取消未激活完成的非结构化补充数据业务。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。  |
 
 **返回值：**
 
@@ -4322,12 +6072,28 @@ closeUnfinishedUssd\(slotId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.closeUnfinishedUssd(slotId).then(() => {
-    console.log(`closeUnfinishedUssd success.`);
+    console.info(`closeUnfinishedUssd success.`);
+}).catch((err: BusinessError) => {
+    console.error(`closeUnfinishedUssd fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: number = 0;
+call.closeUnfinishedUssd(slotId).then(() => {
+    console.info(`closeUnfinishedUssd success.`);
 }).catch((err: BusinessError) => {
     console.error(`closeUnfinishedUssd fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4336,21 +6102,27 @@ call.closeUnfinishedUssd(slotId).then(() => {
 
 ## call.setVoNRState<sup>10+</sup>
 
-setVoNRState\(slotId: number, state: VoNRState, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setVoNRState\(slotId: number, state: VoNRState, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setVoNRState\(slotId: int, state: VoNRState, callback: AsyncCallback\<void\>\): void
 
 设置NR语音的开关状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填 | 说明                                                 |
 | ----------- | ----------------------------- | ---- | ---------------------------------------------------- |
-| slotId      | number                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                |
 | state       | [VoNRState](#vonrstate10)     | 是   | 开关状态。                                            |
 | callback    | AsyncCallback&lt;void&gt;  | 是   | 以回调函数的方式返回设置NR语音的开关状态的结果。 |
 
@@ -4370,6 +6142,8 @@ setVoNRState\(slotId: number, state: VoNRState, callback: AsyncCallback\<void\>\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4379,7 +6153,24 @@ call.setVoNRState(slotId, state, (err: BusinessError) => {
     if (err) {
         console.error(`setVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setVoNRState success`);
+        console.info(`setVoNRState success`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
+call.setVoNRState(slotId, state, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setVoNRState fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setVoNRState success`);
     }
 });
 ```
@@ -4387,21 +6178,27 @@ call.setVoNRState(slotId, state, (err: BusinessError) => {
 
 ## call.setVoNRState<sup>10+</sup>
 
-setVoNRState\(slotId: number, state: VoNRState\): Promise\<void\>
+ArkTS-Dyn: setVoNRState\(slotId: number, state: VoNRState\): Promise\<void\>
+
+ArkTS-Sta: setVoNRState\(slotId: int, state: VoNRState\): Promise\<void\>
 
 设置NR语音的开关状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填 | 说明                                        |
 | ----------- | ----------------------------- | ---- | ------------------------------------------- |
-| slotId      | number                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
 | state       | [VoNRState](#vonrstate10)     | 是   | 开关状态。                                   |
 
 **返回值：**
@@ -4426,14 +6223,32 @@ setVoNRState\(slotId: number, state: VoNRState\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
 call.setVoNRState(slotId, state).then(() => {
-    console.log(`setVoNRState success`);
+    console.info(`setVoNRState success`);
 }).catch((err: BusinessError) => {
+    console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
+call.setVoNRState(slotId, state).then(() => {
+    console.info(`setVoNRState success`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -4441,21 +6256,27 @@ call.setVoNRState(slotId, state).then(() => {
 
 ## call.getVoNRState<sup>10+</sup>
 
-getVoNRState\(slotId: number, callback: AsyncCallback\<VoNRState\>\): void
+ArkTS-Dyn: getVoNRState\(slotId: number, callback: AsyncCallback\<VoNRState\>\): void
+
+ArkTS-Sta: getVoNRState\(slotId: int, callback: AsyncCallback\<VoNRState\>\): void
 
 查询NR语音的开关状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      |                     类型                      | 必填  | 说明                                                   |
 | ----------- | --------------------------------------------- | ---- | ------------------------------------------------------ |
-| slotId      | number                                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                  |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int           | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                  |
 | callback    | AsyncCallback&lt;[VoNRState](#vonrstate10)&gt;| 是   | 回调函数。返回NR语音开关的状态。                         |
 
 **错误码：**
@@ -4474,6 +6295,8 @@ getVoNRState\(slotId: number, callback: AsyncCallback\<VoNRState\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4482,7 +6305,23 @@ call.getVoNRState(slotId, (err: BusinessError, data: call.VoNRState) => {
     if (err) {
         console.error(`getVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getVoNRState success, data->${JSON.stringify(data)}`);
+        console.info(`getVoNRState success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+call.getVoNRState(slotId, (err: BusinessError | null, data: call.VoNRState | undefined) => {
+    if (err?.code) {
+        console.error(`getVoNRState fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getVoNRState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4490,21 +6329,27 @@ call.getVoNRState(slotId, (err: BusinessError, data: call.VoNRState) => {
 
 ## call.getVoNRState<sup>10+</sup>
 
-getVoNRState\(slotId: number\): Promise\<VoNRState\>
+ArkTS-Dyn: getVoNRState\(slotId: number\): Promise\<VoNRState\>
+
+ArkTS-Sta: getVoNRState\(slotId: int\): Promise\<VoNRState\>
 
 查询NR语音的开关状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填 | 说明                                        |
 | ----------- | ----------------------------- | ---- | ------------------------------------------- |
-| slotId      | number                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
 
 **返回值：**
 
@@ -4528,13 +6373,30 @@ getVoNRState\(slotId: number\): Promise\<VoNRState\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.getVoNRState(slotId).then((data: call.VoNRState) => {
-    console.log(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getVoNRState fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+call.getVoNRState(slotId).then((data: call.VoNRState) => {
+    console.info(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -4542,21 +6404,27 @@ call.getVoNRState(slotId).then((data: call.VoNRState) => {
 
 ## call.canSetCallTransferTime<sup>10+</sup>
 
-canSetCallTransferTime\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+ArkTS-Dyn: canSetCallTransferTime\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+
+ArkTS-Sta: canSetCallTransferTime\(slotId: int, callback: AsyncCallback\<boolean\>\): void
 
 检查是否可以设置呼叫转移时间。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填 | 说明                                                  |
 | ----------- | ----------------------------- | ---- | ----------------------------------------------------- |
-| slotId      | number                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                 |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                 |
 | callback    | AsyncCallback&lt;boolean&gt;  | 是   | 回调函数。返回true表示可以设置，返回false表示不可以设置。|
 
 **错误码：**
@@ -4575,6 +6443,8 @@ canSetCallTransferTime\(slotId: number, callback: AsyncCallback\<boolean\>\): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4583,7 +6453,23 @@ call.canSetCallTransferTime(slotId, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`canSetCallTransferTime fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
+        console.info(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+call.canSetCallTransferTime(slotId, (err: BusinessError | null, data: boolean | undefined) => {
+    if (err?.code) {
+        console.error(`canSetCallTransferTime fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4591,21 +6477,27 @@ call.canSetCallTransferTime(slotId, (err: BusinessError, data: boolean) => {
 
 ## call.canSetCallTransferTime<sup>10+</sup>
 
-canSetCallTransferTime\(slotId: number\): Promise\<boolean\>
+ArkTS-Dyn: canSetCallTransferTime\(slotId: number\): Promise\<boolean\>
+
+ArkTS-Sta: canSetCallTransferTime\(slotId: int\): Promise\<boolean\>
 
 检查是否可以设置呼叫转移时间。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填 | 说明                                        |
 | ----------- | ----------------------------- | ---- | ------------------------------------------- |
-| slotId      | number                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int                        | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。     |
 
 **返回值：**
 
@@ -4629,13 +6521,30 @@ canSetCallTransferTime\(slotId: number\): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.canSetCallTransferTime(slotId).then((data: boolean) => {
-    console.log(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
+    console.info(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`canSetCallTransferTime fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let slotId: int = 0;
+call.canSetCallTransferTime(slotId).then((data: boolean) => {
+    console.info(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`canSetCallTransferTime fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -4649,9 +6558,13 @@ inputDialerSpecialCode\(inputCode: string, callback: AsyncCallback\<void\>\): vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4675,6 +6588,8 @@ inputDialerSpecialCode\(inputCode: string, callback: AsyncCallback\<void\>\): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4682,7 +6597,22 @@ call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError) => {
     if (err) {
         console.error(`inputDialerSpecialCode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`inputDialerSpecialCode success`);
+        console.info(`inputDialerSpecialCode success`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`inputDialerSpecialCode fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`inputDialerSpecialCode success`);
     }
 });
 ```
@@ -4695,9 +6625,13 @@ inputDialerSpecialCode\(inputCode: string\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4726,14 +6660,31 @@ inputDialerSpecialCode\(inputCode: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     call.inputDialerSpecialCode('*#*#2846579#*#*');
-    console.log(`inputDialerSpecialCode success`);
+    console.info(`inputDialerSpecialCode success`);
 } catch (error) {
     console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(error)}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+try {
+    await call.inputDialerSpecialCode('*#*#2846579#*#*');
+    console.info(`inputDialerSpecialCode success`);
+} catch (error : Error) {
+    let err = error as BusinessError;
+    console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(err)}`);
 }
 ```
 
@@ -4746,9 +6697,13 @@ removeMissedIncomingCallNotification\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE, ohos.permission.READ_CALL_LOG 和 ohos.permission.WRITE_CALL_LOG
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE, ohos.permission.READ_CALL_LOG 和 ohos.permission.WRITE_CALL_LOG
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4771,6 +6726,8 @@ removeMissedIncomingCallNotification\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4778,7 +6735,22 @@ call.removeMissedIncomingCallNotification((err: BusinessError) => {
     if (err) {
         console.error(`removeMissedIncomingCallNotification failed, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`removeMissedIncomingCallNotification success`);
+        console.info(`removeMissedIncomingCallNotification success`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+call.removeMissedIncomingCallNotification((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`removeMissedIncomingCallNotification failed, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`removeMissedIncomingCallNotification success`);
     }
 });
 ```
@@ -4792,9 +6764,13 @@ removeMissedIncomingCallNotification\(\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE, ohos.permission.READ_CALL_LOG 和 ohos.permission.WRITE_CALL_LOG
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE, ohos.permission.READ_CALL_LOG 和 ohos.permission.WRITE_CALL_LOG
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4816,33 +6792,55 @@ removeMissedIncomingCallNotification\(\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.removeMissedIncomingCallNotification().then(() => {
-    console.log(`removeMissedIncomingCallNotification success`);
+    console.info(`removeMissedIncomingCallNotification success`);
 }).catch((err: BusinessError) => {
+    console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+call.removeMissedIncomingCallNotification().then(() => {
+    console.info(`removeMissedIncomingCallNotification success`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.sendCallUiEvent<sup>12+</sup>
 
-sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
+ArkTS-Dyn: sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
+
+ArkTS-Sta: sendCallUiEvent\(callId: int, eventName: string\): Promise\<void\>
 
 发布通话界面事件。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明     |
 | --------- | ------ | ---- | -------- |
-| callId    | number | 是   | 呼叫Id。 |
+| callId    | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 呼叫Id。 |
 | eventName | string | 是   | 事件名称。 |
 
 **返回值：**
@@ -4866,13 +6864,30 @@ sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let callId: number = 0;
 call.sendCallUiEvent(callId, 'eventName').then(() => {
-    console.log(`sendCallUiEvent success.`);
+    console.info(`sendCallUiEvent success.`);
 }).catch((err: BusinessError) => {
+    console.error(`sendCallUiEvent fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import call from '@ohos.telephony.call';
+
+let callId: int = 0;
+call.sendCallUiEvent(callId, 'eventName').then(() => {
+    console.info(`sendCallUiEvent success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`sendCallUiEvent fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -4881,7 +6896,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 拨打电话的可选参数。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
@@ -4896,14 +6911,18 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|        名称              | 类型                               | 必填 | 说明                                         |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+|        名称              | 类型                               | 只读 | 可选 | 说明                                         |
 | ------------------------ | ---------------------------------- | ---- | ------------------------------------------- |
-| accountId <sup>9+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
-| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
-| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
+| accountId <sup>9+</sup>  | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   | 是   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 是   | 视频状态类型。                               |
+| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 是   | 拨号场景。                                   |
+| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 是   | 拨号类型。                                   |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4912,7 +6931,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 值   | 说明               |
 | ---------------------- | ---- | ------------------ |
@@ -4928,7 +6951,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 值   | 说明               |
 | ---------------------- | ---- | ----------------- |
@@ -4941,13 +6968,17 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|                名称               |                  类型                 | 必填  |        说明      |
-| --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| deviceType <sup>10+</sup>         | [AudioDeviceType](#audiodevicetype10) | 是   | 音频设备类型。    |
-| address <sup>10+</sup>            | string                                | 否   | 音频设备地址。    |
-| deviceName <sup>11+</sup>         | string                                | 否   | 音频设备名称。    |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
+|                名称               |                  类型                 | 只读 | 可选 |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| deviceType <sup>10+</sup>         | [AudioDeviceType](#audiodevicetype10) | 是   | 否   | 音频设备类型。    |
+| address <sup>10+</sup>            | string                                | 否   | 是   | 音频设备地址。    |
+| deviceName <sup>11+</sup>         | string                                | 否   | 是   | 音频设备名称。    |
 
 ## AudioDeviceType<sup>10+</sup>
 
@@ -4955,7 +6986,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值   | 说明         |
 | -------------------- | ---- | ----------- |
@@ -4971,13 +7006,17 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|                名称               |                  类型                 | 必填  |        说明      |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
+|                名称               |                  类型                 | 只读 | 可选 |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList <sup>10+</sup>    | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
-| currentAudioDevice <sup>10+</sup> | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
-| isMuted <sup>10+</sup>            | boolean                               | 是   | 是否静音。        |
+| audioDeviceList <sup>10+</sup>    | [Array\<AudioDevice\>](#audiodevice10) | 否   | 否   | 音频设备列表。    |
+| currentAudioDevice <sup>10+</sup> | [AudioDevice](#audiodevice10)          | 否   | 否   | 当前音频设备。    |
+| isMuted <sup>10+</sup>            | boolean                               | 否   | 否   | 是否静音。        |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4986,7 +7025,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                          | 值   | 说明                       |
 | --------------------------------------------- | ---- | -------------------------- |
@@ -5005,17 +7048,21 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|          名称            | 类型                                                 | 必填 | 说明             |
-| ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
-| transferNum              | string                                               | 是   | 转移编号。         |
-| type                     | [CallTransferType](#calltransfertype8)               | 是   | 呼叫转移类型。     |
-| settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 设置呼叫转移类型。 |
-| startHour<sup>9+</sup>   | number                                               | 否   | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                                               | 否   | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                                               | 否   | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                                               | 否   | 结束时间的分钟数。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+|          名称            | 类型                                                 | 只读 | 可选 | 说明             |
+| ------------------------ | ---------------------------------------------------- | ---- | ---- | ---------------- |
+| transferNum              | string                                               | 否   | 否   | 转移编号。         |
+| type                     | [CallTransferType](#calltransfertype8)               | 否   | 否   | 呼叫转移类型。     |
+| settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 否   | 否   | 设置呼叫转移类型。 |
+| startHour<sup>9+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 否   | 是   | 开始时间的小时数。 |
+| startMinute<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 否   | 是   | 开始时间的分钟数。 |
+| endHour<sup>9+</sup>     | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 否   | 是   | 结束时间的小时数。 |
+| endMinute<sup>9+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 否   | 是   | 结束时间的分钟数。 |
 
 ## CallTransferType<sup>8+</sup>
 
@@ -5023,7 +7070,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ------------ |
@@ -5038,7 +7089,11 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 值   | 说明         |
 | -------------------------- | ---- | ------------ |
@@ -5053,25 +7108,29 @@ IP多媒体系统调用模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|      名称       | 类型                                     | 必填 | 说明           |
-| --------------- | ---------------------------------------- | ---- | -------------- |
-| accountNumber   | string                                   | 是   | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 扬声器接通电话。 |
-| accountId       | number                                   | 是   | 帐户Id。         |
-| videoState      | [VideoStateType](#videostatetype7)       | 是   | 视频状态类型。   |
-| startTime       | number                                   | 是   | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 是否是Ecc。      |
-| callType        | [CallType](#calltype7)                   | 是   | 通话类型。       |
-| callId          | number                                   | 是   | 呼叫Id。         |
-| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 详细呼叫状态。   |
-| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 会议状态。       |
-| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 否   | VoIP通话信息。       |
-| crsType<sup>11+</sup> | number                             | 是   | 视频彩振类型。|
-| originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
-| numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
-| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+|      名称       | 类型                                     | 只读 | 可选 | 说明           |
+| --------------- | ---------------------------------------- | ---- | ---- | -------------- |
+| accountNumber   | string                                   | 否   | 否   | 账号号码。       |
+| speakerphoneOn  | boolean                                  | 否   | 否   | 扬声器接通电话。 |
+| accountId       | ArkTS-Dyn: number <br/>ArkTS-Sta: int      | 否   | 否   | 帐户Id。         |
+| videoState      | [VideoStateType](#videostatetype7)       | 否   | 否   | 视频状态类型。   |
+| startTime       | ArkTS-Dyn: number <br/>ArkTS-Sta: int      | 否   | 否   | 开始时间。       |
+| isEcc           | boolean                                  | 否   | 否   | 是否是Ecc。      |
+| callType        | [CallType](#calltype7)                   | 否   | 否   | 通话类型。       |
+| callId          | ArkTS-Dyn: number <br/>ArkTS-Sta: int      | 否   | 否   | 呼叫Id。         |
+| callState       | [DetailedCallState](#detailedcallstate7) | 否   | 否   | 详细呼叫状态。   |
+| conferenceState | [ConferenceState](#conferencestate7)     | 否   | 否   | 会议状态。       |
+| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 否   | 是   | VoIP通话信息。       |
+| crsType<sup>11+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   | 否   | 视频彩振类型。|
+| originalCallType<sup>11+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int                    | 否   | 否   | 视频彩振原始呼叫类型。|
+| numberLocation<sup>12+</sup> | string | 否   | 是   | 号码归属地信息 |
+| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否   | 是   | 号码标记信息。 |
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -5079,19 +7138,23 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|      名称       | 类型               | 必填 | 说明           |
-| --------------- | ------------------- | ---- | -------------- |
-| voipCallId   | string    | 是   | VoIP通话唯一Id。       |
-| userName  | string    | 是   | 用户昵称。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+|      名称       | 类型               | 只读 | 可选 | 说明           |
+| --------------- | ------------------- | ---- | ---- | -------------- |
+| voipCallId   | string    | 否   | 否   | VoIP通话唯一Id。       |
+| userName  | string    | 否   | 否   | 用户昵称。 |
 | userProfile       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | 是   | 用户头像图片。  |
-| extensionId      | string     | 是   |  三方应用进程Id。  |
-| abilityName      | string     | 是   |  需加载的三方应用的界面ability。  |
-| voipBundleName    | string     | 是   |  三方应用包名。  |
-| showBannerForIncomingCall<sup>12+</sup>    | boolean     | 否   |  上报来电时是否显示来电横幅。  |
-| isConferenceCall<sup>12+</sup>    | boolean     | 否   |  上报是否是电话会议。  |
-| isVoiceAnswerSupported<sup>12+</sup>    | boolean     | 否   |  上报来电时是否支持语音接听。  |
+| extensionId      | string     | 否   | 否   |  三方应用进程Id。  |
+| abilityName      | string     | 否   | 否   |  需加载的三方应用的界面ability。  |
+| voipBundleName    | string     | 否   | 否   |  三方应用包名。  |
+| showBannerForIncomingCall<sup>12+</sup>    | boolean     | 否   | 是   |  上报来电时是否显示来电横幅。  |
+| isConferenceCall<sup>12+</sup>    | boolean     | 否   | 是   |  上报是否是电话会议。  |
+| isVoiceAnswerSupported<sup>12+</sup>    | boolean     | 否   | 是   |  上报来电时是否支持语音接听。  |
 
 ## ConferenceState<sup>7+</sup>
 
@@ -5099,7 +7162,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                         | 值   | 说明           |
 | ---------------------------- | ---- | -------------- |
@@ -5114,7 +7181,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
@@ -5130,7 +7201,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                   | 值   | 说明     |
 | ------------------------------------- | ---- | --------|
@@ -5146,7 +7221,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 值   | 说明           |
 | ------------------------- | ---- | -------------- |
@@ -5166,13 +7245,17 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|   名称   | 类型                                         | 必填 | 说明         |
-| -------- | -------------------------------------------- | ---- | ------------ |
-| type     | [CallRestrictionType](#callrestrictiontype8) | 是   | 呼叫限制类型。 |
-| password | string                                       | 是   | 密码。         |
-| mode     | [CallRestrictionMode](#callrestrictionmode8) | 是   | 呼叫限制模式。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+|   名称   | 类型                                         | 只读 | 可选 | 说明         |
+| -------- | -------------------------------------------- | ---- | ---- | ------------ |
+| type     | [CallRestrictionType](#callrestrictiontype8) | 否   | 否   | 呼叫限制类型。 |
+| password | string                                       | 否   | 否   | 密码。         |
+| mode     | [CallRestrictionMode](#callrestrictionmode8) | 否   | 否   | 呼叫限制模式。 |
 
 ## CallRestrictionMode<sup>8+</sup>
 
@@ -5180,7 +7263,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 值   | 说明         |
 | ----------------------------- | ---- | ------------ |
@@ -5193,11 +7280,15 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|   名称  | 类型                                       | 必填 | 说明           |
-| ------- | ------------------------------------------ | ---- | -------------- |
-| eventId | [CallAbilityEventId](#callabilityeventid8) | 是   | 呼叫能力事件Id。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+|   名称  | 类型                                       | 只读 | 可选 | 说明           |
+| ------- | ------------------------------------------ | ---- | ---- | -------------- |
+| eventId | [CallAbilityEventId](#callabilityeventid8) | 否   | 否   | 呼叫能力事件Id。 |
 
 ## CallAbilityEventId<sup>8+</sup>
 
@@ -5205,7 +7296,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                  | 值   | 说明            |
 | ------------------------------------- | ---- | --------------- |
@@ -5224,7 +7319,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 值   | 说明         |
 | --------------- | ---- | ------------ |
@@ -5238,7 +7337,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值   | 说明             |
 | -------------------- | ---- | ---------------- |
@@ -5252,11 +7355,15 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|     名称       | 类型   | 必填 | 说明     |
-| -------------- | ------ | ---- | -------- |
-| messageContent | string | 是   | 消息内容。 |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+|     名称       | 类型   | 只读 | 可选 | 说明     |
+| -------------- | ------ | ---- | ---- | -------- |
+| messageContent | string | 否   | 否   | 消息内容。 |
 
 ## CallTransferResult<sup>8+</sup>
 
@@ -5264,16 +7371,17 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-|          名称            |                 类型               | 必填 |       说明       |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
-| number                   | string                             |  是  | 号码。             |
-| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
+|          名称            |                 类型               | 只读 | 可选 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus8) |  否   | 否   | 转移状态。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
+| number                   | string                             |  否   | 否   | 呼叫转移的号码。<br/>**ArkTS-Dyn起始版本：** 8             |
+| teleNumber               | string                             |  否   | 否   | 呼叫转移的号码。<br/>**ArkTS-Sta起始版本：** 22             |
+| startHour<sup>9+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: int|  否   | 否   | 开始时间的小时数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
+| startMinute<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int|  否   | 否   | 开始时间的分钟数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
+| endHour<sup>9+</sup>     | ArkTS-Dyn: number <br/>ArkTS-Sta: int|  否   | 否   | 结束时间的小时数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
+| endMinute<sup>9+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: int|  否   | 否   | 结束时间的分钟数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
 
 ## CallWaitingStatus<sup>7+</sup>
 
@@ -5281,7 +7389,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值   | 说明         |
 | -------------------- | ---- | ------------ |
@@ -5294,7 +7406,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                | 值   | 说明     |
 | ------------------- | ---- | -------- |
@@ -5307,7 +7423,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值   | 说明     |
 | ---------------- | ---- | -------- |
@@ -5320,12 +7440,16 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |                    类型                    | 必填 | 说明            |
-| ------- | ------------------------------------------ | ---- | --------------- |
-| reason  | [DisconnectedReason](#disconnectedreason8) | 是   | 通话结束原因。    |
-| message | string                                     | 是   | 通话结束提示信息。|
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |                    类型                    | 只读 | 可选 | 说明            |
+| ------- | ------------------------------------------ | ---- | ---- | --------------- |
+| reason  | [DisconnectedReason](#disconnectedreason8) |  否   | 否   | 通话结束原因。    |
+| message | string                                     |  否   | 否   | 通话结束提示信息。|
 
 ## DisconnectedReason<sup>8+</sup>
 
@@ -5333,7 +7457,11 @@ VoIP通话信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 |                              名称                            | 值   |                  说明                   |
 | ------------------------------------------------------------ | ---- | --------------------------------------- |
@@ -5423,12 +7551,16 @@ MMI码结果。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    | 类型                             | 必填 | 说明            |
-| ------- | -------------------------------- | ---- | --------------- |
-| result  | [MmiCodeResult](#mmicoderesult9) | 是   | MMI码结果。 |
-| message | string                           | 是   | MMI码消息。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 类型                             | 只读 | 可选 | 说明            |
+| ------- | -------------------------------- | ---- | ---- | --------------- |
+| result  | [MmiCodeResult](#mmicoderesult9) | 否   | 否   | MMI码结果。 |
+| message | string                           | 否   | 否   | MMI码消息。 |
 
 ## MmiCodeResult<sup>9+</sup>
 
@@ -5436,7 +7568,11 @@ MMI码结果。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值   | 说明          |
 | ---------------- | ---- | ------------- |
@@ -5445,22 +7581,28 @@ MMI码结果。
 
 ## call.answerCall<sup>11+</sup>
 
-answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
+ArkTS-Dyn:  answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
+
+ArkTS-Sta:  answerCall(videoState: VideoStateType, callId: int\): Promise\<void\>
 
 接听来电。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限：** ohos.permission.ANSWER_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名                   | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
 | videoState| [VideoStateType](#videostatetype7)| 是   | 接听通话类型。                                                 |
-| callId    | number                            | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。                 |
+| callId    | ArkTS-Dyn: number <br/>ArkTS-Sta: int                            | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。                 |
 
 **返回值：**
 
@@ -5484,33 +7626,55 @@ answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(0, 1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.answerCall(call.VideoStateType.TYPE_VOICE, 1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.cancelCallUpgrade<sup>11+</sup>
 
-cancelCallUpgrade\(callId: number\): Promise\<void\>
+ArkTS-Dyn: cancelCallUpgrade\(callId: number\): Promise\<void\>
+
+ArkTS-Sta: cancelCallUpgrade\(callId: int\): Promise\<void\>
 
 视频通话升级过程中取消升级。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.PLACE_CALL
+**需要权限：** ohos.permission.PLACE_CALL
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。|
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。|
 
 **返回值：**
 
@@ -5534,33 +7698,55 @@ cancelCallUpgrade\(callId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelCallUpgrade(1).then(() => {
-    console.log(`cancelCallUpgrade success.`);
+    console.info(`cancelCallUpgrade success.`);
 }).catch((err: BusinessError) => {
+    console.error(`cancelCallUpgrade fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.cancelCallUpgrade(1).then(() => {
+    console.info(`cancelCallUpgrade success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`cancelCallUpgrade fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.controlCamera<sup>11+</sup>
 
-controlCamera\(callId: number, cameraId: string\): Promise\<void\>
+ArkTS-Dyn: controlCamera\(callId: number, cameraId: string\): Promise\<void\>
+
+ArkTS-Sta: controlCamera\(callId: int, cameraId: string\): Promise\<void\>
 
 设置使用指定的相机进行视频通话，cameraId为空表示关闭相机。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
 | cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考[相机管理](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)。|
 
 **返回值：**
@@ -5585,33 +7771,55 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.controlCamera(1, "1").then(() => {
-    console.log(`controlCamera success.`);
+    console.info(`controlCamera success.`);
 }).catch((err: BusinessError) => {
+    console.error(`controlCamera fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.controlCamera(1, "1").then(() => {
+    console.info(`controlCamera success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`controlCamera fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setPreviewSurface<sup>11+</sup>
 
-setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
+ArkTS-Dyn: setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
+
+ArkTS-Sta: setPreviewSurface\(callId: int, surfaceId: string\): Promise\<void\>
 
 设置本端预览画面窗口。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
 | surfaceId | string                    | 是   | 预览窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。   |
 
 **返回值：**
@@ -5636,33 +7844,55 @@ setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setPreviewSurface(1, "surfaceId1").then(() => {
-    console.log(`setPreviewSurface success.`);
+    console.info(`setPreviewSurface success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setPreviewSurface fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setPreviewSurface(1, "surfaceId1").then(() => {
+    console.info(`setPreviewSurface success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setPreviewSurface fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setDisplaySurface<sup>11+</sup>
 
-setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
+ArkTS-Dyn: setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
+
+ArkTS-Sta: setDisplaySurface\(callId: int, surfaceId: string\): Promise\<void\>
 
 设置远端画面窗口。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
 | surfaceId | string                    | 是   | 画面窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。   |
 
 **返回值：**
@@ -5687,33 +7917,55 @@ setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDisplaySurface(1, "surfaceId1").then(() => {
-    console.log(`setDisplaySurface success.`);
+    console.info(`setDisplaySurface success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setDisplaySurface fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setDisplaySurface(1, "surfaceId1").then(() => {
+    console.info(`setDisplaySurface success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setDisplaySurface fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## call.setDeviceDirection<sup>11+</sup>
 
-setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\<void\>
+ArkTS-Dyn: setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\<void\>
+
+ArkTS-Sta: setDeviceDirection\(callId: int, deviceDirection: DeviceDirection\): Promise\<void\>
 
 设置视频通话画面显示方向为设备方向。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型                                             | 必填 | 说明           |
 | ------ | ----------------------------------------------- | ---- | -------------- |
-| callId | number                                          | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。|
+| callId | ArkTS-Dyn: number <br/>ArkTS-Sta: int             | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。|
 | deviceDirection  | [DeviceDirection](#devicedirection11) | 是   | 画面方向。该参数根据设备方向获取。     |
 
 **返回值：**
@@ -5738,12 +7990,28 @@ setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDeviceDirection(1, 0).then(() => {
-    console.log(`setDeviceDirection success.`);
+    console.info(`setDeviceDirection success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setDeviceDirection fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
+
+call.setDeviceDirection(1, 0).then(() => {
+    console.info(`setDeviceDirection success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setDeviceDirection fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -5756,9 +8024,9 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -5787,7 +8055,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5799,9 +8067,9 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -5830,7 +8098,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5842,9 +8110,9 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -5873,7 +8141,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5885,9 +8153,9 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -5916,7 +8184,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5928,9 +8196,9 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -5959,7 +8227,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5971,9 +8239,9 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -6002,7 +8270,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6014,9 +8282,9 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -6043,7 +8311,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 ```ts
 call.on('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6055,9 +8323,9 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
 
@@ -6084,7 +8352,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 ```ts
 call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6094,7 +8362,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                       | 值     | 说明     |
 | ------------------------------------------ | ------ | --------|
@@ -6113,7 +8385,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值     | 说明     |
 | -------------------- | ------ | --------|
@@ -6128,7 +8404,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值     | 说明     |
 | ------------------------------ | ------ | --------|
@@ -6143,14 +8423,18 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |                    类型                             | 必填 | 说明           |
-| ------- | -------------------------------------------------- | ---- | ------------- |
-| callId  | number                                             | 是   | 呼叫Id。         |
-| isRequestInfo| boolean                                       | 是   | 该信息是否为请求信息。|
-| imsCallMode  | [ImsCallMode](#imscallmode8)                  | 是   | 视频通话模式。    |
-| result  | [VideoRequestResultType](#videorequestresulttype11)| 是   | 通话结束提示信息。|
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |                    类型                             | 只读 | 可选 | 说明           |
+| ------- | -------------------------------------------------- | ---- | ---- | ------------- |
+| callId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 否   | 否   |呼叫ID。         |
+| isRequestInfo| boolean                                       | 否   | 否   | 该信息是否为请求信息。|
+| imsCallMode  | [ImsCallMode](#imscallmode8)                  | 否   | 否   | 视频通话模式。    |
+| result  | [VideoRequestResultType](#videorequestresulttype11)| 否   | 否   | 通话结束提示信息。|
 
 ## CallSessionEvent<sup>11+</sup>
 
@@ -6158,12 +8442,16 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |                    类型                             | 必填 | 说明           |
-| ------- | -------------------------------------------------- | ---- | ------------- |
-| callId  | number                                             | 是   | 呼叫Id。         |
-| eventId  | [CallSessionEventId](#callsessioneventid11)       | 是   | 视频通话事件。    |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |                    类型                             | 只读 | 可选 | 说明           |
+| ------- | -------------------------------------------------- | ---- | ---- | ------------- |
+| callId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 否   | 否   | 呼叫ID。         |
+| eventId  | [CallSessionEventId](#callsessioneventid11)       | 否   | 否   | 视频通话事件。    |
 
 ## PeerDimensionsDetail<sup>11+</sup>
 
@@ -6171,13 +8459,17 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |     类型      | 必填 | 说明           |
-| ------- | ------------ | ---- | ------------- |
-| callId  | number       | 是   | 呼叫Id。         |
-| width   | number       | 是   | 对端画面图像尺寸宽(像素)。  |
-| height  | number       | 是   | 对端画面图像尺寸高(像素)。  |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |     类型      | 只读 | 可选 | 说明           |
+| ------- | ------------ | ---- | ---- | ------------- |
+| callId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int        | 否   | 否   | 呼叫ID。         |
+| width   | ArkTS-Dyn: number <br/>ArkTS-Sta: int        | 否   | 否   | 对端画面图像尺寸宽(像素)。  |
+| height  | ArkTS-Dyn: number <br/>ArkTS-Sta: int        | 否   | 否   | 对端画面图像尺寸高(像素)。  |
 
 ## CameraCapabilities<sup>11+</sup>
 
@@ -6185,13 +8477,17 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |     类型      | 必填 | 说明           |
-| ------- | ------------ | ---- | ------------- |
-| callId  | number       | 是   | 呼叫Id。         |
-| width   | number       | 是   | 本端画面图像尺寸宽(像素)。  |
-| height  | number       | 是   | 本端画面图像尺寸高(像素)。  |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |     类型      | 只读 | 可选 | 说明           |
+| ------- | ------------ | ---- | ---- | ------------- |
+| callId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int       | 否   | 否   | 呼叫ID。         |
+| width   | ArkTS-Dyn: number <br/>ArkTS-Sta: int       | 否   | 否   | 本端画面图像尺寸宽(像素)。  |
+| height  | ArkTS-Dyn: number <br/>ArkTS-Sta: int       | 否   | 否   | 本端画面图像尺寸高(像素)。  |
 
 ## NumberMarkInfo<sup>12+</sup>
 
@@ -6199,16 +8495,20 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
 
-| 名称    |     类型      | 必填 | 说明           |
-| ------- | ------------ | ---- | ------------- |
-| markType | [MarkType](#marktype12) | 是   | 号码的标记类型。 |
-| markContent | string | 否  | 号码的标记内容，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“姓名 工号”。 |
-| markCount | number       | 否  | 号码的标记次数。 |
-| markSource | string | 否 | 号码的标记来源供应商。 |
-| isCloud | boolean | 否 | 号码的标记是否来自云端，默认为false。<br/>-true：是<br/>-false：否|
-| markDetails<sup>14+</sup> | string | 否 | 号码标记的详细信息，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“部门 职位”。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    |     类型      | 只读 | 可选 | 说明           |
+| ------- | ------------ | ---- | ---- | ------------- |
+| markType | [MarkType](#marktype12) | 否   | 否   | 号码的标记类型。 |
+| markContent | string | 否   | 是   | 号码的标记内容，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“姓名 工号”。 |
+| markCount | ArkTS-Dyn: number <br/>ArkTS-Sta: int        | 否   | 是   | 号码的标记次数。 |
+| markSource | string | 否   | 是   | 号码的标记来源供应商。 |
+| isCloud | boolean | 否   | 是   | 号码的标记是否来自云端，默认为false。<br/>-true：是<br/>-false：否|
+| markDetails<sup>14+</sup> | string | 否   | 是   | 号码标记的详细信息，markType为MARK_TYPE_ENTERPRISE时，该字段返回信息为“部门 职位”。 |
 
 ## MarkType<sup>12+</sup>
 
@@ -6216,7 +8516,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值     | 说明     |
 | ------------------------------ | ------ | --------|
