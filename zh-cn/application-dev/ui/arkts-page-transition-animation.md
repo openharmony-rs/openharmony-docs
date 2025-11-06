@@ -340,7 +340,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-       // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // $r('app.media.forest')需要替换为开发者所需的资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
