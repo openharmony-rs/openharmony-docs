@@ -145,6 +145,15 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
    
+   ``` TypeScript
+   let dialogController: promptAction.CommonController = new promptAction.DialogController();
+   this.getUIContext().getPromptAction().presentCustomDialog(() => {
+     this.customDialogComponent(dialogController);
+   }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+   });
+   ```
+   
 
 ## 创建自定义内容为CustomBuilderWithId的弹出框控制器
 
