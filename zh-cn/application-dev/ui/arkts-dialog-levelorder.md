@@ -23,109 +23,26 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
 > 
 > 详细变量定义请参考[完整示例](#完整示例)。
 
-1.初始化一个弹出框内容区，内部包含一个Text组件。
+1. 初始化一个弹出框内容区，内部包含一个Text组件。
 
-```ts
-@Builder normalCustomDialog(index: number) {
-  Column() {
-    Text("我是普通弹窗" + index).fontSize(30)
-  }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
-}
-```
+    <!-- @[normal_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    
 
-2.初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并且设置层级为0的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建普通层级弹出框。
+2. 初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并且设置层级为0的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建普通层级弹出框。
+    <!-- @[top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    
+    
 
-```ts
-@Builder topCustomDialog() {
-  Column() {
-    Text("我是置顶弹窗").fontSize(30)
-    Row({ space: 50 }) {
-      Button('点我打开普通弹窗')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().openCustomDialog({
-            builder: () => {
-              this.normalCustomDialog(this.dialogIndex)
-            },
-            levelOrder: LevelOrder.clamp(0),
-          })
-            .catch((err: BusinessError) => {
-              console.error("openCustomDialog error: " + err.code + " " + err.message)
-            })
-          this.dialogIndex++
-        })
-    }
-  }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
-}
-```
 
-3.通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并且设置层级为100000的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建最高层级弹出框。
+3. 通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并且设置层级为100000的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建最高层级弹出框。
 
-```ts
-this.getUIContext().getPromptAction().openCustomDialog({
-  builder: () => {
-    this.topCustomDialog()
-  },
-  levelOrder: LevelOrder.clamp(100000)
-}).catch((err: BusinessError) => {
-  console.error("openCustomDialog error: " + err.code + " " + err.message)
-})
-```
+    <!-- @[open_top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    
+ 
 
 ## 完整示例
-```ts
-import { LevelOrder } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @StorageLink('dialogIndex') dialogIndex: number = 0
-
-  @Builder normalCustomDialog(index: number) {
-    Column() {
-      Text("我是普通弹窗" + index).fontSize(30)
-    }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
-  }
-
-  @Builder topCustomDialog() {
-    Column() {
-      Text("我是置顶弹窗").fontSize(30)
-      Row({ space: 50 }) {
-        Button('点我打开普通弹窗')
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.normalCustomDialog(this.dialogIndex)
-              },
-              levelOrder: LevelOrder.clamp(0),
-            })
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message)
-              })
-            this.dialogIndex++
-          })
-      }
-    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
-  }
-
-  build() {
-    Row() {
-      Column({ space: 5 }) {
-        Button('点击弹窗')
-          .fontSize(20)
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.topCustomDialog()
-              },
-              levelOrder: LevelOrder.clamp(100000)
-            }).catch((err: BusinessError) => {
-              console.error("openCustomDialog error: " + err.code + " " + err.message)
-            })
-          })
-      }.width('100%')
-    }
-  }
-}
-```
+ <!-- @[dialog_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+ 
+ 
+ 
 ![dialog-levelorder-demo1](figures/dialog-levelorder-demo1.gif)
