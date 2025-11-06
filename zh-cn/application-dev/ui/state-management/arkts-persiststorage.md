@@ -141,6 +141,45 @@ PersistentStorage支持联合类型和undefined和null，在下面的示例中�
 
 <!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) -->
 
+``` TypeScript
+// 定义常量替代魔法值，明确数值含义
+const DEFAULT_NUMBER: number = 10; // 默认数字值
+const FONT_SIZE_LARGE: number = 50; // 大字体尺寸
+const WIDTH_HEIGHT_FULL: string = '100%'; // 宽度占满,高度占满
+
+// 初始化持久化属性，键名使用常量定义（若有多处使用可提取）
+const STORAGE_KEY_P: string = 'P';
+PersistentStorage.persistProp(STORAGE_KEY_P, undefined);
+
+@Entry
+@Component
+struct TestCase6 {
+  // 使用常量作为默认值，类型明确
+  @StorageLink(STORAGE_KEY_P) p: number | undefined | null = DEFAULT_NUMBER;
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.p + '')
+          .fontSize(FONT_SIZE_LARGE)
+          .fontWeight(FontWeight.Bold)
+        Button('changeToNumber').onClick(() => {
+          this.p = DEFAULT_NUMBER; // 引用常量，避免直接写10
+        })
+        Button('changeTo undefined').onClick(() => {
+          this.p = undefined;
+        })
+        Button('changeTo null').onClick(() => {
+          this.p = null;
+        })
+      }
+      .width(WIDTH_HEIGHT_FULL)
+    }
+    .height(WIDTH_HEIGHT_FULL)
+  }
+}
+```
+
 ### 持久化Date类型变量
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
