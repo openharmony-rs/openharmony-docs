@@ -835,6 +835,7 @@
         - [使用Web组件与系统剪贴板交互处理网页内容](web/web-clipboard.md)
       - [同层渲染](web/web-same-layer.md)
       - [使用离线Web组件](web/web-offline-mode.md)
+      - [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和原生应用通信场景](web/web-native-messaging.md)
       - Web调试维测<!--web-debugging-->
         - [使用DevTools工具调试前端页面](web/web-debugging-with-devtools.md)
         - [使用crashpad收集Web组件崩溃信息](web/web-crashpad.md)
@@ -3430,6 +3431,7 @@
           - [Class (NativeMediaPlayerSurfaceInfo)](reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md)
           - [Class (PdfData)](reference/apis-arkweb/arkts-apis-webview-PdfData.md)
           - [Class (ProxyConfig)](reference/apis-arkweb/arkts-apis-webview-ProxyConfig.md)
+          - [Class (PrefetchOptions)](reference/apis-arkweb/arkts-apis-webview-PrefetchOptions.md)
           - [Class (ProxyController)](reference/apis-arkweb/arkts-apis-webview-ProxyController.md)
           - [Class (ProxyRule)](reference/apis-arkweb/arkts-apis-webview-ProxyRule.md)
           - [Class (WebviewController)](reference/apis-arkweb/arkts-apis-webview-WebviewController.md)
@@ -3453,6 +3455,9 @@
           - [Enums](reference/apis-arkweb/arkts-apis-webview-e.md)
           - [Types](reference/apis-arkweb/arkts-apis-webview-t.md)
         - [@ohos.web.netErrorList](reference/apis-arkweb/arkts-apis-netErrorList.md)
+        - [@ohos.web.webNativeMessagingExtensionAbility](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)
+        - [@ohos.web.webNativeMessagingExtensionContext](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md)
+        - [@ohos.web.webNativeMessagingExtensionManager](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)
       - ArkTS 组件<!--arkweb-comp-->
         - Web<!--ts-basic-components-web-->
           - [组件描述](reference/apis-arkweb/arkts-basic-components-web.md)
@@ -5390,6 +5395,7 @@
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-api-->
       - ArkTS API<!--mindspore-lite-arkts-->
         - [@ohos.ai.mindSporeLite (端侧AI框架)](reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)
+        - [ArkTS API错误码](reference/apis-mindspore-lite-kit/errorcode-mindSporeLite.md)
       - C API<!--mindspore-lite-c-->
         - 模块<!--mindspore-lite-module-->
           - [MindSpore](reference/apis-mindspore-lite-kit/capi-mindspore.md)

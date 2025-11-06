@@ -1694,6 +1694,82 @@ import { a } from './file1';
 import { b, c } from './file1'; // 移除lazy
 ```
 
+## class默认支持懒加载
+
+**规则：** `arkts-class-lazy-import`
+
+**规则解释：**
+
+ArkTS-Dyn中的类声明了就会加载，而ArkTS-Sta的类默认是懒加载的。
+
+**变更原因：**
+
+ArkTS-Sta的类默认是懒加载的，这可以提升启动性能并减少内存占用。
+
+**适配建议：**
+
+要加载类需要显式地实例化或调用；组件开发中，在指定时机执行的代码要移动到合适的组件、生命周期里。
+
+**示例：**
+
+- 场景1，类声明的时候不会自动加载执行static方法。
+
+**ArkTS-Dyn**
+
+```typescript
+class C {
+  static {
+    console.info('init');  // ArkTS-Dyn中类会立即加载，并运行静态方法
+  }
+}
+```
+
+**ArkTS-Sta**
+
+```typescript
+class C {
+  static {
+    console.info('init');  // ArkTS-Sta中类不会立即加载
+  }
+}
+new C(); // 通过实例化可以显式地加载类，才会执行里面的静态方法。
+```
+
+- 场景2，全局作用域的实现与类相同，均采用懒加载方式，因此全局作用域中的顶层代码不会立即执行。
+
+**ArkTS-Dyn**
+
+```typescript
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+console.info("init UIAbility"); // 在ArkTS-Dyn中，文件被引入了就会执行这条代码
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+  }
+
+  // ...
+}
+```
+
+**ArkTS-Sta**
+
+```typescript
+import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+console.info("init UIAbility"); // 在ArkTS-Sta中，文件被引入不会直接执行这条的代码
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    console.info("init UIAbility"); // 可以放在在onCreate生命周期里执行
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+  }
+
+  // ...
+}
+```
+
 ## 不支持动态import
 
 **规则：** `arkts-no-dynamic-import`
@@ -1717,12 +1793,13 @@ ArkTS-Sta中模块加载默认支持懒加载，无需动态import。
 ```typescript
 // file1.ets
 export const a = 'file1';
+
 // file2.ets
-import('./file1').then((m) => { // 在ArkTS-Sta中动态import是不支持的
+import('./file1').then((m) => { // 在ArkTS-Sta中不支持动态import
   console.info('success');
 })
 async () => {
-  const module = await import('./file1'); // 在ArkTS-Sta中动态import是不支持的
+  const module = await import('./file1'); // 在ArkTS-Sta中不支持动态import
 }
 ```
 
@@ -1731,6 +1808,7 @@ async () => {
 ```typescript
 // file1.ets
 export const a = 'file1';
+
 // file2.ets
 import {a} from './file1'  // 支持静态import
 ```
@@ -3427,44 +3505,6 @@ function add(left: number = 0, right: number) {
 function add(left: number, right: number = 0) {
   return left + right;
 }
-```
-
-## class的懒加载
-
-**规则：** `arkts-class-lazy-import`
-
-**规则解释：**
-
-ArkTS-Sta的类默认是懒加载的。
-
-**变更原因：**
-
-ArkTS-Sta的类默认是懒加载的，这可以提升启动性能并减少内存占用。
-
-**适配建议：**
-
-将类中未执行的初始化逻辑移到外部。
-
-**示例：**
-
-**ArkTS-Dyn**
-
-```typescript
-class C {
-  static {
-    console.info('init');  // ArkTS-Sta上不会立即执行
-  }
-}
-```
-
-**ArkTS-Sta**
-
-```typescript
-// ArkTS-Sta  如果依赖没有被使用的class执行逻辑，那么将该段逻辑移出class
-class C {
-  static {}
-}
-console.info('init');
 ```
 
 ## 继承/实现方法时参数遵循逆变原则，返回类型遵循协变原则

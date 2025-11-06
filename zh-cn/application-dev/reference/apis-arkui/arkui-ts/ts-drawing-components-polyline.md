@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  -该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  -该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 
 ## 子组件
@@ -52,7 +54,9 @@ Polyline(options?: PolylineOptions)
 
 ### points
 
-points(value: Array&lt;any&gt;)
+ArkTS-Dyn: points(value: Array&lt;any&gt;)
+
+ArkTS-Sta: points(value: Array&lt;ShapePoint&gt; | undefined)
 
 设置折线经过坐标点列表，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
@@ -62,11 +66,15 @@ points(value: Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------- |
-| value  | Array&lt;any&gt; | 是   | 折线经过坐标点列表。<br/>默认值：[]（空数组）<br/>默认单位：vp |
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: Array&lt;[ShapePoint](./ts-drawing-components-line.md#shapepoint20)&gt; \| undefined | 是   | 折线经过坐标点列表。<br/>默认值：[]（空数组）<br/>默认单位：vp<br/> |
 
 ### fill
 

@@ -4,9 +4,9 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> -该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -231,7 +231,9 @@ enableAnalyzer(enable: boolean)
 
 ### enableSecure<sup>13+</sup>
 
-enableSecure(isSecure: boolean)
+ArkTS-Dyn: enableSecure(isSecure: boolean)
+
+ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 防止组件内自绘制内容被截屏、录屏。
 
@@ -247,7 +249,7 @@ enableSecure(isSecure: boolean)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| isSecure | boolean | 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false |
+| isSecure | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined| 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false <br/> |
 
   > **说明：**
   >
@@ -295,7 +297,7 @@ hdrBrightness(brightness: number)
 
 ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback )
 
-ArkTS-Sta: onLoad(callback: VoidCallback )
+ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 插件加载完成时回调事件。
 
@@ -311,7 +313,7 @@ ArkTS-Sta: onLoad(callback: VoidCallback )
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 是    | XComponent持有的Surface创建后回调事件。 |
+| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) \| undefined| 是    | XComponent持有的Surface创建后回调事件。 <br/>|
 
 > **说明：**
 > 
@@ -319,7 +321,9 @@ ArkTS-Sta: onLoad(callback: VoidCallback )
 
 ### onDestroy
 
-onDestroy(event: VoidCallback )
+ArkTS-Dyn: onDestroy(event: VoidCallback )
+
+ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
 
 插件卸载完成时回调事件。
 
@@ -335,7 +339,7 @@ onDestroy(event: VoidCallback )
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| event | [VoidCallback](ts-types.md#voidcallback12) | 是    | XComponent销毁后回调事件。 |
+| event | ArkTS-Dyn: [VoidCallback](./ts-types.md#voidcallback12)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) \| undefined | 是    | XComponent销毁后回调事件。 <br/>|
 
 ## OnNativeLoadCallback<sup>18+</sup>
 

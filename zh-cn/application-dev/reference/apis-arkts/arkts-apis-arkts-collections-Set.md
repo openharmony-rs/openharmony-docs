@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -27,7 +29,7 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -41,7 +43,7 @@ constructor(values?: readonly T[] | null)
 
 构造函数，用于创建ArkTS Set对象。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -87,13 +89,14 @@ const mySet1: collections.Set<number|SharedClass> = new collections.Set<number|S
 let obj = new Object();
 const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|Object>([1, obj]);
 ```
+
 ## constructor
 
 constructor(iterable: Iterable\<T>)
 
 创建ArkTS Set对象的构造函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -125,11 +128,12 @@ console.info(newSet.has('b').toString()); // 预期输出： true
 ```
 
 ## entries
+
 entries(): IterableIterator<[T, T]>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键值对。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -161,11 +165,12 @@ console.info(iterator.next().value);
 ```
 
 ## keys
+
 keys(): IterableIterator\<T>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的键。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -197,11 +202,12 @@ console.info(iterator.next().value);
 ```
 
 ## values
+
 values(): IterableIterator\<T>
 
 返回一个Set迭代器对象，该对象包含了此Set中每个元素的值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -249,11 +255,12 @@ console.info("size:" + mySet.size);
 ```
 
 ## clear
+
 clear(): void
 
 删除该Set中的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -278,11 +285,12 @@ console.info("size:" + mySet.size);
 ```
 
 ## delete
+
 delete(value: T): boolean
 
 删除该Set中指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -321,11 +329,12 @@ console.info("result:" + mySet.delete("hello"));
 ```
 
 ## forEach
+
 forEach(callbackFn: (value: T, value2: T, set: Set\<T>) => void): void
 
 按插入顺序对该Set中的每个键/值对执行一次回调函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -371,11 +380,12 @@ new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set)
 ```
 
 ## has
+
 has(value: T): boolean
 
 判断该Set中是否存在指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -412,11 +422,12 @@ console.info("result:" + mySet.has("world"));
 ```
 
 ## add
+
 add(value: T): Set\<T>
 
 如果没有相同元素，则在该Set中插入一个新元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

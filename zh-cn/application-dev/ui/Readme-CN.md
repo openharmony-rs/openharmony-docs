@@ -9,8 +9,11 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn动态数据](arkts-sta-interop-dyn-data.md)
       - [ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数](arkts-sta-interop-dyn-builder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta全局自定义构建函数](arkts-dyn-interop-sta-builder.md)
       - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-wrappedbuilder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta WrappedBuilder对象](arkts-dyn-interop-sta-wrappedbuilder.md)
       - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
+      - [ArkTS-Dyn @Builder函数初始化ArkTS-Sta自定义组件@BuilderParam成员属性](arkts-dyn-interop-sta-builderparam.md)
       - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
       - [ArkTS-Dyn的Navigation调用ArkTS-Sta的NavDestination页面](arkts-dyn-interop-sta-navigation.md)
@@ -29,6 +32,7 @@
       - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](arkts-sta-interop-dyn-builder-v2.md)
       - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](arkts-dyn-interop-sta-builder-v2.md)
     - 状态管理V1V2混用互操作
+      - [ArkTS-Sta与ArkTS-Dyn状态管理V1V2混用互操作校验规格](arkts-sta-interop-dyn-validate.md)
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
     - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
