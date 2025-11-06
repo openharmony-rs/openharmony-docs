@@ -114,11 +114,14 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-```ts
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
+
+``` TypeScript
 @Component
 struct TotalView {
   @Prop @Watch('onCountUpdated') count: number = 0;
   @State total: number = 0;
+
   // @Watch 回调
   onCountUpdated(propName: string): void {
     this.total += this.count;
@@ -138,7 +141,7 @@ struct CountModifier {
     Column() {
       Button('add to basket')
         .onClick(() => {
-          this.count++
+          this.count++;
         })
       TotalView({ count: this.count })
     }
@@ -160,14 +163,16 @@ struct CountModifier {
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-```ts
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) -->
+
+``` TypeScript
 class PurchaseItem {
-  static NextId: number = 0;
+  public static nextId: number = 0;
   public id: number;
   public price: number;
 
   constructor(price: number) {
-    this.id = PurchaseItem.NextId++;
+    this.id = PurchaseItem.nextId++;
     this.price = price;
   }
 }
@@ -185,6 +190,7 @@ struct BasketViewer {
     }
     return total;
   }
+
   // @Watch 回调
   onBasketUpdated(propName: string): void {
     this.totalPurchase = this.updateTotal();
@@ -212,7 +218,7 @@ struct BasketModifier {
     Column() {
       Button('Add to basket')
         .onClick(() => {
-          this.shopBasket.push(new PurchaseItem(Math.round(100 * Math.random())))
+          this.shopBasket.push(new PurchaseItem(Math.round(100 * Math.random())));
         })
       BasketViewer({ shopBasket: $shopBasket })
     }
@@ -234,36 +240,42 @@ struct BasketModifier {
 
 为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明@Watch触发的时机与赋值、同步的关系。
 
-```ts
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
+
+``` TypeScript
 @Observed
 class Task {
-  isFinished: boolean = false;
+  public isFinished: boolean = false;
 
-  constructor(isFinished : boolean) {
+  constructor(isFinished: boolean) {
     this.isFinished = isFinished;
   }
 }
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
 struct ParentComponent {
   @State @Watch('onTaskAChanged') taskA: Task = new Task(false);
   @State @Watch('onTaskBChanged') taskB: Task = new Task(false);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State type1: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text5').id);
+  @State type2: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text6').id);
 
   onTaskAChanged(changedPropertyName: string): void {
-    console.info(`观测到父组件任务属性变化: ${changedPropertyName}`);
+    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text12')), changedPropertyName);
   }
 
   onTaskBChanged(changedPropertyName: string): void {
-    console.info(`观测到父组件任务属性变化: ${changedPropertyName}`);
+    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text12')), changedPropertyName);
   }
 
   build() {
     Column() {
-      Text(`父组件任务A状态: ${this.taskA.isFinished ? '已完成' : '未完成'}`)
-      Text(`父组件任务B状态: ${this.taskB.isFinished ? '已完成' : '未完成'}`)
+      Text(`${this.type1} ${this.taskA.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
       ChildComponent({ taskA: this.taskA, taskB: this.taskB })
-      Button('切换任务状态')
+      Button(resource.resourceToString($r('app.string.watch_text9')))
         .onClick(() => {
           this.taskB = new Task(!this.taskB.isFinished);
           this.taskA = new Task(!this.taskA.isFinished);
@@ -276,19 +288,22 @@ struct ParentComponent {
 struct ChildComponent {
   @ObjectLink @Watch('onObjectLinkTaskChanged') taskB: Task;
   @Link @Watch('onLinkTaskChanged') taskA: Task;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State type1: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text10').id);
+  @State type2: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text11').id);
 
   onObjectLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`观测到子组件@ObjectLink关联的任务属性变化: ${changedPropertyName}`);
+    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text13')), changedPropertyName);
   }
 
   onLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`观测到子组件@Link关联的任务属性变化: ${changedPropertyName}`);
+    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text14')), changedPropertyName);
   }
 
   build() {
     Column() {
-      Text(`子组件任务A状态: ${this.taskA.isFinished ? '已完成' : '未完成'}`)
-      Text(`子组件任务B状态: ${this.taskB.isFinished ? '已完成' : '未完成'}`)
+      Text(`${this.type1} ${this.taskA.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
     }
   }
 }
@@ -315,16 +330,19 @@ struct ChildComponent {
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-```ts
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct UsePropertyName {
   @State @Watch('countUpdated') apple: number = 0;
   @State @Watch('countUpdated') cabbage: number = 0;
   @State fruit: number = 0;
+
   // @Watch 回调
   countUpdated(propName: string): void {
-    if (propName == 'apple') {
+    if (propName === 'apple') {
       this.fruit = this.apple;
     }
   }
