@@ -1304,7 +1304,11 @@ struct Index {
 **ArkTS-Sta起始版本**：20
 
 **属性：**
-<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示文件打印份数。默认值为1。 |
@@ -1325,7 +1329,11 @@ struct Index {
 **ArkTS-Sta起始版本**：20
 
 **属性：**
-<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | startPage | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示起始页。默认值为1。 |
@@ -1344,7 +1352,11 @@ struct Index {
 **ArkTS-Sta起始版本**：20
 
 **属性：**
-<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | id | string | 是 | 表示纸张类型ID。 |
@@ -1836,7 +1848,11 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **ArkTS-Sta起始版本**：20
 
 **属性：**
-<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 是 | 表示打印机支持的纸张尺寸列表。 |
@@ -1908,7 +1924,11 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **ArkTS-Sta起始版本**：20
 
 **属性：**
-<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：20
+
 | **名称** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 表示默认单双面模式。 |
