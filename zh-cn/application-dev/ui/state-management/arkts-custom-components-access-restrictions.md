@@ -285,6 +285,41 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【正例】
     <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PrivateWithLinkAccessRestrictions {
+      @State linkValue: string = 'Hello';
+      @State objectLinkValue: PrivateComponentObj = new PrivateComponentObj();
+    
+      build() {
+        Column() {
+          PrivateWithLinkComponentChild({ linkValue: this.linkValue, objectLinkValue: this.objectLinkValue })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Observed
+    class PrivateComponentObj {
+      public count: number = 0;
+    }
+    
+    @Component
+    struct PrivateWithLinkComponentChild {
+      @Link linkValue: string;
+      @ObjectLink objectLinkValue: PrivateComponentObj;
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 4. 当成员变量被protected访问限定符修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
