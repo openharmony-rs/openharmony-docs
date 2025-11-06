@@ -164,6 +164,45 @@ struct Parent {
 
 <!-- @[calculation_directState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets) -->
 
+``` TypeScript
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  appendMsg(newMsg: string) {
+    // 性能打点
+    hiTraceMeter.startTrace('StateVariable', 1);
+    this.message += newMsg;
+    this.message += ';';
+    this.message += '<br/>';
+    hiTraceMeter.finishTrace('StateVariable', 1);
+  }
+
+  build() {
+    Column() {
+      Button('Click to print log')
+        .onClick(() => {
+          this.appendMsg('Operating state variable');
+        })
+        .width('90%')
+        .backgroundColor(Color.Blue)
+        .fontColor(Color.White)
+        .margin({
+          top: 10
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .alignItems(HorizontalAlign.Center)
+    .margin({
+      top: 15
+    })
+  }
+}
+```
+
 直接操作状态变量，三次触发计算函数，运行耗时结果如下：
 
 ![](figures/hp_arkui_use_state_var.png)
