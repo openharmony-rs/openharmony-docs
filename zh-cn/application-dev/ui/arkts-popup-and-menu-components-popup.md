@@ -86,6 +86,57 @@ export struct TextPopupExample {
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
+``` TypeScript
+// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+@Entry
+@Component
+export struct CustomPopupExample {
+  @State customPopup: boolean = false;
+
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
+    Row({ space: 2 }) {
+      Image($r('app.media.app_icon')).width(24).height(24).margin({ left: 5 })
+      Text('This is Custom Popup').fontSize(15)
+    }.width(200).height(50).padding(5)
+  }
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('CustomPopupOptions')
+            .id('CustomPopupOptions')
+            .margin({ top: 300 })
+            .onClick(() => {
+              this.customPopup = !this.customPopup;
+            })
+            .bindPopup(this.customPopup, {
+              builder: this.popupBuilder, // 气泡的内容
+              placement: Placement.Bottom, // 气泡的弹出位置
+              popupColor: Color.Pink, // 气泡的背景色
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.customPopup = false
+                }
+              }
+            })
+        }
+        .height('100%')
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 使用者通过配置placement参数将弹出的气泡放到需要提示的位置。弹窗构造器会触发弹出提示信息，来引导使用者完成操作，也让使用者有更好的UI体验。
 
 ![zh-cn_other_0000001500900234](figures/zh-cn_other_0000001500900234.jpeg)
