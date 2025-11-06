@@ -4,6 +4,7 @@ baseProfile模块提供了基础的profile方法。
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -34,6 +35,10 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
 | deviceId | string                        | 否   | 否   | 蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
@@ -49,12 +54,12 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| USER_DISCONNECT            | 0    | 用户主动断开连接。|
-| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。|
-| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。|
-| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。|
-| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。|
-| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。|
+| USER_DISCONNECT            | 0    | 用户主动断开连接。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| CONNECT_FROM_KEYBOARD      | 1    | 应该从键盘侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| CONNECT_FROM_MOUSE         | 2    | 应该从鼠标侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| CONNECT_FROM_CAR           | 3    | 应该从车机侧发起连接。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数超过上限。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| CONNECT_FAIL_INTERNAL      | 5    | 内部错误。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 
 
 ## BaseProfile.getConnectedDevices
@@ -66,6 +71,10 @@ getConnectedDevices(): Array&lt;string&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -109,6 +118,10 @@ getConnectionState(deviceId: string): ProfileConnectionState
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
