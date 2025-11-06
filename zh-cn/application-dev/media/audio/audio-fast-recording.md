@@ -1,4 +1,4 @@
-# 低时延音频录制
+# 低时延音频录制(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -12,8 +12,8 @@
 
 ## 使用前提
 
-- 设备支持低时延模式的音频输入设备。
-- 芯片平台支持。
+- 支持低时延模式的音频输入设备。
+- 可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)验证当前设备是否支持低时延模式。
 
 ## 开发指导
 
@@ -25,7 +25,7 @@
 
 ### 设置低时延模式
 
-开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode()](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)，来决定音频流使用哪种模式。
+开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode()](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
 
 设置低时延模式开发示例：
 ```cpp
@@ -47,19 +47,38 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 当前系统中存在更高优先级流（如：VOIP通话）。
 
 从API version 20开始，支持低时延相关查询接口。
-- 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否在低时延状态下工作。
-- 切换到部分特殊场景（如：更高优先级流创建、新连接设备不支持等）时，开发者通过调用[OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange)来获取低时延状态改变事件。
+- 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。
+- - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange)来获取低时延状态改变事件。
 
 
 ### 使用低时延流的场景
 - k歌、直播等对时延要求较高的场景，建议使用低时延模式。
-- 普通录音、录像、录屏等没有实时要求的场景，不需要使用低时延模式。
+- 普通录音、录像、录屏等没有实时要求的场景，不建议使用低时延模式。
 
-### 确保数据及时提供
-低时延模式下，应用取数据的频次比普通录制模式高，如果获取数据不及时可能导致杂音等问题。
+### 确保数据及时读入
+低时延模式下，应用读取数据的频次比普通录制模式高，如果获取数据不及时可能导致杂音等问题。开发者应避免在数据回调线程中做耗时操作，确保数据回调线程可以及时返回。
 
 ### 数据回调线程
-[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)提供了开发音频录制功能的示例代码。在设置回调函数时，开发者需要将OH_AudioCapturer_Callbacks对象设置给系统侧，系统侧会有频率的调用OH_AudioCapturer_Callbacks对象的OH_AudioCapturer_OnReadData方法读取数据。回调函数的声明请查看[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)。
+音频录制的音频数据需要通过回调接口读入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback)设置回调函数，在设置音频回调函数时，回调函数[OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback)（从API version 12开始支持）用于读取音频数据。
+
+开发音频录制功能的示例代码请参考：[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
+
+设置数据回调函数示例：
+```cpp
+// 自定义读入数据函数。
+static OH_AudioData_Callback_Result MyOnReadData(
+    OH_AudioCapturer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t length)
+{
+    // 从buffer中取出length长度的录音数据。
+    return AUDIO_DATA_CALLBACK_RESULT_VALID0;
+}
+// 配置读入音频数据回调函数。
+OH_AudioCapturer_OnReadDataCallback readDataCb = MyOnReadData;
+OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
+```
 - 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadData中执行耗时操作。
 - 为保证OH_AudioCapturer_OnReadData与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadData回调方法中调用音频流控制接口。
   
