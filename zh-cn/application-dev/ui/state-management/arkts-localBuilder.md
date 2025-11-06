@@ -187,6 +187,48 @@ struct Parent {
 组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会随之更新。
 <!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) -->
 
+``` TypeScript
+class ReferenceType {
+  paramString: string = '';
+}
+
+@Component
+struct HelloComponent {
+  @Prop message: string;
+
+  build() {
+    Row() {
+      Text(`HelloComponent===${this.message}`)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State variableValue: string = 'Hello World';
+
+  @LocalBuilder
+  citeLocalBuilder($$: ReferenceType) {
+    Row() {
+      Column() {
+        Text(`citeLocalBuilder===${$$.paramString}`)
+        HelloComponent({ message: $$.paramString })
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      this.citeLocalBuilder({ paramString: this.variableValue })
+      Button('Click me').onClick(() => {
+        this.variableValue = 'Hi World';
+      })
+    }
+  }
+}
+```
+
 当子组件引用父组件的\@LocalBuilder函数并传入状态变量时，状态变量的改变不会触发\@LocalBuilder函数内的UI刷新。这是因为调用\@LocalBuilder装饰的函数创建出来的组件绑定于父组件，而状态变量的刷新机制仅作用于当前组件及其子组件，对父组件无效。而使用\@Builder修饰函数可触发UI刷新，原因在于\@Builder改变了函数的this指向，使创建出来的组件绑定到子组件上，从而在子组件修改变量能够实现\@Builder中的UI刷新。
 
 组件Child将状态变量传递到Parent的\@Builder和\@LocalBuilder函数内。在\@Builder函数内，`this`指向Child，参数变化能触发UI刷新。在\@LocalBuilder函数内，`this`指向Parent，参数变化不会触发UI刷新。若\@LocalBuilder函数内引用Parent的状态变量发生变化，UI能正常刷新。
