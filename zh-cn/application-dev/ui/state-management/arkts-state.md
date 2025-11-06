@@ -234,6 +234,32 @@
 
 <!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
 
+``` TypeScript
+import PlayDetailViewModel from './PlayDetailViewModel';
+
+@Entry
+@Component
+struct PlayDetailPage {
+  @State vm: PlayDetailViewModel = new PlayDetailViewModel();
+
+  build() {
+    Stack() {
+      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Row() {
+        Button('Change Color')
+          .onClick(() => {
+            let self = this.vm;
+            this.vm.changeCoverUrl(self);
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .alignContent(Alignment.Top)
+  }
+}
+```
+
 ### 类的构造函数中通过捕获this修改变量无法观察
 
 在状态管理中，类会被一层“代理”进行包装。当在组件中改变该类的成员变量时，会被该代理进行拦截，在更改数据源中值的同时，也会将变化通知给绑定的组件，从而实现观测变化与触发刷新。
