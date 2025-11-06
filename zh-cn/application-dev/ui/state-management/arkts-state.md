@@ -326,45 +326,7 @@ struct MyComponent {
 >
 > 从API version 11开始，\@State支持Map类型。
 
-<!-- @[state_scene_type_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct DatePickerExample {
-  @State selectedDate: Date = new Date('2021-08-08');
-
-  build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }.width('100%')
-  }
-}
-```
+在下面的示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 <!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
 
 ``` TypeScript
@@ -1015,24 +977,24 @@ struct ConsumerChild {
     3. count的改变再次触发Text组件的刷新。
 
     4. Text最终显示为2。
-<!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
+    <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
 
-``` TypeScript
-@Entry
-@Component
-struct Index {
-  @State count: number = 1;
-
-  build() {
-    Column() {
-      // 应避免直接在Text组件内改变count的值
-      Text(`${this.count++}`)
-        .width(50)
-        .height(50)
+    ``` TypeScript
+    @Entry
+    @Component
+    struct Index {
+      @State count: number = 1;
+    
+      build() {
+        Column() {
+          // 应避免直接在Text组件内改变count的值
+          Text(`${this.count++}`)
+            .width(50)
+            .height(50)
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 在首次创建的过程中，Text组件被多渲染了一次，最终显示为2。
 
@@ -1045,67 +1007,8 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。
 
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
+<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->
 
-<!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
-
-``` TypeScript
-class Balloon {
-  public volume: number;
-
-  constructor(volume: number) {
-    this.volume = volume;
-  }
-
-  static increaseVolume(balloon: Balloon) {
-    balloon.volume += 2;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State balloon: Balloon = new Balloon(10);
-
-  reduceVolume(balloon: Balloon) {
-    balloon.volume -= 1;
-  }
-
-  build() {
-    Column({ space: 8 }) {
-      Text(`The volume of the balloon is ${this.balloon.volume} cubic centimeters.`)
-        .fontSize(30)
-      Button(`increaseVolume`)
-        .onClick(() => {
-          // 通过静态方法调用，无法触发UI刷新
-          Balloon.increaseVolume(this.balloon);
-        })
-      Button(`reduceVolume`)
-        .onClick(() => {
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.reduceVolume(this.balloon);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-@Entry
-@Component
-struct Index {
-  @State message: number = 20;
-
-  build() {
-    Column() {
-      Text(`${this.message++}`)
-
-      Text(`${this.message++}`)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
 上面示例的渲染过程为：
 
 1. 创建第一个Text组件，触发this.message改变。
@@ -1126,6 +1029,7 @@ struct Index {
 
 【反例】
 <!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) -->
+
 状态变量观察类属性变化是通过代理捕获其变化的，当使用a.b(this.object)调用时，框架会将代理对象转换为原始对象。修改原始对象属性，无法观察，因此UI不会刷新。开发者可以使用如下方法修改：
 
 1. 先将this.balloon赋值给临时变量。
