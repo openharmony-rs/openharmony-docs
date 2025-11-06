@@ -16961,5 +16961,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-embedded-components.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"embedded_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"exampleEmbeddedAbility_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"extension_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"exampleEmbeddedAbility_start",
+						"start_line":63
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-embedded-component.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"embeddedComponentCTest_start",
+						"start_line":21
+					}
+				]
+			}
+		]
 	}
 ]
