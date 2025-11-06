@@ -34,6 +34,61 @@
 
 <!-- @[scene_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct SceneRequire {
+  @State message: string = 'Hello World';
+
+  @Builder
+  buildTest() {
+    Row() {
+      Text('Hello, world')
+        .fontSize(30)
+    }
+  }
+
+  build() {
+    Row() {
+      // 构造Child时需传入所有@Require对应参数，否则编译失败。
+      Child({
+        regularValue: this.message,
+        stateValue: this.message,
+        provideValue: this.message,
+        initMessage: this.message,
+        message: this.message,
+        buildTest: this.buildTest,
+        initBuildTest: this.buildTest
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Require regularValue: string;
+  @Require @State stateValue: string;
+  @Require @Provide provideValue: string;
+  @Require @BuilderParam buildTest: () => void;
+  @Require @BuilderParam initBuildTest: () => void;
+  @Require @Prop initMessage: string;
+  @Require @Prop message: string;
+
+  build() {
+    Column() {
+      Text(this.initMessage)
+        .fontSize(30)
+      Text(this.message)
+        .fontSize(30)
+      this.initBuildTest();
+      this.buildTest();
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
 
 使用[\@ComponentV2](./arkts-new-componentV2.md)修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
