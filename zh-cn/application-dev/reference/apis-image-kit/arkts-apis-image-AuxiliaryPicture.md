@@ -82,7 +82,7 @@ import { image } from '@kit.ImageKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     if (context != undefined) {
-      let auxPicture: image.AuxiliaryPicture | null = await GetAuxiliaryPicture(context)
+      let auxPicture: image.AuxiliaryPicture | null = GetAuxiliaryPicture(context)
       if (auxPicture != null) {
         WritePixelsFromBufferFunc(auxPicture);
       }
@@ -860,6 +860,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 if (context != undefined) {
   let auxPicture: image.AuxiliaryPicture | null = GetAuxiliaryPicture(context)
   if (auxPicture != null) {

@@ -590,10 +590,10 @@ async function Marshalling_UnMarshalling() {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 import rpc from '@ohos.rpc';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。

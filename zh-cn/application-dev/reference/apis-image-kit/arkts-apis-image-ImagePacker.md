@@ -449,7 +449,7 @@ ArkTS-Sta示例:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 function ReleaseFunc(): void {
   try {

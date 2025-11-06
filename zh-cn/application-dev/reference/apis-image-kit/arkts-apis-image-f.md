@@ -189,12 +189,13 @@ async function Marshalling_UnMarshalling(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 import rpc from '@ohos.rpc';
 
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 if (context != undefined) {
   MarshallingUnMarshallingFunc(context);
@@ -1620,7 +1621,7 @@ function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.Im
   let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
   let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
   try {
-    const imageSourceIncremental = image.createIncrementalSource(buffer);
+    const imageSourceIncremental = image.CreateIncrementalSource(buffer);
     hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
     if (imageSourceIncremental != undefined) {
       return imageSourceIncremental;
