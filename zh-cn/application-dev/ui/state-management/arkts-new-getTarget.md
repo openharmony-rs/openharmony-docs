@@ -36,7 +36,7 @@
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
-// let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值
+let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值
 @Observed
 class Info {
   public name: string = 'Tom';
