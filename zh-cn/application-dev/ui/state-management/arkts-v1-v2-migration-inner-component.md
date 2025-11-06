@@ -434,6 +434,34 @@ V1实现：
 
 <!-- @[Parent13_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  // @Prop可以直接修改变量值
+  @Prop value: number;
+
+  build() {
+    Column() {
+      Text(this.value.toString())
+      Button('+1')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  build() {
+    Column() {
+      Child({ value: 30 })
+    }
+  }
+}
+```
+
 
 V2迁移策略：使用\@Param和\@Once。
 
