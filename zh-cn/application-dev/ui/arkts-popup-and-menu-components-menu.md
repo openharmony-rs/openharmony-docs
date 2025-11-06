@@ -29,6 +29,18 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 <!-- @[call_bind_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
 
+``` TypeScript
+Button('click for Menu')
+  .bindMenu([
+    {
+      value: 'Menu1',
+      action: () => {
+        hilog.info(DOMAIN_NUMBER, TAG, 'handle Menu1 select');
+      }
+    }
+  ])
+```
+
 ![zh-cn_image_0000001562940565](figures/zh-cn_image_0000001562940565.png)
 
 ## 创建自定义样式的菜单
