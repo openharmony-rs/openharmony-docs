@@ -1,5 +1,12 @@
 # transient_task_type.h
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 The **transient_task_type.h** file declares the error codes and structs of a transient task.
