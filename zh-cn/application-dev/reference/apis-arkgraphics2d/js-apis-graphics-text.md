@@ -2368,11 +2368,11 @@ function textFunc() {
     align: text.TextAlign.END,
   };
   let myPlaceholderSpan: text.PlaceholderSpan = {
-    width: 10000,
-    height: 10000000,
+    width: 100,
+    height: 100,
     align: text.PlaceholderAlignment.ABOVE_BASELINE,
     baseline: text.TextBaseline.ALPHABETIC,
-    baselineOffset: 100000
+    baselineOffset: 100
   };
   let fontCollection = new text.FontCollection();
   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
