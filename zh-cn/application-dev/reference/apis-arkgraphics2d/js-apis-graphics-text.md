@@ -3704,7 +3704,7 @@ let length = runStringRange.end;
 
 ArkTS-Dyn: getStringIndices(range?: Range): Array\<number>
 
-ArkTS-Sta: getStringIndices(range?: Range): Array\<int> | undefined;
+ArkTS-Sta: getStringIndices(range?: Range): Array\<int> | undefined
 
 获取排版单元指定范围内字形的字符索引，该索引是相对于整个段落的偏移。
 
