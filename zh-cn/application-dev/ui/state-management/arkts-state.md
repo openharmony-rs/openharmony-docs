@@ -106,6 +106,11 @@
 
   对\@State装饰变量的属性赋值。
     <!-- @[state_decorate_object_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    
+    ``` TypeScript
+    // class属性的赋值
+    this.title.value = 'Hi';
+    ```
 
   嵌套属性的赋值观察不到。
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
