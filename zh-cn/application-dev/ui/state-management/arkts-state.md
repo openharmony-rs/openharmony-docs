@@ -219,6 +219,21 @@
 - 执行Button组件的更新方法，实现按需刷新。
 <!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct MyComponent {
+  @State count: number = 0;
+
+  build() {
+    Button(`click times: ${this.count}`)
+      .onClick(() => {
+        this.count += 1;
+      })
+  }
+}
+```
+
 ### 装饰class对象类型的变量
 
 - 自定义组件MyComponent定义了被\@State装饰的状态变量count和title，其中title的类型为自定义类Model。如果count或title的值发生变化，则查询MyComponent中使用该状态变量的UI组件，并进行重新渲染。
