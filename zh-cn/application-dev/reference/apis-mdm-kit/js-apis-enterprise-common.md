@@ -1,4 +1,4 @@
-# @ohos.enterprise.common（包管理）
+# @ohos.enterprise.common（公共管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
