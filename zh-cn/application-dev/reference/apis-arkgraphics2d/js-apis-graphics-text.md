@@ -1206,7 +1206,7 @@ ArkTS-Sta: layout(width: double): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1400,7 +1400,7 @@ ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1434,7 +1434,7 @@ ArkTS-Sta: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: doub
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1471,7 +1471,7 @@ ArkTS-Sta: getMaxWidth(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1499,7 +1499,7 @@ ArkTS-Sta: getHeight(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1527,7 +1527,7 @@ ArkTS-Sta: getLongestLine(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1555,7 +1555,7 @@ ArkTS-Sta: getLongestLineWithIndent(): double
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1583,7 +1583,7 @@ ArkTS-Sta: getMinIntrinsicWidth(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1611,7 +1611,7 @@ ArkTS-Sta: getMaxIntrinsicWidth(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1639,7 +1639,7 @@ ArkTS-Sta: getAlphabeticBaseline(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1667,7 +1667,7 @@ ArkTS-Sta: getIdeographicBaseline(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1693,7 +1693,7 @@ getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeig
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1728,7 +1728,7 @@ getRectsForPlaceholders(): Array\<TextBox>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1756,7 +1756,7 @@ ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffin
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1791,7 +1791,7 @@ ArkTS-Sta: getWordBoundary(offset: int): Range
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1825,7 +1825,7 @@ ArkTS-Sta: getLineCount(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1853,7 +1853,7 @@ ArkTS-Sta: getLineHeight(line: int): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1887,7 +1887,7 @@ ArkTS-Sta: getLineWidth(line: int): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1919,7 +1919,7 @@ didExceedMaxLines(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1945,7 +1945,7 @@ getTextLines(): Array\<TextLine>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1973,7 +1973,7 @@ ArkTS-Sta: getActualTextRange(lineNumber: int, includeSpaces: boolean): Range
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2007,7 +2007,7 @@ getLineMetrics(): Array\<LineMetrics>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2035,7 +2035,7 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2067,7 +2067,7 @@ updateColor(color: common2D.Color): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2093,7 +2093,7 @@ updateDecoration(decoration: Decoration): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2132,7 +2132,7 @@ ArkTS-Sta: getLineBreak(startIndex: int, width: double): int
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2177,7 +2177,7 @@ ArkTS-Sta: createLine(startIndex: int, count: int): TextLine
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2219,7 +2219,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
@@ -2236,7 +2236,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
@@ -2262,7 +2262,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
@@ -2279,7 +2279,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
@@ -2296,7 +2296,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称  | 值 | 说明                                   |
 | ----- | - | -------------------------------------- |
@@ -2313,7 +2313,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 值 | 说明                                           |
 | ------------------------- | - | ---------------------------------------------- |
@@ -2334,7 +2334,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 值 | 说明                          |
 | ---------- | - | ----------------------------- |
@@ -2357,7 +2357,7 @@ ParagraphBuilder对象的构造函数。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2449,7 +2449,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2544,7 +2544,7 @@ popStyle(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **示例：**
 
@@ -2635,7 +2635,7 @@ addText(text: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
