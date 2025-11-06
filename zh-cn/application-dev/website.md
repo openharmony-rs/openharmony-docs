@@ -5390,6 +5390,7 @@
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-api-->
       - ArkTS API<!--mindspore-lite-arkts-->
         - [@ohos.ai.mindSporeLite (端侧AI框架)](reference/apis-mindspore-lite-kit/js-apis-mindSporeLite.md)
+        - [ArkTS API错误码](reference/apis-mindspore-lite-kit/errorcode-mindSporeLite.md)
       - C API<!--mindspore-lite-c-->
         - 模块<!--mindspore-lite-module-->
           - [MindSpore](reference/apis-mindspore-lite-kit/capi-mindspore.md)
