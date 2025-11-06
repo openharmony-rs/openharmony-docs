@@ -498,6 +498,210 @@ customDialogComponentGetState(dialogController: promptAction.DialogController) {
 
 <!-- @[dialog_example_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
 
+``` TypeScript
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class Params {
+  public text: string = '';
+  public dialogController: promptAction.CommonController = new promptAction.DialogController();
+
+  constructor(text: string, dialogController: promptAction.CommonController) {
+    this.text = text;
+    this.dialogController = dialogController;
+  }
+}
+
+
+@Component
+struct MyComponent {
+  build() {
+    Column({ space: 5 }) {
+      // 'app.string.closeDialog_by_custom'资源文件中的value值为'点我关闭弹窗：通过自定义组件自带的DialogController'。
+      Button($r('app.string.closeDialog_by_custom'))
+        .onClick(() => {
+          let dialogController: promptAction.DialogController = this.getDialogController();
+          if (dialogController !== undefined) {
+            dialogController.close();
+          }
+        })
+    }
+  }
+}
+
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 5 }) {
+    Text(params.text)
+      .fontSize(30)
+    if (params.dialogController !== undefined) {
+      // 'app.string.closeDialog_by_controller'资源文件中的value值为'点我关闭弹窗：通过外部传递的DialogController'。
+      Button($r('app.string.closeDialog_by_controller'))
+        .onClick(() => {
+          params.dialogController.close();
+        })
+    }
+    MyComponent()
+  }
+  .width(300)
+  .height(200)
+  .backgroundColor('#FFF0F0F0')
+}
+
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build() {
+    Column({ space: 5 }) {
+      // 'app.string.my_content'资源文件中的value值为'我是内容'。
+      Text($r('app.string.my_content'))
+        .fontSize(30)
+      // 'app.string.closeDialog_by_dialog'资源文件中的value值为'点我关闭弹窗：通过自定义组件自带的DialogController'。
+      Button($r('app.string.closeDialog_by_dialog'))
+        .onClick(() => {
+          let dialogController: PromptActionDialogController = this.getDialogController();
+          if (dialogController !== undefined) {
+            dialogController.close();
+          }
+        })
+    }
+    .height(200)
+    .backgroundColor('#FFF0F0F0')
+  }
+}
+
+
+@Entry
+@Component
+export struct DialogController {
+  private message = 'dialog';
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    isModal: false,
+    autoCancel: false
+  };
+  private dialogOptions: promptAction.DialogOptions = {
+    isModal: false,
+    autoCancel: false
+  };
+
+  @Builder
+  customDialogComponent(dialogController: promptAction.DialogController) {
+    Column({ space: 5 }) {
+      Text(this.message)
+        .fontSize(30)
+      if (dialogController !== undefined) {
+        // 'app.string.closeDialog_by_outside'资源文件中的value值为'点击关闭弹窗：通过外部传递的DialogController'。
+        Button($r('app.string.closeDialog_by_outside'))
+          .onClick(() => {
+            dialogController.close();
+          })
+      }
+    }
+    .height(200)
+    .padding(5)
+    .justifyContent(FlexAlign.SpaceBetween)
+    .backgroundColor('#FFF0F0F0')
+  }
+
+
+  @Builder
+  customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
+    Column({ space: 5 }) {
+      Text(this.message)
+        .fontSize(30)
+      if (dialogId !== undefined) {
+        // 'app.string.closeDialog_by_id'资源文件中的value值为'点击关闭弹窗：通过DialogID'。
+        Button($r('app.string.closeDialog_by_id'))
+          .onClick(() => {
+            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+          })
+      }
+      if (dialogController !== undefined) {
+        // 'app.string.closeDialog_by_dialog_controller'资源文件中的value值为'点击关闭弹窗：通过外部传递的DialogController'。
+        Button($r('app.string.closeDialog_by_dialog_controller'))
+          .onClick(() => {
+            dialogController.close();
+          })
+      }
+    }
+  }
+
+
+  @Builder
+  customDialogComponentGetState(dialogController: promptAction.DialogController) {
+    Column({ space: 5 }) {
+      Text(this.message)
+        .fontSize(30)
+      if (dialogController !== undefined) {
+        // 'app.string.click_check_status'资源文件中的value值为'点我查询弹窗状态'。
+        Button($r('app.string.click_check_status'))
+          .onClick(() => {
+            hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+          })
+      }
+    }
+    .height(200)
+    .padding(5)
+    .justifyContent(FlexAlign.SpaceBetween)
+    .backgroundColor('#FFF0F0F0')
+  }
+
+
+  build() {
+    NavDestination() {
+      Column({ space: 5 }) {
+        // 'app.string.open_custom_dialog_with_controller'资源文件中的value值为'OpenCustomDialogWithController弹窗'。
+        Button($r('app.string.open_custom_dialog_with_controller'))
+          .onClick(() => {
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
+            let contentNode: ComponentContent<Object> =
+              new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+                new Params(this.message, dialogController));
+            this.getUIContext().getPromptAction().openCustomDialogWithController(
+              contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
+              hilog.error(0x0000, 'dialogController',
+                'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
+            });
+          })
+        // 'app.string.present_custom_dialog'资源文件中的value值为'PresentCustomDialog+CustomBuilder弹窗'。
+        Button($r('app.string.present_custom_dialog'))
+          .onClick(() => {
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
+            this.getUIContext().getPromptAction().presentCustomDialog(() => {
+              this.customDialogComponent(dialogController);
+            }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
+              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+            });
+          })
+        // 'app.string.custom_builder_with_id'资源文件中的value值为'PresentCustomDialog+CustomBuilderWithId弹窗'。
+        Button($r('app.string.custom_builder_with_id'))
+          .onClick(() => {
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
+            this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
+              this.customDialogComponentWithId(dialogId, dialogController);
+            }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
+              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+            });
+          })
+        // 'app.string.custom_dialog_controller_dialog'资源文件中的value值为'CustomDialogController弹窗'。
+        Button($r('app.string.custom_dialog_controller_dialog'))
+          .onClick(() => {
+            let customDialogController: CustomDialogController = new CustomDialogController({
+              builder: CustomDialogExample(),
+            });
+            customDialogController.open();
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
 
 
 ![dialog-controller-demo1](figures/dialog-controller-demo1.gif)
