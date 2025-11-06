@@ -60,6 +60,44 @@ struct DeepReParent {
 
 <!-- @[deep_copy_correct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets) -->
 
+``` TypeScript
+@Observed
+class MyClass {
+  public num: number = 0;
+
+  constructor(num: number) {
+    this.num = num;
+  }
+}
+
+@Component
+struct PropChild {
+  @ObjectLink testClass: MyClass; // @ObjectLink装饰状态变量不会深拷贝。
+
+  build() {
+    Text(`PropChild testNum ${this.testClass.num}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State testClass: MyClass[] = [new MyClass(1)];
+
+  build() {
+    Column() {
+      Text(`Parent testNum ${this.testClass[0].num}`)
+        .onClick(() => {
+          this.testClass[0].num += 1;
+        })
+
+      // 当子组件不需要本地修改状态时，应优先使用@ObjectLink，因为@Prop会执行深拷贝并带来性能开销，此时@ObjectLink是比@Link和@Prop更优的选择。
+      PropChild({ testClass: this.testClass[0] })
+    }
+  }
+}
+```
+
 
 ## 不使用状态变量强行更新非状态变量关联组件
 
