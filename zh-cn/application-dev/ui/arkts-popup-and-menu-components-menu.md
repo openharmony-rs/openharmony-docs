@@ -62,6 +62,14 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 - 仅当应用具备ohos.permission.VIBRATE权限，且用户启用了触感反馈时才会生效。开启触控反馈时，需要在工程的module.json5中配置[声明权限](../security/AccessToken/declare-permissions.md)的requestPermissions字段开启振动权限，配置如下：
 
   <!-- @[menu_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  "requestPermissions": [
+    {
+      "name": "ohos.permission.VIBRATE",
+    }
+  ],
+  ```
 
 <!-- @[popVibrate_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/PopVibrateMenu.ets) -->
 
