@@ -1052,11 +1052,11 @@ try {
   promise.then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
     pixelMap.release();
-  }).catch((err) =>{
-    console.error(`Failed to get snapshot. Cause: ${err}`);
+  }).catch((err: Error) =>{
+    console.error(`Failed to get snapshot. Cause code: ${err?.code}, message: ${err?.message}`);
   });
-} catch (exception) {
-  console.error(`Failed to get snapshot. Cause: ${exception}`);
+} catch (exception: Error) {
+  console.error(`Failed to get snapshot. Cause code: ${exception?.code}, message: ${exception?.message}`);
 }
 ```
 
@@ -3217,9 +3217,10 @@ import { Want } from '@ohos.app.ability.Want';
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 加载主窗口对应的页面
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause: ${err}`);
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -3227,9 +3228,10 @@ export default class EntryAbility extends UIAbility {
 
     // 获取应用主窗口。
     let mainWindow: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err, data) => {
-      if (err) {
-        console.error(`Failed to obtain the main window. Cause: ${err}`);
+    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       mainWindow = data;
@@ -3239,14 +3241,14 @@ export default class EntryAbility extends UIAbility {
       try {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
         mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
-          if (err) {
-            console.error(`Failed to hide the non-system floating windows. Cause: ${err}`);
+          if (err: Error) {
+            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in hiding the non-system floating windows.');
         });
-      } catch (exception) {
-        console.error(`Failed to hide the non-system floating windows. Cause: ${exception}`);
+      } catch (exception: Error) {
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception?.code}, message: ${exception?.message}`);
       }
     });
   }
