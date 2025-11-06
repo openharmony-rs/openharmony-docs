@@ -152,7 +152,7 @@ struct Index {
 | \@Trace成员变量装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | 无。                                                           |
-| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、Array、Date、Map、Set等类型。 |
+| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。 |
 
 ## 观察变化
 

@@ -2198,7 +2198,6 @@ struct ChildComponent {
           console.info(`appear: ${this.data.message}`);
         })
     }.margin({ left: 10, right: 10 })
-    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
