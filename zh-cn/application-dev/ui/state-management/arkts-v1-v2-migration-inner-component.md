@@ -57,6 +57,18 @@ V2迁移策略：直接替换。
 
 <!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Child {
+  @Local val: number = 10;
+
+  build() {
+    Text(this.val.toString())
+  }
+}
+```
+
 
 **复杂类型**
 
