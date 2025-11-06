@@ -2427,7 +2427,7 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
 getCurrentWifiBssidForLocating(): string
 
-获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息
+获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息。如果当前设备没有连接Wi-Fi，调用该接口会抛错误码3301900。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
