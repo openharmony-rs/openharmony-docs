@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## 使用场景
+## 功能介绍
 
 在不同的国家和文化中，数字、货币和度量衡的表示方法各异，包括小数分隔符、小数位数、货币和度量衡单位等。例如，应用界面需要显示数字“1,000”（一千）表示商品价格。若采用固定格式“1,000”，在欧洲某些国家（如德国）用户会将其理解为“1”，因为这些国家使用逗号作为小数分隔符。为了确保界面符合当地习惯，需要对数字、货币和度量衡进行格式化，使其根据用户的语言和地区设置显示。
 
@@ -45,17 +45,22 @@ unitConvert接口可以将原始单位转换为目标单位，并根据区域ID�
 
 **开发实例**
 
-```ts
-// 导入模块
-import { i18n } from '@kit.LocalizationKit';
+1. 导入模块。
+   ```ts
+   import { i18n } from '@kit.LocalizationKit';
+   ```
+   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
 
-// 设置要转换的单位和目标单位
-let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
-let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
+2. 单位转换。
+   ```ts
+   // 设置要转换的单位和目标单位
+   let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
+   let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
 
-// 以en-US区域ID转换度量衡
-let convertedUnit: string = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US'); // convertedUnit = '236.588 L'
+   // 以en-US区域ID转换度量衡
+   let simplifyConvertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US'); // simplifyConvertedUnit = '236.588 L'
 
-// 显示完整的度量衡
-convertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US', 'long'); // convertedUnit = '236.588 liters'
-```
+   // 显示完整的度量衡
+   let convertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US', 'long'); // convertedUnit = '236.588 liters'
+   ```
+   <!-- [measurement_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
