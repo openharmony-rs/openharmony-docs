@@ -222,6 +222,38 @@ struct CompA {
 
 <!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  build() {
+    Column() {
+      Button('Click to print log')
+        .onClick(() => {
+          for (let i = 0; i < 10; i++) {
+            hilog.info(0x0000, 'TAG', '%{public}s', this.message);
+          }
+        })
+        .width('90%')
+        .backgroundColor(Color.Blue)
+        .fontColor(Color.White)
+        .margin({
+          top: 10
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .alignItems(HorizontalAlign.Center)
+    .margin({
+      top: 15
+    })
+  }
+}
+```
+
 【正例】
 
 <!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->
