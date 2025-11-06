@@ -2057,7 +2057,7 @@ let lineMetrics =  paragraph.getLineMetrics(0);
 
 ### updateColor<sup>20+</sup>
 
-updateColor(color: common2D.Color): void;
+updateColor(color: common2D.Color): void
 
 更新整个文本段落的颜色。如果当前装饰线未设置颜色，使用该接口也会同时更新装饰线的颜色。
 
@@ -2083,7 +2083,7 @@ paragraph.updateColor({ alpha: 255, red: 255, green: 0, blue: 0 });
 
 ### updateDecoration<sup>20+</sup>
 
-updateDecoration(decoration: Decoration): void;
+updateDecoration(decoration: Decoration): void
 
 更新整个文本段落的装饰线。
 
