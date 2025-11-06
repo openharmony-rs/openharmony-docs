@@ -30,9 +30,9 @@ startWork(work: WorkInfo): void
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数**：
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| work       | [WorkInfo](#workinfo) | 否    | 否    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。                               |
+| 参数名  | 类型                    | 必填   | 说明             |	
+| ---- | --------------------- | ---- | -------------- |	
+| work | [WorkInfo](#workinfo) | 是    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。|
 
 **错误码**：
 
@@ -85,10 +85,10 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| work       | [WorkInfo](#workinfo) | 否    | 否    | 要停止或移除的延迟任务。        |
-| needCancel | boolean | 否    | 是    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。 |
+| 参数名        | 类型                    | 必填   | 说明         |
+| ---------- | --------------------- | ---- | ---------- |	
+| work       | [WorkInfo](#workinfo) | 是    | 要停止或移除的延迟任务。 |	
+| needCancel | boolean               | 否    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。|
 
 **错误码**：
 
@@ -140,10 +140,10 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| workId       | number | 否    | 否    | 延迟任务Id。                               |
-| callback | AsyncCallback\<[WorkInfo](#workinfo)> | 否    | 否    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。|
+| 参数名      | 类型                                    | 必填   | 说明                                       |	
+| -------- | ------------------------------------- | ---- | ---------------------------------------- |	
+| workId   | number                                | 是    | 延迟任务Id。                                 |	
+| callback | AsyncCallback\<[WorkInfo](#workinfo)> | 是    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码**：
 
@@ -182,9 +182,9 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| workId       | number | 否    | 否    | 延迟任务Id。                               |
+| 参数名    | 类型     | 必填   | 说明       |	
+| ------ | ------ | ---- | -------- |	
+| workId | number | 是    | 延迟任务Id。 |
 
 **返回值**：
 
@@ -229,9 +229,9 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| callback | AsyncCallback\<void> | 否    | 否    | 回调函数，获取成功时，err为undefined，否则为错误对象。|
+| 参数名      | 类型                   | 必填   | 说明                              |	
+| -------- | -------------------- | ---- | ------------------------------- |	
+| callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
 **返回值**：
 
@@ -260,9 +260,9 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| callback       |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 否    | 否    | 回调函数，获取成功时，err为undefined，否则为错误对象。  |
+| 参数名      | 类型                   | 必填   | 说明                              |	
+| -------- | -------------------- | ---- | ------------------------------- |	
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -373,10 +373,10 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| workId       | number | 否    | 否    | 指定延迟任务的Id。                           |
-| callback | AsyncCallback\<void> | 否    | 否    | 回调函数。 |
+| 参数名      | 类型                   | 必填   | 说明                                       |	
+| -------- | -------------------- | ---- | ---------------------------------------- |	
+| workId   | number               | 是    | 指定延迟任务的Id。                                 |	
+| callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
 **返回值**：
 
@@ -406,10 +406,10 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| workId       | number | 否    | 否    | 指定延迟任务的Id。                           |
-| callback | AsyncCallback\<void> | 否    | 否    | 回调函数。 |
+| 参数名      | 类型                   | 必填   | 说明                                       |	
+| -------- | -------------------- | ---- | ---------------------------------------- |	
+| workId   | number               | 是    | 指定延迟任务的Id。                                 |	
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。 |
 
 **错误码**：
 
@@ -448,9 +448,9 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 **参数**：
 
-| 名称             | 类型     | 只读   | 可选   | 说明                                       |
-| --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| workId       | number | 否    | 否    | 指定延迟任务的Id。                           |
+| 参数名    | 类型     | 必填   | 说明       |	
+| ------ | ------ | ---- | -------- |	
+| workId | number | 是    | 指定延迟任务的Id。 |
 
 **返回值**：
 
@@ -491,11 +491,11 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 >  **说明：**
 >  WorkInfo参数设置时需遵循以下规则：
->  1、workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
->  2、携带参数信息仅支持number、string、boolean三种类型。
->  3、至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
->  4、对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
->  5、对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
+>  1. workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
+>  2. 携带参数信息仅支持number、string、boolean三种类型。
+>  3. 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
+>  4. 对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
+>  5. 对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
