@@ -46,7 +46,7 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 ``` TypeScript
 @Entry
 @Component
-struct ifExample {
+struct IfExample {
   @State count: number = 0;
 
   build() {
@@ -149,7 +149,7 @@ struct MainView {
 
 ``` TypeScript
 @Component
-struct CounterView1 {
+struct KeepCounterView {
   @Link counter: number;
   label: string = 'unknown';
 
@@ -170,16 +170,16 @@ struct CounterView1 {
 
 @Entry
 @Component
-struct MainView1 {
+struct KeepMainView {
   @State toggle: boolean = true;
   @State counter: number = 0;
 
   build() {
     Column() {
       if (this.toggle) {
-        CounterView1({ counter: $counter, label: 'CounterView #positive' });
+        KeepCounterView({ counter: $counter, label: 'CounterView #positive' });
       } else {
-        CounterView1({ counter: $counter, label: 'CounterView #negative' });
+        KeepCounterView({ counter: $counter, label: 'CounterView #negative' });
       }
       Button(`toggle ${this.toggle}`)
         .onClick(() => {
@@ -203,7 +203,7 @@ struct MainView1 {
 ``` TypeScript
 @Entry
 @Component
-struct nestedIf {
+struct NestedIf {
   @State toggle: boolean = false;
   @State toggleColor: boolean = false;
 

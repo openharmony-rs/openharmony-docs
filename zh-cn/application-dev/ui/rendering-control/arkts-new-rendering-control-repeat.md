@@ -272,7 +272,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading1 {
+struct RepeatLazyLoadingLongData {
   // 假设数据源总长度较长，为1000。初始数组未提供数据。
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
@@ -319,7 +319,7 @@ struct RepeatLazyLoading1 {
 ``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading2 {
+struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
   build() {
     Column({ space: 5 }) {
@@ -370,7 +370,7 @@ struct RepeatLazyLoading2 {
 ``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading3 {
+struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
   // 提供首屏显示所需的初始数据。
   aboutToAppear(): void {
@@ -567,7 +567,7 @@ class Repeat006Clazz {
 
 @Entry
 @ComponentV2
-struct RepeatVirtualScroll2T {
+struct RepeatVirtualScroll {
   @Local simpleList: Array<Repeat006Clazz> = [];
   private exchange: number[] = [];
   private counter: number = 0;
@@ -883,6 +883,10 @@ struct DemoList {
 <!-- @[repeat_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoGrid.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 class DemoGridItemInfo {
   public name: string;
   public icon: Resource;
@@ -936,6 +940,7 @@ struct DemoGrid {
                   this.isRefreshing = true;
                 })
                 .onAppear(() => {
+                  hilog.info(DOMAIN, TAG, 'AceTag', obj.item.name);
                 })
               } else {
                 GridItem() {
@@ -954,6 +959,7 @@ struct DemoGrid {
                 .borderRadius(16)
                 .backgroundColor(Color.White)
                 .onAppear(() => {
+                  hilog.info(DOMAIN, TAG, 'AceTag', obj.item.name);
                 })
               }
             })
@@ -1012,7 +1018,9 @@ struct DemoGrid {
 
 ``` TypeScript
 const remotePictures: string[] = [
-  'www.example.com/xxx/0001.jpg', // 请填写具体的网络图片地址
+  'common/image/image1.png', // 请填写具体的图片地址
+  'common/image/image2.png',
+  'common/image/image3.png',
 ];
 
 @ObservedV2
@@ -1031,7 +1039,7 @@ struct DemoSwiper {
   @Local pics: Array<DemoSwiperItemInfo> = [];
 
   aboutToAppear(): void {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 3; i++) {
       this.pics.push(new DemoSwiperItemInfo('pic' + i));
     }
     setTimeout(() => {
@@ -1264,7 +1272,7 @@ class ArrayHolder1 {
 }
 @Entry
 @ComponentV2
-struct RepeatTemplateSingle1 {
+struct RepeatSingle {
   @Local arrayHolder: ArrayHolder1 = new ArrayHolder1(100);
   @Local totalCount: number = this.arrayHolder.arr.length;
   scroller: Scroller = new Scroller();
