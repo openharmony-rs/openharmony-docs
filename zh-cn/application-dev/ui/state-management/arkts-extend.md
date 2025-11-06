@@ -81,6 +81,15 @@ struct FancyUse {
 使用@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
 
+``` TypeScript
+@Extend(Text)
+function fancyText(weightValue: number, color: Color) {
+  .fontStyle(FontStyle.Italic)
+  .fontWeight(weightValue)
+  .backgroundColor(color)
+}
+```
+
 通过\@Extend组合样式后，使得代码更加简洁，增强可读性。
 <!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
 
