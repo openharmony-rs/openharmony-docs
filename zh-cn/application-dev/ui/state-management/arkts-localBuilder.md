@@ -192,6 +192,76 @@ struct Parent {
 组件Child将状态变量传递到Parent的\@Builder和\@LocalBuilder函数内。在\@Builder函数内，`this`指向Child，参数变化能触发UI刷新。在\@LocalBuilder函数内，`this`指向Parent，参数变化不会触发UI刷新。若\@LocalBuilder函数内引用Parent的状态变量发生变化，UI能正常刷新。
 <!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) -->
 
+``` TypeScript
+class Data {
+  public size: number = 0;
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'parent';
+  @State data: Data = new Data();
+
+  @Builder
+  componentBuilder($$: Data) {
+    Text(`builder + $$`)
+    Text(`${'this -> ' + this.label}`)
+    Text(`${'size : ' + $$.size}`)
+  }
+
+  @LocalBuilder
+  componentLocalBuilder($$: Data) {
+    Text(`LocalBuilder + $$ data`)
+    Text(`${'this -> ' + this.label}`)
+    Text(`${'size : ' + $$.size}`)
+  }
+
+  @LocalBuilder
+  contentLocalBuilderNoArgument() {
+    Text(`LocalBuilder + local data`)
+    Text(`${'this -> ' + this.label}`)
+    Text(`${'size : ' + this.data.size}`)
+  }
+
+  build() {
+    Column() {
+      Child({
+        contentBuilder: this.componentBuilder,
+        contentLocalBuilder: this.componentLocalBuilder,
+        contentLocalBuilderNoArgument: this.contentLocalBuilderNoArgument,
+        data: this.data
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  label: string = 'child';
+
+  @Builder
+  customBuilder() {
+  };
+
+  @BuilderParam contentBuilder: ((data: Data) => void) = this.customBuilder;
+  @BuilderParam contentLocalBuilder: ((data: Data) => void) = this.customBuilder;
+  @BuilderParam contentLocalBuilderNoArgument: (() => void) = this.customBuilder;
+  @Link data: Data;
+
+  build() {
+    Column() {
+      this.contentBuilder({ size: this.data.size })
+      this.contentLocalBuilder({ size: this.data.size })
+      this.contentLocalBuilderNoArgument()
+      Button('add child size').onClick(() => {
+        this.data.size += 1;
+      })
+    }
+  }
+}
+```
+
 ### 按值传递参数
 
 调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
