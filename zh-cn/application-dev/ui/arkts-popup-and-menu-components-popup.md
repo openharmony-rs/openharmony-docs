@@ -78,6 +78,75 @@ export struct TextPopupExample {
 
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct AnimationPopupExample {
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
+
+  @Builder popupBuilder() {
+    Row() {
+      Text('Custom Popup with transitionEffect').fontSize(10)
+    }.height(50).padding(5)
+  }
+
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+          // PopupOptions 类型设置弹框内容
+          Button('PopupOptions')
+            .id('PopupOptions')
+            .margin({ top: 250 })
+            .onClick(() => {
+              this.handlePopup = !this.handlePopup;
+            })
+            .bindPopup(this.handlePopup, {
+              message: 'This is a popup with transitionEffect',
+              placementOnTop: true,
+              showInSubWindow: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.handlePopup = false;
+                }
+              },
+              // 设置弹窗显示动效为透明度动效与平移动效的组合效果，无退出动效
+              transition:TransitionEffect.asymmetric(
+                TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
+                  TransitionEffect.translate({ x: 50, y: 50 })),
+                TransitionEffect.IDENTITY)
+            })
+
+          // CustomPopupOptions 类型设置弹框内容
+          Button('CustomPopupOptions')
+            .id('CustomPopupOptions')
+            .margin({ top: 60 })
+            .onClick(() => {
+              this.customPopup = !this.customPopup;
+            })
+            .bindPopup(this.customPopup, {
+              builder: this.popupBuilder,
+              placement: Placement.Top,
+              showInSubWindow: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.customPopup = false;
+                }
+              },
+              // 设置弹窗显示动效与退出动效为缩放动效
+              transition:TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+            })
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // ···
+  }
+}
+```
+
 ![popup_transition](figures/popup_transition.gif)
 
 ## 自定义气泡
