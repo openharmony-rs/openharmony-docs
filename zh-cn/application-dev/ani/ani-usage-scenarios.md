@@ -676,9 +676,9 @@ ani_object createDouble(ani_env *env)
 
 ### 4.1.3 拆箱
 
-使用 `unboxed` 来提取基本类型的值：
+使用 `to<Type>` 方法来提取基本类型的值，其中 `<Type>` 为对应的数据类型：
 ```cpp
-Object_CallMethodByName_Double(boxed_double_obj, "unboxed", ":d", &unboxed_value)
+Object_CallMethodByName_Double(boxed_double_obj, "toDouble", ":d", &unboxed_value)
 ```
 
 `Double` 由装箱对象的返回类型决定。Mangling `:d` 表示返回一个 `double` 类型的值。
@@ -692,7 +692,7 @@ function handleData(param: Double): void
 void HandleDataImpl(ani_env *env, ani_object param)
 {
     ani_double value = 0;
-    env->Object_CallMethodByName_Double(param, "unboxed", ":d", &value);
+    env->Object_CallMethodByName_Double(param, "toDouble", ":d", &value);
     std::cout << "Value: " << value << std::endl;
 }
 ```
