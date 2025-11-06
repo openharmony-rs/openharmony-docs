@@ -3218,7 +3218,7 @@ export default class EntryAbility extends UIAbility {
     // 加载主窗口对应的页面
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err}, message: ${err}`);
+        console.error(`Failed to load the content. Cause: ${err}, ${err}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -3228,7 +3228,7 @@ export default class EntryAbility extends UIAbility {
     let mainWindow: window.Window | undefined = undefined;
     windowStage.getMainWindow((err, data) => {
       if (err) {
-        console.error(`Failed to obtain the main window. Cause code: ${err}, message: ${err}`);
+        console.error(`Failed to obtain the main window. Cause: ${err}, ${err}`);
         return;
       }
       mainWindow = data;
@@ -3239,13 +3239,13 @@ export default class EntryAbility extends UIAbility {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
         mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
           if (err) {
-            console.error(`Failed to hide the non-system floating windows. Cause code: ${err}, message: ${err}`);
+            console.error(`Failed to hide the non-system floating windows. Cause: ${err}, ${err}`);
             return;
           }
           console.info('Succeeded in hiding the non-system floating windows.');
         });
       } catch (exception) {
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception}, message: ${exception}`);
+        console.error(`Failed to hide the non-system floating windows. Cause: ${exception}, ${exception}`);
       }
     });
   }
