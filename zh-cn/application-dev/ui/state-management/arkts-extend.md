@@ -78,6 +78,31 @@ struct FancyUse {
 以下示例声明了3个Text组件，每个Text组件均设置了fontStyle、fontWeight和backgroundColor样式。
 <!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct FancyUse {
+  @State label: string = 'Hello World';
+
+  build() {
+    Row({ space: 10 }) {
+      Text(`${this.label}`)
+        .fontStyle(FontStyle.Italic)
+        .fontWeight(100)
+        .backgroundColor(Color.Blue)
+      Text(`${this.label}`)
+        .fontStyle(FontStyle.Italic)
+        .fontWeight(200)
+        .backgroundColor(Color.Pink)
+      Text(`${this.label}`)
+        .fontStyle(FontStyle.Italic)
+        .fontWeight(300)
+        .backgroundColor(Color.Orange)
+    }.margin('20%')
+  }
+}
+```
+
 使用@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
 
