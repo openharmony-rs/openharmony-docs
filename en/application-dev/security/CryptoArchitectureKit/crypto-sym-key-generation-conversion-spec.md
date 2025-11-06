@@ -15,7 +15,7 @@ A key can be generated based on a string parameter, which holds key specificatio
 
 Advanced Encryption Standard (AES) is the most common symmetric encryption algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -34,7 +34,7 @@ An AES key can be generated from a string parameter. When creating a symmetric k
 ## DES
 The DES algorithm has the following features:
 
- 
+Features:
 
 DES is a block encryption algorithm. It divides plaintext into 64-bit blocks and encrypts each block.
 
@@ -48,7 +48,7 @@ A DES key can be generated from a string parameter. When creating a symmetric ke
 
 3DES is also called 3DESede or Triple DES.
 
-It has the following features:
+Features:
 
 - It uses three 64-bit keys to encrypt a data block three times, which means to apply the DES cipher three times to each data block.
 
@@ -64,7 +64,7 @@ A 3DES key can be generated from a string parameter. When creating a symmetric k
 
 ShangMi 4 (SM4) is a symmetric algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -82,7 +82,7 @@ An SM4 key can be generated from a string parameter. When creating a symmetric k
 
 Hash-based Message Authentication Code (HMAC) is a hash-based message authentication code algorithm. A symmetric key is required for calculation.
 
-It has the following features:
+Features:
 
 The symmetric key used by HMAC can be of any length.
 
