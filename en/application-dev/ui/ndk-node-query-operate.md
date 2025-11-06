@@ -359,7 +359,7 @@ std::shared_ptr<ArkUIBaseNode> CreateMoveToExample()
     nodeAPI->setAttribute(row2, NODE_HEIGHT, &text_item1);
     nodeAPI->setAttribute(row2, NODE_MARGIN, &item_margin);
 
-    //Create a Stack node.
+    // Create a Stack node.
     ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
     ArkUI_NumberValue stack_value[] = {{.f32=50}};
     ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};

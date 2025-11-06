@@ -124,7 +124,7 @@
     - [Symbol Glyph (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [Styled String (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [Text and Image Layout](arkts-text-image-layout.md)
-  - Media Display <!--arkts-media-display-->
+  - Media Display<!--arkts-media-display-->
     - [Image Display (Image)](arkts-graphics-display.md)
     - [Video Playback (Video)](arkts-common-components-video-player.md)
     - [Creating a Swiper (Swiper)](arkts-layout-development-create-looping.md)
@@ -271,8 +271,8 @@
   - [Implementing Custom Drawing](arkts-user-defined-draw.md)
   - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
-  - [Ensuring Functionality in Multi-Instance Scenarios](ndk-scope-task.md)
-  - [Creating Multi-threaded Components with NDK](ndk-build-on-multi-thread.md)
+  - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
+  - [Creating Multi-threaded Components with the NDK](ndk-build-on-multi-thread.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)
   - Framework Overview<!--js-framework-overview-->

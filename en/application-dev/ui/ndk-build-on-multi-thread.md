@@ -1,4 +1,4 @@
-# Creating Multi-threaded Components with NDK
+# Creating Multi-threaded Components with the NDK
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

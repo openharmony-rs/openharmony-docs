@@ -1,4 +1,10 @@
 # &lt;image-animator&gt; Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **&lt;image-animator&gt;** component applies an animation to images. For details, see [image-animator](../reference/apis-arkui/arkui-js/js-components-basic-image-animator.md).
@@ -137,9 +143,9 @@ export default {
 
 > **NOTE**
 > - If the **duration** attribute is set in the **images** attribute, the **duration** attribute set in the **&lt;image-animator&gt;** component is invalid.
-> 
+>
 > - If **fixedsize** is set to **true**, the **width**, **height**, **top**, and **left** settings in **images** will not take effect.
-> 
+>
 > - Setting **reverse** to **false** indicates that images are played from the first one to the last one. Setting **reverse** to **true** indicates that images are played from the last one to the first one.
 
 

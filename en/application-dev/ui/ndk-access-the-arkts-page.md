@@ -76,7 +76,8 @@ When building a UI with NDK APIs, you need to create placeholder components in t
 The UI component capabilities provided by the NDK, including component creation, tree operations, attribute setting, and event registration, are exposed using the function pointer structs (such as [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)), which can be obtained through the [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface).
 
 > **NOTE**
-> - The [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) handles NDK initialization. It is recommended that you call this API for global initialization before constructing UIs with the NDK.
+>
+> The [module query API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) handles NDK initialization. It is recommended that you call this API for global initialization before constructing UIs with the NDK.
 
 ```
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
