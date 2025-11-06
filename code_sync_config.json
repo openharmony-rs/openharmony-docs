@@ -18019,7 +18019,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"pageTransition_template3_pageTransitionSrc1_start",
 						"start_line":15
 					}
@@ -18029,7 +18029,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"pageTransition_template3_pageTransitionDst1_start",
 						"start_line":15
 					}
@@ -18039,7 +18039,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":57,
 						"name":"pageTransition_template4_pageTransitionSrc2_start",
 						"start_line":15
 					}
@@ -18049,7 +18049,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":57,
 						"name":"pageTransition_template4_pageTransitionDst2_start",
 						"start_line":15
 					}
@@ -18064,7 +18064,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"animationBlur_template1_start",
 						"start_line":15
 					}
