@@ -344,3 +344,15 @@ Web布局模式的配置。
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
+
+## NativeEmbedParamStatus<sup>21+</sup>
+
+定义同层渲染object标签内嵌param元素的状态变化类型，当添加param元素时触发ADD，修改param元素属性触发UPDATE，删除param元素触发DELETE。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                           | 值 | 说明           |
+| ----------------------------- | -- | ------------ |
+| ADD                           | 0 | 添加param元素。   |
+| UPDATE                        | 1 | 更改param元素属性。   |
+| DELETE                        | 2 | 删除param元素。 |
