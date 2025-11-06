@@ -858,7 +858,7 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
 
    <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->
-
+   
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
