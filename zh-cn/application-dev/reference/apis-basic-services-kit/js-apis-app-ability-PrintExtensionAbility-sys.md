@@ -26,7 +26,7 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
@@ -65,7 +65,7 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
@@ -106,12 +106,12 @@ ArkTS-Sta: onRequestPrinterCapability(printerId: int): print.PrinterCapability
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | print.PrinterCapability | 表示打印能力。 |
 
@@ -176,12 +176,12 @@ onRequestPreview(jobInfo: print.PrintJob): string
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobInfo | print.PrintJob | 是 | 表示打印任务信息。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | string | 返回的预览结果。 |
 

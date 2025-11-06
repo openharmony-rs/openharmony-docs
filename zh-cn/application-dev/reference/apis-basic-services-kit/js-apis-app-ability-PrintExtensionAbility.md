@@ -25,7 +25,7 @@ onCreate(want: Want): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | Want | 是 | 表示调用打印页面需要参数。 |
 
@@ -108,7 +108,7 @@ ArkTS-Sta: onConnectPrinter(printerId: int): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
@@ -153,7 +153,7 @@ ArkTS-Sta: onDisconnectPrinter(printerId: int): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 

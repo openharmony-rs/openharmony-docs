@@ -23,11 +23,11 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onBlock](#printtaskonblock22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onBlock](#printtaskonblocksup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onBlock](#printtaskonblock22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -36,7 +36,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
@@ -76,7 +76,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskondeprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -85,7 +85,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
 
@@ -124,11 +124,11 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onSucceed](#printtaskonsucceed22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onSucceed](#printtaskonsucceedsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onSucceed](#printtaskonsucceed22)。
 
 
 **需要权限：** ohos.permission.PRINT
@@ -138,7 +138,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印成功。 |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
@@ -178,7 +178,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-1)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskondeprecated-1)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -187,7 +187,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
 
@@ -225,12 +225,11 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 注册打印完成后的监听，使用callback回调。
 
 > **说明：**
->
-> 从API version 12开始废弃。系统不再开放相关功能。
+>从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onFail](#printtaskonfail22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onFail](#printtaskonfailsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onFail](#printtaskonfail22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -239,7 +238,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印失败。 |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
@@ -279,7 +278,7 @@ onFail(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-2)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskdeprecated-2)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -288,7 +287,7 @@ onFail(callback: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
 
@@ -327,11 +326,11 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.onCancel](#printtaskoncancel22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onCancel](#printtaskoncancelsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onCancel](#printtaskoncancel22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -340,7 +339,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印取消。 |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
@@ -380,7 +379,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskonsupdeprecatedsup-3)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.on](#printtaskondeprecated-3)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -389,7 +388,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 是 | 打印完成后处于响应状态的回调。 |
 
@@ -428,11 +427,11 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offBlock](#printtaskoffblock22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offBlock](#printtaskoffblocksup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offBlock](#printtaskoffblock22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -441,7 +440,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
@@ -481,7 +480,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffdeprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -490,7 +489,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
 
@@ -529,11 +528,11 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offSucceed](#printtaskoffsucceed22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offSucceed](#printtaskoffsucceedsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offSucceed](#printtaskoffsucceed22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -542,7 +541,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：succeed，<br/>表示打印成功。 |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
@@ -582,7 +581,7 @@ offSucceed(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-1)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffdeprecated-1)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -591,7 +590,7 @@ offSucceed(callback?: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
 
@@ -630,11 +629,11 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offFail](#printtaskofffail22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offFail](#printtaskofffailsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offFail](#printtaskofffail22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -643,7 +642,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：fail，<br/>表示打印失败。 |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
@@ -683,7 +682,7 @@ offFail(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-2)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffdeprecated-2)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -692,7 +691,7 @@ offFail(callback?: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
 
@@ -731,11 +730,11 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[PrintTask.offCancel](#printtaskoffcancel22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offCancel](#printtaskoffcancelsup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offCancel](#printtaskoffcancel22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -744,7 +743,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 **ArkTS-Dyn起始版本**：10
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：cancel，<br/>表示打印取消。 |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
@@ -784,7 +783,7 @@ offCancel(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffsupdeprecatedsup-3)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[PrintTask.off](#printtaskoffdeprecated-3)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -793,7 +792,7 @@ offCancel(callback?: Callback&lt;void&gt;): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;void&gt; | 否 | 取消相应状态监听成功后的回调。 |
 
@@ -845,7 +844,7 @@ ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
@@ -931,7 +930,7 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintDocumentAdapterState](#printdocumentadapterstate11) | 是 | 表示打印任务更改为该状态。 |
@@ -987,7 +986,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
@@ -1037,12 +1036,12 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
 
@@ -1089,7 +1088,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
@@ -1156,13 +1155,13 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
 
@@ -1225,7 +1224,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | 是 | 表示三方应用实现的[PrintDocumentAdapter](#printdocumentadapter11)接口实例。 |
@@ -1233,7 +1232,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
 
@@ -1595,12 +1594,12 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示新发现的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | 添加打印机到系统打印机发现列表完成结果。 |
 
@@ -1650,12 +1649,12 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示待更新能力的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | 更新打印机能力到系统打印机发现列表完成结果。 |
 
@@ -1723,12 +1722,12 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待移除的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | 从系统打印机发现列表里移除打印机完成结果。 |
 
@@ -1770,12 +1769,12 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待获取信息的打印机id。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[PrinterInformation](#printerinformation14)&gt; | 根据打印机id获取的对应打印机信息。 |
 
@@ -1969,7 +1968,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 **ArkTS-Sta起始版本**：20
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;Array&lt;string&gt;&gt; | 获取系统中已添加的打印机列表的完成结果回调。 |
 
@@ -2008,7 +2007,7 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 **ArkTS-Sta起始版本**：20
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | 是 | 表示打印机事件。 |
 | printerInformation | PrinterInformation | 是 | 表示打印机信息。 |
@@ -2021,11 +2020,11 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 12开始支持，从API version 22开始废弃，建议使用[print.onPrinterChange](#printonprinterchange22)替代。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[print.onPrinterChange](#printonprinterchangesup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.onPrinterChange](#printonprinterchange22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2034,7 +2033,7 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 **ArkTS-Dyn起始版本**：18
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
@@ -2069,7 +2068,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.on](#printonsup18supsupdeprecatedsup)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.on](#printon18deprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2078,7 +2077,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
 
@@ -2116,7 +2115,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[print.offPrinterChange](#printoffprinterchangesup22sup)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.offPrinterChange](#printoffprinterchange22)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2125,7 +2124,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 **ArkTS-Dyn起始版本**：18
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
@@ -2160,7 +2159,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[print.off](#printoffsup18supsupdeprecatedsup)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[print.off](#printoff18deprecated)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2169,7 +2168,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 **ArkTS-Sta起始版本**：22
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
 
