@@ -689,6 +689,30 @@ V1实现：
 
 <!-- @[Parent19_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeNoInitV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  // @Consume禁止本地初始化，当找不到对应的@Provide时抛出异常
+  @Consume message: string;
+
+  build() {
+    Text(this.message)
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Provide message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Child()
+    }
+  }
+}
+```
+
 
 V2迁移策略：\@Consumer可以本地初始化。
 
