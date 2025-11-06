@@ -1053,10 +1053,10 @@ try {
     console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
     pixelMap.release();
   }).catch((err) =>{
-    console.error(`Failed to get snapshot. Cause: ${err}, ${err}`);
+    console.error(`Failed to get snapshot. Cause: ${err}`);
   });
 } catch (exception) {
-  console.error(`Failed to get snapshot. Cause: ${exception}, ${exception}`);
+  console.error(`Failed to get snapshot. Cause: ${exception}`);
 }
 ```
 
@@ -3211,14 +3211,15 @@ ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
-import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
+import { UIAbility } from '@ohos.app.ability.UIAbility';
+import { Want } from '@ohos.app.ability.Want';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 加载主窗口对应的页面
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: ${err}, ${err}`);
+        console.error(`Failed to load the content. Cause: ${err}`);
         return;
       }
       console.info('Succeeded in loading the content.');
@@ -3228,7 +3229,7 @@ export default class EntryAbility extends UIAbility {
     let mainWindow: window.Window | undefined = undefined;
     windowStage.getMainWindow((err, data) => {
       if (err) {
-        console.error(`Failed to obtain the main window. Cause: ${err}, ${err}`);
+        console.error(`Failed to obtain the main window. Cause: ${err}`);
         return;
       }
       mainWindow = data;
@@ -3239,13 +3240,13 @@ export default class EntryAbility extends UIAbility {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
         mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
           if (err) {
-            console.error(`Failed to hide the non-system floating windows. Cause: ${err}, ${err}`);
+            console.error(`Failed to hide the non-system floating windows. Cause: ${err}`);
             return;
           }
           console.info('Succeeded in hiding the non-system floating windows.');
         });
       } catch (exception) {
-        console.error(`Failed to hide the non-system floating windows. Cause: ${exception}, ${exception}`);
+        console.error(`Failed to hide the non-system floating windows. Cause: ${exception}`);
       }
     });
   }
