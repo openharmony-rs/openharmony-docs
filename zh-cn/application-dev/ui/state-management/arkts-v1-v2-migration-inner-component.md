@@ -749,6 +749,32 @@ V1实现：
 
 <!-- @[Parent21_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Parent {
+  @State parentValue: number = 42;
+
+  build() {
+    Column() {
+      // @Provide可以从父组件初始化
+      Child({ childValue: this.parentValue })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Provide childValue: number = 0;
+
+  build() {
+    Column() {
+      Text(this.childValue.toString())
+    }
+  }
+}
+```
+
 
 V2迁移策略：使用\@Param接受初始值，再赋值给\@Provider。
 
