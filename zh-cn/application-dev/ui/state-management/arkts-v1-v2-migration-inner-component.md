@@ -1069,6 +1069,26 @@ V1：
 
 <!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State firstName: string = 'Li';
+  @State lastName: string = 'Hua';
+
+  build() {
+    Column() {
+      Text(this.lastName + ' ' + this.firstName)
+      Text(this.lastName + ' ' + this.firstName)
+      Button('changed lastName').onClick(() => {
+        this.lastName += 'a';
+      })
+
+    }
+  }
+}
+```
+
 
 V2:
 
