@@ -12,25 +12,30 @@
 
 通过Text组件设置[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性和ImageSpan设置verticalAlign为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
 
-```ts
+<!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
+
+``` TypeScript
 Text() {
+  // $r('app.media.hot_sale')需要替换为开发者所需的资源文件。
   ImageSpan($r('app.media.hot_sale'))
     .width(50)
     .height(30)
     .borderRadius(5)
     .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-  Span('惊喜价 ￥1299')
+  // 'app.string.surprise_price'资源文件中的value值为"惊喜价 ￥1299"
+  Span($r('app.string.surprise_price'))
     .fontSize(25)
     .fontColor(Color.Red)
   Span('1599')
     .decoration({
-    type: TextDecorationType.LineThrough,
-    color: Color.Grey,
-    style: TextDecorationStyle.SOLID
+      type: TextDecorationType.LineThrough,
+      color: Color.Grey,
+      style: TextDecorationStyle.SOLID
     })
     .fontSize(16)
 }.textVerticalAlign(TextVerticalAlign.CENTER)
 ```
+
 
 ![span_imagespan_composition](figures/span_imagespan_composition.png)
 
@@ -38,10 +43,18 @@ Text() {
 
 通过[ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment)添加图片，[TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle)设置多种文本样式，实现商品详情信息展示的应用场景。
 
-```ts
-// xxx.ets
+<!-- @[textImage_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageAttribute.ets) -->
+
+``` TypeScript
+// resourceGetString封装工具，从资源中获取字符串
+import resourceGetString from '../../common/resource';
 import { image } from '@kit.ImageKit';
 import { LengthMetrics } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Textcomponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Textcomponent_';
 
 @Entry
 @Component
@@ -63,7 +76,8 @@ struct styled_string_demo {
   }]);
 
   async aboutToAppear() {
-    console.info("aboutToAppear initial imagePixelMap");
+    hilog.info(DOMAIN, TAG, BUNDLE + 'aboutToAppear initial imagePixelMap');
+    // $r('app.media.sky')需要替换为开发者所需的资源文件。
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.sky'));
   }
 
@@ -89,7 +103,8 @@ struct styled_string_demo {
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   //创建含段落样式的对象paragraphStyledString1
   paragraphStyledString1: MutableStyledString =
-    new MutableStyledString("\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，", [
+    // 'app.string.print_photo'资源文件中的value值为"\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，"
+    new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [
       {
         start: 0,
         length: 28,
@@ -103,7 +118,8 @@ struct styled_string_demo {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  paragraphStyledString2: MutableStyledString = new MutableStyledString("\n限时直降5.15元 限量增送", [
+  // 'app.string.limited_time_discount'资源文件中的value值为"\n限时直降5.15元 限量增送"
+  paragraphStyledString2: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.limited_time_discount')), [
     {
       start: 0,
       length: 5,
@@ -135,7 +151,8 @@ struct styled_string_demo {
       styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
     }
   ]);
-  paragraphStyledString3: MutableStyledString = new MutableStyledString("\n￥22.50 销量400万+", [
+  // 'app.string.sales_volume'资源文件中的value值为"\n￥22.50 销量400万+"
+  paragraphStyledString3: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.sales_volume')), [
     {
       start: 0,
       length: 15,
@@ -189,8 +206,8 @@ struct styled_string_demo {
           .backgroundColor('#FFFFFF')
           .borderRadius(5)
           .width(210)
-
-        Button('点击查看商品详情')
+        // 'app.string.textImageMixedLayout_content'资源文件中的value值为"点击查看商品详情"
+        Button($r('app.string.textImageMixedLayout_content'))
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr = new MutableStyledString(new ImageAttachment({
