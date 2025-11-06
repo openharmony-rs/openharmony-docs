@@ -394,6 +394,33 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【反例】
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PrivateErrorAccessRestrictions {
+      build() {
+        Column() {
+          PrivateErrorComponentChild({ propValue: 'Hello' })
+        }
+        .width('100%')
+      }
+    }
+    
+    @Component
+    struct PrivateErrorComponentChild {
+      // 此处使用private修饰符时会出现告警日志
+      @Require @Prop private propValue: string = 'Hello';
+    
+      build() {
+        Column() {
+          Text('Hello')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+      }
+    }
+    ```
 
 
    编译告警日志如下：
