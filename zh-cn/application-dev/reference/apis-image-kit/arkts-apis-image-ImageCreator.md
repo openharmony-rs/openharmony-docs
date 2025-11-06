@@ -63,9 +63,10 @@ creator.dequeueImage((err: BusinessError, img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -141,9 +142,9 @@ creator.dequeueImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -229,9 +230,10 @@ creator.dequeueImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -326,9 +328,9 @@ creator.dequeueImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -425,9 +427,10 @@ onImageRelease(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -525,9 +528,10 @@ offImageRelease(callback?: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -614,9 +618,10 @@ creator.release((err: BusinessError) => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -694,9 +699,9 @@ creator.release().then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;

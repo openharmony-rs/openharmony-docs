@@ -65,7 +65,9 @@ receiver.getReceivingSurfaceId((err: BusinessError, id: string) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function GetReceivingSurfaceIdFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -117,7 +119,8 @@ receiver.getReceivingSurfaceId().then((id: string) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetReceivingSurfaceIdFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -168,8 +171,9 @@ receiver.readLatestImage((err: BusinessError, img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function ReadLatestImageFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -223,8 +227,8 @@ receiver.readLatestImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReadLatestImageFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -275,8 +279,9 @@ receiver.readNextImage((err: BusinessError, img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 
 function ReadNextImageFunc(): void {
@@ -331,8 +336,8 @@ receiver.readNextImage().then((img: image.Image) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReadNextImageFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -524,8 +529,9 @@ receiver.release((err: BusinessError) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function ReleaseFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };
@@ -579,8 +585,8 @@ receiver.release().then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(): void {
   let size: image.Size = { height: 8192, width: 8 };

@@ -586,8 +586,9 @@ async function WriteBufferToPixels() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -650,8 +651,9 @@ async function WriteBufferToPixels() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -2472,8 +2474,10 @@ async function ApplyColorSpace() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
   let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
@@ -2549,8 +2553,9 @@ async function ApplyColorSpace() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
   let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
@@ -2625,8 +2630,9 @@ if (pixelmap != undefined) {
 ArkTS-Sta示例:
 <!--code_no_check-->
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ToSdrFunc(pixelMap: image.PixelMap): void {
   try {

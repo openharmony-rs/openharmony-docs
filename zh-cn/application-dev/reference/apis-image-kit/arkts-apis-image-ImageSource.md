@@ -67,8 +67,9 @@ imageSourceApi.getImageInfo(0, (error: BusinessError, imageInfo: image.ImageInfo
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function GetImageInfoFunc(imageSource: image.ImageSource): void {
   try {
@@ -126,8 +127,9 @@ imageSourceApi.getImageInfo((err: BusinessError, imageInfo: image.ImageInfo) => 
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function GetImageInfoFunc(imageSource: image.ImageSource): void {
   try {
@@ -190,8 +192,8 @@ imageSourceApi.getImageInfo(0)
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetImageInfoFunc(imageSource: image.ImageSource): void {
   try {
@@ -255,8 +257,8 @@ if (imageInfo == undefined) {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetImageInfoSyncFunc(imageSource: image.ImageSource) {
   try {
@@ -329,8 +331,8 @@ imageSourceApi.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, options)
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetImagePropertyFunc(imageSource: image.ImageSource): void {
   let opts: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' };
@@ -396,8 +398,8 @@ imageSourceApi.getImageProperties(key).then((data) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetImagePropertiesFunc(imageSource: image.ImageSource): void {
   let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
@@ -529,8 +531,8 @@ imageSourceApi.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120").then(()
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ModifyImagePropertyFunc(imageSource: image.ImageSource): void {
   let opts: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' };
@@ -609,8 +611,8 @@ imageSourceApi.modifyImageProperties(keyValues).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ModifyImagePropertiesFunc(imageSource: image.ImageSource): void {
   let keyValues: Record<image.PropertyKey, string | null> = {};
@@ -670,8 +672,8 @@ imageSourceApi.updateData(array, false, 0, 10).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function UpdateDataFunc(imageSource: image.ImageSource): void {
   const array: ArrayBuffer = new ArrayBuffer(100);
@@ -727,8 +729,9 @@ imageSourceApi.updateData(array, false, 0, 10, (err: BusinessError) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function UpdateDataFunc(imageSource: image.ImageSource): void {
   const array: ArrayBuffer = new ArrayBuffer(100);
@@ -1315,8 +1318,8 @@ imageSourceApi.createPixelMapList(decodeOpts).then((pixelMapList: Array<image.Pi
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
   let decodeOpts: image.DecodingOptions = {
@@ -1394,8 +1397,9 @@ imageSourceApi.createPixelMapList((err: BusinessError, pixelMapList: Array<image
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
   try {
@@ -1479,8 +1483,9 @@ imageSourceApi.createPixelMapList(decodeOpts, (err: BusinessError, pixelMapList:
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
   let decodeOpts: image.DecodingOptions = {
@@ -1831,8 +1836,9 @@ imageSourceApi.getDelayTimeList((err: BusinessError, delayTimes: Array<number>) 
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function GetDelayTimeListFunc(imageSource: image.ImageSource): void {
   try {
@@ -1899,8 +1905,8 @@ imageSourceApi.getDelayTimeList().then((delayTimes: Array<number>) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetDelayTimeListFunc(imageSource: image.ImageSource): void {
   try {
@@ -1965,8 +1971,9 @@ imageSourceApi.getFrameCount((err: BusinessError, frameCount: number) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function GetFrameCountFunc(imageSource: image.ImageSource): void {
   try {
@@ -2034,8 +2041,8 @@ imageSourceApi.getFrameCount().then((frameCount: number) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetFrameCountFunc(imageSource: image.ImageSource): void {
   try {
@@ -2092,8 +2099,8 @@ imageSourceApi.getDisposalTypeList().then((disposalTypes: Array<number>) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetDisposalTypeListFunc(imageSource: image.ImageSource): void {
   try {
@@ -2142,8 +2149,9 @@ imageSourceApi.release((err: BusinessError) => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 function ReleaseFunc(imageSource: image.ImageSource): void {
   try {
@@ -2196,8 +2204,8 @@ imageSourceApi.release().then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(imageSource: image.ImageSource): void {
   try {

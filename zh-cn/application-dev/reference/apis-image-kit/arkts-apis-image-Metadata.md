@@ -79,8 +79,8 @@ async function GetProperties(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetPropertiesFunc(metadata: image.Metadata): void {
   try {
@@ -161,8 +161,8 @@ async function SetProperties(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function SetPropertiesFunc(metadata: image.Metadata): void {
   let properties: Record<string, string | null> = {
@@ -232,8 +232,8 @@ async function GetAllProperties(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetAllPropertiesFunc(metadata: image.Metadata): void {
   try {
@@ -298,8 +298,8 @@ async function clone(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function CloneFunc(metadata: image.Metadata): void {
   try {

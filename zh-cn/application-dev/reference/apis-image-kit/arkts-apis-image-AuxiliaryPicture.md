@@ -75,21 +75,20 @@ async function WritePixelsFromBuffer(context: Context) {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-if (context != undefined) {
-  let auxPicture: image.AuxiliaryPicture | null = GetAuxiliaryPicture(context)
-  if (auxPicture != null) {
-    WritePixelsFromBufferFunc(auxPicture);
-  }
-} else {
-  hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
-}
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    if (context != undefined) {
+      let auxPicture: image.AuxiliaryPicture | null = await GetAuxiliaryPicture(context)
+      if (auxPicture != null) {
+        WritePixelsFromBufferFunc(auxPicture);
+      }
+    } else {
+      hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
+    }
 
 function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryPicture | null {
   const resourceMgr = context.resourceManager;
@@ -145,7 +144,7 @@ readPixelsToBuffer(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { image } from '@kit.ImageKit';
 
 async function ReadPixelsToBuffer(context: Context) {
@@ -193,10 +192,9 @@ readPixelsToBuffer(): Promise\<ArrayBuffer | undefined>
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -297,10 +295,9 @@ getType(): AuxiliaryPictureType | undefined
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -381,7 +378,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 ArkTS-Dyn示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { image } from '@kit.ImageKit';
 
 async function SetAuxPictureObjMetadata(exifContext: Context) {
@@ -415,10 +412,9 @@ async function SetAuxPictureObjMetadata(exifContext: Context) {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -563,10 +559,9 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -602,7 +597,7 @@ function GetAuxiliaryPicture(context: common.UIAbilityContext): image.AuxiliaryP
 function GetMetadataFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
-    let metadata: = await auxPicture.getMetadata(metadataType);
+    let metadata = await auxPicture.getMetadata(metadataType);
     if (metadata != null) {
       hilog.info(0x00000, 'GetMetadataFunc', 'getMetadata success!');
     }
@@ -673,10 +668,9 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined
 **示例：**
 
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -772,17 +766,17 @@ async function SetAuxiliaryPictureInfo() {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 if (context != undefined) {
   let auxPicture: image.AuxiliaryPicture | null = GetAuxiliaryPicture(context)
   if (auxPicture != null) {
-    GetAuxiliaryPictureInfoFunc(auxPicture);
+    SetAuxiliaryPictureInfoFunc(auxPicture);
   } else {
     hilog.info(0x00000, 'GetAuxiliaryPicture', 'auxPicture is null!');
   }
@@ -861,10 +855,9 @@ async function Release() {
 
 ArkTS-Sta示例：
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 if (context != undefined) {

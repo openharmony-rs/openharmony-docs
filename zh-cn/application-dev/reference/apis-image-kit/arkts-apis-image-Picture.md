@@ -62,8 +62,8 @@ async function GetMainPixelmap() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetMainPixelmapFunc(picture: image.Picture): void {
   try {
@@ -132,8 +132,8 @@ async function GetHdrComposedPixelmap() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetHdrComposedPixelmapFunc(picture: image.Picture): void {
   try {
@@ -195,8 +195,8 @@ async function GetGainmapPixelmap() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetGainmapPixelmapFunc(picture: image.Picture): void {
   try {
@@ -273,8 +273,8 @@ async function SetAuxiliaryPicture(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function SetAuxiliaryPictureFunc(picture: image.Picture, auxPixelMap: image.AuxiliaryPicture): void {
   let type: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
@@ -335,8 +335,8 @@ async function GetAuxiliaryPicture() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetAuxiliaryPictureFunc(picture: image.Picture): void {
   let type: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
@@ -425,8 +425,8 @@ async function SetPictureObjMetadata(exifContext: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function SetMetadataFunc(picture: image.Picture): void {
   try {
@@ -498,8 +498,8 @@ async function GetPictureObjMetadataProperties() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function GetMetadataFunc(picture: image.Picture): void {
   try {
@@ -596,6 +596,7 @@ import image from '@ohos.multimedia.image'
 import resourceManager from '@ohos.resourceManager'
 import rpc from '@ohos.rpc';
 
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 if (context != undefined) {
   MarshallingUnMarshallingFunc(context);
@@ -683,8 +684,8 @@ async function Release() {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(picture: image.Picture): void {
   try {

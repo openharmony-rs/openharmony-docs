@@ -68,10 +68,10 @@ async function CreatePicture(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1082,9 +1082,9 @@ const imageSourceApi: image.ImageSource = image.createImageSource(path);
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1157,9 +1157,9 @@ let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOpti
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1231,10 +1231,10 @@ const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1310,10 +1310,10 @@ const imageSourceApi: image.ImageSource = image.createImageSource(file.fd, sourc
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1381,8 +1381,8 @@ const imageSourceApi: image.ImageSource = image.createImageSource(buf);
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 let imageSource = CreateImageSourceFunc();
 
@@ -1444,8 +1444,8 @@ const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOp
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 let imageSource = CreateImageSourceFunc();
 
@@ -1517,10 +1517,10 @@ resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFil
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1611,10 +1611,10 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
   let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
@@ -1694,17 +1694,17 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
   let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
   let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
   let sourceOpts: image.SourceOptions = { sourceDensity: 120 };
   try {
-    const imageSourceIncremental = image.createIncrementalSource(buffer, sourceOpts);
+    const imageSourceIncremental = image.CreateIncrementalSource(buffer, sourceOpts);
     hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
     if(imageSourceIncremental != undefined) {
       return imageSourceIncremental;
@@ -1771,7 +1771,7 @@ const imagePackerApi: image.ImagePacker = image.createImagePacker();
 
 ArkTS-Sta示例:
 ```ts
-import image from '@ohos.multimedia.image'
+import { image } from '@kit.ImageKit';
 
 const imagePacker: image.ImagePacker = image.createImagePacker();
 ```
@@ -1862,10 +1862,10 @@ async function CreateAuxiliaryPicture(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1943,7 +1943,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 ArkTS-Sta示例:
 ```ts
-import image from '@ohos.multimedia.image'
+import { image } from '@kit.ImageKit';
 
 let size: image.Size = {
   height: 8192,
@@ -2000,7 +2000,7 @@ let creator: image.ImageCreator = image.createImageCreator(size, image.ImageForm
 
 ArkTS-Sta示例:
 ```ts
-import image from '@ohos.multimedia.image'
+import { image } from '@kit.ImageKit';
 
 let size: image.Size = {
   height: 8192,

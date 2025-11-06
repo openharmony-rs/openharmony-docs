@@ -93,9 +93,9 @@ imagePackerApi.packToData(imageSourceApi, packOpts)
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -103,7 +103,7 @@ if (context != undefined) {
   ImagePackerFunc(context);
 }
 
-function ImagePackerFunc(context: common.UIAbilityContext): void {
+async function ImagePackerFunc(context: common.UIAbilityContext): Promise<void> {
   //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
   let filePath: string = context.filesDir + "test_image.jpg";
   try {
@@ -188,9 +188,9 @@ image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -198,7 +198,7 @@ if (context != undefined) {
   ImagePackerFunc();
 }
 
-function ImagePackerFunc(): void {
+async function ImagePackerFunc(): Promise<void> {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
@@ -287,10 +287,9 @@ async function Packing(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -298,7 +297,7 @@ if (context != undefined) {
   PackingFunc(context);
 }
 
-function PackingFunc(context: common.UIAbilityContext): void {
+async function PackingFunc(context: common.UIAbilityContext): Promise<void> {
   const resourceMgr = context.resourceManager;
   const rawFile = await resourceMgr.getRawFileContent("test_image.jpg");
   let opts: image.SourceOptions = { sourceDensity: 98 };
@@ -384,10 +383,9 @@ Packer.packToDataFromPixelmapSequence(pixelMapList, ops)
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function PackToDataFromPixelmapSequenceFunc(context: common.UIAbilityContext): void {
   const resourceMgr = context.resourceManager;
@@ -449,8 +447,9 @@ imagePackerApi.release((err: BusinessError)=>{
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function ReleaseFunc(): void {
   try {
@@ -505,8 +504,8 @@ imagePackerApi.release().then(() => {
 
 ArkTS-Sta示例:
 ```ts
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
 
 function ReleaseFunc(): void {
   try {
@@ -587,10 +586,11 @@ imagePackerApi.packToFile(imageSourceApi, file.fd, packOpts, (err: BusinessError
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@ohos.base';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -692,10 +692,10 @@ imagePackerApi.packToFile(imageSourceApi, file.fd, packOpts).then(() => {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -793,10 +793,11 @@ image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
+import { fileIo } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -906,10 +907,10 @@ image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1015,11 +1016,11 @@ async function PackToFile(context: Context) {
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import fileIo from '@ohos.file.fs'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -1122,10 +1123,11 @@ Packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
 
 ArkTS-Sta示例:
 ```ts
-import common from '@ohos.app.ability.common'
-import hilog from '@ohos.hilog'
-import image from '@ohos.multimedia.image'
-import resourceManager from '@ohos.resourceManager'
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 function PackToFileFromPixelmapSequenceFunc(context: common.UIAbilityContext): void {
   const resourceMgr = context.resourceManager;
