@@ -104,6 +104,31 @@
    设置draggable属性为true，并配置onDragStart回调函数。在回调函数中，可通过UDMF（用户数据管理框架）设置拖拽的数据，并返回自定义的拖拽背景图像。
 
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   
+   ``` TypeScript
+   import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+   // ···
+                 // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+                 Image($r('app.media.app_icon'))
+                   .width(100)
+                   .height(100)
+                   .draggable(true)
+                   // ···
+                   .onDragStart((event) => {
+                     let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                     // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
+                     data.imageUri = 'resources/base/media/app_icon.png';
+                     let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                     event.setData(unifiedData);
+   
+                     let dragItemInfo: DragItemInfo = {
+                       pixelMap: this.pixmap,
+                       extraInfo: 'this is extraInfo',
+                     };
+                     // onDragStart回调函数中返回自定义拖拽背板图
+                     return dragItemInfo;
+                   })
+   ```
 
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
 
