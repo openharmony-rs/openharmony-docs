@@ -11,7 +11,9 @@
 
 Add an asset with the password **demo_pwd**, alias **demo_alias**, and additional information **demo_label**.
 
-```typescript
+<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -21,22 +23,31 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let attr: asset.AssetMap = new Map();
-attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-attr.set(asset.Tag.SYNC_TYPE, asset.SyncType.TRUSTED_DEVICE); // You need to specify the sync type between trusted devices (for example, clone between old and new devices).
+export async function addSyncAsset(): Promise<string> {
+  let result: string = '';
+  let attr: asset.AssetMap = new Map();
+  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+  attr.set(asset.Tag.SYNC_TYPE, asset.SyncType.TRUSTED_DEVICE); // You need to specify the sync type between trusted devices (for example, clone between old and new devices).
 
-try {
-  asset.add(attr).then(() => {
-    console.info(`Succeeded in adding Asset with sync.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Asset with sync. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to add Asset with sync. Code is ${err?.code}, message is ${err?.message}`);
+  try {
+    await asset.add(attr).then(() => {
+      console.info(`Succeeded in adding Asset with sync.`);
+      result = 'Succeeded in adding Asset with sync';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add Asset with sync. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to add Asset with sync';
+    })
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to add Asset with sync. Code is ${err?.code}, message is ${err?.message}`);
+    result = 'Failed to add Asset with sync';
+  }
+  return result;
 }
 ```
+
 
 ## Accessing the Backup and Restore Extension Capability
 
@@ -57,17 +68,26 @@ The following table describes the attributes of **AssetMap** for querying the sy
 
 ### Sample Code
 
-```typescript
+<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let query: asset.AssetMap = new Map();
-asset.querySyncResult(query).then((res: asset.SyncResult) => {
-  console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
-});
+export async function querySyncResult(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  await asset.querySyncResult(query).then((res: asset.SyncResult) => {
+    console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
+    result = 'Succeeded in querying sync result';
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query sync result of Asset';
+  });
+  return result;
+}
 ```
+
 
 ## Notes and Constraints
 
