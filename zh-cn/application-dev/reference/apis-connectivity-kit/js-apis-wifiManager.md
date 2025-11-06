@@ -3441,7 +3441,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 startScan(): void
 
-启动WLAN扫描。
+启动WLAN扫描。应用处于前台时，两分钟内最多能扫描4次。处于后台时，30分钟内最多能扫描1次。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
