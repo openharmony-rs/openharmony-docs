@@ -1214,6 +1214,144 @@ ChildList类型在定义的时候使用了@Observed进行装饰，所以用new�
 
 <!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: StringData2[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): StringData2 {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN_NUMBER, TAG, 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN_NUMBER, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+}
+
+class MyDataSource9 extends BasicDataSource {
+  private dataArray: StringData2[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): StringData2 {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: StringData2): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: StringData2): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
+  }
+}
+
+class StringData2 {
+ public message: string;
+ public imgSrc: Resource;
+
+  constructor(message: string, imgSrc: Resource) {
+    this.message = message;
+    this.imgSrc = imgSrc;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent8 {
+  private data: MyDataSource9 = new MyDataSource9();
+
+  aboutToAppear() {
+    for (let i = 0; i <= 9; i++) {
+      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      this.data.pushData(new StringData2(`Click to add ${i}`, $r('app.media.icon')));
+    }
+  }
+
+  build() {
+    List({ space: 3 }) {
+      LazyForEach(this.data, (item: StringData2, index: number) => {
+        ListItem() {
+          Column() {
+            Text(item.message).fontSize(20)
+              .onAppear(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'text appear:' + item.message);
+              })
+            Image(item.imgSrc)
+              .width(100)
+              .height(100)
+              .onAppear(() => {
+                hilog.info(DOMAIN_NUMBER, TAG, 'image appear');
+              })
+          }.margin({ left: 10, right: 10 })
+        }
+        .onClick(() => {
+          item.message += '0';
+          this.data.reloadData();
+        })
+      }, (item: StringData2, index: number) => JSON.stringify(item))
+    }.cachedCount(5)
+  }
+}
+```
+
 
 上述代码运行效果如下。
 
