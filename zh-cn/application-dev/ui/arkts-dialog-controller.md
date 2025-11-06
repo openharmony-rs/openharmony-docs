@@ -62,8 +62,6 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    }
    ```
    
-   
-
 3. 初始化另一自定义弹出框内容区，其中包含一个Text组件和一个按钮，该按钮通过外部传递的弹出框控制器用于关闭弹出框，并且该内容区还包含前一个自定义弹出框内容区。
 
    <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
@@ -88,9 +86,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
      .backgroundColor('#FFF0F0F0')
    }
    ```
-   
-   
-
+      
 4. 初始化一个弹出框控制器，并通过设置控制器参数来初始化一个弹出框内容实体对象。最后，通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口，并且设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
@@ -107,7 +103,6 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    });
    ```
    
-
 ## 创建自定义内容为CustomBuilder的弹出框控制器
 
 > **说明：**
@@ -138,9 +133,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
      .backgroundColor('#FFF0F0F0')
    }
    ```
-   
-   
-
+      
 2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
@@ -154,7 +147,6 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    });
    ```
    
-
 ## 创建自定义内容为CustomBuilderWithId的弹出框控制器
 
 > **说明：**
@@ -188,9 +180,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
      }
    }
    ```
-   
-   
-
+      
 2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
    <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
@@ -204,7 +194,6 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    });
    ```
    
-
 ## 在CustomDialogController内容区直接获取弹出框控制器
 
 > **说明：**
@@ -240,9 +229,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
      }
    }
    ```
-   
-   
-
+      
 2. 初始化一个自定义弹出框构造器，关联自定义弹出框内容区。
 
    <!-- @[custom_dialog_example_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
@@ -253,208 +240,6 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    });
    customDialogController.open();
    ```
-import { ComponentContent, promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class Params {
-  public text: string = '';
-  public dialogController: promptAction.CommonController = new promptAction.DialogController();
-
-  constructor(text: string, dialogController: promptAction.CommonController) {
-    this.text = text;
-    this.dialogController = dialogController;
-  }
-}
-
-
-@Component
-struct MyComponent {
-  build() {
-    Column({ space: 5 }) {
-      // 'app.string.closeDialog_by_custom'资源文件中的value值为'点我关闭弹窗：通过自定义组件自带的DialogController'。
-      Button($r('app.string.closeDialog_by_custom'))
-        .onClick(() => {
-          let dialogController: promptAction.DialogController = this.getDialogController();
-          if (dialogController !== undefined) {
-            dialogController.close();
-          }
-        })
-    }
-  }
-}
-
-
-@Builder
-function buildText(params: Params) {
-  Column({ space: 5 }) {
-    Text(params.text)
-      .fontSize(30)
-    if (params.dialogController !== undefined) {
-      // 'app.string.closeDialog_by_controller'资源文件中的value值为'点我关闭弹窗：通过外部传递的DialogController'。
-      Button($r('app.string.closeDialog_by_controller'))
-        .onClick(() => {
-          params.dialogController.close();
-        })
-    }
-    MyComponent()
-  }
-  .width(300)
-  .height(200)
-  .backgroundColor('#FFF0F0F0')
-}
-
-
-@CustomDialog
-@Component
-struct CustomDialogExample {
-  controller?: CustomDialogController;
-
-  build() {
-    Column({ space: 5 }) {
-      // 'app.string.my_content'资源文件中的value值为'我是内容'。
-      Text($r('app.string.my_content'))
-        .fontSize(30)
-      // 'app.string.closeDialog_by_dialog'资源文件中的value值为'点我关闭弹窗：通过自定义组件自带的DialogController'。
-      Button($r('app.string.closeDialog_by_dialog'))
-        .onClick(() => {
-          let dialogController: PromptActionDialogController = this.getDialogController();
-          if (dialogController !== undefined) {
-            dialogController.close();
-          }
-        })
-    }
-    .height(200)
-    .backgroundColor('#FFF0F0F0')
-  }
-}
-
-
-@Entry
-@Component
-export struct DialogController {
-  private message = 'dialog';
-  private baseDialogOptions: promptAction.BaseDialogOptions = {
-    isModal: false,
-    autoCancel: false
-  };
-  private dialogOptions: promptAction.DialogOptions = {
-    isModal: false,
-    autoCancel: false
-  };
-
-  @Builder
-  customDialogComponent(dialogController: promptAction.DialogController) {
-    Column({ space: 5 }) {
-      Text(this.message)
-        .fontSize(30)
-      if (dialogController !== undefined) {
-        // 'app.string.closeDialog_by_outside'资源文件中的value值为'点击关闭弹窗：通过外部传递的DialogController'。
-        Button($r('app.string.closeDialog_by_outside'))
-          .onClick(() => {
-            dialogController.close();
-          })
-      }
-    }
-    .height(200)
-    .padding(5)
-    .justifyContent(FlexAlign.SpaceBetween)
-    .backgroundColor('#FFF0F0F0')
-  }
-
-
-  @Builder
-  customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
-    Column({ space: 5 }) {
-      Text(this.message)
-        .fontSize(30)
-      if (dialogId !== undefined) {
-        // 'app.string.closeDialog_by_id'资源文件中的value值为'点击关闭弹窗：通过DialogID'。
-        Button($r('app.string.closeDialog_by_id'))
-          .onClick(() => {
-            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
-          })
-      }
-      if (dialogController !== undefined) {
-        // 'app.string.closeDialog_by_dialog_controller'资源文件中的value值为'点击关闭弹窗：通过外部传递的DialogController'。
-        Button($r('app.string.closeDialog_by_dialog_controller'))
-          .onClick(() => {
-            dialogController.close();
-          })
-      }
-    }
-  }
-
-
-  @Builder
-  customDialogComponentGetState(dialogController: promptAction.DialogController) {
-    Column({ space: 5 }) {
-      Text(this.message)
-        .fontSize(30)
-      if (dialogController !== undefined) {
-        // 'app.string.click_check_status'资源文件中的value值为'点我查询弹窗状态'。
-        Button($r('app.string.click_check_status'))
-          .onClick(() => {
-            hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
-          })
-      }
-    }
-    .height(200)
-    .padding(5)
-    .justifyContent(FlexAlign.SpaceBetween)
-    .backgroundColor('#FFF0F0F0')
-  }
-
-
-  build() {
-    NavDestination() {
-      Column({ space: 5 }) {
-        // 'app.string.open_custom_dialog_with_controller'资源文件中的value值为'OpenCustomDialogWithController弹窗'。
-        Button($r('app.string.open_custom_dialog_with_controller'))
-          .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController();
-            let contentNode: ComponentContent<Object> =
-              new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
-                new Params(this.message, dialogController));
-            this.getUIContext().getPromptAction().openCustomDialogWithController(
-              contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController',
-                'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
-            });
-          })
-        // 'app.string.present_custom_dialog'资源文件中的value值为'PresentCustomDialog+CustomBuilder弹窗'。
-        Button($r('app.string.present_custom_dialog'))
-          .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController();
-            this.getUIContext().getPromptAction().presentCustomDialog(() => {
-              this.customDialogComponent(dialogController);
-            }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
-            });
-          })
-        // 'app.string.custom_builder_with_id'资源文件中的value值为'PresentCustomDialog+CustomBuilderWithId弹窗'。
-        Button($r('app.string.custom_builder_with_id'))
-          .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController();
-            this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
-              this.customDialogComponentWithId(dialogId, dialogController);
-            }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
-            });
-          })
-        // 'app.string.custom_dialog_controller_dialog'资源文件中的value值为'CustomDialogController弹窗'。
-        Button($r('app.string.custom_dialog_controller_dialog'))
-          .onClick(() => {
-            let customDialogController: CustomDialogController = new CustomDialogController({
-              builder: CustomDialogExample(),
-            });
-            customDialogController.open();
-          })
-      }.width('100%')
-    }
-  }
-}
-```
 
 ## 使用控制器获取弹出框的状态
 
@@ -488,9 +273,6 @@ customDialogComponentGetState(dialogController: promptAction.DialogController) {
   .backgroundColor('#FFF0F0F0')
 }
 ```
-
-
-
 
 ## 完整示例
 
@@ -701,7 +483,4 @@ export struct DialogController {
   }
 }
 ```
-
-
-
 ![dialog-controller-demo1](figures/dialog-controller-demo1.gif)
