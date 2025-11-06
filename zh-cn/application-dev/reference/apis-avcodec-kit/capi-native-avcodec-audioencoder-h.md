@@ -399,7 +399,7 @@ OH_AVErrCode OH_AudioEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 **废弃版本：** 11
 
-**替代接口：** OH_AudioCodec_SetParameter](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_setparameter)
+**替代接口：** [OH_AudioCodec_SetParameter](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_setparameter)
 
 **参数：**
 
@@ -462,7 +462,7 @@ OH_AVErrCode OH_AudioEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 **废弃版本：** 11
 
-**替代接口：** {[OH_AudioCodec_FreeOutputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_freeoutputbuffer)
+**替代接口：** [OH_AudioCodec_FreeOutputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_freeoutputbuffer)
 
 **参数：**
 
