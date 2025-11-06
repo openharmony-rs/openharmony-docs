@@ -1424,7 +1424,7 @@ paragraph.paint(canvas, 0, 0);
 
 ArkTS-Dyn: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset: number): void
 
-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
+ArkTS-Sta: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
 
 在画布上沿路径绘制文本。
 
@@ -2217,6 +2217,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
 | textStyle | [TextStyle](#textstyle)                             | 否   | 否   | 字体的样式信息。|
@@ -2229,6 +2233,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
@@ -2252,6 +2260,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
 | rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息。|
@@ -2264,6 +2276,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
@@ -2278,6 +2294,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  | 值 | 说明                                   |
 | ----- | - | -------------------------------------- |
 | TIGHT | 0 | 不设置letterSpacing时，与字形紧贴，否则包含letterSpacing的宽度。|
@@ -2290,6 +2310,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                      | 值 | 说明                                           |
 | ------------------------- | - | ---------------------------------------------- |
@@ -2307,6 +2331,10 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称       | 值 | 说明                          |
 | ---------- | - | ----------------------------- |
