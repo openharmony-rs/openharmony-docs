@@ -28,6 +28,10 @@
 使用方法：
 <!-- @[Custom_Component_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) -->
 
+``` TypeScript
+this.myBuilderFunction()
+```
+
 - 允许在自定义组件内定义一个或多个\@LocalBuilder函数，该函数被认为是该组件的私有、特殊类型的成员函数。
 
 - 自定义构建函数可以在所属组件的build函数和其他自定义构建函数中调用，但不允许在组件外调用。
