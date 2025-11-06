@@ -312,6 +312,13 @@ struct MyComponent {
 2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
 
     <!-- @[state_scene_type_class_out_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
+    
+    ``` TypeScript
+    // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
+    MyComponent({ count: 1, increaseBy: 2 })
+    // title和count均有外部传入，分别使用传入的new Model('Hello World 2')和7进行初始化
+    MyComponent({ title: new Model('Hello World 2'), count: 7 })
+    ```
 
 ### 装饰Map类型变量
 
