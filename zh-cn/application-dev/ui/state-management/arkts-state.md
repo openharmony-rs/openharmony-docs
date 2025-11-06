@@ -136,6 +136,11 @@
 
   \@State装饰的对象为Model类型数组时。
     <!-- @[state_decorate_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
+    
+    ``` TypeScript
+    // 数组类型
+    @State title: Model[] = [new Model(11), new Model(1)];
+    ```
 
   数组自身的赋值可以观察到。
     <!-- @[state_decorate_array_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
