@@ -52,7 +52,6 @@ struct Child {
 }
 ```
 
-
 V2迁移策略：直接替换。
 
 <!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
@@ -68,7 +67,6 @@ struct Child {
   }
 }
 ```
-
 
 **复杂类型**
 
@@ -101,7 +99,6 @@ struct Example {
 }
 ```
 
-
 V2迁移策略：使用\@ObservedV2和\@Trace。
 
 <!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
@@ -129,8 +126,6 @@ struct Example {
   }
 }
 ```
-
-
 
 **外部初始化状态变量**
 
@@ -162,7 +157,6 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：使用\@Param和\@Once。
 
 <!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
@@ -188,8 +182,6 @@ struct Parent {
   }
 }
 ```
-
-
 
 ### \@Link -> \@Param/\@Event
 
@@ -234,7 +226,6 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：使用\@Param和\@Event。
 
 <!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
@@ -270,8 +261,6 @@ struct Parent {
   }
 }
 ```
-
-
 
 ### \@Prop -> \@Param
 
@@ -314,9 +303,9 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：直接替换。
 
+<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
 
 **复杂类型的单向数据传递**
 
@@ -367,7 +356,6 @@ struct Parent {
   }
 }
 ```
-
 
 V2迁移策略：使用深拷贝。
 
@@ -425,7 +413,6 @@ struct Parent {
 }
 ```
 
-
 **子组件修改变量**
 
 在V1中，子组件可以修改\@Prop的变量，然而在V2中，\@Param是只读的。如果子组件需要修改传入的值，可以使用\@Param和\@Once允许子组件在本地修改。
@@ -462,7 +449,6 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：使用\@Param和\@Once。
 
 <!-- @[Parent14_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets) -->
@@ -494,7 +480,6 @@ struct Parent {
   }
 }
 ```
-
 
 在V1中，子组件可以修改\@Prop的变量，且只会在本地更新，不会同步回父组件。父组件数据源更新时，会通知子组件更新，并覆写子组件本地\@Prop的值。
 
@@ -538,7 +523,6 @@ struct Parent {
   }
 }
 ```
-
 
 V2中，\@Param本地不可写，与\@Once搭配使用时只同步一次。若要实现子组件本地可写，且父组件后续更新仍能通知子组件，可借助\@Monitor实现。
 
@@ -596,7 +580,6 @@ struct Parent {
 }
 ```
 
-
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
 **迁移规则**
 
@@ -647,7 +630,6 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：确保alias一致，没有指定alias的情况下，依赖属性名进行匹配。
 
 <!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
@@ -679,7 +661,6 @@ struct Parent {
   }
 }
 ```
-
 
 **V1的\@Consume不支持本地初始化，V2支持**
 
@@ -713,7 +694,6 @@ struct Parent {
 }
 ```
 
-
 V2迁移策略：\@Consumer可以本地初始化。
 
 <!-- @[Parent20_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets) -->
@@ -739,7 +719,6 @@ struct Parent {
   }
 }
 ```
-
 
 **V1的\@Provide可以从父组件初始化，V2不支持**
 
@@ -775,7 +754,6 @@ struct Child {
 }
 ```
 
-
 V2迁移策略：使用\@Param接受初始值，再赋值给\@Provider。
 
 <!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
@@ -806,7 +784,6 @@ struct Child {
   }
 }
 ```
-
 
 **V1的\@Provide默认不支持重载，V2默认支持**
 
@@ -849,7 +826,6 @@ struct Child {
 }
 ```
 
-
 V2迁移策略：去掉allowOverride。
 
 <!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
@@ -886,8 +862,6 @@ struct Child {
   }
 }
 ```
-
-
 
 ### \@Watch -> \@Monitor
 **迁移规则**
@@ -934,7 +908,6 @@ struct WatchExample {
 }
 ```
 
-
 V2迁移策略：直接替换。
 
 <!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
@@ -966,7 +939,6 @@ struct MonitorExample {
   }
 }
 ```
-
 
 **多变量监听**
 
@@ -1014,7 +986,6 @@ struct WatchExample {
 }
 ```
 
-
 V2迁移策略：同时监听多个变量，以及获取变化前的值。
 
 <!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
@@ -1056,8 +1027,6 @@ struct MonitorExample {
 }
 ```
 
-
-
 ### \@Computed
 **迁移规则**
 
@@ -1088,7 +1057,6 @@ struct Index {
   }
 }
 ```
-
 
 V2:
 
