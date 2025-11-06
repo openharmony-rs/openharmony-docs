@@ -9284,7 +9284,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets",
 				"functions":[
 					{
-						"end_line":141,
+						"end_line":158,
 						"name":"custom_node",
 						"start_line":93
 					}
@@ -9294,7 +9294,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":34,
 						"name":"create_sys",
 						"start_line":23
 					}
