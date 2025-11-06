@@ -31,13 +31,13 @@ EventResult的构造函数。
 
 setGestureEventResult(result: boolean): void
 
-设置手势事件消费结果。当属性没有显式调用时，默认允许消费该手势事件。
+设置手势事件消费结果。若未显式调用该属性，默认允许消费该手势事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 **参数：**
@@ -54,13 +54,13 @@ setGestureEventResult(result: boolean): void
 
 setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
-设置手势事件消费结果。当属性没有显式调用时，默认阻止事件冒泡。
+设置手势事件消费结果。若未显式调用该属性，默认阻止事件冒泡。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
