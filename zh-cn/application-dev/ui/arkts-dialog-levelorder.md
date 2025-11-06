@@ -42,6 +42,32 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
 2. 初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口，并且设置层级为0的[levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来创建普通层级弹出框。
     <!-- @[top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
     
+    ``` TypeScript
+    @Builder
+    topCustomDialog() {
+      Column() {
+        // 'app.string.top_dialog'资源文件中的value值为'我是置顶弹窗'。
+        Text($r('app.string.top_dialog')).fontSize(30)
+        Row({ space: 50 }) {
+          // 'app.string.open_dialog'资源文件中的value值为'点我打开普通弹窗'。
+          Button($r('app.string.open_dialog'))
+            .onClick(() => {
+              this.getUIContext().getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.normalCustomDialog(this.dialogIndex);
+                },
+                levelOrder: LevelOrder.clamp(0),
+              })
+                .catch((err: BusinessError) => {
+                  hilog.error(DOMAIN, 'dialogBoxLayer', 'openCustomDialog error: ' + err.code + '' + err.message);
+                });
+              this.dialogIndex++;
+            })
+        }
+      }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+    }
+    ```
+    
     
 
 
