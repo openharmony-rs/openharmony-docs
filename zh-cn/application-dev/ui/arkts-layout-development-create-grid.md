@@ -96,25 +96,26 @@ Grid() {
 <!-- @[Set_numberrows_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridCalculator.ets) -->
 
 ``` TypeScript
-layoutOptions: GridLayoutOptions = {
-  regularSize: [1, 1],
-  onGetRectByIndex: (index: number) => {
-  // ···
-    if (index == key1) { // key1是“0”按键对应的index
-      return [6, 0, 1, 2];
-    } else if (index == key2) { // key2是“=”按键对应的index
-      return [5, 3, 2, 1];
-    }
+  layoutOptions: GridLayoutOptions = {
+    regularSize: [1, 1],
+    onGetRectByIndex: (index: number) => {
     // ···
-    // 这里需要根据具体布局返回其他item的位置
+
+      if (index == key1) { // key1是“0”按键对应的index
+        return [6, 0, 1, 2];
+      } else if (index == key2) { // key2是“=”按键对应的index
+        return [5, 3, 2, 1];
+      }
+    // ···
+      // 这里需要根据具体布局返回其他item的位置
+    }
   }
-}
 // ···
-Grid(undefined, this.layoutOptions) {
-  // ···
-}
-.columnsTemplate('1fr 1fr 1fr 1fr')
-.rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+          Grid(undefined, this.layoutOptions) {
+            // ···
+          }
+          .columnsTemplate('1fr 1fr 1fr 1fr')
+          .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
 ```
 
 ### 设置主轴方向
@@ -157,34 +158,34 @@ Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 <!-- @[build_a_office_services_meeting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
 
 ``` TypeScript
-Grid() {
-  GridItem() {
-    // app.string.Meeting资源文件中的value值为‘会议’
-    Text($r('app.string.Meeting'))
+  Grid() {
+    GridItem() {
+      // app.string.Meeting资源文件中的value值为‘会议’
+      Text($r('app.string.Meeting'))
     // ···
-  }
+    }
 
-  GridItem() {
-    // app.string.Check_in资源文件中的value值为‘投票’
-    Text($r('app.string.Check_in'))
+    GridItem() {
+      // app.string.Check_in资源文件中的value值为‘投票’
+      Text($r('app.string.Check_in'))
     // ···
-  }
+    }
 
-  GridItem() {
-    // app.string.Voting资源文件中的value值为‘签到’
-    Text($r('app.string.Voting'))
+    GridItem() {
+      // app.string.Voting资源文件中的value值为‘签到’
+      Text($r('app.string.Voting'))
     // ···
-  }
+    }
 
-  GridItem() {
-    // app.string.Printing资源文件中的value值为‘打印’
-    Text($r('app.string.Printing'))
+    GridItem() {
+      // app.string.Printing资源文件中的value值为‘打印’
+      Text($r('app.string.Printing'))
     // ···
+    }
   }
-}
 // ···
-.rowsTemplate('1fr 1fr')
-.columnsTemplate('1fr 1fr')
+  .rowsTemplate('1fr 1fr')
+  .columnsTemplate('1fr 1fr')
 ```
 
 
