@@ -16606,5 +16606,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-draw.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"create_customNode_start",
+						"start_line":43
+					},
+					{
+						"end_line":115,
+						"name":"userdata_start",
+						"start_line":58
+					},
+					{
+						"end_line":83,
+						"name":"nodeCustomEvent_start",
+						"start_line":79
+					},
+					{
+						"end_line":110,
+						"name":"drawCanvas_Start",
+						"start_line":86
+					},
+					{
+						"end_line":120,
+						"name":"drawing_start",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h",
+				"functions":[
+					{
+						"end_line":221,
+						"name":"arkUICustomNode_start",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp",
+				"functions":[
+					{
+						"end_line":636,
+						"name":"arkUICustomNodeCpp_start",
+						"start_line":28
+					}
+				]
+			}
+		]
 	}
 ]
