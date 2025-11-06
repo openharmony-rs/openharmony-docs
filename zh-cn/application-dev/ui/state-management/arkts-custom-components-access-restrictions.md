@@ -325,6 +325,33 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
    【反例】
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct ProtectedErrorAccessRestrictions {
+     build() {
+       Column() {
+         ProtectedErrorComponentChild({ regularValue: 'Hello' })
+       }
+       .width('100%')
+     }
+   }
+   
+   @Component
+   struct ProtectedErrorComponentChild {
+     // 此处使用protected修饰符时会出现告警日志
+     protected regularValue: string = 'Hello';
+   
+     build() {
+       Column() {
+         Text('Hello')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+       }
+     }
+   }
+   ```
 
 
    编译告警日志如下：
