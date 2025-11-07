@@ -888,6 +888,86 @@ struct Index {
 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
+  
+  ``` TypeScript
+  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0000;
+  @Entry
+  @Component
+  
+  export struct PrepareMenu {
+    @State text: string = 'Text editMenuOptions';
+    @State endIndex: number = 0;
+    onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+      let item1: TextMenuItem = {
+        content: 'create1',
+        icon: $r('app.media.startIcon'),
+        id: TextMenuItemId.of('create1'),
+      };
+      let item2: TextMenuItem = {
+        content: 'create2',
+        id: TextMenuItemId.of('create2'),
+        icon: $r('app.media.startIcon'),
+      };
+      menuItems.push(item1);
+      menuItems.unshift(item2);
+      return menuItems;
+    }
+    onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+      if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.COPY)) {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+        return false;
+      }
+      return false;
+    }
+    onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+      let item1: TextMenuItem = {
+        content: 'prepare1_' + this.endIndex,
+        icon: $r('app.media.startIcon'),
+        id: TextMenuItemId.of('prepare1'),
+      };
+      menuItems.unshift(item1);
+      return menuItems;
+    }
+    @State editMenuOptions: EditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick,
+      onPrepareMenu: this.onPrepareMenu
+    };
+  
+    build() {
+      NavDestination() {
+      Column() {
+        Text(this.text)
+          .fontSize(20)
+          .copyOption(CopyOptions.LocalDevice)
+          .editMenuOptions(this.editMenuOptions)
+          .margin({ top: 100 })
+          .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+            this.endIndex = selectionEnd;
+          })
+      }
+      .width('90%')
+      .margin('5%')
+      }
+      // ···
+    }
+  }
+  ```
 
 
 ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
