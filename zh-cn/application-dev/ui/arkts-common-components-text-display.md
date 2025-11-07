@@ -547,6 +547,34 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 从API version 20开始，支持通过[lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20)设置文本的行间距。当不配置[LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20对象说明)时，首行上方和尾行下方默认会有行间距，当onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外的行间距。
 
   <!-- @[Line_Spacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets) -->
+  
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  
+  @Extend(Text)
+  function style() {
+    .width(250)
+    .height(100)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+  }
+  
+  @Entry
+  @Component
+  export struct LineSpacing {
+    build() {
+      NavDestination() {
+        Column() {
+          Text('The line spacing of this context is set to 20_px, and the spacing is effective only between the lines.')
+            .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+            .style()
+        }
+      }
+      // ···
+    }
+  }
+  ```
 
   ![Text_line_spacing](figures/Text_line_spacing.jpg)
 
