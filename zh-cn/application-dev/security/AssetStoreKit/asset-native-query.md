@@ -51,6 +51,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在查询前，需确保已有关键资产，可参考[指南文档](./asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 ### 查询单条关键资产明文
 
 查询别名是demo_alias的关键资产明文。
@@ -63,7 +67,7 @@
    ```
 
 2. 引用头文件。
-   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -73,7 +77,7 @@
 
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
@@ -116,7 +120,7 @@ static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
    ```
 
 2. 引用头文件。
-   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -126,7 +130,7 @@ static napi_value QueryAssetPlaintext(napi_env env, napi_callback_info info)
 
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
@@ -167,7 +171,7 @@ static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
    ```
 
 2. 引用头文件。
-   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -177,7 +181,7 @@ static napi_value QueryAssetAttribute(napi_env env, napi_callback_info info)
 
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QueryBatchAssetAttributes(napi_env env, napi_callback_info info)
