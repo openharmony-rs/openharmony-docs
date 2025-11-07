@@ -307,6 +307,17 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight)属性设置文本行高。
 
   <!-- @[custom_line_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  Text('This is the text with the line height set. This is the text with the line height set.')
+    .width(300).fontSize(12).border({ width: 1 }).padding(10)
+  Text('This is the text with the line height set. This is the text with the line height set.')
+    .width(300)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .lineHeight(20)
+  ```
 
   ![zh-cn_image_0000001511740480](figures/zh-cn_image_0000001511740480.png)
 
