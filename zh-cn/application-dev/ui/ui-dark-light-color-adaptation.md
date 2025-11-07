@@ -140,7 +140,8 @@
     <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
     ``` TypeScript
-    @StorageProp('currentColorMode') @Watch('onColorModeChange') currentMode: number = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
+    @StorageProp('currentColorMode') @Watch('onColorModeChange') currentMode: number =
+      ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
     d. 在 aboutToAppear 初始化函数中根据当前最新颜色模式刷新状态变量。
