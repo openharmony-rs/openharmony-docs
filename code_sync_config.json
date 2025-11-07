@@ -10434,14 +10434,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":22,
 						"name":"AppEvent_Crash_Click_ArkTS_Header",
 						"start_line":19
 					},
 					{
-						"end_line":125,
+						"end_line":128,
 						"name":"Crash_ArkTS_Add_Event",
-						"start_line":100
+						"start_line":101
 					},
 					{
 						"end_line":188,
