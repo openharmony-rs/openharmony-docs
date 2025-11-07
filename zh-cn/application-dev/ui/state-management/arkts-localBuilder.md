@@ -385,6 +385,51 @@ struct ParentPage {
 【反例】
 <!-- @[problem_ui_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshOpposite.ets) -->
 
+``` TypeScript
+class LayoutSize {
+  public size: number = 0;
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'parent';
+  @State layoutSize: LayoutSize = { size: 0 };
+
+  @LocalBuilder
+  componentBuilder($$: LayoutSize) {
+    Text(`this: ${this.label}`)
+    Text(`size: ${$$.size}`)
+  }
+
+  build() {
+    Column() {
+      Child({
+        customBuilder: this.componentBuilder,
+        layoutSize: this.layoutSize
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  label: string = 'child';
+  @BuilderParam customBuilder: ((layoutSize: LayoutSize) => void);
+  @Link layoutSize: LayoutSize;
+
+  build() {
+    Column() {
+      this.customBuilder({ size: this.layoutSize.size }) // 子组件调用父组件的@LocalBuilder函数
+      Button('add child size')
+        .onClick(() => {
+          this.layoutSize.size += 1; // 子组件传入的参数发生变化，不会引起@LocalBuilder函数内的UI刷新
+        })
+    }
+  }
+}
+```
+
 【正例】
 
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
