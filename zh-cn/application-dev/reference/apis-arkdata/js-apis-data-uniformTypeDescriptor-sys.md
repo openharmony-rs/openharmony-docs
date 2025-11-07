@@ -14,7 +14,7 @@
 
 ## 导入模块
 
-```js
+```ts
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
@@ -32,7 +32,22 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| typeDescriptors    | Array\<[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)>  | 是    |待注册的标准化数据类型描述符列表。不可为空。<br>[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)格式要求：<br>1. typeId不可为空，长度不超过127且仅包含字母、数字、中划线（-）和点号（.）；<br>2. belongingToTypes长度不超过50且每项非空、每项长度不超过 127；<br>3. description/referenceURL/iconFile每项长度不超过 255；<br>4. filenameExtensions长度不超过50且每项非空、每项长度不超过127且首字符为点号；<br>5. mimeTypes长度不超过50且每项非空、每项长度不超过127。<br>[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)内容要求：<br>1. typeId必须唯一，不能与已注册类型重复；<br>2. typeId前缀需与当前应用包名匹配；<br>3. belongingToTypes中的类型 ID 必须已存在；<br>4. 不能形成循环依赖。   |
+| typeDescriptors    | Array\<[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)>  | 是    |待注册的标准化数据类型描述符列表。列表不可为空，长度不超过50。|
+
+**约束限制：**
+
+[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)格式要求：
+1. typeId不可为空字符串，长度不超过127且仅包含字母、数字、中划线（-）和点号（.）；
+2. belongingToTypes长度不超过50。每项不可为空字符串，长度不超过127；
+3. description/referenceURL/iconFile每项长度不超过255；
+4. filenameExtensions长度不超过50。每项不可为空字符串，长度不超过127且首字符为点号；
+5. mimeTypes长度不超过50。每项不可为空字符串，长度不超过127；
+
+[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)内容要求：
+1. typeId必须唯一，不能与已注册类型的typeId重复；
+2. typeId必须以当前应用的包名开头；
+3. belongingToTypes中的标准化数据类型ID必须为[预置数据类型](../../database/uniform-data-type-list.md)或本次注册的其他标准化数据类型的typeId；
+4. 标准化数据类型之间不能存在循环依赖关系；
 
 **返回值：**
 
@@ -59,7 +74,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
+    const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
     typeDescriptor.typeId = 'com.example.myHap.image';
     typeDescriptor.belongingToTypes = ['general.image'];
     typeDescriptor.filenameExtensions = ['.myImage'];
@@ -77,7 +92,7 @@ try {
 
 unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
-根据给定的类型ID列表，从系统中注销一个或多个标准化数据类型描述符。
+从系统中注销一个或多个标准化数据类型。
 
 **需要权限:** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 
@@ -87,7 +102,14 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| typeIds    | Array\<string>  | 是    |待注销的typeId列表。不可为空。要求：<br>1. typeId对应的标准化数据类型存在。<br>2. typeId的前缀与当前应用的包名匹配。<br>3. typeId对应的标准化数据类型是由接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#registerTypeDescriptors)注册的。   |
+| typeIds    | Array\<string>  | 是    |待注销的typeId列表。列表不可为空，长度不超过50。  |
+
+**约束限制：**
+
+1. typeId对应的标准化数据类型必须在系统中已注册；
+2. typeId必须以当前应用的包名开头；
+3. typeId对应的标准化数据类型必须已通过[registerTypeDescriptors](#uniformTypeDescriptorregisterTypeDescriptors)接口注册；
+
 
 **返回值：**
 
