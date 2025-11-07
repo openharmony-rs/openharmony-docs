@@ -8,11 +8,11 @@
 
 >  **说明：**
 >
->  -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  -该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  -该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+>  - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 
 ## 子组件
@@ -95,13 +95,13 @@ ArkTS-Sta: fill(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/> |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 填充区域颜色。<br/>默认值：Color.Black |
 
 ### fillOpacity
 
@@ -119,13 +119,13 @@ ArkTS-Sta: fillOpacity(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                           |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 填充区域透明度。<br/>默认值：1 <br/> |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 填充区域透明度。<br/>默认值：1 |
 
 ### stroke
 
@@ -143,13 +143,13 @@ ArkTS-Sta: stroke(value: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 边框颜色。 <br/> |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 边框颜色。 |
 
 ### strokeDashArray
 
@@ -167,7 +167,7 @@ ArkTS-Sta: strokeDashArray(value: Array&lt;Length&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -191,7 +191,7 @@ ArkTS-Sta: strokeDashOffset(value: double | string | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -215,13 +215,13 @@ ArkTS-Sta: strokeLineCap(value: LineCapStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                              | 必填 | 说明                                             |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | ArkTS-Dyn: [LineCapStyle](ts-appendix-enums.md#linecapstyle)<br/>ArkTS-Sta: [LineCapStyle](ts-appendix-enums.md#linecapstyle) \| undefined | 是   | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt<br/> |
+| value  | ArkTS-Dyn: [LineCapStyle](ts-appendix-enums.md#linecapstyle)<br/>ArkTS-Sta: [LineCapStyle](ts-appendix-enums.md#linecapstyle) \| undefined | 是   | 边框端点绘制样式。<br/>默认值：LineCapStyle.Butt |
 
 ### strokeLineJoin
 
@@ -239,13 +239,13 @@ ArkTS-Sta: strokeLineJoin(value: LineJoinStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                               |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | ArkTS-Dyn: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle)<br/>ArkTS-Sta: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) \| undefined | 是   | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter<br/> |
+| value  | ArkTS-Dyn: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle)<br/>ArkTS-Sta: [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) \| undefined | 是   | 边框拐角绘制样式。<br/>默认值：LineJoinStyle.Miter |
 
 ### strokeMiterLimit
 
@@ -265,7 +265,7 @@ ArkTS-Sta: strokeMiterLimit(value: double | string | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -289,13 +289,13 @@ ArkTS-Sta: strokeOpacity(value: double | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                       |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 边框透明度。<br/>默认值：1<br/> |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 边框透明度。<br/>默认值：1 |
 
 ### strokeWidth
 
@@ -313,7 +313,7 @@ ArkTS-Sta: strokeWidth(value: double | string | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -337,7 +337,7 @@ ArkTS-Sta: antiAlias(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 

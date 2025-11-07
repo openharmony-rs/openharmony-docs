@@ -4,11 +4,11 @@
 
 >  **说明：**
 >
-> -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> -该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> -该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+> - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 ## 子组件
 
@@ -69,13 +69,13 @@ ArkTS-Sta: startPoint(value: ShapePoint | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint20) \| undefined | 是   | 直线起点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0]<br/> |
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint22) \| undefined | 是   | 直线起点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] |
 
 ### endPoint
 
@@ -93,13 +93,13 @@ ArkTS-Sta: endPoint(value: ShapePoint | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint20) \| undefined | 是   | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0]<br/> |
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint22) \| undefined | 是   | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] |
 
 ### fill
 
@@ -299,7 +299,7 @@ antiAlias(value: boolean)
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true |
 
-## ShapePoint<sup>20+</sup>
+## ShapePoint<sup>22+</sup>
 
 type ShapePoint = [Length, Length]
 
@@ -309,7 +309,7 @@ type ShapePoint = [Length, Length]
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
