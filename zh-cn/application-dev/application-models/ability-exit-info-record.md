@@ -110,5 +110,5 @@
     <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
-    hilog.info(DOMAIN_NUMBER,TAG,`App ${uid} terminated at ${timestamp}.`);
+    hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);
     ```
