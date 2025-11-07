@@ -169,6 +169,68 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
    const date = new Date();
    ```
    <!-- @[calendarEvent_addEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   const event: calendarManager.Event = {
+     // 日程标题
+     title: 'title',
+     // 日程类型，不推荐三方开发者使用calendarManager.EventType.IMPORTANT，重要日程类型不支持一键服务跳转功能及无法自定义提醒时间
+     type: calendarManager.EventType.NORMAL,
+     // 日程开始时间
+     startTime: date.getTime(),
+     // 日程结束时间
+     endTime: date.getTime() + 60 * 60 * 1000,
+     // 距开始时间提前10分钟提醒
+     reminderTime: [10],
+     // 日程重复规则，可选属性。如果日程为周期性日程需要填写该属性。
+     recurrenceRule: {
+       // 日程重复规则类型，支持按天、按周、按月、按年重复
+       recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
+       // 日程重复次数，该字段和expire属性只需要填写一个，如果两个都填写按照count属性计算。
+       count: 100,
+       // 重复日程间隔时间，与recurrenceFrequency相关，此示例表示日程每隔2天进行重复。
+       interval: 2,
+       // 日程过期时间，该字段和count属性只需要填写一个，如果两个都填写按照count属性计算。
+       expire: date.getTime() + 60 * 60 * 1000 * 3,
+       // 日程排除日期，将该日期从重复日程中排除掉
+       excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
+     },
+     // 日程服务，可选字段，需要一键服务功能的日程，填写该属性。
+     service: {
+       // 服务类型，比如一键查看、一键入会、一键追剧等。
+       type: calendarManager.ServiceType.TRIP,
+       // 服务的uri。可以跳转到三方应用相应界面，格式为DeepLink。使用DeepLink方式需要在华为HAG云侧进行注册，注册提供的信息为应用包名、应用的服务类型。
+       // DeepLink包括scheme、host、path以及参数（不包含参数值）
+       uri: 'xxx://xxx.xxx.com/xxx',
+       // 服务辅助描述信息，可选字段
+       description: '一键服务'
+     }
+   
+   };
+   // 方式一
+   calendar.addEvent(event).then((data: number) => {
+     hilog.info(DOMAIN, 'testTag', `Succeeded in adding event, id -> ${data}`);
+     eventId = data;
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
+   });
+   // 方式二
+   const eventInfo: calendarManager.Event = {
+     // 日程标题
+     title: 'title',
+     // 日程类型
+     type: calendarManager.EventType.NORMAL,
+     // 日程开始时间
+     startTime: date.getTime(),
+     // 日程结束时间
+     endTime: date.getTime() + 60 * 60 * 1000
+   };
+   calendarMgr?.editEvent(eventInfo).then((id: number): void => {
+     hilog.info(DOMAIN, 'testTag', `create Event id = ${id}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to create Event. Code: ${err.code}, message: ${err.message}`);
+   });
+   ```
 
 6. 按照日程id进行指定日程的更新，更新日程相关信息。
 
