@@ -16329,7 +16329,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":94,
 						"name":"NavigationExampleTwo",
 						"start_line":15
 					}
