@@ -235,6 +235,22 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 6. 按照日程id进行指定日程的更新，更新日程相关信息。
 
 	<!-- @[calendarEvent_updateEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    const updateEvent: calendarManager.Event = {
+      title: 'updateTitle',
+      description: 'updateEventTest',
+      type: calendarManager.EventType.NORMAL,
+      id: eventId,
+      startTime: date.getTime(),
+      endTime: date.getTime() + 60 * 60 * 1000
+    };
+    calendar.updateEvent(updateEvent).then(() => {
+      hilog.info(DOMAIN, 'testTag', `Succeeded in updating event`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, 'testTag', `Failed to update event. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```
 
 7. 查询当前日历账户下的所有日程。由于涉及数据隐私安全，进行了权限管控的应用无法获取其他创建的日程信息。根据不同的查询条件和查询字段，返回不同的查询结果。
 
