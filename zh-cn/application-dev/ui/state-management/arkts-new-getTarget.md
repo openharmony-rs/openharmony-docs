@@ -129,6 +129,50 @@ struct GetTargetNoChange {
 使用UIUtils.getTarget接口可以获取代理前的原始对象。
 <!-- @[nonObservedClass_out](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+@Observed
+class ObservedClass {
+  public name: string = 'Tom';
+}
+class NonObservedClass {
+  public name: string = 'Tom';
+}
+let observedClass: ObservedClass = new ObservedClass(); // 被代理
+let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
+let globalNumberList: number[] = [1, 2, 3]; // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
+let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
+let globalSampleDate: Date = new Date(); // 不被代理
+@Entry
+@Component
+struct GetTargetAgent {
+  @State observedObject: ObservedClass = observedClass; // 已被代理数据不会重复创建代理
+  @State nonObservedObject: NonObservedClass = nonObservedClass; // 创建代理
+  @State numberList: number[] = globalNumberList; // Array类型创建代理
+  @State sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
+  @State sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
+  @State sampleDate: Date = globalSampleDate; // Date类型创建代理
+
+  build() {
+    Column() {
+      Text(`this.observedObject === observedClass: ${this.observedObject ===
+        observedClass}`) // true
+      Text(`UIUtils.getTarget(this.nonObservedObject) === nonObservedClass: ${UIUtils.getTarget(this.nonObservedObject) ===
+        nonObservedClass}`) // true
+      Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
+        globalNumberList}`) // true
+      Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
+        globalSampleMap}`) // true
+      Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
+        globalSampleSet}`) // true
+      Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
+        globalSampleDate}`) // true
+    }
+  }
+}
+```
+
 
 ### 获取状态管理V2代理前的原始对象
 
