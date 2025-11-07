@@ -46,6 +46,60 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 3. 根据上下文获取日程管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
 	<!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    const DOMAIN = 0x0000;
+    
+    export let calendarMgr: calendarManager.CalendarManager | null = null;
+    
+    export let mContext: common.UIAbilityContext | null = null;
+    
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onCreate");
+      }
+    
+      onDestroy(): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onDestroy");
+      }
+    
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageCreate");
+        windowStage.loadContent('pages/Index', (err, data) => {
+          if (err.code) {
+            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            return;
+          }
+          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+        });
+        mContext = this.context;
+        const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
+        let atManager = abilityAccessCtrl.createAtManager();
+        atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
+          hilog.info(DOMAIN, 'testTag', 'get Permission success');
+          calendarMgr = calendarManager.getCalendarManager(mContext);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN, 'testTag', 'get Permission error, Cause: %{public}s', JSON.stringify(error));
+        })
+      }
+    
+      onWindowStageDestroy(): void {
+        // Main window is destroyed, release UI related resources
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageDestroy");
+      }
+    
+      onForeground(): void {
+        // Ability has brought to foreground
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onForeground");
+      }
+    
+      onBackground(): void {
+        // Ability has back to background
+        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onBackground");
+      }
+    }
+    ```
 
 4. 根据日历账户信息创建Calendar对象，用于进行日程管理。设置日历配置信息，可以根据需要打开日程提醒、设置日历账户颜色。
 
