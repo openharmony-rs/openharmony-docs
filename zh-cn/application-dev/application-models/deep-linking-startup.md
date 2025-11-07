@@ -131,7 +131,7 @@ struct DeepOpenLinkIndex {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = 'link://www.example.com';
+        let link: string = 'link://www.example.com'; // 此处为实际应用链接
         let openLinkOptions: OpenLinkOptions = {
           appLinkingOnly: false
         };
