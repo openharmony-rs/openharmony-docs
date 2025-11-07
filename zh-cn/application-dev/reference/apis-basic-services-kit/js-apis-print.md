@@ -16,7 +16,7 @@ import { print } from '@kit.BasicServicesKit';
 
 打印任务完成后的事件监听回调接口类。
 
-### PrintTask.on<sup>
+### PrintTask.on
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
@@ -113,7 +113,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on<sup>
+### PrintTask.on
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
@@ -211,7 +211,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.on<sup>
+### PrintTask.on
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
