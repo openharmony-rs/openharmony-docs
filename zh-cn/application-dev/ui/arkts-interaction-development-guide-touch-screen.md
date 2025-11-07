@@ -129,6 +129,57 @@ struct Sampling {
 在支持多指触控的触屏设备上，上报的事件中同时包含了窗口所有按压手指的信息，可以通过**touches**获取，如下：
 <!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_MultipleFingerInformation]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_MultipleFingerInformation';
+
+@Entry
+@ComponentV2
+struct MultipleFingerInformation {
+  private currentFingerCount: number = 0;
+  private allFingerIds: number[] = [];
+
+  build() {
+    RelativeContainer() {
+      Column()
+        .backgroundColor(Color.Green)
+        .height('100%')
+        .width('100%')
+        .onTouch((event: TouchEvent) => {
+          if (event.source !== SourceType.TouchScreen) {
+            return;
+          }
+          // clear数组
+          this.allFingerIds.splice(0, this.allFingerIds.length);
+          // 从event中获取所有触点信息
+          let allFingers = event.touches;
+          if (allFingers.length > 0 && this.currentFingerCount === 0) {
+            // 第1根手指按下
+            hilog.info(DOMAIN, TAG, BUNDLE + 'fingers start to press down');
+            this.currentFingerCount = allFingers.length;
+          }
+          if (allFingers.length !== 0) {
+            for (const finger of allFingers) {
+              this.allFingerIds.push(finger.id);
+            }
+            hilog.info(DOMAIN, TAG, BUNDLE + 'current all fingers : ' + this.allFingerIds.toString());
+          }
+          if (event.type === TouchType.Up && event.touches.length === 1) {
+            // 所有手指都已抬起
+            hilog.info(DOMAIN, TAG, BUNDLE + 'all fingers already up');
+            this.currentFingerCount = 0;
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 不同触点通过id区分，id按照接触屏幕的顺序依次递增，与物理上的触点（手指）并无严格顺序对应关系。并且这些触点在**touches**数组中并非按照编号大小顺序排列，请不要依赖顺序进行访问，另外，直到所有触点全部离开屏幕之前，期间抬起的触点对应的编号，会在有触点按下时自动复用。
 
 以下是上面的示例在如下操作序列时产生的日志输出情况：
