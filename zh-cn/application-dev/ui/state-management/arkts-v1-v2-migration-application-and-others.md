@@ -140,6 +140,22 @@ V2:
 - 声明被\@Trace的属性作为页面间共享的可观察的数据。
 
   <!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
+  
+  ``` TypeScript
+  @ObservedV2
+  export class MyStorage {
+    public static singleton_: MyStorage;
+  
+    static instance() {
+      if (!MyStorage.singleton_) {
+        MyStorage.singleton_ = new MyStorage();
+      }
+      return MyStorage.singleton_;
+    }
+    // 页面级UI状态存储的数字
+    @Trace public count: number = 47;
+  }
+  ```
 
   <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
   
