@@ -1018,6 +1018,81 @@ export struct RequestFocusExample {
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
   <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct FocusControl {
+    @State btColor: string = '#ff2787d9';
+    @State btColor2: string = '#ff2787d9';
+  
+    build() {
+      NavDestination() {
+          Column({ space: 20 }) {
+            Column({ space: 5 }) {
+              Button('Button')
+                .width(200)
+                .height(70)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor)
+                .onFocus(() => {
+                  this.btColor = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor = '#ff2787d9';
+                })
+                .id('testButton')
+  
+              Button('Button')
+                .width(200)
+                .height(70)
+                .fontColor(Color.White)
+                .focusOnTouch(true)
+                .backgroundColor(this.btColor2)
+                .onFocus(() => {
+                  this.btColor2 = '#ffd5d5d5';
+                })
+                .onBlur(() => {
+                  this.btColor2 = '#ff2787d9';
+                })
+                .id('testButton2')
+  
+              Divider()
+                .vertical(false)
+                .width('80%')
+                .backgroundColor('#ff707070')
+                .height(10)
+  
+              Button('FocusController.requestFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().requestFocus('testButton');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('focusControl.requestFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  focusControl.requestFocus('testButton2');
+                })
+                .backgroundColor('#ff2787d9')
+  
+              Button('clearFocus')
+                .width(200).height(70).fontColor(Color.White)
+                .onClick(() => {
+                  this.getUIContext().getFocusController().clearFocus();
+                })
+                .backgroundColor('#ff2787d9')
+            }
+          }
+          .width('100%')
+          .height('100%')
+      }
+      // ···
+    }
+  }
+  ```
 
 ![focus-2](figures/focus-2.gif)
 
