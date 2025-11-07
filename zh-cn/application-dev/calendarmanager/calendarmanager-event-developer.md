@@ -104,6 +104,31 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 4. 根据日历账户信息创建Calendar对象，用于进行日程管理。设置日历配置信息，可以根据需要打开日程提醒、设置日历账户颜色。
 
 	<!-- @[calendarEvent_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { calendarMgr } from '../entryability/EntryAbility';
+    import { calendarManager } from '@kit.CalendarKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const DOMAIN = 0x0000;
+    
+    let calendar: calendarManager.Calendar | undefined = undefined;
+    // 指定日历账户信息
+    const calendarAccount: calendarManager.CalendarAccount = {
+      name: 'MyCalendar',
+      type: calendarManager.CalendarType.LOCAL,
+      // 日历账户显示名称，该字段如果不填，创建的日历账户在界面显示为空字符串。
+      displayName: 'MyCalendar'
+    };
+    // 日历配置信息
+    const config: calendarManager.CalendarConfig = {
+      // 打开日程提醒
+      enableReminder: true,
+      // 设置日历账户颜色
+      color: '#aabbcc'
+    };
+    ```
     <!-- @[calendarEvent_createCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
 
 5. 在当前日历账户下添加日历日程，注意入参中不需要填写日程id。
