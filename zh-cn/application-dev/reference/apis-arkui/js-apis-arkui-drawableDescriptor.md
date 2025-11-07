@@ -6,6 +6,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -388,10 +390,14 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称      | 类型    | 必填  | 说明                                    |
 | ---------- | ------ | -----| --------------------------------------- |
-| duration   | number | 否   | 设置图片数组播放总时间。默认每张图片播放1秒。<br/> 取值范围：[0, +∞)      |
-| iterations | number | 否   | 设置图片数组播放次数。默认为1，值为-1时表示无限播放，值为0时表示不播放，值大于0时表示播放次数。 |
+| duration   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放总时间。默认每张图片播放1秒。<br/> 取值范围：[0, +∞)      |
+| iterations | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放次数。默认为1，值为-1时表示无限播放，值为0时表示不播放，值大于0时表示播放次数。 |
 
 **示例：**
 

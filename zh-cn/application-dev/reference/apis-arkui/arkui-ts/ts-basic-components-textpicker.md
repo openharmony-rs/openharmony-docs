@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件不建议开发者在动效过程中修改属性数据。
@@ -38,10 +40,14 @@ TextPicker(options?: TextPickerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | range | string[]&nbsp;\|&nbsp;string[] []<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br/>[TextPickerRangeContent](#textpickerrangecontent10对象说明)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10对象说明)[]<sup>10+</sup> | 是 | 选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。<br/>**说明**：单列数据选择器使用string[]，[Resource](ts-types.md#resource)，[TextPickerRangeContent](#textpickerrangecontent10对象说明)[]类型。<br/>多列数据选择器使用string[][]类型。 <br/>多列联动数据选择器使用[TextCascadePickerRangeContent](#textcascadepickerrangecontent10对象说明)[]类型。<br/>Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。<br>range的类型及列数不可以动态修改。|
-| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | 否 | 设置默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>**说明**：单列数据选择器使用number类型。<br/>多列、多列联动数据选择器使用number[]类型。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。|
+| selected | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup> <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[]<sup>10+</sup> | 否 | 设置默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>**说明**：单列数据选择器使用int类型。<br/>多列、多列联动数据选择器使用int[]类型。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。|
 | value | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] | 否 | 设置默认选中项的值，优先级低于selected。<br/>默认值：第一个元素值<br/>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/> **说明**：只有显示文本列表时该值有效。显示图片或图片加文本的列表时，该值无效。 <br/>单列数据选择器使用[ResourceStr](ts-types.md#resourcestr)类型。<br/>多列、多列联动数据选择器使用[ResourceStr](ts-types.md#resourcestr)[]类型。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。|
 | columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | 否 | 设置每一个选择项列宽。<br/>默认值：每一个选择项列宽相等。<br/>**说明**：如果文本长度大于列宽时，文本被截断。<br/>当设置为异常值时，列宽按照默认值处理，此时TextPicker组件多列等宽，每一列宽度为组件宽度除以列数。默认值支持Undefined和Null，不支持Undefined[]和Null[]。 |
 
@@ -91,7 +97,9 @@ TextPicker(options?: TextPickerOptions)
 
 ### defaultPickerItemHeight
 
-defaultPickerItemHeight(value: number | string)
+ArkTS-Dyn: defaultPickerItemHeight(value: number | string)
+
+ArkTS-Sta: defaultPickerItemHeight(value: double | string)
 
 设置Picker各选择项的高度。
 
@@ -99,15 +107,21 @@ defaultPickerItemHeight(value: number | string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                   |
 | ------ | -------------------------- | ---- | ---------------------- |
-| value  | number&nbsp;\|&nbsp;string | 是   | Picker各选择项的高度。number类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 是   | Picker各选择项的高度。double类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br />默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。 |
 
 ### defaultPickerItemHeight<sup>18+</sup>
 
-defaultPickerItemHeight(height: Optional\<number | string>)
+ArkTS-Dyn: defaultPickerItemHeight(height: Optional\<number | string>)
+
+ArkTS-Sta: defaultPickerItemHeight(height: Optional\<double | string>)
 
 设置Picker各选择项的高度。与[defaultPickerItemHeight](#defaultpickeritemheight)相比，height参数新增了对undefined类型的支持。
 
@@ -115,11 +129,15 @@ defaultPickerItemHeight(height: Optional\<number | string>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                   |
 | ------ | -------------------------- | ---- | ---------------------- |
-| height  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;string> | 是   | Picker各选择项的高度。number类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br/>默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>当height的值为undefined时，维持上次取值。 |
+| height  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;string> <br> ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)\<double&nbsp;\|&nbsp;string> | 是   | Picker各选择项的高度。double类型取值范围：[0, +∞)，string类型仅支持number类型取值的字符串形式，例如"56"。<br/>默认值：选中项56vp，非选中项36vp。<br />**说明：**<br />设置该参数后，选中项与非选中项的高度均为所设置的值。<br/>当height的值为undefined时，维持上次取值。 |
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -227,35 +245,47 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 
 ### selectedIndex<sup>10+</sup>
 
-selectedIndex(value: number | number[])
+ArkTS-Dyn: selectedIndex(value: number | number[])
 
-设置默认选中项在数组中的索引值，优先级高于[TextPickerOptions](#textpickeroptions对象说明)中的选中值。单列数据选择器使用number类型。多列、多列联动数据选择器使用number[]类型。
+ArkTS-Sta: selectedIndex(value: int | int[])
+
+设置默认选中项在数组中的索引值，优先级高于[TextPickerOptions](#textpickeroptions对象说明)中的选中值。单列数据选择器使用int类型。多列、多列联动数据选择器使用int[]类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 10
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | number&nbsp;\|&nbsp;number[] | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当value的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致。如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。<br/> |
+| value  |  ArkTS-Dyn: number&nbsp;\|&nbsp;number[] <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[] | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当value的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致。如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。<br/> |
 
 ### selectedIndex<sup>18+</sup>
 
-selectedIndex(index: Optional\<number | number[]>)
+ArkTS-Dyn: selectedIndex(index: Optional\<number | number[]>)
 
-设置默认选中项在数组中的索引值，优先级高于[TextPickerOptions](#textpickeroptions对象说明)中的选中值。单列数据选择器使用number类型。多列、多列联动数据选择器使用number[]类型。与[selectedIndex](#selectedindex10)相比，index参数新增了对undefined类型的支持。
+ArkTS-Sta: selectedIndex(index: Optional\<int | int[]>)
+
+设置默认选中项在数组中的索引值，优先级高于[TextPickerOptions](#textpickeroptions对象说明)中的选中值。单列数据选择器使用int类型。多列、多列联动数据选择器使用int[]类型。与[selectedIndex](#selectedindex10)相比，index参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| index  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;number[]> | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当index的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致，如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。<br/> |
+| index  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;number[]> <br> ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)\<int&nbsp;\|&nbsp;int[]> | 是   | 默认选中项在数组中的索引值，索引从0开始。<br/>默认值：0 <br/>当index的值为undefined时，默认值与[TextPickerOptions](#textpickeroptions对象说明)中的selected值保持一致，如果[TextPickerOptions](#textpickeroptions对象说明)中的selected值为undefined，则默认值为0。<br/> |
 
 ### canLoop<sup>10+</sup>
 
@@ -449,7 +479,9 @@ selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
 
 ### onChange
 
-onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&nbsp;number&nbsp;\|&nbsp;number[])&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&nbsp;number&nbsp;\|&nbsp;number[])&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&nbsp;int&nbsp;\|&nbsp;int[])&nbsp;=&gt;&nbsp;void)
 
 滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
 
@@ -459,12 +491,16 @@ onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&n
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
 | value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | 是   | 当前选中项的文本。多列的情况，value为数组类型。   |
-| index  | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
+| index  | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup> <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[]<sup>10+</sup> | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
 
 ### onChange<sup>18+</sup>
 
@@ -573,17 +609,23 @@ onCancel(callback: () => void)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTs-Dyn起始版本：** 15
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否    | 文本颜色。                     |
 | font  | [Font](ts-types.md#font)                 | 否    | 文本样式。 |
-| minFontSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 文本最小显示字号，与maxFontSize配合使用。设置minFontSize与maxFontSize时，font中的size不生效。默认最大行数为1，自适应高度方式为MIN_FONT_SIZE_FIRST。                     |
-| maxFontSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 文本最大显示字号。                     |
+| minFontSize  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 文本最小显示字号，与maxFontSize配合使用。设置minFontSize与maxFontSize时，font中的size不生效。默认最大行数为1，自适应高度方式为MIN_FONT_SIZE_FIRST。                     |
+| maxFontSize  | double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 文本最大显示字号。                     |
 |  overflow   |   [TextOverflow](ts-appendix-enums.md#textoverflow) | 否    | 文本截断方式，设置为MARQUEE时不生效。                     |
 
 ## OnTextPickerChangeCallback<sup>18+</sup>
 
-type OnTextPickerChangeCallback = (value: string | string[], index: number | number[]) => void
+ArkTS-Dyn: type OnTextPickerChangeCallback = (value: string | string[], index: number | number[]) => void
+
+ArkTS-Sta: type OnTextPickerChangeCallback = (value: string | string[], index: int | int[]) => void
 
 滑动选中TextPicker文本内容后，触发该回调。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
 
@@ -591,16 +633,22 @@ type OnTextPickerChangeCallback = (value: string | string[], index: number | num
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
 | value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | 是   | 当前选中项的文本。多列的情况，value为数组类型。   |
-| index  | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
+| index  | ArkTS-Dyn: number&nbsp;\|&nbsp;number[]<sup>10+</sup> <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[]<sup>10+</sup> | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
 
 ## TextPickerScrollStopCallback<sup>14+</sup>
 
-type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void
+ArkTS-Dyn: type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void
+
+ArkTS-Sta: type TextPickerScrollStopCallback = (value: string | string[], index: int | int[]) => void
 
 文本选择器的选项列滑动停止时触发该事件。
 
@@ -610,16 +658,22 @@ type TextPickerScrollStopCallback = (value: string | string[], index: number | n
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 14
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
 | value  | string&nbsp;\|&nbsp;string[] | 是   | 当前选中项的文本。多列的情况，value为数组类型。   |
-| index  | number&nbsp;\|&nbsp;number[] | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
+| index  | ArkTS-Dyn: number&nbsp;\|&nbsp;number[] <br> ArkTS-Sta: int&nbsp;\|&nbsp;int[] | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
 
 ## TextPickerEnterSelectedAreaCallback<sup>18+</sup>
 
-type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: number | number[]) => void
+ArkTS-Dyn: type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: number | number[]) => void
+
+ArkTS-Sta: type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: double | double[]) => void
 
 滑动TextPicker过程中，选项进入分割线区域内，触发该回调。
 
@@ -629,12 +683,16 @@ type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: num
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
 | value  | string&nbsp;\|&nbsp;string[] | 是   | 当前选中项的文本。多列的情况，value为数组类型。   |
-| index  | number&nbsp;\|&nbsp;number[] | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
+| index  | ArkTS-Dyn: number&nbsp;\|&nbsp;number[] <br> ArkTS-Sta: double&nbsp;\|&nbsp;double[] | 是   | 当前选中项的索引值，索引从0开始。多列的情况，index为数组类型。 |
 
 ## PickerBackgroundStyle<sup>20+</sup>
 

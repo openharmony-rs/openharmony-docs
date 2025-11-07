@@ -4,7 +4,9 @@
 
 >  **说明：** 
 >
-> 该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -139,7 +141,9 @@ pathColor(value: ResourceColor)
 
 ### pathStrokeWidth
 
-pathStrokeWidth(value: number | string)
+ArkTS-Dyn: pathStrokeWidth(value: number | string)
+
+ArkTS-Sta: pathStrokeWidth(value: double | string)
 
 设置连线的宽度。设置为0或负数时连线不显示。
 
@@ -149,9 +153,13 @@ pathStrokeWidth(value: number | string)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 9
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型                       | 必填 | 说明                          |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，超过最大值按最大值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，超过最大值按最大值处理。 |
 
 ### autoReset
 
@@ -207,7 +215,9 @@ skipUnselectedPoint(skipped: boolean)
 
 ### onPatternComplete
 
-onPatternComplete(callback: (input: Array\<number\>) => void)
+ArkTS-Dyn: onPatternComplete(callback: (input: Array\<number\>) => void)
+
+ArkTS-Sta: onPatternComplete(callback: (input: Array\<int\>) => void)
 
 密码输入结束时触发该回调。
 
@@ -215,15 +225,21 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 9
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
+| input  | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
 
 ### onDotConnect<sup>11+</sup>
 
-onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+ArkTS-Dyn: onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+
+ArkTS-Sta: onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\>)
 
 密码输入选中宫格圆点时触发该回调。
 
@@ -232,6 +248,10 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 22
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 

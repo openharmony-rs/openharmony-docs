@@ -4,15 +4,17 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 
 > **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
 >
-> 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](../../../ui/arkts-common-events-focus-event.md#设置组件是否可获焦)。Image组件默认不获焦，需将[focusable](ts-universal-attributes-focus.md#focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)属性设置为true，即可实现点击获焦。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](./ts-basic-svg.md)。
+> - 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](../../../ui/arkts-common-events-focus-event.md#设置组件是否可获焦)。Image组件默认不获焦，需将[focusable](ts-universal-attributes-focus.md#focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)属性设置为true，即可实现点击获焦。
 >
-> 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](./ts-basic-svg.md)。
 >
->如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
+> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+>
+> - 如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
 
 ## 需要权限
 
@@ -550,7 +552,9 @@ orientation(orientation: ImageRotateOrientation)
 
 ### hdrBrightness<sup>19+</sup>
 
-hdrBrightness(brightness: number)
+ArkTS-Dyn: hdrBrightness(brightness: number)
+
+ArkTS-Sta: hdrBrightness(brightness: double)
 
 设置组件在显示HDR图片时的亮度。
 
@@ -562,11 +566,15 @@ svg类型图源不支持该属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 19
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1。0表示图片按照SDR亮度显示，1表示图片按照当前允许的最高HDR亮度显示。  |
+| brightness | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1。0表示图片按照SDR亮度显示，1表示图片按照当前允许的最高HDR亮度显示。  |
 
 ## ImageContent<sup>12+</sup>
 
@@ -686,10 +694,14 @@ svg类型图源不支持该属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型       | 必填 | 说明           |
 | ------ | --------- | ---- | ------------- |
-| width<sup>7+</sup>  | number | 是   | 图片解码尺寸宽度。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup>  | number | 是   | 图片解码尺寸高度。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 图片解码尺寸宽度。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 图片解码尺寸高度。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## DrawableDescriptor<sup>10+</sup>
 
@@ -765,7 +777,9 @@ type ImageMatrix = Matrix4Transit
 
 ### onComplete
 
-onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
+ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
+
+ArkTS-Sta: onComplete(callback: (event?: { width: int, height: int, componentWidth: int, componentHeight: int, loadingStatus: int,contentWidth: int, contentHeight: int, contentOffsetX: int, contentOffsetY: int }) =&gt; void)
 
 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
 
@@ -779,17 +793,21 @@ onComplete(callback: (event?: { width: number, height: number, componentWidth: n
 
 **参数：**
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | 是   | 图片的宽。<br/>单位：像素                                    |
-| height                       | number | 是   | 图片的高。<br/>单位：像素                                    |
-| componentWidth               | number | 是   | 组件的宽。<br/>单位：像素                                    |
-| componentHeight              | number | 是   | 组件的高。<br/>单位：像素                                    |
-| loadingStatus                | number | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth<sup>10+</sup>   | number | 是   | 图片实际绘制的宽度。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight<sup>10+</sup>  | number | 是   | 图片实际绘制的高度。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY<sup>10+</sup> | number | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| width                        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 图片的宽。<br/>单位：像素                                    |
+| height                       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 图片的高。<br/>单位：像素                                    |
+| componentWidth               | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 组件的宽。<br/>单位：像素                                    |
+| componentHeight              | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 组件的高。<br/>单位：像素                                    |
+| loadingStatus                | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
+| contentWidth<sup>10+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 图片实际绘制的宽度。<br/>单位：像素<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight<sup>10+</sup>  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 图片实际绘制的高度。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：像素<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 ### onError<sup>9+</sup>
 
@@ -853,10 +871,14 @@ type ImageErrorCallback = (error: ImageError) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 9
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称          | 类型   | 必填 | 说明                      |
 | --------------- | ------ | ---- | ------------------------- |
-| componentWidth  | number | 是   | 组件的宽。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| componentHeight | number | 是   | 组件的高。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentWidth  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 组件的宽。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| componentHeight | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 组件的高。<br/>单位：像素<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message<sup>10+</sup>         | string | 是   | 报错信息。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | 否   | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
