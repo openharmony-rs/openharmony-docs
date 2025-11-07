@@ -13634,7 +13634,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"underlying_code_required_for_dynamic_components",
 						"start_line":15
 					}
@@ -13644,7 +13644,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":56,
 						"name":"read_local_js_resource_from_rawfile_dir_via_file_api",
 						"start_line":16
 					}
@@ -13654,7 +13654,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":28,
 						"name":"write_code_for_business_components",
 						"start_line":16
 					}
@@ -13664,7 +13664,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"compile_resource_allocation_information",
 						"start_line":16
 					}
@@ -13674,9 +13674,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"dynamic_webview_component_loading",
-						"start_line":-1
+						"start_line":16
 					}
 				]
 			},
@@ -13684,7 +13684,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"underlying_code_required_for_dynamic_components",
 						"start_line":15
 					}
@@ -13694,7 +13694,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":65,
 						"name":"local_resources_content_read_from_rawfile_directory_by_file_operation",
 						"start_line":16
 					}
@@ -13704,7 +13704,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"write_code_for_business_components",
 						"start_line":15
 					}
@@ -13714,7 +13714,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":53,
 						"name":"compile_resource_allocation_information",
 						"start_line":16
 					}
@@ -13724,7 +13724,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"dynamic_webview_component_loading",
 						"start_line":16
 					}
