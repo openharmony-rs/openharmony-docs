@@ -177,7 +177,7 @@
 
 ## 完整示例
 
-下面展示了使用AVScreenCaptureRecorder屏幕录屏存文件的完整示例代码。
+以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
 
 ```javascript
 import { media } from '@kit.MediaKit';

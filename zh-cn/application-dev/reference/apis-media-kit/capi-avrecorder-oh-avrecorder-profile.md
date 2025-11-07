@@ -39,7 +39,7 @@
 | int32_t videoFrameWidth | 视频宽度。 |
 | int32_t videoFrameHeight | 视频高度。 |
 | int32_t videoFrameRate | 视频帧率。 |
-| bool isHdr | 是否录制HDR视频。 |
-| bool enableTemporalScale | 是否启用时间缩放编码模式。 |
+| bool isHdr | 是否录制HDR视频。<br> true表示录制HDR视频，false表示不录制HDR视频。<br> 默认是false。 |
+| bool enableTemporalScale | 是否启用时间缩放编码模式。<br> true表示启用时间缩放编码模式，false表示不启用时间缩放编码模式。<br> 默认是false。 |
 
 
