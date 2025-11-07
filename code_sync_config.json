@@ -20806,5 +20806,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-componentV2.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"ComponentV2_page_componentV2",
+						"start_line":20
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-wrapBuilder.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"wrapbuilder_page_two",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"wrapbuilder_page_three",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"wrapbuilder_page_four",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"wrapbuilder_page_five",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
