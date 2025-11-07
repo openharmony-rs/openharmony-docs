@@ -81,8 +81,7 @@ radio.getRadioTech(slotId, (err: BusinessError | null, data: radio.NetworkRadioT
         console.error(`getRadioTech failed, callback: err->${JSON.stringify(err)}`);
     } else {
         console.info(`getRadioTech success, callback: data->${JSON.stringify(data)}`);
-    }
-    
+    } 
 });
 ```
 
@@ -153,11 +152,9 @@ import { BusinessError } from '@ohos.base';
 let slotId: int = 0;
 radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
     console.info(`getRadioTech success, promise: data->${JSON.stringify(data)}`);
-    done();
 }).catch((error: Error) => {
     let err: BusinessError = error;
     console.error(`getRadioTech failed, promise: err->${JSON.stringify(err)}`);
-    done();
 });
 ```
 
@@ -482,12 +479,10 @@ import { BusinessError } from '@ohos.base';
 
 let slotId: int = 0;
 radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
-    console.info(`getNetworkSelectionMode success, promise: data->${data}`);
-    done();
+    console.info(`getNetworkSelectionMode success, promise: data->${data}`);    
 }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-    done();
 });
 ```
 
@@ -553,10 +548,8 @@ let slotId: int = 0;
 radio.getISOCountryCodeForNetwork(slotId, (err: BusinessError | null, data: string | undefined)) => {
     if (err?.code) {
         console.error(`getISOCountryCodeForNetwork failed, callback: err->${JSON.stringify(err)}`);
-        done();
     } else {
         console.info(`getISOCountryCodeForNetwork success, callback: data->${JSON.stringify(data)}`);
-        done();
     }
 });
 ```
@@ -625,11 +618,9 @@ import { BusinessError } from '@ohos.base';
 let slotId: int = 0;
 radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
     console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
-    done();
 }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`getISOCountryCodeForNetwork failed, promise: err->${JSON.stringify(err)}`);
-    done();
 });
 ```
 
