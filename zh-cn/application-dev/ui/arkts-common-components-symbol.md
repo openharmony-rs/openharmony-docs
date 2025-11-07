@@ -104,6 +104,17 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口实现了symbolGlyph组件显示阴影效果。
 
   <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
+  @State isActive: boolean = true;
+  
+  options: ShadowOptions = {
+    radius: 10.0,
+    color: Color.Blue,
+    offsetX: 10,
+    offsetY: 10,
+  };
+  ```
 
   <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
