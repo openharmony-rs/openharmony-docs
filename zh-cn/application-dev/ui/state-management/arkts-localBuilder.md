@@ -390,4 +390,49 @@ struct ParentPage {
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
 <!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->
 
+``` TypeScript
+class LayoutSize {
+  public size: number = 0;
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'parent';
+  @State layoutSize: LayoutSize = { size: 0 };
+
+  @LocalBuilder
+  componentBuilder() {
+    Text(`this: ${this.label}`)
+    Text(`size: ${this.layoutSize.size}`)
+  }
+
+  build() {
+    Column() {
+      Child({
+        customBuilder: this.componentBuilder,
+        layoutSize: this.layoutSize
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  label: string = 'child';
+  @BuilderParam customBuilder: () => void;
+  @Link layoutSize: LayoutSize;
+
+  build() {
+    Column() {
+      this.customBuilder()
+      Button('add child size')
+        .onClick(() => {
+          this.layoutSize.size += 1; //子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
+        })
+    }
+  }
+}
+```
+
 ![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)
