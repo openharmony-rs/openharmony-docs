@@ -356,6 +356,30 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing)属性设置文本字符间距。
 
   <!-- @[custom_text_letter_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  Text('This is the text content with letterSpacing 0.')
+    .letterSpacing(0)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with letterSpacing 3.')
+    .letterSpacing(3)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  Text('This is the text content with letterSpacing -1.')
+    .letterSpacing(-1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .width('100%')
+    .margin(5)
+  ```
 
   ![zh-cn_image_0000001562940513](figures/zh-cn_image_0000001562940513.png)
 
