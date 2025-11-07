@@ -100,7 +100,7 @@
     ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
       // RSS或PSS值过大，说明内存使用率接近或达到上限，打印告警，或者增加处理逻辑。
-      hilog.warn(DOMAIN_NUMBER,TAG,`Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
+      hilog.warn(DOMAIN_NUMBER, TAG, `Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
     }
     ```
 
