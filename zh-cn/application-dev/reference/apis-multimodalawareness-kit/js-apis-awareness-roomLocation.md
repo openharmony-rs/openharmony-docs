@@ -27,9 +27,9 @@ import { roomLocation } from '@kit.MultimodalAwarenessKit';
 
 
 
-## roomLocationon('onRoomLocated')
+## roomLocationon('roomLocate')
 
- on(type: 'onRoomLocated', callback: Callback&lt;RoomLocateResponse&gt;): void;
+ on(type: 'roomLocate', callback: Callback&lt;RoomLocateResponse&gt;): void;
 
 订阅房间级定位事件。
 
@@ -39,7 +39,7 @@ import { roomLocation } from '@kit.MultimodalAwarenessKit';
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为"onRoomLocated"表示房间级定位。 |
+| type     | string                           | 是   | 事件类型。type为"roomLocate"表示房间级定位。 |
 | callback | Callback&lt;[RoomLocateResponse](#roomlocateresponse)&gt; | 是   | 回调函数，返回定位结果。                                   |
 
 **错误码**：
@@ -56,16 +56,16 @@ import { roomLocation } from '@kit.MultimodalAwarenessKit';
 **示例**：
 
 ```ts
-roomLocation.on('onRoomLocated', (data:roomLocation.RoomLocateResponse) => {
+roomLocation.on('roomLocate', (data:roomLocation.RoomLocateResponse) => {
     console.info('on success' + data);
 })
 ```
 
 
 
-## roomLocation.off('onRoomLocated')
+## roomLocation.off('roomLocate')
 
-off(type: 'onRoomLocated', callback?: Callback&lt;RoomLocateResponse&gt;): void;
+off(type: 'roomLocate', callback?: Callback&lt;RoomLocateResponse&gt;): void;
 
 取消订阅房间级定位事件。
 
@@ -75,7 +75,7 @@ off(type: 'onRoomLocated', callback?: Callback&lt;RoomLocateResponse&gt;): void;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为"onRoomLocated"表示房间级定位。 |
+| type     | string                           | 是   | 事件类型。type为"roomLocate"表示房间级定位。 |
 | callback | Callback&lt;[RoomLocateResponse](#roomlocateresponse)&gt; | 否  | 回调函数，返回定位结果。                                   |
 
 **错误码**：
@@ -92,7 +92,7 @@ off(type: 'onRoomLocated', callback?: Callback&lt;RoomLocateResponse&gt;): void;
 **示例**：
 
 ```ts
-roomLocation.off('onRoomLocated', (data:roomLocation.RoomLocateResponse) => {
+roomLocation.off('roomLocate', (data:roomLocation.RoomLocateResponse) => {
     console.info('off success' + data);
 })
 ```
