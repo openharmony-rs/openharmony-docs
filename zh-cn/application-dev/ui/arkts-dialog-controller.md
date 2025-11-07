@@ -98,7 +98,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
        new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController',
+     hilog.error(DOMAIN, 'dialogController',
        'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
    });
    ```
@@ -143,7 +143,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    this.getUIContext().getPromptAction().presentCustomDialog(() => {
      this.customDialogComponent(dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    
@@ -190,7 +190,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
      this.customDialogComponentWithId(dialogId, dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    
@@ -263,7 +263,7 @@ customDialogComponentGetState(dialogController: promptAction.DialogController) {
       // 'app.string.click_check_status'资源文件中的value值为'点我查询弹窗状态'。
       Button($r('app.string.click_check_status'))
         .onClick(() => {
-          hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+          hilog.info(DOMAIN, 'dialogController', 'state:' + dialogController.getState());
         })
     }
   }
@@ -284,7 +284,7 @@ customDialogComponentGetState(dialogController: promptAction.DialogController) {
 import { ComponentContent, promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
+const DOMAIN = 0x0000;
 class Params {
   public text: string = '';
   public dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -423,7 +423,7 @@ export struct DialogController {
         // 'app.string.click_check_status'资源文件中的value值为'点我查询弹窗状态'。
         Button($r('app.string.click_check_status'))
           .onClick(() => {
-            hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+            hilog.info(DOMAIN, 'dialogController', 'state:' + dialogController.getState());
           })
       }
     }
@@ -446,7 +446,7 @@ export struct DialogController {
                 new Params(this.message, dialogController));
             this.getUIContext().getPromptAction().openCustomDialogWithController(
               contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController',
+              hilog.error(DOMAIN, 'dialogController',
                 'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
             });
           })
@@ -457,7 +457,7 @@ export struct DialogController {
             this.getUIContext().getPromptAction().presentCustomDialog(() => {
               this.customDialogComponent(dialogController);
             }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+              hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
             });
           })
         // 'app.string.custom_builder_with_id'资源文件中的value值为'PresentCustomDialog+CustomBuilderWithId弹窗'。
@@ -467,7 +467,7 @@ export struct DialogController {
             this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
               this.customDialogComponentWithId(dialogId, dialogController);
             }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+              hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
             });
           })
         // 'app.string.custom_dialog_controller_dialog'资源文件中的value值为'CustomDialogController弹窗'。
