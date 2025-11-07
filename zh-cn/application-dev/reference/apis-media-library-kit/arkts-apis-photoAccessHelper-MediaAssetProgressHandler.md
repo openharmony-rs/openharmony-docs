@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 15开始支持。
 
@@ -15,14 +16,20 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## onProgress<sup>15+</sup>
 
-onProgress(progress: number): void
+ArkTS-Dyn: onProgress(progress: number): void
+
+ArkTS-Sta: onProgress(progress: int): void
 
 当所请求的视频资源返回进度时系统会回调此方法。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| progress | number | 是   | 返回的进度百分比，范围为0~100。 |
+| progress | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 返回的进度百分比，范围为0~100。 |

@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -14,13 +15,17 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称           | 类型    | 可读   | 可写  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype) | 是    | 否    | 相册类型。    |
 | albumSubtype | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是    | 否   | 相册子类型。    |
 | albumName | string | 是    | 预置相册不可写，用户相册可写   | 相册名称。    |
 | albumUri | string | 是    | 否    | 相册uri。   |
-| count | number | 是    | 否    |  相册中文件数量。 |
+| count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
 
 ## getAssets
@@ -32,6 +37,10 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -94,6 +103,10 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
