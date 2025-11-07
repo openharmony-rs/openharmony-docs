@@ -889,7 +889,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
-允许应用使用外部native程序
+允许应用使用外部native程序。
 
 包括加载外部动态链接库(so)、二进制文件(bin)等。
 
@@ -907,9 +907,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用获取网络设备的IP和MAC地址。
 
-<!--RP58--><!--RP58End-->
-
+<!--RP58-->
 用于网络连接或者识别，不支持用于设备定位。
+<!--RP58End-->
 
 **权限级别**：system_basic
 
