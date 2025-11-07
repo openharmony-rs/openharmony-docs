@@ -18359,7 +18359,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts",
 				"functions":[
 					{
-						"end_line":135,
+						"end_line":136,
 						"name":"update_form_interface",
 						"start_line":27
 					}
