@@ -94,7 +94,7 @@
             //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code},\
             //   message is ${paramError.message}`);
             // }
-            let link: string = 'https://www.example.com';
+            let link: string = 'https://www.example.com'; // 此处为实际应用链接
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,
@@ -201,7 +201,7 @@
             //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, \
             //   message is ${paramError.message}`);
             // }
-            let link: string = 'https://www.example.com';
+            let link: string = 'https://www.example.com'; // 此处为实际应用链接
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
               appLinkingOnly: true,
