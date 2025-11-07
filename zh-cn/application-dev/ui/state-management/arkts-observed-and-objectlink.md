@@ -421,6 +421,71 @@ struct Index {
 
 <!-- @[Nested_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/NestedObject.ets) -->
 
+``` TypeScript
+@Observed
+class Book {
+  public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Observed
+class Bag {
+  public book: Book;
+
+  constructor(book: Book) {
+    this.book = book;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State bag: Bag = new Bag(new Book('JS'));
+
+  build() {
+    Column() {
+      Text(`Index: ${this.bag.book.name}`) // 无法观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change bag.book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.bag.book.name = 'TS';
+        })
+
+      BookCard({ book: this.bag.book })
+    }
+  }
+}
+```
+
 ![Observed_ObjectLink_nested_object](figures/Observed_ObjectLink_nested_object.gif)
 
 上述示例中：
