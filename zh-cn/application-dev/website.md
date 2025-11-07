@@ -1598,8 +1598,7 @@
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频时延管理](media/audio/audio-latency.md)
         - [音频工作组管理](media/audio/audio-workgroup.md)
-        - [音效管理](media/audio/audio-effect-management.md)
-        - [空间音频管理](media/audio/public-audio-spatialization-management.md)
+        - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
