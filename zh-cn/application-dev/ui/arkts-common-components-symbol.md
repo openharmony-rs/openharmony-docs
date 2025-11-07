@@ -123,6 +123,10 @@ SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/a
 
 <!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
+``` TypeScript
+@State wifiColor: ResourceColor = Color.Black;
+```
+
 <!-- @[symbol_glyph_span_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
 ``` TypeScript
