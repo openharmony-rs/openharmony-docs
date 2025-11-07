@@ -43,6 +43,26 @@
 
 <!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusActive.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct FocusActiveExample {
+  build() {
+    NavDestination() {
+      Column() {
+        Button('Set Active').width(140).height(45).margin(5).onClick(() => {
+          this.getUIContext().getFocusController().activate(true, true);
+        })
+        Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
+          this.getUIContext().getFocusController().activate(false, true);
+        })
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 
 按下Tab键，焦点激活态显示。点击鼠标退出焦点激活态。
 
