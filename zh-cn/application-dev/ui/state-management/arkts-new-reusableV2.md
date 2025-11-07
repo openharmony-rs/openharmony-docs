@@ -57,6 +57,29 @@ reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：[复用�
 
 <!-- @[Interface Description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ExamplePage.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct ExamplePage {
+
+  build() {
+    Column() {
+      ReusableV2ComponentExample()
+        .reuse({reuseId: () => 'reuseComponent'}) // 使用'ReusableV2ComponentExample'作为reuseId
+      ReusableV2ComponentExample()
+        .reuse({reuseId: () => ''}) // 使用空字符串将默认使用组件名'ReusableV2ComponentExample'作为reuseId
+      ReusableV2ComponentExample() // 未指定reuseId将默认使用组件名'ReusableV2ComponentExample'作为reuseId
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2ComponentExample {
+  build() {
+  }
+}
+```
+
 ## 使用限制
 
 - 仅能将\@ReusableV2装饰的自定义组件作为V2自定义组件的子组件使用。如果在V1的自定义组件中使用V2的复用组件将导致编译期报错，编译期无法校验到的复杂场景下将会有运行时报错。
