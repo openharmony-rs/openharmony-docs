@@ -998,7 +998,7 @@ export struct DisableMenuItem {
     // ···
           RichEditor(this.options)
             .onReady(() => {
-              // $r('app.string.Demo_richEditor')需要替换为开发者所需的资源文件
+              // 'app.string.Demo_richEditor'资源文件中的value值为'这是一个RichEditor'
               this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
                 style: {
                   fontSize: 30
