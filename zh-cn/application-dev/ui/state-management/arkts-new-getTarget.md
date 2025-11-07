@@ -255,6 +255,15 @@ struct GetBeforeAgent {
 
 <!-- @[ModelViewTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewTwo.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public name: string = 'Tom';
+  @Trace public age: number = 24;
+}
+let info: Info = new Info(); // NAPI接口传入info实例
+```
+
 | 影响接口名              | 影响结果                                       |
 | ----------------------- | ---------------------------------------------- |
 | napi_get_property_names | 返回值为"\_\_ob\_name"，"\_\_ob\_age"。        |
