@@ -1581,9 +1581,9 @@ Native侧
     target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-<!--RP3-->上述用例具体实现可参考[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)。<!--RP3End-->
+    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)<!--RP3End-->。
 
-![示意图](./figures/drawStar.jpeg)
+    ![示意图](./figures/drawStar.jpeg)
 
 ## 使用NativeXComponent管理Surface生命周期
 
