@@ -165,7 +165,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title('NavDestinationTitle1')
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -185,7 +185,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title('NavDestinationTitle2')
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -205,7 +205,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       }.title('NavDestinationTitle3')
       .onBackPressed(() => {
         const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -771,7 +771,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
     build() {
       // ···
         Column() {
-          // $r('app.string.onPageName')需要替换为开发者所需的字符串资源文件
+          // $r('app.string.onPageName')资源文件中的value值为“所属页面Name:”
           Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
         }.width('100%').height('100%')
       // ···
@@ -927,7 +927,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    ``` TypeScript
    NavDestination() {
      Column() {
-       // $r('app.string.ToPage')需要替换为开发者所需的字符串资源文件
+       // $r('app.string.ToPage')资源文件中的value值为“跳转到目的页”
        Button($r('app.string.ToPage'))
          .width('80%')
          .height(40)
@@ -1129,7 +1129,7 @@ struct NavigationExample {
         .width('90%')
         .margin({ top: 12 })
       }
-      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.mainTitle')资源文件中的value值为“主标题”
       .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
@@ -1151,7 +1151,7 @@ export struct pageTwoTmp {
     }.title('NavDestinationTitle2')
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1171,7 +1171,7 @@ export struct pageOneTmp {
     }.title('NavDestinationTitle1')
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1255,7 +1255,7 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件
+              // $r('app.string.detailsPageParameters')资源文件中的value值为“详情页面参数”
               this.pathInfos.pushPathByName(`${item}`,
                 // 将name指定的NaviDestination页面信息入栈,传递的参数为param
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
@@ -1270,7 +1270,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.settings')资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -1307,7 +1307,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.settingPage')资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -1326,7 +1326,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.stepperIndex_text24')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.return')资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -1416,6 +1416,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
+              // $r('app.string.pageSettingParam')资源文件中的value值为“页面设置参数”
               this.pathInfos.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
