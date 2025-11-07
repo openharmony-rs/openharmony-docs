@@ -22,7 +22,7 @@
   <!--Del-->
   - [@ohos.multimodalInput.pointer (Mouse Pointer) (System API)](js-apis-pointer-sys.md)
   - [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](js-apis-shortKey-sys.md)
-  - [@ohos.multimodalInput.shortKey (Global Shortcut Keys) (system API)](js-apis-inputconsumer-sys.md)
+  - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (system API)](js-apis-inputconsumer-sys.md)
   - [@ohos.multimodalInput.inputDevice (Input device) (system API)](js-apis-inputdevice-sys.md)
   - [@ohos.multimodalInput.inputEventClient (Input Event Injection) (System API)](js-apis-inputeventclient-sys.md)
   - [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](js-apis-inputmonitor-sys.md)

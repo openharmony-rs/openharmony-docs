@@ -21,23 +21,51 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager). Both [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) and [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) can be used to register resources.
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 
+   // Method 1: Use registerSource to register resources.
    let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
    let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
-   let id = 0;
+   let idForUri = 0;
 
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
      console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
-     id = value;
+     idForUri = value;
    }).catch((err: BusinessError) => {
      console.error(`Failed to register source ${err}`);
+   });
+
+   // Method 2: Use registerSourceFromFd to register resources.
+   let idForFd = 0;
+   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // Use the corresponding file in the rawfile directory.
+   let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+     fd: audioFile.fd,
+     offset: audioFile.offset,
+     length: audioFile.length,
+   };
+
+   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // Use the corresponding file in the rawfile directory.
+   let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+     fd: hapticFile.fd,
+     offset: hapticFile.offset,
+     length: hapticFile.length,
+   };
+
+   audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+     console.info('Succeeded in doing registerSourceFromFd.');
+     idForFd = value;
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 

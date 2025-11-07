@@ -229,7 +229,7 @@
       - [remoteAbilityInfo (System API)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (System API)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
-    - continuation<!--continuation-->
+    - continuation<!--ability--continuation-->
       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
       - [continuationResult](js-apis-continuation-continuationResult.md)
     - security<!--ability-security-->

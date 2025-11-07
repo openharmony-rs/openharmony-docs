@@ -95,7 +95,9 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-Obtains the application context. This API provides context access independent of the base class **Context**. Each call creates a new ApplicationContext instance.
+Obtains the application context. This API provides context access independent of the base class **Context**.
+
+Repeated calls to this API generate a new ApplicationContext object.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -129,6 +131,51 @@ export default class EntryAbility extends UIAbility {
       let code: number = (error as BusinessError).code;
       let message: string = (error as BusinessError).message;
       console.error(`getApplicationContext failed, error.code: ${code}, error.message: ${message}`);
+    }
+  }
+}
+```
+
+## application.getApplicationContextInstance<sup>22+</sup>
+
+getApplicationContextInstance(): ApplicationContext
+
+Obtains the application context. This API provides context access independent of the base class **Context**.
+
+Repeated calls to this API obtain the same ApplicationContext instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type                                                        | Description               |
+| ------------------------------------------------------------ | ------------------- |
+| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context.|
+
+**Error codes**
+
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message       |
+| -------- | --------------- |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let applicationContext: common.ApplicationContext = application.getApplicationContextInstance();
+    } catch (error) {
+      let code: number = (error as BusinessError).code;
+      let message: string = (error as BusinessError).message;
+      console.error(`getApplicationContextInstance failed, error.code: ${code}, error.message: ${message}`);
     }
   }
 }
