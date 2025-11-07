@@ -44,6 +44,40 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 通过[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
 
   <!-- @[symbol_span_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  Row() {
+    Column() {
+      Text('Black')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .fontColor([Color.Black])
+      }
+    }
+  
+    Column() {
+      Text('Green')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .fontColor([Color.Green])
+      }
+    }
+  
+    Column() {
+      Text('Pink')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .fontColor([Color.Pink])
+      }
+    }
+  }
+  ```
 
   ![symbolSpan_multi_fontColor](figures/symbolspan_multi_fontcolor.PNG)
 
