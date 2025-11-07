@@ -434,6 +434,29 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   <!-- @[custom_the_text_by_text_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
+  ``` TypeScript
+  Text('This is the text content with textCase set to Normal.')
+    .textCase(TextCase.Normal)
+    .padding(10)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  
+  // 文本全小写展示
+  Text('This is the text content with textCase set to LowerCase.')
+    .textCase(TextCase.LowerCase)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  
+  // 文本全大写展示
+  Text('This is the text content with textCase set to UpperCase.')
+    .textCase(TextCase.UpperCase)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  ```
+  
   ![zh-cn_image_0000001562940529](figures/zh-cn_image_0000001562940529.png)
 
 - 通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性设置文本是否可复制粘贴。
