@@ -1323,13 +1323,19 @@ try {
 
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
-setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
+ArkTS-Dyn: setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 创建悬浮窗、模态窗或WindowType窗口类型为系统窗口时，可以调用该接口使能窗口获取避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
 
 该接口一般适用于此场景：应用于创建上述类型窗口并希望获取避让区信息时，需要在创建窗口后调用该接口设置使能该窗口，再调用[getWindowAvoidArea()](#getwindowavoidarea9)或[on('avoidAreaChange')](#onavoidareachange9)获取或监听避让区。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
+  
+**ArkTS-Sta起始版本：** 22
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1358,6 +1364,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1401,6 +1408,55 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_DIALOG,
+        decorEnabled: true,
+        ctx: this.context
+      };
+      try {
+        window.createWindow(config, (err: BusinessError, data) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to create the system window. Cause: ${err}`);
+            return;
+          }
+          windowClass = data;
+          windowClass.setUIContent("pages/Test");
+          let enabled = true;
+          let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+          promise.then(() => {
+            let type = window.AvoidAreaType.TYPE_SYSTEM;
+            let avoidArea = windowClass?.getWindowAvoidArea(type);
+          }).catch((err: Error) => {
+            console.error(`Failed to obtain the system window avoid area. Cause: ${err}`);
+          });
+        });
+      } catch (exception: BusinessError) {
+        console.error(`Failed to create the system window. Cause: ${exception}`);
       }
     });
   }
@@ -4834,13 +4890,17 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本** 12
+
+**ArkTS-Sta起始版本** 22
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | --------- | ------ | -- | ---------------------------------------- |
-| grayScale | number | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
+| grayScale | ArkTS: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
 
 **返回值：**
 
@@ -4861,6 +4921,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4882,6 +4943,32 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
     }
   } catch (exception) {
     console.error(`Failed to set the grayScale. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
+  if (error?.code) {
+    console.error(`Failed to set the content. Cause: ${error}`);
+    return;
+  }
+  console.info('Succeeded in setting the content.');
+  let grayScale: double = 0.5;
+  try {
+    if (canIUse("SystemCapability.Window.SessionManager")) {
+      let promise = windowClass?.setWindowGrayScale(grayScale);
+      promise?.then(() => {
+        console.info('Succeeded in setting the grayScale.');
+      }).catch((err: Error) => {
+        console.error(`Failed to set the grayScale. Cause: ${err}`);
+      });
+    }
+  } catch (exception) {
+    console.error(`Failed to set the grayScale. Cause: ${exception}`);
   }
 });
 ```
