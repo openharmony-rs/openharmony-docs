@@ -57,67 +57,6 @@ libchild_process.so
 
     子进程启动后会先调用NativeChildProcess_OnConnect获取IPC Stub对象，之后再调用NativeChildProcess_MainProc移交主线程控制权，该函数返回后子进程随即退出。
 
-    <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
-    
-    ``` C++
-    // [Start child_process_head_file]
-    #include <IPCKit/ipc_kit.h>
-    // ···
-    // [End child_process_head_file]
-    #include <IPCKit/ipc_cremote_object.h>
-    #include <IPCKit/ipc_cparcel.h>
-    #include <IPCKit/ipc_error_code.h>
-    
-    class IpcCapiStubTest {
-    public:
-        explicit IpcCapiStubTest();
-        ~IpcCapiStubTest();
-        OHIPCRemoteStub *GetRemoteStub();
-        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData);
-    
-    private:
-        OHIPCRemoteStub *stub_{nullptr};
-    };
-    
-    IpcCapiStubTest::IpcCapiStubTest()
-    {
-        // 创建stub对象
-        stub_ = OH_IPCRemoteStub_Create("testIpc", &IpcCapiStubTest::OnRemoteRequest, nullptr, this);
-    }
-    
-    IpcCapiStubTest::~IpcCapiStubTest()
-    {
-        if (stub_ != nullptr) {
-            OH_IPCRemoteStub_Destroy(stub_);
-        }
-    }
-    
-    OHIPCRemoteStub *IpcCapiStubTest::GetRemoteStub() { return stub_; }
-    
-    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)
-    {
-        return OH_IPC_SUCCESS;
-    }
-    
-    IpcCapiStubTest g_ipcStubObj;
-    
-    extern "C" {
-    OHIPCRemoteStub *NativeChildProcess_OnConnect()
-    {
-        // ipcRemoteStub指向子进程实现的ipc stub对象，用于接收来自主进程的IPC消息并响应
-        // 子进程根据业务逻辑控制其生命周期
-        return g_ipcStubObj.GetRemoteStub();
-    }
-    
-    void NativeChildProcessMainProc()
-    {
-        // 相当于子进程的Main函数，实现子进程的业务逻辑
-        // ...
-        // 函数返回后子进程随即退出
-    }
-    
-    } // extern "C"
-    ```
 
 2. 子进程-编译为动态链接库。
 
@@ -253,32 +192,7 @@ libchild_process.so
     在子进程中，实现参数为[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
     <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
-    
-    ``` C++
-    // [Start create_native_child_param_header]
-    #include <AbilityKit/native_child_process.h>
-    // [End create_native_child_param_header]
-    extern "C" {
-    /**
-     * 子进程的入口函数，实现子进程的业务逻辑
-     * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcess方法时指定，此示例中为Main
-     * 函数返回后子进程退出
-     */
-    void Main(NativeChildProcess_Args args)
-    {
-        // 获取传入的entryPrams
-        char *entryParams = args.entryParams;
-        // 获取传入的fd列表
-        NativeChildProcess_Fd *current = args.fdList.head;
-        while (current != nullptr) {
-            char *fdName = current->fdName;
-            int32_t fd = current->fd;
-            current = current->next;
-            // 业务逻辑..
-        }
-    }
-    } // extern "C"
-    ```
+
 
 2. 子进程-编译为动态链接库。
 
@@ -412,44 +326,3 @@ libchild_process.so
 
 <!-- @[child_get_start_params_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
 
-``` C++
-// [Start child_get_start_params_header]
-#include <AbilityKit/native_child_process.h>
-// [End child_get_start_params_header]
-#include <thread>
-
-extern "C" {
-void ThreadFunc()
-{
-    // 获取子进程的启动参数
-    NativeChildProcess_Args *args = OH_Ability_GetCurrentChildProcessArgs();
-    // 获取启动参数失败时返回nullptr
-    if (args == nullptr) {
-        return;
-    }
-    // 获取启动参数中的entryPrams
-    char *entryParams = args->entryParams;
-    // 获取fd列表
-    NativeChildProcess_Fd *current = args->fdList.head;
-    while (current != nullptr) {
-        char *fdName = current->fdName;
-        int32_t fd = current->fd;
-        current = current->next;
-        // 业务逻辑..
-    }
-}
-
-/**
- * 子进程的入口函数，实现子进程的业务逻辑
- * args是子进程的启动参数
- */
-void Main(NativeChildProcess_Args args)
-{
-    // 业务逻辑..
-
-    // 创建线程
-    std::thread tObj(ThreadFunc);
-}
-
-} // extern "C"
-```
