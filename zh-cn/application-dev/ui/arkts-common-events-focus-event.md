@@ -1189,6 +1189,36 @@ tabIndex自定义组件Tab键走焦顺序。
 > tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
 
   <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct TabIndexExample {
+    build() {
+      NavDestination() {
+        Column() {
+          Button('Button1')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Focus Button1')
+            .width(140)
+            .height(45)
+            .margin(5).tabIndex(1)
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Focus Button2')
+            .width(140)
+            .height(45)
+            .margin(5).tabIndex(2)
+        }.width('100%')
+      }
+      // ···
+    }
+  }
+  ```
 
 Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
