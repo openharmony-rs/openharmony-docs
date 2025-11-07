@@ -538,7 +538,7 @@ getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | 是 | 回调函数。当成功获取所有处于连接状态的网络列表时，error为undefined，data为处于激活状态的数据网络列表；否则为错误对象。在Wi-Fi和蜂窝数据开关均开启的情况下，若无应用指定使用蜂窝网络，则仅激活Wi-Fi网络，因此仅返回Wi-Fi的NetHandle。除非有特定应用启动蜂窝网络，才能同时获取Wi-Fi和蜂窝数据的NetHandle。|
 
 **错误码：**
 
@@ -2684,7 +2684,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | 是   | 需要解析的主机名。                                           |
+| host     | string                                            | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | 是   | 回调函数。当使用对应网络解析主机名成功获取所有IP地址，error为undefined，data为获取到的所有IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2710,7 +2710,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2737,7 +2737,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2767,7 +2767,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2788,7 +2788,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | 是   | 需要解析的主机名。                                           |
+| host     | string                                    | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | 是   | 回调函数。当使用对应网络解析主机名获取第一个IP地址成功，error为undefined，data为获取的第一个IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2814,7 +2814,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2839,7 +2839,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2869,7 +2869,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });

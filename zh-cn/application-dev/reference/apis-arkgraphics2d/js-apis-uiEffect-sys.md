@@ -70,6 +70,14 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 | ---------------------------------------- | ----------------------- |
 | [HdrBrightnessBlender](#hdrbrightnessblender20) | 返回具有提亮效果的混合器（支持HDR）。 |
 
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
 **示例：**
 
 ```ts

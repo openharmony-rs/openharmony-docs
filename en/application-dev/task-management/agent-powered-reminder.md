@@ -1,18 +1,19 @@
 # Agent-powered Reminder (ArkTS)
 
-## Overview
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
-### Introduction
+## Introduction
 
-After an application switches to the background or an application process is terminated, the system can still send scheduled notifications on behalf of the application through reminderAgentManager. When the application switches to the background or the process is terminated, the system sends reminders on behalf of the application. Currently, the following reminder types are supported: timer, calendar, and alarm.<!--RP1--><!--RP1End-->
+When an application is backgrounded or closed, the system can still send scheduled notifications on behalf of the application.  Currently, the following reminder types are supported: timer, calendar, and alarm.<!--RP1--><!--RP1End-->
 
-- Timer: reminders based on countdown timers
+## Constraints
 
-- Calendar: reminders based on calendar events
-
-- Alarm: reminders based on alarm clocks
-
-### Constraints
+<!--RP3--><!--RP3End-->
 
 <!--RP2-->
 - **Maximum reminders**: 30 for regular applications, 10,000 for system applications, and 12,000 total for the system.
@@ -26,21 +27,19 @@ After an application switches to the background or an application process is ter
 
 - **Redirection limit**: The application that is redirected to upon a click on the notification must be the application that requested the agent-powered reminder.
 
-<!--RP3--><!--RP3End-->
-
 ## Relationship with Other Kits
-- Notifications are published using Notification Kit. For notification styles, see [Notification Style](../notification/notification-overview.md#notification-style).
+- When the preset time arrives, notifications created by Notification Kit will be displayed in the notification center. For details about notification styles, see [Notification Style](../notification/notification-overview.md#notification-style).
 
 ## Available APIs
 
-**Table 1** Main APIs for agent-powered reminders
-
 The table below uses promise as an example to describe the APIs used for developing agent-powered reminders. For details about more APIs and their usage, see [reminderAgentManager](../reference/apis-backgroundtasks-kit/js-apis-reminderAgentManager.md).
+
+**Table 1** Main APIs for agent-powered reminders
 | API| Description|
 | -------- | -------- |
-| publishReminder(reminderReq: ReminderRequest): Promise&lt;number&gt; | Publishes a scheduled reminder.|
-| cancelReminder(reminderId: number): Promise&lt;void&gt; | Cancels a reminder.|
-| getValidReminders(): Promise&lt;Array&lt;ReminderRequest&gt;&gt; | Obtains all valid reminders set by the current application.|
+| publishReminder(reminderReq: ReminderRequest): Promise&lt;number&gt; | Publishes a reminder.|
+| cancelReminder(reminderId: number): Promise&lt;void&gt; | Cancels a reminder published.|
+| getValidReminders(): Promise&lt;Array&lt;ReminderRequest&gt;&gt; | Obtains all [valid (not yet expired) reminders](#constraints) set by the current application.|
 | cancelAllReminders(): Promise&lt;void&gt; | Cancels all reminders set by the current application.|
 | addNotificationSlot(slot: NotificationSlot): Promise&lt;void&gt; | Adds a notification slot.|
 | removeNotificationSlot(slotType: notification.SlotType): Promise&lt;void&gt; | Removes a notification slot.|
@@ -48,11 +47,19 @@ The table below uses promise as an example to describe the APIs used for develop
 
 ## How to Develop
 
-1. Declare the **ohos.permission.PUBLISH_AGENT_REMINDER** permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+<!--RP4--><!--RP4End-->
 
-2. [Request notification authorization](../notification/notification-enable.md). Agent-powered reminders can be used only after being authorized by the user.
+### Requesting Permissions
 
-3. Import the modules.
+Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+
+### Requesting Notification Authorization
+
+[Request notification authorization](../notification/notification-enable.md). Agent-powered reminders can be used only after being authorized by the user.
+
+### Developing Functionalities
+
+1. Import the modules.
    
    ```ts
    import { reminderAgentManager } from '@kit.BackgroundTasksKit';
@@ -60,7 +67,7 @@ The table below uses promise as an example to describe the APIs used for develop
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-4. Define a reminder. You can define the following types of reminders based on project requirements.
+2. Define a reminder. You can define the following types of reminders based on project requirements.
 
    - Timer
      
@@ -134,7 +141,7 @@ The table below uses promise as an example to describe the APIs used for develop
         reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM, // The reminder type is alarm.
         hour: 23, // Hour portion of the reminder time.
         minute: 9, // Minute portion of the reminder time.
-        daysOfWeek: [2], // Days of a week when the reminder repeats..
+        daysOfWeek: [2], // Days of a week when the reminder repeats.
         actionButton: [ // Set the button type and title displayed for the reminder in the notification panel.
           {
             title: 'close',
@@ -161,7 +168,7 @@ The table below uses promise as an example to describe the APIs used for develop
       }
       ```
 
-5. Publish the reminder. After the reminder is published, your application can use the agent-powered reminder feature.
+3. Publish the reminder. After the reminder is published, your application can use the agent-powered reminder feature.
    
    ```ts
     reminderAgentManager.publishReminder(targetReminderAgent).then((res: number) => {
@@ -172,13 +179,13 @@ The table below uses promise as an example to describe the APIs used for develop
     })
    ```
 
-6. Delete the reminder as required.
+4. Delete the reminder as required.
    
    ```ts
     let reminderId: number = 1;
     // The reminder ID is obtained from the callback after the reminder is published.
     reminderAgentManager.cancelReminder(reminderId).then(() => {
-      console.log('Succeeded in canceling reminder.');
+      console.info('Succeeded in canceling reminder.');
     }).catch((err: BusinessError) => {
       console.error(`Failed to cancel reminder. Code: ${err.code}, message: ${err.message}`);
     });

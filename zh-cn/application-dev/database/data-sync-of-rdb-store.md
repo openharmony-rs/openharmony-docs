@@ -266,16 +266,16 @@
      });
      if (devices.length === 0) {
        hilog.error(DOMAIN, 'rdbDataSync', 'no device to query data');
-     } else {
-       // 构造用于查询分布式表的谓词对象
-       const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-       try {
-         // 查询组网内设备上的分布式表
-         const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
-         hilog.info(DOMAIN, 'rdbDataSync', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-       } catch (e) {
-         hilog.error(DOMAIN, 'rdbDataSync', 'Remote query failed, code: ' + e.code + ', message: ' + e.message);
-       }
+       return;
+     }
+     // 构造用于查询分布式表的谓词对象
+     const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+     try {
+       // 查询组网内设备上的分布式表
+       const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+       hilog.info(DOMAIN, 'rdbDataSync', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+     } catch (e) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'Remote query failed, code: ' + e.code + ', message: ' + e.message);
      }
    }
    ```

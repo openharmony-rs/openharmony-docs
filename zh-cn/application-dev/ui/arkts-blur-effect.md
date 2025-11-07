@@ -6,10 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-动画效果可以丰富界面的细节，提升UI界面的真实感和品质感。例如，模糊和阴影效果可以让物体看起来更加立体，使得动画更加生动。ArkUI提供了丰富的效果接口，开发者可快速打造出精致、个性化的效果。本章中主要对常用的模糊、阴影和色彩效果等接口进行了介绍。
+动画效果可以丰富界面的细节，提升UI界面的真实感和品质感。例如，模糊和阴影效果可以让物体看起来更加立体，使得动画更加生动。ArkUI提供了丰富的效果接口，开发者可快速打造出精致、个性化的效果。本章主要介绍常用的模糊、阴影和色彩效果等接口。
 
 
-模糊可以用来体现界面空间的纵深感，区分前后元素的层级关系。
+模糊效果可以体现界面空间的纵深感，区分前后元素的层级关系。
 
 
 | 接口                                                         | 说明                                         |
@@ -26,8 +26,9 @@
 
 ## 使用backdropBlur为组件添加背景模糊
 
+<!-- @[animationBlur_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct BlurEffectsExample {
@@ -40,8 +41,8 @@ struct BlurEffectsExample {
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
         .backdropBlur(10)// 对背景进行模糊
-        // $r('app.media.share')需要替换为开发者所需的图像资源文件
-        .backgroundImage($r('app.media.share'))
+         // $r("app.media.bg")需要替换为开发者所需的图像资源文件
+        .backgroundImage($r('app.media.bg'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
     .width('100%')
@@ -52,24 +53,29 @@ struct BlurEffectsExample {
 ```
 
 
-
 ![zh-cn_image_0000001599812870](figures/zh-cn_image_0000001599812870.png)
 
 
 ## 使用blur为组件添加内容模糊
 
+<!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
 
-```ts
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
-struct Index1 {
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State radius: number = 0;
   @State text: string = '';
-  @State y: string = '手指不在屏幕上';
+  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);//app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上’
 
   aboutToAppear() {
-    this.text = "按住屏幕上下滑动\n" + "当前手指所在y轴位置 ： " + this.y +
-      "\n" + "当前图片模糊程度为 : " + this.radius;
+    // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+    this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + 
+    "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+      "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
   }
 
   build() {
@@ -80,8 +86,8 @@ struct Index1 {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
-      // $r("app.media.wall")需要替换为开发者所需的图像资源文件
-      Image($r("app.media.wall"))
+      // $r("app.media.bg")需要替换为开发者所需的图像资源文件
+      Image($r("app.media.bg"))
         .blur(this.radius)// 使用blur接口为照片组件添加内容模糊效果
         .height('100%')
         .width("100%")
@@ -96,16 +102,17 @@ struct Index1 {
         }
         if (event.type === TouchType.Up) {
           this.radius = 0;
-          this.y = '手指离开屏幕';
+          //app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上‘
+          this.y = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);
         }
       }
-      this.text = "按住屏幕上下滑动\n" + "当前手指所在y轴位置 ： " + this.y +
-        "\n" + "当前图片模糊程度为 : " + this.radius;
+      // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+      this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+        "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
     })
   }
 }
 ```
-
 
 
 ![zh-cn_image_0000001599813588](figures/zh-cn_image_0000001599813588.gif)
@@ -113,8 +120,9 @@ struct Index1 {
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
 
+<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct BackDropBlurStyleDemo {
@@ -123,7 +131,8 @@ struct BackDropBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            Text('原图')
+            // $r('app.string.originalImage')资源文件中的value值为'原图'
+            Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
               .textAlign(TextAlign.Center)
@@ -133,10 +142,11 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
 
-          Text('原图')
+          // $r('app.string.originalImage')资源文件中的value值为'原图'
+          Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
@@ -159,8 +169,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
           // AdaptiveColor.DEFAULT: 不使用取色模糊，使用默认的颜色作为蒙版颜色
@@ -194,8 +204,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -225,8 +235,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -256,8 +266,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -287,8 +297,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -318,8 +328,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -349,8 +359,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -377,15 +387,15 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-
 ![zh-cn_image_0000001649455517](figures/zh-cn_image_0000001649455517.png)
 
 
 
 ## 使用foregroundBlurStyle为组件添加内容模糊效果
 
+<!-- @[animationBlur_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template4/ForegroundBlurStyleDemo.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct ForegroundBlurStyleDemo {
@@ -394,7 +404,8 @@ struct ForegroundBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            Text('原图')
+            // $r('app.string.originalImage')资源文件中的value值为'原图'
+            Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
               .textAlign(TextAlign.Center)
@@ -404,10 +415,11 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
 
-          Text('原图')
+          // $r('app.string.originalImage')资源文件中的value值为'原图' 
+          Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
@@ -430,8 +442,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
           // AdaptiveColor.DEFAULT: 不使用取色模糊，使用默认的颜色作为蒙版颜色
@@ -465,8 +477,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -496,8 +508,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -527,8 +539,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -558,8 +570,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -589,8 +601,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -620,8 +632,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.share')需要替换为开发者所需的图像资源文件
-          .backgroundImage($r('app.media.share'))
+          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -648,13 +660,14 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-
 ![zh-cn_image_0000001599658168](figures/zh-cn_image_0000001599658168.png)
 
 
 ## 使用motionBlur为组件添加运动模糊效果
 
-```ts
+<!-- @[animationBlur_template5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template5/MotionBlurTest.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
 
 @Entry
@@ -670,7 +683,7 @@ struct motionBlurTest {
   build() {
     Column() {
       Column() {
-        // $r('app.media.testImg')需要替换为开发者所需的图像资源文件
+        // $r('app.media.testImg')需要替换为开发者所需要的资源文件
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)
@@ -700,5 +713,7 @@ struct motionBlurTest {
   }
 }
 ```
+
+
 
 ![motionBlurTest](figures/motionBlur.gif)

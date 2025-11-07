@@ -204,7 +204,7 @@ struct Parent {
 
 1. 使用\@Observed装饰class会改变class原始的原型链，\@Observed和其他类装饰器装饰同一个class可能会带来问题。
 
-2. \@ObjectLink装饰器不能在[\@Entry](./arkts-create-custom-components.md#entry)装饰的自定义组件中使用。
+2. \@ObjectLink装饰器不建议在[\@Entry](./arkts-create-custom-components.md#entry)装饰的自定义组件中使用，编译时会产生告警。
 
 3. \@ObjectLink装饰的类型必须是复杂类型，否则会有编译期报错。
 
@@ -554,7 +554,11 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick(() => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
+            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -2194,7 +2198,6 @@ struct ChildComponent {
           console.info(`appear: ${this.data.message}`);
         })
     }.margin({ left: 10, right: 10 })
-    .alignItems(HorizontalAlign.Center)
   }
 }
 ```

@@ -149,7 +149,9 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str，通知其对应的\@Consumer，对应UI刷新。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，通知其对应的\@Provider，对应UI刷新。
 
-```ts
+<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -192,7 +194,9 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-```ts
+<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -229,11 +233,13 @@ struct Child {
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-```ts
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
-  @Provider() count: number[] = [1,2,3];
+  @Provider() count: number[] = [1, 2, 3];
 
   build() {
     Row() {
@@ -261,7 +267,7 @@ struct Parent {
 
 @ComponentV2
 struct Child {
-  @Consumer() count: number[] = [9,8,7];
+  @Consumer() count: number[] = [9, 8, 7];
 
   build() {
     Column() {
@@ -288,57 +294,60 @@ struct Child {
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-```ts
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
-  @Provider() SelectedDate: Date = new Date('2021-08-08');
+  @Provider() selectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
-      Text(`parent: ${this.SelectedDate}`)
+      Text(`parent: ${this.selectedDate}`)
       Button('update the new date')
         .onClick(() => {
-          this.SelectedDate = new Date('2023-07-07');
+          this.selectedDate = new Date('2023-07-07');
         })
       Button('increase the year by 1')
         .onClick(() => {
-          this.SelectedDate.setFullYear(this.SelectedDate.getFullYear() + 1);
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
         .onClick(() => {
-          this.SelectedDate.setMonth(this.SelectedDate.getMonth() + 1);
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
         .onClick(() => {
-          this.SelectedDate.setDate(this.SelectedDate.getDate() + 1);
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
       Child()
     }
   }
 }
+
 @ComponentV2
 struct Child {
-  @Consumer() SelectedDate: Date = new Date('2022-07-07');
+  @Consumer() selectedDate: Date = new Date('2022-07-07');
 
   build() {
     Column() {
-      Text(`child: ${this.SelectedDate}`)
+      Text(`child: ${this.selectedDate}`)
       Button('update the new date')
         .onClick(() => {
-          this.SelectedDate = new Date('2025-01-01');
+          this.selectedDate = new Date('2025-01-01');
         })
       Button('increase the year by 1')
         .onClick(() => {
-          this.SelectedDate.setFullYear(this.SelectedDate.getFullYear() + 1);
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
         .onClick(() => {
-          this.SelectedDate.setMonth(this.SelectedDate.getMonth() + 1);
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
         .onClick(() => {
-          this.SelectedDate.setDate(this.SelectedDate.getDate() + 1);
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
     }
   }
@@ -349,7 +358,9 @@ struct Child {
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-```ts
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -382,6 +393,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Map<number, string> = new Map([[0, 'd'], [1, 'e'], [3, 'f']]);
@@ -418,7 +430,9 @@ struct Child {
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-```ts
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -447,6 +461,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
@@ -475,12 +490,15 @@ struct Child {
 }
 ```
 
+
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
 当需要在父组件中向子组件注册回调函数时，可以使用\@Provider和\@Consumer装饰回调方法来实现。
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
-```ts
+<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -515,16 +533,19 @@ struct Child {
 }
 ```
 
+
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-```ts
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
+
+``` TypeScript
 @ObservedV2
 class User {
-  @Trace name: string;
-  @Trace age: number;
+  @Trace public name: string;
+  @Trace public age: number;
 
   constructor(name: string, age: number) {
     this.name = name;
@@ -578,7 +599,9 @@ struct Child {
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-```ts
+<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -625,7 +648,9 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-```ts
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -687,7 +712,9 @@ struct Child {
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 
-```ts
+<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
@@ -715,7 +742,7 @@ class TextNodeController extends NodeController {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
       // 构建BuilderNode，TestRemove作为子组件
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -739,13 +766,15 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct RemoChildDisconnectProvider {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
 
       // 添加BuilderNode，@Consumer与@Provider建立双向同步
@@ -764,7 +793,7 @@ struct RemoChildDisconnectProvider {
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       // @Provider/@Consumer双向同步更新
       Button('change Provider')
@@ -781,7 +810,8 @@ struct RemoChildDisconnectProvider {
 @ComponentV2
 struct TestRemove {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -802,6 +832,7 @@ struct TestRemove {
   }
 }
 ```
+
 
 上面的例子中：
 

@@ -219,3 +219,15 @@ Efficiency resource information.
 | reason                         | string  | No   | No   | Reason for requesting the resource.      |
 | uid                            | number  | No   | No   | Application UID.    |
 | pid                            | number  | No   | No   | Application PID.  |
+
+## BackgroundTaskMode<sup>21+</sup>
+
+Defines the main type of a continuous task.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+| Name                    | Value | Description                   |
+| ------------------------ | ---- | --------------------- |
+| MODE_ALLOW_WIFI_AWARE           | 7         | WLAN-related services.           |

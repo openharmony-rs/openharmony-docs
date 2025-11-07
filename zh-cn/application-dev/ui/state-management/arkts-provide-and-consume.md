@@ -86,7 +86,7 @@
 
   **图1** \@Provide初始化规则图示  
 
-![zh-cn_image_0000001552614217](figures/zh-cn_image_0000001552614217.png)
+![provide-initialization](figures/provide-initialization.png)
 
 | \@Consume传递/访问 | 说明                                       |
 | -------------- | ---------------------------------------- |
@@ -98,7 +98,7 @@
   **图2** \@Consume初始化规则图示  
 
 
-![zh-cn_image_0000001502094666](figures/zh-cn_image_0000001502094666.png)
+![consume-initialization](figures/consume-initialization.png)
 
 ## 观察变化和行为表现
 

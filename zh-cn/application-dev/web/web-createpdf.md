@@ -33,11 +33,6 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-
-const TAG = '[Sample_WebCreatePdf]'
-const DOMAIN = 0xF811
-const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -67,17 +62,16 @@ struct Index {
                 let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
+                  console.info('createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG,
-                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                  console.error('createPDF write data to file failed with error message: ' + err.message +
                       ', error code: ' + err.code);
                 }).finally(() => {
                   // 关闭file
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                hilog.error(DOMAIN, TAG, BUNDLE +
+                console.error(
                   `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
             });
@@ -98,11 +92,6 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-
-const TAG = '[Sample_WebCreatePdf]'
-const DOMAIN = 0xF811
-const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -131,17 +120,16 @@ struct Index {
                 let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
+                  console.info('createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG,
-                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                  console.error('createPDF write data to file failed with error message: ' + err.message +
                       ', error code: ' + err.code);
                 }).finally(() => {
                   // 关闭file
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                hilog.error(DOMAIN, TAG, BUNDLE +
+                console.error(
                   `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             })

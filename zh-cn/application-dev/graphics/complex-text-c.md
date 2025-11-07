@@ -37,7 +37,7 @@
 
 <!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -103,7 +103,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
 
@@ -214,7 +214,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_decoration_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个TypographyStyle创建Typography时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -291,7 +291,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_font_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -368,7 +368,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -452,7 +452,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -534,7 +534,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 设置页面最大宽度
 double maxWidth = width_;
 // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
@@ -618,7 +618,7 @@ OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 
 <!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个TypographyStyle创建Typography时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置使能自动间距，默认为false
@@ -696,7 +696,7 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 <!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // 设置文字大小
@@ -753,12 +753,12 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_vertical_alignment_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // 设置垂直对齐方式
 OH_Drawing_SetTypographyVerticalAlignment(typoStyle,
-                                            OH_Drawing_TextVerticalAlignment::TEXT_VERTICAL_ALIGNMENT_CENTER);
+                                          OH_Drawing_TextVerticalAlignment::TEXT_VERTICAL_ALIGNMENT_CENTER);
 // 设置文字大小
 OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 // 设置文字颜色
@@ -799,7 +799,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_TextStyle *badgeTxtStyle = OH_Drawing_CreateTextStyle();
@@ -853,7 +853,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_high_contrast_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 开启APP的文字渲染高对比模式，该模式的优先级要高于系统设置中的高对比度文字配置
 OH_Drawing_SetTextHighContrast(TEXT_APP_ENABLE_HIGH_CONTRAST);
 // 创建一个 TypographyStyle，创建 Typography 时需要使用
@@ -913,35 +913,35 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
   <!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-  ``` c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小为50
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
-    OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65); // 设置行高上限为65
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
-    OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65); // 设置行高下限为65
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, text);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// 排版宽度为1000
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // 设置文字大小为50
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // 设置文字颜色
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65); // 设置行高上限为65
+  OH_Drawing_SetTextStyleAttributeDouble(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65); // 设置行高下限为65
+  // 创建排版对象，并绘制
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // 排版宽度为1000
+  OH_Drawing_TypographyLayout(typography, 1000);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  // 释放对象
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
   ```
 
 具体效果如下所示：
@@ -962,36 +962,36 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
   <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-    
-  ``` c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小为50
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// 设置行高缩放系数为1.5
-OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
-// 设置行高缩放样式（1代表行高缩放以字形高度作为缩放基数）
-OH_Drawing_SetTextStyleAttributeInt(txtStyle,
-    OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, text);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// 排版宽度为1000
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // 设置文字大小为50
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // 设置文字颜色
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  // 设置行高缩放系数为1.5
+  OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
+  // 设置行高缩放样式（1代表行高缩放以字形高度作为缩放基数）
+  OH_Drawing_SetTextStyleAttributeInt(txtStyle,
+      OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
+  // 创建排版对象，并绘制
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // 排版宽度为1000
+  OH_Drawing_TypographyLayout(typography, 1000);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  // 释放对象
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
   ```
 
 具体效果如下所示：
@@ -1012,33 +1012,33 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
   <!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-    
-  ``` c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle,
-    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100); // 设置行间距为100
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小为50
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, text);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// 排版宽度为200
-OH_Drawing_TypographyLayout(typography, 200);
-OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
+  
+  ``` C++
+  OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+  OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle,
+      OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100); // 设置行间距为100
+  OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+  // 设置文字大小为50
+  OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+  // 设置文字颜色
+  OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+  // 创建排版对象，并绘制
+  OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+  OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+  OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+  const char *text = "Hello World!";
+  OH_Drawing_TypographyHandlerAddText(handler, text);
+  OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+  // 排版宽度为200
+  OH_Drawing_TypographyLayout(typography, 200);
+  OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 0);
+  
+  // 释放对象
+  OH_Drawing_DestroyFontCollection(fc);
+  OH_Drawing_DestroyTextStyle(txtStyle);
+  OH_Drawing_DestroyTypographyStyle(typoStyle);
+  OH_Drawing_DestroyTypographyHandler(handler);
+  OH_Drawing_DestroyTypography(typography);
   ```
 
 具体效果如下所示：
@@ -1062,7 +1062,7 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_style_copy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
-```C++
+``` C++
 // 创建一个TypographyStyle，其中创建Typography时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 配置段落样式包括：使能自动间距、最大行数、省略号样式、省略号文本、对齐方式
@@ -1114,7 +1114,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // 将段落一文本添加到handler中
 const char *text = "The text style, paragraph style, and text shadow of the copied text will be exactly the same "
-                    "as those of the original text.";
+                   "as those of the original text.";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 // 创建段落一，并将段落一按照排版宽度进行排版
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);

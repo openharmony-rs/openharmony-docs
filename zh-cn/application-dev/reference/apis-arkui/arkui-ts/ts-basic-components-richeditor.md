@@ -2894,7 +2894,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["80px", "80px"],
@@ -2913,7 +2914,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["70px", "70px"],
@@ -2932,7 +2934,8 @@ struct Index {
               start: this.start,
               textStyle:
               {
-                fontWeight: FontWeight.Bolder
+                fontWeight: FontWeight.Bolder,
+                fontSize:15
               },
               imageStyle: {
                 size: ["60px", "60px"],
@@ -5512,8 +5515,6 @@ struct RichEditorExample {
 struct RichEditorExample {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
-  styledStringController: RichEditorStyledStringController = new RichEditorStyledStringController();
-  styledStringOptions: RichEditorStyledStringOptions = { controller: this.styledStringController };
 
   build() {
     Column() {
@@ -5537,16 +5538,11 @@ struct RichEditorExample {
           .height('35%')
           .border({ width: 1, color: Color.Blue })
       }
-
-      Row() {
-        RichEditor(this.styledStringOptions)
-          .height('35%')
-          .border({ width: 1, color: Color.Red })
-      }
     }
   }
 }
 ```
+![UrlStyle](figures/example_27.gif)
 
 ### 示例28（开启带样式的撤销还原能力）
 从API version 20开始，该示例对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](#undostyle20)属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。

@@ -50,7 +50,7 @@ The following figure shows the wukong component architecture and the responsibil
 
 | Command          | Description                                          |
 | -------------- | ---------------------------------------------- |
-| version | Obtains version information.                            |
+| -v/--version | Obtains version information.                            |
 | help    | Obtains help information.                            |
 | appinfo | Queries the bundle name and the name of the corresponding mainAbility of the app that can be started.|
 | special | Runs special testing.                                  |

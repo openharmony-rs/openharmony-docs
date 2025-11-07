@@ -1,4 +1,10 @@
 # @ohos.continuation.continuationManager (流转/协同管理)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
 continuationManager模块提供了流转/协同入口管理服务能力，包括连接/取消流转管理服务，注册/解注册设备连接变化监听，拉起设备选择模块，更新连接状态。
 
@@ -20,7 +26,7 @@ register(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[registerContinuation](#continuationmanagerregistercontinuation9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -54,7 +60,7 @@ register(options: ContinuationExtraParams, callback: AsyncCallback\<number>): vo
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[registerContinuation](#continuationmanagerregistercontinuation9-1)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -93,7 +99,7 @@ register(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[registerContinuation](#continuationmanagerregistercontinuation9-2)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -125,11 +131,15 @@ register(options?: ContinuationExtraParams): Promise\<number>
   });
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(callback: AsyncCallback\<number>): void
 
 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -174,11 +184,15 @@ registerContinuation(callback: AsyncCallback\<number>): void
   }
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<number>): void
 
 连接流转管理服务，并获取对应的注册token，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -228,11 +242,15 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
   }
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 连接流转管理服务，并获取对应的注册token，使用Promise方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -294,7 +312,7 @@ on(type: 'deviceConnect', callback: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[on](#continuationmanagerondeviceselected9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -325,7 +343,7 @@ on(type: 'deviceDisconnect', callback: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[on](#continuationmanagerondeviceunselected9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -354,7 +372,7 @@ off(type: 'deviceConnect', callback?: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[off](#continuationmanageroffdeviceselected9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -385,7 +403,7 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[off](#continuationmanageroffdeviceunselected9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -406,11 +424,15 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
   });
   ```
 
-## continuationManager.on('deviceSelected')<sup>9+</sup>
+## continuationManager.on('deviceSelected')<sup>(deprecated)</sup>
 
 on(type: 'deviceSelected', token: number, callback: Callback\<Array\<ContinuationResult>>): void
 
 异步方法，监听设备连接状态，使用Callback形式返回连接的设备信息。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -458,11 +480,15 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
   }
   ```
 
-## continuationManager.on('deviceUnselected')<sup>9+</sup>
+## continuationManager.on('deviceUnselected')<sup>(deprecated)</sup>
 
 on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<ContinuationResult>>): void
 
 异步方法，监听设备断开状态，使用Callback形式返回断开的设备信息。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -511,11 +537,15 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
   }
   ```
 
-## continuationManager.off('deviceSelected')<sup>9+</sup>
+## continuationManager.off('deviceSelected')<sup>(deprecated)</sup>
 
 off(type: 'deviceSelected', token: number): void
 
 取消监听设备连接状态。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -555,11 +585,15 @@ off(type: 'deviceSelected', token: number): void
   }
   ```
 
-## continuationManager.off('deviceUnselected')<sup>9+</sup>
+## continuationManager.off('deviceUnselected')<sup>(deprecated)</sup>
 
 off(type: 'deviceUnselected', token: number): void
 
 取消监听设备断开状态。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -607,7 +641,7 @@ startDeviceManager(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -641,7 +675,7 @@ startDeviceManager(token: number, options: ContinuationExtraParams, callback: As
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9-1)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -681,7 +715,7 @@ startDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<v
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9-2)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -716,11 +750,15 @@ startDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<v
   });
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): void
 
 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -765,11 +803,15 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
   }
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, options: ContinuationExtraParams, callback: AsyncCallback\<void>): void
 
 拉起设备选择模块，可显示组网内可选择设备列表信息，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -820,11 +862,15 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
   }
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<void>
 
 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -886,7 +932,7 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState,
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[updateContinuationState](#continuationmanagerupdatecontinuationstate9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -896,7 +942,7 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState,
   | -------- | -------- | -------- | -------- |
   | token | number | 是 | 注册后的token。 |
   | deviceId | string | 是 | 设备ID。 |
-  | status | [DeviceConnectState](#deviceconnectstate) | 是 | 设备连接状态。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
   | callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **示例：**
@@ -923,7 +969,7 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[updateContinuationState](#continuationmanagerupdatecontinuationstate9-1)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -933,7 +979,7 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
   | -------- | -------- | -------- | -------- |
   | token | number | 是 | 注册后的token。 |
   | deviceId | string | 是 | 设备ID。 |
-  | status | [DeviceConnectState](#deviceconnectstate) | 是 | 设备连接状态。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
 
 **返回值：**
 
@@ -958,11 +1004,15 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
   });
   ```
 
-## continuationManager.updateContinuationState<sup>9+</sup>
+## continuationManager.updateContinuationState<sup>(deprecated)</sup>
 
 updateContinuationState(token: number, deviceId: string, status: DeviceConnectState, callback: AsyncCallback\<void>): void
 
 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -976,7 +1026,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
   | -------- | -------- | -------- | -------- |
   | token | number | 是 | 注册后的token。 |
   | deviceId | string | 是 | 设备ID。 |
-  | status | [DeviceConnectState](#deviceconnectstate) | 是 | 设备连接状态。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
   | callback | AsyncCallback\<void> | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1010,11 +1060,15 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
   }
   ```
 
-## continuationManager.updateContinuationState<sup>9+</sup>
+## continuationManager.updateContinuationState<sup>(deprecated)</sup>
 
 updateContinuationState(token: number, deviceId: string, status: DeviceConnectState): Promise\<void>
 
 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1028,7 +1082,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
   | -------- | -------- | -------- | -------- |
   | token | number | 是 | 注册后的token。 |
   | deviceId | string | 是 | 设备ID。 |
-  | status | [DeviceConnectState](#deviceconnectstate) | 是 | 设备连接状态。 |
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | 是 | 设备连接状态。 |
 
 **返回值：**
 
@@ -1077,7 +1131,7 @@ unregister(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[unregisterContinuation](#continuationmanagerunregistercontinuation9)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1111,7 +1165,7 @@ unregister(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[unregisterContinuation](#continuationmanagerunregistercontinuation9-1)替代。
+> 从API version 8开始支持，从API version 9开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1142,11 +1196,15 @@ unregister(token: number): Promise\<void>
   });
   ```
 
-## continuationManager.unregisterContinuation<sup>9+</sup>
+## continuationManager.unregisterContinuation<sup>(deprecated)</sup>
 
 unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 解注册流转管理服务，传入注册时获取的token进行解注册，使用AsyncCallback方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1191,11 +1249,15 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
   }
   ```
 
-## continuationManager.unregisterContinuation<sup>9+</sup>
+## continuationManager.unregisterContinuation<sup>(deprecated)</sup>
 
 unregisterContinuation(token: number): Promise\<void>
 
 解注册流转管理服务，传入注册时获取的token进行解注册，使用Promise方式作为异步方法。
+
+> **说明：**
+> 
+> 从API version 9开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1245,9 +1307,13 @@ unregisterContinuation(token: number): Promise\<void>
   ```
 
 
-## DeviceConnectState
+## DeviceConnectState<sup>(deprecated)</sup>
 
 设备连接状态。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1260,9 +1326,13 @@ unregisterContinuation(token: number): Promise\<void>
 | CONNECTED | 2 | 设备已连接状态。 |
 | DISCONNECTING | 3 | 设备断开连接状态。 |
 
-## ContinuationMode
+## ContinuationMode<sup>(deprecated)</sup>
 
 设备选择模块连接模式。
+
+> **说明：**
+> 
+> 从API version 8开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1273,11 +1343,15 @@ unregisterContinuation(token: number): Promise\<void>
 | COLLABORATION_SINGLE | 0 | 设备选择模块单选模式。 |
 | COLLABORATION_MULTIPLE | 1 | 设备选择模块多选模式。 |
 
-## ContinuationResult<sup>10+</sup>
+## ContinuationResult<sup>(deprecated)</sup>
 
 type ContinuationResult = _ContinuationResult
 
 流转管理入口返回的设备信息。
+
+> **说明：**
+> 
+> 从API version 10开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1287,11 +1361,15 @@ type ContinuationResult = _ContinuationResult
 | --- | --- |
 | [_ContinuationResult](js-apis-continuation-continuationResult.md) | 表示流转管理入口返回的设备信息。 |
 
-## ContinuationExtraParams<sup>10+</sup>
+## ContinuationExtraParams<sup>(deprecated)</sup>
 
 type ContinuationExtraParams = _ContinuationExtraParams
 
 流转管理入口中设备选择模块所需的过滤参数。
+
+> **说明：**
+> 
+> 从API version 10开始支持，从API version 22开始不再维护，由于接口定义存在功能重复，请统一使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)相关接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
