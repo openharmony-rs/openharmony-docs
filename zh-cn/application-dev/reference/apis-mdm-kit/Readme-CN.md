@@ -13,6 +13,7 @@
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser（浏览器管理）](js-apis-enterprise-browser.md)
   - [@ohos.enterprise.bundleManager（包管理）](js-apis-enterprise-bundleManager.md)
+  - [@ohos.enterprise.common（Enterprise公共模块）](js-apis-enterprise-common.md)
   - [@ohos.enterprise.deviceControl（设备控制管理）](js-apis-enterprise-deviceControl.md)
   - [@ohos.enterprise.deviceInfo（设备信息管理）](js-apis-enterprise-deviceInfo.md)
   - [@ohos.enterprise.deviceSettings （设备设置管理）](js-apis-enterprise-deviceSettings.md)
