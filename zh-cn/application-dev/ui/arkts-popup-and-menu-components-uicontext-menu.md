@@ -20,6 +20,7 @@
      enableArrow: true
    })
    .then(() => {
+     // 全局变量定义：const DOMAIN = 0xFF00;
      hilog.info(DOMAIN, 'globalOpenMenu', 'openMenu success');
    })
    .catch((err: BusinessError) => {
@@ -73,6 +74,7 @@
      buttons: [{
        text: 'confirm',
        action: () => {
+         // 全局变量定义：const DOMAIN = 0xFF00;
          hilog.info(DOMAIN, 'globalOpenMenu', 'confirm button click');
        },
        fontSize: 15,
@@ -130,6 +132,7 @@
        enableArrow: false
      }, true)
      .then(() => {
+       // 全局变量定义：const DOMAIN = 0xFF00;
        hilog.info(DOMAIN, 'globalOpenMenu', 'updateMenu success');
      })
      .catch((err: BusinessError) => {
@@ -148,6 +151,7 @@
    this.getUIContext().getPromptAction()
      .closeMenu(this.contentNode)
      .then(() => {
+       // 全局变量定义：const DOMAIN = 0xFF00;
        hilog.info(DOMAIN, 'globalOpenMenu', 'closeMenu success');
      })
      .catch((err: BusinessError) => {
