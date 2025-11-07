@@ -251,6 +251,56 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性控制文本超长处理，textOverflow需配合[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
 
   <!-- @[custom_text_overflow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow ' +
+    'to None text content. This is the setting of textOverflow to Clip text content This is the setting ' +
+    'of textOverflow to None text content.')
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.None })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  // 'app.string.CustomTextStyle_textContent_epsis'资源文件中的value值为
+  // '我是超长文本，超出的部分显示省略号 I am an extra long text, with ellipses displayed for any excess。'
+  Text($r('app.string.CustomTextStyle_textContent_epsis'))
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.Ellipsis })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  // 'app.string.CustomTextStyle_textContent_marq'资源文件中的value值为
+  // '当文本溢出其尺寸时，文本将滚动显示
+  // When the text overflows its dimensions,the text will scroll for displaying.'
+  Text($r('app.string.CustomTextStyle_textContent_marq'))
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.MARQUEE })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+  // 'app.string.CustomTextStyle_textContent_marq_def'资源文件中的value值为
+  // '当文本溢出其尺寸时，文本将滚动显示，支持设置跑马灯配置项
+  // When the text overflows its dimensions, the text will scroll for displaying.'
+  Text($r('app.string.CustomTextStyle_textContent_marq_def'))
+    .width(250)
+    .textOverflow({ overflow: TextOverflow.MARQUEE })
+    .maxLines(1)
+    .fontSize(12)
+    .border({ width: 1 })
+    .padding(10)
+    .marqueeOptions({
+      start: true,
+      fromStart: true,
+      step: 6,
+      loop: -1,
+      delay: 0,
+      fadeout: false,
+      marqueeStartPolicy: MarqueeStartPolicy.DEFAULT
+    })
+  ```
 
   ![zh-cn_image_0000001563060701](figures/zh-cn_image_0000001563060701.gif)
 
