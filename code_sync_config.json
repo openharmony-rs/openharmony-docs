@@ -18341,5 +18341,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-event-formextensionability.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"update_by_message_card",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts",
+				"functions":[
+					{
+						"end_line":135,
+						"name":"update_form_interface",
+						"start_line":27
+					}
+				]
+			}
+		]
 	}
 ]
