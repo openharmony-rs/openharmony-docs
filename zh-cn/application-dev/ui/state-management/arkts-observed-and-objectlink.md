@@ -80,6 +80,27 @@ this.objLink= ...
 
 <!-- @[Observe_the_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
 
+``` TypeScript
+class Child {
+  public num: number;
+
+  constructor(num: number) {
+    this.num = num;
+  }
+}
+
+@Observed
+class Parent {
+  public child: Child;
+  public count: number;
+
+  constructor(child: Child, count: number) {
+    this.child = child;
+    this.count = count;
+  }
+}
+```
+
 以上示例中，Parent被\@Observed装饰，其成员变量的赋值的变化是可以被观察到的，但对于Child，没有被\@Observed装饰，其属性的修改不能被观察到。若想观察Child的属性修改变化，示例请参考[嵌套对象](#嵌套对象)。
 
 
