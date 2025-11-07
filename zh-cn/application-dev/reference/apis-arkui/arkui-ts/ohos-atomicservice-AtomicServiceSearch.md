@@ -121,8 +121,8 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最小显示字号。需要配合maxFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
 | maxFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最大显示字号。需要配合minFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。   |
 | editMenuOptions          | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 否 | 是 | 设置自定义菜单扩展项，允许用户设置扩展项的文本内容、图标、回调方法。默认值为`undefined`。   |
-| enablePreviewText        | boolean | 否 | 是 | 是否开启输入预上屏。默认值：`true`。 <br/> 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。  |
-| enableHapticFeedback     | boolean | 否 | 是 | 是否开启触控反馈。默认值：`true`。   |
+| enablePreviewText        | boolean | 否 | 是 | 是否开启输入预上屏。true表示开启输入预上屏。默认值：`true`。 <br/> 需要配合开启输入法的预上屏功能。预上屏内容定义为文字暂存态，目前不支持文字拦截功能，因此该值为true时不触发onWillInsert、onDidInsert回调。  |
+| enableHapticFeedback     | boolean | 否 | 是 | 是否开启触控反馈。true表示开启。默认值：`true`。   |
 | onSubmit                 | Callback&lt;string&gt; \| [SearchSubmitCallback](ts-basic-components-search.md#searchsubmitcallback14) | 否 | 是 | 点击搜索图标、搜索按钮或者按下软键盘搜索按钮时触发该回调。默认值为`undefined`。   |
 | onChange                 | [EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12) | 否 | 是 | 输入内容发生变化时，触发该回调。默认值为`undefined`。   |
 | onCopy                   | Callback&lt;string&gt; | 否 | 是 | 进行复制操作时，触发该回调。默认值为`undefined`。   |
@@ -131,9 +131,9 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | onTextSelectionChange    | [OnTextSelectionChangeCallback](#ontextselectionchangecallback) | 否 | 是 | 文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调。默认值为`undefined`。   |
 | onContentScroll          | [OnContentScrollCallback](#oncontentscrollcallback) | 否 | 是 | 文本内容滚动时，触发该回调。默认值为`undefined`。   |
 | onEditChange             | Callback&lt;boolean&gt; | 否 | 是 | 输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。isEditing为true表示正在输入。默认值为`undefined`。   |
-| onWillInsert             | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean&gt; | 否 | 是 | 在将要输入时，触发该回调。默认值为`undefined`。   |
+| onWillInsert             | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean&gt; | 否 | 是 | 在将要输入时，触发该回调。true表示正常插入。默认值为`undefined`。   |
 | onDidInsert              | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明)&gt; | 否 | 是 | 在输入完成时，触发该回调。默认值为`undefined`。   |
-| onWillDelete             | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean&gt; | 否 | 是 | 在将要删除时，触发该回调。默认值为`undefined`。   |
+| onWillDelete             | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean&gt; | 否 | 是 | 在将要删除时，触发该回调。true表示正常删除。默认值为`undefined`。   |
 | onDidDelete              | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明)&gt; | 否 | 是 | 在删除完成时，触发该回调。默认值为`undefined`。   |
 
 ## OperationParams

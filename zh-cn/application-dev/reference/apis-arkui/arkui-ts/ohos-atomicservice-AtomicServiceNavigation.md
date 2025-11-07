@@ -179,7 +179,7 @@ NavDestination组件内容。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------------- | ------ | ---- | -- | ---------- |
 | sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认为$r('sys.color.ohos_id_color_sub_background')。 |
-| onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。 |
+| onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。true表示显示，false表示隐藏。 |
 | sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例
