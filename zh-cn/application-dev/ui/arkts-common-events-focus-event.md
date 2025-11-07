@@ -109,6 +109,73 @@ export struct FocusActiveExample {
 
 <!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
 
+``` TypeScript
+@Entry
+export struct FocusTransferExample {
+  @State logText: string = '\n';
+  context = this.getUIContext().getHostContext();
+
+  addText(message: string) {
+    this.logText += `${message}\n`;
+  };
+
+  build() {
+    NavDestination() {
+      Column() {
+        Row() {
+          Column() {
+            Button('Button 1')
+              .margin(20)
+              .onClick(() => {
+                // app.string.Focus_Event资源文件中的value值为'获焦信息'
+                this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
+                this.getUIContext().getFocusController().requestFocus('Row 2');
+              })
+          }
+        }
+
+        Column() {
+          Row() {
+            Button('Button 2')
+              .margin(20)
+              .onFocus(() => {
+                // app.string.Get_Focus资源文件中的value值为'获得焦点'
+                this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+              })
+            Button('button 3')
+              .margin(20)
+              .onFocus(() => {
+                this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+              })
+          }
+          .id('Row 2')
+          .onFocus(() => {
+            this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+          })
+        }
+        .onFocus(() => {
+          this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
+        })
+
+        Scroll() {
+          Text(this.logText)
+            .fontSize(14)
+            .textAlign(TextAlign.Start)
+            .padding(10)
+        }
+        .height('40%')
+        .width('100%')
+        .border({ width: 1, color: '#ccc' })
+        .margin(10)
+      }
+      .height('100%')
+      .padding(20)
+    }
+    // ···
+  }
+}
+```
+
 运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
 ![Liner_Focus_1](figures/Focus_transfer.gif)
