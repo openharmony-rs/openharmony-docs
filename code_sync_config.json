@@ -17739,7 +17739,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":162,
+						"end_line":161,
 						"name":"bind_sheet_entry_ability",
 						"start_line":15
 					}
