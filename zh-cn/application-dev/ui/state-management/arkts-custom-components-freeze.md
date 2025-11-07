@@ -587,6 +587,64 @@ struct NavigationContentMsgStack {
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
 <!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('descChange') desc: string;
+  @State count: number = 0;
+
+  descChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.count = params.count as number;
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent desc: ${this.desc}`)
+        .fontSize(20)
+      Text(`ChildComponent count ${this.count}`)
+        .fontSize(20)
+    }.border({ width: 2, color: Color.Pink })
+  }
+}
+
+@Entry
+@Component
+struct Page {
+  @State desc: string = 'Hello World';
+  @State flag: boolean = true;
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button(`change desc`).onClick(() => {
+        this.desc += '!';
+      })
+      Button(`change flag`).onClick(() => {
+        this.count++;
+        this.flag = !this.flag;
+      })
+      if (this.flag) {
+        ChildComponent({ desc: this.desc, count: this.count })
+      }
+    }
+    .height('100%')
+  }
+}
+```
+
 在上面的示例中：
 
 1. 点击`change flag`，改变`flag`为false：
