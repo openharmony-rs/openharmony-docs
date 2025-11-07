@@ -612,7 +612,7 @@ export class TestModel {
   constructor() {
     this.model = new Model(() => {
       this.isSuccess = true;
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
+      hilog.info(0xFF00, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
     })
   }
 
@@ -842,11 +842,11 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   getContent() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `this.dataObj.name change: ${this.dataObj.name}`);
+    hilog.info(0xFF00, 'testTag', '%{public}s', `this.dataObj.name change: ${this.dataObj.name}`);
     return this.dataObj.name;
   }
 
@@ -895,7 +895,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
@@ -914,8 +914,6 @@ struct ConsumerChild {
 ``` TypeScript
 import { UIUtils } from '@ohos.arkui.StateManagement';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
 
 class DataObj {
   public name: string = 'default name';
@@ -949,7 +947,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
