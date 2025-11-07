@@ -114,6 +114,20 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   <!-- @[shadow_color_2_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
 
   <!-- @[shadow_color_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 'app.string.radial_gradient'资源文件中的value值为"径向渐变"
+    Text($r('app.string.radial_gradient'))
+      .fontSize(18)
+      .fontColor(0xCCCCCC)
+      .textAlign(TextAlign.Center)
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+      .fontSize(96)
+      .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
+  }
+  ```
 
   ![ShaderStyleSymbolEffect](figures/symbolGlyph_shaderStyle.jpg)
 
