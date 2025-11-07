@@ -96,6 +96,22 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
 
   <!-- @[symbol_quick_replacement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 'app.string.quick_replacement_animation'资源文件中的value值为"快速替换动效"
+    Text($r('app.string.quick_replacement_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
+      .fontSize(96)
+      .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE),
+                    this.triggerValueReplace)
+    Button('trigger').onClick(() => {
+      this.replaceFlag = !this.replaceFlag;
+      this.triggerValueReplace = this.triggerValueReplace + 1;
+    })
+  }
+  ```
 
   ![symbolGlyph_symbolEffect_quick_replace](figures/symbolGlyph_symbolEffect_quick_replace.gif)
 
