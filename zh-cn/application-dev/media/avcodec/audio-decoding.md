@@ -270,6 +270,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    constexpr uint32_t DEFAULT_MAX_INPUT_SIZE = 1152;
    // 配置是否为ADTS解码（aac解码时可选）。
    constexpr uint32_t DEFAULT_AAC_TYPE = 1;
+   // 配置划分音频数据块字节数，从API version 22开始支持，仅WMAV1、WMAV2、WMA PRO解码时必须配置。
+   constexpr int32_t DEFAULT_BLOCK_ALIGN = 1;
    OH_AVFormat *format = OH_AVFormat_Create();
    // 写入format。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
@@ -277,6 +279,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_INPUT_SIZE, DEFAULT_MAX_INPUT_SIZE);
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AAC_IS_ADTS, DEFAULT_AAC_TYPE);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_BLOCK_ALIGN, DEFAULT_BLOCK_ALIGN);
    // 配置解码器。
    int32_t ret = OH_AudioCodec_Configure(audioDec_, format);
    if (ret != AV_ERR_OK) {
