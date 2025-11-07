@@ -224,6 +224,27 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)属性设置文本对齐样式。
 
   <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.TextAlign_Start'资源文件中的value值为'左对齐'
+  Text($r('app.string.TextAlign_Start'))
+    .width(300)
+    .textAlign(TextAlign.Start)
+    .border({ width: 1 })
+    .padding(10)
+  // 'app.string.TextAlign_Center'资源文件中的value值为'中间对齐'
+  Text($r('app.string.TextAlign_Center'))
+    .width(300)
+    .textAlign(TextAlign.Center)
+    .border({ width: 1 })
+    .padding(10)
+  // 'app.string.TextAlign_End'资源文件中的value值为'右对齐'
+  Text($r('app.string.TextAlign_End'))
+    .width(300)
+    .textAlign(TextAlign.End)
+    .border({ width: 1 })
+    .padding(10)
+  ```
 
   ![zh-cn_image_0000001511421260](figures/zh-cn_image_0000001511421260.png)
 
