@@ -118,6 +118,15 @@ Text可通过以下两种方式来创建：
 - 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase)设置文字一直保持大写或者小写状态。
 
   <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  
+  ``` TypeScript
+  Text() {
+    Span('I am Upper-span').fontSize(12)
+      .textCase(TextCase.UpperCase)
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
 
   ![zh-cn_image_0000001562940525](figures/zh-cn_image_0000001562940525.png)
 
