@@ -32,6 +32,14 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 1. 导入相关依赖。
 
 	<!-- @[calendarEvent_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { calendarManager } from '@kit.CalendarKit';
+    import { window } from '@kit.ArkUI';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    ```
 
 2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
 
