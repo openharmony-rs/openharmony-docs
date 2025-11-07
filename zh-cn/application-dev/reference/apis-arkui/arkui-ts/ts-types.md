@@ -1113,7 +1113,10 @@ TextInput、TextArea、Search的基础控制器。
 
 ### getTextContentRect<sup>10+</sup>
 
-getTextContentRect(): RectResult
+ArkTS-Dyn: getTextContentRect(): RectResult
+
+ArkTS-Sta: getTextContentRect(): RectResult | undefined
+
 
 获取已编辑文本内容区域相对组件的位置和大小，返回值单位为像素。
 
@@ -1121,11 +1124,15 @@ getTextContentRect(): RectResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型       | 说明       |
 | -------------------  | -------- |
-| [RectResult](#rectresult10) | 获取已编辑文本内容区域相对组件的位置和大小。 |
+| ArkTS-Dyn: [RectResult](#rectresult10) <br/> ArkTS-Sta: [RectResult](#rectresult10) \| undefined | 获取已编辑文本内容区域相对组件的位置和大小。 |
 
 > **说明：**
 >
@@ -1136,7 +1143,10 @@ getTextContentRect(): RectResult
 
 ### getTextContentLineCount<sup>10+</sup>
 
-getTextContentLineCount(): number
+ArkTS-Dyn: getTextContentLineCount(): number
+
+ArkTS-Sta: getTextContentLineCount(): int | undefined
+
 
 获取已编辑文本内容的行数。
 
@@ -1144,15 +1154,21 @@ getTextContentLineCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型  | 说明       |
 | ----- | -------- |
-| number| 已编辑文本内容行数。 |
+| ArkTS-Dyn: number <br/> ArkTS-Sta: int \| undefined | 已编辑文本内容行数。 |
 
 ### getCaretOffset<sup>11+</sup>
 
-getCaretOffset(): CaretOffset
+ArkTS-Dyn: getCaretOffset(): CaretOffset
+
+ArkTS-Sta: getCaretOffset(): CaretOffset | undefined
 
 返回当前光标所在位置信息。
 
@@ -1160,11 +1176,15 @@ getCaretOffset(): CaretOffset
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [CaretOffset](#caretoffset11对象说明) | 光标相对输入框的位置。 |
+| ArkTS-Dyn: [CaretOffset](#caretoffset11对象说明) <br/> ArkTS-Sta: [CaretOffset](#caretoffset11对象说明) \| undefined | 光标相对输入框的位置。|
 
 > **说明：**
 >
@@ -1175,7 +1195,9 @@ getCaretOffset(): CaretOffset
 
 ### addText<sup>15+</sup>
 
-addText(text: string, textOperationOptions?: TextContentControllerOptions): number
+ArkTS-Dyn: addText(text: string, textOperationOptions?: TextContentControllerOptions): number
+
+ArkTS-Sta: addText(text: string, textOperationOptions?: TextContentControllerOptions): int | undefined
 
 在已编辑文本的指定位置插入文本，默认插入至文本末尾。
 拖拽文本的状态下不生效。
@@ -1185,6 +1207,10 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1197,7 +1223,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 
 | 类型  | 说明       |
 | ----- | -------- |
-| number| 插入文本后光标的位置。 |
+| ArkTS-Dyn: number <br/> ArkTS-Sta:  int \| undefined | 插入文本后光标的位置。 |
 
 ### deleteText<sup>15+</sup>
 
@@ -1220,7 +1246,9 @@ deleteText(range?: TextRange): void
 
 ### getSelection<sup>15+</sup>
 
-getSelection(): TextRange
+ArkTS-Dyn: getSelection(): TextRange
+
+ArkTS-Sta: getSelection(): TextRange | undefined
 
 返回当前文本的选择范围。
 
@@ -1228,11 +1256,15 @@ getSelection(): TextRange
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [TextRange](ts-text-common.md#textrange12) | 文本当前的选择范围，未选中返回光标位置。 |
+| ArkTS-Dyn: [TextRange](ts-text-common.md#textrange12) <br/> ArkTS-Sta: [TextRange](ts-text-common.md#textrange12) \| undefined | 文本当前的选择范围，未选中返回光标位置。 |
 
 ### clearPreviewText<sup>17+</sup>
 

@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 子组件
 
@@ -24,7 +26,9 @@ ContainerSpan()
 
 ### textBackgroundStyle
 
-textBackgroundStyle(style: TextBackgroundStyle)
+ArkTS-Dyn: textBackgroundStyle(style: TextBackgroundStyle)
+
+ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined)
 
 设置文本背景样式。子组件在不设置该属性时，将继承此属性值。
 
@@ -32,15 +36,21 @@ textBackgroundStyle(style: TextBackgroundStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 是   | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} |
+| style  | ArkTS-Dyn: [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)<br/>ArkTS-Sta: [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) \| undefined | 是   | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} |
 
 ### attributeModifier<sup>12+</sup>
 
-attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute>)
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute> | undefined)
 
 设置组件的动态属性。
 
@@ -48,11 +58,15 @@ attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> | 是   | 动态设置组件的属性。 |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> \| undefined | 是   | 动态设置组件的属性。 |
 
 ## 事件
 
