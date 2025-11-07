@@ -218,6 +218,21 @@
 
 - 执行Button组件的更新方法，实现按需刷新。
     <!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct MyComponent {
+      @State count: number = 0;
+    
+      build() {
+        Button(`click times: ${this.count}`)
+          .onClick(() => {
+            this.count += 1;
+          })
+      }
+    }
+    ```
 
 ### 装饰class对象类型的变量
 
