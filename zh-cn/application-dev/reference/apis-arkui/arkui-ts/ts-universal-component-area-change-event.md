@@ -4,13 +4,17 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
 
 ## onAreaChange
 
-onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
+ArkTS-Dyn: onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
+
+ArkTS-Sta: onAreaChange(event: ((oldValue: Area, newValue: Area) => void) | undefined): this
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
@@ -24,6 +28,10 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -35,7 +43,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 示例
 

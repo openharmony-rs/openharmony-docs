@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
 ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖出或拖入响应。开发者也可以通过实现通用拖拽事件来自定义拖拽响应。
 
@@ -22,7 +24,9 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 ## onDragStart
 
-onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
+ArkTS-Dyn: onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
+
+ArkTS-Sta: onDragStart(event: ((event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo) | undefined): this
 
 第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
 
@@ -38,21 +42,27 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明               |
 | ----------- | ------------------------------- | ---- | ------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)  | 是   | 回调函数。<br/> **说明：**<br/> event为拖拽事件信息。<br/> extraParams为拖拽事件额外信息。需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)<br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event为拖拽事件信息。<br/> extraParams为拖拽事件额外信息。需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDragEnter
 
-onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragEnter(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽进入组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -60,21 +70,27 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void <br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => void \|&nbsp;undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDragMove
 
-onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragMove(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽在组件范围内移动时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -82,21 +98,27 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void <br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => void \|&nbsp;undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDragLeave
 
-onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragLeave(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 拖拽离开组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
 
@@ -104,21 +126,27 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void <br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => void \|&nbsp;undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDrop
 
-onDrop(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDrop(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDrop(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 绑定此事件的组件可作为释放目标。当在本组件范围内停止拖放行为时，将触发回调。如果开发者未在onDrop中主动调用event.setResult()来设置拖拽接收的结果，对于系统支持的默认可拖入组件，处理结果将依据系统实际处理的数据。对于其他组件，系统将默认视为数据接收成功。
 
@@ -126,21 +154,27 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void <br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => void \|&nbsp;undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDrop<sup>15+</sup>
 
-onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
+ArkTS-Dyn: onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
+
+ArkTS-Sta: onDrop(eventCallback: OnDragEventCallback | undefined, dropOptions: DropOptions): this
 
 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.setResult()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
 
@@ -148,22 +182,28 @@ onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| eventCallback  | [OnDragEventCallback](#ondrageventcallback15)   | 是   | 回调函数。|
+| eventCallback  | ArkTS-Dyn: [OnDragEventCallback](#ondrageventcallback15) <br/>ArkTS-Sta: [OnDragEventCallback](#ondrageventcallback15) \|&nbsp;undefined | 是   | 回调函数。|
 | dropOptions  | [DropOptions](#dropoptions15)   | 否   | 落入过程的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDragEnd<sup>10+</sup>
 
-onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
+ArkTS-Dyn: onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
+
+ArkTS-Sta: onDragEnd(event: ((event: DragEvent, extraParams?: string) => void) | undefined): this
 
 绑定此事件的组件触发的拖拽结束后，触发回调。
 
@@ -171,21 +211,27 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => void  <br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => void \|&nbsp;undefined | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onPreDrag<sup>12+</sup>
 
-onPreDrag(callback: Callback\<PreDragStatus>)
+ArkTS-Dyn: onPreDrag(callback: Callback\<PreDragStatus>)
+
+ArkTS-Sta: onPreDrag(callback: Callback\<PreDragStatus> | undefined)
 
 绑定此事件的组件，当处于拖拽发起前的不同阶段时，触发回调。
 
@@ -193,11 +239,15 @@ onPreDrag(callback: Callback\<PreDragStatus>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| callback    | Callback<[PreDragStatus](#predragstatus12枚举说明)>     | 是   | 回调函数。|
+| callback    | ArkTS-Dyn: Callback<[PreDragStatus](#predragstatus12枚举说明)><br/> ArkTS-Sta: Callback<[PreDragStatus](#predragstatus12枚举说明)> \| undefined     | 是   | 回调函数。|
 
 ## onDragSpringLoading<sup>20+</sup>
 

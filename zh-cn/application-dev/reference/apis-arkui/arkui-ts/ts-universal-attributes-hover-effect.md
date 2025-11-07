@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
-> 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## hoverEffect
 
-hoverEffect(value: HoverEffect): T
+ArkTS-Dyn: hoverEffect(value: HoverEffect): T
+
+ArkTS-Sta: hoverEffect(value: HoverEffect | undefined): this
 
 设置组件的鼠标悬浮态显示效果。当未设置hoverEffect时，组件默认鼠标悬浮态效果为HoverEffect.Auto。
 
@@ -16,17 +20,21 @@ hoverEffect(value: HoverEffect): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                             | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [HoverEffect](ts-appendix-enums.md#hovereffect8) | 是   | 设置当前组件悬浮态下的悬浮效果。|
+| value  | ArkTS-Dyn: [HoverEffect](ts-appendix-enums.md#hovereffect8) <br/>ArkTS-Sta: [HoverEffect](ts-appendix-enums.md#hovereffect8) \|&nbsp;undefined | 是   | 设置当前组件悬浮态下的悬浮效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 示例
 
