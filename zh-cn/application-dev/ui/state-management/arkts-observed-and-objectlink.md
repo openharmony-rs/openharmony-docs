@@ -321,6 +321,51 @@ struct Parent {
     【正例】
   
     <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) -->
+    
+    ``` TypeScript
+    
+    @Observed
+    class Info {
+      public count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink num: Info;
+    
+      build() {
+        Column() {
+          Text(`num value: ${this.num.count}`)
+            .onClick(() => {
+              // 正确写法，可以更改@ObjectLink装饰变量的成员属性
+              this.num.count = 20;
+            })
+        }
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State num: Info = new Info(10);
+    
+      build() {
+        Column() {
+          Text(`count value: ${this.num.count}`)
+          Button('click')
+            .onClick(() => {
+              // 可以在父组件做整体替换
+              this.num = new Info(30);
+            })
+          Child({ num: this.num })
+        }
+      }
+    }
+    ```
 
 
 ## 使用场景
