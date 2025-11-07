@@ -2273,7 +2273,7 @@ let bufferSize: number = 0;
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// 确保该沙箱路径下存在该资源。
+// 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
 let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -2378,6 +2378,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
@@ -2447,6 +2448,7 @@ audioRenderer.getBufferSize().then((data: number) => {
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
