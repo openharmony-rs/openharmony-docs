@@ -114,7 +114,8 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
      <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
      
      ``` TypeScript
-     import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+     import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
+       SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
      ```
 
   2. 加载场景并设置渲染参数。
