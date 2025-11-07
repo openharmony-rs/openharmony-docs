@@ -153,11 +153,12 @@
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
    <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
-   ```ts
+   
+   ``` TypeScript
    let reminderId: number = await reminderAgent.publishReminder(
      this.calendarReminders[index].reminderRequestCalendar!);
-   Logger.info(TAG, `publish reminder result: id is ${reminderId}`);  // 保存发布的提醒ID
-   this.calendarReminders[index].reminderId = reminderId;
+   Logger.info(TAG, `publish reminder result: id is ${reminderId}`);
+   this.calendarReminders[index].reminderId = reminderId;  // 保存发布的提醒ID
    ```
 
 4. 根据需要删除提醒任务。
