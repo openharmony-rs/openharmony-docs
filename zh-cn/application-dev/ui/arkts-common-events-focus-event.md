@@ -1228,6 +1228,34 @@ tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过
 
 <!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct TabIndexFocusExample {
+  build() {
+    NavDestination() {
+      Column() {
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin(5).tabIndex(1)
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin(5)
+        }.tabIndex(2)
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 Tab键走焦：tabIndex配置在容器上。
 
 ![TabIndex_Focus_2.gif](figures/TabIndex_Focus_2.gif)
