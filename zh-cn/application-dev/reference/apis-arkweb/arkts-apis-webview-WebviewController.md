@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -1600,7 +1602,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1613,7 +1615,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('accessStep')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let result = this.controller.accessStep(this.steps);
             console.log('result:' + result);
@@ -1852,7 +1854,7 @@ struct Index {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, $rawfile, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1918,7 +1920,7 @@ struct Index {
   build() {
     Column() {
       Button('refresh')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.refresh();
           } catch (error) {
@@ -1926,7 +1928,7 @@ struct Index {
           }
         })
       Button('Register JavaScript To Window')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             // 同时注册同步和异步函数
             this.controller.registerJavaScriptProxy(this.testObjtest, "objName", ["test", "toString", "testNumber"],
@@ -1941,7 +1943,7 @@ struct Index {
           }
         })
       Button('deleteJavaScriptRegister')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.deleteJavaScriptRegister("objName");
             this.controller.deleteJavaScriptRegister("objTestName");
@@ -2770,7 +2772,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, $rawfile, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2798,7 +2800,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('refresh')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.refresh();
           } catch (error) {
@@ -2806,7 +2808,7 @@ struct WebComponent {
           }
         })
       Button('Register JavaScript To Window')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.registerJavaScriptProxy(this.testObjtest, this.name, ["test", "toString"]);
           } catch (error) {
@@ -2814,7 +2816,7 @@ struct WebComponent {
           }
         })
       Button('deleteJavaScriptRegister')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.deleteJavaScriptRegister(this.name);
           } catch (error) {
@@ -3009,7 +3011,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, $rawfile, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3022,7 +3024,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('searchString')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.searchAllAsync(this.searchString);
           } catch (error) {
@@ -3104,7 +3106,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { $rawfile, Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { $rawfile, Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3116,7 +3118,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearMatches')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.clearMatches();
           } catch (error) {
@@ -3190,7 +3192,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { $rawfile, Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { $rawfile, Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3202,7 +3204,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('searchNext')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.searchNext(true);
           } catch (error) {
@@ -3269,7 +3271,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3281,7 +3283,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearSslCache')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.clearSslCache();
           } catch (error) {
@@ -3346,7 +3348,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3358,7 +3360,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearClientAuthenticationCache')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.clearClientAuthenticationCache();
           } catch (error) {
@@ -4287,7 +4289,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4299,7 +4301,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('storeWebArchive')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.storeWebArchive("/data/storage/el2/base/", true,
               (error: BusinessError<void> | null | undefined, filename: String | undefined) => {
@@ -4396,7 +4398,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4408,7 +4410,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('storeWebArchive')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.storeWebArchive("/data/storage/el2/base/", true)
               .then(filename => {
@@ -4656,7 +4658,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4669,7 +4671,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('backOrForward')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.backOrForward(this.step);
           } catch (error) {
@@ -5368,7 +5370,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, $rawfile } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5380,7 +5382,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setNetworkAvailable')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.setNetworkAvailable(true);
           } catch (error) {
@@ -5484,7 +5486,7 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -5495,7 +5497,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('hasImageCb')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.hasImage((error: BusinessError | null, data:  Boolean | undefined): void => {
               if (error) {
@@ -5580,7 +5582,7 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -5591,7 +5593,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('hasImagePm')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.hasImage().then((data: boolean) => {
               console.info('hasImage: ' + data);
@@ -5671,7 +5673,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5683,7 +5685,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeCache')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.removeCache(false);
           } catch (error) {
@@ -5758,7 +5760,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5770,7 +5772,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeAllCache')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebviewController.removeAllCache(false);
           } catch (error) {
@@ -6702,7 +6704,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, ClickEvent, State } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6715,7 +6717,7 @@ struct WebComponent {
   build() {
     Column() {
       Button("Toggle Mute")
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           if (e) {
             this.muted = !this.muted;
             this.controller.setAudioMuted(this.muted);
@@ -6903,7 +6905,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6915,7 +6917,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('prefetchPopularPage')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             // 预加载时，需要将'https://www.example.com'替换成一个真实的网站地址。
             this.controller.prefetchPage('https://www.example.com');
@@ -7343,7 +7345,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7356,7 +7358,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setDownloadDelegate')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -7437,7 +7439,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7450,7 +7452,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setDownloadDelegate')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -7458,7 +7460,7 @@ struct WebComponent {
           }
         })
       Button('startDownload')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
@@ -7740,7 +7742,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent, OnErrorReceiveEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry, OnErrorReceiveEvent } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7752,7 +7754,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setConnectionTimeout')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebviewController.setConnectionTimeout(5);
             console.log("setConnectionTimeout: 5s");
@@ -7901,7 +7903,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7913,7 +7915,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableSafeBrowsing')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.enableSafeBrowsing(true);
             console.log("enableSafeBrowsing: true");
@@ -7973,7 +7975,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -7984,7 +7986,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isSafeBrowsingEnabled')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           let result = this.controller.isSafeBrowsingEnabled();
           console.log("result: " + result);
         })
@@ -8059,7 +8061,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8071,7 +8073,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableIntelligentTrackingPrevention')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.enableIntelligentTrackingPrevention(true);
             console.log("enableIntelligentTrackingPrevention: true");
@@ -8149,7 +8151,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8161,7 +8163,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isIntelligentTrackingPreventionEnabled')
-         .onClick((e: ClickEvent) => {
+         .onClick((e) => {
           try {
             let result = this.controller.isIntelligentTrackingPreventionEnabled();
             console.log("result: " + result);
@@ -8239,7 +8241,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8251,7 +8253,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('addIntelligentTrackingPreventionBypassingList')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
             webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
@@ -8329,7 +8331,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8341,7 +8343,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('removeIntelligentTrackingPreventionBypassingList')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let hostList = ["www.test1.com", "www.test2.com"];
             webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
@@ -8406,7 +8408,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -8417,7 +8419,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearIntelligentTrackingPreventionBypassingList')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           webview.WebviewController.clearIntelligentTrackingPreventionBypassingList();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -8549,7 +8551,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8561,7 +8563,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('enableAdsBlock')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.enableAdsBlock(true);
             console.log("enableAdsBlock: true")
@@ -8638,7 +8640,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8650,7 +8652,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isAdsBlockEnabled')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let isAdsBlockEnabled: boolean = this.controller.isAdsBlockEnabled();
             console.log("isAdsBlockEnabled:", isAdsBlockEnabled);
@@ -8728,7 +8730,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8740,7 +8742,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isAdsBlockEnabledForCurPage')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let isAdsBlockEnabledForCurPage: boolean = this.controller.isAdsBlockEnabledForCurPage();
             console.log("isAdsBlockEnabledForCurPage:", isAdsBlockEnabledForCurPage);
@@ -9280,7 +9282,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9292,7 +9294,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('isIncognitoMode')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             let result = this.controller.isIncognitoMode();
             console.log('isIncognitoMode' + result);
@@ -10244,7 +10246,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10256,7 +10258,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('stopAllMedia')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.stopAllMedia();
           } catch (error) {
@@ -10323,7 +10325,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10335,7 +10337,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('pauseAllMedia')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.pauseAllMedia();
           } catch (error) {
@@ -10402,7 +10404,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry , ClickEvent} from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10414,7 +10416,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('resumeAllMedia')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.resumeAllMedia();
           } catch (error) {
@@ -10481,7 +10483,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10493,7 +10495,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('closeAllMediaPresentations')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.closeAllMediaPresentations();
           } catch (error) {
@@ -10566,7 +10568,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10578,7 +10580,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('getMediaPlaybackState')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
           } catch (error) {
@@ -10652,7 +10654,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10665,7 +10667,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setWebSchemeHandler')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             this.controller.setWebSchemeHandler('http', this.schemeHandler);
           } catch (error) {
@@ -10816,7 +10818,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10829,7 +10831,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('setWebSchemeHandler')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebviewController.setServiceWorkerWebSchemeHandler('http', this.schemeHandler);
           } catch (error) {
@@ -10881,7 +10883,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -10892,7 +10894,7 @@ struct WebComponent {
   build() {
     Column() {
       Button('clearServiceWorkerWebSchemeHandler')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           webview.WebviewController.clearServiceWorkerWebSchemeHandler();
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -10922,6 +10924,7 @@ startCamera(): void
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
+
 ArkTS-Dyn示例：
 
 ```ts
@@ -11003,7 +11006,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context, ClickEvent } from '@kit.ArkUI';
+import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { UIContext } from "@kit.ArkUI";
 import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
@@ -11032,21 +11035,21 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button("startCamera").onClick((e: ClickEvent) => {
+      Button("startCamera").onClick((e) => {
         try {
           this.controller.startCamera();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
-      Button("stopCamera").onClick((e: ClickEvent) => {
+      Button("stopCamera").onClick((e) => {
         try {
           this.controller.stopCamera();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
-      Button("closeCamera").onClick((e: ClickEvent) => {
+      Button("closeCamera").onClick((e) => {
         try {
           this.controller.closeCamera();
         } catch (error) {
@@ -12716,7 +12719,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Button, Web, Column, Component, Entry, ClickEvent } from '@kit.ArkUI';
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -12729,7 +12732,7 @@ struct WebComponent {
     Column() {
       // url加载前设置生效。
       Button('setHostIP')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebviewController.setHostIP('www.example.com', '127.0.0.1', 30);
           } catch (error) {
@@ -12737,7 +12740,7 @@ struct WebComponent {
           }
         })
       Button('clearHostIP')
-        .onClick((e: ClickEvent) => {
+        .onClick((e) => {
           try {
             webview.WebviewController.clearHostIP('www.example.com');
           } catch (error) {
@@ -13276,7 +13279,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 // xxx.ts
-import { Entry, Component, Column, Row, Button, ClickEvent, Web } from '@ohos.arkui.component'
+import { Entry, Component, Column, Row, Button, Web } from '@ohos.arkui.component'
 import { BusinessError } from '@ohos.base'
 import { webview } from '@kit.ArkWeb';
 

@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -195,7 +197,9 @@ ArkTS-Sta示例：
 
 ## javaScriptProxy
 
-javaScriptProxy(javaScriptProxy: JavaScriptProxy)
+ArkTS-Dyn: javaScriptProxy(javaScriptProxy: JavaScriptProxy)
+
+ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
 
 将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
 
@@ -208,11 +212,15 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- |---------------------------------------- |
-| javaScriptProxy     | [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)                                   | 是    |  参与注册的对象。只能声明方法，不能声明属性。                   |
+| javaScriptProxy     |ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。                   |
 
 **示例：**
 
@@ -271,9 +279,11 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 ## javaScriptAccess
 
-javaScriptAccess(javaScriptAccess: boolean)
+ArkTS-Dyn: javaScriptAccess(javaScriptAccess: boolean)
 
-设置是否允许执行JavaScript脚本。若未显式调用该属性，默认允许执行JavaScript脚本。
+ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined): this
+
+设置是否允许执行JavaScript脚本。若未显式调用该属性或入参值为undefined时，默认允许执行JavaScript脚本。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -285,7 +295,7 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 | 参数名              | 类型    | 必填   | 说明                |
 | ---------------- | ------- | ---- | ------------------- |
-| javaScriptAccess | boolean | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。|
+| javaScriptAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。|
 
 **示例：**
 
@@ -390,9 +400,11 @@ ArkTS-Sta示例：
 
 ## mixedMode
 
-mixedMode(mixedMode: MixedMode)
+ArkTS-Dyn: mixedMode(mixedMode: MixedMode)
 
-设定当安全源尝试从非安全源加载资源时的行为。若未显式调用该属性，默认值为MixedMode.None，即禁止安全源从非安全源加载内容。
+ArkTS-Sta: mixedMode(mixedMode: MixedMode | undefined): this
+
+设定当安全源尝试从非安全源加载资源时的行为。若未显式调用该属性或入参值为undefined时，默认值为MixedMode.None，即禁止安全源从非安全源加载内容。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -404,7 +416,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容。|
+| mixedMode |ArkTS-Dyn: [MixedMode](./arkts-basic-components-web-e.md#mixedmode)<br/>ArkTS-Sta: [MixedMode](./arkts-basic-components-web-e.md#mixedmode) \|  undefined| 是    | 要设置的混合内容。|
 
 **示例：**
 
@@ -1078,17 +1090,23 @@ ArkTS-Sta示例：
 
 ## cacheMode
 
-cacheMode(cacheMode: CacheMode)
+ArkTS-Dyn: cacheMode(cacheMode: CacheMode)
 
-设置缓存模式。若未显式调用该属性，默认优先使用未过期cache加载资源，无效或无cache时从网络获取。
+ArkTS-Sta: cacheMode(cacheMode: CacheMode | undefined): this
+
+设置缓存模式。若未显式调用该属性或入参值为undefined时，默认优先使用未过期cache加载资源，无效或无cache时从网络获取。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| cacheMode | [CacheMode](./arkts-basic-components-web-e.md#cachemode) | 是    | 要设置的缓存模式。|
+| cacheMode | ArkTS-Dyn: [CacheMode](./arkts-basic-components-web-e.md#cachemode)<br/>ArkTS-Sta: [CacheMode](./arkts-basic-components-web-e.md#cachemode) \|  undefined | 是    | 要设置的缓存模式。|
 
 **示例：**
 
@@ -1322,9 +1340,11 @@ ArkTS-Sta示例：
 
 ## blockNetwork<sup>9+</sup>
 
-blockNetwork(block: boolean)
+ArkTS-Dyn: blockNetwork(block: boolean)
 
-设置Web组件是否阻止从网络加载资源。若未显式调用该属性，默认Web组件不阻止从网络加载资源。
+ArkTS-Sta: blockNetwork(block: boolean | undefined): this
+
+设置Web组件是否阻止从网络加载资源。若未显式调用该属性或入参值为undefined时，默认Web组件不阻止从网络加载资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1335,7 +1355,7 @@ blockNetwork(block: boolean)
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | 是    | 设置Web组件是否阻止从网络加载资源。<br>true表示设置Web组件阻止从网络加载资源，false表示设置Web组件不阻止从网络加载资源。|
+| block | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置Web组件是否阻止从网络加载资源。<br>true表示设置Web组件阻止从网络加载资源，false表示设置Web组件不阻止从网络加载资源。|
 
 **示例：**
 
@@ -2400,7 +2420,9 @@ ArkTS-Sta示例：
 
 ## javaScriptOnDocumentStart<sup>11+</sup>
 
-javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
+ArkTS-Dyn: javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
+
+ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
 
@@ -2416,11 +2438,15 @@ javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | 是    | 需要注入的ScriptItem数组。 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined | 是    | 需要注入的ScriptItem数组。 |
 
 **ets示例：**
 
@@ -2454,6 +2480,39 @@ ArkTS-Dyn示例：
       }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Column, Component, Web, State, ScriptItem, $rawfile, Color } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private localStorage: string =
+      "if (typeof(Storage) !== 'undefined') {" +
+        "   localStorage.setItem('color', 'Red');" +
+        "}";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.localStorage, scriptRules: ["*"] }
+    ] as ScriptItem[];
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .javaScriptOnDocumentStart(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
+    }
+  }
+  ```
+
 **HTML示例：**
 
 ```html
@@ -2481,7 +2540,9 @@ ArkTS-Dyn示例：
 
 ## javaScriptOnDocumentEnd<sup>11+</sup>
 
-javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
+ArkTS-Dyn: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
+
+ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
 
@@ -2497,14 +2558,19 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2533,6 +2599,36 @@ struct Index {
 }
   ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, State, ScriptItem, $rawfile, Color } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private jsStr: string =
+    "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
+  @State scripts: Array<ScriptItem> = [
+    { script: this.jsStr, scriptRules: ["*"] }
+  ] as ScriptItem[];
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+        .backgroundColor(Color.Grey)
+        .javaScriptOnDocumentEnd(this.scripts)
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -2548,7 +2644,9 @@ Hello world!
 
 ## runJavaScriptOnDocumentStart<sup>15+</sup>
 
-runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
+ArkTS-Dyn: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
+
+ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
 
@@ -2564,14 +2662,19 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
 
 **ets示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2601,6 +2704,39 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
       }
   }
   ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, State, ScriptItem, $rawfile, Color } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private localStorage: string =
+      "if (typeof(Storage) !== 'undefined') {" +
+        "   localStorage.setItem('color', 'Red');" +
+        "}";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.localStorage, scriptRules: ["*"] } as ScriptItem
+    ];
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .runJavaScriptOnDocumentStart(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
+    }
+  }
+  ```
+
 **HTML示例：**
 
 ```html
@@ -2628,7 +2764,9 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
 ## runJavaScriptOnDocumentEnd<sup>15+</sup>
 
-runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
+ArkTS-Dyn: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
+
+ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
 
 将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
 
@@ -2644,15 +2782,20 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
 
 **示例：**
 
-  ```ts
+ArkTS-Dyn示例：
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2678,7 +2821,37 @@ struct Index {
     }
   }
 }
-  ```
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry, State, ScriptItem, $rawfile, Color } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private jsStr: string =
+    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  @State scripts: Array<ScriptItem> = [
+    { script: this.jsStr, scriptRules: ["*"] } as ScriptItem
+  ];
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+        .backgroundColor(Color.Grey)
+        .runJavaScriptOnDocumentEnd(this.scripts)
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```
 
 ```html
 <!DOCTYPE html>
@@ -2695,7 +2868,9 @@ Hello world!
 
 ## runJavaScriptOnHeadEnd<sup>15+</sup>
 
-runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
+ArkTS-Dyn: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
+
+ArkTS-Sta: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem> | undefined): this
 
 将JavaScript脚本注入到Web组件中，当页面DOM树head标签解析完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
 
@@ -2707,15 +2882,20 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> | 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
 
 **示例：**
 
-  ```ts
+ArkTS-Dyn示例：
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2741,7 +2921,37 @@ struct Index {
     }
   }
 }
-  ```
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry, State, ScriptItem, $rawfile, Color } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private jsStr: string =
+    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  @State scripts: Array<ScriptItem> = [
+    { script: this.jsStr, scriptRules: ["*"] } as ScriptItem
+  ];
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+        .backgroundColor(Color.Grey)
+        .runJavaScriptOnHeadEnd(this.scripts)
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```
 
 ```html
 <!DOCTYPE html>
@@ -3606,6 +3816,7 @@ ArkTS-Sta示例：
 
 onAdsBlocked(callback: OnAdsBlockedCallback)
 
+
 一个页面发生广告过滤后，通过此回调接口通知过滤的详细信息。由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3614,10 +3825,11 @@ onAdsBlocked(callback: OnAdsBlockedCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnAdsBlockedCallback](./arkts-basic-components-web-t.md#onadsblockedcallback12) | 是 | 广告过滤的回调。 |
+| callback       |[OnAdsBlockedCallback](./arkts-basic-components-web-t.md#onadsblockedcallback12)| 是 | 广告过滤的回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4198,12 +4410,12 @@ struct WebComponent {
   MenuBuilder() {
     Menu() {
       MenuItem({ content: '复制', } as MenuItemOptions)
-        .onClick((e: ClickEvent): void => {
+        .onClick((e): void => {
           this.result?.copy();
           this.result?.closeContextMenu();
         })
       MenuItem({ content: '全选', } as MenuItemOptions)
-        .onClick((e: ClickEvent): void => {
+        .onClick((e): void => {
           this.result?.selectAll();
           this.result?.closeContextMenu();
         })

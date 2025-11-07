@@ -32,6 +32,10 @@ handleCancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## handleConfirm<sup>9+</sup>
 
 handleConfirm(): void
@@ -40,6 +44,10 @@ handleConfirm(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## handleCancel<sup>20+</sup>
 
 handleCancel(abortLoading: boolean): void
@@ -47,6 +55,10 @@ handleCancel(abortLoading: boolean): void
 通知Web组件取消此请求，并根据参数abortLoading决定是否停止加载。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

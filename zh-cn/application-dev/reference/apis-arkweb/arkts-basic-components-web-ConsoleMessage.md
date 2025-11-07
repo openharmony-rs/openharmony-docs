@@ -100,6 +100,10 @@ getSourceId(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明            |

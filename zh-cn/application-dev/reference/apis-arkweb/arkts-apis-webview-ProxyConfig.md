@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 15开始支持。
@@ -17,6 +19,10 @@ insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 插入一条代理规则，与schemeFilter匹配的URL都会使用指定代理。如果schemeFilter为空，所有URL都将使用指定代理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -45,11 +51,15 @@ insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会直接与服务器相连。<br>默认值：MATCH_ALL_SCHEMES |
+| schemeFilter   | [ProxySchemeFilter](./arkts-apis-webview-e.md#proxyschemefilter15)  | 否   | 与schemeFilter匹配的URL会直接与服务器相连。<br>默认值：MATCH_ALL_SCHEMES。|
 
 **错误码：**
 
@@ -70,6 +80,10 @@ insertBypassRule(bypassRule: string): void
 插入一条bypass规则，指明哪些URL应该绕过代理并直接连接到服务器。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -97,6 +111,10 @@ bypassHostnamesWithoutPeriod(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
@@ -109,6 +127,10 @@ clearImplicitRules(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **示例：**
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
@@ -117,15 +139,19 @@ clearImplicitRules(): void
 
 enableReverseBypass(reverse: boolean): void
 
-反转bypass规则。
+反转bypass规则。若未显式调用该属性，默认表示与[insertBypassRule](#insertbypassrule15)中的bypassRule匹配的URL会绕过代理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| reverse     | boolean  | 是   | 参数值默认是false，表示与[insertBypassRule](#insertbypassrule15)中的bypassRule匹配的URL会绕过代理，参数值为true时，表示与[insertBypassRule](#insertbypassrule15)中的bypassRule匹配的URL会使用代理。 |
+| reverse     | boolean  | 是   | 参数值为false时，表示与[insertBypassRule](#insertbypassrule15)中的bypassRule匹配的URL会绕过代理，参数值为true时，表示与[insertBypassRule](#insertbypassrule15)中的bypassRule匹配的URL会使用代理。 |
 
 **错误码：**
 
@@ -147,6 +173,10 @@ getBypassRules(): Array\<string\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -165,6 +195,10 @@ getProxyRules(): Array\<ProxyRule\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -182,6 +216,10 @@ isReverseBypassEnabled(): boolean
 获取[enableReverseBypass](#enablereversebypass15)的参数值，详见[enableReverseBypass](#enablereversebypass15)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
