@@ -145,6 +145,34 @@
 5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
 
 	<!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    const calendarAccounts: calendarManager.CalendarAccount = {
+      name: 'MyCalendar',
+      type: calendarManager.CalendarType.LOCAL,
+      displayName: 'MyCalendar'
+    };
+    // 日历配置信息
+    calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
+      //获取日历账户
+      if (err) {
+        hilog.error(DOMAIN, 'testTag', `Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+      } else {
+        const config: calendarManager.CalendarConfig = {
+          // 打开日程提醒
+          enableReminder: true,
+          // 设置日历账户颜色
+          color: '#aabbcc'
+        };
+        // 设置日历配置信息
+        data.setConfig(config).then(() => {
+          hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in setting config, data->${JSON.stringify(config)}`);
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, 'testTag', `Failed to set config. Code: ${err.code}, message: ${err.message}`);
+        })
+      }
+    });
+    ```
 
 
 6. 可以查询指定日历账户。
