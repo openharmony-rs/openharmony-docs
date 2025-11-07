@@ -3055,7 +3055,13 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 非自由窗口状态下，触发避让区回调时，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区并返回，否则直接返回空的避让区。
 <!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。<!--RP7End-->
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 9
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3087,13 +3093,62 @@ try {
 }
 ```
 
+## onAvoidAreaChange<sup>22+</sup>
+
+onAvoidAreaChange(callback: Callback&lt;AvoidAreaOptions&gt;): void
+
+开启当前应用窗口系统规避区变化的监听。
+<!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。<!--RP7End-->
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('avoidAreaChange')](#onavoidareachange9)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                                  |
+| -------- |----------------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 是   | 回调函数。返回当前规避区以及规避区类型。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onAvoidAreaChange((data) => {
+    console.info('Succeeded in enabling the listener for system avoid area changes. type:' +
+    JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for system avoid area changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('avoidAreaChange')<sup>9+</sup>
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 关闭当前窗口系统规避区变化的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 9
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3130,6 +3185,56 @@ try {
   windowClass.off('avoidAreaChange');
 } catch (exception) {
   console.error(`Failed to enable or disable the listener for system avoid area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offAvoidAreaChange<sup>22+</sup>
+
+offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
+
+关闭当前窗口系统规避区变化的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('avoidAreaChange')](#offavoidareachange9)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                              | 必填 | 说明                                |
+| -------- |----------------------------------|------|------------------------------------|
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 否   | 回调函数。返回当前规避区以及规避区类型。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+**示例：**
+
+```ts
+interface Param {
+  type: window.AvoidAreaType,
+  area: window.AvoidArea
+}
+const callback = (data: Param) => {
+  // ...
+}
+try {
+  windowClass.onAvoidAreaChange', callback);
+
+  windowClass.offAvoidAreaChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offAvoidAreaChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for system avoid area changes. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3652,7 +3757,13 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 9
 
 **参数：**
 
@@ -3681,6 +3792,49 @@ try {
 }
 ```
 
+## onDisplayIdChange<sup>22+</sup>
+
+onDisplayIdChange(callback: Callback&lt;long&gt;): void
+
+开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('displayIdChange')](#ondisplayidchange14)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回number类型参数，表示窗口所处屏幕的displayId。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onDisplayIdChange((data) => {
+    console.info('Window displayId changed, displayId=' + JSON.stringify(data));
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('screenshot')<sup>9+</sup>
 
 off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
@@ -3689,7 +3843,13 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 9
 
 **参数：**
 
@@ -3719,6 +3879,51 @@ try {
   windowClass.off('screenshot');
 } catch (exception) {
   console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offScreenshot<sup>22+</sup>
+
+offScreenshot(callback?: Callback&lt;void&gt;): void
+
+关闭截屏事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenshot')](#offscreenshot9)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。发生截屏事件时的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有截屏事件的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+**示例：**
+
+```ts
+let callback = () => {
+  console.info('screenshot happened');
+};
+try {
+  windowClass.onScreenshot(callback);
+  windowClass.offSreenshot(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offScreenshot();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3967,7 +4172,13 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 14
 
 **参数：**
 
@@ -3997,6 +4208,50 @@ try {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+## onDisplayIdChange<sup>22+</sup>
+
+onDisplayIdChange(callback: Callback&lt;long&gt;): void
+
+开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('displayIdChange')](#ondisplayidchange14)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回number类型参数，表示窗口所处屏幕的displayId。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onDisplayIdChange((data) => {
+    console.info('Window displayId changed, displayId=' + JSON.stringify(data));
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('displayIdChange')<sup>14+</sup>
 
 off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
@@ -4005,7 +4260,13 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 14
 
 **参数：**
 
@@ -4042,6 +4303,53 @@ try {
 }
 ```
 
+## offDisplayIdChange<sup>22+</sup>
+
+offDisplayIdChange(callback?: Callback&lt;long&gt;): void
+
+关闭本窗口所处屏幕变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('displayIdChange')](#offdisplayidchange14)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;long&gt;    | 否   | 回调函数。当本窗口所处屏幕发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (displayId: long) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onDisplayIdChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offDisplayIdChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offDisplayIdChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('windowVisibilityChange')<sup>11+</sup>
 
 on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
@@ -4050,7 +4358,13 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowVisibilityChange](#onwindowvisibilitychange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 11
 
 **参数：**
 
@@ -4082,6 +4396,50 @@ try {
 }
 ```
 
+## onWindowVisibilityChange<sup>22+</sup>
+
+onWindowVisibilityChange(callback: Callback&lt;boolean&gt;): void
+
+开启本窗口可见状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowVisibilityChange')](#onwindowvisibilitychange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt;   | 是   | 回调函数。当本窗口可见状态发生变化后的回调。回调函数返回boolean类型参数，当返回参数为true时表示窗口可见，否则表示窗口不可见。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowVisibilityChange((boolean) => {
+    console.info('Window visibility changed, isVisible=' + boolean);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('windowVisibilityChange')<sup>11+</sup>
 
 off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
@@ -4090,7 +4448,13 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowVisibilityChange](#offwindowvisibilitychange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 11
 
 **参数：**
 
@@ -4125,6 +4489,56 @@ try {
   windowClass.off('windowVisibilityChange');
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowVisibilityChange<sup>22+</sup>
+
+offWindowVisibilityChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭本窗口可见状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowVisibilityChange')](#offwindowvisibilitychange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowVisibilityChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowVisibilityChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowVisibilityChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -4219,7 +4633,13 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 15
 
 **参数：**
 
@@ -4254,6 +4674,52 @@ try {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+## onSystemDensityChange<sup>22+</sup>
+
+onSystemDensityChange(callback: Callback&lt;double&gt;): void
+
+开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
+
+**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemDensityChange')](#onsystemdensitychange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;double&gt;   | 是   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。回调函数返回double类型参数，表示当前窗口所处屏幕的系统显示大小缩放系数。                               |
+
+**错误码：**
+
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (density: double) => {
+  console.info('System density changed, density=' + JSON.stringify(density));
+}
+try {
+  windowClass.onSystemDensityChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('systemDensityChange')<sup>15+</sup>
 
 off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
@@ -4264,7 +4730,13 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 15
 
 **参数：**
 
@@ -4298,6 +4770,55 @@ try {
   windowClass.off('systemDensityChange');
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offSystemDensityChange<sup>22+</sup>
+
+offSystemDensityChange(callback?: Callback&lt;double&gt;): void
+
+关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
+
+**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemDensityChange')](#offsystemdensitychange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;number&gt;    | 否   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕的系统显示大小缩放系数变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (density: number) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onSystemDensityChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offSystemDensityChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offSystemDensityChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
