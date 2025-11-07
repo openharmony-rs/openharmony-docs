@@ -629,6 +629,35 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 - 在UIAbility中接收router事件并获取参数
 
     <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/entryability/EntryAbility.ets
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    
+    const TAG: string = 'EntryAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    // ···
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        if (want?.parameters?.params) {
+          let params: Record<string, Object> = JSON.parse(JSON.stringify(want.parameters.params));
+          // 获取router事件中传递的info参数
+          if (params.info === 'router info') {
+            // 执行业务逻辑，由用户自行实现
+            hilog.info(DOMAIN_NUMBER, TAG, `router info: ${params.info}`);
+          }
+          // 获取router事件中传递的message参数
+          if (params.message === 'router message') {
+            // 执行业务逻辑，由用户自行实现
+            hilog.info(DOMAIN_NUMBER, TAG, `router message: ${params.message}`);
+          }
+        }
+      }
+    // ···
+    }
+    ```
 
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
