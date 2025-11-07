@@ -19181,5 +19181,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-interaction-development-guide-touch-screen.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"prevent_bubbling",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/sampling/Sampling.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"samp_ling",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"multiple_finger_information",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
