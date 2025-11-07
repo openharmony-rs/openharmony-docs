@@ -28,6 +28,7 @@
   ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN_NUMBER = 0xF811;
   const TAG  = '[Sample_EnvConfig]';
   
