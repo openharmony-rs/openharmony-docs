@@ -106,6 +106,24 @@ class Parent {
 
 <!-- @[Modify_and_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
 
+``` TypeScript
+@ObjectLink parent: Parent;
+
+build() {
+  Column() {
+    Button('click me')
+      .onClick(() => {
+        // 赋值变化可以被观察到
+        this.parent.child = new Child(5);
+        this.parent.count = 5;
+        // Child没有被@Observed装饰，其属性的变化观察不到
+        this.parent.child.num = 5;
+      // ···
+      })
+  }
+}
+```
+
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
 \@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)处理的返回值。示例请参考[嵌套对象](#嵌套对象)。
