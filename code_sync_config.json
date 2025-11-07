@@ -16619,9 +16619,9 @@
 						"start_line":43
 					},
 					{
-						"end_line":115,
+						"end_line":119,
 						"name":"userdata_start",
-						"start_line":58
+						"start_line":62
 					},
 					{
 						"end_line":83,
@@ -16629,12 +16629,12 @@
 						"start_line":79
 					},
 					{
-						"end_line":110,
+						"end_line":114,
 						"name":"drawCanvas_Start",
-						"start_line":86
+						"start_line":25
 					},
 					{
-						"end_line":120,
+						"end_line":124,
 						"name":"drawing_start",
 						"start_line":17
 					}
@@ -16644,7 +16644,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h",
 				"functions":[
 					{
-						"end_line":221,
+						"end_line":219,
 						"name":"arkUICustomNode_start",
 						"start_line":17
 					}
@@ -16654,7 +16654,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":636,
+						"end_line":638,
 						"name":"arkUICustomNodeCpp_start",
 						"start_line":28
 					}
