@@ -241,6 +241,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy(): void {
     // 释放UI资源
   }
+  // ···
 }
 ```
 
