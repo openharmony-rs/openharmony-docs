@@ -1515,6 +1515,33 @@ export struct FocusScopeIdExample {
 >  4. 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct FocusOnclickExample {
+     @State count: number = 0;
+     @State name: string = 'Button';
+   
+     build() {
+       NavDestination() {
+         Column() {
+           Button(this.name)
+             .fontSize(30)
+             .onClick(() => {
+               this.count++
+               if (this.count % 2 === 0) {
+                 this.name = 'count is even number';
+               } else {
+                 this.name = 'count is odd number';
+               }
+             }).height(60)
+         }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+       }
+       // ···
+     }
+   }
+   ```
 
 ![focus-4](figures/focus-4.gif)
 
