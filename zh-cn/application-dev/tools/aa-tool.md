@@ -67,7 +67,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -a | 可选参数，abilityName。 |
   | -b | 可选参数，bundleName。  |
   | -m | 可选参数，moduleName。  |
-  | -U | 可选参数，URI。         |
+  | -U | 可选参数，URI。<br>**说明：** 仅支持传递字符串。 |
   | -A | 可选参数，action。      |
   | -e | 可选参数，entity。      |
   | -t | 可选参数，type。        |
