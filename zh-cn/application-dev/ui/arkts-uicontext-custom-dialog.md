@@ -131,7 +131,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 @Entry
 @Component
-export struct customDialogComponentWithTransition {
+export struct CustomDialogComponentWithTransition {
   private customDialogComponentId: number = 0
   @Builder
   customDialogComponent() {
@@ -208,7 +208,7 @@ const DOMAIN = 0x0000;
 
 @Entry
 @Component
-export struct customDialogWithKeyboardAvoidDistance {
+export struct CustomDialogWithKeyboardAvoidDistance {
   @Builder
   customDialogComponent() {
     Column() {
@@ -306,7 +306,7 @@ export class PromptActionClassNew {
     }
   }
 
-  // ···
+// ···
 
   static updateDialog(options: promptAction.BaseDialogOptions) {
     if (PromptActionClassNew.contentNode !== null) {
