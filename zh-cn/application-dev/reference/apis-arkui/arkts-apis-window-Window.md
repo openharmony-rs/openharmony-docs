@@ -9592,7 +9592,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setWindowShadowRadius<sup>17+</sup>
 
-setWindowShadowRadius(radius: number): void
+ArkTS-Dyn: setWindowShadowRadius(radius: number): void
+
+ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 设置子窗或悬浮窗窗口边缘阴影的模糊半径。
 
@@ -9602,11 +9604,15 @@ setWindowShadowRadius(radius: number): void
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                          |
 | ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
 
 **错误码：**
 
@@ -9631,7 +9637,9 @@ try {
 
 ## setWindowCornerRadius<sup>17+</sup>
 
-setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 设置子窗或悬浮窗的圆角半径值，使用Promise异步回调。
 
@@ -9648,11 +9656,15 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                 |
 | ----------- | ------- | ---- |----------------------------------------------------|
-| cornerRadius | number | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为vp，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
+| cornerRadius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为vp，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
 
 **返回值：**
 
@@ -9692,7 +9704,9 @@ try{
 
 ## getWindowCornerRadius<sup>17+</sup>
 
-getWindowCornerRadius(): number
+ArkTS-Dyn: getWindowCornerRadius(): number
+
+ArkTS-Sta: getWindowCornerRadius(): double
 
 该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
@@ -9702,11 +9716,15 @@ getWindowCornerRadius(): number
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
 | ---------------------- | ------------------------------------------------------------------------------------ |
-| number | 当前子窗或悬浮窗的圆角半径值，单位为vp。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 当前子窗或悬浮窗的圆角半径值，单位为vp。 |
 
 **错误码：**
 
@@ -9720,9 +9738,19 @@ getWindowCornerRadius(): number
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 try {
   let cornerRadius = windowClass.getWindowCornerRadius();
+} catch (exception) {
+  console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  let cornerRadius: double = windowClass.getWindowCornerRadius();
 } catch (exception) {
   console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
 }
