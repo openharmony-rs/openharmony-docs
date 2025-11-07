@@ -20,6 +20,11 @@ Text可通过以下两种方式来创建：
 - string字符串。
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.CreateText_Text_new'资源文件中的value值为'我是一段文本'
+  Text($r('app.string.CreateText_Text_new'))
+  ```
 
 
 ![zh-cn_image_0000001563060685](figures/zh-cn_image_0000001563060685.png)
