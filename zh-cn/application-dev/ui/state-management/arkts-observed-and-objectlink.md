@@ -1728,6 +1728,86 @@ struct DelayedChangeIndex {
 
 <!-- @[ObjectLink_Data_source_update_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ObjectLinkDataSourceUpdate.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
+@Observed
+class Person {
+  public name: string = '';
+  public age: number = 0;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Observed
+class Info {
+  public person: Person;
+
+  constructor(person: Person) {
+    this.person = person;
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State @Watch('onChange01') info: Info =
+    new Info(
+      new Person('Bob', 10)
+    );
+
+  onChange01() {
+    hilog.info(DOMAIN, TAG, `:::onChange01: + ${this.info.person.name}`); // 2
+  }
+
+  build() {
+    Column() {
+      Text(this.info.person.name).height(40)
+      Child({
+        per: this.info.person, clickEvent: () => {
+          hilog.info(DOMAIN, TAG, `:::clickEvent before ${this.info.person.name}`); // 1
+          this.info.person = new Person('Jack', 12);
+          hilog.info(DOMAIN, TAG, `:::clickEvent after ${this.info.person.name}`); // 3
+        }
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink @Watch('onChange02') per: Person;
+  clickEvent?: () => void;
+
+  onChange02() {
+    hilog.info(DOMAIN, TAG, `:::onChange02:${this.per.name}`); // 5
+  }
+
+  build() {
+    Column() {
+      Button(this.per.name)
+        .height(40)
+        .onClick(() => {
+          this.onClickType();
+        })
+    }
+  }
+
+  private onClickType() {
+    if (this.clickEvent) {
+      this.clickEvent();
+    }
+    hilog.info(DOMAIN, TAG, `:::--------this.per.name in Child is still: ${this.per.name}`); // 4
+  };
+}
+```
+
 \@ObjectLink的数据源更新依赖其父组件，当父组件中数据源改变引起父组件刷新时，会重新设置子组件\@ObjectLink的数据源。这个过程不是在父组件数据源变化后立刻发生的，而是在父组件实际刷新时才会进行。上述示例中，Parent包含Child，Parent传递箭头函数给Child，在点击时，日志打印顺序是1-2-3-4-5，打印到日志4时，点击事件流程结束，此时仅仅是将子组件Child标记为需要父组件更新的节点，因此日志4打印的this.per.name的值仍为Bob，等到父组件真正更新时，才会更新Child的数据源。
 
 当@ObjectLink @Watch('onChange02') per: Person的\@Watch函数执行时，说明\@ObjectLink的数据源已被父组件更新，此时日志5打印的值为更新后的Jack。
