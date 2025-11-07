@@ -39,24 +39,16 @@
 <!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
 
 ``` TypeScript
-// [Start session_backup]
-// [Start session_restore]
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
-// [StartExclude session_restore]
-// [StartExclude session_backup]
 // ···
-// [EndExclude session_backup]
-// [EndExclude session_restore]
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
+let context = getContext(this) as common.UIAbilityContext;
 let filesDir = context.filesDir;
 
-// [StartExclude session_backup]
-// [StartExclude session_restore]
 // 获取能力文件
 export async function getLocalCapabilities(): Promise<void> {
   try {
@@ -64,10 +56,10 @@ export async function getLocalCapabilities(): Promise<void> {
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
     fs.copyFileSync(fileData.fd, fpath);
-	// ···
+    // ···
     fs.closeSync(fileData.fd);
   } catch (error) {
-    console.error(`getLocalCapabilities failed with err, code is ${err.code}, message is ${err.message}`);
+    console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
