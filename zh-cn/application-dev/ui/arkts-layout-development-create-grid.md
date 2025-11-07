@@ -285,10 +285,12 @@ export struct ScrollableGrid {
         // ···
 
           Grid() {
-            ForEach(this.services, (service: string, index) => {
+            ForEach(this.services, (service: string, index: number) => {
               GridItem() {
+                // ···
               }
               .width('25%')
+            // ···
             }, (service: string): string => service)
           }
           .rowsTemplate('1fr 1fr') // 只设置rowsTemplate属性，当内容超出Grid区域时，可水平滚动。
