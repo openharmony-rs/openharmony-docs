@@ -21,7 +21,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-打开应用的通知扩展订阅设置页面，以半模态弹窗显示。用户可在该页面设置通知的启用状态及模式。使用Promise异步回调。
+打开应用的通知扩展订阅者设置页面，以半模态弹窗显示。用户可在该页面设置通知的启用状态及模式。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -57,18 +57,23 @@ import notificationExtensionSubscription from '@ohos.notificationExtensionSubscr
 import { common } from '@kit.AbilityKit';
 
 try {
-  await notificationExtensionSubscription.openSubscriptionSettings(getContext(this) as common.UIAbilityContext);
-  } catch (error) {
-    console.error("xxxxx failed to call openSubscriptionSettings")
-    }
-    console.log("xxxxx userGranted result");
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
+    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+  }).catch((err) => {
+    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(err)}`)
+  });
+} catch (error) {
+  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+}
+hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
 ```
 
 ## notificationExtensionSubscription.subscribe
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
-连接蓝牙地址后，订阅通知。使用Promise异步回调。
+连接蓝牙地址，并实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后方可订阅通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -78,7 +83,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 | 参数名     | 类型                                        | 必填 | 说明                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------- |
-| info  | [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 是   | 订阅的信息列表（数组）。 |
+| info  | [NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 是   | 订阅的信息列表（数组）。 |
 
 **返回值：**
 
@@ -100,7 +105,6 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
@@ -146,7 +150,6 @@ unsubscribe(): Promise\<void\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationExtensionSubscription.unsubscribe().then(() => {
@@ -170,7 +173,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise对象，返回一个[NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md)对象数组，表示应用的订阅信息。 |
+| Promise\<[NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise对象，返回一个[NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md)对象数组，表示应用的订阅信息。 |
 
 **错误码：**
 
@@ -185,11 +188,10 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info('getSubscribeInfo successfully. Data: ' + JSON.stringify(data));
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -224,7 +226,6 @@ isUserGranted(): Promise\<boolean\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
@@ -267,11 +268,10 @@ getUserGrantedEnabledBundles(): Promise\<String[]\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info('getUserGrantedEnabledBundles successfully. Data: ' + JSON.stringify(data));
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
@@ -281,7 +281,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => 
 
 type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo
 
-用于描述通知扩展订阅的信息。使用Promise异步回调。
+用于描述通知扩展订阅的信息。
 
 **系统能力**： SystemCapability.Notification.Notification
 
