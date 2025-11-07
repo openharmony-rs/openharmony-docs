@@ -71,6 +71,63 @@ this.title = new Model('Hi');
 
 <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
 
+``` TypeScript
+// ···
+
+// 子组件：展示 Model 中的两个值
+@Component
+struct NestedDisplay {
+  // 接收复杂类型 Model（带嵌套 Info）
+  @Prop title: Model;
+
+  build() {
+    Column({ space: 20 }) {
+      // 显示第一层属性：title.value
+
+      Text(`title.value [the first layer]：${this.title.value}`)
+        .fontSize(18)
+        .padding(10)
+        .backgroundColor('#F5F5F5')
+        .borderRadius(6);
+
+      // 显示第二层属性：title.info.value
+      Text(`title.info.value [the second layer]：${this.title.info.value}`)
+        .fontSize(18)
+        .padding(10)
+        .backgroundColor('#E8F4F8')
+        .borderRadius(6);
+
+      // 按钮区域：修改不同层级的属性
+      Column({ space: 10 }) {
+        // 按钮1：修改第一层属性（@Prop 可观察到）
+        Button('change title.value to "Hi"')
+          .onClick(() => {
+            // ···
+          })
+
+        // 按钮2：修改第二层属性（@Prop 观察不到，UI 不更新）
+        Button('change title.info.value to "ArkUI"')
+          .onClick(() => {
+            // ···
+          })
+
+        // 按钮3：重新赋值整个 Model（强制更新所有属性）
+        Button('Reassign Model')
+          .onClick(() => {
+            // 重新创建 Model 对象（改变引用），@Prop 会观察到并更新所有属性
+            this.title = new Model(
+              this.title.value,
+              new Info(this.title.info.value)
+            );
+          })
+      }
+      .margin({ top: 20 });
+    }
+    .padding(30);
+  }
+}
+```
+
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
 - 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
