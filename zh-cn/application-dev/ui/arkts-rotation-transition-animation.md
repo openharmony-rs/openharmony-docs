@@ -16,6 +16,23 @@
 
 <!-- @[rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template1/Index.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct rotation {
+  build() {
+    Stack() {
+      Image($r('app.media.tree'))
+        .position({ x: 0, y: 0 })
+        .size({ width: 100, height: 100 })
+        .id('image1')
+    }
+    .backgroundColor(Color.White)
+    .size({ width: '100%', height: '100%' })
+  }
+}
+```
+
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
