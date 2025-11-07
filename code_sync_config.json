@@ -18326,5 +18326,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-page-custom-drawing.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets",
+				"functions":[
+					{
+						"end_line":96,
+						"name":"custom_drawing",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
