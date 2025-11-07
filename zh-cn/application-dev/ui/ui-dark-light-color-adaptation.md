@@ -169,10 +169,10 @@
     onColorModeChange(): void {
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
         // 当前为浅色模式，资源初始化逻辑
-        this.colorText == 'light';
+      // ···
       } else {
         // 当前为深色模式，资源初始化逻辑
-        this.colorText == 'dark';
+      // ···
       }
     }
     ```
