@@ -190,7 +190,6 @@ import { common } from '@kit.AbilityKit';
     // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
     httpRequest.off('headersReceive');
     ```
-   
 6. 调用destroy()方法销毁
 
     当该请求使用完毕时，调用destroy()方法销毁。
@@ -199,7 +198,6 @@ import { common } from '@kit.AbilityKit';
     // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
     httpRequest.destroy();
     ```
-
 ## 发起HTTP流式传输请求
 
 HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容的一小部分，而不是一次性将整个响应加载到内存，这对于处理大文件、实时数据流等场景非常有用。
