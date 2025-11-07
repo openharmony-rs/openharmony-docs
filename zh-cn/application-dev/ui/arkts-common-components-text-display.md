@@ -462,6 +462,13 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性设置文本是否可复制粘贴。
 
   <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.CustomTextStyle_textContent_incopy'资源文件中的value值为'这是一段可复制文本。'
+  Text($r('app.string.CustomTextStyle_textContent_incopy'))
+    .fontSize(30)
+    .copyOption(CopyOptions.InApp)
+  ```
 
   ![zh-cn_image_0000001511580868](figures/zh-cn_image_0000001511580868.png)
 
