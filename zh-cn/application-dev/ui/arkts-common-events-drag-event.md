@@ -171,32 +171,32 @@
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-     @Builder
-     pixelMapBuilder() {
-       Column() {
-         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-         Image($r('app.media.startIcon'))
-           .width(120)
-           .height(120)
-           // ···
-       }
-     }
+   @Builder
+   pixelMapBuilder() {
+    Column() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.startIcon'))
+        .width(120)
+        .height(120)
+        // ···
+    }
+   }
    
    // ···
    
-     // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-     private getComponentSnapshot(): void {
-       this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-         this.pixelMapBuilder()
-       },
-         (error: Error, pixmap: image.PixelMap) => {
-           if (error) {
-             hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-             return;
-           }
-           this.pixmap = pixmap;
-         })
-     }
+   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+   private getComponentSnapshot(): void {
+    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+      this.pixelMapBuilder()
+    },
+      (error: Error, pixmap: image.PixelMap) => {
+        if (error) {
+          hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+          return;
+        }
+        this.pixmap = pixmap;
+      })
+   }
    ```
 
 3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
