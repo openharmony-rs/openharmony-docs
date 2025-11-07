@@ -167,6 +167,40 @@ V2:
 - 点击`change Storage Count`，调用LocalStorage的setOrCreate，改变`count`对应的值，并通知所有绑定该key的变量。
 
   <!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
+  
+  ``` TypeScript
+  // Page1.ets
+  export let storage: LocalStorage = new LocalStorage();
+  
+  storage.setOrCreate('count', 47);
+  
+  @Entry(storage)
+  @Component
+  struct Page1 {
+    @LocalStorageProp('count') count: number = 0;
+    pageStack: NavPathStack = new NavPathStack();
+  
+    build() {
+      Navigation(this.pageStack) {
+        Column() {
+          Text(`${this.count}`)
+            .fontSize(50)
+            .onClick(() => {
+              this.count++;
+            })
+          Button('change Storage Count')
+            .onClick(() => {
+              storage.setOrCreate('count', storage.get<number>('count') as number + 100);
+            })
+          Button('push to Page2')
+            .onClick(() => {
+              this.pageStack.pushPathByName('Page2', null);
+            })
+        }
+      }
+    }
+  }
+  ```
 
   <!-- @[Internal_@Trace_setOrCreate_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page2.ets) -->
   
