@@ -45,13 +45,7 @@
   @ComponentV2
   struct MyComponent {
     @Param @Once onceParam: string = 'onceParam'; // 正确用法
-    @Once onceStr: string = 'Once'; // 错误用法，@Once无法单独使用
-    @Local @Once onceLocal: string = 'onceLocal'; // 错误用法，@Once不能与@Local一起使用
   // ···
-  }
-  @Component
-  struct Index {
-    @Once @Param onceParam: string = 'onceParam'; // 错误用法
   }
   ```
 
