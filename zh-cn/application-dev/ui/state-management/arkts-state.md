@@ -691,121 +691,22 @@ export class Model {
 【示例1】
 <!-- @[state_problem_state_ui_refresh_example_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample01.ets) -->
 
-``` TypeScript
-class Info {
-  public address: string = '杭州';
-}
-
-@Entry
-@Component
-struct Test {
-  @State message: string = '上海';
-  @State info: Info = new Info();
-
-  aboutToAppear(): void {
-    this.info.address = this.message;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.message}`);
-      Text(`${this.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.info.address = '北京';
-        })
-    }
-  }
-}
-```
 点击`Button('change')`只会触发第二个`Text`组件的刷新，因为`message`是字符串类型。字符串是值类型，点击按钮时，改变的是`info`中的`address`值，而不会影响`this.message`的值，因此第一个Text组件不会刷新。
 
 【示例2】
 <!-- @[state_problem_state_ui_refresh_example_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets) -->
 
-``` TypeScript
-class Info {
-  public address: string = '杭州';
-
-  constructor(address: string) {
-    this.address = address;
-  }
-}
-
-class User {
-  public info: Info = new Info('天津');
-}
-
-@Entry
-@Component
-struct Test {
-  @State info: Info = new Info('上海');
-  @State user: User = new User();
-
-  aboutToAppear(): void {
-    this.user.info = this.info;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.info.address}`);
-      Text(`${this.user.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.user.info.address = '北京';
-        })
-    }
-  }
-}
-```
 在`aboutToAppear`中，`info`的引用被赋值给了`user`的成员属性`info`。因此，点击按钮改变`info`中的属性时，会触发第一个`Text`组件的刷新。第二个`Text`组件由于观测能力仅有一层，无法检测到二层属性的变化，所以不会刷新。
 
 【示例3】
 <!-- @[state_problem_state_ui_refresh_example_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample03.ets) -->
 
-``` TypeScript
-class Info {
-  public address: string = '杭州';
-
-  constructor(address: string) {
-    this.address = address;
-  }
-}
-
-class User {
-  public info: Info = new Info('天津');
-}
-
-@Entry
-@Component
-struct Test {
-  @State info: Info = new Info('上海');
-  @State user: User = new User();
-
-  aboutToAppear(): void {
-    this.user.info = this.info;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.info.address}`);
-      Text(`${this.user.info.address}`);
-      Button('change')
-        .onClick(() => {
-          this.user.info = new Info('广州');
-          this.user.info.address = '北京';
-        })
-    }
-  }
-}
-```
-
 在上述示例中，点击按钮后有以下变化：
 
-- 第一个`Text`组件不会刷新。这是因为在点击事件中执行`this.user.info = new Info('广州')`，该变化使得`this.user.info`不再引用`this.info`，而是重新赋值了一个`Info`实例，因此再改变`this.user.info`的属性不会被`this.info`观察，第一个`Text`组件不会刷新。
-- 第二个`Text`组件会刷新。这是因为点击按钮后，首先执行`this.user.info = new Info('广州')`，该变化属于第一层的赋值，可以被观察，会对当前自定义组件标脏，并请求下一帧刷新。再执行`this.user.info.address = '北京'`，该变化属于第二层的赋值，不能被观察到。但是需要注意，当前变化虽然无法被观察到，但赋值是可以生效的。在下一帧刷新到来时，`this.user.info.address`已被修改为`北京`，因此第二个`Text`组件显示`北京`。
+- 第一个`Text`组件不会刷新。这是因为在点击事件中执行`this.user.info = new Info('Guangzhou')`，该变化使得`this.user.info`不再引用`this.info`，而是重新赋值了一个`Info`实例，因此再改变`this.user.info`的属性不会被`this.info`观察，第一个`Text`组件不会刷新。
+- 第二个`Text`组件会刷新。这是因为点击按钮后，首先执行`this.user.info = new Info('Guangzhou')`，该变化属于第一层的赋值，可以被观察，会对当前自定义组件标脏，并请求下一帧刷新。再执行`this.user.info.address = 'Beijing'`，该变化属于第二层的赋值，不能被观察到。但是需要注意，当前变化虽然无法被观察到，但赋值是可以生效的。在下一帧刷新到来时，`this.user.info.address`已被修改为`Beijing`，因此第二个`Text`组件显示`Beijing`。
 
-如果上述示例注释掉`this.user.info = new Info('广州')`，则与示例2场景一致，只会触发第一个`Text`组件更新，第二个`Text`组件将无法更新。
+如果上述示例注释掉`this.user.info = new Info('Guangzhou')`，则与示例2场景一致，只会触发第一个`Text`组件更新，第二个`Text`组件将无法更新。
 
 ### 复杂类型常量重复赋值给状态变量触发刷新
 <!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->
