@@ -72,7 +72,8 @@
    - 定义倒计时实例。
      
       <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
-      ```ts
+      
+      ``` TypeScript
       let timer: reminderAgent.ReminderRequestTimer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,  // 提醒类型为倒计时类型
         ringDuration: Constant.REMINDER_DURATION,
