@@ -138,6 +138,65 @@ build() {
 
 <!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->
 
+``` TypeScript
+@Observed
+class DateClass extends Date {
+  constructor(args: number | string) {
+    super(args);
+  }
+}
+
+@Observed
+class NewDate {
+  public data: DateClass;
+
+  constructor(data: DateClass) {
+    this.data = data;
+  }
+}
+
+@Component
+struct Child {
+  label: string = 'date';
+  @ObjectLink data: DateClass;
+
+  build() {
+    Column() {
+      Button('child increase the day by 1')
+        .onClick(() => {
+          this.data.setDate(this.data.getDate() + 1);
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.data
+      })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State newData: NewDate = new NewDate(new DateClass('2023-1-1'));
+
+  build() {
+    Column() {
+      Child({ label: 'date', data: this.newData.data })
+
+      Button('parent update the new date')
+        .onClick(() => {
+          this.newData.data = new DateClass('2023-07-07');
+        })
+      Button(`ViewB: this.newData = new NewDate(new DateClass('2023-08-20'))`)
+        .onClick(() => {
+          this.newData = new NewDate(new DateClass('2023-08-20'));
+        })
+    }
+  }
+}
+```
+
 \@ObjectLink装饰继承于Map的class时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。示例请参考[继承Map类](#继承map类)。
 
 \@ObjectLink装饰继承于Set的class时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。示例请参考[继承Set类](#继承set类)。
