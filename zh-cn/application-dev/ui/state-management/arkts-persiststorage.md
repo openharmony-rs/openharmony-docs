@@ -85,34 +85,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    @StorageLink('aProp') aProp: number = 48;
    ```
 
-完整代码如下：
-<!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) -->
-
-``` TypeScript
-PersistentStorage.persistProp('aProp', 47);
-
-@Entry
-@Component
-struct TestPageOne {
-  @State message: string = 'Hello World';
-  @StorageLink('aProp') aProp: number = 48;
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-        // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-        // 未修改时默认值为47
-        Text(`${this.aProp}`)
-          .onClick(() => {
-            this.aProp += 1;
-          })
-      }
-    }
-  }
-}
-```
-
+   完整代码如下：
+   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) -->
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
@@ -123,7 +97,7 @@ struct TestPageOne {
 
   **图1** PersistProp初始化流程  
 
-![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
+  ![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
@@ -194,45 +168,6 @@ struct TestPageThree {
 PersistentStorage支持联合类型和undefined和null，在下面的示例中，使用persistProp方法初始化“P”为undefined。通过@StorageLink('P')绑定变量p，类型为number | undefined | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
 <!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) -->
-
-``` TypeScript
-// 定义常量替代魔法值，明确数值含义
-const DEFAULT_NUMBER: number = 10; // 默认数字值
-const FONT_SIZE_LARGE: number = 50; // 大字体尺寸
-const WIDTH_HEIGHT_FULL: string = '100%'; // 宽度占满,高度占满
-
-// 初始化持久化属性，键名使用常量定义（若有多处使用可提取）
-const STORAGE_KEY_P: string = 'P';
-PersistentStorage.persistProp(STORAGE_KEY_P, undefined);
-
-@Entry
-@Component
-struct TestCase6 {
-  // 使用常量作为默认值，类型明确
-  @StorageLink(STORAGE_KEY_P) p: number | undefined | null = DEFAULT_NUMBER;
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.p + '')
-          .fontSize(FONT_SIZE_LARGE)
-          .fontWeight(FontWeight.Bold)
-        Button('changeToNumber').onClick(() => {
-          this.p = DEFAULT_NUMBER; // 引用常量，避免直接写10
-        })
-        Button('changeTo undefined').onClick(() => {
-          this.p = undefined;
-        })
-        Button('changeTo null').onClick(() => {
-          this.p = null;
-        })
-      }
-      .width(WIDTH_HEIGHT_FULL)
-    }
-    .height(WIDTH_HEIGHT_FULL)
-  }
-}
-```
 
 ### 持久化Date类型变量
 
