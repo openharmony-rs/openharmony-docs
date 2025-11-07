@@ -99,6 +99,8 @@ export default class DeepAbility extends UIAbility {
       }
     }
   }
+  // ...
+}
 ```
 
 ## 拉起方应用实现应用跳转
