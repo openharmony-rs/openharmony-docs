@@ -38,6 +38,19 @@
 
 <!-- @[ReusableV2Component1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/common/ReusableV2Component1.ets) -->  
 
+``` TypeScript
+@ReusableV2 // 装饰ComponentV2的自定义组件
+@ComponentV2
+export struct ReusableV2Component {
+  @Local message: string = 'Hello World';
+  build () {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
+
 ## 接口说明
 
 reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：[复用选项](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)。
