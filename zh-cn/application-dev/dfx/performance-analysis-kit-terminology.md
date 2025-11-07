@@ -35,9 +35,9 @@ Nolog版本是指在系统中关闭了日志记录功能的系统版本。这种
 
 用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏（AppFreeze），即应用无响应或卡死。
 
-### Asan
+### ASan
 
-Asan（Address Sanitizer）为内存地址消毒器，用于检测非法地址访问。
+ASan（Address Sanitizer）为内存地址消毒器，用于检测非法地址访问。
 
 ### CPP Crash
 
@@ -54,13 +54,13 @@ Asan（Address Sanitizer）为内存地址消毒器，用于检测非法地址�
 | 16 | SIGSTKFLT | 栈错误。 | 处理器执行了错误的栈操作，如栈空时弹出、栈满时压入。 |
 | 31 | SIGSYS | 错误的系统调用。 | 系统调用时使用了错误或非法参数。 |
 
-### GWP-Asan
+### GWP-ASan
 
-GWP-Asan是一种原生内存分配器功能，支持检测内存释放后使用和堆缓冲区溢出问题。
+GWP-ASan是一种原生内存分配器功能，支持检测内存释放后使用和堆缓冲区溢出问题。
 
-### HWAsan
+### HWASan
 
-HWAsan（Hardware-Assisted Address Sanitizer）是Clang LLVM提供的一套内存错误检测系统，用来检测C/C++中常见的内存访问错误，相比Asan（Address Sanitizer），它在性能和内存开销上有不小提升。
+HWASan（Hardware-Assisted Address Sanitizer）是Clang LLVM提供的一套内存错误检测系统，用来检测C/C++中常见的内存访问错误，相比ASan（Address Sanitizer），它在性能和内存开销上有不小提升。
 
 ### JS Crash
 

@@ -28,8 +28,9 @@ ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../refere
 
 
 
-```ts
-// entry/src/main/ets/widget/pages/WidgetCard.ets
+<!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct AnimationCard {
@@ -49,7 +50,8 @@ struct AnimationCard {
           curve: Curve.EaseOut,
           playMode: PlayMode.Normal,
         })
-    }.height('100%').alignItems(VerticalAlign.Center)
+    }.height('100%')
+     .alignItems(VerticalAlign.Center)
   }
 }
 ```
@@ -58,8 +60,10 @@ struct AnimationCard {
 
 ![WidgetAnimation](figures/WidgetTransitionAnimation.gif)
 
-```ts
-// entry/src/main/ets/widget/pages/WidgetCard.ets
+<!-- @[TransitionEffectExample1_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/ets/widget1/pages/TransitionEffectExample1.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/widget/pages/TransitionEffectExample1.ets
 @Entry
 @Component
 struct TransitionEffectExample1 {

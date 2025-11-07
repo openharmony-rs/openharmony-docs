@@ -514,7 +514,7 @@ class MyCheckboxGroupStyle implements ContentModifier<CheckBoxGroupConfiguration
     return wrapBuilder(buildCheckboxgroup);
   }
 }
-let statusString: string[] = ["全选", "部分选中", "全不选"];
+let statusString: string[] = ['全选', '部分选中', '全不选'];
 @Builder
 function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
   Column({ space: 10 }) {
@@ -528,13 +528,13 @@ function buildCheckboxgroup(config: CheckBoxGroupConfiguration) {
         .fillOpacity(0)
         .strokeWidth(3)
         .onClick(() => {
-          console.log("checkboxgroup status ", statusString[config.status])
+          console.info('checkboxgroup status ', statusString[config.status])
           if (config.status === SelectStatus.All ||  config.status === SelectStatus.Part) {
             config.triggerChange(false);
-            console.log("checkboxgroup not selected")
+            console.info('checkboxgroup not selected')
           } else {
             config.triggerChange(true);
-            console.log("checkboxgroup selected")
+            console.info('checkboxgroup selected')
           }
         })
         .opacity(config.enabled ? 1 : 0.1)

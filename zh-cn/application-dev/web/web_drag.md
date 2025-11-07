@@ -41,65 +41,61 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（html示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
 <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
-  
-  ``` TypeScript
-  import { webview } from '@kit.ArkWeb'
-  import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-  import hilog from '@ohos.hilog';
-  const TAG = '[Sample_WebDragInteraction]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'WebDragInteraction_';
-  
-  @Entry
-  @Component
-  struct DragDrop {
-    private controller: webview.WebviewController = new webview.WebviewController()
-    @State ports: Array<webview.WebMessagePort> = []
-    @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
-  
-    build() {
-      Column() {
-        Web({
-          src: $rawfile('drag.html'),
-          controller: this.controller,
-        }).onPageEnd((event) => {
-          //注册通信端口
-          this.ports = this.controller.createWebMessagePorts();
-          this.ports[1].onMessageEvent((result: webview.WebMessage) => {
-            //ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
-            hilog.info(DOMAIN, TAG, BUNDLE, 'ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
-            //这里添加result中消息接收到后的处理,可进行耗时任务
-          });
-          hilog.info(DOMAIN, TAG, BUNDLE, 'ETS postMessage set h5port ');
-          //完成通信端口注册后，向前端发送注册完成消息，完成双向的端口绑定
-          this.controller.postMessage('__init_port__', [this.ports[0]], '*');
-        })// onDrop 可做简单逻辑，例如暂存一些关键数据
-          .onDrop((dragEvent: DragEvent) => {
-            hilog.info(DOMAIN, TAG, BUNDLE, 'ETS onDrop!')
-            let data: UnifiedData = dragEvent.getData();
-            if(!data) {
-              return false;
-            }
-            let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
-            if (!uriArr || uriArr.length <= 0) {
-              return false;
-            }
-            // 可以遍历records取数据暂存，或者以其他方式暂存数据
-            for (let i = 0; i < uriArr.length; ++i) {
-              if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                let plainText = uriArr[i] as unifiedDataChannel.PlainText;
-                if (plainText.textContent) {
-                  hilog.info(DOMAIN, TAG, BUNDLE, 'plainText.textContent: ', plainText.textContent);
-                }
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb'
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragDrop {
+  private controller: webview.WebviewController = new webview.WebviewController()
+  @State ports: Array<webview.WebMessagePort> = []
+  @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
+
+  build() {
+    Column() {
+      Web({
+        src: $rawfile('drag.html'),
+        controller: this.controller,
+      }).onPageEnd((event) => {
+        //注册通信端口
+        this.ports = this.controller.createWebMessagePorts();
+        this.ports[1].onMessageEvent((result: webview.WebMessage) => {
+          //ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
+          console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
+          //这里添加result中消息接收到后的处理,可进行耗时任务
+        });
+        console.info('ETS postMessage set h5port ');
+        //完成通信端口注册后，向前端发送注册完成消息，完成双向的端口绑定
+        this.controller.postMessage('__init_port__', [this.ports[0]], '*');
+      })// onDrop 可做简单逻辑，例如暂存一些关键数据
+        .onDrop((dragEvent: DragEvent) => {
+          console.info('ETS onDrop!')
+          let data: UnifiedData = dragEvent.getData();
+          if(!data) {
+            return false;
+          }
+          let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+          if (!uriArr || uriArr.length <= 0) {
+            return false;
+          }
+          // 可以遍历records取数据暂存，或者以其他方式暂存数据
+          for (let i = 0; i < uriArr.length; ++i) {
+            if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+              let plainText = uriArr[i] as unifiedDataChannel.PlainText;
+              if (plainText.textContent) {
+                console.info('plainText.textContent: ', plainText.textContent);
               }
             }
-            return true
-          })
-      }
-  
+          }
+          return true
+        })
     }
+
   }
-  ```
+}
+```
 
 html示例:
 

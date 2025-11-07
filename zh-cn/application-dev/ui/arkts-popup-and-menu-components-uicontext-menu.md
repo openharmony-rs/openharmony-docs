@@ -37,7 +37,7 @@
    ```ts
    @Builder
    export function buildText(params: Params) {
-     Menu({
+     Popup({
        // 类型设置图标内容
        icon: {
          image: $r('app.media.app_icon'),
@@ -45,20 +45,20 @@
          height: 32,
          fillColor: Color.White,
          borderRadius: 10
-       } as MenuIconOptions,
+       } as PopupIconOptions,
        // 设置文字内容
        title: {
-         text: `This is a Menu title 1`,
+         text: `This is a Popup title 1`,
          fontSize: 20,
          fontColor: Color.Black,
          fontWeight: FontWeight.Normal
-       } as MenuTextOptions,
+       } as PopupTextOptions,
        // 设置文字内容
        message: {
-         text: `This is a Menu message 1`,
+         text: `This is a Popup message 1`,
          fontSize: 15,
          fontColor: Color.Black
-       } as MenuTextOptions,
+       } as PopupTextOptions,
        // 设置按钮内容
        buttons: [{
          text: 'confirm',
@@ -75,11 +75,11 @@
            },
            fontSize: 15,
            fontColor: Color.Black
-         },] as [MenuButtonOptions?, MenuButtonOptions?]
+         },] as [PopupButtonOptions?, PopupButtonOptions?]
      })
    }
    
-   let contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
+   private contentNode: ComponentContent<Object> = new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
    ```
 
 

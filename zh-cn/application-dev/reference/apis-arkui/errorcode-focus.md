@@ -22,7 +22,7 @@ the component cannot be focused.
 
 **可能原因**
 
-节点默认无法获焦、开发者通过focusable等属性方法设置节点无法获焦等。
+节点默认无法获焦、开发者通过focusable等属性方法设置等。
 
 **处理步骤**
 
@@ -40,7 +40,7 @@ This component has an unfocusable ancestor.
 
 **可能原因**
 
-祖先节点默认无法获焦、开发者通过focusable等属性方法设置祖先节点无法获焦等。
+祖先节点默认无法获焦、开发者通过focusable等属性方法设置等。
 
 **处理步骤**
 

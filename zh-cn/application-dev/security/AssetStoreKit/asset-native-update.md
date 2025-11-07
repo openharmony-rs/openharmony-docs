@@ -58,6 +58,10 @@
 
 ## 代码示例
 
+> **说明：**
+>
+> 在更新前，需确保已有关键资产，可参考[指南文档](./asset-native-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属信息更新成demo_label_new。
 
 在指定群组中更新一条关键资产的示例代码详见[更新群组关键资产](asset-native-group-access-control.md#更新群组关键资产)。
@@ -68,7 +72,7 @@
    ```
 
 2. 引用头文件。
-   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -78,7 +82,7 @@
 
 
 3. 参考如下示例代码，进行业务功能开发。
-   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- [update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value UpdateAsset(napi_env env, napi_callback_info info)

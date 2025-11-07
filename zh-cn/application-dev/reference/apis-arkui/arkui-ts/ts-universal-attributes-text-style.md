@@ -66,6 +66,8 @@ getCaretOffset(): CaretOffset
 
 返回当前光标所在位置信息。
 
+当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

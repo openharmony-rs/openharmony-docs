@@ -28,17 +28,20 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 - 创建不包含子组件的Toggle。
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
+  <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
-    ```ts
-  Toggle({ type: ToggleType.Checkbox, isOn: false })
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
-    ```
+  ``` TypeScript
+  Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // 请开发者替换为实际的id
+  Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // 请开发者替换为实际的id
+  ```
 
   ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
   
-  ```ts
-  Toggle({ type: ToggleType.Switch, isOn: false })
-  Toggle({ type: ToggleType.Switch, isOn: true })
+  <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Switch, isOn: false }).id('toggle3') // 请开发者替换为实际的id
+  Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // 请开发者替换为实际的id
   ```
   
     ![zh-cn_image_0000001511421228](figures/zh-cn_image_0000001511421228.png)
@@ -47,17 +50,20 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   当ToggleType为Button时，只能包含一个子组件，如果子组件有文本设置，则相应的文本内容会显示在按钮上。
 
-  ```ts
+  <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
   Toggle({ type: ToggleType.Button, isOn: false }) {
     Text('status button')
       .fontColor('#182431')
       .fontSize(12)
-  }.width(100)
+  }.width(100).id('toggle5') // 请开发者替换为实际的id
+  
   Toggle({ type: ToggleType.Button, isOn: true }) {
     Text('status button')
       .fontColor('#182431')
       .fontSize(12)
-  }.width(100)
+  }.width(100).id('toggle6') // 请开发者替换为实际的id
   ```
 
     ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
@@ -67,27 +73,38 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 - 通过selectedColor属性设置Toggle打开选中后的背景颜色。
 
-  ```ts
-  Toggle({ type: ToggleType.Button, isOn: true }) {
-    Text('status button')
-    .fontColor('#182431')
-    .fontSize(12)
-  }.width(100).selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
+  <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
+  
+  ``` TypeScript
+    Toggle({ type: ToggleType.Button, isOn: true }) {
+      Text('status button')
+        .fontColor('#182431')
+        .fontSize(12)
+    }.width(100)
     .selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Switch, isOn: true })
-    .selectedColor(Color.Pink)
+  // ···
+  
+    Toggle({ type: ToggleType.Checkbox, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
+    Toggle({ type: ToggleType.Switch, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
   ```
 
   ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
 
 - 通过switchPointColor属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
-  ```ts
+  <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
+  
+  ``` TypeScript
   Toggle({ type: ToggleType.Switch, isOn: false })
     .switchPointColor(Color.Pink)
+    // ···
   Toggle({ type: ToggleType.Switch, isOn: true })
     .switchPointColor(Color.Pink)
+    // ···
   ```
 
   ![zh-cn_image_0000001511421232](figures/zh-cn_image_0000001511421232.png)
@@ -98,12 +115,15 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
 
 
-```ts
+<!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
+
+``` TypeScript
 Toggle({ type: ToggleType.Switch, isOn: false })
   .onChange((isOn: boolean) => {
-      if(isOn) {
-        // 需要执行的操作
-      }
+    if(isOn) {
+      // 需要执行的操作
+      // ···
+    }
   })
 ```
 
@@ -112,50 +132,57 @@ Toggle({ type: ToggleType.Switch, isOn: false })
 
 Toggle用于切换蓝牙开关状态。
 
-```ts
+<!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) --> 
+
+``` TypeScript
 // xxx.ets
 import { promptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ToggleExample {
-  @State bOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
-  @State bOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
+export struct ToggleSample {
+  @State message: string = 'off';
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
-    Column() {
-      Row() {
-        Text("Bluetooth Mode")
-          .height(50)
-          .fontSize(16)
+    // ···
+      Column({ space: 8 }) {
+        Column({ space: 8 }) {
+          Text('Bluetooth Mode: ' + this.message)
+            .id('message')
+          Row() {
+            Text('Bluetooth')
+            Blank()
+            Toggle({ type: ToggleType.Switch })
+              .id('toggle') // 请开发者替换为实际的id
+              .onChange((isOn: boolean) => {
+                if (isOn) {
+                  this.message = 'on';
+                  promptAction.openToast({ 'message': 'Bluetooth is on.' });
+                } else {
+                  this.message = 'off';
+                  promptAction.openToast({ 'message': 'Bluetooth is off.' });
+                }
+              })
+          }.width('100%')
+        }
+        .alignItems(HorizontalAlign.Start)
+        .backgroundColor('#fff')
+        .borderRadius(12)
+        .padding(12)
+        .width('100%')
       }
-
-      Row() {
-        Text("Bluetooth")
-          .height(50)
-          .padding({ left: 10 })
-          .fontSize(16)
-          .textAlign(TextAlign.Start)
-          .backgroundColor(0xFFFFFF)
-        Toggle({ type: ToggleType.Switch })
-          .margin({ left: 200, right: 10 })
-          .onChange((isOn: boolean) => {
-            if (isOn) {
-              this.getUIContext().getPromptAction().showToast(this.bOnSt);
-            } else {
-              this.getUIContext().getPromptAction().showToast(this.bOffSt);
-            }
-          })
-      }
-      .backgroundColor(0xFFFFFF)
-    }
-    .padding(10)
-    .backgroundColor(0xDCDCDC)
-    .width('100%')
-    .height('100%')
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    // ···
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    .title($r('app.string.ToggleCaseExample_title'))
   }
 }
 ```
 
 
 ![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
+  
