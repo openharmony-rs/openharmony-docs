@@ -204,6 +204,18 @@
    由于涉及数据隐私安全，进行了权限管控的应用无法获取其他应用创建的账户信息。
    
    <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
+     hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
+     data.forEach((calendar) => {
+       const account = calendar.getAccount();
+       hilog.info(DOMAIN, 'testTag', '%{public}s', `account -> ${JSON.stringify(account)}`);
+     })
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+   });
+   ```
 
 9. 删除指定的日历账户，删除账户后，该账户下的所有日程会全部删除。
 
