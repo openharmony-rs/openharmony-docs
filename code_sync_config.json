@@ -20574,9 +20574,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":64,
 						"name":"state_problem_this_unable_observe_opposite",
-						"start_line":19
+						"start_line":17
 					}
 				]
 			},
@@ -20624,9 +20624,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":61,
 						"name":"state_problem_complex_constant_repeat_refresh",
-						"start_line":19
+						"start_line":17
 					}
 				]
 			},
@@ -20634,9 +20634,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":57,
 						"name":"state_problem_complex_solution_01",
-						"start_line":19
+						"start_line":17
 					}
 				]
 			},
@@ -20644,7 +20644,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":61,
 						"name":"state_problem_complex_solution_02",
 						"start_line":16
 					}
