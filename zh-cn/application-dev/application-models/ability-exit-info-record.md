@@ -89,7 +89,7 @@
       doAnotherThing();
     } else if (reason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
       // Ability上次因rss管控而退出，此处可实现处理逻辑，最简单的就是打印出来。
-      hilog.info(DOMAIN_NUMBER,TAG,`The ability has exit last because the rss control，the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
+      hilog.info(DOMAIN_NUMBER, TAG, `The ability has exit last because the rss control，the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
     }
     ```
 
