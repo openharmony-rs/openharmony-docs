@@ -1,4 +1,10 @@
 # Button Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Button** component can be used to set a capsule, circle, text, arc, or download button. For details, see [button](../reference/apis-arkui/arkui-js/js-components-basic-button.md).
 
@@ -212,7 +218,6 @@ Switch between the button types for different types of text.
   justify-content: center;
   margin-left: 30px;
   margin-right: 30px;
-  justify-content: space-around;
 }
 .input-text {
   height: 80px;
@@ -239,7 +244,7 @@ Switch between the button types for different types of text.
   color: #ffffff;
 }
 .color-3 {
-  background-color: #0598db;;
+  background-color: #0598db;
 }
 ```
 

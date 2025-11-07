@@ -619,7 +619,7 @@ struct ClearRect {
 
   ![2023022701120(1)](figures/2023022701120.jpg)
 
-- Draws custom graphics
+- Drawing custom graphics
 
 
 <!-- @[drawIrregularFigures_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/DrawIrregularFigures.ets) -->
