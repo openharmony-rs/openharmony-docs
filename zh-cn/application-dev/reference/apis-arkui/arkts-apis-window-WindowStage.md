@@ -1070,8 +1070,8 @@ export default class EntryAbility extends UIAbility {
       windowStage.onWindowStageEvent((data) => {
         console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
       });
-    } catch (exception) {
-      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err: Error) {
+      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -1188,8 +1188,8 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    windowStage.loadContent('page/Index', (err) =>{
-      if(err.code) {
+    windowStage.loadContent('page/Index', (err: BusinessError<void> | null) => {
+      if(err?.code) {
         console.error('Failed to load the content. Cause:' + JSON.stringify(err));
         return;
       }
@@ -1199,15 +1199,15 @@ export default class EntryAbility extends UIAbility {
       }
       try {
         windowStage.onWindowStageEvent(callback);
-      } catch (exception) {
-        console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      } catch (err: Error) {
+        console.error(`Failed to enable the listener for window stage event changes. Cause code: ${err.code}, message: ${err.message}`);
       }
       try {
         windowStage.offWindowStageEvent(callback);
         // 如果通过onWindowStageEvent开启多个callback进行监听，同时关闭所有监听
         windowStage.offWindowStageEvent();
-      } catch (exception) {
-        console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      } catch (err: Error) {
+        console.error(`Failed to disable the listener for window stage event changes. Cause code: ${err.code}, message: ${err.message}`);
       }
     });
   }

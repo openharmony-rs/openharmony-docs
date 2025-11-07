@@ -3989,8 +3989,8 @@ try {
   windowClass.onWindowEvent((data) => {
     console.info('Window event happened. Event:' + JSON.stringify(data));
   });
-} catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+} catch (err: Error) {
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -4070,14 +4070,14 @@ const callback = (windowEventType: window.WindowEventType) => {
   // ...
 }
 try {
-  // 通过on接口开启监听
+  // 通过onWindowEvent接口开启监听
   windowClass.onWindowEvent(callback);
   // 关闭指定callback的监听
   windowClass.offWindowEvent(callback);
   // 如果通过onWindowEvent开启多个callback进行监听，同时关闭所有监听：
   windowClass.offWindowEvent());
-} catch (exception) {
-  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+} catch (err: Error) {
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -8287,15 +8287,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let windowClass: window.Window = window.findWindow("subWindow");
   let newParentWindow: window.Window = window.findWindow("newParentWindow");
-  let newParentWindowId: number = newParentWindow.getWindowProperties().id;
+  let newParentWindowId: int = newParentWindow.getWindowProperties().id;
   let promise = windowClass.setParentWindow(newParentWindowId);
   promise.then(() => {
     console.info('Succeeded in setting the new parent window.');
-  }).catch((err: BusinessError) => {
+  }).catch((err: Error) => {
     console.error(`Failed to set the new parent window. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch (exception) {
-  console.error(`Failed to set the new parent window. Cause code: ${exception.code}, message: ${exception.message}`);
+} catch (err: Error) {
+  console.error(`Failed to set the new parent window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
