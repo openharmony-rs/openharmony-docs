@@ -1,4 +1,10 @@
 # Traditional Curve
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Traditional curves are mathematically described curves. A typical representative is the cubic Bezier curve. You define the curve shape with a set of control points, to bring out the expected animation effect, such as ease in and ease out. As aforementioned, a traditional curve is not based on the real-world behavior. This means that it does not change its shape to respond to user behavior, and lacks the natural and engaging feel given by a physics-based curve. When creating animations, prioritize physics-based curves and use traditional curves only in rare cases.
 
@@ -34,7 +40,7 @@ const myCurves: MyCurve[] = [
 
 @Entry
 @Component
-export struct CurveDemo {
+struct CurveDemo {
   @State dRotate: number = 0; // Rotation angle.
 
   build() {
