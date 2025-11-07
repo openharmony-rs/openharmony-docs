@@ -163,6 +163,11 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
    方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建, `editEvent()`不支持自定义周期性日程创建。
    
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let eventId : number | undefined = undefined;
+   const date = new Date();
+   ```
    <!-- @[calendarEvent_addEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
 
 6. 按照日程id进行指定日程的更新，更新日程相关信息。
