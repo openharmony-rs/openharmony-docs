@@ -79,14 +79,11 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
     this.context.setRestoreEnabled(true);
-    // [StartExclude onCreate]
     if (want && want.parameters) {
       let recoveryMyData = want.parameters['myData'];
     }
-    // [EndExclude onCreate]
   }
 
-  // [StartExclude onCreate]
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
     // 保存应用数据。
     hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onSaveState');
@@ -96,5 +93,4 @@ export default class EntryAbility extends UIAbility {
 
 // ···
 }
-// [End onCreate]
 ```
