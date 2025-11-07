@@ -26,6 +26,15 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   SymbolSpan组件需嵌入在Text组件中才能显示，单独使用不会呈现任何内容。
 
   <!-- @[creat_symbol_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  Text() {
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolSpan($r('sys.symbol.ohos_trash'))
+      .fontWeight(FontWeight.Normal)
+      .fontSize(96)
+  }
+  ```
 
   ![symbol_trash](figures/symbolspan_trash.png)
 
