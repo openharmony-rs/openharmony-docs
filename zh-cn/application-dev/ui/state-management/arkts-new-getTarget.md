@@ -179,6 +179,34 @@ struct GetTargetAgent {
 状态管理V2会给状态变量装饰器如\@Trace、\@Local装饰的Map、Set、Date、Array添加一层代理。和V1不同的是，状态管理V2不会对类对象实例进行代理。
 <!-- @[observedObject_globalObservedObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetAgentObject.ets) -->
 
+``` TypeScript
+@ObservedV2
+class ObservedClassTwo {
+  @Trace public name: string = 'Tom';
+}
+let globalObservedObject: ObservedClassTwo = new ObservedClassTwo(); // 不被代理
+let globalNumberList: number[] = [1, 2, 3]; // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
+let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
+let globalSampleDate: Date = new Date(); // 不被代理
+@Entry
+@ComponentV2
+struct GetAgentObject {
+  @Local observedObject: ObservedClassTwo = globalObservedObject; // V2中对象不被代理
+  @Local numberList: number[] = globalNumberList; // Array类型创建代理
+  @Local sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
+  @Local sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
+  @Local sampleDate: Date = globalSampleDate; // Date类型创建代理
+
+  build() {
+    Column() {
+      Text(`this.observedObject === globalObservedObject ${this.observedObject === globalObservedObject}`) // true
+      Text(`this.numberList === globalNumberList ${this.numberList === globalNumberList}`) // false
+    }
+  }
+}
+```
+
 
 使用UIUtils.getTarget接口可以获取代理前的原始对象。
 <!-- @[NonObservedClass_outs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetBeforeAgent.ets) -->
