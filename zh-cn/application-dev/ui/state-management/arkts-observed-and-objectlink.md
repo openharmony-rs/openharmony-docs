@@ -1678,6 +1678,48 @@ struct Index {
 
 <!-- @[Delayed_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
+@Observed
+class RenderClass {
+  public waitToRender: boolean = false;
+
+  constructor() {
+  }
+}
+
+@Entry
+@Component
+struct DelayedChangeIndex {
+  @State @Watch('renderClassChange') renderClass: RenderClass = new RenderClass();
+
+  renderClassChange() {
+    hilog.info(DOMAIN, TAG, `The value of renderClass is changed to: ${this.renderClass.waitToRender}`);
+  }
+
+  onPageShow() {
+    setTimeout(() => {
+      this.renderClass.waitToRender = true;
+    }, 1000);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(`The value of renderClass is: ${this.renderClass.waitToRender}`)
+          .fontSize(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is：false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“The value of renderClass is：true”，日志输出“The value of renderClass is changed to：true”。
 
 因此，更推荐开发者在组件中对\@Observed装饰的类成员变量进行修改，以实现刷新。
