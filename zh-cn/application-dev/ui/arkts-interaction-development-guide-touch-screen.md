@@ -91,6 +91,39 @@ struct PreventBubbling {
 以下是一个简单示例：
 <!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/sampling/Sampling.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Sampling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_Sampling';
+
+@Entry
+@ComponentV2
+struct Sampling {
+  build() {
+    RelativeContainer() {
+      Column()
+        .backgroundColor(Color.Green)
+        .height('100%')
+        .width('100%')
+        .onTouch((event: TouchEvent) => {
+          // 从event中获取历史点
+          let allHistoricalPoints = event.getHistoricalPoints();
+          if (allHistoricalPoints.length !== 0) {
+            for (const point of allHistoricalPoints) {
+              hilog.info(DOMAIN, TAG, BUNDLE + 'historical point: [' + point.touchObject.windowX +
+                ', ' + point.touchObject.windowY + ']');
+            }
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## 多指信息
 
 在支持多指触控的触屏设备上，上报的事件中同时包含了窗口所有按压手指的信息，可以通过**touches**获取，如下：
