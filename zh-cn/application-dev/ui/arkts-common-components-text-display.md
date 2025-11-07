@@ -388,6 +388,45 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   minFontSize用于设置文本的最小显示字号，maxFontSize用于设置文本的最大显示字号。这两个属性必须同时设置才能生效，并且需要与[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性或布局大小限制配合使用，单独设置任一属性将不会产生效果。
 
   <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.CustomTextStyle_textContent_one_style'资源文件中的value值为'我的最大字号为30，最小字号为5，宽度为250，maxLines为1'
+  Text($r('app.string.CustomTextStyle_textContent_one_style'))
+    .width(250)
+    .maxLines(1)
+    .maxFontSize(30)
+    .minFontSize(5)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  // 'app.string.CustomTextStyle_textContent_two_style'资源文件中的value值为'我的最大字号为30，最小字号为5，宽度为250，maxLines为2'
+  Text($r('app.string.CustomTextStyle_textContent_two_style'))
+    .width(250)
+    .maxLines(2)
+    .maxFontSize(30)
+    .minFontSize(5)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  // 'app.string.CustomTextStyle_textContent_no_max'资源文件中的value值为'我的最大字号为30，最小字号为15，宽度为250,高度为50'
+  Text($r('app.string.CustomTextStyle_textContent_no_max'))
+    .width(250)
+    .height(50)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  // 'app.string.CustomTextStyle_textContent_high'资源文件中的value值为'我的最大字号为30，最小字号为15，宽度为250,高度为100'
+  Text($r('app.string.CustomTextStyle_textContent_high'))
+    .width(250)
+    .height(100)
+    .maxFontSize(30)
+    .minFontSize(15)
+    .border({ width: 1 })
+    .padding(10)
+    .margin(5)
+  ```
 
   ![zh-cn_image_0000001511740472](figures/zh-cn_image_0000001511740472.png)
 
