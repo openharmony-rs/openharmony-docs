@@ -3810,7 +3810,7 @@ onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | --------------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回number类型参数，表示窗口所处屏幕的displayId。                               |
+| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回long类型参数，表示窗口所处屏幕的displayId。                               |
 
 **错误码：**
 
@@ -4227,7 +4227,7 @@ onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | --------------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回number类型参数，表示窗口所处屏幕的displayId。                               |
+| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回long类型参数，表示窗口所处屏幕的displayId。                               |
 
 **错误码：**
 
@@ -4314,6 +4314,8 @@ offDisplayIdChange(callback?: Callback&lt;long&gt;): void
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('displayIdChange')](#offdisplayidchange14)。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
@@ -4791,7 +4793,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- |----------------------------| ---- |--------------------------------------|
-| callback | Callback&lt;number&gt;    | 否   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕的系统显示大小缩放系数变化事件的回调。            |
+| callback | Callback&lt;double&gt;    | 否   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕的系统显示大小缩放系数变化事件的回调。            |
 
 **错误码：**
 
@@ -4806,7 +4808,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 **示例：**
 
 ```ts
-const callback = (density: number) => {
+const callback = (density: double) => {
   // ...
 }
 try {
