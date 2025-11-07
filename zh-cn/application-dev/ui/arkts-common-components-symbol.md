@@ -72,6 +72,22 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   <!-- @[symbol_variable_color_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
 
   <!-- @[symbol_variable_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 'app.string.variable_color_animation'资源文件中的value值为"可变颜色动效"
+    Text($r('app.string.variable_color_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolGlyph($r('sys.symbol.ohos_wifi'))
+      .fontSize(96)
+      .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
+    // 'app.string.off'资源文件中的value值为"关闭"
+    // 'app.string.on'资源文件中的value值为"播放"
+    Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
+      this.isActive = !this.isActive;
+    })
+  }
+  ```
 
   ![symbolGlyph_symbolEffect_isActive](figures/symbolGlyph_symbolEffect_isActive.gif)
 
