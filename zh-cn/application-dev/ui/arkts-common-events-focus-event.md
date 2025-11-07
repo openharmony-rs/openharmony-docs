@@ -894,6 +894,24 @@ export struct DefaultFocus {
 
 <!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct FocusScopePriorityPrevious {
+  build() {
+    NavDestination() {
+      Row() {
+        Button('Button1')
+          .defaultFocus(true)
+        Button('Button2')
+          .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
+      }.focusScopeId('RowScope')
+    }
+    // ···
+  }
+}
+```
+
 ### 层级页面/容器整体获焦时的焦点链
 
 **整体获焦与非整体获焦**
