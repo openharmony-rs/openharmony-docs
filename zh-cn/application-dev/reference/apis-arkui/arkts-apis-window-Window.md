@@ -5849,14 +5849,18 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名     | 类型                   | 必填 | 说明                                                                                                                                                             |
 | ----------- | ------------------------- | -- | ------------------------------------------------------- |
-| isFocusable | boolean                   | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。|
-| callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                               |
+| isFocusable | boolean                | 是   | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                                                                                                                                       |
 
 **错误码：**
 
@@ -5895,6 +5899,10 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 设置窗口是否具有获得焦点的能力，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -7560,12 +7568,15 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
 | isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。 |
-
 
 **返回值：**
 
@@ -7637,6 +7648,10 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7995,6 +8010,10 @@ isFocused(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -8261,6 +8280,10 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **需要权限：** ohos.permission.WINDOW_TOPMOST
@@ -8356,6 +8379,10 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -8414,6 +8441,10 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9284,7 +9315,7 @@ try {
 }
 ```
 
-## setExclusivelyHighlighted<sup>15+<sup>
+## setExclusivelyHighlighted<sup>15+</sup>
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
@@ -9295,6 +9326,10 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9338,7 +9373,7 @@ try {
 }
 ```
 
-## isWindowHighlighted<sup>18+<sup>
+## isWindowHighlighted<sup>18+</sup>
 
 isWindowHighlighted(): boolean
 
@@ -9349,6 +9384,10 @@ isWindowHighlighted(): boolean
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9753,7 +9792,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setSubWindowZLevel<sup>18+</sup>
 
-setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
+ArkTS-Dyn: setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setSubWindowZLevel(zLevel: int): Promise&lt;void&gt;
 
 设置当前子窗口层级级别，设置了模态属性的子窗不支持。使用Promise异步回调。
 
@@ -9763,15 +9804,19 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名       | 类型                          | 必填 | 说明                           |
+| 参数名 | 类型 | 必填 | 说明 |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| zLevel | number | 是   | 子窗口层级级别。默认值为0，取值范围为[-10000, 10000]，该参数仅支持整数输入，浮点数输入将向下取整。 |
+| zLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 子窗口层级级别。默认值为0，取值范围为[-10000, 10000]，该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
-| 类型                | 说明                      |
+| 类型 | 说明 |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -9823,7 +9868,9 @@ export default class EntryAbility extends UIAbility {
 
 ## getSubWindowZLevel<sup>18+</sup>
 
-getSubWindowZLevel(): number
+ArkTS-Dyn: getSubWindowZLevel(): number
+
+ArkTS-Sta: getSubWindowZLevel(): int
 
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
 
@@ -9831,11 +9878,16 @@ getSubWindowZLevel(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                                           |
 | ------------------- | --------------------------------------------- |
-| number             | 当前子窗口层级级别。 |
+| ArkTS-Dyn: number   | 当前子窗口层级级别。 |
+| ArkTS-Sta: int
 
 **错误码：**
 
