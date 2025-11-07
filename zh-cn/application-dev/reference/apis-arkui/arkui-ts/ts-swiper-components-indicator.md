@@ -25,6 +25,8 @@
 
 ## 接口
 
+### IndicatorComponent
+
 IndicatorComponent(controller?: IndicatorComponentController)
 
 单独导航点组件的构造函数，可配置该组件的控制器。
@@ -231,7 +233,7 @@ changeIndex(index: number, useAnimation?: boolean): void
 ## 示例
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
-该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了圆点单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
 ```
 @Entry
 @Component
@@ -294,7 +296,7 @@ struct DotIndicatorDemo {
 
 ### 示例2（数字单独导航点与Swiper绑定使用）
 
-该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了数字单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了数字单独导航点与Swiper的交互。
 
 ```
 @Entry
