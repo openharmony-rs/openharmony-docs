@@ -20294,24 +20294,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":107,
 						"name":"open_popup",
-						"start_line":95
+						"start_line":96
 					},
 					{
-						"end_line":83,
+						"end_line":84,
 						"name":"build_text",
 						"start_line":34
 					},
 					{
-						"end_line":119,
+						"end_line":122,
 						"name":"update_popup",
-						"start_line":109
+						"start_line":111
 					},
 					{
-						"end_line":131,
+						"end_line":135,
 						"name":"close_popup",
-						"start_line":123
+						"start_line":126
 					}
 				]
 			},
@@ -20334,7 +20334,7 @@
 						"start_line":68
 					},
 					{
-						"end_line":100,
+						"end_line":99,
 						"name":"open_popup_main",
 						"start_line":16
 					}
@@ -20349,9 +20349,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":123,
 						"name":"open_menu",
-						"start_line":103
+						"start_line":111
 					},
 					{
 						"end_line":94,
@@ -20359,9 +20359,9 @@
 						"start_line":91
 					},
 					{
-						"end_line":83,
+						"end_line":91,
 						"name":"build_text",
-						"start_line":34
+						"start_line":41
 					},
 					{
 						"end_line":154,
@@ -20374,14 +20374,14 @@
 						"start_line":95
 					},
 					{
-						"end_line":129,
+						"end_line":139,
 						"name":"update_menu",
-						"start_line":118
+						"start_line":127
 					},
 					{
-						"end_line":142,
+						"end_line":153,
 						"name":"close_menu",
-						"start_line":133
+						"start_line":143
 					}
 				]
 			}
