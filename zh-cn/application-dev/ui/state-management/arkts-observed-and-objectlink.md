@@ -238,6 +238,20 @@ struct Parent {
     @ObjectLink test: Test;
     ```
     <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
+    
+    ``` TypeScript
+    @Observed
+    class Info {
+      public count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
+    }
+    // ···
+    // 正确写法
+    @ObjectLink count: Info;
+    ```
   
 5. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
 
