@@ -230,7 +230,7 @@ struct DeepWebIndex {
               .then(() => {
                 hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
               }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG,`openLink failed, err: ${JSON.stringify(err)}.`);
+              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed, err: ${JSON.stringify(err)}.`);
             });
             return true;
           }
