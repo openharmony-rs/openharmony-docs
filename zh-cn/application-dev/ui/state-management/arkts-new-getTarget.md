@@ -39,6 +39,16 @@
   ```
   
   <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->
+  
+  ``` TypeScript
+  import { UIUtils } from '@kit.ArkUI';
+  @Observed
+  class Info {
+    public name: string = 'Tom';
+  }
+  let info: Info = new Info();
+  let rawInfo: Info = UIUtils.getTarget(info); // 正确用法
+  ```
 
 
 - 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
