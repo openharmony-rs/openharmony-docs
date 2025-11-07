@@ -242,6 +242,45 @@ Shift+Tab键：与Tab键具有相反的焦点转移效果。
 
 <!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct FocusLinerExample {
+  build() {
+    NavDestination() {
+      Column() {
+        Column() {
+          Button('Column Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+          Button('Column Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+        }
+        .margin(10)
+        Row() {
+          Button('Row Button1')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+          Button('Row Button2')
+            .width(150)
+            .height(45)
+            .fontColor(Color.White)
+            .margin(10)
+        }
+      }
+    }
+    // ···
+  }
+}
+```
+
 Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 ![Liner_Focus_1](figures/Liner_Focus_1.gif)
