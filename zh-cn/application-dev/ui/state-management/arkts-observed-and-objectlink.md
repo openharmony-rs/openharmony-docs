@@ -260,6 +260,20 @@ struct Parent {
     @ObjectLink count: CountInfo = new CountInfo(10);
     ```
     <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
+    
+    ``` TypeScript
+    @Observed
+    class CountInfo {
+      public count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
+    }
+    // ···
+    // 正确写法
+    @ObjectLink count: CountInfo;
+    ```
 
 6. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示Cannot set property when setter is undefined。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
 
