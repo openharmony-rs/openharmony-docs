@@ -270,6 +270,61 @@ struct TestPageTwo {
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
 <!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
+
+``` TypeScript
+@Component
+struct StorageLinkComponent {
+  @StorageLink('linkA') linkA: number | null = null;
+  @StorageLink('linkB') linkB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageLink接口初始化，@StorageLink取值')
+      Text(`${this.linkA}`).fontSize(20).onClick(() => {
+        this.linkA ? this.linkA = null : this.linkA = 1;
+      })
+      Text(`${this.linkB}`).fontSize(20).onClick(() => {
+        this.linkB ? this.linkB = undefined : this.linkB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Red)
+  }
+}
+
+@Component
+struct StoragePropComponent {
+  @StorageProp('propA') propA: number | null = null;
+  @StorageProp('propB') propB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageProp接口初始化，@StorageProp取值')
+      Text(`${this.propA}`).fontSize(20).onClick(() => {
+        this.propA ? this.propA = null : this.propA = 1;
+      })
+      Text(`${this.propB}`).fontSize(20).onClick(() => {
+        this.propB ? this.propB = undefined : this.propB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Blue)
+  }
+}
+
+@Entry
+@Component
+struct TestPageThree {
+  build() {
+    Row() {
+      Column() {
+        StorageLinkComponent()
+        StoragePropComponent()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 ### 装饰Date类型变量
 
 > **说明：**
