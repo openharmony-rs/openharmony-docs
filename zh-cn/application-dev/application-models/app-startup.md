@@ -289,7 +289,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
 ``` TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -613,7 +613,7 @@ struct Index {
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
      ``` TypeScript
-     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
      // ···
      
      export default class MyStartupConfigEntry extends StartupConfigEntry {
