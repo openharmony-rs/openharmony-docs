@@ -4,8 +4,11 @@
 
 >**说明：**
 >
->本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.radio (网络搜索)](js-apis-radio.md)
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.radio (网络搜索)](js-apis-radio.md)
 
 ## 导入模块
 
@@ -16,21 +19,27 @@ import { radio } from '@kit.TelephonyKit';
 
 ## radio.setPrimarySlotId<sup>8+</sup>
 
-setPrimarySlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setPrimarySlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setPrimarySlotId\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 设置主卡所在卡槽的索引号。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                                   |
 | -------- | --------------------- | ---- | -------------------------------------- |
-| slotId   | number                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。返回设置主卡的执行结果。        |
 
 **错误码：**
@@ -50,6 +59,8 @@ setPrimarySlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -59,28 +70,50 @@ radio.setPrimarySlotId(slotId, (err: BusinessError) => {
         console.error(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.setPrimarySlotId(slotId, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setPrimarySlotId success.`);
+    }
 });
 ```
 
 
 ## radio.setPrimarySlotId<sup>8+</sup>
 
-setPrimarySlotId\(slotId: number\): Promise\<void\>
+ArkTS-Dyn: setPrimarySlotId\(slotId: number\): Promise\<void\>
+
+ArkTS-Sta: setPrimarySlotId\(slotId: int\): Promise\<void\>
 
 设置主卡所在卡槽的索引号。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -105,13 +138,30 @@ setPrimarySlotId\(slotId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.setPrimarySlotId(slotId).then(() => {
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.setPrimarySlotId(slotId).then(() => {
+    console.info(`setPrimarySlotId success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -124,9 +174,13 @@ getIMEI\(callback: AsyncCallback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -150,6 +204,8 @@ getIMEI\(callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -158,28 +214,49 @@ radio.getIMEI((err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getIMEI((err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getIMEI<sup>8+</sup>
 
-getIMEI\(slotId: number, callback: AsyncCallback\<string\>\): void
+ArkTS-Dyn: getIMEI\(slotId: number, callback: AsyncCallback\<string\>\): void
+
+ArkTS-Sta: getIMEI\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 获取设备的指定卡槽的IMEI。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                       |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2     |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2     |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回设备指定卡槽的IMEI。如果IMEI不存在，则返回空字符串。 |
 
 **错误码：**
@@ -198,6 +275,8 @@ getIMEI\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -207,28 +286,50 @@ radio.getIMEI(slotId, (err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getIMEI(slotId, (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getIMEI<sup>8+</sup>
 
-getIMEI\(slotId?: number\): Promise\<string\>
+ArkTS-Dyn: getIMEI\(slotId?: number\): Promise\<string\>
+
+ArkTS-Sta: getIMEI\(slotId?: int\): Promise\<string\>
 
 获取设备的指定卡槽的IMEI。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -252,13 +353,30 @@ getIMEI\(slotId?: number\): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getIMEI(slotId).then((data: string) => {
-    console.log(`getIMEI success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getIMEI failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getIMEI(slotId).then((data: string) => {
+    console.info(`getIMEI success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getIMEI failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -271,9 +389,13 @@ getMEID\(callback: AsyncCallback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -297,6 +419,8 @@ getMEID\(callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -305,28 +429,49 @@ radio.getMEID((err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getMEID((err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getMEID<sup>8+</sup>
 
-getMEID\(slotId: number, callback: AsyncCallback\<string\>\): void
+ArkTS-Dyn: getMEID\(slotId: number, callback: AsyncCallback\<string\>\): void
+
+ArkTS-Sta: getMEID\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 获取设备的指定卡槽的MEID。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回设备的指定卡槽的MEID。如果MEID不存在，则返回空字符串。|
 
 **错误码：**
@@ -345,6 +490,8 @@ getMEID\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -354,28 +501,50 @@ radio.getMEID(slotId, (err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getMEID(slotId, (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getMEID<sup>8+</sup>
 
-getMEID\(slotId?: number\): Promise\<string\>
+ArkTS-Dyn: getMEID\(slotId?: number\): Promise\<string\>
+
+ArkTS-Sta: getMEID\(slotId?: int\): Promise\<string\>
 
 获取设备的指定卡槽的MEID。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -399,13 +568,30 @@ getMEID\(slotId?: number\): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getMEID(slotId).then((data: string) => {
-    console.log(`getMEID success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getMEID failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getMEID(slotId).then((data: string) => {
+    console.info(`getMEID success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getMEID failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -420,9 +606,13 @@ getUniqueDeviceId\(callback: AsyncCallback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -446,6 +636,8 @@ getUniqueDeviceId\(callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -454,14 +646,31 @@ radio.getUniqueDeviceId((err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getUniqueDeviceId((err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}}`);
+    } else {
+        console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getUniqueDeviceId<sup>8+</sup>
 
-getUniqueDeviceId\(slotId: number, callback: AsyncCallback\<string\>\): void
+ArkTS-Dyn: getUniqueDeviceId\(slotId: number, callback: AsyncCallback\<string\>\): void
+
+ArkTS-Sta: getUniqueDeviceId\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 获取设备的指定卡槽的唯一设备ID。使用callback异步回调。
 
@@ -469,15 +678,19 @@ getUniqueDeviceId\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回指定卡槽的唯一设备ID。      |
 
 **错误码：**
@@ -496,6 +709,8 @@ getUniqueDeviceId\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -505,14 +720,32 @@ radio.getUniqueDeviceId(slotId, (err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getUniqueDeviceId(slotId, (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getUniqueDeviceId<sup>8+</sup>
 
-getUniqueDeviceId\(slotId?: number\): Promise\<string\>
+ArkTS-Dyn: getUniqueDeviceId\(slotId?: number\): Promise\<string\>
+
+ArkTS-Sta: getUniqueDeviceId\(slotId?: int\): Promise\<string\>
 
 获取设备的指定卡槽的唯一设备ID。使用Promise异步回调。
 
@@ -520,15 +753,19 @@ getUniqueDeviceId\(slotId?: number\): Promise\<string\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -552,13 +789,30 @@ getUniqueDeviceId\(slotId?: number\): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getUniqueDeviceId(slotId).then((data: string) => {
-    console.log(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getUniqueDeviceId failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getUniqueDeviceId(slotId).then((data: string) => {
+    console.info(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getUniqueDeviceId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -571,9 +825,13 @@ sendUpdateCellLocationRequest\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -596,6 +854,8 @@ sendUpdateCellLocationRequest\(callback: AsyncCallback\<void\>\): void
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -605,27 +865,48 @@ radio.sendUpdateCellLocationRequest((err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.sendUpdateCellLocationRequest((err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`sendUpdateCellLocationRequest success.`);
+    }
 });
 ```
 
 ## radio.sendUpdateCellLocationRequest<sup>8+</sup>
 
-sendUpdateCellLocationRequest\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: sendUpdateCellLocationRequest\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: sendUpdateCellLocationRequest\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 发送更新小区位置请求。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明       |
 | -------- | --------------------- | ---- | ---------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。返回更新小区位置请求的结果。 |
 
 **错误码：**
@@ -643,6 +924,8 @@ sendUpdateCellLocationRequest\(slotId: number, callback: AsyncCallback\<void\>\)
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -653,27 +936,49 @@ radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`sendUpdateCellLocationRequest success.`);
+    }
 });
 ```
 
 ## radio.sendUpdateCellLocationRequest<sup>8+</sup>
 
-sendUpdateCellLocationRequest\(slotId?: number\): Promise\<void\>
+ArkTS-Dyn: sendUpdateCellLocationRequest\(slotId?: number\): Promise\<void\>
+
+ArkTS-Sta: sendUpdateCellLocationRequest\(slotId?: int\): Promise\<void\>
 
 发送更新小区位置请求。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -697,13 +1002,30 @@ sendUpdateCellLocationRequest\(slotId?: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.sendUpdateCellLocationRequest(slotId).then(() => {
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 }).catch((err: BusinessError) => {
+    console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.sendUpdateCellLocationRequest(slotId).then(() => {
+    console.info(`sendUpdateCellLocationRequest success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -716,9 +1038,13 @@ getCellInformation\(callback: AsyncCallback\<Array\<CellInformation\>\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -742,6 +1068,8 @@ getCellInformation\(callback: AsyncCallback\<Array\<CellInformation\>\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -750,28 +1078,49 @@ radio.getCellInformation((err: BusinessError, data: Array<radio.CellInformation>
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getCellInformation((err: BusinessError | null, data: Array<radio.CellInformation> | undefined) => {
+    if (err?.code) {
+        console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getCellInformation<sup>8+</sup>
 
-getCellInformation\(slotId: number, callback: AsyncCallback\<Array\<CellInformation\>\>\): void
+ArkTS-Dyn: getCellInformation\(slotId: number, callback: AsyncCallback\<Array\<CellInformation\>\>\): void
+
+ArkTS-Sta: getCellInformation\(slotId: int, callback: AsyncCallback\<Array\<CellInformation\>\>\): void
 
 获取小区信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<Array<[CellInformation](#cellinformation8)\>\> | 是   | 回调函数。返回小区信息。 |
 
 **错误码：**
@@ -790,6 +1139,8 @@ getCellInformation\(slotId: number, callback: AsyncCallback\<Array\<CellInformat
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -799,28 +1150,50 @@ radio.getCellInformation(slotId, (err: BusinessError, data: Array<radio.CellInfo
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getCellInformation(slotId, (err: BusinessError | null, data: Array<radio.CellInformation> | undefined) => {
+    if (err?.code) {
+        console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 
 ## radio.getCellInformation<sup>8+</sup>
 
-getCellInformation\(slotId?: number\): Promise\<Array\<CellInformation\>\>
+ArkTS-Dyn: getCellInformation\(slotId?: number\): Promise\<Array\<CellInformation\>\>
+
+ArkTS-Sta: getCellInformation\(slotId?: int\): Promise\<Array\<CellInformation\>\>
 
 获取小区信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -844,13 +1217,29 @@ getCellInformation\(slotId?: number\): Promise\<Array\<CellInformation\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
-    console.log(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
+    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
     console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -863,9 +1252,13 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions, callback: AsyncCa
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -890,6 +1283,8 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -910,7 +1305,34 @@ radio.setNetworkSelectionMode(networkSelectionModeOptions, (err: BusinessError) 
         console.error(`setNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let networkInformation: radio.NetworkInformation = {
+    operatorName: "中国移动",
+    operatorNumeric: "898600",
+    state: radio.NetworkInformationState.NETWORK_AVAILABLE,
+    radioTech: "CS"
+}
+let networkSelectionModeOptions: radio.NetworkSelectionModeOptions = {
+    slotId: 0,
+    selectMode: radio.NetworkSelectionMode.NETWORK_SELECTION_AUTOMATIC,
+    networkInformation: networkInformation,
+    resumeSelection: true
+}
+radio.setNetworkSelectionMode(networkSelectionModeOptions, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setNetworkSelectionMode success.`);
+    }
 });
 ```
 
@@ -922,9 +1344,13 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -954,6 +1380,8 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -970,29 +1398,61 @@ let networkSelectionModeOptions: radio.NetworkSelectionModeOptions = {
     resumeSelection: true
 }
 radio.setNetworkSelectionMode(networkSelectionModeOptions).then(() => {
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let networkInformation: radio.NetworkInformation = {
+    operatorName: "中国移动",
+    operatorNumeric: "898600",
+    state: radio.NetworkInformationState.NETWORK_AVAILABLE,
+    radioTech: "CS"
+}
+let networkSelectionModeOptions: radio.NetworkSelectionModeOptions = {
+    slotId: 0,
+    selectMode: radio.NetworkSelectionMode.NETWORK_SELECTION_AUTOMATIC,
+    networkInformation: networkInformation,
+    resumeSelection: true
+}
+radio.setNetworkSelectionMode(networkSelectionModeOptions).then(() => {
+    console.info(`setNetworkSelectionMode success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## radio.getNetworkSearchInformation
 
-getNetworkSearchInformation\(slotId: number, callback: AsyncCallback\<NetworkSearchResult\>\): void
+ArkTS-Dyn: getNetworkSearchInformation\(slotId: number, callback: AsyncCallback\<NetworkSearchResult\>\): void
+
+ArkTS-Sta: getNetworkSearchInformation\(slotId: int, callback: AsyncCallback\<NetworkSearchResult\>\): void
 
 获取网络搜索信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<[NetworkSearchResult](#networksearchresult)\> | 是   | 回调函数。返回网络搜索信息。 |
 
 **错误码：**
@@ -1011,6 +1471,8 @@ getNetworkSearchInformation\(slotId: number, callback: AsyncCallback\<NetworkSea
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1019,27 +1481,48 @@ radio.getNetworkSearchInformation(0, (err: BusinessError, data: radio.NetworkSea
         console.error(`getNetworkSearchInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getNetworkSearchInformation(0, (err: BusinessError | null, data: radio.NetworkSearchResult | undefined) => {
+    if (err?.code) {
+        console.error(`getNetworkSearchInformation failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 ## radio.getNetworkSearchInformation
 
-getNetworkSearchInformation\(slotId: number\): Promise\<NetworkSearchResult\>
+ArkTS-Dyn: getNetworkSearchInformation\(slotId: number\): Promise\<NetworkSearchResult\>
+
+ArkTS-Sta: getNetworkSearchInformation\(slotId: int\): Promise\<NetworkSearchResult\>
 
 获取网络搜索信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -1063,12 +1546,28 @@ getNetworkSearchInformation\(slotId: number\): Promise\<NetworkSearchResult\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getNetworkSearchInformation(0).then((data: radio.NetworkSearchResult) => {
-    console.log(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getNetworkSearchInformation failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.getNetworkSearchInformation(0).then((data: radio.NetworkSearchResult) => {
+    console.info(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getNetworkSearchInformation failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -1085,7 +1584,7 @@ getNrOptionMode\(callback: AsyncCallback\<NrOptionMode\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **参数：**
 
@@ -1116,7 +1615,7 @@ radio.getNrOptionMode((err: BusinessError, data: radio.NrOptionMode) => {
         console.error(`getNrOptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1133,7 +1632,7 @@ getNrOptionMode\(slotId: number, callback: AsyncCallback\<NrOptionMode\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **参数：**
 
@@ -1166,7 +1665,7 @@ radio.getNrOptionMode(slotId, (err: BusinessError, data: radio.NrOptionMode) => 
         console.error(`getNrOptionModecallback failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1183,7 +1682,7 @@ getNrOptionMode\(slotId?: number\): Promise\<NrOptionMode\>
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **参数：**
 
@@ -1217,7 +1716,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNrOptionMode(slotId).then((data: radio.NrOptionMode) => {
-    console.log(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNrOptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1231,9 +1730,13 @@ turnOnRadio\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1257,6 +1760,8 @@ turnOnRadio\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1265,28 +1770,50 @@ radio.turnOnRadio((err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 });
 ```
 
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.turnOnRadio((err: BusinessError | data: undefined) => {
+    if (err?.code) {
+        console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`turnOnRadio success.`);
+    }
+});
+```
 
 ## radio.turnOnRadio<sup>7+</sup>
 
-turnOnRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: turnOnRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: turnOnRadio\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 打开指定卡槽的Radio。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                                   |
 | -------- | --------------------- | ---- | -------------------------------------- |
-| slotId   | number                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。返回打开指定卡槽的Radio的操作结果。      |
 
 **错误码：**
@@ -1305,6 +1832,8 @@ turnOnRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1314,28 +1843,50 @@ radio.turnOnRadio(slotId, (err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.turnOnRadio(slotId, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`turnOnRadio success.`);
+    }
 });
 ```
 
 
 ## radio.turnOnRadio<sup>7+</sup>
 
-turnOnRadio(slotId?: number): Promise\<void\>
+ArkTS-Dyn: turnOnRadio(slotId?: number): Promise\<void\>
+
+ArkTS-Sta: turnOnRadio(slotId?: int): Promise\<void\>
 
 打开Radio。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -1359,13 +1910,30 @@ turnOnRadio(slotId?: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOnRadio(slotId).then(() => {
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 }).catch((err: BusinessError) => {
+    console.error(`turnOnRadio failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.turnOnRadio(slotId).then(() => {
+    console.info(`turnOnRadio success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`turnOnRadio failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -1378,9 +1946,13 @@ turnOffRadio\(callback: AsyncCallback\<void\>\): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1404,6 +1976,8 @@ turnOffRadio\(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1412,28 +1986,49 @@ radio.turnOffRadio((err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+radio.turnOffRadio((err: BusinessError) => {
+    if (err?.code) {
+        console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`turnOffRadio success.`);
+    }
 });
 ```
 
 
 ## radio.turnOffRadio<sup>7+</sup>
 
-turnOffRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: turnOffRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: turnOffRadio\(slotId: int, callback: AsyncCallback\<void\>\): void
 
 关闭指定卡槽的Radio。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                                   |
 | -------- | --------------------- | ---- | -------------------------------------- |
-| slotId   | number                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<void\> | 是   | 回调函数。返回关闭指定卡槽的Radio的操作结果。 |
 
 **错误码：**
@@ -1452,6 +2047,8 @@ turnOffRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1461,28 +2058,50 @@ radio.turnOffRadio(slotId, (err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.turnOffRadio(slotId, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`turnOffRadio success.`);
+    }
 });
 ```
 
 
 ## radio.turnOffRadio<sup>7+</sup>
 
-turnOffRadio\(slotId?: number\): Promise\<void\>
+ArkTS-Dyn: turnOffRadio\(slotId?: number\): Promise\<void\>
+
+ArkTS-Sta: turnOffRadio\(slotId?: int\): Promise\<void\>
 
 关闭Radio。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -1506,34 +2125,57 @@ turnOffRadio\(slotId?: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOffRadio(slotId).then(() => {
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 }).catch((err: BusinessError) => {
+    console.error(`turnOffRadio failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.turnOffRadio(slotId).then(() => {
+    console.info(`turnOffRadio success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`turnOffRadio failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## radio.setPreferredNetwork<sup>8+</sup>
 
-setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setPreferredNetwork\(slotId: int, networkMode: PreferredNetworkMode, callback: AsyncCallback\<void\>\): void
 
 设置首选网络。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                                           | 必填 | 说明                                   |
 | ----------- | ---------------------------------------------- | ---- | -------------------------------------- |
-| slotId      | number                                         | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int            | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | networkMode | [PreferredNetworkMode](#preferrednetworkmode8) | 是   | 设置首选网络模式。                       |
 | callback    | AsyncCallback\<void\>                          | 是   | 回调函数。返回设置首选网络的结果。|
 
@@ -1553,6 +2195,8 @@ setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode, callback
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1563,27 +2207,50 @@ radio.setPreferredNetwork(slotId, mode, (err: BusinessError) => {
         console.error(`setPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
+radio.setPreferredNetwork(slotId, mode, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setPreferredNetwork success.`);
+    }
 });
 ```
 
 ## radio.setPreferredNetwork<sup>8+</sup>
 
-setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode\): Promise\<void\>
+ArkTS-Dyn: setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode\): Promise\<void\>
+
+ArkTS-Sta: setPreferredNetwork\(slotId: int, networkMode: PreferredNetworkMode\): Promise\<void\>
 
 设置首选网络。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                                           | 必填 | 说明                                   |
 | ----------- | ---------------------------------------------- | ---- | -------------------------------------- |
-| slotId      | number                                         | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId      | ArkTS-Dyn: number <br/>ArkTS-Sta: int            | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | networkMode | [PreferredNetworkMode](#preferrednetworkmode8) | 是   | 设置首选网络模式。|
 
 **返回值：**
@@ -1608,35 +2275,59 @@ setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode\): Promis
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
 radio.setPreferredNetwork(slotId, mode).then(() => {
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
 }).catch((err: BusinessError) => {
+    console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
+radio.setPreferredNetwork(slotId, mode).then(() => {
+    console.info(`setPreferredNetwork success.`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## radio.getPreferredNetwork<sup>8+</sup>
 
-getPreferredNetwork\(slotId: number, callback: AsyncCallback\<PreferredNetworkMode\>\): void
+ArkTS-Dyn: getPreferredNetwork\(slotId: number, callback: AsyncCallback\<PreferredNetworkMode\>\): void
+
+ArkTS-Sta: getPreferredNetwork\(slotId: int, callback: AsyncCallback\<PreferredNetworkMode\>\): void
 
 获取首选网络。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                               | 必填 | 说明                                   |
 | -------- | --------------------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<[PreferredNetworkMode](#preferrednetworkmode8)\> | 是   | 回调函数。返回首选网络类型。|
 
 **错误码：**
@@ -1655,6 +2346,8 @@ getPreferredNetwork\(slotId: number, callback: AsyncCallback\<PreferredNetworkMo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1664,27 +2357,49 @@ radio.getPreferredNetwork(slotId, (err: BusinessError, data: radio.PreferredNetw
         console.error(`getPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getPreferredNetwork(slotId, (err: BusinessError | null, data: radio.PreferredNetworkMode | undefined) => {
+    if (err?.code) {
+        console.error(`getPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 ## radio.getPreferredNetwork<sup>8+</sup>
 
-getPreferredNetwork\(slotId: number\): Promise\<PreferredNetworkMode\>
+ArkTS-Dyn: getPreferredNetwork\(slotId: number\): Promise\<PreferredNetworkMode\>
+
+ArkTS-Sta: getPreferredNetwork\(slotId: int\): Promise\<PreferredNetworkMode\>
 
 获取首选网络。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -1708,34 +2423,57 @@ getPreferredNetwork\(slotId: number\): Promise\<PreferredNetworkMode\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getPreferredNetwork(slotId).then((data: radio.PreferredNetworkMode) => {
-    console.log(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getPreferredNetwork(slotId).then((data: radio.PreferredNetworkMode) => {
+    console.info(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## radio.getImsRegInfo<sup>9+</sup>
 
-getImsRegInfo\(slotId: number, imsType: ImsServiceType, callback: AsyncCallback\<ImsRegInfo\>\): void
+ArkTS-Dyn: getImsRegInfo\(slotId: number, imsType: ImsServiceType, callback: AsyncCallback\<ImsRegInfo\>\): void
+
+ArkTS-Sta: getImsRegInfo\(slotId: int, imsType: ImsServiceType, callback: AsyncCallback\<ImsRegInfo\>\): void
 
 获取特定IMS服务类型的IMS注册状态信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                   |
 | -------- | ------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                     | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int        | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | imsType  | [ImsServiceType](#imsservicetype9)         | 是   | IMS服务类型。                          |
 | callback | AsyncCallback<[ImsRegInfo](#imsreginfo9)\> | 是   | 回调函数。返回指定IMS服务类型的IMS注册状态信息。|
 
@@ -1755,6 +2493,8 @@ getImsRegInfo\(slotId: number, imsType: ImsServiceType, callback: AsyncCallback\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1765,27 +2505,50 @@ radio.getImsRegInfo(slotId, mode, (err: BusinessError, data: radio.ImsRegInfo) =
         console.error(`getImsRegInfo failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
+radio.getImsRegInfo(slotId, mode, (err: BusinessError | null, data: radio.ImsRegInfo | undefined) => {
+    if (err?.code) {
+        console.error(`getImsRegInfo failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
+    }
 });
 ```
 
 ## radio.getImsRegInfo<sup>9+</sup>
 
-getImsRegInfo\(slotId: number, imsType: ImsServiceType\): Promise\<ImsRegInfo\>
+ArkTS-Dyn: getImsRegInfo\(slotId: number, imsType: ImsServiceType\): Promise\<ImsRegInfo\>
+
+ArkTS-Sta: getImsRegInfo\(slotId: int, imsType: ImsServiceType\): Promise\<ImsRegInfo\>
 
 获取特定IMS服务类型的IMS注册状态信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名  | 类型                               | 必填 | 说明                                   |
 | ------- | ---------------------------------- | ---- | -------------------------------------- |
-| slotId  | number                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId  | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | imsType | [ImsServiceType](#imsservicetype9) | 是   | IMS服务类型。                          |
 
 **返回值：**
@@ -1810,14 +2573,32 @@ getImsRegInfo\(slotId: number, imsType: ImsServiceType\): Promise\<ImsRegInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
-    console.log(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getImsRegInfo failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
+radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
+    console.info(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getImsRegInfo failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -1830,9 +2611,9 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **参数：**
 
@@ -1863,7 +2644,7 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1875,9 +2656,9 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **参数：**
 
@@ -1908,28 +2689,34 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
 
 ## radio.getBasebandVersion<sup>10+</sup>
 
-getBasebandVersion\(slotId: number, callback: AsyncCallback\<string\>\): void
+ArkTS-Dyn: getBasebandVersion\(slotId: number, callback: AsyncCallback\<string\>\): void
+
+ArkTS-Sta: getBasebandVersion\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 获取设备的基带版本号。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | ------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回设备的基带版本号。            |
 
 **错误码：**
@@ -1948,6 +2735,8 @@ getBasebandVersion\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1957,28 +2746,49 @@ radio.getBasebandVersion(slotId, (err: BusinessError, data: string) => {
         console.error(`getBasebandVersion failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getBasebandVersion(slotId, (err: BusinessError | null, data: string | undefined) => {
+    if (err?.code) {
+        console.error(`getBasebandVersion failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
+    }
+});
+```
 
 ## radio.getBasebandVersion<sup>10+</sup>
 
-getBasebandVersion\(slotId: number\): Promise\<string\>
+ArkTS-Dyn: getBasebandVersion\(slotId: number\): Promise\<string\>
+
+ArkTS-Sta: getBasebandVersion\(slotId: int\): Promise\<string\>
 
 获取设备的基带版本号。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                  |
 | -------- | ----------------------- | ---- | ------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -2002,13 +2812,30 @@ getBasebandVersion\(slotId: number\): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getBasebandVersion(slotId).then((data: string) => {
-    console.log(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getBasebandVersion failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getBasebandVersion(slotId).then((data: string) => {
+    console.info(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getBasebandVersion failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -2016,21 +2843,27 @@ radio.getBasebandVersion(slotId).then((data: string) => {
 
 ## radio.setNROptionMode<sup>10+</sup>
 
-setNROptionMode\(slotId: number, mode: NROptionMode, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: setNROptionMode\(slotId: number, mode: NROptionMode, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setNROptionMode\(slotId: int, mode: NROptionMode, callback: AsyncCallback\<void\>\): void
 
 设置NR选项模式。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                              | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                           | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int              | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
 | mode     | [NROptionMode](#nroptionmode10)                  | 是   | NR的选择模式。                          |
 | callback | AsyncCallback\<void\>                            | 是   | 回调函数。返回设置NR选项模式的结果。 |
 
@@ -2050,6 +2883,8 @@ setNROptionMode\(slotId: number, mode: NROptionMode, callback: AsyncCallback\<vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2060,28 +2895,50 @@ radio.setNROptionMode(slotId, mode, (err: BusinessError) => {
         console.error(`setNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNROptionMode success.`);
+    console.info(`setNROptionMode success.`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.NROptionMode = radio.NROptionMode.NR_OPTION_NSA_ONLY;
+radio.setNROptionMode(slotId, mode, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setNROptionMode failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`setNROptionMode success.`);
+    }
+});
+```
 
 ## radio.setNROptionMode<sup>10+</sup>
 
-setNROptionMode\(slotId: number, mode: NROptionMode\): Promise\<void\>
+ArkTS-Dyn: setNROptionMode\(slotId: number, mode: NROptionMode\): Promise\<void\>
+
+ArkTS-Sta: setNROptionMode\(slotId: int, mode: NROptionMode\): Promise\<void\>
 
 设置NR选项模式 。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 |              类型               | 必填 | 说明                                   |
 | ------ | ------------------------------- | ---- | ------------------------------------- |
-| slotId | number                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | mode   | [NROptionMode](#nroptionmode10) | 是   | NR的选项模式。   |
 
 **返回值：**
@@ -2106,14 +2963,32 @@ setNROptionMode\(slotId: number, mode: NROptionMode\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 let mode: radio.NROptionMode = radio.NROptionMode.NR_OPTION_NSA_ONLY;
 radio.setNROptionMode(slotId, mode).then(() => {
-    console.log(`setNROptionMode success`);
+    console.info(`setNROptionMode success`);
 }).catch((err: BusinessError) => {
+    console.error(`setNROptionMode failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let mode: radio.NROptionMode = radio.NROptionMode.NR_OPTION_NSA_ONLY;
+radio.setNROptionMode(slotId, mode).then(() => {
+    console.info(`setNROptionMode success`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`setNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -2121,19 +2996,25 @@ radio.setNROptionMode(slotId, mode).then(() => {
 
 ## radio.getNROptionMode<sup>10+</sup>
 
-getNROptionMode\(slotId: number, callback: AsyncCallback\<NROptionMode\>\): void
+ArkTS-Dyn: getNROptionMode\(slotId: number, callback: AsyncCallback\<NROptionMode\>\): void
+
+ArkTS-Sta: getNROptionMode\(slotId: int, callback: AsyncCallback\<NROptionMode\>\): void
 
 获取Nr选项模式 。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                              | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| slotId   | number                                           | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int              | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
 | callback | AsyncCallback\<[NROptionMode](#nroptionmode10)\> | 是   | 回调函数。返回NR选项模式。           |
 
 **错误码：**
@@ -2151,6 +3032,8 @@ getNROptionMode\(slotId: number, callback: AsyncCallback\<NROptionMode\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2160,25 +3043,47 @@ radio.getNROptionMode(slotId, (err: BusinessError, data: radio.NROptionMode) => 
         console.error(`getNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getNROptionMode(slotId, (err: BusinessError | null, data: radio.NROptionMode | undefined) => {
+    if (err?.code) {
+        console.error(`getNROptionMode failed, callback: err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`getNROptionMode success, callback: data->${data}`);
+    }
 });
 ```
 
 ## radio.getNROptionMode<sup>10+</sup>
 
-getNROptionMode\(slotId: number\): Promise\<NROptionMode\>
+ArkTS-Dyn: getNROptionMode\(slotId: number\): Promise\<NROptionMode\>
+
+ArkTS-Sta: getNROptionMode\(slotId: int\): Promise\<NROptionMode\>
 
 获取NR选项模式 。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -2201,35 +3106,57 @@ getNROptionMode\(slotId: number\): Promise\<NROptionMode\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNROptionMode(slotId).then((data: radio.NROptionMode) => {
-    console.log(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.getNROptionMode(slotId).then((data: radio.NROptionMode) => {
+    console.info(`getNROptionMode success, promise: data->${data}`);    
+}).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`getNROptionMode failed, promise: err->${JSON.stringify(err)}`);  
+});
+```
 
 ## radio.getNetworkCapability<sup>10+</sup>
 
-getNetworkCapability\(slotId: number, type: NetworkCapabilityType, callback: AsyncCallback\<NetworkCapabilityState\>\): void
+ArkTS-Dyn: getNetworkCapability\(slotId: number, type: NetworkCapabilityType, callback: AsyncCallback\<NetworkCapabilityState\>\): void
+
+ArkTS-Sta: getNetworkCapability\(slotId: int, type: NetworkCapabilityType, callback: AsyncCallback\<NetworkCapabilityState\>\): void
 
 获取指定网络类型的开关状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                                       | 必填 | 说明                                  |
 | -------- | -----------------------------------------------------------------------| ---- | ----------------------------------- |
-| slotId   | number                                                                 | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | type     | [NetworkCapabilityType](#networkcapabilitytype10)                      | 是   | 网络能力类型。                        |
 | callback | AsyncCallback\<[NetworkCapabilityState](#networkcapabilitystate10)\>   | 是   | 回调函数。返回指定网络类型的开关状态。 |
 
@@ -2249,6 +3176,8 @@ getNetworkCapability\(slotId: number, type: NetworkCapabilityType, callback: Asy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2259,28 +3188,51 @@ radio.getNetworkCapability(slotId, type, (err: BusinessError, data: radio.Networ
         console.error(`getNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkCapability success, callback: err->${JSON.stringify(err)}`);
+    console.info(`getNetworkCapability success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+radio.getNetworkCapability(slotId, type, (err: BusinessError | null, data: radio.NetworkCapabilityState | undefined) => {
+    if (err?.code) {
+        console.error(`getNetworkCapability failed, callback: err->${JSON.stringify(err)}`);        
+    } else {
+        console.info(`getNetworkCapability success, callback: data->${data}`);      
+    }
 });
 ```
 
 
 ## radio.getNetworkCapability<sup>10+</sup>
 
-getNetworkCapability\(slotId: number, type: NetworkCapabilityType\): Promise\<NetworkCapabilityState\>
+ArkTS-Dyn: getNetworkCapability\(slotId: number, type: NetworkCapabilityType\): Promise\<NetworkCapabilityState\>
+
+ArkTS-Sta: getNetworkCapability\(slotId: int, type: NetworkCapabilityType\): Promise\<NetworkCapabilityState\>
 
 获取指定网络类型的开关状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                               | 必填 | 说明                                   |
 | -------- | --------------------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | type     | [NetworkCapabilityType](#networkcapabilitytype10)               | 是   | 网络能力类型。                        |
 
 **返回值：**
@@ -2305,14 +3257,32 @@ getNetworkCapability\(slotId: number, type: NetworkCapabilityType\): Promise\<Ne
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
-    console.log(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+    console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
+    console.info(`getNetworkCapability success, promise: data->${data}`);  
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -2320,22 +3290,29 @@ radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityStat
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
+ArkTS-Dyn: setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
+      callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta: setNetworkCapability\(slotId: int, type: NetworkCapabilityType, state: NetworkCapabilityState,
       callback: AsyncCallback\<void\>\): void
 
 设置指定网络类型的开关状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                               | 必填 | 说明                                   |
 | -------- | --------------------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | type     | [NetworkCapabilityType](#networkcapabilitytype10)               | 是   | 网络能力类型。                        |
 | state    | [NetworkCapabilityState](#networkcapabilitystate10)             | 是   | 网络能力状态。                        |
 | callback | AsyncCallback\<void\>                                           | 是   | 回调函数。返回设置指定网络类型的开关状态的结果。 |
@@ -2356,6 +3333,8 @@ setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: Networ
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2367,28 +3346,51 @@ radio.setNetworkCapability(slotId, type, state, (err: BusinessError) => {
         console.error(`setNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkCapability success.`);
+    console.info(`setNetworkCapability success.`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
+radio.setNetworkCapability(slotId, type, state, (err: BusinessError | null, data: undefined) => {
+    if (err?.code) {
+        console.error(`setNetworkCapability failed, callback: err->${JSON.stringify(err)}`);       
+    } else {
+        console.info(`setNetworkCapability success.`);       
+    }
+});
+```
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState\): Promise\<void\>
+ArkTS-Dyn: setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState\): Promise\<void\>
+
+ArkTS-Sta: setNetworkCapability\(slotId: int, type: NetworkCapabilityType, state: NetworkCapabilityState\): Promise\<void\>
 
 设置指定网络类型的开关状态。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                               | 必填 | 说明                                   |
 | -------- | --------------------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | type     | [NetworkCapabilityType](#networkcapabilitytype10)               | 是   | 网络能力类型。                        |
 | state    | [NetworkCapabilityState](#networkcapabilitystate10)             | 是   | 网络能力状态。                        |
 
@@ -2414,6 +3416,8 @@ setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: Networ
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2421,29 +3425,52 @@ let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
 radio.setNetworkCapability(slotId, type, state).then(() => {
-    console.log(`setNetworkCapability success`);
+    console.info(`setNetworkCapability success`);
 }).catch((err: BusinessError) => {
     console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
+radio.setNetworkCapability(slotId, type, state).then(() => {
+    console.info(`setNetworkCapability success`);  
+}).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`); 
+});
+```
+
 ## radio.factoryReset<sup>11+</sup>
 
-factoryReset\(slotId: number\): Promise\<void\>
+ArkTS-Dyn: factoryReset\(slotId: number\): Promise\<void\>
+
+ArkTS-Sta: factoryReset\(slotId: int\): Promise\<void\>
 
 重置网络状态设置。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+**需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   |                              类型                               | 必填 | 说明                                   |
 | -------- | --------------------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                                          | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                             | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 
@@ -2467,34 +3494,57 @@ factoryReset\(slotId: number\): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.factoryReset(slotId).then(() => {
-    console.log(`factoryReset success`);
+    console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
+    console.error(`factoryReset failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+import { BusinessError } from '@ohos.base';
+
+let slotId: int = 0;
+radio.factoryReset(slotId).then(() => {
+    console.info(`factoryReset success`);
+}).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`factoryReset failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
 ## radio.getIMEISV<sup>12+</sup>
 
-getIMEISV\(slotId: number\): string
+ArkTS-Dyn: getIMEISV\(slotId: number\): string
+
+ArkTS-Sta: getIMEISV\(slotId: int\): string
 
 获取设备指定卡槽的软件版本号。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 
 **错误码：**
@@ -2513,10 +3563,22 @@ getIMEISV\(slotId: number\): string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let slotId: number = 0;
 let data: string = radio.getIMEISV(slotId);
-console.log(`IMEISV is:` + data);
+console.info(`IMEISV is ${JSON.stringify(data)}`);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import radio from '@ohos.telephony.radio';
+
+let slotId: int = 0;
+let data: string = radio.getIMEISV(slotId);
+console.info(`IMEISV is ${JSON.stringify(data)}`);
 ```
 
 ## PreferredNetworkMode<sup>8+</sup>
@@ -2525,7 +3587,11 @@ console.log(`IMEISV is:` + data);
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                                                      | 值   | 说明                                          |
 | --------------------------------------------------------- | ---- | --------------------------------------------- |
@@ -2568,13 +3634,17 @@ console.log(`IMEISV is:` + data);
 
 小区信息。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称              |                  类型                   | 必填 |                           说明                               |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |                           
-| isCamped          | boolean                                 |  是  | 获取服务单元的状态。<br>**系统接口：** 此接口为系统接口。<br/>true表示驻留小区，false表示非驻留小区。          |
-| timeStamp         | number                                  |  是  | 获取单元格信息时获取时间戳。<br>**系统接口：** 此接口为系统接口。    |                              
-| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  是  | Cdma小区信息 \|Gsm小区信息\|Lte小区信息\|Nr小区信息\|Tdscdma小区信息\|Wcdma小区信息。  <br>**系统接口：** 此接口为系统接口。|
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称              |                  类型                   | 只读 | 可选 |                           说明                               |
+| ----------------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |                           
+| isCamped          | boolean                                 |  否  |  否  | 获取服务单元的状态。<br>**系统接口：** 此接口为系统接口。<br/>true表示驻留小区，false表示非驻留小区。          |
+| timeStamp         | ArkTS-Dyn: number <br/>ArkTS-Sta: int     |  否  |  否  | 获取单元格信息时获取时间戳。<br>**系统接口：** 此接口为系统接口。    |                              
+| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  否  |  否  | Cdma小区信息 \|Gsm小区信息\|Lte小区信息\|Nr小区信息\|Tdscdma小区信息\|Wcdma小区信息。  <br>**系统接口：** 此接口为系统接口。|
 
 ## CdmaCellInformation<sup>8+</sup>
 
@@ -2582,15 +3652,19 @@ CDMA小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称      | 类型   | 必填 | 说明         |
-| --------- | ------ | ---- | ------------ |
-| baseId    | number |  是  | 基站Id。     |
-| latitude  | number |  是  | 纬度。       |
-| longitude | number |  是  | 经度。       |
-| nid       | number |  是  | 网络识别码。 |
-| sid       | number |  是  | 系统识别码。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称      | 类型   | 只读 | 可选 | 说明         |
+| --------- | ------ | ---- | ---- | ------------ |
+| baseId    | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 基站Id。     |
+| latitude  | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 纬度。       |
+| longitude | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 经度。       |
+| nid       | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 网络识别码。 |
+| sid       | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 系统识别码。 |
 
 ## GsmCellInformation<sup>8+</sup>
 
@@ -2598,16 +3672,20 @@ GSM小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明                 |
-| ------ | ------ | ---- | -------------------- |
-| lac    | number |  是  | 位置区编号。         |
-| cellId | number |  是  | 小区号。             |
-| arfcn  | number |  是  | 绝对无线频率信道号。 |
-| bsic   | number |  是  | 基站识别号。         |
-| mcc    | string |  是  | 移动国家码。         |
-| mnc    | string |  是  | 移动网号。           |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型   | 只读 | 可选 | 说明                 |
+| ------ | ------ | ---- | ---- | -------------------- |
+| lac    | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 位置区编号。         |
+| cellId | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 小区号。             |
+| arfcn  | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 绝对无线频率信道号。 |
+| bsic   | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 基站识别号。         |
+| mcc    | string |  否  |  否  | 移动国家码。         |
+| mnc    | string |  否  |  否  | 移动网号。           |
 
 ## LteCellInformation<sup>8+</sup>
 
@@ -2615,18 +3693,22 @@ LTE小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称          | 类型    | 必填 | 说明                    |
-| ------------- | ------- | ---- | ----------------------- |
-| cgi           | number  |  是  | 小区全球标识。          |
-| pci           | number  |  是  | 物理小区识别。          |
-| tac           | number  |  是  | 跟踪区域代码。          |
-| earfcn        | number  |  是  | 绝对无线频率信道号。    |
-| bandwidth     | number  |  是  | 带宽。                  |
-| mcc           | string  |  是  | 移动国家码。            |
-| mnc           | string  |  是  | 移动网号。              |
-| isSupportEndc | boolean |  是  | 是否支持新无线电_双连接。<br/>true表示支持新无线电_双连接，false表示不支持新无线电_双连接。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称          | 类型    | 只读 | 可选 | 说明                    |
+| ------------- | ------- | ---- | ---- | ----------------------- |
+| cgi           | ArkTS-Dyn: number <br/>ArkTS-Sta: int  |  否  |  否  | 小区全球标识。          |
+| pci           | ArkTS-Dyn: number <br/>ArkTS-Sta: int  |  否  |  否  | 物理小区识别。          |
+| tac           | ArkTS-Dyn: number <br/>ArkTS-Sta: int  |  否  |  否  | 跟踪区域代码。          |
+| earfcn        | ArkTS-Dyn: number <br/>ArkTS-Sta: int  |  否  |  否  | 绝对无线频率信道号。    |
+| bandwidth     | ArkTS-Dyn: number <br/>ArkTS-Sta: int  |  否  |  否  | 带宽。                  |
+| mcc           | string  |  否  |  否  | 移动国家码。            |
+| mnc           | string  |  否  |  否  | 移动网号。              |
+| isSupportEndc | boolean |  否  |  否  | 是否支持新无线电_双连接。<br/>true表示支持新无线电_双连接，false表示不支持新无线电_双连接。 |
 
 ## NrCellInformation<sup>8+</sup>
 
@@ -2634,16 +3716,20 @@ NR小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称    | 类型   | 必填 | 说明             |
-| ------- | ------ | ---- | ---------------- |
-| nrArfcn | number |  是  | 5G频点号。       |
-| pci     | number |  是  | 物理小区识别。   |
-| tac     | number |  是  | 跟踪区域代码。   |
-| nci     | number |  是  | 5G网络小区标识。 |
-| mcc     | string |  是  | 移动国家码。     |
-| mnc     | string |  是  | 移动网号。       |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 类型   | 只读 | 可选 | 说明             |
+| ------- | ------ | ---- | ---- | ---------------- |
+| nrArfcn | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 5G频点号。       |
+| pci     | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 物理小区识别。   |
+| tac     | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 跟踪区域代码。   |
+| nci     | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 5G网络小区标识。 |
+| mcc     | string |  否  |  否  | 移动国家码。     |
+| mnc     | string |  否  |  否  | 移动网号。       |
 
 ## TdscdmaCellInformation<sup>8+</sup>
 
@@ -2651,16 +3737,20 @@ TD-SCDMA小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明         |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  是  | 位置区编号。 |
-| cellId | number |  是  | 小区号。     |
-| cpid   | number |  是  | 小区参数Id。 |
-| uarfcn | number |  是  | 绝对射频号。 |
-| mcc    | string |  是  | 移动国家码。 |
-| mnc    | string |  是  | 移动网号。   |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型   | 只读 | 可选 | 说明         |
+| ------ | ------ | ---- | ---- | ------------ |
+| lac    | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 位置区编号。 |
+| cellId | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 小区号。     |
+| cpid   | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 小区参数Id。 |
+| uarfcn | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 绝对射频号。 |
+| mcc    | string |  否  |  否  | 移动国家码。 |
+| mnc    | string |  否  |  否  | 移动网号。   |
 
 ## WcdmaCellInformation<sup>8+</sup>
 
@@ -2668,16 +3758,20 @@ WCDMA小区信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明         |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  是  | 位置区编号。 |
-| cellId | number |  是  | 小区号。     |
-| psc    | number |  是  | 主扰码。     |
-| uarfcn | number |  是  | 绝对射频号。 |
-| mcc    | string |  是  | 移动国家码。 |
-| mnc    | string |  是  | 移动网号。   |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称   | 类型   | 只读 | 可选 | 说明         |
+| ------ | ------ | ---- | ---- | ------------ |
+| lac    | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 位置区编号。 |
+| cellId | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 小区号。     |
+| psc    | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 主扰码。     |
+| uarfcn | ArkTS-Dyn: number <br/>ArkTS-Sta: int |  否  |  否  | 绝对射频号。 |
+| mcc    | string |  否  |  否  | 移动国家码。 |
+| mnc    | string |  否  |  否  | 移动网号。   |
 
 ## NrOptionMode<sup>(deprecated)</sup>
 
@@ -2689,7 +3783,7 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
 | 名称                 | 值   | 说明                               |
 | -------------------- | ---- | ---------------------------------- |
@@ -2704,7 +3798,11 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                 | 值   | 说明                              |
 | -------------------- | ---- | --------------------------------- |
@@ -2719,12 +3817,16 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称                   | 类型                                              | 必填 | 说明           |
-| ---------------------- | ------------------------------------------------- | ---- | -------------- |
-| isNetworkSearchSuccess | boolean                                           |  是  | 网络是否搜索成功。<br/>true表示网络搜索成功，false表示网络搜索失败。 |
-| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  是  | 网络搜索结果。 |
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                   | 类型                                              | 只读 | 可选 | 说明           |
+| ---------------------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| isNetworkSearchSuccess | boolean                                           |  否  |  否  |  网络是否搜索成功。<br/>true表示网络搜索成功，false表示网络搜索失败。 |
+| networkSearchResult    | Array<[NetworkInformation](#networkinformation)\> |  否  |  否  | 网络搜索结果。 |
 
 ## NetworkInformation
 
@@ -2732,14 +3834,18 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称            |                         类型                        | 必填 | 说明           |
-| --------------- | --------------------------------------------------- | ---- | -------------- |
-| operatorName    | string                                              |  是  | 运营商的名称。 |
-| operatorNumeric | string                                              |  是  | 运营商数字。   |
-| state           | [NetworkInformationState](#networkinformationstate) |  是  | 网络信息状态。 |
-| radioTech       | string                                              |  是  | 无线电技术。   |
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称            |                         类型                        | 只读 | 可选 | 说明           |
+| --------------- | --------------------------------------------------- | ---- | ---- | -------------- |
+| operatorName    | string                                              |  否  |  否  | 运营商的名称。 |
+| operatorNumeric | string                                              |  否  |  否  | 运营商数字。   |
+| state           | [NetworkInformationState](#networkinformationstate) |  否  |  否  | 网络信息状态。 |
+| radioTech       | string                                              |  否  |  否  | 无线电技术。   |
 
 ## NetworkInformationState
 
@@ -2747,7 +3853,11 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 值   | 说明             |
 | ----------------- | ---- | ---------------- |
@@ -2762,14 +3872,18 @@ NR的选择模式。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称               |                    类型                       | 必填 |                 说明                   |
-| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
-| slotId             | number                                        |  是  | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  是  | 网络选择模式。                         |
-| networkInformation | [NetworkInformation](#networkinformation)     |  是  | 网络信息。                             |
-| resumeSelection    | boolean                                       |  是  | 是否继续选择。<br/>true表示继续选择，false表示不继续选择。                              |
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称               |                    类型                       | 只读 | 可选 |                 说明                   |
+| ------------------ | --------------------------------------------- | ---- | ---- | -------------------------------------- |
+| slotId             | number                                        |  否  |  否  | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| selectMode         | [NetworkSelectionMode](js-apis-radio.md#networkselectionmode) |  否  |  否  | 网络选择模式。                         |
+| networkInformation | [NetworkInformation](#networkinformation)     |  否  |  否  | 网络信息。                             |
+| resumeSelection    | boolean                                       |  否  |  否  | 是否继续选择。<br/>true表示继续选择，false表示不继续选择。                              |
 
 ## ImsRegState<sup>9+</sup>
 
@@ -2777,7 +3891,11 @@ IMS注册状态。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值   | 说明     |
 | ---------------- | ---- | -------- |
@@ -2790,7 +3908,11 @@ IMS注册技术。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 值   | 说明            |
 | ----------------------- | ---- | --------------- |
@@ -2805,12 +3927,16 @@ IMS注册信息。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
 
-| 名称        | 类型                         | 必填 | 说明          |
-| ----------- | ---------------------------- | ---- | ------------- |
-| imsRegState | [ImsRegState](#imsregstate9) |  是  | IMS注册状态。 |
-| imsRegTech  | [ImsRegTech](#imsregtech9)   |  是  | IMS注册技术。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称        | 类型                         | 只读 | 可选 | 说明          |
+| ----------- | ---------------------------- | ---- | ---- | ------------- |
+| imsRegState | [ImsRegState](#imsregstate9) |  否  |  否  | IMS注册状态。 |
+| imsRegTech  | [ImsRegTech](#imsregtech9)   |  否  |  否  | IMS注册技术。 |
 
 ## ImsServiceType<sup>9+</sup>
 
@@ -2818,7 +3944,11 @@ IMS服务类型。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -2833,7 +3963,11 @@ IMS服务类型。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值   | 说明       |
 | -----------------| ---- | ---------- |
@@ -2846,7 +3980,11 @@ IMS服务类型。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Telephony.CoreService
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 值   | 说明       |
 | -----------------------| ---- | ---------- |
