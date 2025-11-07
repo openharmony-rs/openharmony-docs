@@ -703,6 +703,52 @@ focusOnTouch(value: boolean)
 
 <!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
 
+``` TypeScript
+
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_FocusAndBlurExample]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_FocusAndBlurExample';
+
+@Entry
+@Component
+export struct ScopeFocusExample {
+  @State scopeFocusState: boolean = true;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Column({ space: 5 }) {
+          Text('容器获焦').textAlign(TextAlign.Center)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('80%')
+        .height(50)
+        .margin({ top: 5, bottom: 5 })
+        .onClick(() => {
+        })
+        .focusable(this.scopeFocusState)
+
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin(5)
+          .onClick(() => {
+            this.scopeFocusState = !this.scopeFocusState;
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+          })
+        Button('Button2')
+          .width(140)
+          .height(45)
+          .margin(5)
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 
 ![Scope_Focus_1.gif](figures/Scope_Focus_1.gif)
 
