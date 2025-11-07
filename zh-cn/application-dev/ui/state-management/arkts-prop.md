@@ -457,6 +457,10 @@ class Book {
 
 <!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
 
+``` TypeScript
+// ···
+```
+
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
 <!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
