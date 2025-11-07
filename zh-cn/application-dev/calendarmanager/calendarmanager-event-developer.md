@@ -267,6 +267,32 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
    还支持根据日程id、日程开始和结束时间、日程标题等查询条件来查询日程。
    <!-- @[calendarEvent_getEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 根据日程id查询
+   const filterId = calendarManager.EventFilter.filterById([eventId]);
+   calendar.getEvents(filterId).then((data: calendarManager.Event[]) => {
+     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by eventId, data -> ${JSON.stringify(data)}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+   });
+   
+   // 根据日程标题查询
+   const filterTitle = calendarManager.EventFilter.filterByTitle('update');
+   calendar.getEvents(filterTitle).then((data: calendarManager.Event[]) => {
+     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by title, data -> ${JSON.stringify(data)}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+   });
+   
+   // 根据日程开始和结束时间查询
+   const filterTime = calendarManager.EventFilter.filterByTime(1686931200000, 1687017600000);
+   calendar.getEvents(filterTime).then((data: calendarManager.Event[]) => {
+     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by time, data -> ${JSON.stringify(data)}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to filter by time. Code: ${err.code}, message: ${err.message}`);
+   });
+   ```
 
 8. 按照日程id进行指定日程的删除。可以通过`deleteEvent()`接口进行单个日程的删除，也可以通过`deleteEvents()`接口批量删除指定日程，此处以删除单个指定日程为例。
 
