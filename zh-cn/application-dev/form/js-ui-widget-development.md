@@ -254,6 +254,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 因大部分卡片提供方都不是常驻服务，只有在需要使用时才会被拉起获取卡片信息，且卡片管理服务支持对卡片进行多实例管理，卡片ID对应实例ID，因此若卡片提供方支持对卡片数据进行配置，则需要对卡片的业务数据按照卡片ID进行持久化管理，以便在后续获取、更新以及拉起时能获取到正确的卡片业务数据。
 
+代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 <!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
 ``` TypeScript
@@ -358,6 +359,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
+代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 <!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
 ``` TypeScript
@@ -601,11 +603,11 @@ export default class JsCardFormAbility extends FormExtensionAbility {
   }
   ```
 
-说明：
+> **说明：**
+> 
+> "data"中JSON Value支持多级嵌套数据，在更新数据时，需要注意携带完整数据。
 
-"data"中JSON Value支持多级嵌套数据，在更新数据时，需要注意携带完整数据。
-
-例如：当前卡片显示07.18日Mr.Zhang的课程信息，示例如下。
+当前卡片显示07.18日Mr.Zhang的课程信息，示例如下。
   ```ts
   "data": {
       "Day": "07.18",
@@ -658,7 +660,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     ```
 
 
-- 在FormExtensionAbility中接收message事件并获取参数
+- 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
     <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
     
