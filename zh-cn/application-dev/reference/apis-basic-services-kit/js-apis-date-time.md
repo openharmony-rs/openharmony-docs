@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。<br>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -19,7 +20,8 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Dyn起始版本:** 10
+
 **ArkTS-Sta起始版本:** 20
 
 | 名称    | 值   | 说明                                             |
@@ -449,14 +451,16 @@ try {
 
 ## systemDateTime.getTime<sup>10+</sup>
 
-ArkTS-Dyn: getTime(isNanoseconds?: boolean): number<br>
+ArkTS-Dyn: getTime(isNanoseconds?: boolean): number
+
 ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 使用同步方式获取自Unix纪元以来到当前系统时间所经过的时间。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Dyn起始版本:** 10
+
 **ArkTS-Sta起始版本:** 20
 
 **参数：**
@@ -486,14 +490,16 @@ try {
 
 ## systemDateTime.getUptime<sup>10+</sup>
 
-ArkTS-Dyn: getUptime(timeType: TimeType, isNanoseconds?: boolean): number<br>
+ArkTS-Dyn: getUptime(timeType: TimeType, isNanoseconds?: boolean): number
+
 ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 使用同步方式获取自系统启动以来经过的时间。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Dyn起始版本:** 10
+
 **ArkTS-Sta起始版本:** 20
 
 **参数：**
@@ -626,7 +632,8 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Dyn起始版本:** 9
+
 **ArkTS-Sta起始版本:** 20
 
 **参数：**
@@ -680,7 +687,8 @@ getTimezone(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Dyn起始版本:** 9
+
 **ArkTS-Sta起始版本:** 20
 
 **返回值：**
@@ -730,7 +738,8 @@ getTimezoneSync(): string
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Dyn起始版本:** 10
+
 **ArkTS-Sta起始版本:** 20
 
 **返回值：**

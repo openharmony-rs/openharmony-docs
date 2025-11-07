@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。<br>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -19,7 +20,8 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Dyn起始版本:** 10
+
 **ArkTS-Sta起始版本:** 20
 
 | 名称    | 值   | 说明                                             |
@@ -29,7 +31,8 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 ## systemDateTime.setTime
 
-ArkTS-Dyn: setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void<br>
+ArkTS-Dyn: setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
+
 ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
@@ -38,7 +41,8 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Dyn起始版本:** 9
+
 **ArkTS-Sta起始版本:** 20
 
 **需要权限：** ohos.permission.SET_TIME
@@ -103,7 +107,8 @@ try {
 
 ## systemDateTime.setTime
 
-ArkTS-Dyn: setTime(time : number) : Promise&lt;void&gt;<br>
+ArkTS-Dyn: setTime(time : number) : Promise&lt;void&gt;
+
 ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
@@ -112,7 +117,8 @@ ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Dyn起始版本:** 9
+
 **ArkTS-Sta起始版本:** 20
 
 **需要权限：** ohos.permission.SET_TIME
