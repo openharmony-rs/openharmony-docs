@@ -211,6 +211,43 @@ struct GetAgentObject {
 使用UIUtils.getTarget接口可以获取代理前的原始对象。
 <!-- @[NonObservedClass_outs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetBeforeAgent.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+@ObservedV2
+class ObservedClassThree {
+  @Trace public name: string = 'Tom';
+}
+let globalObservedObject: ObservedClassThree = new ObservedClassThree(); // 不被代理
+let globalNumberList: number[] = [1, 2, 3]; // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
+let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
+let globalSampleDate: Date = new Date(); // 不被代理
+@Entry
+@ComponentV2
+struct GetBeforeAgent {
+  @Local observedObject: ObservedClassThree = globalObservedObject; // V2中对象不被代理
+  @Local numberList: number[] = globalNumberList; // Array类型创建代理
+  @Local sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
+  @Local sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
+  @Local sampleDate: Date = globalSampleDate; // Date类型创建代理
+
+  build() {
+    Column() {
+      Text(`this.observedObject === globalObservedObject ${this.observedObject ===
+        globalObservedObject}`) // true
+      Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
+        globalNumberList}`) // true
+      Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
+        globalSampleMap}`) // true
+      Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
+        globalSampleSet}`) // true
+      Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
+        globalSampleDate}`) // true
+    }
+  }
+}
+```
+
 
 状态管理V2装饰器会为装饰的变量生成getter和setter方法，同时为原有变量名添加"\_\_ob\_"的前缀。出于性能考虑，getTarget接口不会对V2装饰器生成的前缀进行处理，因此向getTarget接口传入\@ObservedV2装饰的类对象实例时，返回的对象依旧为对象本身，且被\@Trace装饰的属性名仍有"\_\_ob\_"前缀。
 
