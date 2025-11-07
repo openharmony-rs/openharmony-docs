@@ -145,13 +145,13 @@
    <!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
    
    ``` TypeScript
-   this.uiContext.getPromptAction()
+   this.getUIContext().getPromptAction()
      .closeMenu(this.contentNode)
      .then(() => {
-       hilog.info(0x0000, 'globalOpenMenu', 'closeMenu success');
+       hilog.info(DOMAIN, 'globalOpenMenu', 'closeMenu success');
      })
      .catch((err: BusinessError) => {
-       hilog.error(0x0000, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
+       hilog.error(DOMAIN, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
      });
    ```
    
