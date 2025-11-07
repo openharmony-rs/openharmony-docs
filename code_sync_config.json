@@ -4460,7 +4460,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":95,
 						"name":"quick_start",
 						"start_line":16
 					}
