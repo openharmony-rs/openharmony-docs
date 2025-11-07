@@ -1196,6 +1196,47 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 示例代码如下：
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) -->
+  
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  
+  @Entry
+  @Component
+  export struct HeightAdaptivePolicy {
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    private manager = this.context.resourceManager;
+  
+    // 'Text_Adaptive_Layout'资源文件中的value值为'混合Hello World! 多行文本 中英文数字混合 1282378283 ~'
+    @State message: string = this.manager.getStringByNameSync('Text_Adaptive_Layout');
+    @State fontSize: number = 25;
+    build() {
+      NavDestination() {
+        Column({ space: 10 }) {
+          Text(this.message)
+            .id('HelloWorld')
+            .fontSize(this.fontSize)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+            .border({ width: 1 })
+            .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST) // 调整自适应布局策略
+            .width(300)
+            .height(200)
+          Row() {
+            Button('fontSize+5')
+              .onClick(() => {
+                this.fontSize += 5;
+              })
+            Button('fontSize-5')
+              .onClick(() => {
+                this.fontSize -= 5;
+              })
+          }
+        }
+        .margin({ left: 30, top: 50 })
+      }
+      // ···
+    }
+  }
+  ```
 
 ![](figures/EllipsisDemo2.gif)
 
