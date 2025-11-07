@@ -1,4 +1,10 @@
 # @ohos.continuation.continuationManager (Continuation/Collaboration Management)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
 The continuationManager module provides the continuation/collaboration management entry. You can use the APIs of this module to connect to and cancel the continuation/collaboration management service, subscribe to and unsubscribe from device connection events, start the device selection module, and update the device connection state.
 
@@ -20,7 +26,7 @@ Registers the continuation management service and obtains a token. This API does
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [registerContinuation](#continuationmanagerregistercontinuation9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -54,7 +60,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [registerContinuation](#continuationmanagerregistercontinuation9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -93,7 +99,7 @@ Registers the continuation management service and obtains a token. This API uses
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [registerContinuation](#continuationmanagerregistercontinuation9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -125,11 +131,15 @@ Registers the continuation management service and obtains a token. This API uses
   });
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(callback: AsyncCallback\<number>): void
 
 Registers the continuation management service and obtains a token. This API does not involve any filter parameters and uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -174,11 +184,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<number>): void
 
 Registers the continuation management service and obtains a token. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -228,11 +242,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.registerContinuation<sup>9+</sup>
+## continuationManager.registerContinuation<sup>(deprecated)</sup>
 
 registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 Registers the continuation management service and obtains a token. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -294,7 +312,7 @@ Subscribes to device connection events. This API uses an asynchronous callback t
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [on](#continuationmanagerondeviceselected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -325,7 +343,7 @@ Subscribes to device disconnection events. This API uses an asynchronous callbac
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [on](#continuationmanagerondeviceunselected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -354,7 +372,7 @@ Unsubscribes from device connection events. This API uses an asynchronous callba
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [off](#continuationmanageroffdeviceselected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -385,7 +403,7 @@ Unsubscribes from device disconnection events. This API uses an asynchronous cal
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [off](#continuationmanageroffdeviceunselected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -406,11 +424,15 @@ Unsubscribes from device disconnection events. This API uses an asynchronous cal
   });
   ```
 
-## continuationManager.on('deviceSelected')<sup>9+</sup>
+## continuationManager.on('deviceSelected')<sup>(deprecated)</sup>
 
 on(type: 'deviceSelected', token: number, callback: Callback\<Array\<ContinuationResult>>): void
 
 Subscribes to device connection events. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -458,11 +480,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.on('deviceUnselected')<sup>9+</sup>
+## continuationManager.on('deviceUnselected')<sup>(deprecated)</sup>
 
 on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<ContinuationResult>>): void
 
 Subscribes to device disconnection events. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -511,11 +537,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.off('deviceSelected')<sup>9+</sup>
+## continuationManager.off('deviceSelected')<sup>(deprecated)</sup>
 
 off(type: 'deviceSelected', token: number): void
 
 Unsubscribes from device connection events.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -555,11 +585,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.off('deviceUnselected')<sup>9+</sup>
+## continuationManager.off('deviceUnselected')<sup>(deprecated)</sup>
 
 off(type: 'deviceUnselected', token: number): void
 
 Unsubscribes from device disconnection events.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -607,7 +641,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -641,7 +675,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -681,7 +715,7 @@ Starts the device selection module to show the list of available devices on the 
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [startContinuationDeviceManager](#continuationmanagerstartcontinuationdevicemanager9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -716,11 +750,15 @@ Starts the device selection module to show the list of available devices on the 
   });
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): void
 
 Starts the device selection module to show the list of available devices on the network. This API does not involve any filter parameters and uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -765,11 +803,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, options: ContinuationExtraParams, callback: AsyncCallback\<void>): void
 
 Starts the device selection module to show the list of available devices on the network. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -820,11 +862,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.startContinuationDeviceManager<sup>9+</sup>
+## continuationManager.startContinuationDeviceManager<sup>(deprecated)</sup>
 
 startContinuationDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<void>
 
 Starts the device selection module to show the list of available devices on the network. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -886,7 +932,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [updateContinuationState](#continuationmanagerupdatecontinuationstate9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -896,7 +942,7 @@ Instructs the device selection module to update the device connection state. Thi
   | -------- | -------- | -------- | -------- |
   | token | number | Yes| Token obtained after the registration of the continuation management service.|
   | deviceId | string | Yes| Device ID.|
-  | status | [DeviceConnectState](#deviceconnectstate) | Yes| Device connection state.|
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | Yes| Device connection state.|
   | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the state is updated, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -923,7 +969,7 @@ Instructs the device selection module to update the device connection state. Thi
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [updateContinuationState](#continuationmanagerupdatecontinuationstate9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -933,7 +979,7 @@ Instructs the device selection module to update the device connection state. Thi
   | -------- | -------- | -------- | -------- |
   | token | number | Yes| Token obtained after the registration of the continuation management service.|
   | deviceId | string | Yes| Device ID.|
-  | status | [DeviceConnectState](#deviceconnectstate) | Yes| Device connection state.|
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | Yes| Device connection state.|
 
 **Return value**
 
@@ -958,11 +1004,15 @@ Instructs the device selection module to update the device connection state. Thi
   });
   ```
 
-## continuationManager.updateContinuationState<sup>9+</sup>
+## continuationManager.updateContinuationState<sup>(deprecated)</sup>
 
 updateContinuationState(token: number, deviceId: string, status: DeviceConnectState, callback: AsyncCallback\<void>): void
 
 Instructs the device selection module to update the device connection state. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -976,7 +1026,7 @@ Instructs the device selection module to update the device connection state. Thi
   | -------- | -------- | -------- | -------- |
   | token | number | Yes| Token obtained after the registration of the continuation management service.|
   | deviceId | string | Yes| Device ID.|
-  | status | [DeviceConnectState](#deviceconnectstate) | Yes| Device connection state.|
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | Yes| Device connection state.|
   | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the state is updated, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1010,11 +1060,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.updateContinuationState<sup>9+</sup>
+## continuationManager.updateContinuationState<sup>(deprecated)</sup>
 
 updateContinuationState(token: number, deviceId: string, status: DeviceConnectState): Promise\<void>
 
 Instructs the device selection module to update the device connection state. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1028,7 +1082,7 @@ Instructs the device selection module to update the device connection state. Thi
   | -------- | -------- | -------- | -------- |
   | token | number | Yes| Token obtained after the registration of the continuation management service.|
   | deviceId | string | Yes| Device ID.|
-  | status | [DeviceConnectState](#deviceconnectstate) | Yes| Device connection state.|
+  | status | [DeviceConnectState](#deviceconnectstatedeprecated) | Yes| Device connection state.|
 
 **Return value**
 
@@ -1077,7 +1131,7 @@ Unregisters the continuation management service. This API uses an asynchronous c
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [unregisterContinuation](#continuationmanagerunregistercontinuation9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1111,7 +1165,7 @@ Unregisters the continuation management service. This API uses a promise to retu
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [unregisterContinuation](#continuationmanagerunregistercontinuation9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1142,11 +1196,15 @@ Unregisters the continuation management service. This API uses a promise to retu
   });
   ```
 
-## continuationManager.unregisterContinuation<sup>9+</sup>
+## continuationManager.unregisterContinuation<sup>(deprecated)</sup>
 
 unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 Unregisters the continuation management service. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1191,11 +1249,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## continuationManager.unregisterContinuation<sup>9+</sup>
+## continuationManager.unregisterContinuation<sup>(deprecated)</sup>
 
 unregisterContinuation(token: number): Promise\<void>
 
 Unregisters the continuation management service. This API uses a promise to return the result.
+
+> **NOTE**
+> 
+> This API is supported since API version 9 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1245,9 +1307,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```
 
 
-## DeviceConnectState
+## DeviceConnectState<sup>(deprecated)</sup>
 
-Enumerates the device connection states.
+Device connection state.
+
+> **NOTE**
+> 
+> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1260,9 +1326,13 @@ Enumerates the device connection states.
 | CONNECTED | 2 | The device is connected.|
 | DISCONNECTING | 3 | The device is being disconnected.|
 
-## ContinuationMode
+## ContinuationMode<sup>(deprecated)</sup>
 
 Enumerates the continuation modes provided by the device selection module.
+
+> **NOTE**
+> 
+> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1273,11 +1343,15 @@ Enumerates the continuation modes provided by the device selection module.
 | COLLABORATION_SINGLE | 0 | Single-choice mode.|
 | COLLABORATION_MULTIPLE | 1 | Multi-choice mode.|
 
-## ContinuationResult<sup>10+</sup>
+## ContinuationResult<sup>(deprecated)</sup>
 
 type ContinuationResult = _ContinuationResult
 
 Defines the device information returned by the continuation management entry.
+
+> **NOTE**
+> 
+> This API is supported since API version 10 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1287,11 +1361,15 @@ Defines the device information returned by the continuation management entry.
 | --- | --- |
 | [_ContinuationResult](js-apis-continuation-continuationResult.md) | Device information returned by the continuation management entry.|
 
-## ContinuationExtraParams<sup>10+</sup>
+## ContinuationExtraParams<sup>(deprecated)</sup>
 
 type ContinuationExtraParams = _ContinuationExtraParams
 
 Defines the extra parameters required by the device selection module in the continuation management entry.
+
+> **NOTE**
+> 
+> This API is supported since API version 10 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

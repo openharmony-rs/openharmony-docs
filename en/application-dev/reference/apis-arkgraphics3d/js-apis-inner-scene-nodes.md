@@ -430,7 +430,8 @@ Camera node, which inherits from [Node](#node).
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | No| No| Post-processing settings.|
 | effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | Yes| No| Post-processing effects applied to the camera output.|
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | No| No| Color after the render target is cleared.|
-| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No| Yes| Rendering pipeline type. (If the FORWARD_LIGHTWEIGHT pipeline is selected, some features are unavailable.)|
+| msaa<sup>22+</sup> | boolean | No| Yes| Whether Multisample Anti-Aliasing (MSAA) is enabled. **true** if enabled, **false** otherwise. The default value is **false**.|
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No| Yes| Rendering pipeline type. If this parameter is not set, the lightweight forward rendering pipeline is used by default. (If the **FORWARD_LIGHTWEIGHT** pipeline is selected, certain features are unavailable.)|
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>

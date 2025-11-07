@@ -321,3 +321,6 @@ async function disable() {
   }
 }
 ```
+
+### Sample of Low-Latency Audio Loopback
+For details, see [Enabling Low-Latency Audio Loopback Using AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio).

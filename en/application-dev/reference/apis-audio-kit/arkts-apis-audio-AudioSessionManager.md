@@ -305,10 +305,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 > **NOTE**
 >
 > - This API applies to the following scenario: When [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [StreamUsage](arkts-apis-audio-e.md#streamusage) for playback is voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
->
 > - This API can be called at any time after an AudioSessionManager instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playing, if an external device like Bluetooth headsets or wired headsets is connected, the system prioritizes audio output through the external device. Otherwise, the system uses the device set by the application.
->
-> - This API has a lower priority than [AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker). If you have already switched the audio device using AVCastPicker, subsequent calls to this API does not take effect.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -579,11 +576,12 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 Selects a media input device. This API uses a promise to return the result.
 
-This API is not suitable for call recording, meaning it does not apply to situations where [SourceType](arkts-apis-audio-e.md#sourcetype8) is **SOURCE_TYPE_VOICE_COMMUNICATION**.
-
-When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the one selected.
-
-Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+> **NOTE**
+>
+> - This API is not suitable for VoIP call recording; that is, it does not apply to scenarios where [SourceType](arkts-apis-audio-e.md#sourcetype8) is **SOURCE_TYPE_VOICE_COMMUNICATION**.
+> - Before calling this API, call [getAvailableDevices](#getavailabledevices21) to query the list of available input devices and select an input device from the list.
+> - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
+> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -635,7 +633,6 @@ try {
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
 Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21).
-
 If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -708,11 +705,11 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 
 Sets the preferred device category for recording with Bluetooth or NearLink. This API uses a promise to return the result.
 
-Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
-
-When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.
-
-Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
+> **NOTE**
+>
+> - Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.
+> - If there are recording streams of other applications with higher priorities in the system, the actual input device used will follow the input device selected by these applications.
+> - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged21) event to find out the actual input device being used.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
