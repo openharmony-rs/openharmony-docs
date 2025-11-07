@@ -207,6 +207,149 @@ struct FreezeChild {
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 <!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+// 用于处理数据监听的IDataSource的基本实现
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, TAG, 'add listener');
+      this.listeners.push(listener);
+    };
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    };
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+}
+
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Entry
+@Component
+struct LazyforEachTest {
+  private data: MyDataSource = new MyDataSource();
+  @State @Watch('onMessageUpdated') message: number = 0;
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `LazyforEach message callback func ${this.message}`);
+  }
+
+  aboutToAppear() {
+    for (let i = 0; i <= 20; i++) {
+      this.data.pushData(`Hello ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change message').onClick(() => {
+        this.message++;
+      })
+      List({ space: 3 }) {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            FreezeChild({ message: this.message, index: item })
+          }
+        }, (item: string) => item)
+      }.cachedCount(5).height(500)
+    }
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Link @Watch('onMessageUpdated') message: number;
+  index: string = '';
+
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, `FreezeChild aboutToAppear index: ${this.index}`);
+  }
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}, index: ${this.index}`)
+      .width('90%')
+      .height(160)
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 在上面的示例中：
 
 1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cachecount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
