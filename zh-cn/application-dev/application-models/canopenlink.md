@@ -45,7 +45,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ···
         try {
-          let link = 'app1Scheme://test.example.com/home';
+          let link = 'app1Scheme://test.example.com/home'; // 此处为实际应用链接
           let canOpen = bundleManager.canOpenLink(link);
           hilog.info(0x0000, 'testTag', 'canOpenLink successfully: %{public}s', JSON.stringify(canOpen));
         } catch (err) {
