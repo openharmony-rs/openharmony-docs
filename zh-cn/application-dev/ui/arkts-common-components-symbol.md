@@ -32,6 +32,43 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 通过[fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize)属性设置SymbolSpan的大小。
 
   <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  Row() {
+    Column() {
+      Text('48')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(48)
+          .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  
+    Column() {
+      Text('72')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(72)
+          .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  
+    Column() {
+      Text('96')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  }
+  ```
 
   ![symbolSpan_multi_fontSize](figures/symbolspan_multi_fontsize.png)
 
