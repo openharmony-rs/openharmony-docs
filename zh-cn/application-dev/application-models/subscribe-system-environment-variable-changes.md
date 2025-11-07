@@ -30,7 +30,7 @@
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const DOMAIN_NUMBER = 0xF811;
-  const TAG = '[Sample_EnvConfig]';
+  const TAG = '[EnvAbility0]';
   
   export default class EnvAbility0 extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -193,7 +193,7 @@ export default class EnvAbility5 extends UIAbility {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
-    const TAG: string = '[MyAbility]';
+    const TAG: string = '[EnvAbilityPage6]';
     const DOMAIN_NUMBER: number = 0xFF00;
     
     @Entry
@@ -246,7 +246,7 @@ export default class EnvAbility5 extends UIAbility {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
-    const TAG: string = '[MyAbility]';
+    const TAG: string = '[EnvAbilityPage7]';
     const DOMAIN_NUMBER: number = 0xFF00;
     
     @Entry
@@ -290,7 +290,7 @@ export default class EnvAbility5 extends UIAbility {
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[MyAbilityStage]';
+const TAG: string = '[EnvAbility8]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
@@ -330,7 +330,7 @@ export default class EnvAbility8 extends AbilityStage {
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvAbility9]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
@@ -369,7 +369,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 import { Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EntryAbility]';
+const TAG: string = '[EnvAbility10]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 export default class EnvAbility10 extends FormExtensionAbility {
