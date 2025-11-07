@@ -15,15 +15,15 @@
  <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
  ``` TypeScript
- this.uiContext.getPromptAction()
+ this.getUIContext().getPromptAction()
    .openMenu(this.contentNode, { id: targetId }, {
      enableArrow: true
    })
    .then(() => {
-     hilog.info(0x0000, 'globalOpenMenu', 'openMenu success');
+     hilog.info(DOMAIN, 'globalOpenMenu', 'openMenu success');
    })
    .catch((err: BusinessError) => {
-     hilog.error(0x0000, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
    });
  ```
  
