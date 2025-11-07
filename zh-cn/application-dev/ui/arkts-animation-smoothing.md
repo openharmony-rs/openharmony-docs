@@ -15,6 +15,55 @@ UI界面除了运行动画之外，还承载着与用户进行实时交互的功
 
 <!-- @[animation_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template1/Index.ets) -->
 
+``` TypeScript
+import { curves } from '@kit.ArkUI';
+
+class SetAnimationVariables {
+  isAnimation: boolean = true
+
+  set(): void {
+    this.isAnimation = !this.isAnimation;
+  }
+}
+
+@Entry
+@Component
+struct AnimationToAnimationDemo {
+  // 第一步：声明相关状态变量
+  @State animationController: SetAnimationVariables = new SetAnimationVariables();
+
+  build() {
+    Column() {
+      Text('ArkUI')
+        .fontWeight(FontWeight.Bold)
+        .fontSize(12)
+        .fontColor(Color.White)
+        .textAlign(TextAlign.Center)
+        .borderRadius(10)
+        .backgroundColor(0xf56c6c)
+        .width(100)
+        .height(100)
+        .scale({
+          // 第二步：将状态变量设置到相关可动画属性接口
+          x: this.animationController.isAnimation ? 2 : 1,
+          y: this.animationController.isAnimation ? 2 : 1
+        })
+        .animation({ curve: curves.springMotion(0.4, 0.8) }) // 第四步：通过animation接口开启动画，动画终点值改变时，系统自动添加衔接动画
+
+      Button('Click')
+        .margin({ top: 200 })
+        .onClick(() => {
+          // 第三步：通过点击事件改变状态变量值，影响可动画属性值
+          this.animationController.set()
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 
 ![zh-cn_image_0000001599971890](figures/zh-cn_image_0000001599971890.gif)
 
