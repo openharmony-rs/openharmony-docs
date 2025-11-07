@@ -368,7 +368,44 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   
     @Monitor('person.age')
     onAgeChange(monitor: IMonitor) {
+  <!-- @[monitor_decorator_last_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets) -->
+  
+  ``` TypeScript
+  @ObservedV2
+  class Frequency {
+    @Trace public count: number = 0;
+  
+    @Monitor('count')
+    onCountChange(monitor: IMonitor) {
       hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `count change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    frequency: Frequency = new Frequency();
+  
+    build() {
+      Column() {
+        Button('change count to 1000')
+          .onClick(() => {
+            for (let i = 1; i <= 1000; i++) {
+              this.frequency.count = i;
+            }
+          })
+        Button('change count to 0 then to 1000')
+          .onClick(() => {
+            for (let i = 999; i >= 0; i--) {
+              this.frequency.count = i;
+            }
+            this.frequency.count = 1000; // 最终不触发onCountChange方法
+          })
+      }
+    }
+  }
+  ```
         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   
