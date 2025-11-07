@@ -59,7 +59,7 @@
 
 <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
 
-``` typeScript
+``` TypeScript
 import { http } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -186,19 +186,19 @@ import { common } from '@kit.AbilityKit';
 
     调用该对象的off()方法，取消订阅HTTP响应头事件。
     
-```ts
-  // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
-  httpRequest.off('headersReceive');
- ```
+    ```ts	
+    // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。	
+    httpRequest.off('headersReceive');	
+    ```
    
 6. 调用destroy()方法销毁
 
     当该请求使用完毕时，调用destroy()方法销毁。
 
-```ts
-  // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
-  httpRequest.destroy();
-```
+    ```ts	
+    // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。	
+    httpRequest.destroy();	
+    ```
 
 ## 发起HTTP流式传输请求
 
