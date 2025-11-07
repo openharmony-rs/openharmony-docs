@@ -190,6 +190,14 @@
 7. 也可以查询默认日历账户，默认日历账户是日历存储首次运行时创建的，若创建日程时不关注归属哪个账户，则无须单独创建日历账户，可以直接使用默认日历账户。
 
 	<!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, 'testTag', `Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```
 
 8. 获取当前应用所有创建的日历账户及默认日历账户Calendar对象。
 
