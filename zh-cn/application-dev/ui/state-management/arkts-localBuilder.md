@@ -58,6 +58,41 @@ this.myBuilderFunction()
 下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
 <!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  label: string = 'Child';
+  @BuilderParam customBuilderParam: () => void;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'Parent';
+
+  @Builder componentBuilder() {
+    Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
+  }
+
+  @LocalBuilder componentLocalBuilder() {
+    Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
+  }
+
+  build() {
+    Column() {
+      Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child
+      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent
+    }
+  }
+}
+```
+
 ## 限制条件
 
 - \@LocalBuilder只能在所属组件内声明，不允许全局声明。
