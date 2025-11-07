@@ -30,7 +30,6 @@ startWork(work: WorkInfo): void
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数**：
-
 | 参数名  | 类型                    | 必填   | 说明             |
 | ---- | --------------------- | ---- | -------------- |
 | work | [WorkInfo](#workinfo) | 是    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。|
@@ -221,9 +220,12 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
-> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -488,6 +490,16 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 ## WorkInfo
 
 延迟任务的具体信息, 用于设置延迟任务的触发条件等。
+
+>  **说明：**
+>
+>  WorkInfo参数设置时需遵循以下规则：
+>
+>  1. workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
+>  2. 携带参数信息仅支持number、string、boolean三种类型。
+>  3. 至少设置一个满足的条件，包括网络类型、充电类型、存储状态、电池状态等。
+>  4. 对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
+>  5. 对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
