@@ -879,7 +879,7 @@ struct ConsumerChild {
 
     4. Text最终显示为2。
     <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
