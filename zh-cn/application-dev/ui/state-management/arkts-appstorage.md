@@ -479,6 +479,83 @@ struct SetSample {
 
 <!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSeven.ets) -->
 
+``` TypeScript
+// xxx.ets
+class ViewData {
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
+
+  constructor(title: string, uri: Resource) {
+    this.title = title;
+    this.uri = uri;
+  }
+}
+
+@Entry
+@Component
+struct Gallery {
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
+  scroller: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      Grid(this.scroller) {
+        ForEach(this.dataList, (item: ViewData, index?: number) => {
+          GridItem() {
+            TapImage({
+              uri: item.uri,
+              index: index
+            })
+          }.aspectRatio(1)
+
+        }, (item: ViewData, index?: number) => {
+          return JSON.stringify(item) + index;
+        })
+      }.columnsTemplate('1fr 1fr')
+    }
+
+  }
+}
+
+@Component
+export struct TapImage {
+  @StorageLink('tapIndex') @Watch('onTapIndexChange') tapIndex: number = -1;
+  @State tapColor: Color = Color.Black;
+  private index: number = 0;
+  private uri: Resource = {
+    id: 0,
+    type: 0,
+    moduleName: '',
+    bundleName: ''
+  };
+
+  // 判断是否被选中
+  onTapIndexChange() {
+    if (this.tapIndex >= 0 && this.index === this.tapIndex) {
+      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, red`);
+      this.tapColor = Color.Red;
+    } else {
+      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, black`);
+      this.tapColor = Color.Black;
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.uri)
+        .objectFit(ImageFit.Cover)
+        .onClick(() => {
+          this.tapIndex = this.index;
+        })
+        .border({ width: 5, style: BorderStyle.Dotted, color: this.tapColor })
+    }
+
+  }
+}
+```
+
 相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用emit订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
 
 > **说明：**
