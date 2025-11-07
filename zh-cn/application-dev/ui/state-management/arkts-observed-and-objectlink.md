@@ -78,7 +78,9 @@ this.objLink= ...
 
 \@Observed装饰的类，如果其属性为非简单类型，比如class、Object或者数组，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化。
 
-```ts
+<!-- @[Observe_the_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
+
+``` TypeScript
 class Child {
   public num: number;
 
@@ -102,15 +104,24 @@ class Parent {
 以上示例中，Parent被\@Observed装饰，其成员变量的赋值的变化是可以被观察到的，但对于Child，没有被\@Observed装饰，其属性的修改不能被观察到。若想观察Child的属性修改变化，示例请参考[嵌套对象](#嵌套对象)。
 
 
-```ts
+<!-- @[Modify_and_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
+
+``` TypeScript
 @ObjectLink parent: Parent;
 
-// 赋值变化可以被观察到
-this.parent.child = new Child(5);
-this.parent.count = 5;
-
-// Child没有被@Observed装饰，其属性的变化观察不到
-this.parent.child.num = 5;
+build() {
+  Column() {
+    Button('click me')
+      .onClick(() => {
+        // 赋值变化可以被观察到
+        this.parent.child = new Child(5);
+        this.parent.count = 5;
+        // Child没有被@Observed装饰，其属性的变化观察不到
+        this.parent.child.num = 5;
+      // ···
+      })
+  }
+}
 ```
 
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
@@ -125,7 +136,9 @@ this.parent.child.num = 5;
 
 \@ObjectLink装饰继承于Date的class时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
 
-```ts
+<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->
+
+``` TypeScript
 @Observed
 class DateClass extends Date {
   constructor(args: number | string) {
@@ -212,15 +225,6 @@ struct Parent {
   API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化，否则会有运行时告警日志。
 
     ```ts
-    @Observed
-    class Info {
-      count: number;
-    
-      constructor(count: number) {
-        this.count = count;
-      }
-    }
-    
     class Test {
       msg: number;
     
@@ -228,12 +232,23 @@ struct Parent {
         this.msg = msg;
       }
     }
-    
     // 错误写法，count未指定类型，编译报错
     @ObjectLink count;
     // 错误写法，Test未被@Observed装饰，编译报错
     @ObjectLink test: Test;
+    ```
+    <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
     
+    ``` TypeScript
+    @Observed
+    class Info {
+      public count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
+    }
+    // ···
     // 正确写法
     @ObjectLink count: Info;
     ```
@@ -241,20 +256,23 @@ struct Parent {
 5. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
 
     ```ts
+    // 错误写法，编译报错
+    @ObjectLink count: CountInfo = new CountInfo(10);
+    ```
+    <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
+    
+    ``` TypeScript
     @Observed
-    class Info {
-      count: number;
+    class CountInfo {
+      public count: number;
     
       constructor(count: number) {
         this.count = count;
       }
     }
-    
-    // 错误写法，编译报错
-    @ObjectLink count: Info = new Info(10);
-    
+    // ···
     // 正确写法
-    @ObjectLink count: Info;
+    @ObjectLink count: CountInfo;
     ```
 
 6. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示Cannot set property when setter is undefined。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
@@ -302,10 +320,13 @@ struct Parent {
   
     【正例】
   
-    ```ts
+    <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) -->
+    
+    ``` TypeScript
+    
     @Observed
     class Info {
-      count: number;
+      public count: number;
     
       constructor(count: number) {
         this.count = count;
@@ -318,7 +339,7 @@ struct Parent {
     
       build() {
         Column() {
-          Text(`num的值: ${this.num.count}`)
+          Text(`num value: ${this.num.count}`)
             .onClick(() => {
               // 正确写法，可以更改@ObjectLink装饰变量的成员属性
               this.num.count = 20;
@@ -334,13 +355,13 @@ struct Parent {
     
       build() {
         Column() {
-          Text(`count的值: ${this.num.count}`)
+          Text(`count value: ${this.num.count}`)
           Button('click')
             .onClick(() => {
               // 可以在父组件做整体替换
               this.num = new Info(30);
             })
-          Child({num: this.num})
+          Child({ num: this.num })
         }
       }
     }
@@ -398,10 +419,12 @@ struct Index {
 
 ### 嵌套对象
 
-```ts
+<!-- @[Nested_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/NestedObject.ets) -->
+
+``` TypeScript
 @Observed
 class Book {
-  name: string;
+  public name: string;
 
   constructor(name: string) {
     this.name = name;
@@ -410,7 +433,7 @@ class Book {
 
 @Observed
 class Bag {
-  book: Book;
+  public book: Book;
 
   constructor(book: Book) {
     this.book = book;
@@ -589,7 +612,9 @@ struct Parent {
 使用\@Observed观察二维数组的变化。可以声明一个被\@Observed装饰的继承Array的子类。
 
 
-```ts
+<!-- @[Two_dimensional_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
+
+``` TypeScript
 @Observed
 class ObservedArray<T> extends Array<T> {
 }
@@ -599,7 +624,9 @@ class ObservedArray<T> extends Array<T> {
 
 在下面的示例中，展示了如何利用\@Observed观察二维数组的变化。
 
-```ts
+<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->
+
+``` TypeScript
 @Observed
 class ObservedArray<T> extends Array<T> {
 }
@@ -622,7 +649,11 @@ struct Item {
 @Entry
 @Component
 struct IndexPage {
-  @State arr: Array<ObservedArray<string>> = [new ObservedArray<string>('apple'), new ObservedArray<string>('banana'), new ObservedArray<string>('orange')];
+  @State arr: Array<ObservedArray<string>> = [
+    new ObservedArray<string>('apple'),
+    new ObservedArray<string>('banana'),
+    new ObservedArray<string>('orange')
+  ];
 
   build() {
     Column() {
@@ -664,7 +695,9 @@ API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../referen
 
 完整例子如下。
 
-```ts
+<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Component
@@ -734,7 +767,9 @@ struct IndexPage {
 
 在下面的示例中，myMap类型为MyMap\<number, string\>，点击Button改变myMap的属性，视图会随之刷新。
 
-```ts
+<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) -->
+
+``` TypeScript
 @Observed
 class Info {
   public info: MyMap<number, string>;
@@ -743,7 +778,6 @@ class Info {
     this.info = info;
   }
 }
-
 
 @Observed
 export class MyMap<K, V> extends Map<K, V> {
@@ -830,7 +864,9 @@ struct MapSampleNestedChild {
 
 在下面的示例中，mySet类型为MySet\<number\>，点击Button改变mySet的属性，视图会随之刷新。
 
-```ts
+<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) -->
+
+``` TypeScript
 @Observed
 class Info {
   public info: MySet<number>;
@@ -839,7 +875,6 @@ class Info {
     this.info = info;
   }
 }
-
 
 @Observed
 export class MySet<T> extends Set<T> {
@@ -914,7 +949,14 @@ struct SetSampleNestedChild {
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child组件中对应的Text组件刷新。
 
-```ts
+<!-- @[ObjectLink_Supports_Union_Types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectLinkSupportsUnionTypes.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
 @Observed
 class Source {
   public source: number;
@@ -951,7 +993,7 @@ struct Parent {
           } else if (this.count instanceof Data) {
             this.count.data += 1;
           } else {
-            console.info('count is undefined, cannot change property');
+            hilog.info(DOMAIN, TAG, `count is undefined, cannot change property`);
           }
         })
 
@@ -1113,9 +1155,11 @@ struct MyView {
 以下示例使用\@Observed/\@ObjectLink来观察嵌套对象的属性更改。
 
 
-```ts
+<!-- @[Basic_nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/BasicNesting.ets) -->
+
+``` TypeScript
 class Parent {
-  parentId: number;
+  public parentId: number;
 
   constructor(parentId: number) {
     this.parentId = parentId;
@@ -1132,7 +1176,7 @@ class Parent {
 
 @Observed
 class Child {
-  childId: number;
+  public childId: number;
 
   constructor(childId: number) {
     this.childId = childId;
@@ -1148,8 +1192,8 @@ class Child {
 }
 
 class Cousin extends Parent {
-  cousinId: number = 47;
-  child: Child;
+  public cousinId: number = 47;
+  public child: Child;
 
   constructor(parentId: number, cousinId: number, childId: number) {
     super(parentId);
@@ -1329,26 +1373,14 @@ incrSubCounter和setSubCounter都是同一个SubCounter的函数。在第一个�
 对于上述问题，为了直接观察SubCounter中的属性，以便this.counter[0].setSubCounter(10)操作有效，可以利用下面的方法：
 
 
-```ts
-CounterComp({ value: this.counter[0] }); // ParentComp组件传递 ParentCounter 给 CounterComp 组件
-@ObjectLink value: ParentCounter; // @ObjectLink 接收 ParentCounter
+<!-- @[Complex_Methods_Nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets) -->
 
-// CounterChild 是 CounterComp 的子组件，CounterComp 传递 this.value.subCounter 给 CounterChild 组件
-CounterChild({ subValue: this.value.subCounter });
-@ObjectLink subValue: SubCounter; // @ObjectLink 接收 SubCounter
-```
-
-该方法使得\@ObjectLink分别代理了ParentCounter和SubCounter的属性，这样对于这两个类的属性的变化都可以观察到，即都会对UI视图进行刷新。即使删除了上面所说的this.counter[0].incrCounter()，UI也会进行正确的刷新。
-
-该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考[@Prop与@ObjectLink的差异](#prop与objectlink的差异)。
-
-
-```ts
+``` TypeScript
 let nextId = 1;
 
 @Observed
 class SubCounter {
-  counter: number;
+  public counter: number;
 
   constructor(c: number) {
     this.counter = c;
@@ -1357,9 +1389,86 @@ class SubCounter {
 
 @Observed
 class ParentCounter {
-  id: number;
-  counter: number;
-  subCounter: SubCounter;
+  public id: number;
+  public counter: number;
+  public subCounter: SubCounter;
+
+  incrCounter() {
+    this.counter++;
+  }
+
+  incrSubCounter(c: number) {
+    this.subCounter.counter += c;
+  }
+
+  setSubCounter(c: number): void {
+    this.subCounter.counter = c;
+  }
+
+  constructor(c: number) {
+    this.id = nextId++;
+    this.counter = c;
+    this.subCounter = new SubCounter(c);
+  }
+}
+
+
+@Entry
+@Component
+struct ParentComp {
+  @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
+  build() {
+    Row() {
+        CounterComp({ value: this.counter[0] }) // ParentComp组件传递 ParentCounter 给 CounterComp 组件
+    }
+  }
+}
+
+@Component
+struct CounterComp {
+  @ObjectLink value: ParentCounter; // @ObjectLink 接收 ParentCounter
+  build() {
+      // CounterChild 是 CounterComp 的子组件，CounterComp 传递 this.value.subCounter 给 CounterChild 组件
+      CounterChild({ subValue: this.value.subCounter })
+  }
+}
+
+@Component
+struct CounterChild {
+  @ObjectLink subValue: SubCounter; // @ObjectLink 接收 SubCounter
+  build() {
+    Text(`${this.subValue.counter}`)
+      .onClick(() => {
+        this.subValue.counter += 1;
+      })
+  }
+}
+```
+
+该方法使得\@ObjectLink分别代理了ParentCounter和SubCounter的属性，这样对于这两个类的属性的变化都可以观察到，即都会对UI视图进行刷新。即使删除了上面所说的this.counter[0].incrCounter()，UI也会进行正确的刷新。
+
+该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考[@Prop与@ObjectLink的差异](#prop与objectlink的差异)。
+
+
+<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->
+
+``` TypeScript
+let nextId = 1;
+
+@Observed
+class SubCounter {
+  public counter: number;
+
+  constructor(c: number) {
+    this.counter = c;
+  }
+}
+
+@Observed
+class ParentCounter {
+  public id: number;
+  public counter: number;
+  public subCounter: SubCounter;
 
   incrCounter() {
     this.counter++;
@@ -1459,12 +1568,14 @@ struct ParentComp {
 1. 修改\@ObjectLink装饰的对象内容将影响数据源对象，并重新同步给\@Prop，因此两个Text组件都将刷新。
 2. 修改\@Prop装饰的对象内容仅影响使用该对象的Text2组件，不会影响数据源对象。
 
-```ts
+<!-- @[Differences_Prop_ObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets) -->
+
+``` TypeScript
 let nextId = 0;
 
 @Observed
 class User {
-  id: number;
+  public id: number;
 
   constructor() {
     this.id = nextId++;
@@ -1565,10 +1676,17 @@ struct Index {
 
 【正例】
 
-```ts
+<!-- @[Delayed_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
 @Observed
 class RenderClass {
-  waitToRender: boolean = false;
+  public waitToRender: boolean = false;
 
   constructor() {
   }
@@ -1576,23 +1694,23 @@ class RenderClass {
 
 @Entry
 @Component
-struct Index {
+struct DelayedChangeIndex {
   @State @Watch('renderClassChange') renderClass: RenderClass = new RenderClass();
 
   renderClassChange() {
-    console.info('renderClass的值被更改为：' + this.renderClass.waitToRender);
+    hilog.info(DOMAIN, TAG, `The value of renderClass is changed to: ${this.renderClass.waitToRender}`);
   }
 
   onPageShow() {
     setTimeout(() => {
       this.renderClass.waitToRender = true;
-    }, 1000)
+    }, 1000);
   }
 
   build() {
     Row() {
       Column() {
-        Text('renderClass的值为：' + this.renderClass.waitToRender)
+        Text(`The value of renderClass is: ${this.renderClass.waitToRender}`)
           .fontSize(20)
       }
       .width('100%')
@@ -1602,17 +1720,24 @@ struct Index {
 }
 ```
 
-上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“renderClass的值为：false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“renderClass的值为：true”，日志输出“renderClass的值被更改为：true”。
+上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is：false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“The value of renderClass is：true”，日志输出“The value of renderClass is changed to：true”。
 
 因此，更推荐开发者在组件中对\@Observed装饰的类成员变量进行修改，以实现刷新。
 
 ### \@ObjectLink数据源更新时机
 
-```ts
+<!-- @[ObjectLink_Data_source_update_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ObjectLinkDataSourceUpdate.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
 @Observed
 class Person {
-  name: string = '';
-  age: number = 0;
+  public name: string = '';
+  public age: number = 0;
 
   constructor(name: string, age: number) {
     this.name = name;
@@ -1622,7 +1747,7 @@ class Person {
 
 @Observed
 class Info {
-  person: Person;
+  public person: Person;
 
   constructor(person: Person) {
     this.person = person;
@@ -1632,10 +1757,13 @@ class Info {
 @Entry
 @Component
 struct Parent {
-  @State @Watch('onChange01') info: Info = new Info(new Person('Bob', 10));
+  @State @Watch('onChange01') info: Info =
+    new Info(
+      new Person('Bob', 10)
+    );
 
   onChange01() {
-    console.info(':::onChange01:' + this.info.person.name); // 2
+    hilog.info(DOMAIN, TAG, `:::onChange01: + ${this.info.person.name}`); // 2
   }
 
   build() {
@@ -1643,9 +1771,9 @@ struct Parent {
       Text(this.info.person.name).height(40)
       Child({
         per: this.info.person, clickEvent: () => {
-          console.info(':::clickEvent before', this.info.person.name); // 1
+          hilog.info(DOMAIN, TAG, `:::clickEvent before ${this.info.person.name}`); // 1
           this.info.person = new Person('Jack', 12);
-          console.info(':::clickEvent after', this.info.person.name); // 3
+          hilog.info(DOMAIN, TAG, `:::clickEvent after ${this.info.person.name}`); // 3
         }
       })
     }
@@ -1658,7 +1786,7 @@ struct Child {
   clickEvent?: () => void;
 
   onChange02() {
-    console.info(':::onChange02:' + this.per.name); // 5
+    hilog.info(DOMAIN, TAG, `:::onChange02:${this.per.name}`); // 5
   }
 
   build() {
@@ -1675,8 +1803,8 @@ struct Child {
     if (this.clickEvent) {
       this.clickEvent();
     }
-    console.info(':::--------此时Child中的this.per.name值仍然是：' + this.per.name); // 4
-  }
+    hilog.info(DOMAIN, TAG, `:::--------this.per.name in Child is still: ${this.per.name}`); // 4
+  };
 }
 ```
 
@@ -1699,12 +1827,14 @@ struct Child {
 
 当clickEvent中更改this.info.person.name时，修改会立刻生效，此时日志4打印的值是Jack。
 
-```ts
+<!-- @[ClickEvent_Jack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ClickEventJack.ets) -->
+
+``` TypeScript
 Child({
   per: this.info.person, clickEvent: () => {
-    console.info(':::clickEvent before', this.info.person.name); // 1
+    hilog.info(DOMAIN, TAG, `:::clickEvent before ${this.info.person.name}`); // 1
     this.info.person.name = 'Jack';
-    console.info(':::clickEvent after', this.info.person.name); // 3
+    hilog.info(DOMAIN, TAG, `:::clickEvent after ${this.info.person.name}`); // 3
   }
 })
 ```
@@ -1787,24 +1917,27 @@ struct Child {
 
 【正例】
 
-```ts
+<!-- @[Not_Trigger_UI_Refresh_Proxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/NotTriggerUIRefresh.ets) -->
+
+``` TypeScript
 @Observed
 class Weather {
-  temperature:number;
+  public temperature: number;
 
-  constructor(temperature:number) {
+  constructor(temperature: number) {
     this.temperature = temperature;
   }
 
-  static increaseTemperature(weather:Weather) {
+  static increaseTemperature(weather: Weather) {
     weather.temperature++;
   }
 }
 
 class Day {
-  weather:Weather;
-  week:string;
-  constructor(weather:Weather, week:string) {
+  public weather: Weather;
+  public week: string;
+
+  constructor(weather: Weather, week: string) {
     this.weather = weather;
     this.week = week;
   }
@@ -1816,8 +1949,8 @@ struct Parent {
   @State day1: Day = new Day(new Weather(15), 'Monday');
 
   build() {
-    Column({ space:10 }) {
-      Child({ weather: this.day1.weather})
+    Column({ space: 10 }) {
+      Child({ weather: this.day1.weather })
     }
     .height('100%')
     .width('100%')
@@ -1828,22 +1961,22 @@ struct Parent {
 struct Child {
   @ObjectLink weather: Weather;
 
-  reduceTemperature (weather:Weather) {
+  reduceTemperature(weather: Weather) {
     weather.temperature--;
   }
 
   build() {
-    Column({ space:10 }) {
+    Column({ space: 10 }) {
       Text(`The temperature of day1 is ${this.weather.temperature} degrees.`)
         .fontSize(20)
       Button('increaseTemperature')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值添加 Proxy 代理
           let weather1 = this.weather;
           Weather.increaseTemperature(weather1);
         })
       Button('reduceTemperature')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值添加 Proxy 代理
           let weather2 = this.weather;
           this.reduceTemperature(weather2);
