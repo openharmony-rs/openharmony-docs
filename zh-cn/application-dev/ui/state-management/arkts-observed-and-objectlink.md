@@ -1829,6 +1829,16 @@ struct Child {
 
 <!-- @[ClickEvent_Jack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ClickEventJack.ets) -->
 
+``` TypeScript
+Child({
+  per: this.info.person, clickEvent: () => {
+    hilog.info(DOMAIN, TAG, `:::clickEvent before ${this.info.person.name}`); // 1
+    this.info.person.name = 'Jack';
+    hilog.info(DOMAIN, TAG, `:::clickEvent after ${this.info.person.name}`); // 3
+  }
+})
+```
+
 此时Parent中Text组件不会刷新，因为this.info.person.name属于两层嵌套。
 
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
