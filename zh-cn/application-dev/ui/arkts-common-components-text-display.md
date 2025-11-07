@@ -487,6 +487,36 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 从API version 20开始，支持通过[contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20)属性设置数字翻牌效果。
 
   <!-- @[Content_Transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ContentTransition.ets) -->
+  
+  ``` TypeScript
+  
+  @Entry
+  @Component
+  export struct ContentTransition {
+    private static readonly INITIAL_SCORE: number = 98;
+    @State number: number = ContentTransition.INITIAL_SCORE;
+    @State numberTransition: NumericTextTransition =
+      new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+    build() {
+      NavDestination() {
+        Column() {
+          Text(this.number + '')
+            .borderWidth(1)
+            .fontSize(40)
+            .contentTransition(this.numberTransition)
+          Button('chang number')
+            .onClick(() => {
+              this.number++
+            })
+            .margin(10)
+        }
+        .width('100%')
+        .height('100%')
+      }
+      // ···
+    }
+  }
+  ```
   ![Text_content_transition](figures/Text_content_transition.gif)
 
 - 从API version 20开始，支持通过[optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20)设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
