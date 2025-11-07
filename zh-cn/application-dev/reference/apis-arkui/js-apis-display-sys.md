@@ -166,7 +166,7 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用不生效不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
 **参数：**
 
@@ -200,11 +200,13 @@ try {
 ## display.setFoldDisplayMode<sup>19+</sup>
 setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
-更改可折叠设备的显示模式，并指明更改原因，不适用于2in1设备。
+更改可折叠设备的显示模式，并指明更改原因。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
 **参数：**
 
