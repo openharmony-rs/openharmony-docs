@@ -78,7 +78,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 <!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
 
 ``` TypeScript
-// 以EntryAbility.ets为例
+// 以DeepAbility.ets为例
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
