@@ -741,6 +741,39 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * AllChooseComponent.ets
 
   <!-- @[all_choose_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/AllChooseComponent.ets) -->
+  
+  ``` TypeScript
+  import TodoListViewModel from '../viewmodel/TodoListViewModel';
+  import { common } from '@kit.AbilityKit';
+  
+  @Component
+  export struct AllChooseComponent {
+    context1 = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // app.string.check_all资源文件中的value值为'全选'
+    @State titleName: ResourceStr = this.context1.resourceManager.getStringSync($r('app.string.check_all').id);
+    @Link todoListViewModel: TodoListViewModel;
+  
+    build() {
+      Row() {
+        Button(`${this.titleName}`, { type: ButtonType.Capsule })
+          .onClick(() => {
+            this.todoListViewModel.chooseAll(); // View层点击事件发生时，调用ViewModel层方法chooseAll处理逻辑
+            this.titleName = this.todoListViewModel.isChoosen ?
+              // app.string.check_all资源文件中的value值为'全选'
+              this.context1.resourceManager.getStringSync($r('app.string.check_all').id)
+              // app.string.deselect_all资源文件中的value值为'取消全选'
+              : this.context1.resourceManager.getStringSync($r('app.string.deselect_all').id);
+          })
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor('#f7f6cc74')
+      }
+      .padding({ left: this.todoListViewModel.isChoosen ? 15 : 0 })
+      .width('100%')
+      .margin({ top: 10, bottom: 10 })
+    }
+  }
+  ```
 
 
   * ThingComponent.ets
