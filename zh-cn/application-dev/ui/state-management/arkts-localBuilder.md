@@ -56,41 +56,7 @@ this.myBuilderFunction()
 > bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
 
 下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
-
-```ts
-@Component
-struct Child {
-  label: string = 'Child';
-  @BuilderParam customBuilderParam: () => void;
-
-  build() {
-    Column() {
-      this.customBuilderParam()
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'Parent';
-
-  @Builder componentBuilder() {
-    Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
-  }
-
-  @LocalBuilder componentLocalBuilder() {
-     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
-  }
-
-  build() {
-    Column() {
-      Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child
-      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent
-    }
-  }
-}
-```
+<!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->
 
 ## 限制条件
 
@@ -115,33 +81,7 @@ struct Parent {
 ### 按回调传递参数
 
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)。
-
-```ts
-import { UIUtils, Binding } from '@ohos.arkui.StateManagement';
-
-@Entry
-@Component
-struct Parent {
-  @State variableValue: string = 'Hello World';
-
-  @LocalBuilder
-  citeLocalBuilder(params: Binding<string>) {
-    Row() {
-      Text(`UseStateVarByReference: ${params.value}`)
-    }
-  }
-
-  build() {
-    Column() {
-      this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
-      Button('Click me')
-        .onClick(() => {
-          this.variableValue = 'Hi World';
-        })
-    }
-  }
-}
-```
+<!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->
 
 ### 按引用传递参数
 
@@ -443,99 +383,11 @@ struct ParentPage {
 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
 
 【反例】
-
-```ts
-class LayoutSize {
-  size: number = 0;
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'parent';
-  @State layoutSize: LayoutSize = { size: 0 };
-
-  @LocalBuilder
-  componentBuilder($$: LayoutSize) {
-    Text(`this: ${this.label}`)
-    Text(`size: ${$$.size}`)
-  }
-
-  build() {
-    Column() {
-      Child({
-        customBuilder: this.componentBuilder, 
-        layoutSize: this.layoutSize
-      })
-    }
-  }
-}
-
-@Component 
-struct Child {
-  label: string = 'child';
-  @BuilderParam customBuilder: ((layoutSize: LayoutSize) => void);
-  @Link layoutSize: LayoutSize;
-
-  build() {
-    Column() {
-      this.customBuilder({ size: this.layoutSize.size }) // 子组件调用父组件的@LocalBuilder函数
-      Button("add child size")
-        .onClick(() => {
-          this.layoutSize.size += 1; // 子组件传入的参数发生变化，不会引起@LocalBuilder函数内的UI刷新
-        })
-    }
-  }
-}
-```
+<!-- @[problem_ui_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshOpposite.ets) -->
 
 【正例】
 
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
-
-```ts
-class LayoutSize {
-  size: number = 0;
-}
-
-@Entry
-@Component
-struct Parent {
-  label: string = 'parent';
-  @State layoutSize: LayoutSize = { size: 0 };
-
-  @LocalBuilder
-  componentBuilder() {
-    Text(`this: ${this.label}`)
-    Text(`size: ${this.layoutSize.size}`)
-  }
-
-  build() {
-    Column() {
-      Child({
-        customBuilder: this.componentBuilder, 
-        layoutSize: this.layoutSize
-      })
-    }
-  }
-}
-
-@Component 
-struct Child {
-  label: string = 'child';
-  @BuilderParam customBuilder: () => void;
-  @Link layoutSize: LayoutSize;
-
-  build() {
-    Column() {
-      this.customBuilder() 
-      Button("add child size")
-        .onClick(() => {
-          this.layoutSize.size += 1; //子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
-        })
-    }
-  }
-}
-```
+<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->
 
 ![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)
