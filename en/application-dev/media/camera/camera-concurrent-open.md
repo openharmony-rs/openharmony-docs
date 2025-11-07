@@ -24,6 +24,8 @@ Starting from API version 18, devices support multi-camera concurrent mode, enab
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
+For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
 1. Import dependencies related to the camera, media library, and image modules.
 
    ```ts
@@ -31,6 +33,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    import { camera } from '@kit.CameraKit';
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
+   import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -54,7 +57,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 3. Obtain the corresponding concurrent capability set.
 
-   Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain an array of [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) objects, each of which includes the modes and output capabilities supported by the camera under the corresponding concurrent mode.
+   Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain an array of [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) objects, each of which includes the modes and output capabilities supported by the camera under the corresponding concurrency mode. If an empty array is returned, the current device does not support concurrency mode.
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -76,6 +79,10 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
      // Obtain the concurrency capability set.
      let concurrentInfo: Array<camera.CameraConcurrentInfo> = cameraManager.getCameraConcurrentInfos(deviceArray);
+
+     if (concurrentInfo.length === 0) {
+      return;
+     }
 
      // Replace the original capability set with the concurrency capability set.
      for (let i = 0; i < concurrentInfo.length; i++) {
@@ -168,16 +175,16 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      return avRecorder;
    }
 
-   function initFd(): number {
-     let filesDir = getContext().filesDir;
+   function initFd(context: common.Context): number {
+     let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
      AppStorage.setOrCreate<string>('filePath', filePath);
      let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      return file.fd;
    }
 
-   async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder): Promise<void> {
-     let fd = initFd();
+   async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
+     let fd = initFd(context);
      let videoConfig: media.AVRecorderConfig = {
        audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
        videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
@@ -201,7 +208,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      });
    }
 
-   async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice)
+   async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
     // Create a video output stream using the video profile with the format 1003 and size 1920*1080 as an example.
      let videoProfileObj: camera.VideoProfile = {
@@ -242,7 +249,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      if (avRecorder === undefined) {
        return;
      }
-     await prepareAVRecorder(videoProfileObj, curCameraDeviceFront, avRecorder);
+     await prepareAVRecorder(videoProfileObj, curCameraDeviceFront, avRecorder, context);
      let videoSurfaceId = await avRecorder.getInputSurface();
      let videoOutput = cameraManager.createVideoOutput(videoProfileObj, videoSurfaceId);
      if (videoOutput === undefined) {
@@ -456,7 +463,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
       // Check whether an exposure mode is supported.
       let hasFlash = session?.isExposureModeSupported(ExposeureMode);
-    
+  
       // Set the exposure mode.
       if (hasFlash) {
         session?.setExposureMode(ExposeureMode);

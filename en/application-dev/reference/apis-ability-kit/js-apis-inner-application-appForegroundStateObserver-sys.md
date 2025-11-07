@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module defines the listener used to listen for application startup and exit state changes. It can be used as an input parameter of [on](js-apis-app-ability-appManager-sys.md#appmanageronappforegroundstate11) to listen for the state changes of all applications.
+The module defines the listener used to listen for application startup and exit state changes. It can be used as an input parameter of [appManager.on('appForegroundState')](js-apis-app-ability-appManager-sys.md#appmanageronappforegroundstate11) to listen for the state changes of all applications.
 
 > **NOTE**
 >
@@ -42,7 +42,7 @@ Called when the application launch or exit state changes.
 import { appManager } from '@kit.AbilityKit';
 
 let observer: appManager.AppForegroundStateObserver = {
-  onAppStateChanged(appStateData) {
+  onAppStateChanged(appStateData: appManager.AppStateData) {
     console.info(`onAppStateChanged appStateData: ${JSON.stringify(appStateData)}`);
   },
 };

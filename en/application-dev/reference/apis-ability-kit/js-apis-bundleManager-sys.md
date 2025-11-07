@@ -851,7 +851,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-Obtains the ability information based on the given Want, ability flags, and user ID. This API uses an asynchronous callback to return the result.
+Obtains the ability information based on the given want, ability flags, and user ID. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -917,7 +917,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
-Obtains the ability information based on the given Want and ability flags. This API uses an asynchronous callback to return the result.
+Obtains the ability information based on the given want and ability flags. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -980,7 +980,7 @@ try {
 
 queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-Obtains the ability information based on the given Want, ability flags, and user ID. This API uses a promise to return the result.
+Obtains the ability information based on the given want, ability flags, and user ID. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1159,7 +1159,7 @@ try {
 
 queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
 
-Obtains the ability information based on the given Want list, ability flags, and user ID. This API uses a promise to return the result.
+Obtains the ability information based on the given want list, ability flags, and user ID. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1232,7 +1232,7 @@ let wants: Array<Want> = [ want, want1 ];
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-Obtains the ExtensionAbility information based on the given Want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API uses an asynchronous callback to return the result.
+Obtains the ExtensionAbility information based on the given want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1299,7 +1299,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
-Obtains the ExtensionAbility information based on the given Want, ExtensionAbility type, and ExtensionAbility flags. This API uses an asynchronous callback to return the result.
+Obtains the ExtensionAbility information based on the given want, ExtensionAbility type, and ExtensionAbility flags. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1363,7 +1363,7 @@ try {
 
 queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
 
-Obtains the ExtensionAbility information based on the given Want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API uses a promise to return the result.
+Obtains the ExtensionAbility information based on the given want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1458,7 +1458,7 @@ try {
 
 queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
 
-Obtains the ExtensionAbility information based on the given Want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API returns the result synchronously.
+Obtains the ExtensionAbility information based on the given want, ExtensionAbility type, ExtensionAbility flags, and user ID. This API returns the result synchronously.
 
 No permission is required for obtaining the caller's own information.
 
@@ -3484,7 +3484,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<string>): void
 
-Obtains the label based on the given bundle name, module name, and ability name. This API uses an asynchronous callback to return the result.
+Obtains the ability label based on the given bundle name, module name, and ability name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -3547,7 +3547,7 @@ try {
 
 getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Promise\<string>
 
-Obtains the label based on the given bundle name, module name, and ability name. This API uses a promise to return the result.
+Obtains the ability label based on the given bundle name, module name, and ability name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
