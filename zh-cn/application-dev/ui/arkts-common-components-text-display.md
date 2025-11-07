@@ -136,6 +136,47 @@ Text可通过以下两种方式来创建：
 
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @Entry
+  @Component
+  export struct TextSpanOnHover {
+    @State textStr1: string = '';
+    @State textStr2: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text() {
+              Span('I am Upper-span')
+                .textCase(TextCase.UpperCase)
+                .fontSize(30)
+                .onClick(() => {
+                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onClick is triggering');
+                  this.textStr1 = 'Span onClick is triggering';
+                })
+                .onHover(() => {
+                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onHover is triggering');
+                  this.textStr2 = 'Span onHover is triggering';
+                })
+            }
+  
+            Text('onClick：' + this.textStr1)
+              .fontSize(20)
+            Text('onHover：' + this.textStr2)
+              .fontSize(20)
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ···
+    }
+  }
+  ```
 
   ![span_event](figures/span_event.gif)
 
