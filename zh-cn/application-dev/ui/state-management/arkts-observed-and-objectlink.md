@@ -1570,6 +1570,54 @@ struct ParentComp {
 
 <!-- @[Differences_Prop_ObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets) -->
 
+``` TypeScript
+let nextId = 0;
+
+@Observed
+class User {
+  public id: number;
+
+  constructor() {
+    this.id = nextId++;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State users: User[] = [new User(), new User(), new User()];
+
+  build() {
+    Column() {
+      UserChild({ firstUserByObjectLink: this.users[0], firstUserByProp: this.users[0] })
+    }
+  }
+}
+
+@Component
+struct UserChild {
+  @ObjectLink firstUserByObjectLink: User;
+  @Prop firstUserByProp: User;
+
+  build() {
+    Column() {
+      // 比较结果为false说明@Prop经过深拷贝后得到的对象与原对象已不是同一个对象
+      Text(`firstUserByObjectLink equals firstUserByProp? : ${this.firstUserByObjectLink === this.firstUserByProp}`)
+      Text(`UserChild firstUserByObjectLink.id: ${this.firstUserByObjectLink.id}`) // Text1
+      Text(`UserChild firstUserByProp.id: ${this.firstUserByProp.id}`) // Text2
+      Button('change @ObjectLink value')
+        .onClick(() => {
+          this.firstUserByObjectLink.id++;
+        })
+      Button('change @Prop value')
+        .onClick(() => {
+          this.firstUserByProp.id++;
+        })
+    }
+  }
+}
+```
+
 上面的示例关系如图所示：
 
 ![zh-cn_image_0000001653949465](figures/zh-cn_image_0000001653949465.jpg)
