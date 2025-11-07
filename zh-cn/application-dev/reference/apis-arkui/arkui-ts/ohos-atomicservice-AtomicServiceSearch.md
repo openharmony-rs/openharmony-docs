@@ -131,9 +131,9 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | onTextSelectionChange    | [OnTextSelectionChangeCallback](#ontextselectionchangecallback) | 否 | 是 | 文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调。默认值为`undefined`。   |
 | onContentScroll          | [OnContentScrollCallback](#oncontentscrollcallback) | 否 | 是 | 文本内容滚动时，触发该回调。默认值为`undefined`。   |
 | onEditChange             | Callback&lt;boolean&gt; | 否 | 是 | 输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。isEditing为true表示正在输入。默认值为`undefined`。   |
-| onWillInsert             | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean&gt; | 否 | 是 | 在将要输入时，触发该回调。true表示正常插入。默认值为`undefined`。   |
+| onWillInsert             | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明), boolean&gt; | 否 | 是 | 在将要输入时，触发该回调。true表示将输入内容正常插入结果字符串，false表示不插入。默认值为`undefined`。   |
 | onDidInsert              | Callback&lt;[InsertValue](ts-text-common.md#insertvalue12对象说明)&gt; | 否 | 是 | 在输入完成时，触发该回调。默认值为`undefined`。   |
-| onWillDelete             | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean&gt; | 否 | 是 | 在将要删除时，触发该回调。true表示正常删除。默认值为`undefined`。   |
+| onWillDelete             | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明), boolean&gt; | 否 | 是 | 在将要删除时，触发该回调。true表示正常删除，false表示不删除。默认值为`undefined`。   |
 | onDidDelete              | Callback&lt;[DeleteValue](ts-text-common.md#deletevalue12对象说明)&gt; | 否 | 是 | 在删除完成时，触发该回调。默认值为`undefined`。   |
 
 ## OperationParams
