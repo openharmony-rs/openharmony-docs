@@ -324,6 +324,56 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。
 
   <!-- @[custom_text_line_and_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  
+  ``` TypeScript
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.LineThrough,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Overline,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Red
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DASHED
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DOTTED
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.DOUBLE
+    })
+    .borderWidth(1).padding(15).margin(5)
+  Text('This is the text')
+    .decoration({
+      type: TextDecorationType.Underline,
+      color: Color.Blue,
+      style: TextDecorationStyle.WAVY,
+      thicknessScale: 4
+    })
+    .borderWidth(1).padding(15).margin(5)
+  ```
 
   ![Text_decoration](figures/Text_decoration.jpg)
 
