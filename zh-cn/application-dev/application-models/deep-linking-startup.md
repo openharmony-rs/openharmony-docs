@@ -179,7 +179,7 @@ struct DeepStartIndex {
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let want: Want = {
-          uri: 'link://www.example.com'
+          uri: 'link://www.example.com' // 此处为实际应用链接
         };
 
         try {
