@@ -66,8 +66,20 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
    module.json5示例代码如下。
 
-<!-- @[startup001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/module.json5) -->
+    <!-- @[startup_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/module.json5) -->
 
+    ``` JSON5
+    {
+      "module": {
+        "name": "entry",
+        "type": "entry",
+        // ···
+        "appStartup": "$profile:startup_config", // 启动框架的配置文件
+        // ···
+      }
+    }
+    ```
+   
 ### 定义启动参数配置
 
 在启动框架配置文件startup_config.json中，可以添加启动参数的配置信息。
@@ -274,8 +286,37 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 - [StartupConfig](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md)：用于设置任务超时时间和启动框架的监听器。
 - [StartupListener](../reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md)：用于监听启动任务是否执行成功。
 
+<!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
-<!-- @[startup002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/ets/startup/StartupConfig.ets) -->
+``` TypeScript
+import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyStartupConfigEntry extends StartupConfigEntry {
+  onConfig() {
+    hilog.info(0x0000, 'testTag', `onConfig`);
+    let onCompletedCallback = (error: BusinessError<void>) => {
+      hilog.info(0x0000, 'testTag', `onCompletedCallback`);
+      if (error) {
+        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+          error.message);
+      } else {
+        hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
+      }
+    };
+    let startupListener: StartupListener = {
+      'onCompleted': onCompletedCallback
+    };
+    let config: StartupConfig = {
+      'timeoutMs': 10000,
+      'startupListener': startupListener
+    };
+    return config;
+  }
+// ···
+}
+```
 
 ## 为每个待初始化功能组件添加启动任务
 
@@ -291,7 +332,29 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 > 
 > 由于StartupTask采用了[Sendable协议](../arkts-utils/arkts-sendable.md#sendable协议)，在继承该接口时，必须添加Sendable注解。
 
-<!-- @[startup003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/ets/startup/StartupTask_001.ets) -->
+<!-- @[startup_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupTask001.ets) -->
+
+``` TypeScript
+import { StartupTask, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Sendable
+export default class StartupTask001 extends StartupTask {
+  constructor() {
+    super();
+  }
+
+  async init(context: common.AbilityStageContext) {
+    hilog.info(0x0000, 'testTag', 'StartupTask_001 init.');
+    return 'StartupTask_001';
+  }
+
+  onDependencyCompleted(dependence: string, result: Object): void {
+    hilog.info(0x0000, 'testTag', 'StartupTask_001 onDependencyCompleted, dependence: %{public}s, result: %{public}s',
+      dependence, JSON.stringify(result));
+  }
+}
+```
 
 ## 可选操作
 
@@ -355,13 +418,44 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
         hsp1、hsp2以及har1的module.json5示例代码如下。
 
+        <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
 
-<!-- @[startup004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/hsp1/src/main/module.json5) -->
+        ``` JSON5
+        {
+          "module": {
+            "name": "hsp1",
+            "type": "shared",
+            // ···
+            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ···
+          }
+        }
+        ```
+        <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
 
-<!-- @[startup005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/hsp2/src/main/module.json5) -->
+        ``` JSON5
+        {
+          "module": {
+            "name": "hsp2",
+            "type": "shared",
+            // ···
+            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ···
+          }
+        }
+        ```
+        <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
 
-<!-- @[startup006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/har1/src/main/module.json5) -->
-
+        ``` JSON5
+        {
+          "module": {
+            "name": "har1",
+            "type": "har",
+            // ···
+            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+          }
+        }
+        ```
 
   其余步骤请参考[设置启动参数](#设置启动参数)和[为每个待初始化功能组件添加启动任务](#为每个待初始化功能组件添加启动任务)章节进行配置。
 
@@ -376,14 +470,75 @@ AppStartup分别提供了自动和手动两种方式来执行启动任务，entr
 下面以UIAbility的onCreate生命周期中为例，介绍如何采用手动模式来启动任务，示例代码如下。
 
 
-<!-- @[startup007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[startup_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let startParams = ['StartupTask_005', 'StartupTask_006'];
+    try {
+      startupManager.run(startParams).then(() => {
+        console.info(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
+      }).catch((error: BusinessError) => {
+        console.error(`StartupTest promise catch error, error = ${JSON.stringify(error)}.`);
+        console.error(`StartupTest promise catch error, startParams = ${JSON.stringify(startParams)}.`);
+      })
+    } catch (error) {
+      let errMsg = (error as BusinessError).message;
+      let errCode = (error as BusinessError).code;
+      console.error(`Startup catch error, errCode= ${errCode}.`);
+      console.error(`Startup catch error, errMsg= ${errMsg}.`);
+    }
+  }
+
+// ···
+}
+```
 
 开发者还可以在页面加载完成后，在页面中调用启动框架手动模式，示例代码如下。
 
+<!-- @[startup_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/pages/Index.ets) -->
 
-<!-- @[startup008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/ets/pages/Index.ets) -->
+``` TypeScript
+import { startupManager } from '@kit.AbilityKit';
 
+@Entry
+@Component
+struct Index {
+  @State message: ResourceStr = $r('app.string.manual_mode'); // $r('app.string.manual_mode')为开发者自定义资源
+  @State startParams1: Array<string> = ['StartupTask_006'];
+  @State startParams2: Array<string> = ['libentry_006'];
+
+  build() {
+    RelativeContainer() {
+      Button(this.message)
+        .id('AppStartup')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          if (!startupManager.isStartupTaskInitialized('StartupTask_006')) { // 判断是否已经完成初始化
+            startupManager.run(this.startParams1);
+          }
+          if (!startupManager.isStartupTaskInitialized('libentry_006')) {
+            startupManager.run(this.startParams2);
+          }
+        })
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ### 添加任务匹配规则
 
@@ -455,8 +610,23 @@ AppStartup分别提供了自动和手动两种方式来执行启动任务，entr
 
   1. 对[设置启动参数](#设置启动参数)步骤中的MyStartupConfigEntry.ets文件进行修改，新增[onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20)方法。
 
-     <!-- @[startup009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/MetaCompetences/entry/src/main/ets/startup/StartupConfig.ets) -->
+     <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
+     ``` TypeScript
+     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
+     // ···
+     
+     export default class MyStartupConfigEntry extends StartupConfigEntry {
+     // ···
+       onRequestCustomMatchRule(want: Want): string {
+         if (want?.parameters?.fromType == 'card') {
+           return 'ruleCard';
+         }
+         return '';
+       }
+     
+     }
+     ```
   2. 对[定义启动任务配置](#定义启动任务配置)步骤中的startup_config.json文件进行修改，增加StartupTask_006任务的matchRules配置。预加载so任务不支持customization字段，按任务原有的excludeFromAutoStart配置处理。
 
       ```json
