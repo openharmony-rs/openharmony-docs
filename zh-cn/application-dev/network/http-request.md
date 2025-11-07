@@ -677,12 +677,12 @@ class FinalHttpInterceptor implements http.HttpInterceptor {
 
 <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
 chain.addChain([
-	new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-	new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-	new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+  new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+  new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+  new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
 ]);
 ```
 
