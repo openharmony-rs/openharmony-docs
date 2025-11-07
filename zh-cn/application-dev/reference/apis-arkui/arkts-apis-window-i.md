@@ -32,16 +32,20 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                   | 类型 | 只读 | 可选 | 说明                                                         |
 | -------------------------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
-| statusBarColor                         | string   |  否  |  是   | 状态栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isStatusBarLightIcon<sup>7+</sup>      | boolean  |  否  |  是   | 状态栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| statusBarContentColor<sup>8+</sup>     | string   |  否  |  是   | 状态栏文字颜色。当设置此属性后，`isStatusBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否使能状态栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
-| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否使能三键导航栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
+| statusBarColor                         | string   |  否  |  是   | 状态栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
+| isStatusBarLightIcon<sup>7+</sup>      | boolean  |  否  |  是   | 状态栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| statusBarContentColor<sup>8+</sup>     | string   |  否  |  是   | 状态栏文字颜色。当设置此属性后，`isStatusBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22|
+| navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
+| isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22|
+| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否使能状态栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 22|
+| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否使能三键导航栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 22|
 
 ## StatusBarProperty<sup>18+</sup>
 
@@ -49,9 +53,13 @@
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                   | 类型 |  只读 |   可选  | 说明 |
 | ------------------------------------- | -------- | ---- | ---- | ------- |
-| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager|
+| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 22|
 
 ## SystemBarStyle<sup>12+</sup>
 
@@ -61,9 +69,13 @@
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。|
+| statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 22|
 
 ## Rect<sup>7+</sup>
 
@@ -92,13 +104,17 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 |
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 |
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 |
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 |
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 
 > **说明：**
 >
@@ -149,35 +165,43 @@
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。 |
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22 |
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## WindowProperties
 
 窗口属性。
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                  | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------- | ------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
-| windowRect<sup>7+</sup>               | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口尺寸，可在页面生命周期[onPageShow](./arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)阶段获取。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| drawableRect<sup>11+</sup>            | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口计算。在Stage模型下，需要在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)加载页面内容后使用该接口。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| type<sup>7+</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 否   | 窗口类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isFullScreen                          | boolean                   | 否   | 否   | 是否全屏，默认为false。true表示全屏；false表示非全屏。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 窗口是否为沉浸式且处于全屏模式（不在悬浮窗、分屏等场景下），默认为false。true表示沉浸式且处于全屏模式；false表示非沉浸式或非全屏模式。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可聚焦，默认为true。true表示可聚焦；false表示不可聚焦。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸，默认为true。true表示可触摸；false表示不可触摸。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| brightness                            | number                    | 否   | 否   | 屏幕亮度。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]，其取1.0时表示最大亮度值。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| windowRect<sup>7+</sup>               | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口尺寸，可在页面生命周期[onPageShow](./arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)阶段获取。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| drawableRect<sup>11+</sup>            | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口计算。在Stage模型下，需要在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)加载页面内容后使用该接口。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 22|
+| type<sup>7+</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 否   | 窗口类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| isFullScreen                          | boolean                   | 否   | 否   | 是否全屏，默认为false。true表示全屏；false表示非全屏。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
+| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 窗口是否为沉浸式且处于全屏模式（不在悬浮窗、分屏等场景下），默认为false。true表示沉浸式且处于全屏模式；false表示非沉浸式或非全屏模式。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可聚焦，默认为true。true表示可聚焦；false表示不可聚焦。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸，默认为true。true表示可触摸；false表示不可触摸。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| brightness                            | ArkTS-Dyn: number <br> ArkTS-Sta: double                    | 否   | 否   | 屏幕亮度。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]，其取1.0时表示最大亮度值。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
 | dimBehindValue<sup>(deprecated)</sup> | number                    | 否   | 否   | 靠后窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。<br>- **说明：** 从API version 9开始废弃。<br>- 从API version 7开始支持。当前无可替代接口。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isKeepScreenOn                        | boolean                   | 否   | 否   | 屏幕是否常亮，默认为false。true表示常亮；false表示不常亮。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isPrivacyMode<sup>7+</sup>            | boolean                   | 否   | 否   | 隐私模式，默认为false。true表示模式开启；false表示模式关闭。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| isKeepScreenOn                        | boolean                   | 否   | 否   | 屏幕是否常亮，默认为false。true表示常亮；false表示不常亮。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
+| isPrivacyMode<sup>7+</sup>            | boolean                   | 否   | 否   | 隐私模式，默认为false。true表示模式开启；false表示模式关闭。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
 | isRoundCorner<sup>(deprecated)</sup>  | boolean                   | 否   | 否   | 窗口是否为圆角。默认为false。true表示圆角；false表示非圆角。<br>- **说明：** 从API version 9开始废弃。<br/>- 从API version 7开始支持。当前无可替代接口。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isTransparent<sup>7+</sup>            | boolean                   | 否   | 否   | 窗口背景是否透明。默认为false。true表示透明；false表示不透明。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| id<sup>9+</sup>                       | number                    | 否   | 否   | 窗口ID，默认值为0，该参数应为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| displayId<sup>12+</sup>               | number                    | 否   | 是   | 窗口所在屏幕ID，默认返回主屏幕ID,该参数应为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| name<sup>18+</sup>               | string                    | 否   | 是   | 窗口名字，默认为空字符串。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| isTransparent<sup>7+</sup>            | boolean                   | 否   | 否   | 窗口背景是否透明。默认为false。true表示透明；false表示不透明。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| id<sup>9+</sup>                       | ArkTS-Dyn: number <br> ArkTs-Sta: int                    | 否   | 否   | 窗口ID，默认值为0，该参数应为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 22|
+| displayId<sup>12+</sup>               | ArkTS-Dyn: number <br> ArkTs-Sta: long                    | 否   | 是   | 窗口所在屏幕ID，默认返回主屏幕ID,该参数应为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 22|
+| name<sup>18+</sup>               | string                    | 否   | 是   | 窗口名字，默认为空字符串。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 22|
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。拓展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以所在屏幕组中的主屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br/>**系统能力：**  SystemCapability.Window.SessionManager |
 
 ## DecorButtonStyle<sup>14+</sup>
@@ -247,11 +271,15 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| systemDensity  | number   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 |
-| defaultDensity | number   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
-| customDensity | number   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
+| systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
+| defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
+| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## WindowLayoutInfo<sup>15+</sup>
 
@@ -261,9 +289,13 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。 |
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小 <br> **ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## KeyboardInfo<sup>18+</sup>
 
@@ -407,10 +439,14 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
+| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。<br>**ArkTS-Dyn起始版本：** 19 <br>**ArkTS-Sta起始版本：** 22 |
+| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。<br>**ArkTS-Dyn起始版本：** 19 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## RotationChangeCallback<sup>19+</sup>
 

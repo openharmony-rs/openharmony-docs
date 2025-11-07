@@ -32,15 +32,19 @@
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
-| TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | 表示挖孔区域。                                                              |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。                                    |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。                                                              |
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                             |
+| TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End--><br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22       |
+| TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22                                                              |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22                                    |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22                                                              |
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22                            |
 
 ## Orientation<sup>9+</sup>
 
@@ -93,10 +97,14 @@
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 值 | 说明           |
 | ---------- | ------ | -------------- |
-| DEFAULT    | 0      | 默认SRGB色域模式。 |
-| WIDE_GAMUT | 1      | 广色域模式。   |
+| DEFAULT    | 0      | 默认SRGB色域模式。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
+| WIDE_GAMUT | 1      | 广色域模式。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## WindowEventType<sup>10+</sup>
 

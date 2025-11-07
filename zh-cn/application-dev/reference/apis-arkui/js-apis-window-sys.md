@@ -135,13 +135,17 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称            | 类型                  | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type            | [WindowType](#windowtype7) | 否   | 否   | 当前属性改变的系统栏类型，仅支持类型为导航栏、状态栏的系统栏。 |
-| isEnable        | boolean                   | 否   | 是   | 当前系统栏是否显示。true表示显示；false表示不显示。默认值为true。 |
-| region          | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 是   | 当前系统栏的位置及大小。默认值为{0,0,0,0}。                           |
-| backgroundColor | string                    | 否   | 是   | 系统栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'。 默认值为'0x66000000'。|
-| contentColor    | string                    | 否   | 是   | 系统栏文字颜色。 默认值为'0xE5FFFFFF'。                |
+| type            | [WindowType](#windowtype7) | 否   | 否   | 当前属性改变的系统栏类型，仅支持类型为导航栏、状态栏的系统栏。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
+| isEnable        | boolean                   | 否   | 是   | 当前系统栏是否显示。true表示显示；false表示不显示。默认值为true。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
+| region          | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 是   | 当前系统栏的位置及大小。默认值为{0,0,0,0}。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22                           |
+| backgroundColor | string                    | 否   | 是   | 系统栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如'#00FF00'或'#FF00FF00'。 默认值为'0x66000000'。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
+| contentColor    | string                    | 否   | 是   | 系统栏文字颜色。 默认值为'0xE5FFFFFF'。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22                |
 
 ## SystemBarTintState<sup>8+</sup>
 
@@ -151,10 +155,14 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 类型                                            | 只读 | 可选 | 说明                         |
 | ---------- | --------------------------------------------------- | ---- | ---- | ---------------------------- |
-| displayId  | number                                              | 否   | 否   | 当前窗口所在屏幕id，该参数应为整数。             |
-| regionTint | Array<[SystemBarRegionTint](#systembarregiontint8)> | 否   | 否   | 当前已改变的所有系统栏信息。 |
+| displayId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 当前窗口所在屏幕id，该参数应为整数。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
+| regionTint | Array<[SystemBarRegionTint](#systembarregiontint8)> | 否   | 否   | 当前已改变的所有系统栏信息。<br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 22 |
 
 ## ScaleOptions<sup>9+</sup>
 

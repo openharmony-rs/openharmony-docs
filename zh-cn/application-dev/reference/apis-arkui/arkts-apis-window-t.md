@@ -20,6 +20,10 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
