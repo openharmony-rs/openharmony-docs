@@ -191,6 +191,8 @@ During application development, you are advised to use [on('stateChange')](../..
 
 5. Call **release()** to release the instance.
 
+    Applications must properly manage AudioRenderer instances according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
+
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 

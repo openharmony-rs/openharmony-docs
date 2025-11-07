@@ -39,12 +39,14 @@ To obtain HDR images in photo capture scenarios, set the color space to P3.
 
 For different modes, enabling HDR, setting the color space, and configuring [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera output stream [profile](arkts-apis-camera-i.md#profile) should match. For details, see the table below. For example, to enable HDR, set [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera preview and video output stream [profiles](arkts-apis-camera-i.md#profile) to **CAMERA_FORMAT_YCRCB_P010** and the color space to **2020_HLG_LIMIT**.
 
+In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
+
 **Recording Mode**
 
 | SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
 |--------------------|--------------------------|------------------|
 | SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
-| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT/BT2020_HLG_FULL |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **Photo Mode**
 

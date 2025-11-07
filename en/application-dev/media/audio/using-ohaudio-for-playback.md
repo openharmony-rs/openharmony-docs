@@ -320,6 +320,8 @@ The following walks you through how to implement simple playback:
 
     When the builder is no longer used, release related resources.
 
+    Applications must properly manage builders according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
+
     ```cpp
     OH_AudioStreamBuilder_Destroy(builder);
     ```
