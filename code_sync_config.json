@@ -18206,5 +18206,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-configuration.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"module_config_formCreate",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"standalone_config",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-page-animation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"animation_card",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/ets/widget1/pages/TransitionEffectExample1.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"TransitionEffectExample1_card",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
