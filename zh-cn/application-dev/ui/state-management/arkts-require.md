@@ -223,9 +223,9 @@ struct Index {
 @Component
 struct Child {
   // 使用@Require必须构造时传参。
-  @Require regular_value: string;
-  @Require @State state_value: string;
-  @Require @Provide provide_value: string;
+  @Require regularValue: string;
+  @Require @State stateValue: string;
+  @Require @Provide provideValue: string;
   @Require @BuilderParam initBuildTest: () => void;
   @Require @Prop initMessage: string;
 
