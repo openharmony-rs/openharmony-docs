@@ -1,5 +1,12 @@
 # 日历账户管理
 
+<!--Kit: Calendar Kit-->	
+<!--Subsystem: Applications-->	
+<!--Owner: @qq_42718467-->	
+<!--Designer: @huangxinwei-->	
+<!--Tester: @z30055209-->	
+<!--Adviser: @ge-yafang-->
+
 日历账户‌用于存储和管理个人或团队的日程，通过日历账户，用户可以方便地查看、编辑和共享日程信息。
 
 日历管理器[CalendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarmanager)用于管理日历账户[Calendar](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendar)。日历账户主要包含账户信息[CalendarAccount](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendaraccount)和配置信息[CalendarConfig](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarconfig)。
