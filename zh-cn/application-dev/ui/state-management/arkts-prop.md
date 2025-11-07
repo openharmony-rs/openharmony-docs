@@ -465,6 +465,10 @@ class Book {
 // ···
 ```
 
+``` TypeScript
+// ···
+```
+
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
 ### 装饰Map类型变量
