@@ -43,25 +43,6 @@
    
  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
- ``` TypeScript
- @Builder
- export function buildText(params: Params) {
-   Menu() {
-     MenuItem({ startIcon: $r('app.media.app_icon') }).width(32).height(32).borderRadius(10)
-     MenuItem({ content: 'This is a Menu title 1' })
-     MenuItem({ content: 'This is a Menu title 2' })
-     MenuItem({ content: 'confirm' }).onClick(() => {
-       hilog.error(0x0000, 'globalOpenMenu', 'confirm button click');
-     })
-     MenuItem({ content: 'cancel' }).onClick(() => {
-       hilog.info(0x0000, 'globalOpenMenu', 'cancel button click');
-     })
-   }
- }
- 
- let contentNode: ComponentContent<Object> =
-   new ComponentContent(uiContext, wrapBuilder(buildText), message, { nestingBuilderSupported: true });
- ```
  
 
 
