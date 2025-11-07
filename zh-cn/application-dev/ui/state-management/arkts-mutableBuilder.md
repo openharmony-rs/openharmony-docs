@@ -1,18 +1,16 @@
-# mutableBuilder：动态全局@Builder封装
+# mutableBuilder：实现全局@Builder动态更新
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
- 当在一个自定义组件内使用多个全局\@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrappBuilder不支持动态切换@Builder，引入mutableBuilder支持全局@Builder的动态切换。
-
-  在阅读本文档前，建议阅读：[@Builder](./arkts-builder.md)和[wrapBuilder](./arkts-wrapBuilder.md)。
+ 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrappBuilder不支持动态切换@Builder，引入[mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
 
 > **说明：**
 >
-> 从API version 22开始，开发者可以使用mutableBuilder。
+> 从API version 22开始，开发者可以使用mutableBuilder实现全局@Builder的动态切换。
 >
 > 从API version 22开始，mutableBuilder支持在原子化服务中使用。
 
@@ -55,8 +53,7 @@ struct Index {
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个MutableBuilder对象。
-
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MuableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
@@ -86,19 +83,30 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
 2. MutableBuilder对象的builder属性方法仅限在自定义组件内部使用。
 
-3. 不建议跟wrapBuilder混合使用，因为mutableBuilder创建的对象类型是MutableBuilder类型，可能会导致动态刷新功能异常。
+3. 不建议与wrapBuilder混合使用，因为mutableBuilder创建的对象类型是MutableBuilder类型，会导致不符合预期的更新。
 
 如下为不推荐的用法：
 
 ```ts
 // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
 @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
-
-Column().onClick(() => {
-    this.switchingBuilder = wrapBuilder(buttonBuilder);  // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象
-    this.switchingBuilder = mutableBuilder(buttonBuilder); // 推荐用法
+// 不支持将MutableBuilder类型的变量赋值为undefined或null，会导致运行时crash
+@State switchingBuilder: MutableBuilder<[MutableBinding]> | undefined | null = null; 
+Button(`MutableBuilder`).onClick(() => {
+  // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象，赋值后会将textBuilder动态切换成buttonBuilder
+  this.switchingBuilder = wrapBuilder(buttonBuilder);  
 })
+```
 
+如下为推荐用法：
+```ts
+// 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
+@State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+
+Button(`MutableBuilder`).onClick(() => {
+  // 赋值会将wrapBuilder中textBuilder中动态切换成buttonBuilder
+  this.switchingBuilder = mutableBuilder(buttonBuilder); // 推荐用法
+})
 ```
 
 ## 动态更改全局@Builder实例

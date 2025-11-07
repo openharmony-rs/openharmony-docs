@@ -72,9 +72,9 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 ## IvParamsSpec
 
-Encapsulates the parameters for encryption or decryption. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
-This class is applicable to block cipher modes that require an IV, such as CBC, CTR, OFB, and CFB.
+This class is applicable to block cipher modes that require an IV, such as CBC, CTR, OFB, CFB, and Poly1305.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -88,7 +88,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 > **NOTE**
 >
-> Before passing **IvParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
 
 ## GcmParamsSpec
 
@@ -110,7 +110,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 > **NOTE**
 >
-> 1. Before passing **GcmParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> 1. Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
 > 2. The Crypto framework imposes no additional restrictions on the IV of 1 to 16 bytes. However, the operation result depends on the underlying OpenSSL support.
 > 3. If **aad** is not required or the **aad** length is 0, you can set its **data** attribute to an empty Uint8Array in the **aad: { data: new Uint8Array() }** format when constructing **GcmParamsSpec**.
 
@@ -134,7 +134,29 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 > **NOTE**
 >
-> Before passing **GcmParamsSpec** to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+
+## Poly1305ParamsSpec<sup>22+</sup>
+
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+
+Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Cipher
+
+| Name   | Type                 | Read-Only| Optional| Description                                                        |
+| ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 12 bytes.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of any bytes.                            |
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.|
+
+> **NOTE**
+>
+> Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
+>
+> When the Poly1305 mode is used for encryption, you need to extract the last 16 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [Poly1305ParamsSpec](#poly1305paramsspec22) for [init()](#init-1) or [initSync()](#initsync12) during decryption.
 
 ## CryptoMode
 
@@ -898,6 +920,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [DataBlob](#datablob) | Key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -946,10 +969,10 @@ async function testGenerateAesKeyFun() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
   let key = await symKeyGenerator.generateSymKey();
   let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);    // Display key content.
+  console.info('key blob: '+ encodedKey.data);
   key.clearMem();
   encodedKey = key.getEncoded();
-  console.info('key blob: ' + encodedKey.data);  // Display all 0s.
+  console.info('key blob: ' + encodedKey.data);
 }
 ```
 
@@ -1024,7 +1047,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.pubKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
@@ -1168,7 +1191,7 @@ async function testClearMem() {
       let priKey = keyPair.priKey;
       let returnBlob = priKey.getEncodedDer('PKCS8');
       console.info('returnBlob data: ' + returnBlob.data);
-      priKey.clearMem(); // For the asymmetric private key, clearMem() releases the internal key struct. After clearMem is executed, getEncoded() is not supported.
+      priKey.clearMem(); // For an asymmetric private key, clearMem() releases the internal key structure. After clearMem is executed, getEncoded() is not supported.
     });
 }
 ```
@@ -1237,7 +1260,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.priKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
@@ -1320,6 +1343,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 | string | Key data obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1383,6 +1407,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 | string | Key data obtained. If **config** is specified, the key obtained is encoded.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1479,6 +1504,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [SymKeyGenerator](#symkeygenerator) | **symKeyGenerator** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1539,6 +1565,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[SymKey](#symkey)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the symmetric key generated. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1579,6 +1606,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[SymKey](#symkey)> | Promise used to return the symmetric key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1625,6 +1653,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 | [SymKey](#symkey) | Symmetric key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message     |
@@ -1729,6 +1758,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[SymKey](#symkey)> | Promise used to return the symmetric key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                         |
@@ -1792,6 +1822,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 | [SymKey](#symkey) | Symmetric key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                              |
@@ -1845,6 +1876,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [AsyKeyGenerator](#asykeygenerator) | **AsyKeyGenerator** instance created. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1896,6 +1928,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1938,6 +1971,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -1978,6 +2012,7 @@ Generates an asymmetric key pair randomly. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2025,6 +2060,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2078,6 +2114,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2129,6 +2166,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2195,6 +2233,7 @@ Converts data into an asymmetric key. This API uses a promise to return the resu
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2246,7 +2285,7 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-Converts data into an asymmetric key. This API uses a promise to return the result.
+Converts data into an asymmetric key pair. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API uses a promise to return the result.
 
 > **NOTE**
 > 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
@@ -2273,6 +2312,7 @@ Converts data into an asymmetric key. This API uses a promise to return the resu
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2344,6 +2384,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2398,7 +2439,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-Converts data into an asymmetric key pair. This API returns the result synchronously.
+Converts data into an asymmetric key pair. Encrypted private keys are supported. The private key password is synchronously passed to decrypt the private key. This API is synchronous.
 
 > **NOTE**
 > The precautions for using **convertPemKeySync** are the same as those for [convertPemKey](#convertpemkey18).
@@ -2422,6 +2463,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2495,6 +2537,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | Returns the **AsyKeyGenerator** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2533,7 +2576,7 @@ function genDsa1024KeyPairSpecBigE() {
   return dsaKeyPairSpec;
 }
 
-let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
 let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
 ```
 
@@ -2574,6 +2617,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -2614,7 +2658,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
     if (err) {
@@ -2647,6 +2691,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2687,7 +2732,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
   keyGenPromise.then(keyPair => {
@@ -2702,7 +2747,7 @@ function testGenerateKeyPair()
 
 generateKeyPairSync(): KeyPair
 
-Generates an asymmetric key pair using this asymmetric key generator. This API returns the result synchronously.
+Generates a public key using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used to create the key generator, a key pair will be randomly generated. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain a key pair that is consistent with the specified key parameters.
 
@@ -2717,6 +2762,7 @@ If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used t
 | [KeyPair](#keypair) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2758,7 +2804,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPairSync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
@@ -2795,6 +2841,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2835,7 +2882,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
@@ -2868,6 +2915,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[PriKey](#prikey)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2909,7 +2957,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
   keyGenPromise.then(priKey => {
@@ -2924,7 +2972,7 @@ function testGeneratePriKey()
 
 generatePriKeySync(): PriKey
 
-Generates a private key using this asymmetric key generator. This API returns the result synchronously.
+Generates a public key using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, a private key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the private key from the key pair generated.
 
@@ -2939,6 +2987,7 @@ If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to 
 | [PriKey](#prikey) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -2979,7 +3028,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
@@ -3015,6 +3064,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the key pair obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3055,7 +3105,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
     if (err) {
@@ -3088,6 +3138,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[PubKey](#pubkey)> | Promise used to return the key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3129,7 +3180,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
   keyGenPromise.then(pubKey => {
@@ -3159,6 +3210,7 @@ If [PUBLIC_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the k
 | [PubKey](#pubkey) | Asymmetric key pair generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3199,7 +3251,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
@@ -3243,6 +3295,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [ECCCommonParamsSpec](#ecccommonparamsspec10) | ECC common parameters generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3295,6 +3348,7 @@ Converts the specified point data into a **Point** object based on the curve nam
 | [Point](#point10) | **Point** object obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3339,6 +3393,7 @@ Obtains the point data in the specified format from a **Point** object. Currentl
 | Uint8Array | Point data in the specified format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3399,6 +3454,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [DHCommonParamsSpec](#dhcommonparamsspec11) | DH common parameters generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3450,6 +3506,7 @@ Generates SM2 ciphertext in ASN.1 format.
 | [DataBlob](#datablob) | SM2 ciphertext in ASN.1 format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3502,6 +3559,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 | [SM2CipherTextSpec](#sm2ciphertextspec12) | SM2 ciphertext parameters obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                        |
@@ -3557,6 +3615,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [Cipher](#cipher) | [Cipher](#cipher) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -3628,6 +3687,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                                |
@@ -3666,6 +3726,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                         |
@@ -3696,6 +3757,7 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 | params | [ParamsSpec](#paramsspec)  \| null| Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -3747,6 +3809,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the result. If the data is updated successfully, **err** is **undefined** and **data** is **DataBlob**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                   |
@@ -3793,6 +3856,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the **DataBlob** (containing the encrypted or decrypted data).|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message                                    |
@@ -3829,6 +3893,7 @@ See **NOTE** in **update()** for other precautions.
 | [DataBlob](#datablob) | Encryption/decryption result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message               |
@@ -3938,7 +4003,7 @@ function cipherByCallback() {
 
 doFinal(data: DataBlob | null): Promise\<DataBlob>
 
- (1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in by **doFinal()** to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
+(1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in by **doFinal()** to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
 
 - Symmetric encryption in GCM and CCM mode: The result consists of the ciphertext and **authTag** (the last 16 bytes for GCM and the last 12 bytes for CCM). If **data** in **doFinal** is null, the result of **doFinal** is **authTag**.<br>During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
@@ -4046,7 +4111,7 @@ The output of **doFinalSync()** varies with the symmetric block cipher mode in u
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **updateSync()** and **doFinalSync()** procedures the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** in **doFinalSync()** is **null**, the result of **doFinalSync()** is **authTag**. 
 
   During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
--  For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **updateSync()** and **doFinalSync()** throughout the process will yield the complete plaintext or ciphertext.
+- For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **updateSync()** and **doFinalSync()** throughout the process will yield the complete plaintext or ciphertext.
 
 (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API returns the encrypted or decrypted data synchronously. If a large amount of data is to be processed, call **doFinalSync()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
 
@@ -4146,6 +4211,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | Uint8Array | Yes  | Value of the parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4191,6 +4257,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | string \| Uint8Array | Returns the value of the cipher parameter obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4313,6 +4380,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4349,6 +4417,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4377,6 +4446,7 @@ The **Sign** class does not support repeated use of **initSync**.
 | priKey | [PriKey](#prikey)  | Yes  | Private key used for the initialization.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4416,6 +4486,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4460,6 +4531,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4502,6 +4574,7 @@ This API can be called only after the [Sign](#sign) instance is initialized by u
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4531,6 +4604,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4562,9 +4636,10 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type          | Description         |
 | -------------- | ------------- |
-| Promise\<[DataBlob](#datablob)> | Promise used to return the signature.|
+| Promise\<[DataBlob](#datablob)> | Signature.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4597,6 +4672,7 @@ Signs the data. This API returns the result synchronously.
 | [DataBlob](#datablob) | Signature.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4722,6 +4798,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | number \| Uint8Array<sup>11+</sup> | Yes  | Value of the signing parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4768,6 +4845,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | string \| number | Returns the value of the signing parameter obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4817,6 +4895,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Verify | Returns the **Verify** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4883,6 +4962,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4917,6 +4997,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4949,6 +5030,7 @@ Initializes the **Verify** instance with a public key. This API returns the resu
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -4987,6 +5069,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5030,6 +5113,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5071,6 +5155,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 | void | No value is returned.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5101,6 +5186,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5136,6 +5222,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<boolean> | Promise used to return the result. **true**: passed; **false**: failed.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5169,6 +5256,7 @@ Verifies the signature. This API returns the verification result synchronously.
 | boolean | Signature verification result. **true**: passed; **false**: failed.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5305,6 +5393,7 @@ Recovers the original data from a signature. This API uses a promise to return t
 | Promise\<[DataBlob](#datablob)  \| null> | Data restored.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5379,6 +5468,7 @@ Recovers the original data from a signature. This API returns the result synchro
 | [DataBlob](#datablob)  \| null | Data restored.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5414,6 +5504,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | itemValue | number \| Uint8Array<sup>11+</sup> | Yes  | Value of the signature verification parameter to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5511,6 +5602,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | KeyAgreement | Returns the **KeyAgreement** instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5564,6 +5656,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the shared key.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5599,6 +5692,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the shared secret generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5697,7 +5791,7 @@ async function testGenerateSecretSync() {
 
 createMd(algName: string): Md
 
-Creates an **Md** instance for message digest operations.
+Creates an **Md** instance for MD operations.
 
 For details about the supported specifications, see [Supported Algorithms and Specifications](../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
@@ -5720,6 +5814,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Md   | Returns the [Md](#md) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -5784,6 +5879,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5823,6 +5919,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5852,6 +5949,7 @@ Updates the MD digest status. This API returns the result synchronously. **updat
 | input  | [DataBlob](#datablob) | Yes  | Data to pass in.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5881,6 +5979,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 
@@ -5927,6 +6026,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -5966,6 +6066,7 @@ Generates an MD. This API returns the result synchronously.
 | [DataBlob](#datablob) | MD generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6009,6 +6110,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | number | MD length obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6053,6 +6155,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Mac  | Returns the [Mac](#mac) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -6100,6 +6203,7 @@ For details about the supported specifications, see [MAC Overview and Algorithm 
 | Mac  | [Mac](#mac) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -6168,6 +6272,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6201,6 +6306,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6226,6 +6332,7 @@ Initializes the MAC computation with a symmetric key. This API returns the resul
 | key    | [SymKey](#symkey) | Yes  | Symmetric key obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6258,6 +6365,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<void>  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6295,6 +6403,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6325,6 +6434,7 @@ Updates the MAC status. This API returns the result synchronously.
 
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6352,6 +6462,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6403,6 +6514,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6448,6 +6560,7 @@ Finishes the MAC computation. This API returns the result synchronously.
 | [DataBlob](#datablob) | MAC computation result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6497,6 +6610,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | number | MAC length obtained.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6557,6 +6671,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [Random](#random) | Returns the [Random](#random) instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message    |
@@ -6615,6 +6730,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return a **DataBlob** object.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6665,6 +6781,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the result.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6713,6 +6830,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 |[DataBlob](#datablob) | Returns the generated random number.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6745,13 +6863,14 @@ try {
 
 enableHardwareEntropy(): void
 
-Enable the hardware entropy source.
+Enables the hardware entropy source.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Rand
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -6803,6 +6922,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | seed   | [DataBlob](#datablob) | Yes  | Seed to set.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message          |
@@ -6856,6 +6976,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | [Kdf](#kdf11) | Key derivation function instance created.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6908,6 +7029,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the derived key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -6985,6 +7107,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Promise\<[DataBlob](#datablob)> | Promise used to return the derived key generated.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -7060,6 +7183,7 @@ Generates a key based on the specified key derivation parameters. This API retur
 | [DataBlob](#datablob) | Key derived.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -7130,6 +7254,7 @@ Generates r and s from the SM2 signature data in ASN1 DER format.
 | [EccSignatureSpec](#eccsignaturespec20) | struct that contains r and s.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |
@@ -7184,6 +7309,7 @@ Converts an SM2 signature (r, s) to the ASN1 DER format.
 | Uint8Array | Signature data in ASN1 DER format.|
 
 **Error codes**
+
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 | ID| Error Message              |

@@ -36,7 +36,7 @@ Column() {
 因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
-特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也互相存在遮盖关系。
+特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
 <!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->

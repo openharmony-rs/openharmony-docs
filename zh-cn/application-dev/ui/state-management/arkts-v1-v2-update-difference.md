@@ -31,11 +31,12 @@
 - 对于V1，具有一层观察能力，可观察第一层对象属性的变化、第一层数据项的变化；
 - 对于V2，具有深度观察能力，能观察到嵌套对象属性或数组项变化；
 
-下面举例说明状态变量在@Component或@ComponentV2中的修改，触发UI刷新时，V1和V2的差异。
+下面举例说明状态变量在[@Component](./arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-new-componentV2.md)中的修改，触发UI刷新时，V1和V2的差异。
 
 ```typescript
 // 如下示例代码以@ObservedV2为例，如果是V1，则对应的是@Observed和@Track。
-@ObservedV2 class ObsObjA {
+@ObservedV2 
+class ObsObjA {
   @Trace propA: string = 'propA';
   @Trace obsObjB: ObsObjB = new ObsObjB();
   constructor(propA: string) {
@@ -43,11 +44,13 @@
   }
 }
 
-@ObservedV2 class ObsObjB {
+@ObservedV2 
+class ObsObjB {
   @Trace propB: string = 'propB';
 }
 
-@ObservedV2 class ObsObjC {
+@ObservedV2 
+class ObsObjC {
   @Trace propC: string = 'propC';
   constructor(propC: string) {
     this.propC = propC;
