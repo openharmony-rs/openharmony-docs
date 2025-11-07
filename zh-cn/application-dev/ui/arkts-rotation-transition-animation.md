@@ -89,6 +89,51 @@ struct rotation {
 监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG: string = 'EntryAbility';
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ···
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+    let mainWindow: window.Window;
+    try {
+      mainWindow = windowStage.getMainWindowSync();
+      let displayClass: display.Display = display.getDefaultDisplaySync();
+      AppStorage.setOrCreate('orientation', displayClass.orientation);
+      // 监听窗口的windowsSizeChange事件，旋转屏时会触发该事件
+      mainWindow.on('windowSizeChange', (data) => {
+        hilog.info(DOMAIN, TAG, 'Succeeded in enabling the listener for window size changes. Data: ' + data);
+        let displayClass: display.Display | null = null;
+        try {
+          displayClass = display.getDefaultDisplaySync();
+          hilog.info(DOMAIN, TAG, 'display orientation is ' + displayClass.orientation);
+          // 获取屏幕的显示方向
+          AppStorage.set('orientation', displayClass.orientation);
+        } catch {
+          return;
+        }
+      })
+    } catch {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'error');
+      return;
+    }
+    // ···
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
+    });
+  }
+
+// ···
+```
+
 需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。
 ```json
 "orientation": "auto_rotation",
