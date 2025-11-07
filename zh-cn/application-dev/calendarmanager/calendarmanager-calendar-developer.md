@@ -220,3 +220,15 @@
 9. 删除指定的日历账户，删除账户后，该账户下的所有日程会全部删除。
 
 	 <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     if (!calendar || calendar === null) {
+       hilog.error(DOMAIN, 'testTag', 'Failed to delete calendar. calendar is null');
+       return;
+     }
+     calendarMgr?.deleteCalendar(calendar).then(() => {
+       hilog.info(DOMAIN, 'testTag', '%{public}s', "Succeeded in deleting calendar");
+     }).catch((err: BusinessError) => {
+       hilog.error(DOMAIN, 'testTag', `Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
+     });
+     ```
