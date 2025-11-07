@@ -473,3 +473,168 @@ struct ListItemGroupExample {
 ```
 
 ![zh-cn_image_listitemgroup_example03](figures/zh-cn_image_listitemgroup_example03.gif)
+
+### 示例4（设置多列布局）
+
+该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的[lanes](./ts-container-list.md#lanes9)属性实现多列布局。
+
+ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+
+class HeadBuilderParams {
+  text: string | Resource;
+
+  constructor(text: string | Resource) {
+    this.text = text;
+  }
+}
+
+class FootBuilderParams {
+  num: number | Resource;
+
+  constructor(num: number | Resource) {
+    this.num = num;
+  }
+}
+
+@Builder
+function itemHead(params: HeadBuilderParams) {
+  Text(params.text)
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Builder
+function itemFoot(params: FootBuilderParams) {
+  Text('共' + params.num.toString() + '节课')
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Component
+struct MyItemGroup {
+  item: TimeTable = { title: '', projects: [] };
+  header?: ComponentContent<HeadBuilderParams> = undefined;
+  footer?: ComponentContent<FootBuilderParams> = undefined;
+  headerParam = new HeadBuilderParams(this.item.title);
+  footerParam = new FootBuilderParams(this.item.projects.length);
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
+
+  aboutToAppear(): void {
+    this.header = new ComponentContent(this.getUIContext(), wrapBuilder(itemHead), this.headerParam);
+    this.footer = new ComponentContent(this.getUIContext(), wrapBuilder(itemFoot), this.footerParam);
+    this.itemArr = new ProjectsDataSource(this.item.projects);
+  }
+
+  GetHeader() {
+    this.header?.update(new HeadBuilderParams(this.item.title));
+    return this.header;
+  }
+
+  GetFooter() {
+    this.footer?.update(new FootBuilderParams(this.item.projects.length));
+    return this.footer;
+  }
+
+  build() {
+    ListItemGroup({
+      headerComponent: this.GetHeader(),
+      footerComponent: this.GetFooter()
+    }) {
+      LazyForEach(this.itemArr, (project: string) => {
+        ListItem() {
+          // 修改ListItem样式以适应多列布局
+          Column() {
+            Text(project)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80)
+          .padding(8)
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor($r('sys.color.background_secondary'))
+          .borderRadius(12)
+          .shadow({
+            radius: 4,
+            color: '#20000000',
+            offsetX: 0,
+            offsetY: 2
+          })
+        }
+      }, (item: string) => item)
+    }
+    .divider({
+      strokeWidth: 2,
+      color: $r('sys.color.background_tertiary'),
+      startMargin: 20,
+      endMargin: 20
+    })
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: '星期一',
+        projects: ['语文', '数学', '英语', '物理', '化学', '生物']
+      },
+      {
+        title: '星期二',
+        projects: ['历史', '地理', '政治', '体育', '美术', '音乐']
+      },
+      {
+        title: '星期三',
+        projects: ['计算机', '编程', '算法', '数据结构', '网络']
+      },
+      {
+        title: '星期四',
+        projects: ['文学', '写作', '阅读', '书法']
+      },
+      {
+        title: '星期五',
+        projects: ['实验', '生活', '奥数', '高数', '中医']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  build() {
+    Column() {
+      List({ space: 15 }) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable) => {
+          MyItemGroup({ item: item })
+        }, (item: TimeTable) => item.title)
+      }
+      .lanes(3) // 设置3列布局
+      .alignListItem(ListItemAlign.Center) // 交叉轴居中对齐
+      .layoutWeight(1)
+      .scrollBar(BarState.Auto)
+      .width('100%')
+      .margin(10)
+    }
+    .backgroundColor($r('sys.color.background_primary'))
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+}
+```
+
+![list_multicolumn_layout](figures/list_multicolumn_layout.gif)
