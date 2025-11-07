@@ -951,6 +951,94 @@ struct SetSampleNestedChild {
 
 <!-- @[ObjectLink_Supports_Union_Types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectLinkSupportsUnionTypes.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+
+@Observed
+class Source {
+  public source: number;
+
+  constructor(source: number) {
+    this.source = source;
+  }
+}
+
+@Observed
+class Data {
+  public data: number;
+
+  constructor(data: number) {
+    this.data = data;
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State count: Source | Data | undefined = new Source(10);
+
+  build() {
+    Column() {
+      Child({ count: this.count })
+
+      Button('change count property')
+        .margin(10)
+        .onClick(() => {
+          // 判断count的类型，做属性的更新
+          if (this.count instanceof Source) {
+            this.count.source += 1;
+          } else if (this.count instanceof Data) {
+            this.count.data += 1;
+          } else {
+            hilog.info(DOMAIN, TAG, `count is undefined, cannot change property`);
+          }
+        })
+
+      Button('change count to Source')
+        .margin(10)
+        .onClick(() => {
+          // 赋值为Source的实例
+          this.count = new Source(100);
+        })
+
+      Button('change count to Data')
+        .margin(10)
+        .onClick(() => {
+          // 赋值为Data的实例
+          this.count = new Data(100);
+        })
+
+      Button('change count to undefined')
+        .margin(10)
+        .onClick(() => {
+          // 赋值为undefined
+          this.count = undefined;
+        })
+    }.width('100%')
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink count: Source | Data | undefined;
+
+  build() {
+    Column() {
+      Text(`count is instanceof ${this.count instanceof Source ? 'Source' :
+        this.count instanceof Data ? 'Data' : 'undefined'}`)
+        .fontSize(30)
+        .margin(10)
+
+      Text(`count's property is  ${this.count instanceof Source ? this.count.source : this.count?.data}`).fontSize(15)
+
+    }.width('100%')
+  }
+}
+```
+
 ![ObjectLink-support-union-types](figures/ObjectLink-support-union-types.gif)
 
 ## 常见问题
