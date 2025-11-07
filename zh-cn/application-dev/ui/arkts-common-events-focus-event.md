@@ -474,6 +474,65 @@ export struct OnFocusBlur {
 
 <!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_FocusAndBlurExample]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_FocusAndBlurExample';
+
+@Entry
+@Component
+export struct FocusAndBlurExample {
+  build() {
+    NavDestination() {
+      Column() {
+        Column({ space: 5 }) {
+          Row() { // 父节点Row1
+            Button('Button1') // 子节点Button1
+              .width(140)
+              .height(45)
+              .margin(5)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onBlur');
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onBlur');
+          })
+
+          Row() { // 父节点Row2
+            Button('Button2') // 子节点Button2
+              .width(140)
+              .height(45)
+              .margin(5)
+              .onFocus(() => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onFocus');
+              })
+              .onBlur(() => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onBlur');
+              })
+          }
+          .onFocus(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
+          })
+          .onBlur(() => {
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onBlur');
+          })
+        }.width('100%').margin({ top: 5 })
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 Button1走焦到Button2，日志打印顺序：
 ```ts
 Row1 onBlur
