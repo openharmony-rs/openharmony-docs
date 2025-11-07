@@ -297,3 +297,11 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 8. 按照日程id进行指定日程的删除。可以通过`deleteEvent()`接口进行单个日程的删除，也可以通过`deleteEvents()`接口批量删除指定日程，此处以删除单个指定日程为例。
 
 	<!-- @[calendarEvent_deleteEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    calendar.deleteEvent(eventId).then(() => {
+      hilog.info(DOMAIN, 'testTag', "Succeeded in deleting event");
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, 'testTag', `Failed to delete event. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```
