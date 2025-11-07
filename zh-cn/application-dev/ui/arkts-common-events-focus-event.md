@@ -766,6 +766,34 @@ tabStop(isTabStop: boolean)
 
 <!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct TabStopExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        Button('Button1')
+          .width(140)
+          .height(45)
+          .margin(5)
+        Column() {
+          Button('Button2')
+            .width(140)
+            .height(45)
+            .margin(5)
+          Button('Button3')
+            .width(140)
+            .height(45)
+            .margin(5)
+        }.tabStop(true)
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 ![TabStop_Focus_1.gif](figures/TabStop_Focus_1.gif)
 
 上述示例包含以下2步：
