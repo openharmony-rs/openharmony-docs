@@ -82,20 +82,20 @@ struct Index {
 > 当UI刷新时，会执行组件的属性设置方法，利用这一机制可以通过观察`getFontSize`方法是否被调用来判断当前组件是否刷新。
 
 - UI首次渲染完成，观察到输出如下日志：
-```
-Component 1 render
-Component 2 render
-```
+  ```
+  Component 1 render
+  Component 2 render
+  ```
 - 当点击`Button('change name')`时，即使只修改了`info.name`，观察日志发现两个Text组件仍会重新渲染。组件```Text(`age: ${this.info.age}`)```并未使用`name`属性，但仍因为`info.name`的改变而刷新，因此这次刷新是冗余的。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
--  同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
+  ```
+  Component 1 render
+  Component 2 render
+  ```
+- 同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
+  ```
+  Component 1 render
+  Component 2 render
+  ```
 
 造成上述冗余刷新的根本原因是：状态管理V1中\@State等装饰器无法精准观察类属性的访问与变更。为了实现类对象属性的精准观察，引入\@Track装饰器。
 
@@ -121,78 +121,6 @@ Component 2 render
 
 <!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) -->
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateTrack]';
-
-class LogTrack {
-  @Track public str1: string;
-  @Track public str2: string;
-
-  constructor(str1: string) {
-    this.str1 = str1;
-    this.str2 = 'World';
-  }
-}
-
-class LogNotTrack {
-  public str1: string;
-  public str2: string;
-
-  constructor(str1: string) {
-    this.str1 = str1;
-    this.str2 = 'World';
-  }
-
-  getUIContext() {
-    throw new Error('Method not implemented.');
-  }
-}
-
-@Entry
-@Component
-struct AddLog {
-  @State logTrack: LogTrack = new LogTrack('Hello');
-  @State logNotTrack: LogNotTrack = new LogNotTrack(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.state_hello').id));
-
-  isRender(index: number) {
-    hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
-    return 50;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.logTrack.str1) // Text1
-          .id('str1')
-          .fontSize(this.isRender(1))
-          .fontWeight(FontWeight.Bold)
-        Text(this.logTrack.str2) // Text2
-          .fontSize(this.isRender(2))
-          .fontWeight(FontWeight.Bold)
-        Button('change logTrack.str1')
-          .id('str2')
-          .onClick(() => {
-            this.logTrack.str1 = 'Bye';
-          })
-        Text(this.logNotTrack.str1) // Text3
-          .fontSize(this.isRender(3))
-          .fontWeight(FontWeight.Bold)
-        Text(this.logNotTrack.str2) // Text4
-          .fontSize(this.isRender(4))
-          .fontWeight(FontWeight.Bold)
-        Button('change logNotTrack.str1')
-          .onClick(() => {
-            this.logNotTrack.str1 = this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.state_bye').id);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 
 在上面的示例中：
