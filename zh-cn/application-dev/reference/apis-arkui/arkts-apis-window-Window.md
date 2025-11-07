@@ -2151,7 +2151,8 @@ export default class EntryAbility extends UIAbility {
     try {
       let systemBarProperty = mainWindow.getWindowSystemBarProperties();
       console.info('Succeeded in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
-    } catch (err: Error) {
+    } catch (exception) {
+      let err = exception as BusinessError;
       console.error(`Failed to get system bar properties. Code: ${err.code}, message: ${err.message}`);
     }
   }
@@ -9197,8 +9198,9 @@ export default class EntryAbility extends UIAbility {
     try {
       let gestureBackEnabled: boolean = mainWindow.isGestureBackEnabled();
       console.info(`Succeeded in obtaining gesture back enabled status: ${gestureBackEnabled}`);
-    } catch (exception: Error) {
-      console.error(`Failed to get gesture back enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to get gesture back enabled status. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
