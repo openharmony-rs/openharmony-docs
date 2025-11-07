@@ -18366,5 +18366,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/uiability-startup-adjust.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":353,
+						"name":"domainVerify_true",
+						"start_line":16
+					},
+					{
+						"end_line":352,
+						"name":"pull_results",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"want_page",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage2.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"want_ability",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
