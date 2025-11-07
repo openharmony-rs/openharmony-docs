@@ -20341,5 +20341,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-popup-and-menu-components-uicontext-menu.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets",
+				"functions":[
+					{
+						"end_line":114,
+						"name":"open_menu",
+						"start_line":103
+					},
+					{
+						"end_line":94,
+						"name":"content_node",
+						"start_line":91
+					},
+					{
+						"end_line":83,
+						"name":"build_text",
+						"start_line":34
+					},
+					{
+						"end_line":154,
+						"name":"frame_node",
+						"start_line":151
+					},
+					{
+						"end_line":98,
+						"name":"menu_options",
+						"start_line":95
+					},
+					{
+						"end_line":129,
+						"name":"update_menu",
+						"start_line":118
+					},
+					{
+						"end_line":142,
+						"name":"close_menu",
+						"start_line":133
+					}
+				]
+			}
+		]
 	}
 ]
