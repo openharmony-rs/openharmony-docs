@@ -343,6 +343,33 @@ Flex多行组件布局，组件大小一致，走焦正常。
 
 <!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct ProjectAreaFocusFlexExample {
+  build() {
+    NavDestination() {
+    Column() {
+      Column({ space: 5 }) {
+        Text('Wrap').fontSize(12).width('90%')
+        // 子组件多行布局
+        Flex({ wrap: FlexWrap.Wrap }) {
+          Button('1').width(145).height(50).margin(5)
+          Button('2').width(145).height(50).margin(5)
+          Button('3').width(150).height(50).margin(5)
+          Button('4').width(160).height(50).margin(5)
+          Button('5').width(170).height(50).margin(5)
+        }
+        .width('90%')
+        .padding(10)
+      }.width('100%').margin({ top: 5 })
+    }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方3、4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
