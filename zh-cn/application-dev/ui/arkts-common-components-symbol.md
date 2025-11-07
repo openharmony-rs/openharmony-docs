@@ -39,6 +39,40 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 
   <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
+  ``` TypeScript
+  Row() {
+    Column() {
+      Text('Light')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_trash'))
+          .fontWeight(FontWeight.Lighter)
+          .fontSize(96)
+      }
+    }
+  
+    Column() {
+      Text('Normal')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_trash'))
+          .fontWeight(FontWeight.Normal)
+          .fontSize(96)
+      }
+    }
+  
+    Column() {
+      Text('Bold')
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_trash'))
+          .fontWeight(FontWeight.Bold)
+          .fontSize(96)
+      }
+    }
+  }
+  ```
+  
   ![symbolSpan_multi_fontWeight_trash](figures/symbol_multi_fontweight_trash.png)
 
 - 通过[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
