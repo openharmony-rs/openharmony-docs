@@ -29,6 +29,46 @@
 参考[事件冒泡](./arkts-interaction-basic-principles.md#事件冒泡)了解冒泡机制，以下是一个简单示例，实现了只要点击在子组件区域内，就阻止父组件接收触摸事件：
 <!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_PreventBubbling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_PreventBubbling';
+
+@Entry
+@ComponentV2
+struct PreventBubbling {
+  build() {
+    RelativeContainer() {
+      Column() { // 父组件
+        // app.string.preventEvent资源文件中的value值为'如果点中了我，就阻止父组件收到触摸事件'
+        Text($r('app.string.preventEvent'))
+          .fontColor(Color.White)
+          .height('40%')
+          .width('80%')
+          .backgroundColor(Color.Brown)
+          .alignSelf(ItemAlign.Center)
+          .padding(10)
+          .margin(20)
+          .onTouch((event: TouchEvent) => {
+            event.stopPropagation(); // 子组件优先接收到触摸事件后，阻止父组件接收事件
+          })
+      }
+      .justifyContent(FlexAlign.End)
+      .backgroundColor(Color.Green)
+      .height('100%')
+      .width('100%')
+      .onTouch((event: TouchEvent) => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'touch event received on parent');
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 > **说明：**
 >
 > 对事件的冒泡进行控制不会影响手势对触摸事件的接收与处理，因此需要分别考虑这两者。
