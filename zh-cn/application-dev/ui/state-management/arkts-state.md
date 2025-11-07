@@ -691,6 +691,34 @@ export class Model {
 【示例1】
 <!-- @[state_problem_state_ui_refresh_example_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample01.ets) -->
 
+``` TypeScript
+class Info {
+  public address: string = 'Hangzhou';
+}
+
+@Entry
+@Component
+struct Test {
+  @State message: string = 'Shanghai';
+  @State info: Info = new Info();
+
+  aboutToAppear(): void {
+    this.info.address = this.message;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.message}`);
+      Text(`${this.info.address}`);
+      Button('change')
+        .onClick(() => {
+          this.info.address = 'Beijing';
+        })
+    }
+  }
+}
+```
+
 点击`Button('change')`只会触发第二个`Text`组件的刷新，因为`message`是字符串类型。字符串是值类型，点击按钮时，改变的是`info`中的`address`值，而不会影响`this.message`的值，因此第一个Text组件不会刷新。
 
 【示例2】
