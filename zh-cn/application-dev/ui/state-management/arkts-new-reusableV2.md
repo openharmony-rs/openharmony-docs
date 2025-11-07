@@ -561,6 +561,46 @@ struct ReusableV2ComponentIMonitorValue {
 
 <!-- @[Use_in_Repeat_component_If](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentIfPage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Reusablev2]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Reusablev2_';
+
+@Entry
+@ComponentV2
+struct ComponentIfPage {
+  @Local condition: boolean = true;
+
+  build() {
+    Column() {
+      // $r('app.string.EntryAbility_RecycleOrReuse')需要替换为开发者所需的字符串（图像、数字等）资源文件
+      Button($r('app.string.EntryAbility_RecycleOrReuse')).onClick(()=>{this.condition=!this.condition;}) // 点击切换回收/复用状态
+      if (this.condition) {
+        ReusableV2ComponentIf()
+      }
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2ComponentIf {
+  @Local message: string = 'Hello World';
+  aboutToRecycle() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableV2Component aboutToRecycle'); // 回收时被调用
+  }
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableV2Component aboutToReuse'); // 复用时被调用
+  }
+  build() {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
+
 ### 在Repeat组件中使用
 
 Repeat组件懒加载场景中，将会优先使用Repeat组件的缓存池，正常滑动场景、更新场景不涉及组件的回收与复用。当Repeat的缓存池需要扩充时将会向自定义组件要求新的子组件，此时如果复用池中有可复用的节点，将会进行复用。
