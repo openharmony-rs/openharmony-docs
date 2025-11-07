@@ -82,7 +82,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     },
     autoCancel: false,
   } as promptAction.CustomDialogOptions;
-  // ···
+// ···
   build() {
     NavDestination() {
       Column() {
@@ -90,9 +90,9 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
           })
-         
+
         // ···
       }
       .width('100%')
@@ -113,7 +113,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     },
     isModal: false,
   } as promptAction.CustomDialogOptions;
-  // ···
+// ···
   build() {
     NavDestination() {
       Column() {
@@ -122,7 +122,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
           })
 
         // ···
@@ -157,7 +157,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     },
     maskColor: '#33AA0000'
   } as promptAction.CustomDialogOptions;
-  // ···
+// ···
   build() {
     NavDestination() {
       Column() {
@@ -166,7 +166,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
           })
 
         // ···
@@ -184,7 +184,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 ``` TypeScript
   @State immersiveMode: ImmersiveMode = ImmersiveMode.DEFAULT;
-  // ···
+// ···
   build() {
     NavDestination() {
       Column() {
@@ -227,7 +227,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     },
     transition: TransitionEffect.OPACITY.animation({ duration: 3000 })
   } as promptAction.CustomDialogOptions;
-  // ···
+// ···
   build() {
     NavDestination() {
       Column() {
@@ -371,7 +371,7 @@ export struct CustomDialogControl {
     },
     maskColor: '#33AA0000'
   } as promptAction.CustomDialogOptions;
-  
+
   transitionOpt: promptAction.CustomDialogOptions = {
     builder: () => {
       this.myBuilder();
@@ -395,21 +395,21 @@ export struct CustomDialogControl {
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
           })
-         
+
         Button('openCustomDialog isModal:false')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
           })
 
         Button('openCustomDialog maskOpt')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
           })
 
         Button('openCustomDialog transition')
