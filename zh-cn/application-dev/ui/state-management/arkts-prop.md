@@ -394,6 +394,62 @@ struct Parent {
 
 <!-- @[prop_fourteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFourteen.ets) -->
 
+``` TypeScript
+@Observed
+class Commodity {
+  public price: number = 0;
+
+  constructor(price: number) {
+    this.price = price;
+  }
+}
+
+@Component
+struct PropChild1 {
+  @Prop fruit: Commodity; // 未进行本地初始化
+
+  build() {
+    Text(`PropChild1 fruit ${this.fruit.price}`)
+      .onClick(() => {
+        this.fruit.price += 1;
+      })
+  }
+}
+
+@Component
+struct PropChild2 {
+  @Prop fruit: Commodity = new Commodity(1); // 进行本地初始化
+
+  build() {
+    Text(`PropChild2 fruit ${this.fruit.price}`)
+      .onClick(() => {
+        this.fruit.price += 1;
+      })
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State fruit: Commodity[] = [new Commodity(1)];
+
+  build() {
+      Column() {
+        Text(`Parent fruit ${this.fruit[0].price}`)
+          .onClick(() => {
+            this.fruit[0].price += 1;
+          })
+
+        // @PropChild1本地没有初始化，必须从父组件初始化
+        PropChild1({ fruit: this.fruit[0] })
+        // @PropChild2本地进行了初始化，可以不从父组件初始化，也可以从父组件初始化
+        PropChild2()
+        PropChild2({ fruit: this.fruit[0] })
+      }
+  }
+}
+```
+
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
 
 在build方法内，当@Prop装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法Score.changeScore1或者this.changeScore2修改自定义组件Child中的this.score.value时，UI不会刷新。
