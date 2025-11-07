@@ -20106,6 +20106,76 @@
 						"end_line":174,
 						"name":"custom_text_line_and_color",
 						"start_line":126
+					},
+					{
+						"end_line":202,
+						"name":"custom_text_baseline_offset",
+						"start_line":180
+					},
+					{
+						"end_line":230,
+						"name":"custom_text_letter_space",
+						"start_line":208
+					},
+					{
+						"end_line":273,
+						"name":"custom_the_size_of_text",
+						"start_line":236
+					},
+					{
+						"end_line":300,
+						"name":"custom_the_text_by_text_case",
+						"start_line":279
+					},
+					{
+						"end_line":315,
+						"name":"custom_the_text_by_copy_option",
+						"start_line":310
+					},
+					{
+						"end_line":305,
+						"name":"custom_the_text_fontFamily",
+						"start_line":301
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ContentTransition.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"Content_Transition",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets",
+				"functions":[
+					{
+						"end_line":83,
+						"name":"Last_space",
+						"start_line":65
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"Line_Spacing",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"Enable_AutoSpacing",
+						"start_line":16
 					}
 				]
 			}
