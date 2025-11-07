@@ -304,6 +304,33 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
 
  <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
+ 
+ ``` TypeScript
+ @Entry
+ @Component
+ export struct ProjectAreaFocusExample {
+   build() {
+     NavDestination() {
+       Column() {
+         Column({ space: 5 }) {
+           Text('Wrap').fontSize(12).width('90%')
+           // 子组件多行布局
+           Flex({ wrap: FlexWrap.Wrap }) {
+             Button('1').width(140).height(50).margin(5)
+             Button('2').width(140).height(50).margin(5)
+             Button('3').width(140).height(50).margin(5)
+             Button('4').width(140).height(50).margin(5)
+             Button('5').width(140).height(50).margin(5)
+           }
+           .width('90%')
+           .padding(10)
+         }.width('100%').margin({ top: 5 })
+       }.width('100%')
+     }
+     // ···
+   }
+ }
+ ```
 
 > **说明：**
 >
