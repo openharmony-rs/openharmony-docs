@@ -108,6 +108,26 @@
    创建日历账户之前，开发者需要先根据账户信息进行查询，如果账户不存在则抛出异常信息，捕获到异常再进行日历账户的创建，否则可能会出现账户重复创建的问题。
 
 	<!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { calendarMgr } from '../entryability/EntryAbility';
+    import { calendarManager } from '@kit.CalendarKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const DOMAIN = 0x0000;
+    
+    let calendar: calendarManager.Calendar | undefined = undefined;
+    // 指定日历账户信息
+    const calendarAccount: calendarManager.CalendarAccount = {
+      // 日历账户名称
+      name: 'MyCalendar',
+      // 日历账户类型
+      type: calendarManager.CalendarType.LOCAL,
+      // 日历账户显示名称，该字段如果不填，创建的日历账户在界面显示为空字符串。
+      displayName: 'MyCalendar'
+    };
+    ```
     <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
 
 5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
