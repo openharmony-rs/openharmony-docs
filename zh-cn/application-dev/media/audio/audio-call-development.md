@@ -52,7 +52,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 确保该沙箱路径下存在该资源。
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -302,7 +302,6 @@ let readDataCallback: Callback<ArrayBuffer>;
 
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 确保该沙箱路径下存在该资源。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   readDataCallback = (buffer: ArrayBuffer) => {

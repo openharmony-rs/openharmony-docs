@@ -94,7 +94,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 
@@ -145,7 +145,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let path = context.cacheDir;
-     // 确保该沙箱路径下存在该资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
      let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
      let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
      let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -266,7 +266,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 确保该沙箱路径下存在该资源。
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
