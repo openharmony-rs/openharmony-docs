@@ -86,6 +86,12 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
 
   <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  @State triggerValueReplace: number = 0;
+  replaceFlag: boolean = true;
+  @State renderMode: number = 1;
+  ```
 
   <!-- @[symbol_disable_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
