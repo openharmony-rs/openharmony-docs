@@ -1,4 +1,4 @@
-# Notification Kit (User Notification Service)
+# Notification Kit<!--notification-api-->
 
 - ArkTS APIs<!--notification-arkts-->
   - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
@@ -34,7 +34,7 @@
 - C APIs<!--notification-c-->
   - Modules<!--notification-module-->
       - [NOTIFICATION](capi-notification.md)
-  - Header Files<!--notification-struct-->
+  - Header Files<!--notification-headerfile-->
       - [notification.h](capi-notification-h.md)
 - Error Codes<!--notification-arkts-errcode-->
   - [Notification Error Codes](errorcode-notification.md)
