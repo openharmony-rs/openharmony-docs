@@ -1794,7 +1794,9 @@ sim.unlockPin(0, pin, (err: BusinessError | null, data: sim.LockStatusResponse |
 
 ## sim.unlockPin<sup>7+</sup>
 
-unlockPin\(slotId: number, pin: string\): Promise\<LockStatusResponse\>
+ArkTS-Dyn: unlockPin\(slotId: number, pin: string\): Promise\<LockStatusResponse\>
+
+ArkTS-Sta: unlockPin\(slotId: int, pin: string\): Promise\<LockStatusResponse\>
 
 解锁指定卡槽SIM卡密码。使用Promise异步回调。
 

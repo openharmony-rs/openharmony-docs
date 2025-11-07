@@ -2605,7 +2605,9 @@ radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
 
 ## radio.on('imsRegStateChange')<sup>9+</sup>
 
-on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback: Callback\<ImsRegInfo\>\): void
+ArkTS-Dyn: on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback: Callback\<ImsRegInfo\>\): void
+
+ArkTS-Sta: on\(type: 'imsRegStateChange', slotId: int, imsType: ImsServiceType, callback: Callback\<ImsRegInfo\>\): void
 
 订阅imsRegStateChange事件，使用callback异步回调。
 
@@ -2615,12 +2617,16 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                                   |
 | -------- | ------------------------------------ | ---- | -------------------------------------- |
 | type     | string                               | 是   | 填写'imsRegStateChange'，表示IMS注册状态变化事件。                |
-| slotId   | number                               | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | imsType  | [ImsServiceType](#imsservicetype9)   | 是   | IMS服务类型。                          |
 | callback | Callback<[ImsRegInfo](#imsreginfo9)> | 是   | 回调函数。返回IMS注册状态信息。              |
 
@@ -2640,6 +2646,8 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
@@ -2648,9 +2656,21 @@ radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let slotId: int = 0;
+let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
+radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
+    console.info(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
 ## radio.off('imsRegStateChange')<sup>9+</sup>
 
-off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback?: Callback\<ImsRegInfo\>\): void
+ArkTS-Dyn: off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback?: Callback\<ImsRegInfo\>\): void
+
+ArkTS-Sta: off\(type: 'imsRegStateChange', slotId: int, imsType: ImsServiceType, callback?: Callback\<ImsRegInfo\>\): void
 
 取消订阅imsRegStateChange事件，使用callback异步回调。
 
@@ -2660,14 +2680,18 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                                 | 必填 | 说明                                   |
-| -------- | ------------------------------------ | ---- | -------------------------------------- |
-| type     | string                               | 是   | 填写'imsRegStateChange'，表示IMS注册状态变化事件。     |
-| slotId   | number                               | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| imsType  | [ImsServiceType](#imsservicetype9)   | 是   | IMS服务类型。                          |
-| callback | Callback<[ImsRegInfo](#imsreginfo9)> | 否   | 回调函数。返回IMS注册状态信息。缺省时，表示注销所有已注册事件回调。需与on('imsRegStateChange')的callback一致。   |
+| 参数名   | 类型                                 | 必填 | 说明                                                         |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                               | 是   | 填写'imsRegStateChange'，表示IMS注册状态变化事件。           |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2                       |
+| imsType  | [ImsServiceType](#imsservicetype9)   | 是   | IMS服务类型。                                                |
+| callback | Callback<[ImsRegInfo](#imsreginfo9)> | 否   | 回调函数。返回IMS注册状态信息。缺省时，表示注销所有已注册事件回调。需与on('imsRegStateChange')的callback一致。 |
 
 **错误码：**
 
@@ -2685,6 +2709,8 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
@@ -2693,6 +2719,15 @@ radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let slotId: int = 0;
+let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
+radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
+    console.info(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## radio.getBasebandVersion<sup>10+</sup>
 

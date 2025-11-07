@@ -4,9 +4,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.data (蜂窝数据)](js-apis-telephony-data.md)。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.data (蜂窝数据)](js-apis-telephony-data.md)。
 
 
 ## 导入模块
@@ -132,6 +136,10 @@ enableCellularData(callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明       |
@@ -154,12 +162,29 @@ enableCellularData(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.enableCellularData((err: BusinessError) => {
     if(err){
+        console.error(`enableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
+    }else{
+        console.log(`enableCellularData success`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.enableCellularData((err: BusinessError | null) => {
+    if(err?.code){
         console.error(`enableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
     }else{
         console.log(`enableCellularData success`);
@@ -178,6 +203,10 @@ enableCellularData(): Promise\<void\>
 **需要权限**：ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -222,6 +251,10 @@ disableCellularData(callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明       |
@@ -244,12 +277,29 @@ disableCellularData(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.disableCellularData((err: BusinessError) => {
     if(err){
+        console.error(`disableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
+    }else{
+        console.log(`disableCellularData success`);
+    }
+});
+```
+
+ArkTS-Dyn示例：
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.disableCellularData((err: BusinessError | null) => {
+    if(err?.code){
         console.error(`disableCellularData fail,callback: callback: err->${JSON.stringify(err)}`);
     }else{
         console.log(`disableCellularData success`);
@@ -268,6 +318,10 @@ disableCellularData(): Promise\<void\>
 **需要权限**：ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

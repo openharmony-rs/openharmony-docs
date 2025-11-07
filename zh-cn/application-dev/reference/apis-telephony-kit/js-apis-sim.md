@@ -17,20 +17,28 @@ import { sim } from '@kit.TelephonyKit';
 
 ## sim.isSimActive<sup>7+</sup>
 
-isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+ArkTS-Dyn: isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+
+ArkTS-Sta: isSimActive\(slotId: int, callback: AsyncCallback\<boolean\>\): void
 
 获取指定卡槽SIM卡是否激活。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回指定卡槽是否激活。<br/>- true:激活。<br/>- false：未激活。                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -41,20 +49,36 @@ sim.isSimActive(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.isSimActive(0, (err: BusinessError | null, data: boolean) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
 
 ## sim.isSimActive<sup>7+</sup>
 
-isSimActive\(slotId: number\): Promise\<boolean\>
+ArkTS-Dyn: isSimActive\(slotId: number\): Promise\<boolean\>
+
+ArkTS-Sta: isSimActive\(slotId: int\): Promise\<boolean\>
 
 获取指定卡槽SIM卡是否激活。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -77,17 +101,23 @@ sim.isSimActive(0).then((data: boolean) => {
 
 ## sim.isSimActiveSync<sup>10+</sup>
 
-isSimActiveSync\(slotId: number\): boolean
+ArkTS-Dyn: isSimActiveSync\(slotId: number\): boolean
+
+ArkTS-Sta: isSimActiveSync\(slotId: int\): boolean
 
 获取指定卡槽SIM卡是否激活。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -287,17 +317,23 @@ sim.hasOperatorPrivileges(0).then((data: boolean) => {
 
 ## sim.getISOCountryCodeForSim
 
-getISOCountryCodeForSim\(slotId: number, callback: AsyncCallback\<string\>\): void
+ArkTS-Dyn: getISOCountryCodeForSim\(slotId: number, callback: AsyncCallback\<string\>\): void
+
+ArkTS-Sta: getISOCountryCodeForSim\(slotId: int, callback: AsyncCallback\<string\>\): void
 
 获取指定卡槽SIM卡的ISO国家码。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                     |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
-| slotId   | number                  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
+| slotId   | rkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
 | callback | AsyncCallback\<string\> | 是   | 回调函数。返回国家码，例如：CN(中国)。 |
 
 **错误码：**
@@ -315,6 +351,8 @@ getISOCountryCodeForSim\(slotId: number, callback: AsyncCallback\<string\>\): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
@@ -324,20 +362,36 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 });
 ```
 
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getISOCountryCodeForSim(0, (err: BusinessError | null, data: string) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
 
 ## sim.getISOCountryCodeForSim
 
-getISOCountryCodeForSim\(slotId: number\): Promise\<string\>
+ArkTS-Dyn: getISOCountryCodeForSim\(slotId: number\): Promise\<string\>
+
+ArkTS-Sta: getISOCountryCodeForSim\(slotId: int\): Promise\<string\>
 
 获取指定卡槽SIM卡的ISO国家码。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**rkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -779,17 +833,23 @@ console.info(`the sim card spn is: ${JSON.stringify(spn)}`);
 
 ## sim.getSimState
 
-getSimState\(slotId: number, callback: AsyncCallback\<SimState\>\): void
+ArkTS-Dyn: getSimState\(slotId: number, callback: AsyncCallback\<SimState\>\): void
+
+ArkTS-Sta: getSimState\(slotId: int, callback: AsyncCallback\<SimState\>\): void
 
 获取指定卡槽的SIM卡状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                   |
 | -------- | -------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<[SimState](#simstate)\> | 是   | 回调函数。参考[SimState](#simstate)。  |
 
 **错误码：**
@@ -806,6 +866,8 @@ getSimState\(slotId: number, callback: AsyncCallback\<SimState\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
@@ -815,20 +877,36 @@ sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimState(0, (err: BusinessError | null, data: sim.SimState) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
 
 ## sim.getSimState
 
-getSimState\(slotId: number\): Promise\<SimState\>
+ArkTS-Dyn: getSimState\(slotId: number\): Promise\<SimState\>
+
+ArkTS-Sta: getSimState\(slotId: int\): Promise\<SimState\>
 
 获取指定卡槽的SIM卡状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -863,17 +941,23 @@ sim.getSimState(0).then((data: sim.SimState) => {
 
 ## sim.getSimStateSync<sup>10+</sup>
 
-getSimStateSync\(slotId: number\): SimState
+ArkTS-Dyn: getSimStateSync\(slotId: number\): SimState
+
+ArkTS-Sta: getSimStateSync\(slotId: int\): SimState
 
 获取指定卡槽的SIM卡状态。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1068,17 +1152,23 @@ console.info(`the card type is: ${JSON.stringify(cardType)}`);
 
 ## sim.hasSimCard<sup>7+</sup>
 
-hasSimCard\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+ArkTS-Dyn: hasSimCard\(slotId: number, callback: AsyncCallback\<boolean\>\): void
+
+ArkTS-Sta: hasSimCard\(slotId: int, callback: AsyncCallback\<boolean\>\): void
 
 获取指定卡槽SIM卡是否插卡。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是  | 回调返回指定卡槽是否插卡。<br/>- true:插卡。<br/>- false：未插卡。                           |
 
 **错误码：**
@@ -1095,6 +1185,8 @@ hasSimCard\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
@@ -1104,20 +1196,36 @@ sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.hasSimCard(0, (err: BusinessError | null, data: boolean) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
 
 ## sim.hasSimCard<sup>7+</sup>
 
-hasSimCard\(slotId: number\): Promise\<boolean\>
+ArkTS-Dyn: hasSimCard\(slotId: number\): Promise\<boolean\>
+
+ArkTS-Sta: hasSimCard\(slotId: int\): Promise\<boolean\>
 
 获取指定卡槽SIM卡是否插卡。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1194,7 +1302,9 @@ console.info(`has sim card: ${JSON.stringify(hasSimCard)}`);
 
 ## sim.getSimAccountInfo<sup>10+</sup>
 
-getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
+ArkTS-Dyn: getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
+
+ArkTS-Sta: getSimAccountInfo\(slotId: int, callback: AsyncCallback\<IccAccountInfo\>\): void
 
 获取SIM卡帐户信息。使用callback异步回调。
 
@@ -1206,11 +1316,15 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                              | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int          | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 是   | 回调函数。返回指定卡槽SIM卡的帐户信息。                             |
 
 **错误码：**
@@ -1229,6 +1343,8 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
@@ -1238,10 +1354,22 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimAccountInfo(0, (err:BusinessError | null , data: sim.IccAccountInfo) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
 
 ## sim.getSimAccountInfo<sup>10+</sup>
 
-getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
+ArkTS-Dyn: getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
+
+ArkTS-Sta: getSimAccountInfo\(slotId: int\): Promise\<IccAccountInfo\>
 
 获取SIM卡帐户信息。使用Promise异步回调。
 
@@ -1253,11 +1381,15 @@ getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1306,6 +1438,10 @@ getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                        | 必填 | 说明       |
@@ -1327,6 +1463,8 @@ getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
@@ -1336,19 +1474,36 @@ sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountI
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getActiveSimAccountInfoList((err: BusinessError | null, data: Array<sim.IccAccountInfo>) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
+
 ## sim.getMaxSimCount<sup>7+</sup>
 
-getMaxSimCount\(\): number
+ArkTS-Dyn: getMaxSimCount\(\): number
+
+ArkTS-Sta: getMaxSimCount\(\): int
 
 获取卡槽数量。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| number | 卡槽数量。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 卡槽数量。 |
 
 **示例：**
 
@@ -1372,6 +1527,10 @@ getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 > 获取ICCID和号码信息时需要GET_TELEPHONY_STATE权限，ICCID和号码信息为敏感数据，不向三方应用开放。调用接口时，获取到的ICCID和号码信息为空。
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
