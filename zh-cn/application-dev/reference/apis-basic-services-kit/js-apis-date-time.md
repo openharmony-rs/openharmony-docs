@@ -22,7 +22,7 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
@@ -461,7 +461,7 @@ ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -477,11 +477,23 @@ ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let time = systemDateTime.getTime(true)
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let time: long = systemDateTime.getTime(true)
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
@@ -500,7 +512,7 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -525,11 +537,24 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let time = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let time: long = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
@@ -634,7 +659,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -689,7 +714,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **返回值：**
 
@@ -740,7 +765,7 @@ getTimezoneSync(): string
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **返回值：**
 

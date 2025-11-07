@@ -22,7 +22,7 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
@@ -43,7 +43,7 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -51,7 +51,7 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 | 参数名   | 类型            | 必填 | 说明                                       |
 | -------- | ----------- | ---- | ---------------- |
-| time     | number                    | 是   | 目标时间戳(ms)。                         |
+| time     | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 是   | 目标时间戳(ms)。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -66,7 +66,7 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 **示例：**
 
-ArkTS-Dyn:
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -85,7 +85,7 @@ try {
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta:
+ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -119,7 +119,7 @@ ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 20
+**ArkTS-Sta起始版本:** 22
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -147,7 +147,7 @@ ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn:
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -165,7 +165,7 @@ try {
 }
 ```
 
-ArkTS-Sta:
+ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
