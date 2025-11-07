@@ -1433,6 +1433,64 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 
 <!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct FocusScopeIdExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        Column() {
+          Button('Group1')
+            .width(165)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button('Button1')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+            Button('Button2')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('1', true, true)
+        .borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
+        TextInput()
+        Column() {
+          Button('Group2')
+            .width(165)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+          Row({ space: 5 }) {
+            Button('Button3')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+            Button('Button4')
+              .width(80)
+              .height(40)
+              .margin(5)
+              .fontColor(Color.White)
+          }
+        }.focusScopeId('2', true, false)
+        .borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+
+        TextInput()
+      }.width('100%')
+    }
+    // ···
+  }
+}
+```
+
 
 ![FocusScopeId_1](figures/FocusScopeId_1.gif)
 
