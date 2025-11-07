@@ -14,9 +14,11 @@
 
 【反例】
 
-```ts
+<!-- @[deep_copy_reverse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyReverse.ets) -->
+
+``` TypeScript
 @Observed
-class MyClass {
+class DeepReMyClass {
   public num: number = 0;
 
   constructor(num: number) {
@@ -25,8 +27,8 @@ class MyClass {
 }
 
 @Component
-struct PropChild {
-  @Prop testClass: MyClass; // @Prop装饰状态变量会深拷贝。
+struct DeepRePropChild {
+  @Prop testClass: DeepReMyClass; // @Prop装饰状态变量会深拷贝。
 
   build() {
     Text(`PropChild testNum ${this.testClass.num}`)
@@ -35,28 +37,30 @@ struct PropChild {
 
 @Entry
 @Component
-struct Parent {
-  @State testClass: MyClass[] = [new MyClass(1)];
+struct DeepReParent {
+  @State testClass: DeepReMyClass[] = [new DeepReMyClass(1)];
 
   build() {
     Column() {
-      Text(`Parent testNum ${this.testClass[0].num}`)
+      Text(`DeepReParent testNum ${this.testClass[0].num}`)
         .onClick(() => {
           this.testClass[0].num += 1;
         })
 
-      // PropChild没有改变@Prop testClass: MyClass的值，所以这时最优的选择是使用@ObjectLink。
-      PropChild({ testClass: this.testClass[0] })
+      // DeepRePropChild没有改变@Prop testClass: DeepReMyClass的值，所以这时最优的选择是使用@ObjectLink。
+      DeepRePropChild({ testClass: this.testClass[0] })
     }
   }
 }
 ```
 
-在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Link和\@Prop更优的选择。
+在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Link和\@Prop更优的选择。
 
 【正例】
 
-```ts
+<!-- @[deep_copy_correct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets) -->
+
+``` TypeScript
 @Observed
 class MyClass {
   public num: number = 0;
@@ -100,7 +104,9 @@ struct Parent {
 【反例】
 
 
-```ts
+<!-- @[force_update_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdateCounterexample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct MyComponent {
@@ -122,7 +128,7 @@ struct MyComponent {
         (item: number) => {
           Text(`${item}`)
         })
-      Text("add item")
+      Text('add item')
         .onClick(() => {
           // 改变realStateArr不会触发UI视图更新。
           this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
@@ -130,7 +136,7 @@ struct MyComponent {
           // 触发UI视图更新。
           this.needsUpdate = !this.needsUpdate;
         })
-      Text("chg color")
+      Text('chg color')
         .onClick(() => {
           // 改变realState不会触发UI视图更新。
           this.realState = this.realState == Color.Yellow ? Color.Red : Color.Yellow;
@@ -156,7 +162,9 @@ struct MyComponent {
 
 解决此问题，需用\@State装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
 
-```ts
+<!-- @[force_update_positive_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdatePositiveCase.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct CompA {
@@ -168,12 +176,12 @@ struct CompA {
         (item: number) => {
           Text(`${item}`)
         })
-      Text("add item")
+      Text('add item')
         .onClick(() => {
           // 改变realStateArr触发UI视图更新。
           this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
         })
-      Text("chg color")
+      Text('chg color')
         .onClick(() => {
           // 改变realState触发UI视图更新。
           this.realState = this.realState == Color.Yellow ? Color.Red : Color.Yellow;
@@ -190,24 +198,26 @@ struct CompA {
 
 【反例】
 
-```ts
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
+
+``` TypeScript
 @Observed
 class Translate {
-  translateX: number = 20;
+  public translateX: number = 20;
 }
 @Component
 struct Title {
   @ObjectLink translateObj: Translate;
   build() {
     Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
+      // $r('app.media.background')需要替换为开发者所需的资源文件。
+      Image($r('app.media.background'))
         .width(50)
         .height(50)
         .translate({
           x:this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
         })
-      Text("Title")
+      Text('Title')
         .fontSize(20)
         .translate({
           x: this.translateObj.translateX
@@ -227,13 +237,13 @@ struct Page {
       })
       Stack() {
       }
-      .backgroundColor("black")
+      .backgroundColor('black')
       .width(200)
       .height(400)
       .translate({
         x:this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
       })
-      Button("move")
+      Button('move')
         .translate({
           x:this.translateObj.translateX
         })
@@ -253,20 +263,22 @@ struct Page {
 
 【正例】
 
-```ts
+<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) -->
+
+``` TypeScript
 @Observed
-class Translate {
-  translateX: number = 20;
+class PageTranslate {
+  public translateX: number = 20;
 }
 @Component
-struct Title {
+struct PageTitle {
   build() {
     Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
+      // $r('app.media.background')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.background'))
         .width(50)
         .height(50)
-      Text("Title")
+      Text('Title')
         .fontSize(20)
     }
   }
@@ -274,17 +286,17 @@ struct Title {
 @Entry
 @Component
 struct Page1 {
-  @State translateObj: Translate = new Translate();
+  @State translateObj: PageTranslate = new PageTranslate();
 
   build() {
     Column() {
-      Title()
+      PageTitle()
       Stack() {
       }
-      .backgroundColor("black")
+      .backgroundColor('black')
       .width(200)
       .height(400)
-      Button("move")
+      Button('move')
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
@@ -314,7 +326,9 @@ struct Page1 {
 
 【反例】
 
-```ts
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -324,7 +338,7 @@ struct Index {
 
   build() {
     Column() {
-      Button('点击打印日志')
+      Button('Click to print log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
@@ -348,7 +362,9 @@ struct Index {
 
 【正例】
 
-```ts
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -358,7 +374,7 @@ struct Index {
 
   build() {
     Column() {
-      Button('点击打印日志')
+      Button('Click to print log')
         .onClick(() => {
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {
@@ -389,7 +405,9 @@ struct Index {
 
 【反例】
 
-```ts
+<!-- @[calculation_directState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets) -->
+
+``` TypeScript
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -408,9 +426,9 @@ struct Index {
 
   build() {
     Column() {
-      Button('点击打印日志')
+      Button('Click to print log')
         .onClick(() => {
-          this.appendMsg('操作状态变量');
+          this.appendMsg('Operating state variable');
         })
         .width('90%')
         .backgroundColor(Color.Blue)
@@ -434,7 +452,9 @@ struct Index {
 
 【正例】
 
-```ts
+<!-- @[calculation_temp_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationTempVariable.ets) -->
+
+``` TypeScript
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -455,9 +475,9 @@ struct Index {
 
   build() {
     Column() {
-      Button('点击打印日志')
+      Button('Click to print log')
         .onClick(() => {
-          this.appendMsg('操作临时变量');
+          this.appendMsg('Operating temporary variable');
         })
         .width('90%')
         .backgroundColor(Color.Blue)
