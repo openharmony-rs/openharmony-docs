@@ -83,6 +83,33 @@ this.myBuilderFunction()
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)。
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->
 
+``` TypeScript
+import { UIUtils, Binding } from '@ohos.arkui.StateManagement';
+
+@Entry
+@Component
+struct Parent {
+  @State variableValue: string = 'Hello World';
+
+  @LocalBuilder
+  citeLocalBuilder(params: Binding<string>) {
+    Row() {
+      Text(`UseStateVarByReference: ${params.value}`)
+    }
+  }
+
+  build() {
+    Column() {
+      this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
+      Button('Click me')
+        .onClick(() => {
+          this.variableValue = 'Hi World';
+        })
+    }
+  }
+}
+```
+
 ### 按引用传递参数
 
 按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起\@LocalBuilder函数内的UI刷新。
