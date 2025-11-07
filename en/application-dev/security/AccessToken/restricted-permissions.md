@@ -902,3 +902,19 @@ With this permission, the application can load external dynamic link libraries (
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22
+
+## ohos.permission.GET_IP_MAC_INFO
+
+Allows an application to obtain the IP address and MAC address of a network device.
+
+<!--RP58--><!--RP58End-->
+
+This permission is applicable only to network connection or identification, not to device location.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: general devices
+
+**Since**: 22
