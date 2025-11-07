@@ -489,7 +489,7 @@ struct Index {
    // ···
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-   // ···
+     // ···
    })
    ```
 
@@ -696,7 +696,7 @@ build() {
      .onDragStart((event) => {
      })
      .onDragEnd((event) => {
-     // ···
+       // ···
      })
    ```
 
@@ -762,7 +762,7 @@ const TAG = 'DropAnimationExampleTag'
 @Entry
 @Component
 export struct DropAnimationExample {
-// ···
+  // ···
   @State targetImage: string = '';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
@@ -1110,7 +1110,7 @@ struct GridEts {
               }
             }
           })
-        // ···
+          // ···
           .onPreDrag((status: PreDragStatus) => {
             // 1.长按时通知，350ms回调
             if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
@@ -1257,7 +1257,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   ``` TypeScript
   build() {
     Column() {
-    // ···
+      // ···
         Column() {
           // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
           Text($r('app.string.DoubleClick_Text'))
@@ -1276,7 +1276,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
             // app.string.Search_Device资源文件中的value值为'搜索设备'
             title: { title: $r('app.string.Search_Device') },
           })
-        // ···
+      // ···
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
@@ -1344,24 +1344,24 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   handleSpringLoading(context: SpringLoadingContext) {
     // BEGIN 状态时检查拖拽数据类型
     if (context.state == dragController.DragSpringLoadingState.BEGIN) {
-    // ···
+      // ···
       // 进行必要判断，决定是否要终止触发
       return;
     }
     if (context.state == dragController.DragSpringLoadingState.UPDATE) {
-    // ···
+      // ···
       // 刷新提醒
       return;
     }
     // 处理Spring Loading结束，触发视图切换
     if (context.state == dragController.DragSpringLoadingState.END) {
-    // ···
+      // ···
       // 视图激活或跳转
       return;
     }
     // 处理CANCEL状态，复原UI
     if (context.state == dragController.DragSpringLoadingState.CANCEL) {
-    // ···
+      // ···
       // 恢复状态与UI
       return;
     }
@@ -1372,151 +1372,6 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 <!-- @[SpringLoading_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
 
-``` TypeScript
-import { dragController } from '@kit.ArkUI';
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-
-// ···
-
-@Entry
-@ComponentV2
-export struct SpringLoadingPage {
-  context1 = this.getUIContext().getHostContext()
-  @Local isShowSheet: boolean = false;
-  // app.string.Select_Result资源文件中的value值为'搜索结果：\n  设备 1\n  设备 2\n  设备 3\n  ... ...'
-  private searchResult: string = this.context1?.resourceManager.getStringSync($r('app.string.Select_Result').id)!;
-  @Local isSearchDone: boolean = false;
-  private reminderColor: Color = Color.Green;
-  private normalColor: Color = Color.Blue;
-  @Local buttonBackgroundColor: Color = this.normalColor;
-
-  @Builder
-  SheetBuilder() {
-    Column() {
-      // 输入框
-      // app.string.Push_Here资源文件中的value值为'拖入此处'
-      TextInput({ placeholder: $r('app.string.Push_Here') })
-        .width('80%')
-        .borderWidth(1)
-        .borderColor(Color.Black)
-        .padding({ bottom: 5 })
-        .onChange((value: string) => {
-          if (value.length == 0) {
-            this.isSearchDone = false;
-            return;
-          }
-          // 此处简化处理，直接显示固定搜索结果
-          this.isSearchDone = true;
-        })
-      if (this.isSearchDone) {
-        Text(this.searchResult).fontSize(20)
-          .textAlign(TextAlign.Start)
-          .width('80%')
-      }
-    }.width('100%').height('100%')
-  }
-
-  // 检查拖拽数据类型是否包含所希望的plain-text
-  checkDataType(dataSummary: unifiedDataChannel.Summary | undefined): boolean {
-    let summary = dataSummary?.summary;
-    if (summary == undefined) {
-      return false;
-    }
-
-    let dataSummaryObjStr: string = JSON.stringify(summary);
-    let dataSummaryArray: Array<Array<string>> = JSON.parse(dataSummaryObjStr);
-    let isDataTypeMatched: boolean = false;
-    dataSummaryArray.forEach((record: Array<string>) => {
-      if (record[0] == 'general.plain-text') {
-        isDataTypeMatched = true;
-      }
-    });
-    return isDataTypeMatched;
-  }
-
-  // 处理BEGIN状态
-  handleBeginState(context: SpringLoadingContext): boolean {
-    // 检查用户所拖拽的数据类型是否自己能够处理的
-    if (this.checkDataType(context?.dragInfos?.dataSummary)) {
-      return true;
-    }
-    // 如果数据无法处理，直接终止Spring Loading
-    context.abort();
-    return false;
-  }
-
-  // Spring Loading处理入口
-  handleSpringLoading(context: SpringLoadingContext) {
-    // BEGIN 状态时检查拖拽数据类型
-    if (context.state == dragController.DragSpringLoadingState.BEGIN) {
-      if (this.handleBeginState(context)) {
-        // 我们已经在onDragEnter时刷新了提醒色，进入Spring Loading状态时，恢复UI，提醒用户继续保持不动
-        this.buttonBackgroundColor = this.normalColor;
-      }
-    // ···
-      return;
-    }
-    if (context.state == dragController.DragSpringLoadingState.UPDATE) {
-      // 奇数次UPDATE通知刷新提醒UI，偶数次复原UI
-      if (context.currentNotifySequence % 2 != 0) {
-        this.buttonBackgroundColor = this.reminderColor;
-      } else {
-        this.buttonBackgroundColor = this.normalColor;
-      }
-    // ···
-      return;
-    }
-    // 处理Spring Loading结束，触发视图切换
-    if (context.state == dragController.DragSpringLoadingState.END) {
-      this.isShowSheet = true;
-    // ···
-      return;
-    }
-    // 处理CANCEL状态，复原UI
-    if (context.state == dragController.DragSpringLoadingState.CANCEL) {
-      this.buttonBackgroundColor = this.normalColor;
-    // ···
-      return;
-    }
-  }
-
-  build() {
-    Column() {
-    // ···
-        Column() {
-          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
-          Text($r('app.string.DoubleClick_Text'))
-            .fontSize(30)
-            .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
-        }.padding({ bottom: 30 })
-
-        // app.string.Search_Device资源文件中的value值为'搜索设备'
-        Button($r('app.string.Search_Device'))
-          .width('80%')
-          .height('80vp')
-          .fontSize(30)
-          .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
-            detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
-            preferType: SheetType.BOTTOM,
-            // app.string.Search_Device资源文件中的value值为'搜索设备'
-            title: { title: $r('app.string.Search_Device') },
-          })
-          .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-          .backgroundColor(this.buttonBackgroundColor)
-          .onDragEnter(() => {
-            // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-            this.buttonBackgroundColor = this.reminderColor
-          })
-          .onDragLeave(() => {
-            // 当用户拖拽离开按钮范围，恢复UI
-            this.buttonBackgroundColor = this.normalColor
-          })
-          .onDragSpringLoading(null)
-          .onDragSpringLoading((context: SpringLoadingContext) => {
-            this.handleSpringLoading(context);
-          })
-        // ···
-```
 
 ![drag spring loading sample gif](figures/spring-loading-record.gif)
 
