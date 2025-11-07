@@ -626,6 +626,71 @@ class ObservedArray<T> extends Array<T> {
 
 <!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->
 
+``` TypeScript
+@Observed
+class ObservedArray<T> extends Array<T> {
+}
+
+@Component
+struct Item {
+  @ObjectLink itemArr: ObservedArray<string>;
+
+  build() {
+    Row() {
+      ForEach(this.itemArr, (item: string, index: number) => {
+        Text(`${index}: ${item}`)
+          .width(100)
+          .height(100)
+      }, (item: string) => item)
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexPage {
+  @State arr: Array<ObservedArray<string>> = [
+    new ObservedArray<string>('apple'),
+    new ObservedArray<string>('banana'),
+    new ObservedArray<string>('orange')
+  ];
+
+  build() {
+    Column() {
+      ForEach(this.arr, (itemArr: ObservedArray<string>) => {
+        Item({ itemArr: itemArr })
+      })
+
+      Divider()
+
+      Button('push two-dimensional array item')
+        .margin(10)
+        .onClick(() => {
+          this.arr[0].push('strawberry');
+        })
+
+      Button('push array item')
+        .margin(10)
+        .onClick(() => {
+          this.arr.push(new ObservedArray<string>('pear'));
+        })
+
+      Button('change two-dimensional array first item')
+        .margin(10)
+        .onClick(() => {
+          this.arr[0][0] = 'APPLE';
+        })
+
+      Button('change array first item')
+        .margin(10)
+        .onClick(() => {
+          this.arr[0] = new ObservedArray<string>('watermelon');
+        })
+    }
+  }
+}
+```
+
 API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
 
 完整例子如下。
