@@ -49,9 +49,21 @@
 | extraInfo      | Record<string, Object\>                                               | 否  | 是  | 实况通知附加内容。           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。     |
-| liveViewType<sup>18+</sup>  | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
-| cardButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
 | extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。      |
+
+
+## NotificationSystemLiveViewContent<sup>18+</sup>
+
+描述系统实况窗通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。继承自[NotificationBasicContent](./js-apis-inner-notification-notificationContent.md#notificationbasiccontent)。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                         | 类型                                             | 只读| 可选 | 说明                               |
+| ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
+| liveViewType | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
+| cardButtons | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
 
 ## NotificationCapsule<sup>11+</sup>
 
