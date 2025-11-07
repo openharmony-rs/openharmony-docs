@@ -522,6 +522,25 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 从API version 20开始，支持通过[optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20)设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
 
   <!-- @[Last_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 启用优化行尾空格功能
+    Text('Trimmed space enabled     ')
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .margin({ top: 20 })
+      .optimizeTrailingSpace(true)
+      .textAlign(TextAlign.Center)
+    // 不启用优化行尾空格功能
+    Text('Trimmed space disabled     ')
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .margin({ top: 20 })
+      .optimizeTrailingSpace(false)
+      .textAlign(TextAlign.Center)
+  }
+  ```
 
   ![Text_optimize_trailing_space](figures/Text_optimize_trailing_space.jpg)
 
