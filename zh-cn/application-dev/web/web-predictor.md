@@ -240,6 +240,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
    export interface BuilderData {
@@ -293,6 +294,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/PrecompileWebview.ets 
    import { BuilderData } from './DynamicComponent';
    import { Config, configs } from './PrecompileConfig';
    
@@ -340,6 +342,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/BusinessWebview.ets
    import { BuilderData } from './DynamicComponent';
    
    @Builder
@@ -357,6 +360,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/PrecompileConfig.ets 
    import { webview } from '@kit.ArkWeb'
    
    export interface Config {
@@ -384,6 +388,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/Index.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';
@@ -459,6 +464,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/DynamicComponent.ets 
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
    export interface BuilderData {
@@ -512,6 +518,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/InjectWebview.ets 
    import { webview } from '@kit.ArkWeb';
    import { resourceConfigs } from './Resource';
    import { BuilderData } from './DynamicComponent';
@@ -566,6 +573,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/BusinessWebview.ets 
    import { BuilderData } from './DynamicComponent';
    
    @Builder
@@ -583,6 +591,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/Resource.ets 
    import { webview } from '@kit.ArkWeb';
    
    export interface ResourceConfig {
@@ -624,6 +633,7 @@ JavaScript资源的获取方式也可通过[网络请求](../reference/apis-netw
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/ndex.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';
