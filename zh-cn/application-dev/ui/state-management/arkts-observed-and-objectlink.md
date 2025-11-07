@@ -614,6 +614,12 @@ struct Parent {
 
 <!-- @[Two_dimensional_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
 
+``` TypeScript
+@Observed
+class ObservedArray<T> extends Array<T> {
+}
+```
+
 声明一个继承自Array的类ObservedArray\<T\>，并使用new操作符创建ObservedArray\<string\>的实例，该实例可以观察到属性变化。
 
 在下面的示例中，展示了如何利用\@Observed观察二维数组的变化。
