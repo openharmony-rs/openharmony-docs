@@ -256,6 +256,14 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
    当没有查询条件和查询字段时，可查询指定日历账户下的所有日程。
    <!-- @[calendarEvent_getEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   calendar.getEvents().then((data: calendarManager.Event[]) => {
+     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events, data -> ${JSON.stringify(data)}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+   });
+   ```
 
    还支持根据日程id、日程开始和结束时间、日程标题等查询条件来查询日程。
    <!-- @[calendarEvent_getEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
