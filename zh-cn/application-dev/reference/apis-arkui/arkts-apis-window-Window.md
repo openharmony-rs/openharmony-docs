@@ -5849,18 +5849,18 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 22
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 **参数：**
 
-| 参数名     | 类型                   | 必填 | 说明                                                                                                                                                             |
+| 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ------------------------------------------------------- |
-| isFocusable | boolean                | 是   | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。 |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                                                                                                                                       |
+| isFocusable | boolean                   | 是 | 窗口是否可获焦。true表示支持；false表示不支持。设置为false时，该窗口不支持绑定输入法和接收键盘事件，如需处理输入逻辑，建议参考[不可获焦窗口中输入框与输入法交互指南](../../inputmethod/use-inputmethod-in-not-focusable-window.md)。|
+| callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                               |
 
 **错误码：**
 
@@ -5900,11 +5900,11 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 22
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
 
@@ -9325,11 +9325,11 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 22
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -9810,13 +9810,13 @@ ArkTS-Sta: setSubWindowZLevel(zLevel: int): Promise&lt;void&gt;
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| zLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 子窗口层级级别。默认值为0，取值范围为[-10000, 10000]，该参数仅支持整数输入，浮点数输入将向下取整。 |
+| zLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 子窗口层级级别。默认值为0，取值范围为[-10000, 10000]，该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
-| 类型 | 说明 |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -9886,8 +9886,7 @@ ArkTS-Sta: getSubWindowZLevel(): int
 
 | 类型                | 说明                                           |
 | ------------------- | --------------------------------------------- |
-| ArkTS-Dyn: number   | 当前子窗口层级级别。 |
-| ArkTS-Sta: int
+| ArkTS-Dyn: number<br>ArkTS-Sta: int   | 当前子窗口层级级别。 |
 
 **错误码：**
 
