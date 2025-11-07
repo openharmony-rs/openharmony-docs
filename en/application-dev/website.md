@@ -516,8 +516,8 @@
           - [Popup Window Overview](ui/arkts-dialog-overview.md)
           - Using Dialog Boxes (Dialog)<!--arkts-use-dialogs-->
             - [Dialog Box Overview](ui/arkts-base-dialog-overview.md)
-            - [Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)](ui/arkts-uicontext-custom-dialog.md)
-            - [Basic Custom Dialog Box (CustomDialog) (Not Recommended)](ui/arkts-common-components-custom-dialog.md)
+            - [Global Custom Dialog Box Independent of UI Components (openCustomDialog)](ui/arkts-uicontext-custom-dialog.md)
+            - [Basic Custom Dialog Box (CustomDialog)](ui/arkts-common-components-custom-dialog.md)
             - [Fixed-Style Dialog Box](ui/arkts-fixes-style-dialog.md)
             - [Page-Level Dialog Box](ui/arkts-embedded-dialog.md)
             - [Dialog Box Layer Management](ui/arkts-dialog-levelorder.md)
@@ -733,8 +733,8 @@
         - [Window Overview](windowmanager/window-overview.md)
         - [Application Window Development (Stage Model)](windowmanager/application-window-stage.md)
         - [Application Window Development (FA Model)](windowmanager/application-window-fa.md)
-        - [Window Metadata Configuration](windowmanager/window-config-m.md)
         - [Window Rotation](windowmanager/window-rotation.md)
+        - [Window Metadata Configuration](windowmanager/window-config-m.md)
         <!--Del-->
         - [System Window Development (Stage Model Only) (for System Applications Only)](windowmanager/system-window-stage-sys.md)
         - [WindowExtensionAbility (for System Applications Only)](windowmanager/windowextensionability-sys.md)
@@ -1331,7 +1331,7 @@
         - Account Management<!--account-management-->
           <!--Del-->
           - [Account Management Overview](basic-services/account/account-overview-sys.md)
-          - System Accounts<!--os-account-->
+          - System Accounts (for System Applications Only)<!--os-account-->
             - [Managing System Accounts](basic-services/account/manage-os-account-sys.md)
             - [Applying Constraints for System Accounts](basic-services/account/control-os-account-by-constraints-sys.md)
             - [Managing System Account Credentials](basic-services/account/manage-os-account-credential-sys.md)
@@ -1612,9 +1612,10 @@
         - [Audio Monitoring](media/audio/audio-ear-monitor.md)
         - [Low-Latency Audio Monitoring](media/audio/audio-ear-monitor-loopback.md)
 	  - Audio Device Routing Management<!--audio-device-->
-	    - [Global Audio Input Device Management](media/audio/audio-input-device-management.md)
-		- [Global Audio Output Device Management](media/audio/audio-output-device-management.md)
-	    - [Responding to Audio Output Device Changes](media/audio/audio-output-device-change.md)
+	    - [Querying and Listening for Audio Input Devices](media/audio/audio-input-device-management.md)
+		- [Querying and Listening for Audio Output Devices](media/audio/audio-output-device-management.md)
+		- [Switching Audio Output Devices](media/audio/audio-output-device-switcher.md)
+	    - [Handling Output Device Changes Gracefully](media/audio/audio-output-device-change.md)
       - Audio Call<!--audio-call-->
         - [Audio Call Overview](media/audio/audio-call-overview.md)
         - [Developing Audio Call](media/audio/audio-call-development.md)
@@ -5490,7 +5491,7 @@
     - Calendar Kit<!--calendar-api-->
       - ArkTS APIs<!--calendar-arkts-->
         - [@ohos.calendarManager (Calendar Manager)](reference/apis-calendar-kit/js-apis-calendarManager.md)
-    - Contacts Kit<!--contacts-->
+    - Contacts Kit<!--contacts-api-->
       - ArkTS APIs<!--contacts-arkts-->
         - [@ohos.contact (Contacts)](reference/apis-contacts-kit/js-apis-contact.md)
       - Error Codes<!--contacts-arkts-errcode-->

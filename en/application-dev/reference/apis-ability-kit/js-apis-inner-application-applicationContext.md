@@ -949,6 +949,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -965,10 +966,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
@@ -1162,7 +1162,7 @@ Sets the scale ratio for the font size of this application. This API can be call
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
 | ------- | -------- |

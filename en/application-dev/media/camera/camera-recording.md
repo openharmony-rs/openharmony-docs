@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -84,7 +84,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      };
      // Define video recording parameters. The ratio of the resolution width (videoFrameWidth) to the resolution height (videoFrameHeight) of the video output stream must be the same as that of the preview stream.
      let avMetadata: media.AVMetadata = {
-      videoOrientation: '90' // The value of rotation is 90, which is obtained through getPhotoRotation.
+      videoOrientation: '90' // The value of rotation is 90, which is obtained through getVideoRotation.
      }
      
      let aVRecorderConfig: media.AVRecorderConfig = {
