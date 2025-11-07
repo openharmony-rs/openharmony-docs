@@ -18691,5 +18691,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-dialog-mask.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets",
+				"functions":[
+					{
+						"end_line":169,
+						"name":"custom_dialog_control_autoCancel",
+						"start_line":27
+					},
+					{
+						"end_line":168,
+						"name":"custom_dialog_control_modal",
+						"start_line":36
+					},
+					{
+						"end_line":167,
+						"name":"custom_dialog_control_mask",
+						"start_line":45
+					},
+					{
+						"end_line":170,
+						"name":"custom_dialog_control_immersive",
+						"start_line":23
+					},
+					{
+						"end_line":166,
+						"name":"custom_dialog_control_transition",
+						"start_line":60
+					},
+					{
+						"end_line":155,
+						"name":"custom_dialog_control_mask_transition",
+						"start_line":142
+					},
+					{
+						"end_line":172,
+						"name":"custom_dialog_control",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"custom_dialog_animation",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
