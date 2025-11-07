@@ -581,6 +581,57 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enableautospacing20)设置是否开启中文与西文的自动间距。
 
   <!-- @[Enable_AutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct EnableAutoSpacing {
+    @State enableSpacing: boolean = false;
+  
+    build() {
+      NavDestination() {
+      Column() {
+        Row({ space: 20 }) {
+          // 'app.string.Enable_automatic_spacing'资源文件中的value值为'开启自动间距'
+          Button($r('app.string.Enable_automatic_spacing'))
+            .onClick(() => this.enableSpacing = true)
+            .backgroundColor(this.enableSpacing ? '#4CAF50' : '#E0E0E0')
+            .fontColor(this.enableSpacing ? Color.White : Color.Black)
+  
+          // 'app.string.off_automatic_spacing'资源文件中的value值为'关闭自动间距'
+          Button($r('app.string.off_automatic_spacing'))
+            .onClick(() => this.enableSpacing = false)
+            .backgroundColor(!this.enableSpacing ? '#F44336' : '#E0E0E0')
+            .fontColor(!this.enableSpacing ? Color.White : Color.Black)
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
+        .margin({ top: 30, bottom: 20 })
+  
+        // 'app.string.Automatic_spacing_has_been_enabled'资源文件中的value值为'当前状态:已开启自动间距'
+        // 'app.string.Automatic_spacing_has_been_turned_off'资源文件中的value值为'当前状态:已关闭自动间距'
+        Text(this.enableSpacing ? $r('app.string.Automatic_spacing_has_been_enabled') : $r('app.string.Automatic_spacing_has_been_turned_off'))
+          .fontSize(16)
+          .fontColor(this.enableSpacing ? '#4CAF50' : '#F44336')
+          .margin({ bottom: 20 })
+  
+        // 设置是否应用中西文自动间距
+        // 'app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'资源文件中的value值为'中西文Auto Spacing自动间距'
+        Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
+          .fontSize(24)
+          .padding(15)
+          .backgroundColor('#F5F5F5')
+          .width('90%')
+          .enableAutoSpacing(this.enableSpacing)
+      }
+      .width('100%')
+      .height('100%')
+      .padding(20)
+      }
+      // ···
+    }
+  }
+  ```
 
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
