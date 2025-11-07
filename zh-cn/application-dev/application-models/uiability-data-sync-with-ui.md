@@ -124,6 +124,7 @@
     <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
+    // ···
     import { UIAbility } from '@kit.AbilityKit';
     // ···
     
