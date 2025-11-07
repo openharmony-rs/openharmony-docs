@@ -421,6 +421,10 @@ class Book {
 
 <!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
 
+``` TypeScript
+// ···
+```
+
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
 ### 装饰Map类型变量
