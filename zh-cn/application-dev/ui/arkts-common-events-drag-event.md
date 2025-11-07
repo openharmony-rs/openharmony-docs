@@ -489,7 +489,7 @@ struct Index {
    // ···
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     // ···
+   // ···
    })
    ```
 
@@ -510,25 +510,25 @@ struct Index {
    <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
    ``` TypeScript
-   @State previewData: DragItemInfo[] = [];
-   @State isSelectedGrid: boolean[] = [];
+     @State previewData: DragItemInfo[] = [];
+     @State isSelectedGrid: boolean[] = [];
    // ···
-   .onClick(() => {
-     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     if (this.isSelectedGrid[idx]) {
-       // ···
-       let gridItemName = 'grid' + idx;
-       // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-       this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
-         this.pixmap = pixmap;
-         this.previewData[idx] = {
-           pixelMap: this.pixmap
-         }
-       })
-     } else {
-       // ···
-     }
-   })
+               .onClick(() => {
+                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                 if (this.isSelectedGrid[idx]) {
+                   // ···
+                   let gridItemName = 'grid' + idx;
+                   // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                   this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                     this.pixmap = pixmap;
+                     this.previewData[idx] = {
+                       pixelMap: this.pixmap
+                     }
+                   })
+                 } else {
+                   // ···
+                 }
+               })
    ```
 
 3. 多选显示效果。
@@ -538,21 +538,21 @@ struct Index {
     <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
     ``` TypeScript
-    @Styles
-    normalStyles(): void {
-      .opacity(1.0)
-    }
+      @Styles
+      normalStyles(): void {
+        .opacity(1.0)
+      }
     
-    @Styles
-    selectStyles(): void {
-      .opacity(0.4)
-    }
+      @Styles
+      selectStyles(): void {
+        .opacity(0.4)
+      }
     
     // ···
-    .stateStyles({
-      normal: this.normalStyles,
-      selected: this.selectStyles
-    })
+                .stateStyles({
+                  normal: this.normalStyles,
+                  selected: this.selectStyles
+                })
     ```
 
 4. 适配数量角标。
@@ -562,21 +562,21 @@ struct Index {
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
     ``` TypeScript
-    @State numberBadge: number = 0;
+      @State numberBadge: number = 0;
     // ···
-    .onClick(() => {
-      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-      if (this.isSelectedGrid[idx]) {
-        // ···
-        this.numberBadge++;
-        // ···
-      } else {
-        this.numberBadge--;
-        // ···
-      }
-    })
-    // 多选场景右上角数量角标需要应用设置numberBadge参数
-    .dragPreviewOptions({ numberBadge: this.numberBadge })
+                .onClick(() => {
+                  this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                  if (this.isSelectedGrid[idx]) {
+                    // ···
+                    this.numberBadge++;
+                    // ···
+                  } else {
+                    this.numberBadge--;
+                    // ···
+                  }
+                })
+                // 多选场景右上角数量角标需要应用设置numberBadge参数
+                .dragPreviewOptions({ numberBadge: this.numberBadge })
     ```
 
 **完整示例：**
@@ -696,7 +696,7 @@ build() {
      .onDragStart((event) => {
      })
      .onDragEnd((event) => {
-       // ···
+     // ···
      })
    ```
 
@@ -755,14 +755,13 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // ···
-
 const DOMAIN = 0x0000;
 const TAG = 'DropAnimationExampleTag'
 
 @Entry
 @Component
 export struct DropAnimationExample {
-  // ···
+// ···
   @State targetImage: string = '';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
@@ -1110,7 +1109,7 @@ struct GridEts {
               }
             }
           })
-          // ···
+        // ···
           .onPreDrag((status: PreDragStatus) => {
             // 1.长按时通知，350ms回调
             if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
@@ -1257,7 +1256,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   ``` TypeScript
   build() {
     Column() {
-      // ···
+    // ···
         Column() {
           // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
           Text($r('app.string.DoubleClick_Text'))
@@ -1276,7 +1275,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
             // app.string.Search_Device资源文件中的value值为'搜索设备'
             title: { title: $r('app.string.Search_Device') },
           })
-      // ···
+        // ···
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
@@ -1344,24 +1343,24 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   handleSpringLoading(context: SpringLoadingContext) {
     // BEGIN 状态时检查拖拽数据类型
     if (context.state == dragController.DragSpringLoadingState.BEGIN) {
-      // ···
+    // ···
       // 进行必要判断，决定是否要终止触发
       return;
     }
     if (context.state == dragController.DragSpringLoadingState.UPDATE) {
-      // ···
+    // ···
       // 刷新提醒
       return;
     }
     // 处理Spring Loading结束，触发视图切换
     if (context.state == dragController.DragSpringLoadingState.END) {
-      // ···
+    // ···
       // 视图激活或跳转
       return;
     }
     // 处理CANCEL状态，复原UI
     if (context.state == dragController.DragSpringLoadingState.CANCEL) {
-      // ···
+    // ···
       // 恢复状态与UI
       return;
     }
