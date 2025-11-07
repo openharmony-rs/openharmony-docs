@@ -74,7 +74,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
   3. 在文件末尾添加PATH信息。
 
       ```shell
-      PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
+      export PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
       ```
 
       其中{DevEco Studio}需替换为DevEco Studio实际安装目录的绝对路径，例如/home/DevEco-Studio。
