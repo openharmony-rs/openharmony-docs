@@ -724,6 +724,42 @@ struct Test {
 【示例2】
 <!-- @[state_problem_state_ui_refresh_example_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemStateUiRefreshExample02.ets) -->
 
+``` TypeScript
+class Info {
+  public address: string = 'Hangzhou';
+
+  constructor(address: string) {
+    this.address = address;
+  }
+}
+
+class User {
+  public info: Info = new Info('Tianjin');
+}
+
+@Entry
+@Component
+struct Test {
+  @State info: Info = new Info('Shanghai');
+  @State user: User = new User();
+
+  aboutToAppear(): void {
+    this.user.info = this.info;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.info.address}`);
+      Text(`${this.user.info.address}`);
+      Button('change')
+        .onClick(() => {
+          this.user.info.address = 'Beijing';
+        })
+    }
+  }
+}
+```
+
 在`aboutToAppear`中，`info`的引用被赋值给了`user`的成员属性`info`。因此，点击按钮改变`info`中的属性时，会触发第一个`Text`组件的刷新。第二个`Text`组件由于观测能力仅有一层，无法检测到二层属性的变化，所以不会刷新。
 
 【示例3】
