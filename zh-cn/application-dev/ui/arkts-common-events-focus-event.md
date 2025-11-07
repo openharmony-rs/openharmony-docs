@@ -1117,6 +1117,50 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 >  - 该能力从API version 18开始支持。
 
   <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct NextFocusExample {
+    build() {
+      NavDestination() {
+        Column({ space: 30 }) {
+          Row().height('30%')
+          Row({ space: 10 }) {
+            Button('A')
+              .id('A')
+              .nextFocus({ forward: 'F', backward: 'C', down: 'B' })
+            Button('B')
+              .id('B')
+              .nextFocus({ down: 'C' })
+            Button('C')
+              .id('C')
+          }
+  
+          Column({ space: 10 }) {
+            Button('D')
+              .id('D')
+            Button('E')
+              .id('E')
+              .nextFocus({
+                forward: 'A',
+                backward: 'M',
+                up: 'E',
+                right: 'F'
+              })
+          }
+  
+          Row({ space: 10 }) {
+            Button('F')
+              .id('F')
+              .nextFocus({ forward: 'B', down: 'A' })
+          }
+        }.width('100%')
+      }
+      // ···
+    }
+  }
+  ```
 
 Tab键走焦：未配置nextFocus时，Tab键走焦顺序为A->B->C->D->E->F。配置nextFocus之后，Tab键走焦顺序为A->F->B->C->D->E->A。
 
