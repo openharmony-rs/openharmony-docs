@@ -177,6 +177,7 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER = 0xF811;
 const TAG  = '[Sample_AppLinking]';
 @Entry
