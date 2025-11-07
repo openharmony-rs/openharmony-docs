@@ -15,6 +15,14 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 
 <!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
+``` TypeScript
+// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+  .fontSize(96)
+  .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+  .fontColor([Color.Black, Color.Green, Color.White])
+```
+
   ![symbol_folder_badge_plus](figures/symbol_ohos_folder_badge_plus.png)
 
 ## 添加到文本中
