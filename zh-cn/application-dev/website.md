@@ -634,7 +634,6 @@
           <!--DelEnd-->
       - UI开发调试调优<!--ui-debug-optimize-->
         - [预览](ui-ide-previewer.md)
-        - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
       - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
         - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](ui/arkts-dyn-sta-ui-rules.md)
         - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->

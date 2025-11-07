@@ -10,7 +10,7 @@
 
 - \@Provide装饰的状态变量自动对其所有后代组件可用，即该变量被提供给他的后代组件。这使开发者无需在组件间多次传递变量。
 
-- 后代组件通过使用\@Consume获取\@Provide提供的变量，建立\@Provide和\@Consume之间的双向数据同步。与[\@State](arkts-static-state.md)/\@Link不同，\@Provide和\@Consume可以在多层级的父子组件之间传递。
+- 后代组件通过使用\@Consume获取\@Provide提供的变量，建立\@Provide和\@Consume之间的双向数据同步。与[\@State](arkts-static-state.md)/[\@Link](./arkts-static-link.md)不同，\@Provide和\@Consume可以在多层级的父子组件之间传递。
 
 - \@Provide和\@Consume可以通过相同的变量名或者相同的变量别名绑定，要求类型相同，否则会发生运行时异常。
 
@@ -38,9 +38,9 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 | \@Provide变量装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>指定别名方法为：\@Provide({ alias: 'aliasName' })。<br/>allowOverride：是否允许重写，boolean类型，可选。<br/>如果指定allowOverride为true，则别名与属性名可以被重写，即可以存在同名的\@Provide变量。<br/>未指定时使用默认值false。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
-| 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及联合类型。 |
 | 初始化规则          | 必须定义本地默认值。<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。 |
-| 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
+| 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、[\@PropRef](./arkts-static-propref.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
 
 | \@Consume变量装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
