@@ -131,4 +131,4 @@
   - [使用SCRYPT进行密钥派生(ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [使用SCRYPT进行密钥派生(C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
   - [使用X963KDF进行密钥派生(ArkTS)](crypto-key-derivation-using-x963kdf.md)
-  - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)
+  - [使用X963KDF进行密钥派生(C/C++)](crypto-key-derivation-using-x963kdf-ndk.md)<!--RP1--><!--RP1End-->
