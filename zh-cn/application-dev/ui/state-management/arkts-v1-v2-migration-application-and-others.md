@@ -142,6 +142,34 @@ V2:
 
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
 
+``` TypeScript
+// Page1.ets
+import { MyStorage } from './storage';
+
+@Entry
+@ComponentV2
+struct Page1 {
+  storage: MyStorage = MyStorage.instance();
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pageStack) {
+      Column() {
+        Text(`${this.storage.count}`)
+          .fontSize(50)
+          .onClick(() => {
+            this.storage.count++;
+          })
+        Button('push to Page2')
+          .onClick(() => {
+            this.pageStack.pushPathByName('Page2', null);
+          })
+      }
+    }
+  }
+}
+```
+
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
 
 ``` TypeScript
