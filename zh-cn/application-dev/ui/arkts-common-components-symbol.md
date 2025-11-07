@@ -13,14 +13,17 @@ SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多
 
 SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置的Symbol资源名。<!--RP1--><!--RP1End-->
 
-  ```ts
-  SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
-    .fontSize(96)
-    .renderingStrategy(SymbolRenderingStrategy.SINGLE)
-    .fontColor([Color.Black, Color.Green, Color.White])
-  ```
-  ![symbol_folder_badge_plus](figures/symbol_ohos_folder_badge_plus.png)
+<!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
+``` TypeScript
+// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+  .fontSize(96)
+  .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+  .fontColor([Color.Black, Color.Green, Color.White])
+```
+
+  ![symbol_folder_badge_plus](figures/symbol_ohos_folder_badge_plus.png)
 
 ## 添加到文本中
 
@@ -30,45 +33,51 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 
   SymbolSpan组件需嵌入在Text组件中才能显示，单独使用不会呈现任何内容。
 
-
-  ```ts
+  <!-- @[creat_symbol_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Text() {
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolSpan($r('sys.symbol.ohos_trash'))
       .fontWeight(FontWeight.Normal)
       .fontSize(96)
   }
   ```
-  ![symbol_trash](figures/symbolspan_trash.png)
 
+  ![symbol_trash](figures/symbolspan_trash.png)
 
 - 通过[fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize)属性设置SymbolSpan的大小。
 
-
-  ```ts
+  <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Row() {
     Column() {
-      Text("48")
+      Text('48')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(48)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
           .fontColor([Color.Black, Color.Green, Color.White])
       }
     }
-
+  
     Column() {
-      Text("72")
+      Text('72')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(72)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
           .fontColor([Color.Black, Color.Green, Color.White])
       }
     }
-
+  
     Column() {
-      Text("96")
+      Text('96')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -77,33 +86,39 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
     }
   }
   ```
+
   ![symbolSpan_multi_fontSize](figures/symbolspan_multi_fontsize.png)
 
 - 通过[fontWeight](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontweight)属性设置SymbolSpan组件的粗细。
 
-  ```ts
+  <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Row() {
     Column() {
-      Text("Light")
+      Text('Light')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Lighter)
           .fontSize(96)
       }
     }
-
+  
     Column() {
-      Text("Normal")
+      Text('Normal')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Normal)
           .fontSize(96)
       }
     }
-
+  
     Column() {
-      Text("Bold")
+      Text('Bold')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Bold)
           .fontSize(96)
@@ -111,33 +126,39 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
     }
   }
   ```
+  
   ![symbolSpan_multi_fontWeight_trash](figures/symbol_multi_fontweight_trash.png)
 
 - 通过[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
 
-  ```ts
+  <!-- @[symbol_span_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Row() {
     Column() {
-      Text("Black")
+      Text('Black')
       Text() {
-          SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
-            .fontSize(96)
-            .fontColor([Color.Black])
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .fontColor([Color.Black])
       }
     }
-
+  
     Column() {
-      Text("Green")
+      Text('Green')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .fontColor([Color.Green])
       }
     }
-
+  
     Column() {
-      Text("Pink")
+      Text('Pink')
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .fontColor([Color.Pink])
@@ -145,35 +166,44 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
     }
   }
   ```
+
   ![symbolSpan_multi_fontColor](figures/symbolspan_multi_fontcolor.PNG)
 
 - 通过[renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy)属性设置SymbolSpan的渲染策略。
 
-  ```ts
+  <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Row() {
     Column() {
-      Text("单色")
+      // 'app.string.single_color'资源文件中的value值为"单色"
+      Text($r('app.string.single_color'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
           .fontColor([Color.Black, Color.Green, Color.White])
       }
     }
-
+  
     Column() {
-      Text("多色")
+      // 'app.string.multi_color'资源文件中的value值为"多色"
+      Text($r('app.string.multi_color'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
           .fontColor([Color.Black, Color.Green, Color.White])
       }
     }
-
+  
     Column() {
-      Text("分层")
+      // 'app.string.hierarchical'资源文件中的value值为"分层"
+      Text($r('app.string.hierarchical'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
@@ -182,33 +212,42 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
     }
   }
   ```
+
   ![symbolSpan_multi_renderingStrategy](figures/symbolspan_multi_renderingStrategy.png)
 
 - 通过[effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy)属性设置SymbolSpan的动效策略。
 
-  ```ts
+  <!-- @[symbol_span_effect_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
   Row() {
     Column() {
-      Text("无动效")
+      // 'app.string.no_action'资源文件中的value值为"无动效"
+      Text($r('app.string.no_action'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.NONE)
       }
     }
-
+  
     Column() {
-      Text("整体缩放动效")
+      // 'app.string.overall_scaling_animation_effect'资源文件中的value值为"整体缩放动效"
+      Text($r('app.string.overall_scaling_animation_effect'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.SCALE)
       }
     }
-
+  
     Column() {
-      Text("层级动效")
+      // 'app.string.hierarchical_animation'资源文件中的value值为"层级动效"
+      Text($r('app.string.hierarchical_animation'));
       Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
@@ -216,6 +255,7 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
     }
   }
   ```
+
   ![symbolSpan_multi_effectStrategy](figures/symbolspan_multi_effectStrategy.gif)
 
 - SymbolSpan不支持通用事件。
@@ -228,132 +268,203 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 
 - 通过设置SymbolEffect属性，可以同时配置SymbolGlyph的动效策略和播放状态。
 
-  ```ts
+  <!-- @[symbol_variable_color_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   @State isActive: boolean = true;
+  ```
+
+  <!-- @[symbol_variable_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text("可变颜色动效")
+    // 'app.string.variable_color_animation'资源文件中的value值为"可变颜色动效"
+    Text($r('app.string.variable_color_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
-    Button(this.isActive ? '关闭' : '播放').onClick(() => {
+    // 'app.string.off'资源文件中的value值为"关闭"
+    // 'app.string.on'资源文件中的value值为"播放"
+    Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
   }
   ```
+
   ![symbolGlyph_symbolEffect_isActive](figures/symbolGlyph_symbolEffect_isActive.gif)
 
 - 通过设置SymbolEffect属性，可以同时指定SymbolGlyph的动画效果策略及其播放触发条件。 
 
-  ```ts
+  <!-- @[symbol_bouncing_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   @State triggerValueReplace: number = 0;
+  ```
+
+  <!-- @[symbol_bouncing_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text("弹跳动效")
+    // 'app.string.bounce_animation'资源文件中的value值为"弹跳动效"
+    Text($r('app.string.bounce_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
       .fontSize(96)
       .fontColor([Color.Gray])
-      .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP), this.triggerValueReplace)
+      .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP),
+                    this.triggerValueReplace)
     Button('trigger').onClick(() => {
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
   }
   ```
+
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
 - 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
 
-  ```ts
+  <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   @State triggerValueReplace: number = 0;
-  @State renderMode: number = 1;
   replaceFlag: boolean = true;
+  @State renderMode: number = 1;
+  ```
 
+  <!-- @[symbol_disable_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text("禁用动效")
+    // 'app.string.disable_animation'资源文件中的value值为"禁用动效"
+    Text($r('app.string.disable_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
       .fontSize(96)
       .renderingStrategy(this.renderMode)
-      .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY), this.triggerValueReplace)
+      .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY),
+                    this.triggerValueReplace)
     Button('trigger').onClick(() => {
       this.replaceFlag = !this.replaceFlag;
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
   }
   ```
+
   ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
 
 - 从API version 20开始，支持通过设置SymbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
 
-  ```ts
+  <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   @State triggerValueReplace: number = 0;
   replaceFlag: boolean = true;
+  ```
 
+  <!-- @[symbol_quick_replacement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text("快速替换动效")
+    // 'app.string.quick_replacement_animation'资源文件中的value值为"快速替换动效"
+    Text($r('app.string.quick_replacement_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
       .fontSize(96)
-      .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace)
+      .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE),
+                    this.triggerValueReplace)
     Button('trigger').onClick(() => {
       this.replaceFlag = !this.replaceFlag;
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
   }
   ```
+
   ![symbolGlyph_symbolEffect_quick_replace](figures/symbolGlyph_symbolEffect_quick_replace.gif)
 
 ## 设置阴影和渐变色
 
 - 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口实现了symbolGlyph组件显示阴影效果。
 
-  ```ts
+  <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
   @State isActive: boolean = true;
-
+  
   options: ShadowOptions = {
     radius: 10.0,
     color: Color.Blue,
     offsetX: 10,
     offsetY: 10,
   };
+  ```
 
+  <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text("阴影能力")
+    // 'app.string.shadow_ability'资源文件中的value值为"阴影能力"
+    Text($r('app.string.shadow_ability'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
       .symbolShadow(this.options)
-    Button(!this.isActive ? '关闭' : '播放').onClick(() => {
+    // 'app.string.off'资源文件中的value值为"关闭"
+    // 'app.string.on'资源文件中的value值为"播放"
+    Button(!this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
   }
   ```
+
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
 - 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口实现了symbolGlyph组件显示渐变色效果。 
 
-  ```ts
+  <!-- @[shadow_color_2_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
   radialGradientOptions: RadialGradientOptions = {
-    center: ["50%", "50%"],
-    radius: "20%",
+    center: ['50%', '50%'],
+    radius: '20%',
     colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
     repeating: true,
   };
+  ```
 
+  <!-- @[shadow_color_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
   Column() {
-    Text('径向渐变')
+    // 'app.string.radial_gradient'资源文件中的value值为"径向渐变"
+    Text($r('app.string.radial_gradient'))
       .fontSize(18)
       .fontColor(0xCCCCCC)
       .textAlign(TextAlign.Center)
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       .fontSize(96)
       .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
   }
   ```
+
   ![ShaderStyleSymbolEffect](figures/symbolGlyph_shaderStyle.jpg)
 
 ## 添加事件
 
 SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
-```ts
+<!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
+
+``` TypeScript
 @State wifiColor: ResourceColor = Color.Black;
+```
+
+<!-- @[symbol_glyph_span_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
+
+``` TypeScript
+// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
 SymbolGlyph($r('sys.symbol.ohos_wifi'))
   .fontSize(96)
   .fontColor([this.wifiColor])
@@ -361,22 +472,36 @@ SymbolGlyph($r('sys.symbol.ohos_wifi'))
     this.wifiColor = Color.Gray;
   })
 ```
+
+
 ![symbolGlyph_onClick](figures/symbolGlyph_onClick.gif)
 
 ## 场景示例
 
 该示例通过symbolEffect、fontSize、fontColor属性展示了播放列表的效果。
 
-```ts
-// xxx.ets
+<!-- @[symbol_glyph_span_scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolSceneExample.ets) -->
+
+``` TypeScript
+// resourceGetString封装工具，从资源中获取字符串
+import resourceGetString from '../../common/resource';
+
 @Entry
 @Component
-struct Index {
+struct SymbolMusicDemo {
   @State triggerValueReplace: number = 0;
+  // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
   @State symbolSources: Resource[] =
     [$r('sys.symbol.repeat'), $r('sys.symbol.repeat_1'), $r('sys.symbol.arrow_left_arrow_right')];
   @State symbolSourcesIndex: number = 0;
-  @State symbolText: string[] = ['顺序播放', '单曲循环', '随机播放'];
+  @State symbolText: string[] = [
+    // 'app.string.play_in_order'资源文件中的value值为"顺序播放"
+    resourceGetString.resourceToString($r('app.string.play_in_order')),
+    // 'app.string.play_in_single_repeat'资源文件中的value值为"单曲循环"
+    resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
+    // 'app.string.shuffle_play'资源文件中的value值为"随机播放"
+    resourceGetString.resourceToString($r('app.string.shuffle_play')),
+  ];
   @State symbolTextIndex: number = 0;
   @State fontColorValue: ResourceColor = Color.Grey;
   @State fontColorValue1: ResourceColor = '#E8E8E8';
@@ -385,7 +510,8 @@ struct Index {
     Column({ space: 10 }) {
       Row() {
         Text() {
-          Span('当前播放列表')
+          // 'app.string.current_playlist'资源文件中的value值为"当前播放列表"
+          Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
           Span('（101）')
@@ -417,18 +543,21 @@ struct Index {
 
         Row({ space: 5 }) {
           Text() {
+            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.arrow_down_circle_badge_vip_circle_filled'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
           }
 
           Text() {
+            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.heart_badge_plus'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
           }
 
           Text() {
+            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
@@ -440,13 +569,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲一")
+          // 'app.string.song'资源文件中的value值为"歌曲一"
+          Text($r('app.string.song'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -456,13 +588,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲二")
+          // 'app.string.song_again'资源文件中的value值为"歌曲二"
+          Text($r('app.string.song_again'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -472,13 +607,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲三")
+          // 'app.string.again_song'资源文件中的value值为"歌曲三"
+          Text($r('app.string.again_song'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -488,13 +626,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲四")
+          // 'app.string.song_repeat'资源文件中的value值为"歌曲四"
+          Text($r('app.string.song_repeat'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -504,13 +645,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲五")
+          // 'app.string.repeat_song'资源文件中的value值为"歌曲五"
+          Text($r('app.string.repeat_song'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -520,13 +664,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲六")
+          // 'app.string.song_play'资源文件中的value值为"歌曲六"
+          Text($r('app.string.song_play'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -536,13 +683,16 @@ struct Index {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          Text("歌曲七")
+          // 'app.string.play_song'资源文件中的value值为"歌曲七"
+          Text($r('app.string.play_song'))
         }.width('82%')
 
         Row({ space: 5 }) {
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
+          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -551,7 +701,8 @@ struct Index {
 
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Column() {
-        Text("关闭")
+        // 'app.string.off'资源文件中的value值为"关闭"
+        Text($r('app.string.off'))
       }
       .alignItems(HorizontalAlign.Center)
       .width('98%')
@@ -566,4 +717,5 @@ struct Index {
   }
 }
 ```
+
 ![symbol_scene_demo](figures/symbol_music_demo.gif)
