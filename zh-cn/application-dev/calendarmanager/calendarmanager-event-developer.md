@@ -130,6 +130,25 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     };
     ```
     <!-- @[calendarEvent_createCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建日历账户
+    calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+      hilog.info(DOMAIN, 'testTag', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
+      calendar = data;
+      // 请确保日历账户创建成功后，再进行相关日程的管理
+    
+      // 设置日历配置信息，打开日程提醒、设置日历账户颜色
+      calendar.setConfig(config).then(() => {
+        hilog.info(DOMAIN, 'testTag', `Succeeded in setting config, data->${JSON.stringify(config)}`);
+      }).catch((err: BusinessError) => {
+        hilog.error(DOMAIN, 'testTag', `Failed to set config. Code: ${err.code}, message: ${err.message}`);
+      });
+      // ...
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, 'testTag', `Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+    });
+    ```
 
 5. 在当前日历账户下添加日历日程，注意入参中不需要填写日程id。
 
