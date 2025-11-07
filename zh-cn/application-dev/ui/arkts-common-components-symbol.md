@@ -125,6 +125,16 @@ SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/a
 
 <!-- @[symbol_glyph_span_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
+``` TypeScript
+// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+SymbolGlyph($r('sys.symbol.ohos_wifi'))
+  .fontSize(96)
+  .fontColor([this.wifiColor])
+  .onClick(() => {
+    this.wifiColor = Color.Gray;
+  })
+```
+
 
 ![symbolGlyph_onClick](figures/symbolGlyph_onClick.gif)
 
