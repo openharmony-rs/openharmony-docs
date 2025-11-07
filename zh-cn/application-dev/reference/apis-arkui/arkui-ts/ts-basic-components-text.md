@@ -1530,6 +1530,38 @@ getLayoutManager(): LayoutManager
 | ---------------------------------------- | ------- |
 | [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。 |
 
+### setTextSelection<sup>23+</sup>
+
+setTextSelection(selectionStart:&nbsp;number | undefined, selectionEnd:&nbsp;number | undefined, options?:&nbsp;SelectionOptions): void
+
+设置文本选择区域并高亮显示。
+
+>  **说明：**
+> 
+> 当[copyOption](#copyoption9)设置为CopyOptions.None时，设置setTextSelection不生效。
+> 
+> 当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE时，设置setTextSelection不生效。
+> 
+> 当selectionStart大于等于selectionEnd时不选中。可选范围为[0, textSize]，其中textSize为文本内容最大字符数，入参小于0时处理为0，大于textSize时处理为textSize。
+> 
+> 当selectionStart或selectionEnd位于截断的不可见区域时，文本不选中。截断为false时，超出父组件的文本选中区域生效。
+>
+> 如果设备为PC/2in1，即使options被赋值为MenuPolicy.SHOW，调用setTextSelection也不弹出菜单。
+>
+> 当emoji表情被选中区域截断时，若表情的起始位置包含在设置的文本选中区域内，该表情就会被选中。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| selectionStart | number \| undefined | 是    | 文本选择区域起始位置。<br />取值范围：[0, +∞），值为负数或undefined时按0处理。 |
+| selectionEnd   | number \| undefined | 是    | 文本选择区域结束位置。<br />取值范围：[0, +∞），值为负数或undefined时按0处理。 |
+| options | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选中文字时的配置。<br />默认值：SelectionOptions中MenuPolicy.DEFAULT |
+
 ## TextMarqueeOptions<sup>18+</sup>对象说明
 
 Marquee初始化参数。
@@ -2800,3 +2832,35 @@ struct TextExample1 {
 ```
 
 ![textMinlines](figures/textMinlines.png)
+
+### 示例22（设置文本选择区域并高亮显示）
+
+从API version 23开始，该示例使用[TextController](#textcontroller11)中的[setTextSelection](#settextselection23)设置文本选择区域并高亮显示。
+
+```ts
+
+@Entry
+@Component
+struct Index {
+  controller: TextController = new TextController();
+  @State textStr: string = 'Hello World! 你好，世界！';
+
+  build() {
+    Scroll() {
+      Column() {
+        Text(this.textStr, { controller: this.controller })
+          .fontSize(25)
+          .borderWidth(1)
+        Button("setTextSelection")
+          .onClick(() => {
+            this.controller.setTextSelection(1, 6, { menuPolicy: MenuPolicy.HIDE })
+          })
+          .margin({ bottom: 20, top: 10 } as Margin)
+      }
+      .margin({ top: 100, left: 8, right: 8 } as Margin)
+    }
+  }
+}
+```
+
+![textSetTextSelection](figures/textSetTextSelection.gif)
