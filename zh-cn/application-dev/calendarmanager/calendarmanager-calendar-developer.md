@@ -129,6 +129,18 @@
     };
     ```
     <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建日历账户
+    calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
+      calendar = data;
+      // 请确保日历账户创建成功后，再进行后续相关操作
+      // ...
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, 'testTag', `Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+    });
+    ```
 
 5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
 
