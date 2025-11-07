@@ -120,7 +120,8 @@
    - 定义闹钟实例。
    
       <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
-      ```ts
+      
+      ``` TypeScript
       let alarm: reminderAgent.ReminderRequestAlarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,  // 提醒类型为闹钟类型
         hour: time.hour,  // 指明提醒的目标时刻
@@ -128,11 +129,11 @@
         actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // “关闭闹钟”
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // 关闭闹钟
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // “推迟闹钟”
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // 推迟闹钟
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
           }
         ],
@@ -142,8 +143,8 @@
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题“闹钟”
-        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容“闹钟时间已到”
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容
         snoozeTimes: 0,  // 指明延迟提醒次数
         timeInterval: 0,  // 执行延迟提醒间隔（单位：秒）
         daysOfWeek: []  // 指明每周哪几天需要重复提醒
