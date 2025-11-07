@@ -50,6 +50,46 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 通过[renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy)属性设置SymbolSpan的渲染策略。
 
   <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  Row() {
+    Column() {
+      // 'app.string.single_color'资源文件中的value值为"单色"
+      Text($r('app.string.single_color'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  
+    Column() {
+      // 'app.string.multi_color'资源文件中的value值为"多色"
+      Text($r('app.string.multi_color'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  
+    Column() {
+      // 'app.string.hierarchical'资源文件中的value值为"分层"
+      Text($r('app.string.hierarchical'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+          .fontSize(96)
+          .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+          .fontColor([Color.Black, Color.Green, Color.White])
+      }
+    }
+  }
+  ```
 
   ![symbolSpan_multi_renderingStrategy](figures/symbolspan_multi_renderingStrategy.png)
 
