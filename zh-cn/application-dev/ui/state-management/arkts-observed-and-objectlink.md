@@ -1375,6 +1375,76 @@ incrSubCounter和setSubCounter都是同一个SubCounter的函数。在第一个�
 
 <!-- @[Complex_Methods_Nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets) -->
 
+``` TypeScript
+let nextId = 1;
+
+@Observed
+class SubCounter {
+  public counter: number;
+
+  constructor(c: number) {
+    this.counter = c;
+  }
+}
+
+@Observed
+class ParentCounter {
+  public id: number;
+  public counter: number;
+  public subCounter: SubCounter;
+
+  incrCounter() {
+    this.counter++;
+  }
+
+  incrSubCounter(c: number) {
+    this.subCounter.counter += c;
+  }
+
+  setSubCounter(c: number): void {
+    this.subCounter.counter = c;
+  }
+
+  constructor(c: number) {
+    this.id = nextId++;
+    this.counter = c;
+    this.subCounter = new SubCounter(c);
+  }
+}
+
+
+@Entry
+@Component
+struct ParentComp {
+  @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
+  build() {
+    Row() {
+        CounterComp({ value: this.counter[0] }) // ParentComp组件传递 ParentCounter 给 CounterComp 组件
+    }
+  }
+}
+
+@Component
+struct CounterComp {
+  @ObjectLink value: ParentCounter; // @ObjectLink 接收 ParentCounter
+  build() {
+      // CounterChild 是 CounterComp 的子组件，CounterComp 传递 this.value.subCounter 给 CounterChild 组件
+      CounterChild({ subValue: this.value.subCounter })
+  }
+}
+
+@Component
+struct CounterChild {
+  @ObjectLink subValue: SubCounter; // @ObjectLink 接收 SubCounter
+  build() {
+    Text(`${this.subValue.counter}`)
+      .onClick(() => {
+        this.subValue.counter += 1;
+      })
+  }
+}
+```
+
 该方法使得\@ObjectLink分别代理了ParentCounter和SubCounter的属性，这样对于这两个类的属性的变化都可以观察到，即都会对UI视图进行刷新。即使删除了上面所说的this.counter[0].incrCounter()，UI也会进行正确的刷新。
 
 该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考[@Prop与@ObjectLink的差异](#prop与objectlink的差异)。
