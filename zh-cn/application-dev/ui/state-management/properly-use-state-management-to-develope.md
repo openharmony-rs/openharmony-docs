@@ -1517,6 +1517,58 @@ struct ChildComponent {
 
 <!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
+@Observed
+class StyleList12 extends Array<TextStyles12> {
+}
+
+@Observed
+class TextStyles12 {
+  public fontSize: number;
+
+  constructor(fontSize: number) {
+    this.fontSize = fontSize;
+  }
+}
+
+@Entry
+@Component
+struct Page12 {
+  @State styleList: StyleList12 = new StyleList12();
+
+  aboutToAppear() {
+    for (let i = 15; i < 50; i++) {
+      this.styleList.push(new TextStyles12(i));
+    }
+  }
+
+  build() {
+    Column() {
+      Text('Font Size List')
+        .fontSize(50)
+        .onClick(() => {
+          for (let i = 0; i < this.styleList.length; i++) {
+            this.styleList[i].fontSize++;
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
+        })
+      List() {
+        ForEach(this.styleList, (item: TextStyles12) => {
+          ListItem() {
+            Text('Hello World')
+              .fontSize(item.fontSize)
+          }
+        })
+      }
+    }
+  }
+}
+```
+
 
 上述代码运行效果如下。
 
