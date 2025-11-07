@@ -46,6 +46,16 @@ Text可通过以下两种方式来创建：
   ```
 
   <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  
+  ``` TypeScript
+  // 'app.string.module_desc'资源文件中的value值为'模块描述'
+  Text($r('app.string.module_desc'))
+    .baselineOffset(0)
+    .fontSize(30)
+    .border({ width: 1 })
+    .padding(10)
+    .width(300)
+  ```
 
   ![zh-cn_image_0000001511580872](figures/zh-cn_image_0000001511580872.png)
 
