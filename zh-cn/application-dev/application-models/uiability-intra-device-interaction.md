@@ -189,7 +189,7 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
+                    info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -310,7 +310,7 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
+                    info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
