@@ -70,6 +70,10 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 通过设置SymbolEffect属性，可以同时配置SymbolGlyph的动效策略和播放状态。
 
   <!-- @[symbol_variable_color_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  @State isActive: boolean = true;
+  ```
 
   <!-- @[symbol_variable_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
