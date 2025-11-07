@@ -1,5 +1,12 @@
 # Class (TextBlob)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -153,7 +160,7 @@ class DrawingRenderNode extends RenderNode {
 
 static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob
 
-基于RunBuffer信息创建Textblob对象。
+基于RunBuffer信息创建TextBlob对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

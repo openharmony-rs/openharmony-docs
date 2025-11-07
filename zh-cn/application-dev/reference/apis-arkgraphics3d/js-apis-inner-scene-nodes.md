@@ -482,18 +482,16 @@ function getNode(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fov | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 视场，取值在0到π弧度之间。 |
-| nearPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 近平面，取值大于0。 |
-| farPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 远平面，取值大于nearPlane。 |
-| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
-| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
-| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
+| fov | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 视场，取值在0到π弧度之间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| nearPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 近平面，取值大于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| farPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 远平面，取值大于nearPlane。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 控制MSAA是否使能。true表示使能MSAA，false表示不使能MSAA。若未设置，默认为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。）<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 22 |
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>

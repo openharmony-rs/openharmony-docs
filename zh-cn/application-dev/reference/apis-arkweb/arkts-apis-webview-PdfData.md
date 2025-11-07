@@ -22,7 +22,7 @@ pdfArrayBuffer(): Uint8Array
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

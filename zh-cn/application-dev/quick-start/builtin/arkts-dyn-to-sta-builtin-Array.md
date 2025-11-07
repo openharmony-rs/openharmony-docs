@@ -94,7 +94,10 @@
 **示例：**  
   ```typescript
   let a: Array<number> = new Array<number>(1, 2, 3);
-  let iter: IterableIterator<number> = a.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of a) {
+    console.info(iter);
+  } // 1 2 3 
   ```
 
 - 适配建议：
@@ -188,7 +191,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `every(predicate: (value: T, index: number, array: Array<T>) => boolean): boolean`
+  `every(predicate: (value: T, index: int, array: Array<T>) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -199,7 +202,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | T[] | 是 | 调用的原始数组。 |
 
   predicate函数返回值说明：
@@ -288,7 +291,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `filter(fn: (v: T, i: number, self: Array<T>) => boolean): Array<T>`
+  `filter(fn: (v: T, i: int, self: Array<T>) => boolean): Array<T>`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -299,7 +302,7 @@ fn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | v | T | 是 | 当前被遍历的数组元素的值。 |
-  | i | number | 是 | 当前元素的索引。 |
+  | i | int | 是 | 当前元素的索引。 |
   | self | Array\<T\> | 是 | 调用的原始数组。 |
   | boolean | 是 | 表示是否过滤当前元素，true表示保留当前元素，false表示过滤掉当前元素。 |
 
@@ -383,7 +386,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `find(predicate: (value: T, index: number, arr: Array<T>) => boolean): T | undefined`
+  `find(predicate: (value: T, index: int, arr: Array<T>) => boolean): T | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -394,7 +397,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Array\<T\> | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -484,7 +487,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `findIndex(predicate: (value: T, index: number, array: Array<T>) => boolean): number`
+  `findIndex(predicate: (value: T, index: int, array: Array<T>) => boolean): int`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -495,7 +498,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Array\<T> | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -506,7 +509,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 第一个通过测试元素的索引，未找到则返回-1表示未找到满足的元素。 |
+  | int | 第一个通过测试元素的索引，未找到则返回-1表示未找到满足的元素。 |
 
 **示例：**  
   ```typescript
@@ -614,7 +617,7 @@ callback函数返回值说明：
 **规则：** `arkts-builtin-thisArgs`
 
 **ArkTS-Dyn版本签名：**  
-  `forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void`
+  `forEach(callbackfn: (value: T, index: int, array: T[]) => void, thisArg?: any): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -626,7 +629,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | T[] | 是 | 调用的原始数组。 |
 
 
@@ -650,7 +653,7 @@ callbackfn函数参数说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `forEach(callbackfn: (value: T, index: number, array: Array<T>) => void): void`
+  `forEach(callbackfn: (value: T, index: int, array: Array<T>) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -661,7 +664,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Array\<T> | 是 | 调用的原始数组。 |
 
 **示例：**  
@@ -738,7 +741,7 @@ callbackfn函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `map<U>(callbackfn: (value: T, index: number, arr: Array<T>) => U): U[]`
+  `map<U>(callbackfn: (value: T, index: int, arr: Array<T>) => U): U[]`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -749,7 +752,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Array\<T> | 是 | 调用的原始数组。 |
 
 callbackfn函数返回值说明：
@@ -960,7 +963,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `some(predicate: (value: T, index: number, array: T[]) => boolean): boolean`
+  `some(predicate: (value: T, index: int, array: T[]) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -971,7 +974,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：

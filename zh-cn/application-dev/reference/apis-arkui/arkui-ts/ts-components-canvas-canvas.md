@@ -4,7 +4,9 @@
 
 > **说明：** 
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  -该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -69,7 +71,9 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 ### onReady
 
-onReady(event: VoidCallback)
+ArkTS-Dyn: onReady(event: VoidCallback)
+
+ArkTS-Sta: onReady(event: VoidCallback | undefined)
 
 Canvas组件初始化完成或者发生大小变化时的事件回调，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -81,11 +85,15 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | [VoidCallback](ts-types.md#voidcallback12) | 是   | Canvas组件初始化完成或者发生大小变化时的事件回调事件。 |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | Canvas组件初始化完成或者发生大小变化时的事件回调事件。 |
 
 ## 示例
 

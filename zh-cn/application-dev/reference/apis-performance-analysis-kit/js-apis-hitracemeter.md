@@ -5,6 +5,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 建议使用API version 19的性能打点接口，后续性能打点接口[startTrace](#hitracemeterstarttrace)、[finishTrace](#hitracemeterfinishtrace)、[traceByValue](#hitracemetertracebyvalue)将逐步废弃。
@@ -23,7 +25,9 @@ import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 ## hiTraceMeter.startTrace
 
-startTrace(name: string, taskId: number): void
+ArkTS-Dyn: startTrace(name: string, taskId: number): void
+
+ArkTS-Sta: startTrace(name: string, taskId: int): void
 
 标记一个异步跟踪耗时任务的开始。
 
@@ -37,12 +41,16 @@ startTrace(name: string, taskId: number): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明               |
-| ------ | ------ | ---- | ------------------ |
-| name   | string | 是   | 要跟踪的任务名称。 |
-| taskId | number | 是   | 任务id。           |
+| 参数名 | 类型                                 | 必填 | 说明               |
+| ------ | ------------------------------------ | ---- | ------------------ |
+| name   | string                               | 是   | 要跟踪的任务名称。 |
+| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 任务id。           |
 
 **示例：**
 
@@ -52,7 +60,9 @@ hiTraceMeter.startTrace("myTestFunc", 1);
 
 ## hiTraceMeter.finishTrace
 
-finishTrace(name: string, taskId: number): void
+ArkTS-Dyn: finishTrace(name: string, taskId: number): void
+
+ArkTS-Sta: finishTrace(name: string, taskId: int): void
 
 标记一个异步跟踪耗时任务的结束。
 
@@ -64,12 +74,16 @@ finishTrace的name和taskId必须与流程开始的[startTrace](#hitracemetersta
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明               |
-| ------ | ------ | ---- | ------------------ |
-| name   | string | 是   | 要跟踪的任务名称。 |
-| taskId | number | 是   | 任务id。           |
+| 参数名 | 类型                                 | 必填 | 说明               |
+| ------ | ------------------------------------ | ---- | ------------------ |
+| name   | string                               | 是   | 要跟踪的任务名称。 |
+| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 任务id。           |
 
 **示例：**
 
@@ -101,7 +115,9 @@ hiTraceMeter.finishTrace("myTestFunc", 1);
 
 ## hiTraceMeter.traceByValue
 
-traceByValue(name: string, count: number): void
+ArkTS-Dyn: straceByValue(name: string, count: number): void
+
+ArkTS-Sta: traceByValue(name: string, count: long): void
 
 用来标记一个跟踪的整数变量，该变量的数值会不断变化。
 
@@ -111,17 +127,33 @@ traceByValue(name: string, count: number): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                   |
-| ------ | ------ | ---- | ---------------------- |
-| name   | string | 是   | 要跟踪的整数变量名称。 |
-| count  | number | 是   | 整数变量的值。         |
+| 参数名 | 类型                                  | 必填 | 说明                   |
+| ------ | ------------------------------------- | ---- | ---------------------- |
+| name   | string                                | 是   | 要跟踪的整数变量名称。 |
+| count  | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 整数变量的值。         |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
-let traceCount = 3;
+let traceCount: number = 3;
+hiTraceMeter.traceByValue("myTestCount", traceCount);
+traceCount = 4;
+hiTraceMeter.traceByValue("myTestCount", traceCount);
+// 业务流程......
+```
+
+ArkTS-Sta示例：
+
+```js
+let traceCount: long = 3;
 hiTraceMeter.traceByValue("myTestCount", traceCount);
 traceCount = 4;
 hiTraceMeter.traceByValue("myTestCount", traceCount);
@@ -138,6 +170,10 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 | 名称       | 值   | 说明                                    |
 | ---------- | ---- | --------------------------------------- |
 | DEBUG      | 0    | 仅用于调试的输出级别，优先级最低。      |
@@ -148,7 +184,9 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);
 
 ## hiTraceMeter.startAsyncTrace<sup>19+</sup>
 
-startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customCategory: string, customArgs?: string): void
+ArkTS-Dyn: startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customCategory: string, customArgs?: string): void
+
+ArkTS-Sta: startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int, customCategory: string, customArgs?: string): void
 
 标记一个异步跟踪耗时任务的开始，分级控制跟踪输出。
 
@@ -160,13 +198,17 @@ startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customC
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名         | 类型                                        | 必填 | 说明                                                         |
 | -------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                               |
 | name           | string                                      | 是   | 要跟踪的任务名称。                                           |
-| taskId         | number                                      | 是   | 任务id。                                                     |
+| taskId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 任务id。                                                     |
 | customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。                 |
 | customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔。<br>不传入该参数等同于传入空字符串。 |
 
@@ -185,7 +227,9 @@ hiTraceMeter.startAsyncTrace(COMMERCIAL, "myTestFunc", 4, "categoryTest", "key1=
 
 ## hiTraceMeter.finishAsyncTrace<sup>19+</sup>
 
-finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void
+ArkTS-Dyn: finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void
+
+ArkTS-Sta: finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void
 
 标记一个异步跟踪耗时任务的结束，分级控制跟踪输出。
 
@@ -195,13 +239,17 @@ finishAsyncTrace的level、name和taskId必须与流程开始的[startAsyncTrace
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明               |
 | ------ | ------------------------------------------- | ---- | ------------------ |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。     |
 | name   | string                                      | 是   | 要跟踪的任务名称。 |
-| taskId | number                                      | 是   | 任务id。           |
+| taskId | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 任务id。           |
 
 **示例：**
 
@@ -252,6 +300,10 @@ startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): vo
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名     | 类型                                        | 必填 | 说明                                                         |
@@ -284,6 +336,10 @@ finishSyncTrace的level必须与流程开始的[startSyncTrace](#hitracemetersta
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明           |
@@ -315,7 +371,9 @@ hiTraceMeter.finishSyncTrace(COMMERCIAL);
 
 ## hiTraceMeter.traceByValue<sup>19+</sup>
 
-traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
+ArkTS-Dyn: traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
+
+ArkTS-Sta: traceByValue(level: HiTraceOutputLevel, name: string, count: long): void
 
 整数跟踪事件，分级控制跟踪输出。用来标记一个预跟踪的整数变量名及整数值。
 
@@ -323,19 +381,36 @@ traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                   |
 | ------ | ------------------------------------------- | ---- | ---------------------- |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。         |
 | name   | string                                      | 是   | 要跟踪的整数变量名称。 |
-| count  | number                                      | 是   | 整数变量的值。         |
+| count  | ArkTS-Dyn: number<br/>ArkTS-Sta: long       | 是   | 整数变量的值。         |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-let traceCount = 3;
+let traceCount: number = 3;
+hiTraceMeter.traceByValue(COMMERCIAL, "myTestCount", traceCount);
+traceCount = 4;
+hiTraceMeter.traceByValue(COMMERCIAL, "myTestCount", traceCount);
+// 业务流程......
+```
+
+ArkTS-Sta示例：
+
+```js
+const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+let traceCount: long = 3;
 hiTraceMeter.traceByValue(COMMERCIAL, "myTestCount", traceCount);
 traceCount = 4;
 hiTraceMeter.traceByValue(COMMERCIAL, "myTestCount", traceCount);
@@ -353,6 +428,10 @@ isTraceEnabled(): boolean
 **原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 

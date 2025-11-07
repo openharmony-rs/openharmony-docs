@@ -1,20 +1,8 @@
-# 自定义组件冻结功能
-自定义组件冻结功能专为优化复杂UI页面的性能而设计，尤其适用于包含多个页面栈、长列表或宫格布局的场景。当状态变量绑定多个UI组件时，其变化易触发大量组件刷新，导致界面卡顿与响应延迟。为提升这类高负载UI界面的刷新性能，建议开发者使用自定义组件冻结功能。
+# V1自定义组件冻结场景
 
-组件冻结功能是一种性能优化机制，它会冻结非激活状态下的组件的刷新能力。当组件处于非激活状态时，即使其绑定的状态变量发生变化，也不会触发该组件的UI重新渲染，从而降低复杂UI场景下的刷新负载。
+当@Component装饰的自定义组件处于冻结状态时，状态变量将不响应更新，即@Watch不会调用，状态变量关联的节点不会刷新。
 
-> **说明：**
->
-> 从API version 20开始，支持自定义组件冻结功能。
->
-
-## 概述
-
-在ArkTS-Sta上下文中，自定义组件默认打开组件冻结机制。系统将仅对处于激活状态的自定义组件进行更新，这使得UI框架可以尽量缩小更新范围，仅限于用户可见范围内（激活状态）的自定义组件，从而提高复杂UI场景下的刷新效率。当处于inactive状态的自定义组件重新变为active状态时，状态管理框架会对其执行必要的刷新操作，确保UI的正确展示。
-
-简而言之，组件冻结旨在优化复杂界面下的UI刷新性能。在存在多个不可见自定义组件的情况下，如多页面栈、长列表或宫格，通过组件冻结可以实现按需刷新，即仅刷新当前可见的自定义组件，而将不可见自定义组件的刷新延迟至它们变为可见时。
-
-需要注意，组件active/inactive并不等同于其可见性。组件冻结目前仅适用于以下场景：
+V1自定义组件冻结支持场景为：
 
 1. [页面路由](../../reference/apis-arkui/js-apis-router.md)：当前栈顶页面为active状态，非栈顶不可见页面为inactive状态。
 2. [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)：只有当前显示的TabContent中的自定义组件处于active状态，其余则为inactive。
@@ -23,9 +11,13 @@
 5. 组件复用：进入复用池的组件为inactive状态，从复用池上树的节点为active状态。
 6. 混用场景：对于以上场景的组合使用，例如TabContent下面使用LazyForEach，切换Tab时，只有LazyForEach的屏上节点会被设置为active状态，其余则为inactive状态。
 
-## 当前支持的场景
+> **说明：**
+>
+> - 在ArkTS-Sta上下文中，从API version 22开始，支持状态管理V1自定义组件冻结。
+>
+> - 在ArkTS-Sta上下文中，自定义组件默认打开组件冻结机制。
 
-### 页面路由
+## 页面路由
 
 > **说明：**
 >
@@ -41,9 +33,8 @@
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, Column, Text, Button } from '@kit.ArkUI';
+import { Watch, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -81,9 +72,8 @@ struct Page1 {
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, Column, Text, Button } from '@kit.ArkUI';
+import { Watch, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -128,7 +118,7 @@ struct Page2 {
 4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
 
-### TabContent
+## TabContent
 
 对Tabs中当前不可见的TabContent进行冻结，修改状态变量不会触发冻结组件的更新。
 
@@ -140,9 +130,8 @@ struct Page2 {
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, ForEach, Column, Text, Button, Row, Tabs, TabContent, TabsController, FontWeight } from '@kit.ArkUI';
+import { State, Link, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -204,19 +193,15 @@ struct FreezeChild {
 
 3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
 
-**加图**
-
-
-### LazyForEach
+## LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, ForEach, TextAlign, Column, List, ListItem, Text, Button, FontWeight, Row, Color, LazyForEach, IDataSource, DataChangeListener } from '@kit.ArkUI';
+import { State, Link, Watch } from '@kit.ArkUI';
 
 class BasicDataSource<string> implements IDataSource<string> {
   private listeners: Array<DataChangeListener> = Array<DataChangeListener>();
@@ -349,15 +334,13 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cachecount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
+1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
 
 2.List区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
 3.再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
 
-**加图**
-
-### Navigation
+## Navigation
 
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Watch回调进行刷新。
 
@@ -366,9 +349,8 @@ struct FreezeChild {
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, Margin, NavPathStack, NavPathInfo, ClickEvent, NavDestination, Builder, Column, Navigation, Text, NavigationMode, Button, FontWeight, ButtonType } from '@kit.ArkUI';
+import { State, Link, Watch, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -531,7 +513,7 @@ struct NavigationContentMsgStack {
   }
 
   getValue(): number {
-    console.log(`freeze-test getValue ${this.index}`);
+    console.info(`freeze-test getValue ${this.index}`);
     return this.message;
   }
 
@@ -571,9 +553,7 @@ struct NavigationContentMsgStack {
 
 10.再次点击`Back Page`回到初始页，此时，无任何触发。
 
-**加图**
-
-### 组件复用
+## 组件复用
 
 [组件复用](../state-management/arkts-reusable.md)通过重利用缓存池中已存在的节点，而非创建新节点，来优化UI性能并提升应用流畅度。复用池中的节点尽管未在UI组件树上展示，但是状态变量的更改仍会触发UI刷新。为了解决复用池中组件异常刷新问题，可以使用组件冻结避免复用池中的组件刷新。
 
@@ -584,9 +564,8 @@ struct NavigationContentMsgStack {
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, ClickEvent, ForEach, Column, List, ListItem, Text, Button, Row, Color, Reusable, LazyForEach, IDataSource, DataChangeListener } from '@kit.ArkUI';
+import { State, Link, Watch } from '@kit.ArkUI';
 
 @Reusable
 @Component
@@ -599,7 +578,7 @@ struct ChildComponent {
   }
   
   getValue(): string {
-    console.log(`Child getvalue,id: ${this.index}`);
+    console.info(`Child getvalue,id: ${this.index}`);
     return this.desc;
   }
 
@@ -631,9 +610,7 @@ struct Page {
   build() {
     Column() {
       Button(`change desc`).onClick(() => {
-        // hiTraceMeter.startTrace('change desc', 1);
         this.desc += '!';
-        // hiTraceMeter.finishTrace('change desc', 1);
       })
       List({ space: 3 }) {
         LazyForEach(this.data, (item: string, index: number) => {
@@ -726,9 +703,8 @@ class TestDataSource extends BasicDataSource<string> {
 
 图示如下：
 ![freeze](../state-management/figures/freezeResuable.png)
-**加图**
 
-### 组件混用
+## 组件混用
 
 当支持组件冻结的场景彼此之间组合使用时，组件冻结机制也会随之叠加冻结和解冻。只有当叠加的所有场景都处于active状态时，状态变量的改变才会触发UI刷新。
 
@@ -737,9 +713,8 @@ class TestDataSource extends BasicDataSource<string> {
 ```ts
 'use static'
 
-import {  Entry, Component, ToolbarItem, Margin, NavPathStack, NavPathInfo, ClickEvent, ForEach, NavDestination, TextAlign, Builder, Column, Navigation, TextInput, List, ListItem, Text, NavigationMode, Button, FontWeight, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color, Reusable } from '@ohos.arkui.component';
-import { Provide, State, Consume, Link, Watch, StorageLink, PropRef } from '@ohos.arkui.stateManagement';
-import { Scroller, Grid, GridItem, Swiper, WaterFlow, FlowItem, Divider, LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component'
+import { Entry, Component, Margin, NavPathStack, NavPathInfo, ClickEvent, NavDestination, Builder, Column, Navigation, Text, NavigationMode, Button, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color } from '@kit.ArkUI';
+import { State, Link, Watch, StorageLink, PropRef } from '@kit.ArkUI';
 
 @Component
 struct ChildOfParamComponent {
@@ -873,7 +848,6 @@ struct MyNavigationTestStack {
             .onClick((e: ClickEvent) => {
               let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
               this.pageInfo.pushPath(info);
-              // this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
             })
         }
       }.title('NavIndex')
@@ -899,7 +873,6 @@ struct PageOneStack {
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageTwo", undefined)
             this.pageInfo.pushPath(info);
-            // this.pageInfo.pushPathByName('pageTwo', null);
           })
       }.width('100%').height('100%')
     }.title('pageOne')
@@ -932,7 +905,7 @@ struct PageTwoStack {
 
 在上述示例代码中：
 
-1.点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，开启组件冻结功能，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
+1.点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
 
 2.切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
 

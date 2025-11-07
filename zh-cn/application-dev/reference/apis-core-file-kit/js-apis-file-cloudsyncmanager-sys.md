@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -20,6 +21,10 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 异步方法修改应用的端云文件同步开关，以Promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -47,6 +52,8 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -58,6 +65,19 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let bundleName: string = "com.example.bundle";
+  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then<void>((): void => {
+    console.info("changeAppCloudSwitch successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
 ## cloudSyncManager.changeAppCloudSwitch
 
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -65,6 +85,10 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 异步方法修改应用的端云文件同步开关，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -87,12 +111,29 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
   let bundleName: string = "com.example.bundle";
   cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
     if (err) {
+      console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("changeAppCloudSwitch successfully");
+    }
+  });
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let bundleName: string = "com.example.bundle";
+  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError<void> | null) => {
+    if (err && err.code) {
       console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("changeAppCloudSwitch successfully");
@@ -107,6 +148,10 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -133,6 +178,8 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -144,6 +191,19 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let bundleName: string = "com.example.bundle";
+  cloudSyncManager.notifyDataChange(accountId, bundleName).then<void>((): void => {
+    console.info("notifyDataChange successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
 ## cloudSyncManager.notifyDataChange
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
@@ -151,6 +211,10 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -172,6 +236,8 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -185,11 +251,30 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let bundleName: string = "com.example.bundle";
+  cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError<void> | null): void => {
+    if (err && err.code) {
+      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("notifyDataChange successfully");
+    }
+  });
+  ```
+
 ## ExtraData<sup>11+</sup>
 
 云端数据变更信息。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
@@ -198,7 +283,9 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;<br>ArkTS1.2: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&gt;
+ArkTS-Dyn: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
+
+ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&gt;
 
 异步方法通知端云服务应用的云数据变更，以Promise形式返回结果。
 
@@ -206,11 +293,15 @@ ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;voi
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 用户Id。|
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 
 **返回值：**
@@ -232,7 +323,7 @@ ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;voi
 
 **示例：**
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -245,7 +336,7 @@ ArkTS1.1示例：
   });
   ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -260,7 +351,9 @@ ArkTS1.2示例：
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void<br>ArkTS1.2: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void 
+ArkTS-Dyn: notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void 
 
 异步方法通知端云服务应用的云数据变更，以callback形式返回结果。
 
@@ -268,11 +361,15 @@ ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData, callback: Async
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 用户Id。|
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 | callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
 
@@ -289,7 +386,7 @@ ArkTS1.1: notifyDataChange(userId: number, extraData: ExtraData, callback: Async
 
 **示例：**
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -304,7 +401,7 @@ ArkTS1.1示例：
   });
   ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -328,6 +425,10 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -354,6 +455,8 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -368,6 +471,22 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let switches: Record<string, boolean> = {
+    'com.example.bundleName1': true,
+    'com.example.bundleName2': false
+  }
+  cloudSyncManager.enableCloud(accountId, switches).then<void>((): void => {
+    console.error("enableCloud successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
 ## cloudSyncManager.enableCloud
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
@@ -377,6 +496,10 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -398,6 +521,8 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -414,6 +539,24 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let switches: Record<string, boolean> = {
+    'com.example.bundleName1': true,
+    'com.example.bundleName2': false
+  }
+  cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError<void> | null): void => {
+    if (err && err.code) {
+      console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("enableCloud successfully");
+    }
+  });
+  ```
+
 ## cloudSyncManager.disableCloud
 
 disableCloud(accountId: string): Promise&lt;void&gt;
@@ -423,6 +566,10 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -448,12 +595,26 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId).then(() => {
     console.info("disableCloud successfully");
   }).catch((err: BusinessError) => {
+    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  cloudSyncManager.disableCloud(accountId).then<void>((): void => {
+    console.info("disableCloud successfully");
+  }).catch((err: BusinessError<void>): void => {
     console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
   });
   ```
@@ -467,6 +628,10 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -487,11 +652,27 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
   cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
     if (err) {
+      console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("disableCloud successfully");
+    }
+  });
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void => {
+    if (err && err.code) {
       console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("disableCloud successfully");
@@ -505,7 +686,11 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
-**系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -521,6 +706,10 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -547,6 +736,8 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -561,6 +752,21 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let accountId: string = "testAccount";
+  let appActions: Record<string, cloudSyncManager.Action> = new Record<string, cloudSyncManager.Action>();
+  appActions['com.example.bundleName1'] = cloudSyncManager.Action.RETAIN_DATA;
+  appActions['com.example.bundleName2'] = cloudSyncManager.Action.CLEAR_DATA;
+  cloudSyncManager.clean(accountId, appActions).then<void>((): void => {
+    console.info("clean successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  });
+  ```
+
 ## cloudSyncManager.clean
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
@@ -570,6 +776,10 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -591,6 +801,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let accountId: string = "testAccount";
@@ -607,6 +819,22 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
   });
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let appActions: Record<string, cloudSyncManager.Action> = new Record<string, cloudSyncManager.Action>();
+  appActions['com.example.bundleName1'] = cloudSyncManager.Action.RETAIN_DATA;
+  appActions['com.example.bundleName2'] = cloudSyncManager.Action.CLEAR_DATA;
+  cloudSyncManager.clean(accountId, appActions, (err: BusinessError<void> | null): void => {
+    if (err && err.code) {
+      console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+    } else {
+      console.info("clean successfully");
+    }
+  });
+  ```
+
 ## DowngradeDownload<sup>20+</sup>
 
 降级下载：云空间会员服务到期，为避免用户云上数据丢失，提供的集中下载云端数据的能力。
@@ -614,6 +842,10 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 云盘降级下载对象，用于支撑云空间应用完成云盘文件的降级下载流程。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 ### constructor<sup>20+</sup>
 
@@ -624,6 +856,10 @@ constructor(bundleName: string)
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -663,6 +899,10 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -707,6 +947,10 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -766,6 +1010,10 @@ stopDownload(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
   | 类型                | 说明                      |
@@ -813,6 +1061,10 @@ stopDownload(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                | 值  | 说明                                                   |
 | ------------------- | --- | ------------------------------------------------------ |
 | NO_STOP             | 0   | 下载中未停止。                                         |
@@ -829,6 +1081,10 @@ stopDownload(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 值  | 说明       |
 | --------- | --- | ---------- |
 | RUNNING   | 0   | 下载中。   |
@@ -840,6 +1096,10 @@ stopDownload(): Promise&lt;void&gt;
 降级下载任务的进度信息。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 ### 属性
 
@@ -859,11 +1119,15 @@ stopDownload(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 ### 属性
 
 | 名称               | 类型   | 只读 | 可选 | 说明                                                             |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------------------------------- |
-| cloudFileCount     | number | 否   | 否   | 本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
+ | cloudFileCount     | number | 否   | 否   | 本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
 | cloudFileTotalSize | number | 否   | 否   | 本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
 | localFileCount     | number | 否   | 否   | 本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
 | localFileTotalSize | number | 否   | 否   | 本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |

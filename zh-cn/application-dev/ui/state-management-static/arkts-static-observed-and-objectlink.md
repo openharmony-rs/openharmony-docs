@@ -4,7 +4,7 @@
 
 ## 概述
 
-\@ObjectLink和\@Observed类装饰器用于在涉及嵌套对象或数组的场景中进行双向数据同步：
+\@ObjectLink和\@Observed类装饰器用于嵌套对象（对象的属性是对象）或数组的场景中进行双向数据同步：
 
 - 使用new创建被\@Observed装饰的类，可以被观察到属性的变化。
 
@@ -28,7 +28,7 @@ import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 | \@ObjectLink变量装饰器 | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | 装饰器参数             | 无。                                       |
-| 允许装饰的变量类型         | 必须为被\@Observed装饰的class实例。<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@PropRef。<br/>\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB, ClassA \| undefined 或者 ClassA \| null, 示例见[@ObjectLink支持联合类型](#objectlink支持联合类型)。|
+| 允许装饰的变量类型         | 必须为复杂类型，即class、interface字面量和built-in类型。其中interface字面量、built-in类型和被\@Observed装饰的class类型可以被观察变化，详情见[观察变化](#观察变化)。<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@PropRef。<br/>\@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或 ClassA \| null的联合类型, 示例见[@ObjectLink支持联合类型](#objectlink支持联合类型)。|
 | 初始化规则         | 不允许定义本地默认值。<br/>初始化\@ObjectLink装饰的变量必须同时满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是\@State，\@Link，\@Provide，\@Consume或者\@ObjectLink装饰的数据。<br/>初始化的class的示例请参考[嵌套对象](#嵌套对象)。                                     |
 | 同步规则           | **在子组件使用时：**<br/>与父组件中的源对象双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、[\@State](arkts-static-state.md)、[\@Link](arkts-static-link.md)、[\@PropRef](arkts-static-propref.md)、[\@Provide](arkts-static-provide-and-consume.md)。|
 
@@ -90,7 +90,11 @@ this.parent.count = 5;
 this.parent.child.num = 5;
 ```
 
-\@ObjectLink：\@ObjectLink只能接收被\@Observed装饰class的实例，推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象（属性是对象的对象称为嵌套对象）需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
+\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
+
+\@ObjectLink接收嵌套对象时，内层对象支持为被\@Observed装饰的class类型。从API version 20开始，内层对象也支持为被[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)处理的interface字面量类型和built-in类型，示例请参考[嵌套对象](#嵌套对象)。
+
+\@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
 - 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考[嵌套对象](#嵌套对象)。
 
@@ -100,7 +104,9 @@ this.parent.child.num = 5;
 
 1. \@ObjectLink装饰器不能在\@Entry装饰的自定义组件中使用。
 
-2. \@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译期会报错。
+2. \@ObjectLink装饰的变量必须是class类型或interface字面量类型，否则会有编译时报错。
+
+3. \@ObjectLink装饰的变量必须要指定类型，否则会有编译时报错。
 
     ```ts
     'use static'
@@ -129,8 +135,6 @@ this.parent.child.num = 5;
     struct Child {
       // 错误写法，count未指定类型，编译报错
       @ObjectLink count;
-      // 错误写法，Test未被@Observed装饰，编译报错
-      @ObjectLink test: Test;
   
       // 正确写法
       @ObjectLink count: Info;
@@ -141,7 +145,7 @@ this.parent.child.num = 5;
     }
     ```
   
-3. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
+4. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译时会报错。
 
     ```ts
     'use static'
@@ -184,7 +188,7 @@ this.parent.child.num = 5;
     }
     ```
 
-4. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示Cannot assign to this property because it is readonly。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
+5. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示`Cannot assign to this property because it is readonly`。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
 
     【反例】
   
@@ -284,6 +288,59 @@ this.parent.child.num = 5;
     ```
 
 ## 使用场景
+
+### 对象类型
+
+```ts
+'use static'
+
+import { Button, Column, Component, Text, Entry, TextAlign } from '@ohos.arkui.component';
+import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+
+@Observed
+class Book {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State book: Book = new Book('JS');
+
+  build() {
+    Column() {
+      BookCard({ book: this.book })
+    }
+  }
+}
+```
+
+Book被\@Observed装饰，其属性的修改可以被观察到。所以点击Button，BookCard组件中的Text组件会刷新。
 
 ### 继承对象
 
@@ -442,6 +499,68 @@ struct Index {
 ```
 
 上述示例中，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化。但是Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
+
+```ts
+'use static'
+
+import { Button, Column, Component, Entry, Text, TextAlign } from '@ohos.arkui.component';
+import { Observed, ObjectLink, State, UIUtils } from '@ohos.arkui.stateManagement';
+
+interface Book {
+  name: string;
+}
+
+interface Bag {
+  book: Book;
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.book.name = 'C++';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State bag: Bag = { book: UIUtils.makeObserved({ name: 'JS' } as Book) } as Bag;
+
+  build() {
+    Column() {
+      Text(`Index: ${this.bag.book.name}`) // 可以观察到name的变化
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change bag.book.name')
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.bag.book.name = 'TS';
+        })
+
+      BookCard({ book: this.bag.book })
+    }
+  }
+}
+```
+
+上述示例中，Index组件中的Text组件刷新，虽然该变化属于第二层的变化，但是makeObserved支持深度观察。Book的属性变化可以被观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
 
 ### 对象数组
 
