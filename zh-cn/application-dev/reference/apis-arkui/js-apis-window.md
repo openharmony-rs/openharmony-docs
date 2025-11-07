@@ -1792,10 +1792,6 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本** 18
-
-**ArkTS-Sta起始版本** 22
-
 **需要权限：** ohos.permission.VISIBLE_WINDOW_INFO
 
 **返回值：**
@@ -1816,7 +1812,6 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1839,33 +1834,6 @@ try {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
   });
 } catch (exception) {
-  console.error(`Failed to get visible window info. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.getVisibleWindowInfo();
-  promise.then((data) => {
-    data.forEach(windowInfo=>{
-      console.info(`left:${windowInfo.rect.left}`);
-      console.info(`top:${windowInfo.rect.top}`);
-      console.info(`width:${windowInfo.rect.width}`);
-      console.info(`height:${windowInfo.rect.height}`);
-      console.info(`windowId:${windowInfo.windowId}`);
-      console.info(`windowStatusType:${windowInfo.windowStatusType}`);
-      console.info(`abilityName:${windowInfo.abilityName}`);
-      console.info(`bundleName:${windowInfo.bundleName}`);
-      console.info(`isFocused:${windowInfo.isFocused}`);
-    })
-  }).catch((err: Error) => {
-    console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
-  });
-} catch (exception: BusinessError) {
   console.error(`Failed to get visible window info. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```

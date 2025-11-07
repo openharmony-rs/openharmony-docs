@@ -1323,9 +1323,7 @@ try {
 
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
-ArkTS-Dyn: setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
-
-ArkTS-Sta: setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
+setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 创建悬浮窗、模态窗或WindowType窗口类型为系统窗口时，可以调用该接口使能窗口获取避让区[AvoidArea](arkts-apis-window-i.md#avoidarea7)。
 
@@ -1418,7 +1416,6 @@ ArkTS-Sta示例：
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -1438,25 +1435,26 @@ export default class EntryAbility extends UIAbility {
         ctx: this.context
       };
       try {
-        window.createWindow(config, (err: BusinessError, data) => {
+        window.createWindow(config, (err: BusinessError<void> | null, data) => {
           const errCode = err?.code;
           if (errCode) {
             console.error(`Failed to create the system window. Cause: ${err}`);
             return;
           }
           windowClass = data;
-          windowClass.setUIContent("pages/Test");
+          windowClass!.setUIContent("pages/Test");
           let enabled = true;
-          let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+          let promise = windowClass!.setSystemAvoidAreaEnabled(enabled);
           promise.then(() => {
             let type = window.AvoidAreaType.TYPE_SYSTEM;
-            let avoidArea = windowClass?.getWindowAvoidArea(type);
+            let avoidArea = windowClass!.getWindowAvoidArea(type);
           }).catch((err: Error) => {
-            console.error(`Failed to obtain the system window avoid area. Cause: ${err}`);
+            console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
           });
         });
-      } catch (exception: BusinessError) {
-        console.error(`Failed to create the system window. Cause: ${exception}`);
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to create the system window. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -4884,7 +4882,9 @@ try {
 
 ## setWindowGrayScale<sup>12+</sup>
 
-setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 设置窗口灰阶，使用Promise异步回调。该接口需要在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)使窗口加载页面内容后调用。
 
@@ -4951,7 +4951,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
+windowClass?.setUIContent('pages/Index', (error: BusinessError<void> | null) => {
   if (error?.code) {
     console.error(`Failed to set the content. Cause: ${error}`);
     return;
@@ -4959,17 +4959,16 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   console.info('Succeeded in setting the content.');
   let grayScale: double = 0.5;
   try {
-    if (canIUse("SystemCapability.Window.SessionManager")) {
-      let promise = windowClass?.setWindowGrayScale(grayScale);
-      promise?.then(() => {
-        console.info('Succeeded in setting the grayScale.');
-      }).catch((err: Error) => {
-        console.error(`Failed to set the grayScale. Cause: ${err}`);
-      });
-    }
+    let promise = windowClass?.setWindowGrayScale(grayScale);
+    promise?.then(() => {
+      console.info('Succeeded in setting the grayScale.');
+    }).catch((err: Error) => {
+      console.error(`Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+    });
   } catch (exception) {
-    console.error(`Failed to set the grayScale. Cause: ${exception}`);
-  }
+    let error = exception as BusinessError;
+    console.error(`Failed to set the grayScale. Cause code: ${error.code}, message: ${error.message}`);
+  } 
 });
 ```
 
