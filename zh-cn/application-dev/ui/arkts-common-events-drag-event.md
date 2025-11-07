@@ -173,32 +173,32 @@
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   @Builder
-   pixelMapBuilder() {
-    Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        // ···
-    }
-   }
+     @Builder
+     pixelMapBuilder() {
+       Column() {
+         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+         Image($r('app.media.startIcon'))
+           .width(120)
+           .height(120)
+           // ···
+       }
+     }
    
    // ···
    
-   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
-   private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder()
-    },
-      (error: Error, pixmap: image.PixelMap) => {
-        if (error) {
-          hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-          return;
-        }
-        this.pixmap = pixmap;
-      })
-   }
+     // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
+     private getComponentSnapshot(): void {
+       this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+         this.pixelMapBuilder()
+       },
+         (error: Error, pixmap: image.PixelMap) => {
+           if (error) {
+             hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+             return;
+           }
+           this.pixmap = pixmap;
+         })
+     }
    ```
 
 3. 若开发者需确保触发[onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)事件，应通过调用[setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12)方法进行设置。
@@ -210,7 +210,7 @@
    import { window, UIContext } from '@kit.ArkUI';
    
    export default class EntryAbility extends UIAbility {
-     // ···
+   // ···
      onWindowStageCreate(windowStage: window.WindowStage): void {
        windowStage.loadContent('pages/Index', (err, data) => {
          if (err.code) {
@@ -226,7 +226,7 @@
          });
        });
      }
-     // ···
+   // ···
    }
    ```
 
@@ -332,7 +332,6 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
 const DOMAIN = 0x0000;
 const TAG = 'DefaultDragError: '
 
@@ -402,97 +401,98 @@ export struct DefaultDrag {
 
   build() {
     // ···
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
         Row() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .visibility(this.imgState)
-            // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction(() => {
-              this.getUIContext()
-                .getPromptAction()
-                .showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              data.imageUri = 'common/pic/img.png';
-              let unifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+              Image($r('app.media.app_icon'))
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 })
+                .visibility(this.imgState)
+                // 绑定平行手势，可同时触发应用自定义长按手势
+                .parallelGesture(LongPressGesture().onAction(() => {
+                  this.getUIContext()
+                    .getPromptAction()
+                    .showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
+                  data.imageUri = 'resources/base/media/app_icon.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
 
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: 'this is extraInfo',
-              };
-              // onDragStart回调函数中返回自定义拖拽背板图
-              return dragItemInfo;
-            })
-            // 提前准备拖拽自定义背板图
-            .onPreDrag((preDragStatus: PreDragStatus) => {
-              if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-                this.getComponentSnapshot();
-              }
-            })
-            .onDragEnd((event) => {
-              // onDragEnd里取到的result值在接收方onDrop设置
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: 'this is extraInfo',
+                  };
+                  // onDragStart回调函数中返回自定义拖拽背板图
+                  return dragItemInfo;
+                })
+                // 提前准备拖拽自定义背板图
+                .onPreDrag((preDragStatus: PreDragStatus) => {
+                  if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+                    this.getComponentSnapshot();
+                  }
+                })
+                .onDragEnd((event) => {
+                  // onDragEnd里取到的result值在接收方onDrop设置
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
 
-        Text('Drag Target Area')
-          .fontSize(20)
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 })
+                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+                .onDragMove((event) => {
+                  event.setResult(DragResult.DROP_ENABLED)
+                  event.dragBehavior = DragBehavior.COPY
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent?: DragEvent) => {
+                  // 获取拖拽数据
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = Number(rect.width);
+                    this.imageHeight = Number(rect.height);
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  })
+                })
+            }
+          }
           .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
-            .onDragMove((event) => {
-              event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.COPY
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-              uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // 获取拖拽数据
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = Number(rect.width);
-                this.imageHeight = Number(rect.height);
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              })
-            })
+          .height('100%')
         }
+        .height('100%')
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
     // ···
 }
 ```
