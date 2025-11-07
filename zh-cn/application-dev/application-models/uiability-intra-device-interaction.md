@@ -62,7 +62,7 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: '来自EntryAbility Page_UIAbilityComponentsInteractive页面'
+                   info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -123,7 +123,7 @@
     
       build() {
         Column() {
-          Button($r('app.string.Stop_AbilityA')) // 'app.string.Stop_AbilityA'为用户自定义字符串资源
+          Button($r('app.string.Stop_AbilityA')) //'app.string.Stop_AbilityA'的值为StopFuncAbilityA
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // context为需要停止的UIAbility实例的AbilityContext
@@ -253,7 +253,7 @@
                     moduleName: 'entry', // moduleName非必选
                     abilityName: 'FuncAbilityA',
                     parameters: {
-                      info: $r('app.string.ability_return_info') // 'app.string.ability_return_info'为用户自定义字符串资源
+                      info: $r('app.string.ability_return_info') //'app.string.ability_return_info'的值为来自FuncAbility Index页面
                     },
                   },
                 };
@@ -276,69 +276,6 @@
 3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
     <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-    
-    ``` TypeScript
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    
-    const TAG: string = '[MainPage]';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    
-    @Entry
-    @Component
-    struct MainPage {
-      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    
-      build() {
-        Column() {
-          List({ initialIndex: 0, space: 8 }) {
-    
-            // ···
-    
-            ListItem() {
-              Row() {
-                // ···
-              }
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001;
-                let want: Want = {
-                  deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.uiabilityinteraction',
-                  moduleName: 'entry', // moduleName非必选
-                  abilityName: 'FuncAbilityA',
-                  parameters: {
-                    // 自定义信息
-                    info: '来自EntryAbility UIAbilityComponentsInteractive页面'
-                  }
-                };
-                context.startAbilityForResult(want).then((data) => {
-                  if (data?.resultCode === RESULT_CODE) {
-                    // 解析被调用方UIAbility返回的信息
-                    let info = data.want?.parameters?.info;
-                    hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(info) ?? '');
-                    if (info !== null) {
-                      this.getUIContext().getPromptAction().showToast({
-                        message: JSON.stringify(info)
-                      });
-                    }
-                  }
-                  hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(data.resultCode) ?? '');
-                }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability for result. Code is ${err.code}, message is ${err.message}`);
-                });
-              })
-            }
-    
-            // ···
-          }
-        // ···
-        }
-        // ···
-      }
-    }
-    ```
 
 
 ## 启动UIAbility的指定页面
@@ -631,7 +568,7 @@ export default class ColdStartAbility extends UIAbility {
 
         <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
         
-        ``` JSON5
+        ```JSON5
         {
           "module": {
             // ···
@@ -705,7 +642,7 @@ struct MainPage {
               abilityName: 'HotStartAbility',
               parameters: {
                 // 自定义信息
-                info: '来自EntryAbility Index页面'
+                info: $r('app.string.index_return_info') // app.string.index_return_info的值为来自EntryAbility Index页面
               }
             };
             let options: StartOptions = {
@@ -822,6 +759,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
     ``` TypeScript
     import { rpc } from '@kit.IPCKit';
+    // ···
 
     class MyParcelable {
       public num: number = 0;
@@ -861,7 +799,6 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // [Start MyParcelable]
     import { rpc } from '@kit.IPCKit';
 
     const MSG_SEND_METHOD: string = 'CallSendMsg';
@@ -894,7 +831,6 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
         return true;
       }
     }
-    // [End MyParcelable]
 
     function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
@@ -951,10 +887,6 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 1. 导入[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
 
     <!-- @[UIAbility_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
-    ``` TypeScript
-    import { UIAbility } from '@kit.AbilityKit';
-    ```
 
 2. 获取[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。
 
