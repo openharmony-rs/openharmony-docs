@@ -716,14 +716,17 @@ let options: http.HttpRequestOptions = {
 
 <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 发起请求
 httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
     hilog.info(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+    // ···
   } else {
     hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
+    // ···
   }
+// ···
 });
 ```
 
