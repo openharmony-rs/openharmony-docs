@@ -106,6 +106,23 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
 
   <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 'app.string.shadow_ability'资源文件中的value值为"阴影能力"
+    Text($r('app.string.shadow_ability'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolGlyph($r('sys.symbol.ohos_wifi'))
+      .fontSize(96)
+      .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
+      .symbolShadow(this.options)
+    // 'app.string.off'资源文件中的value值为"关闭"
+    // 'app.string.on'资源文件中的value值为"播放"
+    Button(!this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
+      this.isActive = !this.isActive;
+    })
+  }
+  ```
 
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
