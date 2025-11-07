@@ -80,6 +80,22 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
   <!-- @[symbol_bouncing_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
 
   <!-- @[symbol_bouncing_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  Column() {
+    // 'app.string.bounce_animation'资源文件中的value值为"弹跳动效"
+    Text($r('app.string.bounce_animation'));
+    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+    SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
+      .fontSize(96)
+      .fontColor([Color.Gray])
+      .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP),
+                    this.triggerValueReplace)
+    Button('trigger').onClick(() => {
+      this.triggerValueReplace = this.triggerValueReplace + 1;
+    })
+  }
+  ```
 
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
