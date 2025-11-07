@@ -33,6 +33,7 @@
     ``` TypeScript
     import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    
     const DOMAIN_NUMBER = 0xF811;
     const TAG  = '[Sample_UnexpExit]';
     const MAX_RSS_THRESHOLD: number = 100000;
@@ -46,7 +47,7 @@
       hilog.info(DOMAIN_NUMBER, TAG, 'do Another Thing');
     }
     
-    export default class ExitAbility1 extends UIAbility {
+    export default class ExitAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         // 获取退出原因
         let reason: number = launchParam.lastExitReason;
@@ -55,16 +56,18 @@
           subReason = launchParam.lastExitDetailInfo.exitSubReason;
         }
         let exitMsg: string = launchParam.lastExitMessage;
-    
+        // ···
         if (launchParam.lastExitDetailInfo) {
           // 获取Ability上次退出时所在进程的信息
           let pid = launchParam.lastExitDetailInfo.pid;
           let processName: string = launchParam.lastExitDetailInfo.processName;
           let rss: number = launchParam.lastExitDetailInfo.rss;
           let pss: number = launchParam.lastExitDetailInfo.pss;
+        // ···
           // 其他信息
           let uid: number = launchParam.lastExitDetailInfo.uid;
           let timestamp: number = launchParam.lastExitDetailInfo.timestamp;
+        // ···
         }
       }
     }
