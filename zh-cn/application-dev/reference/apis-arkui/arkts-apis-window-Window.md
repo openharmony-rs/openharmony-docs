@@ -9315,7 +9315,7 @@ try {
 }
 ```
 
-## setExclusivelyHighlighted<sup>15+</sup>
+## setExclusivelyHighlighted<sup>15+<sup>
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
@@ -9373,7 +9373,7 @@ try {
 }
 ```
 
-## isWindowHighlighted<sup>18+</sup>
+## isWindowHighlighted<sup>18+<sup>
 
 isWindowHighlighted(): boolean
 
