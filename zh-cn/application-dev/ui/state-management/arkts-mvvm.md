@@ -798,6 +798,23 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * TodoComponent.ets
 
   <!-- @[to_do_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoComponent.ets) -->
+  
+  ``` TypeScript
+  @Component
+  export struct TodoComponent {
+    build() {
+      Row() {
+        // app.string.all_tasks资源文件中的value值为'全部待办'
+        Text($r('app.string.all_tasks'))
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+      }
+      .padding({ left: 15 })
+      .width('50%')
+      .margin({ top: 10, bottom: 10 })
+    }
+  }
+  ```
 
 
   * TodoListComponent.ets
