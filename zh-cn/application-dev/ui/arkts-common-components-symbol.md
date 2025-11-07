@@ -56,6 +56,43 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 - 通过[effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy)属性设置SymbolSpan的动效策略。
 
   <!-- @[symbol_span_effect_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  Row() {
+    Column() {
+      // 'app.string.no_action'资源文件中的value值为"无动效"
+      Text($r('app.string.no_action'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_wifi'))
+          .fontSize(96)
+          .effectStrategy(SymbolEffectStrategy.NONE)
+      }
+    }
+  
+    Column() {
+      // 'app.string.overall_scaling_animation_effect'资源文件中的value值为"整体缩放动效"
+      Text($r('app.string.overall_scaling_animation_effect'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_wifi'))
+          .fontSize(96)
+          .effectStrategy(SymbolEffectStrategy.SCALE)
+      }
+    }
+  
+    Column() {
+      // 'app.string.hierarchical_animation'资源文件中的value值为"层级动效"
+      Text($r('app.string.hierarchical_animation'));
+      Text() {
+        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
+        SymbolSpan($r('sys.symbol.ohos_wifi'))
+          .fontSize(96)
+          .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
+      }
+    }
+  }
+  ```
 
   ![symbolSpan_multi_effectStrategy](figures/symbolspan_multi_effectStrategy.gif)
 
