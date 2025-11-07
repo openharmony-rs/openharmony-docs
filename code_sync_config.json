@@ -17079,7 +17079,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollableGrid.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":99,
 						"name":"build_scrollable_horizontally_grid_layouts",
 						"start_line":18
 					}
