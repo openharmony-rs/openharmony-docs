@@ -179,7 +179,7 @@ import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN_NUMBER = 0xF811;
-const TAG  = '[Sample_AppLinking]';
+const TAG = '[Sample_AppLinking]';
 @Entry
 @Component
 struct Index {
