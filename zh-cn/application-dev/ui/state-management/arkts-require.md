@@ -166,6 +166,31 @@ struct ParentPage {
 
 <!-- @[page_one_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct PageOne {
+  message: string = 'Hello World';
+
+  build() {
+    Column() {
+      ChildIndex({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct ChildIndex {
+  @Require @State message: string;
+
+  build() {
+    Column() {
+      Text(this.message) // 从API version 18开始，可以编译通过。
+    }
+  }
+}
+```
+
 ## 常见问题
 
 当Child组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递相应参数，则会导致编译失败。当ChildV2组件内将\@Require装饰器与\@Param结合使用时，若父组件Index在构造ChildV2时未传递相应参数，则同样会导致编译失败。
