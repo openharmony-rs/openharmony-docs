@@ -1,4 +1,4 @@
-# Global Audio Input Device Management
+# Querying and Listening for Audio Input Devices
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
