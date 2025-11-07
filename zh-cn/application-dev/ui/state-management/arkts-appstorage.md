@@ -205,6 +205,66 @@ prop.get() // == 49
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
 <!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
+class Data {
+  public code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+AppStorage.setOrCreate('propA', 47);
+AppStorage.setOrCreate('propB', new Data(50));
+let storage = new LocalStorage();
+storage.setOrCreate('linkA', 48);
+storage.setOrCreate('linkB', new Data(100));
+
+@Entry(storage)
+@Component
+struct TestPageTwo {
+  @StorageLink('propA') storageLink: number = 1;
+  @StorageProp('propA') storageProp: number = 1;
+  @StorageLink('propB') storageLinkObject: Data = new Data(1);
+  @StorageProp('propB') storagePropObject: Data = new Data(1);
+
+  build() {
+    Column({ space: 20 }) {
+      // @StorageLink与AppStorage建立双向联系，更改数据会同步回AppStorage中key为'propA'的值
+      Text(`storageLink ${this.storageLink}`)
+        .onClick(() => {
+          this.storageLink += 1;
+        })
+
+      // @StorageProp与AppStorage建立单向联系，更改数据不会同步回AppStorage中key为'propA'的值
+      // 但能被AppStorage的set/setorCreate更新值
+      Text(`storageProp ${this.storageProp}`)
+        .onClick(() => {
+          this.storageProp += 1;
+        })
+
+      // AppStorage的API虽然能获取值，但是不具有刷新UI的能力，日志能看到数值更改
+      // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
+      Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
+        .onClick(() => {
+          console.info(`Appstorage.get: ${AppStorage.get<number>('propA')}`);
+          AppStorage.set<number>('propA', 100);
+        })
+
+      Text(`storageLinkObject ${this.storageLinkObject.code}`)
+        .onClick(() => {
+          this.storageLinkObject.code += 1;
+        })
+
+      Text(`storagePropObject ${this.storagePropObject.code}`)
+        .onClick(() => {
+          this.storagePropObject.code += 1;
+        })
+    }
+  }
+}
+```
 ### AppStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
