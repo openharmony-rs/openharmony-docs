@@ -562,21 +562,21 @@ struct Index {
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
     ``` TypeScript
-      @State numberBadge: number = 0;
+    @State numberBadge: number = 0;
     // ···
-                .onClick(() => {
-                  this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-                  if (this.isSelectedGrid[idx]) {
-                    // ···
-                    this.numberBadge++;
-                    // ···
-                  } else {
-                    this.numberBadge--;
-                    // ···
-                  }
-                })
-                // 多选场景右上角数量角标需要应用设置numberBadge参数
-                .dragPreviewOptions({ numberBadge: this.numberBadge })
+    .onClick(() => {
+      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+      if (this.isSelectedGrid[idx]) {
+        // ···
+        this.numberBadge++;
+        // ···
+      } else {
+        this.numberBadge--;
+        // ···
+      }
+    })
+    // 多选场景右上角数量角标需要应用设置numberBadge参数
+    .dragPreviewOptions({ numberBadge: this.numberBadge })
     ```
 
 **完整示例：**
