@@ -177,6 +177,51 @@ V2:
   <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
 
   <!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page2.ets) -->
+  
+  ``` TypeScript
+  // Page2.ets
+  import { MyStorage } from './storage';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN = 0x0000;
+  
+  @Builder
+  export function Page2Builder() {
+    Page2()
+  }
+  
+  @ComponentV2
+  struct Page2 {
+    storage: MyStorage = MyStorage.instance();
+    pathStack: NavPathStack = new NavPathStack();
+    @Local count: number = this.storage.count;
+  
+    @Monitor('storage.count')
+    onCountChange(mon: IMonitor) {
+      hilog.info(DOMAIN, 'testTag', '%{public}s', `Page2 ${mon.value()?.before} to ${mon.value()?.now}`);
+      this.count = this.storage.count;
+    }
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text(`${this.count}`)
+            .fontSize(50)
+            .onClick(() => {
+              this.count++;
+            })
+          Button('change Storage Count')
+            .onClick(() => {
+              this.storage.count += 100;
+            })
+        }
+      }
+      .onReady((context: NavDestinationContext) => {
+        this.pathStack = context.pathStack;
+      })
+    }
+  }
+  ```
 
 **自定义组件接收LocalStorage实例场景**
 
