@@ -88,6 +88,36 @@ struct PageOne {
 页面2：
 <!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page2.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component({ freezeWhenInactive: true })
+struct PageTwo {
+  @StorageLink('PropA') @Watch('second') storageLink2: number = 1;
+
+  second() {
+    hilog.info(DOMAIN, TAG, 'second page: ' + `${this.storageLink2}`);
+  }
+
+  build() {
+    Column() {
+      Text(`second Page ${this.storageLink2}`).fontSize(50)
+      Button('back')
+        .onClick(() => {
+          this.getUIContext().getRouter().back();
+        })
+      Button('second page storageLink2 + 2').fontSize(30)
+        .onClick(() => {
+          this.storageLink2 += 2;
+        })
+    }
+  }
+}
+```
+
 在上面的示例中：
 
 1.在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](./arkts-watch.md)注册的方法first会被调用。
