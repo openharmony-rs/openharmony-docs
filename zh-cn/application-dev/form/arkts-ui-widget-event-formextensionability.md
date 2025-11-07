@@ -87,13 +87,14 @@
     <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     const TAG: string = 'EntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
     
     export default class EntryFormAbility extends FormExtensionAbility {
     // ···
       onFormEvent(formId: string, message: string): void {
-        // 当卡片提供方的postCardAction接口的message事件被触发时调用
+        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // 和卡片布局中对应
