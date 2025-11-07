@@ -29,26 +29,18 @@ export struct TextPopupExample {
 
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-
-        Column() {
-          Button('PopupOptions')
-            .id('PopupOptions')
-            .margin({ top: 300 })
-            .onClick(() => {
-              this.handlePopup = !this.handlePopup;
-            })
-            .bindPopup(this.handlePopup, {
-              message: 'This is a popup with PopupOptions',
-            })
-        }.width('100%').padding({ top: 5 })
-
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+      Column() {
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .margin({ top: 300 })
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with PopupOptions',
+          })
+      }.width('100%').padding({ top: 5 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -70,8 +62,6 @@ export struct StatePopupExample {
 
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-
         Column() {
           Button('PopupOptions')
             .id('PopupOptions')
@@ -88,13 +78,7 @@ export struct StatePopupExample {
               }
             })
         }.width('100%').padding({ top: 5 })
-
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -121,8 +105,6 @@ export struct ButtonPopupExample {
 
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-
         Column() {
           Button('PopupOptions').margin({ top: 300 })
             .id('PopupOptions')
@@ -151,13 +133,7 @@ export struct ButtonPopupExample {
               }
             })
         }.width('100%').padding({ top: 5 })
-
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -172,13 +148,16 @@ export struct ButtonPopupExample {
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
 ``` TypeScript
+// xxx.ets
 @Entry
 @Component
 export struct AnimationPopupExample {
   @State handlePopup: boolean = false;
   @State customPopup: boolean = false;
 
-  @Builder popupBuilder() {
+  // popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
     Row() {
       Text('Custom Popup with transitionEffect').fontSize(10)
     }.height(50).padding(5)
@@ -186,55 +165,51 @@ export struct AnimationPopupExample {
 
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-          // PopupOptions 类型设置弹框内容
-          Button('PopupOptions')
-            .id('PopupOptions')
-            .margin({ top: 250 })
-            .onClick(() => {
-              this.handlePopup = !this.handlePopup;
-            })
-            .bindPopup(this.handlePopup, {
-              message: 'This is a popup with transitionEffect',
-              placementOnTop: true,
-              showInSubWindow: false,
-              onStateChange: (e) => {
-                if (!e.isVisible) {
-                  this.handlePopup = false;
-                }
-              },
-              // 设置弹窗显示动效为透明度动效与平移动效的组合效果，无退出动效
-              transition:TransitionEffect.asymmetric(
-                TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
-                  TransitionEffect.translate({ x: 50, y: 50 })),
-                TransitionEffect.IDENTITY)
-            })
+      Flex({ direction: FlexDirection.Column }) {
+        // PopupOptions 类型设置弹框内容
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with transitionEffect',
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.handlePopup = false;
+              }
+            },
+            // 设置弹窗显示动效为透明度动效与平移动效的组合效果，无退出动效
+            transition: TransitionEffect.asymmetric(
+              TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
+                TransitionEffect.translate({ x: 50, y: 50 })),
+              TransitionEffect.IDENTITY)
+          })
+          .position({ x: 100, y: 150 })
 
-          // CustomPopupOptions 类型设置弹框内容
-          Button('CustomPopupOptions')
-            .id('CustomPopupOptions')
-            .margin({ top: 60 })
-            .onClick(() => {
-              this.customPopup = !this.customPopup;
-            })
-            .bindPopup(this.customPopup, {
-              builder: this.popupBuilder,
-              placement: Placement.Top,
-              showInSubWindow: false,
-              onStateChange: (e) => {
-                if (!e.isVisible) {
-                  this.customPopup = false;
-                }
-              },
-              // 设置弹窗显示动效与退出动效为缩放动效
-              transition:TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
-            })
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // CustomPopupOptions 类型设置弹框内容
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .onClick(() => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder,
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.customPopup = false;
+              }
+            },
+            // 设置弹窗显示动效与退出动效为缩放动效
+            transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+          })
+          .position({ x: 80, y: 300 })
+      }.width('100%').padding({ top: 5 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -266,8 +241,6 @@ export struct CustomPopupExample {
 
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-
         Column() {
           Button('CustomPopupOptions')
             .id('CustomPopupOptions')
@@ -287,13 +260,7 @@ export struct CustomPopupExample {
             })
         }
         .height('100%')
-
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -316,50 +283,33 @@ export struct CustomPopupExample {
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+// xxx.ets
+
 @Entry
 @Component
 export struct StylePopupExample {
   @State handlePopup: boolean = false;
 
-  // popup构造器定义弹框内容
-  @Builder
-  popupBuilder() {
-    Row({ space: 2 }) {
-      Image($r('app.media.app_icon')).width(24).height(24).margin({ left: 5 })
-      Text('This is Custom Popup').fontSize(15)
-    }.width(200).height(50).padding(5)
-  }
-
   build() {
     NavDestination() {
-      Column({ space: 12 }) {
-
-        Column({ space: 100 }) {
-          Button('PopupOptions')
-            .margin({ top: 300 })
-            .onClick(() => {
-              this.handlePopup = !this.handlePopup;
-            })
-            .bindPopup(this.handlePopup, {
-              width: 200,
-              message: 'This is a popup.',
-              popupColor: Color.Pink, // 设置气泡的背景色
-              mask: {
-                color: '#33d9d9d9'
-              },
-              placement: Placement.Top,
-              backgroundBlurStyle: BlurStyle.NONE // 去除背景模糊效果需要关闭气泡的模糊背景
-            })
-        }
-        .width('100%')
-
+      Column({ space: 100 }) {
+        Button('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            width: 200,
+            message: 'This is a popup.',
+            popupColor: Color.Red, // 设置气泡的背景色
+            mask: {
+              color: '#33d9d9d9'
+            },
+            placement: Placement.Top,
+            backgroundBlurStyle: BlurStyle.NONE // 去除背景模糊效果需要关闭气泡的模糊背景
+          })
       }
       .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
     }
-    .backgroundColor('#f1f2f3')
     // ···
   }
 }
@@ -409,7 +359,7 @@ export struct AvoidSoftKeyboardPopupExample {
           .position({ x: 100, y: 300 })
       }
       .width('100%')
-    }.backgroundColor('#f1f2f3')
+    }
     // ···
   }
 }
@@ -484,7 +434,7 @@ export struct PolymorphicEffectPopupExample {
       }
       .width('100%')
       .justifyContent(FlexAlign.Center)
-    }.backgroundColor('#f1f2f3')
+    }
     // ···
   }
 }
@@ -617,7 +567,7 @@ export struct SupportedAvoidAxisPopupExample {
       }
       .height('100%')
       .width('100%')
-    }.backgroundColor('#f1f2f3')
+    }
     // ···
   }
 }
