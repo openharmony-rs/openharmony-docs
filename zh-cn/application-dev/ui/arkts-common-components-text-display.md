@@ -89,6 +89,29 @@ Text可通过以下两种方式来创建：
 
 
   <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  
+  ``` TypeScript
+  Text() {
+    // 'app.string.TextSpan_textContent_span_one'资源文件中的value值为'我是Span1，'
+    Span($r('app.string.TextSpan_textContent_span_one'))
+      .fontSize(16)
+      .fontColor(Color.Grey)
+      .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
+    // 'app.string.TextSpan_textContent_span_two'资源文件中的value值为'我是Span2'
+    Span($r('app.string.TextSpan_textContent_span_two'))
+      .fontColor(Color.Blue)
+      .fontSize(16)
+      .fontStyle(FontStyle.Italic)
+      .decoration({ type: TextDecorationType.Underline, color: Color.Black })
+    // 'app.string.TextSpan_textContent_span_three'资源文件中的value值为'，我是Span3'
+    Span($r('app.string.TextSpan_textContent_span_three'))
+      .fontSize(16)
+      .fontColor(Color.Grey)
+      .decoration({ type: TextDecorationType.Overline, color: Color.Green })
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
 
   ![zh-cn_image_0000001562700437](figures/zh-cn_image_0000001562700437.png)
 
