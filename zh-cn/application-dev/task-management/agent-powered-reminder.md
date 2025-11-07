@@ -92,7 +92,8 @@
    - 定义日历实例。
      
       <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
-      ```ts
+      
+      ``` TypeScript
       let calendar: reminderAgent.ReminderRequestCalendar = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,  // 提醒类型为日历类型
         dateTime: {  // 指明提醒的目标时间
