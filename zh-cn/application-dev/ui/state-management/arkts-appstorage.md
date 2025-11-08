@@ -686,6 +686,74 @@ export struct TapImage {
 
 <!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->
 
+``` TypeScript
+
+class ViewData {
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
+
+  constructor(title: string, uri: Resource) {
+    this.title = title;
+    this.uri = uri;
+  }
+}
+
+@Entry
+@Component
+struct Gallery {
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
+  scroller: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      Grid(this.scroller) {
+        ForEach(this.dataList, (item: ViewData, index?: number) => {
+          GridItem() {
+            TapImage({
+              uri: item.uri,
+              index: index
+            })
+          }.aspectRatio(1)
+
+        }, (item: ViewData, index?: number) => {
+          return JSON.stringify(item) + index;
+        })
+      }.columnsTemplate('1fr 1fr')
+    }
+
+  }
+}
+
+@Component
+export struct TapImage {
+  @StorageLink('tapIndex') tapIndex: number = -1;
+  private index: number = 0;
+  private uri: Resource = {
+    id: 0,
+    type: 0,
+    moduleName: '',
+    bundleName: ''
+  };
+
+  build() {
+    Column() {
+      Image(this.uri)
+        .objectFit(ImageFit.Cover)
+        .onClick(() => {
+          this.tapIndex = this.index;
+        })
+        .border({
+          width: 5,
+          style: BorderStyle.Dotted,
+          color: (this.tapIndex >= 0 && this.index === this.tapIndex) ? Color.Red : Color.Black
+        })
+    }
+  }
+}
+```
+
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
 使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
