@@ -104,6 +104,8 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **参数：**
@@ -111,6 +113,14 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 | 参数名   | 类型                                           | 必填 | 说明       |
 | -------- | ---------------------------------------------- | ---- | ---------- |
 | callback | AsyncCallback\<[DataFlowType](#dataflowtype)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -133,6 +143,8 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **返回值：**
@@ -140,6 +152,14 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 | 类型                                     | 说明                                            |
 | ---------------------------------------- | ----------------------------------------------- |
 | Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -160,6 +180,8 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **参数：**
@@ -167,6 +189,14 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 | 参数名   | 类型                                                   | 必填 | 说明       |
 | -------- | ------------------------------------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -189,6 +219,8 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **返回值：**
@@ -196,6 +228,14 @@ getCellularDataState(): Promise\<DataConnectState\>
 | 类型                                             | 说明                                  |
 | ------------------------------------------------ | ------------------------------------- |
 | Promise\<[DataConnectState](#dataconnectstate)\> | 以Promise形式返回获取PS域的连接状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
