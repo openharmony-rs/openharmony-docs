@@ -29,7 +29,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
 
 ``` JSON5
 {
