@@ -1144,10 +1144,6 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1167,8 +1163,6 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1200,46 +1194,6 @@ export default class EntryAbility extends UIAbility {
           console.info('Succeeded in setting window container color.');
         } catch (exception) {
           console.error(`Failed to set the window container color. Cause code: ${exception.code}, message: ${exception.message}`);
-        };
-      });
-    });
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent("pages/page2", (err: BusinessError<void> | null) => {
-      let errCode = err?.code;
-      if (errCode) {
-        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
-        return;
-      }
-      console.info('Succeeded in loading the content.');
-      // 获取应用主窗口。
-      let windowClass: window.Window | undefined = undefined;
-      windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
-        let errCode = err?.code;
-        if (errCode) {
-          console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
-          return;
-        }
-        windowClass = data;
-        let activeColor: string = '#00000000';
-        let inactiveColor: string = '#FF000000';
-        try {
-          windowClass!.setWindowContainerColor(activeColor, inactiveColor);
-          console.info('Succeeded in setting window container color.');
-        } catch (exception) {
-          let error = exception as BusinessError;
-          console.error(`Failed to set the window container color. Cause code: ${error.code}, message: ${error.message}`);
         };
       });
     });
