@@ -160,6 +160,66 @@ struct ReusableV2Component {
 
 <!-- @[ConditionPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ConditionPage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Reusablev2]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Reusablev2_';
+
+@ObservedV2
+class Info {
+  @Trace public age: number = 25;
+}
+const info: Info = new Info();
+@Entry
+@ComponentV2
+struct Index {
+  @Local condition: boolean = true;
+  build() {
+    Column() {
+      Button('Reuse/Recycle')
+        .onClick(() => {
+          this.condition = !this.condition;
+        })
+      Button('Change value')
+        .onClick(() => {
+          info.age++;
+        })
+      if (this.condition) {
+        ReusableV2Component()
+      }
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  @Local info: Info = info; // 仅做演示使用，并不建议@Local赋值全局变量
+  @Monitor('info.age')
+  onValChange() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'info.age change');
+  }
+  aboutToRecycle() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'aboutToRecycle');
+    this.info.age++;
+  }
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'aboutToReuse');
+    this.info.age++;
+  }
+  onRender(): string {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'info.age onRender');
+    return this.info.age.toString();
+  }
+  build() {
+    Column() {
+      Text(this.onRender())
+    }
+  }
+}
+```
+
 建议按如下步骤进行操作：
 
 1. 点击`改值`按钮，可以观察到UI变化，\@Monitor触发并输出日志`info.age change`以及`info.age onRender`，说明此时能够正常监听到变化以及触发UI刷新。
