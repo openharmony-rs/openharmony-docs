@@ -68,12 +68,10 @@
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
-        // $r('app.string.arkts_new_gettarget2') 需要替换为开发者所需的资源文件
         Button('Change Proxy Object Properties')
           .onClick(() => {
             this.info.name = 'Alice'; // Text组件能够刷新
           })
-        // $r('app.string.arkts_new_gettarget3') 需要替换为开发者所需的资源文件
         Button('Change Original Object Properties')
           .onClick(() => {
             let rawInfo: Info = UIUtils.getTarget(this.info);
