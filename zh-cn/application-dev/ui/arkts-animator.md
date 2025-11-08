@@ -158,6 +158,12 @@
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
 
    <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   onPageHide(): void {
+     this.animatorOptions = undefined;
+   }
+   ```
 
 完整示例如下。
 
