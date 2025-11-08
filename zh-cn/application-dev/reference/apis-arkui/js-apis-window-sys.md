@@ -522,7 +522,7 @@ on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): v
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemBarTintChange](#windowonsystembartintchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onSystemBarTintChange](#windowonsystembartintchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -570,7 +570,7 @@ onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -610,7 +610,7 @@ off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;)
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemBarTintChange](#windowoffsystembartintchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offSystemBarTintChange](#windowoffsystembartintchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -659,11 +659,11 @@ offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemBarTintChange')](#windowoffsystembartintchange8)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('systemBarTintChange')](#windowoffsystembartintchange8)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -708,11 +708,11 @@ on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): v
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -754,11 +754,11 @@ onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on(type: 'gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on(type: 'gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -800,11 +800,11 @@ off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;):
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -850,11 +850,11 @@ offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off(type: 'gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off(type: 'gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -900,11 +900,11 @@ on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWaterMarkFlagChange](#windowonwatermarkflagchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onWaterMarkFlagChange](#windowonwatermarkflagchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -946,11 +946,11 @@ onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on(type: 'waterMarkFlagChange')](#windowonwatermarkflagchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on(type: 'waterMarkFlagChange')](#windowonwatermarkflagchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -992,11 +992,11 @@ off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWaterMarkFlagChange](#windowoffwatermarkflagchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offWaterMarkFlagChange](#windowoffwatermarkflagchange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1042,11 +1042,11 @@ offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off(type: 'waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off(type: 'waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

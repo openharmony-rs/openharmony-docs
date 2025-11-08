@@ -3061,7 +3061,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3106,7 +3106,7 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3148,7 +3148,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3200,7 +3200,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3763,7 +3763,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3792,42 +3792,40 @@ try {
 }
 ```
 
-## onDisplayIdChange<sup>22+</sup>
+## onScreenshot<sup>22+</sup>
 
-onDisplayIdChange(callback: Callback&lt;long&gt;): void
+onScreenshot(callback: Callback&lt;void&gt;): void
 
-开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+开启截屏事件的监听。
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('displayIdChange')](#ondisplayidchange14)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshot')](#onscreenshot9)。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型                       | 必填 | 说明                                                         |
-| -------- | --------------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回long类型参数，表示窗口所处屏幕的displayId。                               |
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。发生截屏事件时的回调。                               |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
+| ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
 
 **示例：**
 
 ```ts
 try {
-  windowClass.onDisplayIdChange((data) => {
-    console.info('Window displayId changed, displayId=' + JSON.stringify(data));
+  windowClass.onScreenshot(() => {
+    console.info('screenshot happened');
   });
 } catch (exception) {
   let error = exception as BusinessError;
@@ -3849,7 +3847,7 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3894,7 +3892,7 @@ offScreenshot(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4178,7 +4176,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 14
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -4221,7 +4219,7 @@ onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4266,7 +4264,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 14
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -4315,7 +4313,7 @@ offDisplayIdChange(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4366,7 +4364,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4410,7 +4408,7 @@ onWindowVisibilityChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4456,7 +4454,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4506,7 +4504,7 @@ offWindowVisibilityChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4641,7 +4639,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 15
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -4689,7 +4687,7 @@ onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4738,7 +4736,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 15
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -4787,7 +4785,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
