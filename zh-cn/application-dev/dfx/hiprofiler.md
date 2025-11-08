@@ -55,6 +55,7 @@ $ hiprofiler_cmd \
   -t 30 \
   -s \
   -k \
+  --nonblock \
 <<CONFIG
  request_id: 1
  session_config {
@@ -83,10 +84,11 @@ CONFIG
 | -o | 自定义文件保存路径（需要以/data/local/tmp开头）。若不设置路径，则调优数据自动保存至/data/local/tmp/hiprofiler_data.htrace。重复调优会覆盖原来路径的文件。 | 
 | -k | 杀掉已存在的调优服务进程。 | 
 | -s | 拉起调优服务进程。 | 
-| -t | 设置调优持续时间，单位：s。 | 
+| -t | 设置调优持续时间，单位：s。 |
+| --nonblock | 设置hiprofiler_cmd通过非阻塞的方式运行。<br>执行命令后，hiprofiler_cmd转入后台运行，继续执行其他命令。<br>如果不设置该参数，hiprofiler_cmd会阻塞执行，直到该命令结束。<br>**说明**：从API version 23开始支持该参数。 |
 
 
-输入完hiprofiler_cmd参数后，需要输入插件配置信息，以&lt;&lt;CONFIG开头，CONFIG结尾，中间内容以json格式输入。
+输入完hiprofiler_cmd参数后，需要输入插件配置信息，以&lt;&lt;CONFIG开头，CONFIG结尾。每个插件需要的配置不同，参考[插件参数说明](#插件参数说明)。
 
 
 以下是session config字段介绍：
