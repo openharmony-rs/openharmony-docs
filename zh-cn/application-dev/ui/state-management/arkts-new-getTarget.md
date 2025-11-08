@@ -52,7 +52,7 @@
 
 
 - 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
-  <!-- @[Changes_to_the_content_in_the_original](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets) --> 
+  <!-- @[Changes_to_the_content_in_the_original](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets) -->
 
 
 ## 使用场景
