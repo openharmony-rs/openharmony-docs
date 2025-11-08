@@ -59,6 +59,30 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+## responseRegionList<sup>23+</sup>
+
+responseRegionList(value: Array&lt;ResponseRegion): T
+
+设置组件的触摸热区列表。
+
+**卡片能力：** 不支持
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | Array&lt;[ResponseRegion](#ResponseRegion对象说明)&gt;&nbsp; | 是   | 组件的触摸热区列表。<br/>默认值：不涉及<br/>合法取值范围：触摸热区数组<br/>非法值设置范围：恢复默认值 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
 ## Rectangle对象说明
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -85,6 +109,37 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
   >  当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
   >
   >  width和height不支持calc()的动态计算。
+
+## ResponseRegion对象说明
+
+**卡片能力：** 不支持
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称        | 类型                        | 只读    |  可选   |  说明                             |
+| ------ | ----------------------------- | -----| -----|-------------------------------- |
+| tool      | [ResponseRegionSupportedTool](#ResponseRegionSupportedTool)  | 否   | 是   |触摸热区适用的输入工具类型。<br/>默认值：ResponseRegionSupportedTool.FINGER |
+| x      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的x轴坐标。<br/>默认值：LengthMetrics.vp(0) |
+| y      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否   | 是   |触摸点相对于组件左上角的y轴坐标。<br/>默认值：LengthMetrics.vp(0) |
+| width  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的宽度。<br/>默认值：LengthMetrics.percent(1) |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| string | 否   | 是   |触摸热区的高度。<br/>默认值：LengthMetrics.percent(1) |
+
+
+### ResponseRegionSupportedTool
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称        | 值 | 说明                             |
+| ------ | -----|-------------------------------- |
+| ALL      | 0 | 所有输入工具类型   |
+| FINGER      | 1 | 手指   |
+| PEN      | 2  | 手写笔   |
+| MOUSE  | 3 | 鼠标   |
+
 
 ## 示例
 
