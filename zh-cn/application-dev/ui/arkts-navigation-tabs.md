@@ -182,6 +182,28 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End }) {
+    TabContent() {
+      Column() {
+        Tabs() {
+          // 顶部导航栏内容
+        // ···
+        }
+      }
+      .backgroundColor('#ff08a8f1')
+      .width('100%')
+    }
+    // app.string.homepage资源文件中的value值为“首页”
+    .tabBar($r('app.string.homepage'))
+
+    // 其他TabContent内容：发现、推荐、我的
+    // ···
+  }
+// ···
+  .scrollable(false)
+```
+
 
 ## 固定导航栏
 
