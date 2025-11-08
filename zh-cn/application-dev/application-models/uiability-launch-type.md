@@ -46,7 +46,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
       {
         "launchType": "singleton",
         // ···
-      },
+      }
     // ···
     ]
   }
@@ -73,7 +73,7 @@ multiton启动模式的开发使用，在[module.json5配置文件](../quick-sta
       {
         "launchType": "multiton",
         // ···
-      },
+      }
     // ···
     ]
   }
@@ -110,7 +110,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
           {
             "launchType": "specified",
             // ···
-          },
+          }
         // ···
         ]
       }
@@ -144,7 +144,8 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
         Row() {
           Column() {
             // ···
-            Button($r('app.string.new_doc')) // app.string.new_doc的值为新建一个文档
+            // app.string.new_doc资源文件中的value值为'新建一个文档'
+            Button($r('app.string.new_doc'))
             // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -167,7 +168,8 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
     
-            Button($r('app.string.open_old_doc')) // app.string.open_old_doc的值为打开已保存文档
+            // app.string.open_old_doc资源文件中的value值为'打开已保存文档'
+            Button($r('app.string.open_old_doc'))
             // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
