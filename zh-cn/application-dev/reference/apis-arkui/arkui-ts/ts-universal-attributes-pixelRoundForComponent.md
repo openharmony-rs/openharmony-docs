@@ -32,6 +32,9 @@ pixelRound(value: PixelRoundPolicy): T
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。	
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value | [PixelRoundPolicy](#pixelroundpolicy) | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。|
@@ -73,27 +76,27 @@ pixelRound(value: PixelRoundPolicy): T
 
 当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。
 
-```ts	
-@Entry	
-@Component	
-struct PixelRoundExample {	
-    @State curWidth : number = 300;	
+```ts
+@Entry
+@Component
+struct PixelRoundExample {
+    @State curWidth : number = 300;
 
-    build() {	
-        Column() {	
-            Button(){	
-                Text(this.curWidth.toString())	
-            }	
-            .onClick(() => {	
-                this.curWidth += 0.1;	
-            })	
-            .height(200)	
-            .width(200)	
-            .backgroundColor('rgb(213, 213, 213)')	
+    build() {
+        Column() {
+            Button(){
+                Text(this.curWidth.toString())
+            }
+            .onClick(() => {
+                this.curWidth += 0.1;
+            })
+            .height(200)
+            .width(200)
+            .backgroundColor('rgb(213, 213, 213)')
 
-            Blank().height(20)	
+            Blank().height(20)
 
-            Row() {	
+            Row() {
                 Row() {
                 }
                 .width('100%')
@@ -115,8 +118,8 @@ struct PixelRoundExample {
         .width("100%")
         .height('100%')
         .backgroundColor('#ffe5e5e5')
-    }	
-}	
+    }
+}
 ```	
 
 在本示例中，当取消像素取整功能（即不设置父子组件上的pixelRound属性）后，初始状态表现为正常。用户可通过点击按钮来增加父组件的宽度，当前示例父组件宽度为301.2px，以此测试在不同宽度下的表现差异。测试中会发现，当父组件达到特定宽度时，右侧会出现1px的显示。同样地，适当调整示例代码后，也可进行上下方向的测试，以观察类似现象。
