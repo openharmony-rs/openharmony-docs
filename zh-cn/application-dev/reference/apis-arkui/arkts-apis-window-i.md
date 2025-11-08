@@ -32,10 +32,6 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称                                   | 类型 | 只读 | 可选 | 说明                                                         |
 | -------------------------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
 | statusBarColor                         | string   |  否  |  是   | 状态栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 22|
@@ -59,7 +55,7 @@
 
 | 名称                                   | 类型 |  只读 |   可选  | 说明 |
 | ------------------------------------- | -------- | ---- | ---- | ------- |
-| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 22|
+| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager|
 
 ## SystemBarStyle<sup>12+</sup>
 
@@ -75,7 +71,7 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 22|
+| statusBarContentColor   | string   | 否   | 是   | 状态栏文字颜色。默认值：`'#E5FFFFFF'`。|
 
 ## Rect<sup>7+</sup>
 
@@ -111,10 +107,10 @@
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22|
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。|
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。|
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。|
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。|
 
 > **说明：**
 >
@@ -173,16 +169,12 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22 |
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 22 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。|
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。|
 
 ## WindowProperties
 
 窗口属性。
-
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称                                  | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------- | ------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
@@ -277,9 +269,9 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
-| defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
-| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 <br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
+| systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。|
+| defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。|
+| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。|
 
 ## WindowLayoutInfo<sup>15+</sup>
 
@@ -295,7 +287,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小 <br> **ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 22 |
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。|
 
 ## KeyboardInfo<sup>18+</sup>
 
@@ -445,8 +437,8 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。<br>**ArkTS-Dyn起始版本：** 19 <br>**ArkTS-Sta起始版本：** 22 |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。<br>**ArkTS-Dyn起始版本：** 19 <br>**ArkTS-Sta起始版本：** 22 |
+| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。|
+| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
 
 ## RotationChangeCallback<sup>19+</sup>
 
