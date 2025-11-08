@@ -32,6 +32,11 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 - 使用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)将设备运行的环境变量存入AppStorage中。
 
   <!-- @[showfirst_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
+  
+  ``` TypeScript
+  // 将设备的languageCode存入AppStorage，默认值为en
+  Environment.envProp('languageCode', 'en');
+  ```
 
 - 在自定义组件中通过@StorageProp获取languageCode的值。
 
