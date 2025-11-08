@@ -1127,6 +1127,101 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 示例代码如下：
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) -->
   
+  ``` TypeScript
+  import { LengthMetrics } from '@kit.ArkUI';
+  import { common } from '@kit.AbilityKit';
+  
+  @Entry
+  @Component
+  export struct LengthMetric {
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    private manager = this.context.resourceManager;
+  
+    // 'Text_Add_Tags_Front_and_Post'资源文件中的value值为'这是一段长文本，超长部分折行，前后添加标签'
+    @State message: string = this.manager.getStringByNameSync('Text_Add_Tags_Front_and_Post');
+    // 'Text_Add_Tags_Front'前标签'
+    @State frontTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Front');
+    // 'Text_Add_Tags_Post'资源文件中的value值为'后标签'
+    @State backTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Post');
+    @State frontPaddingVp: number = 20;
+    @State backPaddingVp: number = 10;
+    @State fontTagWidthVp: Length = 0;
+    @State backTagWidthVp: Length = 0;
+    @State backOffsetVpX: Length = 0;
+    @State backOffsetVpY: Length = 0;
+    @State messageLines: number = 0;
+    @State stackWidthVp: number = 300;
+  
+    // 显示之前，测算前后标签的位置，中间文本的缩进距离
+    aboutToAppear(): void {
+      // 计算前标签的宽度fontTagWidthVp，作为message的首行缩进距离
+      let frontTagSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
+        textContent: this.frontTag,
+      });
+      this.fontTagWidthVp = this.getUIContext().px2vp(Number(frontTagSize.width)) + this.frontPaddingVp * 2
+  
+      // 计算frontTag+message占据的行数
+      let linesFrontTagPlusMessage = 0;
+      let mutableStr = new MutableStyledString(this.message,
+        [{
+          start: 0,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({ textIndent: LengthMetrics.vp(this.fontTagWidthVp) })
+        }]
+      )
+      let paragraphArr = this.getUIContext()
+        .getMeasureUtils()
+        .getParagraphs(mutableStr, { constraintWidth: LengthMetrics.vp(this.stackWidthVp) });
+      for (let i = 0; i < paragraphArr.length; ++i) {
+        linesFrontTagPlusMessage += paragraphArr[i].getLineCount();
+      }
+  
+      // 后标签offsetX的偏移量backOffsetVpX=frontTag+message最后一行的宽度
+      this.backOffsetVpX =
+        this.getUIContext().px2vp((paragraphArr[paragraphArr.length-1].getLineWidth(linesFrontTagPlusMessage - 1)))
+      // 后标签offsetY的偏移量backOffsetVpY=frontTag+message总高度-最后一行的高度。
+      let heightFrontTagPlusMessageVp = 0;
+      for (let i = 0; i < paragraphArr.length; ++i) {
+        heightFrontTagPlusMessageVp += this.getUIContext().px2vp(paragraphArr[i].getHeight());
+      }
+      let lastLineHeight =
+        this.getUIContext().px2vp(paragraphArr[paragraphArr.length-1].getLineHeight(linesFrontTagPlusMessage - 1))
+      this.backOffsetVpY = heightFrontTagPlusMessageVp - lastLineHeight
+    }
+  
+    build() {
+      NavDestination() {
+        Column({ space: 20 }) {
+          Blank()
+            .height(200)
+          Stack() {
+            Text(this.frontTag)
+              .padding({ left: this.frontPaddingVp, right: this.frontPaddingVp })
+              .backgroundColor('rgb(39, 135, 217)')
+            Text(this.message)
+              .textIndent(this.fontTagWidthVp)
+              .padding(0)
+            Text(this.backTag)
+              .padding({ left: this.backPaddingVp, right: this.backPaddingVp })
+              .backgroundColor('rgb(0, 74, 175)')
+              .offset({
+                x: this.backOffsetVpX,
+                y: this.backOffsetVpY
+              })
+          }
+          .alignContent(Alignment.TopStart) // 顶部起始端对齐
+          .width(this.stackWidthVp)
+        }
+        .height('100%')
+        .width('90%')
+        .padding('5%')
+      }
+      // ···
+    }
+  }
+  ```
+  
 ![](figures/text_tag_case_2.png)
 
 ### Text组件如何实现表情与文字一起显示
