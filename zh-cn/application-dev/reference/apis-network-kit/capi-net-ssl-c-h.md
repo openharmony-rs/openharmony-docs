@@ -33,6 +33,7 @@
 | [void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)](#oh_netstack_destroycertificatescontent) | 释放证书内容。 |
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | 整体明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | 按域名明文HTTP是否允许。 |
+| [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | 按域名明文HTTP是否允许。 |
 
 
 ## 函数说明
@@ -205,7 +206,7 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 
 **描述**
 
-检查组件是否已配置为进行明文流量拦截。。
+检查组件是否已配置开启明文http拦截功能。
 
 **起始版本：** 20
 
@@ -214,8 +215,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *component | 表示组件名称。 |
-| bool *componentCfg | 输出参数，如果组件配置为拦截明文流量，则true，否则false。 |
+| const char *component | 组件名称，当前支持的组件请参考：[配置不信任用户安装的CA证书](../../network/http-request.md#配置不信任用户安装的ca证书) |
+| bool *componentCfg | 输出参数，组件是否配置开启明文http拦截功能，如果开启则为true，否则为false。 |
 
 **返回：**
 
