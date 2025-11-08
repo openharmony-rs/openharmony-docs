@@ -330,7 +330,7 @@ export default class EnvAbility8 extends AbilityStage {
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EnvAbility9]';
+const TAG: string = '[EntryAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
