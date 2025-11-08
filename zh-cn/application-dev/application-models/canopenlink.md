@@ -52,7 +52,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
           let message = (err as BusinessError).message;
           hilog.error(0x0000, 'testTag', 'canOpenLink failed: %{public}s', message);
         }
-   // ···      
+    // ···
     ```
 
 ### 目标方操作步骤
