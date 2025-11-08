@@ -275,6 +275,61 @@ struct TestStorageProp {
 
 <!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
 
+``` TypeScript
+@Component
+struct StorageLinkComponent {
+  @StorageLink('linkA') linkA: number | null = null;
+  @StorageLink('linkB') linkB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageLink接口初始化，@StorageLink取值')
+      Text(`${this.linkA}`).fontSize(20).onClick(() => {
+        this.linkA ? this.linkA = null : this.linkA = 1;
+      })
+      Text(`${this.linkB}`).fontSize(20).onClick(() => {
+        this.linkB ? this.linkB = undefined : this.linkB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Red)
+  }
+}
+
+@Component
+struct StoragePropComponent {
+  @StorageProp('propA') propA: number | null = null;
+  @StorageProp('propB') propB: number | undefined = undefined;
+
+  build() {
+    Column() {
+      Text('@StorageProp接口初始化，@StorageProp取值')
+      Text(`${this.propA}`).fontSize(20).onClick(() => {
+        this.propA ? this.propA = null : this.propA = 1;
+      })
+      Text(`${this.propB}`).fontSize(20).onClick(() => {
+        this.propB ? this.propB = undefined : this.propB = 1;
+      })
+    }
+    .borderWidth(3).borderColor(Color.Blue)
+  }
+}
+
+@Entry
+@Component
+struct TestPageStorageLink {
+  build() {
+    Row() {
+      Column() {
+        StorageLinkComponent()
+        StoragePropComponent()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 > **说明：**
