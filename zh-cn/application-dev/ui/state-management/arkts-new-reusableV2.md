@@ -512,6 +512,63 @@ struct ReusableV2Component {
 
 <!-- @[IMonitorValuePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/IMonitorValuePage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Reusablev2]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Reusablev2_';
+
+@ObservedV2
+class Info {
+  @Trace public age: number;
+  constructor(age: number) {
+    this.age = age;
+  }
+}
+@Entry
+@ComponentV2
+struct Index {
+  @Local condition: boolean = true;
+  build() {
+    Column() {
+      Button('Recycle/Reuse')
+        .onClick(() => {
+          this.condition = !this.condition;
+        })
+      if (this.condition) {
+        ReusableV2Component()
+      }
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  noDecoInfo: Info = new Info(30); // 未加装饰器，被视作常量
+  @Monitor('noDecoInfo.age')
+  onAgeChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, TAG, BUNDLE + `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+  aboutToRecycle() {
+    this.noDecoInfo.age = 25;
+  }
+  aboutToReuse() {
+    this.noDecoInfo.age = 35;
+  }
+  build() {
+    Column() {
+      Column() {
+        Text(`noDecoInfo.age: ${this.noDecoInfo.age}`)
+          .onClick(() => {
+            this.noDecoInfo.age++;
+          }) // 能够触发刷新但是不会被重置
+      }
+    }
+  }
+}
+```
+
 建议按照下列步骤进行操作：
 
 1. 点击`noDecoInfo.age: 30`，UI刷新为`noDecoInfo.age: 31`，\@Monitor触发并输出日志`age change from 30 to 31`。
