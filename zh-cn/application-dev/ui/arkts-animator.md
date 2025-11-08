@@ -71,6 +71,11 @@
 4. 动画执行完成后手动释放AnimatorResult对象。
 
    <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
+   // 释放动画对象
+   result = undefined;
+   ```
 
 
 ## 使用帧动画实现小球抛物运动
