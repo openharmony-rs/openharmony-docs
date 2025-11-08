@@ -79,9 +79,9 @@ zh-cn/application-dev/application-models/create-dataability.md @huipeizi @jsjzju
 zh-cn/application-dev/application-models/create-serviceability.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/application-models/dataability*.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/application-models/deep-linking-startup.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/application-models/embeddeduiextensionability.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/application-models/embeddeduiextensionability.md @huipeizi @xhz-sz @lixueqing513
 zh-cn/application-dev/application-models/extensionability-overview.md @huipeizi @jsjzju @lixueqing513
-zh-cn/application-dev/application-models/insight-intent-config-development.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/application-models/insight-intent-config-development.md @huipeizi @li-weifeng2024 @lixueqing513
 zh-cn/application-dev/application-models/lifecycle*.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/application-models/particleability-switch.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/application-models/process-model-stage.md @huipeizi @yzkp @lixueqing513
@@ -876,19 +876,19 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-completionH
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-CompletionHandlerForAtomicService.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-contextConstant.md @huipeizi @ccllee1 @li-weifeng2024 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dialogSession-sys.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md @huipeizi @xhz-sz @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntent*.md @huipeizi @li-weifeng2024 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md @huipeizi @xukeke @lusq
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md @huipeizi @li-weifeng2024 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md @huipeizi @jsjzju @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiAbility.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md @huipeizi @xhz-sz @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md @huipeizi @li-weifeng2024 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startup*.md @huipeizi @yzkp @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-appManager-sys.md @huipeizi @yzkp @lixueqing513
@@ -917,7 +917,7 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-servi
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext-sys.md @huipeizi @li-weifeng2024 @lixueqing513
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @huipeizi @zhangyafei-echo @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @huipeizi @xhz-sz @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-uripermissionmanager-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
