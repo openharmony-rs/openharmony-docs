@@ -208,7 +208,7 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *component | 组件名称，当前支持的组件请参考：[配置不信任用户安装的CA证书](../../network/http-request.md#配置不信任用户安装的ca证书) |
+| const char *component | 组件名称，当前支持的组件：Network Kit、ArkWeb。 |
 | bool *componentCfg | 输出参数，组件是否配置开启明文http拦截功能，如果开启则为true，否则为false。 |
 
 **返回：**
