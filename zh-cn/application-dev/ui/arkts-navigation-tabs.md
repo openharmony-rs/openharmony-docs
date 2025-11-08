@@ -242,6 +242,14 @@ Tabs({ barPosition: BarPosition.End }) {
 
 <!-- @[scrollable_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ScrollableTabBar.ets) -->
 
+``` TypeScript
+Tabs({ barPosition: BarPosition.Start }) {
+  // TabContent的内容：关注、视频、游戏、数码、科技、体育、影视、人文、艺术、自然、军事
+  // ···
+}
+.barMode(BarMode.Scrollable)
+```
+
 
 ## 自定义导航栏
 
