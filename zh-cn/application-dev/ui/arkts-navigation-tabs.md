@@ -268,6 +268,23 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 <!-- @[custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
 
+``` TypeScript
+@State currentIndex: number = 0;
+
+@Builder
+tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
+  Column() {
+    Image(this.currentIndex === targetIndex ? selectedImg : normalImg)
+      .size({ width: 25, height: 25 })
+    Text(title)
+      .fontColor(this.currentIndex === targetIndex ? '#1698CE' : '#6B6B6B')
+  }
+  .width('100%')
+  .height(50)
+  .justifyContent(FlexAlign.Center)
+}
+```
+
 
 在TabContent对应tabBar属性中传入自定义函数组件，并传递相应的参数。
 
