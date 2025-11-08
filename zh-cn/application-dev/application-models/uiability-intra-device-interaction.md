@@ -62,7 +62,8 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                   info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                   info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -123,7 +124,8 @@
     
       build() {
         Column() {
-          Button($r('app.string.Stop_AbilityA')) //'app.string.Stop_AbilityA'的值为StopFuncAbilityA
+          // app.string.Stop_AbilityA资源文件中的value值为'StopFuncAbilityA'
+          Button($r('app.string.Stop_AbilityA'))
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
               // context为需要停止的UIAbility实例的AbilityContext
@@ -189,7 +191,8 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -253,7 +256,8 @@
                     moduleName: 'entry', // moduleName非必选
                     abilityName: 'FuncAbilityA',
                     parameters: {
-                      info: $r('app.string.ability_return_info') //'app.string.ability_return_info'的值为来自FuncAbility Index页面
+                      // app.string.ability_return_info资源文件中的value值为'来自FuncAbility Index页面'
+                      info: $r('app.string.ability_return_info')
                     },
                   },
                 };
@@ -310,7 +314,8 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    info: $r('app.string.main_page_return_info') // app.string.main_page_return_info的值为来自EntryAbility MainPage页面
+                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    info: $r('app.string.main_page_return_info')
                   }
                 };
                 context.startAbilityForResult(want).then((data) => {
@@ -705,7 +710,8 @@ struct MainPage {
               abilityName: 'HotStartAbility',
               parameters: {
                 // 自定义信息
-                info: $r('app.string.index_return_info') // app.string.index_return_info的值为来自EntryAbility Index页面
+                // app.string.index_return_info资源文件中的value值为'来自EntryAbility Index页面'
+                info: $r('app.string.index_return_info')
               }
             };
             let options: StartOptions = {
