@@ -243,6 +243,52 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 
 若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用TabsController，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
 <!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
+
+``` TypeScript
+// ···
+  @State currentIndex: number = 2;
+  @State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
+  private controller: TabsController = new TabsController();
+
+// ···
+              Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller }) {
+                // ···
+              }
+              .animationDuration(0)
+              .height(300)
+              .animationMode(this.currentAnimationMode)
+              .onChange((index: number) => {
+                this.currentIndex = index;
+              })
+
+              // app.string.ContentWillChange_animationMode资源文件中的value值为“动态修改animationMode”
+              Button($r('app.string.ContentWillChange_animationMode')).width('50%').margin({ top: 1 }).height(25)
+                .onClick(()=>{
+                  if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
+                    this.currentAnimationMode = AnimationMode.NO_ANIMATION;
+                  } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
+                  }
+              })
+
+              // app.string.ContentWillChange_changeIndex资源文件中的value值为“动态修改index”
+              Button($r('app.string.ContentWillChange_changeIndex')).width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  this.currentIndex = (this.currentIndex + 1) % 4;
+                })
+
+              Button('changeIndex').width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  let index = (this.currentIndex + 1) % 4;
+                  this.controller.changeIndex(index);
+                })
+```
   
   **图12** 切换指定页签    
 
