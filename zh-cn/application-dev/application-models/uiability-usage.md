@@ -194,7 +194,8 @@ export default class EntryAbility extends UIAbility {
           }
 
           ListItem() {
-            Button($r('app.string.Start_UIAbilityB'))  // app.string.Start_UIAbilityB的值为拉起UIAbilityB
+            // app.string.Start_UIAbilityB资源文件中的value值为'拉起UIAbilityB'
+            Button($r('app.string.Start_UIAbilityB'))
               .onClick((event: ClickEvent) => {
               let want: Want = {
                 bundleName: this.context.abilityInfo.bundleName,
