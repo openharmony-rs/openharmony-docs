@@ -53,36 +53,6 @@
 
 - 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
   <!-- @[Changes_to_the_content_in_the_original](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets) -->
-  
-  ``` TypeScript
-  import { UIUtils } from '@kit.ArkUI';
-  @Observed
-  class Info {
-    public name: string = 'Tom';
-  }
-  @Entry
-  @Component
-  struct GetTargetObject {
-    @State info: Info = new Info();
-  
-    build() {
-      Column() {
-        Text(`info.name: ${this.info.name}`)
-        // $r('app.string.arkts_new_gettarget2') 需要替换为开发者所需的资源文件
-        Button('Change Proxy Object Properties')
-          .onClick(() => {
-            this.info.name = 'Alice'; // Text组件能够刷新
-          })
-        // $r('app.string.arkts_new_gettarget3') 需要替换为开发者所需的资源文件
-        Button('Change Original Object Properties')
-          .onClick(() => {
-            let rawInfo: Info = UIUtils.getTarget(this.info);
-            rawInfo.name = 'Bob'; // Text组件不能刷新
-          })
-      }
-    }
-  }
-  ```
 
 
 ## 使用场景
