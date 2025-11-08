@@ -116,7 +116,7 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -155,7 +155,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -192,7 +192,7 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -231,7 +231,7 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -268,7 +268,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -352,7 +352,7 @@ isCellularDataEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -395,7 +395,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -559,7 +559,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -603,7 +603,7 @@ queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -658,7 +658,7 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -696,7 +696,7 @@ getActiveApnName(): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
