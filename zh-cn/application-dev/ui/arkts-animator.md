@@ -28,6 +28,10 @@
 1. 引入相关依赖。
 
    <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
+   import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
+   ```
 
 2. 创建执行动画的对象。
 
