@@ -124,89 +124,12 @@ struct Index {
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1V2混用文档](../state-management/arkts-v1-v2-mixusage.md)。
 
-  <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
-  
-  ``` TypeScript
-  class RawObject {
-    public name: string;
-  
-    constructor(name: string) {
-      this.name = name;
-    }
-  }
-  
-  @ObservedV2
-  class ObservedObject {
-    @Trace public name: string;
-  
-    constructor(name: string) {
-      this.name = name;
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local rawObject: RawObject = new RawObject('rawObject');
-    @Local observedObject: ObservedObject = new ObservedObject('observedObject');
-  
-    build() {
-      Column() {
-        Text(`${this.rawObject.name}`)
-        Text(`${this.observedObject.name}`)
-        Button('change object')
-          .onClick(() => {
-            // 对类对象整体的修改均能观察到
-            this.rawObject = new RawObject('new rawObject');
-            this.observedObject = new ObservedObject('new observedObject');
-          })
-        Button('change name')
-          .onClick(() => {
-            // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
-            this.rawObject.name = 'new rawObject name';
-            // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
-            this.observedObject.name = 'new observedObject name';
-          })
-      }
-    }
-  }
-  ```
+    <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
-  <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
+    <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
   
-  ``` TypeScript
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local numArr: number[] = [1, 2, 3, 4, 5]; // 使用@Local装饰一维数组变量
-    @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]]; // 使用@Local装饰二维数组变量
-  
-    build() {
-      Column() {
-        Text(`${this.numArr[0]}`)
-        Text(`${this.numArr[1]}`)
-        Text(`${this.numArr[2]}`)
-        Text(`${this.dimensionTwo[0][0]}`)
-        Text(`${this.dimensionTwo[1][1]}`)
-        Button('change array item') // 按钮1：修改数组中的特定元素
-          .onClick(() => {
-            this.numArr[0]++;
-            this.numArr[1] += 2;
-            this.dimensionTwo[0][0] = 0;
-            this.dimensionTwo[1][1] = 0;
-          })
-        Button('change whole array') // 按钮2：替换整个数组
-          .onClick(() => {
-            this.numArr = [5, 4, 3, 2, 1];
-            this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
-          })
-      }
-    }
-  }
-  ```
-
 - 当装饰的变量是嵌套类或对象数组时，\@Local无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
 
   <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
@@ -274,14 +197,14 @@ struct Index {
   }
   ```
 
- 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
+- 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
-  | 类型   | 可观测变化的API                                              |
+  | 类型  | 可观测变化的API                                              |	
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
-  | Date | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
-  | Map  | set, clear, delete                                           |
-  | Set  | add, clear, delete                                           |
+  | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |	
+  | Map   | set, clear, delete                                           |	
+  | Set   | add, clear, delete                                           |
 
 ## 限制条件
 
