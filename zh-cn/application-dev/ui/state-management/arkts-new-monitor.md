@@ -119,6 +119,68 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@Monitor监听的对象属性需要被\@Trace装饰，未被\@Trace装饰的属性的变化无法被监听。\@Monitor可以同时监听多个属性，这些属性之间用","隔开。
   <!-- @[monitor_decorator_multi_watch_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchObservedV2.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @ObservedV2
+  class Info {
+    @Trace public name: string = 'Tom';
+    @Trace public region: string = 'North';
+    @Trace public job: string = 'Teacher';
+    public age: number = 25;
+  
+    // name被@Trace装饰，能够监听变化
+    @Monitor('name')
+    onNameChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    }
+  
+    // age未被@Trace装饰，不能监听变化
+    @Monitor('age')
+    onAgeChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    }
+  
+    // region与job均被@Trace装饰，能够监听变化
+    @Monitor('region', 'job')
+    onChange(monitor: IMonitor) {
+      monitor.dirty.forEach((path: string) => {
+        hilog.info(0xFF00, 'testTag', '%{public}s',
+          `${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+      })
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    info: Info = new Info();
+  
+    build() {
+      Column() {
+        Button('change name')
+          .onClick(() => {
+            this.info.name = 'Jack'; // 能够触发onNameChange方法
+          })
+        Button('change age')
+          .onClick(() => {
+            this.info.age = 26; // 不能够触发onAgeChange方法
+          })
+        Button('change region')
+          .onClick(() => {
+            this.info.region = 'South'; // 能够触发onChange方法
+          })
+        Button('change job')
+          .onClick(() => {
+            this.info.job = 'Driver'; // 能够触发onChange方法
+          })
+      }
+    }
+  }
+  ```
 
 - \@Monitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
   <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) -->
