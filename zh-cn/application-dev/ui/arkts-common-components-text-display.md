@@ -1041,6 +1041,108 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
+  
+  ``` TypeScript
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct TextHotSearch {
+    build() {
+      NavDestination() {
+        Column({ space: 12 }) {
+          // ···
+            Column() {
+              Row() {
+                Text('1').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
+                // 'app.string.TextHotSearch_textContent_one'资源文件中的value值为'我是热搜词条1'
+                Text($r('app.string.TextHotSearch_textContent_one'))
+                  .fontSize(12)
+                  .fontColor(Color.Blue)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .fontWeight(300)
+                // 'app.string.TextHotSearch_textContent_two'资源文件中的value值为'爆'
+                Text($r('app.string.TextHotSearch_textContent_two'))
+                  .margin({ left: 6 })
+                  .textAlign(TextAlign.Center)
+                  .fontSize(10)
+                  .fontColor(Color.White)
+                  .fontWeight(600)
+                  .backgroundColor(0x770100)
+                  .borderRadius(5)
+                  .width(15)
+                  .height(14)
+              }.width('100%').margin(5)
+  
+              Row() {
+                Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
+                // 'app.string.TextHotSearch_textContent_three'资源文件中的value值为'我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2'
+                Text($r('app.string.TextHotSearch_textContent_three'))
+                  .fontSize(12)
+                  .fontColor(Color.Blue)
+                  .fontWeight(300)
+                  .constraintSize({ maxWidth: 200 })
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热'
+                Text($r('app.string.TextHotSearch_textContent_four'))
+                  .margin({ left: 6 })
+                  .textAlign(TextAlign.Center)
+                  .fontSize(10)
+                  .fontColor(Color.White)
+                  .fontWeight(600)
+                  .backgroundColor(0xCC5500)
+                  .borderRadius(5)
+                  .width(15)
+                  .height(14)
+              }.width('100%').margin(5)
+  
+              Row() {
+                Text('3').fontSize(14).fontColor(Color.Orange).margin({ left: 10, right: 10 })
+                // 'app.string.TextHotSearch_textContent_five'资源文件中的value值为'我是热搜词条3'
+                Text($r('app.string.TextHotSearch_textContent_five'))
+                  .fontSize(12)
+                  .fontColor(Color.Blue)
+                  .fontWeight(300)
+                  .maxLines(1)
+                  .constraintSize({ maxWidth: 200 })
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热' 
+                Text($r('app.string.TextHotSearch_textContent_four'))
+                  .margin({ left: 6 })
+                  .textAlign(TextAlign.Center)
+                  .fontSize(10)
+                  .fontColor(Color.White)
+                  .fontWeight(600)
+                  .backgroundColor(0xCC5500)
+                  .borderRadius(5)
+                  .width(15)
+                  .height(14)
+              }.width('100%').margin(5)
+  
+              Row() {
+                Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
+                // 'app.string.TextHotSearch_textContent_six'资源文件中的value值为'我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4'
+                Text($r('app.string.TextHotSearch_textContent_six'))
+                  .fontSize(12)
+                  .fontColor(Color.Blue)
+                  .fontWeight(300)
+                  .constraintSize({ maxWidth: 200 })
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+              }.width('100%').margin(5)
+            }.width('100%')
+          // ···
+        }
+        .width('100%')
+        .height('100%')
+        .padding({ left: 12, right: 12 })
+      }
+      // ···
+    }
+  }
+  ```
 
 ![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
