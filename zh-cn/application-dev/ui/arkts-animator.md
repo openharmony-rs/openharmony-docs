@@ -102,6 +102,34 @@
 3. 在onPageShow中创建AnimatorResult对象。
 
    <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   onPageShow(): void {
+     //创建animatorResult对象
+     this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
+     this.animatorOptions.onFrame = (progress: number) => {
+       this.translateX = progress;
+       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
+         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
+       }
+     }
+     //动画取消时执行方法
+     this.animatorOptions.onCancel = () => {
+       // $r('app.string.cancel')资源文件中的value值为'取消'
+       this.animatorStatus = $r('app.string.cancel');
+     }
+     //动画完成时执行方法
+     this.animatorOptions.onFinish = () => {
+       // $r('app.string.complete')资源文件中的value值为'完成'
+       this.animatorStatus = $r('app.string.complete');
+     }
+     //动画重复播放时执行方法
+     this.animatorOptions.onRepeat = () => {
+       // 'repeat'资源文件中的value值为'动画重复播放'
+       hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
+     }
+   }
+   ```
 
 4. 定义动画播放，重置，暂停的按钮。
 
