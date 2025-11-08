@@ -823,6 +823,25 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     ```
 
     <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
+    // 'app.string.show_selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    Text($r('app.string.show_selected_menu'), this.options)
+      .fontSize(30)
+      .copyOption(CopyOptions.InApp)
+      .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
+        onAppear: () => {
+          // 'app.string.SelectMenu_Text_Ejected'资源文件中的value值为'自定义选择菜单弹出时触发该回调'
+          hilog.info(0x0000, 'Sample_TextComponent',
+            resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
+        },
+        onDisappear: () => {
+          // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
+          hilog.info(0x0000, 'Sample_TextComponent',
+            resource.resourceToString($r('app.string.SelectMenu_Text_Close')));
+        }
+      })
+    ```
 
     <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
