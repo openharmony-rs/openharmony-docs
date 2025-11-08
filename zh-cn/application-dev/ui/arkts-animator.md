@@ -83,6 +83,10 @@
 1. 引入相关依赖。
 
    <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
+   ```
 
 2. 定义要做动画的组件。
 
