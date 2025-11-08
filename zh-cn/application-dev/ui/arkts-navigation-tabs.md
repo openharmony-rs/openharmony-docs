@@ -126,6 +126,13 @@ Tabs({ barPosition: BarPosition.End }) {
 
 <!-- @[top_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TopTabBar.ets) -->
 
+``` TypeScript
+Tabs({ barPosition: BarPosition.Start }) {
+  // TabContent的内容:关注、视频、游戏、数码、科技、体育、影视
+  // ···
+}
+```
+
 
 ## 侧边导航
 
