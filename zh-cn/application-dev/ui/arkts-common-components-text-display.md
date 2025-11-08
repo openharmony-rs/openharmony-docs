@@ -778,6 +778,19 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
   - 以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+    
+    ``` TypeScript
+    // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+    Text() {
+      Span('Hello')
+        .fontSize(50)
+      ImageSpan($r('app.media.startIcon'))
+        .width(30).height(30)
+        .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
+      Span('World')
+    }
+    .textVerticalAlign(TextVerticalAlign.CENTER)
+    ```
 
     ![Text_vertical_align](figures/Text_vertical_align.png)
 
