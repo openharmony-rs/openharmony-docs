@@ -782,6 +782,52 @@ struct ReusableV2Component {
 
 <!-- @[ComponentForEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentForEachPage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Reusablev2]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Reusablev2_';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local simpleList: number[] = [0, 1, 2, 3, 4, 5];
+  build() {
+    Column() {
+      ForEach(this.simpleList, (num: number, index) => {
+        Row() {
+          Button('Click to change')
+            .onClick(() => {
+              this.simpleList[index]++;
+            })
+          ReusableV2Component({ num: num })
+        }
+      }) // 每次修改完key发生变化
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  @Require @Param num: number;
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableV2Component aboutToAppear', this.num); // 创建时触发
+  }
+  aboutToRecycle() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableV2Component aboutToRecycle', this.num); // 回收时触发
+  }
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableV2Component aboutToReuse', this.num); // 复用时触发
+  }
+  build() {
+    Column() {
+      Text(`child: ${this.num}`)
+    }
+  }
+}
+```
+
 ### 在LazyForEach组件中使用
 >**说明：**
 >
