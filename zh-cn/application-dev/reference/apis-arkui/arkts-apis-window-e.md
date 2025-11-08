@@ -44,7 +44,7 @@
 | TYPE_CUTOUT                      | 1    | 表示挖孔区域。                                                              |
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。                                    |
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。                                                              |
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                            |
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                             |
 
 ## Orientation<sup>9+</sup>
 
@@ -104,7 +104,7 @@
 | 名称       | 值 | 说明           |
 | ---------- | ------ | -------------- |
 | DEFAULT    | 0      | 默认SRGB色域模式。 |
-| WIDE_GAMUT | 1      | 广色域模式。 |
+| WIDE_GAMUT | 1      | 广色域模式。   |
 
 ## WindowEventType<sup>10+</sup>
 

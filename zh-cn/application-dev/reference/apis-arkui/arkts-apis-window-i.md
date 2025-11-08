@@ -107,10 +107,10 @@
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。|
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。|
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。|
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。|
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 |
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 |
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 |
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 |
 
 > **说明：**
 >
@@ -169,8 +169,8 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。|
-| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。|
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否   | 否   | 系统规避区变化后返回的规避区域类型。 |
+| area   | [AvoidArea](arkts-apis-window-i.md#avoidarea7)         | 否   | 否   | 系统规避区变化后返回的规避区域。 |
 
 ## WindowProperties
 
@@ -269,9 +269,9 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。|
-| defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。|
-| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。|
+| systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 |
+| defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
+| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
 
 ## WindowLayoutInfo<sup>15+</sup>
 
@@ -287,7 +287,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。|
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。 |
 
 ## KeyboardInfo<sup>18+</sup>
 
@@ -437,7 +437,7 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。|
+| rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
 
 ## RotationChangeCallback<sup>19+</sup>
