@@ -883,6 +883,49 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     ```
 
     <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
+    // 定义onCreateMenu，onMenuItemClick
+    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+    onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+      let item1: TextMenuItem = {
+        content: 'customMenu1',
+        icon: $r('app.media.app_icon'),
+        id: TextMenuItemId.of('customMenu1'),
+      };
+      let item2: TextMenuItem = {
+        content: 'customMenu2',
+        id: TextMenuItemId.of('customMenu2'),
+        icon: $r('app.media.app_icon'),
+      };
+      menuItems.push(item1);
+      menuItems.unshift(item2);
+      return menuItems;
+    }
+    onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+      if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
+        // 'app.string.SelectMenu_Text_customMenu'资源文件中的value值为'拦截 id: customMenu2 start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
+          textRange.end);
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.COPY)) {
+        // 'app.string.SelectMenu_Text_copy'资源文件中的value值为'拦截 COPY start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+        // 'app.string.SelectMenu_Text_SelectionAll'资源文件中的value值为'不拦截 SELECT_ALL start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
+          textRange.end);
+        return false;
+      }
+      return false;
+    };
+    ```
 
     ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
