@@ -75,6 +75,25 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 
 ### 应用逻辑使用Environment
   <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/AppliedLogic.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN = 0x0001;
+  const TAG = 'environmentalProject';
+  
+  // 使用Environment.envProp将设备运行languageCode存入AppStorage中
+  Environment.envProp('languageCode', 'en');
+  // 从AppStorage获取单向绑定的languageCode的变量
+  const lang: SubscribedAbstractProperty<string> = AppStorage.prop('languageCode');
+  
+  if (lang.get() === 'zh') {
+    // app.string.AppliedLogic_Hello 资源文件中的value值为'你好'
+    hilog.info(DOMAIN, TAG, `${$r('app.string.AppliedLogic_Hello')}`);
+  } else {
+    hilog.info(DOMAIN, TAG, 'Hello!');
+  }
+  ```
 ## 限制条件
 
 Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
