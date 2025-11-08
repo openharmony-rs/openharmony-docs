@@ -236,6 +236,62 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 
 ![cachedMaxCount2](figures/cachedMaxCount1.gif)
 <!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct NumberOfCachesTabBar {
+  build() {
+    // ···
+          Tabs({ barPosition: BarPosition.Start }) {
+            TabContent() {
+              MyComponent({ color: '#00CB87' })
+            }.tabBar(SubTabBarStyle.of('green'))
+
+            TabContent() {
+              MyComponent({ color: '#007DFF' })
+            }.tabBar(SubTabBarStyle.of('blue'))
+
+            TabContent() {
+              MyComponent({ color: '#FFBF00' })
+            }.tabBar(SubTabBarStyle.of('yellow'))
+
+            TabContent() {
+              MyComponent({ color: '#E67C92' })
+            }.tabBar(SubTabBarStyle.of('pink'))
+
+            TabContent() {
+              MyComponent({ color: '#FF0000' })
+            }.tabBar(SubTabBarStyle.of('red'))
+          }
+          .width(360)
+          .height(296)
+          .backgroundColor('#F1F3F5')
+          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+        // ···
+  }
+}
+
+@Component
+struct MyComponent {
+  private color: string = '';
+
+  aboutToAppear(): void {
+    console.info('aboutToAppear backgroundColor:' + this.color);
+  }
+
+  aboutToDisappear(): void {
+    console.info('aboutToDisappear backgroundColor:' + this.color);
+  }
+
+  build() {
+    Column()
+      .width('100%')
+      .height('100%')
+      .backgroundColor(this.color)
+  }
+}
+```
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
 1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContenet1~2释放，TabContent3~5被缓存。
