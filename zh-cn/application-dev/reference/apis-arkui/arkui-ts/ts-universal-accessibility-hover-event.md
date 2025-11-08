@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
->  -  本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -90,7 +90,9 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
-onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
+ArkTS-Dyn: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
+
+ArkTS-Sta: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback | undefined): this
 
 当前触摸位置处于注册了回调接口的组件区域，但未能响应无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
 
@@ -98,16 +100,20 @@ onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) | 是   |  提供开启无障碍模式后未能响应的用户输入的触摸事件，当开启无障碍模式后，单指触摸未能响应无障碍悬浮事件位置时触发该回调。 |
+| callback      | ArkTS-Dyn: [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) <br/>ArkTS-Sta: [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) \| undefined| 是   |  提供开启无障碍模式后未能响应的用户输入的触摸事件，当开启无障碍模式后，单指触摸未能响应无障碍悬浮事件位置时触发该回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AccessibilityTransparentCallback<sup>20+</sup>
 
