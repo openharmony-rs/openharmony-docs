@@ -35,7 +35,7 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     const DOMAIN_NUMBER = 0xF811;
-    const TAG  = '[Sample_UnexpExit]';
+    const TAG = '[Sample_UnexpExit]';
     const MAX_RSS_THRESHOLD: number = 100000;
     const MAX_PSS_THRESHOLD: number = 100000;
     
