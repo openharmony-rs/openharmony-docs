@@ -38,6 +38,16 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 
 <!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
 
+``` TypeScript
+TabContent() {
+  // app.string.homepage_content资源文件中的value值为“首页的内容”
+  Text($r('app.string.homepage_content'))
+    .fontSize(30)
+}
+// app.string.homepage资源文件中的value值为“首页”
+.tabBar($r('app.string.homepage'))
+```
+
 
 设置多个内容时，需在Tabs内按照顺序放置。
 
