@@ -62,6 +62,11 @@
 3. 播放动画。
 
    <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
+   // 播放动画
+   result.play();
+   ```
 
 4. 动画执行完成后手动释放AnimatorResult对象。
 
