@@ -52,6 +52,26 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 >
 > 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
   <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/UiEnvironment.ets) -->
+  
+  ``` TypeScript
+  // 将设备languageCode存入AppStorage中
+  Environment.envProp('languageCode', 'en');
+  
+  @Entry
+  @Component
+  struct UiEnvironment {
+    @StorageProp('languageCode') languageCode: string = 'en';
+  
+    build() {
+      Row() {
+        Column() {
+          // 输出当前设备的languageCode
+          Text(this.languageCode)
+        }
+      }
+    }
+  }
+  ```
 
 ### 应用逻辑使用Environment
   <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/AppliedLogic.ets) -->
