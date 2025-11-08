@@ -15,7 +15,7 @@
   - [Requesting Frame Rates for Custom Content](displaysync-xcomponent.md)
   - [Native DisplaySoloist Development (C/C++)](displaysoloist-native-guidelines.md)
 - [Overdraw Debugging](overdraw-dfx-guidelines.md)
-- Graphics Drawing and Display<!--graphic-drawing-->
+- Graphics Drawing and Display<!--graphic-drawing-and-display-->
   - [Overview of Graphics Drawing and Display](graphic-drawing-overview.md)
   - Canvas Acquisition and Display of Drawing Results<!--canvas-get-result-draw-->
     - [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md)
