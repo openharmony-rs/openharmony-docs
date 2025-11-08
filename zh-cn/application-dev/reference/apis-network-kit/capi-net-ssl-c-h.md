@@ -197,3 +197,29 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 | -- | -- |
 | int32_t | 0 - 成功。<br>         201 - 权限被拒。<br>         401 - 参数错误。 |
 
+### OH_Netstack_IsCleartextCfgByComponent
+
+```
+int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
+```
+
+**描述**
+
+检查组件是否已配置为进行明文流量拦截。。
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char *component | 表示组件名称。 |
+| bool *componentCfg | 输出参数，如果组件配置为拦截明文流量，则true，否则false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>         2100001 - 无效的参数值。 |
+
