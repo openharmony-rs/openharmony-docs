@@ -75,7 +75,7 @@ struct Index {
 ![ui_parallel003](figures/ui_parallel003.png)
 
 
-## 并行化创建组件示例
+## 并行化创建组件
 
 并行创建的UI在创建完成后的下一帧才能合并显示，页面需要多帧才能显示全部内容。
 
@@ -198,6 +198,208 @@ struct Page {
 
 ```
 ![ui_parallel003](figures/ui_parallel004.gif)
+
+
+## List&Grid支持并行化创建子组件
+
+从API version 22开始，提供[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)的重载接口[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)用于UI并行化循环创建。
+
+- 在非List和Grid中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)会并行创建arr数组中定义的所有UI节点。适用于批量创建大量静态内容（例如图标、按钮、卡片等）。
+
+  ```ts
+  'use static'
+
+  import { Entry, Column, Component, Image, Text, Stack, Row, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+  class CardInfo {
+    title: string
+    desc: string
+    cover: string
+
+    constructor(title: string, desc: string, cover: string) {
+      this.title = title
+      this.desc = desc
+      this.cover = cover
+    }
+  }
+
+  @Entry
+  @Component
+  struct ParallelDemo {
+    @State arr: Array<Int> = [1]
+
+    aboutToAppear() {
+      // 模拟10个卡片数据
+      for (let i = 2; i <= 10; i++) {
+        this.arr.push(i)
+      }
+    }
+
+    build() {
+      Column() {
+        Text('ParallelizeUI 循环创建示例')
+          .fontSize(22)
+          .fontWeight(FontWeight.Bold)
+          .fontColor('#333')
+          .margin({ bottom: 12 } as Margin)
+
+        // 并行创建
+        ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
+          (item: Int, index: Int) => {
+            const coverIndex = ((item - 1) % 5) + 1
+            return new CardInfo(
+              `卡片 ${item}`,
+              `描述信息 ${item}`,
+              `app.media.cover${coverIndex}`
+            )
+          },
+          (param: CardInfo) => {
+            // 每个卡片UI
+            Stack() {
+              Image($r(param.cover))
+                .width('100%')
+                .height(180)
+                .borderRadius(10)
+                .objectFit(ImageFit.Cover)
+
+              Column() {
+                Text(param.title) // 卡片标题
+                  .fontSize(18)
+                  .fontWeight(FontWeight.Medium)
+                  .fontColor('#FFF')
+
+                Text(param.desc) // 卡片描述
+                  .fontSize(14)
+                  .fontColor('#DDD')
+              }
+              .padding(10)
+            }
+            .width('100%')
+            .borderRadius(10)
+          }
+        )
+      }
+      .width('100%')
+      .padding(16)
+      .backgroundColor('#FAFAFA')
+    }
+  }
+  ```
+
+  ![ui_parallel003](figures/ui_parallelnolist.jpg)
+
+- 在List和Grid容器中使用时，[ParallelizeUI<V, T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t22)仅按需并行创建当前可见区域内的节点，并在节点滑出可见区域后自动释放。
+  ```ts
+  'use static'
+
+  import { Entry, Text, Column, Component, Button, ClickEvent, List, ListItem, Image, Row, Stack, ToggleType, $r, ImageFit, Alignment,FontWeight, TextOverflow  } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+  class Info {
+    title: string
+    up: string
+    views: string
+    likes: string
+    coverRes: string
+    constructor(title: string, up: string, views: string, likes: string, coverRes: string) {
+      this.title = title
+      this.up = up
+      this.views = views
+      this.likes = likes
+      this.coverRes = coverRes
+    }
+  }
+
+  @Entry
+  @Component
+  struct Index {
+    @State arr: Array<Int> = [1]
+    @State stateVar: string = 'state var';
+
+    aboutToAppear() {
+      // 构造并行循环创建的数据源，创建50个ListItem子组件
+      for (let i = 2; i <= 50; i++) {
+        this.arr.push(i)
+      }
+    }
+
+    build() {
+      Column() {
+        List({ space: 10 }) {
+          ParallelizeUI<Int, Info>({ enable:true }, this.arr,
+            (item: Int, index: Int) => {
+              const coverIndex = ((item - 1) % 5) + 1   // 为每个Item生成Index
+              const coverResId = `app.media.cover${coverIndex}`
+
+              return new Info(
+                `【热门】搞笑视频 ${item}`,
+                `UP主：用户${item}`,
+                `${(Math.random() * 100).toFixed(1)}万播放`,
+                `${(Math.random() * 1).toFixed(1)}万点赞`,
+                coverResId
+              )
+            },
+            (param: Info) => {
+              ListItem() {
+                Column() {
+                  // 封面
+                  Stack() {
+                    Image($r(param.coverRes))
+                      .width('100%')
+                      .height(200)
+                      .borderRadius(8)
+                      .objectFit(ImageFit.Cover)
+                      .alt('video cover')
+
+                    // 播放量右下角浮层
+                    Row() {
+                      Text(param.views)
+                        .fontSize(12)
+                        .fontColor('#FFFFFF')
+                        .backgroundColor('rgba(0,0,0,0.5)')
+                        .borderRadius(10)
+                    }
+                    .align(Alignment.BottomEnd)
+                  }
+
+                  // 标题
+                  Text(param.title)
+                    .fontSize(18)
+                    .fontWeight(FontWeight.Medium)
+                    .maxLines(2)
+                    .textOverflow({ overflow: TextOverflow.Ellipsis })
+
+                  // 底部信息行（up主、点赞量）
+                  Row() {
+                    Text(param.up)
+                      .fontSize(14)
+                      .fontColor('#888')
+
+                    Text(` · ${param.likes}`)
+                      .fontSize(14)
+                      .fontColor('#888')
+                  }
+                }
+                .backgroundColor('#FFFFFF')
+                .borderRadius(12)
+                .padding(8)
+              }
+              .width('100%')
+            })
+        }
+        .width('100%')
+        .height('100%')
+        .padding(10)
+        .backgroundColor('#F8F8F8')
+      }
+    }
+  }
+  ```
+
+  ![ui_parallel003](figures/ui_parallellist.jpg)
 
 ## 相关实例
 
