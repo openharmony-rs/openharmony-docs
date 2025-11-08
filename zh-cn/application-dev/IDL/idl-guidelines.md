@@ -49,7 +49,7 @@ IDL支持的基本数据类型及其映射到C++、TS上的数据类型的对应
 ### sequenceable数据类型
 sequenceable数据类型是指使用“sequenceable”关键字声明的数据，表明该数据类型可以被序列化进行跨进程或跨设备传递。sequenceable在C++与TS中声明方式存在一定差异。
 
-在C++中sequenceable数据类型的声明放在文件的头部，以“sequenceable includedir..namespace.typename”的形式声明。具体而言。声明可以有如下三个形式：
+在C++中sequenceable数据类型的声明放在文件的头部，以“sequenceable includedir..namespace.typename”的形式声明。具体而言，声明可以有如下三个形式：
 
 ```cpp
 sequenceable includedir..namespace.typename
@@ -63,7 +63,7 @@ sequenceable namespace.typename
 sequenceable a.b..C.D
 ```
 
- 上述声明在生成的的C++头文件中将被解析为如下代码：
+ 上述声明在生成的C++头文件中将被解析为如下代码：
 
 ```cpp
 #include  "a/b/d.h"
@@ -481,7 +481,7 @@ export default class MySequenceable implements rpc.Parcelable {
 sequenceable QuickFixInfo..OHOS.AAFwk.ApplicationQuickFixInfo;
 interface OHOS.AAFwk.IQuickFixManager {
     void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-    void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+    void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
     void RevokeQuickFix([in] String bundleName);
 }
 ```
@@ -651,7 +651,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    # .idl文件中的定义
    interface OHOS.AAFwk.IQuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```
@@ -762,7 +762,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    sequenceable QuickFixInfo..OHOS.AAFwk.ApplicationQuickFixInfo;
    interface OHOS.AAFwk.IQuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles, [in] boolean isDebug);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```
@@ -772,12 +772,12 @@ interface OHOS.AAFwk.IQuickFixManager {
    ```bash
    # 例 quick_fix_manager_client.h中的函数
        int32_t ApplyQuickFix(const std::vector<std::string> &quickFixFiles);
-       int32_t GetApplyedQuickFixInfo(const std::string &bundleName, ApplicationQuickFixInfo &quickFixInfo);
+       int32_t GetAppliedQuickFixInfo(const std::string &bundleName, ApplicationQuickFixInfo &quickFixInfo);
        int32_t RevokeQuickFix(const std::string &bundleName);
    # .idl文件中的定义
    interface OHOS.AAFwk.QuickFixManager {
        void ApplyQuickFix([in] String[] quickFixFiles);
-       void GetApplyedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
+       void GetAppliedQuickFixInfo([in] String bundleName, [out] ApplicationQuickFixInfo quickFixInfo);
        void RevokeQuickFix([in] String bundleName);
    }
    ```
