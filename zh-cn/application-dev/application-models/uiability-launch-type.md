@@ -37,7 +37,6 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 
 <!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
-
 ## multiton启动模式
 
 multiton启动模式为多实例模式，每次调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，都会在应用进程中创建一个新的该类型[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例。即在最近任务列表中可以看到有多个该类型的UIAbility实例。这种情况下可以将UIAbility配置为multiton（多实例模式）。
@@ -48,7 +47,6 @@ multiton启动模式为多实例模式，每次调用[startAbility()](../referen
 multiton启动模式的开发使用，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`multiton`即可。
 
 <!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
-
 
 ## specified启动模式
 
@@ -71,7 +69,6 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 1. 在SpecifiedAbility中，需要将[module.json5配置文件](../quick-start/module-configuration-file.md)的`launchType`字段配置为`specified`。
    
     <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
-    
 
 2. 在EntryAbility中，调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，可以在[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
 
