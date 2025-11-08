@@ -74,6 +74,7 @@
   <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
 
+
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
 - 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
@@ -165,49 +166,7 @@ struct Father {
 
 ParentComponent的状态变量countDownStartValue的变化将重置CountDownComponent的count。
 
-<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTow.ets) -->
-
-``` TypeScript
-struct CountDownComponent {
-  @Prop count: number = 0;
-  costOfOneAttempt: number = 1;
-
-  build() {
-    Column() {
-      if (this.count > 0) {
-        Text(`You have ${this.count} Nuggets left`)
-      } else {
-        Text('Game over!')
-      }
-      // @Prop装饰的变量不会同步给父组件
-      Button(`Try again`).onClick(() => {
-        this.count -= this.costOfOneAttempt;
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct ParentComponent {
-  @State countDownStartValue: number = 10;
-
-  build() {
-      Column() {
-        Text(`Grant ${this.countDownStartValue} nuggets to play.`)
-        // 父组件的数据源的修改会同步给子组件
-        Button(`+1 - Nuggets in New Game`).onClick(() => {
-          this.countDownStartValue += 1;
-        })
-        // 父组件的修改会同步给子组件
-        Button(`-1  - Nuggets in New Game`).onClick(() => {
-          this.countDownStartValue -= 1;
-        })
-        CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2 })
-      }
-  }
-}
-```
+<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwo.ets) -->
 
 
 在上面的示例中：
@@ -573,21 +532,9 @@ struct MainProgram {
 
 <!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
 
-``` TypeScript
-// ···
-```
-
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
 <!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
-
-``` TypeScript
-// ···
-```
-
-``` TypeScript
-// ···
-```
 
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
