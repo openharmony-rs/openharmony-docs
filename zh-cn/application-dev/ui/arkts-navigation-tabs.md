@@ -219,6 +219,14 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 
 <!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
 
+``` TypeScript
+Tabs({ barPosition: BarPosition.End }) {
+  // TabContent的内容：首页、发现、推荐、我的
+  // ···
+}
+.barMode(BarMode.Fixed)
+```
+
 
 ## 滚动导航栏
 
