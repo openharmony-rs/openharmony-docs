@@ -160,7 +160,7 @@ struct ReusableV2Component {
             .template('a', (ri) => {
               ListItem() {
                 Column() {
-                  NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件
+                  ReusableV2Component({ val: ri.item}) // 暂不支持，编译期报错
                   reusableV2Builder(ri.item) // 暂不支持，运行时报错
                   NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件  
                 }
