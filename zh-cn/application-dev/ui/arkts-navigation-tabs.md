@@ -150,6 +150,17 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 <!-- @[side_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SideTabBar.ets) -->
 
+``` TypeScript
+  Tabs({ barPosition: BarPosition.Start }) {
+    // TabContent的内容:首页、发现、推荐、我的
+    // ···
+  }
+// ···
+  .vertical(true)
+  .barWidth(100)
+  .barHeight(200)
+```
+
 
 >**说明：**
 >
