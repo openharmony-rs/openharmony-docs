@@ -605,7 +605,9 @@ struct Index {
 
 ## window.getWindowsByCoordinate<sup>14+</sup>
 
-getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
+ArkTS-Dyn: getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
+
+ArkTS-Sta: getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?: int): Promise&lt;Array&lt;Window&gt;&gt;
 
 查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
 
@@ -613,14 +615,18 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                        |
 | ------ | ---------- |----|---------------------------------------------------------------------------|
-| displayId   | number| 是  | 查询窗口所在的displayId，该参数应为整数，传入非整数会忽略掉小数部分，可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
-| windowNumber    | number| 否  | 查询的窗口数量，该参数应为大于0的整数，传入非整数会忽略掉小数部分，未设置或小于等于0返回所有满足条件的窗口。                                  |
-| x    | number | 否  | 查询的x坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
-| y    | number| 否  | 查询的y坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
+| displayId   | ArkTS-Dyn: number<br>ArkTS-Sta: long| 是  | 查询窗口所在的displayId，该参数应为整数，传入非整数会忽略掉小数部分，可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
+| windowNumber    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否  | 查询的窗口数量，该参数应为大于0的整数，传入非整数会忽略掉小数部分，未设置或小于等于0返回所有满足条件的窗口。                                  |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否  | 查询的x坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否  | 查询的y坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。                                         |
 
 **返回值：**
 
@@ -637,6 +643,10 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 | 401      | Parameter error. Possible cause: Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -665,9 +675,41 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let displayId = 0;
+  window.getWindowsByCoordinate(displayId).then((data) => {
+    console.info(`Succeeded in getting windows. Data: ${data}`);
+    for (let window of data) {
+      // do something with window
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+  });
+  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+    console.info(`Succeeded in getting windows. Data: ${data}`);
+    for (let window of data) {
+      // do something with window
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get window from point. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.getAllWindowLayoutInfo<sup>15+</sup>
 
-getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
+ArkTS-Dyn: getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
+
+ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
 获取指定屏幕上可见的窗口布局信息数组，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
 
@@ -675,11 +717,15 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                        |
 | ------ | ---------- |----|---------------------------------------------------------------------------|
-| displayId   | number| 是  | 需要获取窗口布局信息的displayId，该参数应为整数，且为当前实际存在屏幕的displayId，可以通过窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)获取。 |
+| displayId   | ArkTS-Dyn-number<br>ArkTS-Sta-long| 是  | 需要获取窗口布局信息的displayId，该参数应为整数，且为当前实际存在屏幕的displayId，可以通过窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)获取。 |
 
 **返回值：**
 
@@ -697,6 +743,10 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -711,6 +761,26 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to obtain all window layout info. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let displayId = 0;
+  let promise = window.getAllWindowLayoutInfo(displayId);
+  promise.then((data) => {
+    console.info('Succeeded in obtaining all window layout info. Data: ' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    console.error(`Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to obtain all window layout info. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 

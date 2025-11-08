@@ -1321,6 +1321,10 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
@@ -1339,6 +1343,8 @@ setDefaultDensityEnabled(enabled: boolean): void
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1368,9 +1374,42 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit'
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+      windowStage.loadContent("pages/page2", (err: BusinessError<void> | null) => {
+        let errCode = err?.code;
+        if (errCode) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('onWindowStageCreate');
+      try {
+        windowStage.setDefaultDensityEnabled(true);
+        console.info('Succeeded in loading the content.');
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to set default density enabled. Cause code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+};
+```
+
 ## setCustomDensity<sup>15+</sup>
 
-setCustomDensity(density: number): void
+ArkTS-Dyn: setCustomDensity(density: number): void
+
+ArkTS-Sta: setCustomDensity(density: double): void
 
 支持应用主窗口自定义其显示大小缩放系数。
 
@@ -1384,11 +1423,15 @@ setCustomDensity(density: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
 | ---------------- | ------- | ---- | ---------------------------- |
-| density | number | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
+| density | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
 
 **错误码：**
 
@@ -1402,6 +1445,8 @@ setCustomDensity(density: number): void
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1421,9 +1466,32 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.setCustomDensity(-1.0);
+    } catch (exception) {
+      let error = exception as BusinessError;
+      console.error(`Failed to set custom density. Cause code: ${error.code}, message: ${error.message}`);
+    }
+  }
+};
+```
+
 ## setCustomDensity<sup>20+</sup>
 
-setCustomDensity(density: number, applyToSubWindow?: boolean): void
+ArkTS-Dyn: setCustomDensity(density: number, applyToSubWindow?: boolean): void
+
+ArkTS-Sta: setCustomDensity(density: double, applyToSubWindow?: boolean): void
 
 支持应用主窗口自定义显示大小缩放系数，并设置已创建的子窗和系统窗口跟随主窗重新布局的生效时机。
 
@@ -1433,11 +1501,15 @@ setCustomDensity(density: number, applyToSubWindow?: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
 | ---------------- | ------- | ---- | ---------------------------- |
-| density | number | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
+| density | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
 | applyToSubWindow | boolean | 否   | 设置当前已创建的子窗和系统窗口是否跟随立即跟随主窗口更新customDensity并重新布局。设置为true时，表示立即跟随主窗生效；设置为false时，表示不会立即跟随主窗生效，而是在子窗或系统窗口下一次位置、大小、系统缩放大小等窗口布局信息变化时跟随主窗的customDensity变化重新布局。默认值为false。 |
 
 **错误码：**
@@ -1451,6 +1523,8 @@ setCustomDensity(density: number, applyToSubWindow?: boolean): void
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -1467,6 +1541,29 @@ export default class EntryAbility extends UIAbility {
       windowStage.setCustomDensity(-1.0, false);
     } catch (exception) {
       console.error(`Failed to set custom density. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.setCustomDensity(2.0);
+      windowStage.setCustomDensity(3.0, true);
+      windowStage.setCustomDensity(-1.0, false);
+    } catch (exception) {
+      let error = exception as BusinessError;
+      console.error(`Failed to set custom density. Cause code: ${error.code}, message: ${error.message}`);
     }
   }
 };
@@ -1556,6 +1653,10 @@ removeStartingWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -1574,6 +1675,8 @@ removeStartingWindow(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1587,6 +1690,27 @@ export default class EntryAbility extends UIAbility {
     windowStage.removeStartingWindow().then(() => {
       console.info('Succeeded in removing starting window.');
     }).catch((err: BusinessError) => {
+        console.error(`Failed to remove starting window. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.removeStartingWindow().then(() => {
+      console.info('Succeeded in removing starting window.');
+    }).catch((err: Error) => {
         console.error(`Failed to remove starting window. Cause code: ${err.code}, message: ${err.message}`);
     });
   }
