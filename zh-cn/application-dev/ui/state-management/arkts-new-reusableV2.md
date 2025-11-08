@@ -201,6 +201,73 @@ struct ReusableV2Component {
 
 <!-- @[AboutToRecyclePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/AboutToRecyclePage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Reusablev2]';
+const DOMAIN = 0xF811;
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local condition1: boolean = false;
+  @Local condition2: boolean = true;
+  build() {
+    Column(){
+      Button('step1. appear')
+        .onClick(() => {
+          this.condition1 = true;
+        })
+      Button('step2. recycle')
+        .onClick(() => {
+          this.condition2 = false;
+        })
+      Button('step3. reuse')
+        .onClick(() => {
+          this.condition2 = true;
+        })
+      Button('step4. disappear')
+        .onClick(() => {
+          this.condition1 = false;
+        })
+      if (this.condition1) {
+        NormalV2Component({ condition: this.condition2 })
+      }
+    }
+  }
+}
+@ComponentV2
+struct NormalV2Component {
+  @Require @Param condition: boolean;
+  build() {
+    if (this.condition) {
+      ReusableV2Component()
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear called'); // 组件创建时调用
+  }
+  aboutToDisappear() {
+    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToDisappear called'); // 组件销毁时调用
+  }
+  aboutToRecycle() {
+    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle called'); // 组件回收时调用
+  }
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse called'); // 组件复用时调用
+  }
+  build() {
+    Column() {
+      Text('ReusableV2Component')
+    }
+  }
+}
+```
+
 建议按下面顺序进行操作：
 
 1. 点击`step1. appear`，此时`condition1`变为true，`Index`中的if组件切换分支，创建出`NormalV2Component`，由于`condition2`初始值为true，所以`NormalV2Component`中的if条件满足，尝试创建`ReusableV2Component`。此时复用池中无元素，因此会创建`ReusableV2Component`，并回调`aboutToAppear`的方法，输出`ReusableV2Component aboutToAppear called`的日志。
