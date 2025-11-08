@@ -273,6 +273,20 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 <!-- @[set_custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
 
+``` TypeScript
+TabContent() {
+  Column() {
+    // app.string.mine_content资源文件中的value值为“我的内容”
+    Text($r('app.string.mine_content'))  
+  }
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#007DFF')
+}
+// app.string.mine资源文件中的value值为“我的”
+.tabBar(this.tabBuilder($r('app.string.mine'), 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
+```
+
 
 ## 切换至指定页签
 
