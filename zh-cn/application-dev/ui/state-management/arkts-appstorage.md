@@ -761,6 +761,38 @@ export struct TapImage {
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+AppStorage.setOrCreate('propA', false);
+
+@Entry
+@Component
+struct PageStorageProp {
+  @StorageProp('propA') @Watch('onChange') propA: boolean = false;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `propA change`);
+  }
+
+  aboutToAppear(): void {
+    this.propA = true;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.propA}`)
+      Button('change')
+        .onClick(() => {
+          AppStorage.setOrCreate('propA', false);
+          hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
+        })
+    }
+  }
+}
+```
+
 上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 
 实现二者同步有以下两种方式：
