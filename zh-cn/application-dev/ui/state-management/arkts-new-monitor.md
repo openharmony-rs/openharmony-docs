@@ -195,6 +195,57 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 <!-- @[monitor_scene_deep_attribute_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorSceneDeepAttributeChanges.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public value: number = 50;
+}
+
+@ObservedV2
+class UIStyle {
+  public info: Info = new Info();
+  @Trace public color: Color = Color.Black;
+  @Trace public fontSize: number = 45;
+
+  @Monitor('info.value')
+  onValueChange(monitor: IMonitor) {
+    let lastValue: number = monitor.value()?.before as number;
+    let curValue: number = monitor.value()?.now as number;
+    if (lastValue != 0) {
+      let diffPercent: number = (curValue - lastValue) / lastValue;
+      if (diffPercent > 0.1) {
+        this.color = Color.Red;
+        this.fontSize = 50;
+      } else if (diffPercent < -0.1) {
+        this.color = Color.Green;
+        this.fontSize = 40;
+      } else {
+        this.color = Color.Black;
+        this.fontSize = 45;
+      }
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  textStyle: UIStyle = new UIStyle();
+
+  build() {
+    Column() {
+      Text(`Important Value: ${this.textStyle.info.value}`)
+        .fontColor(this.textStyle.color)
+        .fontSize(this.textStyle.fontSize)
+      Button('change!')
+        .onClick(() => {
+          this.textStyle.info.value = Math.floor(Math.random() * 100) + 1;
+        })
+    }
+  }
+}
+```
+
 ## 常见问题
 
 ### 自定义组件中\@Monitor对变量监听的生效及失效时间
