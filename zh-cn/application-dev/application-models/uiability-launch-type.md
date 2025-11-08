@@ -37,6 +37,22 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 
 <!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "abilities": [
+    // ···
+      {
+        "launchType": "singleton",
+        // ···
+      },
+    // ···
+    ]
+  }
+}
+```
+
 ## multiton启动模式
 
 multiton启动模式为多实例模式，每次调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，都会在应用进程中创建一个新的该类型[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例。即在最近任务列表中可以看到有多个该类型的UIAbility实例。这种情况下可以将UIAbility配置为multiton（多实例模式）。
