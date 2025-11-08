@@ -234,6 +234,55 @@ struct PageOne {
 页面2
 <!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageTwo.ets) -->
 
+``` TypeScript
+import { AppStorageV2 } from '@kit.ArkUI';
+import { Sample } from './Sample';
+
+@Builder
+export function PageTwoBuilder() {
+  PageTwo()
+}
+@Entry
+@ComponentV2
+struct PageTwo {
+  // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
+  @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('PageTwo connect the key Sample1')
+          .onClick(() => {
+            // 在AppStorageV2中创建一个key为Sample1的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
+            this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
+          })
+
+        Text(`PageTwo add 1 to prop.p1: ${this.prop.p1}`)
+          .fontSize(30)
+          .onClick(() => {
+            this.prop.p1++;
+          })
+
+        Text(`PageTwo add 1 to prop.p2: ${this.prop.p2}`)
+          .fontSize(30)
+          .onClick(() => {
+            // 页面不刷新，但是p2的值改变了；只有重新初始化才会改变
+            this.prop.p2++;
+          })
+
+        // 获取当前AppStorageV2里面的所有key
+        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+          .fontSize(30)
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
+
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageTwo页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 
 ```json
