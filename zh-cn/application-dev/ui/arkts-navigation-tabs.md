@@ -105,6 +105,13 @@ Tabs() {
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
 
+``` TypeScript
+Tabs({ barPosition: BarPosition.End }) {
+  // TabContent的内容：首页、发现、推荐、我的
+  // ···
+}
+```
+
 底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例9（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例9设置底部页签使用symbol图标)。
 
 
