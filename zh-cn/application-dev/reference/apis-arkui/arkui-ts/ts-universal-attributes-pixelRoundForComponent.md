@@ -1,5 +1,4 @@
-# 组件级像素取整	
-
+# 组件级像素取整
 <!--Kit: ArkUI-->	
 <!--Subsystem: ArkUI-->	
 <!--Owner: @Lichtschein-->	
