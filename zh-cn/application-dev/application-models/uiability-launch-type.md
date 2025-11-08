@@ -64,6 +64,22 @@ multiton启动模式的开发使用，在[module.json5配置文件](../quick-sta
 
 <!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "abilities": [
+    // ···
+      {
+        "launchType": "multiton",
+        // ···
+      },
+    // ···
+    ]
+  }
+}
+```
+
 ## specified启动模式
 
 specified启动模式为指定实例模式，针对一些特殊场景使用（例如文档应用中每次新建文档希望都能新建一个文档实例，重复打开一个已保存的文档希望打开的都是同一个文档实例）。
