@@ -189,7 +189,7 @@ onScrollStop(callback: Optional\<OnPickerCallback>)
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
 | type  | [PickerIndicatorType](#pickerindicatortype枚举说明) | 否   | 否   | 选中项指示器的类型。<br/>默认值：PickerIndicatorType.BACKGROUND |
-| strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | 否   | 是   | 分割线的线宽。<br/>默认值：2.0px<br/>单位：如果未指定单位则默认为vp，也可指定为px。<br/>取值范围：最大不超过选中项高度的一半，即20vp。strokeWidth小于0时使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
+| strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | 否   | 是   | 分割线的线宽。<br/>默认值：2.0px<br/>单位：如果未指定单位则默认为vp，也可指定为px。<br/>取值范围：最大不超过选中项高度的一半，即20vp。strokeWidth小于0时使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>1. 当type为PickerIndicatorType.DIVIDER时生效。<br/>2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。  |
 | dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 分割线的颜色。<br/>默认值：'sys.color.comp_divider'<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
 | startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否   | 是   | 分割线与Picker容器侧边起始端的距离。<br/>默认值：0<br/>单位：如果未指定单位则默认为vp，也可指定为px。<br/>取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。设置小于0或startMargin与endMargin之和超过Picker容器的宽度时，使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
 | endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否   | 是   | 分割线与Picker容器侧边结束端的距离。<br/>默认值：0<br/>单位：如果未指定单位则默认为vp，也可指定为px。<br/>取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。设置小于0或startMargin与endMargin之和超过Picker容器的宽度时，使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
