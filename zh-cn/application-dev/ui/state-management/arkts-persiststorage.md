@@ -130,8 +130,8 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
+<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 <!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
-
 
 示例代码在读取PersistentStorage存储的数据后，判断“aProp”的值是否大于50，如果大于50，则使用AppStorage的接口将其设置为47。
 
