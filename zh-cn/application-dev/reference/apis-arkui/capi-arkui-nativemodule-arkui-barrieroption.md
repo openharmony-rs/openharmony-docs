@@ -1,13 +1,11 @@
 # ArkUI_BarrierOption
-<<<<<<< HEAD
-=======
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
->>>>>>> 9f04030... update adviser
 
 ## 概述
 
