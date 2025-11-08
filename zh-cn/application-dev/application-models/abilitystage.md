@@ -41,7 +41,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 3. 打开MyAbilityStage.ets文件，导入AbilityStage的依赖包，自定义类继承AbilityStage并加上需要的生命周期回调，示例中增加了一个[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调。
 
-    <!-- @[my_examole_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
+    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
 
     ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
