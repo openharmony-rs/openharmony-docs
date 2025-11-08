@@ -91,6 +91,13 @@
 2. 定义要做动画的组件。
 
    <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   Button()
+     .width(60)
+     .height(60)
+     .translate({ x: this.translateX, y: this.translateY })
+   ```
 
 3. 在onPageShow中创建AnimatorResult对象。
 
