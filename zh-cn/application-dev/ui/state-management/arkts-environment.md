@@ -41,6 +41,10 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 - 在自定义组件中通过@StorageProp获取languageCode的值。
 
   <!-- @[showsecond_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets) -->
+  
+  ``` TypeScript
+  @StorageProp('languageCode') lang: string = 'en';
+  ```
 
 设备环境到Component的更新链：Environment --&gt; AppStorage --&gt; Component。
 
