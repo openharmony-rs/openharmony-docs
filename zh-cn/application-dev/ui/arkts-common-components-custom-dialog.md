@@ -277,7 +277,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 ## 弹出框的动画
 
-弹出框通过定义openAnimation控制弹出框出现动画的持续时间，速度等参数。
+弹出框通过定义openAnimation控制出现动画的持续时间，速度等参数。
 
 ```ts
 @CustomDialog
