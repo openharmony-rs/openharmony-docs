@@ -240,9 +240,9 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
 ### \@LocalStorageProp和LocalStorage单向同步的简单场景
 
-本示例展示了ParentOne和ChildOne组件各自在本地创建与storage0中'PropA'属性的单向数据同步：
+本示例展示了ParentOne和ChildOne组件各自在本地创建与paraOneLocal中'PropA'属性的单向数据同步：
 
-- ParentOne中对this.storagePropOne的修改，只会在ParentOne中生效，并没有同步回storage0。
+- ParentOne中对this.storagePropOne的修改，只会在ParentOne中生效，并没有同步回storageOneLocal。
 
 - ChildOne组件中，Text绑定的storagePropTwo 依旧显示47。
 
@@ -276,23 +276,10 @@ playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父�
 
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
+<!-- @[localtorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[localtorage_export_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[localtorage_export_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = {
-    'PropA': 47
-  };
-  storage: LocalStorage = new LocalStorage(this.para);
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.loadContent('pages/Index', this.storage);
-  }
-}
-```
 > **说明：**
 >
 > 在UI页面通过getSharedLocalStorage获取当前stage共享的LocalStorage实例。
@@ -300,19 +287,19 @@ export default class EntryAbility extends UIAbility {
 > this.getUIContext().getSharedLocalStorage()只在模拟器或者实机上才有效，在Previewer预览器中使用不生效。
 
 
-在下面的用例中，Index页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到Page页面，点击Change propA改变propA的值，back回Index页面后，页面中propA的值也同步修改。
+在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到Page页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
 
 <!-- @[localtorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
 
 <!-- @[localtorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
 {
   "routerMap": [
     {
       "name": "Page",
-      "pageSourceFile": "src/main/ets/pages/Page.ets",
+      "pageSourceFile": "src/main/ets/pages/PageFiveShareChange.ets",
       "buildFunction": "PageBuilder",
       "data": {
         "description" : "LocalStorage example"
@@ -335,7 +322,7 @@ export default class EntryAbility extends UIAbility {
 
 本示例以\@LocalStorageLink为例，展示了：
 
-- 父组件中的TestIndex，显示LocalStorage实例localStorageOne中PropA的值为“propA”。
+- 父组件TestIndex中的Text，显示LocalStorage实例localStorageOne中PropA的值为“propA”。
 
 - ChildSix组件中，Text绑定的propB，显示LocalStorage实例localStorageTwo中PropB的值为“propB”。
 
