@@ -880,6 +880,52 @@ struct Index {
 - 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。
 
   <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
+  
+  ``` TypeScript
+  import { TextMenuController } from '@kit.ArkUI';
+  
+  // xxx.ets
+  @Entry
+  @Component
+  export struct DisableMenuItems {
+    aboutToAppear(): void {
+      // 禁用搜索菜单
+      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
+    }
+  
+    aboutToDisappear(): void {
+      // 恢复系统服务菜单
+      TextMenuController.disableMenuItems([])
+    }
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            // 'app.string.Service_MenuItems_Text'资源文件中的value值为'这是一段文本，长按弹出文本选择菜单。'
+            Text($r('app.string.Service_MenuItems_Text'))
+              .height(60)
+              .fontStyle(FontStyle.Italic)
+              .fontWeight(FontWeight.Bold)
+              .textAlign(TextAlign.Center)
+              .copyOption(CopyOptions.InApp)
+              .editMenuOptions({
+                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                  // menuItems不包含搜索
+                  return menuItems;
+                },
+                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                  return false
+                }
+              })
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ···
+    }
+  }
+  ```
 
   ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
