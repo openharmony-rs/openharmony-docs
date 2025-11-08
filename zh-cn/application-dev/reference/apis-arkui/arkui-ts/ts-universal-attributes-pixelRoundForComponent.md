@@ -1,23 +1,22 @@
 # 组件级像素取整
-<!--Kit: ArkUI-->	
-<!--Subsystem: ArkUI-->	
-<!--Owner: @Lichtschein-->	
-<!--Designer: @lanshouren-->	
-<!--Tester: @liuli0427-->	
-<!--Adviser: @Brilliantry_Rui-->	
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Lichtschein-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
-组件级像素取整的目标是将像素取整功能作为组件的属性，从而在组件层面实现系统像素取整的开启或关闭。	
+组件级像素取整的目标是将像素取整功能作为组件的属性，从而在组件层面实现系统像素取整的开启或关闭。
 
+>  **说明：**
+>
+>  本模块从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
->  **说明：**	
->	
->  本模块从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。	
+## pixelRound
 
-## pixelRound	
+pixelRound(value: PixelRoundPolicy): T
 
-pixelRound(value: PixelRoundPolicy): T	
-
-指定当前组件在指定方向上的像素取整对齐方式，某方向不设置时默认在该方向进行四舍五入取整。	
+指定当前组件在指定方向上的像素取整对齐方式，某方向不设置时默认在该方向进行四舍五入取整。
 
 > **说明：**
 > 
@@ -33,24 +32,23 @@ pixelRound(value: PixelRoundPolicy): T
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。	
 
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| value | [PixelRoundPolicy](#pixelroundpolicy) | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。|
 
-| 参数名 | 类型   | 必填 | 说明                                                         |	
-| ------ | ------ | ---- | ------------------------------------------------------------ |	
-| value | [PixelRoundPolicy](#pixelroundpolicy) | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。|	
+**返回值：**
 
-**返回值：**	
+| 类型 | 说明 |
+| --- | --- |
+|  T | 返回当前组件。 |
 
-| 类型 | 说明 |	
-| --- | --- |	
-|  T | 返回当前组件。 |	
+## PixelRoundPolicy
 
-## PixelRoundPolicy	
+指定组件级像素取整的方向。
 
-指定组件级像素取整的方向。	
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。	
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。	
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,12 +69,11 @@ pixelRound(value: PixelRoundPolicy): T
 | 组件渲染时带有动画且有轻微抖动。                             | 关闭相应组件上的像素取整。                                   |
 | 容器内布局紧凑且子组件大小不一致。                           | 关闭相应组件上的像素取整。                                   |
 
-## 示例	
+## 示例
 
-当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。	
+当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。
 
 ```ts	
-
 @Entry	
 @Component	
 struct PixelRoundExample {	
@@ -119,7 +116,6 @@ struct PixelRoundExample {
         .height('100%')
         .backgroundColor('#ffe5e5e5')
     }	
-
 }	
 ```	
 
