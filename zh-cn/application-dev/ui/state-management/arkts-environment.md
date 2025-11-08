@@ -98,3 +98,21 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 
 Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在[runScopedTask](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
   <!-- @[limiting_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/entryability/EntryAbilityDemo.ets) -->
+  
+  ``` TypeScript
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+      windowStage.loadContent('pages/Index');
+      let window = windowStage.getMainWindow();
+      window.then(window => {
+        let uiContext = window.getUIContext();
+        uiContext.runScopedTask(() => {
+          Environment.envProp('languageCode', 'en');
+        });
+      });
+    }
+  }
+  ```
