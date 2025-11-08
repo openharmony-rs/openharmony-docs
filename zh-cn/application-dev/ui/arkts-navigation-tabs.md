@@ -248,6 +248,65 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 从API version 18开始，支持使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
 
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct ContentPageNoAndTabLinkage {
+
+  @State selectIndex: number = 0;
+  @Builder tabBuilder(title: Resource, targetIndex: number) {
+    Column() {
+      Text(title)
+        .fontColor(this.selectIndex === targetIndex ? '#1698CE' : '#6B6B6B')
+    }
+  }
+  build() {
+    // ···
+      Column({ space: 12 }) {
+        // ···
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              // app.string.homepage_content资源文件中的value值为“首页内容”
+              Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            //app.string.homepage资源文件中的value值为“首页”
+            }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
+
+            TabContent() {
+              // app.string.discover_content资源文件中的value值为“发现内容”
+              Text($r('app.string.discover_content')).width('100%').height('100%').backgroundColor('rgb(112,112,112)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.discover资源文件中的value值为“发现”
+            }.tabBar(this.tabBuilder($r('app.string.discover'), 1))
+
+            TabContent() {
+              // app.string.recommend_content资源文件中的value值为“推荐内容”
+              Text($r('app.string.recommend_content')).width('100%').height('100%').backgroundColor('rgb(39,135,217)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.recommend资源文件中的value值为“推荐”
+            }.tabBar(this.tabBuilder($r('app.string.recommend'), 2))
+
+            TabContent() {
+              // app.string.mine_content资源文件中的value值为“我的内容”
+              Text($r('app.string.mine_content')).width('100%').height('100%').backgroundColor('rgb(0,74,175)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            }
+            // app.string.mine资源文件中的value值为“我的”
+            .tabBar(this.tabBuilder($r('app.string.mine'), 3))
+          }
+          .animationDuration(0)
+          .backgroundColor('#F1F3F5')
+          .onSelected((index: number) => {
+            this.selectIndex = index;
+          })
+        // ···
+      }
+      .width('100%')
+    // ···
+  }
+}
+```
   **图11** 内容页和页签联动  
 
 ![内容页和页签联动](figures/tabcontent_tabbar_sync.gif)
