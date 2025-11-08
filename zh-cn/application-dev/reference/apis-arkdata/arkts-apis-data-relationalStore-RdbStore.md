@@ -175,7 +175,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，可以通过conflict参数[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)指定冲突解决模式，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -346,7 +346,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+向目标表中插入一行数据，可以通过conflict参数[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)指定冲突解决模式，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -991,7 +991,7 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式。
+向目标表中插入一组数据，可以通过conflict参数[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)指定冲突解决模式。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1170,7 +1170,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)指定冲突解决模式，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1344,7 +1344,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)指定冲突解决模式，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
