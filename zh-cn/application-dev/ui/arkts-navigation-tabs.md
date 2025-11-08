@@ -237,6 +237,19 @@ Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMod
 开发者可以通过Tabs组件的onContentWillChange接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
   
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
+
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+    // ···
+  }
+// ···
+  .onContentWillChange((currentIndex, comingIndex) => {
+    if (comingIndex == 2) {
+      return false;
+    }
+    return true;
+  })
+```
   **图13** 支持开发者自定义页面切换拦截事件 
 
 ![TabsChange3](figures/TabsChange3.gif)
