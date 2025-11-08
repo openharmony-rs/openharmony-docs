@@ -238,7 +238,7 @@ struct Child {
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
   <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @ComponentV2
