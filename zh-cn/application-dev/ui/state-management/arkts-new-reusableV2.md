@@ -92,6 +92,7 @@ struct ReusableV2Component {
     build() {
       Column() {
         ReusableV2Component() // 正确用法
+        V1Component()
       }
     }
   }
@@ -105,6 +106,15 @@ struct ReusableV2Component {
   function v2ReusableBuilder() {
     ReusableV2Component()
   }
+  @Component
+  struct V1Component {
+    build() {
+      Column() {
+        ReusableV2Component() // 错误用法，编译报错
+        v2ReusableBuilder() // 错误用法，较复杂场景，运行时报错
+      }
+    }
+  }  
   ```
 
 - V1和V2支持部分混用场景。
@@ -151,6 +161,8 @@ struct ReusableV2Component {
               ListItem() {
                 Column() {
                   NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件
+                  reusableV2Builder(ri.item) // 暂不支持，运行时报错
+                  NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件  
                 }
               }
             })
