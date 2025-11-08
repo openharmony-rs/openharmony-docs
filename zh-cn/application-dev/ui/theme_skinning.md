@@ -246,7 +246,9 @@
   @Component
   struct DisplayPage1 {
     @State customTheme: CustomTheme = new AppTheme();
-    @State message: string = 'Set a custom theme style for specific pages';
+    // $r('app.string.SetCustomThemeStyle')资源文件文件中的value值为'设置应用局部页面自定义主题风格'
+    @State message: string =
+      this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SetCustomThemeStyle'));
     count = 0;
   
     build() {
