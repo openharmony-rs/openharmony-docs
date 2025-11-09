@@ -158,7 +158,7 @@
 
 以下示例通过[HAR](../quick-start/har-package.md)包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
 
-  <!-- [main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
+  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
   ``` TypeScript
   // entry/src/main/ets/components/MainPage.ets
