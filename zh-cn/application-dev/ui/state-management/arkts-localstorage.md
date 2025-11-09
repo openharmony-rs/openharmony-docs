@@ -665,45 +665,7 @@ struct ChildSix {
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
    <!-- @[localtorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
-   
-   ``` TypeScript
-   let localStorageA0: LocalStorage = new LocalStorage();
-   localStorageA0.setOrCreate('propA', 'propA');
-   
-   let localStorageB0: LocalStorage = new LocalStorage();
-   localStorageB0.setOrCreate('propB', 'propB');
-   
-   @Entry(localStorageA0)
-   @Component
-   struct AIndex {
-     // 'PropA'，和localStorageA0中'PropA'的双向同步
-     @LocalStorageLink('PropA') propA: string = 'Hello World';
-     @State count: number = 0;
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.propA)
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-           // 使用LocalStorage 实例localStorageB0
-           AChild(localStorageB0)
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   
-   @Component
-   struct AChild {
-     build() {
-       Text('hello')
-         .fontSize(50)
-         .fontWeight(FontWeight.Bold)
-     }
-   }
-   ```
+
 
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
@@ -921,72 +883,6 @@ struct NavigationContentMsgStack {
 
 <!-- @[localtorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->
 
-``` TypeScript
-@Component
-struct LocalStorageLinkComponent {
-  @LocalStorageLink('LinkA') linkA: number | null = null;
-  @LocalStorageLink('LinkB') linkB: number | undefined = undefined;
-
-  build() {
-    Column() {
-      Text('@LocalStorageLink接口初始化，@LocalStorageLink取值')
-      Text(`${this.linkA}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.linkA ? this.linkA = null : this.linkA = 1;
-        })
-      Text(`${this.linkB}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.linkB ? this.linkB = undefined : this.linkB = 1;
-        })
-    }
-    .borderWidth(3).borderColor(Color.Green)
-  }
-}
-
-@Component
-struct LocalStoragePropComponent {
-  @LocalStorageProp('PropA') propA: number | null = null;
-  @LocalStorageProp('PropB') propB: number | undefined = undefined;
-
-  build() {
-    Column() {
-      Text('@LocalStorageProp接口初始化，@LocalStorageProp取值')
-      Text(`${this.propA}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.propA ? this.propA = null : this.propA = 1;
-        })
-      Text(`${this.propB}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.propB ? this.propB = undefined : this.propB = 1;
-        })
-    }
-    .borderWidth(3)
-    .borderColor(Color.Yellow)
-  }
-}
-
-let storageLink: LocalStorage = new LocalStorage();
-
-@Entry(storageLink)
-@Component
-struct LinkIndex {
-  build() {
-    Row() {
-      Column() {
-        LocalStorageLinkComponent()
-        LocalStoragePropComponent()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
 ### 装饰Date类型变量
 
 > **说明：**
@@ -1134,34 +1030,4 @@ struct LocalSetSample {
 
 <!-- @[localtorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
 
-``` TypeScript
-let storageChange = new LocalStorage();
-storageChange.setOrCreate('count', 47);
-
-class Model {
-  public storage: LocalStorage = storageChange;
-
-  call(propName: string, value: number) {
-    this.storage.setOrCreate<number>(propName, value);
-  }
-}
-
-let model: Model = new Model();
-
-@Entry({ storage: storageChange })
-@Component
-struct Test {
-  @LocalStorageLink('count') count: number = 0;
-
-  build() {
-    Column() {
-      Text(`count值: ${this.count}`)
-      Button('change')
-        .onClick(() => {
-          model.call('count', this.count + 1);
-        })
-    }
-  }
-}
-```
 <!--no_check-->
