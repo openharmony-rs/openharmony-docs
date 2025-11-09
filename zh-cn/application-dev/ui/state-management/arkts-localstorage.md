@@ -502,6 +502,36 @@ struct ParentFour {
 
 <!-- @[localtorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
 
+``` TypeScript
+
+// 预览器上不支持获取页面共享的LocalStorage实例。
+@Entry({ useSharedStorage: true })
+@Component
+struct PageFiveShare {
+  // 可以使用@LocalStorageLink/Prop与LocalStorage实例中的变量建立联系
+  @LocalStorageLink('PropA') propA: number = 1;
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pageStack) {
+      Row(){
+        Column() {
+          Text(`${this.propA}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Button('To Page')
+            .onClick(() => {
+              this.pageStack.pushPathByName('Page', null);
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
 <!-- @[localtorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
 
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
