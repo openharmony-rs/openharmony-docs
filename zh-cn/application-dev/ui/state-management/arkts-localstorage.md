@@ -495,6 +495,18 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 ```
 <!-- @[localtorage_export_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  para: Record<string, number> = {
+    'PropA': 47
+  };
+  storage: LocalStorage = new LocalStorage(this.para);
+
+  onWindowStageCreate(windowStage: window.WindowStage): void{
+    windowStage.loadContent('pages/Index', this.storage);
+  }
+```
 <!-- @[localtorage_export_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 > **说明：**
