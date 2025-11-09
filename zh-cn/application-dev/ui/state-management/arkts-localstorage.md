@@ -402,6 +402,87 @@ playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父�
 
 <!-- @[localtorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) -->
 
+``` TypeScript
+let count: Record<string, number> = { 'countStorage': 1 };
+let storageFour: LocalStorage = new LocalStorage(count);
+
+@Component
+struct ChildFour {
+  // 子组件实例的名字
+  label: string = 'no name';
+  // 和LocalStorage中“countStorage”的双向绑定数据
+  @LocalStorageLink('countStorage') playCountLink: number = 0;
+
+  build() {
+    Row() {
+      Text(this.label)
+        .width(50)
+        .height(60)
+        .fontSize(12)
+      Text(`playCountLink ${this.playCountLink}: inc by 1`)
+        .onClick(() => {
+          this.playCountLink += 1;
+        })
+        .width(200)
+        .height(60)
+        .fontSize(12)
+    }
+    .width(300)
+    .height(60)
+  }
+}
+
+@Entry(storageFour)
+@Component
+struct ParentFour {
+  @LocalStorageLink('countStorage') playCount: number = 0;
+
+  build() {
+    Column() {
+      Row() {
+        Text('Parent')
+          .width(50)
+          .height(60)
+          .fontSize(12)
+        Text(`playCount ${this.playCount} dec by 1`)
+          .onClick(() => {
+            this.playCount -= 1;
+          })
+          .width(250)
+          .height(60)
+          .fontSize(12)
+      }
+      .width(300)
+      .height(60)
+
+      Row() {
+        Text('LocalStorage')
+          .width(50)
+          .height(60)
+          .fontSize(12)
+        Text(`countStorage ${this.playCount} incr by 1`)
+          .onClick(() => {
+            storageFour.set<number | undefined>('countStorage', Number(storageFour.get<number>('countStorage')) + 1);
+          })
+          .width(250)
+          .height(60)
+          .fontSize(12)
+      }
+      .width(300)
+      .height(60)
+
+      ChildFour({ label: 'ChildA' })
+      ChildFour({ label: 'ChildB' })
+
+      Text(`playCount in LocalStorage for debug ${storageFour.get<number>('countStorage')}`)
+        .width(300)
+        .height(60)
+        .fontSize(12)
+    }
+  }
+}
+```
+
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
