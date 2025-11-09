@@ -708,6 +708,49 @@ struct ChildSix {
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
    <!-- @[localtorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->
+   
+   ``` TypeScript
+   let localStorageBOne: LocalStorage = new LocalStorage();
+   localStorageBOne.setOrCreate('propA', 'propA');
+   
+   let localStorageBTwo: LocalStorage = new LocalStorage();
+   localStorageBTwo.setOrCreate('propB', 'propB');
+   
+   @Entry(localStorageBOne)
+   @Component
+   struct PageSixLocalStorageB {
+     // 'PropA'，和localStorageBOne中'propA'的双向同步
+     @LocalStorageLink('PropA') propA: string = 'Hello World';
+     @State count: number = 0;
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.propA)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+           // 使用LocalStorage 实例localStorageBTwo
+           BChild({}, localStorageBTwo)
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   
+   @Component
+   struct BChild {
+     @State count: number = 5;
+     // 'Hello World'，和localStorageBTwo中'propB'的双向同步，如果localStorageBTwo中没有'propB'，则使用默认值'Hello World'
+     @LocalStorageLink('PropB') propB: string = 'Hello World';
+   
+     build() {
+       Text(this.propB)
+         .fontSize(50)
+         .fontWeight(FontWeight.Bold)
+     }
+   }
+   ```
 
 ### Navigation组件和LocalStorage联合使用
 
