@@ -1,10 +1,16 @@
 # Property Animation Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-A property API (property for short) defines a multitude of properties, such as size, layout, and location, for controlling behavior of the owning component. Changes to some properties (such as location) on the UI will cause UI re-render. You can animate the value change of a property from the start point to the end point. Properties can be classified as animatable or non-animatable, depending on whether an animation can be applied to their value changes. Specifically, an animatable property meets the following requirements:
+A property API (property for short) defines a multitude of properties, such as size, layout, and location, for controlling behavior of the owning component. Changes to some properties (such as location) on the UI will cause UI re-render. You can animate the value change of a property from the start point to the end point. To ensure animation start and end points are accurate, property animations refresh all nodes in the dirty state queue. If the animation duration is excessively long, it is important to verify whether additional nodes require refreshing to maintain synchronization. Properties can be classified as animatable or non-animatable, depending on whether an animation can be applied to their value changes. Specifically, an animatable property meets the following requirements:
 
 
-1. Its value changes can cause UI re-render. For example, the [enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled) property is used to control whether a component can respond to events such as clicks and touches. However, as its value change does not cause UI re-render, it does not qualify as an animatable property.
+1. Its value changes can cause UI re-render. For example, the [enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled) attribute is used to control whether a component can respond to events such as clicks and touches. However, as its value change does not cause UI re-render, it does not qualify as an animatable property.
 
 2. An animation can be applied to the transition between value changes. For example, the [focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable) property determines whether the current component can obtain focus. If the value of this property changes, the component should immediately switch to the end state to respond to user behavior, and no animation is appropriate here. Therefore, the property does not qualify as an animatable property.
 

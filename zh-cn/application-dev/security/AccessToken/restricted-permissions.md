@@ -300,6 +300,18 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **变更信息**：API 8-13，权限等级为system_core；从API 14开始，权限等级变更为system_basic，向普通应用开放。
 
+## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
+
+允许运营商应用添加eSIM配置文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**起始版本**：13
+
+**变更信息**：在API 13，权限等级为normal；从API 14开始，权限等级变更为system_basic。
+
 ## ohos.permission.kernel.DISABLE_CODE_MEMORY_PROTECTION
 
 允许应用禁用本应用的代码运行时完整性保护。
@@ -454,9 +466,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-允许应用固化对端蓝牙设备MAC对应的虚拟随机地址。
+允许应用固化对端蓝牙设备MAC对应的虚拟地址。
 
-通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟随机地址，申请该权限后，可保持该虚拟随机地址长时间保持，即使是开/关/重启蓝牙也不发生变化。
+通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用[access.addPersistentDeviceId](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
 
 <!--RP36--><!--RP36End-->
 
@@ -570,6 +582,22 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **携带额外数据**：是，配置方法请见[Driver Development Kit开发指导](../../device/driver/externaldevice-guidelines.md#应用签名)。
+
+**起始版本**：18
+
+## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
+
+允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
+
+支持以下类型的外设扩展驱动开发：
+外设以USB总线接入主机，且满足：
+
+1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
+2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
 
 **起始版本**：18
 
@@ -757,6 +785,30 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：20
 
+## ohos.permission.READ_WHOLE_CALENDAR
+
+允许应用读取所有的日历信息。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**起始版本**：9
+
+**变更信息**：在API 9-19，该权限面向系统应用开放；从API 20开始，面向普通应用开放。
+
+## ohos.permission.WRITE_WHOLE_CALENDAR
+
+允许应用添加、移除或更改所有的日历活动。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**起始版本**：9
+
+**变更信息**：在API 9-19，该权限面向系统应用开放；从API 20开始，面向普通应用开放。
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 允许应用配置系统分享的目标应用名单。
@@ -788,3 +840,81 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：21
+
+## ohos.permission.WEB_NATIVE_MESSAGING
+
+允许应用使用Web本地通信能力。
+
+应用获取此权限后，可以使用web本地通信能力，使浏览器扩展与本地应用进行通信。
+
+<!--RP54--><!--RP54End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：21
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+允许应用读取系统或者已安装应用发布的通知。
+
+<!--RP55--><!--RP55End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：22
+
+## ohos.permission.CUSTOM_SCREEN_RECORDING
+
+允许应用无需弹窗录制屏幕。
+
+获取该权限后，应用在录制屏幕时不再每次弹出隐私告警弹窗。
+
+<!--RP56--><!--RP56End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
+
+允许应用使用外部native程序。
+
+包括加载外部动态链接库(so)、二进制文件(bin)等。
+
+<!--RP57--><!--RP57End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.GET_IP_MAC_INFO
+
+允许应用获取网络设备的IP和MAC地址。
+
+<!--RP58-->
+用于网络连接或者识别，不支持用于设备定位。
+<!--RP58End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22

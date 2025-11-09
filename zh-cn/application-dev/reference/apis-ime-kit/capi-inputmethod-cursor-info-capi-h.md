@@ -56,10 +56,10 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 | 参数项 | 描述 |
 | -- | -- |
-| double left | 光标靠左点与物理屏幕左侧距离的绝对值。 |
-| double top | 光标顶点与物理屏幕上侧距离的绝对值。 |
-| double width | 宽度。 |
-| double height | 高度。 |
+| double left | 光标靠左点与物理屏幕左侧距离的绝对值，单位px。 |
+| double top | 光标顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double width | 宽度，单位px。 |
+| double height | 高度，单位px。 |
 
 **返回：**
 
@@ -104,10 +104,10 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | 表示指向[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。 |
-| double left | 光标靠左点与物理屏幕左侧距离的绝对值。 |
-| double top | 光标顶点与物理屏幕上侧距离的绝对值。 |
-| double width | 宽度。 |
-| double height | 高度。 |
+| double left | 光标靠左点与物理屏幕左侧距离的绝对值，单位px。 |
+| double top | 光标顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double width | 宽度，单位px。 |
+| double height | 高度，单位px。 |
 
 **返回：**
 
@@ -133,10 +133,10 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | 表示指向[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。 |
-| double *left | 靠左点与物理屏幕左侧距离的绝对值。 |
-| double *top | 顶点与物理屏幕上侧距离的绝对值。 |
-| double *width | 宽度。 |
-| double *height | 高度。 |
+| double *left | 靠左点与物理屏幕左侧距离的绝对值，单位px。 |
+| double *top | 顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double *width | 宽度，单位px。 |
+| double *height | 高度，单位px。 |
 
 **返回：**
 

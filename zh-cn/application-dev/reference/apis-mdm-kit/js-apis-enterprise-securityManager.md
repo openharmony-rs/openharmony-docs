@@ -69,7 +69,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let aliasStr = "certName";
@@ -128,7 +128,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 // 变量context需要在MainAbility的onCreate回调函数中进行初始化
@@ -196,7 +196,7 @@ import { common, Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 let accountId: number = 100;
@@ -258,7 +258,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let accountId: number = 100;
@@ -315,7 +315,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -365,7 +365,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let policy: securityManager.PasswordPolicy = {
@@ -425,7 +425,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -476,7 +476,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
@@ -533,7 +533,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
@@ -585,7 +585,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
@@ -643,7 +643,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
@@ -660,7 +660,10 @@ try {
 
 setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelMap, accountId: number): void
 
-给指定用户设置水印策略。当前只支持最多保存100个策略。
+为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
+> **说明：**
+>
+> 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -674,7 +677,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
-| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不能超过500KB。                                                       |
+| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
 | accountId     | number     | 是   | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -697,7 +700,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
@@ -751,7 +754,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
@@ -806,7 +809,7 @@ import { securityManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
       // 需根据实际情况进行替换
@@ -869,7 +872,7 @@ import { securityManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
       // 需根据实际情况进行替换
@@ -883,6 +886,121 @@ try {
     console.info(`Succeeded in getting permission managed state, result : ${result}`);
 } catch(err) {
     console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setExternalSourceExtensionsPolicy<sup>22+</sup>
+
+setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
+
+设置外部来源扩展程序的管控策略。
+- DEFAULT：
+默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。
+- DISALLOW：
+禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启
+“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+- FORCE_OPEN：
+强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
+| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy)                     | 是   | 管控策略。                                                                                                                                                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 9200010 | A conflict policy has been configured.                                          |
+| 9200012 | Parameter verification failed.                                          |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+    console.info(`Succeeded in setting managed policy.`);
+} catch(err) {
+    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
+
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
+
+获取外部来源扩展程序的管控策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。      |                                                                               
+
+**返回值：**
+
+| 类型                                  | 说明       |
+| ----------------------------------- | -------- |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | 返回ManagedPolicy枚举类型的管控策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+    console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch(err) {
+    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

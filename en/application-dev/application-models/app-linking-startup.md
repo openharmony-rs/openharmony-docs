@@ -1,5 +1,12 @@
 # Using App Linking for Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
 In App Linking, the system directs users to specific content in the target application based on the passed-in URI (HTTPS link). Unlike [Deep Linking](deep-linking-startup.md), users can directly access the content regardless of whether the target application is installed.

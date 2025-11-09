@@ -1,6 +1,13 @@
 # ArcScrollBar
 
-The **ArcScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) to provide a circular scrollbar.
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @shengu_lancer; @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
+The **ArcScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).
 
 >  **NOTE**
 >
@@ -16,7 +23,7 @@ Not supported
 
 ArcScrollBar(options: ArcScrollBarOptions)
 
-Creates an instance of the **ArcScrollBar** component.
+A constructor used to create an **ArcScrollBar** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -36,10 +43,10 @@ Represents the parameters used to construct an **ArcScrollBar** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | Yes| Scroller, which can be bound to scrollable components for scrolling control.|
-| state | [BarState](ts-appendix-enums.md#barstate) | No| State of the scrollbar.<br>Default value: **BarState.Auto**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -- | -------- | -------- |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | No| No| Scroller, which can be bound to scrollable components for scrolling control.|
+| state | [BarState](ts-appendix-enums.md#barstate) | No| Yes| State of the scrollbar.<br>Default value: **BarState.Auto**|
 
 >  **NOTE**
 > 
@@ -55,7 +62,7 @@ import { ArcScrollBar } from '@kit.ArkUI';
 @Entry
 @Component
 struct ArcScrollBarExample {
-  private scroller: Scroller = new Scroller()
+  private scroller: Scroller = new Scroller();
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   build() {

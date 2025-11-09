@@ -1,4 +1,11 @@
-# 系统能力SystemCapability列表
+# Tablet
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 SysCap，全称SystemCapability，即系统能力，指操作系统中每一个相对独立的特性。
 

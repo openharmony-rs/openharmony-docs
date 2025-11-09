@@ -1,4 +1,10 @@
 # NotificationSorting (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSorting** module provides APIs for defining the sorting information of active notifications.
 

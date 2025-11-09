@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 14
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[NdkKeyEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkKeyEvent)<!--RP1End-->
 
 ## 汇总
 
@@ -108,7 +110,7 @@ enum ArkUI_KeyCode
 | ARKUI_KEYCODE_N = 2030 | 按键'N'。                     |
 | ARKUI_KEYCODE_O = 2031 | 按键'O'。                     |
 | ARKUI_KEYCODE_P = 2032 | 按键'P'。                     |
-| ARKUI_KEYCODE_Q = 2033 | 按键'R'。                     |
+| ARKUI_KEYCODE_Q = 2033 | 按键'Q'。                     |
 | ARKUI_KEYCODE_R = 2034 | 按键'R'。                     |
 | ARKUI_KEYCODE_S = 2035 | 按键'S'。                     |
 | ARKUI_KEYCODE_T = 2036 | 按键'T'。                     |

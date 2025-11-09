@@ -400,7 +400,7 @@ JavaScript resources can also be obtained through [Data Request](../reference/ap
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button ("Loading page")
+         Button("Loading page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
@@ -637,7 +637,7 @@ You are advised to use this function together with dynamic components, use offli
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button ("Loading page")
+         Button("Loading page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",

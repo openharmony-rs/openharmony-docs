@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 NodeController用于实现自定义节点的创建、显示、更新等操作的管理，并负责将自定义节点挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上。
 

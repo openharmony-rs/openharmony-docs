@@ -1,4 +1,10 @@
 # @ohos.enterprise.bluetoothManager (Bluetooth Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **bluetoothManager** module provides Bluetooth management capabilities, including setting and obtaining Bluetooth information.
 
@@ -28,6 +34,7 @@ Obtains device Bluetooth information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -56,11 +63,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -75,7 +84,7 @@ try {
 
 addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
-Adds allowed Bluetooth devices. The current device can only connect to the allowed Bluetooth devices.
+Adds Bluetooth devices to the trustlist. After adding devices to this list, the current device will only be allowed to connect to Bluetooth devices in the list. The MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
@@ -86,6 +95,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -93,7 +103,7 @@ A policy conflict is reported when this API is called in the following scenarios
 | Name   | Type                                                   | Mandatory| Description                                               |
 | --------- | ------------------------------------------------------- | ---- | --------------------------------------------------- |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                     |
-| deviceIds | Array\<string>                                          | Yes  | MAC addresses of the Bluetooth devices to add. This array can hold a maximum of 1000 MAC addresses.|
+| deviceIds | Array\<string>                                          | Yes  | MAC addresses of the Bluetooth devices to add. The maximum number of allowed Bluetooth devices is 1,000. If there are already 300 MAC addresses of the devices, only 700 more can be added.|
 
 **Error codes**
 
@@ -110,12 +120,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.addAllowedBluetoothDevices(wantTemp,deviceIds);
@@ -135,6 +148,7 @@ Removes allowed Bluetooth devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -158,12 +172,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.removeAllowedBluetoothDevices(wantTemp,deviceIds);
@@ -183,6 +200,7 @@ Obtains allowed Bluetooth devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -211,11 +229,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
@@ -229,7 +249,7 @@ try {
 
 addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
-Adds disallowed Bluetooth devices. The current device cannot connect to the disallowed Bluetooth devices.
+Adds Bluetooth devices to the blocklist. The current device cannot connect to the disallowed Bluetooth devices. The MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
@@ -240,12 +260,14 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                               |
 | --------- | ------------------------------------------------------- | ---- | --------------------------------------------------- |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                     |
-| deviceIds | Array&lt;string&gt;                                          | Yes  | MAC addresses of the Bluetooth devices to add. <br>The maximum number of disallowed Bluetooth devices is 1,000. If there are already 300 MAC addresses of the devices, only 700 more can be added.|
+| deviceIds | Array&lt;string&gt;                                          | Yes  | MAC addresses of the Bluetooth devices to add. The maximum number of disallowed Bluetooth devices is 1,000. If there are already 300 MAC addresses of the devices, only 700 more can be added.|
 
 **Error codes**
 
@@ -261,20 +283,21 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in adding allowed bluetooth devices.`);
+    console.info(`Succeeded in adding disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to add allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to add disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -282,11 +305,13 @@ try {
 
 removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
-Removes disallowed Bluetooth devices. If some disallowed Bluetooth devices are removed, the current device cannot connect to the remaining disallowed Bluetooth devices. If all disallowed Bluetooth devices are removed, the current device can connect to any Bluetooth device.
+Removes disallowed Bluetooth devices. If some Bluetooth devices are removed from the disallowed list, the current device cannot connect to the remaining ones; if all Bluetooth devices are removed, the current device can connect to any Bluetooth device.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -308,20 +333,21 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in removing allowed bluetooth devices.`);
+    console.info(`Succeeded in removing disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to remove allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to remove disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -334,6 +360,8 @@ Obtains disallowed Bluetooth devices.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -360,18 +388,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
-    console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+    console.info(`Succeeded in getting disallowed bluetooth devices. Result: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -380,8 +409,6 @@ try {
 Represents the device Bluetooth information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -395,12 +422,13 @@ Represents the device Bluetooth information.
 
 turnOnBluetooth(admin: Want): void
 
-Enables Bluetooth.
+Enables Bluetooth. After Bluetooth is enabled, the user can manually disable it.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -427,8 +455,9 @@ import { Want } from '@kit.AbilityKit';
 import { bluetoothManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
     bluetoothManager.turnOnBluetooth(wantTemp);
@@ -442,12 +471,13 @@ try {
 
 turnOffBluetooth(admin: Want): void
 
-Disables Bluetooth.
+Disables Bluetooth. After Bluetooth is disabled, the user can manually enable it.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -474,12 +504,13 @@ import { Want } from '@kit.AbilityKit';
 import { bluetoothManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
     bluetoothManager.turnOffBluetooth(wantTemp);
-    console.info(`Succeeded in turning off bluetooth.`);
+    console.info('Succeeded in turning off bluetooth.');
 } catch(err) {
     console.error(`Failed to turn off bluetooth. Code: ${err.code}, message: ${err.message}`);
 }
@@ -489,11 +520,13 @@ try {
 
 addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array&lt;Protocol&gt;): void
 
-Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed Bluetooth protocols to send files to other devices.
+Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed Bluetooth protocols to send files to other devices. This API is used to disable the GATT or SPP protocol, which does not take effect for system services and system applications.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -545,6 +578,8 @@ Removes disallowed Bluetooth protocols. After removing some protocols, the user 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                  |
@@ -594,6 +629,8 @@ Obtains the disallowed Bluetooth protocols of a specified user.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -645,8 +682,10 @@ Represents the Bluetooth protocol type.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
 | GATT | 0 | [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#gatt)|
 | SPP | 1 | [Serial Port Profile (SPP)](../../connectivity/terminology.md#spp)|
-<!--no_check-->
+| OPP | 2 | [Object Push Profile (OPP)](../../connectivity/terminology.md#opp)|

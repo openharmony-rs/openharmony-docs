@@ -507,7 +507,7 @@ ethernet.off('interfaceStateChange');
 
 getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
-获取以太网设备信息。使用Promise异步回调。
+获取本机以太网卡的设备信息（如供应商名称、产品名称、最大连接速率等）使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -519,7 +519,7 @@ getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
 | 类型                | 说明                                                        |
 | ------------------- | ----------------------------------------------------------- |
-| Promise\<Array\<[EthernetDeviceInfos](#ethernetdeviceinfos20)>>  | 以Promise形式返回执行结果。成功返回以太网设备信息列表，失败返回对应错误码。 |
+| Promise\<Array\<[EthernetDeviceInfos](#ethernetdeviceinfos20)>>  | Promise对象，返回本次执行结果。成功返回以太网设备信息列表，失败返回对应错误码。 |
 
 **错误码：**
 
@@ -555,28 +555,28 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 **系统能力**：SystemCapability.Communication.NetManager.Ethernet
 
-| 名称          | 类型                    | 必填 | 说明                                                         |
-| ------------ | ----------------------- | ---|------------------------------------------------------------ |
-| mode         | [IPSetMode](#ipsetmode9) | 是 | 以太网连接配置模式。 |
-| ipAddr       | string                  | 是 | 以太网连接静态配置ip信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| route        | string                  | 是 | 以太网连接静态配置路由信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| gateway      | string                  | 是 | 以太网连接配置网关信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| netMask      | string                  | 是 | 以太网连接配置子网掩码，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
-| dnsServers   | string                  | 是 | 以太网连接配置dns服务地址，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）多地址间用“,”隔开。 |
-| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | 否 | 以太网连接代理配置信息，默认情况下不配置任何代理信息。 |
+| 名称          | 类型                    | 只读 |可选| 说明                                                         |
+| ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
+| mode         | [IPSetMode](#ipsetmode9) | 否 |否 |以太网连接配置模式。 |
+| ipAddr       | string                  | 否 |否 |以太网连接静态配置ip信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| route        | string                  | 否 |否 |以太网连接静态配置路由信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| gateway      | string                  | 否 |否 |以太网连接配置网关信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| netMask      | string                  | 否 |否 |以太网连接配置子网掩码，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
+| dnsServers   | string                  | 否 |否 |以太网连接配置dns服务地址，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）多地址间用“,”隔开。 |
+| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | 否 |是 |以太网连接代理配置信息，默认情况下不配置任何代理信息。 |
 
 ## InterfaceStateInfo<sup>11+</sup>
 
-监听以太网卡状态变化
+监听以太网卡状态变化。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.NetManager.Ethernet
 
-| 名称         | 类型                    | 必填 | 说明                                                 |
-| ------------ | ----------------------- | --- | ---------------------------------------------------- |
-| iface        | string                  |  是 | 以太网卡名称。                                        |
-| active       | boolean                 |  是 | 以太网卡是否处于激活状态（true：激活；false：未激活）。 |
+| 名称         | 类型                    | 只读 |可选| 说明                                                 |
+| ------------ | ----------------------- | --- | ---|------------------------------------------------- |
+| iface        | string                  |  否 |否 |以太网卡名称。                                        |
+| active       | boolean                 |  否 |否 |以太网卡是否处于激活状态。true表示激活，false表示未激活。 |
 
 ## IPSetMode<sup>9+</sup>
 

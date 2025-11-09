@@ -1,4 +1,10 @@
 # @ohos.telephony.radio (Radio) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **radio** module provides basic network search management functions. You can obtain the radio access technology (RAT) used in the CS and PS domains, network status, current network selection mode, ISO country code of the registered network, ID of the slot in which the primary card is located, list of signal strengths of the registered network, carrier name, and IMEI, MEID, and unique device ID of the SIM card in the specified slot. Besides, you can check whether the current device supports 5G\(NR\) and whether the radio service is enabled on the primary SIM card.
 

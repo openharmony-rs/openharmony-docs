@@ -1,101 +1,70 @@
 # Multimedia Subsystem Changelog
 
-## c1.multimedia.1 Behavior Change in the Audio Framework for Identifying USB Audio Device Types
+## cl.multimedia.1 HEIF Format Change for Image APIs
+
 **Access Level**
 
 Public API
 
 **Reason for Change**
 
-Previously, all USB audio devices are recognized by the system as headset input/output devices. To improve recognition accuracy and meet the UX display requirements of applications, the system now differentiates between USB headsets and ordinary USB audio devices (such as speakers).
+During HEIF encoding with the camera, the encoding fails with the standard-defined **image/heic** parameter. The current version of Image defines the format parameter as **image/heif**, which does not comply with the standard definition. To improve adherence to standards, the **mimeType** parameter for HEIF images is changed to **image/heic**.
 
 **Impact of the Change**
 
-This change requires application adaptation.
-
-When audio devices are connected or disconnected, the system reports the type of audio device to the application. Applications can also actively query the available device types through interfaces. For applications targeting API levels before 18, the system behavior remains unchanged. For applications targeting API level 18 and later, the identification and reporting of USB devices have been changed as follows:
-
-TS APIs
-
-| Platform| Before Change| After Change|
-| --- | ----- | ----- |
-| General| If only an input device is present at a USB address, it is recognized as a USB_HEADSET.| If only an input device is present at a USB address, it is recognized as a USB_DEVICE.|
-| PC/2-in-1 device| If only an output device is present at a USB address, it is recognized as a USB_HEADSET.| If only an output device is present at a USB address, it is recognized as a USB_DEVICE.|
-
-NDK APIs
-| Platform| Before Change| After Change|
-| --- | ----- | ----- |
-| General| If only an input device is present at a USB address, it is recognized as an AUDIO_DEVICE_USB_HEADSET.| If only an input device is present at a USB address, it is recognized as an AUDIO_DEVICE_USB_DEVICE.|
-| PC/2-in-1 device| If only an output device is present at a USB address, it is recognized as an AUDIO_DEVICE_USB_HEADSET.| If only an output device is present at a USB address, it is recognized as an AUDIO_DEVICE_USB_DEVICE.|
+1.  The parameter type for the HEIF format in **OH_PackingOptions_SetMimeType()** is changed. This change involves application adaptation.
+      Before change: The **mimeType** parameter for HEIF images is **image/heif**.
+      After change: The **mimeType** parameter for HEIF images is **image/heic**.
+     
+ 2. The return value type for the HEIF format in **OH_PackingOptions_GetMimeType()** is changed. This change involves application adaptation.
+      Before change: The **mimeType** parameter for HEIF images is **image/heif**.
+      After change: The **mimeType** parameter for HEIF images is **image/heic**.
+      
+ 3. The return value type of the **supportedFormats** API provided by the ImageSource instance for querying the decoding formats supported by the device has changed. This change involves application adaptation.
+     Before change: The return value of the decoding type supported by the device for HEIF images is **image/heif**.
+     After change: The return value of the decoding type supported by the device for HEIF images is **image/heic**.
+     
+ 4. The return value type of the **supportedFormats** API provided by the ImagePacker instance for querying the encoding formats supported by the device has changed. This change involves application adaptation.
+     Before change: The return value of the encoding type supported by the device for HEIF images is **image/heif**.
+     After change: The return value of the encoding type supported by the device for HEIF images is **image/heic**.
+     
+ 5. The HEIF encoding parameters in the image.PackingOption struct are changed. This change does not involve application adaptation.
+     Before change: The **mimeType** parameter for HEIF encoding is **image/heif**.
+     After change: The **mimeType** parameter for HEIF encoding is **image/heic**.
+     
+ 6. The HEIF encoding parameters in the OH_PackingOptions struct are changed. This change does not involve application adaptation.
+     Before change: The **mimeType** parameter for HEIF encoding is **image/heif**.
+     After change: The **mimeType** parameter for HEIF encoding is **image/heic**.
 
 **Start API Level**
 
-9
+10
 
 **Change Since**
 
-OpenHarmony 5.1.0.53
+OpenHarmony 5.0.0.53
 
 **Key API/Component Changes**
 
-After this change, when a single-input or single-output USB audio device is connected to the system, the device type returned by the following APIs changes:
-
-@ohos.multimedia.audio.d.ts ArkTS APIs:
-
-| Class | API |
-|---|---|
-| audio.AudioRoutingManager  |  getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback\<AudioDeviceDescriptors>): void |
-| audio.AudioRoutingManager  |  getDevices(deviceFlag: DeviceFlag): Promise\<AudioDeviceDescriptors> |
-| audio.AudioRoutingManager  |  getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors |
-| audio.AudioRoutingManager  |  getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors |
-| audio.AudioRoutingManager  |  on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback\<DeviceChangeAction>): void |
-| audio.AudioRoutingManager  |  off(type: 'availableDeviceChange', callback?: Callback\<DeviceChangeAction>): void |
-
-C APIs in **native_audio_routing_manager.h**:
-
-| API|
-|--|
-| OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray) |
-| OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray) |
+| API Type| d.ts File/Header File| API| Start API Level|
+|--|--|--|--|
+| C API | image_packer_native.h | Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format) | 12 |
+| C API | image_packer_native.h | Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format) | 12 |
+| ArkTS API | @ohos.multimedia.image.d.ts |  imagePacker.supportedFormats: Array\<string> | 10 |
+| ArkTS API | @ohos.multimedia.image.d.ts |  imageSource.supportedFormats: Array\<string> | 10 |
+| ArkTS API | @ohos.multimedia.image.d.ts | image.PackingOption | 11 |
+| C API | image_packer_native.h | struct OH_PackingOptions | 12 |
 
 **Adaptation Guide**
 
-TS APIs
+1. When **OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)** is called to set **mimeType** for HEIF images, **format** must be **image/heic**.
 
-If your application has specific handling requirements for USB audio devices, you now need to handle both USB_HEADSET and USB_DEVICE types.
-```cpp
-// Perform special processing for the USB audio device.
-if (devicetype == DeviceType.USB_HEADSET) {
-  // do sth
-}
-```
+2. When **OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)** is called to obtain **mimeType** of HEIF images, **format** in the return value is **image/heic**. You need to review the sample project of the application and modify the format based on service requirements.
 
-After the change, if your application has specific handling requirements for USB audio devices, you now need to handle both USB_HEADSET and USB_DEVICE types.
-```cpp
-// Perform special processing for the USB audio device.
-if (devicetype == DeviceType.USB_HEADSET || devicetype == DeviceType.USB_DEVICE) {
-  // do sth
-}
-```
+3. When supportedFormats of ImageSource is used to obtain the decoding type of a device, the calling behavior remains unchanged. If the device supports HEIF, the return value is changed from **image/heif** to **image/heic**.
 
+4. When supportedFormats of ImagePacker is used to obtain the encoding type of a device, the calling behavior remains unchanged. If the device supports HEIF, the return value is changed from **image/heif** to **image/heic**.
 
-NDK APIs
+5. When **image.PackingOption** is used to encode HEIF images, the **image/heif** or **image/heic** type can be used.
 
-If your application has specific handling requirements for USB audio devices, you now need to handle both AUDIO_DEVICE_USB_HEADSET and AUDIO_DEVICE_USB_DEVICE types.
-
-Before the change, if your application has specific handling requirements for USB audio devices, you only need to handle AUDIO_DEVICE_USB_HEADSET.
-
-```cpp
-// Perform special processing for the USB audio device.
-if (devicetype == OH_AudioDevice_Type.AUDIO_DEVICE_USB_HEADSET) {
-  // do sth
-}
-```
-
-After the change, if your application has specific handling requirements for USB audio devices, you now need to handle both AUDIO_DEVICE_USB_HEADSET and AUDIO_DEVICE_USB_DEVICE types.
-```cpp
-// Perform special processing for the USB audio device.
-if (devicetype == OH_AudioDevice_Type.AUDIO_DEVICE_USB_HEADSET || devicetype == OH_AudioDevice_Type.AUDIO_DEVICE_USB_DEVICE) {
-  // do sth
-}
-```
+6. When **OH_PackingOptions** is used to encode HEIF images, the **image/heif** or **image/heic** type can be used.

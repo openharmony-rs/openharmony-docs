@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -119,13 +119,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明      |
-| ------- | ------- |
-| Press   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称      |  值  | 说明      |
+| ------- | ----- |  ------- |
+| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -739,7 +739,7 @@
 | ----------- | --- | -------- |
 | None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LocalDevice | 2 | 支持复制后在当前设备内所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## HitTestMode<sup>9+</sup>
@@ -877,7 +877,8 @@ type Nullable\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| T \| undefined | 该类型申明的对象可以是自定义类型，也可以是undefined。 |
+|  T   | 表示该类型申明的对象是自定义类型。 |
+| undefined | 该类型申明的对象是undefined。 |
 
 ## WordBreak<sup>11+</sup>
 
@@ -1222,6 +1223,20 @@ type Nullable\<T> = T | undefined
 | END    | 3    | 轴事件结束。 |
 | CANCEL | 4    | 轴事件取消。 |
 
+## AxisType<sup>22+</sup>
+
+定义轴事件的轴类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+| 名称    | 值   | 说明                               |
+| ------- | ---- | ---------------------------------- |
+| VERTICAL_AXIS   | 0    | 垂直滚动轴。 |
+| HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
+| PINCH_AXIS | 2    | 捏合轴。 |
+
 ## InteractionHand<sup>15+</sup>
 
 定义事件是由左手点击触发还是右手点击触发。
@@ -1303,7 +1318,7 @@ type Nullable\<T> = T | undefined
 | ------  | ---- | -------------------- |
 | ROTATION | 0 | x、y、z方向的旋转角属性。该属性对应参数个数为3，属性的单位为度（°）。 |
 | TRANSLATION | 1 | x、y方向的平移属性。该属性对应参数个数为2，属性的单位为px。 |
-| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2。 |
+| SCALE | 2 | x、y方向的缩放属性。该属性对应参数个数为2，属性的取值范围为(-∞, +∞) 。|
 | OPACITY | 3 | 透明度属性。该属性对应参数个数为1，属性的取值范围为[0,1]。 |
 
 ## ColorSpace<sup>20+</sup>
@@ -1344,3 +1359,33 @@ type Nullable\<T> = T | undefined
 | ------------------ | - | ---------------------------------------- |
 | FLOATING_ABOVE_MENU| 0 | 悬浮在Menu之上，默认值，不占用高度。      |
 | EMBEDDED_IN_MENU   | 1 | 在Menu中展开，参与布局计算，占用高度。    |
+
+## PresetFillType<sup>22+</sup>
+
+为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称            | 值   | 说明                                                         |
+| --------------- | ---- | ------------------------------------------------------------ |
+| ARKUI_ITEMFILLPOLICY_NONE | -1    | 没有设置响应式断点规格。 |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
+| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
+
+## RenderStrategy<sup>22+</sup>
+
+定义组件绘制圆角的模式。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                                 | 值 | 说明                                       |
+| ---------------------------------- | --- | ---------------------------------------- |
+| FAST | 0 | 在线绘制模式，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
+| OFFSCREEN | 1 | 离屏绘制模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式效果更好，可以解决在线绘制模式显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |

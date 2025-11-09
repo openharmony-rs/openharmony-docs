@@ -81,9 +81,9 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description|
 | -------- | -------- |
-| [I4UZ7U](https://gitee.com/openharmony/xts_acts/issues/I4UZ7U?from=project-issue) | There may be 35 failed items during the XTS test on a small-system device.|
-| [I4V2DN](https://gitee.com/openharmony/xts_acts/issues/I4V2DN?from=project-issue) | The execution of two test cases times out during the ActsLwipTest module test.|
-| [I4V3KC](https://gitee.com/openharmony/xts_acts/issues/I4V3KC?from=project-issue) | The test case testPublish0010 fails in the Distributed Scheduler.|
+| [I4UZ7U](https://gitcode.com/openharmony/xts_acts/issues/I4UZ7U?from=project-issue) | There may be 35 failed items during the XTS test on a small-system device.|
+| [I4V2DN](https://gitcode.com/openharmony/xts_acts/issues/I4V2DN?from=project-issue) | The execution of two test cases times out during the ActsLwipTest module test.|
+| [I4V3KC](https://gitcode.com/openharmony/xts_acts/issues/I4V3KC?from=project-issue) | The test case testPublish0010 fails in the Distributed Scheduler.|
 | [I4URGA](https://gitee.com/openharmony/applications_sample_camera/issues/I4URGA?from=project-issue) | A blue screen may appear when users search for WLAN signals on the **Settings** page.|
 | I4SDCK | An empty path or garbled characters are returned when users run **GetSrcPath** or **GetDataPath** on the Hi3516 development board of a small-system device.|
 | [I4T6KZ](https://gitee.com/openharmony/communication_dsoftbus/issues/I4T6KZ) | The execution of **SendMessage** and **SendData4Data** fails during the transmission test.|
@@ -104,15 +104,15 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 | Issue No.| Description|
 | -------- | -------- |
 | [I4UJNU](https://gitee.com/openharmony/applications_settings/issues/I4UJNU) | The WLAN password is displayed in plaintext in the hilog when the WLAN is connected.|
-| [I4MSWM](https://gitee.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | During the XT test, there is one failed item in the faultloggertest case of the ActsFaultLoggerTest module.|
-| [I4MSVV](https://gitee.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | During the XTS test, there are three failed items in the HiCollieCppTest case of the ActsHiCollieCppTest module.|
+| [I4MSWM](https://gitcode.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | During the XT test, there is one failed item in the faultloggertest case of the ActsFaultLoggerTest module.|
+| [I4MSVV](https://gitcode.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | During the XTS test, there are three failed items in the HiCollieCppTest case of the ActsHiCollieCppTest module.|
 | I4PPXV | The application icon is missing after a user opens an application, exits the application, and then returns to the home screen.|
 | [I4OF9A](https://gitee.com/openharmony/distributeddatamgr_file/issues/I4OF9A?from=project-issue) | The **text** value read by the **file.readText** interface is unstable.|
-| [I4OWWM](https://gitee.com/openharmony/xts_acts/issues/I4OWWM) | The JSON file corresponding to the WeekPluralNumbertest module is incorrectly configured. When a test case is executed, "required device does not exist" is reported, and the test suite cannot be executed.|
-| [I4OUVQ](https://gitee.com/openharmony/xts_tools/issues/I4OUVQ?from=project-issue) | During repeated pressure tests of XTS JS cases, the system stops responding and the test cannot continue.|
-| [I4NMXQ](https://gitee.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | The storagefileioperformancejstest and storagefilestabilityjstest test suites fail to run on XTS.|
-| [I4NTKG](https://gitee.com/openharmony/xts_acts/issues/I4NTKG) | Two failed items are displayed when the XTS test suite WeekPluralNumberTest is executed.|
-| [I4NPHG](https://gitee.com/openharmony/xts_acts/issues/I4NPHG?from=project-issue) | The timer test suite TimerJSApiTest.hap is not compiled with the version.|
+| [I4OWWM](https://gitcode.com/openharmony/xts_acts/issues/I4OWWM) | The JSON file corresponding to the WeekPluralNumbertest module is incorrectly configured. When a test case is executed, "required device does not exist" is reported, and the test suite cannot be executed.|
+| [I4OUVQ](https://gitcode.com/openharmony/xts_tools/issues/I4OUVQ?from=project-issue) | During repeated pressure tests of XTS JS cases, the system stops responding and the test cannot continue.|
+| [I4NMXQ](https://gitcode.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | The storagefileioperformancejstest and storagefilestabilityjstest test suites fail to run on XTS.|
+| [I4NTKG](https://gitcode.com/openharmony/xts_acts/issues/I4NTKG) | Two failed items are displayed when the XTS test suite WeekPluralNumberTest is executed.|
+| [I4NPHG](https://gitcode.com/openharmony/xts_acts/issues/I4NPHG?from=project-issue) | The timer test suite TimerJSApiTest.hap is not compiled with the version.|
 
 
   **Table 5** Fixed security vulnerabilities

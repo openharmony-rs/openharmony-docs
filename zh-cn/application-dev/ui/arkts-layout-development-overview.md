@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 组件按照布局的要求依次排列，构成应用的页面。在声明式UI中，所有的页面都是由自定义组件构成，开发者可以根据自己的需求，选择合适的布局进行页面开发。
@@ -107,6 +107,6 @@ position、offset等属性影响了布局容器相对于自身或其他组件的
 
 - [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)
 
-- [ArkUI常用布局容器对齐方式（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/OHLayoutAlign)
+- [ArkUI常用布局容器对齐方式（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/OHLayoutAlign)
 
-- [常用组件与布局（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)
+- [常用组件与布局（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)

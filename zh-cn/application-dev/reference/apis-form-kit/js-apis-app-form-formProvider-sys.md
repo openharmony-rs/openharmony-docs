@@ -1,4 +1,10 @@
 # @ohos.app.form.formProvider (formProvider)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @Brilliantry_Rui-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间、请求发布卡片等能力。
 

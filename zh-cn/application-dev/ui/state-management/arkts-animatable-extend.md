@@ -1,4 +1,10 @@
 # \@AnimatableExtend装饰器：定义可动画属性
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @yangfan229-->
+<!--Tester: @lxl007-->
+<!--Adviser: @zhang_yixin13-->
 
 @AnimatableExtend装饰器用于自定义可动画的属性方法，在这个属性方法中修改组件不可动画的属性。在动画执行过程中，通过逐帧回调函数修改不可动画属性值，让不可动画属性也能实现动画效果。也可通过逐帧回调函数修改可动画属性的值，实现逐帧布局的效果。
 
@@ -43,7 +49,9 @@
 以下示例通过改变Text组件宽度实现逐帧布局的效果。
 
 
-```ts
+<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->
+
+``` TypeScript
 @AnimatableExtend(Text)
 function animatableWidth(width: number) {
   .width(width)
@@ -51,37 +59,40 @@ function animatableWidth(width: number) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct AnimatablePropertyText {
   @State textWidth: number = 80;
 
   build() {
     Column() {
-      Text("AnimatableProperty")
+      Text('AnimatableProperty')
         .animatableWidth(this.textWidth)
         .animation({ duration: 2000, curve: Curve.Ease })
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           this.textWidth = this.textWidth == 80 ? 160 : 80;
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/AnimatableProperty.gif)
 
 
 以下示例实现折线的动画效果。  
 
 
-```ts
+<!-- @[animatable_extend_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyExample.ets) -->
+
+``` TypeScript
 class Point {
-  x: number
-  y: number
+  x: number;
+  y: number;
 
   constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
   }
 
   plus(rhs: Point): Point {
@@ -160,7 +171,7 @@ function animatablePoints(points: PointVector) {
 
 @Entry
 @Component
-struct AnimatablePropertyExample {
+struct  AnimatablePropertyExample {
   @State points: PointVector = new PointVector([
     new Point(50, Math.random() * 200),
     new Point(100, Math.random() * 200),
@@ -178,7 +189,7 @@ struct AnimatablePropertyExample {
         .fill(Color.Green)
         .stroke(Color.Red)
         .backgroundColor('#eeaacc')
-      Button("Play")
+      Button('Play')
         .onClick(() => {
           // points是实现了可动画协议的数据类型，points在动画过程中可按照定义的运算规则、动画参数从之前的PointVector变为新的PointVector数据，产生每一帧的PointVector数据，进而产生动画
           this.points = new PointVector([
@@ -189,9 +200,10 @@ struct AnimatablePropertyExample {
             new Point(250, Math.random() * 200),
           ]);
         })
-    }.width("100%")
+    }.width('100%')
     .padding(10)
   }
 }
 ```
+
 ![image](figures/animatable-points.gif)

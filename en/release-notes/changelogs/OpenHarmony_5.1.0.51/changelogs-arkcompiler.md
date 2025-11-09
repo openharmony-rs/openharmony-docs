@@ -32,14 +32,14 @@ OpenHarmony SDK 5.1.0.51
 
 | API                         | Impact                                                         |
 | ------------------------------- | --------------------------------------------------------------- |
-| OH\_JSVM\_CompileWasmModule   | Returns JIT\_MODE\_EXPECTED status code without JIT permission.                     |
-| OH\_JSVM\_CompileWasmFunction | Returns JIT\_MODE\_EXPECTED status code without JIT permission.                     |
-| OH\_JSVM\_CreateWasmCache     | Returns JIT\_MODE\_EXPECTED status code without JIT permission.                     |
-| OH\_JSVM\_RunScript           | Fails to execute scripts containing wasm without JIT permission and may exhibit performance differences in specific scenarios.|
+| OH_JSVM_CompileWasmModule   | If the JIT permission is not granted, the JIT_MODE_EXPECTED status code is returned, and a log is printed for notification.                     |
+| OH_JSVM_CompileWasmFunction | If the JIT permission is not granted, the JIT_MODE_EXPECTED status code is returned, and a log is printed for notification.                     |
+| OH_JSVM_CreateWasmCache     | If the JIT permission is not granted, the JIT_MODE_EXPECTED status code is returned, and a log is printed for notification.                     |
+| OH_JSVM_RunScript           | If the JIT permission is not granted, the script containing wasm will fail to be executed. The performance varies in specific scenarios, and a log is printed for notification.|
 
 **Adaptation Guide**
 
-For new applications that wish to use JIT, you must submit an application for the **ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY** restricted ACL permission to the AppGallery Connect (AGC). In your application materials, specify the exact scenarios in which the JIT functionality of the JSVM engine will be used. Once the permission is approved, you can update your profile certificate from the AGC website and repackage your application for release. For details, see [Requesting Restricted Permissions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/declare-permissions-in-acl-V5).
+For new applications that wish to use JIT, you must submit an application for the ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY restricted ACL permission to the AppGallery Connect (AGC). In your application materials, specify the exact scenarios in which the JIT functionality of the JSVM engine will be used. Once the permission is approved, you can update your profile certificate from the AGC website and repackage your application for release. For details, see [Requesting Restricted Permissions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/declare-permissions-in-acl-V5).
 
 Precautions
 1. If restricted permissions are only declared in the configuration file without a permission profile, the application installation will fail.

@@ -1,6 +1,6 @@
 # Combo解决方案之W800芯片移植案例
 
-本方案基于OpenHarmony LiteOS-M内核，使用联盛德W800芯片的润和软件海王星系列[Neptune100开发板](https://gitee.com/openharmony-sig/device_board_hihope)，进行开发移植。移植架构采用`Board`与`SoC`分离方案，支持通过Kconfig图形化配置编译选项，增加玄铁`ck804ef`架构移植，实现了`HDF`、`XTS`等子系统及组件的适配。
+本方案基于OpenHarmony LiteOS-M内核，使用联盛德W800芯片的润和软件海王星系列[Neptune100开发板](https://gitcode.com/openharmony-sig/device_board_hihope)，进行开发移植。移植架构采用`Board`与`SoC`分离方案，支持通过Kconfig图形化配置编译选项，增加玄铁`ck804ef`架构移植，实现了`HDF`、`XTS`等子系统及组件的适配。
 
 ## 适配准备
 
@@ -10,7 +10,7 @@
 
 ### 目录规划
 
-本方案的目录结构使用[Board和Soc解耦的思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
+本方案的目录结构使用[Board和Soc解耦的思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
 
 芯片适配目录规划为：
    ```

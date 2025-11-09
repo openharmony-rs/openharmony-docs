@@ -28,13 +28,13 @@ restool is a resource compilation tool that creates resource indexes and parses 
 | --icon-check | Yes| No| Whether to enable PNG image verification for icons and startWindowIcons.|
 | --thread | Yes| Yes| Number of child threads enabled during resource compilation.|
 | --target-config | Yes| Yes| Used together with the **-i** command to support compilation selection.<br>For details, see **target-config Parameters**.|
-| --ignored-file | Yes| Yes| Ignoring rule for files and folders during resource compilation. The value is a regular expression. Multiple rules are separated by colons (:\). For example, **\\.git:\\.svn** indicates that the files and folders whose names are **.git** and **.svn** are ignored.|
+| --ignored-file | Yes| Yes| Ignoring rule for files and folders during resource compilation. The value is a regular expression. Multiple rules are separated by colons. For example, **\\.git:\\.svn** indicates that the files and folders whose names are **.git** and **.svn** are ignored.|
 
 **target-config** Parameters
 
 Supported parameters: **MccMnc**, **Locale**, **Orientation**, **Device**, **ColorMode**, and **Density**.
 
-Format: Use semicolons (;\) to separate different parameter configurations. Use square brackets ([]) to encapsulate values for a parameter and use commas (,) to separate values.
+Format: Use semicolons to separate different parameter configurations. Use square brackets ([]) to encapsulate values for a parameter and use commas (,) to separate values.
 
 **MccMnc** matching rule: The MCC must always be used for matching. If an MNC is not included, a match is found as long as the MCC is the same. If an MNC is included, a match is found when both the MCC and MNC are the same.
 
@@ -78,7 +78,7 @@ restool dump config entry.hap
 
 ## Example
 
-For example, the structure of the entry directory is as follows:
+An example **entry** directory structure is as follows:
 ```
 entry/src/main
 |    |----resource
@@ -148,7 +148,7 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 }
 ```
 
-Step 2: Fix the resource ID. You can use either of the following methods to fix the id_defined.json file: Run command 1 to fix the id_defined.json file. Save the customized id_defined.json file in the resource/base/element/ directory and run command 2 to fix the id_defined.json file.
+Step 2: Fix the resource ID. There are two ways to fix the resource ID.
 
 + Run the following command to fix the resource ID:
 ```
@@ -159,7 +159,7 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1
 ```
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1 -r out1/ResourceTable.txt  -f
 ```
-## Error Codes of the restool Tool
+## Error Codes
 
 ### 11201001 Failed to Load the Dependency Library
 
@@ -167,7 +167,7 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1
 
 Failed to load the library 'xxx.dll'.
 
-**Description**
+**Symptom**
 
 Failed to load the dependency library.
 
@@ -175,13 +175,13 @@ Failed to load the dependency library.
 
 1. The path of the dependency library is incorrect or you do not have the permission to access the path.
 2. The third-party dependency library is not installed, the path is incorrect, or you do not have the permission to access the path.
-3. The Windows system reports an error. In the user environment variables and system environment variables, the path file before the xxx.dll path cannot be accessed. As a result, the environment variable fails to be searched when the dependent library is loaded.
+3. An error is reported on Windows. The files before the **xxx.dll** path in the user environment variables and system environment variables cannot be accessed. As a result, the environment variables are incorrectly searched during dependency library loading.
 
 **Solution**
 
 1. Check whether the dependency library path is correct and whether you have the access permission.
 2. Install the missing third-party dependency library based on the error message. Ensure that the path of the third-party dependency library is correct and you have the access permission.
-3. Add the `xxx/openharmony/previewer/common/bin` path of the SDK and the path of the dependent library to the first two lines of the environment variable Path. The sequence of the two paths is not limited.
+3. Add the **xxx/openharmony/previewer/common/bin** path of the SDK and the path of the dependent library to the first two lines of the environment variable **Path**. The sequence is not required.
 
 ### 11203001 Failed to Open the JSON File
 
@@ -189,13 +189,13 @@ Failed to load the dependency library.
 
 Failed to open the JSON file 'xxx.json'.
 
-**Description**
+**Symptom**
 
-Failed to open the source file.
+Failed to open the JSON file.
 
 **Possible Causes**
 
-The JSON file path is incorrect or you do not have the permission to access the file.
+The JSON file path is incorrect, or you do not have the permission to access the JSON file.
 
 **Solution**
 
@@ -207,89 +207,89 @@ Check whether the JSON file path is correct and whether you have the access perm
 
 Failed to parse the JSON file: incorrect format.
 
-**Description**
+**Symptom**
 
 Failed to parse the JSON file because the file format is incorrect.
 
 **Possible Causes**
 
-The JSON file format is incorrect. For example, the JSON file contains redundant commas (,).
+The JSON file format is incorrect. For example, the JSON file contains unnecessary commas (,).
 
 **Solution**
 
-Check the JSON file format. For details, see [JSON](https://www.json.org/json-zh.html).
+Check the JSON file format. For details, see [JSON](https://www.json.org/json-en.html).
 
-### 11203003 The JSON Node Type Does Not Match the Expected One
+### 11203003 Unexpected JSON Node Type
 
 **Error Message**
 
 The value type of node 'xxx' does not match. Expected type: xxx.
 
-**Description**
+**Symptom**
 
-The type of the `xxx` node in the JSON file is incorrect.
+The type of the **xxx** node in the JSON file is incorrect.
 
 **Possible Causes**
 
-The type of the corresponding node in the JSON file is incorrect. For example, the expected type is string, but the actual type is number.
+The node type in the JSON file is incorrect. For example, the expected type is string, but the actual type is number.
 
 **Solution**
 
-Check the type of the `xxx` node in the JSON file.
+Check the type of the **xxx** node in the JSON file.
 
-### 11203004 A Mandatory Node Is Missing in JSON
+### 11203004 Required Node Missing in JSON
 
 **Error Message**
 
 The required node 'xxx' is missing.
 
-**Description**
+**Symptom**
 
-The JSON file does not contain the required `xxx` node.
+The JSON file does not contain the required **xxx** node.
 
 **Possible Causes**
 
-Mandatory nodes, such as `name` and `value`, are not configured in the JSON file.
+Required nodes, such as **name** and **value**, are not configured in the JSON file.
 
 **Solution**
 
-Check whether the `xxx` node is missing in the JSON file.
+Check whether the **xxx** node is missing in the JSON file.
 
-### 11203005 Empty Object or Array Exists in JSON
+### 11203005 Empty Object or Array in JSON
 
 **Error Message**
 
 The array or object node 'xxx' cannot be empty.
 
-**Description**
+**Symptom**
 
-The `xxx` node in JSON is an empty object or an empty array.
+The **xxx** node in the JSON file is an empty object or array.
 
 **Possible Causes**
 
-The corresponding node in the JSON file is empty. For example, the object is set to {} or the array is set to [].
+The node in the JSON file is empty, for example, the object is set to **{}** or the array is set to **[]**.
 
 **Solution**
 
-Check whether the `xxx` node in the JSON file is empty.
+Check whether the **xxx** node in the JSON file is empty.
 
-### 11203006 JSON Contains Multiple Subnodes
+### 11203006 Multiple Child Nodes in JSON
 
 **Error Message**
 
 The node 'xxx' in the JSON file can have only one member.
 
-**Description**
+**Symptom**
 
-The `xxx` node in JSON can contain only one subnode.
+The **xxx** node in the JSON file can contain only one child node.
 
 **Possible Causes**
 
-The corresponding node in the JSON file contains multiple subnodes.
+The node in the JSON file contains multiple child nodes.
 
 **Solution**
 
-Check whether the `xxx` node contains only one subnode.
+Check whether the **xxx** node contains only one child node.
 
 ### 11203007 Invalid JSON Node Name
 
@@ -297,17 +297,17 @@ Check whether the `xxx` node contains only one subnode.
 
 Invalid node name 'xxx'. Valid values: ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
 
-**Description**
+**Symptom**
 
-Invalid JSON node name `xxx`.
+The JSON node name **xxx** is invalid.
 
 **Possible Causes**
 
-The name of the corresponding node in the JSON file is incorrect and is not in the specified ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"] range.
+The name of the node in the JSON file is incorrect and is not within the specified range of ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
 
 **Solution**
 
-Check whether the name of the `xxx` node in the JSON file is within the specified range.
+Check whether the name of the **xxx** node in the JSON file is within the specified range.
 
 ### 11204001 Failed to Create a File
 
@@ -315,7 +315,7 @@ Check whether the name of the `xxx` node in the JSON file is within the specifie
 
 Failed to create the directory or file 'xxx'.
 
-**Description**
+**Symptom**
 
 Failed to create the file.
 
@@ -327,13 +327,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 Check whether the file path is correct and whether you have the access permission.
 
-### 11204003 Failure to Delete the File
+### 11204003 Failed to Delete the File
 
 **Error Message**
 
 Failed to delete the directory or file 'xxx'.
 
-**Description**
+**Symptom**
 
 Failed to delete the file.
 
@@ -345,13 +345,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 Check whether the file path is correct and whether you have the access permission.
 
-### 11204004 Failed to Copy Files
+### 11204004 Failed to Copy the File
 
 **Error Message**
 
 Failed to copy the file from 'xxx' to 'xxx'.
 
-**Description**
+**Symptom**
 
 Failed to copy the file.
 
@@ -363,13 +363,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 Check whether the file path is correct and whether you have the access permission.
 
-### 11204005 Failed to Open a File
+### 11204005 Failed to Open the File
 
 **Error Message**
 
 Failed to open the file 'xxx'.
 
-**Description**
+**Symptom**
 
 Failed to open the file.
 
@@ -387,19 +387,19 @@ Check whether the file path is correct and whether you have the access permissio
 
 Failed to read the file 'xxx'.
 
-**Description**
+**Symptom**
 
 Failed to read the file.
 
 **Possible Causes**
 
 1. The file path is incorrect or you do not have the permission to access the file.
-2. Empty file.
+2. The file is empty.
 
 **Solution**
 
 1. Check whether the file path is correct and whether you have the access permission.
-2. **Check whether the file content is empty.**
+2. Check whether the file is empty.
 
 ### 11210001 Unknown Command Option
 
@@ -407,53 +407,53 @@ Failed to read the file.
 
 Unknown option 'xxx'.
 
-**Description**
+**Symptom**
 
 Unknown command option.
 
 **Possible Causes**
 
-The corresponding command option is not supported.
+The command option is not supported.
 
 **Solution**
 
-Check whether the command is correct. You can run the -h command to view the command help information and enter the correct command options and parameters.
+Check whether the command is correct. You can run the **-h** command to view the command help information and enter the correct command options and parameters.
 
-### 11210002 Mandatory Parameters Are Missing
+### 11210002 Mandatory Parameters Missing
 
 **Error Message**
 
 Option 'xxx' requires an argument.
 
-**Description**
+**Symptom**
 
 Mandatory parameters are missing.
 
 **Possible Causes**
 
-Mandatory parameters are missing. For example, the input path is not specified for -i/--inputPath.
+Mandatory parameters are missing. For example, the input path is not specified for **-i/--inputPath**.
 
 **Solution**
 
-Check whether the command is correct. You can run the -h command to view the command help information and enter the correct command options and parameters.
+Check whether the command is correct. You can run the **-h** command to view the command help information and enter the correct command options and parameters.
 
-### 11210003 Invalid Parameters
+### 11210003 Invalid Parameter
 
 **Error Message**
 
 Invalid argument value 'xxx'.
 
-**Description**
+**Symptom**
 
-Invalid parameter.
+The parameter is invalid.
 
 **Possible Causes**
 
-Each command option must contain a prefix `-`. The parameter corresponding to the option does not contain a hyphen. If a hyphen is missing when you enter an option, the option is processed as a parameter and does not take effect. For example, if you enter `restool inputPath`, the option does not take effect.
+All command options must be prefixed with a hyphen (**-**). The parameters corresponding to the options do not have hyphens. If the hyphen is omitted when you enter an option, the option is processed as a parameter and does not take effect. For example, **restool inputPath** is processed as a parameter.
 
 **Solution**
 
-Check whether the command is correct. You can run the -h command to view the command help information and enter the correct command options and parameters.
+Check whether the command is correct. You can run the **-h** command to view the command help information and enter the correct command options and parameters.
 
 ### 11210004 Invalid Input Path
 
@@ -461,17 +461,17 @@ Check whether the command is correct. You can run the -h command to view the com
 
 Invalid input path 'xxx'.
 
-**Description**
+**Symptom**
 
-Invalid input path.
+The input path is invalid.
 
 **Possible Causes**
 
--The path specified by i/--inputPath is incorrect, or you do not have the access permission.
+-The path specified by **i/--inputPath** is incorrect, or you do not have the access permission.
 
 **Solution**
 
-Check whether the path parameters are correct and whether you have the access permission.
+Check whether the path parameter is correct and whether you have the access permission.
 
 ### 11210005 Duplicate Input Path
 
@@ -479,17 +479,17 @@ Check whether the path parameters are correct and whether you have the access pe
 
 Duplicated input path 'xxx'.
 
-**Description**
+**Symptom**
 
-Duplicate input path.
+The input path is duplicate.
 
 **Possible Causes**
 
-Multiple -i/--inputPath options specify the same input path.
+The same input path is specified for multiple **-i/--inputPath** options.
 
 **Solution**
 
-Check whether the path specified by -i/--inputPath is duplicate.
+Check whether the path specified by **-i/--inputPath** is duplicate.
 
 ### 11210006 Bundle Name Conflict
 
@@ -497,17 +497,17 @@ Check whether the path specified by -i/--inputPath is duplicate.
 
 The package names 'xxx' and 'xxx' conflict.
 
-**Description**
+**Symptom**
 
-A bundle name conflict occurs.
+The bundle name conflicts.
 
 **Possible Causes**
 
-The -p/--packageName option is specified multiple times.
+The **-p/--packageName** option is specified multiple times.
 
 **Solution**
 
-Check whether the -p/--packageName option is specified for multiple times.
+Check whether the **-p/--packageName** option is specified for multiple times.
 
 ### 11210007 Invalid Output Path
 
@@ -515,17 +515,17 @@ Check whether the -p/--packageName option is specified for multiple times.
 
 Invalid output path 'xxx'.
 
-**Description**
+**Symptom**
 
-Invalid output path.
+The output path is invalid.
 
 **Possible Causes**
 
--The output path specified by o/--outputPath does not exist or you do not have the permission to access the path.
+-The output path specified by **-o/--outputPath** does not exist or you do not have the access permission.
 
 **Solution**
 
-Check whether the path parameters are correct and whether you have the access permission.
+Check whether the path parameter is correct and whether you have the access permission.
 
 ### 11210008 Output Path Conflict
 
@@ -533,17 +533,17 @@ Check whether the path parameters are correct and whether you have the access pe
 
 The output paths 'xxx' and 'xxx' conflict.
 
-**Description**
+**Symptom**
 
 The output path conflicts.
 
 **Possible Causes**
 
-The -o/--outputPath option is specified multiple times.
+The **-o/--outputPath** option is specified multiple times.
 
 **Solution**
 
-Check whether the -o/--outputPath option is specified for multiple times.
+Check whether the **-o/--outputPath** option is specified for multiple times.
 
 ### 11210009 Duplicate Resource Header File Path
 
@@ -551,17 +551,17 @@ Check whether the -o/--outputPath option is specified for multiple times.
 
 Duplicated resource header path 'xxx'.
 
-**Description**
+**Symptom**
 
-Duplicate resource header file path.
+The resource header file path is duplicate.
 
 **Possible Causes**
 
-Multiple -r/--resHeader options specify the same resource header file path.
+The same resource header file path is specified for multiple **-r/--resHeader** options.
 
 **Solution**
 
-Check whether the resource header file path specified by -r/--resHeader is duplicate.
+Check whether the resource header file path specified by the **-r/--resHeader** option is duplicate.
 
 ### 11210010 Module Name Conflict
 
@@ -569,17 +569,17 @@ Check whether the resource header file path specified by -r/--resHeader is dupli
 
 The module names 'xxx' and 'xxx' conflict.
 
-**Description**
+**Symptom**
 
-A module name conflict occurs.
+The module names conflict.
 
 **Possible Causes**
 
-The -m/--modules option is specified multiple times.
+The **-m/--modules** option is specified multiple times.
 
 **Solution**
 
-Check whether the -m/--modules option is specified for multiple times.
+Check whether the **-m/--modules** option is specified multiple times.
 
 ### 11210011 Duplicate Module Name
 
@@ -587,17 +587,17 @@ Check whether the -m/--modules option is specified for multiple times.
 
 Duplicated module name 'xxx'.
 
-**Description**
+**Symptom**
 
-Duplicate module name.
+The module name is duplicate.
 
 **Possible Causes**
 
--The m/--modules option specifies a duplicate module name, for example, `-m entry,entry`.
+-The **m/--modules** option specifies a duplicate module name, for example, **-m entry,entry**.
 
 **Solution**
 
-Check whether the module name specified by -m/--modules is duplicate.
+Check whether the module name specified by **-m/--modules** is duplicate.
 
 ### 11210012 Application Configuration File Conflict
 
@@ -605,17 +605,17 @@ Check whether the module name specified by -m/--modules is duplicate.
 
 The paths 'xxx' and 'xxx' of the module.json (in the stage model) or config.json (in the FA model) file conflict.
 
-**Description**
+**Symptom**
 
-The paths of the application configuration file [module.json (stage model)](../quick-start/module-configuration-file.md) or [config.json (FA model)](../quick-start/application-configuration-file-overview-fa.md) conflict.
+The paths of the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) conflict.
 
 **Possible Causes**
 
-The -j/--json option is specified multiple times.
+The **-j/--json** option is specified multiple times.
 
 **Solution**
 
-Check whether the -j/--json option is specified for multiple times.
+Check whether the **-j/--json option** is specified multiple times.
 
 ### 11210013 Invalid Resource Start ID
 
@@ -623,13 +623,13 @@ Check whether the -j/--json option is specified for multiple times.
 
 Invalid start ID 'xxx'. It is out of range.
 
-**Description**
+**Symptom**
 
 Invalid resource start ID.
 
 **Possible Causes**
 
-The resource start ID specified by -e/--startId is not within the specified range.
+The resource start ID specified by **-e/--startId** is not within the specified range.
 
 **Solution**
 
@@ -641,35 +641,35 @@ Check whether the resource start ID is within the range of [0x01000000, 0x06FFFF
 
 Duplicated append path 'xxx'.
 
-**Description**
+**Symptom**
 
-Duplicate incremental resource file path.
+The incremental resource file path is duplicate.
 
 **Possible Causes**
 
-Multiple -x/--append options specify the same incremental resource file path.
+The same incremental resource file path is specified for multiple **-x/--append** options.
 
 **Solution**
 
-Check whether the incremental resource file path specified by -x/--append is duplicate.
+Check whether the incremental resource file path specified by **-x/--append** is duplicate.
 
-### 11210015 A target-config Conflict Occurs
+### 11210015 target-config Conflict
 
 **Error Message**
 
 The target configurations 'xxx' and 'xxx' conflict.
 
-**Description**
+**Symptom**
 
-The parameters specified by multiple target-config options conflict.
+The parameters specified by multiple **target-config** options conflict.
 
 **Possible Causes**
 
-The --target-config option is specified multiple times.
+The **--target-config** option is specified multiple times.
 
 **Solution**
 
-Check whether the --target-config option is specified for multiple times.
+Check whether the **--target-config** option is specified multiple times.
 
 ### 11210016 Invalid target-config
 
@@ -677,35 +677,35 @@ Check whether the --target-config option is specified for multiple times.
 
 Invalid target configuration argument 'xxx'. The argument format for option --target-config should be like 'Locale[zh_CN,en_US];Device[phone]'.
 
-**Description**
+**Symptom**
 
-The target-config parameter is invalid.
+The **target-config** parameter is invalid.
 
 **Possible Causes**
 
---The format of the parameter specified in the target-config option is incorrect.
+--The format of the parameter specified in the **target-config** option is incorrect.
 
 **Solution**
 
-Check whether the parameter format of the --target-config option is correct, for example, `Locale[zh_CN,en_US];Device[phone]`. For details about the format, see the description of target-config in Command Options Supported by restool.
+Check whether the format of the parameter in the **--target-config** option is correct, for example, `Locale[zh_CN,en_US];Device[phone]`. For details about the format, see **target-config** in [Command Options](#command-options).
 
-### 11210017 Invalid Path of System Resource id_defined.json
+### 11210017 Invalid System Resource id_defined.json Path
 
 **Error Message**
 
 Invalid system id_defined.json path 'xxx'.
 
-**Description**
+**Symptom**
 
-Invalid system resource id_defined.json path.
+The path of the system resource **id_defined.json** is invalid.
 
 **Possible Causes**
 
-The id_defined.json path of the system resource specified by --defined-sysids is incorrect or you do not have the permission to access the path.
+The **id_defined.json** path of the system resource specified by **--defined-sysids** is incorrect or no access permission is available.
 
 **Solution**
 
-Check whether the id_defined.json path of the system resource is correct and whether you have the permission to access the path.
+Check whether the **id_defined.json** path of the system resource is correct and whether you have the permission to access the path.
 
 ### 11210018 Duplicate System Resource id_defined.json Path
 
@@ -713,17 +713,17 @@ Check whether the id_defined.json path of the system resource is correct and whe
 
 Duplicated system id_defined.json path 'xxx'.
 
-**Description**
+**Symptom**
 
---The file path specified by the defined-sysids option is duplicate.
+--The file path specified by **defined-sysids** is duplicate.
 
 **Possible Causes**
 
-Multiple --defined-sysids options specify the same system resource id_defined.json path.
+The same system resource **id_defined.json** path is specified for multiple **--defined-sysids** options.
 
 **Solution**
 
-Check whether the path of the system resource id_defined.json file specified by --defined-sysids is duplicate.
+Check whether the **id_defined.json** file path specified by **--defined-sysids** is duplicate.
 
 ### 11210019 compressed-config Conflict
 
@@ -731,31 +731,31 @@ Check whether the path of the system resource id_defined.json file specified by 
 
 The compression JSON paths 'xxx' and 'xxx' conflict.
 
-**Description**
+**Symptom**
 
-The parameters specified by multiple --compressed-config options conflict.
+The parameters specified by multiple **--compressed-config** options conflict.
 
 **Possible Causes**
 
-The --compressed-config option is specified multiple times.
+The **--compressed-config** option is specified multiple times.
 
 **Solution**
 
-Check whether the --compressed-config option is specified for multiple times.
+Check whether the **--compressed-config** option is specified multiple times.
 
-### 11210020 Non-ASCII Value of the Parameter
+### 11210020 Non-ASCII Parameter Value
 
 **Error Message**
 
 The argument value 'xxx' is not an ASCII value.
 
-**Description**
+**Symptom**
 
 The parameter value is not in ASCII format.
 
 **Possible Causes**
 
-The input and output paths contain Chinese characters or other non-ASCII characters.
+The input or output path parameter contains Chinese characters or other non-ASCII characters.
 
 **Solution**
 
@@ -767,89 +767,89 @@ Check whether the parameter value contains Chinese characters or non-ASCII chara
 
 Options 'xxx' and 'xxx' cannot be used together.
 
-**Description**
+**Symptom**
 
 Two mutually exclusive options cannot be specified at the same time.
 
 **Possible Causes**
 
-Two mutually exclusive options are specified, such as `-x` and `--target-config`.
+Two mutually exclusive options are specified, such as **-x** and **--target-config**.
 
 **Solution**
 
-Check whether the command is correct. Do not specify mutually exclusive options. You can run the -h command to view the command help information and enter correct command options and parameters.
+Check whether the command is correct. Do not specify mutually exclusive options. You can run the **-h** command to view the command help information and input the correct command options and parameters.
 
-### 11210022 Empty Bundle Name
+### 11210022 Empty Package Name
 
 **Error Message**
 
 The package name is empty. It should be specified with option -p/--packageName.
 
-**Description**
+**Symptom**
 
-The bundle name is empty.
+The package name is empty.
 
 **Possible Causes**
 
-The -p/--packageName option is not specified.
+The **-p/--packageName** option is not specified.
 
 **Solution**
 
-Check whether the -p/--packageName option is used to specify the bundle name.
+Check whether the **-p/--packageName** option is used to specify the package name.
 
-### 11210023 The Resource Header File Path Is Empty
+### 11210023 Empty Resource Header File Path
 
 **Error Message**
 
 The resource header path (for example, ./ResourceTable.js, ./ResourceTable.h) is empty. It should be specified with option -r/--resHeader.
 
-**Description**
+**Symptom**
 
-The path of the resource header file is empty.
+The resource header file path is empty.
 
 **Possible Causes**
 
-The -r/--resHeader option is not used to specify the path of the resource header file.
+The resource header file path is not specified by **-r/--resHeader**.
 
 **Solution**
 
-Check whether the -r/--resHeader option is used to specify the path of the resource header file.
+Check whether the resource header file path is specified by **-r/--resHeader**.
 
-### 11210024 The dump Command Does Not Contain the HAP Path
+### 11210024 HAP Path Missing from the dump Command
 
 **Error Message**
 
 The HAP path of the resource dump command is missing.
 
-**Description**
+**Symptom**
 
-The dump command does not contain the HAP package path.
+The dump command does not contain the HAP path.
 
 **Possible Causes**
 
-The dump command does not specify the path of the HAP package.
+The dump command does not specify the path of the HAP.
 
 **Solution**
 
-Check whether the dump command specifies the path of the HAP package, for example, `restool dump xxx/entry.hap`.
+Check whether the dump command specifies the HAP path, for example, **restool dump xxx/entry.hap**.
 
-### 11210025 The HAP Path Specified by the Dump Command Is Invalid
+### 11210025 Invalid HAP Path Specified by the dump Command
 
 **Error Message**
 
 Invalid HAP path 'xxx' in the resource dump command.
 
-**Description**
+**Symptom**
 
-The HAP package path specified in the dump command is invalid.
+The HAP path specified in the dump command is invalid.
 
 **Possible Causes**
 
-The path of the HAP package specified by the dump command is incorrect or you do not have the access permission.
+The HAP path specified in the dump command is incorrect or you do not have the access permission.
 
 **Solution**
 
-Check whether the path of the HAP package specified by the dump command is correct and whether the user has the permission to access the path.
+Check whether the HAP path specified in the dump command is correct and whether you have permission to access it.
 
 ### 11210026 Invalid Number of Child Threads
 
@@ -857,53 +857,53 @@ Check whether the path of the HAP package specified by the dump command is corre
 
 Invalid thread count 'xxx'. It should be an integer greater than 0.
 
-**Description**
+**Symptom**
 
-Number of invalid sub-threads.
+The number of child threads is invalid.
 
 **Possible Causes**
 
---The number of sub-threads specified by the thread option is a negative number or a decimal.
+--The number of child threads specified by the **thread** option is either a negative number or a decimal.
 
 **Solution**
 
-Check whether the value of --thread is an integer greater than 0.
+Check whether the value of **--thread** is an integer greater than 0.
 
-### 11211001 The Output Path Already Exists
+### 11211001 Output Path Exists
 
 **Error Message**
 
 The output path exists. Specify option -f/--forceWrite to overwrite.
 
-**Description**
+**Symptom**
 
 The output path already exists.
 
 **Possible Causes**
 
-A file already exists in the output path specified by -o/--output and cannot be directly overwritten.
+The output path specified by **-o/--output** already has files, and they cannot be overwritten.
 
 **Solution**
 
-Check whether a file exists in the output path. You can manually delete the file or specify the -f/--forceWrite option to forcibly overwrite the existing file.
+Check whether the output path has files. You can manually delete the files or specify the **-f/--forceWrite** option to forcibly overwrite the files.
 
-### 11211002 The Module Configuration File Path Is Missing
+### 11211002 Module Configuration File Path Missing
 
 **Error Message**
 
 There are multiple input paths, but the path of the module.json (in the stage model) or config.json (in the FA model) file is not specified with option -j/--json.
 
-**Description**
+**Symptom**
 
-The path of the application configuration file [module.json (stage model)](../quick-start/module-configuration-file.md) or [config.json (FA model)](../quick-start/application-configuration-file-overview-fa.md) is missing.
+The path of the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) is missing.
 
 **Possible Causes**
 
-If only one input path is specified using -i/--inputPath, ResTool reads the application configuration file from the parent directory of the input path by default. If multiple input paths are specified, for example, `restool -i xxx\AppScope -i xxx\entry\main`, you need to specify the path of the application configuration file using -j/--json.
+If only one input path is specified using **-i/--inputPath**, the restool reads the application configuration file from the parent directory of the input path by default. If multiple input paths are specified, for example, **restool -i xxx\AppScope -i xxx\entry\main**, you need to specify the path of the application configuration file using **-j/--json**.
 
 **Solution**
 
-Check whether the application configuration file path is specified by -j/--json.
+Check whether the application configuration file path is specified using **-j/--json**.
 
 ### 11211003 Invalid Module Type
 
@@ -911,39 +911,39 @@ Check whether the application configuration file path is specified by -j/--json.
 
 Invalid module type 'xxx'. Valid values: ["entry", "har", "shared", "feature"].
 
-**Description**
+**Symptom**
 
 The module type is invalid.
 
 **Possible Causes**
 
-The module type specified in the application configuration file [module.json (stage model)](../quick-start/module-configuration-file.md) or [config.json (FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect. The value is not in the ["entry," "har," "shared," "feature"] range.
+The module type specified in the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect. The value is not in the range of ["entry", "har", "shared", "feature"].
 
 **Solution**
 
 Check whether the module type is within the specified range.
 
-### 11211004 The Start Resource ID Conflicts with the id_defined.json File
+### 11211004 Conflict Between Resource Start ID and id_defined.json
 
 **Error Message**
 
 The start ID 'xxx' specified by option -e/--startId conflict with the IDs in the id_defined.json file.
 
-**Description**
+**Symptom**
 
-The resource start ID specified by -e/--startId conflicts with that in the id_defined.json file.
+The resource start ID specified by **-e/--startId** conflicts with the **id_defined.json** file.
 
 **Possible Causes**
 
-By default, the start resource ID is `0x01000000`. During compilation, the resource IDs increase in ascending order. In addition, restool provides two methods to customize resource IDs:
-1. -e/--startId: specifies the start resource ID in the range of [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF).
-2. Fixed resource ID: Use the id_defined.json file to specify the resource ID.
+By default, the start resource ID is **0x01000000**. During compilation, the resource IDs increase in ascending order. In addition, restool provides two methods to customize them:
+1. **-e/--startId**: specifies the start resource ID in the range of [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF).
+2. [Fixing the Resource ID](#fixing-the-resource-id): specifies the resource ID in the **id_defined.json** file.
 
-If the two modes are used at the same time, the resource IDs calculated in the two modes may be different, causing conflicts.
+If the two methods are used at the same time, the resource IDs calculated in the two methods may be different, causing conflicts.
 
 **Solution**
 
-Check whether the preceding two methods are used to customize resource IDs.
+Check whether the two methods are used at the same time.
 
 ### 11211007 Invalid Resource Type in id_defined.json
 
@@ -951,13 +951,13 @@ Check whether the preceding two methods are used to customize resource IDs.
 
 Invalid resource type 'xxx' in the id_defined.json file. Valid values: ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
 
-**Description**
+**Symptom**
 
-The resource type in id_defined.json is invalid.
+The resource type in **id_defined.json** is invalid.
 
 **Possible Causes**
 
-The value of type in the id_defined.json file is not within the range specified by ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
+The value of **type** in the **id_defined.json** file is not within the range of ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
 
 **Solution**
 
@@ -969,13 +969,13 @@ Check whether the resource type is within the specified range.
 
 Invalid ID value 'xxx' in the id_defined.json file. It should be a hexadecimal string, match the pattern ^0[xX][0-9a-fA-F]{8}, and be in the scope [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
-**Description**
+**Symptom**
 
-The resource ID in the id_defined.json file is invalid.
+The resource ID in the **id_defined.json** file is invalid.
 
 **Possible Causes**
 
-1. The resource ID in id_defined.json is not a hexadecimal number.
+1. The resource ID in **id_defined.json** is not a hexadecimal number.
 2. The ID is not in the range of [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 **Solution**
@@ -989,13 +989,13 @@ Check whether the resource ID is in hexadecimal format and the value range is [0
 
 The order value 'xxx' in the id_defined.json file does not match the record element sequence 'xxx'. Expected value: xxx.
 
-**Description**
+**Symptom**
 
-The order attribute value of the resource in the id_defined.json file is inconsistent with the declaration sequence of the resource in the `record` array.
+The **order** value in the **id_defined.json** file is inconsistent with the declaration sequence in the **record** array.
 
 **Possible Causes**
 
-The order attribute of the resource in the id_defined.json file is incorrect. The following is an incorrect example:
+The **order** value in the **id_defined.json** file is incorrect. The following is an incorrect example:
 
 ```
 {
@@ -1015,30 +1015,30 @@ The order attribute of the resource in the id_defined.json file is incorrect. Th
 }
 ```
 
-Two resources are declared. The subscript of the array `record` starts from 0. The subscript of the second resource `ohos_id_color_foreground_dark` in the array is 1, and the value of the corresponding order is also 1.
+Two resources are declared. The index of the **record** array starts from 0. The index of the second resource **ohos_id_color_foreground_dark** in the array is 1, and the value of order should also be 1.
 
 **Solution**
 
-Check whether the order attribute value of the resource is consistent with the declaration sequence of the resource in the array.
+Check whether the **order** value of is consistent with the declaration sequence in the array.
 <!--DelEnd-->
 
-### 11211012 Duplicate IDs Are Defined in id_defined.json
+### 11211012 Duplicate IDs Defined in id_defined.json
 
 **Error Message**
 
 The names 'xxx' and 'xxx' in the id_defined.json file define the same ID.
 
-**Description**
+**Symptom**
 
-Two resources in id_defined.json define the same resource ID.
+Two resources in **id_defined.json** define the same resource ID.
 
 **Possible Causes**
 
-Two resources in id_defined.json define the same resource ID.
+The same resource ID is defined for two resources in **id_defined.json**.
 
 **Solution**
 
-Check whether the resource ID in the id_defined.json file is unique and whether the value is in the range of [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
+Check whether the resource ID in the **id_defined.json** file is unique and whether the value is in the range of [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 ### 11211014 Incorrect Module Name
 
@@ -1046,18 +1046,18 @@ Check whether the resource ID in the id_defined.json file is unique and whether 
 
 The module name 'xxx' is not found in ["yyy","zzz"], which is specified by -m/--modules.
 
-**Description**
+**Symptom**
 
-The module name in the application configuration file is not in the module name list specified by -m/--modules.
+The module name in the application configuration file is not in the module name list specified by **-m/--modules**.
 
 **Possible Causes**
 
-1. The module name list specified by -m/--modules is incorrect.
-2. The module name specified by name in the application configuration file [module.json (stage model)](../quick-start/module-configuration-file.md) or [config.json (FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect.
+1. The module name list specified by **-m/--modules** is incorrect.
+2. The module name specified by **name** in the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect.
 
 **Solution**
 
-Check whether the module name list specified by -m/--modules contains the module name specified by name in the application configuration file.
+Check whether the module name list specified by **-m/--modules** contains the module name specified by **name** in the application configuration file.
 
 ### 11211101 Invalid Resource File
 
@@ -1065,19 +1065,19 @@ Check whether the module name list specified by -m/--modules contains the module
 
 Failed to scan resources: invalid path 'xxx'.
 
-**Description**
+**Symptom**
 
-Failed to scan the resource because the resource file is invalid.
+Resource scanning fails because the resource file is invalid.
 
 **Possible Causes**
 
 The resource file does not meet the requirements. For example:
-1. rawfile should be a folder, but it is actually a file.
-2. The base/element directory should contain JSON files but actually contains folders.
+1. **rawfile** is expected to be a folder, but it is actually a file.
+2. **base/element** is expected to contain only JSON files, but actually contains folders.
 
 **Solution**
 
-Check whether the resource file type is correct. For details, see the description of various resource files in [Resource Classification and Access - Resource Classification](../quick-start/resource-categories-and-access.md).
+Check whether the resource file type is correct. For details, see [Resource Categories](../quick-start/resource-categories-and-access.md#resource-categories).
 
 ### 11211103 Invalid Qualifier Directory
 
@@ -1085,17 +1085,17 @@ Check whether the resource file type is correct. For details, see the descriptio
 
 Invalid qualifier key 'xxx'. It should match the pattern of the qualifiers directory, for example zh_CN or en_US.
 
-**Description**
+**Symptom**
 
-Invalid qualifier directory.
+The qualifier directory is invalid.
 
 **Possible Causes**
 
-The qualifiers directory name is incorrect.
+The qualifier directory name is incorrect.
 
 **Solution**
 
-Check whether the qualifiers directory name is correct. For details about the qualifiers directory naming rules, see [Resource Classification and Access - Qualifiers Directory](../quick-start/resource-categories-and-access.md).
+Check whether the qualifiers directory name is correct. For details about the naming rules, see [Qualifiers Directory](../quick-start/resource-categories-and-access.md#qualifiers-directory).
 
 ### 11211104 Invalid Resource Group Directory
 
@@ -1103,17 +1103,17 @@ Check whether the qualifiers directory name is correct. For details about the qu
 
 Invalid resource directory name 'xxx'. Valid values: ["element","media","profile"].
 
-**Description**
+**Symptom**
 
-Invalid resource group directory name.
+The resource group directory name is invalid.
 
 **Possible Causes**
 
-The resource group directory name in the qualifiers directory is incorrect and is not in the ["element,""media,""profile"] range.
+The resource group directory name in the qualifiers directory is incorrect and is not in the range of ["element","media","profile"].
 
 **Solution**
 
-Check whether the qualifiers directory contains only [resource group directory](../quick-start/resource-categories-and-access.md): `element`, `media`, and `profile`.
+Check whether the qualifiers directory contains only [resource group directories](../quick-start/resource-categories-and-access.md#resource-group-directories): **element**, **media**, and **profile**.
 
 ### 11211106 Invalid Translation Status
 
@@ -1121,35 +1121,35 @@ Check whether the qualifiers directory contains only [resource group directory](
 
 Invalid translation priority value 'xxx'. Valid values: ["code","translate","LT","customer"].
 
-**Description**
+**Symptom**
 
 Invalid translation status.
 
 **Possible Causes**
 
-The translation status attribute priority under the translatable attribute attr of the string or [singular and plural](../../application-dev/internationalization/l10n-singular-plural.md) resource is incorrectly configured and is not in the ["code,""translate,""LT,""customer"] range.
+The translation status attribute **priority** of the translatable attribute **attr** of the string or [plural](../../application-dev/internationalization/l10n-singular-plural.md) resource is incorrectly configured and is not in the range of ["code","translate","LT","customer"].
 
 **Solution**
 
-Check whether the value of priority is correct. For details, see the description of priority in [Resource Translatability](../quick-start/resource-categories-and-access.md).
+Check whether the value of **priority** is correct. For details, see [Using the attr Attribute for Resource Translation](../quick-start/resource-categories-and-access.md#using-the-attr-attribute-for-resource-translation).
 
-### 11211107 Unsupported Element Type
+### 11211107 element Type Not Supported
 
 **Error Message**
 
 Unsupported element resource type 'xxx'. Valid values: ["integer","string","strarray","intarray","boolean","color","theme","plural","float","pattern","symbol"].
 
-**Description**
+**Symptom**
 
-The element resource type is not supported.
+The element type is not supported.
 
 **Possible Causes**
 
-The JSON resource file in the element directory supports the ["integer","string","strarray","intarray","boolean","color","theme","plural","float","pattern","symbol"] resource type and does not support the id resource type.
+The JSON resource file in the **element** directory supports the following resource types:["integer","string","strarray","intarray","boolean","color","theme","plural","float","pattern","symbol"]. "id" is not supported.
 
 **Solution**
 
-Check whether the type of the element resource is correct. For details, see the description of the element resource in [Resource Group Directory](../quick-start/resource-categories-and-access.md).
+Check whether the element type is correct. For details, see [Resource Group Directories](../quick-start/resource-categories-and-access.md#resource-group-directories)
 
 ### 11211108 Invalid Color Value
 
@@ -1157,15 +1157,15 @@ Check whether the type of the element resource is correct. For details, see the 
 
 Invalid color value 'xxx' of the resource 'xxx'. It can only reference '$color:xxx' or be '#rgb', '#argb', '#rrggbb', or '#aarrggbb'.
 
-**Description**
+**Symptom**
 
-Invalid color value.
+The color value is invalid.
 
 **Possible Causes**
 
 The color resource supports only the following formats:
-1. Reference other color resources. For example, `$color:xxx` references the color resource of the application, or `$ohos:color:xxx` references the system color resource.
-2. RGB color value format starting with `#`, for example, `#rgb`, `#argb`, `#rrggbb`, and `#aarrggbb`.
+1. Referencing other color resources. For example, **$color:xxx** references the application's color resource, or **$ohos:color:xxx** references the system color resource.
+2. RGB color value starting with **#**, for example, **#rgb**, **#argb**, **#rrggbb**, and **#aarrggbb**.
 
 **Solution**
 
@@ -1177,31 +1177,31 @@ Check whether the color resource is in the correct reference format or RGB forma
 
 Invalid resource reference `$xxx:xxx`. Supported reference: `$(ohos:)?xxx:xxx`.
 
-**Description**
+**Symptom**
 
-Invalid resource reference.
+The resource reference is invalid.
 
 **Possible Causes**
 
-Resource reference applies only to resources of the same type. For example, in string.json, you can use `$string:xxx` to reference string resources of an application or use `$ohos:string:xxx` to reference system string resources. However, you cannot use `$integer:xxx` to reference integer resources.
+Resource reference applies only to resources of the same type. For example, in string.json, you can use **$string:xxx** to reference the application's string resources or use **$ohos:string:xxx** to reference system string resources. However, you cannot use **$integer:xxx** to reference integer resources.
 
 **Solution**
 
 Check whether the resource reference mode is correct.
 
-### 11211110 The parent Parameter of the theme Resource Is Empty
+### 11211110 Empty parent in theme Resource
 
 **Error Message**
 
 The parent value of resource 'xxx' is empty. It should be a valid resource name.
 
-**Description**
+**Symptom**
 
-The parent value of the theme resource is empty.
+The **parent** value of the **theme** resource is empty.
 
 **Possible Causes**
 
-The parent attribute of the theme resource is optional. The value must be the name of another theme resource and cannot be an empty string. The following is a correct example:
+The **parent** property of the **theme** resource is optional. Its value must be the name of another **theme** resource and cannot be an empty string. The following is a correct example:
 ```
 {
   "theme": [
@@ -1235,61 +1235,61 @@ The parent attribute of the theme resource is optional. The value must be the na
   ]
 }
 ```
-Two theme resources `base` and `child` are declared. `base` does not contain the parent attribute. The parent attribute of `child` is set to base.
+Two theme resources **base** and **child** are declared. **base** does not contain the **parent** property, and the **parent** property of the **child** resource is set to **base**.
 
 **Solution**
 
-Check whether the parent attribute of the theme resource is empty. If the parent attribute is not required, remove it.
+Check whether the **parent** property of the **theme** resource is empty. If the **parent** property is not required, delete it.
 
-### 11211111 The Length of the Resource of the Number Group Type Is Too Long
+### 11211111 Excessive array Resource Length
 
 **Error Message**
 
 The array resource 'xxx' is too large. The total length of the value of the array elements cannot exceed 65535.
 
-**Description**
+**Symptom**
 
-The resource of the array type is too long.
+The length of the array resource is too long.
 
 **Possible Causes**
 
-The total length of a single array resource exceeds 65535 bytes.
+The total length of an array resource exceeds 65535 bytes.
 
 **Solution**
 
-Check whether the array resource is too long. If yes, split it into multiple array resources.
+Check whether the length of the array resource is too long. If the length is too long, split the array resource into multiple array resources.
 
-### 11211112 Invalid Single/Plural Resource Type
+### 11211112 Invalid plural Resource Type
 
 **Error Message**
 
 Invalid quantity 'xxx' of the plural resource 'xxx'. Valid values: ["zero","one","two","few","many","other"].
 
-**Description**
+**Symptom**
 
-Invalid singular or plural resource type.
+The plural resource type is invalid.
 
 **Possible Causes**
 
-The category attribute quantity of the singular and plural resources is not in the range of ["zero,""one,""two,""few,""many,""other"].
+The value of the **quantity** property of the plural resource is incorrect, which is not in the range of ["zero","one","two","few","many","other"].
 
 **Solution**
 
-Check whether the singular and plural categories are correct. For details, see the description of singular and plural categories in [Supporting singular and plural](../../application-dev/internationalization/l10n-singular-plural.md).
+Check whether the plural resource type is correct. For details, see [Singular/Plural Form Selection](../../application-dev/internationalization/l10n-singular-plural.md).
 
-### 11211113 Duplicate Types of Single and Plural Resources
+### 11211113 Duplicate plural Resource Type
 
 **Error Message**
 
 Duplicated quantity 'xxx' of the plural resource 'xxx'.
 
-**Description**
+**Symptom**
 
-The category of the singular and plural resources is duplicate.
+The plural resource type is duplicate.
 
 **Possible Causes**
 
-The same category is repeatedly declared in singular and plural resources. In the following noncompliant code example, `eat_apple` repeatedly declares the category `one`.
+The same type is declared repeatedly in the plural resource. For example, the **one** type is declared repeatedly for **eat_apple** in the following error example:
 ```
 {
   "plural": [
@@ -1316,43 +1316,43 @@ The same category is repeatedly declared in singular and plural resources. In th
 
 **Solution**
 
-Check whether the categories of the singular and plural resource declarations are duplicate. For details, see the description of singular and plural categories in [Supporting singular and plural](../../application-dev/internationalization/l10n-singular-plural.md).
+Check whether the plural resource type is duplicate. For details, see [Singular/Plural Form Selection](../../application-dev/internationalization/l10n-singular-plural.md).
 
-### 11211114 The Single/Plural Resource Does Not Have the Other Type
+### 11211114 other Type Missing in Plural Resource
 
 **Error Message**
 
 The plural resource 'xxx' should contain the 'other' quantity.
 
-**Description**
+**Symptom**
 
-The singular and plural resources must contain the other type.
+The resource must contain the **other** type.
 
 **Possible Causes**
 
-The declaration of the other type is missing for singular and plural resources.
+The plural resource does not contain the **other** type.
 
 **Solution**
 
-Check whether the singular and plural resources contain the declaration of the other type. For details, see the description of the singular and plural types in [Supporting singular and plural](../../application-dev/internationalization/l10n-singular-plural.md).
+Check whether the **plural** resource contain the **other** type. For details, see [Singular/Plural Form Selection](../../application-dev/internationalization/l10n-singular-plural.md).
 
-### 11211115 Invalid Symbol Resource
+### 11211115 Invalid symbol Resource
 
 **Error Message**
 
 Invalid value 'xxx' of the symbol resource 'xxx'. It should be in the scope [0xF0000,0xFFFFF] or [0x100000,0x10FFFF].
 
-**Description**
+**Symptom**
 
-The symbol resource value is invalid.
+The **symbol** resource value is invalid.
 
 **Possible Causes**
 
-The symbol value is not in the range of [0xF0000, 0xFFFFF] or [0x100000, 0x10FFFF].
+The **symbol** resource value is not within the range of [0xF0000,0xFFFFF] or [0x100000,0x10FFFF].
 
 **Solution**
 
-Checks whether the value of the symbol resource is within the specified range.
+Check whether the **symbol** resource value is within the specified range.
 
 ### 11211116 Invalid Resource Name
 
@@ -1360,27 +1360,27 @@ Checks whether the value of the symbol resource is within the specified range.
 
 Invalid resource name 'xxx'. It should match the pattern [a-zA-Z0-9_].
 
-**Description**
+**Symptom**
 
-Invalid resource name.
+The resource name is invalid.
 
 **Possible Causes**
 
-The resource name must match the [a-zA-Z0-9_] rule and can contain only uppercase letters, lowercase letters, digits, and underscores (_).
+The resource name must match the **[a-zA-Z0-9_]** rule and can contain only uppercase letters, lowercase letters, digits, and underscores (_).
 
 **Solution**
 
-Check whether the resource name matches the rule [a-zA-Z0-9_].
+Check whether the resource name matches the **[a-zA-Z0-9_]** rule.
 
-### 11211117 Resource Duplication Definition
+### 11211117 Duplicate Resource Definition
 
 **Error Message**
 
 Resource 'xxx' conflict. It is first declared at 'xxx' and declared again at 'xxx'.
 
-**Description**
+**Symptom**
 
-Resource duplication definition.
+The resource definition is duplicate.
 
 **Possible Causes**
 
@@ -1388,46 +1388,46 @@ Resources of the same type and name are defined in multiple places, causing conf
 
 **Solution**
 
-Check whether the resource is defined repeatedly. You can change the resource name or delete the duplicate resource.
+Check whether the resource is defined repeatedly. If yes, change the resource name or delete the duplicate resource.
 
-### 11211118 The Resource ID Exceeds the Maximum Value
+### 11211118 Resource ID Exceeds Maximum
 
 **Error Message**
 
 The resource ID 'xxx' exceeds the maximum ID 'xxx'.
 
-**Description**
+**Symptom**
 
-The resource ID exceeds the maximum.
+The resource ID exceeds the maximum value.
 
 **Possible Causes**
 
-The application resource ID range is [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF]. If there are too many resources or a large resource start ID is specified, the ID overflow may exceed the maximum value 0x06FFFFFF or 0xFFFFFFFF.
+The application resource ID is in the range of [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF]. If there are too many resources or a large resource start ID is specified, the ID may overflow and exceed the maximum value **0x06FFFFFF** or **0xFFFFFFFF**.
 
 **Solution**
 
 1. Delete unnecessary resources.
-2. Specifies the start ID of a smaller resource.
+2. Specify a smaller resource start ID.
 
-### 11211120 The Referenced Resource Is Not Defined
+### 11211120 Referenced Resource Not Defined
 
 **Error Message**
 
 The resource reference '$xxx:xxx' is not defined.
 
-**Description**
+**Symptom**
 
 The referenced resource is not defined.
 
 **Possible Causes**
 
 1. The referenced resource does not exist. For example, the resource has been deleted or renamed.
-2. The directory where the referenced resource is located is not specified as the input path by -i/--inputPath.
+2. The directory where the referenced resource is located is not specified as the input path using **-i/--inputPath**.
 
 **Solution**
 
-1. Check whether the resource that reports the error exists.
-2. Check whether the parent directory of the `resources` where the resource is located is specified as the input path by -i/--inputPath. For example, if the resource in the error information is defined in `xxx/entry/src/main/resources/base/element/string.json`, specify `xxx/entry/src/main` as the input path.
+1. Check whether the resource reported in the error information exists.
+2. Check whether the parent directory of **resources** where the resource is located is specified as the input path using **-i/--inputPath**. For example, if the resource in the error information is defined in **xxx/entry/src/main/resources/base/element/string.json**, you need to specify **xxx/entry/src/main** as the input path.
 
 ### 11211124 Failed to Parse the resources.index File
 
@@ -1435,17 +1435,17 @@ The referenced resource is not defined.
 
 Failed to parse the resources.index file.
 
-**Description**
+**Symptom**
 
-Failed to parse resources.index.
+The resources.index file parsing fails.
 
 **Possible Causes**
 
-The format of resources.index is incorrect. For example, the content is empty or the 128-byte version information does not exist at the beginning of the file.
+The format of **resources.index** is incorrect. For example, the content is empty or the beginning of the file does not contain 128-byte version information.
 
 **Solution**
 
-Check the source of the resources.index file and ensure that the file is generated by the restool tool.
+Check the source of the **resources.index** file and ensure that the file is generated by restool.
 
 ### 11212001 Failed to Parse the HAP
 
@@ -1453,14 +1453,14 @@ Check the source of the resources.index file and ensure that the file is generat
 
 Failed to parse the HAP.
 
-**Description**
+**Symptom**
 
-Failed to parse the HAP package.
+The HAP parsing fails.
 
 **Possible Causes**
 
-The format of the HAP package is incorrect. For example, the package fails to be decompressed after being compressed for multiple times.
+The format of the HAP file is incorrect. For example, it fails to be decompressed after being compressed multiple times.
 
 **Solution**
 
-Check the format of the HAP package. Ensure that the HAP package is directly generated by the SDK tool and is not compressed or decompressed.
+Check the format of the HAP file. Ensure that the HAP is generated by the SDK without any modification, such as compression and decompression.

@@ -1,5 +1,11 @@
 # @system.bluetooth (蓝牙)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >

@@ -26,7 +26,7 @@ Custom components have variables. A variable must be decorated by a decorator wh
 
 Before implementing state management, you need to understand the basic syntax of the UI paradigm. A review of the following topics would be helpful: [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [Creating a Custom Component](./arkts-create-custom-components.md).
 
-## Fundamental Concepts
+## Basic Concepts
 
 - State variable: a variable decorated by a state decorator. Its value change will trigger UI re-renders. Example: @State num: number = 1, where @State is a state decorator and **num** is a state variable.
 
@@ -210,7 +210,7 @@ State management of V2 provides a new set of decorators.
 | \@CustomDialog | [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)  | Custom dialog box. For V2, you are advised to use **openCustomDialog** to implement a custom dialog box.|
 | WithTheme     | WithTheme   | Theming, used to set custom theme styles for partial application pages, including [onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12).<br>Since API version 18, this API is supported in V2 components.|
 | Built-in UI component library    | Built-in UI component library   | Built-in UI component libraries for their respective state management versions. Built-in UI components that work with V1 include the following: [Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md), [ProgressButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md), and [SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md).<br>New V2-optimized components are available since API version 18, including [DialogV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md), [ProgressButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md), and [SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md).|
-| animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animationTo Failed in State Management V2](./arkts-new-local.md#using-animationto-failed-in-state-management-v2).|
+| animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
 For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
 <!--no_check-->

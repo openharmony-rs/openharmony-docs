@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 点击日期弹出日历选择器弹窗，可在弹窗内选择日期。
 
@@ -43,6 +43,8 @@ static show(options?: CalendarDialogOptions): void
 继承自[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称       | 类型                                            | 只读 | 可选 | 说明                                                        |
 | ---------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |

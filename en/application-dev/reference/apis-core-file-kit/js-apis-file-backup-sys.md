@@ -25,10 +25,10 @@ Defines a file metadata object, which includes the application name and file URI
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Mandatory| Description                                                                                               |
-| ---------- | ------ | ---- | --------------------------------------------------------------------------------------------------- |
-| bundleName | string | Yes  | Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
-| uri        | string | Yes  | URI of the file in the application sandbox.<br>Currently, the URI is not in the uniform data format. It can consist of digits (0–9), letters (a–z and A–Z), underscores (_), and period (.) only.     |
+| Name      | Type  | Read-Only| Optional| Description                                                                                               |
+| ---------- | ------ | ---- | ---- |--------------------------------------------------------------------------------------------------- |
+| bundleName | string | No  | No| Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
+| uri        | string | No  | No| URI of the file in the application sandbox.<br>Currently, the URI is not in the uniform data format. It can consist of digits (0–9), letters (a–z and A–Z), underscores (_), and period (.) only.     |
 
 ## FileData
 
@@ -40,9 +40,9 @@ Defines a file data object, which includes the file descriptor (FD) of the file 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name| Type  | Mandatory| Description                                    |
-| ---- | ------ | ---- | ---------------------------------------- |
-| fd   | number | Yes  | FD, which can be obtained through the backup service.|
+| Name| Type  | Read-Only| Optional| Description                                    |
+| ---- | ------ | ---- | --- |---------------------------------------- |
+| fd   | number | No  | No|FD, which can be obtained through the backup service.|
 
 ## FileManifestData<sup>12+</sup>
 
@@ -54,9 +54,9 @@ Defines a file data object, which includes the file descriptor (FD) of the file 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Mandatory| Description                                    |
-| ---------- | ------ | ---- | ---------------------------------------- |
-| manifestFd | number | Yes  | FD, which can be obtained through the backup service.|
+| Name      | Type  | Read-Only| Optional| Description                                    |
+| ---------- | ------ | ---- | --- | ---------------------------------------- |
+| manifestFd | number | No  | No| FD, which can be obtained through the backup service.|
 
 ## IncrementalBackupTime<sup>12+</sup>
 
@@ -64,10 +64,10 @@ Represents the time of the last incremental backup.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name               | Type  | Mandatory| Description                                                                                               |
-| ------------------- | ------ | ---- | --------------------------------------------------------------------------------------------------- |
-| bundleName          | string | Yes  | Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
-| lastIncrementalTime | number | Yes  | Time when the last incremental backup was performed.                                                                          |
+| Name               | Type  | Read-Only| Optional| Description                                                                                               |
+| ------------------- | ------ | ---- | --- | --------------------------------------------------------------------------------------------------- |
+| bundleName          | string | No  | No| Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
+| lastIncrementalTime | number | No  | No| Time when the last incremental backup was performed.                                                                          |
 
 ## BackupParams<sup>12+</sup>
 
@@ -75,9 +75,9 @@ Represents optional parameters in JSON strings for backup and restore.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Mandatory| Description                                              |
-| ---------- | ------ | ---- | -------------------------------------------------- |
-| parameters | string | No  | Optional parameters for backup or restore, in JSON strings. It is empty by default.|
+| Name      | Type  | Read-Only| Optional| Description                                              |
+| ---------- | ------ | ---- | ---- | -------------------------------------------------- |
+| parameters | string | No  | Yes| Optional parameters for backup or restore, in JSON strings. It is empty by default.|
 
 ## BackupPriority<sup>12+</sup>
 
@@ -85,9 +85,9 @@ Represents the backup priority.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name    | Type  | Mandatory| Description                                                  |
-| -------- | ------ | ---- | ------------------------------------------------------ |
-| priority | number | No  | Backup priority. A larger value indicates a higher priority. If the priorities are the same, the API called first is executed first. The default value is **0**.|
+| Name    | Type  | Read-Only| Optional| Description                                                  |
+| -------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| priority | number | No  | Yes| Backup priority. A larger value indicates a higher priority. If the priorities are the same, the API called first is executed first. The default value is **0**.|
 
 ## IncrementalBackupData<sup>12+</sup>
 
@@ -145,6 +145,8 @@ Called when the file is ready for sending to the client. If the callback is invo
 >
 > The **File** returned by **AsyncCallback** is the file.backup.[File](#file). The returned file belongs to the backup service. Once the file is closed, the backup service shall clear the resources used by the file. However, the client must close the file handle first.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Return value**
@@ -188,6 +190,8 @@ onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
 Called when the application backup or restore starts. If the callback is successfully invoked, **bundleName** is returned. Otherwise, an **err** object is returned. Since API version 12, **err** and **bundleName** are returned.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Return value**
@@ -203,7 +207,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13500001 | The application is not added to the backup or restore. |
 | 13500002 | Failed to start application extension Procedure.       |
 | 13600001 | IPC error.                                             |
@@ -232,6 +236,8 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 
 Called when the application backup or restore ends. If the callback is successfully invoked, **bundleName** is returned. Otherwise, an **err** object is returned. Since API version 12, **err** and **bundleName** are returned.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Return value**
@@ -247,7 +253,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13500003 | Backup or restore timed out.     |
 | 13500004 | Application extension death.     |
 | 13600001 | IPC error.                       |
@@ -276,6 +282,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 onAllBundlesEnd: AsyncCallback&lt;undefined&gt;
 
 Called when the backup or restore of all applications ends. If the callback fails to be invoked, an **err** object is returned.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -312,6 +320,8 @@ onBackupServiceDied: Callback&lt;undefined&gt;
 
 Called when the backup service is suspended. If this callback fails to be invoked, an **err** object is returned.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Example**
@@ -327,6 +337,8 @@ Called when the backup service is suspended. If this callback fails to be invoke
 onResultReport (bundleName: string, result: string)
 
 Called when the backup or restore is complete. If the callback is invoked successfully, the application bundle name and backup or restore information (such as the number of backed up or restored records or exception information) are returned.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -354,6 +366,8 @@ onProcess (bundleName: string, process: string)
 
 Called to report the backup or restore progress information. If the callback is invoked successfully, the progress information or exception information are returned.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Return value**
@@ -379,6 +393,8 @@ Called to report the backup or restore progress information. If the callback is 
 getBackupVersion(): string
 
 Obtains the backup or restore version information.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -427,6 +443,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getLocalCapabilities(callback: AsyncCallback&lt;FileData&gt;): void
 
 Obtains a JSON file that describes local capabilities. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -497,6 +515,8 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 Obtains a JSON file that describes local capabilities. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -563,6 +583,8 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 
 Obtains local capabilities. The local capabilities of an application are queried based on the **dataList** parameter passed in. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -587,7 +609,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
@@ -623,6 +645,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 getBackupInfo(bundleToBackup: string): string
 
 Obtains information about the application to back up.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -672,7 +696,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 updateTimer(bundleName: string, timeout: number): boolean
 
-Called after **onBundleBegin** and before **onBundleEnd** to set the backup or restore timer.
+Sets the duration of application backup or restoration. This method must be called after **onBundleBegin** and before **onBundleEnd**.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -726,7 +752,9 @@ Called after **onBundleBegin** and before **onBundleEnd** to set the backup or r
 
 updateSendRate(bundleName: string, sendRate: number): boolean
 
-Called after **onBundleBegin** and before **onBundleEnd** to set the backup or restore timer.
+Updates the rate at which the backup application sends file descriptors (FDs). This method is called after **onBundleBegin** and before **onBundleEnd**.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -782,6 +810,8 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 Reports the size of the application data to be backed up.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 | Name  | Type                                 | Mandatory| Description                |
@@ -808,6 +838,8 @@ Provides a backup process object to support the application backup process. Befo
 constructor(callbacks: GeneralCallbacks)
 
 A constructor used to create a **SessionBackup** instance.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -874,9 +906,9 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 Obtains a JSON file that describes local capabilities in the backup service. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.BACKUP
-
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -1032,9 +1064,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
 
-**Required permissions**: ohos.permission.BACKUP
-
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -1059,7 +1091,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 13600001 | IPC error.                                                    |
 | 13900001 | Operation not permitted.                                      |
 | 13900020 | Invalid argument.                                             |
@@ -1176,6 +1208,8 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): v
 
 Appends the applications whose data needs to be backed up. Currently, the obtained **SessionBackup** instance can be called only once in the entire backup process. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -1272,6 +1306,8 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 Appends the applications whose data needs to be backed up. Currently, the obtained **SessionBackup** instance can be called only once in the entire backup process. This API uses a promise to return the result.
 
 From API version 12, the optional parameter **infos** is added to carry information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -1415,6 +1451,8 @@ release(): Promise&lt;void&gt;
 
 Releases the backup session when the backup process is complete. This API disconnects the application from the backup and restore service and exits the service. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -1433,7 +1471,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
@@ -1496,6 +1534,8 @@ cancel(bundleName: string): number
 
 Cancels the backup of an application when data exceptions occur.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -1520,7 +1560,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -1784,6 +1824,8 @@ constructor(callbacks: GeneralCallbacks)
 
 A constructor used to create a **SessionRestore** instance.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -1849,9 +1891,9 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 Obtains a JSON file that describes local capabilities in the restore service. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.BACKUP
-
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -2012,6 +2054,8 @@ Appends the applications whose data needs to be restored. Currently, the obtaine
 > - During the data restore, the capability file needs to be verified.
 > - Therefore, **remoteCapabilitiesFd** can be obtained by using the [getLocalCapabilities](#backupgetlocalcapabilities) API provided by the backup service. You can modify the parameters based on the actual situation of your application. You can also use the JSON file example provided by **getLocalCapabilities** to generate a capability file.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -2123,6 +2167,8 @@ Currently, the obtained **SessionRestore** instance can be called only once in t
 > - During the data restore, the capability file needs to be verified.
 > - You can use [getLocalCapabilities](#backupgetlocalcapabilities) to obtain **remoteCapabilitiesFd**,
     and modify the parameters based on the application to be restored. You can also use the JSON file example provided by **getLocalCapabilities** to generate a capability file.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -2263,6 +2309,8 @@ Obtains the handle to the shared file from the service. This API uses an asynchr
 > - **getFileHandle** can be called multiple times based on the number of files to be restored.
 > - File to be restored cannot be a relative path (../) or soft link.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -2357,6 +2405,8 @@ Obtains the handle to the shared file from the service. This API uses a promise 
 > - You can use **onFileReady** to obtain the file handle. When file operations are completed at the client, you need to use **publishFile** to publish the file.
 > - **getFileHandle** can be called multiple times based on the number of files to be restored.
 > - File to be restored cannot be a relative path (../) or soft link.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -2458,6 +2508,8 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 > - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fs.copyFile](js-apis-file-fs.md#fscopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
 > - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
 > - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.BACKUP
 
@@ -2569,6 +2621,8 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 > - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
 > - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -2676,6 +2730,8 @@ release(): Promise&lt;void&gt;
 
 Releases the restore session when the restore process is complete. This API disconnects the application from the backup and restore service and exits the service. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -2694,7 +2750,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
@@ -2748,7 +2804,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       },
       onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
         if (err) {
-          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('onBundleEnd success');
@@ -2784,6 +2840,8 @@ cancel(bundleName: string): number
 
 Cancels the restoration of an application when data exceptions occur.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -2808,7 +2866,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -3078,6 +3136,8 @@ constructor(callbacks: GeneralCallbacks)
 
 A constructor used to create an **IncrementalBackupSession** instance.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -3096,7 +3156,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -3153,9 +3213,9 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 Obtains a JSON file that describes local capabilities in the incremental backup service. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.BACKUP
-
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -3311,9 +3371,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
 
-**Required permissions**: ohos.permission.BACKUP
-
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -3338,7 +3398,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 13600001 | IPC error.                                                    |
 | 13900001 | Operation not permitted.                                      |
 | 13900020 | Invalid argument.                                             |
@@ -3456,6 +3516,8 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -3480,7 +3542,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
@@ -3555,6 +3617,8 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -3580,7 +3644,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
@@ -3696,6 +3760,8 @@ release(): Promise&lt;void&gt;
 
 Releases the session for the incremental backup. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -3714,7 +3780,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
@@ -3778,6 +3844,8 @@ cancel(bundleName: string): number
 
 Cancels the incremental backup of an application when data exceptions occur.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.BACKUP
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
@@ -3802,7 +3870,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verifcation faild.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 

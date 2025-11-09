@@ -199,7 +199,7 @@ function userIAMAuthFinger(huksChallenge: Uint8Array) {
         fingerAuthToken = result.token;
       }
     });
-    console.log("subscribe authentication event success");
+    console.info("subscribe authentication event success");
   } catch (error) {
     err = error as BusinessError;
     console.error(`subscribe authentication event failed, errCode : ${err.code}, errMsg : ${err.message}`);

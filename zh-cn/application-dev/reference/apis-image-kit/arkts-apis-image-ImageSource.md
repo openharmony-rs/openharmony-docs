@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -438,6 +438,65 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
   };
   let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.modifyImageProperties(keyValues).then(() => {
+    imageSourceObj.getImageProperties(checkKey).then((data) => {
+      console.info(`Image Width and Image Height:${data}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+  });
+}
+```
+
+## modifyImagePropertiesEnhanced<sup>22+</sup>
+
+modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise\<void\>
+
+批量修改图片属性。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
+> - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
+> - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的exif读写。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明         |
+| ------- | ------ | ---- | ------------ |
+| records | Record\<string, string \| null>|是| 包含图片属性名和属性值的键值对集合。|
+
+**返回值：**
+
+| 类型           | 说明                        |
+| -------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7700102 | Unsupported MIME type.             |
+| 7700202 | Unsupported metadata. For example, the property key is not supported, or the property value is invalid.             |
+| 7700304 | Failed to write image properties to the file.             |
+
+**示例：**
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
+  let keyValues: Record<string, string|null> = {
+    "ImageWidth" : "1024",
+    "ImageLength" : "1024"
+  };
+  let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+  imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {
     imageSourceObj.getImageProperties(checkKey).then((data) => {
       console.info(`Image Width and Image Height:${data}`);
     }).catch((err: BusinessError) => {

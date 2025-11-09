@@ -1,5 +1,12 @@
 # net_ssl_c.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 定义SSL/TLS证书链校验模块C接口数据结构。

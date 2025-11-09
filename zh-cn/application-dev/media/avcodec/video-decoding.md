@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 开发者可以调用本模块的Native API接口，完成视频解码，即将媒体数据解码成YUV文件或送显。
 
@@ -44,7 +44,7 @@
 
 3. 在接口调用的过程中，两种方式的接口调用方式基本一致，但存在以下差异点：
     - 在Surface模式下，可选择调用OH_VideoDecoder_FreeOutputBuffer接口丢弃输出帧（不送显）；在Buffer模式下，应用必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。
-    - Surface模式下，应用在解码器就绪前，必须调用OH_VideoDecoder_SetSurface接口设置OHNativeWindow，启动后，调用OH_VideoDecoder_RenderOutputBuffer接口将解码数据送显。
+    - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
     - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
 
 4. Surface模式的数据流转性能优于Buffer模式。
@@ -78,7 +78,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/_video_decoder.md)。
+详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)。
 如下为视频解码调用关系图：
 
 - 虚线表示可选。
@@ -243,7 +243,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     注册回调函数指针集合OH_AVCodecCallback，包括：
 
-    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror)；
+    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
     - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
     - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
     - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -362,9 +362,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 5. 调用OH_VideoDecoder_Configure()配置解码器。
 
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
-    参数校验规则请参考[OH_VideoDecoder_Configure() 参考文档](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_configure)。
+    参数校验规则请参考[OH_VideoDecoder_Configure() 参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)。
 
     参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
 
@@ -463,7 +463,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 9. （可选）OH_VideoDecoder_SetParameter()动态配置解码器surface参数。
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -641,7 +641,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     > **注意：**
     >
     > 1. 如果要获取buffer的属性，如pixel_format、stride等可通过调用[OH_NativeWindow_NativeWindowHandleOpt](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口获取。
-    > 2. 显示并释放解码帧时，推荐优先调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_renderoutputbufferattime)接口。
+    > 2. 显示并释放解码帧时，推荐优先调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口。
     >
 
 13. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
@@ -768,11 +768,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     // 调用OH_VideoDecoder_Destroy，注销解码器。
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoDec != nullptr) {
-        ret = OH_VideoDecoder_Destroy(videoDec);
+        OH_VideoDecoder_Destroy(videoDec);
         videoDec = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
     }
     inQueue.Flush();
     outQueue.Flush();
@@ -819,7 +816,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     注册回调函数指针集合OH_AVCodecCallback，包括：
 
-    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror)；
+    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
     - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
     - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
     - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -1009,7 +1006,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 8. （可选）OH_VideoDecoder_SetParameter()动态配置解码器参数。
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);

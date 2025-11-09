@@ -15,7 +15,7 @@ AbilityDelegator可以通过[getAbilityDelegator](js-apis-app-ability-abilityDel
 > 
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 本模块接口仅可在<!--RP1-->[自动化测试框架arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
 
 ## 导入模块
 
@@ -360,7 +360,7 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 };
 
 function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -368,7 +368,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
   if (error) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -415,7 +415,7 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 };
 
 function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -423,7 +423,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
   if (error && error.code !== 0) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -1524,7 +1524,7 @@ abilityDelegator.removeAbilityStageMonitorSync({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<AbilityStage>): void
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用callback异步回调。
+返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1568,7 +1568,7 @@ abilityDelegator.waitAbilityStageMonitor({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用Promise异步回调。
+返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象，支持设置超时最大等待时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1617,7 +1617,7 @@ abilityDelegator.waitAbilityStageMonitor({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用callback异步回调。
+在指定的超时最大等待时间内，返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

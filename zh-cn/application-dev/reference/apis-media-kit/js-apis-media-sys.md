@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 媒体子系统为开发者提供一套简单且易于理解的接口，使得开发者能够方便接入系统并使用系统的媒体资源。
 
@@ -526,7 +526,7 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-### setMetadata<sup>18+</sup>
+### setMetadata<sup>19+</sup>
 setMetadata(metadata: Record\<string, string\>): void
 
 给AVRecorder的录制文件中设置自定义meta数据。

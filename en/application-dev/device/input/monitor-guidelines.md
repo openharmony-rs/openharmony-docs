@@ -1,8 +1,15 @@
 # Event Listening Development (C/C++)
 
-## Introduction
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The multimodal module provides applications with the ability to listen for key and input events (mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
+## When to Use
+
+Since API version 12, the multimodal module provides applications with the ability to listen for key and input events (including mouse, touch, and axis events). Currently, event listening is available only for screen recording applications. For example, when a user starts screen recording, your application can listen for key, mouse, touch, and axis events of the device.
 
 ## Available APIs
 
@@ -45,11 +52,11 @@ Declare the required permission in the **module.json5** file. For details, see [
 
 ### Creating an Event Listener
 
-#### Key Events
+- **Key event**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[key_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct KeyEvent {
     int32_t action;
     int32_t keyCode;
@@ -64,22 +71,28 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
+	// ···
 }
 
-void TestMonitor()
+static napi_value AddKeyEventMonitor(napi_env env, napi_callback_info info)
 {
-    // Add a key event listener.
     Input_Result ret = OH_Input_AddKeyEventMonitor(OnKeyEventCallback);
-    // Remove the key event listener.
-    ret = OH_Input_RemoveKeyEventMonitor(OnKeyEventCallback);
+	// ···
+}
+
+static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveKeyEventMonitor(OnKeyEventCallback);
+	// ···
 }
 ```
 
-#### Mouse Events
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+- **Mouse event**
 
+<!-- @[mouse_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 struct MouseEvent {
     int32_t action;
     int32_t displayX;
@@ -102,22 +115,28 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
+	// ···
 }
 
-void TestMonitor()
+static napi_value AddMouseEventMonitor(napi_env env, napi_callback_info info)
 {
-    // Add a mouse event listener.
     Input_Result ret = OH_Input_AddMouseEventMonitor(OnMouseEventCallback);
-    // Remove the mouse event listener.
-    ret = OH_Input_RemoveMouseEventMonitor(OnMouseEventCallback);
+	// ···
+}
+
+static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveMouseEventMonitor(OnMouseEventCallback);
+	// ···
 }
 ```
 
-#### Touch Events
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+- **Touch event**
 
+<!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 struct TouchEvent {
     int32_t action;
     int32_t id;
@@ -126,7 +145,6 @@ struct TouchEvent {
     int64_t actionTime { -1 };
 };
 
-// Define the touch event callback function.
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
@@ -136,23 +154,28 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+	// ···
 }
 
-void TestMonitor()
+static napi_value AddTouchEventMonitor(napi_env env, napi_callback_info info)
 {
-    // Add a touch event listener.
     Input_Result ret = OH_Input_AddTouchEventMonitor(OnTouchEventCallback);
-    // Remove the touch event listener.
-    ret = OH_Input_RemoveTouchEventMonitor(OnTouchEventCallback);
+	// ···
+}
+
+static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveTouchEventMonitor(OnTouchEventCallback);
+	// ···
 }
 ```
 
-#### Axis Events
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
-#include <map>
+- **Axis event**
 
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 struct AxisEvent {
     int32_t axisAction;
     float displayX;
@@ -163,11 +186,9 @@ struct AxisEvent {
     int32_t axisEventType { -1 };
 };
 
-// Define the callback function for all axis events.
 void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -194,13 +215,13 @@ void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
         ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
         event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
     }
+	// ···
 }
 
 // Define the callback function for pinch-type axis events.
 void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -219,13 +240,12 @@ void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
     event.axisValues.insert(std::make_pair(AXIS_TYPE_PINCH, value));
     ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_ROTATE, &value);
     event.axisValues.insert(std::make_pair(AXIS_TYPE_ROTATE, value));
+	// ···
 }
 
-// Define the callback function for scroll wheel-type axis events.
 void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     // The lifecycle of Input_AxisEvent is limited to the callback function. After the callback function is executed, Input_AxisEvent is automatically destroyed.
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -244,23 +264,42 @@ void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
     event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_VERTICAL, value));
     ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
     event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
+	// ···
 }
 
-void TestMonitor()
+static napi_value AddAxisEventMonitorForAll(napi_env env, napi_callback_info info)
 {
-    // Add a listener for all axis events.
     Input_Result ret = OH_Input_AddAxisEventMonitorForAll(OnAllAxisEventCallback);
-    // Remove the listener for all axis events.
-    ret = OH_Input_RemoveAxisEventMonitorForAll(OnAllAxisEventCallback);
+	// ···
+}
 
-    // Add a listener for pinch-type axis events.
-    ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
-    // Remove the listener for pinch-type axis events.
-    ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+static napi_value RemoveAxisEventMonitorForAll(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveAxisEventMonitorForAll(OnAllAxisEventCallback);
+	// ···
+}
 
-    // Add a listener for scroll wheel-type axis events.
-    ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
-    // Remove the listener for scroll wheel-type axis events.
-    ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+static napi_value AddPinchAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+	// ···
+}
+
+static napi_value RemovePinchAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+	// ···
+}
+
+static napi_value AddScrollAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+	// ···
+}
+
+static napi_value RemoveScrollAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret =  OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+	// ···
 }
 ```

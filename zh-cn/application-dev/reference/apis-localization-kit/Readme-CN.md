@@ -1,5 +1,12 @@
 # Localization Kit（本地化开发服务）<!--localization-api-->
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 - ArkTS API<!--localization-arkts-->
   - [@ohos.i18n (国际化-I18n)](js-apis-i18n.md)
   - [@ohos.intl (国际化-Intl)](js-apis-intl.md)

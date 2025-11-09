@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The [AVPlayer](media-kit-intro.md#avplayer) is used to play raw media assets in an end-to-end manner. In this topic, you will learn how to use the AVPlayer to play a complete piece of music. To play PCM audio data, call [AudioRenderer](../audio/using-audiorenderer-for-playback.md).
 

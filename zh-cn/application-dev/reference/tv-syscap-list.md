@@ -1,4 +1,4 @@
-# 系统能力SystemCapability列表
+# TV
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

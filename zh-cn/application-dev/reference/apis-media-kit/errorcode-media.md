@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ No memory.
 
 销毁当前实例，并重新创建，如果重新创建失败，则停止相关操作。
 
-## 5400102 当前状态机不支持此操作
+## 5400102 当前状态不支持此操作
 
 **错误信息**
 
@@ -41,7 +41,7 @@ Operation not allowed.
 
 **可能原因**
 
-当前状态机不支持此操作。
+当前状态不支持此操作。
 
 **处理步骤**
 

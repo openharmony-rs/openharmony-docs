@@ -1,4 +1,10 @@
 # Multimodal Awareness Kit<!--multimodal-awareness-kit-->
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
 - [Introduction to Multimodal Awareness Kit](multimodalawareness-kit-intro.md)
 - [Stationary Development](stationary-guidelines.md)

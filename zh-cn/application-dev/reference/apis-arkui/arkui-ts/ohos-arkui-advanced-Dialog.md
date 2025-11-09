@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 弹出框是一种模态窗口，通常用于在保持当前的上下文环境时，临时展示用户需关注的信息或待处理的操作，用户在模态弹出框内完成上述交互任务。模态弹出框需要用户进行交互才能够退出模态模式。
@@ -131,7 +131,7 @@ AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, sec
 
 LoadingDialog({controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
-进度加载类弹出框，用于显示操作执行中的的提示信息。
+进度加载类弹出框，用于显示操作执行中的提示信息。
 
 **装饰器类型：**\@CustomDialog
 

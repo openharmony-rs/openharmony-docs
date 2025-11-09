@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Screen capture is mainly used to record the main screen.
 
@@ -27,6 +27,7 @@ Before your development, configure the following permissions for your applicatio
 - To use the microphone, request the ohos.permission.MICROPHONE permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 - To read images or videos, preferentially use the media library [Picker for access](../medialibrary/photoAccessHelper-photoviewpicker.md).
 - To save images or videos, preferentially use the [security component for storage](../medialibrary/photoAccessHelper-savebutton.md).
+- Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission to maintain capture even when the screen is off but not locked. For details about the configuration, [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 > **NOTE**
 >
@@ -40,8 +41,8 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     import { common } from '@kit.AbilityKit';
-    import media from '@ohos.multimedia.media';
-    import fs from '@ohos.file.fs';
+    import { media } from '@kit.MediaKit';
+    import { fileIo as fs } from '@kit.CoreFileKit';
     ```
 
 2. Create the member variable **screenCapture** of the **AVScreenCaptureRecorder** type.
@@ -180,17 +181,15 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 Refer to the sample code below to implement captured file storage using **AVScreenCaptureRecorder**.
 
 ```javascript
-import { common } from '@kit.AbilityKit';
-import media from '@ohos.multimedia.media';
-import fs from '@ohos.file.fs';
+import { media } from '@kit.MediaKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
   private captureFile: fs.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
-  private openFile(): void {
-    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the container format.
     this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
@@ -280,13 +279,13 @@ export class AVScreenCaptureDemo {
   }
 
   // Call startRecording to start screen capture. To stop screen capture, click the stop button in the screen capture capsule.
-  async startRecording(): Promise<void> {
+  async startRecording(context: Context): Promise<void> {
     this.screenCapture = await media.createAVScreenCaptureRecorder();
     if (!this.screenCapture) {
       // failed.
       return;
     }
-    this.openFile();
+    this.openFile(context);
     if (!this.captureFile) {
       console.error("Handle exceptions.");
       return;

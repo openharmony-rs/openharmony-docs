@@ -2,8 +2,8 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @chenshi51-->
-<!--Designer: @Maplestory-->
-<!--Tester: @yufeifei-->
+<!--Designer: @Maplestory91-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -44,7 +44,7 @@ In ArkTS, the JsError crash detection detects global exceptions, collects the er
 
 Since API version 20, crash log specifications can be customized.
 
-The system provides the common **NativeCrash** log generation functionality. However, some applications have specific requirements on the **NativeCrash** log content. Therefore, you need to set crash log parameters.
+The system provides the common NativeCrash log generation feature and allows you to set crash log parameters to meet your requirements.
 
 ### **Available APIs**
 
@@ -58,7 +58,7 @@ You can set the crash log printing specifications in **Record <string, ParamType
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| extend_pc_lr_printing | boolean | No| The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit system, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit system, or 8 bytes before and 116 bytes after on 32-bit systems.<br>Default value: **false**.|
+| extend_pc_lr_printing | boolean | No| The value **true** means to print the memory values of the 248 bytes before and 256 bytes after the PC and LR in the 64-bit system, or print the memory values of the 124 bytes before and 128 bytes after the PC and LR in the 32-bit system.<br>The value **false** means to print the memory values of the 16 bytes before and 232 bytes after the PC and LR in the 64-bit system, or print the memory values of the 8 bytes before and 116 bytes after the PC and LR in the 32-bit system.<br>Default value: **false**.|
 | log_file_cutoff_sz_bytes | number | No| The value ranges from 0 to 5242880, in bytes.<br>The crash log is truncated to the specified size when this parameter is set.<br>Otherwise, the default value **0** is used, which means no truncation.|
 | simplify_vma_printing | boolean | No| The value **true** means to print only the Virtual Memory Area (VMA) mapping information of the addresses in the crash log, that is, **Maps** in the crash log, to reduce the log size.<br>The value **false** means to print all VMA mapping information.<br>Default value: **false**.|
 
@@ -91,7 +91,11 @@ For details about the crash log, see [Application Crash Log Configured by HiAppE
 
 ### params
 
-The **params** parameter in the event information is described as follows.
+**params** is the event parameter object in [AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventinfo), which consists of a parameter name and a parameter value.
+
+The fields contained in **params** of a system event are defined by the event.
+
+The following table lists the common information predefined in the crash event.
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
@@ -105,9 +109,12 @@ The **params** parameter in the event information is described as follows.
 | uuid | string | Error ID, which is generated based on fault information and uniquely identifies crash faults of the same type.|
 | exception | object | Exception information in brief. For details, see [exception](#exception). For details about all fault information, see the **external_log** file.|
 | hilog | string[] | Log information, which displays a maximum of 100 lines of HiLog logs. For more logs, see the fault log file.|
+| process_life_time | number | Lifetime of the faulty process, in seconds.<br>Note: This field is supported since API version 22.|
+| memory | object | Memory information. For details, see [memory](#memory).<br>Note: This field is supported since API version 22.|
 | threads | object[] | Full thread call stack. For details, see [thread](#thread). This field applies only to **NativeCrash** events.|
 | external_log<sup></sup> | string[] | [Application sandbox path](../file-management/app-sandbox-directory.md) of the fault log file. You can read the fault log file through the path. To avoid failed writing of new log files due to insufficient directory space, delete the log files after they are processed. For details about the threshold, see the **log_over_limit** field.|
 | log_over_limit | boolean | Whether the total size of the generated and existing fault log files exceeds the upper limit 5 MB. The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded.|
+| process_name | string | Name of the faulty process.<br>Note: This field is supported since API version 21.|
 
 ### exception
 
@@ -118,6 +125,7 @@ The **params** parameter in the event information is described as follows.
 | name | string | Exception type.|
 | message | string | Exception cause.|
 | stack | string | Exception call stack.|
+| thread_name | string | Thread name.<br>Note: This field is supported since API version 21.|
 
 **exception** of **NativeCrash**
 
@@ -168,6 +176,15 @@ Js **frame**
 | symbol | string | Function name.|
 | line | number | Code line number.|
 | column | number | Code column number.|
+
+### memory
+
+| Name| Type| Description|
+| -------- | -------- | -------- |
+| rss | number | Size of the memory allocated for a process, in KB.|
+| sys_free_mem | number | Size of free memory, in KB.|
+| sys_avail_mem | number | Size of available memory, in KB.|
+| sys_total_mem | number | Total memory size, in KB.|
 
 ## Customizing Crash Event Parameters
 

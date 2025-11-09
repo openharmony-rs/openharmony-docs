@@ -18,7 +18,7 @@
 
 onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
-网页触发alert()告警弹窗时触发回调。
+网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -177,7 +177,7 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
-网页调用confirm()告警时触发此回调。
+网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -266,7 +266,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
-网页调用prompt()告警时触发此回调。
+网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -790,7 +790,7 @@ onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
 
 | 参数名   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ------------- |
-| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | 是    | 页面文档标题发生变更时触发 |
+| callback | Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> | 是    | 页面文档标题发生变更时触发。 |
 
 **示例：**
 
@@ -848,6 +848,7 @@ onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\>)
           .onRefreshAccessedHistory((event) => {
             if (event) {
               console.info('url:' + event.url + ' isReload:' + event.isRefreshed);
+              console.info('isMainFrame:' + event.isMainFrame);
             }
           })
       }
@@ -1358,6 +1359,8 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 >
 > - 主资源：浏览器加载网页的入口文件，通常是HTML文档。  
 > - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
+> - 应用程序需要调用[handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9)或[handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9)处理该回调，如果没有处理该回调则默认取消资源加载。handleConfirm()或者handleCancel()的行为可能会被记录下来，以便为将来的SSL错误做出响应。
+> - 应用程序可以用于显示自定义错误页面或静默记录问题。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1376,7 +1379,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
   
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1479,7 +1482,7 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 
   function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
     if (!(certChainData instanceof Array)) {
-      console.info('failed, cert chain data type is not array');
+      console.error('failed, cert chain data type is not array');
       return;
     }
 
@@ -1566,6 +1569,11 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 
 通知用户收到SSL客户端证书请求事件。
+
+> **说明：**
+>
+> - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)（继续）、[ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9)（取消）或[ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9)（忽略）。
+> - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2181,7 +2189,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
-通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。
+通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2189,7 +2197,7 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 请求显示地理位置权限时触发。     |
+| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
 
 **示例：**
 
@@ -2935,7 +2943,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。          |
+| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。       |
 
 **示例：**
 
@@ -3053,7 +3061,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时允许此次导航。 |
+| callback | Callback\<[OnLoadInterceptEvent](./arkts-basic-components-web-i.md#onloadinterceptevent12), boolean\> | 是 | 导航触发时的回调包括iframe导航，在回调中可以选择允许或者取消此次导航。<br>返回值为boolean类型。返回true表示取消此次导航，false表示允许此次导航。<br>返回undefined或null时为false。 |
 
 **示例：**
 
@@ -3379,6 +3387,58 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
   }
   ```
 
+## onSafeBrowsingCheckFinish<sup>21+</sup>
+
+onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+网站安全风险检查结束时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  export enum ThreatType {
+    UNKNOWN = -1,
+    THREAT_ILLEGAL = 0,
+    THREAT_FRAUD = 1,
+    THREAT_RISK = 2,
+    THREAT_WARNING = 3,
+    THREAT_NONE = 4,
+    THREAT_UNPROCESSED = 5,
+  }
+
+  export class OnSafeBrowsingCheckResultCallback {
+    threatType: ThreatType = ThreatType.UNKNOWN;
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onSafeBrowsingCheckFinish((callback) => {
+            let jsonData = JSON.stringify(callback);
+            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            console.info("onSafeBrowsingCheckFinish: [threatType]= " + json.threatType);
+          })
+      }
+    }
+  }
+  ```
+
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
 
 onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
@@ -3391,7 +3451,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。 |
+| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。|
 
 **示例：**
 
@@ -3780,7 +3840,7 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL |
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL。  |
 
 **示例：**
 
@@ -4687,3 +4747,74 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
     }
   }
   ```
+
+## onDetectedBlankScreen<sup>22+</sup>
+
+onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+
+设置Web组件的检测到白屏时的回调函数。
+
+> **说明：**
+>
+> - 需配合[blankScreenDetectionConfig](./arkts-basic-components-web-attributes.md#blankscreendetectionconfig22)使用。否则，默认关闭白屏检测功能，不会返回检测到白屏时的回调函数。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | OnDetectBlankScreenCallback\<[BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22)\> | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+
+**示例：**
+
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .blankScreenDetectionConfig({
+            enable: true,
+            detectionTiming: [2, 4, 6, 8],
+            contentfulNodesCountThreshold: 4,
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
+          })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
+            console.log(`Found blank screen on ${event.url}.`);
+            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+          })
+      }
+    }
+  }
+  ```
+## onRenderExited<sup>(deprecated)</sup>
+
+onRenderExited(callback: (event?: { detail: object }) => boolean)
+
+应用渲染进程因错误或崩溃退出时触发回调。
+
+多个Web组件可能共享单个渲染进程，每个受影响的Web组件都会触发该回调。
+
+应用处理该回调时，可以调用绑定的WebViewController接口来恢复页面。例如[refresh](./arkts-apis-webview-WebviewController.md#refresh)、[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)等。
+
+详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onRenderExited<sup>9+</sup>](#onrenderexited9)代替。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名              | 类型                                     | 必填   | 说明             |
+| ---------------- | ---------------------------------------- | ---- | ---------------- |
+| callback |(event?: { detail: object }) => boolean | 是    | 渲染过程退出时触发。 |

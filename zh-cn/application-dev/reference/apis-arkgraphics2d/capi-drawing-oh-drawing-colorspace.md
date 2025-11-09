@@ -1,4 +1,10 @@
 # OH_Drawing_ColorSpace
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 

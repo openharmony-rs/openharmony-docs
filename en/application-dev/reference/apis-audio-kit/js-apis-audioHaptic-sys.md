@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio-haptic enables users to get rhythmic auditory and haptic feedback while having incoming calls or messages.
 

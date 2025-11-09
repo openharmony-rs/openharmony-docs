@@ -144,6 +144,27 @@ Web组件指定共享渲染进程。
   }
   ```
 
+指定Web组件是否将鼠标事件作为触屏事件处理。
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController();
+    controller2: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+      }
+    }
+  }
+  ```
+
 加载本地网页。
 
 通过$rawfile方式加载。
@@ -165,9 +186,9 @@ Web组件指定共享渲染进程。
   }
   ```
 
-通过resources协议加载，适用Webview加载带有"#"路由的链接。
+通过resources协议加载。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有"#"路由链接时的局限性。当URL中包含"#"号时，"#"后面的内容会被视为锚点（fragment）。
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -280,7 +301,7 @@ Web组件指定共享渲染进程。
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```

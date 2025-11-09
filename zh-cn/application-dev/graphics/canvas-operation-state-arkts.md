@@ -24,7 +24,7 @@
 
 ## 裁剪操作
 
-裁剪是图形处理中的常见操作，裁剪针对的是画布本身，可以用于限制绘图区域，只在指定的区域内容进行绘制。需要先进行裁剪操作，再进行绘制，才会有对应效果。
+裁剪是图形处理中的常见操作，裁剪针对的是画布本身，可以用于限制绘图区域，只在指定的区域进行绘制。需要先进行裁剪操作，再进行绘制，才会有对应效果。
 
 当前支持的裁剪操作主要如下：
 
@@ -52,7 +52,7 @@
 
 ### 开发示例
 
-此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。具体详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 使用clipRect()接口裁剪矩形。有以下3个入参：
 
@@ -65,6 +65,7 @@
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为蓝色
@@ -74,12 +75,13 @@ canvas.attachBrush(brush);
 // 创建矩形对象
 let rect: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
 // 裁剪矩形区域
-canvas.clipRect(rect); 
+canvas.clipRect(rect);
 // 绘制圆形
 canvas.drawCircle(300, 300, 300);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 裁剪后的图 |
@@ -120,6 +122,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -127,12 +130,13 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 执行平移操作
-canvas.translate(300, 300); 
+canvas.translate(300, 300);
 // 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 }); 
+canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 平移后的效果图 |
@@ -149,6 +153,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -162,6 +167,7 @@ canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 旋转后的效果图 |
@@ -178,6 +184,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色为红色
@@ -191,6 +198,7 @@ canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 缩放后的效果图 |
@@ -218,6 +226,7 @@ canvas.detachBrush();
 
 
 ```ts
+// CanvasOperationState.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色为红色
@@ -239,7 +248,7 @@ canvas.drawCircle(300, 300, 200);
 // 去除描边效果
 canvas.detachPen();
 ```
-
+<!-- [arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ![Screenshot_20241129152510415](figures/Screenshot_20241129152510415.jpg)
 

@@ -1,4 +1,10 @@
 # @ohos.enterprise.deviceSettings (Device Settings) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **deviceSettings** module provides APIs for setting enterprise devices, including obtaining the screen-off time of a device.
 
@@ -8,7 +14,7 @@ The **deviceSettings** module provides APIs for setting enterprise devices, incl
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md).
 
@@ -27,6 +33,10 @@ Sets the device screen-off time.
 **Required permissions**: ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -50,13 +60,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
+  // Replace parameters with actual values.
   deviceSettings.setScreenOffTime(wantTemp, 30000);
   console.info(`Succeeded in setting screen off time`);
 } catch(err) {
@@ -73,6 +86,10 @@ Obtains the device screen-off time. This API uses an asynchronous callback to re
 **Required permissions**: ohos.permission.ENTERPRISE_GET_SETTINGS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -96,11 +113,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
@@ -121,6 +140,10 @@ Obtains the device screen-off time. This API uses an asynchronous promise to ret
 **Required permissions**: ohos.permission.ENTERPRISE_GET_SETTINGS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -149,12 +172,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 deviceSettings.getScreenOffTime(wantTemp).then((result) => {
@@ -173,6 +198,10 @@ Installs a user certificate. This API uses a callback to return the result.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -199,16 +228,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 <!--code_no_check-->
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
-// The variable context needs to be initialized in MainAbility's onCreate callback function
-// test.cer needs to be placed in the rawfile directory
+// Initialize the context variable in the onCreate callback function of the MainAbility.
+// Store test.cer in the rawfile directory.
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.resourceManager.getRawFileContent("test.cer").then((value) => {
@@ -235,6 +266,10 @@ Installs a user certificate. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -266,16 +301,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 
 <!--code_no_check-->
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
-// The variable context needs to be initialized in MainAbility's onCreate callback function
-// test.cer needs to be placed in the rawfile directory
+// Initialize the context variable in the onCreate callback function of the MainAbility.
+// Store test.cer in the rawfile directory.
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.resourceManager.getRawFileContent("test.cer").then((value) => {
@@ -313,6 +350,10 @@ Uninstalls a user certificate. This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
@@ -337,13 +378,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
-let aliasStr = "certName"
+// Replace with actual values.
+let aliasStr = "certName";
 deviceSettings.uninstallUserCertificate(wantTemp, aliasStr, (err) => {
   if (err) {
     console.error(`Failed to uninstall user certificate. Code: ${err.code}, message: ${err.message}`);
@@ -362,6 +406,10 @@ Uninstalls a user certificate. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -392,13 +440,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let aliasStr = "certName"
 deviceSettings.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
   console.info(`Succeeded in uninstalling user certificate`);
@@ -416,6 +467,10 @@ Sets the power policy.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -440,11 +495,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   let delayTime = 0;
@@ -452,7 +509,7 @@ try {
   let powerPolicyAction: deviceSettings.PowerPolicyAction = deviceSettings.PowerPolicyAction.AUTO_SUSPEND;
   let powerPolicy: deviceSettings.PowerPolicy = {powerPolicyAction, delayTime};
   deviceSettings.setPowerPolicy(wantTemp, powerScene, powerPolicy);
-  console.info(`Succeeded in setting power polilcy`);
+  console.info(`Succeeded in setting power policy`);
 } catch (err) {
   console.error(`Failed to set power policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -468,6 +525,10 @@ Obtains the power policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
@@ -477,9 +538,9 @@ Obtains the power policy.
 
 **Return value**
 
-| Type  | Description                                 | Description                      |
-| ----- | ----------------------------------- |------------------------------- |
-| PowerPolicy | [PowerPolicy](#powerpolicy11) |   Power policy.      |
+| Type  | Description       |
+| ----- | --------------------------------- |
+| [PowerPolicy](#powerpolicy11) | Power policy.      |
 
 **Error codes**
 
@@ -496,16 +557,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   let powerScene: deviceSettings.PowerScene = deviceSettings.PowerScene.TIME_OUT;
   let powerPolicy: deviceSettings.PowerPolicy = deviceSettings.getPowerPolicy(wantTemp, powerScene);
-  console.info(`Succeeded in getting power polilcy ${JSON.stringify(powerPolicy)}`);
+  console.info(`Succeeded in getting power policy ${JSON.stringify(powerPolicy)}`);
 } catch (err) {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
@@ -516,6 +579,8 @@ try {
 Represents the power policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**System API**: This is a system API.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ----- | ---- | ------------------------------- |
@@ -528,6 +593,8 @@ Defines the scenario to which the power policy applies.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
+
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | TIME_OUT | 0 | Timeout scenario.|
@@ -538,10 +605,12 @@ Enumerates the actions that can be performed to apply the power policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
+
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | NONE | 0 | No action is performed.|
 | AUTO_SUSPEND | 1 | Automatically enter the sleep mode.|
 | FORCE_SUSPEND | 2 | Forcibly enter the sleep mode.|
-| HIBERNATE | 3 | Enter the hibernation state. Currently, the power subsystem does not support this action.|
+| HIBERNATE | 3 | Enter the sleep mode. This policy does not take effect currently.|
 | SHUTDOWN | 4 | Shut down the system.|

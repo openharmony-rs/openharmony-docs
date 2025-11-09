@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6; @zzs_911-->
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--media-arkts-->
   - @ohos.multimedia.media (Media)<!--js-apis-media-->

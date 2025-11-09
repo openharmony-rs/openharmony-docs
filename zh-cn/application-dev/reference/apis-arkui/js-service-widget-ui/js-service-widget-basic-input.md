@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 交互式组件，提供单选框功能。

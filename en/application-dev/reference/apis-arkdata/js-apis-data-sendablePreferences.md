@@ -1,8 +1,8 @@
 # @ohos.data.sendablePreferences (Shared User Preferences)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -27,7 +27,7 @@ Sendable preferences can be passed between concurrent ArkTS instances (including
 import { sendablePreferences } from '@kit.ArkData';
 ```
 
-## Constant
+## Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -52,7 +52,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 | Name | Type            | Mandatory| Description                                                                                                                                                                          |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | Yes  | Application context.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context.|
 | options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.       |
 
 **Return value**
@@ -110,7 +110,7 @@ Obtains a **Preferences** instance. This API returns the result synchronously.
 
 | Name | Type                 | Mandatory| Description                                                        |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)               | Yes  | Application context.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | Yes  | Application context.|
 | options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.                           |
 
 **Return value**
@@ -163,7 +163,7 @@ Avoid using a deleted **Preferences** instance to perform data operations, which
 
 | Name | Type            | Mandatory| Description                                                                        |
 | ------- | ---------------- | ---- | ----------------------------------------------------------------------------|
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | Yes  | Application context.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context.|
 | options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.                                                                           |
 
 **Return value**
@@ -221,7 +221,7 @@ After an application calls [getPreferences](#sendablepreferencesgetpreferences) 
 
 | Name | Type            | Mandatory| Description                                                                                                                     |
 | ------- | ---------------- | ---- | ----------------------------------------------------------------------------------------------------------------------- |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)          | Yes  | Application context.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | Yes  | Application context.|
 | options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.                                                                                   |
 
 **Return value**
@@ -278,7 +278,7 @@ After an application calls [getPreferences](#sendablepreferencesgetpreferences) 
 
 | Name | Type                 | Mandatory| Description                                                        |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)               | Yes  | Application context.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | Yes  | Application context.|
 | options | [Options](#options) | Yes  | Configuration options of the **Preferences** instance.                           |
 
 **Error codes**
@@ -315,10 +315,10 @@ Represents the configuration options of a **Preferences** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
-| Name       | Type  | Mandatory| Description                                                        |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| name        | string | Yes  | Name of the **Preferences** instance.                                     |
-| dataGroupId | string\|null | No  | Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.|
+| Name       | Type  | Read-Only| Optional| Description                                                        |
+| ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
+| name        | string | No | No | Name of the **Preferences** instance.                                     |
+| dataGroupId | string\|null | No | Yes | Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.|
 
 
 ## Preferences
@@ -341,7 +341,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 
 | Name  | Type                   | Mandatory| Description |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | Yes  | Key of the data to obtain. It cannot be empty. |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -388,7 +388,7 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 
 | Name  | Type                   | Mandatory| Description           |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | Yes  | Key of the data to obtain. It cannot be empty. |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -508,7 +508,7 @@ Writes data to this **Preferences** instance. This API uses a promise to return 
 
 | Name| Type                   | Mandatory| Description                        |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | Yes  | Key of the data. It cannot be empty. |
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | value  | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Yes  | Value to write.|
 
 **Return value**
@@ -559,7 +559,7 @@ Writes data to this **Preferences** instance. This API returns the result synchr
 
 | Name| Type                   | Mandatory| Description                                                        |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | Yes  | Key of the data. It cannot be empty.|
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 | value  | [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | Yes  | Value to write.|
 
 **Error codes**
@@ -591,7 +591,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the data to check. It cannot be empty.|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -639,7 +639,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the data to check. It cannot be empty.|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -681,7 +681,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the KV pair to delete. It cannot be empty.|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -725,7 +725,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the KV pair to delete. It cannot be empty.|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Error codes**
 

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The @LocalBuilder decorator addresses a critical challenge in component composition. While local \@Builder functions enable reference data passing between components, they require careful management of parent-child relationships. Specifically, when you use **.bind(this)** to modify function call contexts, this often leads to misalignment between the visual component hierarchy and the underlying state management relationships. To address this issue, the @LocalBuilder decorator is introduced. @LocalBuilder provides the same functionality as the local @Builder but better ensures consistency between the visual component hierarchy and the underlying state management relationships.
+The \@LocalBuilder decorator addresses a critical challenge in component composition. While local \@Builder functions enable reference data passing between components, they require careful management of parent-child relationships. Specifically, when you use **.bind(this)** to modify function call contexts, this often leads to misalignment between the visual component hierarchy and the underlying state management relationships. To address this issue, the @LocalBuilder decorator is introduced. @LocalBuilder provides the same functionality as the local @Builder but better ensures consistency between the visual component hierarchy and the underlying state management relationships.
 
 Before proceeding, you are advised to review [\@Builder](./arkts-builder.md) to understand the base functionality that \@LocalBuilder enhances.
 
@@ -33,7 +33,7 @@ Invocation pattern:
 ```ts
 this.myBuilderFunction()
 ```
-- One or more @LocalBuilder functions can be defined in a custom component. These functions are treated as private and special member functions of the owning component.
+- One or more \@LocalBuilder functions can be defined in a custom component. These functions are treated as private and special member functions of the owning component.
 
 - Each \@LocalBuilder function is accessible only within the owning component's scope and can be called from the component's **build** method or other local builder functions.
 
@@ -75,7 +75,7 @@ In by-reference parameter passing, state variables can be passed, and the change
 
 > **NOTE**
 >
-> If the \@LocalBuilder function is used together with the **$$** operator, when a child component calls the @LocalBuilder function of the parent component, parameter changes from the child component will not trigger UI re-rendering in the @LocalBuilder function.
+> If the \@LocalBuilder function is used together with the `$$` operator, when a child component calls the \@LocalBuilder function of the parent component, parameter changes from the child component will not trigger UI re-rendering in the @LocalBuilder function.
 
 In the example, the @LocalBuilder function in the **Parent** component is called in the **build** function using the key-value pair syntax for parameter passing. After **Click me** is clicked, the **Text** content in the @LocalBuilder changes with the state variable.
 
@@ -107,9 +107,9 @@ struct Parent {
 }
 ```
 
-For passing parameters by reference in an \@LocalBuilder function that invokes custom components, ArkUI provides [$$](arkts-two-way-sync.md) as the standard paradigm.
+For passing parameters by reference in an \@LocalBuilder function that invokes custom components, ArkUI provides `$$` as the standard paradigm.
 
-In the following example, in the \@LocalBuilder function of the **Parent** component, a custom component is called with parameters passed by reference. When the value of the state variable in the **Parent** component changes, the **message** value of the custom component **HelloComponent** within the @LocalBuilder function will also change.
+In the following example, in the \@LocalBuilder function of the **Parent** component, a custom component is called with parameters passed by reference. When the value of the state variable in the **Parent** component changes, the **message** value of the custom component **HelloComponent** within the \@LocalBuilder function will also change.
 
 ```ts
 class ReferenceType {

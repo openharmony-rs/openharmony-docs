@@ -78,7 +78,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 
 mdns.addLocalService(context, localServiceInfo, (error:BusinessError, data:mdns.LocalServiceInfo) =>  {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -147,7 +147,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 }
 
 mdns.addLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -212,7 +212,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 
 mdns.removeLocalService(context, localServiceInfo, (error: BusinessError, data: mdns.LocalServiceInfo) =>  {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -279,7 +279,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 }
 
 mdns.removeLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -396,7 +396,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 
 mdns.resolveLocalService(context, localServiceInfo, (error: BusinessError, data: mdns.LocalServiceInfo) =>  {
   console.error(JSON.stringify(error));
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -464,7 +464,7 @@ let localServiceInfo: mdns.LocalServiceInfo = {
 }
 
 mdns.resolveLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 ## DiscoveryService
@@ -569,7 +569,7 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
@@ -611,13 +611,13 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
 
 discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -657,7 +657,7 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
@@ -699,13 +699,13 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
 
 discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -799,7 +799,7 @@ discoveryService.on('serviceFound', (data: mdns.LocalServiceInfo) => {
 discoveryService.stopSearchingMDNS();
 
 discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 
@@ -839,7 +839,7 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('serviceLost', (data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
@@ -881,13 +881,13 @@ let discoveryService = mdns.createDiscoveryService(context, serviceType);
 discoveryService.startSearchingMDNS();
 
 discoveryService.on('serviceLost', (data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 discoveryService.stopSearchingMDNS();
 
 discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 ```
 

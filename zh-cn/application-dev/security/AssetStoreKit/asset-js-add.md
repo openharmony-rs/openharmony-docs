@@ -55,7 +55,6 @@
 
   ASSET对部分属性会进行完整性保护，这部分属性名称以"DATA_LABEL_CRITICAL"开头，写入后不支持更新。
 
-
 ## 代码示例
 
 > **说明：**
@@ -66,7 +65,9 @@
 
 新增一条密码是demo_pwd，别名是demo_alias，附属信息是demo_label的关键资产，该关键资产在用户首次解锁设备后可被访问。
 
-```typescript
+<!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -76,18 +77,27 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let attr: asset.AssetMap = new Map();
-attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.add(attr).then(() => {
-    console.info(`Succeeded in adding Asset.`);
-  }).catch((err: BusinessError) => {
+export async function addAsset(): Promise<string> {
+  let result: string = '';
+  let attr: asset.AssetMap = new Map();
+  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+  try {
+    await asset.add(attr).then(() => {
+      console.info(`Succeeded in adding Asset.`);
+      result = 'Succeeded in adding Asset';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to add Asset';
+    })
+  } catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (err) {
-  console.error(`Failed to add Asset. Code is ${err?.code}, message is ${err?.message}`);
+    result = 'Failed to add Asset';
+  }
+  return result;
 }
 ```
+

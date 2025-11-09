@@ -1,14 +1,18 @@
 # XComponentNode
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
-The **XComponentNode** module provides APIs for the XComponentNode, which represent an [XComponent](arkui-ts/ts-basic-components-xcomponent.md#xcomponent) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
+The **XComponentNode** module provides APIs for the XComponentNode, which represent an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
 
-> **NOTE**
->
-> The APIs of this module are deprecated since API version 12. You are advised to use [XComponent type node](./js-apis-arkui-frameNode.md#xcomponent12) for implementation instead.
+> Note: The APIs of this module are deprecated since API version 12. You are advised to use [XComponent type node](./js-apis-arkui-frameNode.md#xcomponent12) for implementation instead.
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
+> 
 > **XComponentNode** is not available in DevEco Studio Previewer.
 
 ## Modules to Import
@@ -23,7 +27,7 @@ import { XComponentNode } from "@kit.ArkUI";
 
 constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XComponentType, libraryName?: string)
 
-A constructor used to create an XComponentNode.
+Constructor used to create an XComponentNode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,11 +35,11 @@ A constructor used to create an XComponentNode.
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| uiContext   | [UIContext](js-apis-arkui-UIContext.md)                      | Yes  | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context).|
+| uiContext   | [UIContext](arkts-apis-uicontext-uicontext.md)                      | Yes  | UI context. For details about how to obtain it, see [Obtaining UI Context](./js-apis-arkui-node.md#obtaining-ui-context).|
 | options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | Yes  | Parameters for creating an XComponentNode.                              |
-| id          | string                                                       | Yes  | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md#xcomponent).|
-| type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes  | Type of the **XComponent**. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md#xcomponent).|
-| libraryName | string                                                       | No  | Name of the dynamic library generated during compilation at the native layer. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md#xcomponent).|
+| id          | string                                                       | Yes  | Unique ID of the **XComponent**. The value can contain a maximum of 128 characters. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
+| type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | Yes  | Type of the **XComponent**. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
+| libraryName | string                                                       | No  | Name of the dynamic library generated during compilation at the native layer. For details, see [XComponent](arkui-ts/ts-basic-components-xcomponent.md).|
 
 > **NOTE**
 >
@@ -53,7 +57,7 @@ Called when the XComponentNode loading is complete.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| event  | Object | No  | Context of the **XComponent** object. The APIs contained in the context are defined by you at the C++ layer.|
+| event  | Object | No  | Context of the **XComponent** object. The APIs contained in the context are defined at the C++ layer by developers.|
 
 ### onDestroy
 
@@ -81,7 +85,7 @@ Changes the rendering type of the XComponentNode.
 
 | Type| Description                  |
 | ---- | ---------------------- |
-| boolean | Whether the rendering type is changed successfully.|
+| boolean | Whether the rendering type is changed successfully.<br>**true**: The rendering type is changed successfully. **false**: The rendering type fails to be changed.|
 
 ## Example
 

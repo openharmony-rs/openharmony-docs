@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio latency is the time it takes from the moment a user clicks or triggers an action until the sound is emitted from the device.
 

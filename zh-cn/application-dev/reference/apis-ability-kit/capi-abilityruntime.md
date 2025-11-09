@@ -1,5 +1,12 @@
 # AbilityRuntime
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 声明元能力基础框架的相关能力。

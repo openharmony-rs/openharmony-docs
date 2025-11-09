@@ -1,4 +1,10 @@
 # NavRouter
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **NavRouter** component provides default processing logic for responding to clicks, eliminating the need for manual logic definition.
 
@@ -72,10 +78,10 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                    | Mandatory| Description                                                        |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name             | string            | Yes  | Name of the navigation destination page to be redirected to.|
-| param             | unknown            | No  | Parameter transferred during redirection.|
+| Name                | Type                                                    | Read-Only| Optional| Description                                                        |
+| -------------------- | ------------------------------------------------------- |---- | ---- | ------------------------------------------------------------ |
+| name             | string            | No  | No  | Name of the navigation destination page to be redirected to.|
+| param             | unknown            | No  | Yes  | Parameter transferred during redirection.|
 
 ## NavRouteMode<sup>10+</sup>
 

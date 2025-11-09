@@ -25,6 +25,8 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 
 Generates a key for the specified user. This API uses a promise to return the result. Because the key is always protected in a trusted environment (such as a TEE), the promise does not return the key content. It returns only the information indicating whether the API is successfully called.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -73,6 +75,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -107,8 +110,8 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
     console.info("Generated a key with alias of: " + keyAlias + "")
-  }).catch((err: Error) => {
-    console.error("Failed to generate the key. Error: "+ JSON.stringify(err))
+  }).catch((err: BusinessError) => {
+    console.error("Failed to generate the key. Error code: " + err.code + " Error message: " + err.message)
   })
 }
 
@@ -124,6 +127,8 @@ export default function HuksAsUserTest() {
 deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
 Deletes a key for the specified user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -235,6 +240,8 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 Imports a plaintext key for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -338,6 +345,8 @@ export default function HuksAsUserTest() {
 attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
 Attests a key for the specified user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -493,6 +502,8 @@ Performs anonymous key attestation. This API uses a promise to return the result
 
 This operation requires Internet access and takes time.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -645,6 +656,8 @@ export default function HuksAsUserTest() {
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
 Imports a wrapped (encrypted) key for the specified user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1232,7 +1245,8 @@ async function EncryptImportedPlainKeyAndKek(
   return result
 }
 
-async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array, callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
+async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array,
+  callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
   const plainKeySizeBuff = new Uint8Array(4);
   AssignLength(plainKey.length, plainKeySizeBuff, 0);
 
@@ -1285,7 +1299,8 @@ export async function HuksSecurityImportTest(userId: number) {
     userId,
     callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey, callerAgreeParams);
   const encData: KeyEncAndKekEnc = await EncryptImportedPlainKeyAndKek(userId, importedAes192PlainKey);
-  const wrappedData = await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey, huksPubKey, callerSelfPublicKey, encData);
+  const wrappedData =
+    await BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey, huksPubKey, callerSelfPublicKey, encData);
   importWrappedAes192Params.inData = wrappedData;
   await PublicImportWrappedKeyFunc(userId,
     importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
@@ -1308,6 +1323,8 @@ export default function HuksAsUserTest() {
 exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
 Exports the public key for the specified user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1427,6 +1444,8 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 Obtains key properties for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1542,6 +1561,8 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 
 Checks whether a key exists for the specified user. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.Security.Huks.Extension
@@ -1585,6 +1606,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit"
+
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
@@ -1653,6 +1675,8 @@ export default function HuksAsUserTest() {
 initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksSessionHandle>
 
 Initialize a key session for the specified user. This API uses a promise to return the result. **huks.initSessionAsUser**, **huks.updateSession**, and **huks.finishSession** must be used together.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 

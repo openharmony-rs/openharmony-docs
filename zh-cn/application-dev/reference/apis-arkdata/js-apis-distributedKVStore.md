@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
-<!--Designer: @dboy190; @houpengtao1-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -963,6 +963,8 @@ try {
 ## KVStoreResultSet
 
 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。同时允许打开的结果集的最大数量为8个。
+
+KVStoreResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
 在调用KVStoreResultSet的方法前，需要先通过[getKVStore](#getkvstore)构建一个SingleKVStore或者DeviceKVStore实例。
 
@@ -4080,6 +4082,7 @@ getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -4148,6 +4151,7 @@ getResultSize(query: Query): Promise&lt;number&gt;
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -5355,7 +5359,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 | 参数名       | 类型                                      | 必填 | 说明                                                       |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | 是   | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。  |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
 
 **错误码：**
 
@@ -6927,6 +6931,7 @@ getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -6995,6 +7000,7 @@ getResultSize(query: Query): Promise&lt;number&gt;
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**

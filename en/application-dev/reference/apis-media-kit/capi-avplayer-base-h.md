@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -279,7 +279,7 @@ Called when the AVPlayer receives a message. If this callback is successfully se
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance.|
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | Message type. For details about the available options, see [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype).|
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* infoBody | Pointer to the message. The pointer is valid only in this callback.|
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | Pointer to the message. The pointer is valid only in this callback.|
 | void *userData | Pointer to the instance provided by the caller when setting the callback function.|
 
 ### OH_AVPlayerOnError()
@@ -290,7 +290,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **Description**
 
-Defines the callback when an error occurs in the AVPlayer. This type is available in API version 9 or later.
+Called when an error occurs in the AVPlayer. This type is available in API version 9 or later.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -298,7 +298,7 @@ Defines the callback when an error occurs in the AVPlayer. This type is availabl
 
 **Deprecated from**: 12
 
-**Substitute**: [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)
+**Substitute**: [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
 
 **Parameters**

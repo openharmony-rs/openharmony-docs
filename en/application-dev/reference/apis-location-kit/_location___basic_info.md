@@ -1,5 +1,10 @@
 # Location_BasicInfo
-
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 ## Overview
 
@@ -19,7 +24,7 @@ Defines the struct for the basic location information.
 | Name| Description| 
 | -------- | -------- |
 | double [latitude](#latitude) | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from –90 to 90. Only the WGS84 coordinate system is supported. | 
-| double [longitude](#longitude) | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from -180 to 180. Only the WGS84 coordinate system is supported. | 
+| double [longitude](#longitude) | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from -180 to 180. Only the WGS84 coordinate system is supported. | 
 | double [altitude](#altitude) | Location altitude, in meters. | 
 | double [accuracy](#accuracy) | Location accuracy, in meters. | 
 | double [speed](#speed) | Speed, in m/s. | 
@@ -113,7 +118,7 @@ double Location_BasicInfo::longitude
 ```
 **Description**
 
-Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from -180 to 180. Only the WGS84 coordinate system is supported.
+Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from -180 to 180. Only the WGS84 coordinate system is supported.
 
 
 ### speed

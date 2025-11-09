@@ -1,5 +1,12 @@
 # Matching Rules of Explicit Want and Implicit Want
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Both explicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) and implicit [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) can be used to match an application component to start based on certain rules. These rules determine how the parameters set in [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) match the configuration file declared by the target application component.
 
 ## Matching Rules of Explicit Want

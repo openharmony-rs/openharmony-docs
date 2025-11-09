@@ -40,7 +40,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 Sendable class需同时满足以下两个规则：
 
-1. 当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。
+1. 针对API version 22以前的工程，当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。从API version 22开始，Sendable class除了必须标注@Sendable装饰器之外，开发者可根据需要在Sendable class上叠加使用其他自定义装饰器，具体操作可参考[在Sendable class上叠加其他自定义装饰器](sendable-constraints.md#支持在sendable-class上叠加自定义装饰器)。
 
 2. 需满足Sendable约束，详情可查[Sendable使用规则](sendable-constraints.md)。
 

@@ -44,7 +44,7 @@
      },
      fontSize: 50,
      // 设置语言偏好为简体中文
-     locale: "zh-Hans"
+     locale: 'zh-Hans'
    };
    ```
 
@@ -64,7 +64,7 @@
    // 更新文本样式
    paragraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   paragraphBuilder.addText("你好，世界");
+   paragraphBuilder.addText('你好，世界');
    ```
 
 5. 排版段落并进行文本绘制。
@@ -83,13 +83,12 @@
 
 此示例中，要绘制的文本为简体中文，将语言偏好设置为简体中文，在匹配文字字体时，会优先匹配简体，从而提高绘制的效率。
 
-```ts
+<!-- @[arkts_multi_language_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -106,9 +105,9 @@ class MyRenderNode extends RenderNode {
       },
       fontSize: 50,
       // 设置语言偏好为简体中文
-      locale: "zh-Hans"
+      locale: 'zh-Hans'
     };
-    
+
     let myParagraphStyle: text.ParagraphStyle = {
       textStyle: myTextStyle,
     };
@@ -117,7 +116,7 @@ class MyRenderNode extends RenderNode {
     // 更新文本样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("你好，世界");
+    paragraphBuilder.addText('你好，世界');
     // 生成段落
     let paragraph = paragraphBuilder.build();
     // 布局
@@ -128,69 +127,69 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
         y: 0,
         width: 10,
         height: 500
-      }
+      };
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
@@ -209,7 +208,6 @@ struct Font08 {
   }
 }
 ```
-
 
 ### 效果展示
 
@@ -273,9 +271,9 @@ struct Font08 {
    // 更新文本样式
    paragraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   paragraphBuilder.addText("Hello World Hello World Hello World Hello World Hello World Hello World " +
-     "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World " +
-     "Hello World Hello World Hello World Hello World Hello World ");
+   paragraphBuilder.addText('Hello World Hello World Hello World Hello World Hello World Hello World ' +
+     'Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World ' +
+     'Hello World Hello World Hello World Hello World Hello World ');
    ```
 
 5. 排版段落并进行文本绘制。
@@ -292,13 +290,12 @@ struct Font08 {
 
 ### 完整示例
 
-```ts
+<!-- @[arkts_multi_line_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -315,9 +312,9 @@ class MyRenderNode extends RenderNode {
       },
       fontSize: 50,
       // 当wordBreak为text.WordBreak.BREAK_HYPHEN时，需要为段落设置语言偏好，段落会在不同语言偏好下呈现不同的文本断词效果
-      locale: "en-gb"
+      locale: 'en-gb'
     };
-    
+
     let myParagraphStyle: text.ParagraphStyle = {
       textStyle: myTextStyle,
       // 文本对齐方式
@@ -332,15 +329,15 @@ class MyRenderNode extends RenderNode {
     // 更新文本样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("Hello World Hello World Hello World Hello World Hello World Hello World " +
-      "Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World " +
-      "Hello World Hello World Hello World Hello World Hello World ");
+    paragraphBuilder.addText('Hello World Hello World Hello World Hello World Hello World Hello World ' +
+      'Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World ' +
+      'Hello World Hello World Hello World Hello World Hello World ');
     // 当wordBreak为text.WordBreak.BREAK_HYPHEN时，替换文本内容为：
-    // paragraphBuilder.addText("Modern embedded systems require robust communication protocols and efficient memory " +
-    //   "management strategies. Developers often face challenges in optimizing performance while maintaining " +
-    //   "modularity and portability. By leveraging a layered architecture and structured logging, applications can " +
-    //   "detect anomalies and respond quickly to faults. This approach enhances reliability, especially in " +
-    //   "time-critical environments such as IoT devices and real-time operating systems.");
+    // paragraphBuilder.addText('Modern embedded systems require robust communication protocols and efficient memory ' +
+    //   'management strategies. Developers often face challenges in optimizing performance while maintaining ' +
+    //   'modularity and portability. By leveraging a layered architecture and structured logging, applications can ' +
+    //   'detect anomalies and respond quickly to faults. This approach enhances reliability, especially in ' +
+    //   'time-critical environments such as IoT devices and real-time operating systems.');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -352,26 +349,26 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
@@ -380,41 +377,41 @@ class MyNodeController extends NodeController {
         height: 500
       }
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
@@ -472,6 +469,10 @@ struct Font08 {
 - **上下标：** 可以将任意字符处理成上标或下标，更精准表达文本含义。
 
 - **高对比度文字绘制：** 主要通过将深色文字变黑、浅色文字变白，增强文本的对比效果。
+
+- **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
+
+- **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
 
 ### 装饰线
 
@@ -559,16 +560,66 @@ let superScriptStyle: text.TextStyle = {
 
 具体使用效果可参见下文[示例五](#示例五高对比度)。
 
+### 行高调整
+
+当前行高调整方式包括两种：设置行高上限/下限和使用行高缩放系数。
+
+**行高调整（方式一）**
+
+从API version 21开始，支持通过设置行高上限和下限调整行高，关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+    // 设置行高上限
+    lineHeightMaximum: 65,
+    // 设置行高下限
+    lineHeightMinimum: 65
+};
+```
+
+使用效果参考下文[示例六](#示例六行高调整方式一)。
+
+**行高调整（方式二）**
+
+通过设置行高缩放系数调整行高，关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+    // 开启行高缩放开关
+    heightOnly: true,
+    // 设置行高缩放系数
+    heightScale: 1.5,
+    // 设置行高缩放风格
+    lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT
+};
+```
+
+使用效果参考下文[示例七](#示例七行高调整方式二)。
+
+### 行间距调整
+
+从API version 21开始，支持设置行间距改善文本行之间的距离，提高阅读体验，关键代码如下：
+
+```ts
+let myParagraphStyle: text.ParagraphStyle = {
+  // 设置行间距
+  lineSpacing: 100,
+  // 关闭段落上升部和下降部
+  textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+};
+```
+
+具体使用效果可参见下文[示例八](#示例八行间距调整)。
+
 ### 示例一（装饰线、字体特征）
 这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
 
-```ts
+<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -600,7 +651,7 @@ class MyRenderNode extends RenderNode {
         green: 0,
         blue: 0
       },
-      fontSize: 300,
+      fontSize: 200,
       // 设置装饰线
       decoration: decorations,
       // 开启字体特征
@@ -617,7 +668,7 @@ class MyRenderNode extends RenderNode {
     // 更新文本样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("1/2 1/3 1/4 ");
+    paragraphBuilder.addText('1/2 1/3 1/4 ');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -629,26 +680,26 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
@@ -657,41 +708,41 @@ class MyNodeController extends NodeController {
         height: 500
       }
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
@@ -721,12 +772,14 @@ struct Font08 {
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
-```ts
+
+<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
@@ -741,7 +794,7 @@ class MyRenderNode extends RenderNode {
         green: 0,
         blue: 0
       },
-      fontSize: 150,
+      fontSize: 120,
       // 可变字体
       fontVariations: [{axis: 'wght', value: 555}],
       // 文本阴影
@@ -769,12 +822,12 @@ class MyRenderNode extends RenderNode {
       baselineOffset: 100
     };
     // 添加占位符
-    paragraphBuilder.addPlaceholder(myPlaceholderSpan)
+    paragraphBuilder.addPlaceholder(myPlaceholderSpan);
 
     // 更新文本样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("Hello Test");
+    paragraphBuilder.addText('Hello Test');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -786,86 +839,86 @@ class MyRenderNode extends RenderNode {
     //获取全部占位符的数组
     let placeholderRects = paragraph.getRectsForPlaceholders();
     // 获取第一个占位符的左边界
-    let left = placeholderRects[0].rect.left
+    let left = placeholderRects[0].rect.left;
     // 获取第一个占位符的上边界
-    let top = placeholderRects[0].rect.top
+    let top = placeholderRects[0].rect.top;
     // 获取第一个占位符的右边界
-    let right = placeholderRects[0].rect.right
+    let right = placeholderRects[0].rect.right;
     // 获取第一个占位符的下边界
-    let bottom = placeholderRects[0].rect.bottom
-    let pen: drawing.Pen =  new drawing.Pen()
-    let pen_color : common2D.Color = { alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 }
-    pen.setColor(pen_color)
-    canvas.attachPen(pen)
+    let bottom = placeholderRects[0].rect.bottom;
+    let pen: drawing.Pen =  new drawing.Pen();
+    let penColor : common2D.Color = { alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 };
+    pen.setColor(penColor);
+    canvas.attachPen(pen);
     // 使用draw方法绘制占位符矩形框
-    canvas.drawRect(left,top,right,bottom)
+    canvas.drawRect(left,top,right,bottom);
   }
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
-  height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+  height: 600,
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
         y: 0,
         width: 10,
         height: 500
-      }
+      };
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
@@ -895,10 +948,11 @@ struct Font08 {
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
 
-```ts
+<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -931,7 +985,7 @@ class MyRenderNode extends RenderNode {
     // 设置待排版文本要应用的样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("VerticalAlignment-center");
+    paragraphBuilder.addText('VerticalAlignment-center');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -943,26 +997,26 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
@@ -970,51 +1024,51 @@ class MyNodeController extends NodeController {
         width: 10,
         height: 500
       }
-      renderNode.pivot = { x: 50, y: 50 }
+      renderNode.pivot = { x: 50, y: 50 };
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
         NodeContainer(myNodeController)
           .height('100%')
           .width('100%')
-        Text("Test for vertical alignment")
-          .onApper(() => {
+        Text('Test for vertical alignment')
+          .onAppear(() => {
             performTask();
           })
       }
@@ -1024,8 +1078,9 @@ struct Font08 {
 }
 ```
 
+
 具体示意效果如下所示：
-| 样式设置（垂直对齐） | 示意效果 | 
+| 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
 | 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
 | 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
@@ -1035,10 +1090,11 @@ struct Font08 {
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
 
-```ts
+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -1077,11 +1133,11 @@ class MyRenderNode extends RenderNode {
     // 设置待排版文本要应用的样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("The chemical formula for water: H");
+    paragraphBuilder.addText('The chemical formula for water: H');
     paragraphBuilder.pushStyle(subScriptStyle);
-    paragraphBuilder.addText("2");
+    paragraphBuilder.addText('2');
     paragraphBuilder.pushStyle(myTextStyle);
-    paragraphBuilder.addText("o");
+    paragraphBuilder.addText('o');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -1093,26 +1149,26 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
@@ -1120,69 +1176,73 @@ class MyNodeController extends NodeController {
         width: 10,
         height: 500
       }
-      renderNode.pivot = { x: 50, y: 50 }
+      renderNode.pivot = { x: 50, y: 50 };
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
 @Component
 struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+  @State src: Resource = $r('app.media.startIcon');
   build() {
     Column() {
       Row() {
         NodeContainer(myNodeController)
           .height('100%')
           .width('100%')
-        Text("Test for superscript and subscript")
-          .onApper(() => {
+        Text('Test for superscript and subscript')
+          .onAppear(() => {
             performTask();
           })
       }
     }
-      .width('100%')
+    .width('100%')
   }
 }
 ```
 
+
 具体示意效果如下所示：
-| 样式设置（上下标) | 示意效果 | 
+| 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
 | 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
 | 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
-```ts
+
+<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext} from '@kit.ArkUI'
 import { text } from '@kit.ArkGraphics2D'
 
@@ -1214,7 +1274,7 @@ class MyRenderNode extends RenderNode {
     // 更新文本样式
     paragraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("Hello World");
+    paragraphBuilder.addText('Hello World');
 
     // 生成段落
     let paragraph = paragraphBuilder.build();
@@ -1226,64 +1286,64 @@ class MyRenderNode extends RenderNode {
 }
 
 // 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
+const textNode = new MyRenderNode();
 // 定义newNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
   width: 400,
   height: 600
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
+};
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
+    this.rootNode = new FrameNode(uiContext);
     if (this.rootNode == null) {
-      return this.rootNode
+      return this.rootNode;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.frame = {
         x: 0,
         y: 0,
         width: 10,
         height: 500
-      }
-      renderNode.pivot = { x: 0.2, y: 0.8 }
+      };
+      renderNode.pivot = { x: 0.2, y: 0.8 };
     }
-    return this.rootNode
+    return this.rootNode;
   }
 
   addNode(node: RenderNode): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.appendChild(node)
+      renderNode.appendChild(node);
     }
   }
 
   clearNodes(): void {
     if (this.rootNode == null) {
-      return
+      return;
     }
-    const renderNode = this.rootNode.getRenderNode()
+    const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
-      renderNode.clearChildren()
+      renderNode.clearChildren();
     }
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
+let myNodeController: MyNodeController = new MyNodeController();
 
 async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
 }
 
 @Entry
@@ -1295,19 +1355,434 @@ struct Font08 {
         NodeContainer(myNodeController)
           .height('100%')
           .width('100%')
-        Text("Test high contrast")
+        Text('Test high contrast')
           .onAppear(() => {
-              performTask();
-            })
+            performTask();
+          })
       }
       .width('100%')
     }
   }
 }
 ```
+
 具体示意效果如下所示：
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
 | 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
 | 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+
+### 示例六（行高调整方式一）
+这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
+
+  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
+
+  // 创建一个MyRenderNode类，并绘制文本。
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
+
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+        // 设置行高上限
+        lineHeightMaximum: 65,
+        // 设置行高下限
+        lineHeightMinimum: 65,
+      };
+
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+      };
+
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+      // 设置待排版文本要应用的样式
+      paragraphBuilder.pushStyle(myTextStyle);
+      // 添加文本
+      paragraphBuilder.addText('Hello World!');
+
+      // 生成段落
+      let paragraph = paragraphBuilder.build();
+      // 布局
+      paragraph.layoutSync(1000);
+      // 绘制文本
+      paragraph.paint(canvas, 0, 0);
+    }
+  }
+
+  // 创建一个MyRenderNode对象
+  const textNode = new MyRenderNode()
+  // 定义newNode的像素格式
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext)
+      if (this.rootNode == null) {
+        return this.rootNode;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        }
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
+    }
+
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
+      }
+    }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode()
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for line height limit')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
+      .width('100%')
+    }
+  }
+  ```
+
+具体效果如下所示：
+
+| 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- | -------- |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
+
+### 示例七（行高调整方式二）
+这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
+
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
+
+  // 创建一个MyRenderNode类，并绘制文本。
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
+
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+        // 开启行高缩放开关
+        heightOnly: true,
+        // 设置行高缩放系数
+        heightScale: 1.5,
+        // 设置行高缩放风格
+        lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
+      };
+
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+      };
+
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+      // 设置待排版文本要应用的样式
+      paragraphBuilder.pushStyle(myTextStyle);
+      // 添加文本
+      paragraphBuilder.addText('Hello World!');
+
+      // 生成段落
+      let paragraph = paragraphBuilder.build();
+      // 布局
+      paragraph.layoutSync(1000);
+      // 绘制文本
+      paragraph.paint(canvas, 0, 0);
+    }
+  }
+
+  // 创建一个MyRenderNode对象
+  const textNode = new MyRenderNode();
+  // 定义newNode的像素格式
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext)
+      if (this.rootNode == null) {
+        return this.rootNode;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        };
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
+    }
+
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
+      }
+    }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode()
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for line height limit')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
+      .width('100%')
+    }
+  }
+  ```
+具体效果如下所示：
+
+| 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| FontSize | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
+
+### 示例八（行间距调整）
+这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
+
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  
+  ``` TypeScript
+  import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+  import { text } from '@kit.ArkGraphics2D'
+
+  // 创建一个MyRenderNode类，并绘制文本。
+  class MyRenderNode extends RenderNode {
+    async draw(context: DrawContext) {
+      let canvas = context.canvas;
+
+      let myTextStyle: text.TextStyle = {
+        color: {
+          alpha: 255,
+          red: 255,
+          green: 0,
+          blue: 0
+        },
+        fontSize: 50,
+      };
+
+      let myParagraphStyle: text.ParagraphStyle = {
+        textStyle: myTextStyle,
+        // 设置行间距
+        lineSpacing: 100,
+        // 关闭段落上升部和下降部
+        textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
+      };
+
+      let fontCollection = text.FontCollection.getGlobalInstance();
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+      // 设置待排版文本要应用的样式
+      paragraphBuilder.pushStyle(myTextStyle);
+      // 添加文本
+      paragraphBuilder.addText('Hello World!');
+
+      // 生成段落
+      let paragraph = paragraphBuilder.build();
+      // 布局
+      paragraph.layoutSync(200);
+      // 绘制文本
+      paragraph.paint(canvas, 0, 0);
+    }
+  }
+
+  // 创建一个MyRenderNode对象
+  const textNode = new MyRenderNode();
+  // 定义newNode的像素格式
+  textNode.frame = {
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 600
+  }
+  textNode.pivot = { x: 0.2, y: 0.8 };
+  textNode.scale = { x: 1, y: 1 };
+
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+
+    makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext);
+      if (this.rootNode == null) {
+        return this.rootNode
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.frame = {
+          x: 0,
+          y: 0,
+          width: 10,
+          height: 500
+        }
+        renderNode.pivot = { x: 50, y: 50 };
+      }
+      return this.rootNode;
+    }
+
+    addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.appendChild(node);
+      }
+    }
+
+    clearNodes(): void {
+      if (this.rootNode == null) {
+        return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+        renderNode.clearChildren();
+      }
+    }
+  }
+
+  let myNodeController: MyNodeController = new MyNodeController();
+
+  async function performTask() {
+    myNodeController.clearNodes();
+    myNodeController.addNode(textNode);
+  }
+
+  @Entry
+  @Component
+  struct Font08 {
+    @State src: Resource = $r('app.media.startIcon')
+    build() {
+      Column() {
+        Row() {
+          NodeContainer(myNodeController)
+            .height('100%')
+            .width('100%')
+          Text('Test for lineSpacing and height behavior')
+            .onAppear(() => {
+              performTask();
+            })
+        }
+      }
+      .width('100%')
+    }
+  }
+  ```
+具体效果如下所示：
+
+| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
+| ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |

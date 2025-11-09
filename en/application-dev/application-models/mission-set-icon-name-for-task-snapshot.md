@@ -1,5 +1,12 @@
 # Setting the Icon and Name of a Mission Snapshot
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Setting a unique icon and name for each mission snapshot of an application helps you better manage the missions and functions of the application.
 
 By default, the **icon** and **label** fields in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the [module.json5 file](../quick-start/module-configuration-file.md) are used to set the icon and label.

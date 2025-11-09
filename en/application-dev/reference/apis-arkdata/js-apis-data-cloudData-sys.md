@@ -52,10 +52,10 @@ Represents the transparently transmitted data, which contains information requir
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name     | Type  | Mandatory| Description                                                        |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| eventId   | string | Yes  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
-| extraData | string | Yes  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| eventId   | string | No  | No  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
+| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
 
 **Example**
 
@@ -87,12 +87,12 @@ Represents the device-cloud sync statistics.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name     | Type  | Mandatory| Description                                                 |
-| --------- | ------ | ---- |-----------------------------------------------------|
-| table   | string | Yes  | Name of the table queried. For example, the value **cloud_notes** indicates that the sync information of the **cloud_notes** table is queried.|
-| inserted   | number | Yes  | Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.         |
-| updated   | number | Yes  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.    |
-| normal | number | Yes  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.                    |
+| Name     | Type  | Read-Only| Optional| Description                                                 |
+| --------- | ------ | ---- | ---- |-----------------------------------------------------|
+| table   | string | No  | No  | Name of the table queried. For example, the value **cloud_notes** indicates that the sync information of the **cloud_notes** table is queried.|
+| inserted   | number | No  | No  | Number of data records that are added locally and have not been synced to the cloud. For example, the value **2** indicates that the table has two data records that are added locally but not synced to the cloud.         |
+| updated   | number | No  | No  | Number of data records that are modified locally or on the cloud but have not been synced. For example, the value **2** indicates that the table has two data records that are updated locally or on the cloud but not synced.    |
+| normal | number | No  | No  | Number of consistent data records between the device and the cloud. For example, the value **2** indicates that table has two data records that are consistent between the device and the cloud.                    |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -111,12 +111,12 @@ Represents information about the last device-cloud sync.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
 
-| Name      | Type                                                        | Mandatory| Description                      |
-| ---------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| startTime  | Date                                                         | Yes  | Start time of the last device-cloud sync.|
-| finishTime | Date                                                         | Yes  | End time of the last device-cloud sync.|
-| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | Yes  | Result of the last device-cloud sync.|
-| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | No| Status of the last device-cloud sync. The default value is **cloudData.SyncStatus.RUNNING**.|
+| Name      | Type                                                        | Read-Only| Optional| Description                      |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------------------- |
+| startTime  | Date                                                         | No  | No  | Start time of the last device-cloud sync.|
+| finishTime | Date                                                         | No  | No  | End time of the last device-cloud sync.|
+| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | No| No| Result of the last device-cloud sync.|
+| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | No| Yes| Status of the last device-cloud sync. The default value is **cloudData.SyncStatus.RUNNING**.|
 
 ## Config
 
@@ -1069,11 +1069,11 @@ Represents the device-cloud sharing result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | Yes  | Error code.      |
-| description | string                      | No  | Detailed description of the error code. The default value is **undefined**.      |
-| value       | T                           | No  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.|
+| Name         | Type                         | Read-Only| Optional | Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | No  | No  | Error code.      |
+| description | string                      | No  | Yes  | Detailed description of the error code. The default value is **undefined**.      |
+| value       | T                           | No  | Yes  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.|
 
 ### Privilege<sup>11+</sup>
 
@@ -1081,13 +1081,13 @@ Defines the privilege (permissions) on the shared data.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| writable    | boolean              | No  | Whether the participant can modify the shared data. The value **true** means the participant can modify the data; the value **false** means the opposite. The default value is **false**.  |
-| readable    | boolean              | No  | Whether the participant can read the shared data. The value **true** means the participant can read the data; the value **false** means the opposite. The default value is **false**.  |
-| creatable   | boolean              | No  | Whether the participant can create data to share. The value **true** means the participant can create data; the value **false** means the opposite. The default value is **false**. |
-| deletable   | boolean              | No  | Whether the participant can delete the shared data. The value **true** means the participant can delete the data; the value **false** means the opposite. The default value is **false**. |
-| shareable   | boolean              | No  | Whether the participant can share the data to others. The value **true** means the participant can share the data; the value **false** means the opposite. The default value is **false**. |
+| Name         | Type                         | Read-Only| Optional | Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| writable    | boolean              | No  | Yes  | Whether the participant can modify the shared data. The value **true** means the participant can modify the data; the value **false** means the opposite. The default value is **false**.  |
+| readable    | boolean              | No  | Yes  | Whether the participant can read the shared data. The value **true** means the participant can read the data; the value **false** means the opposite. The default value is **false**.  |
+| creatable   | boolean              | No  | Yes  | Whether the participant can create data to share. The value **true** means the participant can create data; the value **false** means the opposite. The default value is **false**. |
+| deletable   | boolean              | No  | Yes  | Whether the participant can delete the shared data. The value **true** means the participant can delete the data; the value **false** means the opposite. The default value is **false**. |
+| shareable   | boolean              | No  | Yes  | Whether the participant can share the data to others. The value **true** means the participant can share the data; the value **false** means the opposite. The default value is **false**. |
 
 ### Participant<sup>11+</sup>
 
@@ -1095,13 +1095,13 @@ Represents information about a participant of device-cloud sharing.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| identity    | string                  | Yes  | ID of the participant.             |
-| role        | [Role](#role11)           | No  | Role of the participant, inviter or invitee. The default value is **undefined**. |
-| state       | [State](#state11)         | No  | State of the device-cloud sharing. The default value is **undefined**.|
-| privilege   | [Privilege](#privilege11) | No  | Permissions on the shared data. The [Privilege](#privilege11) defaults are used by default.|
-| attachInfo  | string                  | No  | Additional information, such as the verification code used for participant identity verification. The default value is an empty string.|
+| Name         | Type                         | Read-Only| Optional| Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| identity    | string                    | No  | No  | ID of the participant.             |
+| role        | [Role](#role11)           | No  | Yes  | Role of the participant, inviter or invitee. The default value is **undefined**. |
+| state       | [State](#state11)         | No  | Yes  | State of the device-cloud sharing. The default value is **undefined**.|
+| privilege   | [Privilege](#privilege11) | No  | Yes  | Permissions on the shared data. The [Privilege](#privilege11) defaults are used by default.|
+| attachInfo  | string                    | No  | Yes  | Additional information, such as the verification code used for participant identity verification. The default value is an empty string.|
 
 ### allocResourceAndShare<sup>11+</sup>
 
@@ -2069,4 +2069,4 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }))
 
 ```
-
+ 

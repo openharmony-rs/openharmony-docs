@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay; @Luobniz21-->
-<!--Designer: @altay-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -191,7 +191,7 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
     }
    ```
    
-3. Set the UIAbility identifier based on the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) lifecycle callback of SpecifiedAbility. In the example, the identifier is set to **SpecifiedAbilityInstance_KEY**.
+3. Set the UIAbility identifier based on the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) lifecycle callback of the AbilityStage corresponding to SpecifiedAbility. In the example, the identifier is set to **SpecifiedAbilityInstance_KEY**.
 
    ```ts
     import { AbilityStage, Want } from '@kit.AbilityKit';

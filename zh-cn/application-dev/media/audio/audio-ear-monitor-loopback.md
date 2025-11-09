@@ -4,9 +4,9 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-从API20开始支持音频低时延耳返。
+从API version 20开始，支持音频低时延耳返。
 
 AudioLoopback是音频返听器，可将音频以更低时延的方式实时传输到耳机中，让用户可以实时听到自己或者其他的相关声音。
 
@@ -92,12 +92,12 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     });
    ```
 
-4. 调用[setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21)方法，设置音频返听的混响模式。
+4. 从API21开始，支持调用[setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21)方法，设置音频返听的混响模式。
 
     > **注意：**
     > - 在启用返听前设置混响模式，混响模式将在启用返听成功后生效。
     > - 在启用返听后设置混响模式，混响模式将立即生效。
-    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式THEATER。
+    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -108,10 +108,10 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     }
    ```
 
-5. 调用[getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21)方法，查询当前的音频返听的混响模式。
+5. 从API21开始，支持调用[getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21)方法，查询当前的音频返听的混响模式。
 
     > **注意：**
-    > 若未设置混响模式，查询得到将是默认混响模式THEATER。
+    > 若未设置混响模式，查询得到将是默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
@@ -121,12 +121,12 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     }
    ```
 
-6. 调用[setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21)方法，设置音频返听的均衡器类型。
+6. 从API21开始，支持调用[setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21)方法，设置音频返听的均衡器类型。
 
     > **注意：**
     > - 在启用返听前设置均衡器类型，均衡器类型将在启用返听成功后生效。
     > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。
-    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型FULL。
+    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,10 +137,10 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     }
    ```
 
-7. 调用[getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21)方法，查询当前的音频返听的均衡器类型。
+7. 从API21开始，支持调用[getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21)方法，查询当前的音频返听的均衡器类型。
 
     > **注意：**
-    > 若未设置均衡器类型，查询得到将是默认均衡器类型FULL。
+    > 若未设置均衡器类型，查询得到将是默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
@@ -234,32 +234,32 @@ async function setVolume(volume: number) {
 }
 
 // 设置音频返听的混响模式。
-async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset): void {
+async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setReverbPreset(preset);
-      Logger.info(`setReverbPreset( ${preset} succeeded.`);
-      currentReverbPreset = this.audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
+      console.info(`setReverbPreset( ${preset} succeeded.`);
+      currentReverbPreset = audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
     } catch (err) {
-      Logger.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 
-// 设置音频返听的混响模式。
+// 设置音频返听的均衡器类型。
 async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setEqualizerPreset(preset);
-      Logger.info(`setEqualizerPreset ${preset} succeeded.`);
-      currentEqualizerPreset = this.audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
+      console.info(`setEqualizerPreset ${preset} succeeded.`);
+      currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
     } catch (err) {
-      Logger.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 

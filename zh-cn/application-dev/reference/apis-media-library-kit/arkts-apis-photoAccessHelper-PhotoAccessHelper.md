@@ -5,7 +5,7 @@
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -231,7 +231,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型，IMAGE或者VIDEO类型。              |
 | extension  | string        | 是   | 文件名后缀参数，例如：'jpg'。              |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 是   | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。<br>**注意：** 传入其他选项，配置不生效。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ]       |
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 是   | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。<br>**注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ] |
 | callback |  AsyncCallback&lt;string&gt; | 是   | callback返回创建的图片和视频的uri。 |
 
 **错误码：**
@@ -345,7 +345,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型，IMAGE或者VIDEO类型。              |
 | extension  | string        | 是   | 文件名后缀参数，例如：'jpg'。              |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。<br>**注意：** 传入其他选项，配置不生效。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ]      |
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，当前仅支持'title'，例如{title: 'testPhoto'}。<br>**注意：** 传入'subtype'选项，配置不生效，仅支持保存DEFAULT类型图片。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
@@ -1104,7 +1104,7 @@ on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1161,7 +1161,7 @@ off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1221,7 +1221,7 @@ on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1278,7 +1278,7 @@ off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

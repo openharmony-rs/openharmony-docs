@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -17,7 +17,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|[CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)|Unsubscribe from a common event.|
+|[CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_unsubscribe)|Unsubscribes from a common event.|
 
 ## How to Develop
 

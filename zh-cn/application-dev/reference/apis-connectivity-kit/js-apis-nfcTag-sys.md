@@ -23,12 +23,12 @@ import { tag } from '@kit.ConnectivityKit';
 
 NFC服务在读取到标签时创建的对象，通过该对象属性，应用可以获取标签支持的技术类型，并使用匹配的技术类型来调用相应接口。
 
-**系统能力：** SystemCapability.Communication.NFC.Tag
-
 **需要权限：** ohos.permission.NFC_TAG
+
+**系统能力：** SystemCapability.Communication.NFC.Tag
 
 | **名称**                      | **类型**                                                      | **只读** | **可选** | **说明**                                                                                     |
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
-| extrasData<sup>9+</sup>       | [PacMap](../apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#pacmap)[] | 是       | 否       | 标签所支持技术的扩展属性值。<br>**系统接口：** 此接口为系统接口。                            |
-| tagRfDiscId<sup>9+</sup>      | number                                                        | 是       | 否       | 标签发现时分配的ID值。<br>**系统接口：** 此接口为系统接口。                                  |
-| remoteTagService<sup>9+</sup> | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)               | 是       | 否       | NFC服务进程的远端对象，用于客户端和服务之间的接口通信。<br>**系统接口：** 此接口为系统接口。 |
+| extrasData<sup>9+</sup>       | [PacMap](../apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#pacmap)[] | 否       | 否       | 标签所支持技术的扩展属性值。<br>**系统接口：** 此接口为系统接口。                            |
+| tagRfDiscId<sup>9+</sup>      | number                                                        | 否       | 否       | 标签发现时分配的ID值。<br>**系统接口：** 此接口为系统接口。                                  |
+| remoteTagService<sup>9+</sup> | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)               | 否       | 否       | NFC服务进程的远端对象，用于客户端和服务之间的接口通信。<br>**系统接口：** 此接口为系统接口。 |

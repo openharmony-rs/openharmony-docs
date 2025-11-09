@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_runtaskinscope)接口，解决Native侧多实例场景下的组件操作问题。该功能通过动态切换执行上下文，确保跨实例组件属性设置的合法性，避免实例上下文不匹配导致的接口调用异常。
 
@@ -21,7 +21,9 @@ API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../re
 本示例展示OH_ArkUI_RunTaskInScope接口的基础使用方式，OH_ArkUI_NodeUtils_GetAttachedNodeHandleById用于获取前置实例页面内的组件，相关使用请参考[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)，此处userData传入的数据类型为最终要设置的组件指针，便于设置对应组件属性。
 
 
-```c
+<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 //page1
 ArkUI_NodeHandle button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
 ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
@@ -29,24 +31,34 @@ ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
 ArkUI_AttributeItem id = {.string = "pageOneButton"};
 nodeAPI->setAttribute(button, NODE_ID, &id);
 nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
+nodeAPI->addChild(textContainer, button);
 ```
 
-```c
+<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 //page2
 //pageOneButton由前置页面创建，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById在第二个页面获取。
 ArkUI_NodeHandle pageOneButton = nullptr;
-auto ec = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("pageOneButton", &pageOneButton);
+auto errorCode = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("pageOneButton", &pageOneButton);
+if (errorCode != ARKUI_ERROR_CODE_NO_ERROR) {
+    OH_LOG_ERROR(LOG_APP, "test Failed to get pageOneButton handle, error code: %{public}d", errorCode);
+    return nullptr;
+}
 auto uiContext = OH_ArkUI_GetContextByNode(pageOneButton);
+if (uiContext == nullptr) {
+    OH_LOG_ERROR(LOG_APP, "test Failed to get UI context for pageOneButton");
+    return nullptr;
+}
 OH_ArkUI_RunTaskInScope(uiContext, pageOneButton, [](void *userData) {
-        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-        auto pageOneButton = (ArkUI_NodeHandle)userData;
-        ArkUI_NumberValue value[] = {480};
-        ArkUI_AttributeItem LABEL_Item = {.string = "success"};
-        value[0].f32 = 250;
-        ArkUI_AttributeItem button_Item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI->setAttribute(pageOneButton, NODE_BUTTON_LABEL, &LABEL_Item);
-        nodeAPI->setAttribute(pageOneButton, NODE_WIDTH, &button_Item);
-    }
-);
+    auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+    auto pageOneButton = (ArkUI_NodeHandle)userData;
+    ArkUI_NumberValue value[] = {VALUE_3};
+    ArkUI_AttributeItem LABEL_Item = {.string = "success"};
+    value[0].f32 = VALUE_2;
+    ArkUI_AttributeItem button_Item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(pageOneButton, NODE_BUTTON_LABEL, &LABEL_Item);
+    nodeAPI->setAttribute(pageOneButton, NODE_WIDTH, &button_Item);
+});
 ```

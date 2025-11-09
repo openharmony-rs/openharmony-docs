@@ -1,8 +1,8 @@
 # Compressing and Decompressing Files
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
-<!--Owner: @jinsenjun-->
-<!--Designer: @jinsenjun-->
+<!--Owner: @jsjzju-->
+<!--Designer: @jsjzju-->
 <!--Tester: @lixueqing-->
 <!--Adviser: @Brilliantry_Rui-->
 

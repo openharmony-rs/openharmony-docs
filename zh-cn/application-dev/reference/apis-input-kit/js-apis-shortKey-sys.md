@@ -65,7 +65,7 @@ struct Index {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set key down duration success`);
+              console.info(`Set key down duration success`);
             });
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -95,7 +95,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 
 | 类型          | 说明          |
 | ------------- | ------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -120,7 +120,7 @@ struct Index {
         .onClick(() => {
           try {
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.log(`Set key down duration success`);
+              console.info(`Set key down duration success`);
             });
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

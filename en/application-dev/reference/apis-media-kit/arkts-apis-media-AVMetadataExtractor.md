@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -25,10 +25,10 @@ import { media } from '@kit.MediaKit';
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
-| Name                                               | Type                                                        | Readable| Writable| Description                                                        |
+| Name                                               | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fdSrc<sup>11+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | Yes  | Yes  | Media file descriptor, which specifies the data source. Before obtaining metadata, you must set the data source through either **fdSrc** or **dataSrc**.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> After the resource handle (FD) is transferred to an AVMetadataExtractor instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVMetadataExtractor use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
-| dataSrc<sup>11+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | Yes  | Yes  | Streaming media resource descriptor, which specifies the data source. Before obtaining metadata, you must set the data source through either **fdSrc** or **dataSrc**.<br> When an application obtains a media file from the remote, you can set **dataSrc** to obtain the metadata before the application finishes the downloading.|
+| fdSrc<sup>11+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | No  | Yes  | Media file descriptor, which specifies the data source. Before obtaining metadata, you must set the data source through either **fdSrc** or **dataSrc**.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> After the resource handle (FD) is transferred to an AVMetadataExtractor instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVMetadataExtractor use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
+| dataSrc<sup>11+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | No  | Yes  | Streaming media resource descriptor, which specifies the data source. Before obtaining metadata, you must set the data source through either **fdSrc** or **dataSrc**.<br> When an application obtains a media file from the remote, you can set **dataSrc** to obtain the metadata before the application finishes the downloading.|
 
 ## setUrlSource<sup>20+</sup>
 
@@ -59,7 +59,7 @@ media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AV
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
     let headers: Record<string, string> = {
-      "User-Agent" : "User-Agent-Value"
+      "User-Agent": "User-Agent-Value"
     };
     avMetadataExtractor.setUrlSource(url, headers);
   } else {
@@ -108,14 +108,14 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-let pixel_map : image.PixelMap | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
 
 // Initialize input parameters.
 let timeUs: number = 0;
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
 let param: media.PixelMapParams = {
-  width : 300,
-  height : 300
+  width: 300,
+  height: 300
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
@@ -137,7 +137,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
 
-Obtains media metadata. This API uses an asynchronous callback to return the result.
+Obtains the media metadata. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -179,7 +179,7 @@ async function test() {
 
 fetchMetadata(): Promise\<AVMetadata>
 
-Obtains media metadata. This API uses a promise to return the result.
+Obtains the media metadata. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -248,7 +248,7 @@ import { media } from '@kit.MediaKit';
 async function test() {
   // Create an AVMetadataExtractor instance.
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-  let pixel_map : image.PixelMap | undefined = undefined;
+  let pixel_map: image.PixelMap | undefined = undefined;
 
   avMetadataExtractor.fetchAlbumCover((error: BusinessError, pixelMap: image.PixelMap) => {
     if (error) {
@@ -293,7 +293,7 @@ import { media } from '@kit.MediaKit';
 async function test() {
   // Create an AVMetadataExtractor instance.
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-  let pixel_map : image.PixelMap | undefined = undefined;
+  let pixel_map: image.PixelMap | undefined = undefined;
 
   avMetadataExtractor.fetchAlbumCover().then((pixelMap: image.PixelMap) => {
     pixel_map = pixelMap;

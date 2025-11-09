@@ -1,5 +1,12 @@
 # ArcList
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 The **ArcList** component is a circular layout container that displays a series of list items in an arc shape. It is suitable for presenting homogeneous data, such as images and text, in a continuous, multi-row format.
 
 > **NOTE**
@@ -23,13 +30,13 @@ Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
 >
 > - The index increases in ascending order of child components. 
 >
-> - In the [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md) statement, only the child components for which the condition evaluates to true participate in the index calculation. 
+> - In the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) statement, only the child components for which the condition evaluates to true participate in the index calculation. 
 >
-> - In the [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md) or [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md) statement, the indexes of all expanded subnodes are calculated. 
+> - In the [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) or [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the indexes of all expanded subnodes are calculated. 
 >
-> - If the values of [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md) change, the indexes of subnodes are updated. 
+> - If the values of [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the indexes of subnodes are updated. 
 >
-> - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **Hidden** or **None** are still included in the index calculation. 
+> - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility-1) attribute is set to **Hidden** or **None** are still included in the index calculation. 
 
 
 ## APIs
@@ -82,7 +89,7 @@ Sets the spacing between list items.
 
 | Name| Type                                                        | Mandatory| Description                              |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Spacing between list items.<br>Default value: **0**<br>Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.|
+| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Spacing between list items.<br>Default value: **LengthMetrics.vp(0)**.<br>Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility-1) attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.|
 
 ### scrollBar
 
@@ -142,7 +149,7 @@ For chained animations to work properly, the edge scrolling effect of the **ArcL
 
 enableScrollInteraction(enable: Optional\<boolean>)
 
-Sets whether to support scroll gestures. When this attribute is set to **false**, scrolling by finger or mouse is not supported, but the [Scroller](ts-container-scroll.md#scroller) controller API is not affected.
+Sets whether to enable scroll gestures.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -152,7 +159,7 @@ Sets whether to support scroll gestures. When this attribute is set to **false**
 
 | Name| Type              | Mandatory| Description                               |
 | ------ | ------------------ | ---- | ----------------------------------- |
-| enable | Optional\<boolean> | Yes  | Whether to support scroll gestures.<br>Default value: **true**|
+| enable | Optional\<boolean> | Yes  | Whether to support scroll gestures. Whether to enable scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
 
 ### fadingEdge
 
@@ -168,13 +175,13 @@ Sets whether to enable the edge fading effect.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect.<br>When **fadingEdge** is set to **true**, it overrides the **.overlay()** attribute of the component.<br>With **fadingEdge** set to **true**, avoid setting background-related attributes on the component, as this may affect the display of the fading effect.<br>With **fadingEdge** set to **true**, the component is clipped to the boundary, and setting the component's **clip** attribute to **false** will not take effect.<br>Default value: **false**, which means not to enable the edge fading effect.|
+| enable | Optional&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect.<br>When **fadingEdge** is set to **true**, it overrides the **.overlay()** attribute of the component.<br>With **fadingEdge** set to **true**, avoid setting background-related attributes on the component, as this may affect the display of the fading effect.<br>With **fadingEdge** set to **true**, the component is clipped to the boundary, and setting the component's **clip** attribute to **false** will not take effect.<br>With the value **true**, the edge fading effect is enabled. With the value **false**, the edge fading effect is disabled.<br>Default value: **false**.|
 
 ### friction
 
 friction(friction: Optional\<number>)
 
-Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only indirectly the scroll chaining during the inertial scrolling process. If this attribute is set to a value less than or equal to 0, the default value is used.
+Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only the inertial scrolling process. If this attribute is set to a value less than or equal to 0, the default value is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -200,7 +207,7 @@ Sets the width of the scrollbar. Once the width is set, the scrollbar will use t
 
 | Name| Type                                                        | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Width of the scrollbar.<br>Default value: **24**<br>Minimum value: 4<br>Unit: vp|
+| width  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Width of the scrollbar.<br>Default value: **LengthMetrics.vp(24)**.<br>Minimum value: **LengthMetrics.vp(4)**<br>Unit: vp|
 
 ### scrollBarColor
 
@@ -216,7 +223,7 @@ Sets the color of the scrollbar.
 
 | Name| Type                                                        | Mandatory| Description                                    |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Color of the scrollbar.<br>Default value: **0xA9FFFFFF**|
+| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Color of the scrollbar.<br>Default value: **ColorMetrics.numeric(0xA9FFFFFF)**|
 
 ### flingSpeedLimit
 
@@ -282,6 +289,8 @@ This event is triggered during initialization of the **ArcList** component if [i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
+**Parameters**
+
 | Name | Type                                            | Mandatory| Description                    |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | Yes  | Callback triggered when the list reaches the start position.|
@@ -298,6 +307,8 @@ If the edge scrolling effect is set to spring, this event is triggered when scro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
+**Parameters**
+
 | Name | Type                                            | Mandatory| Description                    |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | Yes  | Callback triggered when the list reaches the end position.|
@@ -312,6 +323,8 @@ Triggered when the list starts scrolling initiated by the user's finger dragging
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
+**Parameters**
+
 | Name | Type                                            | Mandatory| Description                |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | Yes  | Callback triggered when the list starts scrolling.|
@@ -325,6 +338,8 @@ Triggered when the list stops scrolling after the user's finger leaves the scree
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
+
+**Parameters**
 
 | Name | Type                                            | Mandatory| Description                |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
@@ -348,7 +363,7 @@ Triggered before each frame when the list is being scrolled. The return value is
 
 > **NOTE**
 > 
-> When **ScrollEdge** or **ScrollToIndex** that does not involve animation is called, **onWillScroll** is not triggered.
+> onWillScroll is not triggered when [ScrollEdge](ts-container-scroll.md#scrolledge) and [ScrollToIndex](ts-container-scroll.md#scrolltoindex) (without animation) are called.
 
 ### onDidScroll
 onDidScroll(handler: Optional\<OnScrollCallback>)
@@ -373,11 +388,11 @@ Provides basic parameters for creating an **ArcList** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name      | Type                                   | Mandatory| Description                                                    |
-| ------------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| initialIndex | number                                      | No  | Item displayed at the beginning of the viewport when the **ArcList** component is loaded for the first time, that is, the first item to be displayed.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item, the value is invalid. In this case, the default value will be used.|
-| scroller     | [Scroller](ts-container-scroll.md#scroller) | No  | Scroller, which can be bound to scrollable components for scrolling control.<br>**NOTE**<br>The same scroller cannot be bound to multiple scrollable components.|
-| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | No  | Header component.                                              |
+| Name      | Type                                   | Read-Only| Optional| Description                                                    |
+| ------------ | ------------------------------------------- | ---- | --- | ------------------------------------------------------------ |
+| initialIndex | number                                      | No  | Yes| Item displayed at the beginning of the viewport when the **ArcList** component is loaded for the first time, that is, the first item to be displayed.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item, the value is invalid. In this case, the default value will be used.|
+| scroller     | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Controller of the scrollable component. After being bound to **ArcList**, the controller can control the scrolling of **ArcList**.<br>**NOTE**<br>The scroller cannot be bound to other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md).|
+| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | No  | Yes| Header component.                                              |
 
 ## ArcScrollIndexHandler
 
@@ -388,6 +403,8 @@ Represents the callback triggered when a child component enters or leaves the vi
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
+
+**Parameters**
 
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
@@ -401,8 +418,8 @@ This example demonstrates an **ArcList** component with a header component and a
 
 ```ts
 // xxx.ets
-import { ComponentContent, LengthMetrics } from "@kit.ArkUI";
-import { UIContext } from '@kit.ArkUI';
+import { ComponentContent, LengthMetrics } from '@kit.ArkUI';
+import { UIContext, CircleShape } from '@kit.ArkUI';
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Builder
@@ -419,10 +436,10 @@ function buildText() {
 struct Index {
   @State  private numItems: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  private watchSize: string = '466px' // Default watch size: 466*466
-  private listSize: string = '414px' // Item width
+  private watchSize: string = '466px'; // Default wearable size: 466*466
+  private listSize: string = '414px'; // Item width
 
-  context: UIContext = this.getUIContext()
+  context: UIContext = this.getUIContext();
   tabBar1: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(buildText));
 
   @Builder
@@ -433,7 +450,7 @@ struct Index {
       .justifyContent(FlexAlign.Center)
       .width(this.watchSize)
       .height(this.watchSize)
-      .clip(new Circle({ width: '100%', height: '100%' }))
+      .clipShape(new CircleShape({ width: '100%', height: '100%' }))
       .backgroundColor(Color.White)
 
       ArcList({ initialIndex: 0, header: this.tabBar1 }) {
@@ -447,7 +464,7 @@ struct Index {
               .focusOnTouch(true)
               .backgroundColor(0x17A98D)
           }.align(Alignment.Center)
-        }, (item: string, index: number) => item + index)
+        }, (item: number, index: number) => (item + index).toString())
       }
       .space(LengthMetrics.px(10))
       .borderRadius(this.watchSize)

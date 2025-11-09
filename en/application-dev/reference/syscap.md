@@ -1,5 +1,12 @@
 # SystemCapability
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 ## Overview
 
 ### System Capabilities and APIs
@@ -149,6 +156,8 @@ You can also find out the SysCap to which an API belongs by referring to the API
 
 The performance of a SysCap may vary by device type. For example, a tablet is superior to a smart wearable device in terms of the camera capability.
 
+The following code snippet uses the facial recognition capability as an example:
+
 ```ts
 import userAuth from '@ohos.userIAM.userAuth';
 
@@ -160,6 +169,8 @@ const authParam : userAuth.AuthParam = {
 const widgetParam :userAuth.WidgetParam = {
   title: 'Enter password',
 };
+
+// Use try...catch to capture exceptions when using the API. If the SysCap of the API is not compatible with the current device, error code 801 is returned.
 try {
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   userAuthInstance.start();

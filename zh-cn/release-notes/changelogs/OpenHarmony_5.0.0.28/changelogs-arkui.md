@@ -532,7 +532,7 @@ API 12
 
 **变更的接口/组件**
 
-[@ohos.arkui.advanced.ChipGroup.d.ets](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.arkui.advanced.ChipGroup.d.ets)中如下接口：
+[@ohos.arkui.advanced.ChipGroup.d.ets](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.arkui.advanced.ChipGroup.d.ets)中如下接口：
 
 items: Array<IconItemOptions | SymbolGlyphModifier>;
 

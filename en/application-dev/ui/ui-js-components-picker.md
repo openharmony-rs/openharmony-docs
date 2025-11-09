@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<picker>** component supports common, date, time, date and time, and multi-column text selectors. For details, see [picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md).
 
@@ -16,7 +16,7 @@ Create a **\<picker>** component in the .hml file under **pages/index**.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <picker>    picker  </picker>
+  <picker>picker</picker>
 </div>
 ```
 

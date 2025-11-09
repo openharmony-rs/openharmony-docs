@@ -1,4 +1,10 @@
 # Toolbar
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 You can configure the toolbar for a component.
 
@@ -6,13 +12,13 @@ You can configure the toolbar for a component.
 >
 >  The feature is supported since API version 20. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  This toolbar is a universal attribute for components. Note the distinction from the toolbar attribute of the [Navigation](ts-basic-components-navigation.md#navigation) component.
+>  This toolbar is a universal attribute for components. Note the distinction from the toolbar attribute of the [Navigation](ts-basic-components-navigation.md) component.
 
 ## toolbar
 
-toolbar(value: CustomBuilder)
+toolbar(value: CustomBuilder): T
 
-Creates a toolbar bound to the component in the window's title bar section. The toolbar position corresponds to the component's position in the layout. The [CustomBuilder](ts-types.md#custombuilder8) must consist of [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) components to take effect.
+Creates a toolbar bound to the component in the window's title bar section. The toolbar position corresponds to the component's position in the layout. The [CustomBuilder](ts-types.md#custombuilder8) must consist of [ToolBarItem](ts-basic-components-toolbaritem.md) components to take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,6 +27,12 @@ Creates a toolbar bound to the component in the window's title bar section. The 
 | Name| Type                                       | Mandatory| Description                                           |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Custom toolbar of the CustomBuilder type for the current component.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 >  **NOTE**
 >  1. Only fixed title bars are supported; floating title bars in three-button navigation mode are not supported.
@@ -31,18 +43,18 @@ Creates a toolbar bound to the component in the window's title bar section. The 
 >
 >  4. The toolbar only works when [NavigationMode](ts-basic-components-navigation.md#navigationmode9) is set to **Split**. It does not work with **Stack** or **Auto** modes.
 >
->  5. The title bar height dynamically adjusts based on the [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) components in the toolbar:
->     * There is a default 4 vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) components and the title bar.
->     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) component is less than or equal to 48 vp, the title bar height will adjust to 56 vp. This setting is suitable for universal components such as title bars, toolbars, and search bars.
->     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) component is between 48 vp and 56 vp, the title bar height will adjust to 64 vp. This setting is suitable for toolbars that display both icons and text.
->     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md#toolbaritem) component exceeds 56 vp, the title bar height will adjust to 72 vp. If it exceeds 64 vp, the title bar height will remain at 72 vp, and any excess area will be clipped.
+>  5. The title bar height dynamically adjusts based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
+>     * There is a default 4 vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md) components and the title bar.
+>     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md) component is less than or equal to 48 vp, the title bar height will adjust to 56 vp. This setting is suitable for universal components such as title bars, toolbars, and search bars.
+>     The title bar height dynamically adjusts based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
+>     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 56 vp, the title bar height will adjust to 72 vp. If it exceeds 64 vp, the title bar height will remain at 72 vp, and any excess area will be clipped.
 
 ## Example
 
 This example demonstrates how to:
 
-1. Bind the universal **toolbar** attribute to a [Button](ts-basic-components-button.md#button) component under [Navigation](ts-basic-components-navigation.md#navigation), adding two button toolbar items at the start of the **Navbar** section in the title bar.
-2. Bind the **toolbar** attribute to a [Text](ts-basic-components-text.md#text) component under [NavDestination](ts-basic-components-navdestination.md#navdestination) to add a slider and a search bar component as toolbar items at the end of the **NavDestination** section in the title bar.
+1. Bind the universal **toolbar** attribute to a [Button](ts-basic-components-button.md) component under [Navigation](ts-basic-components-navigation.md), adding two button toolbar items at the start of the **Navbar** section in the title bar.
+2. Bind the **toolbar** attribute to a [Text](ts-basic-components-text.md) component under [NavDestination](ts-basic-components-navdestination.md) to add a slider and a search bar component as toolbar items at the end of the **NavDestination** section in the title bar.
 
 ```ts
 // xxx.ets
@@ -79,7 +91,6 @@ struct SideBarContainerExample {
 
   @Builder
   PageNavDest(name: string) {
-    if (name = "1")
     NavDestination() {
       Column() {
         Text("add toolbar")
@@ -104,7 +115,7 @@ struct SideBarContainerExample {
           .onClick(() => {
             this.current = item
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       .backgroundColor('#19000000')
@@ -151,4 +162,4 @@ struct SideBarContainerExample {
   }
 }
 ```
-<!--no_check-->
+![toolbar.png](figures/toolbar.png)

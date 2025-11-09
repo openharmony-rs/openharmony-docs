@@ -25,11 +25,11 @@ OpenHarmony社区Beta分支是在社区开发和演进过程中不定期从Maste
 
 OpenHarmony社区基于LTS/Release分支以patch形式合入少量补丁代码，用于解决单点bug、安全漏洞、以及其他必须的适配修改，经过集成验证之后发布的稳定可靠的标签版本。
 
-社区版本发布在：https://gitee.com/openharmony/docs/tree/master/zh-cn/release-notes
+社区版本发布在：https://gitcode.com/openharmony/docs/tree/master/zh-cn/release-notes
 
 ## 生命周期策略
 
-OpenHarmony社区依据《[OpenHarmony版本生命周期管理](https://gitee.com/openharmony/release-management/blob/master/OpenHarmony%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A.md)》对Release和LTS分支提供维护和技术支持。
+OpenHarmony社区依据《[OpenHarmony版本生命周期管理](https://gitcode.com/openharmony/release-management/blob/master/OpenHarmony%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A.md)》对Release和LTS分支提供维护和技术支持。
 
 ### 维护时间表
 
@@ -48,18 +48,18 @@ OpenHarmony目前已发布的LTS/Release分支的维护时间表如下:
 
 | 分支          | 下载命令（repo + https）                                     | 下载命令（repo + ssh)                                        |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.0.1-Release | repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony_1.0.1_release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
-| 3.0-LTS       | repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-3.0-LTS --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.0-LTS --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
-| 3.1-Release   | repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
-| 3.2-Release   | repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-3.2-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
-| 4.0-Release   | repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-4.0-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.0-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
-| 4.1-Release   | repo init -u https://gitee.com/openharmony/manifest.git -b OpenHarmony-4.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-4.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 1.0.1-Release | repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony_1.0.1_release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 3.0-LTS       | repo init -u https://gitcode.com/openharmony/manifest.git -b OpenHarmony-3.0-LTS --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.0-LTS --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 3.1-Release   | repo init -u https://gitcode.com/openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 3.2-Release   | repo init -u https://gitcode.com/openharmony/manifest.git -b OpenHarmony-3.2-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 4.0-Release   | repo init -u https://gitcode.com/openharmony/manifest.git -b OpenHarmony-4.0-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.0-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
+| 4.1-Release   | repo init -u https://gitcode.com/openharmony/manifest.git -b OpenHarmony-4.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' | repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-4.1-Release -m default.xml --no-repo-verify<br/>repo sync -c<br/>repo forall -c 'git lfs pull' |
 
 
 
 ### 版本计划
 
-OpenHarmony Release sig团队定期发布和更新维护分支版本计划，详情可参考：https://gitee.com/openharmony-sig/oh-inner-release-management/blob/master/OpenHarmony-SIG-RoadMap.md
+OpenHarmony Release sig团队定期发布和更新维护分支版本计划，详情可参考：https://gitcode.com/openharmony-sig/oh-inner-release-management/blob/master/OpenHarmony-SIG-RoadMap.md
 
 
 

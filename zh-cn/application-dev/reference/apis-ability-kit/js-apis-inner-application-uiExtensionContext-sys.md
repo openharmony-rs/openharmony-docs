@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
-<!--Designer: @li-weifeng2-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -81,7 +81,7 @@ export default class UIExtension extends UIExtensionAbility {
       abilityName: 'EntryAbility',
       moduleName: 'entry'
     }).then((data) => {
-      console.log(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
+      console.info(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
       console.error(`StartAbilityForResultAsCaller failed, err code: ${error.code}, err msg: ${error.message}.`);
     });
@@ -111,7 +111,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | ------ | ------ |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 | 类型 | 说明 |
 | ------ | ------ |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -402,7 +402,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   }
 }
 ```
-### startUIAbilitiesInSplitWindowMode<sup>20+</sup>
+### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
 startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
 
@@ -471,12 +471,12 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   onForeground() {
     // 启动第一个UIAbility的主窗ID，实际使用需替换为第一个UIAbility实际主窗ID
     let primaryWindowId = 123;
-    let secdonaryWant: Want = {
+    let secondaryWant: Want = {
       bundleName: 'com.example.myapplication1',
       abilityName: 'EntryAbility'
     };
     try {
-      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secdonaryWant).then(() => {
+      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secondaryWant).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((error: BusinessError) => {
         console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);

@@ -1,8 +1,15 @@
 # ability_base_common.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## Overview
 
-The file describes the error codes defined by AbilityBase.
+The file declares the error codes defined by AbilityBase.
 
 **File to include**: <AbilityKit/ability_base/ability_base_common.h>
 

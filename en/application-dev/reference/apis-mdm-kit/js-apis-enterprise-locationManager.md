@@ -1,4 +1,10 @@
 # @ohos.enterprise.locationManager (Location Service Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **locationManager** module provides location service management capabilities for devices, including setting and obtaining the location service policy.
 
@@ -27,6 +33,7 @@ Sets a location service policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -49,11 +56,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { locationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -73,6 +82,7 @@ Queries the location service policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -100,18 +110,20 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { locationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
     let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
     console.info(`Succeeded in getting location policy. policy: ${result}`);
 } catch(err) {
-    console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

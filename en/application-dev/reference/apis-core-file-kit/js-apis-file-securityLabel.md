@@ -216,7 +216,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath).then((type: string) => {
-    console.log("getSecurityLabel successfully, Label: " + type);
+    console.info("getSecurityLabel successfully, Label: " + type);
   }).catch((err: BusinessError) => {
     console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -261,7 +261,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.log("getSecurityLabel successfully, Label: " + type);
+      console.info("getSecurityLabel successfully, Label: " + type);
     }
   });
   ```
@@ -306,5 +306,5 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 ```ts
 let filePath = pathDir + '/test.txt';
 let type = securityLabel.getSecurityLabelSync(filePath);
-console.log("getSecurityLabel successfully, Label: " + type);
+console.info("getSecurityLabel successfully, Label: " + type);
 ```

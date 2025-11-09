@@ -212,7 +212,6 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The permissionNames in the list are all invalid. |
 | 12100004 | The API is not used in pair with 'on'. |
 | 12100007 | The service is abnormal. |
 
@@ -263,7 +262,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **示例：**
 
@@ -322,7 +322,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation results. |
 
 **示例：**
 
@@ -383,8 +384,8 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The permission list contains the permission that is not declared in the module.json file; 3. The permission list is invalid because the permissions in it do not belong to the same permission group. |
-| 12100010 | The request already exists. |
+| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
 | 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
@@ -444,7 +445,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes: 1. The context is invalid because it does not belong to the application itself; 2. The type of global switch is not support. |
-| 12100010 | The request already exists. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100013 | The specific global switch is already open. |
 
 **示例：**
@@ -507,6 +508,56 @@ try {
 } catch(err) {
   console.error(`getSelfPermissionStatus fail, code: ${err.code}, message: ${err.message}`);
 }
+```
+
+### openPermissionOnSetting<sup>22+</sup>
+
+openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
+
+用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)拉起跳转设置页的弹窗。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。 |
+| permission | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 权限名，只支持授权方式为[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象，返回跳转设置页弹窗结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission is invalid or not declared in the module.json file. |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
+| 12100014 | Unexpected permission. The permission is not a manual_settings permission. |
+
+**示例：**
+
+示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```ts
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
+  console.info(`openPermissionOnSetting success, result: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### verifyAccessTokenSync<sup>9+</sup>
@@ -736,3 +787,15 @@ type Context = _Context
 | NOT_DETERMINED | 1     | 表示未操作。应用声明[用户授权权限](../../security/AccessToken/permissions-for-all-user.md)，暂未调用[requestPermissionsFromUser](#requestpermissionsfromuser9)接口请求用户授权时，或用户在设置中将权限状态修改为每次询问时，查询权限状态将返回此值。 |
 | INVALID | 2     | 表示无效。应用未[声明权限](../../security/AccessToken/declare-permissions.md)或当前无法处理。例如：当模糊位置权限的状态为NOT_DETERMINED时，查询精确位置权限状态，返回此值。 |
 | RESTRICTED | 3     | 表示受限。<!--RP2-->应用被设置禁止通过[requestPermissionsFromUser](#requestpermissionsfromuser9)接口请求用户授权。<!--RP2End--> |
+
+## SelectedResult<sup>22+</sup>
+
+表示跳转设置页弹窗结果的枚举。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称               |    值 | 说明        |
+| ------------------ | ----- | ----------- |
+| REJECTED | -1    | 表示用户选择不允许前往设置。 |
+| OPENED | 0     | 表示用户选择前往设置。 |
+| GRANTED | 1     | 表示权限已授权，无需弹窗。 |

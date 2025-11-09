@@ -1,8 +1,8 @@
 # @ohos.file.fileExtensionInfo (User File Extension Information) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -16,7 +16,7 @@ The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileIn
 ## Modules to Import
 
 ```ts
-import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
+import { fileExtensionInfo } from '@kit.CoreFileKit';
 ```
 
 ## fileExtensionInfo.DeviceType
@@ -24,6 +24,8 @@ import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
 Defines the values of **deviceType** used in **RootInfo**.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 
@@ -43,6 +45,8 @@ Defines the values of **deviceFlags** used in **RootInfo**. **deviceFlags** is u
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 ### Constants
@@ -57,6 +61,8 @@ Defines the values of **deviceFlags** used in **RootInfo**. **deviceFlags** is u
 Defines the values of **mode** used in **FileInfo**.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 

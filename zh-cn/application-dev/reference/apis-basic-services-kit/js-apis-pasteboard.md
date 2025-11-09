@@ -608,13 +608,13 @@ struct PasteboardTest {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-| 名称                | 类型                                          | 必填 | 说明                                                         |
-| ------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | 否   | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
-| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否   | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
-| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 是   | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
-| progressListener    | [ProgressListener](#progresslistener15)       | 否   | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
-| progressSignal      | [ProgressSignal](#progresssignal15)           | 否   | 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义，默认为空。 |
+| 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
+| ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
+| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
+| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
+| progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
+| progressSignal      | [ProgressSignal](#progresssignal15)           | 否 | 是 | 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义，默认为空。 |
 
 ## PasteDataRecord<sup>7+</sup>
 
@@ -1081,7 +1081,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 getMimeTypes(): Array&lt;string&gt;
 
-获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，当剪贴板内容为空时，返回列表为空。
+获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，接口调用异常时返回undefined。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2898,7 +2898,7 @@ try {
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-检测**本地**剪贴板中存在的模式，使用Promise异步回调。
+检测**本地**剪贴板中存在的[Pattern](#pattern13)模式，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3088,4 +3088,75 @@ try {
 } catch (err) {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
+```
+### UpdateCallback <sup>22+</sup>
+
+type UpdateCallback = () => void
+
+表示剪贴板内容变更的回调
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+
+onRemoteUpdate(callback: UpdateCallback): void
+
+订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401      | Possible causes: Incorrect parameters types. |
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.onRemoteUpdate(listener);
+```
+
+### offRemoteUpdate(callback?: UpdateCallback)<sup>22+</sup>
+
+offRemoteUpdate(callback?: UpdateCallback): void
+
+取消订阅跨设备剪贴板内容变化事件。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                      |
+| -------- | -------- | -------- |---------------------------------------------------------|
+| callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.offRemoteUpdate(listener);
 ```

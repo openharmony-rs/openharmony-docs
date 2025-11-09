@@ -1,4 +1,10 @@
 # Popup
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 You can bind the **Popup** attribute to a component to create a popup, specifying its content and interaction logic, and display state. It is mainly used for screen recording and message notification.
 
 Popups can be defined with [PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions) or [CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8). In **PopupOptions**, you can set **primaryButton** and **secondaryButton** to include buttons in the popup. In **CustomPopupOptions**, you can create a custom popup using [builder](../../application-dev/ui/state-management/arkts-builder.md). For **PopupOptions**, the maximum font scale factor is 2.
@@ -138,7 +144,7 @@ struct PopupExample {
         })
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with transitionEffect',
-          placementOnTop: true,
+          placement: Placement.Top,
           showInSubWindow: false,
           onStateChange: (e) => {
             if (!e.isVisible) {
@@ -190,6 +196,7 @@ struct Index {
   // Define the popup content in the popup builder.
   @Builder popupBuilder() {
     Row({ space: 2 }) {
+      // Replace $r('app.media.icon') with the image resource file you use.
       Image($r("app.media.icon")).width(24).height(24).margin({ left: 5 })
       Text('This is Custom Popup').fontSize(15)
     }.width(200).height(50).padding(5)
@@ -373,13 +380,14 @@ struct PopupItemChild {
 
   build() {
     Row({ space: 8 }) {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon'))
         .width(24)
         .height(24)
       Text(this.childName)
         .fontSize(16)
     }
-    .width(200)
+    .width(130)
     .height(50)
     .padding(8)
     .onClick(() => {

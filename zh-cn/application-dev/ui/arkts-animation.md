@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 UI（用户界面）中包含开发者与设备进行交互时所看到的各种组件（如时间、壁纸等）。属性作为接口，用于控制组件的行为。例如，开发者可通过位置属性调整组件在屏幕上的位置。
@@ -54,4 +54,4 @@ ArkUI中提供多种动画接口（属性动画、转场动画等），用于驱
 
 针对动画开发，有以下相关实例可供参考：
 
-- [动效示例（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/Animation)
+- [动效示例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/Animation)

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -117,8 +117,6 @@ stop(callback: AsyncCallback\<void\>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.stop(() => {
     console.info('Callback invoked to indicate the video output stop success.');
@@ -359,7 +357,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -495,7 +493,7 @@ isMirrorSupported(): boolean
 
 | 类型            | 说明                              |
 | -------------- |---------------------------------|
-| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。 |
+| boolean | 返回是否支持镜像录像，true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **示例：**
 

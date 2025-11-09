@@ -19,6 +19,8 @@
 | const.product.udid | int&nbsp;GetDevUdid(char&nbsp;\*udid,&nbsp;int&nbsp;size) | Obtains the UDID of the device through **DeviceInfo** or through calculation if the attempt to obtain the UDID through **DeviceInfo** fails.|
 | | const char *AclGetSerial(void) | Obtains the SN of the device (with ACL check).|
 | | int AclGetDevUdid(char *udid, int size) | Obtains the UDID of the device (with ACL check).|
+| ohos.boot.hardware | const&nbsp;char\*&nbsp;GetChipType(void) | Obtains the CPU chip model of the device.|
+| persist.startup.bootcount | int GetBootCount(void)| Obtains the number of times that the device has been powered on. If the operation fails, **-1** is returned.|
 
 ## DeviceInfo Source
 

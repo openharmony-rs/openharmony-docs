@@ -1,4 +1,10 @@
 # PluginComponent (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 The **PluginComponent** allows an application to display external UI from another application. To implement update through inter-process communication (IPC), see [@ohos.pluginComponent](../js-apis-plugincomponent.md).
 
@@ -20,28 +26,46 @@ PluginComponent(options: PluginComponentOptions)
 
 Creates a **PluginComponent** to display the UI provided by an external application.
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
 | Name | Type                                                    | Mandatory| Description                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [PluginComponentOptions](#plugincomponentoptions14) | Yes  | Configuration options of the **PluginComponent**.|
+| options | [PluginComponentOptions](#plugincomponentoptions18) | Yes  | Configuration options of the **PluginComponent**.|
 
-## PluginComponentOptions<sup>14+</sup>
+## PluginComponentOptions<sup>18+</sup>
 
 Defines options for constructing a **PluginComponent**.
 
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 | Name      | Type  | Description                       |
 | ---------- | ------ | --------------------------- |
-| template   | [PluginComponentTemplate](#plugincomponenttemplate9) | Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
-| data       | any    | Data passed to the **PluginComponent** provider.|
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9) | Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
+| data<sup>9+</sup>       | any    | Data passed to the **PluginComponent** provider.|
 
 ## PluginComponentTemplate<sup>9+</sup>
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type  | Description                       |
 | ---------- | ------ | --------------------------- |
 | source     | string | Component template name.               |
 | bundleName | string | Bundle name of the provider ability.|
+
 ## Attributes
+
 The width and height of the component must be explicitly set to non-zero valid values.
 
 **NOTE**
@@ -50,11 +74,11 @@ The width and height of the component must be explicitly set to non-zero valid v
 * 1. Use an absolute path. In this case, set **source** to the absolute path of the template and leave **bundleName** blank. This mode is not recommended as it is applicable only to standalone templates that do not need to load resources.
 * 2. Use an application package. In this case, set **bundleName** to the application bundle name and **source** to the relative path of the HAP file template. In the multi-HAP scenario, a HAP file is identified based on its relative path and name.
 
-  Example: **{source: 'pages/PluginProviderExample.ets&entry', bundleName:'com.example.provider'}**
+  Example: **{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}**
 
   The template is provided only when **source** can be set to an ability name or bundle name in the FA model.
 
-  Example: **{source:'plugin', bundleName:'com.example.provider'}**
+  Example: **{source: 'plugin', bundleName: 'com.example.provider'}**
 
 
 ## Events
@@ -73,9 +97,15 @@ Triggered when the component loading is complete.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
+| Name | Type                                                    | Mandatory| Description                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback function, which is triggered when the component loading is complete.|
+
 ### onError
 
-onError(callback: {info: PluginErrorCallback})
+onError(callback: PluginErrorCallback)
 
 Triggered when an error occurs during component loading.
 
@@ -87,24 +117,50 @@ Triggered when an error occurs during component loading.
 
 | Name   | Type                                                        | Mandatory| Description                                           |
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback  | [PluginErrorCallback](#pluginerrorcallback14)          | Yes  | Callback invoked when an error occurs.|
+| callback  | [PluginErrorCallback](#pluginerrorcallback18)          | Yes  | Callback invoked when an error occurs.|
 
-## PluginErrorCallback<sup>14+</sup>
+## PluginErrorCallback<sup>18+</sup>
 
-Defines the callback invoked when an error occurs.
+Callback invoked when an error occurs.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type              | Description                       |
 | -------- | ------------------ | --------------------------- |
-| info     | [PluginErrorData](#pluginerrordata14)  | Data provided when the error occurs.|
+| info     | [PluginErrorData](#pluginerrordata18)  | Data provided when the error occurs.|
 
-## PluginErrorData<sup>14+</sup>
+## PluginErrorData<sup>18+</sup>
 
-Defines the data provided when an error occurs during component loading.
+Data provided when the error occurs.
+
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type  | Description                       |
 | ---------- | ------ | -------------------------- |
-| errcode    | number | Error code.                   |
-| msg        | string | Error message.                 |
+| errcode<sup>9+</sup>    | number | Error code.                   |
+| msg<sup>9+</sup>        | string | Error message.                 |
+
+Error code 1 is the default error code. The following table describes the error information and handling suggestions.
+
+| Error Message  | Description                       | Handling Suggestion|
+| ------ | -------------------------- | ----------------- |
+| package path is empty. | Empty package path.| Check whether the source field in the PluginComponentTemplate parameter is correct. |
+| Query Active OsAccountIds failed! | Failed to obtain the activated user ID.| Check whether the Account service is abnormal or whether the application has the permission to query the user ID.   |
+| Template source is empty. | The template source is empty.| Check whether the source field in the PluginComponentTemplate parameter is correct. |
+| Bms bundleManager is nullptr. | Failed to obtain the bundle manager.|  Check whether the BMS service is abnormal or whether the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM permission.                 |
+| App bundleName is empty. | The application package name is empty. | Check whether the bundleName field in the PluginComponentTemplate parameter is correct.                  |
+| Bms get bundleName failed! | Failed to obtain the package name. |  Check whether the bundleName field in the PluginComponentTemplate parameter is correct, whether the package corresponding to the bundleName field is correctly installed, whether the BMS service is abnormal, or whether the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM permission.               |
+| Bms moduleResPaths is empty. | The moduleResPaths attribute of the plugin package is empty.|  Check whether the moduleResPaths attribute of the package corresponding to the bundleName field is abnormal or whether the BMS service is abnormal.                  |
+| Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | Failed to obtain the hapPath. |   Check whether the bundleName field in the PluginComponentTemplate parameter is correct and whether the module corresponding to the bundleName field is correctly installed.              |
+
 
 ## Example: Loading a PluginComponent
 
@@ -120,7 +176,7 @@ This example demonstrates the basic usage of the **PluginComponent**. Specifical
 The user application has a bundle name of **"com.example.user"** and contains one page.
 - The EntryAbility (UIAbility) loads the entry page file **ets/pages/Index.ets**, which contains the following code:
   ```ts
-  import plugin from "./plugin_component"
+  import plugin from "./plugin_component";
 
   interface Info {
     errcode: number,
@@ -141,8 +197,8 @@ The user application has a bundle name of **"com.example.user"** and contains on
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.onListener()
-            console.log("Button('Register Push Listener')")
+            plugin.onListener();
+            console.info("Button('Register Push Listener')");
           })
         Button('Request')
           .fontSize(50)
@@ -150,8 +206,8 @@ The user application has a bundle name of **"com.example.user"** and contains on
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.Request()
-            console.log("Button('Request')")
+            plugin.Request();
+            console.info("Button('Request')");
           })
         PluginComponent({
           // Provider
@@ -159,10 +215,10 @@ The user application has a bundle name of **"com.example.user"** and contains on
           data: { 'countDownStartValue': 'new countDownStartValue' }
         }).size({ width: 500, height: 350 })
           .onComplete(() => {
-            console.log("onComplete")
+            console.info("onComplete");
           })
           .onError((info: Info) => {
-            console.log("onComplete" + info.errcode + ":" + info.msg)
+            console.error("onError" + info.errcode + ":" + info.msg);
           })
       }
       .width('100%')
@@ -191,12 +247,12 @@ The user application has a bundle name of **"com.example.user"** and contains on
 The provider application has a bundle name of **"com.example.provider"** and contains one page.
 - The EntryAbility (UIAbility) loads the entry page file **ets/pages/Index.ets**, which contains the following code:
   ```ts
-  import plugin from "./plugin_component"
+  import plugin from "./plugin_component";
 
   @Entry
   @Component
   struct PluginProviderExample {
-    @State message: string = 'no click!'
+    @State message: string = 'no click!';
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -206,8 +262,8 @@ The provider application has a bundle name of **"com.example.provider"** and con
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.onListener()
-            console.log("Button('Register Request Listener')")
+            plugin.onListener();
+            console.info("Button('Register Request Listener')");
           })
         Button('Push')
           .fontSize(30)
@@ -215,9 +271,9 @@ The provider application has a bundle name of **"com.example.provider"** and con
           .height(100)
           .margin({ top: 20 })
           .onClick(() => {
-            plugin.Push()
-            this.message = "Button('Push')"
-            console.log("Button('Push')")
+            plugin.Push();
+            this.message = "Button('Push')";
+            console.info("Button('Push')");
           })
         Text(this.message)
           .height(150)
@@ -234,7 +290,7 @@ The provider application has a bundle name of **"com.example.provider"** and con
 
 The **PluginComponent** manager is used for communication between the user and provider. You need to select the corresponding code based on the model type and copy it into your project.
 
-#### FA Model
+### FA Model
 ```js
 // This example code is only applicable to the FA model.
 import pluginComponentManager from '@ohos.pluginComponent'
@@ -245,17 +301,17 @@ var providerName = 'Index'
 
 // Push event listener
 function onPushListener(source, template, data, extraData) {
-    console.log("onPushListener template.source=" + template.source)
-    console.log("onPushListener template.ability=" + template.ability)
-    console.log("onPushListener data=" + JSON.stringify(data))
-    console.log("onPushListener extraData=" + JSON.stringify(extraData))
+    console.info("onPushListener template.source=" + template.source)
+    console.info("onPushListener template.ability=" + template.ability)
+    console.info("onPushListener data=" + JSON.stringify(data))
+    console.info("onPushListener extraData=" + JSON.stringify(extraData))
 }
 
 // Request event listener
 function onRequestListener(source, name, data)
 {
-    console.log("onRequestListener name=" + name);
-    console.log("onRequestListener data=" + JSON.stringify(data));
+    console.info("onRequestListener name=" + name);
+    console.info("onRequestListener data=" + JSON.stringify(data));
     return {template:"pluginTemplate", data:data};
 }
 
@@ -284,7 +340,7 @@ export default {
                 jsonPath: "",
             },
             (err, data) => {
-                console.log("push_callback: push ok!");
+                console.info("push_callback: push ok!");
             }
         )
     },
@@ -303,17 +359,17 @@ export default {
             jsonPath: "",
         },
             (err, data) => {
-                console.log("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
-                console.log("request_callback: componentTemplate.source=" + data.componentTemplate.source)
-                console.log("request_callback: data=" + JSON.stringify(data.data))
-                console.log("request_callback: extraData=" + JSON.stringify(data.extraData))
+                console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
+                console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source)
+                console.info("request_callback: data=" + JSON.stringify(data.data))
+                console.info("request_callback: extraData=" + JSON.stringify(data.extraData))
             }
         )
     }
 }
 ```
 
-#### Stage Model
+### Stage Model
 ```js
 // This example code is only applicable to the stage model.
 import pluginComponentManager from '@ohos.pluginComponent'
@@ -326,16 +382,16 @@ var providerName = 'Index'
 
 // Push event listener
 function onPushListener(source, template, data, extraData) {
-    console.log("onPushListener template.source=" + template.source)
-    console.log("onPushListener template.ability=" + template.ability)
-    console.log("onPushListener data=" + JSON.stringify(data))
-    console.log("onPushListener extraData=" + JSON.stringify(extraData))
+    console.info("onPushListener template.source=" + template.source)
+    console.info("onPushListener template.ability=" + template.ability)
+    console.info("onPushListener data=" + JSON.stringify(data))
+    console.info("onPushListener extraData=" + JSON.stringify(extraData))
 }
 
 // Request event listener
 function onRequestListener(source, name, data) {
-    console.log("onRequestListener name=" + name)
-    console.log("onRequestListener data=" + JSON.stringify(data))
+    console.info("onRequestListener name=" + name)
+    console.info("onRequestListener data=" + JSON.stringify(data))
     return { template: "pluginTemplate", data: data }
 }
 
@@ -368,7 +424,7 @@ export default {
                 jsonPath: "",
             },
             (err, data) => {
-                console.log("push_callback: push ok!");
+                console.info("push_callback: push ok!");
             }
         )
     },
@@ -391,10 +447,10 @@ export default {
             jsonPath: "",
         },
             (err, data) => {
-                console.log("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
-                console.log("request_callback: componentTemplate.source=" + data.componentTemplate.source)
-                console.log("request_callback: data=" + JSON.stringify(data.data))
-                console.log("request_callback: extraData=" + JSON.stringify(data.extraData))
+                console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability)
+                console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source)
+                console.info("request_callback: data=" + JSON.stringify(data.data))
+                console.info("request_callback: extraData=" + JSON.stringify(data.extraData))
             }
         )
     }

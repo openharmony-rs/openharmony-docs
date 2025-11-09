@@ -290,3 +290,21 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 **示例：**
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
+
+## OnDetectBlankScreenCallback<sup>22+<sup>
+
+type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
+
+检测到白屏时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [BlankScreenDetectionEventInfo](./arkts-basic-components-web-i.md#blankscreendetectioneventinfo22) | 是 | 检测到白屏时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22)。

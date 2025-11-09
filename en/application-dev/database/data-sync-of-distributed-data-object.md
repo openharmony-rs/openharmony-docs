@@ -139,6 +139,8 @@ Since API version 20, synchronization of [assets](../reference/apis-arkdata/js-a
 
 Most of the APIs for cross-device sync of distributed data objects are executed asynchronously in callback or promise mode. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed Data Object](../reference/apis-arkdata/js-apis-data-distributedobject.md).
 
+
+
 | API| Description|
 | -------- | -------- |
 | create(context: Context, source: object): DataObject | Creates a distributed data object instance.|
@@ -198,25 +200,196 @@ Most of the APIs for cross-device sync of distributed data objects are executed 
 >
 > - Currently, only files in distributed file directory can be migrated. Files in other directories can be copied or moved to distributed file directory before migration. For details about how to move or copy files and obtain URIs, see [File Management](../reference/apis-core-file-kit/js-apis-file-fs.md) and [File URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md).
 
-```ts
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { distributedDataObject } from '@kit.ArkData';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+import hilog from '@ohos.hilog';
+
+// Define service data.
+class Data {
+  public title: string | undefined;
+  public text: string | undefined;
+
+  constructor(title: string | undefined, text: string | undefined) {
+    this.title = title;
+    this.text = text;
+  }
+}
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
+
+let sessionId: string;
+let caller: Caller;
+let dataObject: distributedDataObject.DataObject;
+const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
+}
+
+export default class EntryAbility extends UIAbility {
+  // 1. Call startAbilityByCall() to start an ability on another device.
+  callRemote() {
+    if (caller) {
+      hilog.error(DOMAIN, TAG, 'call remote already');
+      return;
+    }
+
+    // 1.1 Call genSessionId() to create a sessionId and call getRemoteDeviceId() to obtain the networkId of the peer device.
+    sessionId = distributedDataObject.genSessionId();
+    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
+    let deviceId = getRemoteDeviceId();
+    if (deviceId === '') {
+      hilog.warn(DOMAIN, TAG, 'no remote device');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
+
+    // 1.2 Assemble want and put sessionId into want.
+    let want: Want = {
+      bundleName: 'com.example.collaboration',
+      abilityName: 'EntryAbility',
+      deviceId: deviceId,
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true, // Start the ability in the foreground. This parameter is optional.
+        'distributedSessionId': sessionId
+      }
+    }
+    try {
+      // 1.3 Call startAbilityByCall() to start the peer ability.
+      this.context.startAbilityByCall(want).then((res) => {
+        if (!res) {
+          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
+        }
+        caller = res;
+      })
+    } catch (e) {
+      let err = e as BusinessError;
+      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+    }
+  }
+
+  // 2. Create a distributed data object after starting the peer ability.
+  createDataObject() {
+    if (!caller) {
+      hilog.error(DOMAIN, TAG, 'call remote first');
+      return;
+    }
+    if (dataObject) {
+      hilog.error(DOMAIN, TAG, 'create dataObject already');
+      return;
+    }
+
+    // 2.1 Create a distributed data object instance.
+    let data = new Data('The title', 'The text');
+    dataObject = distributedDataObject.create(this.context, data);
+
+    // 2.2 Register a listener callback for data changes.
+    dataObject.on('change', changeCallBack);
+    // 2.3 Set a sessionId for the distributed data object and add it to the network.
+    dataObject.setSessionId(sessionId);
+  }
+
+  // 3. Create a distributed data object on the peer device and restore the data saved on the caller device.
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (want.parameters && want.parameters.distributedSessionId) {
+      // 3.1 Create a distributed data object instance on the peer device.
+      let data = new Data(undefined, undefined);
+      dataObject = distributedDataObject.create(this.context, data);
+
+      // 3.2 Register a listener callback for data changes.
+      dataObject.on('change', changeCallBack);
+      // 3.3 Obtain sessionId of the caller device from **want** and add the distributed data object instance to the network with the sessionId.
+      let sessionId = want.parameters.distributedSessionId as string;
+      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
+      dataObject.setSessionId(sessionId);
+    }
+  }
+}
+
+// Obtain devices on the trusted network.
+function getRemoteDeviceId() {
+  let deviceId = '';
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
+    let devices = deviceManager.getAvailableDeviceListSync();
+    if (devices[0] && devices[0].networkId) {
+      deviceId = devices[0].networkId;
+    }
+  } catch (e) {
+    let err = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+  }
+  return deviceId;
+}
+
+```
+
+
+### Using Distributed Data Objects in Multi-Device Collaboration
+
+1. Call **startAbilityByCall()** to start an ability on another device.
+
+    1.1 Call **genSessionId()** to create a **sessionId** and obtain a **networkId** of the peer device through the distributed device management API.
+
+    1.2 Assemble **want** and put **sessionId** into **want**.
+
+    1.3 Call **startAbilityByCall()** to start the peer ability.
+
+2. Create a distributed data object on the caller device and adds it to the network.
+
+   2.1 Create a distributed data object instance.
+
+   2.2 Register a listener callback for data changes.
+
+   2.3 Set a **sessionId** for the distributed data object and add it to the network.
+
+3. Create a distributed data object on the peer device and restore the data saved on the caller device.
+
+   3.1 Create a distributed data object instance.
+
+   3.2 Register a listener callback for data changes.
+
+   3.3 Obtain **sessionId** of the caller device from **want** and add the distributed data object instance to the network with the **sessionId**.
+
+> **NOTE**
+>
+> - Currently, <!--RP3-->distributed data objects can be used only in [multi-device collaboration using the cross-device call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call) to sync data.<!--RP3End-->
+>
+> - To implement multi-device collaboration using the cross-device call, <!--RP4-->you need to apply for the ohos.permission.DISTRIBUTED_DATASYNC permission and set **launchType** to **singleton**. For details, see [How to Develop](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP4End-->
+>
+> - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
+>
+> - For details about how to obtain the **networkId** of the peer device, see [Querying Device Information](../distributedservice/devicemanager-guidelines.md#querying-device-information).
+
+ The sample code is as follows:
+
+<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { commonType, distributedDataObject } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define service data.
 export class ContentInfo {
-  mainTitle: string | undefined;
-  textContent: string | undefined;
-  imageUriArray: Array<ImageInfo> | undefined;
-  isShowLocalInfo: boolean | undefined;
-  isAddLocalInfo: boolean | undefined;
-  selectLocalInfo: string | undefined;
-  attachments?: commonType.Assets | undefined;
+  public mainTitle: string | undefined;
+  public textContent: string | undefined;
+  public imageUriArray: Array<ImageInfo> | undefined;
+  public isShowLocalInfo: boolean | undefined;
+  public isAddLocalInfo: boolean | undefined;
+  public selectLocalInfo: string | undefined;
+  public attachments?: commonType.Assets | undefined;
 
   constructor(
     mainTitle: string | undefined,
     textContent: string | undefined,
-    imageUriArray: Array<ImageInfo>| undefined,
+    imageUriArray: Array<ImageInfo> | undefined,
     isShowLocalInfo: boolean | undefined,
     isAddLocalInfo: boolean | undefined,
     selectLocalInfo: string | undefined,
@@ -255,12 +428,14 @@ export interface ImageInfo {
   imageName: string;
 }
 
-const TAG = '[DistributedDataObject]';
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
 let dataObject: distributedDataObject.DataObject;
 
 export default class EntryAbility extends UIAbility {
   private imageUriArray: Array<ImageInfo> = [];
   private distributedObject: distributedDataObject.DataObject | undefined = undefined;
+
   // 1. Create a distributed data object in **onContinue()** for the application on the source device, and save data to the target device.
   async onContinue(wantParam: Record<string, Object | undefined>): Promise<AbilityConstant.OnContinueResult> {
     // 1.1 Obtain the key URI of the distributed data object to be set.
@@ -268,11 +443,11 @@ export default class EntryAbility extends UIAbility {
       let sessionId: string = distributedDataObject.genSessionId();
       wantParam.distributedSessionId = sessionId;
 
-      let distrUriArray: Array<string> = [];
+      let distrUriArray: string[] = [];
       let assetUriArray = AppStorage.get<Array<string>>('assetUriArray');
-        if (assetUriArray) {
-          distrUriArray = assetUriArray;
-        }
+      if (assetUriArray) {
+        distrUriArray = assetUriArray;
+      }
       // 1.2 Create a distributed data object.
       let contentInfo: ContentInfo = new ContentInfo(
         AppStorage.get('mainTitle'),
@@ -286,32 +461,32 @@ export default class EntryAbility extends UIAbility {
       this.distributedObject = distributedDataObject.create(this.context, source);
 
       // 1.3 Set the asset or assets of the distributed data object.
-      if (assetUriArray?.length == 1) {
-        this.distributedObject?.setAsset('attachments', distrUriArray[0]). then(() => {
-          console.info('OnContinue setAsset');
+      if (assetUriArray?.length === 1) {
+        this.distributedObject?.setAsset('attachments', distrUriArray[0]).then(() => {
+          hilog.info(DOMAIN, TAG, 'OnContinue setAsset');
         })
       } else {
-        this.distributedObject?.setAssets('attachments', distrUriArray). then(() => {
-          console.info('OnContinue setAssets');
+        this.distributedObject?.setAssets('attachments', distrUriArray).then(() => {
+          hilog.info(DOMAIN, TAG, 'OnContinue setAssets');
         })
       }
       // 1.4 Save the asset or assets to the source device.
       this.distributedObject?.setSessionId(sessionId);
       this.distributedObject?.save(wantParam.targetDevice as string).catch((err: BusinessError) => {
-        console.error('OnContinue failed to save. code: ', err.code);
-        console.error('OnContinue failed to save. message: ', err.message);
+        hilog.error(DOMAIN, TAG, 'OnContinue failed to save. code: ', err.code);
+        hilog.error(DOMAIN, TAG, 'OnContinue failed to save. message: ', err.message);
       });
     } catch (error) {
-      console.error('OnContinue faild code: ', error.code);
-      console.error('OnContinue faild message: ', error.message);
+      hilog.error(DOMAIN, TAG, 'OnContinue failed code: ', error.code);
+      hilog.error(DOMAIN, TAG, 'OnContinue failed message: ', error.message);
     }
-    console.info("OnContinue success!");
+    hilog.info(DOMAIN, TAG, 'OnContinue success!');
     return AbilityConstant.OnContinueResult.AGREE;
   }
 
   // 2. Create a distributed data object in onCreate() for the application on the target device (for cold start), and add it to the network for data migration.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason == AbilityConstant.LaunchReason.CONTINUATION) {
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
         this.restoreDistributedObject(want);
       }
@@ -320,7 +495,7 @@ export default class EntryAbility extends UIAbility {
 
   // 2. Create a distributed data object in onNewWant() for the application on the target device (for hot start), and add it to the network for data migration.
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason == AbilityConstant.LaunchReason.CONTINUATION) {
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
       if (want.parameters && want.parameters.distributedSessionId) {
         this.restoreDistributedObject(want);
       }
@@ -329,7 +504,7 @@ export default class EntryAbility extends UIAbility {
 
   async restoreDistributedObject(want: Want): Promise<void> {
     if (!want.parameters || !want.parameters.distributedSessionId) {
-      console.error(TAG + 'missing sessionId');
+      hilog.error(DOMAIN, TAG, 'missing sessionId');
       return;
     }
 
@@ -339,10 +514,10 @@ export default class EntryAbility extends UIAbility {
 
     // 2.2 Register a listener callback for the data recovery state. If "restored" is returned by the listener callback registered, the distributed data object of the target device has obtained the data transferred from the source device. If asset data is migrated, the file is also transferred to the target device.
     dataObject.on('status', (sessionId: string, networkId: string, status: string) => {
-      console.log(TAG + `status change, sessionId:  ${sessionId}`);
-      console.log(TAG + `status change, networkId:  ${networkId}`);
-      if (status == 'restored') { // "restored" indicates that the data saved on the source device is restored on the target device.
-        console.log(TAG + `title: ${dataObject['title']}, text: ${dataObject['text']}`);
+      hilog.info(DOMAIN, TAG, `status change, sessionId:  ${sessionId}`);
+      hilog.info(DOMAIN, TAG, `status change, networkId:  ${networkId}`);
+      if (status === 'restored') { // "restored" indicates that the data saved on the source device is restored on the target device.
+        hilog.info(DOMAIN, TAG, `title: ${dataObject['title']}, text: ${dataObject['text']}`);
         AppStorage.setOrCreate('mainTitle', dataObject['mainTitle']);
         AppStorage.setOrCreate('textContent', dataObject['textContent']);
         AppStorage.setOrCreate('imageUriArray', dataObject['imageUriArray']);
@@ -355,170 +530,9 @@ export default class EntryAbility extends UIAbility {
 
     // 2.3 Obtain the sessionId of the source device from want.parameters and call setSessionId to set the same sessionId for the target device.
     let sessionId = want.parameters.distributedSessionId as string;
-    console.log(TAG + `get sessionId: ${sessionId}`);
+    hilog.info(DOMAIN, TAG, `get sessionId: ${sessionId}`);
     dataObject.setSessionId(sessionId);
   }
 }
-```
 
-### Using Distributed Data Objects in Multi-Device Collaboration
-
-1. Call **startAbilityByCall()** to start an ability on another device.
-
-    1.1 Call **genSessionId()** to create a **sessionId** and obtain a **networkId** of the peer device through the distributed device management API.
-
-    1.2 Assemble **want** and put **sessionId** into **want**.
-
-    1.3 Call **startAbilityByCall()** to start the peer ability.
-
-2. Create a distributed data object on the caller device and adds it to the network.
-
-   2.1 Create a distributed data object instance.
-
-   2.2 Register a listener callback for data changes.
-
-   2.3 Set a **sessionId** for the distributed data object and add it to the network.
-
-3. Create a distributed data object on the peer device and restore the data saved on the caller device.
-
-   3.1 Create a distributed data object instance on the peer device.
-
-   3.2 Register a listener callback for data changes.
-
-   3.3 Obtain **sessionId** of the caller device from **want** and add the distributed data object instance to the network with the **sessionId**.
-
-> **NOTE**
->
-> - Currently, <!--RP3-->distributed data objects can be used only in [multi-device collaboration using the cross-device call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call) to sync data.<!--RP3End-->
->
-> - To implement multi-device collaboration using the cross-device call, <!--RP4-->you need to apply for the ohos.permission.DISTRIBUTED_DATASYNC permission and set **launchType** to **singleton**. For details, see [How to Develop](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP4End-->
->
-> - The **sessionId** field in **wantParam** is used by other services. You are advised to customize a key for accessing the **sessionId** field.
->
-> - For details about how to obtain the **networkId** of the peer device, see [Querying Device Information](../distributedservice/devicemanager-guidelines.md#querying-device-information).
-
- The sample code is as follows:
-
-```ts
-import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject } from '@kit.ArkData';
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { JSON } from '@kit.ArkTS';
-
-// Define service data.
-class Data {
-  title: string | undefined;
-  text: string | undefined;
-
-  constructor(title: string | undefined, text: string | undefined) {
-    this.title = title;
-    this.text = text;
-  }
-}
-
-const TAG = '[DistributedDataObject]';
-
-let sessionId: string;
-let caller: Caller;
-let dataObject: distributedDataObject.DataObject;
-const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
-  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
-}
-
-export default class EntryAbility extends UIAbility {
-  // 1. Call startAbilityByCall() to start an ability on another device.
-  callRemote() {
-    if (caller) {
-      console.error(TAG + 'call remote already');
-      return;
-    }
-
-    // 1.1 Call genSessionId() to create a sessionId and call getRemoteDeviceId() to obtain the networkId of the peer device.
-    sessionId = distributedDataObject.genSessionId();
-    console.log(TAG + `gen sessionId: ${sessionId}`);
-    let deviceId = getRemoteDeviceId();
-    if (deviceId == "") {
-      console.warn(TAG + 'no remote device');
-      return;
-    }
-    console.log(TAG + `get remote deviceId: ${deviceId}`);
-
-    // 1.2 Assemble want and put sessionId into want.
-    let want: Want = {
-      bundleName: 'com.example.collaboration',
-      abilityName: 'EntryAbility',
-      deviceId: deviceId,
-      parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true, // Start the ability in the foreground. This parameter is optional.
-        'distributedSessionId': sessionId
-      }
-    }
-    try {
-      // 1.3 Call startAbilityByCall() to start the peer ability.
-      this.context.startAbilityByCall(want).then((res) => {
-        if (!res) {
-          console.error(TAG + 'startAbilityByCall failed');
-        }
-        caller = res;
-      })
-    } catch (e) {
-      let err = e as BusinessError;
-      console.error(TAG + `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-    }
-  }
-
-  // 2. Create a distributed data object after starting the peer ability.
-  createDataObject() {
-    if (!caller) {
-      console.error(TAG + 'call remote first');
-      return;
-    }
-    if (dataObject) {
-      console.error(TAG + 'create dataObject already');
-      return;
-    }
-
-    // 2.1 Create a distributed data object instance.
-    let data = new Data('The title', 'The text');
-    dataObject = distributedDataObject.create(this.context, data);
-
-    // 2.2 Register a listener callback for data changes.
-    dataObject.on('change', changeCallBack);
-    // 2.3 Set a sessionId for the distributed data object and add it to the network.
-    dataObject.setSessionId(sessionId);
-  }
-
-  // 3. Create a distributed data object on the peer device and restore the data saved on the caller device.
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (want.parameters && want.parameters.distributedSessionId) {
-      // 3.1 Create a distributed data object instance on the peer device.
-      let data = new Data(undefined, undefined);
-      dataObject = distributedDataObject.create(this.context, data);
-
-      // 3.2 Register a listener callback for data changes.
-      dataObject.on('change', changeCallBack);
-      // 3.3 Obtain sessionId of the caller device from **want** and add the distributed data object instance to the network with the sessionId.
-      let sessionId = want.parameters.distributedSessionId as string;
-      console.log(TAG + `onCreate get sessionId: ${sessionId}`);
-      dataObject.setSessionId(sessionId);
-    }
-  }
-}
-
-// Obtain devices on the trusted network.
-function getRemoteDeviceId() {
-  let deviceId = "";
-  try {
-    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
-    let devices = deviceManager.getAvailableDeviceListSync();
-    if (devices[0] && devices[0].networkId) {
-      deviceId = devices[0].networkId;
-    }
-  } catch (e) {
-    let err = e as BusinessError;
-    console.error(TAG + `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-  }
-  return deviceId;
-}
 ```

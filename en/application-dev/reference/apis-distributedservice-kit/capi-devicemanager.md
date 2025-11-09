@@ -5,7 +5,7 @@
 Distributed device management module, which provides APIs to obtain information about trusted devices and local devices.
 
 **Since**: 20
-## File Summary
+## Files
 
 | Name| Description|
 | -- | -- |

@@ -1,5 +1,12 @@
 # Universal Keystore Kit（密钥管理服务）
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 - [Universal Keystore Kit简介](huks-overview.md)
 - [通用密钥库基础概念](huks-concepts.md)
 - 密钥生成/导入<!--huks-key-generation-import-->
@@ -56,8 +63,8 @@
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
     - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
     <!--Del-->
-    - [非匿名密钥证明(ArkTS)](huks-key-attestation-arkts.md)
-    - [非匿名密钥证明(C/C++)](huks-key-attestation-ndk.md)
+    - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
+    - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)
     <!--DelEnd-->
 - 其他操作<!--huks-other-operations-->
   - 查询密钥是否存在<!--huks-check-key-->

@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考[rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)。
@@ -269,4 +269,4 @@ export default {
 
 针对rating组件的开发，有以下相关实例可供参考：
 
-- [rating组件的使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)
+- [rating组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)

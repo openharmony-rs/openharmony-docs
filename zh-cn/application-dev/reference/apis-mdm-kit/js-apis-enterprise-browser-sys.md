@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.browser](js-apis-enterprise-browser.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.browser](js-apis-enterprise-browser.md)。
 
 ## 导入模块
 
@@ -68,7 +68,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -132,7 +132,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -183,7 +183,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -241,7 +241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';

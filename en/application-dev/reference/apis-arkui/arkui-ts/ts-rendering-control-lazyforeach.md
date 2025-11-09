@@ -1,10 +1,16 @@
 # LazyForEach
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-For details about the development, see [LazyForEach: Lazy Data Loading](../../../ui/state-management/arkts-rendering-control-lazyforeach.md).
+For details about the development, see [LazyForEach: Lazy Data Loading](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 In scenarios involving a large number of child components, LazyForEach, when combined with techniques such as cached list items, dynamic preloading, and component reuse, can significantly improve scrolling frame rates while reducing memory usage. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
 
 ## APIs
@@ -23,11 +29,15 @@ LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) =
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | dataSource    | [IDataSource](#idatasource)                       | Yes  | **LazyForEach** data source. You need to implement related APIs.                 |
 | itemGenerator | (item: any, index: number) =&gt; void   | Yes  | Child component generation function, which generates a child component for each data item in the array.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- The function body of **itemGenerator** must be included in braces {...}.<br>- **itemGenerator** can and must generate only one child component for each iteration.<br>- The **if** statement is allowed in **itemGenerator**, but you must ensure that each branch of the **if** statement creates a child component of the same type.|
-| keyGenerator  | (item: any, index: number) =&gt; string | No  | ID generation function, which generates a unique and fixed ID for each data item in the data source. Components are updated only when their generated key changes. The **keyGenerator** parameter is optional, but you are advised to provide it so that the development framework can better identify array changes and update components correctly.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- The ID generated for each data item in the data source must be unique.<br>- If **keyGenerator** is not provided, the framework uses the default key generation function, that is, **(item: Object, index: number) => { return viewId + '-' + index.toString(); }**, where the generated key value is only affected by the index.|
+| keyGenerator  | (item: any, index: number) =&gt; string | No  | ID generation function, which generates a unique and fixed ID for each data item in the data source. Components are updated only when their generated key changes. The **keyGenerator** parameter is optional, but you are advised to provide it so that the development framework can better identify array changes and update components correctly.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- When **keyGenerator** is omitted, the default function **(item: Object, index: number) => { return viewId + '-' + index.toString(); }** is used, where key generation is affected by the index value only (**viewId** is compiler-generated and consistent within the same **LazyForEach** component).<br>- To ensure correct and efficient child component updates, avoiding rendering anomalies or performance degradation, keys must meet the following requirements:<br>1. Uniqueness: Each data item must have a distinct key.<br>2. Consistency: Keys must remain unchanged for unmodified data items.|
 
 > **NOTE**
 >
 > To ensure smooth scrolling and prevent frame drops, avoid time-consuming operations in **keyGenerator** and **itemGenerator** functions. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Repeated Rendering](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439). The **JSON.stringify()** method is particularly discouraged for key generation in complex business scenarios. When processing item objects, this serialization method consumes significant computational resources and execution time, which can substantially degrade page rendering performance. For best practices, see [Optimizing Performance Using LazyForEach: Rules for Generating Key Values and Creating Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization#section68711519072).
+
+## Attributes
+
+The [drag-and-drop sorting](./ts-universal-attributes-drag-sorting.md) attribute is supported.
 
 ## IDataSource
 
@@ -91,7 +101,7 @@ Registers a listener for data changes.
 
 | Name  | Type                                       | Mandatory| Description          |
 | -------- | ------------------------------------------- | ---- | -------------- |
-| listener | [DataChangeListener](#datachangelistener7) | Yes  | Listener for data changes.|
+| listener | [DataChangeListener](#datachangelistener) | Yes  | Listener for data changes.|
 
 ### unregisterDataChangeListener
 
@@ -107,9 +117,9 @@ Unregisters the listener for data changes.
 
 | Name  | Type                                       | Mandatory| Description          |
 | -------- | ------------------------------------------- | ---- | -------------- |
-| listener | [DataChangeListener](#datachangelistener7) | Yes  | Listener for data changes.|
+| listener | [DataChangeListener](#datachangelistener) | Yes  | Listener for data changes.|
 
-## DataChangeListener<sup>7+</sup>
+## DataChangeListener
 
 Listener for data changes.
 
@@ -206,8 +216,6 @@ onDataAdd(index: number): void
 
 Invoked when data is added to the position indicated by the specified index.  
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -284,6 +292,7 @@ Invoked when data is processed in batches to notify the component of refreshing.
 > **NOTE**
 >
 > This API cannot be used together with other data operation APIs of **DataChangeListener**. For example, in the same **LazyForEach**, if you have called **onDataAdd**, do not call **onDatasetChange**; if you have called **onDatasetChange**, do not call **onDataAdd** or other data operation APIs. Different **LazyForEach** instances on the page do not affect each other. When data is processed in batches within the same **onDatasetChange** callback, if multiple **DataOperation** instances target the same index, only the first **DataOperation** will take effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -319,7 +328,7 @@ Represents an operation for adding data.
 | type   | [DataOperationType](#dataoperationtype).ADD     | Yes  | Type of data addition.        |
 | index  | number                    | Yes  | Index at which to insert the data record. The value range is [0, data source length - 1].|
 | count  | number                    | No  | Number of data records to insert.<br>Default value: **1**.  |
-| key    | string \| Array\<string\> | No  | Keys to assign to the inserted data records.|
+| key    | string \| Array\<string\> | No  | Keys to assign to the inserted data records. The original keys are used by default.|
 
 ### DataDeleteOperation
 
@@ -366,21 +375,8 @@ Represents an operation for moving data.
 | Name| Type                     | Mandatory| Description                |
 | ------ | ------------------------- | ---- | -------------------- |
 | type   | [DataOperationType](#dataoperationtype).MOVE     | Yes  | Type of data movement.|
-| index  | [MoveIndex](#moveindex)        | Yes  | Positions for the movement. The value range is [0, data source length - 1].|
+| index  | [MoveIndex](#moveindex12)        | Yes  | Positions for the movement. The value range is [0, data source length - 1].|
 | key | string              | No  | New key to assign to the moved data. The original key is used by default.|
-
-#### MoveIndex
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| from   | number | Yes  | Start position for the movement. The value range is [0, data source length - 1].|
-| to  | number           | Yes  | End position for the movement. The value range is [0, data source length - 1].|
 
 ### DataExchangeOperation
 
@@ -395,34 +391,8 @@ Represents an operation for exchanging data.
 | Name| Type                      | Mandatory| Description                        |
 | ------ | -------------------------- | ---- | ---------------------------- |
 | type   | [DataOperationType](#dataoperationtype).EXCHANGE | Yes  | Type of data exchange.                |
-| index  | [ExchangeIndex](#exchangeindex)            | Yes  | Positions for the exchange. The value range is [0, data source length - 1].|
-| key    | [ExchangeKey](#exchangekey)              | No  | New keys to assign to the exchanged data. The original keys are used by default.|
-
-#### ExchangeIndex
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| start   | number | Yes  | First position for the exchange. The value range is [0, data source length - 1].|
-| end  | number           | Yes  | Second position for the exchange. The value range is [0, data source length - 1].|
-
-#### ExchangeKey
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description           |
-| ------ | --------------- | ---- | ------- |
-| start   | string | Yes  | New key to assign to the first position in the exchange. The original key is used by default.       |
-| end  | string   | Yes  | New key to assign to the second position in the exchange. The original key is used by default.          |
+| index  | [ExchangeIndex](#exchangeindex12)            | Yes  | Positions for the exchange. The value range is [0, data source length - 1].|
+| key    | [ExchangeKey](#exchangekey12)              | No  | New keys to assign to the exchanged data. The original keys are used by default.|
 
 ### DataReloadOperation
 
@@ -454,3 +424,42 @@ Enumerates the data operation types.
 | MOVE | move | Data movement.|
 | EXCHANGE | exchange | Data exchange.|
 | RELOAD | reload | Data reloading.|
+
+## MoveIndex<sup>12+</sup>
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                      | Mandatory| Description           |
+| ------ | --------------- | ---- | ------- |
+| from   | number | Yes  | Start position for the movement. The value range is [0, data source length - 1].|
+| to  | number           | Yes  | End position for the movement. The value range is [0, data source length - 1].|
+
+## ExchangeIndex<sup>12+</sup>
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                      | Mandatory| Description           |
+| ------ | --------------- | ---- | ------- |
+| start   | number | Yes  | First position for the exchange. The value range is [0, data source length - 1].|
+| end  | number           | Yes  | Second position for the exchange. The value range is [0, data source length - 1].|
+
+## ExchangeKey<sup>12+</sup>
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                      | Mandatory| Description           |
+| ------ | --------------- | ---- | ------- |
+| start   | string | Yes  | New key to assign to the first position in the exchange. The original key is used by default.       |
+| end  | string   | Yes  | New key to assign to the second position in the exchange. The original key is used by default.          |

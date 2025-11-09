@@ -1,11 +1,17 @@
 # Introduction to Background Tasks Kit
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Introduction
 
 When you return to the home screen, lock the screen, or switch to another application, the current application is switched to the background. If the application continues all the activities when running in the background, the power consumption of the device may be high and the UI may freeze. To reduce the device power consumption and deliver a positive user experience, the system manages the application running in the background, for example, suspending or terminating its process. Typically, the application process is suspended after the application runs in the background for a while. If resources are inadequate, some processes will be terminated (that is, recycling all resources of the processes). After being suspended, the application process cannot use software resources (such as common events and timers) or hardware resources (such as CPU, network, GPS, and Bluetooth).<!--RP2--><!--RP2End-->
 
-To ensure that background functionalities such as music playback and calendar reminders can be used properly, Background Tasks Kit provides some background tasks within the specifications, extending the running time of applications in the background. <!--Del-->For system applications, Background Tasks Kit also supports [device usage statistics](../device-usage-statistics/device-usage-statistics-overview.md), including statistics on the application usage duration.<!--DelEnd-->
+To ensure that background functionalities such as music playback and calendar reminders can be used properly, Background Tasks Kit provides some background tasks within the specifications, extending the running time of applications in the background. <!--Del-->For system applications, Background Tasks Kit also supports [device usage statistics](../device-usage-statistics/device-usage-statistics-overview-sys.md), including statistics on the application usage duration.<!--DelEnd-->
 
 ## Constraints
 Resource usage: The system provides resource quotas for running processes, including the memory usage and <!--RP3-->CPU usage<!--RP3End--> in a continuous period of time, and disk write I/O volume in 24 hours. When the quota is reached, the system generates a warning-level log if the process is running in the foreground, and terminates the process if it is running in the background.
@@ -13,7 +19,7 @@ Resource usage: The system provides resource quotas for running processes, inclu
 
 ## Background Task Types
 
-For standard-system devices, the following types of constrained background tasks are provided: transient tasks, continuous tasks, deferred tasks, agent-powered reminders, and efficiency resources.
+Background Tasks Kit provides the following types of constrained background tasks: transient tasks, continuous tasks, deferred tasks, agent-powered reminders<!--Del-->, and efficiency resources<!--DelEnd-->.
 
 You can select a proper background task type to ensure that your application can continue running after switching to the background.
 
@@ -26,7 +32,7 @@ You can select a proper background task type to ensure that your application can
 - **Agent-powered reminders**: After an application is switched to the background or an application process is terminated, the system sends a reminder on behalf of the application. You can create scheduled reminders for countdown timers, calendar events, and alarm clocks.
 
 <!--Del-->
-For system applications that provide basic capabilities, the system provides an API for [requesting energy resources](efficiency-resource-request.md). After an application calls the API, the system exempts the application from management.<!--DelEnd-->
+For system applications that provide basic capabilities, the system provides an API for [energy resource request](efficiency-resource-request-sys.md). After an application calls the API, the system exempts the application from management.<!--DelEnd-->
 
   **Figure 1** Selecting a type of background task 
 ![bgtask_choice](figures/bgtask_choice.png)

@@ -101,12 +101,14 @@ try {
 
 setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
-Sets the power saving mode for a process. This API uses a promise to return the result. This API takes effect only on PCs/2-in-1 devices.
+Sets the power saving mode for a process. This API uses a promise to return the result.
 
 You can set to enter the power saving mode when:
 - The application is not focused, and there are no audio operations or UI updates.
 - The application cannot obtain the power lock through the system framework.
 - The application needs to perform time-consuming computing tasks, such as compression, decompression, and compilation, which are significantly restricted by CPU resources. (In this case, the power saving mode will be enabled forcibly.)
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -155,7 +157,9 @@ try {
 
 isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
-Queries whether the process is in power saving mode. This API uses a promise to return the result. This API takes effect only on PCs/2-in-1 devices.
+Queries whether the process is in power saving mode. This API uses a promise to return the result.
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -199,6 +203,56 @@ try {
 }
 ```
 
+## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
+
+getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
+
+Obtains the power saving mode of a process. This API uses a promise to return the result.
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
+
+**Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
+
+**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**Parameters**
+
+| Name     | Type     | Mandatory     | Description     |
+|-------------|-----------|-----------|-----------|
+| pid         | number    | Yes       | Process ID.<br>Value range: any integer greater than 0. |
+
+**Return value**
+
+| Type            | Description              |
+| -------------- | ---------------- |
+| Promise<[PowerSaveMode](#powersavemode20)> | Promise that returns the power saving mode of a process.|
+
+**Error codes**
+
+For details about the error codes, see [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID   | Error Message            |
+|----------|------------------|
+| 201      | Permission denied. |
+| 801      | Capability not supported. |
+| 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
+// Replace the process ID with the actual one.
+let pid = 33333;
+try {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
+        console.info("getPowerSaveMode: " + result.toString());
+    });
+} catch (error) {
+    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
 ## ProcessPriority
 
 Specifies the child process priority.
@@ -207,7 +261,7 @@ Specifies the child process priority.
 
 | Name                  |  Value     | Description                                                                            |
 |----------------------| -------- |--------------------------------------------------------------------------------|
-| PROCESS_BACKGROUND   | 1        | Compared with **PROCESS_INACTIVE**, this priority has a more obvious suppression effect. Child processes can obtain less CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages. |
+| PROCESS_BACKGROUND   | 1        | Compared with **PROCESS_INACTIVE**, **PROCESS_LOWER** has a more significant suppression effect and obtains fewer CPU resources. You are advised to set this priority when executing background child processes that cannot be perceived by users, such as background image-text pages. |
 | PROCESS_INACTIVE     | 2        | You are advised to set this priority when executing background child processes that can be perceived by users, such as audio playback and navigation.                                            |
 
 ## PowerSaveMode<sup>20+</sup>
@@ -220,5 +274,3 @@ Specifies the power saving mode.
 |-----|----|-------|
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
-
-<!--no_check-->

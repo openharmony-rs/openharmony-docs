@@ -14,7 +14,7 @@ The following uses Uint8Array as an example. Before the change, the **callbackFn
 - Declare the callback function of the **map** API as follows: **map(callbackFn: TypedArrayForEachCallback\<number, Uint8Array>): Uint8Array**.
 - **TypedArrayForEachCallback** is defined without a return value, as follows: **type TypedArrayForEachCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => void**.
 
-**Change Impact**
+**Impact of the Change**
 
 This change is a non-compatible change.
 
@@ -24,24 +24,24 @@ This change is a non-compatible change.
 - Case 2: The **callbackFn** function in the **map** API has a return value, the type of which is not number. The code can be compiled, and the implementation is the same as that expected.
 - Case 3: The **callbackFn** function in the **map** API has a return value, the type of which is number. The code can be compiled, and the implementation is the same as that expected.
 
-  ```
-  let arr = [1, 2, 3, 4, 5];
-  
-  // Create a Uint8Array.
-  let uint8: collections.Uint8Array = new collections.Uint8Array(arr);
-  
-  // Case 1: The feature of map is not implemented. callbackFn has no return value, and the map API returns a new collections.Uint8Array.
-  let zeroMappedArray: collections.Uint8Array = uint8.map((value: number) => {}); // The compilation is successful.
-  console.info('' + zeroMappedArray); // Output: collections.Uint8Array [0, 0, 0, 0, 0]
-  
-  // Case 2: The feature of map is implemented. callbackFn returns an element value (in the form of a string) after map is called, and the map API returns a new collections.Uint8Array.
-  let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => value + "1"); // The compilation is successful.
-  console.info('' + wrongTypeMapped); //Output: collections.Uint8Array [11, 21, 31, 41, 51]
-  
-  // Case 3: The feature of map is implemented. callbackFn returns an element value after map is called, and the map API returns a new collections.Uint8Array.
-  let normalMapped: collections.Uint8Array = uint8.map((value: number) => value * 2); // The compilation is successful.
-  console.info('' + normalMapped); // Output: collections.Uint8Array [2, 4, 6, 8, 10]
-  ```
+```
+let arr = [1, 2, 3, 4, 5];
+
+// Create a Uint8Array.
+let uint8: collections.Uint8Array = new collections.Uint8Array(arr);
+
+// Case 1: The feature of map is not implemented. callbackFn has no return value, and the map API returns a new collections.Uint8Array.
+let zeroMappedArray: collections.Uint8Array = uint8.map((value: number) => {}); // The compilation is successful.
+console.info('' + zeroMappedArray); // Output: collections.Uint8Array [0, 0, 0, 0, 0]
+
+// Case 2: The feature of map is implemented. callbackFn returns an element value (in the form of a string) after map is called, and the map API returns a new collections.Uint8Array.
+let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => value + "1"); // The compilation is successful.
+console.info('' + wrongTypeMapped); //Output: collections.Uint8Array [11, 21, 31, 41, 51]
+
+// Case 3: The feature of map is implemented. callbackFn returns an element value after map is called, and the map API returns a new collections.Uint8Array.
+let normalMapped: collections.Uint8Array = uint8.map((value: number) => value * 2); // The compilation is successful.
+console.info('' + normalMapped); // Output: collections.Uint8Array [2, 4, 6, 8, 10]
+```
 
 **After Change**
 
@@ -50,22 +50,22 @@ This change is a non-compatible change.
 - Case 3: The **callbackFn** function in the **map** API has a return value, the type of which is number. The code can be compiled, and the implementation is the same as that expected. (This change is compatible.)
 
 
-    ```
-    let arr = [1, 2, 3, 4, 5];
-    
-    // Create a Uint8Array.
-    let uint8: collections.Uint8Array = new collections.Uint8Array(arr);
-    
-    // Case 1: The feature of map is not implemented. callbackFn has no return value, and the map API returns a new collections.Uint8Array.
-    let zeroMappedArray: collections.Uint8Array = uint8.map((value: number) => {}); // An incompatible change. The compilation fails. 
-    
-    // Case 2: The feature of map is implemented. callbackFn returns a string after map is called, and the map API returns a new collections.Uint8Array.
-    let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => value + "1"); // An incompatible change. The compilation fails. 
-    
-    // Case 3: The feature of map is implemented. callbackFn returns an element value after map is called, and the map API returns a new collections.Uint8Array.
-    let normalMapped: collections.Uint8Array = uint8.map((value: number) => value * 2); // The compilation is successful.
-    console.info('' + normalMapped); // Output: collections.Uint8Array [2, 4, 6, 8, 10]
-    ```
+```
+let arr = [1, 2, 3, 4, 5];
+
+// Create a Uint8Array.
+let uint8: collections.Uint8Array = new collections.Uint8Array(arr);
+
+// Case 1: The feature of map is not implemented. callbackFn has no return value, and the map API returns a new collections.Uint8Array.
+let zeroMappedArray: collections.Uint8Array = uint8.map((value: number) => {}); // An incompatible change. The compilation fails. 
+
+// Case 2: The feature of map is implemented. callbackFn returns a string after map is called, and the map API returns a new collections.Uint8Array.
+let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => value + "1"); // An incompatible change. The compilation fails. 
+
+// Case 3: The feature of map is implemented. callbackFn returns an element value after map is called, and the map API returns a new collections.Uint8Array.
+let normalMapped: collections.Uint8Array = uint8.map((value: number) => value * 2); // The compilation is successful.
+console.info('' + normalMapped); // Output: collections.Uint8Array [2, 4, 6, 8, 10]
+```
 
 **Start API Level**
 
@@ -82,14 +82,12 @@ OpenHarmony SDK 5.0.0.31
 **Adaptation Guide**
 
 - In the preceding case 2, you can make adaptation as follows:
-
-  ```
-  let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => parseInt(value + "1")); // Use parseInt to convert a string to a number.
-  ```
+```
+let wrongTypeMapped: collections.Uint8Array = uint8.map((value: number) => parseInt(value + "1")); // Use parseInt to convert a string to a number.
+```
 
 - For details, see the following sample code:
-
-  [ArkTS Collections - Typed Array](../../../application-dev/reference/apis-arkts/js-apis-arkts-collections.md#collectionstypedarray)
+ArkTS Containers - TypedArray ([Int8Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md), and [Float32Array](../../../application-dev/reference/apis-arkts/arkts-apis-arkts-collections-Float32Array.md))
 
 ## cl.arkcompiler.2 Compilation Check Enhanced for ArkTS Sendable Syntax Rules
 
@@ -99,9 +97,9 @@ Others
 
 **Reason for Change**
 
-A sendable object must comply with the [usage rules](../../..//application-dev/arkts-utils/arkts-sendable.md#sendable-usage-rules). In sendable generic class scenarios where some constraints should be made, the compiler does not check for these constraints. As a result, a sendable object using these syntaxes runs abnormally in concurrent scenarios, but no compilation error is reported. In this version update, a compile-time check is added for these constraints. You can find the code that fails to meet the sendable usage constraints earlier through compile-time errors, reducing fault locating costs at the runtime.
+A sendable object must comply with the [Usage Rules and Constraints for Sendable](../../../application-dev/arkts-utils/sendable-constraints.md). In sendable generic class scenarios where some constraints should be made, the compiler does not check for these constraints. As a result, a sendable object using these syntaxes runs abnormally in concurrent scenarios, but no compilation error is reported. In this version update, a compile-time check is added for these constraints. You can find the code that fails to meet the sendable usage constraints earlier through compile-time errors, reducing fault locating costs at the runtime.
 
-**Change Impact**
+**Impact of the Change**
 
 This change is a non-compatible change.
 
@@ -211,11 +209,11 @@ Others
 
 **Reason for Change**
 
-Sendable value assignment must comply with the [usage rules](../../..//application-dev/arkts-utils/arkts-sendable.md#sendable-usage-rules). However, a non-sendable object can be assigned to the sendable type, and the compiler does not provide a check for this scenario. As a result, a runtime exception occurs when a non-sendable object is used as a sendable object, but no compilation error is reported. In this version update, a compile-time check is added for the constraint. You can find the code that fails to meet the sendable usage constraints earlier through compile-time errors, reducing fault locating costs at the runtime.
+Sendable value assignment must comply with the [Usage Rules and Constraints for Sendable](../../../application-dev/arkts-utils/sendable-constraints.md). However, a non-sendable object can be assigned to the sendable type, and the compiler does not provide a check for this scenario. As a result, a runtime exception occurs when a non-sendable object is used as a sendable object, but no compilation error is reported. In this version update, a compile-time check is added for the constraint. You can find the code that fails to meet the sendable usage constraints earlier through compile-time errors, reducing fault locating costs at the runtime.
 
 Error object: a variable, parameter, or return value that is declared using the sendable type or interface but assigned to a non-sendable object.
 
-**Change Impact**
+**Impact of the Change**
 
 This change is a non-compatible change.
 
@@ -224,8 +222,10 @@ Before the change: In some scenarios where a non-sendable object is assigned to 
 After the change: In some scenarios where a non-sendable object is assigned to the sendable type, an error message is displayed on the DevEco Studio editing page, and a compilation error is reported.
 
 When the error object is used as a sendable object, a runtime exception is reported before the change, whereas a compilation error is reported after the change. When the error object is used as a common object, no error is reported before the change, whereas a compilation error is reported after the change. Before the change, a non-sendable object can be assigned to the sendable type in some scenarios. After the change, a non-sendable object cannot be assigned to the sendable type.
+ 
+An error is reported in the following scenarios:
 
-An error is reported in the following scenarios: 
+ 
 
 Case 1: The error object is used as a sendable object.
 

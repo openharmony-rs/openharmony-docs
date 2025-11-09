@@ -2,12 +2,13 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--SE: @liyang_bryan-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The OhosImageComponent struct describes the information about an image component.
+The struct describes the information about an image component.
 
 **Since**: 10
 

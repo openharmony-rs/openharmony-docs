@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -42,7 +42,7 @@ Defines the parameter used to execute an intent call.
 | abilityName | string | No| No| Name of the ability to be called. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter can be left empty.|
 | insightIntentName | string | No| No| Intent name.|
 | insightIntentParam | Record\<string, Object> | No| No| Intent call parameter.|
-| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | No| No| Intent call execution mode. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter must be filled (with any value that conforms to the definition), although it will not actually take effect.|
+| executeMode | [insightIntent.ExecuteMode](js-apis-app-ability-insightIntent.md#executemode) | No| No| Intent execution mode. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter must be filled (with any value that conforms to the definition), although it will not actually take effect.|
 | displayId<sup>12+</sup> | number | No| Yes| Physical screen ID specified during intent call. The value must be an integer. This parameter is valid only when **executeMode** is set to **UI_ABILITY_FOREGROUND**.|
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12).|
 | flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|
@@ -102,6 +102,36 @@ Defines the parameter type of the [@InsightIntentFunctionMethod](./js-apis-app-a
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+## FormIntentInfo<sup>20+<sup>
+
+FormIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform) decorator, such as the widget name.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | Yes| No| Ability name.|
+| formName | string | Yes| No| Name of the widget bound to the [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md).|
+
+## EntryIntentInfo<sup>20+<sup>
+
+EntryIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry) decorator, such as the intent execution mode.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | Yes| No| Ability name.|
+| executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | Yes| No| Intent execution mode. that is, execution mode supported when the bound ability is started.|
+
 ## EntityInfo<sup>20+<sup>
 
 EntityInfo inherits from [IntentEntityDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo) and is used to describe the information about the intent entity defined by the [@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator.
@@ -142,9 +172,9 @@ Defines the intent information, which is the specific parameter configuration of
 | schema | string | Yes| No| Standard intent name. If an intent in the standard intent list matches both the **schema** and **intentVersion** fields, it is processed as a standard intent.|
 | icon | string | Yes| No| Icon of the intent.|
 | llmDescription | string | Yes| No| Function of an intent, which helps large language models understand the intent.|
-| keywords | Array&lt;string&gt; | Yes| No| Search keywords for the intent.|
+| keywords | string[] | Yes| No| Search keywords for the intent.|
 | intentType | [InsightIntentType](#insightintenttype20) | Yes| No| Type of intent defined by the intent decorator.|
-| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) | Yes| No| Intent information for specific intent decorators.|
+| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | Yes| No| Intent information for specific intent decorators.|
 | parameters | Record<string, Object> | Yes| No| Data format of intent parameters, which is used to define the input data format during intent calls.|
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | Yes| No| Entity information contained in the intent.|
 

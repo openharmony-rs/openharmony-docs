@@ -71,7 +71,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -125,7 +125,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -184,7 +184,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceId> = usbManager.getAllowedUsbDevices(wantTemp);
@@ -199,6 +199,9 @@ try {
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 设置USB存储设备访问策略。
+
+> **说明**：
+> 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
 
 以下情况下，通过本接口设置USB存储设备访问策略为可读可写/只读，会报策略冲突：
 
@@ -249,7 +252,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.DISABLED;
@@ -305,7 +308,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(wantTemp);
@@ -362,7 +365,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -418,7 +421,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -479,7 +482,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(wantTemp);

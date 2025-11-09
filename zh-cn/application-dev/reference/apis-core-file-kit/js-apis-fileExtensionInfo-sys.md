@@ -1,8 +1,8 @@
 # @ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import fileExtensionInfo from '@ohos.file.fileExtensionInfo';
+import { fileExtensionInfo } from '@kit.CoreFileKit';
 ```
 
 ## fileExtensionInfo.DeviceType
