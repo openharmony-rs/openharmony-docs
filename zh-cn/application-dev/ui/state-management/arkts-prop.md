@@ -263,50 +263,6 @@ struct ParentComponent {
 
 <!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
 
-``` TypeScript
-struct Child {
-  @Prop value: number = 0;
-
-  build() {
-    Text(`${this.value}`)
-      .fontSize(50)
-      .onClick(() => {
-        this.value++;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State arr: number[] = [1, 2, 3];
-
-  build() {
-      Row() {
-        Column() {
-          Child({ value: this.arr[0] })
-          Child({ value: this.arr[1] })
-          Child({ value: this.arr[2] })
-
-          Divider().height(5)
-
-          ForEach(this.arr,
-            (item: number) => {
-              Child({ value: item })
-            },
-            (item: number) => item.toString()
-          )
-          Text('replace entire arr')
-            .fontSize(50)
-            .onClick(() => {
-              // 两个数组都包含项“3”。
-              this.arr = this.arr[0] == 1 ? [3, 4, 5] : [1, 2, 3];
-            })
-        }
-      }
-  }
-}
-```
 
 初始渲染创建6个子组件实例，每个\@Prop装饰的变量初始化都在本地拷贝了一份数组项。子组件onClick事件处理程序会更改局部变量值。
 
@@ -538,67 +494,6 @@ class Book {
 
 <!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
 
-``` TypeScript
-struct MyComponent {
-  @Prop customCounter: number;
-  @Prop customCounter2: number = 5;
-
-  build() {
-    Column() {
-      Row() {
-        Text(`From Main: ${this.customCounter}`).fontColor('#ff6b6565').margin({ left: -110, top: 12 })
-      }
-
-      Row() {
-        Button('Click to change locally!')
-          .width(288)
-          .height(40)
-          .margin({ left: 30, top: 12 })
-          .fontColor('#FFFFFF')
-          .onClick(() => {
-            this.customCounter2++;
-          })
-      }
-
-      Row() {
-        Text(`Custom Local: ${this.customCounter2}`).fontColor('#ff6b6565').margin({ left: -110, top: 12 })
-      }
-    }
-  }
-}
-
-@Entry
-@Component
-struct MainProgram {
-  @State mainCounter: number = 10;
-
-  build() {
-      Column() {
-        Row() {
-          Column() {
-            // customCounter必须从父组件初始化，因为MyComponent的customCounter成员变量缺少本地初始化；此处，customCounter2可以不做初始化。
-            MyComponent({ customCounter: this.mainCounter })
-            // customCounter2也可以从父组件初始化，父组件初始化的值会覆盖子组件customCounter2的本地初始化的值
-            MyComponent({ customCounter: this.mainCounter, customCounter2: this.mainCounter })
-          }
-        }
-
-        Row() {
-          Column() {
-            Button('Click to change number')
-              .width(288)
-              .height(40)
-              .margin({ left: 30, top: 12 })
-              .fontColor('#FFFFFF')
-              .onClick(() => {
-                this.mainCounter++;
-              })
-          }
-        }
-      }
-  }
-}
-```
 
 ![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
