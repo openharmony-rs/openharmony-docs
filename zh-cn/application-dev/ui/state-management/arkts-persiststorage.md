@@ -162,6 +162,14 @@ const MAX_NUM: number = 50; // 大字体尺寸
 ```
 <!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
 
+``` TypeScript
+PersistentStorage.persistProp('aProp', 48);
+if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
+  // 如果PersistentStorage存储的值超过50，设置为47
+  AppStorage.setOrCreate('aProp',47);
+}
+```
+
 示例代码在读取PersistentStorage存储的数据后，判断“aProp”的值是否大于50，如果大于50，则使用AppStorage的接口将其设置为47。
 
 ### 持久化联合类型变量
