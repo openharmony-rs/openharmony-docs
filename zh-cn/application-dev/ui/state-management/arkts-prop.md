@@ -892,7 +892,7 @@ struct ParentComponent {
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
-const TAG = 'Prop';
+const TAG: string = '[SampleProp]';
 
 class Animals {
   public name: string;
