@@ -1,117 +1,135 @@
-# ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作
+# 在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）
 
-从API version 22起，ArkTS-Dyn动态数据与@Observed装饰的数据之间的交互操作可用于UI组件开发和数据绑定的场景，建议提前阅读: [ArkTS-Sta互操作概述](../quick-start/arkts-interop-overview.md)了解互操作能力框架。
+## 概述
 
-完整示例结构如下：
+ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和[@Observed](../ui/state-management/arkts-observed-and-objectlink.md)装饰的数据的变化。
+
+
+## 使用限制
+
+- 遵循ArkTS-Dyn @Observed和@ObjectLink的[使用限制](../ui/state-management/arkts-observed-and-objectlink.md#限制条件)；
+
+- 遵循ArkTS-Dyn @Track的[使用限制](../ui/state-management/arkts-track.md#限制条件)；
+
+- 遵循ArkTS-Sta @Observed和@ObjectLink的[使用限制](../ui/state-management-static/arkts-static-observed-and-objectlink.md#限制条件)；
+
+- 遵循ArkTS-Sta @Track的[使用限制](../ui/state-management-static/arkts-static-track.md#限制条件)；
+
+- 不能在非UI线程中直接修改ArkTS-Sta组件中使用的ArkTS-Dyn @Observed装饰的数据成员的值，否则会运行异常；
+
+- 遵循[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)规范，如不支持ArkTS-Dyn对象继承ArkTS-Sta对象。
+
+
+## 使用场景
+
+基于以下示例结构，说明在ArkTS-Sta组件中使用动态数据和@Observed装饰数据的场景。
 
 ```text
 project/
-├── entry/          # ArkTS-Sta主模块
+├── entry/                          # ArkTS-Sta主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets
+│                   └── Index.ets    # 使用动态@Observed装饰的数据
 │
-└── dynamic/         # ArkTS-Dyn子模块
+└── dynamic_module/                  # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets
+                    └── MainPage.ets  # 导出动态@Observed装饰的数据
 
 ```
 
-ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和@Observed装饰的数据的变化。
+示例如下：
 
-以下代码示例展示了如何在ArkTS-Sta组件中使用动态数据和@Observed装饰的数据。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`src/main/ets/components/MainPage.ets`目录创建并导出动态@Observed装饰的数据。
 
-- 创建ArkTS-Dyn子模块`dynamic`，在`src/main/ets/components/MainPage.ets`目录创建并导出动态@Observed装饰的数据。
+```TypeScript
+// dynamic_module/src/main/ets/components/MainPage.ets
 
-  ```TypeScript
-  // dynamic/src/main/ets/components/MainPage.ets
+@Observed
+export class MyClassA { // 定义动态@Observed装饰的类并导出
+  @Track name: string = 'text: x';
+  message: string = 'text: x';
+}
+```
 
-  @Observed
-  export class MyClassA {
-    @Track name: string = 'text: x';
-    message: string = 'text: x';
-  }
-  ```
+- 在ArkTS-Dyn子模块`dynamic_module`的`Index.ets`文件中导出动态@Observed装饰的数据。
 
-- 在ArkTS-Dyn子模块`dynamic`的`Index.ets`文件中导出动态@Observed装饰的数据。
+```TypeScript
+// dynamic_module/Index.ets
 
-   ```TypeScript
-  // dynamic/Index.ets
-
-  export { MyClassA } from './src/main/ets/components/MainPage.ets';
-  ```
+export { MyClassA } from './src/main/ets/components/MainPage'; // 导出动态@Observed装饰的类
+```
 
 - 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。
 
-  ```json
-  // entry/oh-package.json5
+```json
+// entry/oh-package.json5
 
-  "dependencies": {
-    "dynamic": "file:../dynamic",
-  }
-  ```
+"dependencies": {
+  "dynamic_module": "file:../dynamic_module"
+}
+```
 
 - 在ArkTS-Sta主模块中使用import语句导入ArkTS-Dyn组件。
 
-  ```TypeScript
-  'use static'
-  // entry/src/main/ets/pages/Index.ets
+```TypeScript
+'use static'
 
-  import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text, ColumnOptions, RowOptions, Color } from '@ohos.arkui.component';
-  import { State} from '@ohos.arkui.stateManagement';
-  // 引用ArkTS-Dyn动态@Observed装饰的数据
-  import { MyClassA } from 'dynamic';
+// entry/src/main/ets/pages/Index.ets
+import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text } from '@ohos.arkui.component';
+import { State} from '@ohos.arkui.stateManagement';
 
-  @Entry
-  @Component
-  export struct Index {
-    @State state: MyClassA = new MyClassA();
+// 引用ArkTS-Dyn动态@Observed装饰的数据
+import { MyClassA } from 'dynamic_module';
 
-    build() {
-      Scroll() {
-        Row() {
-          Column({ space: 20 } as ColumnOptions) {
-            // 在ArkTS-Sta中使用动态@Observed装饰的数据
-            Text(this.state.name)
-              .height('10%')
-              .backgroundColor(Color.Pink)
-            Row({ space: 5 } as RowOptions) {
-              // 单独为动态@Observed装饰的类中的某一个成员赋值
-              Button('Member Assignment')
-                .layoutWeight(1)
-                .onClick((event: ClickEvent)=> {
-                  this.state.name = 'state: x';
-                })
-              // 创建新对象整体为动态@Observed装饰的类中的成员赋值
-              Button('Overall Assignment')
-                .layoutWeight(1)
-                .onClick((event: ClickEvent)=> {
+@Entry
+@Component
+export struct Index { // ArkTS-Sta组件
+  @State state: MyClassA = new MyClassA();
+
+  build() {
+    Scroll() {
+      Row() {
+        Column() {
+          // 在ArkTS-Sta中使用动态@Observed装饰的数据
+          Text(this.state.name)
+            .height('10%')
+          Row() {
+            // 单独为动态@Observed装饰的类中的某一个成员赋值
+            Button('Member Assignment')
+              .layoutWeight(1)
+              .onClick((event: ClickEvent)=> {
+                this.state.name = 'state: x';
+              })
+            // 创建新对象整体为动态@Observed装饰的类中的成员赋值
+            Button('Overall Assignment')
+              .layoutWeight(1)
+              .onClick((event: ClickEvent)=> {
+                let data = new MyClassA();
+                data.name = 'state: Hello';
+                this.state = data;
+              })
+            // 多线程中为动态@Observed装饰的数据中的成员赋值
+            Button('Multithreading')
+              .layoutWeight(1)
+              .onClick((event: ClickEvent)=> {
+                const task = () =>{
                   let data = new MyClassA();
-                  data.name = 'state: Hello';
-                  this.state = data;
-                })
-              // 多线程中为动态@Observed装饰的数据中的成员赋值
-              Button('Multithreading')
-                .layoutWeight(1)
-                .onClick((event: ClickEvent)=> {
-                  const task = () =>{
-                    let data = new MyClassA();
-                    data.name = 'world';
-                  }
-                  taskpool.execute(task)
-                })
-            }
-            .width('80%')
+                  data.name = 'world';
+                }
+                taskpool.execute(task)
+              })
           }
-          .width('100%')
+          .width('80%')
         }
+        .width('100%')
       }
-      .height('100%')
     }
+    .height('100%')
   }
-  ```
+}
+```

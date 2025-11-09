@@ -1,4 +1,4 @@
-# 使用ArkTS-Dyn的自定义节点对象
+# 在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象
 
 ## FrameNode和TypedFrameNode自定义节点
 

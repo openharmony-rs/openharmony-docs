@@ -58,24 +58,6 @@
       - [ArkTS-Sta互操作类型映射规则](quick-start/arkts-interop-type-mapping.md)
       - [ArkTS-Sta互操作场景](quick-start/arkts-interop-more.md)
       - [ArkTS-Sta互操作特性规范](quick-start/arkts-interop-spec.md)
-      - ArkTS1.2UI互操作指导
-        - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
-        - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
-        - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](ui/arkts-dyn-interop-sta-component.md)
-        - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
-        - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](ui/arkts-sta-interop-dyn-observed.md)
-        - 状态管理V2互操作
-          - [ArkTS-Sta使用ArkTS-Dyn的AppStorageV2进行状态存储](ui/arkts-sta-interop-dyn-storages-v2.md)
-          - [ArkTS-Dyn使用ArkTS-Sta的AppStorageV2进行状态存储](ui/arkts-dyn-interop-sta-storages-v2.md)
-          - [ArkTS-Sta使用ArkTS-Dyn @ObservedV2数据和@Trace数据互操作](ui/arkts-sta-interop-dyn-observedv2.md)
-          - [ArkTS-Dyn使用ArkTS-Sta @ObservedV2数据和@Trace数据互操作](ui/arkts-dyn-interop-sta-observedv2.md)
-          - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](ui/arkts-sta-interop-dyn-builder-v2.md)
-          - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](ui/arkts-dyn-interop-sta-builder-v2.md)
-        - 状态管理V1V2混用互操作
-        - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
-        - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](ui/arkts-sta-interop-dyn-navigation.md)
-        - [ArkTS-Dyn的Navigation调用ArkTS-Sta的NavDestination页面](ui/arkts-dyn-interop-sta-navigation.md)
-        - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](ui/arkts-dyn-partial-features-using-sta.md)
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)
@@ -652,6 +634,37 @@
           <!--Del-->
           - [UI组件适配（系统接口）](ui/arkts-sta-deprecated-sys.md)
           <!--DelEnd-->
+      - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
+        - [UI互操作概述](ui/arkts-dyn-sta-ui-interop.md)
+        - UI互操作声明文件规范<!--ui-arkts-sta-interop-dyn-interface-->
+        - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
+          - [在ArkTS-Sta中使用ArkTS-Dyn的自定义组件](ui/arkts-sta-interop-dyn-component.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的自定义构建函数（@Builder）](ui/arkts-sta-interop-dyn-builder.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的wrapBuilder（封装全局@Builder）](ui/arkts-sta-interop-dyn-wrappedbuilder.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的@BuilderParam（引用@Builder函数）](ui/arkts-sta-interop-dyn-builderparam.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](ui/arkts-sta-interop-dyn-navigation.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象](ui/arkts-sta-interop-dyn-node.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](ui/arkts-dyn-interop-sta-component.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](ui/arkts-dyn-interop-sta-builder.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](ui/arkts-dyn-interop-sta-wrappedbuilder.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的@BuilderParam（引用@Builder函数）](ui/arkts-dyn-interop-sta-builderparam.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](ui/arkts-dyn-interop-sta-navigation.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的自定义节点对象](ui/arkts-dyn-interop-sta-node.md)
+        - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
+          - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](ui/arkts-sta-interop-dyn-statemanager-v1.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](ui/arkts-sta-interop-dyn-observed.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态](ui/arkts-sta-interop-dyn-storages.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](ui/arkts-dyn-interop-sta-statemanagement-v1.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的@Observed和@ObjectLink（嵌套类对象属性变化）](ui/arkts-dyn-interop-sta-observed.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态](ui/arkts-dyn-interop-sta-storages.md)
+        - 状态管理（V2）互操作<!--ui-arkts-sta-interop-dyn-state-management-v2-->
+          - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](ui/arkts-sta-interop-dyn-statemanagement-v2.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的@ObservedV2和@Trace（类属性变化观测）](ui/arkts-sta-interop-dyn-observedv2.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态](ui/arkts-sta-interop-dyn-storages-v2.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](ui/arkts-dyn-interop-sta-statemanagement-v2.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的@ObservedV2和@Trace（类属性变化观测）](ui/arkts-dyn-interop-sta-observedv2.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态](ui/arkts-dyn-interop-sta-storages-v2.md)
+        - 状态管理V1和V2混用互操作<!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
       - 使用NDK接口构建UI<!--arkts-use-ndk-->
         - [NDK接口概述](ui/ndk-build-ui-overview.md)
         - [接入ArkTS页面](ui/ndk-access-the-arkts-page.md)

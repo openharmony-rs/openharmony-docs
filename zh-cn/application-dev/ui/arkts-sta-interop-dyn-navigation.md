@@ -1,7 +1,7 @@
-# ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面
+# 在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）
 
 
-从API version 20开始，支持从ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面实现导航跳转。在[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)场景下，导出ArkTS-Dyn的NavDestination子页面，在ArkTS-Sta的Navigation中直接调用。
+从API version 22开始，支持从ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面实现导航跳转。在[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)场景下，导出ArkTS-Dyn的NavDestination子页面，在ArkTS-Sta的Navigation中直接调用。
 
 
 完整示例结构如下图所示：
@@ -57,7 +57,7 @@ ArkTS-Dyn初始化NavDestination页面属性，其使用规格限制与非互操
   }
   ```
 
-- 在ArkTS-Sta主模块中引入ArkTS-Dyn动态模块的页面。
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn的页面。
 
   ```TypeScript
   'use static'

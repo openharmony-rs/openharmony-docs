@@ -21,9 +21,9 @@ project/
                     └── DynData.ets
 ```
 
-ArkUI互操作能力支持静态上下文调用动态模块的动态数据。
+ArkUI互操作能力支持ArkTS-Sta调用ArkTS-Dyn的数据。
 
-以下示例展示了如何在静态上下文中使用动态模块的动态数据。
+以下示例展示了如何在ArkTS-Sta中使用ArkTS-Dyn的数据。
 
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创建并导出动态数据。
 

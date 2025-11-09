@@ -1,128 +1,59 @@
-# ArkTS-Dyn使用ArkTS-Sta WrappedBuilder对象
+# 在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Dyn中使用ArkTS-Sta的WrappedBuilder对象。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局\@Builder的场景。使用时需要遵守语言互操作[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)，以及ArkTS-Sta wrapBuilder方法[限制条件](./state-management/arkts-v1.2-wrapBuilder.md#限制条件)。
+从API version 22开始，支持在ArkTS-Dyn中使用ArkTS-Sta的[WrappedBuilder对象](./state-management/arkts-wrapBuilder.md)。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局[\@Builder](./state-management/arkts-builder.md)的场景。
+
+
+## 限制条件
+
+- 遵循ArkTS-Sta WrappedBuilder对象的使用[限制条件](./state-management/arkts-wrapBuilder.md#限制条件)。
+
+
+## 使用场景
 
 \@Builder的参数传递包括[按值传递](#按值传递)与[按引用传递](#按引用传递)，详见[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
-## 按值传递
 
-WrapBuilder封装的\@Builder函数默认按值传递，当传入状态变量时，其变化不会触发\@Builder内部UI刷新。
-
-完整示例结构如下所示：
-
-```text
-project/
-├── entry/                            # ArkTS-Dyn主模块
-│   └── src/
-│       └── main/
-│           └── ets/
-│               └── pages/
-│                   └── Index.ets     # 调用WrappedBuilder
-│
-└── library/                          # ArkTS-Sta子模块
-    └── src/
-        └── main/
-            └── ets/
-                └── components/
-                    └── MainPage.ets  # 定义WrappedBuilder
-
-```
-
-下面的代码示例展示了在ArkTS-Dyn中引用ArkTS-Sta的WrappedBuilder对象显示UI。
-
-- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录创建并导出WrappedBuilder对象。
-
-```TypeScript
-'use static'
-
-// library/src/main/ets/components/MainPage.ets
-import { Builder, WrappedBuilder, wrapBuilder, Text } from '@ohos.arkui.component';
-
-@Builder
-function showTextBuilder(input: string) {
-  Text(input)
-    .fontSize(30)
-}
-export const globalBuilder: WrappedBuilder<@Builder (input: string) => void> = wrapBuilder(showTextBuilder);
-```
-
-```TypeScript
-'use static'
-
-// library/index.ets
-export { globalBuilder } from './src/main/ets/components/MainPage';
-```
-
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
-
-```json
-// entry/oh-package.json5
-
-"dependencies": {
-  "library": "file:../library"
-}
-```
-
-- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta WrappedBuilder对象。
-
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-import { globalBuilder } from 'library';
-
-@Entry
-@Component
-struct Parent {
-  build() {
-    Column() {
-      globalBuilder.builder('Hello World!')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor('#F1F3F5')
-  }
-}
-```
-
-## 按引用传递
+### 按引用传递参数
 
 ArkTS-Dyn调用ArkTS-Sta WrappedBuilder对象时，封装的\@Builder仅在接收一个参数且该参数为对象字面量时为引用传递，其余情况均为按值传递。该对象字面量包含状态变量时，其变化会触发\@Builder函数内部UI刷新。
 
 由于ArkTS-Sta不支持跨语言创建对象字面量，因此ArkTS-Dyn创建对象字面量时，需要使用ArkTS-Dyn侧的对象。
 
-完整示例结构如下所示：
+基于以下示例结构，说明在ArkTS-Dyn中引用ArkTS-Sta WrappedBuilder对象字面量更新的场景。
+
 ```text
 project/
-├── entry/                          # ArkTS-Dyn主模块
+├── entry/                             # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets   # 调用WrappedBuilder并引用传递
+│                   └── Index.ets      # 调用WrappedBuilder对象并按引用传递参数
 │
-└── dyn_library/                    # ArkTS-Dyn子模块
+└── dynamic_module/                    # ArkTS-Dyn子模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── components/
-│                   └── MainPage.ets # Person类定义
+│                   └── MainPage.ets    # Person类定义
 │
 │
-└── sta_library/                     # ArkTS-Sta子模块
+└── static_module/                      # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets # 定义WrappedBuilder
+                    └── MainPage.ets    # 定义WrappedBuilder对象
 ```
 
-下面的代码示例展示了ArkTS-Dyn引用ArkTS-Sta WrappedBuilder对象字面量更新的场景。
+示例如下：
 
-- 创建ArkTS-Dyn子模块`dyn_library`，在`dyn_library/src/main/ets/components`目录创建并导出class。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出class。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
-// dyn_library/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/MainPage.ets
 
 export class Person {
   name: string = '';
@@ -131,19 +62,19 @@ export class Person {
 ```
 
 ```TypeScript
-// dyn_library/index.ets
+// dynamic_module/index.ets
 
 export { Person } from './src/main/ets/components/MainPage';
 ```
 
-- 创建ArkTS-Sta子模块`sta_library`，在`sta_library/src/main/ets/components`目录创建并导出WrappedBuilder对象。且在`oh-package.json5`文件中配置子模块依赖。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出WrappedBuilder对象。且在`oh-package.json5`文件中配置子模块依赖。
 
 ```TypeScript
 'use static'
 
-// sta_library/src/main/ets/components/MainPage.ets
+// static_module/src/main/ets/components/MainPage.ets
 import { Builder, WrappedBuilder, wrapBuilder, Text, Column } from '@ohos.arkui.component';
-import { Person } from 'dyn_library';
+import { Person } from 'dynamic_module';
 
 @Builder
 function personInfo(person: Person) {
@@ -159,15 +90,15 @@ export const globalBuilder: WrappedBuilder<@Builder (person: Person) => void> = 
 ```TypeScript
 'use static'
 
-// sta_library/index.ets
+// static_module/index.ets
 export { globalBuilder } from './src/main/ets/components/MainPage';
 ```
 
 ```json
-// sta_library/oh-package.json5
+// static_module/oh-package.json5
 
 "dependencies": {
-  "dyn_library": "file:../dyn_library"
+  "dynamic_module": "file:../dynamic_module"
 }
 ```
 
@@ -175,7 +106,7 @@ export { globalBuilder } from './src/main/ets/components/MainPage';
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets
-import { globalBuilder } from 'sta_library';
+import { globalBuilder } from 'static_module';
 
 @Entry
 @Component
@@ -203,16 +134,101 @@ struct Parent {
 // entry/oh-package.json5
 
 "dependencies": {
-  "sta_library": "file:../sta_library"
+  "static_module": "file:../static_module"
 }
 ```
+
+
+### 按值传递参数
+
+wrapBuilder封装的\@Builder函数默认按值传递，当传入状态变量时，其变化不会触发\@Builder内部UI刷新。
+
+基于以下示例结构，说明在ArkTS-Dyn中引用ArkTS-Sta的WrappedBuilder对象显示UI的场景。
+
+```text
+project/
+├── entry/                            # ArkTS-Dyn主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets     # 调用WrappedBuilder对象
+│
+└── static_module/                    # ArkTS-Sta子模块
+    └── src/
+        └── main/
+            └── ets/
+                └── components/
+                    └── MainPage.ets  # 定义WrappedBuilder对象
+
+```
+
+示例如下：
+
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出WrappedBuilder对象。
+
+```TypeScript
+'use static'
+
+// static_module/src/main/ets/components/MainPage.ets
+import { Builder, WrappedBuilder, wrapBuilder, Text } from '@ohos.arkui.component';
+
+@Builder
+function showTextBuilder(input: string) { // 按值传递参数，状态变量变化不会触发UI刷新
+  Text(input)
+    .fontSize(30)
+}
+
+// 使用wrapBuilder封装全局@Builder并导出
+export const globalBuilder: WrappedBuilder<@Builder (input: string) => void> = wrapBuilder(showTextBuilder);
+```
+
+```TypeScript
+'use static'
+
+// static_module/index.ets
+export { globalBuilder } from './src/main/ets/components/MainPage'; // 导出WrappedBuilder对象
+```
+
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+
+```json
+// entry/oh-package.json5
+
+"dependencies": {
+  "static_module": "file:../static_module"
+}
+```
+
+- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta WrappedBuilder对象。
+
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { globalBuilder } from 'static_module'; // 引入WrappedBuilder对象
+
+@Entry
+@Component
+struct Parent {
+  @State inputText: string = 'Hello ArkTS-Dyn!';
+
+  build() {
+    Column() {
+      // 状态变量的改变不会引起@Builder的UI刷新
+      globalBuilder.builder(this.inputText)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
 ## 常见问题
 
 ### 声明文件编译报错
 由于[ArkTS-Sta wrapBuilder](./state-management/arkts-v1.2-wrapBuilder.md#接口说明)与[ArkTS-Dyn wrapBuilder](./state-management/arkts-wrapBuilder.md#接口说明)的接口规格不一致，在部分复杂的WrappedBuilder场景下，编译时生成的ArkTS-Dyn声明文件可能报错，需要开发者手动修改声明文件报错位置后增量编译，以符合ArkTS-Dyn WrappedBuilder的语法规格。
 
-以上文[按值传递](#按值传递)示例为例，定义WrappedBuilder的ArkTS-Sta源文件为`library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Dyn声明文件位于`library/build/default/intermediates/declgen/default/declgenV1/library/src/main/ets/components/MainPage.d.ets`。正确的声明文件示例如下。
+以上文[按值传递参数](#按值传递参数)示例为例，定义WrappedBuilder的ArkTS-Sta源文件为`library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Dyn声明文件位于`library/build/default/intermediates/declgen/default/declgenV1/library/src/main/ets/components/MainPage.d.ets`。正确的声明文件示例如下。
 
 ```TypeScript
 import type { Record } from "../../../../../static.Record";

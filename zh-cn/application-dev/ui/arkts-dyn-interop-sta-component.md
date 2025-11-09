@@ -1,110 +1,162 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta自定义组件
 
-从API version 20开始，UI自定义组件互操作适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用UI的场景。
+## 概述
 
-完整示例结构如下：
+从API version 22开始，支持在ArkTS-Dyn中使用[ArkTS-Sta](../quick-start/arkts-interop-overview.md)自定义组件。
+
+
+## 使用限制
+
+- 在ArkTS-Dyn中，不能对ArkTS-Sta的自定义组件设置通用样式；
+
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { MainPage } from 'static_module'; // 从静态模块中导入
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Column() {
+      // 不支持对ArkTS-Sta自定义组件设置通用样式
+      MainPage({ message: 'Hello World!' })
+        .width(100)
+
+      // 可以通过嵌套一个ArkTS-Dyn Stack组件，将通用样式设置在Stack组件上
+      Stack() {
+        MainPage({ message: 'Hello World!' })
+      }
+      .width(100)
+    }
+  }
+}
+```
+
+```TypeScript
+// static_module/src/main/ets/components/MainPage.ets
+@Component
+export struct MainPage { // 从静态模块中导出
+
+  build() {
+    Text('Hello World!')
+      .fontSize(50)
+  }
+}
+```
+
+- ArkTS-Dyn中不支持通过@Reusable/@ReusableV2装饰器复用ArkTS-Sta自定义组件。
+
+
+## 使用场景
+
+ArkUI互操作能力支持在ArkTS-Dyn中使用ArkTS-Sta的自定义组件，包括创建并传递参数。
+
+基于以下示例结构，说明在ArkTS-Dyn中使用ArkTS-Sta的自定义组件的场景。
 
 ```text
 project/
-├── entry/          # ArkTS-Dyn主模块
+├── entry/                            # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── MainPage.ets
+│                   └── Index.ets      # 在ArkTS-Dyn中引入并使用ArkTS-Sta自定义组件
 │
-└── library/         # ArkTS-Sta子模块
+└── static_module/                     # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── ChildComponent.ets
+                    └── MainPage.ets   # 定义ArkTS-Sta自定义组件并导出
 ```
 
-ArkUI互操作能力支持动态上下文调用静态模块的自定义组件，包括创建并传递参数。
+示例如下：
 
-以下示例展示了如何在动态上下文中使用静态模块的自定义组件。
+- 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录创建并导出自定义组件。
+```TypeScript
+'use static'
 
-  ```TypeScript
-  'use static'
+// static_module/src/main/ets/components/MainPage.ets
+import { Text, Column, Component, ComponentV2, Color } from '@ohos.arkui.component';
 
-  // library/src/main/ets/components/ChildComponent.ets
-  import { Text, Column, Component, ComponentV2, Color } from '@ohos.arkui.component';
+@Component
+export struct ChildComponentV1 {
+  message: string = 'Hello World V1!';
 
-  @Component
-  export struct ChildComponentV1 {
-    message: string = 'Hello World V1!';
-  
-    build() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontColor(Color.Blue)
-      }
-      .padding(20)
-      .backgroundColor('#F1E666')
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(30)
     }
+    .padding(20)
   }
+}
 
-  @ComponentV2
-  export struct ChildComponentV2 {
-    message: string = 'Hello World V2!';
-  
-    build() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontColor(Color.Blue)
-      }
-      .padding(20)
-      .backgroundColor(Color.White)
+@ComponentV2
+export struct ChildComponentV2 {
+  message: string = 'Hello World V2!';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(30)
     }
+    .padding(20)
   }
-  ```
+}
+```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
+```TypeScript
+'use static'
 
-  ```json
-  // entry/oh-package.json5
-  
-  "dependencies": {
-    "library": "file:../library",
-  }
-  ```
+// static_module/Index.ets
+export { ChildComponentV1，ChildComponentV2 } from './src/main/ets/components/MainPage';
+```
+
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+```json
+// entry/oh-package.json5
+
+"dependencies": {
+  "static_module": "file:../static_module"
+}
+```
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-  ```TypeScript
-  // entry/src/main/ets/pages/MainPage.ets
-  import { ChildComponentV1, ChildComponentV2 } from 'library';
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { ChildComponentV1, ChildComponentV2 } from 'static_module';
 
-  @Entry
-  @Component
-  struct MainPageV1 {
-    build() {
-      Column() {
-        // 无需显式使用占位组件API，框架会自动处理
-        ChildComponentV1()
-        ChildComponentV2()
-        MainPageV2()
-      }
-      .width('100%')
-      .height('100%')
-      .backgroundColor('#FFF3F5')
-    }
-  }
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      // 直接使用ArkTS-Sta自定义组件
+      ChildComponentV1()
+      ChildComponentV2()
 
-  @ComponentV2
-  struct MainPageV2 {
-    build() {
-      Column() {
-        // 无需显式使用占位组件API，框架会自动处理
-        ChildComponentV1()
-        ChildComponentV2()
-      }
-      .width('100%')
+      // 也可以将ArkTS-Sta自定义组件封装在ArkTS-Dyn自定义组件中嵌套使用
+      MainPage()
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+
+@ComponentV2
+struct MainPage {
+  build() {
+    Column() {
+      // 使用ArkTS-Sta自定义组件
+      ChildComponentV1()
+      ChildComponentV2()
+    }
+    .width('100%')
+  }
+}
+```
