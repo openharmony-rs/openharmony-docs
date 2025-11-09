@@ -45,6 +45,9 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | CA_CERT | 1      | CA证书。 |
+| CREDENTIAL_USER | 2      | 用户公共凭据。<br>**起始版本：** 22 |
+| CREDENTIAL_APP | 3      | 应用私有凭据。<br>**起始版本：** 22 |
+| CREDENTIAL_UKEY | 4      | USB凭据。<br>**起始版本：** 22 |
 
 ## CertificateScope<sup>14+</sup>
 
@@ -76,6 +79,7 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 | ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。 |
 | ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。 |
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。 |
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
@@ -88,6 +92,44 @@ import certificateManagerDialog from '@kit.DeviceCertificateKit';
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | showInstallButton | boolean | 否   | 否   | 表示是否显示安装证书的按钮，true为显示，false为不显示。 |
+
+## CertReference<sup>22+</sup>
+
+表示证书凭据类型。
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称              | 类型    | 只读 | 可选 | 说明                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| certType | [CertificateType](#certificatetype14)   | 否   | 否   | 表示证书类型。 |
+| keyUri | string   | 否   | 否   | 表示证书凭据的唯一标识符，长度限制256字节以内。 |
+
+## UkeyAuthRequest<sup>22+</sup>
+
+提供USB凭据授权请求信息
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称              | 类型    | 只读 | 可选 | 说明                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| keyUri | string   | 否   | 否   | 表示USB证书凭据的唯一标识符，长度限制256字节以内。 |
+
+## AuthorizeRequest<sup>22+</sup>
+
+提供证书授权请求信息
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称              | 类型    | 只读 | 可选 | 说明                         |
+| ----------------- | ------- | ---- | ---- | ---------------------------- |
+| certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
+| certPurpose | [certificateManager.CertificatePurpose](./js-apis-certManager.md#certificatePurpose22)    | 否   | 是   | 表示证书用途。 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -402,5 +444,131 @@ try {
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+## certificateManagerDialog.openAuthorizeDialog<sup>22+</sup>
+
+openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise\<CertReference>
+
+打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户为应用程序授权证书，可授权的证书类型包括应用私有凭据、用户公共凭据和USB凭据。使用Promise方式异步返回结果。
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名     | 类型                                                                 | 必填 | 说明          |
+|---------|--------------------------------------------------------------------|----|-------------|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [AuthorizeRequest](#AuthorizeRequest22) | 是  | 表示授权请求信息。 |
+
+**返回值**：
+
+| 类型               | 说明                                   |
+|------------------|--------------------------------------|
+| Promise\<[CertReference](#CertReference22)> | Promise对象。表示返回授权证书引用的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+
+| 错误码ID    | 错误信息                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported.  |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 29700002 | The user cancels the authorization.                                                                                                             |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
+
+**示例**：
+```ts
+import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+let certTypes: Array<certificateManagerDialog.CertificateType> = [
+  certificateManagerDialog.CertificateType.CREDENTIAL_USER,
+  certificateManagerDialog.CertificateType.CREDENTIAL_APP,
+  certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+];
+let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
+let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
+try {
+    certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
+      let reference = certReference;
+      console.info(`Success to open authorize dialog.`)
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+## certificateManagerDialog.openUkeyAuthDialog<sup>22+</sup>
+
+openAuthorizeDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
+
+打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。使用Promise方式异步返回结果。
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名     | 类型                                                                 | 必填 | 说明          |
+|---------|--------------------------------------------------------------------|----|-------------|
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [UkeyAuthRequest](#ukeyAuthRequest22) | 是  | 表示USB凭据授权请求信息。 |
+
+**返回值**：
+
+| 类型               | 说明                                   |
+|------------------|--------------------------------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+
+| 错误码ID    | 错误信息                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported.  |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 29700002 | The user cancels the authorization.                                                                                                             |
+| 29700003 | The authentication operation fail, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
+| 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
+
+**示例**：
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+
+/* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
+let context: common.Context = new UIContext().getHostContext() as common.Context;
+/* keyUri为证书凭据的唯一标识符，调用方自行获取，此处仅为示例 */
+let keyUri: string = "test"
+let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
+try {
+    certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
+        console.info(`Success to open ukey authorization dialog`)
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

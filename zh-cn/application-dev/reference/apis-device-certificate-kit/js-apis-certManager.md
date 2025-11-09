@@ -118,6 +118,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
 | credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
+| certPurpose          | [CertificatePurpose](#certificatePurpose22)   | 否  | 是  | 表示凭据的用途。 |
 
 ## CredentialAbstract
 
@@ -146,6 +147,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。 |
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
+| credentialDetailList         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
 
 ## CMHandle
 
@@ -174,6 +176,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 175000010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
 
@@ -231,6 +235,29 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | EL1  | 1    | EL1级别，表示设备启动后可以访问。               |
 | EL2  | 2    | EL2级别，表示设备首次解锁后可以访问。           |
 | EL4  | 4    | EL4级别，表示设备解锁时可以访问。             |
+
+## CertificatePurpose<sup>22+</sup>
+
+表示凭据的用途。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+| 名称         | 值   | 说明                                       |
+| ------------ | ---- | ------------------------------------------ |
+| PURPOSE_DEFAULT  | 0    | 表示凭据默认用途。               |
+| PURPOSE_ALL  | 1    | 表示凭据所有用途，用于查询凭据功能。           |
+| PURPOSE_SIGN  | 2    | 表示凭据签名用途。             |
+| PURPOSE_ENCRYPT  | 3    | 表示凭据加密用途。             |
+
+## UkeyInfo<sup>22+</sup>
+
+提供USB凭据属性信息。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+| 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
+| -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| certPurpose          | [CertificatePurpose](#certificatePurpose22)         | 否   | 是  | 表示凭据用途。 |
 
 ## certificateManager.installPrivateCertificate
 
@@ -1583,5 +1610,59 @@ try {
   console.info(`Success to get SM system ca path: ${smSystemCAPath}`);
 } catch (error) {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
+}
+```
+## certificateManager.getUkeyCertificate<sup>22+</sup>
+
+getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise<CMResult>;
+
+表示获取USB凭据详细信息。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**参数**：
+
+| 参数名   | 类型                                      | 必填 | 说明                             |
+| -------- | ----------------------------------------- | ---- | -------------------------------- |
+| keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
+| ukeyInfo | [UkeyInfo](#ukeyInfo22)  | 是   | 表示USB凭据的属性信息。 |
+
+**返回值**：
+
+| 类型                            | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| Promise\<[CMResult](#cmresult)> | Promise对象。表示获取USB凭据详细信息的结果，返回值[CMResult](#cmresult)对象中的credentialDetailList属性。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID    | 错误信息      |
+|----------| ------------- |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. The application does not have the permission required to call the API. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500002 | Indicates that the certificate does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
+
+**示例**：
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
+let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
+    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+  }
+try {
+  certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
+      let list = cmResult.credentialDetailList;
+      console.info('Succeeded in getting detail of USB key certificate.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
