@@ -311,6 +311,43 @@ struct Parent {
 
 <!-- @[localtorage_page_two_sigle_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSigleSYN.ets) -->
 
+``` TypeScript
+// 创建新实例并使用给定对象初始化
+let paraOneLocal: Record<string, number> = { 'PropA': 47 };
+let storageOneLocal: LocalStorage = new LocalStorage(paraOneLocal);
+// 使LocalStorage可从@Component组件访问
+@Entry(storageOneLocal)
+@Component
+struct ParentOne {
+  // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
+  @LocalStorageProp('PropA') storagePropOne: number = 1;
+
+  build() {
+    Column({ space: 15 }) {
+      // 点击后从47开始加1，只改变当前组件显示的storagePropOne ，不会同步到LocalStorage中
+      Button(`ParentOne from LocalStorage ${this.storagePropOne}`)
+        .onClick(() => {
+          this.storagePropOne += 1;
+        })
+      ChildOne()
+    }
+  }
+}
+
+@Component
+struct ChildOne {
+  // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
+  @LocalStorageProp('PropA') storagePropTwo: number = 2;
+
+  build() {
+    Column({ space: 15 }) {
+      // 当ParentOne改变时，当前storagePropTwo不会改变，显示47
+      Text(`ParentOne from LocalStorage ${this.storagePropTwo}`)
+    }
+  }
+}
+```
+
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
