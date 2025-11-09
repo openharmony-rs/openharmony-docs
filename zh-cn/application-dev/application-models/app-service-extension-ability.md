@@ -73,25 +73,21 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 3. 在MyAppServiceExtAbility.ets文件中，增加导入[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的依赖包，自定义类继承AppServiceExtensionAbility组件并实现生命周期回调。
 
     <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
-
+    
     ``` TypeScript
-    // [Start ability_app_service_two]
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
     // ···
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const TAG: string = '[MyAppServiceExtAbility]';
-    // [StartExclude ability_app_service_two]
     const DOMAIN_NUMBER: number = 0xFF00;
-    // [EndExclude  ability_app_service_two]
-
-    // [StartExclude ability_app_service_two]
+    
     class StubTest extends rpc.RemoteObject {
       constructor(des: string) {
         super(des);
       }
-
+    
       onRemoteMessageRequest(code: number,
         data: rpc.MessageSequence,
         reply: rpc.MessageSequence,
@@ -100,37 +96,31 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
         return true;
       }
     }
-    // [EndExclude  ability_app_service_two]
-
+    
     export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
       onCreate(want: Want): void {
-        // [StartExclude ability_app_service_two]
         let appServiceExtensionContext = this.context;
         hilog.info(DOMAIN_NUMBER, TAG, `onCreate, want: ${want.abilityName}`);
-        // [EndExclude  ability_app_service_two]
         // ···
       }
-
-      // [StartExclude ability_app_service_two]
+    
       onRequest(want: Want, startId: number): void {
         hilog.info(DOMAIN_NUMBER, TAG, `onRequest, want: ${want.abilityName}`);
       }
-
+    
       onConnect(want: Want): rpc.RemoteObject {
         hilog.info(DOMAIN_NUMBER, TAG, `onConnect, want: ${want.abilityName}`);
         return new StubTest('test');
       }
-
+    
       onDisconnect(want: Want): void {
         hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect, want: ${want.abilityName}`);
       }
-
+    
       onDestroy(): void {
         hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
       }
-      // [EndExclude  ability_app_service_two]
     };
-    // [End ability_app_service_two]
     ```
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
