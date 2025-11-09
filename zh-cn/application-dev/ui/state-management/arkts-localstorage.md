@@ -1153,4 +1153,35 @@ struct LocalSetSample {
 
 <!-- @[localtorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
 
+``` TypeScript
+let storageChange = new LocalStorage();
+storageChange.setOrCreate('count', 47);
+
+class Model {
+  public storage: LocalStorage = storageChange;
+
+  call(propName: string, value: number) {
+    this.storage.setOrCreate<number>(propName, value);
+  }
+}
+
+let model: Model = new Model();
+
+@Entry({ storage: storageChange })
+@Component
+struct Test {
+  @LocalStorageLink('count') count: number = 0;
+
+  build() {
+    Column() {
+      Text(`count value: ${this.count}`)
+      Button('change')
+        .onClick(() => {
+          model.call('count', this.count + 1);
+        })
+    }
+  }
+}
+```
+
 <!--no_check-->
