@@ -509,6 +509,10 @@ export default class EntryAbility extends UIAbility {
 ```
 <!-- @[localtorage_export_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+}
+```
+
 > **说明：**
 >
 > 在UI页面通过getSharedLocalStorage获取当前stage共享的LocalStorage实例。
