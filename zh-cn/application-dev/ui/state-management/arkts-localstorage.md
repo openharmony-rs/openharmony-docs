@@ -547,6 +547,50 @@ struct ParentFour {
 
 <!-- @[localtorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->
 
+``` TypeScript
+let localStorageOne: LocalStorage = new LocalStorage();
+localStorageOne.setOrCreate('propA', 'propA');
+
+let localStorageTwo: LocalStorage = new LocalStorage();
+localStorageTwo.setOrCreate('propB', 'propB');
+
+@Entry(localStorageOne)
+@Component
+struct TestIndex {
+  // 'PropA'，和localStorageOne中'propA'的双向同步
+  @LocalStorageLink('PropA') propA: string = 'Hello World';
+  @State count: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.propA)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        // 使用LocalStorage 实例localStorageTwo
+        ChildSix({ count: this.count }, localStorageTwo)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+
+@Component
+struct ChildSix {
+  @Link count: number;
+  //  'Hello World'和localStorageTwo中'propB'的双向同步，如果localStorageTwo中没有'propB'，则使用默认值'Hello World'
+  @LocalStorageLink('PropB') propB: string = 'Hello World';
+
+  build() {
+    Text(this.propB)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
    <!-- @[localtorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
