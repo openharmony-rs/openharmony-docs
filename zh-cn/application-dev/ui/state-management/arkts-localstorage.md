@@ -665,6 +665,45 @@ struct ChildSix {
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
    <!-- @[localtorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
+   
+   ``` TypeScript
+   let localStorageA0: LocalStorage = new LocalStorage();
+   localStorageA0.setOrCreate('propA', 'propA');
+   
+   let localStorageB0: LocalStorage = new LocalStorage();
+   localStorageB0.setOrCreate('propB', 'propB');
+   
+   @Entry(localStorageA0)
+   @Component
+   struct AIndex {
+     // 'PropA'，和localStorageA0中'PropA'的双向同步
+     @LocalStorageLink('PropA') propA: string = 'Hello World';
+     @State count: number = 0;
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.propA)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+           // 使用LocalStorage 实例localStorageB0
+           AChild(localStorageB0)
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   
+   @Component
+   struct AChild {
+     build() {
+       Text('hello')
+         .fontSize(50)
+         .fontWeight(FontWeight.Bold)
+     }
+   }
+   ```
 
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
