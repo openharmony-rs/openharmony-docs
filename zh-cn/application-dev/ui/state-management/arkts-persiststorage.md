@@ -87,6 +87,31 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
    完整代码如下：
    <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) -->
+   
+   ``` TypeScript
+   PersistentStorage.persistProp('aProp', 47);
+   
+   @Entry
+   @Component
+   struct TestPageOne {
+     @State message: string = 'Hello World';
+     @StorageLink('aProp') aProp: number = 48;
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+           // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+           // 未修改时默认值为47
+           Text(`${this.aProp}`)
+             .onClick(() => {
+               this.aProp += 1;
+             })
+         }
+       }
+     }
+   }
+   ```
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
