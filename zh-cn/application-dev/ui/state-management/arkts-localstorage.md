@@ -394,7 +394,7 @@ struct ParentTwo {
 
 2.点击“countStorage ${this.playCount} incr by 1”，调用LocalStorage的set接口，更新LocalStorage中“countStorage”对应的属性，ChildFour组件中的playCountLink绑定的组件会同步刷新。
 
-3.Text组件“playCount in LocalStorage for debug ${storage.get&lt;number&gt;('countStorage')}”没有同步刷新，因为storage.get&lt;number&gt;('countStorage')返回的是常规变量，常规变量的更新并不会引起Text组件的重新渲染。
+3.Text组件“playCount in LocalStorage for debug ${storageFour.get&lt;number&gt;('countStorage')}”没有同步刷新，因为storageFour.get&lt;number&gt;('countStorage')返回的是常规变量，常规变量的更新并不会引起Text组件的重新渲染。
 
 ChildFour自定义组件中的变化：
 
@@ -487,31 +487,7 @@ struct ParentFour {
 
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
-<!-- @[localtorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-```
-<!-- @[localtorage_export_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = {
-    'PropA': 47
-  };
-  storage: LocalStorage = new LocalStorage(this.para);
-
-  onWindowStageCreate(windowStage: window.WindowStage): void{
-    windowStage.loadContent('pages/Index', this.storage);
-  }
-```
-<!-- @[localtorage_export_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-}
-```
+<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 > **说明：**
 >
