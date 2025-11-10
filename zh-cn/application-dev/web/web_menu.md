@@ -246,7 +246,9 @@ struct WebComponent {
 ```
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
 ## 自定义菜单
-自定义菜单赋予开发者调整菜单触发时机与视觉展现的能力，使应用能够依据用户操作场景动态匹配功能入口，简化开发流程中的界面适配工作，同时使应用交互更符合用户直觉。应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口，实现自定义菜单。目前已额外支持通过长按图片和链接响应自定义菜单。
+自定义菜单赋予开发者灵活控制菜单触发时机与视觉呈现的能力，使应用能够根据用户操作场景动态匹配功能入口，显著简化开发过程中的界面适配工作，同时让交互体验更贴近用户直觉。
+
+开发者可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口实现自定义菜单功能。目前，已额外支持通过长按图片、链接和文本，触发自定义菜单及自定义文本菜单。
 1. 创建[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件作为菜单弹窗。
 2. 通过Web组件的[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)方法绑定MenuBuilder菜单弹窗。将[WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13)设置为WebElementType.IMAGE，[responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13)设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在[options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13)中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 ```ts
@@ -961,4 +963,68 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 可排查是否通过JS的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致手柄菜单不显示。
 
 ### 如何修改文本选中菜单的样式
-目前暂不支持修改文本选中菜单的具体样式。
+从API version 21开始，应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口，实现自定义文本菜单。
+
+**示例代码**
+
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+
+<!---->
+
+```html
+<!--bindSelectionMenuText.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义文本菜单</title>
+    <style>
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .context {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .context span {
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="context">
+        <span>在这个数字时代，文本复制功能变得日益重要。无论是引用名言、保存重要信息，还是分享有趣的内容，复制文本都是我们日常操作的  一部分。</span>
+    </div>
+</div>
+
+<script>
+  function copySelectedText() {
+      const selectedText = window.getSelection().toString();
+      if (selectedText.length > 0) {
+          // 使用Clipboard API复制文本
+          navigator.clipboard.writeText(selectedText)
+              .then(() => {
+                  showNotification();
+              })
+              .catch(err => {
+                  console.error('copy failed:', err);
+              });
+      }
+  }
+  function clearSelection() {
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    }
+  }
+</script>
+</body>
+</html>
+```
+![bindselectionmen-text](./figures/web-menu-bindselectionmen-text.gif)
