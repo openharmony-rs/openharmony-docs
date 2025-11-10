@@ -691,10 +691,12 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
 - 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
 
-  ```ts
+  <!-- @[Shader_Style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ShaderStyle.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
-  struct demo {
+  export struct ShaderStyle {
     @State message: string = 'Hello World';
     @State linearGradientOptions: LinearGradientOptions =
       {
@@ -702,59 +704,70 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
         colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
         repeating: true,
       };
-
+  
     build() {
-      Column({ space: 5 }) {
-        Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
-          .margin({ top: 40, left: 40 })
-        Text(this.message)
-          .fontSize(50)
-          .width('80%')
-          .height(50)
-          .shaderStyle(this.linearGradientOptions)
+      NavDestination() {
+        Column({ space: 5 }) {
+          // 'app.string.direction_LeftTop'资源文件中的value值为'direction为LeftTop的线性渐变'
+          Text($r('app.string.direction_LeftTop')).fontSize(18).width('90%').fontColor(0xCCCCCC)
+            .margin({ top: 40, left: 40 })
+          Text(this.message)
+            .fontSize(50)
+            .width('80%')
+            .height(50)
+            .shaderStyle(this.linearGradientOptions)
+        }
+        .height('100%')
+        .width('100%')
       }
-      .height('100%')
-      .width('100%')
+      // ···
     }
   }
   ```
+
   ![Text_shader_style](figures/Text_shader_style.png)
 
 ## 添加事件
 
 Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State textStr1: string = '';
-  @State textStr2: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('This is a text component.')
-          .fontSize(30)
-          .onClick(() => {
-            console.info('Text onClick is triggering');
-            this.textStr1 = 'Text onClick is triggering';
-          })
-          .onTouch(() => {
-            console.info('Text onTouch is triggering');
-            this.textStr2 = 'Text onTouch is triggering';
-          })
-        Text('onClick：' + this.textStr1)
-          .fontSize(20)
-        Text('onTouch：' + this.textStr2)
-          .fontSize(20)
-      }.width('100%')
+  <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  @Entry
+  @Component
+  export struct GeneralEvents {
+    @State textStr1: string = '';
+    @State textStr2: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('This is a text component.')
+              .fontSize(30)
+              .onClick(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onClick is triggering');
+                this.textStr1 = 'Text onClick is triggering';
+              })
+              .onTouch(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onTouch is triggering');
+                this.textStr2 = 'Text onTouch is triggering';
+              })
+            Text('onClick：' + this.textStr1)
+              .fontSize(20)
+            Text('onTouch：' + this.textStr2)
+              .fontSize(20)
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ···
     }
-    .height('100%')
   }
-}
-```
+  ```
 
 ![text_event](figures/text_event.gif)
 
@@ -764,15 +777,17 @@ struct Index {
 
   - 以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
-    ```ts
+    <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+    
+    ``` TypeScript
+    // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
     Text() {
-      Span("Hello")
+      Span('Hello')
         .fontSize(50)
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
       ImageSpan($r('app.media.startIcon'))
         .width(30).height(30)
         .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-      Span("World")
+      Span('World')
     }
     .textVerticalAlign(TextVerticalAlign.CENTER)
     ```
@@ -787,35 +802,50 @@ struct Index {
 
     Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性才可以被选中。
 
-    ```ts
-    Text("这是一段文本，用来展示选中菜单")
+    <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+    
+    ``` TypeScript
+    // 'app.string.selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    Text($r('app.string.selected_menu'))
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
     ```
+
     ![Text_select_menu](figures/Text_select_menu.jpg)
 
   - Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)属性绑定自定义选择菜单。
 
-    ```ts
-    controller:TextController = new TextController()
-    build() {
-      Column() {
-        Text("这是一段文本，用来展示选中菜单", {controller:this.controller})
-          .fontSize(30)
-          .copyOption(CopyOptions.InApp)
-          .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
-            onAppear: () => {
-              console.info('自定义选择菜单弹出时触发该回调');
-            },
-            onDisappear: () => {
-              console.info('自定义选择菜单关闭时触发该回调');
-            }
-          })
-      }
-    }
+    <!-- @[set_selection_menu_with_bindselectionmenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
+    controller: TextController = new TextController();
+    options: TextOptions = { controller: this.controller };
     ```
 
-    ```ts
+    <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
+    // 'app.string.show_selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    Text($r('app.string.show_selected_menu'), this.options)
+      .fontSize(30)
+      .copyOption(CopyOptions.InApp)
+      .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
+        onAppear: () => {
+          // 'app.string.SelectMenu_Text_Ejected'资源文件中的value值为'自定义选择菜单弹出时触发该回调'
+          hilog.info(0x0000, 'Sample_TextComponent',
+            resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
+        },
+        onDisappear: () => {
+          // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
+          hilog.info(0x0000, 'Sample_TextComponent',
+            resource.resourceToString($r('app.string.SelectMenu_Text_Close')));
+        }
+      })
+    ```
+
+    <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
     // 定义菜单项
     @Builder
     RightClickTextCustomMenu() {
@@ -823,24 +853,28 @@ struct Index {
         Menu() {
           MenuItemGroup() {
             // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu One", labelInfo: "" })
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
               .onClick(() => {
                 // 使用closeSelectionMenu接口关闭菜单
                 this.controller.closeSelectionMenu();
               })
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu Two", labelInfo: "" })
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: "CustomMenu Three", labelInfo: "" })
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Two', labelInfo: '' })
+            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Three', labelInfo: '' })
           }
         }.backgroundColor('#F0F0F0')
       }
     }
     ```
+
     ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
 
   - Text组件通过设置[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
 
-    ```ts
-    Text('这是一段文本，用来展示选中菜单')
+    <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
+    // 'app.string.show_selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    Text($r('app.string.show_selected_menu'))
       .fontSize(20)
       .copyOption(CopyOptions.LocalDevice)
       .editMenuOptions({
@@ -848,10 +882,12 @@ struct Index {
       })
     ```
 
-    ```ts
+    <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    
+    ``` TypeScript
     // 定义onCreateMenu，onMenuItemClick
+    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
     onCreateMenu = (menuItems: Array<TextMenuItem>) => {
-      // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
       let item1: TextMenuItem = {
         content: 'customMenu1',
         icon: $r('app.media.app_icon'),
@@ -866,23 +902,31 @@ struct Index {
       menuItems.unshift(item2);
       return menuItems;
     }
-    
     onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
-      if (menuItem.id.equals(TextMenuItemId.of("customMenu2"))) {
-        console.log("拦截 id: customMenu2 start:" + textRange.start + "; end:" + textRange.end);
+      if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
+        // 'app.string.SelectMenu_Text_customMenu'资源文件中的value值为'拦截 id: customMenu2 start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
+          textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        console.log("拦截 COPY start:" + textRange.start + "; end:" + textRange.end);
+        // 'app.string.SelectMenu_Text_copy'资源文件中的value值为'拦截 COPY start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        console.log("不拦截 SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+        // 'app.string.SelectMenu_Text_SelectionAll'资源文件中的value值为'不拦截 SELECT_ALL start:'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
+          textRange.end);
         return false;
       }
       return false;
     };
     ```
+
     ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
 ### 关闭选中菜单
@@ -892,84 +936,94 @@ struct Index {
   - 在Text组件区域内点击空白处，会正常关闭选中态和菜单；
   - 在Text组件区域外点击空白处，前提是Text组件设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下：
 
-    ```ts
+    <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
+    
+    ``` TypeScript
     // xxx.ets
     @Entry
     @Component
-    struct Index {
+    export struct SelectionChange {
       @State text: string =
         'This is set selection to Selection text content This is set selection to Selection text content.';
       @State start: number = 0;
       @State end: number = 20;
-
+    
       build() {
-        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-          Text(this.text)
-            .fontSize(12)
-            .border({ width: 1 })
-            .lineHeight(20)
-            .margin(30)
-            .copyOption(CopyOptions.InApp)
-            .selection(this.start, this.end)
-            .onTextSelectionChange((selectionStart, selectionEnd) => {
-              // 更新选中态位置
-              this.start = selectionStart;
-              this.end = selectionEnd;
-            })
+        NavDestination() {
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+            Text(this.text)
+              .fontSize(12)
+              .border({ width: 1 })
+              .lineHeight(20)
+              .margin(30)
+              .copyOption(CopyOptions.InApp)
+              .selection(this.start, this.end)
+              .onTextSelectionChange((selectionStart, selectionEnd) => {
+                // 更新选中态位置
+                this.start = selectionStart;
+                this.end = selectionEnd;
+              })
+          }
+          .height(600)
+          .width(335)
+          .borderWidth(1)
+          .onClick(() => {
+            // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
+            this.start = -1;
+            this.end = -1;
+          })
         }
-        .height(600)
-        .width(335)
-        .borderWidth(1)
-        .onClick(() => {
-          // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
-          this.start = -1;
-          this.end = -1;
-        })
+        // ···
       }
     }
     ```
- 
+
 ### 屏蔽系统服务类菜单
 
 - 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。
 
-  ```ts
+  <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
+  
+  ``` TypeScript
   import { TextMenuController } from '@kit.ArkUI';
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  export struct ServiceMenuItems {
     aboutToAppear(): void {
       // 禁用所有系统服务菜单
       TextMenuController.disableSystemServiceMenuItems(true);
     }
-
+  
     aboutToDisappear(): void {
       // 页面消失恢复系统服务菜单
       TextMenuController.disableSystemServiceMenuItems(false);
     }
-
     build() {
-      Row() {
-        Column() {
-          Text("这是一段文本，长按弹出文本选择菜单")
-            .height(60)
-            .fontStyle(FontStyle.Italic)
-            .fontWeight(FontWeight.Bold)
-            .textAlign(TextAlign.Center)
-            .copyOption(CopyOptions.InApp)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+      NavDestination() {
+        Row() {
+          Column() {
+            // 'app.string.Service_MenuItems_Text'资源文件中的value值为'这是一段文本，长按弹出文本选择菜单。'
+            Text($r('app.string.Service_MenuItems_Text'))
+              .height(60)
+              .fontStyle(FontStyle.Italic)
+              .fontWeight(FontWeight.Bold)
+              .textAlign(TextAlign.Center)
+              .copyOption(CopyOptions.InApp)
+              .editMenuOptions({
+                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
                   // menuItems不包含被屏蔽的系统菜单项
                   return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                },
+                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
                   return false;
-              }
-            })
-        }.width('100%')
+                }
+              })
+          }.width('100%')
+        }
+        .height('100%')
       }
-      .height('100%')
+      // ···
     }
   }
   ```
