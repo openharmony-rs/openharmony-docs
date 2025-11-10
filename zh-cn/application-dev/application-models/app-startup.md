@@ -332,7 +332,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 > 
 > 由于StartupTask采用了[Sendable协议](../arkts-utils/arkts-sendable.md#sendable协议)，在继承该接口时，必须添加Sendable注解。
 
-<!-- @[startup_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupTask001.ets) -->
+<!-- @[startup_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupTask_001.ets) -->
 
 ``` TypeScript
 import { StartupTask, common } from '@kit.AbilityKit';
