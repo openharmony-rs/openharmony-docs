@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -1062,51 +1062,51 @@ The target token ID is invalid.
 
 **错误信息**
 
-Current application is not in kiosk app list, can not exit kiosk mode.
+The current application is not in Kiosk app list and cannot enter Kiosk mode.
 
 **错误描述**
 
-当前应用不在EDM配置的支持Kiosk模式的应用列表内，尝试进入或退出Kiosk模式时，将返回错误码。
+当前应用不在Kiosk名单列表内，无法进入Kiosk模式。
 
 **可能原因**
 
-应用不在EDM配置的支持Kiosk模式的应用列表内。
+当前应用不在Kiosk名单列表，不支持该应用进入Kiosk模式。
 
 **处理步骤**
 
-检查应用是否在EDM配置的支持Kiosk模式的应用列表内。
+需要EDM管控模块将当前应用添加到Kiosk应用列表内。
 
 ## 16000111 已经有应用进入了Kiosk模式
 
 **错误信息**
 
-System is already in kiosk mode, can not enter again.
+The system is already in Kiosk mode and cannot enter Kiosk mode again.
 
 **错误描述**
 
-当前系统已有应用进入Kiosk模式，调用方尝试进入时将返回错误码。
+当前系统已处于Kiosk模式，无法再次进入。
 
 **可能原因**
 
-已经有应用进入Kiosk模式。
+同一时间只允许一个应用进入Kiosk模式。
 
 **处理步骤**
 
-检查系统内是否存在应用已经进入Kiosk模式。
+将已进入Kiosk模式的应用退出Kiosk模式。
 
 ## 16000112 当前系统没有应用进入Kiosk模式
 
 **错误信息**
 
-Current application is not in kiosk mode, can not exit.
+The current application is not in Kiosk mode and cannot exit Kiosk mode.
 
 **错误描述**
 
-如果系统中没有应用进入Kiosk模式，尝试退出Kiosk模式时将返回错误码。
+当前应用未进入Kiosk模式，不能退出Kiosk模式。
 
 **可能原因**
 
-当前系统没有应用进入Kiosk模式。
+该应用进程之前未进入Kiosk模式，无法主动退出Kiosk模式。
 
 **处理步骤**
 
@@ -1257,6 +1257,60 @@ Want中传入了DLP文件。
 
 检查Want是否携带了DLP文件。
 <!--DelEnd-->
+
+## 16000130 UIAbility不属于调用方
+
+**错误信息**
+
+The UIAbility not belong to caller.
+
+**错误描述**
+
+目标UIAbility不属于调用方。
+
+**可能原因**
+
+启动了一个非自身应用的UIAbility。
+
+**处理步骤**
+
+检查目标UIAbility信息是否属于自身应用。
+
+## 16000131 UIAbility已启动
+
+**错误信息**
+
+The UIAbility is already exist, can not start again.
+
+**错误描述**
+
+UIAbility已启动，无法重新启动。
+
+**可能原因**
+
+startSelfUIAbilityInCurrentProcess用于冷启动一个新的UIAbility实例，如果拉起一个已经启动过的UIAbility实例，报该异常。
+
+**处理步骤**
+
+检查UIAbility是否已启动过。
+
+## 16000135 UIAbility的主窗不存在
+
+**错误信息**
+
+The main window of this ability of this context does not exits.
+
+**错误描述**
+
+该UIAbility的主窗不存在。
+
+**可能原因**
+
+Window还未创建或已销毁的时候调用该接口。
+
+**处理步骤**
+
+在windowStage创建前和销毁后不要调用该接口。
 
 ## 16000151 无效wantAgent对象
 
@@ -1873,23 +1927,26 @@ The target bundle is not in u1.
 将指定的应用安装在userId为1的用户下。
 <!--DelEnd-->
 
-## 16000115 当前进程未运行isolationProcess字段设为true的组件
+## 16000115 当前进程不支持设置为备选主控进程
 
 **错误信息**
 
-The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process.
+The current process cannot be set as a candidate master process.
 
 **错误描述**
 
-当前进程未运行配置了"isolationProcess"的组件，不支持设置为备选主控进程。
+当前进程不支持设置为备选主控进程。
 
 **可能原因**
 
-当前进程没有运行配置了isolationProcess字段的组件，不支持声明为主控进程。
+当前进程不满足以下任一条件：
+
+1. 运行了isolationProcess字段设为true的组件。
+2. 曾经成为过主控进程。
 
 **处理步骤**
 
-不支持处理，当前进程未运行isolationProcess字段设为true的组件，无法将其设置为备选主控进程。
+不支持处理。当前进程只有运行了isolationProcess字段设为true的组件，或曾为主控进程，才可设置为备选主控进程。
 
 ## 16000116 当前进程已经是主控进程
 
@@ -1945,23 +2002,26 @@ Not a master process.
 
 不支持处理，当前进程不是主控进程，无法放弃其主控进程身份。
 
-## 16000119 存在未完成的onNewProcessRequest请求
+## 16000119 存在未完成的请求
 
 **错误信息**
 
-Cannot exit because there is an unfinished onNewProcessRequest.
+Cannot exit because there is an unfinished request.
 
 **错误描述**
 
-放弃当前进程的主控进程身份失败，因为有未完成的onNewProcessRequest请求。
+因为存在未完成的请求，放弃当前进程的主控进程身份失败。
 
 **可能原因**
 
-当前进程存在未完成的onNewProcessRequest请求。
+当前进程存在未完成的请求：
+
+1. 进程中存在未完成的[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)请求。
+2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的[onAcceptWant](js-apis-app-ability-abilityStage.md#onacceptwant)请求。
 
 **处理步骤**
 
-等待当前进程中的onNewProcessRequest请求完成，然后再放弃当前进程的主控进程身份。
+等待当前进程中的请求完成，然后再放弃当前进程的主控进程身份。
 
 ## 16000205 当前接口未在主线程中调用
 

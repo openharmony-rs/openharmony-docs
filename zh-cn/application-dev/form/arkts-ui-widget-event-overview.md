@@ -1,4 +1,10 @@
 # ArkTS卡片页面交互概述
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkTS卡片提供页面交互能力，包括卡片与卡片提供方（例如：应用）的页面跳转、卡片拉起卡片提供方进程、卡片与卡片提供方的消息传递。其中[动态卡片](arkts-form-overview.md#动态卡片)可以使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口、[静态卡片](arkts-form-overview.md#静态卡片)使用[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)实现页面交互功能。并且postCardAction和FormLink，均支持router、message和call三种类型的事件，具体使用场景如下：
 

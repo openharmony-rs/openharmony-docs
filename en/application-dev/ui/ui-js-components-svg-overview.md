@@ -1,5 +1,10 @@
 # Basics
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **&lt;svg&gt;** component is used as the root node of the SVG canvas and can be nested in the SVG. For details, see [svg](../reference/apis-arkui/arkui-js/js-components-svg.md).
 

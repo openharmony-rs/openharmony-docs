@@ -1,4 +1,10 @@
 # @ohos.systemCapability (System Capability) (System API)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Developtools-->
+<!--Owner: @pengfojin-->
+<!--Designer: @ringking0-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 System capability (SysCap) refers to a relatively independent feature in the operating system. Different devices provide different system capabilities, and multiple APIs implement a system capability. You can determine whether an API can be used based on system capabilities. This module provides APIs for querying the set of system capabilities.
 
@@ -11,7 +17,7 @@ System capability (SysCap) refers to a relatively independent feature in the ope
 ## Modules to Import
 
 ```ts
-import systemcapability from '@ohos.systemCapability';
+import { systemcapability } from '@kit.BasicServicesKit';
 ```
 
 ## systemcapability.querySystemCapabilities
@@ -35,9 +41,9 @@ Queries system capabilities. This API uses an asynchronous callback to return th
 try {
     systemcapability.querySystemCapabilities((err:Error, data:string) => {
     if (err == undefined) {
-        console.log("get system capabilities:" + data)
+        console.info("get system capabilities:" + data);
     } else {
-        console.error(" get system capabilities err:" + err)
+        console.error(" get system capabilities err:" + err);
     }});
 }catch(e){
     console.error("get unexpected error: " + e);
@@ -64,7 +70,7 @@ Queries system capabilities. This API uses a promise to return the result.
 ```ts
 try {
     systemcapability.querySystemCapabilities().then((value:string) => {
-        console.log("get system capabilities: " + value);
+        console.info("get system capabilities: " + value);
     }).catch((err:Error) => {
         console.error("get system capabilities error: " + err);
     });

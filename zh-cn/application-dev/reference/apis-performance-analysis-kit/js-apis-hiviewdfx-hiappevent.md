@@ -235,7 +235,7 @@ setEventParam(params: Record&lt;string, ParamType&gt;, domain: string, name?: st
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
-- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#自定义参数)）
+- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
@@ -295,7 +295,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -324,6 +324,56 @@ hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => 
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
 hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+## hiAppEvent.configEventPolicy<sup>22+</sup>
+
+configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
+
+系统事件相关的配置策略设置方法，使用Promise方式作为异步回调。
+
+在同一生命周期中，可以通过配置策略设置系统事件相关的策略参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**参数：**
+
+| 参数名 | 类型                          | 必填 | 说明           |
+| ------ | ---------------------------- | ---- | -------------- |
+| policy | [EventPolicy](#eventpolicy22)  | 是   | 系统事件配置策略。 |
+
+**返回值：**
+
+| 类型                | 说明          |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+
+**示例：**
+
+以下示例用于模拟设置MAIN_THREAD_JANK事件的配置策略：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policy: hiAppEvent.EventPolicy = {
+  "mainThreadJankPolicy":{
+    "logType": 1,
+    "sampleInterval": 100,
+    "ignoreStartupTime": 11,
+    "sampleCount": 21,
+    "reportTimesPerApp": 3,
+    "autoStopSampling": true
+  }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set main thread jank event policy.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set main thread jank event policy. Code: ${err?.code}, message: ${err?.message}`);
 });
 ```
 
@@ -642,7 +692,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1068,6 +1118,40 @@ hiAppEvent.configure(config2);
 | maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10M”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
+## EventPolicy<sup>22+</sup>
+
+提供系统事件配置策略的定义，用于使用[configEventPolicy](#hiappeventconfigeventpolicy22)设置事件配置策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
+<!--RP5--><!--RP5End-->
+
+
+## MainThreadJankPolicy<sup>22+</sup>
+
+提供主线程超时事件配置策略的定义。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| logType | number | 否 | 是   | 采集日志的类型。<br/>logType=0：默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值用户自定义。<br/>logType=2：仅采集trace。 |
+| ignoreStartupTime | number | 否 | 是   | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
+| sampleInterval | number | 否 | 是   | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| sampleCount | number | 否 | 是   | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
+| reportTimesPerApp | number | 否 | 是   | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
+| autoStopSampling | boolean | 否 | 是   | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+
+<!--RP6--><!--RP6End-->
+
+
 ## Processor<sup>11+</sup>
 
 可以上报事件的数据处理者对象。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。
@@ -1175,7 +1259,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
 | MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。 |
 | APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。 |
-
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 

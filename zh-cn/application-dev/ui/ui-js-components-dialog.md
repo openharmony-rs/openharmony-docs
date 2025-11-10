@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 dialog组件用于创建自定义弹窗，通常用来展示用户当前需要或用户必须关注的信息或操作。具体用法请参考[dialog API](../reference/apis-arkui/arkui-js/js-components-container-dialog.md)。
 
@@ -328,4 +328,4 @@ export default {
 
 针对dialog开发，有以下相关实例可供参考：
 
-- [弹窗基本使用（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/DialogDemo)
+- [弹窗基本使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/DialogDemo)

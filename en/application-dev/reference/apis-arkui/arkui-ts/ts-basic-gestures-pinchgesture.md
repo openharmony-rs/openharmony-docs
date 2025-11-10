@@ -11,17 +11,17 @@
 >  **NOTE**
 >
 >  This gesture is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
->  
->  After a pinch gesture is successfully triggered, all fingers must be lifted and pressed again to trigger the pinch gesture again.
+>
+>  To trigger the pinch gesture again after successful recognition, all fingers must be lifted and then make contact again to satisfy the recognition criteria.
 
 
 ## APIs
 
 ### PinchGesture
 
-PinchGesture(value?: { fingers?: number, distance?: number })
+PinchGesture(value?: { fingers?: number; distance?: number })
 
-Sets the parameters for the pinch gesture.
+Sets the parameters for the pinch gesture. Inherits from [GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -31,7 +31,7 @@ Sets the parameters for the pinch gesture.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number, distance?: number } | No| Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2**<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br> - **distance**: minimum recognition distance, in vp.<br>Default value: **5**<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, it will be converted to the default value.|
+| value | { fingers?: number; distance?: number } | No| Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2**<br>Value range: [2, 5]. Values outside this range are automatically adjusted to the default value.<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br> - **distance**: minimum recognition distance, in vp.<br>Default value: **5**<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, it will be converted to the default value.|
 
 ### PinchGesture<sup>15+</sup>
 
@@ -47,20 +47,20 @@ Sets the parameters for the pinch gesture. Compared with [PinchGesture](#pinchge
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [PinchGestureHandlerOptions](./ts-uigestureevent.md#pinchgesturehandleroptions) | No| Parameters of the pinch gesture handler.|
+| options | [PinchGestureHandlerOptions](./ts-gesturehandler.md#pinchgesturehandleroptions) | No| Parameters of the pinch gesture handler.|
 
 
 ## Events
 
 >  **NOTE**
 >
->  In **fingerList** of [GestureEvent](ts-gesture-settings.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
+>  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos**.
 
 ### onActionStart
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Triggered when a pinch gesture is recognized.
+Triggered when the pinch gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -70,7 +70,7 @@ Triggered when a pinch gesture is recognized.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  | (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
+| event  | (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
 
 ### onActionUpdate
 
@@ -86,13 +86,13 @@ Triggered when the user moves the finger in the pinch gesture on the screen.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
 
 ### onActionEnd
 
 onActionEnd(event: (event: GestureEvent) => void)
 
-Triggered when the fingers used for the pinch gesture are lifted.
+Triggered when all fingers are lifted after successful pinch gesture recognition.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -102,13 +102,13 @@ Triggered when the fingers used for the pinch gesture are lifted.
 
 | Name| Type                                      | Mandatory| Description                     |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-settings.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
+| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent)) => void | Yes  | Callback for the pinch event.|
 
 ### onActionCancel
 
 onActionCancel(event: () => void)
 
-Triggered when a tap cancellation event is received after the pinch gesture is recognized. Gesture event information is returned.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. No gesture event information is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -124,7 +124,7 @@ Triggered when a tap cancellation event is received after the pinch gesture is r
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Triggered when a tap cancellation event is received after the pinch gesture is recognized. Gesture event information is returned.
+Callback invoked when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -134,16 +134,7 @@ Triggered when a tap cancellation event is received after the pinch gesture is r
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  Callback\<[GestureEvent](ts-gesture-settings.md#gestureevent)> | Yes  | Callback for the pinch event.|
-
-## Attributes
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type   | Read-Only| Optional| Description                                       |
-| ----  | ------| -----| -----|----------------------------------- |
-| tag<sup>12+</sup>   | string  | No| No| Tag for the pinch gesture. It is used to distinguish the gesture during custom gesture recognition.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| allowedTypes<sup>14+</sup> | No| No| Array\<[SourceTool](ts-gesture-settings.md#sourcetool9)> | Allowed event input types for the pinch gesture.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes  | Callback for the pinch event.|
 
 ## Example
 
@@ -175,7 +166,7 @@ struct PinchGestureExample {
       .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
       // The gesture event is triggered by pinching three fingers together.
       .gesture(
-      PinchGesture({ fingers: 3 })
+      PinchGesture({ fingers: 3 }) // Three-finger pinch gesture for zooming in or out.
         .onActionStart((event: GestureEvent) => {
           console.info('Pinch start')
         })
@@ -253,7 +244,7 @@ struct PinchGestureExample {
     }
     // The gesture event is triggered by a two-finger pinch.
     .gesture(
-      PinchGesture({ fingers: 2 })
+      PinchGesture({ fingers: 2 }) // Two-finger pinch gesture for zooming in or out.
         .onActionStart((event: GestureEvent) => {
           // Displayed size of the image before scaling
           const displayWidth = this.contentWidth * this.curScale;

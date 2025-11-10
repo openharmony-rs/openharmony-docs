@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考[密钥生成支持的算法](huks-key-generation-overview.md#支持的算法)。
+以HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考[密钥派生支持的算法](huks-key-derivation-overview.md#支持的算法)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt

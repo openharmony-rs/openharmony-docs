@@ -1,4 +1,10 @@
 # Stack Layout (Stack)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## Overview
@@ -22,20 +28,22 @@ In the **Stack** component shown in Figure 1, the sequence of child elements is 
 
 The **Stack** component can contain various child elements, which are stacked in the center by default. While respecting the constraints of **Stack**, child elements are laid out in their respective style.
 
-```ts
+<!-- @[StackLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutExample.ets) -->
+
+``` TypeScript
 // xxx.ets
-let MTop:Record<string,number> = { 'top': 50 }
+let mTop:Record<string,number> = { 'top': 50 }
 
 @Entry
 @Component
-struct StackExample {
+struct StackLayoutExample {
   build() {
     Column(){
       Stack({ }) {
         Column(){}.width('90%').height('100%').backgroundColor('#ff58b87c')
         Text('text').width('60%').height('60%').backgroundColor('#ffc3f6aa')
         Button('button').width('30%').height('30%').backgroundColor('#ff8ff3eb').fontColor('#000')
-      }.width('100%').height(150).margin(MTop)
+      }.width('100%').height(150).margin(mTop)
     }
   }
 }
@@ -53,11 +61,13 @@ Alignment of elements in the **Stack** component is set through the [alignConten
 
 ![en-us_image_0000001562940621](figures/en-us_image_0000001562940621.png)
 
-```ts
+<!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
-struct StackExample {
+struct StackAlignContentExample {
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Text('Stack').width('90%').height('100%').backgroundColor('#e1dede').align(Alignment.BottomEnd)
@@ -74,18 +84,23 @@ The stacking order of child elements in the **Stack** component is set through t
 
   In the stack layout, if the size of an element is greater than that of the one before it, the one before it is hidden.
 
-```ts
+<!-- @[StackLayoutNozIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutNozIndex.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    Text('Stacked element 1').textAlign(TextAlign.End).fontSize(20)
+    // The value in the 'app.string.stack_num1' resource file is 'Stack child element 1'.
+    Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306)
 
   Column() {
-    Text('Stacked element 2').fontSize(20)
+    // The value in the 'app.string.stack_num2' resource file is 'Stack child element 2'.
+    Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink)
 
   Column() {
-    Text('Stacked element 3').fontSize(20)
+    // The value in the 'app.string.stack_num3' resource file is 'Stack child element 3'.
+    Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
@@ -95,18 +110,23 @@ Stack({ alignContent: Alignment.BottomStart }) {
 In the preceding figure, the size of the stacked element 3 is greater than that of all the elements before it. Therefore, the first two elements are completely hidden. To show these elements, modify their **zIndex** attribute settings.
 
 
-```ts
+<!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    Text('Stacked element 1').fontSize(20)
+    // The value in the 'app.string.stack_num1' resource file is 'Stack child element 1'.
+    Text($r('app.string.stack_num1')).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
 
   Column() {
-    Text('Stacked element 2').fontSize(20)
+    // The value in the 'app.string.stack_num2' resource file is 'Stack child element 2'.
+    Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
 
   Column() {
-    Text('Stacked element 3').fontSize(20)
+    // The value in the 'app.string.stack_num3' resource file is 'Stack child element 3'.
+    Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
@@ -119,7 +139,9 @@ Stack({ alignContent: Alignment.BottomStart }) {
 In this example, the stack layout is used to quickly set up a page.
 
 
-```ts
+<!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct StackSample {
@@ -141,9 +163,12 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        Text('Contacts').fontSize(16)
-        Text('Settings').fontSize(16)
-        Text('Messaging').fontSize(16)
+        // The value in the 'app.string.contacts' resource file is 'Contacts'.
+        Text($r('app.string.contacts')).fontSize(16)
+        // The value in the 'app.string.settings' resource file is 'Settings'.
+        Text($r('app.string.setting')).fontSize(16)
+        // The value in the 'app.string.text_message' resource file is 'Messaging'.
+        Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')
       .height(50)

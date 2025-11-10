@@ -26,9 +26,11 @@ import { intelligence } from '@kit.ArkData';
 
 getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
-获取文本嵌入模型，使用Promise异步回调。
+获取文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -82,6 +84,8 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
@@ -130,9 +134,11 @@ intelligence.getImageEmbeddingModel(imageConfig)
 
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
-获取文本的分块。
+获取文本的分块。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -183,11 +189,11 @@ intelligence.splitText(splitText, splitConfig)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| 名称     | 类型              | 必填 | 说明                                                         |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| version    | [ModelVersion](#modelversion)           | 是   |模型的版本。 |
-| isNpuAvailable | boolean                | 是   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
-| cachePath | string                | 否   | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
+| 名称     | 类型              | 只读 | 可选| 说明                                                         |
+| ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
+| version    | [ModelVersion](#modelversion)           | 否 | 否   |模型的版本。 |
+| isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
+| cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
 
 ## ModelVersion
 
@@ -217,10 +223,10 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| 名称     | 类型              | 必填 | 说明                                                         |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| size    |       number     | 是   |分块的最大大小，取值为非负整数。 |
-| overlapRatio | number                | 是   | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。 |
+| 名称     | 类型              | 只读 | 可选 | 说明                                                         |
+| ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
+| size    |       number     | 否   | 否  |分块的最大大小，取值为非负整数。 |
+| overlapRatio | number                | 否  | 否   | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。 |
 
 
 ## TextEmbedding
@@ -235,9 +241,11 @@ type Image = string
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型，使用Promise异步回调。
+加载文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -272,9 +280,11 @@ textEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型，使用Promise异步回调。
+释放文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -309,11 +319,13 @@ textEmbedding.releaseModel()
 
 getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
-获取给定文本的嵌入向量。
+获取给定文本的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -358,11 +370,13 @@ textEmbedding.getEmbedding(text)
 
 getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
-获取给定批次文本的嵌入向量。
+获取给定批次文本的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -415,9 +429,11 @@ textEmbedding.getEmbedding(batchTexts)
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型，使用Promise异步回调。
+加载图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -452,9 +468,11 @@ imageEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型，使用Promise异步回调。
+释放图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -489,11 +507,13 @@ imageEmbedding.releaseModel()
 
 getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
-获取给定图像的嵌入向量。
+获取给定图像的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 

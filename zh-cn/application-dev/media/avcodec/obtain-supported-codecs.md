@@ -5,7 +5,7 @@
 <!--Owner: @yang-xiaoyu5-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 因来源、编解码协议及设备能力的不同，导致不同设备上可用的编解码器及其能力存在差异。
 
@@ -242,7 +242,7 @@ if (ret != AV_ERR_OK || qualityRange.maxVal < 0) {
 if (quality > qualityRange.maxVal || quality < qualityRange.minVal) {
    // 3.（可选）调整待配置质量参数。
 }
-// 5. 配置编码参数。
+// 4. 配置编码参数。
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
 if (videoEnc == nullptr) {
    // 异常处理。
@@ -407,9 +407,9 @@ if (ret != AV_ERR_OK || bitrateRange.maxVal <= 0) {
    // 异常处理。
 }
 if (bitrate > bitrateRange.maxVal || bitrate < bitrateRange.minVal ) {
-   // 7.（可选）调整待配置码率值。
+   // 6.（可选）调整待配置码率值。
 }
-// 8. 配置编码参数。
+// 7. 配置编码参数。
 OH_AVCodec *audioEnc = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
 if (audioEnc == nullptr) {
    // 异常处理。
@@ -431,9 +431,9 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编解码档次和级别支持情况
 
-编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcprofile-1)。
+编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、主档次和高档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
 
-级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel](../../reference/apis-avcodec-kit/_codec_base.md#oh_avclevel-1)。
+级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |

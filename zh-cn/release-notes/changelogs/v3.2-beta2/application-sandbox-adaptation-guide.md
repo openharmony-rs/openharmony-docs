@@ -14,7 +14,7 @@
 
 1. 定位出app异常的问题点之后，识别该问题是否是app源代码访问路径出错导致的，是否是访问有效文件可以通过下一章节的[沙箱文件访问规格清单](#沙箱文件访问规格清单)自查。
 2. 如果是app源码访问无效路径，则可以通过调整访问路径的策略，将原来访问/data目录从绝对路径访问方式调整为使用context接口进行访问，具体请见context接口使用说明：
-   https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/application-models/application-context-stage.md
+   https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/application-models/application-context-stage.md
 3. 如果是app调用三方模块，异常调用栈出现在三方模块中，而app源码没有使用绝对路径去访问文件，则适配过程如下：
    - 通知三方模块，让其访问文件路径通过context接口进行访问而非使用绝对路径的方式。
    - 如果三方模块是个公共模块，除了给appspawn孵化的进程使用之外还给native进程使用，则可以将三方模块抽象成一个服务，应用通过ipc的方式去访问服务。
@@ -83,7 +83,7 @@
 > \<PACKAGENAME\>代表当前的应用包名
 
 更多物理路径沙箱路径的对应关系，请访问：
-https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox64.json
+https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox64.json
 
 ## 案例：Contacts.hap拨号场景无法触发音频问题
 
@@ -102,8 +102,8 @@ https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox64.jso
 如果发现应用异常且定位没有结论，可以使用关闭进程沙箱的方式来规避问题，规避方式如下：
 
 1. 打开OpenHarmony startup_appspawn仓的源码，找到应用沙箱配置文件，根据自己编译类型修改对应的配置代码文件。
-   32位修改:https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json
-   64位修改:https://gitee.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json
+   32位修改:https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json
+   64位修改:https://gitcode.com/OpenHarmony/startup_appspawn/blob/master/appdata-sandbox.json
 
 2. 在json中文件找到camera的配置，在下方参照camera的配置新建一条自身应用的配置，将包名改为自身应用报名，其他项保持跟camera一致即可，OFF字段代表关闭进程沙箱。
 

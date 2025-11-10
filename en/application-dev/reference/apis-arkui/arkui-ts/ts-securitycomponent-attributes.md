@@ -1,5 +1,12 @@
 # Security Component Universal Attributes
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 Universal attributes of security components are basic attributes applicable to all security components.
 
 > **NOTE**
@@ -98,7 +105,7 @@ Sets the anchor of the security component for moving the component with its uppe
 
 offset(value: Position | Edges | LocalizedEdges): T
 
-Sets the coordinate offset of the security control relative to its own layout position.
+Sets the coordinate offset of the security component relative to its own layout position.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -108,7 +115,7 @@ Sets the coordinate offset of the security control relative to its own layout po
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |Yes|Coordinate offset of the security control relative to its own layout position. This attribute does not affect the layout in the parent container. The offset is used only during drawing.<br>Default value:<br>{<br>x: 0,<br>y: 0<br>}.|
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |Yes|Coordinate offset of the security component relative to its own layout position. This attribute does not affect the layout in the parent container. The offset is used only during drawing.<br>Default value:<br>{<br>x: 0,<br>y: 0<br>}.|
 
 **Return value**
 
@@ -162,7 +169,7 @@ Sets the font style of the text in the security component.
 
 ## fontWeight
 
-fontWeight(value: number | FontWeight | string): T
+fontWeight(value: number | FontWeight | string | Resource): T
 
 Sets the font weight of the text in the security component.
 
@@ -174,7 +181,7 @@ Sets the font weight of the text in the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string |Yes|Font weight of the security component. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Medium**.|
+| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> |Yes|Font weight of the text in the security component.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight.<br>For the string type, only numeric strings, for example, **'400'**, and the enumerated values of **FontWeight** are supported, including **'bold'**, **'bolder'**, **'lighter'**, **'regular'**, and **'medium'**.<br>The Resource type is supported since API version 20. The Resource type supports only 'integer' and 'string' formats. For the 'integer' type, values follow the number type specifications described earlier; for the 'string' type, values follow the string type specifications mentioned previously.<br>If fontWeight is not set for a control, the font weight is set to FontWeight.Medium by default. If the value of value is invalid, the font weight is set to FontWeight.Normal.|
 
 **Return value**
 
@@ -416,7 +423,7 @@ Sets the alignment of the icon and text in the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| alignType | [Alignment](ts-appendix-enums.md#alignment) |Yes|Alignment type of the icon and text in the security component. The icon and text are aligned as a whole in the component's background area, and the UX display is affected by the [padding](ts-securitycomponent-attributes.md#padding).<br>Default value: **Alignment.Center**.|
+| alignType | [Alignment](ts-appendix-enums.md#alignment) |Yes|Alignment mode of the icon text in the security component. The icon text is aligned as a whole within the background of the control. The UX display is affected by [padding](ts-securitycomponent-attributes.md#padding). The alignment mode is specified based on the effective padding.<br>Default value: **Alignment.Center**.|
 
 **Return value**
 
@@ -438,7 +445,7 @@ Sets the space between the icon and text in the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |Yes|Space between the icon and text in the security component. Since API version 14, if a negative value is assigned, the default value is used instead.<br>Default value: **4vp**.|
+| value | [Dimension](ts-types.md#dimension10) |Yes|Space between the icon and text in the security component. Percentage strings are not supported. Since API version 14, if a negative value is assigned, the default value is used instead.<br>Default value: **4vp**.|
 
 **Return value**
 
@@ -460,7 +467,7 @@ Sets the width of the security component. By default, the security component aut
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-|value | [Length](ts-types.md#length) |Yes|Width of the security component. By default, the security component automatically adapts its width to the content. If the set width is less than the minimum width allowed by the current combination of attributes, the width will be adjusted to the set value, and the button text will automatically wrap to maintain the complete display of the security component.|
+|value | [Length](ts-types.md#length) |Yes|Width of the security component. By default, the security component automatically adapts its width to the content.|
 
 **Return value**
 
@@ -482,7 +489,7 @@ Sets the height of the security component. By default, the security component au
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) |Yes|Height of the security component. By default, the security component automatically adapts its height to the content. If the value is less than the minimum height allowed by the current attribute combination, the actual height will be greater than the set value to ensure that content of the security component is fully displayed.|
+| value | [Length](ts-types.md#length) |Yes|Height of the security component. By default, the security component automatically adapts its height to the content.|
 
 **Return value**
 
@@ -504,7 +511,7 @@ Sets the size of the security component. By default, the security component auto
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [SizeOptions](ts-types.md#sizeoptions) |Yes|Size of the security component. By default, the security component automatically adapts its size to the content. If the set size is less than the minimum size allowed by the current combination of attributes, the width will be adjusted to the set value while the height will not, and the button text will automatically wrap to ensure the integrity of the display for the security control.|
+| value | [SizeOptions](ts-types.md#sizeoptions) |Yes|Width and height of the element. By default, the width and height are automatically adapted based on the element content.|
 
 **Return value**
 
@@ -526,7 +533,7 @@ Sets the size constraints of the component during component layout.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. **constraintSize** takes precedence over **width** and **height**. Learn [how constraintSize affects the width and height](ts-universal-attributes-size.md).<br>As with width and height, if the set size is less than the minimum size allowed by the current combination of attributes, the width will be adjusted to the set value while the height will not, and the button text will automatically wrap to ensure the integrity of the display for the security control.<br>Default value:<br>{<br>minWidth: 0,<br>maxWidth: Infinity,<br>minHeight: 0,<br>maxHeight: Infinity<br>}.|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. **constraintSize** takes precedence over **width** and **height**. For details about the value, see [Impact of constraintSize on width/height](ts-universal-attributes-size.md#constraintsize).<br>Default value:<br>{<br>minWidth: 0,<br>maxWidth: Infinity,<br>minHeight: 0,<br>maxHeight: Infinity<br>}.|
 
 **Return value**
 
@@ -548,7 +555,7 @@ Sets the alignment rules in the relative container. This API is valid only when 
 
 | Name| Type                                       | Mandatory| Description                    |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption) | Yes  | Alignment rule in the relative container.|
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes  | Alignment rule in the relative container.|
 
 **Return value**
 
@@ -684,7 +691,7 @@ Sets the minimum font size.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.|
+| minSize  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.|
 
 **Return value**
 
@@ -708,7 +715,7 @@ Sets the maximum font size.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.|
+| maxSize  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.|
 
 **Return value**
 
@@ -718,9 +725,9 @@ Sets the maximum font size.
 
 ## maxLines<sup>18+</sup>
 
-maxLines(line: number): T
+maxLines(line: number | Resource): T
 
-Maximum number of lines in the text. By default, text is wrapped. After this attribute is specified, the maximum number of text lines does not exceed the specified value.
+Maximum number of lines in the text. By default, the text is automatically wrapped. After this attribute is specified, the maximum number of lines of the text does not exceed the specified value.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -730,7 +737,7 @@ Maximum number of lines in the text. By default, text is wrapped. After this att
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| value  | number | Yes  | Maximum number of lines in the text.<br>Value range: [1, +∞).<br>**NOTE**<br>If the value is less than 1, it is handled as the default value 100000.|
+| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes  | Maximum number of lines in the text.<br>The value range of the input parameter of the number type is [1, +∞). The Resource type is supported since API version 20. The Resource type supports only integer. The value range is [1, +∞).<br>**NOTE**<br>If the value is less than 1, it is handled as the default value 100000.|
 
 **Return value**
 
@@ -744,7 +751,9 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
 Sets the policy for text height adaptation.
 
-The text size is adjusted based on the specified height adaptation policy.
+The text size is automatically adjusted based on the text height adaptation policy.
+
+The secure text control text is laid out based on the value of [maxFontSize](#maxfontsize18). If the text can be completely displayed, adaptation adjustment is not required and this API does not take effect. Otherwise, the text height is adjusted based on the specified text height adaptation policy. The specific adaptation adjustment specifications are as follows:
 
 **TextHeightAdaptivePolicy.MAX_LINES_FIRST**: prioritizes the [maxLines](#maxlines18) attribute for adjusting the text height. If the layout size using the **maxLines** attribute exceeds the layout constraints, the security component attempts to reduce the font size within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18) to display more text. If the text still cannot be fully displayed, the security component adaptively adjusts its height to fully display the text.
 
@@ -752,9 +761,9 @@ The text size is adjusted based on the specified height adaptation policy.
 
 **TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST**: prioritizes layout constraints for adjusting the text height. If the layout size exceeds the constraints, the security component attempts to reduce the font size within the range of [minFontSize](#minfontsize18) and [maxFontSize](#maxfontsize18). If the layout size still exceeds the constraints after the font size is reduced to **minFontSize**, the security component truncates the excess lines. If the [maxLines](#maxlines18) attribute is set, the number of lines does not exceed the **maxLines** value (horizontal truncation may occur). If **maxLines** is not set, there is no limit on the number of lines.
 
-When the layout can fully display the text without adjustment, no adaptive adjustments are made to the text.
+If the security component text is not completely displayed, the click is not authorized.
 
-If the text in the security component is not fully displayed, authorization will not be granted upon clicking.
+For details, see [Example](#example-3).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -764,7 +773,7 @@ If the text in the security component is not fully displayed, authorization will
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | Yes  | Policy for text height adaptation.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**.|
+| policy  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | Yes  | Policy for text height adaptation.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**.|
 
 **Return value**
 
@@ -786,7 +795,7 @@ Sets whether the security component is interactive.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the security component is interactive.<br>**true**: The component is interactive and responds to operations such as clicks.<br>**false**: The component is non-interactive and does not respond to operations such as clicks.<br>Default value: **true**.|
+| respond  | boolean | Yes  | Whether the security component is interactive.<br>**true**: The component is interactive and responds to operations such as clicks.<br>**false**: The component is non-interactive and does not respond to operations such as clicks.<br>Default value: **true**.|
 
 **Return value**
 
@@ -797,6 +806,8 @@ Sets whether the security component is interactive.
 
 
 ## SecurityComponentLayoutDirection
+
+Enumerates the layout directions of icons and texts in a security component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -814,22 +825,23 @@ Enumerates the button types.
 The button type affects how the settings for the [borderRadius](ts-securitycomponent-attributes.md#borderradius) attribute are applied. The specific impact is as follows:
 
 - For a button of the **Capsule** type, the **borderRadius** settings do not take effect, and the button's corner radius is always half of the button's height or width, whichever is smaller.
-- For a button of the **Circle** type:
-  - If both its width and height are set, the **borderRadius** settings do not take effect, and the button radius is half of the width or height, whichever is smaller.
-  - If either its width or height is set, the **borderRadius** settings do not take effect, and the button radius is half of the set width or height.
-  - If neither its width nor height is set, or if **borderRadius** is set to a negative value, the button radius is determined by the layout constraints.
-- If **borderRadius** is not specified, the corner radius of a rounded rectangle button remains at the default value, 20 vp, regardless of the button's height.
+- When the button type is Circle, the setting of borderRadius does not take effect.
+  - If both the width and height are set, the rounded corner radius of the button is half of the smaller value between the width and height.
+  - If only one of the width and height is set, the rounded corner radius of the button is half of the set width or height.
+  - If the width and height are not set or the value of borderRadius is a negative number, the rounded corner radius of the button is determined based on the specific layout.
+- When the button type is Normal, the rounded corner radius of the button can be set by borderRadius. The rounded corner size is limited by the component size. The minimum value is 0, and the maximum value is half of the smaller value between the width and height.
+- If the button type is ROUNDED_RECTANGLE and **borderRadius** is not specified, the corner radius of a rounded rectangle button remains at the default value, 20 vp, regardless of the button's height.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Description              |
-| ------- | ------------------ |
-| Capsule | Capsule-type button, with a default corner radius equal to half of the button's height.|
-| Circle  | Circular button.             |
-| Normal  | Normal button, with no rounded corners by default.     |
-| ROUNDED_RECTANGLE<sup>16+</sup> | Rounded rectangle button, with a default corner radius of 20 vp.|
+| Name     | Value| Description              |
+| ------- | -------- | ------------------ |
+| Normal  | 0 | Normal button, with no rounded corners by default.     |
+| Capsule | 1 | Capsule button (the default radius is half of the height).|
+| Circle  | 2 | Circular button.             |
+| ROUNDED_RECTANGLE<sup>16+</sup> | 8 | Rounded rectangle button, with a default corner radius of 20 vp.|
 
 ## Example
 
@@ -902,56 +914,56 @@ struct Index {
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .width(100)
           .height(100)
-          .backgroundColor("#A3CF62")
+          .backgroundColor('#A3CF62')
           .alignRules({
-            top: { anchor: "__container__", align: VerticalAlign.Top },
-            left: { anchor: "__container__", align: HorizontalAlign.Start }
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start }
           })
-          .id("row1")
+          .id('row1')
 
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .width(100)
           .height(100)
-          .backgroundColor("#00AE9D")
+          .backgroundColor('#00AE9D')
           .alignRules({
-            top: { anchor: "__container__", align: VerticalAlign.Top },
-            right: { anchor: "__container__", align: HorizontalAlign.End }
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            right: { anchor: '__container__', align: HorizontalAlign.End }
           })
-          .id("row2")
+          .id('row2')
 
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
           .height(100)
-          .backgroundColor("#0A59F7")
+          .backgroundColor('#0A59F7')
           .alignRules({
-            top: { anchor: "row1", align: VerticalAlign.Bottom },
-            left: { anchor: "row1", align: HorizontalAlign.End },
-            right: { anchor: "row2", align: HorizontalAlign.Start }
+            top: { anchor: 'row1', align: VerticalAlign.Bottom },
+            left: { anchor: 'row1', align: HorizontalAlign.End },
+            right: { anchor: 'row2', align: HorizontalAlign.Start }
           })
-          .id("row3")
+          .id('row3')
 
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
-          .backgroundColor("#2CA9E0")
+          .backgroundColor('#2CA9E0')
           .alignRules({
-            top: { anchor: "row3", align: VerticalAlign.Bottom },
-            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-            left: { anchor: "__container__", align: HorizontalAlign.Start },
-            right: { anchor: "row1", align: HorizontalAlign.End }
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: 'row1', align: HorizontalAlign.End }
           })
-          .id("row4")
+          .id('row4')
 
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
-          .backgroundColor("#30C9F7")
+          .backgroundColor('#30C9F7')
           .alignRules({
-            top: { anchor: "row3", align: VerticalAlign.Bottom },
-            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-            left: { anchor: "row2", align: HorizontalAlign.Start },
-            right: { anchor: "__container__", align: HorizontalAlign.End }
+            top: { anchor: 'row3', align: VerticalAlign.Bottom },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+            left: { anchor: 'row2', align: HorizontalAlign.Start },
+            right: { anchor: '__container__', align: HorizontalAlign.End }
           })
-          .id("row5")
+          .id('row5')
       }
       .width(300).height(300)
       .margin({ left: 50 })
-      .border({ width: 2, color: "#6699FF" })
+      .border({ width: 2, color: '#6699FF' })
     }
     .height('100%')
   }
@@ -959,3 +971,342 @@ struct Index {
 ```
 
 ![SaveBotton_alignRules_1.png](figures/SaveBotton_alignRules_1.png)
+
+### Example 3
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Scroll() {
+        Column({ space: 10 }) {
+          Column({ space: 10 }) {
+            Row() {
+              Text('FontSize = 20, Legend: ').fontSize(20)
+              Text('Quickly save images').fontSize(20).fontColor(Color.Blue)
+            }.width('100%')
+
+            Row() {
+              Text('FontSize = 10, Legend: ').fontSize(20)
+              Text('Quickly save images').fontSize(10).fontColor(Color.Blue)
+            }.width('100%')
+          }.width('100%')
+
+          Flex({ wrap: FlexWrap.Wrap }) {
+            Column() {
+              Row() {
+                Text('heightAdaptivePolicy = MIN_FONT_SIZE_FIRST').fontSize(16).fontWeight(FontWeight.Bold)
+              }
+            }.height(40)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('No need to adjust the text size.')
+                }.width('90%')
+
+                // The text can be completely displayed in the current layout without adjustment.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
+                  .width(120)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x10000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Decrease the font size first.')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. Decrease the font size first. If the text can be displayed in one line after the font size is decreased, the font size is decreased.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
+                  .width(60)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Decrease the font size first, and then wrap the text.')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. Decrease the font size first. If the text still cannot be completely displayed after the font size is decreased, use the maxLines attribute to wrap the text.
+                //If the height is insufficient for the text to be completely displayed, the height is automatically adjusted to ensure that the text can be completely displayed.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
+                  .width(20)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Decrease the font size and wrap lines. The text is truncated.')
+                }.width('90%')
+
+                //If the current layout cannot display the text completely, the fontSize is decreased first. If the text still cannot be displayed completely after the fontSize is decreased, the maxLines attribute is used to wrap lines.
+                //The maxLines attribute is set to 3, and only three lines can be displayed. Therefore, the text is truncated.
+                //If the height is insufficient to display the text completely, the height is automatically adjusted to display the text completely.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(3)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
+                  .width(10)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x10000000)
+          }.width('100%')
+
+          Flex({ wrap: FlexWrap.Wrap }) {
+            Column() {
+              Row() {
+                Text('heightAdaptivePolicy = MAX_LINES_FIRST').fontSize(16).fontWeight(FontWeight.Bold)
+              }
+            }.height(40)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('No need to adjust the text automatically')
+                }.width('90%')
+
+                //The text can be completely displayed in the current layout without adjustment.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
+                  .width(120)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x10000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Wrap first')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. The maxlines attribute is used to wrap the text. After the text is wrapped, it can be completely displayed.
+                //The height is automatically adjusted to ensure that the text can be completely displayed.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
+                  .width(60)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Wrap first, then reduce the font size')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. The maxlines attribute is used to wrap the text. After the text is wrapped, it still cannot be completely displayed. The fontSize is reduced to try to display the text. After the font size is reduced, the text can be completely displayed.
+                //The height is automatically adjusted to ensure that the text can be completely displayed.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(3)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
+                  .width(20)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Line break + font size reduction, text truncation')
+                }.width('90%')
+
+                //The current layout cannot completely display the text. The maxlines attribute is used to break lines. If the text still cannot be completely displayed after line break, the fontSize attribute is used to reduce the font size.
+                //The minFontSize attribute is set to 10. Only one word can be displayed in each line. As a result, the text is truncated.
+                //If the height is insufficient to display the text completely, the height is automatically adjusted to display the text completely.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(3)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
+                  .width(10)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x10000000)
+          }.width('100%')
+
+          Flex({ wrap: FlexWrap.Wrap }) {
+
+            Column() {
+              Row() {
+                Text('heightAdaptivePolicy = LAYOUT_CONSTRAINT_FIRST').fontSize(16).fontWeight(FontWeight.Bold)
+              }
+            }.height(40)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('No need to adjust the layout')
+                }.width('90%')
+
+                //The text can be completely displayed without adjusting the layout. The text does not need to be adjusted adaptively.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .width(120)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x10000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Do not change the layout constraint. Reduce the font size first.')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. The fontSize is reduced first. After the fontSize is reduced, the text can be displayed in one line.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .width(60)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text('Do not change the layout constraint. Reduce the font size and then wrap the text.')
+                }.width('90%')
+
+                //The text cannot be completely displayed in the current layout. The fontSize is reduced first. After the fontSize is reduced, the text cannot be completely displayed. Use the maxlines attribute to wrap the text. After the layout, the text can be completely displayed.
+                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the secure control cannot be adjusted adaptively.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .width(20)
+                  .height(40)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('50%').height(90).backgroundColor(0x30000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text(`Maxlines is insufficient.\nThe text is truncated.`)
+                }.width('90%')
+
+                //The current layout cannot display the text completely. The fontSize is reduced first. After the reduction, the text cannot be displayed completely. However, the height can display only one line. Therefore, the text is truncated.
+                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the secure control cannot be automatically adjusted.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(2)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .width(20)
+                  .height(40)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('25%').height(90).backgroundColor(0x10000000)
+
+            Column() {
+              Column({ space: 10 }) {
+                Row() {
+                  Text(`The height is insufficient.\nThe text is truncated.`)
+                }.width('90%')
+
+                //The current layout cannot display the text completely. The fontSize is reduced first. After the reduction, the text cannot be displayed completely. However, the height can display only one line. Therefore, the text is truncated.
+                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the secure control cannot be automatically adjusted.
+                SaveButton({
+                  text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
+                })
+                  .maxFontSize(20)
+                  .minFontSize(10)
+                  .maxLines(6)
+                  .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
+                  .width(20)
+                  .height(20)
+                  .padding(0)
+                  .borderRadius(10)
+              }
+            }.width('25%').height(90).backgroundColor(0x20000000)
+          }.width('100%')
+
+        }.width('100%')
+      }.width('100%').margin({ top: 10, left: 10, right: 10 })
+    }
+  }
+}
+```
+
+

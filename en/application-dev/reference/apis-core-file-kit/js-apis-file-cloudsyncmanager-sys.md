@@ -11,7 +11,7 @@ The **cloudSyncManager** module provides APIs for managing device-cloud synergy 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are system APIs.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.file.cloudSyncManager (Device-Cloud Synchronization Management)](js-apis-file-cloudsyncmanager.md).
 
 ## Modules to Import
 
@@ -24,6 +24,8 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise&lt;void&gt;
 
 Changes the device-cloud file sync switch for an application. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -70,6 +72,8 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 Changes the device-cloud file sync switch for an application. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **Parameters**
@@ -111,6 +115,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 Notifies the cloud sync service of the application data change in the cloud. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -156,6 +162,8 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 Notifies the cloud sync service of the application data change in the cloud. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **Parameters**
@@ -195,18 +203,22 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 Represents the cloud data change information.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-| Name    | Type  | Mandatory| Description|
-| ---------- | ------ | ---- | ---- |
-| eventId | string | Yes  | Change event ID.|
-| extraData | ExtraData | Yes  | Represents the cloud data change information.|
+| Name    | Type  | Read-Only| Optional| Description|
+| ---------- | ------ | ---- | ---- | ---- |
+| eventId | string | No  | No  | Change event ID.|
+| extraData | string | No  | No  | Represents the cloud data change information.|
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 Notifies the cloud sync service of the application data change in the cloud. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -255,6 +267,8 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 Notifies the cloud sync service of the application data change in the cloud. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -298,6 +312,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
 Enables device-cloud synergy. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -348,6 +364,8 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 Enables device-cloud synergy. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -394,6 +412,8 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 Disables device-cloud synergy. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -437,6 +457,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 Disables device-cloud synergy. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -492,6 +514,8 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 Clears the cloud data locally. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -541,6 +565,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 Clears the cloud data locally. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -587,6 +613,8 @@ Represents the downgrade download for cloud data to prevent data loss when Cloud
 
 It supports the download of cloud application files.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ### constructor<sup>20+</sup>
@@ -594,6 +622,8 @@ It supports the download of cloud application files.
 constructor(bundleName: string)
 
 A constructor used to create a **DowngradeDownload** instance with a specified bundle name.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -619,6 +649,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let bundleName = 'com.demo.a';
   try {
     let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
@@ -634,6 +666,8 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 Obtains the size and count of files for applications requiring downgrade download, including those stored only locally, only in the cloud, or both locally and in the cloud. This API uses a promise to return the result.
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -642,7 +676,7 @@ Obtains the size and count of files for applications requiring downgrade downloa
 
   | Type                             | Description                    |
   | --------------------------------- | ------------------------ |
-  | Promise&lt;[CloudFileInfo](#cloudfileinfo20)&gt; | Promise used to return the local and cloud file information.|
+  | Promise&lt;[CloudFileInfo](js-apis-file-cloudsyncmanager.md#cloudfileinfo20)&gt; | Promise used to return the local and cloud file information.|
 
 **Error codes**
 
@@ -678,6 +712,8 @@ Starts the downgrade download for the specified application's cloud files. This 
 
 Repeated triggering of a downgrade download task will throw an error (22400006).
 
+**System API**: This is a system API.
+
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -686,7 +722,7 @@ Repeated triggering of a downgrade download task will throw an error (22400006).
 
 | Name  | Type                            | Mandatory| Description                                                                               |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](#downloadprogress20)&gt; | Yes  | Callback used to return the download progress. The parameter is **DownloadProgress**, and the return value is **void**.|
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | Yes  | Callback used to return the download progress. The parameter is **DownloadProgress**, and the return value is **void**.|
 
 **Return value**
 
@@ -716,11 +752,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   let bundleName: string = "com.demo.a";
   let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
   let callback = (data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+    console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
     if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
-      console.info('Dwongrade finished.');
+      console.info('Downgrade finished.');
     } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
-      console.info(`Dwongrade stopped, reason: ${data.stopReason}.`);
+      console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
     }
   };
   downgradeMgr.startDownload(callback).then(() => {
@@ -735,6 +771,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 stopDownload(): Promise&lt;void&gt;
 
 Stops the downgrade download task triggered by [startDownload](#startdownload20). This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -781,65 +819,3 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     });
   }
   ```
-## DownloadStopReason<sup>20+</sup>
-
-Enumerates the reasons why the download stops. The default value is **NO_STOP**.
-
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-| Name               | Value | Description                                                  |
-| ------------------- | --- | ------------------------------------------------------ |
-| NO_STOP             | 0   | Downloading.                                        |
-| NETWORK_UNAVAILABLE | 1   | Downloading. Mobile network and Wi-Fi are unavailable.              |
-| LOCAL_STORAGE_FULL  | 2   | Downloading. The device storage is full.                        |
-| TEMPERATURE_LIMIT   | 3   | Downloading. The device temperature exceeds the upper limit.                            |
-| USER_STOPPED        | 4   | Downloading. The user stops the download.                      |
-| APP_UNLOAD          | 5   | Downloading. The application is uninstalled.                    |
-| OTHER_REASON        | 6   | Downloading. The download stops due to other reasons, for example, the cloud server does not respond.|
-
-## DownloadState<sup>20+</sup>
-
-Enumerates the download states.
-
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-| Name     | Value | Description      |
-| --------- | --- | ---------- |
-| RUNNING   | 0   | Downloading.  |
-| COMPLETED | 1   | Downloaded.|
-| STOPPED   | 2   | Downloading stopped.|
-
-## DownloadProgress<sup>20+</sup>
-
-Represents the downgrade download progress.
-
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-### Property
-
-| Name           | Type                                       | Read-Only| Optional| Description                                                                         |
-| --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
-| state           | [DownloadState](#downloadstate20)           | No  | No  | Download state.                                                             |
-| successfulCount | number                                      | No  | No  | Number of downloaded files. The value range is [0, INT32_MAX]. If the progress is abnormal, **-1** is returned.       |
-| failedCount     | number                                      | No  | No  | Number of files that fail to be downloaded. The value range is [0, INT32_MAX]. If the progress is abnormal, **-1** is returned.     |
-| totalCount      | number                                      | No  | No  | Total number of files to be downloaded. The value range is [0, INT32_MAX]. If the progress is abnormal, **-1** is returned.       |
-| downloadedSize  | number                                      | No  | No  | Size of the downloaded data, in bytes. The value range is [0, INT64_MAX). If the progress is abnormal, **INT64_MAX** is returned.|
-| totalSize       | number                                      | No  | No  | Total size of the files to be downloaded, in bytes. The value range is [0, INT64_MAX). If the progress is abnormal, **INT64_MAX** is returned.|
-| stopReason      | [DownloadStopReason](#downloadstopreason20) | No  | No  | Reason why the download stops.                                                             |
-
-## CloudFileInfo<sup>20+</sup>
-
-Represents the number and size of local and cloud files of an application.
-
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-### Property
-
-| Name              | Type  | Read-Only| Optional| Description                                                            |
-| ------------------ | ------ | ---- | ---- | ---------------------------------------------------------------- |
-| cloudFileCount     | number | No  | No  | Total number of cloud files that are not downloaded locally. The value range is [0, INT32_MAX].  |
-| cloudFileTotalSize | number | No  | No  | Total size of cloud files that are not downloaded locally, in bytes. The value range is [0, INT64_MAX].|
-| localFileCount     | number | No  | No  | Total number of local files that are not uploaded to the cloud. The value range is [0, INT32_MAX].  |
-| localFileTotalSize | number | No  | No  | Total size of local files that are not uploaded to the cloud, in bytes. The value range is [0, INT64_MAX].|
-| bothFileCount      | number | No  | No  | Total number of local files that have been uploaded to the cloud. The value range is [0, INT32_MAX].  |
-| bothlFileTotalSize | number | No  | No  | Total size of local files that have been uploaded to the cloud, in bytes. The value range is [0, INT64_MAX].|

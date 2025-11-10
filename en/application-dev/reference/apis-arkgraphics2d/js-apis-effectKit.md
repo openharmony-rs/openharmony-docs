@@ -1,6 +1,12 @@
 # @ohos.effectKit (Image Effects)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanamaru-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
-The EffectKit module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker.
+This module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker. The effectKit module processes images (such as PixelMap, PNG, and JPEG) offline to obtain visual effects. The uiEffect module connects to the rendering service in real time and process the screen frame buffer to obtain dynamic visual effects.
 
 This module provides the following classes:
 
@@ -33,7 +39,7 @@ Creates a **Filter** instance based on a pixel map.
 
 | Name   | Type              | Mandatory| Description    |
 | ------- | ----------------- | ---- | -------- |
-| source  | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).  |
+| source  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).  |
 
 **Return value**
 
@@ -77,7 +83,7 @@ Creates a **ColorPicker** instance based on a pixel map. This API uses a promise
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | ----------- | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).|
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).|
 
 **Return value**
 
@@ -135,7 +141,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | ----------- | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).|
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).|
 | region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 
 **Return value**
@@ -194,7 +200,7 @@ Creates a **ColorPicker** instance based on a pixel map. This API uses an asynch
 
 | Name    | Type               | Mandatory| Description                      |
 | -------- | ------------------ | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md). |
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md). |
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | Yes | Callback used to return the **ColorPicker** instance created.|
 
 **Error codes**
@@ -247,7 +253,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 
 | Name    | Type               | Mandatory| Description                      |
 | -------- | ------------------ | ---- | -------------------------- |
-| source   | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md). |
+| source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md). |
 | region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | Yes | Callback used to return the **ColorPicker** instance created.|
 
@@ -295,12 +301,12 @@ A class that stores the color picked.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
-| Name  | Type  | Readable| Writable| Description             |
+| Name  | Type  | Read-Only| Optional| Description             |
 | ------ | ----- | ---- | ---- | ---------------- |
-| red   | number | Yes  | No  | Value of the red component. The value range is [0x0, 0xFF].          |
-| green | number | Yes  | No  | Value of the green component. The value range is [0x0, 0xFF].          |
-| blue  | number | Yes  | No  | Value of the blue component. The value range is [0x0, 0xFF].          |
-| alpha | number | Yes  | No  | Value of the alpha component. The value range is [0x0, 0xFF].      |
+| red   | number | No  | No  | Value of the red component. The value range is [0x0, 0xFF].          |
+| green | number | No  | No  | Value of the green component. The value range is [0x0, 0xFF].          |
+| blue  | number | No  | No  | Value of the blue component. The value range is [0x0, 0xFF].          |
+| alpha | number | No  | No  | Value of the alpha component. The value range is [0x0, 0xFF].      |
 
 ## TileMode<sup>14+</sup>
 
@@ -323,7 +329,7 @@ A class used to obtain the color from an image. Before calling any method of **C
 
 getMainColor(): Promise\<Color>
 
-Obtains the main color from the image and writes the result to a [Color](#color) instance. This API uses a promise to return the result.
+Obtains the main color from the image and writes the result to a [Color](#color) instance. This API uses a promise to return the result. This API uses the image scaling algorithm to calculate the weighted average of surrounding pixels and reduces the original image to one pixel to obtain the main color.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -371,7 +377,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getMainColorSync(): Color
 
-Obtains the main color from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously.
+Obtains the main color from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously. This API uses the image scaling algorithm to calculate the weighted average of surrounding pixels and reduces the original image to one pixel to obtain the main color.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -418,7 +424,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getLargestProportionColor(): Color
 
-Obtains the color with the largest proportion from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously.
+Obtains the color with the largest proportion from the image and writes the result to a [Color](#color) instance. This API returns the result synchronously. This API uses the median split algorithm to divide the color space and obtain the average color of the color space with the largest proportion.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -515,7 +521,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![image_Largest_Proportion_Color.png](figures/image_Top_Proportion_Colors.png)
+![image_Top_Proportion_Colors.png](figures/image_Top_Proportion_Colors.png)
 
 ### getHighestSaturationColor<sup>10+</sup>
 
@@ -698,25 +704,64 @@ Adds the blur effect to the filter linked list, and returns the head node of the
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let radius = 5;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.blur(radius);
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let radius = 5;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.blur(radius);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![image_Add_Blur.png](figures/image_Add_Blur.png)
 
@@ -748,25 +793,64 @@ Adds the blur effect to the filter linked list, and returns the head node of the
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let radius = 30;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.blur(radius, effectKit.TileMode.DECAL);
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let radius = 30;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.blur(radius, effectKit.TileMode.DECAL);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![image_Add_Blur_With_TileMode.png](figures/image_Add_Blur_With_TileMode.png)
 
@@ -787,24 +871,63 @@ Adds the inversion effect to the filter linked list, and returns the head node o
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.invert();
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.invert();
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageInvert(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![image_Add_Invert.png](figures/image_Add_Invert.png)
 
@@ -839,30 +962,69 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let colorMatrix:Array<number> = [
+      0.2126,0.7152,0.0722,0,0,
+      0.2126,0.7152,0.0722,0,0,
+      0.2126,0.7152,0.0722,0,0,
+      0,0,0,1,0
+      ];
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.setColorMatrix(colorMatrix);
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let colorMatrix:Array<number> = [
-    0.2126,0.7152,0.0722,0,0,
-    0.2126,0.7152,0.0722,0,0,
-    0.2126,0.7152,0.0722,0,0,
-    0,0,0,1,0
-  ];
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.setColorMatrix(colorMatrix);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageColorFilter(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 
 ### brightness
@@ -892,25 +1054,64 @@ Adds the brightness effect to the filter linked list, and returns the head node 
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let bright = 0.5;
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.brightness(bright);
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let bright = 0.5;
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.brightness(bright);
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageBrightness(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![image_Add_Brightness.png](figures/image_Add_Brightness.png)
 
@@ -935,24 +1136,63 @@ Adds the grayscale effect to the filter linked list, and returns the head node o
 **Example**
 
 ```ts
-import { image } from "@kit.ImageKit";
-import { effectKit } from "@kit.ArkGraphics2D";
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// Pass the image data to be read.
+function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // Add an effect flag to the image.
+        headFilter.grayscale();
+      }
+      // Process the image based on the added effect flag and return the processed image data.
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
 
-const color = new ArrayBuffer(96);
-let opts : image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // Read the image file in the rawfile folder. You can also change the read mode as required to ensure that the image data in ArrayBuffer format is obtained.
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
   }
-};
-image.createPixelMap(color, opts).then((pixelMap) => {
-  let headFilter = effectKit.createEffect(pixelMap);
-  if (headFilter != null) {
-    headFilter.grayscale();
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // Image processing is an asynchronous operation. You can perform the next step based on whether the processed image data needs to be obtained. Add await as required for synchronization.
+    this.imagePixelMap = await ImageGrayscale(this.imageBuffer);
   }
-})
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![image_Add_Grayscale.png](figures/image_Add_Grayscale.png)
 
@@ -960,7 +1200,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getEffectPixelMap(): Promise<image.PixelMap>
 
-Obtains **image.PixelMap** of the source image to which the filter linked list is added. This API uses a promise to return the result.
+Obtains **image.PixelMap** of the source image to which the filter linked list is added. This API uses a CPU for rendering and a promise to return the result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -997,6 +1237,53 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
+### getEffectPixelMap<sup>20+</sup>
+
+getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
+
+Obtains the **image.PixelMap** of the source image with the linked list effect. The rendering mode (CPU rendering or GPU rendering) can be specified. This API uses a promise to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name| Type       | Mandatory| Description                                                        |
+| ------ | ----------- | ---- | ------------------------------------------------------------ |
+|  useCpuRender   | boolean | Yes  | Rendering mode. **true**: CPU rendering. **false**: GPU rendering.|
+
+**Return value**
+
+| Type                  | Description          |
+| ---------------------- | -------------- |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise used to return **image.PixelMap** of the source image.|
+
+
+**Example**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createEffect(pixelMap).grayscale().getEffectPixelMap(false).then(data => {
+    console.info('getPixelBytesNumber = ', data.getPixelBytesNumber());
+  })
+})
+```
+
 ### getPixelMap<sup>(deprecated)</sup>
 
 getPixelMap(): image.PixelMap
@@ -1013,7 +1300,7 @@ Obtains **image.PixelMap** of the source image to which the filter linked list i
 
 | Type          | Description                                           |
 | :------------- | :---------------------------------------------- |
-| [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | **image.PixelMap** of the source image.|
+| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **image.PixelMap** of the source image.|
 
 **Example**
 

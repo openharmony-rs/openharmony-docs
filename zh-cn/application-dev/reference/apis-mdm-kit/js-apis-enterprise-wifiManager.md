@@ -68,14 +68,14 @@ import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 
 try {
   let result: boolean = wifiManager.isWifiActiveSync(wantTemp);
-  console.info(`Succeeded in query is wifi active or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
 } catch (err) {
-  console.error(`Failed to query is wifi active or not. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -120,7 +120,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let profile: wifiManager.WifiProfile = {
   //需根据实际情况进行替换
@@ -236,7 +236,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -295,7 +295,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(wantTemp);
@@ -350,7 +350,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -404,7 +404,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -463,7 +463,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(wantTemp);
@@ -669,7 +669,7 @@ import { wifiManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -722,7 +722,7 @@ import { wifiManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {

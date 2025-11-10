@@ -1,5 +1,12 @@
 # WantAgentInfo
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the information required for triggering the WantAgent.
 
 > **NOTE**
@@ -30,3 +37,4 @@ Defines the information required for triggering a WantAgent object. The informat
 | actionFlags<sup>11+</sup> | Array<[abilityWantAgent.WantAgentFlags](js-apis-app-ability-wantAgent.md#wantagentflags)> | No| Yes| Array of flags for using the WantAgent object.          |
 | extraInfo      | { [key: string]: any }            | No| Yes| Extra information.              |
 | extraInfos<sup>11+</sup> | Record\<string, Object>            | No| Yes| Extra information. You are advised to use this property to replace **extraInfo**. When this property is set, **extraInfo** does not take effect.              |
+| userId<sup>22+</sup>    | number                          | No| Yes| User ID.<br>The value must be greater than or equal to 0.<br>The default value is the user ID of the caller. |

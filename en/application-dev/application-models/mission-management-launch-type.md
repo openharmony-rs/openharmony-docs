@@ -1,7 +1,13 @@
 # Mission Management and Launch Type
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-One UIAbility instance corresponds to one mission. The number of UIAbility instances is related to the UIAbility launch type, specified by **launchType**, which is configured in the **config.json** file in the FA model and the [module.json5](../quick-start/module-configuration-file.md) file in the stage model.
+One UIAbility instance corresponds to one mission. The number of UIAbility instances is related to the UIAbility launch type, specified by **launchType**, which is configured in the **config.json** file in the [FA model](ability-terminology.md#fa-model) and the [module.json5](../quick-start/module-configuration-file.md) file in the [stage model](ability-terminology.md#stage-model).
 
 
 The following describes how the mission list manager manages the UIAbility instanced started in different modes.
@@ -32,4 +38,4 @@ Every mission retains a snapshot of the UIAbility instance. After the UIAbility 
 
 > **NOTE**
 >
-> The **specified** mode is supported in the stage model only.
+> The specified mode is supported in the [stage model](ability-terminology.md#stage-model) only.

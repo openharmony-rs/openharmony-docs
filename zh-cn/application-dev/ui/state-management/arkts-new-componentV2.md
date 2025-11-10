@@ -28,13 +28,35 @@
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
-    ```ts
+
+    <!-- @[ComponentV2_page_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets) -->
+    
+    ``` TypeScript
+    @Entry
     @ComponentV2 // 装饰器
-    struct Index { // struct声明的数据结构
+    struct ComponentV2Test { // struct声明的数据结构
+      @Local message: string = 'Hello World';
       build() { // build定义的UI
+        RelativeContainer() {
+          Text(this.message)
+            .id('HelloWorld')
+            // $r('app.float.page_text_font_size')需要替换为开发者所需的资源文件;
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              this.message = 'Welcome';
+            })
+        }
+        .height('100%')
+        .width('100%')
       }
     }
     ```
+
 
 除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
 

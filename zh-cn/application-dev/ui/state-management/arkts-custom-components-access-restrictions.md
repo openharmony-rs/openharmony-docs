@@ -32,11 +32,13 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 1. 当成员变量被private访问限定符和\@State/\@Prop/\@Provide/\@BuilderParam装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
-    【反例】
-    ```ts
+   【反例】
+    <!-- @[LlinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateErrorCase.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
+    struct LinkErrorAccessRestrictions {
       @Builder
       buildTest() {
         Text('Parent builder')
@@ -44,30 +46,30 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
       build() {
         Column() {
-          ComponentsChild({
-            state_value: 'Hello',
-            prop_value: 'Hello',
-            provide_value: 'Hello',
-            builder_value: this.buildTest,
-            regular_value: 'Hello'
+          LinkErrorComponentChild({
+            stateValue: 'Hello',
+            propValue: 'Hello',
+            provideValue: 'Hello',
+            builderValue: this.buildTest,
+            regularValue: 'Hello'
           })
         }
         .width('100%')
       }
     }
-
+    
     @Component
-    struct ComponentsChild {
+    struct LinkErrorComponentChild {
       // 此处使用private修饰符时会出现告警日志
-      @State private state_value: string = 'Hello';
+      @State private stateValue: string = 'Hello';
       // 此处使用private修饰符时会出现告警日志
-      @Prop private prop_value: string = 'Hello';
+      @Prop private propValue: string = 'Hello';
       // 此处使用private修饰符时会出现告警日志
-      @Provide private provide_value: string = 'Hello';
+      @Provide private provideValue: string = 'Hello';
       // 此处使用private修饰符时会出现告警日志
-      @BuilderParam private builder_value: () => void = this.buildTest;
+      @BuilderParam private builderValue: () => void = this.buildTest;
       // 此处使用private修饰符时会出现告警日志
-      private regular_value: string = 'Hello';
+      private regularValue: string = 'Hello';
     
       @Builder
       buildTest() {
@@ -84,21 +86,24 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
+
     编译告警日志如下：
 
     ```ts
-    Property 'state_value' is private and can not be initialized through the component constructor.
-    Property 'prop_value' is private and can not be initialized through the component constructor.
-    Property 'provide_value' is private and can not be initialized through the component constructor.
-    Property 'builder_value' is private and can not be initialized through the component constructor.
-    Property 'regular_value' is private and can not be initialized through the component constructor.
+    Property 'stateValue' is private and can not be initialized through the component constructor.
+    Property 'propValue' is private and can not be initialized through the component constructor.
+    Property 'provideValue' is private and can not be initialized through the component constructor.
+    Property 'builderValue' is private and can not be initialized through the component constructor.
+    Property 'regularValue' is private and can not be initialized through the component constructor.
     ```
 
-    【正例】
-    ```ts
+   【正例】
+    <!-- @[LlinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LlinkWithPrivateCorrectCase.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
+    struct LinkAccessRestrictions {
       @Builder
       buildTest() {
         Text('Parent builder')
@@ -106,25 +111,25 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
       build() {
         Column() {
-          ComponentsChild({
-            state_value: 'Hello',
-            prop_value: 'Hello',
-            provide_value: 'Hello',
-            builder_value: this.buildTest,
-            regular_value: 'Hello'
+          LinkComponentChild({
+            stateValue: 'Hello',
+            propValue: 'Hello',
+            provideValue: 'Hello',
+            builderValue: this.buildTest,
+            regularValue: 'Hello'
           })
         }
         .width('100%')
       }
     }
-
+    
     @Component
-    struct ComponentsChild {
-      @State state_value: string = 'Hello';
-      @Prop prop_value: string = 'Hello';
-      @Provide provide_value: string = 'Hello';
-      @BuilderParam builder_value: () => void = this.buildTest;
-      regular_value: string = 'Hello';
+    struct LinkComponentChild {
+      @State stateValue: string = 'Hello';
+      @Prop propValue: string = 'Hello';
+      @Provide provideValue: string = 'Hello';
+      @BuilderParam builderValue: () => void = this.buildTest;
+      regularValue: string = 'Hello';
     
       @Builder
       buildTest() {
@@ -143,33 +148,36 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
-    【反例】
-    ```ts
+   【反例】
+    <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
-      @Provide consume_value: string = 'Hello';
+    struct PublicErrorAccessRestrictions {
+      @Provide consumeValue: string = 'Hello';
+    
       build() {
         Column() {
-          ComponentChild()
+          PublicErrorComponentChild()
         }
         .width('100%')
       }
     }
-
+    
     @Component
-    struct ComponentChild {
+    struct PublicErrorComponentChild {
       // 此处使用public修饰符时会出现告警日志
-      @LocalStorageProp('sessionLocalProp') public local_prop_value: string = 'Hello';
+      @LocalStorageProp('sessionLocalProp') public localPropValue: string = 'Hello';
       // 此处使用public修饰符时会出现告警日志
-      @LocalStorageLink('sessionLocalLink') public local_link_value: string = 'Hello';
+      @LocalStorageLink('sessionLocalLink') public localLinkValue: string = 'Hello';
       // 此处使用public修饰符时会出现告警日志
-      @StorageProp('sessionProp') public storage_prop_value: string = 'Hello';
+      @StorageProp('sessionProp') public storagePropValue: string = 'Hello';
       // 此处使用public修饰符时会出现告警日志
-      @StorageLink('sessionLink') public storage_link_value: string = 'Hello';
+      @StorageLink('sessionLink') public storageLinkValue: string = 'Hello';
       // 此处使用public修饰符时会出现告警日志
-      @Consume public consume_value: string;
-      
+      @Consume public consumeValue: string;
+    
       build() {
         Column() {
           Text('Hello')
@@ -180,37 +188,42 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-    编译告警日志如下：
+
+   编译告警日志如下：
 
     ```ts
-    Property 'local_prop_value' can not be decorated with both '@LocalStorageProp' and public.
-    Property 'local_link_value' can not be decorated with both '@LocalStorageLink' and public.
-    Property 'storage_prop_value' can not be decorated with both '@StorageProp' and public.
-    Property 'storage_link_value' can not be decorated with both '@StorageLink' and public.
-    Property 'consume_value' can not be decorated with both '@Consume' and public.
+    Property 'localPropValue' can not be decorated with both '@LocalStorageProp' and public.
+    Property 'localLinkValue' can not be decorated with both '@LocalStorageLink' and public.
+    Property 'storagePropValue' can not be decorated with both '@StorageProp' and public.
+    Property 'storageLinkValue' can not be decorated with both '@StorageLink' and public.
+    Property 'consumeValue' can not be decorated with both '@Consume' and public.
     ```
+
+   【正例】
+    <!-- @[PublicWithStorageProp_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets) -->
     
-    【正例】
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
-      @Provide consume_value: string = 'Hello';
+    struct PublicCorrectAccessRestrictions {
+      @Provide consumeValue: string = 'Hello';
+    
       build() {
         Column() {
-          ComponentChild()
+          PublicCorrectComponentChild()
         }
         .width('100%')
       }
     }
-
+    
     @Component
-    struct ComponentChild {
-      @LocalStorageProp('sessionLocalProp') local_prop_value: string = 'Hello';
-      @LocalStorageLink('sessionLocalLink') local_link_value: string = 'Hello';
-      @StorageProp('sessionProp') storage_prop_value: string = 'Hello';
-      @StorageLink('sessionLink') storage_link_value: string = 'Hello';
-      @Consume consume_value: string;
+    struct PublicCorrectComponentChild {
+      @LocalStorageProp('sessionLocalProp') localPropValue: string = 'Hello';
+      @LocalStorageLink('sessionLocalLink') localLinkValue: string = 'Hello';
+      @StorageProp('sessionProp') storagePropValue: string = 'Hello';
+      @StorageLink('sessionLink') storageLinkValue: string = 'Hello';
+      @Consume consumeValue: string;
+    
       build() {
         Column() {
           Text('Hello')
@@ -223,31 +236,36 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
-    【反例】
-    ```ts
+   【反例】
+    <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
-      @State link_value: string = 'Hello';
-      @State objectLink_value: ComponentObj = new ComponentObj();
+    struct PrivateWithLinkErrorAccessRestrictions {
+      @State linkValue: string = 'Hello';
+      @State objectLinkValue: PrivateErrorComponentObj = new PrivateErrorComponentObj();
+    
       build() {
         Column() {
-          ComponentChild({link_value: this.link_value, objectLink_value: this.objectLink_value})
+          PrivateWithLinkErrorComponentChild({ linkValue: this.linkValue, objectLinkValue: this.objectLinkValue })
         }
         .width('100%')
       }
     }
     
     @Observed
-    class ComponentObj {
-      count: number = 0;
+    class PrivateErrorComponentObj {
+      public count: number = 0;
     }
+    
     @Component
-    struct ComponentChild {
+    struct PrivateWithLinkErrorComponentChild {
       // 此处使用private修饰符时会出现告警日志
-      @Link private link_value: string;
+      @Link private linkValue: string;
       // 此处使用private修饰符时会出现告警日志
-      @ObjectLink private objectLink_value: ComponentObj;
+      @ObjectLink private objectLinkValue: PrivateErrorComponentObj;
+    
       build() {
         Column() {
           Text('Hello')
@@ -258,36 +276,41 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-    编译告警日志如下：
-    
+   编译告警日志如下：
+
     ```ts
-    Property 'link_value' can not be decorated with both '@Link' and private.
-    Property 'objectLink_value' can not be decorated with both '@ObjectLink' and private.
+    Property 'linkValue' can not be decorated with both '@Link' and private.
+    Property 'objectLinkValue' can not be decorated with both '@ObjectLink' and private.
     ```
+
+   【正例】
+    <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) -->
     
-    【正例】
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
-      @State link_value: string = 'Hello';
-      @State objectLink_value: ComponentObj = new ComponentObj();
+    struct PrivateWithLinkAccessRestrictions {
+      @State linkValue: string = 'Hello';
+      @State objectLinkValue: PrivateComponentObj = new PrivateComponentObj();
+    
       build() {
         Column() {
-          ComponentChild({link_value: this.link_value, objectLink_value: this.objectLink_value})
+          PrivateWithLinkComponentChild({ linkValue: this.linkValue, objectLinkValue: this.objectLinkValue })
         }
         .width('100%')
       }
     }
-
+    
     @Observed
-    class ComponentObj {
-      count: number = 0;
+    class PrivateComponentObj {
+      public count: number = 0;
     }
+    
     @Component
-    struct ComponentChild {
-      @Link link_value: string;
-      @ObjectLink objectLink_value: ComponentObj;
+    struct PrivateWithLinkComponentChild {
+      @Link linkValue: string;
+      @ObjectLink objectLinkValue: PrivateComponentObj;
+    
       build() {
         Column() {
           Text('Hello')
@@ -300,55 +323,62 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 4. 当成员变量被protected访问限定符修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
-    【反例】
-    ```ts
-    @Entry
-    @Component
-    struct AccessRestrictions {
-      build() {
-        Column() {
-          ComponentChild({regular_value: 'Hello'})
-        }
-        .width('100%')
-      }
-    }
-    
-    @Component
-    struct ComponentChild {
-      // 此处使用protected修饰符时会出现告警日志
-      protected regular_value: string = 'Hello';
-      build() {
-        Column() {
-          Text('Hello')
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-        }
-      }
-    }
-    ```
+   【反例】
+   <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct ProtectedErrorAccessRestrictions {
+     build() {
+       Column() {
+         ProtectedErrorComponentChild({ regularValue: 'Hello' })
+       }
+       .width('100%')
+     }
+   }
+   
+   @Component
+   struct ProtectedErrorComponentChild {
+     // 此处使用protected修饰符时会出现告警日志
+     protected regularValue: string = 'Hello';
+   
+     build() {
+       Column() {
+         Text('Hello')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+       }
+     }
+   }
+   ```
 
-    编译告警日志如下：
-    
+
+   编译告警日志如下：
+
     ```ts
     The member attributes of a struct can not be protected.
     ```
+
+   【正例】
+    <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) -->
     
-    【正例】
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
+    struct ProtectedCorrectAccessRestrictions {
       build() {
         Column() {
-          ComponentChild({regular_value: 'Hello'})
+          ProtectedCorrectComponentChild({ regularValue: 'Hello' })
         }
         .width('100%')
       }
     }
-
+    
     @Component
-    struct ComponentChild {
-      regular_value: string = 'Hello';
+    struct ProtectedCorrectComponentChild {
+      regularValue: string = 'Hello';
+    
       build() {
         Column() {
           Text('Hello')
@@ -358,25 +388,30 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
       }
     }
     ```
+
 
 5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰，并且通过父组件初始化赋值时，ArkTS会进行校验并产生告警日志。
 
-    【反例】
-    ```ts
+   【反例】
+    <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
+    struct PrivateErrorAccessRestrictions {
       build() {
         Column() {
-          ComponentChild({prop_value: 'Hello'})
+          PrivateErrorComponentChild({ propValue: 'Hello' })
         }
         .width('100%')
       }
     }
+    
     @Component
-    struct ComponentChild {
+    struct PrivateErrorComponentChild {
       // 此处使用private修饰符时会出现告警日志
-      @Require @Prop private prop_value: string = 'Hello';
+      @Require @Prop private propValue: string = 'Hello';
+    
       build() {
         Column() {
           Text('Hello')
@@ -387,28 +422,33 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-    编译告警日志如下：
-    
+
+   编译告警日志如下：
+
     ```ts
-    Property 'prop_value' can not be decorated with both '@Require' and private.
-    Property 'prop_value' is private and can not be initialized through the component constructor.
+    Property 'propValue' can not be decorated with both '@Require' and private.
+    Property 'propValue' is private and can not be initialized through the component constructor.
     ```
+
+   【正例】
+    <!-- @[PrivateWithRequire_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireCorrectCase.ets) -->
     
-    【正例】
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct AccessRestrictions {
+    struct PrivateCorrectAccessRestrictions {
       build() {
         Column() {
-          ComponentChild({prop_value: 'Hello'})
+          PrivateCorrectComponentChild({ propValue: 'Hello' })
         }
         .width('100%')
       }
     }
+    
     @Component
-    struct ComponentChild {
-      @Require @Prop prop_value: string = 'Hello';
+    struct PrivateCorrectComponentChild {
+      @Require @Prop propValue: string = 'Hello';
+    
       build() {
         Column() {
           Text('Hello')

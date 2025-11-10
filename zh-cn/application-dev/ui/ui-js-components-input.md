@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 input是交互式组件，用于接收用户数据。其类型可设置为日期、多选框和按钮等。具体用法请参考[input API](../reference/apis-arkui/arkui-js/js-components-basic-input.md)。
 
@@ -255,7 +255,7 @@ import promptAction from '@ohos.promptAction'
   </div>    
   <div class="label-item">        
     <label class="lab" target="input3">date:</label>        
-    <input class="flex" id="input3" type="date" placeholder="Enter data" />    
+    <input class="flex" id="input3" type="date" placeholder="Enter date" />    
   </div>    
   <div class="label-item">        
     <label class="lab" target="input4">time:</label>        

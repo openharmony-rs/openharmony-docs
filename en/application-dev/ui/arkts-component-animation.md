@@ -1,4 +1,10 @@
 # Component Animation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 In addition to universal property animation and transition animation APIs, ArkUI provides default animation effects for certain components, for example, the swipe effect for the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component and the click effect of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component. Based on these default animation effects, you can apply custom animations to the child components through the property animation and transition animation APIs.
@@ -53,25 +59,29 @@ Some components allow for animation customization for their child components thr
 
 The following is an example of customizing the swipe animation for the **Scroll** component:
 
-
 ```ts
-import { curves, window, display, mediaquery } from '@kit.ArkUI';
+import { curves, window, display, mediaquery, UIContext } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 
-export default class GlobalContext extends AppStorage{
-  static mainWin: window.Window|undefined = undefined;
-  static mainWindowSize:window.Size|undefined = undefined;
+export default class GlobalContext extends AppStorage {
+  static mainWin: window.Window | undefined = undefined;
+  static mainWindowSize: window.Size | undefined = undefined;
 }
 /**
  * Encapsulates the WindowManager class.
  */
 export class WindowManager {
-  private static instance: WindowManager|null = null;
-  private displayInfo: display.Display|null = null;
-  private orientationListener = mediaquery.matchMediaSync('(orientation: landscape)');
+  private static instance: WindowManager | null = null;
+  private displayInfo: display.Display | null = null;
+  private uiContext: UIContext;
+  private orientationListener: mediaquery.MediaQueryListener;
 
-  constructor() {
-    this.orientationListener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) })
+  constructor(uiContext: UIContext) {
+    this.uiContext = uiContext
+    this.orientationListener = this.uiContext.getMediaQuery().matchMediaSync('(orientation: landscape)');
+    this.orientationListener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
+      this.onPortrait(mediaQueryResult)
+    })
     this.loadDisplayInfo()
   }
 
@@ -98,14 +108,14 @@ export class WindowManager {
       AppStorage.setOrCreate<number>('mainWinWidth', winWidth)
       let winHeight = this.getMainWindowHeight();
       AppStorage.setOrCreate<number>('mainWinHeight', winHeight)
-      let context:UIAbility = new UIAbility()
+      let context: UIAbility = new UIAbility()
       context.context.eventHub.emit("windowSizeChange", winWidth, winHeight)
     })
   }
 
-  static getInstance(): WindowManager {
+  static getInstance(uiContext: UIContext): WindowManager {
     if (WindowManager.instance == null) {
-      WindowManager.instance = new WindowManager();
+      WindowManager.instance = new WindowManager(uiContext);
     }
     return WindowManager.instance
   }
@@ -138,28 +148,28 @@ export class WindowManager {
    * Obtains the width of the main window, in vp.
    */
   getMainWindowWidth(): number {
-    return GlobalContext.mainWindowSize != null ? px2vp(GlobalContext.mainWindowSize.width) : 0
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.width) : 0
   }
 
   /**
    * Obtains the height of the main window, in vp.
    */
   getMainWindowHeight(): number {
-    return GlobalContext.mainWindowSize != null ? px2vp(GlobalContext.mainWindowSize.height) : 0
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.height) : 0
   }
 
   /**
    * Obtains the screen width, in vp.
    */
   getDisplayWidth(): number {
-    return this.displayInfo != null ? px2vp(this.displayInfo.width) : 0
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.width) : 0
   }
 
   /**
    * Obtains the screen height, in vp.
    */
   getDisplayHeight(): number {
-    return this.displayInfo != null ? px2vp(this.displayInfo.height) : 0
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.height) : 0
   }
 
   /**
@@ -167,7 +177,9 @@ export class WindowManager {
    */
   release() {
     if (this.orientationListener) {
-      this.orientationListener.off('change', (mediaQueryResult: mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult)})
+      this.orientationListener.off('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
+        this.onPortrait(mediaQueryResult)
+      })
     }
     if (GlobalContext.mainWin != null) {
       GlobalContext.mainWin.off('windowSizeChange')
@@ -195,7 +207,7 @@ export const taskDataArr: Array<TaskData> =
   [
     new TaskData('#317AF7', 0, 'music'),
     new TaskData('#D94838', 1, 'mall'),
-    new TaskData('#DB6B42 ', 2, 'photos'),
+    new TaskData('#DB6B42', 2, 'photos'),
     new TaskData('#5BA854', 3, 'setting'),
     new TaskData('#317AF7', 4, 'call'),
     new TaskData('#D94838', 5, 'music'),
@@ -210,7 +222,7 @@ export const taskDataArr: Array<TaskData> =
 @Entry
 @Component
 export struct TaskSwitchMainPage {
-  displayWidth: number = WindowManager.getInstance().getDisplayWidth();
+  displayWidth: number = WindowManager.getInstance(this.getUIContext()).getDisplayWidth();
   scroller: Scroller = new Scroller();
   cardSpace: number = 0; // Widget spacing
   cardWidth: number = this.displayWidth / 2 - this.cardSpace / 2; // Widget width
@@ -220,7 +232,7 @@ export struct TaskSwitchMainPage {
   @State taskViewOffsetX: number = 0;
   @State cardOffset: number = this.displayWidth / 4;
   lastCardOffset: number = this.cardOffset;
-  startTime: number|undefined=undefined
+  startTime: number | undefined = undefined
 
   // Initial position of each widget
   aboutToAppear() {
@@ -246,7 +258,7 @@ export struct TaskSwitchMainPage {
       // Scroll component
       Scroll(this.scroller) {
         Row({ space: this.cardSpace }) {
-          ForEach(taskDataArr, (item:TaskData, index) => {
+          ForEach(taskDataArr, (item: TaskData, index) => {
             Column()
               .width(this.cardWidth)
               .height(this.cardHeight)
@@ -267,7 +279,7 @@ export struct TaskSwitchMainPage {
               .translate({ x: this.cardOffset })
               .animation({ curve: curves.springMotion() })
               .zIndex((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ? 2 : 1)
-          }, (item:TaskData) => item.toString())
+          }, (item: TaskData) => item.toString())
         }
         .width((this.cardWidth + this.cardSpace) * (taskDataArr.length + 1))
         .height('100%')
@@ -275,20 +287,20 @@ export struct TaskSwitchMainPage {
       .gesture(
         GestureGroup(GestureMode.Parallel,
           PanGesture({ direction: PanDirection.Horizontal, distance: 5 })
-            .onActionStart((event: GestureEvent|undefined) => {
-              if(event){
+            .onActionStart((event: GestureEvent | undefined) => {
+              if (event) {
                 this.startTime = event.timestamp;
               }
             })
-            .onActionUpdate((event: GestureEvent|undefined) => {
-              if(event){
+            .onActionUpdate((event: GestureEvent | undefined) => {
+              if (event) {
                 this.cardOffset = this.lastCardOffset + event.offsetX;
               }
             })
-            .onActionEnd((event: GestureEvent|undefined) => {
-              if(event){
+            .onActionEnd((event: GestureEvent | undefined) => {
+              if (event) {
                 let time = 0
-                if(this.startTime){
+                if (this.startTime) {
                   time = event.timestamp - this.startTime;
                 }
                 let speed = event.offsetX / (time / 1000000000);
@@ -346,4 +358,174 @@ export struct TaskSwitchMainPage {
 ```
 
 ![en-us_image_0000001599808406](figures/en-us_image_0000001599808406.gif)
+
+You can use the **animateTo** API to replace a specified item in a list with the first item, while other items in the list are rearranged sequentially. Below is the sample code and animation effect demonstrating a custom dynamic replacement animation for the **List** component.
+
+```ts
+import { curves, AnimatorResult } from '@kit.ArkUI';
+
+// This API controls the visual attributes of list items.
+class ListItemModify implements AttributeModifier<ListItemAttribute> {
+  public offsetY: number = 0;
+
+  applyNormalAttribute(instance: ListItemAttribute): void {
+    instance.translate({ y: this.offsetY }) // Y-axis translation
+  }
+}
+
+@Observed
+class DragSortCtrl<T> {
+  private arr: Array<T>
+  private modify: Array<ListItemModify>
+  private uiContext: UIContext; // Add a UIContext member.
+  private dragRefOffset: number = 0
+  offsetY: number = 0
+  private ITEM_INTV: number = 0
+
+  constructor(arr: Array<T>, intv: number, uiContext: UIContext) {
+    this.arr = arr;
+    this.uiContext = uiContext;
+    this.modify = new Array<ListItemModify>()
+    this.ITEM_INTV = intv
+    arr.forEach(() => {
+      this.modify.push(new ListItemModify())
+    })
+  }
+
+  itemMove(index: number, newIndex: number): void {
+    let tmp = this.arr.splice(index, 1) // Remove the item at the current index.
+    this.arr.splice(newIndex, 0, tmp[0]) // Insert the removed item at the new index position in the array.
+    let tmp2 = this.modify.splice(index, 1)
+    this.modify.splice(newIndex, 0, tmp2[0])
+  }
+
+  setDragRef(item: T): void {
+    this.dragRefOffset = 0
+  }
+
+  onMove(item: T, offset: number) {
+    this.offsetY = offset - this.dragRefOffset // Calculate the per-frame input offset. When the item height threshold is reached, enter the if logic to update dragRefOffset.
+    let index = this.arr.indexOf(item) // Search for the input item in the array.
+    this.modify[index].offsetY = this.offsetY
+    if (this.offsetY < -this.ITEM_INTV / 2) { // Move the specified item to the top, one position at a time.
+      // Use the interpolatingSpring curve to generate a spring animation.
+      this.uiContext.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => {
+        this.offsetY += this.ITEM_INTV // Adjust the offset to implement smooth movement.
+        this.dragRefOffset -= this.ITEM_INTV // Total movement offset.
+        console.info(`item offsetY ${this.offsetY} dragRefOffset ${this.dragRefOffset}`);
+        this.itemMove (index, index - 1) // Swap the positions of the list items.
+      })
+    }
+  }
+
+  getModify(item: T): ListItemModify {
+    let index = this.arr.indexOf(item)
+    return this.modify[index]
+  }
+}
+
+@Entry
+@Component
+struct ListAutoSortExample {
+  @State private arr: Array<number> = [0, 1, 2, 3, 4, 5]
+  @State dragSortCtrl: DragSortCtrl<number> = new DragSortCtrl<number>(this.arr, 120, this.getUIContext())
+  @State firstListItemGroupCount: number = 3
+  private listScroll: ListScroller = new ListScroller()
+  private backAnimator: AnimatorResult | null = null
+
+  @Builder
+  itemEnd(item: number, index: number) {
+    Row() {
+      Button("To TOP").margin("4vp").onClick(() => {
+        console.info(`item number item ${item} index ${index}`);
+        this.listScroll.closeAllSwipeActions({
+          onFinish: () => {
+            this.dragSortCtrl.setDragRef(item)
+            let length = 120 * (this.arr.indexOf(item))
+            this.backAnimator = this.getUIContext()?.createAnimator({ // Create a spring animation.
+              duration: 1000,
+              easing: "interpolating-spring(0, 1, 150, 24)",
+              delay: 0,
+              fill: "none",
+              direction: "normal",
+              iterations: 1,
+              begin: 0,
+              end: -length
+            })
+            this.backAnimator.onFrame = (value) => { // Frame-by-frame callback to update the position.
+              this.dragSortCtrl.onMove(item, value) // Handle the list movement and replacement animation.
+            }
+            this.backAnimator.onFinish = () => {}
+            this.backAnimator.play() // Start the animation.
+          }
+        })
+      })
+    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
+  }
+
+  @Builder
+  header(title: string) {
+    Row() {
+      Text(title)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        List({ space: 20, scroller: this.listScroll }) {
+          ListItemGroup({ header: this.header('first ListItemGroup'), space: 20 }) {
+            ForEach(this.arr, (item: number, index) => {
+              if (index < this.firstListItemGroupCount) {
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .borderRadius(10)
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor(0xFFFFFF)
+                }
+                .swipeAction({
+                  end: this.itemEnd(item, index)
+                })
+                .clip(true)
+                .attributeModifier(this.dragSortCtrl.getModify(item)) // Dynamically set attributes.
+                .borderRadius(10)
+                .margin({ left: 20, right: 20 })
+              }
+            })
+          }
+          ListItemGroup({ header: this.header('second ListItemGroup'), space: 20 }) {
+            ForEach(this.arr, (item: number, index) => {
+              if (index > this.firstListItemGroupCount - 1) {
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .borderRadius(10)
+                    .textAlign(TextAlign.Center)
+                    .backgroundColor(0xFFFFFF)
+                }
+                .swipeAction({
+                  end: this.itemEnd(item, index)
+                })
+                .clip(true)
+                .attributeModifier(this.dragSortCtrl.getModify(item))
+                .borderRadius(10)
+                .margin({ left: 20, right: 20 })
+              }
+            })
+          }
+        }
+        .padding({ top: 20 })
+        .height("100%")
+      }
+    }.backgroundColor(0xDCDCDC)
+  }
+}
+```
+
+![listAnimateDemo](figures/listAnimateDemo.gif)
 <!--RP1--><!--RP1End-->

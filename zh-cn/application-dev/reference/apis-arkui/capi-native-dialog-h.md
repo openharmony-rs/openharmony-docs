@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -19,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：**  <!--RP1-->[NativeDialogSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDialogSample)<!--RP1End-->
 
 ## 汇总
 

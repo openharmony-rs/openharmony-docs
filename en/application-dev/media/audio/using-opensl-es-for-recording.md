@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through &lt;OpenSLES.h&gt; and &lt;OpenSLES_OpenHarmony.h&gt;.
 
@@ -19,7 +19,7 @@ If you have used the OpenSL ES APIs in your code, you can switch them to the OHA
 
 ## OpenSL ES on OpenHarmony
 
-Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitee.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio recording functionalities.
+Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio recording functionalities.
 
 If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
 

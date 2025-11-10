@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album.
 
@@ -1808,7 +1808,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getDataAnalysisProgress<sup>12+</sup>
 
-getDataAnalysisProgress(analysisType: AnalysisType): Promise&lt;string&gt;
+getDataAnalysisProgress(analysisType?: AnalysisType): Promise&lt;string&gt;
 
 Obtains the asset analysis progress. This API uses a promise to return the result.
 
@@ -1822,13 +1822,13 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Smart analysis type.|
+| analysisType | [AnalysisType](#analysistype11) | No   | Analysis type. The default value is null.<br>This parameter is mandatory in API versions 12 to 21 and optional from API version 22 onwards.|
 
 **Return value**
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress.|
+| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress.<br>If the parameter is empty, the overall progress is returned. If the parameter is provided, the progress corresponding to the specified analysis type is returned.|
 
 **Error codes**
 
@@ -1838,7 +1838,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. | 
 | 14000011       | Internal system error.         |
 
 **Example**
@@ -1850,7 +1850,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('getDataAnalysisProgress test start');
 
-    let result: string = await phAccessHelper.getDataAnalysisProgress(photoAccessHelper.AnalysisType.ANALYSIS_FACE);
+    let result: string = await phAccessHelper.getDataAnalysisProgress();
     console.info('getDataAnalysisProgress:' + result);
 
   } catch (err) {
@@ -2158,7 +2158,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  if (fetchResult === undefined) {
+    console.error('fetchResult is undefined');
+    return;
+  }  
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('photoAsset is undefined');
+    return;
+  }
   let uriList: Array<string> = [
     photoAsset.uri,
   ];
@@ -2449,7 +2457,7 @@ Registers a listener for the **'hiddenPhotoChange'** event to monitor hidden med
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2466,11 +2474,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2509,7 +2517,7 @@ Unregisters a listener for the **'hiddenPhotoChange'** event to stop monitoring 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2526,11 +2534,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2572,7 +2580,7 @@ Registers a listener for the **'trashedPhotoChange'** event to monitor media ass
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2632,7 +2640,7 @@ Unregisters a listener for the **'trashedPhotoChange'** event to stop monitoring
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2695,7 +2703,7 @@ Registers a listener for the **'hiddenAlbumChange'** event to monitor hidden alb
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2712,11 +2720,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2755,7 +2763,7 @@ Unregisters a listener for the **'hiddenAlbumChange'** event to stop monitoring 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2772,11 +2780,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2818,7 +2826,7 @@ Registers a listener for the **'trashedAlbumChange'** event to monitor album cha
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2835,11 +2843,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2878,7 +2886,7 @@ Unregisters a listener for the **'trashedAlbumChange'** event to stop monitoring
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2895,11 +2903,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2916,6 +2924,56 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.off('trashedAlbumChange', onCallback1);
   } catch (error) {
     console.error('onTrashedAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+### isCompatibleDuplicateSupported<sup>21+</sup>
+
+isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
+
+Checks whether a temporary JPEG copy should be created for an application. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| bundleName | string | Yes  | Bundle name of the application.|
+
+**Return value**
+
+| Type                 | Description                       |
+| --------------------- | --------------------------- |
+| Promise&lt;boolean&gt; | Check result for whether a temporary JPEG copy should be created for the application. **true** if a temporary JPEG copy should be created, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+
+**Example**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('isCompatibleDuplicateSupportedPromiseDemo')
+    let isSupport: boolean = await phAccessHelper.isCompatibleDuplicateSupported('com.example.helloworld');
+    console.info(`isCompatibleDuplicateSupported: ${isSupport}`);
+  } catch (err) {
+    console.error(`isCompatibleDuplicateSupportedPromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -2948,7 +3006,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3013,7 +3071,7 @@ Obtains the sorting order for system, user, and source albums. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3079,7 +3137,7 @@ Sets the sorting order for system, user, and source albums. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -3120,6 +3178,221 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }).catch((err: BusinessError) => {
     console.error(`setPhotoAlbumOrderPromise failed with err: ${err.code}, ${err.message}`);
   });
+}
+```
+
+### query<sup>22+</sup>
+
+query(sql: string): Promise&lt;ResultSet&gt;
+
+Queries data in the database using the specified SQL statement. This API does not support write operations or multi-level queries. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type | Mandatory| Description|
+| ------- | ----- | ----- | ---- |
+| sql | string | Yes| SQL statement to execute.|
+
+**Return value**
+
+| Type| Description|
+| ----- | ---- |
+| Promise&lt;[ResultSet](#resultset22)&gt; | Promise used to return a **ResultSet** object. If the operation fails, an exception is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Called by non-system application.                            |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The SQL statement is abnormal. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out.|
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('query');
+  try {
+    let ret: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    while (ret.goToNextRow()) {
+      let row = ret.getRow();
+      Object.entries(row).forEach((entry) => {
+        const key = entry[0];
+        const value = entry[1];
+      });
+    }
+    ret.close();
+  } catch (err) {
+    console.error(`query failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### batchGetPhotoAssetParams<sup>21+</sup>
+
+batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams
+
+Obtains the values of specified properties for an array of [PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset) objects in batches.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| assets | [PhotoAsset](js-apis-photoAccessHelper-sys.md#photoasset)[] | Yes  | Array of files for which property values are to be retrieved.|
+| members | string[] | Yes  | Array of properties for which values are to be retrieved.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| [PhotoAssetParams](arkts-apis-photoAccessHelper-t.md#photoassetparams21)| Array of record types that map file property names to their values.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: The attribute to be queried does not exist in assets.        |
+| 23800104       | The provided member must be a property name of PhotoKey.        |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(context: Context) {
+  console.info('batchGetPhotoAssetParams');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  const FETCH_COLUMNS: string[] = [
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED,
+    photoAccessHelper.PhotoKeys.PHOTO_TYPE,
+    photoAccessHelper.PhotoKeys.TITLE,
+    photoAccessHelper.PhotoKeys.DATE_MODIFIED_MS,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    photoAccessHelper.PhotoKeys.DATE_TRASHED_MS,
+    photoAccessHelper.PhotoKeys.POSITION,
+    photoAccessHelper.PhotoKeys.DATE_TAKEN,
+    'owner_album_id',
+    'thumbnail_ready',
+    'data',
+  ];
+  const keyToGet: string[] = [
+    photoAccessHelper.PhotoKeys.URI,
+    photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+    photoAccessHelper.PhotoKeys.DATE_ADDED,
+    photoAccessHelper.PhotoKeys.SIZE,
+    photoAccessHelper.PhotoKeys.DURATION,
+    photoAccessHelper.PhotoKeys.WIDTH,
+    photoAccessHelper.PhotoKeys.HEIGHT,
+    'data',
+    photoAccessHelper.PhotoKeys.THUMBNAIL_READY,];
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: FETCH_COLUMNS,
+    predicates: predicates
+  };
+  let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: albumPredicates
+  }
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.
+  getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+  let photoAssetsFetchResult: photoAccessHelper.FetchResult<PhotoAsset> = await album.getAssets(fetchOptions);
+  let photoAssets: PhotoAsset[] = await photoAssetsFetchResult.getAllObjects();
+  const batchParamOfPhotoAssets: photoAccessHelper.PhotoAssetParams =
+   phAccessHelper.batchGetPhotoAssetParams(photoAssets, keyToGet);
+  console.info(`batchGetPhotoAssetParams success, the length is ${batchParamOfPhotoAssets.length}`);
+}
+```
+
+### getRangeObjects<sup>21+</sup>
+
+getRangeObjects(index: number, offset: number): Promise\<T[]\>
+
+Obtains a specified number of file assets starting from a given index. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name      | Type                                      | Mandatory  | Description                |
+| -------- | ---------------------------------------- | ---- | ------------------ |
+| index    | number                                   | Yes   | The value must be greater than or equal to 0 and less than the total number of objects in the search results.    |
+| offset    | number                                   | Yes   | Number of files to retrieve. The value must be greater than 0.<br>The sum of **index** and **offset** must be less than the total number of objects in the search results. Otherwise, error code 23800151 is thrown.    |
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<T[]\>| Promise used to return the array.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202     | Called by non-system application.         |
+| 23800151       | The scenario parameter verification fails. Possible causes: 'index' or 'offset' validity check failed.          |
+| 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
+
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper} from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRangeObjectsDemo');
+  type PhotoAsset = photoAccessHelper.PhotoAsset;
+  let testNum: string = "getRangeObjects_test_002";
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+  };
+  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
+  let count: number = fetchResult1.getCount();
+  const half: number = Math.ceil(count / 2);
+  let promises: Promise<PhotoAsset[]>[] = [];
+  promises[0] = fetchResult1.getRangeObjects(0, half);
+  promises[1] = fetchResult2.getRangeObjects(half, count - half);
+  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
+  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
+  console.info('photoAssets length: ', photoAssets.length);
 }
 ```
 
@@ -3375,6 +3648,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('asset is undefined');
+    return;
+  }
   asset.setFavorite(true).then(() => {
     console.info('setFavorite successfully');
   }).catch((err: BusinessError) => {
@@ -4212,6 +4489,58 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### createTemporaryCompatibleDuplicate<sup>21+</sup>
+
+createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
+
+Creates a JPEG-compatible copy for a third-party application that does not support HEIF/HEIC image encoding. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+|Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.        |
+| 202   | Called by non-system application.         |
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being editted.|
+| 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('createTemporaryCompatibleDuplicatePromiseDemo')
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    await photoAsset.createTemporaryCompatibleDuplicate();
+  } catch (err) {
+    console.error(`createTemporaryCompatibleDuplicatePromiseDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### requestSource<sup>11+</sup>
 
 requestSource(callback: AsyncCallback&lt;number&gt;): void
@@ -4377,6 +4706,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     let editData = '123456';
     let uri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
     photoAsset.commitEditedAsset(editData, uri, (err) => {
@@ -4568,6 +4901,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      return;
+    }
     photoAsset.revertToOriginal();
     console.info('revertToOriginal is successful');
   } catch (err) {
@@ -4927,23 +5264,23 @@ Describes the information about a shared media asset.
 | height | number | No| No| Pixel height of the media asset.<br>**System API**: This is a system API.|
 | dataTaken | number | No| No| Timestamp when the media asset was taken and stored locally.<br>**System API**: This is a system API.|
 | orientation | number | No| No| Rotation angle of the media asset.<br>**System API**: This is a system API.|
-| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite.<br>**System API**: This is a system API.|
+| isFavorite | boolean | No| No| Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**System API**: This is a system API.|
 | title | string | No| No| Title of the media asset.<br>**System API**: This is a system API.|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | No| No| Location of the media asset.<br>**System API**: This is a system API.|
 | dataTrashed | number | No| No| Whether the media asset is moved to the trash.<br>**System API**: This is a system API.|
-| hidden | boolean | No| No| Whether the media asset is hidden.<br>**System API**: This is a system API.|
+| hidden | boolean | No| No| Whether the media asset is hidden. **true** if hidden, **false** otherwise.<br>**System API**: This is a system API.|
 | userComment | string | No| No| User comments on the media asset.<br>**System API**: This is a system API.|
 | cameraShotKey | string | No| No| Camera shot information of the media asset.<br>**System API**: This is a system API.|
 | dateYear | string | No| No| Year when the media asset was created.<br>**System API**: This is a system API.|
 | dateMonth | string | No| No| Month when the media asset was created.<br>**System API**: This is a system API.|
 | dateDay | string | No| No| Time when the media asset was created.<br>**System API**: This is a system API.|
-| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending.<br>**System API**: This is a system API.|
+| pending | boolean | No| No| Whether the media asset is in a pending state. **true** if pending, **false** otherwise.<br>**System API**: This is a system API.|
 | dateAddedMs | number | No| No| Time elapsed after the media asset was added.<br>**System API**: This is a system API.|
 | dateTrashedMs | number | No| No| Time elapsed since the media asset was trashed.<br>**System API**: This is a system API.|
 | subtype | [PhotoSubtype](#photosubtype) | No| No| Subtype of the media asset.<br>**System API**: This is a system API.|
 | movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | No| No| Effect of the moving photo.<br>**System API**: This is a system API.|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | No| No| Dynamic range type of the media asset.<br>**System API**: This is a system API.|
-| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready.<br>**System API**: This is a system API.|
+| thumbnailReady | boolean | No| No| Whether the thumbnail of the media asset is ready. **true** if ready, **false** otherwise.<br>**System API**: This is a system API.|
 | lcdSize | string | No| No| Width and height of the LCD thumbnail of the media asset.<br>**System API**: This is a system API.|
 | thmSize | string | No| No| Width and height of the thumb thumbnail of the media asset.<br>**System API**: This is a system API.|
 | thumbnailModifiedMs<sup>14+</sup> | number | No| Yes| Time elapsed since the thumbnail status of the media asset changed.<br>**System API**: This is a system API.|
@@ -4963,6 +5300,7 @@ Provides APIs to manage albums.
 | dateAdded<sup>18+</sup>    | number | Yes   | Yes  | Time when the album was added.<br>**System API**: This is a system API.|
 | dateModified<sup>18+</sup>    | number | Yes   | Yes  | Time when the album was modified.<br>**System API**: This is a system API.|
 | coverUriSource<sup>20+</sup>    | number | Yes   | Yes  | Source URI of the album cover.<br>**System API**: This is a system API.|
+| uploadStatus<sup>22+</sup>    | boolean | Yes   | No  | Whether the album can be synced to cloud storage or family storage. **true** if it can be synced, **false** otherwise.<br>**System API**: This is a system API.|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -5444,8 +5782,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult =
       await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SMART, photoAccessHelper.AlbumSubtype.PORTRAIT,
         fetchOptions);
+    if (fetchResult === undefined) {
+      console.error('getFaceId fetchResult is undefined');
+      return;
+    }
     let album = await fetchResult?.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
     let faceId = await album?.getFaceId();
+    if (faceId === undefined) {
+      console.error('faceId is undefined');
+      return;
+    }
     console.info(`getFaceId successfully, faceId: ${faceId}`);
     fetchResult.close();
   } catch (err) {
@@ -6106,6 +6456,107 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### setHasAppLink<sup>21+</sup>
+
+setHasAppLink(hasAppLink: int): void
+
+Sets the status of the app link association.
+
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| hasAppLink | int | Yes   | Whether to enable or disable the app link association.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.       |
+| 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
+
+**Example**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+enum linkType {
+  NOT_DECODED = 0,
+  LINK_NOT_EXIST = 1,
+  LINK_EXIST = 2
+}
+
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType) {
+    try {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
+        photoAccessHelper.getPhotoAccessHelper(getContext());
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setHasAppLink(hasAppLink);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+    } catch (error) {
+      console.error('set hasAppLink error: ' + error);
+      return;
+    }
+}
+```
+
+### setAppLinkInfo<sup>21+</sup>
+
+setAppLinkInfo(appLink: string): void
+
+Sets the information about the app link association.
+
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| appLink | string | Yes   | Information about the app link association.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.       |
+| 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter's length is not within the valid range. |
+
+**Example**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+
+async function example(asset: photoAccessHelper.PhotoAsset, appLinkInfo: string) {
+    try {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
+        photoAccessHelper.getPhotoAccessHelper(getContext());
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setAppLinkInfo(appLinkInfo);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+    } catch (error) {
+      console.error('set appLinkInfo error: ' + error);
+      return;
+    }
+}
+```
+
 ### deleteLocalAssetsPermanentlyWithUri<sup>19+</sup>
 
 static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt;String&gt;): Promise&lt;void&gt;
@@ -6173,6 +6624,116 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     } catch (err) {
     console.error(`deleteLocalAssetsPermanentlyWithUriDemo failed with error: ${err.code}, ${err.message}`);
 }
+}
+```
+
+### deleteLocalAssetsWithUri<sup>22+</sup>
+
+static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+Deletes local media assets to the recycle bin in batches. This API uses a promise to return the result.
+
+>**NOTE**
+>
+>- If the assets are only on the local device, they are moved directly to the recycle bin.
+>- If the assets are only in the cloud, no changes are made.
+>- If the assets are on both the local device and the cloud, after deletion, they only remain in the cloud, and the local copies are moved in the recycle bin.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Context of the ability instance.|
+| assetUris | string[] | Yes   | Array of URIs of the images or videos to be deleted. The array can contain a maximum of 500 elements.|
+
+**Return value**
+
+| Type                 | Description        |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**Example**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteLocalAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteLocalAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteLocalAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
+### deleteCloudAssetsWithUri<sup>22+</sup>
+
+static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
+
+Deletes cloud media assets to the recycle bin in batches. This API uses a promise to return the result.
+
+>**NOTE**
+>
+>- If the assets are only on the local device, no changes are made.
+>- If the assets are only in the cloud, they are moved directly to the recycle bin.
+>- If the assets are on both the local device and the cloud, after deletion, they only remain on the local device, and the cloud copies are moved in the recycle bin.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Context of the ability instance.|
+| assetUris | string[] | Yes   | Array of URIs of the images or videos to be deleted. The array can contain a maximum of 500 elements.|
+
+**Return value**
+
+| Type                 | Description        |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
+
+**Example**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteCloudAssetsWithUriDemo');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteCloudAssetsWithUri(context, [assetUri]);
+    } catch (err) {
+      console.error(`deleteCloudAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
 }
 ```
 
@@ -6618,6 +7179,58 @@ async function example(context: Context, albumUri: string) {
 }
 ```
 
+### setUploadStatus<sup>22+</sup>
+
+static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise&lt;void&gt;
+
+Sets whether the albums can be synced to cloud storage or family storage. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
+| albums  |   [Album](#album)[]          | Yes  | Array of albums whose sync status is to be set. You can set the sync status for user albums and source albums. The array can contain a maximum of 500 elements.        |
+| allowUpload  |   boolean       | Yes  | Whether the albums can be synced to cloud storage or family storage. **true** if they can be synced, **false** otherwise.        |
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt;| Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      |  Permission denied.         |
+| 202      |  Called by non-system application.  |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(context: Context, album: photoAccessHelper.Album) {
+  console.info('setUploadStatusDemo');
+  try {
+    let allowUpload = true;
+    await photoAccessHelper.MediaAlbumChangeRequest.setUploadStatus(context, [album], allowUpload);
+    console.info('setUploadStatus successfully');
+  } catch (err) {
+    console.error(`setUploadStatus failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### setCoverUri<sup>11+</sup>
 
 setCoverUri(coverUri: string): void
@@ -6661,9 +7274,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (albums === undefined) {
+      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      return;
+    }
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-
+    if (asset === undefined) {
+      console.error('asset is undefined');
+      return;
+    }
     let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     albumChangeRequest.setCoverUri(asset.uri);
     await phAccessHelper.applyChanges(albumChangeRequest);
@@ -6686,7 +7306,7 @@ Resets the cover.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -6695,7 +7315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](./arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6830,7 +7450,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-
+    if (asset === undefined) {
+      console.error('asset is undefined');
+      return;
+    }
     if (albumFetchResult.isAfterLast()) {
       console.error('lack of album to be moved into');
       return;
@@ -7006,8 +7629,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.TRASH);
+    if (albumFetchResult === undefined) {
+      console.error('albumFetchResult is undefined');
+      return;
+    }
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    if (fetchResult === undefined) {
+      console.error('fetchResult is undefined');
+      return;
+    }
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
     let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
@@ -7902,6 +8533,104 @@ async function example(context: Context) {
 }
 ```
 
+### setRelationship<sup>21+</sup> 
+
+setRelationship(relationship: string): Promise&lt;void&gt;
+
+Sets the relationships of a person in the portrait album.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE\_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| relationship | string | Yes  | Name of the relationship to set.<br>You can set it to an empty string to remove the current relationship setting.|
+
+The supported relationship names include:
+
+| Unique ID       | Description     |
+| ---------- | ------- |
+| me | Me|
+| son | Son|
+| daughter | Daughter|
+| wife | Wife|
+| husband | Husband|
+| father | Father|
+| mother | Mother|
+| colleague | Colleague|
+| friend | Friend|
+| classmate | Classmate|
+| best_friend_female | Best female friend|
+| boyfriend | Boyfriend|
+| girlfriend | Girlfriend|
+| family | Family|
+| maternal_grandfather | Maternal grandfather|
+| maternal_grandmother | Maternal grandmother|
+| paternal_grandfather | Paternal grandfather|
+| paternal_grandmother | Paternal grandmother|
+| older_brother | Older brother|
+| older_sister | Older sister|
+| younger_brother | Younger brother|
+| younger_sister | Younger sister|
+| relative | Relative|
+| other | Other|
+
+
+**Return value**
+
+| Type                       | Description          |
+| --------------------------- | -------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+
+| ID   | Error Message                             |
+| :------- | :-------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range.  | 
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function SetRelationshipExample(context: Context, relationship: string) {
+  try {
+    console.info('setRelationship');
+    let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let albumFetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: new dataSharePredicates.DataSharePredicates()
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await helper.getAlbums(photoAccessHelper.AlbumType.SMART, photoAccessHelper.AlbumSubtype.PORTRAIT, albumFetchOption);
+    if (albumFetchResult.getCount() === 0) {
+      console.error('No album');
+      return;
+    }
+    let portraitAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    let changeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest =
+      new photoAccessHelper.MediaAnalysisAlbumChangeRequest(portraitAlbum);
+    changeRequest.setRelationship(relationship);
+    await helper.applyChanges(changeRequest);
+    console.info(`setRelationship ${relationship}`);
+  } catch (err) {
+    console.error(`setRelationship error: ${err}`);
+  }
+}
+```
+
 ## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18).
@@ -7926,7 +8655,7 @@ A constructor used to create a **Highlights** album instance.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -7975,11 +8704,11 @@ Sets the specified attribute value in the highlights album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | attribute | [HighlightAlbumChangeAttribute](#highlightalbumchangeattribute21) | Yes  | Attribute to set.|
-| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value must be **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**, the value must be 8 bytes long.|
+| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value is **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**, the value is a numeric string of a maximum of 8 bytes, for example, **12345678**.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID   | Error Message                             |
 | :------- | :-------------------------------- |
@@ -8147,6 +8876,63 @@ async function example(context: Context) {
     console.info(`getOrderPosition ${positions}`);
   } catch (err) {
     console.error(`getOrderPosition error: ${err}`);
+  }
+}
+```
+
+### getRelationship<sup>21+</sup> 
+
+getRelationship(): Promise&lt;string&gt;
+
+Obtains the relationships of a person in the portrait album.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.READ\_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type               | Description                               |
+| :------------------ | :---------------------------------- |
+| Promise&lt;string&gt;| Relationships of the person in the portrait album.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID   | Error Message                             |
+| :------- | :-------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function GetRelationshipExample(context: Context) {
+  try {
+    console.info('getRelationship');
+    let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let albumFetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: new dataSharePredicates.DataSharePredicates()
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await helper.getAlbums(photoAccessHelper.AlbumType.SMART, photoAccessHelper.AlbumSubtype.PORTRAIT, albumFetchOption);
+    if (albumFetchResult.getCount() === 0) {
+      console.error('No album');
+      return;
+    }
+    let portraitAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let analysisAlbum = new photoAccessHelper.AnalysisAlbum(portraitAlbum);
+    let relationship: string | undefined = await analysisAlbum?.getRelationship();
+    console.info(`getRelationship ${relationship}`);
+  } catch (err) {
+    console.error(`getRelationship error: ${err}`);
   }
 }
 ```
@@ -8428,7 +9214,7 @@ Cancels cloud enhancement tasks.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | Array of [PhotoAssets](#photoasset) whose cloud enhancement tasks are to be canceled.|
+| photoAssets | Array<[PhotoAsset](#photoasset)> | Yes  | Array of [PhotoAsset](#photoasset) objects whose cloud enhancement tasks are to be canceled.|
 
 **Return value**
 
@@ -8582,29 +9368,29 @@ async function example(context: Context) {
       = await cloudEnhancementInstance.queryCloudEnhancementTaskState(asset);
     let taskStage = cloudEnhancementTaskState.taskStage;
     if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXCEPTION) {
-      console.log("task has exception");
+      console.info("task has exception");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_PREPARING) {
-      console.log("task is preparing");
+      console.info("task is preparing");
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_UPLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is uploading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_EXECUTING) {
       let expectedDuration = cloudEnhancementTaskState.expectedDuration;
       let message = `task is executing, expectedDuration: ${expectedDuration}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING) {
       let transferredFileSize = cloudEnhancementTaskState.transferredFileSize;
       let totalFileSize = cloudEnhancementTaskState.totalFileSize;
       let message = `task is downloading, transferredFileSize: ${transferredFileSize}, totalFileSize: ${totalFileSize}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.log(message);
+      console.info(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
-      console.log("task is completed");
+      console.info("task is completed");
     }
   } catch (err) {
     console.error(`queryCloudEnhancementTaskStateDemo failed with error: ${err.code}, ${err.message}`);
@@ -9057,7 +9843,7 @@ async function example(context: Context) {
     let taskInfo = cloudMediaAssetStatus.taskInfo;
     let errorCode = cloudMediaAssetStatus.errorCode;
     let message = `taskStatus: ${taskStatus}, taskInfo: ${taskInfo}, errorCode: ${errorCode}`;
-    console.log(message);
+    console.info(message);
   } catch (err) {
     console.error(`getCloudMediaAssetStatusDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -9088,7 +9874,7 @@ Checks whether the video of the moving photo is ready. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -9171,7 +9957,7 @@ Obtains an instance of custom user behavior recording for Gallery.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9218,7 +10004,7 @@ Adds custom user behavior recordings. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9269,7 +10055,7 @@ Obtains custom user behavior recordings based on retrieval options. This API use
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9325,7 +10111,7 @@ Updates the existing database fields based on custom user behavior recordings. T
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9377,7 +10163,7 @@ Removes custom user behavior recordings based on retrieval options. This API use
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9403,7 +10189,7 @@ async function example(context: Context) {
   crManager.removeCustomRecords(fetchOption).then(() => {
     console.info('removeCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('removeCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`removeCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -9432,7 +10218,7 @@ Increases the value of **shareCount** by 1 for the data in the database based on
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9479,7 +10265,7 @@ Increases the value of **LcdJumpCount** by 1 for the data in the database based 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | --- | --- |
@@ -9532,6 +10318,7 @@ Enumerates the [PhotoAsset](#photoasset) types.
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  Screenshot and screen recording file.<br>**System API**: This is a system API.|
+| SPATIAL_3DGS<sup>22+</sup> |  7 |  Video file using the 3D Gaussian Splatting (3DGS) rendering format.<br>**System API**: This is a system API.|
 
 ## AlbumType
 
@@ -9600,12 +10387,19 @@ Defines the key information about an image or video file.
 | DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
 | MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | Effect of the moving photo. **System API**: This is a system API.|
 | CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | Cloud enhancement identifier. **System API**: This is a system API.|
+| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | Whether a thumbnail is generated. **System API**: This is a system API.|
+| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | Whether a thumbnail is visible. **System API**: This is a system API.|
 | SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | Watermark type to set. **System API**: This is a system API.|
-| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | Specifies whether automatic cloud enhancement is supported. **System API**: This is a system API.|
+| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | Whether automatic cloud enhancement is supported. **System API**: This is a system API.|
 | OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs. **System API**: This is a system API.|
 | IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API.|
 | SUM_SIZE<sup>19+</sup>  | 'sum(size)' | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API.|
-| EXIF_ROTATE<sup>20+</sup>  | 'exif_rotate' | Rotational angle of the file. **System API**: This is a system API.|
+| EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | Rotational angle of the file. **System API**: This is a system API.|
+| HAS_APPLINK<sup>21+</sup>  | 'has_applink' | Whether to enable or disable the app link association. **System API**: This is a system API.|
+| APPLINK<sup>21+</sup>  | 'applink' | Information about the app link association. **System API**: This is a system API.|
+| HDR_MODE<sup>21+</sup>  | 'hdr_mode' | HDR mode of the file. **System API**: This is a system API.|
+| EXIST_COMPATIBLE_DUPLICATE<sup>22+</sup>  | 'exist_compatible_duplicate' | Whether a JPEG-compatible copy exists. **System API**: This is a system API.|
+| CLOUD_ID<sup>22+</sup>  | 'cloud_id' | Unique ID of the file on the cloud. **System API**: This is a system API.|
 
 ## AlbumKeys
 
@@ -9619,6 +10413,7 @@ Enumerates the album keys.
 | BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | Bundle name of the album.<br>**System API**: This is a system API.           |
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | Timestamp when the album was modified, in milliseconds.<br>**System API**: This is a system API.           |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | Source URI of the album cover.<br>**System API**: This is a system API.           |
+| UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | Synchronization status of the album.<br>**System API**: This is a system API.           |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -9796,6 +10591,8 @@ Enumerates the smart analysis types.
 | ANALYSIS\_BONE\_POSE<sup>12+</sup>        | 12 | Analysis of the position of skeletal elements (bones) in a human body. **System API**: This is a system API.   |
 | ANALYSIS\_VIDEO\_LABEL<sup>12+</sup>        | 13 | Video label analysis. **System API**: This is a system API.   |
 | ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | Highlight label. **System API**: This is a system API.   |
+| ANALYSIS\_MULTI\_CROP<sup>12+</sup>        | 15 | Label for 2D panning detection boxes. **System API**: This is a system API.   |
+| ANALYSIS\_SEARCH\_INDEX<sup>18+</sup>        | 16 | Foreground index analysis. **System API**: This is a system API.   |
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -9950,13 +10747,13 @@ Represents the cloud enhancement task information, which includes the cloud enha
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStage       |[CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  |Yes| Cloud enhancement task state.|
-|transferredFileSize          |number  |No| Size of the file transferred. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-|totalFileSize          |number  |No| Total file size. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
-|expectedDuration          |number  |No| Queuing time. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
-|statusCode          |number  |No| Status code. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_FAILED**. |
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStage  | [CloudEnhancementTaskStage](#cloudenhancementtaskstage13)  | Yes| No| Cloud enhancement task state. |
+| transferredFileSize  | number  | Yes| Yes| Size of the file transferred. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| totalFileSize  | number  | Yes| Yes| Total file size. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_UPLOADING** or **CloudEnhancementTaskStage.TASK_STAGE_DOWNLOADING**. |
+| expectedDuration  | number  | Yes| Yes| Queuing time. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_EXECUTING**. |
+| statusCode  | number  | Yes| Yes| Status code. This parameter is mandatory when **taskStage** is **CloudEnhancementTaskStage.TASK_STAGE_FAILED**. |
 
 ## VideoEnhancementType<sup>13+</sup>
 
@@ -10024,6 +10821,7 @@ Enumerates the modes used for deleting cloud media assets.
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  Deletes the local metadata and thumbnail of the original files from the cloud.|
+| HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  Deletes the local metadata and thumbnail of the original files from the home storage device.|
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
@@ -10068,11 +10866,11 @@ Describes the details of a cloud media asset download task. It is the return val
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|taskStatus       |[CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  |Yes| Status of the download task.|
-|taskInfo          |string  |Yes| Total number of and size (measured in bytes) of the assets that have been downloaded, and the total number and size (also measured in bytes) of the assets remaining to be downloaded. |
-|errorCode       |[CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  |Yes| Reason why the download task is suspended.|
+| Name   | Type                       | Read-Only| Optional| Description                                                        |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskStatus | [CloudMediaAssetTaskStatus](#cloudmediaassettaskstatus14)  | Yes| No| Status of the download task. |
+| taskInfo | string  | Yes| No| Total number of and size (measured in bytes) of the assets that have been downloaded, and the total number and size (also measured in bytes) of the assets remaining to be downloaded. |
+| errorCode | [CloudMediaTaskPauseCause](#cloudmediataskpausecause14)  | Yes| No| Reason why the download task is suspended. |
 
 ## RecommendationType<sup>11+</sup>
 
@@ -10215,3 +11013,301 @@ Describes the album sorting order.
 | orderSection | number | No  | No | Sorting section of the album.|
 | orderType    | number | No  | No | Sorting type of the album.|
 | orderStatus  | number | No  | No | Sorting status of the album.|
+
+## ValueType<sup>22+</sup>
+
+type ValueType =  number | string | boolean | Uint8Array | null
+
+Defines the type of value in a KV pair. The type varies with the parameter function.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Type| Description|
+|------|------|
+| number | Number.|
+| string | String.|
+| boolean | Boolean.|
+| Uint8Array | Uint8 array.|
+| null | Null.|
+
+## ValuesBucket<sup>22+</sup>
+
+type ValuesBucket = Record&lt;string, ValueType&gt;
+
+Defines the type of key and value in a KV pair.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Type| Description|
+| ---- | ---- |
+| Record&lt;string, [ValueType](#valuetype22)&gt; | Types of key and value in a KV pair. The key type is string, and the value type is specified by **ValueType**.|
+
+## ResultSet<sup>22+</sup>
+
+Defines APIs to access the result set obtained by querying the RDB store.
+
+Before calling any of the following APIs, you must use [query](#query22) to obtain a ResultSet instance.
+
+### Properties
+
+​**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ---- | ----- | ---- | ----- |
+| columnCount | number | No| No| Number of columns in the result set.<br>**System API**: This is a system API.|
+| rowCount | number | No| No| Number of rows in the result set.<br>**System API**: This is a system API.|
+| rowIndex | number | No| No| Index of the current row in the result set.<br>**System API**: This is a system API.|
+| isAtLastRow | boolean | No| No| Whether the cursor is in the last row of the result set. **true** if the cursor is in the last row; **false** otherwise.<br>**System API**: This is a system API.|
+
+### goToRow<sup>22+</sup>
+
+goToRow(position: number): boolean
+
+Moves the cursor to the specified row in the result set.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ---- | ----- | ----- |
+| position | number | Yes| Index of the specified row, starting from 0. The value ranges from 0 to the total number of rows in the result set minus 1.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ----- |
+| boolean | Operation result. **true** if the cursor is moved to the specified row; **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | Scene parameters validate failed, possible causes: position invalid. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToRow(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToFirstRow<sup>22+</sup>
+
+goToFirstRow(): boolean
+
+Moves the cursor to the first row of the result set.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type| Description|
+| ----- | ---- |
+| boolean | Operation result. **true** if the cursor is moved to the first row; **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToFirstRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToFirstRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### goToNextRow<sup>22+</sup>
+
+goToNextRow(): boolean
+
+Moves the cursor to the next row in the result set.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type| Description|
+| ----- | ---- |
+| boolean | Operation result. **true** if the cursor is moved to the next row; **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('goToNextRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToNextRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`goToNextRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getValue<sup>22+</sup>
+
+getValue(columnIndex: number): ValueType
+
+Obtains the value of the specified column in the current row.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ---- | ----- | ----- |
+| columnIndex | number | Yes| Index of the specified column, starting from 0. The value ranges from 0 to the total number of columns in the result set minus 1.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ----- |
+| [ValueType](#valuetype22) | Allowed data field types.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getValue');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const codes = resultSet.getValue(0);
+    resultSet.close();
+  } catch (err) {
+    console.error(`getValue failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getRow<sup>22+</sup>
+
+getRow(): ValuesBucket
+
+Obtains the values of all columns in the specified row.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type| Description|
+| ---- | ----- |
+| [ValuesBucket](#valuesbucket22) | Values of all columns in the specified row.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getRow');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.goToFirstRow();
+    const row = resultSet.getRow();
+    resultSet.close();
+  } catch (err) {
+    console.error(`getRow failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### close<sup>22+</sup>
+
+close(): void
+
+Closes this resultSet to release memory. If it is not closed, memory leaks may occur.
+
+​**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message |
+| --------- | ---------- |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('close');
+  try {
+    let resultSet: photoAccessHelper.ResultSet = await phAccessHelper.query('SELECT * from Photos');
+    resultSet.close();
+  } catch (err) {
+    console.error(`close failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```

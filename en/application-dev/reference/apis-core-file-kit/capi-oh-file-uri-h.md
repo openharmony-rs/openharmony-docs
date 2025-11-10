@@ -10,6 +10,8 @@
 
 FileUri provides APIs for URI operations, including performing URI-path conversion, obtaining directory URIs, and verifying URIs.
 
+**File to include**: <filemanagement/fileuri/oh_file_uri.h>
+
 **Library**: libohfileuri.so
 
 **System capability**: SystemCapability.FileManagement.AppFileService
@@ -46,7 +48,6 @@ Converts the input path to the URI of the application.<br> In this process, Chin
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -59,7 +60,7 @@ Converts the input path to the URI of the application.<br> In this process, Chin
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_PARAMS 401 - The input parameter is invalid. Possible causes:<br>                  1. The **path** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         [ERR_UNKNOWN](capi-error-code-h.md#filemanagement_errcode) 13900042 - An unknown error occurs. This error is returned if the length of the converted URI is 0.<br>         [ERR_ENOMEM](capi-error-code-h.md#filemanagement_errcode) 13900011 - The memory allocation or copy fails.<br>         [ERR_OK](capi-error-code-h.md#filemanagement_errcode) 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>                  1. The **path** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         ERR_UNKNOWN 13900042 - Unknown error. This error is returned if the length of the converted URI is 0.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_OK 0 - The API is called successfully.|
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -75,7 +76,6 @@ Converts the URI to the corresponding sandbox path.<br> 1. In this process, the 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -88,7 +88,7 @@ Converts the URI to the corresponding sandbox path.<br> 1. In this process, the 
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         {@link ERR_PARAMS} 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         [ERR_UNKNOWN](capi-error-code-h.md#filemanagement_errcode) 13900042 - An unknown error occurs. This error is returned if the length of the converted path is 0.<br>         [ERR_ENOMEM](capi-error-code-h.md#filemanagement_errcode) 13900011 - The memory allocation or copy fails.<br>         [ERR_OK](capi-error-code-h.md#filemanagement_errcode) 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         ERR_UNKNOWN 13900042 - Unknown error. This error is returned if the length of the converted path is 0.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_OK 0 - The API is called successfully.|
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -104,7 +104,6 @@ Obtains the URI of the path. <br>If the URI points to a file, the URI of the pat
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -117,7 +116,7 @@ Obtains the URI of the path. <br>If the URI points to a file, the URI of the pat
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_PARAMS 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         [ERR_ENOMEM](capi-error-code-h.md#filemanagement_errcode) 13900011 - The memory allocation or copy fails.<br>         [ERR_ENOENT](capi-error-code-h.md#filemanagement_errcode) 13900002 - The file or directory does not exist.<br>         [ERR_UNKNOWN](capi-error-code-h.md#filemanagement_errcode) 13900042 - An unknown error occurs. This error is returned if the length of the obtained directory URI is 0.<br>         [ERR_OK](capi-error-code-h.md#filemanagement_errcode) 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_ENOENT 13900002 - The file or directory does not exist.<br>         ERR_UNKNOWN 13900042 - Unknown error. This error is returned if the length of the obtained directory URI is 0.<br>         ERR_OK 0 - The API is called successfully.|
 
 ### OH_FileUri_IsValidUri()
 
@@ -132,7 +131,6 @@ Checks whether the format of the input URI is correct. The system only checks wh
 **System capability**: SystemCapability.FileManagement.AppFileService
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -161,7 +159,6 @@ Obtains the file name based on the URI. The ASCII code in the file name will be 
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -174,4 +171,4 @@ Obtains the file name based on the URI. The ASCII code in the file name will be 
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_PARAMS 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>                  4. The URI is in incorrect format.<br>         [ERR_ENOMEM](capi-error-code-h.md#filemanagement_errcode) 13900011 - The memory allocation or copy fails.<br>         [ERR_OK](capi-error-code-h.md#filemanagement_errcode) 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>                  4. The URI is in incorrect format.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_OK 0 - The API is called successfully.|

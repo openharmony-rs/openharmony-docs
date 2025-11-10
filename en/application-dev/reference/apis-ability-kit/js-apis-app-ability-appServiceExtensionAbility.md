@@ -85,7 +85,7 @@ Called when an AppServiceExtensionAbility instance is created. Applications can 
 
   const TAG: string = '[AppServiceExtAbility]';
 
-  class AppServiceExtAbility extends AppServiceExtensionAbility {
+  export default class AppServiceExtAbility extends AppServiceExtensionAbility {
     onCreate(want: Want) {
       hilog.info(0x0000, TAG, `onCreate, want: ${want.abilityName}`);
     }
@@ -108,7 +108,7 @@ Called when an AppServiceExtensionAbility instance is destroyed. Applications ca
 
   const TAG: string = '[AppServiceExtAbility]';
 
-  class AppServiceExtAbility extends AppServiceExtensionAbility {
+  export default class AppServiceExtAbility extends AppServiceExtensionAbility {
     onDestroy() {
       hilog.info(0x0000, TAG, `onDestroy`);
     }
@@ -119,10 +119,7 @@ Called when an AppServiceExtensionAbility instance is destroyed. Applications ca
 
 onRequest(want: Want, startId: number): void
 
-Called when an AppServiceExtensionAbility instance is started by calling [startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20).
-
-- If the instance has already been created, this callback is invoked directly.
-- If the instance has not been created before, the system first creates the instance and triggers the [onCreate()](#oncreate) callback, followed by this callback.
+Called each time an AppServiceExtensionAbility instance is started by calling [startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -141,7 +138,7 @@ Called when an AppServiceExtensionAbility instance is started by calling [startA
 
   const TAG: string = '[AppServiceExtAbility]';
 
-  class AppServiceExtAbility extends AppServiceExtensionAbility {
+  export default class AppServiceExtAbility extends AppServiceExtensionAbility {
     onRequest(want: Want, startId: number) {
       hilog.info(0x0000, TAG, `onRequest, want: ${want.abilityName}, startId: ${startId}`);
     }
@@ -154,8 +151,6 @@ onConnect(want: Want): rpc.RemoteObject
 
 Called when an AppServiceExtensionAbility instance is connected by calling [connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20).
 
-- If the instance has already been created, this callback is invoked directly.
-- If the instance has not been created before, the system first creates the instance and triggers the [onCreate()](#oncreate) callback, followed by this callback.
 
 Applications need to return a RemoteObject in this callback for communication between the client and the server. When an AppServiceExtensionAbility instance is in a connected state, if the caller initiates a new connection, the system returns the cached RemoteObject instead of calling **onConnect()** again.
 
@@ -191,7 +186,7 @@ Applications need to return a RemoteObject in this callback for communication be
     }
   }
 
-  class AppServiceExtAbility extends AppServiceExtensionAbility {
+  export default class AppServiceExtAbility extends AppServiceExtensionAbility {
     onConnect(want: Want) {
       hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}`);
       return new StubTest('test');
@@ -221,7 +216,7 @@ Called when all connections to an AppServiceExtensionAbility instance are interr
 
   const TAG: string = '[AppServiceExtAbility]';
 
-  class AppServiceExtAbility extends AppServiceExtensionAbility {
+  export default class AppServiceExtAbility extends AppServiceExtensionAbility {
     onDisconnect(want: Want) {
       hilog.info(0x0000, TAG, `onDisconnect, want: ${want.abilityName}`);
     }

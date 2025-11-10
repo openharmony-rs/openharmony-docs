@@ -1,4 +1,11 @@
-# SystemCapability List
+# TV
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
@@ -63,7 +70,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.BundleManager.BundleFramework.Resource
 - SystemCapability.BundleManager.Zlib
 - SystemCapability.Applications.CalendarData
-- SystemCapability.Notification.CommonEvent
 - SystemCapability.Customization.ConfigPolicy
 - SystemCapability.Customization.CustomConfig
 - SystemCapability.Security.CryptoFramework
@@ -88,12 +94,13 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 - SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 - SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+- SystemCapability.Notification.CommonEvent
 - SystemCapability.Notification.Notification
-- SystemCapability.Notification.NotificationSettings
 - SystemCapability.Notification.ReminderAgent
+- SystemCapability.Notification.NotificationSettings
+- SystemCapability.Notification.Emitter
 - SystemCapability.Multimedia.Drm.Core
 - SystemCapability.Utils.Lang
-- SystemCapability.Notification.Emitter
 - SystemCapability.Resourceschedule.Ffrt.Core
 - SystemCapability.Graphic.Graphic2D.ColorManager.Core
 - SystemCapability.Graphic.Graphic2D.EGL

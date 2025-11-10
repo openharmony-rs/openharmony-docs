@@ -221,13 +221,13 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
       Scroll() {
         Column({ space: 10 }) {
           // Display the content received by the HTML5 page.
-          Text ("The message received by the HTML5 page from the application")
+          Text("The message received by the HTML5 page from the application")
           TextArea({text: this.h5Log})
             .id("log_area")
             .width("100%")
             .height(100)
             .border({ width: 1 })
-          Text ("Button on the application")
+          Text("Button on the application")
           Row() {
             Button('createNoControllerTagPort')
               .id("create_no_tag_btn")
@@ -353,7 +353,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
           .border({ width: 1 })
 
           Column({ space: 10 }) {
-            Text ("The Send button on the HTML5 page")
+            Text("The Send button on the HTML5 page")
             Row({ space: 10 }) {
               Button('H5String')
                 .id("h5_send_string_btn")

@@ -1,5 +1,12 @@
 # buffer_common.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 提供NativeBuffer模块的公共类型定义。<br>从API version 12开始，部分类型定义从native_buffer.h移动至此头文件统一呈现，对于此类类型，API version 12之前即支持使用，各版本均可正常使用。
@@ -103,6 +110,8 @@ OH_NativeBuffer的图像标准。
 | OH_VIDEO_HDR_HLG | 视频HLG。 |
 | OH_VIDEO_HDR_HDR10 | 视频HDR10。 |
 | OH_VIDEO_HDR_VIVID | 视频HDR VIVID。 |
+| OH_IMAGE_HDR_VIVID_DUAL | 图片HDR VIVID DUAL。<br/>**起始版本：** 22 |
+| OH_IMAGE_HDR_VIVID_SINGLE | 图片HDR VIVID SINGLE。<br/>**起始版本：** 22 |
 | OH_VIDEO_NONE = -1 |  无元数据。<br/>**起始版本：** 13 |
 
 ### OH_NativeBuffer_MetadataKey

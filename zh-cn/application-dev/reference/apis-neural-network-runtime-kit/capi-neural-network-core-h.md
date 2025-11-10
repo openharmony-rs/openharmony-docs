@@ -679,7 +679,7 @@ OH_NN_ReturnCode OH_NNTensorDesc_GetDataType(const NN_TensorDesc *tensorDesc, OH
 | 参数项 | 描述 |
 | -- | -- |
 | [const NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) *tensorDesc | 指向[NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md)实例的指针。 |
-| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) *dataType | 返回的张量数据类型。 |
+| [OH_NN_DataType](capi-neural-network-runtime-type-h.md#oh_nn_datatype) *dataType | 指向返回的张量数据类型的指针，作为出参使用。 |
 
 **返回：**
 

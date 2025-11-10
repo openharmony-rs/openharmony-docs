@@ -317,4 +317,4 @@ Test Node-API napi_create_arraybuffer:[object ArrayBuffer]
 ## 注意事项
 
 - **生命周期和内存管理**：在使用Node-API处理ArrayBuffer时，需注意，void*类型的buffer数据段生命周期由引擎管理，[不允许用户自己delete，否则会double free](napi-guidelines.md#防止重复释放获取的buffer)。
-- **需注意申请buff大小**：当byte_length很大时，分配失败并不会抛异常，参数data指向的内存为nullptr。建议对*data == nullptr做严格判断，并对超大byte_length做限额检验，避免OOM。
+- **需注意申请buffer大小**：当byte_length很大时，分配失败并不会抛异常，参数data指向的内存为nullptr。建议对*data == nullptr做严格判断，并对超大byte_length做限额检验，避免OOM。

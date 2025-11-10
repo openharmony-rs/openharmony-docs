@@ -300,6 +300,54 @@ Log out of the system and log in to the system using a new account.
 
 <!--Del-->
 
+## 12300017 Foreground System Account Not Found
+
+**Error Message**
+
+The foreground OS account is not found.
+
+**Possible Causes**
+
+ 
+1. The foreground system account does not exist on the specified logical display (either it is not activated or it is not switched to the foreground).
+2. The specified **displayId** is invalid or the corresponding logical display does not exist.
+3. The specified **localId** is invalid or the corresponding system account does not exist.
+
+**Solution**
+
+Ensure that the input **displayId**/**localId** is correct and exists. Try again if the specified foreground account exists on the logical display.
+
+## 12300018 Logical Display Not Found
+
+**Error Message**
+
+Display not found.
+
+**Possible Causes**
+
+ 
+1. The specified **displayId** is invalid or the corresponding logical display does not exist.
+2. The target logical display is not connected or has been disconnected.
+
+**Solution**
+
+Ensure that the **displayId** is correct and the logical screen device is connected and available. Try again with a valid logical display ID.
+
+## 12300019 Cross-Display Activation Not Supported
+
+**Error Message**
+
+Cross-display activation not supported.
+
+**Possible Causes**
+
+ 
+The current system strategy or configuration does not allow cross-display activation.
+
+**Solution**
+
+Activate the account on the same logical display, or log out of the account on the specified logical display and then activate the account.
+
 ## 12300021 System Account Already Bound
 
 **Error Message**
@@ -308,11 +356,11 @@ The OS account is already bound.
 
 **Description**
 
-This error code is reported if the entered system account has been bound to a domain account.
+This error code is reported if the input system account has been bound to a domain account.
 
 **Possible Causes**
 
-The entered system account has been bound to a domain account.
+The input system account has been bound to a domain account.
 
 **Solution**
 
@@ -326,11 +374,11 @@ The domain account is already bound.
 
 **Description**
 
-This error code is reported if the entered domain account has been bound to a system account.
+This error code is reported if the input domain account has been bound to a system account.
 
 **Possible Causes**
 
-The entered domain account has been bound to a system account.
+The input domain account has been bound to a system account.
 
 **Solution**
 

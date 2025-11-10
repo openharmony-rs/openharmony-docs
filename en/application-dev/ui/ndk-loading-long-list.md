@@ -1,5 +1,11 @@
 # Implementing a List Layout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The ArkUI development framework provides list components through NDK APIs, enabling efficient display of structured, scrollable content. List components allow you to control the scroll position, group display content, and use **NodeAdapter** for lazy loading to improve list creation performance.
 
@@ -9,23 +15,23 @@ For details about how to create a list, see [Integrating with ArkTS Pages](../ui
 
 ## Listening for Scroll Events
 
-Implement list scroll event monitoring as instructed in the component event monitoring section.
+For details,see [Listening for Component Events](ndk-listen-to-component-events.md).
 
 ## Implementing Lazy Loading
 
 ### NodeAdapter Overview
 
-The NDK provides the [NodeAdapter](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadapterhandle) object as an alternative to the LazyForEach functionality in ArkTS for on-demand generation of child components. **NodeAdapter** works with **List**, **ListItemGroup**, **Grid**, **WaterFlow**, and **Swiper** components.
+The NDK provides the [NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md) object as an alternative to the **LazyForEach** functionality in ArkTS for on-demand generation of child components. **NodeAdapter** works with **List**, **ListItemGroup**, **Grid**, **WaterFlow**, and **Swiper** components.
 
 - Nodes with **NodeAdapter** set do not support direct child addition APIs like **addChild**. Child components are managed entirely by **NodeAdapter**. If a parent component already has child nodes, setting **NodeAdapter** will fail and return an error code.
 
-- **NodeAdapter** notifies you of on-demand generation of components through relevant events. Similar to the component event mechanism, you need to register an [event listener](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_nodeadapter_registereventreceiver) when using **NodeAdapter** and handle logic in the listener events. Relevant events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadaptereventtype). **NodeAdapter** does not actively release off-screen component objects; you must release or cache and reuse component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodeadaptereventtype) event. The following image illustrates the event triggering mechanism in a typical list scrolling scenario.
+- **NodeAdapter** notifies you of on-demand generation of components through relevant events. Similar to the component event mechanism, you need to register an [event listener](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver) when using **NodeAdapter** and handle logic in the listener events. Relevant events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype). **NodeAdapter** does not actively release off-screen component objects; you must release or cache and reuse component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype) event. The following image illustrates the event triggering mechanism in a typical list scrolling scenario.
   ![en-us_image_0000001949769409](figures/en-us_image_0000001949769409.png)
 
 
 ### Implementing a Lazy Loading Adapter
 
-Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create a **NodeAdapter** object in the class constructor and set an event listener for the **NodeAdapter** object. In the class destructor, destroy the **NodeAdapter** object.
+Use the **ArkUIListItemAdapter** class to manage the lazy loading adapter. Create a **NodeAdapter** object in the class constructor and set an event listener for the **NodeAdapter** object. In the class destructor, destroy the **NodeAdapter** object.
 
    ```c++
    // ArkUIListItemAdapter
@@ -41,7 +47,8 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
    
    #include "ArkUIListItemNode.h"
    #include "ArkUITextNode.h"
-   #include "nativeModule.h"
+   #include "NativeModule.h"
+   #include <hilog/log.h>
    
    namespace NativeModule {
    
@@ -139,7 +146,7 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
            }
        }
    
-       // Assign IDs to items that need to be displayed, used for element diffing in the ReloadAllItems scenario.
+       // Assign IDs to items that need to be displayed, used for element diffing in ReloadAllItems scenarios.
        void OnNewItemIdCreated(ArkUI_NodeAdapterEvent *event) {
            auto index = OH_ArkUI_NodeAdapterEvent_GetItemIndex(event);
            static std::hash<std::string> hashId = std::hash<std::string>();
@@ -170,7 +177,15 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
                textNode->SetBackgroundColor(0xFFfffacd);
                textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
                listItem->AddChild(textNode);
-               listItem->RegisterOnClick([index]() { OH_LOG_INFO(LOG_APP, "on %{public}d list item click", index); });
+               auto swipeNode = std::make_shared<ArkUITextNode>();
+               swipeNode->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
+                   auto it = std::find(data_.begin(), data_.end(), data);
+                   if (it != data_.end()) {
+                       auto index = std::distance(data_.begin(), it);
+                       RemoveItem(index);
+                   }
+               });
+               listItem->SetSwiperAction(swipeNode);
                handle = listItem->GetHandle();
                // Maintain a reference to the text list item.
                items_.emplace(handle, listItem);
@@ -215,7 +230,6 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
    
    #include "ArkUIListItemAdapter.h"
    #include "ArkUINode.h"
-   #include <hilog/log.h>
    
    namespace NativeModule {
    class ArkUIListNode : public ArkUINode {
@@ -224,7 +238,9 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST)) {}
    
        ~ArkUIListNode() override {
-           nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX);
+           if (nativeModule_) {
+               nativeModule_->unregisterNodeEvent(handle_, NODE_LIST_ON_SCROLL_INDEX);
+           }
            if (adapter_) {
                // Unload the UI components under the adapter during destruction.
                nativeModule_->resetAttribute(handle_, NODE_LIST_NODE_ADAPTER);
@@ -315,10 +331,7 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
    
    #include "NativeEntry.h"
    
-   #include "ArkUIMixedRefresh.h"
    #include "LazyTextListExample.h"
-   #include "MixedRefreshExample.h"
-   #include "TextListExample.h"
    
    #include <arkui/native_node_napi.h>
    #include <arkui/native_type.h>
@@ -344,7 +357,6 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
    
        // Keep the native-side object in the management class to maintain its lifecycle.
        NativeEntry::GetInstance()->SetRootNode(node);
-       g_env = env;
        return nullptr;
    }
    
@@ -431,10 +443,14 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
         std::shared_ptr<ArkUINode> GetSwipeContent() const { 
             return swipeContent_; 
         }
+        std::list<std::shared_ptr<ArkUIBaseNode>> &GetChildren() {
+            return children_;
+        }
     private: 
         ArkUI_ListItemSwipeActionOption* swipeAction_ = nullptr; 
         ArkUI_ListItemSwipeActionItem* swipeItem_ = nullptr;
         std::shared_ptr<ArkUINode> swipeContent_ = nullptr; 
+        std::list<std::shared_ptr<ArkUIBaseNode>> children_;
     }; 
     }// namespace NativeModule 
     #endif// MYAPPLICATION_ARKUILISTITEMNODE_H
@@ -612,7 +628,7 @@ Use the **ArkUListItemAdapter** class to manage the lazy loading adapter. Create
             header->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
             auto listItemGroup = std::make_shared<ArkUIListItemGroupNode>(); 
             listItemGroup->SetHeader(header); 
-            auto adapter = std::make_shared<ArkUIListItemAdapter>(4); 
+            auto adapter = std::make_shared<ArkUIListItemAdapter>(); 
             listItemGroup->SetLazyAdapter(adapter); 
             list->AddChild(listItemGroup); 
         }

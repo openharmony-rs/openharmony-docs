@@ -270,6 +270,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | descriptions         | HashMap\<String, String>    | 标识HAP的说明信息。                    | NA             |
 | compressedSize       | long                        | 标识HAP包压缩后的大小，单位字节。         | NA              |
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
+| isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
 
 ### AbilityInfo结构体信息
 

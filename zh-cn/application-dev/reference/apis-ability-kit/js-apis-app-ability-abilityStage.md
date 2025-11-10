@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -56,7 +56,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
-    console.log('MyAbilityStage.onCreate is called');
+    console.info('MyAbilityStage.onCreate is called');
   }
 }
 ```
@@ -98,7 +98,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onAcceptWant(want: Want) {
-    console.log('MyAbilityStage.onAcceptWant called');
+    console.info('MyAbilityStage.onAcceptWant called');
     return 'com.example.test';
   }
 }
@@ -108,9 +108,9 @@ export default class MyAbilityStage extends AbilityStage {
 
 onNewProcessRequest(want: Want): string
 
-如果UIAbility或UIExtensionAbility配置了在独立进程中运行（即[module.json5配置文件](../../quick-start/module-configuration-file.md)中UIAbility或UIExtensionAbility的isolationProcess字段取值为true），当该UIAbility或UIExtensionAbility被拉起时，会触发该回调，并返回一个string作为进程唯一标识。同步接口，不支持异步回调。
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。同步接口，不支持异步回调。
 
-如果该应用已有相同标识的进程存在，则待启动的UIAbility或UIExtensionAbility运行在此进程中，否则创建新的进程。
+如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
 
 如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到onAcceptWant回调。
 
@@ -120,7 +120,7 @@ onNewProcessRequest(want: Want): string
 
 > **说明：**
 >
-> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。
+> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。<!--DelEnd-->
 > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync20)实现时，本回调函数将不执行。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -131,7 +131,7 @@ onNewProcessRequest(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility或UIExtensionAbility名称、Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -146,7 +146,7 @@ import { AbilityStage, Want } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onNewProcessRequest(want: Want) {
-    console.log('MyAbilityStage.onNewProcessRequest called');
+    console.info('MyAbilityStage.onNewProcessRequest called');
     return 'com.example.test';
   }
 }
@@ -158,6 +158,10 @@ export default class MyAbilityStage extends AbilityStage {
 onConfigurationUpdate(newConfig: Configuration): void
 
 当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-configuration.md)类中。同步接口，不支持异步回调。
+
+> **说明：**
+>
+> 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -176,7 +180,7 @@ import { AbilityStage, Configuration } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
+    console.info(`MyAbilityStage.onConfigurationUpdate, language: ${config.language}`);
   }
 }
 ```
@@ -206,7 +210,7 @@ import { AbilityStage, AbilityConstant } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`MyAbilityStage.onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```
@@ -228,7 +232,7 @@ import { AbilityStage } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onDestroy() {
-    console.log('MyAbilityStage.onDestroy is called');
+    console.info('MyAbilityStage.onDestroy is called');
   }
 }
 ```
@@ -360,9 +364,9 @@ class MyAbilityStage extends AbilityStage {
 
 onNewProcessRequestAsync(want: Want): Promise\<string\>
 
-如果UIAbility或UIExtensionAbility配置了在独立进程中运行（即[module.json5配置文件](../../quick-start/module-configuration-file.md)中UIAbility或UIExtensionAbility的isolationProcess字段取值为true），当该UIAbility或UIExtensionAbility被拉起时，会触发该回调，并返回一个string作为进程唯一标识。使用Promise异步回调。
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。使用Promise异步回调。
 
-如果该应用已有相同标识的进程存在，则待启动的UIAbility或UIExtensionAbility运行在此进程中，否则创建新的进程。
+如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
 
 <!--Del-->
 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
@@ -378,13 +382,13 @@ onNewProcessRequestAsync(want: Want): Promise\<string\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility或UIExtensionAbility名称、Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<string\> | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility或UIExtensionAbility在此进程中运行，否则创建新的进程。 |
+| Promise\<string\> | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->在此进程中运行，否则创建新的进程。 |
 
 **示例：**
 

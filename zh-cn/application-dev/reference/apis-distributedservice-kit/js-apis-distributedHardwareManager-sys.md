@@ -1,5 +1,10 @@
 # @ohos.distributedHardware.hardwareManager (分布式硬件管理)(系统接口)
-
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。
 
 > **说明：**
@@ -11,7 +16,7 @@
 ## 导入模块
 
 ```js
-import hardwareManager from '@ohos.distributedHardware.hardwareManager';
+import { hardwareManager } from '@kit.DistributedServiceKit';
 ```
 
 ## HardwareDescriptor
@@ -87,7 +92,7 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@ohos.base';
   
   try {
@@ -96,11 +101,11 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
       srcNetworkId: '1111'
     };
     hardwareManager.pauseDistributedHardware(description).then(() => {
-      console.log('pause distributed hardware successfully');
+      console.info('pause distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('pause distributed hardware failed, cause:' + error);
     })
-    console.log('pause distributed hardware successfully');
+    console.info('pause distributed hardware successfully');
   } catch (error) {
     console.error('pause distributed hardware failed:' + error);
   }
@@ -141,7 +146,7 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@ohos.base';
 
   try {
@@ -150,11 +155,11 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
       srcNetworkId: '1111'
     };
     hardwareManager.resumeDistributedHardware(description).then(() => {
-      console.log('resume distributed hardware successfully');
+      console.info('resume distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('resume distributed hardware failed, cause:' + error);
     })
-    console.log('resume distributed hardware successfully');
+    console.info('resume distributed hardware successfully');
   } catch (error) {
     console.error('resume distributed hardware failed:' + error);
   }
@@ -197,7 +202,7 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import hardwareManager from '@ohos.distributedHardware.hardwareManager';
+  import { hardwareManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@ohos.base';
   
   try {
@@ -206,11 +211,11 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
       srcNetworkId: '1111'
     };
     hardwareManager.stopDistributedHardware(description).then(() => {
-      console.log('stop distributed hardware successfully');
+      console.info('stop distributed hardware successfully');
     }).catch((error: BusinessError) => {
       console.error('stop distributed hardware failed, cause:' + error);
     })
-    console.log('stop distributed hardware successfully');
+    console.info('stop distributed hardware successfully');
   } catch (error) {
     console.error('stop distributed hardware failed:' + error);
   }

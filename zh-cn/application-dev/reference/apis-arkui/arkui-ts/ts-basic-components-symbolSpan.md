@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 作为Text组件的子组件，用于显示图标小符号的组件。
 

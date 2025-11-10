@@ -104,7 +104,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被设置值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double positionY | positionY值，即输入框顶点与物理屏幕上侧距离的绝对值。 |
+| double positionY | positionY值，即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
 
 **返回：**
 
@@ -156,7 +156,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被获取值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double *positionY | 即输入框顶点与物理屏幕上侧距离的绝对值。 |
+| double *positionY | 即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
 
 **返回：**
 

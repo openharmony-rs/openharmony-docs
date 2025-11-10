@@ -8,7 +8,7 @@
 
 **变更原因**
 
-系统不支持应用的快捷方式配置文件中[shortcutId字段](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/module-configuration-file.md#shortcuts%E6%A0%87%E7%AD%BE)通过索引方式（以`$`字符起始）配置。
+系统不支持应用的快捷方式配置文件中[shortcutId字段](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/module-configuration-file.md#shortcuts%E6%A0%87%E7%AD%BE)通过索引方式（以`$`字符起始）配置。
 
 **变更影响**
 

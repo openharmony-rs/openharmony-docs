@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the [AVRecorder](media-kit-intro.md#avrecorder) to develop the video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple video recording scenarios and can be used to generate local video files directly.
 
@@ -182,7 +182,7 @@ import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function videoRecording(context: common.Context): Promise<void> {
-  // Create an AVRecorder instance.
+  // Create an AVRecorder instance named avRecorder.
   let avRecorder: media.AVRecorder | undefined = undefined;
   try {
     avRecorder = await media.createAVRecorder();

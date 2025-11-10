@@ -1,4 +1,10 @@
 # Transition Animation Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Compared with [property animations](arkts-attribute-animation-overview.md), which work for components that are always present, transition animations are applied to animate the appearing or disappearing components. With transition animations, you are freed from the burdensome tasks of disappearing component management, which are unavoidable if you use property animations instead. With property animations, in addition to deleting the component in the animation completion callback, you would also need to add logic to check the component status in the callback, in case that the component that has been deleted appears again before the animation ends.
@@ -9,7 +15,7 @@ Transition animations are classified into basic transition animations and advanc
 
 - [Enter/Exit transition](arkts-enter-exit-transition.md): used on appearing and disappearing components. It is a basic type of transition.
 
-- [Navigation transition](arkts-navigation-navigation.md): used during page navigation, where one page disappears and another page appears. For example, it can be used for switching from a level-1 menu page to a level-2 details page.
+- [Navigation transition](arkts-navigation-navigation.md#navigation-examples): used during page navigation, where one page disappears and another page appears. For example, it can be used for switching from a level-1 menu page to a level-2 details page.
 
 - [Modal transition](arkts-modal-transition.md): achieved by a modal – a view that appears on top of the current view while the current view remains. The dialog box is a typical type of modal.
 

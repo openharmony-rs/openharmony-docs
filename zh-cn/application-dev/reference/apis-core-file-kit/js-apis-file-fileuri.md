@@ -138,7 +138,7 @@ getFullDirectoryUri(): string
     let path = pathDir + '/test.txt';
     let fileUriObject = new fileUri.FileUri(path);
     let directoryUri = fileUriObject.getFullDirectoryUri();
-    console.log(`success to getFullDirectoryUri: ${JSON.stringify(directoryUri)}`);
+    console.info(`success to getFullDirectoryUri: ${JSON.stringify(directoryUri)}`);
   } catch (error) {
     console.error(`failed to getFullDirectoryUri because: ${JSON.stringify(error)}`);
   }
@@ -177,7 +177,7 @@ isRemoteUri(): boolean
     let fileUriObject = new fileUri.FileUri(uri);
     let ret = fileUriObject.isRemoteUri();
     if (ret) {
-        console.log(`It is a remote uri.`);
+        console.info(`It is a remote uri.`);
     }
   }
   ```

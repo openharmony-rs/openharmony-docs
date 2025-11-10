@@ -1,5 +1,12 @@
 # @ohos.commonEventManager (Common Event) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
 
 > **NOTE**
@@ -46,6 +53,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |
 | 1500003  | The common event sending frequency too high. |
+| 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -100,6 +108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |
 | 1500003  | The common event sending frequency too high. |
+| 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -243,7 +252,7 @@ Enables or disables static subscription for the current application. This API us
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled. |
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
 | callback  | AsyncCallback\<void> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -287,7 +296,7 @@ Enables or disables static subscription for the current application. This API us
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | Yes  | Whether static subscription is enabled.<br>**true**: enabled.<br>**false**: disabled. |
+| enable  | boolean | Yes  | Whether static subscription is enabled.<br> **true**: enabled.<br>**false**: disabled.|
 
 **Return value**
 

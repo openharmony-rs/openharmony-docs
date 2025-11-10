@@ -1,5 +1,12 @@
 # Scrollable Component Error Codes
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong; @zcdqs-->
+<!--Designer: @yylong; @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).

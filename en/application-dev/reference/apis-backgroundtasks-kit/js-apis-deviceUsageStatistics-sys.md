@@ -1,4 +1,10 @@
 # @ohos.bundleState (Device Usage Statistics) (System API)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -41,7 +47,7 @@ Queries the application usage duration statistics based on the specified start t
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
 | begin    | number                                   | Yes   | Start time, in milliseconds.                                  |
 | end      | number                                   | Yes   | End time, in milliseconds.                                  |
-| callback | AsyncCallback&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponse)&gt; | Yes   | Callback used to return the application usage duration statistics.|
+| callback | AsyncCallback&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponsedeprecated)&gt; | Yes   | Callback used to return the application usage duration statistics.|
 
 **Example**
 
@@ -53,8 +59,8 @@ bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStateInfos callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfos callback success.');
-    console.log('BUNDLE_ACTIVE queryBundleStateInfos callback result ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfos callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStateInfos callback result ' + JSON.stringify(res));
   }
 });
 ```
@@ -83,7 +89,7 @@ Queries the application usage duration statistics based on the specified start t
 
 | Type                                      | Description                                    |
 | ---------------------------------------- | -------------------------------------- |
-| Promise&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponse)&gt; | Promise used to return the application usage duration statistics.|
+| Promise&lt;[BundleActiveInfoResponse](js-apis-deviceUsageStatistics-sys.md#bundleactiveinforesponsedeprecated)&gt; | Promise used to return the result. return the application usage duration statistics.|
 
 **Example**
 
@@ -91,8 +97,8 @@ Queries the application usage duration statistics based on the specified start t
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
-  console.log('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
-  console.log('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStateInfos promise result ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStateInfos promise failed, because: ' + err.code);
 });
@@ -115,7 +121,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 | Name       | Type                                      | Mandatory  | Description                                      |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltype)            | Yes   | Type of information to be queried.                                   |
+| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltypedeprecated)            | Yes   | Type of information to be queried.                                   |
 | begin      | number                                   | Yes   | Start time, in milliseconds.                                   |
 | end        | number                                   | Yes   | End time, in milliseconds.                                   |
 | callback   | AsyncCallback&lt;Array&lt;[BundleStateInfo](js-apis-deviceUsageStatistics-sys.md#bundlestateinfodeprecated)&gt;&gt; | Yes   | Callback used to return the application usage duration statistics.|
@@ -129,10 +135,10 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -155,7 +161,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 | Name       | Type                           | Mandatory  | Description   |
 | ---------- | ----------------------------- | ---- | ----- |
-| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltype) | Yes   | Type of information to be queried.|
+| byInterval | [IntervalType](js-apis-deviceUsageStatistics-sys.md#intervaltypedeprecated) | Yes   | Type of information to be queried.|
 | begin      | number                        | Yes   | Start time, in milliseconds.|
 | end        | number                        | Yes   | End time, in milliseconds.|
 
@@ -163,7 +169,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 | Type                                      | Description                                      |
 | ---------------------------------------- | ---------------------------------------- |
-| Promise&lt;Array&lt;[BundleStateInfo](js-apis-deviceUsageStatistics-sys.md#bundlestateinfodeprecated)&gt;&gt; | Promise used to return the application usage duration statistics.|
+| Promise&lt;Array&lt;[BundleStateInfo](js-apis-deviceUsageStatistics-sys.md#bundlestateinfodeprecated)&gt;&gt; | Promise used to return the result. return the application usage duration statistics.|
 
 **Example**
 
@@ -171,10 +177,10 @@ Queries the application usage duration statistics in the specified time frame at
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
-  console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise failed, because: ' + err.code);
@@ -211,10 +217,10 @@ bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res:
   if (err) {
     console.error('BUNDLE_ACTIVE queryBundleActiveStates callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates callback success.');
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryBundleActiveStates callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryBundleActiveStates callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryBundleActiveStates callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryBundleActiveStates callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -244,7 +250,7 @@ Queries events of all applications based on the specified start time and end tim
 
 | Type                                      | Description                                    |
 | ---------------------------------------- | -------------------------------------- |
-| Promise&lt;Array&lt;[BundleActiveState](js-apis-deviceUsageStatistics-sys.md#bundleactivestatedeprecated)&gt;&gt; | Promise used to return the events obtained.|
+| Promise&lt;Array&lt;[BundleActiveState](js-apis-deviceUsageStatistics-sys.md#bundleactivestatedeprecated)&gt;&gt; | Promise used to return the result. return the events obtained.|
 
 **Example**
 
@@ -252,10 +258,10 @@ Queries events of all applications based on the specified start time and end tim
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
-  console.log('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
+  console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryBundleActiveStates promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryBundleActiveStates promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryBundleActiveStates promise failed, because: ' + err.code);
@@ -285,7 +291,7 @@ Queries the priority group of this application. This API uses a promise to retur
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
-  console.log('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE QueryPackageGroup promise failed. because: ' + err.code);
 });
@@ -317,7 +323,7 @@ bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
     console.error('BUNDLE_ACTIVE QueryPackageGroup callback failed. because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE QueryPackageGroup callback succeeded. result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE QueryPackageGroup callback succeeded. result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -350,10 +356,10 @@ bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessErro
   if (err) {
     console.error('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
     for (let i = 0; i < res.length; i++) {
-      console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback number : ' + (i + 1));
-      console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback result ' + JSON.stringify(res[i]));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback number : ' + (i + 1));
+      console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback result ' + JSON.stringify(res[i]));
     }
   }
 });
@@ -389,10 +395,10 @@ Queries events of this application based on the specified start time and end tim
 import { BusinessError } from '@ohos.base';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
-  console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
+  console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
   for (let i = 0; i < res.length; i++) {
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise number : ' + (i + 1));
-    console.log('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise result ' + JSON.stringify(res[i]));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise number : ' + (i + 1));
+    console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise result ' + JSON.stringify(res[i]));
   }
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise failed, because: ' + err.code);

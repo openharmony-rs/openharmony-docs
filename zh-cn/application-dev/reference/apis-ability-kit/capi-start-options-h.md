@@ -1,5 +1,12 @@
 # start_options.h
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo; @yangxuguang-huawei-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 提供应用启动参数数据结构[AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)以及设置和获取相关函数。

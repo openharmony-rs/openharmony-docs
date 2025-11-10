@@ -1,6 +1,12 @@
 # AbilityFirstFrameStateObserver (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-**AbilityFirstFrameStateObserver** defines the observer used to listen for the complete of the first frame rendering of a given ability. It is used as an input parameter of [on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12) to listen for the completion event.
+The module defines the observer used to listen for the first frame rendering completion event of a given ability. It is used as an input parameter of [on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12) to listen for the completion event.
 
 > **NOTE**
 >

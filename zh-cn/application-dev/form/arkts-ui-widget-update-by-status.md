@@ -11,34 +11,36 @@
 
 - 卡片配置文件：配置每30分钟自动刷新。
 
-  ```json
-  {
-    "forms": [
-      {
-        "name": "WidgetUpdateByStatus",
-        "description": "$string:UpdateByStatusFormAbility_desc",
-        "src": "./ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets",
-        "uiSyntax": "arkts",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": true
-        },
-        "isDefault": true,
-        "updateEnabled": true,
-        "scheduledUpdateTime": "10:30",
-        "updateDuration": 1,
-        "defaultDimension": "2*2",
-        "supportDimensions": [
-          "2*2"
-        ]
-      }
-    ]
-  }
-  ```
+    ```json
+    {
+      "forms": [
+        {
+          "name": "WidgetUpdateByStatus",
+          "description": "$string:UpdateByStatusFormAbility_desc",
+          "src": "./ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets",
+          "uiSyntax": "arkts",
+          "window": {
+            "designWidth": 720,
+            "autoDesignWidth": true
+          },
+          "isDefault": true,
+          "updateEnabled": true,
+          "scheduledUpdateTime": "10:30",
+          "updateDuration": 1,
+          "defaultDimension": "2*2",
+          "supportDimensions": [
+            "2*2"
+          ]
+        }
+      ]
+    }
+    ```
 
 - 卡片页面：卡片具备不同的状态选择，在不同的状态下需要刷新不同的内容，因此在状态发生变化时通过postCardAction通知EntryFormAbility。
 
-  ```ts
+    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) -->
+
+  ``` TypeScript
   let storageUpdateByStatus = new LocalStorage();
   
   @Entry(storageUpdateByStatus)
@@ -140,7 +142,9 @@
 
 - EntryFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
 
-  ```ts
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
+
+  ``` TypeScript
   import { Want } from '@kit.AbilityKit';
   import { preferences } from '@kit.ArkData';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -177,7 +181,7 @@
         await storeDB.delete('A' + formId);
         await storeDB.delete('B' + formId);
       }).catch((err: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
       });
     }
   
@@ -204,7 +208,7 @@
             'textB': 'BBB'
           };
           let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-        await formProvider.updateForm(formId, formInfo);
+          await formProvider.updateForm(formId, formInfo);
         }
         hilog.info(DOMAIN_NUMBER, TAG, `Update form success stateA:${stateA} stateB:${stateB}.`);
       }).catch((err: BusinessError) => {

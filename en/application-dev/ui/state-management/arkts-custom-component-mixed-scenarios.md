@@ -1,23 +1,35 @@
 # Mixing Use of Custom Components
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-For the \@Component decorated custom components (referred to as the custom components of V1), corresponding state variable decorators (referred to as the decorators of V1), such as \@State, \@Prop, and \@Link, are provided. However, state management V1 (V1 for short) has many restrictions on the observation of nested classes. For example, you need to use \@ObjectLink to continuously disassemble nested classes so that in-depth data can be observed. Therefore, a new set of state management V2 (V2 for short) is provided in API version 12. You can declare \@ComponentV2 decorated custom components (referred to as custom components of V2) and use them with new decorators (referred to as the decorators of V2), such as \@Local and \@Param. The proposal of V2 not only compensates the deficiency of V1 in nested class observation, but also enhances some decorator functions. For example, compared with \@Watch of V1, \@Monitor of V2 can sense the changed data and obtain the data before the change.
+V1 provides a series of state variable decorators (V1 decorators for short), such as @State, @Prop, and @Link, which can be used in custom components decorated with @Component (V1 custom components for short).
+
+However, V1 has many restrictions on the observation of nested classes. For example, you need to use \@ObjectLink to continuously decompose nested classes so that deep-level data can be observed.
+
+Therefore, V2 is provided in API version 12. You can declare custom components decorated with \@ComponentV2 (V2 custom components for short) and use a new set of decorators (V2 decorators for short). For example, \@Local and \@Param.
+
+V2 not only solves the problem of V1's observation of nested classes, but also enhances the functions of some decorators. For example, \@Monitor in V2 can not only detect changed data, but also obtain data before the change.
 
 In terms of design, the code of V1 and V2 are expected to be completely isolated because V2 can do better than V1 in certain scenarios. However, from the actual perspective, the code developed in V1 have a solid foundation and it is not practical to migrate the entire code to V2 at a time. Therefore, it is allowed to use some capabilities of V2 in the code of V1 and capabilities of V1 is not completely prohibited in V2. For example, a custom component of V1 uses a custom component of V2, or V1 uses a decorator of V2. In this way, a problem of mixed use of V1 and V2 occurs.
 
-This topic describes the mixed use of V1 and V2, aiming at guiding you to migrate code of V1 to V2.
+This guide describes the scenarios where V1 and V2 are mixed, helping you migrate V1 code to V2.
 
 > **NOTE**
 >
 > State management V2 is supported since API version 12.
-> The rules for mixed use described in this topic apply only to API version 17 and earlier. Since API version 18, state management provides new APIs [enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility18) and [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed18) to help you solve the problem of mixed use during the migration from V1 to V2. For details, see [Mixing Use of State Management V1 and V2](./arkts-v1-v2-mixusage.md).
+> The rules for mixed use described in this topic apply only to API version 18 and earlier. Since API version 19, to help you migrate your application from V1 to V2 more easily, the state management module provides new APIs [enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19) and [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19) to solve the mixed use problems during the migration. For details, see [Mixing Use of State Management V1 and V2](./arkts-v1-v2-mixusage.md).
 
 ## Overview
 
-The rules for mixing the use of V1 and V2 are as follows:
+The rules for mixed use of state management V1 and V2 are as follows:
 
 * The decorators of V2 cannot be used in the custom components of V1. Otherwise, an error is reported during compilation.
 
-* When no variable is passed between components, custom components of V1 can use custom components of V2 as well as import \@ComponentV2 decorated custom components of a third party.
+* If variables are not transferred between components, V1 custom components can use V2 custom components, including custom components decorated by the third-party \@ComponentV2 decorator.
 
 * When variables are passed between components, such as passing variables of V1 to the custom components of V2, constraints are as follows:
   - Variables that are not decorated by decorators in V1 (common variables) can be received only by using \@Param in V2.
@@ -49,7 +61,7 @@ The rules for mixing the use of V1 and V2 are as follows:
 
 ### Data Types Supported by State Management Decorators
 
- 
+The following data types are supported by status management:
 
 | Type    | Keyword                                            |
 | ------------ | -------------------------------------------------- |
@@ -71,7 +83,7 @@ The rules for mixing the use of V1 and V2 are as follows:
 @Component
 struct Child {
   // @Param cannot be used in @Component. Otherwise, an error is reported during compilation.
-  // @Once and @Require are the extended decorators of @Param and must be used together with @Param.
+  // @Once and @Require are extended decorators of @Param and must be used together with @Param.
   @Param message: string = "";	                 
   @Event changeMessage: (val: string) => void;  // @Event cannot be used in @Component. Otherwise, an error is reported during compilation.
 
@@ -219,13 +231,13 @@ struct Index {
 }
 ```
 
-All decorators cannot decorate the same variable except extended decorators \@Watch, \@Once, and \@Require that can be used with other decorators.
+Except \@Watch, \@Once, and \@Require, other capability extension decorators cannot be used together with other decorators.
 
 ## Introduction to Mixed Use  
 
 ### Mixing Use of Decorators of V1 and V2
 
-**1. Use the \@ObservedV2 decorated class object in a custom component of V1.**
+1. Use the class object decorated by \@ObservedV2 in the V1 custom component.
 
 ```typescript
 @ObservedV2
@@ -367,7 +379,7 @@ struct Index {
 
 You are not advised to use \@Observed decorated classes in V2 because \@Observed and \@Track decorated class properties can only be distinguished but not be observed. In-depth data can be observed only when \@Observed and \@ObjectLink are used to split nested data. However, \@ObjectLink cannot be used in custom components of V2.
 
-When migrating code from V1 to V2, you are not advised to use \@Observed decorated classes in \@ComponentV2 because they are not observable. If you have to use the classes, comply with the following rules:
+When migrating V1 code to V2, you are not advised to use the class decorated by @Observed in @ComponentV2 (no observation capability in V2). If you must use it, comply with the following rules:
 
 * \@Observed can only decorate class, and \@Trace cannot be used in \@Observed.
 * \@Observed and \@Track decorated classes are not observable and you can use the decorators only to prevent the entire class from being refreshed when a class property is changed.
@@ -418,7 +430,7 @@ struct Index {
 }
 ```
 
-Using the custom components of V2 in V1 performs no impact when no variable is passed.
+When V2 custom components are used in V1, if no variable passing is involved, there will be no impact. If variable passing is involved, follow the instructions in [Mixing Use of State Management V1 and V2](arkts-v1-v2-mixusage.md).
 
 **2. Use the custom components of V1 in V2.**
 
@@ -462,7 +474,7 @@ struct Index {
 }
 ```
 
-Using the custom components of V1 in V2 performs no impact when no variable is passed.
+When V1 custom components are used in V2, if no variable passing is involved, there will be no impact. If variable passing is involved, follow the instructions in [Mixing Use of State Management V1 and V2](arkts-v1-v2-mixusage.md).
 
 ### Mixing Use of Custom Components of V1 and V2 When Variables Are Passed
 
@@ -483,7 +495,7 @@ class Info {
 struct Child {  
   // V2 strictly manages data input. When receiving data from the parent component, the @Param decorator must be used to receive data.
   @Param @Once message: string = "hello";	              // Changes are observable and can be synchronized to the parent component through @Event. @Once can be used to change @Param decorated variables.
-  @Param @Once undefineVal: string | undefined = undefined;  // @Once can be used to change @Param decorated variables.
+  @Param @Once undefinedVal: string | undefined = undefined;  // @Once can be used to change @Param decorated variables.
   @Param info: Info = new Info();		                 // The class property changes are not observable.
   @Require @Param set: Set<number>;
   
@@ -498,11 +510,11 @@ struct Child {
 
       Divider()
         .color(Color.Blue)
-      Text(`undefineVal:${this.undefineVal}`) // Display undefineVal.
+      Text (`undefinedVal:${this.undefinedVal}`) // Displays undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefineVal = "change to define";
+          this.undefinedVal = "change to define";
         })
       Divider()
         .color(Color.Blue)
@@ -527,7 +539,7 @@ struct Child {
 @Component
 struct Index {
   message: string = 'Hello World';       // Simple type.
-  undefineVal: undefined = undefined;    // Simple type: undefined.
+  undefinedVal: undefined = undefined;    // Simple type, undefined
   info: Info = new Info();               // Class type.
   set: Set<number> = new Set([10, 20]);  // Built-in type.
 
@@ -543,7 +555,7 @@ struct Index {
         .color(Color.Blue)
       Child({
         message: this.message,
-        undefineVal: this.undefineVal,
+        undefinedVal: this.undefinedVal,
         info: this.info,
         set: this.set
       })
@@ -576,7 +588,7 @@ class Info {
 struct Child {  
   // V2 strictly manages data input. When receiving data from the parent component, the @Param decorator must be used to receive data.
   @Param @Once message: string = "hello";
-  @Param @Once undefineVal: string | undefined = undefined;  // @Once can be used to change @Param decorated variables.
+  @Param @Once undefinedVal: string | undefined = undefined;  // @Once can be used to change @Param decorated variables.
   @Param info: Info = new Info();
   @Require @Param set: Set<number>;
   build() {
@@ -589,11 +601,11 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text ('undefineVal:${this.undefineVal}') // Display undefineVal.
+      Text (`undefinedVal:${this.undefinedVal}`) // Displays undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefineVal = "change to define";
+          this.undefinedVal = "change to define";
         })
       Divider()
         .color(Color.Blue)
@@ -618,7 +630,7 @@ struct Child {
 @Component
 struct Index {
   @State message: string = 'Hello World';       // Simple type data can be passed.
-  @State undefineVal: undefined = undefined;    // Simple type data, undefined, can be passed.
+  @State undefinedVal: undefined = undefined;    // Simple type data, undefined, can be passed.
   @State info: Info = new Info();               // Class type cannot be passed. Otherwise, an error is reported during compilation. Remove @State to eliminate the error.
   @State set: Set<number> = new Set([10, 20]);  // Built-in type cannot be passed. Otherwise, an error is reported during compilation. Remove @State to eliminate the error.
 
@@ -634,7 +646,7 @@ struct Index {
         .color(Color.Blue)
       Child({
         message: this.message,
-        undefineVal: this.undefineVal,
+        undefinedVal: this.undefinedVal,
         info: this.info,
         set: this.set
       })
@@ -645,7 +657,7 @@ struct Index {
 }
 ```
 
-When the state variable of V1 is assigned to the custom component of V2, rules are as follows:
+When the state variable of V1 is transferred to the custom component of V2, the following rules are followed:
 
 * Only simple variables are supported. For other types of data, an error is reported during compilation.
 
@@ -669,7 +681,7 @@ struct Child {
   // State variable received by V1 from V2. Only @State, @Prop, and @Provide decorators can be used.
   @State  message: string = "hello";	         // Changes are observable.
   @State info: Info = new Info();		      	// Top-level class property changes are observable.
-  @Prop undefineVal: undefined | string = undefined;   
+  @Prop undefinedVal: undefined | string = undefined;
   @Provide setMap: Set<number> = new Set();
   build() {
     Column() {
@@ -681,11 +693,11 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefineVal:${this.undefineVal}`) 	// Display undefineVal.
+      Text(`undefinedVal:${this.undefinedVal}`) // Display undefinedVal.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefineVal = "change to define";
+          this.undefinedVal = "change to define";
         })
       Divider()
         .color(Color.Blue)
@@ -710,7 +722,7 @@ struct Child {
 @ComponentV2
 struct Index {
   message: string = 'Hello World';       // Simple type.
-  undefineVal: undefined = undefined;    // Simple type: undefined.
+  undefinedVal: undefined = undefined; // Simple data type, undefined
   info: Info = new Info();               // Class type.
   set: Set<number> = new Set([10, 20]);  // Built-in type.
 
@@ -726,7 +738,7 @@ struct Index {
         .color(Color.Blue)
       Child({
         message: this.message,
-        undefineVal: this.undefineVal,
+        undefinedVal: this.undefinedVal,
         info: this.info,
         setMap: this.set
       })
@@ -739,7 +751,7 @@ struct Index {
 
 When a common variable of V2 is passed to a custom component of V1:
 
-* V1 can receive data without using the decorator. The received variables are also common variables in the custom component of V1.
+* V1 does not need to use the decorator to receive data. The received variable is a common variable in the V1 custom component.
 
 * If V1 uses a decorator to receive data, data can be received only through \@State, \@Prop, and \@Provide.
 
@@ -761,7 +773,7 @@ struct Child {
   // State variable received by V1 from V2. Only @State, @Prop, and @Provide can be used.
   @State  message: string = "hello";	        // Changes are observable.
   @State info: Info = new Info();		        // Top-level class property changes are observable.
-  @Prop undefineVal: undefined | string = undefined;
+  @Prop undefinedVal: undefined | string = undefined;
   @Provide set: Set<number> = new Set();
   build() {
     Column() {
@@ -773,11 +785,11 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefineVal:${this.undefineVal}`) 	// Display undefineVal.
+      Text (`undefinedVal:${this.undefinedVal}`) // Displays undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.undefineVal = "change to define";
+          this.undefinedVal = "change to define";
         })
       Divider()
         .color(Color.Blue)
@@ -803,7 +815,7 @@ struct Child {
 @ComponentV2
 struct Index {
   @Local message: string = 'Hello World';       	// Simple type data can be passed.
-  @Provider() undefineVal: undefined = undefined;   // Simple type data, undefined, can be passed.
+  @Provider() undefinedVal: undefined = undefined;   // Simple type data, undefined, can be passed.
   @Consumer() info: Info = new Info();          	// Class type can be passed.
   @Param set: Set<number> = new Set([10, 20]);  	// Built-in type cannot be passed. Otherwise, an error is reported during compilation. Remove @Param to eliminate the error.
 
@@ -820,7 +832,7 @@ struct Index {
         .color(Color.Blue)
       Child({
         message: this.message,
-        undefineVal: this.undefineVal,
+        undefinedVal: this.undefinedVal,
         info: this.info,
         set: this.set
       })
@@ -834,13 +846,18 @@ struct Index {
 When the state variables of V2 are passed to a custom component of V1, constraints are as follows:
 
 * V1 can receive data without using the decorator. The received variables are also common variables in the custom component of V1.
-
 * If V1 uses a decorator to receive data, data can be received only through \@State, \@Prop, and \@Provide.
-* If a decorator is used to receive data in V1, data of the built-in type cannot be received.
+* When V1 uses the decorator to receive data, built-in data is not supported.
 
 ### Summary
 
-According to the detailed analysis of the mixed use of V1 and V2, when the code of V1 is used in V2, that is, components or classes of V1 are passed to V2, most capabilities of V1 are disabled in V2. When the code of V2 is used in V1, that is, components or classes of V2 are passed to V1, some functions are available, for example, \@ObservedV2 and \@Trace. This is also the most helpful way to observe the V1 nested class data. Therefore, during code development, you are not advised to use V1 and V2 together for mixed development. However, you can gradually migrate the code of V1 to V2 to steadily replace the function code of V1. In addition, you are not advised to use the code of V1 in V2.
+After sorting out the hybrid use of V1 and V2, you can summarize the following information:
+
+1. When V2 code is mixed with V1 code (that is, V1 component or class data is transferred to V2), most V1 capabilities are disabled in V2.
+
+2. When V1 code is mixed with V2 code (that is, V2 components or class data is transferred to V1), some functions are opened. For example, \@ObservedV2 and \@Trace are the biggest help for observing V1 nested class data.
+
+Therefore, during code development, you are not advised to use V1 and V2 together for mixed development. However, you can gradually migrate the code of V1 to V2 to steadily replace the function code of V1. In addition, you are not advised to use the code of V1 in V2.
 
 ## Supplementary Scenarios
 
@@ -947,10 +964,11 @@ struct Index {
 }
 ```
 
-The sample code uses a three-layer nesting to show:
+The preceding example is a three-layer nesting scenario, indicating that:
 
 * The observation capability of the decorator of V1 is to function as a proxy for data. Therefore, when data is nested, the decorator of V1 can only disassemble the child component to observe lower-level data through \@Observed and \@ObjectLink.
-* \@Track is used to prevent the **info** in the **MessageInfo** class from being updated when the **messageId** is changed. You can remove \@Track to observe the change. When the **messageId** is changed, the **info** is also changed. However, this change cannot be observed by \@ObjectLink.
+
+* \@Track prevents the info in the MessageInfo class from being changed by the messageId and then refreshed. If you remove \@Track, you can observe that the info is refreshed when the messageId changes. However, this is not the observation capability of \@ObjectLink.
 
 ### Using @ObsevedV2 and @Trace to Observe Nested Classes
 
@@ -1040,8 +1058,7 @@ struct Index {
 }
 ```
 
-The sample code shows:
+When \@ObservedV2+\@Trace is used, you can find that:
 
-* \@ObservedV2 and \@Trace nest the observation capability to the class properties. Therefore, when a class property is marked by @Trace, the change can be observed regardless of the number of nested levels.
-* When \@ObservdV2 and \@Observed are used together, the decorator used by the outermost class determines whether the class object can be decorated by the decorator of V1. For example, the class decorated by \@ObservedV2 in the lower level does not affect the outermost class decorated by the decorator of V1.
-
+* \@ObservedV2+\@Trace implements the observation capability on class attributes. Therefore, when a class attribute is marked with @Trace, changes can be observed regardless of the number of nested layers.
+* When \@ObservedV2 and \@Observed are nested, whether the class object can be decorated by the V1 decorator depends on the decorator used by the outermost class. For example, in the example, the \@ObservedV2 decoration of the nested class does not affect the decoration of the outermost class by the V1 decorator.

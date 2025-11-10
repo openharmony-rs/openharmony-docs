@@ -1,4 +1,10 @@
 # @ohos.enterprise.systemManager (System Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **systemManager** module provides system management capabilities.
 
@@ -26,6 +32,8 @@ Sets the NTP server.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
@@ -47,12 +55,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let server: string = "ntpserver.com";
 try {
   systemManager.setNTPServer(wantTemp, server);
@@ -71,6 +82,8 @@ Obtains the NTP server information.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -98,12 +111,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@ohos.base';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   systemManager.getNTPServer(wantTemp);
@@ -122,6 +137,8 @@ Sets the update policy. In intranet updates, call [systemManager.notifyUpdatePac
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -144,11 +161,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 // Default update policy.
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
@@ -227,11 +246,13 @@ try {
 
 getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy
 
-Queries the update policy.
+Checks the update policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -259,11 +280,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
@@ -282,6 +305,8 @@ Notifies the system of the update packages. In intranet updates, call this API t
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -311,29 +336,35 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let notify: systemManager.NotifyDescription = {
+  // Replace with actual values.
   "installTips": "installTips",
   "installTipsDetail": "installTips detail"
-}
+};
 let description: systemManager.PackageDescription = {
-  "notify": notify,
-}
+  // Replace with actual values.
+  "notify": notify
+};
 let updatePackages: Array<systemManager.Package> = [{
+  // Replace with actual values.
   "type": systemManager.PackageType.FIRMWARE,
   "path": "path",
-  "fd": 60,
-}]
+  "fd": 60
+}];
 let updatePackageInfo: systemManager.UpdatePackageInfo = {
+  // Replace with actual values.
   "version" : "1.0",
   "packages" : updatePackages,
-  "description" : description,
+  "description" : description
 };
 systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
   console.info('Succeeded in notifying update packages.');
@@ -351,6 +382,8 @@ Obtains the system update result.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -379,12 +412,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
     console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
@@ -401,6 +436,8 @@ Obtains the authentication data for system update verification. This API uses a 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -427,12 +464,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
     console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
@@ -440,6 +479,412 @@ systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
     console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
   });
 ```
+
+## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>
+
+addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
+
+Adds a list of NearLink protocols that are not allowed to be used for a specified user. NearLink Kit provides a low-power, high-speed short-range communication service that supports connection and data interaction between NearLink devices. <!--RP3--><!--RP3End-->This API does not take effect for system services and system applications such as the keyboard and stylus.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                                   | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | Yes  | NearLink protocol list.|
+| accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+// Replace with actual values.
+let protocols: systemManager.NearLinkProtocol[] = [systemManager.NearLinkProtocol.SSAP,
+  systemManager.NearLinkProtocol.DATA_TRANSFER];
+
+// Replace with actual values.
+let accountId: number = 100;
+
+try {
+  systemManager.addDisallowedNearLinkProtocols(wantTemp, protocols, accountId);
+  console.info('Succeeded in adding the disabled Starlink protocol list for the specified user.');
+} catch (err) {
+  console.error(`Failed to add the disabled Starlink protocol list for the specified user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeDisallowedNearLinkProtocols<sup>20+</sup>
+
+removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
+
+Removes the list of disallowed NearLink protocols for a specified user.
+
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                                   | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | Yes  | NearLink protocol list.|
+| accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+// Replace with actual values.
+let protocols: systemManager.NearLinkProtocol[] = [systemManager.NearLinkProtocol.SSAP,
+  systemManager.NearLinkProtocol.DATA_TRANSFER];
+
+// Replace with actual values.
+let accountId: number = 100;
+try {
+  systemManager.removeDisallowedNearLinkProtocols(wantTemp, protocols, accountId);
+  console.info('Succeeded in removing the disabled Starlink protocol list for the specified user.');
+} catch (err) {
+  console.error(`Failed to remove the disabled Starlink protocol list for the specified user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getDisallowedNearLinkProtocols<sup>20+</sup>
+
+getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array&lt;NearLinkProtocol&gt;
+
+Obtains the list of disallowed NearLink protocols for a specified user.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                   | Mandatory| Description                                                        |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;          | List of disallowed NearLink protocols for a specified user.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+// Replace with actual values.
+let accountId: number = 100;
+
+try {
+  let result: systemManager.NearLinkProtocol[] = systemManager.getDisallowedNearLinkProtocols(wantTemp, accountId);
+  console.info(`Succeeded in querying the disabled Starlink protocol list for the specified user: ${result}`);
+} catch (err) {
+  console.error(`Failed to query the disabled Starlink protocol list for the specified user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.setInstallLocalEnterpriseAppEnabled<sup>20+</sup>
+
+setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
+
+Sets whether local installation of enterprise applications is supported. When it is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping the application installation package on PCs/2-in-1 devices with local installation capability.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory | Description|
+| ----- | ----------------------------------- | ---- | ------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility.|
+| isEnable | boolean | Yes| Whether local installation of enterprise applications is supported. The value **true** indicates that the local installation of enterprise applications is supported, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                     |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+// Replace with actual values.
+let isEnable: boolean = true;
+try {
+  systemManager.setInstallLocalEnterpriseAppEnabled(wantTemp, isEnable);
+  console.info('Succeeded in setting InstallLocalEnterpriseAppEnabled.');
+} catch (err) {
+  console.error(`Failed to set installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getInstallLocalEnterpriseAppEnabled<sup>20+</sup>
+
+getInstallLocalEnterpriseAppEnabled(admin: Want): boolean
+
+Checks whether local installation of enterprise applications is supported.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| boolean | Whether local installation of enterprise applications is supported. The value **true** indicates that local installation is supported, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+try {
+  let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabled(wantTemp);
+  console.info('Succeeded in getting installLocalEnterpriseAppEnabled.');
+} catch (err) {
+  console.error(`Failed to get installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+  
+
+## systemManager.setAutoUnlockAfterReboot<sup>20+</sup>
+
+setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
+
+Sets automatic unlocking upon device reboot. This setting takes effect only on devices without a screen lock password.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory  | Description     |
+| ----- | ----------------------------------- | ---- | ------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| isAllowed | boolean | Yes| The value **true** indicates that the device is automatically unlocked after reboot, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                     |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+let isAllowed: boolean = true;
+try {
+  systemManager.setAutoUnlockAfterReboot(wantTemp, isAllowed);
+  console.info('Succeeded in setting setAutoUnlockAfterReboot.');
+} catch (err) {
+  console.error(`Failed to set auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getAutoUnlockAfterReboot<sup>20+</sup>
+
+getAutoUnlockAfterReboot(admin: Want): boolean
+
+Checks whether the device is automatically unlocked upon reboot.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| boolean | The value **true** indicates the device is automatically unlocked after reboot, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+try {
+  systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info('Succeeded in getting auto unlock after reboot.');
+} catch (err) {
+  console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## SystemUpdateInfo
 
 Represents information about the system version to update.
@@ -466,7 +911,7 @@ Represents an OTA update policy.
 | delayUpdateTime | number   | No  | Yes| Period for which the update is postponed, in hours.|
 | installStartTime        | number   | No  | Yes| Start time (timestamp) of the installation window.|
 | installEndTime | number   | No  | Yes| End time (timestamp) of the installation window.|
-| disableSystemOtaUpdate<sup>20+</sup> | boolean   | No  | Yes| Whether to disable public network upgrade. <br>The value **true** means to disable public network upgrade; the value **false** (default) means the opposite. If public network upgrade is disabled, you can perform intranet upgrade.|
+| disableSystemOtaUpdate<sup>20+</sup> | boolean   | No  | Yes| Whether to disable public network upgrade. The value **true** indicates that public network upgrade is disabled, and the value **false** indicates the opposite. If this field is used as an input parameter of [systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy), the default value can be retained. The current configuration can be obtained via the [systemManager.getOtaUpdatePolicy](#systemmanagergetotaupdatepolicy) API. After public network upgrade is disabled, you can perform intranet upgrade.<!--RP4--><!--RP4End--> |
 
 ## PolicyType
 
@@ -574,3 +1019,16 @@ Enumerates the system update statuses.
 | UPDATING           | -2 | The system update is being performed.|
 | UPDATE_FAILURE     | -1 | The update failed.|
 | UPDATE_SUCCESS     | 0 | The update is successful.|
+
+## NearLinkProtocol<sup>20+</sup>
+
+Enumerates NearLink protocols.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name              | Value | Description   |
+| -----------------  | ---- | ----- |
+| SSAP   | 0 |  SparkLink Service Access Protocol (SSAP).<!--RP1--><!--RP1End--> |
+| DATA_TRANSFER      | 1 | Data transfer protocol.<!--RP2--><!--RP2End--> |

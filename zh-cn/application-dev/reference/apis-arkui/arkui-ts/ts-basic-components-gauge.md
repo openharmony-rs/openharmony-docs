@@ -1,10 +1,10 @@
 # Gauge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 数据量规图表组件，用于将数据展示为环形图表。
 
@@ -272,11 +272,11 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-information-display-common.md
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型    | 必填 | 说明              |
-| ------ | ------ | ----| ---------------- |
-| value | number | 是 | 当前数据值。 |
-| min | number | 是 | 当前数据段最小值。 |
-| max | number | 是 | 当前数据段最大值。 |
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| value | number | 否 | 否 | 当前数据值。 |
+| min | number | 否 | 否 | 当前数据段最小值。 |
+| max | number | 否 | 否 | 当前数据段最大值。 |
 
 
 ## 示例

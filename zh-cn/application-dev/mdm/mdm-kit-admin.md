@@ -32,47 +32,58 @@
 
 其次，打开新建的EnterpriseAdminAbility文件，导入EnterpriseAdminExtensionAbility模块，使其继承EnterpriseAdminExtensionAbility并加上需要的应用通知回调方法，如onAdminEnabled()、onAdminDisabled()等回调方法。当设备管理应用激活或者解除激活时，可以在对应回调方法中接受系统发送通知。
 
-```ts
+<!-- @[enterprise_admin_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+
+``` TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+// ···
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  // 设备管理应用激活回调方法，应用可在此回调函数中进行初始化策略设置
+// ···
+
+  // 设备管理器应用激活回调方法，应用可在此回调函数中进行初始化策略设置。
   onAdminEnabled() {
-    console.info("onAdminEnabled");
+    console.info('onAdminEnabled');
+    // ···
   }
 
-  // 设备管理应用解除激活回调方法，应用可在此回调函数中通知企业管理员设备已脱管
+  // 设备管理器应用去激活回调方法，应用可在此回调函数中通知企业管理员设备已脱管。
   onAdminDisabled() {
-    console.info("onAdminDisabled");
-  }
-  
-  // 应用安装回调方法，应用可在此回调函数中进行事件上报，通知企业管理员
-  onBundleAdded(bundleName: string) {
-    console.info("EnterpriseAdminAbility onBundleAdded bundleName:" + bundleName);
+    console.info('onAdminDisabled');
+    // ···
   }
 
-  // 应用卸载回调方法，应用可在此回调函数中进行事件上报，通知企业管理员
+  // 应用安装回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
+  onBundleAdded(bundleName: string) {
+    console.info('EnterpriseAdminAbility onBundleAdded bundleName:' + bundleName);
+  }
+
+  // 应用卸载回调方法，应用可在此回调函数中进行事件上报，通知企业管理员。
   onBundleRemoved(bundleName: string) {
-    console.info("EnterpriseAdminAbility onBundleRemoved bundleName" + bundleName);
+    console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
   }
 };
 ```
 
+
 最后，在工程Module对应的[module.json5](../quick-start/module-configuration-file.md)配置文件中将EnterpriseAdminAbility注册为ExtensionAbility，type标签需要设置为“enterpriseAdmin”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-```ts
+<!-- @[extension_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
+
+``` JSON5
 "extensionAbilities": [
   {
-	"name": "EnterpriseAdminAbility",
-	"type": "enterpriseAdmin",
-	"exported": true,
-	"srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
+    "name": "EnterpriseAdminAbility",
+    "type": "enterpriseAdmin",
+    "exported": true,
+    "srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
   }
-]
+],
 ```
+
 
 ## 相关实例
 
 针对EnterpriseAdminExtensionAbility开发，有以下相关示例可供参考：
 
-- [企业设备管理扩展（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/EnterpriseAdminExtensionAbility)
+- [企业设备管理扩展（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility)

@@ -629,7 +629,7 @@ Obtains the length of the asset in an **OH_Data_Values** instance.
 
 | Name                                          | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance. Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
+| [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | size_t *length                                   | Pointer to the length of the ASSETS data obtained.                |
 

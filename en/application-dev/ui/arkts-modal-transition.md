@@ -1,4 +1,10 @@
 # Modal Transition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.
@@ -12,7 +18,7 @@ Modal transition is a type of transition achieved by a modal – a view that app
 | [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) | Binds a menu to the component, which is displayed when the component is clicked.    | Use this API where a menu is required, for example, for the plus sign (+), a common menu indicator in applications.                |
 | [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) | Binds a context menu to the component, which is displayed when the user long-presses or right-clicks the component.| Use this API for components that bounce up when long-pressed, for example, home screen icons.            |
 | [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | Binds a popup to the component.       | Use this API to display a popup containing additional information about a component when the component is clicked.              |
-| [if](../ui/state-management/arkts-rendering-control-ifelse.md)                                       | Adds or deletes the component.     | Use this API to display a temporary page in a certain state. In this mode, the return navigation needs to be implemented with a listener. |
+| [if](../ui/rendering-control/arkts-rendering-control-ifelse.md)                                       | Adds or deletes the component.     | Use this API to display a temporary page in a certain state. In this mode, the return navigation needs to be implemented with a listener. |
 
 
 ## Creating Modal Transition with bindContentCover
@@ -64,17 +70,17 @@ import { curves } from '@kit.ArkUI';
 
 interface PersonList {
   name: string,
-  cardnum: string
+  cardNum: string
 }
 
 @Entry
 @Component
 struct BindContentCoverDemo {
   private personList: Array<PersonList> = [
-    { name: 'Wang **', cardnum: '1234***********789' },
-    { name: 'Song *', cardnum: '2345***********789' },
-    { name: 'Xu **', cardnum: '3456***********789' },
-    { name: 'Tang *', cardnum: '4567***********789' }
+    { name: 'Wang **', cardNum: '1234***********789' },
+    { name: 'Song *', cardNum: '2345***********789' },
+    { name: 'Xu **', cardNum: '3456***********789' },
+    { name: 'Tang *', cardNum: '4567***********789' }
   ];
   // Step 1: Define bindContentCover.
   // Define the state variable to control the visibility of the modal.
@@ -130,7 +136,7 @@ struct BindContentCoverDemo {
               Text(item.name)
                 .fontColor(0x333333)
                 .fontSize(18)
-              Text(item.cardnum)
+              Text(item.cardNum)
                 .fontColor(0x666666)
                 .fontSize(14)
             }
@@ -404,6 +410,7 @@ Below is the complete sample code and effect.
 @Component
 struct BindContextMenuDemo {
   private menu: string[] = ['Save', 'Favorite', 'Search'];
+  // Replace $r('app.media.xxx') with the image resource file you use.
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.
@@ -459,9 +466,9 @@ struct BindContextMenuDemo {
 ![en-us_image_0000001600137920](figures/en-us_image_0000001600137920.gif)
 
 
-## Creating a Popup with bindPopUp
+## Creating a Popup with bindPopup
 
-You can bind a popup to a component through the [bindpopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) attribute, specifying its content, interaction logic, and display status.
+You can bind a popup to a component through the [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) attribute, specifying its content, interaction logic, and display status.
 
 Below is the complete sample code and effect.
 
@@ -610,7 +617,7 @@ struct ModalTransitionWithIf {
             }
             .width('100%')
             .onClick(() => {
-              // Step 3: Change the state variable to display the modal view.
+              // Step 5: Change the state variable to display the modal view.
               if(item.slice(-2) === 'Share'){
                 this.shareFunc();
               }
@@ -623,7 +630,7 @@ struct ModalTransitionWithIf {
       .height('100%')
       .backgroundColor(0xfefefe)
 
-      // Step 4: Define the modal view in if and display it at the top layer. Use if to control the appearance and disappearance of the modal view.
+      // Step 3: Define the modal view in if and display it at the top layer. Use if to control the appearance and disappearance of the modal view.
       if(this.isShowShare){
         Column() {
           Column() {
@@ -703,7 +710,7 @@ struct ModalTransitionWithIf {
         .width('100%')
         .height('100%')
         .backgroundColor(0xffffff)
-        // Step 5: Define the mode in which the modal view disappears.
+        // Step 4: Define the mode in which the modal view disappears.
         .transition(TransitionEffect.OPACITY
           .combine(TransitionEffect.translate({ x: '100%' }))
           .combine(TransitionEffect.scale({ x: 0.95, y: 0.95 })))

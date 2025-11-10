@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供在给定范围内选择评分的组件。
 
@@ -393,9 +393,9 @@ struct RatingExample {
         .stars(5)
         .stepSize(0.5)
         .starStyle({
-          backgroundUri: '/common/imag1.png', // common目录与pages同级
-          foregroundUri: '/common/imag2.png',
-          secondaryUri: '/common/imag3.png'
+          backgroundUri: '/common/image1.png', // common目录与pages同级
+          foregroundUri: '/common/image2.png',
+          secondaryUri: '/common/image3.png'
         })
         .margin({ top: 24 })
         .onChange((value: number) => {

@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md)。
 
 ## 导入模块
 
@@ -67,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
@@ -129,7 +129,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
@@ -183,13 +183,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   usbManager.disableUsb(wantTemp, true);
   console.info(`Succeeded in disabling USB`);
 } catch (err) {
-  console.error(`Failed to disabling USB. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to disable USB. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -240,7 +240,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let isDisabled = usbManager.isUsbDisabled(wantTemp);

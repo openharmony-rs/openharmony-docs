@@ -1,10 +1,10 @@
-# Pressure Management (C++)
+# Pressure Management (C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, the camera framework supports monitoring of system pressure levels.
 

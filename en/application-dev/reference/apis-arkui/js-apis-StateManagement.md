@@ -1,4 +1,10 @@
 # @ohos.arkui.StateManagement (State Management)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @HelloCrease-->
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state and tools required by applications.
 
@@ -26,10 +32,6 @@ import { AppStorageV2, PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 For details about how to use AppStorageV2, see [AppStorageV2: Storing Application-wide UI State](../../ui/state-management/arkts-new-appstoragev2.md).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### connect
 
 static connect\<T extends object\>( <br>
@@ -38,7 +40,7 @@ static connect\<T extends object\>( <br>
       defaultCreator?: StorageDefaultCreator\<T\> <br>
 ): T | undefined
 
-Stores key-value pair data in the application memory. If the given key already exists in [AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md), it returns the corresponding value; otherwise, it constructs a default value using the constructor for obtaining the default value and returns it.
+Stores key-value pair data in the application memory. If the given key already exists in [AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -54,7 +56,7 @@ Stores key-value pair data in the application memory. If the given key already e
 
 >**NOTE**
 >
->1. The second parameter is used when no key is specified, and the third parameter is used otherwise.
+>1. The second parameter is used when no **key** is specified, and the third parameter is used otherwise (including when the second parameter is invalid).
 >
 >2. If the data has been stored in AppStorageV2, you can obtain the stored data without using the default constructor. If the data has not been stored, you must specify a default constructor; otherwise, an application exception will be thrown.
 >
@@ -156,10 +158,6 @@ const keys: Array<string> = AppStorageV2.keys();
 
 Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Persisting Application State](../../ui/state-management/arkts-new-persistencev2.md).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### globalConnect<sup>18+</sup>
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
@@ -169,6 +167,8 @@ Stores key-value pair data on the application disk. If the given key already exi
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
 
 | Name  |Type  |Mandatory  | Description                                                     |
 | ------------- | ------------|-------------------|-------------------------- |
@@ -331,10 +331,6 @@ Defines the parameter type for **globalConnect**.
 
 Provides APIs for handling data transformations related to state management.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### getTarget
 
 static getTarget\<T extends object\>(source: T): T
@@ -362,7 +358,7 @@ Obtains the original object from a proxy object wrapped by the state management 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 class NonObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 let nonObservedClass: NonObservedClass = new NonObservedClass();
 @Entry
@@ -392,7 +388,7 @@ Converts ordinary unobservable data into observable data. For details, see [make
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Source object. It supports classes not decorated by @Observed or @ObserveV2, objects returned by **JSON.parse**, and classes decorated by @Sendable.<br>Array, Map, Set, and Date types are supported.<br>**collection.Array**, **collection.Set**, and **collection.Map** are supported.<br>For details, see [makeObserved API: Changing Unobservable Data to Observable Data](../../ui/state-management/arkts-new-makeObserved.md).|
+| source | T    | Yes  | Source object. The class decorated with @Observed or @ObservedV2, the object returned by JSON.parse, and the class decorated with @Sendable are supported.<br>Array, Map, Set, and Date types are supported.<br>**collection.Array**, **collection.Set**, and **collection.Map** are supported.<br>For details, see [makeObserved API: Changing Unobservable Data to Observable Data](../../ui/state-management/arkts-new-makeObserved.md).|
 
 **Return value**
 
@@ -507,7 +503,7 @@ This API can be used in conjunction with [enableV2Compatibility](#enablev2compat
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common class, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/js-apis-arkts-collections.md) type and [\@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common class, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and [@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -561,6 +557,321 @@ struct Child {
 }
 ```
 
+### makeBinding<sup>20+</sup>
+static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
+
+Creates a read-only one-way data binding instance, which is used to construct the actual parameter corresponding to the Binding parameter type in the \@Builder function.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| getter | [GetterCallback\<T\>](#gettercallback20)    | Yes  | Callback function for obtaining the value. The function is executed each time the value is accessed to obtain the latest value.|
+
+**Return value**
+
+| Type| Description                                            |
+| ---- | ------------------------------------------------ |
+| [Binding\<T\>](#bindingt20)    | The value attribute contains only one value, which is used to obtain the currently bound value. The value can be read but cannot be directly modified.|
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num1: Binding<number>) {
+  Row() {
+    Button(`Custom Button: ${num1.value}`)
+      .onClick(() => {
+        // num1.value += 1; will report an error because Binding does not support modification.
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        /**
+         * Creates a read-only binding instance.
+         * @param getter - Function for returning this.number1.
+         * @returns Read-only Binding<number> object.
+         *
+         * Features:
+         * 1. The value is recalculated each time when .value is accessed.
+         * 2. The value cannot be directly modified.
+         */
+        UIUtils.makeBinding<number>(
+          () => this.number1 // GetterCallback
+        )
+      )
+    }
+  }
+}
+```
+
+### makeBinding<sup>20+</sup>
+static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>): MutableBinding\<T\>
+
+Creates a mutable binding instance for building the actual parameter whose parameter type is MutableBinding in the \@Builder function.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| getter | [GetterCallback\<T\>](#gettercallback20)    | Yes  | Callback function for obtaining the value. The function is executed each time when the value is accessed to obtain the latest value.|
+| setter | [SetterCallback\<T\>](#settercallback20)    | Yes  | Defines how to update the value. This function is automatically called when .value is modified.|
+
+**Return value**
+
+| Type| Description                                            |
+| ---- | ------------------------------------------------ |
+| [MutableBinding\<T\>](#mutablebindingt20)    | Contains the value attribute. You can read and modify data through .value. When the value is set, the system checks whether the type matches the generic T.|
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num2: MutableBinding<number>) {
+  Row() {
+    Button(`Custom Button: ${num2.value}`)
+      .onClick(() => {
+        // MutableBinding type, which can be modified.
+        num2.value += 1;
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        /**
+         * Creates a mutable binding.
+         * @param getter - Function that returns this.number2.
+         * @param setter - Callback called when the binding value is modified.
+         * @returns Returns a mutable MutableBinding<number> object.
+         *
+         * Features:
+         * 1. Read and write operations are supported.
+         * 2. The setter callback is automatically called when .value is modified.
+         */
+        UIUtils.makeBinding<number>(
+          () => this.number2, // GetterCallback
+          (val: number) => {
+            this.number2 = val;
+          }) // SetterCallback
+      )
+    }
+  }
+}
+```
+
+### addMonitor<sup>20+</sup>
+static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
+
+Adds a listener to a state variable of State Management 2.0. For details, see [addMonitor/clearMonitor](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
+| path | string \| string[]    | Yes  | Path of the variable to be listened to. You can specify a path or pass a string array to specify multiple variable paths to be listened to at a time.<br>Only strings and string arrays are supported. If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
+| monitorCallback | [MonitorCallback](#monitorcallback20)   | Yes  | Listening function registered for the corresponding state variable. That is, when the state variable corresponding to the path changes, the corresponding function is called back.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table.|
+| options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listening function. For details, see [MonitorOptions](#monitoroptions20).|
+
+
+**Error codes**
+For details about the error codes, see [State Management Error Codes](./errorcode-stateManagement.md).
+| ID| Error Message|
+| ------- | -------------------------------- |
+|130000|The target is not a custom component instance or V2 class instance.|
+|130001|The path is invalid.|
+|130002|monitorCallback is not a function or an anonymous function.|
+
+**Example**
+In the following example:
+1. In the constructor of ObservedClass, add the synchronization listening callback onChange for the name attribute.
+2. Click the Text component and change the value of name to Jack and Jane. The onChange callback is triggered twice. The logs are as follows:
+<!--code_no_check-->
+```
+ObservedClass property name change from Tom to Jack
+ObservedClass property name change from Jack to Jane
+```
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class ObservedClass {
+  @Trace name: string = 'Tom';
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`ObservedClass property ${path} change from ${mon.value(path)?.before} to ${mon.value(path)?.now}`);
+    });
+  }
+
+  constructor() {
+    // Add the listening callback this.onChange of the name attribute to the instance this of ObservedClass. The listening callback is synchronous.
+    UIUtils.addMonitor(this, 'name', this.onChange, { isSynchronous: true });
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`name: ${this.observedClass.name}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.observedClass.name = 'Jack';
+          this.observedClass.name = 'Jane';
+        })
+    }
+  }
+}
+```
+
+### clearMonitor<sup>20+</sup>
+static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback): void
+
+Deletes the listener added to the state variable of the state management V2 by calling [addMonitor](#addmonitor20). For details, see [addMonitor/clearMonitor](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| target | object | Yes  | Target object. Only the [\@ComponentV2](../../ui/state-management/arkts-new-componentV2.md) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
+| path | string \| string[]   | Yes  | Name path of the variable whose listener is to be deleted. You can specify a path or pass a string array to delete the listener functions of multiple state variables at a time.<br>Only strings and arrays are supported. If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
+| monitorCallback | [MonitorCallback](#monitorcallback20)   | No  | Listener function to be deleted.<br>If this parameter is not passed, all listener functions registered with the variable corresponding to path are deleted.<br>If the type is not supported, a runtime error is thrown. For details about the error code, see the table below.|
+
+**Error codes**
+For details about the error codes, see [State Management Error Codes](./errorcode-stateManagement.md).
+| ID| Error Message|
+| ------- | -------------------------------- |
+|130000|The target is not a custom component instance or V2 class instance.|
+|130001|The path is invalid.|
+|130002|monitorCallback is not a function or an anonymous function.|
+
+**Example**
+In the following example:
+1. Add the synchronous listening callback onChange of the age attribute to the constructor of ObservedClass.
+2. Click the Text component to trigger the age increment. The onChange listening callback function is triggered. The log information is as follows:
+<!--code_no_check-->
+```
+ObservedClass property age change from 10 to 11
+```
+3. Click clear monitor to delete the onChange listening function of age.
+4. Click the Text component again to trigger the age increment. The onChange function is not triggered.
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class ObservedClass {
+  @Trace age: number = 10;
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`ObservedClass property ${path} change from ${mon.value(path)?.before} to ${mon.value(path)?.now}`);
+    });
+  }
+
+  constructor() {
+    //Add the listening callback this.onChange of the name attribute to the instance this of ObservedClass. The listening callback is synchronous.
+    UIUtils.addMonitor(this, 'age', this.onChange);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`age: ${this.observedClass.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          //Click to trigger age++. The onChange callback is triggered.
+          this.observedClass.age++;
+        })
+      Button('clear monitor')
+        .onClick(() => {
+          //Click clearMonitor to delete the onChange listening function of age in this.observedClass.
+          // Click the button again to trigger age++. The onChange listener is not triggered.
+          UIUtils.clearMonitor(this.observedClass, 'age', this.observedClass.onChange);
+        })
+    }
+  }
+}
+```
+
+## MonitorOptions<sup>20+</sup>
+
+Optional parameter of [addMonitor](#addmonitor20), which is used to configure the callback type.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description    |
+| ------ | ---- | ---- | ---- | ------------ |
+|isSynchronous|boolean|No|Yes|Whether the current callback function is a synchronous callback. true: synchronous callback. The default value is false, indicating an asynchronous callback.|
+
+## MonitorCallback<sup>20+</sup>
+type MonitorCallback = (monitorValue: IMonitor) => void
+
+Listener callback function of the [IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12) type.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| monitorValue | IMonitor | Yes  | Changed information passed by the callback function.|
+
 ## StorageDefaultCreator\<T\>
 
 type StorageDefaultCreator\<T\> = () => T
@@ -575,7 +886,7 @@ Obtains the default constructor.
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| () => T    | Default constructor.|
+|   T  | Default constructor.|
 
 **Example**
 
@@ -614,10 +925,6 @@ struct SampleComp {
 
 Represents a class constructor that accepts arbitrary arguments.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### new
 
 new(...args: any): T
@@ -632,7 +939,7 @@ Creates and returns an instance of the specified type T.
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| ...args | any    | Yes  | Function arguments.  |
+| ...args | any    | No  | Function arguments.  |
 
 **Return value**
 
@@ -736,10 +1043,6 @@ struct Index {
 ## TypeConstructor\<T\>
 
 Class constructor.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### new
 
@@ -846,6 +1149,242 @@ struct Index {
         .onClick(() => {
           this.data.sampleChild.id++;
         })
+    }
+  }
+}
+```
+
+## GetterCallback<sup>20+</sup>
+
+type GetterCallback\<T\> = () => T
+
+Callback method for obtaining the value.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type| Description                                            |
+| ---- | ------------------------------------------------ |
+| T    | Value of the T type.|
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num1: Binding<number>) {
+  Row() {
+    Button(`Custom Button: ${num1.value}`)
+      .onClick(() => {
+        // num1.value += 1; will report an error because the Binding type cannot be modified.
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        // The first parameter of the UIUtils.makeBinding function must be GetterCallback.
+        UIUtils.makeBinding<number>(
+          () => this.number1 // GetterCallback
+        )
+      )
+    }
+  }
+}
+```
+
+## SetterCallback<sup>20+</sup>
+
+type SetterCallback\<T\> = (newValue: T) => void
+
+Sets the callback method of the value.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description    |
+| ------ | ---- | ---- | ------------ |
+| newValue | T    | Yes  | Parameter of the T type.  |
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num2: MutableBinding<number>) {
+  Row() {
+    Button(`Custom Button: ${num2.value}`)
+      .onClick(() => {
+        // MutableBinding supports modification. num2.value can be modified.
+        num2.value += 1;
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        // The second parameter of the UIUtils.makeBinding function must be SetterCallback.
+        UIUtils.makeBinding<number>(
+          () => this.number2, // GetterCallback
+          (val: number) => {
+            this.number2 = val;
+          }) // SetterCallback must be provided. Otherwise, a runtime error will occur when the function is triggered.
+      )
+    }
+  }
+}
+```
+
+## Binding\<T\><sup>20+</sup>
+
+A generic class for read-only data binding, which can bind data of any type.
+
+### value<sup>20+</sup>
+get value(): T
+
+Provides the get accessor to obtain the bound value.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type            | Description                                                        |
+| -------------------- | ------------------------------------------------------------ |
+| T |The return value type is the generic parameter T, which is the same as the type defined by Binding\<T\>.|
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num1: Binding<number>) {
+  // The first parameter of CustomButton is Binding, a generic class for read-only data binding.
+  Row() {
+    // num1.value Binding can use the bound value.
+    Button(`Custom Button: ${num1.value}`)
+      .onClick(() => {
+        // num1.value += 1; will report an error, as the generic class for read-only data binding cannot modify the value.
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        UIUtils.makeBinding<number>(
+          () => this.number1 // GetterCallback
+        )
+      )
+    }
+  }
+}
+```
+
+## MutableBinding\<T\><sup>20+</sup>
+
+A generic class for variable data binding, which allows read and write operations on the bound value and provides complete get and set accessors.
+
+### value<sup>20+</sup>
+set value(newValue: T)
+
+Provides the set accessor to set the bound value. The set accessor must be provided when a MutableBinding instance is constructed. Otherwise, a runtime error occurs when the set accessor is triggered.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| newValue  | T | Yes  | The parameter type is the generic parameter T, which is the same as the type defined by MutableBinding\<T\>.|
+
+### value<sup>20+</sup>
+get value(): T
+
+Provides the get accessor to obtain the current binding value.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type            | Description                                                        |
+| -------------------- | ------------------------------------------------------------ |
+| T |The return value type is the generic parameter T, which is the same as the type defined by Binding\<T\>.|
+
+**Example**
+
+```ts
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num2: MutableBinding<number>) {
+  // The second parameter of CustomButton is MutableBinding, a generic class of mutable data binding.
+  Row() {
+    Button(`Custom Button: ${num2.value}`)
+      .onClick(() => {
+        // The generic class of mutable data binding can modify the bound value.
+        num2.value += 1;
+      })
+  }
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local number1: number = 5;
+  @Local number2: number = 10;
+
+  build() {
+    Column() {
+      Text('parent component')
+
+      CustomButton(
+        UIUtils.makeBinding<number>(
+          () => this.number2, // GetterCallback
+          (val: number) => {
+            this.number2 = val;
+          }) // SetterCallback must be provided. Otherwise, a runtime error occurs when the callback is triggered.
+      )
     }
   }
 }

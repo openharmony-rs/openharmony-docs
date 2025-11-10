@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件对齐方式、布局方向及显示位置。
 

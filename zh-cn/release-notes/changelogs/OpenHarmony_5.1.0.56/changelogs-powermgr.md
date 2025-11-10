@@ -33,7 +33,7 @@
 
 **变更的接口/组件**
 
-[@ohos.power.d.ts](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md)中如下接口:
+[@ohos.power.d.ts](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md)中如下接口:
 
 - wakeup(detail: string): void
 - suspend(isImmediate?: boolean): void

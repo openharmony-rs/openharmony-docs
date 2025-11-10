@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -87,7 +87,7 @@ Sets a data source based on the media file descriptor.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVImageGenerator_FetchFrameByTime()
 
@@ -119,7 +119,7 @@ This function must be called after [OH_AVImageGenerator_SetFDSource](#oh_avimage
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>**AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>**AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is forbidden.<br>         **AV_ERR_UNSUPPORTED_FORMAT**: The format is not supported.<br>         **AV_ERR_NO_MEMORY**: Internal memory allocation failed.|
 
 ### OH_AVImageGenerator_Release()
 
@@ -146,4 +146,4 @@ Releases the resources used by the OH_AVImageGenerator instance and destroys the
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|

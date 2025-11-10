@@ -1,5 +1,12 @@
 # Drag-and-Drop Sorting
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 By using **ForEach**, **LazyForEach**, or **Repeat** within a **List** component and setting up the **onMove** event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, the data source must be updated based on the reported start index and target index. Ensure that only the order of the data changes so that the drop animation can be executed properly.
 
 > **NOTE**
@@ -8,7 +15,7 @@ By using **ForEach**, **LazyForEach**, or **Repeat** within a **List** component
 
 ## onMove
 
-onMove(handler: Optional\<OnMoveHandler\>)
+onMove(handler: Optional\<OnMoveHandler\>): T
 
 Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events.
 
@@ -22,9 +29,15 @@ Invoked when data is moved during drag-and-drop sorting. This callback is effect
 | ------ | --------- | ---- | ---------- |
 | handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | Yes  | Drag operation.|
 
+**Return value**
+
+| Type     | Description      |
+| ------ | --------- |
+| T  | Current component.|
+
 ## onMove<sup>20+</sup>
 
-onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler)
+onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler): T
 
 Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events.
 
@@ -38,6 +51,12 @@ Invoked when data is moved during drag-and-drop sorting. This callback is effect
 | ------ | --------- | ---- | ---------- |
 | handler  | Optional\<[OnMoveHandler](#onmovehandler)\> | Yes  | Drag operation.|
 | eventHandler  | [ItemDragEventHandler](#itemdrageventhandler20) | Yes  | Callback invoked when the drag occurs.|
+
+**Return value**
+
+| Type     | Description      |
+| ------ | --------- |
+| T  | Current component.|
 
 ## OnMoveHandler
 
@@ -64,14 +83,12 @@ Defines callbacks for drag events on a data source, allowing you to respond to d
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type  | Mandatory| Description                |
-| ------ | ------ | ---- | -------------------- |
-| onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No | Callback triggered when an item is long-pressed.<br>- **index**: index of the target when the long press occurs.|
-| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No  | Callback triggered when dragging starts.<br>- **index**: index of the target when dragging starts.|
-| onMoveThrough  | [OnMoveHandler](#onmovehandler) | No  | Callback triggered when the dragged item moves over other items.|
-| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No  | Callback triggered when dragging ends.<br>- **index**: index of the target when dragging ends.|
+| Name| Type  | Read-Only| Optional| Description                |
+| ------ | ------ | ---- | ---- | -------------------- |
+| onLongPress  |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No | Yes| Callback triggered when an item is long-pressed.<br>- **index**: index of the target when the long press occurs.|
+| onDragStart  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No  | Yes| Callback triggered when dragging starts.<br>- **index**: index of the target when dragging starts.|
+| onMoveThrough  | [OnMoveHandler](#onmovehandler) | No  | Yes| Callback triggered when the dragged item moves over other items.|
+| onDrop  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | No  | Yes| Callback triggered when dragging ends.<br>- **index**: index of the target when dragging ends.|
 
 ## Example
 
@@ -144,27 +161,27 @@ struct ListOnMoveExample {
           .onMove((from: number, to: number) => {
             let tmp = this.arr.splice(from, 1);
             this.arr.splice(to, 0, tmp[0]);
-            console.log('List onMove From: ' + from);
-            console.log('List onMove To: ' + to);
+            console.info('List onMove From: ' + from);
+            console.info('List onMove To: ' + to);
           },
             {
               onLongPress: (index: number) => {
-                console.log('List onLongPress: ' + index);
+                console.info('List onLongPress: ' + index);
               },
               onDrop: (index: number) => {
-                console.log('List onDrop: ' + index);
+                console.info('List onDrop: ' + index);
               },
               onDragStart: (index: number) => {
-                console.log('List onDragStart: ' + index);
+                console.info('List onDragStart: ' + index);
               },
               onMoveThrough: (from: number, to: number) => {
-                console.log('List onMoveThrough From: ' + from);
-                console.log('List onMoveThrough To: ' + to);
+                console.info('List onMoveThrough From: ' + from);
+                console.info('List onMoveThrough To: ' + to);
               }
             }
           )
       }.width('90%')
-        .scrollBar(BarState.Off)
+      .scrollBar(BarState.Off)
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 }

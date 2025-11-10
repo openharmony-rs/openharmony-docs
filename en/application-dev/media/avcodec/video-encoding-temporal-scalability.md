@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Basic Concepts
 
@@ -63,7 +63,7 @@ If your application does not involve dynamic adjustment of the temporal referenc
 
   The reference frame is valid only in the GOP. After an I-frame is refreshed, the DPB is cleared, so does the reference frame. In other words, the I-frame refresh location has a great impact on the reference relationship.
 
-  When temporal scalability is enabled, to temporarily request the I-frame through **OH_MD_KEY_REQUEST_I_FRAME**, you must configure the frame channel with a determined effective time to notify the system of the I-frame refresh location, so as to avoid disorder of the reference relationship. For details, see the configuration guide of the frame channel. Do not use **OH_VideoEncoder_SetParameter**, which uses an uncertain effective time. For details, see "Step 4: Call **OH_VideoEncoder_RegisterParameterCallback()** to register the frame-specific parameter callback function" in [Video Encoding in Surface Mode](video-encoding.md#surface-mode).
+  When temporal scalability is enabled, to temporarily request the I-frame through **OH_MD_KEY_REQUEST_I_FRAME**, you must configure the frame channel with a determined effective time to notify the system of the I-frame refresh location, so as to avoid disorder of the reference relationship. For details, see the configuration guide of the frame channel. Do not use **OH_VideoEncoder_SetParameter**, which uses an uncertain effective time. For details, see step 4 in [Video Encoding in Surface Mode](video-encoding.md#surface-mode).
 
 - The callback using **OH_AVBuffer** is supported, but the callback using **OH_AVMemory** is not.
 
@@ -200,7 +200,7 @@ The LTR feature provides a configuration of the frame-level reference relationsh
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR  | Marked as an LTR frame.|
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR   | POC number of the LTR frame referenced by the current frame. |
 
-- **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**: This parameter is set in the configuration phase. The value of this parameter must not be greater than the maximum number of supported LTR frames. For details, see Step 3 below.
+- **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**: This parameter is set in the configuration phase. The value of this parameter must not be greater than the maximum number of supported LTR frames. For details, see step 3 below.
 - **OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR **: The BL layer and the EL layer to skip are marked as an LTR frame.
 - **OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR**: POC number of the frame marked as the LTR frame.
 

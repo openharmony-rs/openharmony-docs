@@ -1,5 +1,12 @@
 # @ohos.reminderAgent (reminderAgent)
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **reminderAgent** module provides APIs for publishing scheduled reminders through the reminder agent.
 
 You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. When the created reminders are published, the timing and pop-up notification functions of your application will be taken over by the reminder agent in the background when your application is frozen or exits.
@@ -471,10 +478,10 @@ Defines a button displayed in the reminder notification.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| title | string | Yes| Text on the button.|
-| type | [ActionButtonType](#actionbuttontypedeprecated) | Yes| Button type.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| title | string | No| No| Text on the button.|
+| type | [ActionButtonType](#actionbuttontypedeprecated) | No| No| Button type.|
 
 
 ## WantAgent<sup>(deprecated)</sup>
@@ -486,10 +493,10 @@ Sets the package and ability that are redirected to when the reminder notificati
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| pkgName | string | Yes| Name of the HAP that is redirected to when the reminder notification is clicked.|
-| abilityName | string | Yes| Name of the ability that is redirected to when the reminder notification is clicked.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | No| No| Name of the HAP that is redirected to when the reminder notification is clicked.|
+| abilityName | string | No| No| Name of the ability that is redirected to when the reminder notification is clicked.|
 
 
 ## MaxScreenWantAgent<sup>(deprecated)</sup>
@@ -501,10 +508,10 @@ Provides the information about the target package and ability to start automatic
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| pkgName | string | Yes| Name of the HAP that is automatically started when the reminder arrives and the device is not in use.|
-| abilityName | string | Yes| Name of the ability that is automatically started when the reminder arrives and the device is not in use.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | No| No| Name of the HAP that is automatically started when the reminder arrives and the device is not in use.|
+| abilityName | string | No| No| Name of the ability that is automatically started when the reminder arrives and the device is not in use.|
 
 
 ## ReminderRequest<sup>(deprecated)</sup>
@@ -516,21 +523,21 @@ Defines the reminder to publish.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| reminderType | [ReminderType](#remindertypedeprecated) | Yes| Type of the reminder.|
-| actionButton | [[ActionButton?, ActionButton?]](#actionbuttondeprecated) | No| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
-| wantAgent | WantAgent | No| Information about the ability that is redirected to when the notification is clicked.|
-| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
-| ringDuration | number | No| Ringing duration, in seconds. The default value is **1**.|
-| snoozeTimes | number | No| Number of reminder snooze times. The default value is **0**.|
-| timeInterval | number | No| Reminder snooze interval, in seconds. The default value is **0**.|
-| title | string | No| Reminder title.|
-| content | string | No| Reminder content.|
-| expiredContent | string | No| Content to be displayed after the reminder expires.|
-| snoozeContent | string | No| Content to be displayed when the reminder is snoozing.|
-| notificationId | number | No| Notification ID used by the reminder. If there are reminders with the same notification ID, the later one will overwrite the earlier one.|
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notification.md#slottype) | No| Type of the slot used by the reminder.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| reminderType | [ReminderType](#remindertypedeprecated) | No| No| Type of the reminder.|
+| actionButton | [[ActionButton?, ActionButton?]](#actionbuttondeprecated) | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
+| wantAgent | WantAgent | No| Yes| Information about the ability that is redirected to when the notification is clicked.|
+| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Yes| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
+| ringDuration | number | No| Yes| Ringing duration, in seconds. The default value is **1**.|
+| snoozeTimes | number | No| Yes| Number of reminder snooze times. The default value is **0**.|
+| timeInterval | number | No| Yes| Reminder snooze interval, in seconds. The default value is **0**.|
+| title | string | No| Yes| Reminder title.|
+| content | string | No| Yes| Reminder content.|
+| expiredContent | string | No| Yes| Content to be displayed after the reminder expires.|
+| snoozeContent | string | No| Yes| Content to be displayed when the reminder is snoozing.|
+| notificationId | number | No| Yes| Notification ID used by the reminder. If there are reminders with the same notification ID, the later one will overwrite the earlier one.|
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notification.md#slottype) | No| Yes| Type of the slot used by the reminder.|
 
 
 ## ReminderRequestCalendar<sup>(deprecated)</sup>
@@ -543,11 +550,11 @@ Defines a reminder for a calendar event.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| dateTime | [LocalDateTime](#localdatetimedeprecated) | Yes| Reminder time.|
-| repeatMonths | Array\<number> | No| Month in which the reminder repeats.|
-| repeatDays | Array\<number> | No| Date on which the reminder repeats.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| dateTime | [LocalDateTime](#localdatetimedeprecated) | No| No| Reminder time.|
+| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats.|
+| repeatDays | Array\<number> | No| Yes| Date on which the reminder repeats.|
 
 
 ## ReminderRequestAlarm<sup>(deprecated)</sup>
@@ -560,11 +567,11 @@ Defines a reminder for an alarm.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| hour | number | Yes| Hour portion of the reminder time.|
-| minute | number | Yes| Minute portion of the reminder time.|
-| daysOfWeek | Array\<number> | No| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| hour | number | No| No| Hour portion of the reminder time.|
+| minute | number | No| No| Minute portion of the reminder time.|
+| daysOfWeek | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
 
 
 ## ReminderRequestTimer<sup>(deprecated)</sup>
@@ -576,9 +583,9 @@ Defines a reminder for a scheduled timer.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | Yes| Number of seconds in the countdown timer.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.|
 
 
 ## LocalDateTime<sup>(deprecated)</sup>
@@ -590,11 +597,11 @@ Sets the time information for a calendar reminder.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| year | number | Yes| Year.|
-| month | number | Yes| Month.|
-| day | number | Yes| Date.|
-| hour | number | Yes| Hour.|
-| minute | number | Yes| Minute.|
-| second | number | No| Second.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| year | number | No| No| Year.|
+| month | number | No| No| Month.|
+| day | number | No| No| Date.|
+| hour | number | No| No| Hour.|
+| minute | number | No| No| Minute.|
+| second | number | No| Yes| Second.|

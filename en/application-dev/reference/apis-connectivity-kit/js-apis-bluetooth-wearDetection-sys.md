@@ -1,5 +1,12 @@
 # @ohos.bluetooth.wearDetection (Bluetooth Wear Detection Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **bluetooth.wearDetection** module provides APIs for checking whether a Bluetooth audio device (such as a Bluetooth earphone) supports wear detection and whether wear detection is enabled, and enabling or disabling wear detection for a device.
 
 > **NOTE**
@@ -32,7 +39,7 @@ Enables wear detection for a device. This API uses an asynchronous callback to r
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -79,13 +86,13 @@ Enables wear detection for a device. This API uses a promise to return the resul
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -129,7 +136,7 @@ Disables wear detection for a device. This API uses an asynchronous callback to 
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -176,13 +183,13 @@ Disables wear detection for a device. This API uses a promise to return the resu
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -214,7 +221,7 @@ try {
 
 isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a device supports wear detection. This API uses an asynchronous callback to return the result.
+Checks whether the device supports wearing detection. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -226,8 +233,8 @@ Checks whether a device supports wear detection. This API uses an asynchronous c
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the device supports wear detection, **supported** is returned. If the operation fails, the corresponding error code will be returned.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the result indicating support for wearing detection. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -259,7 +266,7 @@ try {
 
 isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 
-Checks whether a device supports wear detection. This API uses a promise to return the result.
+Checks whether the device supports wearing detection. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -271,13 +278,13 @@ Checks whether a device supports wear detection. This API uses a promise to retu
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. If the device supports wear detection, **supported** is returned. If the operation fails, the corresponding error code will be returned.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that wearing detection is supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -309,7 +316,7 @@ try {
 
 isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether wear detection is enabled for a device. This API uses an asynchronous callback to return the result.
+Checks whether wearing detection is enabled for a device. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -321,8 +328,8 @@ Checks whether wear detection is enabled for a device. This API uses an asynchro
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If wear detection is enabled, **enabled** is returned. If the operation fails, the corresponding error code will be returned.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the result indicating whether wearing detection is enabled. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -354,7 +361,7 @@ try {
 
 isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 
-Checks whether wear detection is enabled for a device. This API uses a promise to return the result.
+Checks whether wearing detection is enabled for a device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -366,13 +373,13 @@ Checks whether wear detection is enabled for a device. This API uses a promise t
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. If wear detection is enabled, **enabled** is returned. If the operation fails, the corresponding error code will be returned.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that wearing detection is enabled, and the value **false** indicates the opposite.|
 
 **Error codes**
 

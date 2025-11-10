@@ -1,4 +1,10 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin; @mayaolll; @yangfan229-->
+<!--Designer: @piggyguy; @yangfan229; @jiangdayuan-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
 
 
 ## 焦点事件onBlur/onFocus回调无法触发(API 9)

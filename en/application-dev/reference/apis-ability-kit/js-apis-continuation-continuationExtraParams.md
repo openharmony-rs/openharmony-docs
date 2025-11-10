@@ -1,14 +1,24 @@
 # ContinuationExtraParams
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
-The ContinuationExtraParams module provides the filter parameters required by the device selection module in the continuation management entry. These filter parameters can be used as an input parameter of [startContinuationDeviceManager](js-apis-continuation-continuationManager.md#continuationmanagerstartcontinuationdevicemanager9-1).
+The ContinuationExtraParams module provides the filter parameters required by the device selection module in the continuation management entry. These filter parameters can be used as an input parameter of [startContinuationDeviceManager](js-apis-continuation-continuationManager.md#continuationmanagerstartcontinuationdevicemanagerdeprecated).
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## ContinuationExtraParams
+## ContinuationExtraParams<sup>(deprecated)</sup>
 
 Describes the extra parameters required by the device selection module in the continuation management entry.
+
+> **NOTE**
+> 
+> This API is supported since API version 8 and deprecated since API version 22. Due to functional redundancy in the API definition, use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -20,5 +30,5 @@ Describes the extra parameters required by the device selection module in the co
 | targetBundle | string | No| Yes| Name of the target bundle.|
 | description | string | No| Yes| Device filtering description.|
 | filter | any | No| Yes| Device filtering parameter.|
-| continuationMode | [continuationManager.ContinuationMode](js-apis-continuation-continuationManager.md#continuationmode) | No| Yes| Continuation mode.|
+| continuationMode | [continuationManager.ContinuationMode](js-apis-continuation-continuationManager.md#continuationmodedeprecated) | No| Yes| Continuation mode.|
 | authInfo | Record<string, Object> | No| Yes| Authentication information.|

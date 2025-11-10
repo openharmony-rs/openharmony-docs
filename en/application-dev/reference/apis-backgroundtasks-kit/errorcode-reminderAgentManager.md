@@ -1,5 +1,12 @@
 # reminderAgentManager Error Codes
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -17,12 +24,12 @@ The application is not allowed to send notifications when **publishReminder()** 
 **Possible Causes**
 
 1. The application has not requested notification to be enabled.
-2. The reminder function is disabled.
+2. The notification feature is not enabled for the application.
 
 **Solution**
 
 1. Call [Notification.requestEnableNotification](../apis-notification-kit/js-apis-notification.md#notificationrequestenablenotification8) to request notification to be enabled for the application.
-2. Check whether the notification function is disabled.
+2. Enable notification for the application in the notification settings.
 
 ## 1700002 Too Many Reminders
 
@@ -36,8 +43,8 @@ The number of reminders exceeds the limit when **publishReminder()** is called.
 
 **Possible Causes**
 <!--RP1-->
-1. In API version 10 or later, the number of reminders generated for the application exceeds 30 (for a common application) or 10,000 (for a system application). In API version 9 or earlier, the number of reminders generated for the application exceeds 30.
-2. In API version 10 or later, the total number of reminders generated for all applications exceeds 12,000. In API version 9 or earlier, the total number of reminders generated for all applications exceeds 2,000.
+1. Since API version 10, the number of reminders generated for the application exceeds 30 (for a regular application) or 10,000 (for a system application). In API version 9 and earlier versions, the number of reminders for a single application exceeds 30.
+2. Since API version 10, the total number of reminders for all applications exceeds 12,000. For API version 9 and earlier versions, the total number of reminders exceeds 2,000.
 
 **Solution**
 

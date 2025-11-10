@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持单击、双击和多次点击事件的识别。
 
@@ -21,7 +21,7 @@ TapGesture(value?: TapGestureParameters)
 
 创建点击手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)。
 
-触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown。
+触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

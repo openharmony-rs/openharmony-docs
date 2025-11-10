@@ -14,7 +14,7 @@
 >
 > 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md)。
 
 ## 导入模块
 
@@ -67,7 +67,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // 需根据实际情况进行替换
@@ -130,7 +130,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // 需根据实际情况进行替换
@@ -199,7 +199,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // 需根据实际情况进行替换
@@ -254,7 +254,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, (err) => {
@@ -308,7 +308,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100, (err) => {
@@ -459,7 +459,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.isAdminEnabled(wantTemp, (err, result) => {
@@ -509,7 +509,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 参数需根据实际情况进行替换
@@ -566,7 +566,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 参数需根据实际情况进行替换
@@ -754,7 +754,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // 需根据实际情况进行替换
@@ -819,7 +819,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
   // 需根据实际情况进行替换
@@ -870,7 +870,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
@@ -926,7 +926,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp).then((result) => {
@@ -979,7 +979,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -988,7 +988,7 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
     console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in subscribe managed event');
+  console.info('Succeeded in subscribing managed event');
 });
 ```
 
@@ -1041,7 +1041,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1094,7 +1094,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1103,7 +1103,7 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
     console.error(`Failed to unsubscribe managed event. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in unsubscribe managed event');
+  console.info('Succeeded in unsubscribing managed event');
 });
 ```
 
@@ -1156,7 +1156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1210,7 +1210,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = "com.example.application";
@@ -1274,7 +1274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let bundleName: string = "com.example.application";
@@ -1369,16 +1369,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let oldAdmin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let newAdmin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication_new',
-  abilityName: 'NewEntryAbility'
+  abilityName: 'NewEnterpriseAdminAbility'
 };
 try {
   adminManager.replaceSuperAdmin(oldAdmin, newAdmin, false);
-  console.info(`Succeeded in replace super admin.`);
+  console.info(`Succeeded in replacing super admin.`);
 } catch(err) {
   console.error(`Failed to replace super admin. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1429,11 +1429,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let admin: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   adminManager.setAdminRunningMode(admin, adminManager.RunningMode.MULTI_USER);
-  console.info(`Succeeded in set admin running mode.`);
+  console.info(`Succeeded in setting admin running mode.`);
 } catch(err) {
   console.error(`Failed to set admin running mode. Code: ${err.code}, message: ${err.message}`);
 }

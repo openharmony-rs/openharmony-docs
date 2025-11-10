@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 弧形列表包含一系列列表项。适合连续、多行呈现同类数据，例如图片和文本。
 

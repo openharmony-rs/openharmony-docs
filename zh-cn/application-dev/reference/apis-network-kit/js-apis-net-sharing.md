@@ -1,5 +1,12 @@
 # @ohos.net.sharing (网络共享管理)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 网络共享管理模块用于将设备网络连接共享给其他连接设备。
 
 > **说明：**

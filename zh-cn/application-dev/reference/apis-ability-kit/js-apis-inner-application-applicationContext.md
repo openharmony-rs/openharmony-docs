@@ -61,38 +61,38 @@ let lifecycleId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let AbilityLifecycleCallback: AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
       },
       onWindowStageCreate(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
       },
       onWindowStageActive(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
       },
       onWindowStageInactive(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
       },
       onWindowStageDestroy(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
       },
       onAbilityDestroy(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
       },
       onAbilityForeground(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
       },
       onAbilityBackground(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
       },
       onAbilityContinue(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
       }
     }
     // 1.通过context属性获取applicationContext
@@ -101,9 +101,9 @@ export default class EntryAbility extends UIAbility {
       // 2.通过applicationContext注册监听应用内生命周期
       lifecycleId = applicationContext.on('abilityLifecycle', AbilityLifecycleCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+    console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
   }
 }
 ```
@@ -145,17 +145,17 @@ let lifecycleId: number;
 export default class EntryAbility extends UIAbility {
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();
-    console.log(`stage applicationContext: ${applicationContext}`);
+    console.info(`stage applicationContext: ${applicationContext}`);
     try {
       applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
         if (error) {
           console.error(`unregisterAbilityLifecycleCallback fail, err: ${JSON.stringify(error)}`);
         } else {
-          console.log(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error code: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -182,7 +182,7 @@ off(type: 'abilityLifecycle', callbackId: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -203,11 +203,11 @@ let lifecycleId: number;
 export default class MyAbility extends UIAbility {
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();
-    console.log(`stage applicationContext: ${applicationContext}`);
+    console.info(`stage applicationContext: ${applicationContext}`);
     try {
       applicationContext.off('abilityLifecycle', lifecycleId);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -221,7 +221,8 @@ on(type: 'environment', callback: EnvironmentCallback): number
 
 > **说明：**
 >
-> 使用[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)也可以实现对系统环境变量的监听。相较于Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口，当前接口的使用场景更加灵活，不仅可以在应用组件中使用，还可以在页面中使用，但是支持订阅的环境变量与Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口存在差异，如不支持订阅direction、screenDensity、displayId，详见[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)中各个环境变量的说明。
+> - 使用[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)也可以实现对系统环境变量的监听。相较于Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口，当前接口的使用场景更加灵活，不仅可以在应用组件中使用，还可以在页面中使用，但是支持订阅的环境变量与Ability的[onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)接口存在差异，如不支持订阅direction、screenDensity、displayId，详见[Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration)中各个环境变量的说明。
+> - 当前接口在实际触发时存在一定限制。例如如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发当前接口的[callback](js-apis-app-ability-environmentCallback.md)回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -258,13 +259,13 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate')
+    console.info('MyAbility onCreate')
     let environmentCallback: EnvironmentCallback = {
       onConfigurationUpdated(config) {
-        console.log(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
+        console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
       },
       onMemoryLevel(level) {
-        console.log(`onMemoryLevel level: ${level}`);
+        console.info(`onMemoryLevel level: ${level}`);
       }
     };
     // 1.获取applicationContext
@@ -273,9 +274,9 @@ export default class EntryAbility extends UIAbility {
       // 2.通过applicationContext注册监听系统环境变化
       callbackId = applicationContext.on('environment', environmentCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log(`registerEnvironmentCallback callbackId: ${callbackId}`);
+    console.info(`registerEnvironmentCallback callbackId: ${callbackId}`);
   }
 }
 ```
@@ -322,11 +323,11 @@ export default class EntryAbility extends UIAbility {
         if (error) {
           console.error(`unregisterEnvironmentCallback fail, err: ${JSON.stringify(error)}`);
         } else {
-          console.log(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -353,7 +354,7 @@ off(type: 'environment', callbackId: number): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -416,7 +417,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let applicationStateChangeCallback: ApplicationStateChangeCallback = {
       onApplicationForeground() {
         console.info('applicationStateChangeCallback onApplicationForeground');
@@ -432,9 +433,9 @@ export default class MyAbility extends UIAbility {
       // 2.通过applicationContext注册当前应用进程状态监听
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log('Register applicationStateChangeCallback');
+    console.info('Register applicationStateChangeCallback');
   }
 }
 ```
@@ -531,9 +532,9 @@ export default class MyAbility extends UIAbility {
   onForeground() {
     let applicationContext = this.context.getApplicationContext();
     applicationContext.getRunningProcessInformation().then((data) => {
-      console.log(`The process running information is: ${JSON.stringify(data)}`);
+      console.info(`The process running information is: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+      console.error(`error code: ${error.code}, error msg: ${error.message}`);
     });
   }
 }
@@ -577,7 +578,7 @@ export default class MyAbility extends UIAbility {
       if (err) {
         console.error(`getRunningProcessInformation failed, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`The process running information is: ${JSON.stringify(data)}`);
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
     })
   }
@@ -602,7 +603,7 @@ killAllProcesses(): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -650,7 +651,7 @@ killAllProcesses(clearPageStack: boolean): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -794,13 +795,11 @@ setLanguage(language: string): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
-
 
 **示例：**
 
@@ -828,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用Promise异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 
@@ -840,7 +842,7 @@ clearUpApplicationData(): Promise\<void\>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void\> | 无返回结果的Promise对象。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -868,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-清理当前应用的数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+清理当前应用的应用文件路径下的所有数据，同时撤销应用向用户申请的权限。使用callback异步回调。仅支持主线程调用。
+
 
 > **说明：**
+> 
+> 应用文件路径详见[应用文件目录信息](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。图中仅标识了el1~el2目录下的应用文件路径，其他文件加密类型目录下的应用文件路径可以参考el1。
 >
 > 该接口会停止应用进程，应用进程停止后，后续的所有回调都不会再触发。
 
@@ -912,7 +917,11 @@ export default class MyAbility extends UIAbility {
 
 restartApp(want: Want): void
 
-应用重启并拉起自身指定UIAbility。重启时不会收到onDestroy回调。仅支持主线程调用，且待重启的应用需要处于获焦状态。
+应用重启并拉起自身指定UIAbility。仅支持主线程调用，且待重启的应用需要处于获焦状态。
+
+> **说明：**
+>
+> 通过该接口重启应用时，不会触发应用中Ability的onDestroy生命周期回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -921,7 +930,7 @@ restartApp(want: Want): void
 **参数：**
 | 参数名        | 类型     | 必填 | 说明                       |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility的信息，Bundle名称不做校验。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的UIAbility信息，校验abilityName，不校验bundleName。 |
 
 **错误码**：
 
@@ -938,20 +947,43 @@ restartApp(want: Want): void
 **示例：**
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
 
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    let applicationContext = this.context.getApplicationContext();
-    let want: Want = {
-      bundleName: 'com.example.myapp',
-      abilityName: 'EntryAbility'
-    };
-    try {
-      applicationContext.restartApp(want);
-    } catch (error) {
-      console.error(`restartApp fail, error: ${JSON.stringify(error)}`);
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let want: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility'
+          };
+          if (this.context) {
+            try {
+              this.context.restartApp(want);
+            } catch (err) {
+              hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+            }
+          } else {
+            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+          }
+        })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -1018,11 +1050,10 @@ setFont(font: string): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
@@ -1133,14 +1164,6 @@ setFontSizeScale(fontSizeScale: number): void
 | ------ | ------------- | ---- | -------------------- |
 | fontSizeScale | number | 是   | 表示字体缩放比例，取值为非负数。当应用字体[跟随系统](../../quick-start/app-configuration-file.md#configuration标签)且该字段取值超过[fontSizeMaxScale](../../quick-start/app-configuration-file.md#configuration标签)取值时，实际生效值为[fontSizeMaxScale](../../quick-start/app-configuration-file.md#configuration标签)取值。|
 
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. |
-
 **示例：**
 
 ```ts
@@ -1203,7 +1226,7 @@ class MyAbilityStage extends AbilityStage {
       let message = (error as BusinessError).message;
       console.error(`getCurrentInstanceKey fail, code: ${code}, msg: ${message}`);
     }
-    console.log(`currentInstanceKey: ${currentInstanceKey}`);
+    console.info(`currentInstanceKey: ${currentInstanceKey}`);
   }
 }
 ```

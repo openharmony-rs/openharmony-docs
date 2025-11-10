@@ -1,5 +1,12 @@
 # @ohos.logLibrary (Log Library) (System API)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @BruceZong-->
+<!--Designer: @gcw_qzKyUhyU-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 The **logLibrary** module provides APIs for obtaining various system maintenance and test logs.
 
 > **NOTE**

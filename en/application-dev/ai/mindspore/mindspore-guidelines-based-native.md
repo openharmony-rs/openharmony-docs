@@ -1,10 +1,17 @@
 # Using MindSpore Lite for Image Classification (C/C++)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 ## When to Use
 
 You can use [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to quickly deploy AI algorithms into your application to perform AI model inference for image classification.
 
-Image classification can be used to recognize objects in images and is widely used in medical image analysis, auto driving, e-commerce, and facial recognition.
+Image classification can be used to recognize objects in images and is widely used in areas such as medical image analysis, auto driving, e-commerce, and facial recognition.
 
 ## Basic Concepts
 
@@ -29,148 +36,18 @@ This sample application uses [mobilenetv2.ms](https://download.mindspore.cn/mode
 
 If you have other pre-trained models for image classification, convert the original model into the .ms format by referring to [Using MindSpore Lite for Model Conversion](mindspore-lite-converter-guidelines.md).
 
-### Writing Code
+### Writing Inference Code
 
-#### Image Input and Preprocessing
-
-1. Call [@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) to pick up the desired image in the album.
-
-2. Based on the input image size, call [[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) to perform operations such as cropping the image, obtaining the image buffer, and standardizing the image.
-
-   ```ts
-   // Index.ets
-   import { fileIo } from '@kit.CoreFileKit';
-   import { photoAccessHelper } from '@kit.MediaLibraryKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { image } from '@kit.ImageKit';
-   
-   @Entry
-   @Component
-   struct Index {
-     @State modelName: string = 'mobilenetv2.ms';
-     @State modelInputHeight: number = 224;
-     @State modelInputWidth: number = 224;
-     @State uris: Array<string> = [];
-   
-     build() {
-       Row() {
-         Column() {
-           Button() {
-             Text('photo')
-               .fontSize(30)
-               .fontWeight(FontWeight.Bold)
-           }
-           .type(ButtonType.Capsule)
-           .margin({
-             top: 20
-           })
-           .backgroundColor('#0D9FFB')
-           .width('40%')
-           .height('5%')
-           .onClick(() => {
-             let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
-   
-             // Obtain images in an album.
-             // 1. Create an image picker instance.
-             let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-   
-             // 2. Set the media file type to IMAGE and set the maximum number of media files that can be selected.
-             photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-             photoSelectOptions.maxSelectNumber = 1;
-   
-             // 3. Create an album picker instance and call select() to open the album page for file selection. After file selection is done, the result set is returned through photoSelectResult.
-             let photoPicker = new photoAccessHelper.PhotoViewPicker();
-             photoPicker.select(photoSelectOptions,
-               async (err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-                 if (err) {
-                   console.error('MS_LITE_ERR: PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
-                   return;
-                 }
-                 console.info('MS_LITE_LOG: PhotoViewPicker.select successfully, photoSelectResult uri: ' +
-                 JSON.stringify(photoSelectResult));
-                 this.uris = photoSelectResult.photoUris;
-                 console.info('MS_LITE_LOG: uri: ' + this.uris);
-                 // Preprocess the image data.
-                 try {
-                   // 1. Based on the specified URI, call fileIo.openSync to open the file to obtain the FD.
-                   let file = fileIo.openSync(this.uris[0], fileIo.OpenMode.READ_ONLY);
-                   console.info('MS_LITE_LOG: file fd: ' + file.fd);
-   
-                   // 2. Based on the FD, call fileIo.readSync to read the data in the file.
-                   let inputBuffer = new ArrayBuffer(4096000);
-                   let readLen = fileIo.readSync(file.fd, inputBuffer);
-                   console.info('MS_LITE_LOG: readSync data to file succeed and inputBuffer size is:' + readLen);
-   
-                   // 3. Perform image preprocessing through PixelMap.
-                   let imageSource = image.createImageSource(file.fd);
-                   imageSource.createPixelMap().then((pixelMap) => {
-                     pixelMap.getImageInfo().then((info) => {
-                       console.info('MS_LITE_LOG: info.width = ' + info.size.width);
-                       console.info('MS_LITE_LOG: info.height = ' + info.size.height);
-                       // 4. Crop the image based on the input image size and obtain the image buffer readBuffer.
-                       pixelMap.scale(256.0 / info.size.width, 256.0 / info.size.height).then(() => {
-                         pixelMap.crop({
-                           x: 16,
-                           y: 16,
-                           size: { height: this.modelInputHeight, width: this.modelInputWidth }
-                         })
-                           .then(async () => {
-                             let info = await pixelMap.getImageInfo();
-                             console.info('MS_LITE_LOG: crop info.width = ' + info.size.width);
-                             console.info('MS_LITE_LOG: crop info.height = ' + info.size.height);
-                             // Set the size of readBuffer.
-                             let readBuffer = new ArrayBuffer(this.modelInputHeight * this.modelInputWidth * 4);
-                             await pixelMap.readPixelsToBuffer(readBuffer);
-                             console.info('MS_LITE_LOG: Succeeded in reading image pixel data, buffer: ' +
-                             readBuffer.byteLength);
-                             // Convert readBuffer to the float32 format, and standardize the image.
-                             const imageArr =
-                               new Uint8Array(readBuffer.slice(0, this.modelInputHeight * this.modelInputWidth * 4));
-                             console.info('MS_LITE_LOG: imageArr length: ' + imageArr.length);
-                             let means = [0.485, 0.456, 0.406];
-                             let stds = [0.229, 0.224, 0.225];
-                             let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
-                             let index = 0;
-                             for (let i = 0; i < imageArr.length; i++) {
-                               if ((i + 1) % 4 == 0) {
-                                 float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
-                                 float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
-                                 float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
-                                 index += 3;
-                               }
-                             }
-                             console.info('MS_LITE_LOG: float32View length: ' + float32View.length);
-                             let printStr = 'float32View data:';
-                             for (let i = 0; i < 20; i++) {
-                               printStr += ' ' + float32View[i];
-                             }
-                             console.info('MS_LITE_LOG: float32View data: ' + printStr);
-                           })
-                       })
-                     })
-                   })
-                 } catch (err) {
-                   console.error('MS_LITE_LOG: uri: open file fd failed.' + err);
-                 }
-               })
-           })
-         }.width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
-
-#### Writing Inference Code
-
-Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to implement inference on the device. The operation process is as follows:
+In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to implement on-device inference. The operation process is as follows:
 
 1. Include the corresponding header file.
 
+   <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+   
    ```c++
    #include <iostream>
    #include <sstream>
-   #include <stdlib.h>
+   #include <cstdlib>
    #include <hilog/log.h>
    #include <rawfile/raw_file_manager.h>
    #include <mindspore/types.h>
@@ -183,26 +60,37 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
 
 2. Read the model file.
 
+   <!-- @[napi_image_classification_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
-   
-   void *ReadModelFile(NativeResourceManager *nativeResourceManager, const std::string &modelName, size_t *modelSize) {
+   ```
+
+   <!-- @[napi_image_classification_ReadModelFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
+   void *ReadModelFile(NativeResourceManager *nativeResourceManager, const std::string &modelName, size_t *modelSize)
+   {
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
        if (rawFile == nullptr) {
            LOGE("MS_LITE_ERR: Open model file failed");
+           OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
        long fileSize = OH_ResourceManager_GetRawFileSize(rawFile);
+       if (fileSize <= 0) {
+           LOGE("MS_LITE_ERR: FileSize not correct");
+       }
        void *modelBuffer = malloc(fileSize);
        if (modelBuffer == nullptr) {
-           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: malloc failed");
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, modelBuffer, fileSize);
        if (ret == 0) {
-           LOGI("MS_LITE_LOG: OH_ResourceManager_ReadRawFile failed");
+           LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
            OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
@@ -211,11 +99,14 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
        return modelBuffer;
    }
    ```
-   
+
 3. Create a context, set parameters such as the number of threads and device type, and load the model. The sample model does not support NNRt inference.
 
+   <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
-   void DestroyModelBuffer(void **buffer) {
+   void DestroyModelBuffer(void **buffer)
+   {
        if (buffer == nullptr) {
            return;
        }
@@ -223,7 +114,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
        *buffer = nullptr;
    }
    
-   OH_AI_ContextHandle CreateMSLiteContext(void *modelBuffer) {
+   OH_AI_ContextHandle CreateMSLiteContext(void *modelBuffer)
+   {
        // Set executing context for model.
        auto context = OH_AI_ContextCreate();
        if (context == nullptr) {
@@ -241,7 +133,8 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
        return context;
    }
    
-   OH_AI_ModelHandle CreateMSLiteModel(void *modelBuffer, size_t modelSize, OH_AI_ContextHandle context) {
+   OH_AI_ModelHandle CreateMSLiteModel(void *modelBuffer, size_t modelSize, OH_AI_ContextHandle context)
+   {
        // Create model
        auto model = OH_AI_ModelCreate();
        if (model == nullptr) {
@@ -265,11 +158,18 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
 
 4. Set the model input data and perform model inference.
 
+   <!-- @[napi_image_classification_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
-   
+   ```
+
+   <!-- @[napi_image_classification_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    // Set the model input data.
-   int FillInputTensor(OH_AI_TensorHandle input, std::vector<float> input_data) {
+   int FillInputTensor(OH_AI_TensorHandle input, std::vector<float> input_data)
+   {
        if (OH_AI_TensorGetDataType(input) == OH_AI_DATATYPE_NUMBERTYPE_FLOAT32) {
            float *data = (float *)OH_AI_TensorGetMutableData(input);
            for (size_t i = 0; i < OH_AI_TensorGetElementNum(input); i++) {
@@ -280,19 +180,25 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
            return OH_AI_STATUS_LITE_ERROR;
        }
    }
-   
+   ```
+
+   <!-- @[napi_image_classification_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    // Execute model inference.
-   int RunMSLiteModel(OH_AI_ModelHandle model, std::vector<float> input_data) {
+   int RunMSLiteModel(OH_AI_ModelHandle model, std::vector<float> input_data)
+   {
        // Set input data for model.
        auto inputs = OH_AI_ModelGetInputs(model);
-   
        auto ret = FillInputTensor(inputs.handle_list[0], input_data);
        if (ret != OH_AI_STATUS_SUCCESS) {
            LOGE("MS_LITE_ERR: RunMSLiteModel set input error.\n");
            return OH_AI_STATUS_LITE_ERROR;
        }
+   
        // Get model output.
        auto outputs = OH_AI_ModelGetOutputs(model);
+   
        // Predict model.
        auto predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
        if (predict_ret != OH_AI_STATUS_SUCCESS) {
@@ -300,6 +206,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
            return OH_AI_STATUS_LITE_ERROR;
        }
        LOGI("MS_LITE_LOG: Run MSLite model Predict success.\n");
+   
        // Print output tensor data.
        LOGI("MS_LITE_LOG: Get model outputs:\n");
        for (size_t i = 0; i < outputs.handle_num; i++) {
@@ -322,9 +229,12 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
 
 5. Implement a complete model inference process.
 
+   <!-- @[napi_image_classification_RunDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
-   static napi_value RunDemo(napi_env env, napi_callback_info info) {
-       LOGI("MS_LITE_LOG: Enter runDemo()");
+   static napi_value RunDemo(napi_env env, napi_callback_info info)
+   {
+       // run demo
        napi_value error_ret;
        napi_create_int32(env, -1, &error_ret);
        // Process the input data.
@@ -336,7 +246,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
        uint32_t length = 0;
        // Obtain the length of the array.
        napi_get_array_length(env, argv[0], &length);
-   	LOGI("MS_LITE_LOG: argv array length = %{public}d", length);
+       LOGI("MS_LITE_LOG: argv array length = %{public}d", length);
        std::vector<float> input_data;
        double param = 0;
        for (int i = 0; i < length; i++) {
@@ -349,7 +259,7 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
        for (int i = 0; i < K_NUM_PRINT_OF_OUT_DATA; i++) {
            outstr << input_data[i] << " ";
        }
-   	LOGI("MS_LITE_LOG: input_data = %{public}s", outstr.str().c_str());
+       LOGI("MS_LITE_LOG: input_data = %{public}s", outstr.str().c_str());
        // Read model file
        const std::string modelName = "mobilenetv2.ms";
        LOGI("MS_LITE_LOG: Run model: %{public}s", modelName.c_str());
@@ -399,19 +309,19 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
 
 6. Write the **CMake** script to link the MindSpore Lite dynamic library.
 
-   ```c++
+   ```cmake
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.4.1)
    project(MindSporeLiteCDemo)
    
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+   set(NATIVERENDER_PATH ${CMAKE_CURRENT_SOURCE_DIR})
    
    if(DEFINED PACKAGE_FIND_FILE)
        include(${PACKAGE_FIND_FILE})
    endif()
    
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
+   include_directories(${NATIVERENDER_PATH}
+                       ${NATIVERENDER_PATH}/include)
    
    add_library(entry SHARED mslite_napi.cpp)
    target_link_libraries(entry PUBLIC mindspore_lite_ndk)
@@ -420,11 +330,13 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
    target_link_libraries(entry PUBLIC ace_napi.z)
    ```
 
-#### Use N-APIs to encapsulate the C++ dynamic library into an ArkTS module.
+### Use N-APIs to encapsulate the C++ dynamic library into an ArkTS module.
 
 1. In **entry/src/main/cpp/types/libentry/Index.d.ts**, define the ArkTS API **runDemo ()**. The content is as follows:
 
-   ```ts
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   
+   ```typescript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
 
@@ -439,19 +351,35 @@ Call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to i
    }
    ```
 
-#### Invoke the encapsulated ArkTS module for inference and output the result.
+### Implementing Image Input and Preprocessing and Performing Inference
 
-In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result.
+1. Call [@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) to pick up the desired image in the album.
+2. Based on the input image size, call [[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) and [@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) to perform operations such as cropping the image, obtaining the image buffer, and standardizing the image.
+3. In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result.
 
-```ts
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
 // Index.ets
-import msliteNapi from 'libentry.so'
+import msliteNapi from 'libentry.so';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'MindSporeLite';
+const PERMISSIONS: Permissions[] = ['ohos.permission.READ_IMAGEVIDEO'];
 
 @Entry
 @Component
 struct Index {
+  @State message: string = 'MindSporeLite C Demo';
+  @State modelName: string = 'mobilenetv2.ms';
   @State modelInputHeight: number = 224;
   @State modelInputWidth: number = 224;
+  @State uris: Array<string> = [];
   @State max: number = 0;
   @State maxIndex: number = 0;
   @State maxArray: Array<number> = [];
@@ -460,49 +388,160 @@ struct Index {
   build() {
     Row() {
       Column() {
+        Text(this.message)
         Button() {
           Text('photo')
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
         }
-        .type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('40%')
-        .height('5%')
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
-          let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
-          // Image input and preprocessing
-          // Call the C++ runDemo function. The buffer data of the input image is stored in float32View after preprocessing. For details, see Image Input and Preprocessing.
-          console.info('MS_LITE_LOG: *** Start MSLite Demo ***');
-          let output: Array<number> = msliteNapi.runDemo(Array.from(float32View), resMgr);
-
-          // Obtain the maximum number of categories.
-          this.max = 0;
-          this.maxIndex = 0;
-          this.maxArray = [];
-          this.maxIndexArray = [];
-          let newArray = output.filter(value => value !== this.max);
-          for (let n = 0; n < 5; n++) {
-            this.max = output[0];
-            this.maxIndex = 0;
-            for (let m = 0; m < newArray.length; m++) {
-              if (newArray[m] > this.max) {
-                this.max = newArray[m];
-                this.maxIndex = m;
-              }
-            }
-            this.maxArray.push(Math.round(this.max * 10000));
-            this.maxIndexArray.push(this.maxIndex);
-            // Call the array filter function.
-            newArray = newArray.filter(value => value !== this.max);
+          if (resMgr === null || resMgr === undefined){
+            hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: get resMgr failed.`);
+            return
           }
-          console.info('MS_LITE_LOG: max:' + this.maxArray);
-          console.info('MS_LITE_LOG: maxIndex:' + this.maxIndexArray);
-          console.info('MS_LITE_LOG: *** Finished MSLite Demo ***');
+
+          // Obtain images in an album.
+          // 1. Create an image picker instance.
+          let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+
+          // 2. Set the media file type to IMAGE and set the maximum number of media files that can be selected.
+          photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+          photoSelectOptions.maxSelectNumber = 1;
+
+          // 3. Create an album picker instance and call select() to open the album page for file selection. After file selection is done, the result set is returned through photoSelectResult.
+          let photoPicker = new photoAccessHelper.PhotoViewPicker();
+          photoPicker.select(photoSelectOptions,
+            async (err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+              if (err) {
+                hilog.error(0xFF00, TAG, '%{public}s',
+                  `MS_LITE_ERR: PhotoViewPicker.select failed with err: ${JSON.stringify(err)}`);
+                return;
+              }
+              hilog.info(0xFF00, TAG, '%{public}s',
+                `MS_LITE_LOG: PhotoViewPicker.select successfully, uri: ${JSON.stringify(photoSelectResult)}`);
+              this.uris = photoSelectResult.photoUris;
+              hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: uri: ${this.uris}`);
+
+              // Preprocess the image data.
+              try {
+                // 1. Based on the specified URI, call fileIo.openSync to open the file to obtain the FD.
+                let file = fileIo.openSync(this.uris[0], fileIo.OpenMode.READ_ONLY);
+                hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: file fd: ${file.fd}`);
+
+                // 2. Based on the FD, call fileIo.readSync to read the data in the file.
+                let inputBuffer = new ArrayBuffer(4096000);
+                let readLen = fileIo.readSync(file.fd, inputBuffer);
+                hilog.info(0xFF00, TAG, '%{public}s',
+                  `MS_LITE_LOG: readSync data to file succeed and inputBuffer size is: ${readLen}`);
+
+                // 3. Perform image preprocessing through PixelMap.
+                let imageSource = image.createImageSource(file.fd);
+                if (imageSource === undefined) {
+                  hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: createImageSource failed.`);
+                  return
+                }
+                imageSource.createPixelMap({ editable: true }).then((pixelMap) => {
+                  pixelMap.getImageInfo().then((info) => {
+                    hilog.info(0xFF00, TAG, '%{public}s',
+                      `MS_LITE_LOG: info.width = ${info.size.width}`);
+                    hilog.info(0xFF00, TAG, '%{public}s',
+                      `MS_LITE_LOG: info.height = ${info.size.height}`);
+
+                    // 4. Crop the image based on the input image size and obtain the image buffer readBuffer.
+                    pixelMap.scale(256.0 / info.size.width, 256.0 / info.size.height).then(() => {
+                      pixelMap.crop({
+                        x: 16,
+                        y: 16,
+                        size: { height: this.modelInputHeight, width: this.modelInputWidth }
+                      }).then(async () => {
+                        let info = await pixelMap.getImageInfo();
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: crop info.width = ${info.size.width}`);
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: crop info.height = ${info.size.height}`);
+                        // Set the size of readBuffer.
+                        let readBuffer = new ArrayBuffer(this.modelInputHeight * this.modelInputWidth * 4);
+                        await pixelMap.readPixelsToBuffer(readBuffer);
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: Succeeded in reading image pixel data, buffer: ${readBuffer.byteLength}`);
+                        // Convert readBuffer to the float32 format, and standardize the image.
+                        const imageArr =
+                          new Uint8Array(readBuffer.slice(0, this.modelInputHeight * this.modelInputWidth * 4));
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: imageArr length: ${imageArr.length}`);
+
+                        let means = [0.485, 0.456, 0.406];
+                        let stds = [0.229, 0.224, 0.225];
+                        let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
+                        let index = 0;
+                        for (let i = 0; i < imageArr.length; i++) {
+                          if ((i + 1) % 4 === 0) {
+                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
+                            float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
+                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
+                            index += 3;
+                          }
+                        }
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: float32View length: ${float32View.length}`);
+                        let printStr = 'float32View data:';
+                        for (let i = 0; i < 20; i++) {
+                          printStr += ' ' + float32View[i];
+                        }
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: float32View data: ${printStr}`);
+
+                        // Call the C++ runDemo.
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: *** Start MSLite Demo ***`);
+
+                        let output: Array<number> = msliteNapi.runDemo(Array.from(float32View), resMgr);
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_WARN: output length = ${output.length}, value = ${output.slice(0, 20)}`);
+
+                        // Obtain the top 5 maximum numbers of categories.
+                        this.max = 0;
+                        this.maxIndex = 0;
+                        this.maxArray = [];
+                        this.maxIndexArray = [];
+                        let newArray = output.filter(value => value !== this.max);
+                        for (let n = 0; n < 5; n++) {
+                          this.max = output[0];
+                          this.maxIndex = 0;
+                          // Obtain the maximum value.
+                          for (let m = 0; m < newArray.length; m++) {
+                            if (newArray[m] > this.max) {
+                              this.max = newArray[m];
+                              this.maxIndex = m;
+                            }
+                          }
+                          this.maxArray.push(Math.round(this.max * 10000));
+                          this.maxIndexArray.push(this.maxIndex);
+                          // Call the array filter function.
+                          newArray = newArray.filter(value => value !== this.max);
+                        }
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: max: ${this.maxArray}`);
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: maxIndex: ${this.maxIndexArray}`);
+
+                        hilog.info(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_LOG: *** Finished MSLite Demo ***`);
+                      }).catch((error: BusinessError) => {
+                        hilog.error(0xFF00, TAG, '%{public}s',
+                          `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
+                      })
+                    })
+                    // 5. Close the file.
+                    fileIo.closeSync(file);
+                  })
+                })
+              } catch (err) {
+                hilog.error(0xFF00, TAG, '%{public}s',
+                  `MS_LITE_ERR: uri: open file fd failed. ${err}`);
+              }
+            })
         })
       }.width('100%')
     }
@@ -555,5 +594,4 @@ Touch the **photo** button on the device screen, select an image, and touch **OK
 ![stepc1](figures/stepc1.png)           ![step2](figures/step2.png)
 
 ![step3](figures/step3.png)         ![stepc4](figures/stepc4.png) 
-
 

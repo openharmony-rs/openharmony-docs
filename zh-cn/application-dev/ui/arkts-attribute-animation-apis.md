@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 通过可动画属性改变引起UI上产生的连续视觉效果，即为属性动画。属性动画是最基础易懂的动画，ArkUI提供三种动画接口[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)、[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)和[keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md)驱动组件属性按照动画曲线等动画参数进行连续的变化，产生属性动画。
@@ -31,13 +31,13 @@ animateTo(value: AnimateParam, event: () => void): void
 > **说明：**
 > 
 > 直接使用animateTo可能导致[UI上下文不明确](./arkts-global-interface.md)的问题，建议使用[getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)调用绑定实例的animateTo。
+<!-- @[attrAnimateToDemo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template2/Index.ets) -->
 
-```ts
+``` TypeScript
 import { curves } from '@kit.ArkUI';
-
 @Entry
 @Component
-struct AnimateToDemo {
+struct attrAnimateToDemo2 {
   @State animate: boolean = false;
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
@@ -72,7 +72,6 @@ struct AnimateToDemo {
 
       // 组件二
       Column() {
-
       }
       .justifyContent(FlexAlign.Center)
       .width(100)
@@ -96,13 +95,13 @@ struct AnimateToDemo {
 
 相比于animateTo接口需要把要执行动画的属性的修改放在闭包中，[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口无需使用闭包，把animation接口加在要做属性动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->
 
-```ts
+``` TypeScript
 import { curves } from '@kit.ArkUI';
-
 @Entry
 @Component
-struct AnimationDemo {
+struct attrAnimationDemo3 {
   @State animate: boolean = false;
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
@@ -155,6 +154,7 @@ struct AnimationDemo {
 }
 ```
 
+
 ![zh-cn_image_0000001649279705](figures/zh-cn_image_0000001649279705.gif)
 
 ## 使用keyframeAnimateTo产生属性动画
@@ -168,7 +168,9 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 
 以下示例主要演示如何通过keyframeAnimateTo来设置关键帧动画。
 
-```ts
+<!-- @[KeyframeAnimateToDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template4/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct KeyframeAnimateToDemo {
@@ -230,6 +232,7 @@ struct KeyframeAnimateToDemo {
   }
 }
 ```
+
 
 ![keyframeAnimateTo1](figures/keyframeAnimateTo1.gif)
 

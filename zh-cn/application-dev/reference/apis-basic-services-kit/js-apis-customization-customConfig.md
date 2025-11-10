@@ -1,5 +1,12 @@
 # @ohos.customization.customConfig (定制配置)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @liule_123-->
+<!--Designer: @sunshine_1984-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 本模块接口为应用提供定制配置的获取能力，如渠道号等。
 
 >  **说明：**
@@ -30,7 +37,9 @@ getChannelId(): string
 
 **示例：**
 
-  ```ts
+```ts
+    import { customConfig } from '@kit.BasicServicesKit';
+
     let channelId: string = customConfig.getChannelId();
-    console.log('app channelId is ' + channelId);
-  ```
+    console.info('app channelId is ' + channelId);
+```

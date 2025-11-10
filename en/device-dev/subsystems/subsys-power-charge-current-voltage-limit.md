@@ -96,7 +96,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 ### Debugging and Verification
 
-1. Build the battery-specific hats test cases. For details about the build commands and framework setup, see [XTS Subsystem](https://gitee.com/openharmony/xts_hats).
+1. Build the battery-specific hats test cases. For details about the build commands and framework setup, see [XTS Subsystem](https://gitcode.com/openharmony/xts_hats).
 
 2. Run the test cases, and check the test report.
 

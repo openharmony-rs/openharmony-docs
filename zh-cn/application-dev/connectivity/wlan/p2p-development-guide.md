@@ -1,5 +1,11 @@
 # P2P模式开发指南
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 ## 简介
 P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以在两台STA之间直接建立TCP/IP连接，并不需要AP的参与。
 
@@ -34,108 +40,188 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ### 创建/删除P2P群组
 1. import需要的Wi-Fi模块。
+<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+
+``` TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+```
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
-5. 示例代码：
+<!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
 
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
-
-// 创建群组，将当前设备当做GO使用时，需要该步骤
-// netId：-1表示创建临时组，下次和已连接过的设备连接，需要重新进行GO协商，以及WPS密钥协商;
-//        -2表示创建永久组，下次和已连接过的设备连接，不需要重新进行GO和WPS密钥协商;
-
-let recvP2pPersistentGroupChangeFunc = () => {
-	console.info("p2p persistent group change receive event");
-  
-	// 永久组创建好后需要处理的业务
-}
-// 创建永久组，需要注册永久组状态改变事件回调
-wifiManager.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
-try {
-	let config:wifiManager.WifiP2PConfig = {
-		deviceAddress: "00:11:22:33:44:55",
-		deviceAddressType: 1,
-		netId: -2,
-		passphrase: "12345678",
-		groupName: "testGroup",
-		goBand: 0
-	}
-	wifiManager.createGroup(config);	
-}catch(error){
-	console.error("failed:" + JSON.stringify(error));
-}
-    
-// 删除群组
-try {
-	wifiManager.removeGroup();	
-}catch(error){
-	console.error("failed:" + JSON.stringify(error));
+``` TypeScript
+async createGroup() {
+  try {
+    let deviceInfo = await wifiManager.getP2pLocalDevice()
+    let config:wifiManager.WifiP2PConfig = {
+      deviceAddress: deviceInfo.deviceAddress,
+      netId: this.netId,
+      passphrase: this.passphrase,
+      groupName: this.groupName,
+      goBand: this.goBand,
+    }
+    hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`)
+    wifiManager.createGroup(config)
+    promptAction.showToast({ message : 'createGroup success' })
+  } catch (e) {
+    hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`)
+  }
 }
 ```
+5. 示例代码：
+
+   ```ts
+   import { wifiManager } from '@kit.ConnectivityKit';
+
+   // 创建群组，将当前设备当做GO使用时，需要该步骤
+   // netId：-1表示创建临时组，下次和已连接过的设备连接，需要重新进行GO协商，以及WPS密钥协商;
+   //        -2表示创建永久组，下次和已连接过的设备连接，不需要重新进行GO和WPS密钥协商;
+
+   let recvP2pPersistentGroupChangeFunc = () => {
+     console.info("p2p persistent group change receive event");
+
+     // 永久组创建好后需要处理的业务
+   }
+   // 创建永久组，需要注册永久组状态改变事件回调
+   wifiManager.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
+   try {
+     let config: wifiManager.WifiP2PConfig = {
+       deviceAddress: "00:11:22:33:44:55",
+       deviceAddressType: 1,
+       netId: -2,
+       passphrase: "12345678",
+       groupName: "testGroup",
+       goBand: 0
+   }
+     wifiManager.createGroup(config);
+   } catch (error) {
+     console.error("failed:" + JSON.stringify(error));
+   }
+
+   // 删除群组
+   try {
+     wifiManager.removeGroup();
+   } catch (error) {
+     console.error("failed:" + JSON.stringify(error));
+   }
+   ```
 
 6. 错误码请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
 ### 建立P2P连接
 1. import需要的Wi-Fi模块。
+<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+
+``` TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+```
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 注册"p2pPeerDeviceChange"事件回调，并在回调实现中执行P2P连接。
+<!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
+
+``` TypeScript
+connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
+  promptAction.showToast({ message : 'connect to device' })
+  hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`)
+  hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo))
+  let config: wifi.WifiP2PConfig = {
+    deviceAddress : p2pScanInfo.deviceAddress,
+    netId : - 2 ,
+    deviceAddressType: 1,
+    passphrase : '' ,
+    groupName : '' ,
+    goBand : 0
+  }
+  wifi.p2pConnect(config)
+}
+```
 5. 开始P2P设备发现。
+<!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
+
+``` TypeScript
+aboutToAppear() {
+  // 如果wifi是开的，就记录下状态，然后扫描p2p设备，并获取连接信息
+  if (!wifi.isWifiActive()) {
+    promptAction.showToast({ message : 'place active wifi' })
+    return
+  }
+  this.isSwitchOn = true;
+  wifi.startDiscoverDevices()
+  this.addListener();
+}
+
+aboutToDisappear() {
+  wifi.off('p2pPeerDeviceChange')
+  wifi.off('p2pConnectionChange')
+}
+```
 6. 示例代码：
 
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
-  
-let recvP2pConnectionChangeFunc = (result:wifiManager.WifiP2pLinkedInfo) => {
-	console.info("p2p connection change receive event: " + JSON.stringify(result));
-	wifiManager.getP2pLinkedInfo((err, data) => {
-		if (err) {
-			console.error("failed to get P2pLinkedInfo: " + JSON.stringify(err));
-			return;
-		}
-		console.info("get getP2pLinkedInfo: " + JSON.stringify(data));
-		// 添加P2P连接成功或者失败场景的业务处理
-	});
-}
-// P2P连接完成，会调用"p2pConnectionChange"事件回调
-wifiManager.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
-  
-let recvP2pPeerDeviceChangeFunc = (result:wifiManager.WifiP2pDevice[]) => {
-	console.info("p2p peer device change receive event: " + JSON.stringify(result));
-	wifiManager.getP2pPeerDevices((err, data) => {
-		if (err) {
-			console.error("failed to get peer devices: " + JSON.stringify(err));
-			return;
-		}
-		console.info("get peer devices: " + JSON.stringify(data));
-		let len = data.length;
-		for (let i = 0; i < len; ++i) {
-			// 选择符合条件的对端P2P设备
-			if (data[i].deviceName === "my_test_device") {
-				console.info("p2p connect to test device: " + data[i].deviceAddress);
-				let config:wifiManager.WifiP2PConfig = {
-					deviceAddress:data[i].deviceAddress,
-					deviceAddressType: 1,
-					netId:-2,
-					passphrase:"",
-					groupName:"",
-					goBand:0,
-				}
-				// 执行P2P连接，作为GO时不能主动发起连接
-				wifiManager.p2pConnect(config);
-			}
-		}
-	});
-}
-// P2P扫描结果上报时会调用"p2pPeerDeviceChange"事件回调
-wifiManager.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
-  
-setTimeout(() => {wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);}, 125 * 1000);
-setTimeout(() =>  {wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);}, 125 * 1000);
-// 开始发现P2P设备，即，开始P2P扫描
-console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
-```
+   ```ts
+   import { wifiManager } from '@kit.ConnectivityKit';
+
+   let recvP2pConnectionChangeFunc = (result: wifiManager.WifiP2pLinkedInfo) => {
+     console.info("p2p connection change receive event: " + JSON.stringify(result));
+     wifiManager.getP2pLinkedInfo((err, data) => {
+       if (err) {
+         console.error("failed to get P2pLinkedInfo: " + JSON.stringify(err));
+         return;
+       }
+       console.info("get getP2pLinkedInfo: " + JSON.stringify(data));
+       // 添加P2P连接成功或者失败场景的业务处理
+     });
+   }
+   // P2P连接完成，会调用"p2pConnectionChange"事件回调
+   wifiManager.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
+
+   let recvP2pPeerDeviceChangeFunc = (result: wifiManager.WifiP2pDevice[]) => {
+     console.info("p2p peer device change receive event: " + JSON.stringify(result));
+     wifiManager.getP2pPeerDevices((err, data) => {
+       if (err) {
+         console.error("failed to get peer devices: " + JSON.stringify(err));
+         return;
+       }
+       console.info("get peer devices: " + JSON.stringify(data));
+       let len = data.length;
+       for (let i = 0; i < len; ++i) {
+         // 选择符合条件的对端P2P设备
+         if (data[i].deviceName === "my_test_device") {
+           console.info("p2p connect to test device: " + data[i].deviceAddress);
+           let config: wifiManager.WifiP2PConfig = {
+             deviceAddress: data[i].deviceAddress,
+             deviceAddressType: 1,
+             netId: -2,
+             passphrase: "",
+             groupName: "",
+             goBand: 0,
+           }
+           // 执行P2P连接，作为GO时不能主动发起连接
+           wifiManager.p2pConnect(config);
+         }
+       }
+     });
+   }
+   // P2P扫描结果上报时会调用"p2pPeerDeviceChange"事件回调
+   wifiManager.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
+
+   setTimeout(() => {
+     wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
+   }, 125 * 1000);
+   setTimeout(() => {
+     wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
+   }, 125 * 1000);
+   // 开始发现P2P设备，即，开始P2P扫描
+   console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
+   ```
 
 7. 错误码请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+
+### 获取对端IP以及Socket通信
+1. import需要的Wi-Fi模块。
+2. 开启设备的Wi-Fi。
+3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
+4. 通过[wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#p2pconnectstate9)获取P2P连接状态，确保连接状态为CONNECTED。
+5. 通过[wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifip2pgroupinfo9)获取群组IP地址，以便Socket通信。
+6. Socket通信请参考[使用Socket访问网络](../../../application-dev/network/socket-connection.md)。

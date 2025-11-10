@@ -109,7 +109,7 @@ OpenHarmony支持如下几种系统类型：
 
     对子系统的进一步拆分，可复用的软件单元，它包含源码、配置文件、资源文件和编译脚本；能独立构建，以二进制方式集成，具备独立验证能力的二进制单元。
 
-以下为OpenHarmony中相关的子系统简介，详细介绍见子系统Readme文档，入口：[https://gitee.com/openharmony/docs/tree/master/zh-cn/readme](https://gitee.com/openharmony/docs/tree/master/zh-cn/readme)。
+以下为OpenHarmony中相关的子系统简介，详细介绍见子系统Readme文档，入口：[https://gitcode.com/openharmony/docs/tree/master/zh-cn/readme](https://gitcode.com/openharmony/docs/tree/master/zh-cn/readme)。
 
 
 | 子系统        | 简 介                                                        | 适用范围         |
@@ -150,9 +150,9 @@ OpenHarmony支持如下几种系统类型：
 
  |系统类型 | 	 开发板型号|	 芯片型号  |	 主要能力及适配案例  |	 典型应用场景  |	开发板代码仓|
   |--------  |	 --------|	 --------|	 --------|	 --------  |	 --------  |
-  |标准系统 | 	 润和DAYU200  |	 RK3568  |	 主要能力：<br/>润和HH-SCDAYU200<br/>基于<br/>Rockchip&nbsp;RK3568，集成双<br/>核心架构GPU以及高效能NPU；板<br/>载四核64位Cortex-A55&nbsp;处<br/>理器采用22nm先进工艺，主频高<br/>达2.0GHz；支持蓝牙、Wi-Fi、<br/>音频、视频和摄像头等功能，拥<br/>有丰富的扩展接口，支持多种视<br/>频输入输出接口；配置双千兆自<br/>适应RJ45以太网口，可满足<br/>NVR<br/>、工业网关等多网口产<br/>品需求。<br/>适配案例：<br/>[DAYU200适配案例](device-dev/porting/porting-dayu200-on_standard-demo.md)  |	影音娱乐、智慧<br/>出行、智<br/>能家居，<br/>如烟机、<br/>烤箱、跑<br/>步机等。  |	 [device_soc_rockchip](https://gitee.com/openharmony/device_soc_rockchip)<br/>[device_board_hihope](https://gitee.com/openharmony/device_board_hihope)<br/>[vendor_hihope](https://gitee.com/openharmony/vendor_hihope) <br/> |
-  |小型系统 | 	 Hispark_<br/>Taurus |	 Hi3516DV<br/>300 | 	 主要能力：<br/>Hi3516DV300是新一<br/>代Smart&nbsp;HD&nbsp;IP摄像<br/>机SOC，集成新一代<br/>ISP(Image&nbsp;Signal&nbsp;P<br/>rocessor)、H.265视频压缩编码<br/>器、高性能NNIE引擎，在低码率<br/>、高画质、智能处理和分析、低<br/>功耗等方面有较好的性能。  |	带屏智能硬件，<br/>比如带屏<br/>冰箱、车<br/>机等。  |	 [device_soc_hisilicon](https://gitee.com/openharmony/device_soc_hisilicon)<br/>[device_board_hisilicon](http://gitee.com/openharmony/device_board_hisilicon)<br/>[vendor_hisilicon](https://gitee.com/openharmony/vendor_hisilicon) <br/>|
-  |轻量系统  |	 Multi-modal<br/> V200Z-R  |	 BES2600  |	 主要能力：<br/>Multi-<br/>modal&nbsp;V200Z-R开发板是基<br/>于恒玄科技BES2600WM芯片的一<br/>款高性能、多功能、高性价比<br/>AIoT&nbsp;SoC开发板Multi-<br/>modal&nbsp;V200Z-R开发板，单<br/>模组集成四核ARM处理器（最高<br/>主频1GHz），集成双频<br/>WiFi&nbsp;+&nbsp;双模蓝牙，<br/>支持标准的<br/>802.11&nbsp;a/b/g/n/协议，支<br/>持BT/BLE&nbsp;5.2协议，内建<br/>多种容量的RAM（最大42MB）和<br/>Flash（最大32MB），支持<br/>MIPI&nbsp;DSI及CSI，适用于各<br/>种AIoT多模态<br/>VUI&nbsp;+&nbsp;GUI交互硬件<br/>场景。<br/>适配案例：<br/>[Multi-modal V200Z-R适配案例](device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md)  |	智能硬件、带屏<br/>类模组产<br/>品，如音<br/>箱、手表<br/>等。  |	 [device_soc_bestechnic](https://gitee.com/openharmony/device_soc_bestechnic)<br/>[device_board_fnlink](https://gitee.com/openharmony/device_board_fnlink)<br/>[vendor_bestechnic](https://gitee.com/openharmony/vendor_bestechnic) <br/>  |
+  |标准系统 | 	 润和DAYU200  |	 RK3568  |	 主要能力：<br/>润和HH-SCDAYU200<br/>基于<br/>Rockchip&nbsp;RK3568，集成双<br/>核心架构GPU以及高效能NPU；板<br/>载四核64位Cortex-A55&nbsp;处<br/>理器采用22nm先进工艺，主频高<br/>达2.0GHz；支持蓝牙、Wi-Fi、<br/>音频、视频和摄像头等功能，拥<br/>有丰富的扩展接口，支持多种视<br/>频输入输出接口；配置双千兆自<br/>适应RJ45以太网口，可满足<br/>NVR<br/>、工业网关等多网口产<br/>品需求。<br/>适配案例：<br/>[DAYU200适配案例](device-dev/porting/porting-dayu200-on_standard-demo.md)  |	影音娱乐、智慧<br/>出行、智<br/>能家居，<br/>如烟机、<br/>烤箱、跑<br/>步机等。  |	 [device_soc_rockchip](https://gitcode.com/openharmony/device_soc_rockchip)<br/>[device_board_hihope](https://gitcode.com/openharmony/device_board_hihope)<br/>[vendor_hihope](https://gitcode.com/openharmony/vendor_hihope) <br/> |
+  |小型系统 | 	 Hispark_<br/>Taurus |	 Hi3516DV<br/>300 | 	 主要能力：<br/>Hi3516DV300是新一<br/>代Smart&nbsp;HD&nbsp;IP摄像<br/>机SOC，集成新一代<br/>ISP(Image&nbsp;Signal&nbsp;P<br/>rocessor)、H.265视频压缩编码<br/>器、高性能NNIE引擎，在低码率<br/>、高画质、智能处理和分析、低<br/>功耗等方面有较好的性能。  |	带屏智能硬件，<br/>比如带屏<br/>冰箱、车<br/>机等。  |	 [device_soc_hisilicon](https://gitcode.com/openharmony/device_soc_hisilicon)<br/>[device_board_hisilicon](http://gitcode.com/openharmony/device_board_hisilicon)<br/>[vendor_hisilicon](https://gitcode.com/openharmony/vendor_hisilicon) <br/>|
+  |轻量系统  |	 Multi-modal<br/> V200Z-R  |	 BES2600  |	 主要能力：<br/>Multi-<br/>modal&nbsp;V200Z-R开发板是基<br/>于恒玄科技BES2600WM芯片的一<br/>款高性能、多功能、高性价比<br/>AIoT&nbsp;SoC开发板Multi-<br/>modal&nbsp;V200Z-R开发板，单<br/>模组集成四核ARM处理器（最高<br/>主频1GHz），集成双频<br/>WiFi&nbsp;+&nbsp;双模蓝牙，<br/>支持标准的<br/>802.11&nbsp;a/b/g/n/协议，支<br/>持BT/BLE&nbsp;5.2协议，内建<br/>多种容量的RAM（最大42MB）和<br/>Flash（最大32MB），支持<br/>MIPI&nbsp;DSI及CSI，适用于各<br/>种AIoT多模态<br/>VUI&nbsp;+&nbsp;GUI交互硬件<br/>场景。<br/>适配案例：<br/>[Multi-modal V200Z-R适配案例](device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md)  |	智能硬件、带屏<br/>类模组产<br/>品，如音<br/>箱、手表<br/>等。  |	 [device_soc_bestechnic](https://gitcode.com/openharmony/device_soc_bestechnic)<br/>[device_board_fnlink](https://gitcode.com/openharmony/device_board_fnlink)<br/>[vendor_bestechnic](https://gitcode.com/openharmony/vendor_bestechnic) <br/>  |
 
 ## 快速入门
 
@@ -163,49 +163,49 @@ OpenHarmony支持如下几种系统类型：
 
 ## 代码仓地址
 
-OpenHarmony主库组织地址：[https://gitee.com/openharmony](https://gitee.com/openharmony)
+OpenHarmony主库组织地址：[https://gitcode.com/openharmony](https://gitcode.com/openharmony)
 
-OpenHarmonySIG组织地址：[https://gitee.com/openharmony-sig](https://gitee.com/openharmony-sig)
+OpenHarmonySIG组织地址：[https://gitcode.com/openharmony-sig](https://gitcode.com/openharmony-sig)
 
-OpenHarmony三方库组织地址：[https://gitee.com/openharmony-tpc](https://gitee.com/openharmony-tpc)
+OpenHarmony三方库组织地址：[https://gitcode.com/openharmony-tpc](https://gitcode.com/openharmony-tpc)
 
-OpenHarmony归档组织地址：[https://gitee.com/openharmony-retired](https://gitee.com/openharmony-retired)
+OpenHarmony归档组织地址：[https://gitcode.com/openharmony-retired](https://gitcode.com/openharmony-retired)
 
 ## 开发者文档
 
 [访问官网](https://www.openharmony.cn/)
 
-简体中文：[OpenHarmony开发者文档](https://gitee.com/openharmony/docs/tree/master/zh-cn)
+简体中文：[OpenHarmony开发者文档](https://gitcode.com/openharmony/docs/tree/master/zh-cn)
 
-[English Version](https://gitee.com/openharmony/docs/tree/master/en)
+[English Version](https://gitcode.com/openharmony/docs/tree/master/en)
 
 ## 源码下载
 
-获取OpenHarmony源码：[下载说明](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)
+获取OpenHarmony源码：[下载说明](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/get-code/sourcecode-acquire.md)
 
 ## 示例教程
 
-Samples：[示例代码](https://gitee.com/openharmony/applications_app_samples)
+Samples：[示例代码](https://gitcode.com/openharmony/applications_app_samples)
 
-Codelabs：[教程指导](https://gitee.com/openharmony/codelabs)
+Codelabs：[教程指导](https://gitcode.com/openharmony/codelabs)
 
 ## 如何参与
 
-参与社区：[社区介绍](https://gitee.com/openharmony/community/blob/master/README.md)
+参与社区：[社区介绍](https://gitcode.com/openharmony/community/blob/master/README.md)
 
-参与贡献：[如何贡献](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)
+参与贡献：[如何贡献](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)
 
 ## 许可协议
 
 OpenHarmony主要遵循Apache License V2.0协议，详情请参考各代码仓LICENSE声明。
 
-OpenHarmony引用三方开源软件及许可证说明，参考[第三方开源软件说明](https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%8F%8A%E8%AE%B8%E5%8F%AF%E8%AF%81%E8%AF%B4%E6%98%8E.md)。
+OpenHarmony引用三方开源软件及许可证说明，参考[第三方开源软件说明](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%8F%8A%E8%AE%B8%E5%8F%AF%E8%AF%81%E8%AF%B4%E6%98%8E.md)。
 
 ## 联系方式
 
 网站：
 
-[https://openharmony.gitee.com](https://openharmony.gitee.com/)
+[https://gitcode.com/openharmony](https://gitcode.com/openharmony)
 
 邮箱:
 

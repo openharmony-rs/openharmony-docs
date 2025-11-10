@@ -4,7 +4,7 @@
 <!--Owner: @hao-liangfei-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 ## Overview
 
 The struct describes the event indicating that the audio session state changes.

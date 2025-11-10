@@ -31,6 +31,8 @@ constructor()
 
 字体属性的构造函数。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **示例：**
@@ -45,6 +47,8 @@ let typeFaceArgument = new drawing.TypefaceArguments();
 addVariation(axis: string, value: number)
 
 给字体属性设置字重值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -25,6 +25,21 @@ LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储键值的集合�
 >
 > 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
+## 规格限制
+
+当LightWeightSet存入的value为number类型且值大于INT32_MAX或小于INT32_MIN时，针对LightWeightSet的操作，其结果可能与预期不一致。
+
+这是因为，当value为number类型且值大于INT32_MAX或小于INT32_MIN时，存储结构会发生改变。
+
+例如在以下示例针对value的计算中，1758783600000大于INT32_MAX，此时会通过TaggedDouble存储；1758783600小于INT32_MIN，此时会通过TaggedInt存储。由于以上存储方式的差异，当对其进行hash算法即会计算出不同的hash值，从而导致映射结果不同，产生与预期不一致的现象。
+
+```ts
+let st = new LightWeightSet<number>();
+let value = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
+st.add(value);
+console.info("result:", st.has(1758783600));  // result: false 
+console.info("result:", st.has(value));  // result: true
+```
 
 ## 导入模块
 

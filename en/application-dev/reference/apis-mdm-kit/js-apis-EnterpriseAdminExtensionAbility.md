@@ -1,6 +1,12 @@
 # @ohos.enterprise.EnterpriseAdminExtensionAbility (EnterpriseAdminExtensionAbility)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **EnterpriseAdminExtensionAbility** module provides extended enterprise device management capabilities.
+This module provides the [EnterpriseAdminExtensionAbility](../../mdm/mdm-kit-term.md#enterpriseadminextensionability).
 
 To have the capabilities provided by this module, for example, to receive a notification when a device administrator application is enabled or disabled, you need to create an **EnterpriseAdminExtensionAbility** instance for the device administrator application and overload related APIs.
 
@@ -14,7 +20,7 @@ To have the capabilities provided by this module, for example, to receive a noti
 ## Modules to Import
 
 ```ts
-import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit'
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 ```
 
 ## EnterpriseAdminExtensionAbility.onAdminEnabled
@@ -25,11 +31,14 @@ Called when the device administrator application is enabled by the enterprise ad
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
   }
@@ -44,11 +53,14 @@ Called when the device administrator application is disabled by the enterprise a
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminDisabled() {
   }
@@ -63,6 +75,7 @@ Called when applications are installed. The application bundle name is included.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -74,6 +87,8 @@ Called when applications are installed. The application bundle name is included.
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onBundleAdded(bundleName: string) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}`);
@@ -89,6 +104,7 @@ Called when applications are installed. The application bundle name and account 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -101,8 +117,11 @@ Called when applications are installed. The application bundle name and account 
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  onBundleAdded(bundleName: string, accountId: number) {
+  // Since there is another callback method with the same name onBundleAdded(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  onBundleAdded(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}, accountId: ${accountId}`);
   }
 };
@@ -116,6 +135,7 @@ Called when applications are uninstalled. The application bundle name is include
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -127,6 +147,8 @@ Called when applications are uninstalled. The application bundle name is include
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onBundleRemoved(bundleName: string) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}`);
@@ -142,6 +164,7 @@ Called when applications are uninstalled. The application bundle name and accoun
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -154,8 +177,11 @@ Called when applications are uninstalled. The application bundle name and accoun
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  onBundleRemoved(bundleName: string, accountId: number) {
+  // Since there is another callback method with the same name onBundleRemoved(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  onBundleRemoved(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}, accountId: ${accountId}`);
   }
 };
@@ -169,6 +195,7 @@ Called when an application is started. You should register the **MANAGED_EVENT_A
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -180,6 +207,8 @@ Called when an application is started. You should register the **MANAGED_EVENT_A
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAppStart(bundleName: string) {
     console.info(`Succeeded in calling onAppStart callback, started bundle name : ${bundleName}`);
@@ -195,6 +224,7 @@ Called when an application is stopped. You should register the **MANAGED_EVENT_A
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -206,6 +236,8 @@ Called when an application is stopped. You should register the **MANAGED_EVENT_A
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAppStop(bundleName: string) {
     console.info(`Succeeded in calling onAppStop callback, stopped bundle name : ${bundleName}`);
@@ -220,6 +252,7 @@ Called to report a system update event. You should register the **MANAGED_EVENT_
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -231,7 +264,9 @@ Called to report a system update event. You should register the **MANAGED_EVENT_
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 import { systemManager } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo) {
     console.info(`Succeeded in calling onSystemUpdate callback, version name  : ${systemUpdateInfo.versionName}`);
@@ -247,11 +282,14 @@ Called when EnterpriseAdminExtensionAbility starts.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onStart() {
     console.info(`Succeeded in calling onStart callback.`);
@@ -263,9 +301,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAccountAdded(accountId: number): void
 
-Called when a system account is added. You should register the **MANAGED_EVENT_ACCOUNT_ADDED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account addition events. When a system account is added on an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+Called when a system account is added. You should register the **MANAGED_EVENT_ACCOUNT_ADDED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account add events. When a system account is added to an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -276,6 +316,8 @@ Called when a system account is added. You should register the **MANAGED_EVENT_A
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAccountAdded(accountId: number) {
     console.info(`Succeeded in calling onAccountAdded callback, added accountId: ${accountId}`);
@@ -287,9 +329,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAccountSwitched(accountId: number): void
 
-Called when the system account is switched. You should register the **MANAGED_EVENT_ACCOUNT_SWITCHED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account switch events. When a system account is switched on an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+Called when the system account is switched. You should register the **MANAGED_EVENT_ACCOUNT_SWITCHED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account switch events. When a system account is switched, the device administrator application reports the event in this callback to notify the enterprise administrator.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -300,6 +344,8 @@ Called when the system account is switched. You should register the **MANAGED_EV
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAccountSwitched(accountId: number) {
     console.info(`Succeeded in calling onAccountSwitched callback, switched accountId: ${accountId}`);
@@ -311,9 +357,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAccountRemoved(accountId: number): void
 
-Called when the system account is removed. You should register the **MANAGED_EVENT_ACCOUNT_REMOVED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account remove events. When a system account is removed from an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+Called when the system account is removed. You should register the **MANAGED_EVENT_ACCOUNT_REMOVED** event through [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync). The enterprise administrator application can subscribe to system account removal events. When a system account is removed, the device administrator application reports the event in this callback to notify the enterprise administrator.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -324,6 +372,8 @@ Called when the system account is removed. You should register the **MANAGED_EVE
 **Example**
 
 ```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAccountRemoved(accountId: number) {
     console.info(`Succeeded in calling onAccountRemoved callback, removed accountId: ${accountId}`);
@@ -340,6 +390,8 @@ Called when an application enters the kiosk mode. This callback contains the app
 Kiosk mode is a system-level runtime mode that restricts a device to a single application or a set of applications. It controls the lock screen, status bar, gestures, and key features to prevent users from launching other applications or performing other operations on the device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -368,6 +420,8 @@ Called when an application exits the kiosk mode. This callback contains the appl
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+  
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |

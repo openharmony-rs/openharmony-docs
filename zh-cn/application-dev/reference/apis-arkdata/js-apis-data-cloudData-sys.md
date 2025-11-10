@@ -52,10 +52,10 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-| 名称      | 类型   | 必填 | 说明                                                         |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| eventId   | string | 是   | 如果传值为"cloud_data_change"，表示云数据变更。              |
-| extraData | string | 是   | 透传数据，extraData是json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用名、数据库名、数据库类型和数据库表名，所有字段均不能为空。
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| eventId   | string | 否   | 否   | 如果传值为"cloud_data_change"，表示云数据变更。              |
+| extraData | string | 否   | 否   | 透传数据，extraData是json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用名、数据库名、数据库类型和数据库表名，所有字段均不能为空。
 
 **示例：**
 
@@ -87,12 +87,12 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-| 名称      | 类型   | 必填 | 说明                                                  |
-| --------- | ------ | ---- |-----------------------------------------------------|
-| table   | string | 是   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
-| inserted   | number | 是   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
-| updated   | number | 是   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
-| normal | number | 是   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
+| 名称      | 类型   | 只读 | 可选 | 说明                                                  |
+| --------- | ------ | ---- | ---- |-----------------------------------------------------|
+| table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
+| inserted   | number | 否   | 否   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
+| updated   | number | 否   | 否   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
+| normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -111,12 +111,12 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-| 名称       | 类型                                                         | 必填 | 说明                       |
-| ---------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| startTime  | Date                                                         | 是   | 最近一次端云同步的开始时间。 |
-| finishTime | Date                                                         | 是   | 最近一次端云同步的结束时间。 |
-| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | 是   | 最近一次端云同步的结果。 |
-| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 最近一次端云同步的状态，默认值cloudData.SyncStatus.RUNNING。 |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明                       |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------------------- |
+| startTime  | Date                                                         | 否   | 否   | 最近一次端云同步的开始时间。 |
+| finishTime | Date                                                         | 否   | 否   | 最近一次端云同步的结束时间。 |
+| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | 否 | 否 | 最近一次端云同步的结果。 |
+| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 是 | 最近一次端云同步的状态，默认值cloudData.SyncStatus.RUNNING。 |
 
 ## Config
 
@@ -1069,11 +1069,11 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | 是   | 错误码。       |
-| description | string                      | 否   | 错误码详细描述，默认为undefined。       |
-| value       | T                           | 否   | 返回结果的值，具体类型由参数T指定，默认为undefined。 |
+| 名称          | 类型                          | 只读 | 可选  | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | 否   | 否   | 错误码。       |
+| description | string                      | 否   | 是   | 错误码详细描述，默认为undefined。       |
+| value       | T                           | 否   | 是   | 返回结果的值，具体类型由参数T指定，默认为undefined。 |
 
 ### Privilege<sup>11+</sup>
 
@@ -1081,13 +1081,13 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| writable    | boolean              | 否   | 被共享者是否可修改共享的数据。true表示可修改，false表示不可修改，默认不可修改。   |
-| readable    | boolean              | 否   | 被共享者是否可读取共享的数据。true表示可读取，false表示不可读取，默认不可读取。   |
-| creatable   | boolean              | 否   | 被共享者是否可创建新的共享数据。true表示可创建，false表示不可创建，默认不可创建。  |
-| deletable   | boolean              | 否   | 被共享者是否可删除共享的数据。true表示可删除，false表示不可删除，默认不可删除。  |
-| shareable   | boolean              | 否   | 被共享者是否可将共享的数据再次共享给其他参与者。true表示可再次共享，false表示不可再次共享，默认不可再次共享。  |
+| 名称          | 类型                          | 只读 | 可选  | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| writable    | boolean              | 否   | 是   | 被共享者是否可修改共享的数据。true表示可修改，false表示不可修改，默认不可修改。   |
+| readable    | boolean              | 否   | 是   | 被共享者是否可读取共享的数据。true表示可读取，false表示不可读取，默认不可读取。   |
+| creatable   | boolean              | 否   | 是   | 被共享者是否可创建新的共享数据。true表示可创建，false表示不可创建，默认不可创建。  |
+| deletable   | boolean              | 否   | 是   | 被共享者是否可删除共享的数据。true表示可删除，false表示不可删除，默认不可删除。  |
+| shareable   | boolean              | 否   | 是   | 被共享者是否可将共享的数据再次共享给其他参与者。true表示可再次共享，false表示不可再次共享，默认不可再次共享。  |
 
 ### Participant<sup>11+</sup>
 
@@ -1095,13 +1095,13 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| identity    | string                  | 是   | 参与者的ID。              |
-| role        | [Role](#role11)           | 否   | 参与者的角色，为邀请者或被邀请者。默认为undefined。  |
-| state       | [State](#state11)         | 否   | 共享的状态。默认为undefined。 |
-| privilege   | [Privilege](#privilege11) | 否   | 指定的共享数据权限。默认为[Privilege](#privilege11)的默认值。 |
-| attachInfo  | string                  | 否   | 附加信息，用于拓展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
+| 名称          | 类型                          | 只读 | 可选 | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| identity    | string                    | 否   | 否   | 参与者的ID。              |
+| role        | [Role](#role11)           | 否   | 是   | 参与者的角色，为邀请者或被邀请者。默认为undefined。  |
+| state       | [State](#state11)         | 否   | 是   | 共享的状态。默认为undefined。 |
+| privilege   | [Privilege](#privilege11) | 否   | 是   | 指定的共享数据权限。默认为[Privilege](#privilege11)的默认值。 |
+| attachInfo  | string                    | 否   | 是   | 附加信息，用于拓展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
 
 ### allocResourceAndShare<sup>11+</sup>
 

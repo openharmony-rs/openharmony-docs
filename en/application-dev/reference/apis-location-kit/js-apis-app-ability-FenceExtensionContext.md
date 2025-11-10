@@ -1,4 +1,10 @@
 # @ohos.app.ability.FenceExtensionContext (FenceExtensionContext)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 The **FenceExtensionContext** class defines the context for **FenceExtensionAbility** objects. Inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), this class provides the configuration information of **FenceExtensionAbility** objects and the API for starting them.
 

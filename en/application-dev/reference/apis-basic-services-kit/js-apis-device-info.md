@@ -1,4 +1,10 @@
 # @ohos.deviceInfo (Device Information)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **deviceInfo** module provides terminal device information query, which cannot be configured by developers.
 
@@ -61,8 +67,10 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | distributionOSApiName<sup>13+</sup> | string | Yes| Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->|
 | distributionOSReleaseType<sup>10+</sup> | string | Yes| Distribution OS release type.<!--Del--> It is defined by the issuer.<!--DelEnd--><br>Example: Release|
 | ODID<sup>12+</sup> | string | Yes|Open device identifier.<br>An ODID will be regenerated in the following scenarios:<br>Restore a phone to its factory settings.<br>Uninstall and reinstall all applications with the same **developerId** on one device.<br>An ODID is generated based on the following rules:<br>The value is generated based on the **groupId** parsed from the **developerId** in the signature information. As **groupId.developerId** is the rule, if no **groupId** exists, the **developerId** is used as the **groupId**.<br>Applications with the same **developerId** use the same ODID on one device.<br>Applications with different **developerId**s use different ODIDs on one device.<br>Applications with the same **developerId** use different ODIDs on different devices.<br>Applications with different **developerId**s use different ODIDs on different devices.<br>**NOTE**<br>The data length is 37 bytes.<br>Example: 1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX|
-| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br>**NOTE**<br>This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br>**Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br>Example: 2502EM400567 |
+| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br> **NOTE**<br>This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br> **Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br> Example: 2502EM400567|
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | Yes| Device capability level.|
+| chipType<sup>21+</sup> | string | Yes| CPU chip model.<br> Example: Kirin9000S|
+| bootCount<sup>21+</sup> | number | Yes| Number of device reboots. If the number cannot be obtained, **–1** is returned.<br> Example: 100|
 
 **Example**
 
@@ -219,6 +227,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // Output: the value of the deviceInfo performanceClass is :0
     console.info('the value of the deviceInfo performanceClass is :' + performanceClass);
 
+    let chipType: string = deviceInfo.chipType;
+    // Output: the value of the deviceInfo chipType is :kirin9000s
+    console.info('the value of the deviceInfo chipType is :' + chipType);
+
+    let bootCount: number = deviceInfo.bootCount
+    // Output: the value of the bootCount is :100
+    console.info('the value of the deviceInfo bootCount is :' + bootCount);
+
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>
@@ -254,31 +270,31 @@ Enumerates device types, which can be used to verify the return value of **devic
 **Example**
 
 ```ts
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_DEFAULT;
+    let deviceTypesInfoDefault: string = deviceInfo.DeviceTypes.TYPE_DEFAULT;
     // Output: the value of the DeviceTypes is :default
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoDefault);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_PHONE;
+    let deviceTypesInfoPhone: string = deviceInfo.DeviceTypes.TYPE_PHONE;
     // Output: the value of the DeviceTypes is :phone-type 
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoPhone);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_TABLET;
-    //Output: the value of the DeviceTypes is :tablet
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    let deviceTypesInfoTablet: string = deviceInfo.DeviceTypes.TYPE_TABLET;
+    // Output: the value of the DeviceTypes is :tablet
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoTablet);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_2IN1;
-    //Output: the value of the DeviceTypes is :2in1
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    let deviceTypesInfo2IN1: string = deviceInfo.DeviceTypes.TYPE_2IN1;
+    // Output: the value of the DeviceTypes is :2in1
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfo2IN1);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_TV;
-    //Output: the value of the DeviceTypes is :tv
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    let deviceTypesInfoTV: string = deviceInfo.DeviceTypes.TYPE_TV;
+    // Output: the value of the DeviceTypes is :tv
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoTV);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_WEARABLE;
+    let deviceTypesInfoWearable: string = deviceInfo.DeviceTypes.TYPE_WEARABLE;
     // Output: the value of the DeviceTypes is :wearable
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoWearable);
 
-    let deviceTypesInfo: string = deviceInfo.DeviceTypes.TYPE_CAR;
-    //Output: the value of the DeviceTypes is :car
-    console.info('the value of the DeviceTypes is :' + deviceTypesInfo);
+    let deviceTypesInfoCar: string = deviceInfo.DeviceTypes.TYPE_CAR;
+    // Output: the value of the DeviceTypes is :car
+    console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 ```

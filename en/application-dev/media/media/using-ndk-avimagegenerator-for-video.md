@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVImageGenerator to obtain the video frame at the specified time from the raw media asset.
 
@@ -47,7 +47,7 @@ In addition, link the following dynamic libraries in the CMake script:
 target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_core.so)
 ```
 
-You can use the APIs related to video frame retrieval by including the header files [avimage_generator.h](../../reference/apis-media-kit/capi-avimage-generator-h.md), [avimage_generator_base.h](../../reference/apis-media-kit/capi-avimage-generator-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md).
+You can use the APIs related to video frame retrieval by including the header files [avimage_generator.h](../../reference/apis-media-kit/capi-avimage-generator-h.md), [avimage_generator_base.h](../../reference/apis-media-kit/capi-avimage-generator-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
 Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md) for the API reference.
 

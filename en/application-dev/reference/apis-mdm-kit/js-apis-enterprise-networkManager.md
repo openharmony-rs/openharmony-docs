@@ -1,4 +1,10 @@
 # @ohos.enterprise.networkManager (Network Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **networkManager** module provides APIs for network management of enterprise devices, including obtaining the device IP address and MAC address.
 
@@ -27,6 +33,7 @@ Obtains all activated wired network interfaces.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -54,11 +61,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -79,6 +88,7 @@ Obtains the device IP address based on the network interface.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -107,14 +117,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: string = networkManager.getIpAddressSync(wantTemp, 'eth0');
   console.info(`Succeeded in getting ip address, result : ${result}`);
 } catch (err) {
@@ -132,6 +145,7 @@ Obtains the MAC address of a device based on the network interface.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -160,14 +174,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: string = networkManager.getMacSync(wantTemp, 'eth0');
   console.info(`Succeeded in getting mac, result : ${result}`);
 } catch (err) {
@@ -185,6 +202,7 @@ Queries whether a specified network interface is disabled.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -213,14 +231,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: boolean = networkManager.isNetworkInterfaceDisabledSync(wantTemp, 'eth0');
   console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
 } catch (err) {
@@ -238,6 +259,7 @@ Disables the device from using the specified network interface.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -261,15 +283,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   networkManager.setNetworkInterfaceDisabledSync(wantTemp, 'eth0', true);
   console.info(`Succeeded in setting network interface disabled`);
 } catch (err) {
@@ -287,6 +312,7 @@ Sets the global network proxy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -309,14 +335,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
-let exclusionStr: string = "192.168,baidu.com"
+
+// Replace with actual values.
+let exclusionStr: string = "192.168,baidu.com";
 let exclusionArray: Array<string> = exclusionStr.split(',');
 let httpProxy: connection.HttpProxy = {
   host: "192.168.xx.xxx",
@@ -336,20 +366,23 @@ try {
 
 setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId: number): void
 
-Sets the network proxy of a specified user. Currently, only 2-in-1 devices are supported.
+Sets the network proxy for a specified user.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                        | Mandatory| Description                      |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | Device administrator application.            |
-| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.            |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | Yes  | HTTP proxy configuration of the network.|
+| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
 **Error codes**
 
@@ -361,24 +394,30 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+
 let httpProxy: connection.HttpProxy = {
+  // Replace with actual values.
   host: '192.168.xx.xxx',
   port: 8080,
   exclusionList: ['192.168', 'baidu.com']
 };
 
 try {
+  // Replace parameters with actual values.
   networkManager.setGlobalProxyForAccount(wantTemp, httpProxy, 100);
   console.info(`Succeeded in setting network global proxy.`);
 } catch (err) {
@@ -396,6 +435,7 @@ Obtains the global network proxy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -423,12 +463,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -441,20 +483,23 @@ try {
 
 ## networkManager.getGlobalProxyForAccount<sup>15+</sup>
 
-getGlobalProxyForAccount(admin: Want, accountId: number): connection.HttpProxy
+getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.HttpProxy
 
-Obtains the network proxy of a specified user. Currently, only 2-in-1 devices are supported.
+Obtains the network proxy for a specified user.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Device administrator application.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility.|
 | accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
 **Return value**
@@ -472,20 +517,23 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: connection.HttpProxy = networkManager.getGlobalProxyForAccount(wantTemp, 100);
   console.info(`Succeeded in getting network global proxy, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -497,13 +545,14 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-Adds firewall rules for the device. Only IPv4 is supported.<br>
+Adds firewall rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -526,14 +575,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let firewallRule: networkManager.FirewallRule = {
-  "srcAddr": "192.168.1.1-192.188.22.66",
+  // Replace with actual values.
+  "srcAddr": "192.168.1.1-192.168.22.66",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
   "destPort": "8080",
@@ -541,22 +593,29 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-}
+  "family": 1
+};
 
-networkManager.addFirewallRule(wantTemp, firewallRule);
+try {
+  networkManager.addFirewallRule(wantTemp, firewallRule);
+  console.info('Succeeded in adding firewall rule.');
+} catch (err) {
+  console.error(`Failed to add firewall rule. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.removeFirewallRule
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-Removes the firewall rules for the device. Only IPv4 is supported.<br>
+Removes firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addFirewallRule](#networkmanageraddfirewallrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -579,15 +638,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
-// Remove the specified firewall rule.
+
 let firewallRule: networkManager.FirewallRule = {
-  "srcAddr": "192.168.1.1-192.188.22.66",
+  // Replace with actual values.
+  "srcAddr": "192.168.1.1-192.168.22.66",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
   "destPort": "8080",
@@ -595,23 +657,37 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
+  "family": 1
+};
+
+// Remove the specified firewall rule.
+try {
+  networkManager.removeFirewallRule(wantTemp, firewallRule);
+  console.info('Succeeded in removing firewall rule.');
+} catch (err) {
+  console.error(`Failed to remove firewall rule. Code: ${err.code}, message: ${err.message}`);
 }
-networkManager.removeFirewallRule(wantTemp, firewallRule);
 
 // Remove all firewall rules.
-networkManager.removeFirewallRule(wantTemp);
+try {
+  networkManager.removeFirewallRule(wantTemp);
+  console.info('Succeeded in removing all firewall rule.');
+} catch (err) {
+  console.error(`Failed to remove all firewall rule. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.getFirewallRules
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-Queries firewall rules of a device. Only IPv4 is supported.
+Checks firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -639,34 +715,42 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let firewallRule: Array<networkManager.FirewallRule>;
-firewallRule = networkManager.getFirewallRules(wantTemp);
+try {
+  firewallRule = networkManager.getFirewallRules(wantTemp);
+  console.info('Succeeded in getting firewall rules');
+} catch (err) {
+  console.error(`Failed to get firewall rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.addDomainFilterRule
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-Adds domain name filtering rules for the device.<br>
+Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name          | Type                                                   | Mandatory| Description              |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------ |
 | admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.    |
-| domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | Yes  | Domain name filtering rule to add.|
+| domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | Yes  | Domain name filtering rule to add. [Direction](#direction) in **DomainFilterRule** can only be set to an output chain. If it is set to an input chain, it will be processed as an output chain. If it is set to a forward chain, error code 401 will be returned.|
 
 **Error codes**
 
@@ -682,32 +766,42 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let domainFilterRule: networkManager.DomainFilterRule = {
+  // Replace with actual values.
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-}
+  "family": 1
+};
 
-networkManager.addDomainFilterRule(wantTemp, domainFilterRule);
+try {
+  networkManager.addDomainFilterRule(wantTemp, domainFilterRule);
+  console.info('Succeeded in adding domain filter rules');
+} catch (err) {
+  console.error(`Failed to add domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.removeDomainFilterRule
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-Removes the domain name filtering rules.<br>
+Removes domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addDomainFilterRule](#networkmanageradddomainfilterrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -730,34 +824,51 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
-// Remove the specified domain name filtering rule.
+
 let domainFilterRule: networkManager.DomainFilterRule = {
+  // Replace with actual values.
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-}
-networkManager.removeDomainFilterRule(wantTemp, domainFilterRule);
+  "family": 1
+};
 
-// Remove all domain name filtering rules.
-networkManager.removeDomainFilterRule(wantTemp);
+// Remove the specified firewall rule.
+try {
+  networkManager.removeDomainFilterRule(wantTemp, domainFilterRule);
+  console.info('Succeeded in removing domain filter rules');
+} catch (err) {
+  console.error(`Failed to remove domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Remove all firewall rules.
+try {
+  networkManager.removeDomainFilterRule(wantTemp);
+  console.info('Succeeded in removing all domain filter rules');
+} catch (err) {
+  console.error(`Failed to remove all domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.getDomainFilterRules
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-Queries domain name filtering rules.
+Checks domain name filtering rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -785,14 +896,21 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let domainFilterRule: Array<networkManager.DomainFilterRule>;
-domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
+try {
+  domainFilterRule = networkManager.getDomainFilterRules(wantTemp);
+  console.info('Succeeded in getting  domain filter rules');
+} catch (err) {
+  console.error(`Failed to get domain filter rules. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## networkManager.turnOnMobileData<sup>20+</sup>
@@ -805,6 +923,7 @@ Turns on mobile data.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -826,12 +945,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   networkManager.turnOnMobileData(wantTemp, true);
@@ -851,6 +972,7 @@ Turns off mobile data.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -871,12 +993,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   networkManager.turnOffMobileData(wantTemp);
@@ -896,6 +1020,7 @@ Adds an access point name (APN).
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -950,6 +1075,7 @@ Deletes the APN.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -998,6 +1124,7 @@ Updates the APN.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1054,6 +1181,7 @@ Sets the preferred APN.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1102,6 +1230,7 @@ Queries the APN ID.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1162,6 +1291,7 @@ Queries the APN parameter information.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1208,7 +1338,7 @@ try {
 
 ## FirewallRule
 
-Represents a firewall rule.
+Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1220,13 +1350,14 @@ Represents a firewall rule.
 | srcPort   | string                  | No  | Yes|Source port.                                                    |
 | destPort  | string                  | No  | Yes|Destination port.                                                  |
 | appUid    | string                  | No  | Yes|UID of the application.                                                   |
-| direction | [Direction](#direction) | No  | Yes|Direction chains to which the rule applies.<br>This parameter is mandatory when a firewall rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Direction](#direction) chains are cleared, and **srcAddr**, **destAddr**, **srcPort**, **destPort**, and **appUid** must be also left empty.|
-| action    | [Action](#action)       | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a firewall rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **srcAddr**, **destAddr**, **srcPort**, **destPort**, and **appUid** must be also left empty.|
-| protocol  | [Protocol](#protocol)   | No  | Yes|Network protocol. If this parameter is set to **ALL** or **ICMP**, **srcPort** and **destPort** cannot be set.|
+| direction | [Direction](#direction) | No  | Yes|Direction chains to which the rule applies.<br>This parameter is mandatory when a firewall filtering rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Direction](#direction) chains are cleared, and **srcAddr**, **destAddr**, **srcPort**, **destPort**, and **appUid** must be also left empty.|
+| action    | [Action](#action)       | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a firewall filtering rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **srcAddr**, **destAddr**, **srcPort**, **destPort**, and **appUid** must be also left empty.|
+| protocol  | [Protocol](#protocol)   | No  | Yes|Network protocol. If the value is **ALL** or **ICMP**, the settings of **srcPort** and **destPort** are invalid.|
+| family<sup>22+</sup>    | number    | No  | Yes|IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).|
 
 ## DomainFilterRule
 
-Represents a domain name filtering rule.
+Represents a domain name filtering rule. IPv4 and IPv6 are supported since API version 22. In API version 22 and earlier versions, only IPv4 is supported.<br>
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1236,7 +1367,8 @@ Represents a domain name filtering rule.
 | domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added.                              |
 | appUid     | string            | No  | Yes|UID of the application.                                                   |
 | action     | [Action](#action) | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **domainName** and **appUid** must be also left empty.|
-| direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is mandatory when a firewall rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be also left empty.|
+| direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|
+| family<sup>22+</sup>    | number| No  | Yes|IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).|
 
 ## Direction
 

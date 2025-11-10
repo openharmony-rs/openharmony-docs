@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置transform属性对组件进行旋转、缩放、移动和倾斜。
 
@@ -595,6 +595,6 @@ transform可以设置多个值并且多个值可同时设置，下面案例中�
 
 - [`JsClock`：时钟（JS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock)
 
-- [动画样式（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/JSUI/AnimationDemo)
+- [动画样式（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/AnimationDemo)
 
-- [图片常见操作（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/ImageOperation)
+- [图片常见操作（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

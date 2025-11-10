@@ -1,5 +1,12 @@
 # OH_Filter_ColorMatrix
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanamaru-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 定义一个用来创建滤镜效果的矩阵。

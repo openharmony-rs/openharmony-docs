@@ -4,7 +4,7 @@
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 inspector用于检查页面布局，通过inspector双向定位功能帮助开发者在DevEco Studio中快速定位组件、修改属性和调试组件，以提高开发效率。
 
@@ -26,14 +26,18 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 下述示例，展示了getFilteredInspectorTree和getFilteredInspectorTreeById的基本用法。
 
-```ts
+<!-- @[uiContextTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets) --> 
+
+``` TypeScript
 import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
 struct ComponentPage {
   loopConsole(inspectorStr: string, i: string) {
-    console.info(`InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`);
+    hilog.info(0x0000, `InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`,
+      'InsTree');
     if (JSON.parse(inspectorStr).$children) {
       i += '-';
       for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
@@ -44,35 +48,35 @@ struct ComponentPage {
 
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
-        console.info(`InsTree : ${inspectorStr}`);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
         this.loopConsole(inspectorStr, '-');
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
-        console.info(`InsTree : ${inspectorStr}`);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
         this.loopConsole(inspectorStr, '-');
       })
       Button('getFilteredInspectorTreeById').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         try {
-          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["id", "src"]);
-          console.info(`result1: ${inspectorStr}`);
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['id', 'src']);
+          hilog.info(0x0000,`result1: ${inspectorStr}`, 'result1');
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          console.info(`result2: ${inspectorStr}`);
-          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ["src"]);
+          hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          console.info(`result3: ${inspectorStr}`);
-        } catch(e) {
-          console.error(`getFilteredInspectorTreeById error: ${e}`);
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+        } catch (e) {
+          hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
         }
       })
 
@@ -81,6 +85,7 @@ struct ComponentPage {
     .height('100%')
   }
 }
+
 ```
 
 ## 布局回调
@@ -89,8 +94,10 @@ struct ComponentPage {
 
 下述示例，展示了布局回调的基本用法。
 
-```ts
-import { inspector } from '@kit.ArkUI'
+<!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
+
+``` TypeScript
+import { inspector } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -110,28 +117,28 @@ struct ImageExample {
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
 
   aboutToAppear() {
-    let onLayoutComplete:()=>void=():void=>{
+    let onLayoutComplete: () => void = (): void => {
       // 补充待实现的功能
-    }
-    let onDrawComplete:()=>void=():void=>{
+    };
+    let onDrawComplete: () => void = (): void => {
       // 补充待实现的功能
-    }
-    let onDrawChildrenComplete:()=>void=():void=>{
+    };
+    let onDrawChildrenComplete: () => void = (): void => {
       // 补充待实现的功能
-    }
-    let FuncLayout = onLayoutComplete // 绑定当前js对象
-    let FuncDraw = onDrawComplete // 绑定当前js对象
-    let FuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
-    let OffFuncLayout = onLayoutComplete // 绑定当前js对象
-    let OffFuncDraw = onDrawComplete // 绑定当前js对象
-    let OffFuncDrawChildren = onDrawChildrenComplete // 绑定当前js对象
+    };
+    let funcLayout = onLayoutComplete; // 绑定当前js对象
+    let funcDraw = onDrawComplete; // 绑定当前js对象
+    let funcDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
+    let offFuncLayout = onLayoutComplete; // 绑定当前js对象
+    let offFuncDraw = onDrawComplete; // 绑定当前js对象
+    let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
-    this.listener.on('drawChildren', FuncDrawChildren)
+    this.listener.on('layout', funcLayout);
+    this.listener.on('draw', funcDraw);
+    this.listener.on('drawChildren', funcDrawChildren);
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listener.off('layout', OffFuncLayout)
@@ -150,32 +157,35 @@ struct ImageExample {
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 
-```ts
+<!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
+
+``` TypeScript
 @Entry
 @Component
 struct ComponentPage {
   build() {
     Column() {
-      Text("Hello World")
+      Text('Hello World')
         .fontSize(20)
-        .id("TEXT")
+        .id('TEXT')
         .onClick(() => {
-          console.info(`Text is clicked`);
+          hilog.info(0x0000,`Text is clicked`, 'isClicked');
         })
       Button('getInspectorByKey').onClick(() => {
-        let result = getInspectorByKey("TEXT");
-        console.info(`result is ${result}`);
+        let result = getInspectorByKey('TEXT');
+        hilog.info(0x0000,`result is ${result}`, 'result');
       })
       Button('getInspectorTree').onClick(() => {
         let result = getInspectorTree();
-        console.info(`result is ${JSON.stringify(result)}`);
+        hilog.info(0x0000,`result is ${JSON.stringify(result)}`, 'result');
       })
       Button('sendEventByKey').onClick(() => {
-        sendEventByKey("TEXT", 10, "");
+        sendEventByKey('TEXT', 10, '');
       })
     }
     .width('100%')
     .height('100%')
   }
 }
+
 ```

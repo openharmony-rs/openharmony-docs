@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 UIContext实例对象。
 
@@ -252,6 +252,39 @@ struct Index {
     }
     .width('100%')
     .height('100%')
+  }
+}
+```
+
+## getId<sup>22+</sup>
+
+getId(): number
+
+获取后端实例唯一标识的ID。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(()=>{
+      console.log(`id:${this.getUIContext()?.getId()}`);
+    })
   }
 }
 ```
@@ -1860,7 +1893,9 @@ vp2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1916,7 +1951,9 @@ px2vp(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3225,7 +3262,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UI上下文](errorcode-uicontext.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                        |
 | ------ | ---------------------------------- |
@@ -3467,3 +3504,112 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setImageCacheCount<sup>22+</sup>
+
+setImageCacheCount(value: number): void
+
+设置内存中缓存解码后图片的数量上限，以加快同源图片的再次加载速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载超过上限时，会移除最久未使用的缓存。建议根据应用内存需求，合理设置缓存数量，避免内存使用过高。
+
+setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码后图片的缓存数量。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## setImageRawDataCacheSize<sup>22+</sup>
+
+setImageRawDataCacheSize(value: number): void
+
+设置内存中缓存解码前图片数据的大小上限，单位为字节，以加快再次加载同源图片的速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载后，若解码前数据超过上限，会删除最久未使用的图片数据缓存。建议根据应用内存需求，设置合理的缓存上限，避免内存使用过高。
+
+setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码前图片数据的缓存大小，单位为字节。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取[Magnifier](arkts-apis-uicontext-magnifier.md)对象，可控制放大镜显示和隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+|[Magnifier](arkts-apis-uicontext-magnifier.md)| Magnifier对象，可用于控制放大镜的显示和隐藏。|
+
+**示例：**
+
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。

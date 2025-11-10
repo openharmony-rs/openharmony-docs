@@ -57,6 +57,7 @@ Enumerates the device-cloud sync errors.
 | CLOUD_STORAGE_FULL |  5 | The cloud space is insufficient.|
 | LOCAL_STORAGE_FULL |  6 | The local space is insufficient.|
 | DEVICE_TEMPERATURE_TOO_HIGH |  7 | The device temperature is too high.|
+| REMOTE_SERVER_ABNORMAL<sup>20+</sup> |  8 | The remote service is unavailable.|
 
 ## SyncProgress<sup>12+</sup>
 
@@ -957,6 +958,53 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   }
   ```
 
+### cleanFileCache<sup>20+</sup>
+
+cleanFileCache(uri: string): void
+
+Deletes a cache file. This API returns the result synchronously.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description|
+| ---------- | ------ | ---- | ---- |
+| uri | string | Yes  | URI of the cache file to delete.|
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                    | Error Message       |
+| ---------------------------- | ---------- |
+| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002 | No such file or directory. |
+| 13900010 | Try again. |
+| 13900012  | Permission denied by the file system. |
+| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 14000002  | Invalid URI. |
+| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**Example**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileUri } from '@kit.CoreFileKit';
+
+  let fileCache = new cloudSync.CloudFileCache();
+  let path = "/data/storage/el2/cloud/1.txt";
+  let uri = fileUri.getUriFromPath(path);
+
+  try {
+    fileCache.cleanFileCache(uri);
+  } catch (err) {
+    let error:BusinessError = err as BusinessError;
+    console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+  } 
+
+  ```
+
 ## DownloadErrorType<sup>11+</sup>
 
 Enumerates the device-cloud download error types.
@@ -990,10 +1038,10 @@ Represents a list of files that fail to be downloaded from the Drive Kit and fai
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-| Name | Type                                     | Mandatory| Description                  |
-| ----- | ----------------------------------------- | ---- | ---------------------- |
-| uri   | string                                    | Yes  | URI of the file that fails to be downloaded.     |
-| error | [DownloadErrorType](#downloaderrortype11) | Yes  | Error type of the file download failure.|
+| Name | Type                                     | Read-Only| Optional| Description                  |
+| ----- | ----------------------------------------- | ---- | ---- | ---------------------- |
+| uri   | string                                    | No  | No  | URI of the file that fails to be downloaded.     |
+| error | [DownloadErrorType](#downloaderrortype11) | No  | No  | Error type of the file download failure.|
 
 
 ## MultiDownloadProgress<sup>20+</sup>
@@ -1001,6 +1049,8 @@ Represents a list of files that fail to be downloaded from the Drive Kit and fai
 Represents the batch download progress of a file from the Drive Kit.
 
 ### Property
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 | Name           | Type                                     | Read-Only| Optional| Description                                                                                              |
 | --------------- | ----------------------------------------- | ---- | ---- | -------------------------------------------------------------------------------------------------- |
@@ -1012,8 +1062,6 @@ Represents the batch download progress of a file from the Drive Kit.
 | downloadedSize  | number                                    | No  | No  | Size of the downloaded file, in bytes. The value range is [0, INT64_MAX). If the progress is abnormal, the value **INT64_MAX** is returned.           |
 | totalSize       | number                                    | No  | No  | Total size of the files to be downloaded, in bytes. The value range is [0, INT64_MAX). If the progress is abnormal, the value **INT64_MAX** is returned.|
 | errType         | [DownloadErrorType](#downloaderrortype11) | No  | No  | Type of the error returned when the batch download fails.|
-
-**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ### getFailedFiles<sup>20+</sup>
 
@@ -1230,11 +1278,11 @@ Represents the data change information.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-| Name    | Type  | Mandatory| Description|
-| ---------- | ------ | ---- | ---- |
-| type | [NotifyType](#notifytype12) | Yes  | Type of the data change.|
-| isDirectory | Array&lt;boolean&gt; | Yes  | Whether the URIs with data changed are of directories. The value **true** means the URIs are of directories; the value **false** means the opposite.|
-| uris | Array&lt;string&gt; | Yes  | List of URIs whose data needs to be changed.|
+| Name    | Type  | Read-Only| Optional| Description|
+| ---------- | ------ | ---- | ---- | ---- |
+| type | [NotifyType](#notifytype12) | No  | No  | Type of the data change.|
+| isDirectory | Array&lt;boolean&gt; | No  | No  | Whether the URIs with data changed are of directories. The value **true** means the URIs are of directories; the value **false** means the opposite.|
+| uris | Array&lt;string&gt; | No  | No  | List of URIs whose data needs to be changed.|
 
 
 ## HistoryVersion<sup>20+</sup>
@@ -1312,7 +1360,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt;HistoryVersion&gt;&gt;
 
-Obtains the list of historical versions. The length of the returned list can be limited. If the number of cloud versions is less than the specified limit, the list will be returned with the actual number of versions. This API uses a promise to return the result.
+Obtains the list of historical versions. The returned versions are sorted by modification time. The earlier the modification time, the later the version. This API uses a promise to return the result.
+
+If the number of cloud versions is less than the length limit, the list will be returned with the actual number of versions.
+
+If the number of cloud versions is greater than or equal to the length limit, the number of the latest versions (specified by **versionNumLimit**) will be returned.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1321,7 +1373,7 @@ Obtains the list of historical versions. The length of the returned list can be 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  |  File URI.|
-| versionNumLimit | number | Yes| Length limit of the historical version list.|
+| versionNumLimit | number | Yes| Length limit of the historical version list. The value range is [0, 100000] (unit: number). If the input value is greater than 100,000, the list is returned according to the maximum value.|
 
 **Return value**
 
@@ -1617,3 +1669,70 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
     console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
   });
   ```
+
+## cloudSync.getCoreFileSyncState<sup>20+</sup>
+
+getCoreFileSyncState(uri: string): FileState
+
+Obtains the upload sync state of a cloud file. This API returns the result synchronously.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description|
+| ---------- | ------ | ---- | ---- |
+| uri | string | Yes  | URI of the file whose sync state is to be obtained.|
+
+**Return value**
+
+| Type                 | Description            |
+| --------------------- | ---------------- |
+| [FileState](#filestate20) | Upload sync state of the given cloud file.|
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                    | Error Message       |
+| ---------------------------- | ---------- |
+| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900002  | No such file or directory. |
+| 13900004  | Interrupted system call. |
+| 13900010  | Try again. |
+| 13900012  | Permission denied by the file system. |
+| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 13900031  | Function not implemented. |
+| 14000002  | Invalid URI. |
+| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. |
+
+**Example**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileUri } from '@kit.CoreFileKit';
+
+  let path = "/data/storage/el2/cloud/1.txt";
+  let uri = fileUri.getUriFromPath(path);
+  try {
+    let state = cloudSync.getCoreFileSyncState(uri);
+  } catch (err) {
+    let error:BusinessError = err as BusinessError;
+    console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
+  }
+  ```
+
+## FileState<sup>20+</sup>
+
+Enumerates the device-cloud file sync states.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+| Name|  Value|  Description|
+| ----- |  ---- |  ---- |
+| INITIAL_AFTER_DOWNLOAD |  0 | Initial state after the first download.|
+| UPLOADING |  1 | The file is being uploaded.|
+| STOPPED |  2 | The upload has been stopped.|
+| TO_BE_UPLOADED |  3 | The file is going to be uploaded.|
+| UPLOAD_SUCCESS |  4 | The file has been successfully uploaded.|
+| UPLOAD_FAILURE |  5 | The file fails to be uploaded.|

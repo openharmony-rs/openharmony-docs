@@ -1,5 +1,12 @@
 # Adding an Asset (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 You can use [add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd), an asynchronous API, or [addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12), a synchronous API, to add an asset.
@@ -8,7 +15,7 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                                        |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -38,16 +45,15 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 ## Constraints
 
-* Alias-based access
+- Alias-based access
 
   Assets are stored in the ASSET database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
 
-* Custom service data storage
+- Custom service data storage
 
   ASSET provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
 
   ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
-
 
 ## Example
 
@@ -59,7 +65,9 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 Add an asset that is accessible when the user unlocks the device for the first time. The asset includes password **demo_pwd**, alias **demo_alias**, and additional information **demo_label**.
 
-```typescript
+<!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -69,19 +77,26 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let attr: asset.AssetMap = new Map();
-attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.add(attr).then(() => {
-    console.info(`Asset added successfully.`);
-  }).catch((err: BusinessError) => {
+export async function addAsset(): Promise<string> {
+  let result: string = '';
+  let attr: asset.AssetMap = new Map();
+  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+  try {
+    await asset.add(attr).then(() => {
+      console.info(`Succeeded in adding Asset.`);
+      result = 'Succeeded in adding Asset';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to add Asset';
+    })
+  } catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to add Asset';
+  }
+  return result;
 }
 ```

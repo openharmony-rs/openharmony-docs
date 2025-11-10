@@ -1,4 +1,10 @@
 # @ohos.telephony.call (Call)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
@@ -811,9 +817,9 @@ Provides an option for determining whether a call is a video call.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|        Name             | Type                              | Mandatory| Description                                                                                            |
-| ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| extras                   | boolean                            | No  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  | 
+|        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
+| ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
+| extras                   | boolean                            | No  | Yes  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  | 
 
 ## CallState
 
@@ -829,15 +835,32 @@ Enumerates call states.
 | CALL_STATE_OFFHOOK | 2    | At least one call is in dialing, active, or on hold, and no new incoming call is ringing or waiting.|
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | The incoming call is answered.|
 
+
+## TelCallState<sup>21+</sup>
+
+Enumerates call states.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+| Name              | Value  | Description                                                        |
+| ------------------ | ---- | ------------------------------------------------------------ |
+| TEL_CALL_STATE_UNKNOWN | -1   | The call status fails to be obtained and is unknown.                        |
+| TEL_CALL_STATE_IDLE    | 0    | No call is in progress.                                    |
+| TEL_CALL_STATE_RINGING | 1    | The call is in the ringing or waiting state.                                    |
+| TEL_CALL_STATE_OFFHOOK | 2    | At least one call is being dialed, and no new incoming call is in the ringing or waiting state.|
+| TEL_CALL_STATE_ANSWERED | 3    | The incoming call is answered.|
+| TEL_CALL_STATE_CONNECTED | 4    | The call is being connected or placed on hold.                                   |
+
+
 ## EmergencyNumberOptions<sup>7+</sup>
 
 Provides an option for determining whether a number is an emergency number for the SIM card in the specified slot.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|  Name | Type  | Mandatory| Description                                          |
-| ------ | ------ | ---- | ---------------------------------------------- |
-| slotId | number | No  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+|  Name | Type  | Read-Only| Optional| Description                                          |
+| ------ | ------ | ---- | ---- | ---------------------------------------------- |
+| slotId | number | No  | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 
 ## NumberFormatOptions<sup>7+</sup>
 
@@ -845,6 +868,6 @@ Provides an option for number formatting.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|    Name    | Type  | Mandatory| Description                                                      |
-| ----------- | ------ | ---- | ---------------------------------------------------------- |
-| countryCode | string | No  | Country code, for example, **CN** (China). All country codes are supported. The default value is **CN**.|
+|    Name    | Type  | Read-Only| Optional| Description                                                      |
+| ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| countryCode | string | No  | Yes  | Country code, for example, **CN** (China). All country codes are supported. The default value is **CN**.|

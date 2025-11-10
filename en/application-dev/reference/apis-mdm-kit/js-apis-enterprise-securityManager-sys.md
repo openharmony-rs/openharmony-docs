@@ -1,4 +1,10 @@
 # @ohos.enterprise.securityManager (Security Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **securityManager** module provides device security management capabilities, including obtaining the security patch status and file system encryption status.
 
@@ -8,9 +14,9 @@ The **securityManager** module provides device security management capabilities,
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 >
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
 
 ## Modules to Import
 
@@ -27,6 +33,8 @@ Queries the security patch tag of a device.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -57,11 +65,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -80,6 +90,8 @@ Queries the encryption status of the device file system.
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -110,11 +122,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -132,6 +146,8 @@ getPasswordPolicy(): PasswordPolicy
 Obtains the password policy of this device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -152,6 +168,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
+
 try {
     let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
     console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
@@ -165,6 +183,8 @@ try {
 Represents the file system encryption status.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 

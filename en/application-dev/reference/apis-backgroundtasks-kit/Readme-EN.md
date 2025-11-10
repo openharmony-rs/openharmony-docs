@@ -1,5 +1,12 @@
 # Background Tasks Kit<!--background-tasks-api-->
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 - ArkTS API<!--background-tasks-arkts-->
   - [@ohos.reminderAgentManager (Reminder Agent Management)](js-apis-reminderAgentManager.md)
   - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](js-apis-resourceschedule-backgroundTaskManager.md)
@@ -38,7 +45,7 @@
     - [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md)
 - Error Codes<!--background-tasks-arkts-errcode-->
   - [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md)
-  - [BackgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md)
+  - [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md)
   <!--Del-->
   - [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md)
   <!--DelEnd-->

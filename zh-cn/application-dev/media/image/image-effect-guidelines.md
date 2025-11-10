@@ -4,7 +4,7 @@
 <!--Owner: @zyj208-->
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 ## 场景介绍
 
 ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过`ImageEffect`接口处理不同图像输入类型`Pixelmap`、`NativeWindow`、`NativeBuffer`或`Uri`，获得滤镜处理效果。

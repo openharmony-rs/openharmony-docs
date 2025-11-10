@@ -1,8 +1,17 @@
 # Gesture Binding
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can bind to each component different gesture events and design the logic for responding to these events. When a gesture is successfully recognized, the ArkUI framework notifies the component of the gesture recognition result through event callback.
 
+>  **NOTE**
+>
+>  The **gesture**, **priorityGesture**, and **parallelGesture** APIs currently do not support switching gesture bindings using the ternary operator (condition ? expression1 : expression2).
 
 ## gesture (Common Gesture Binding Method)
 
@@ -49,7 +58,7 @@ The **priorityGesture** API binds gestures that are preferentially recognized to
 
 By default, the child component preferentially recognizes the gesture specified by **gesture**, and the parent component preferentially recognizes the gesture specified by **priorityGesture** (if set).
 
-With regard to long press gestures, the component with the shortest minimum hold-down time responds first, ignoring the **priorityGesture** settings.
+For components bound with a long press gesture, you can set the minimum trigger duration using [duration](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#longpressgesturehandleroptions). When a long press gesture is triggered, the system prioritizes responding to the component with the shortest long press trigger time, ignoring the **priorityGesture** setting.
 
 In the following example, the parent component **Column** and child component **Text** are both bound to the tap gesture. As the **Column** is bound to the gesture through **priorityGesture**, the tap gesture recognized by the parent component is preferentially responded to.
 

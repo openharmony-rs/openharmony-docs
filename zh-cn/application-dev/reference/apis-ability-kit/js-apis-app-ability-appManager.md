@@ -30,7 +30,7 @@ import { appManager } from '@kit.AbilityKit';
 | -------------------- | --- | --------------------------------- |
 | STATE_CREATE    | 0   |    进程创建完成。       |
 | STATE_FOREGROUND          | 1   |    进程处于前台。      |
-| STATE_ACTIVE  | 2   |     进程获焦。   |
+| STATE_ACTIVE  | 2   |     进程中至少有一个窗口获焦。   |
 | STATE_BACKGROUND        | 3   |    进程处于后台。           |
 | STATE_DESTROY        | 4   |    进程销毁完成。         |
 
@@ -52,7 +52,7 @@ isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 |以回调方式返回接口运行结果及当前系统是否处于稳定性测试场景，可进行错误处理或其他自定义处理。返回true表示系统处于稳定性测试场景，返回false表示系统不处于稳定性测试场景。  |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前系统是否处于稳定性测试场景的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。  |
 
 **错误码**：
 
@@ -72,7 +72,7 @@ appManager.isRunningInStabilityTest((err, flag) => {
   if (err) {
     console.error(`isRunningInStabilityTest fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+    console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
   }
 });
 ```
@@ -96,7 +96,7 @@ isRunningInStabilityTest(): Promise&lt;boolean&gt;
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前是否处于稳定性测试场景，可进行错误处理或其他自定义处理。返回true表示系统处于稳定性测试场景，返回false表示系统不处于稳定性测试场景。 |
+  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前是否处于稳定性测试场景，可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。 |
 
 **错误码**：
 
@@ -113,7 +113,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRunningInStabilityTest().then((flag) => {
-  console.log(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
+  console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -134,7 +134,7 @@ isRamConstrainedDevice(): Promise\<boolean>
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。true：当前设备为RAM受限设备，false：当前设备为非RAM受限设备。 |
+  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
 
 **错误码**：
 
@@ -151,7 +151,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRamConstrainedDevice().then((data) => {
-  console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+  console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -171,7 +171,7 @@ isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 |以回调方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。true：当前设备为RAM受限设备，false：当前设备为非RAM受限设备。  |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前设备是否为RAM受限设备的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。  |
 
 **错误码**：
 
@@ -191,7 +191,7 @@ appManager.isRamConstrainedDevice((err, data) => {
   if (err) {
     console.error(`isRamConstrainedDevice fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
+    console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -227,7 +227,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getAppMemorySize().then((data) => {
-  console.log(`The size of app memory is: ${JSON.stringify(data)}`);
+  console.info(`The size of app memory is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -247,7 +247,7 @@ getAppMemorySize(callback: AsyncCallback\<number>): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | 是 |获取当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。使用callback异步回调。|
+  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用程序可以使用的最大内存（RAM）值，单位是M；否则为错误对象。可根据此值进行错误处理或其他自定义处理。|
 
 **错误码**：
 
@@ -267,7 +267,7 @@ appManager.getAppMemorySize((err, data) => {
   if (err) {
     console.error(`getAppMemorySize fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The size of app memory is: ${JSON.stringify(data)}`);
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -291,7 +291,7 @@ getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 以Promise方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
+| Promise\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Promise对象，返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -308,7 +308,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getRunningProcessInformation().then((data) => {
-  console.log(`The running process information is: ${JSON.stringify(data)}`);
+  console.info(`The running process information is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
@@ -333,7 +333,7 @@ getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 |以callback方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。|
+  | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用运行进程的信息；否则为错误对象。可进行错误处理或其他自定义处理。|
 
 **错误码**：
 
@@ -353,7 +353,7 @@ appManager.getRunningProcessInformation((err, data) => {
   if (err) {
     console.error(`getRunningProcessInformation fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`The running process information is: ${JSON.stringify(data)}`);
+    console.info(`The running process information is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -399,31 +399,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver);
-  console.log(`[appManager] observerCode: ${observerId}`);
+  console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -446,7 +446,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList:
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'applicationState'字符串。 |
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 应用状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 应用状态监听器，用于监听应用的生命周期变化。 |
 | bundleNameList | `Array<string>` | 是 | 表示需要注册监听的bundleName数组。最大值128。 |
 
 **返回值：**
@@ -473,25 +473,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
@@ -499,7 +499,7 @@ let bundleNameList = ['bundleName1', 'bundleName2'];
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver, bundleNameList);
-  console.log(`[appManager] observerCode: ${observerId}`);
+  console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -528,7 +528,7 @@ off(type: 'applicationState', observerId: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -551,25 +551,25 @@ let observerId = 0;
 // 1.注册应用状态监听器
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 let bundleNameList = ['bundleName1', 'bundleName2'];
@@ -585,7 +585,7 @@ try {
 // 2.注销应用状态监听器
 try {
   appManager.off('applicationState', observerId).then((data) => {
-    console.log(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
+    console.info(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`unregisterApplicationStateObserver fail, err: ${JSON.stringify(err)}`);
   });
@@ -635,25 +635,25 @@ let observerId = 0;
 // 1.注册应用状态监听器
 let applicationStateObserver: appManager.ApplicationStateObserver = {
   onForegroundApplicationChanged(appStateData) {
-    console.log(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
   onAbilityStateChanged(abilityStateData) {
-    console.log(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
   onProcessCreated(processData) {
-    console.log(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
   onProcessDied(processData) {
-    console.log(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
   onProcessStateChanged(processData) {
-    console.log(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
   onAppStarted(appStateData) {
-    console.log(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
   onAppStopped(appStateData) {
-    console.log(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 let bundleNameList = ['bundleName1', 'bundleName2'];
@@ -730,7 +730,7 @@ let appIndex = 1;
 
 try {
   appManager.killProcessesByBundleName(bundleName, isClearPageStack, appIndex).then((data) => {
-    console.log('killProcessesByBundleName success.');
+    console.info('killProcessesByBundleName success.');
   }).catch((err: BusinessError) => {
     console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
   });
@@ -745,7 +745,11 @@ try {
 
 isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
-判断指定应用是否在运行中。使用Promise异步回调。
+判断所有用户下指定包名和分身应用索引的应用是否正在运行。使用Promise异步回调。
+
+> **说明：**
+>
+> 如果当前用户未安装该应用，则返回错误码16000073；如果当前用户已安装该应用，则判断所有用户下该指定应用是否正在运行。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -762,7 +766,7 @@ isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
 | 类型           | 说明              |
 | -------------- | ---------------- |
-| Promise\<boolean> | Promise对象。返回true表示应用正在运行，返回false表示应用未运行。 |
+| Promise\<boolean> | Promise对象。返回true表示至少存在一个用户正在运行指定包名和分身应用索引的应用，返回false表示所有用户下指定包名和分身应用索引的应用都没有运行。 |
 
 **错误码**：
 

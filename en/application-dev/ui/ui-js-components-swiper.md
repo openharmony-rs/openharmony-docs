@@ -1,4 +1,10 @@
 # &lt;swiper&gt; Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 The **&lt;swiper&gt;** component is a sliding container used to switch between child components. For details, see [swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md).
@@ -119,7 +125,7 @@ text{
 > **NOTE**
 > - The **digital** attribute takes effect only when the **indicator** attribute is set to **true**.
 > 
-> - The **loop** attribute takes effect only when there are two or more than two child components of the **&lt;swiper&gt;** component.
+> - The **loop** attribute takes effect only when there are two or more child components of the **&lt;swiper&gt;** component.
 > 
 > - The **scrolleffect** attribute takes effect only when the **loop** attribute value is set to **false**.
 

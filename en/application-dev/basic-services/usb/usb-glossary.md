@@ -1,4 +1,4 @@
-# USB Service Terms
+# USB Service Glossary
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->

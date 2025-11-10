@@ -3,9 +3,9 @@
 
 ## How do I encapsulate a commonEvent utility class? (API version 9)
 
-**Problem**
+**Symptom**
 
-A commonEvent utility class needs to be encapsulated for the following purpose: Register a custom callback function when creating a subscriber, and then call the custom callback function when receiving an event notification.
+A **commonEvent** utility class needs to be encapsulated for the following purpose: Register a custom callback function when creating a subscriber, and then call the custom callback function when receiving an event notification.
 
 **Solution**
 
@@ -14,7 +14,7 @@ import commonEvent from '@ohos.commonEventManager';
 
 export class SubscribeEvent {
   private static subscriber = null
-  // Custom callback function
+  // Custom callback function variable
   private static callback = null
   /**
    * Create a subscriber.
@@ -78,13 +78,13 @@ struct Faq10_1 {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            // Attributes of a common event.
+            // Properties of a common event
             let options = {
               code: 0,    // Result code of the common event.
               data: "initial data",// Result data of the common event.
               isOrdered: true  // The common event is an ordered one.
             }
-            // Callback for common event publication.
+            // Callback for common event publication
             function publishCB(err) {
               if (err) {
                 console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
@@ -113,13 +113,13 @@ struct Faq10_1 {
 
 ## How do I make events be transferred in only one UIAbility instance? (API version 9)
 
-**Problem**
+**Symptom**
 
 Events need to be subscribed to and triggered only in one UIAbility instance.
 
 **Solution**
 
-Use the API in the **EventHub** module of the UIAbility to subscribe to events. The **EventHub** module offers the event center, which provides the API for subscribing to, unsubscribing from, and triggering events.
+You can call the EventHub module in UIAbility to subscribe to events. EventHub provides an event center that allows you to subscribe to, unsubscribe from, and trigger events.
 
 **Example**
 
@@ -156,7 +156,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 
 **Solution**
 
-You can implement this feature by setting the **wantAgent** attribute in the **NotificationRequest** parameter of the **Notification.publish** API.
+Configure the **wantAgent** property in the **NotificationRequest** parameter of the **Notification.publish** API.
 
 **Example**
 
@@ -168,7 +168,7 @@ async function publishNotification() {
   let wantAgentInfo = {
     wants: [
       {
-        bundleName: "com.example.webuseragent", // Bundle name of the target application.
+        bundleName: "com.example.webuseragent", // Bundle name of your application
         abilityName: "EntryAbility",
       }
     ],
@@ -181,7 +181,7 @@ async function publishNotification() {
     content: {
       contentType: contentType,
       normal: {
-        title: "Test Title",
+        title: "Test title",
         text: "Test content",
       }
     },
@@ -196,16 +196,16 @@ async function publishNotification() {
 [Notification](../reference/apis-notification-kit/js-apis-notificationManager.md) and [WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)
 
 
-## What should I do if calling notificationManager.publish fails?
+## What should I do if calling notificationManager.publish fails? (API version 9)
 
-**Problem**
+**Symptom**
 
-After a notification is published, no error log is displayed, and no notification is displayed in the notification panel.
+After a notification is published, no error log is displayed, and no notification is displayed in the notification bar.
 
 **Solution**
 
-Before publishing a notification, you must enable the notification feature for your application in the system settings of the real device so that the notification can be viewed in the notification panel.
+When publishing a notification, you need to enable the notification feature of the corresponding application in the system settings of a real device so that the published notification can be viewed in the notification bar.
 
-To manually enable the notification feature, choose **Settings** > **Notification & status bar** > *Application name* > **Allow notifications**.
+To enable this feature manually, go to **Settings** > **Notifications & status bar**. Tap the target application and turn on **Allow notifications**.
 
 You can also call the **notificationManager.requestEnableNotification()** API to display a dialog box (only once) to prompt the user to enable the feature.

@@ -80,7 +80,7 @@ UART模块应用比较广泛，主要用于实现设备之间的低速串行通�
 
 ### 接口说明
 
-UART模块提供的主要接口如表1所示，具体API[详见](https://gitee.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/uart_if.h)。
+UART模块提供的主要接口如表1所示，具体API[详见](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/uart_if.h)。
 
 **表 1** UART驱动API接口功能介绍
 

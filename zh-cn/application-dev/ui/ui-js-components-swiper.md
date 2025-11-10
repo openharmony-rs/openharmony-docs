@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 swiper为滑动容器，提供切换显示子组件的能力。具体用法请参考[swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md)。
@@ -377,4 +377,4 @@ export default {
 
 针对swiper开发，有以下相关实例可供参考：
 
-- [简易视频播放器（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

@@ -1,5 +1,12 @@
 # Media Data Multiplexing
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
 You can call native APIs to multiplex audio and video streams, that is, to store encoded audio and video data to a file in a certain format.
 
 For details about the supported multiplexing formats, see [AVCodec Supported Formats](avcodec-support-formats.md#media-data-multiplexing).
@@ -22,7 +29,7 @@ For details about the supported multiplexing formats, see [AVCodec Supported For
 
 ## Development Guidelines
 
-Read [AVMuxer](../../reference/apis-avcodec-kit/_a_v_muxer.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md).
 
 > **NOTE**
 >
@@ -69,9 +76,30 @@ For details about the keys to be configured for different container formats, see
    ```
 
 4. Add file-level data.
+
+   For details about the defined keys of file-level data, see [AVCodec Supported Formats](avcodec-support-formats.md#media-data-multiplexing).
+
+   Custom keys must start with **com.openharmony.**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
+
+   > **NOTE**
+   >
+   > The defined keys must be set before **OH_AVMuxer_Start()** is called, and custom keys can be set before **OH_AVMuxer_Stop()** is called.
+
    ```c++
    OH_AVFormat *format = OH_AVFormat_Create(); // Call OH_AVFormat_Create to create a format.
-   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // Set the creation time (UTC time in ISO 8601 format).
+
+   // Set the defined keys.
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // Set the creation time (UTC time in ISO 8601 format). This is supported since API version 14.
+   OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // Set the comment. The value is a string. This is supported since API version 20.
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_MOOV_FRONT, 1); // Set whether the moov metadata should be at the front of a media file. This is supported since API version 20. The default value is 0. The value 1 indicates that the moov metadata is at the front of a media file.
+
+   // Set a custom key (starting with com.openharmony.).
+   OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", 1024); // The value type is int32_t.
+   OH_AVFormat_SetFloatValue(format, "com.openharmony.testFloat", 1.024); // The value type is float.
+   OH_AVFormat_SetStringValue(format, "com.openharmony.testString", "string test"); // The value type is string, and the length cannot exceed 256 characters.
+   uint8_t testData[] = {1, 2, 3};
+   OH_AVFormat_SetBuffer(format, "com.openharmony.testBuffer", testData, sizeof(testData)); // The value type is uint8_t*, which is supported since API version 20.
+
    int ret = OH_AVMuxer_SetFormat(muxer, format); // Set format data to the muxer.
    if (ret != AV_ERR_OK) {
       // Failed to set the format because no valid key data to be written is found.

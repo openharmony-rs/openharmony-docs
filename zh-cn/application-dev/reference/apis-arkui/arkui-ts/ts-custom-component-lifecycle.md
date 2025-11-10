@@ -46,7 +46,7 @@ aboutToAppear函数在创建自定义组件的新实例后，在其build()函数
 
 onDidBuild?(): void
 
-onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段进行埋点数据上报等不影响实际UI的功能。不建议在onDidBuild函数中更改状态变量、使用animateTo等功能，这可能会导致不稳定的UI表现。
+onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -174,11 +174,11 @@ export class routerParam {
 @Component
 struct Index {
   aboutToAppear(): void {
-    console.log('onNewParam', 'Index aboutToAppear');
+    console.info('onNewParam', 'Index aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -215,11 +215,11 @@ import { routerParam } from './Index';
 @Component
 struct PageOne {
   aboutToAppear(): void {
-    console.log('onNewParam', 'PageOne aboutToAppear');
+    console.info('onNewParam', 'PageOne aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -352,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.log('ReusableV2Component aboutToReuse'); // 复用时被调用
+    console.info('ReusableV2Component aboutToReuse'); // 复用时被调用
   }
   build() {
     Column() {

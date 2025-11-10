@@ -1,5 +1,12 @@
 # WebSocket_Header
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 websocket客户端增加header头的链表节点。

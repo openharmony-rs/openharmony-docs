@@ -1,4 +1,10 @@
 # &lt;switch&gt; Development
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 The **&lt;switch&gt;** component is used to switch between the on and off states. For details, see [switch](../reference/apis-arkui/arkui-js/js-components-basic-switch.md).
@@ -30,7 +36,7 @@ Create a **&lt;switch&gt;** component in the .hml file under **pages/index**.
 
 ## Adding Attributes and Methods
 
-Use the **textoff** and **showtext** attributes to set the status when text is selected and unselected. Set the **checked** attribute to **true** (indicating that the component is on). Add the **change** event that is triggered when the component status changes. After the event is triggered, the **switchChange** function is executed to obtain the current component status (on or off).
+  Use the **textoff** and **showtext** attributes to set the status when text is selected and unselected. Set the **checked** attribute to **true** (indicating that the component is on). Add the **change** event that is triggered when the component status changes. After the event is triggered, the **switchChange** function is executed to obtain the current component status (on or off).
 
 ```html
 <!-- xxx.hml -->
@@ -168,7 +174,6 @@ switch{
 
 ```js
 // xxx.js
-import prompt from '@system.prompt';
 export default {
   data:{
     address: '',

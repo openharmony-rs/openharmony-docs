@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 切换通话输出设备
 
@@ -254,37 +254,41 @@
    ```ts
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 
-   @State pickerImage: ResourceStr = $r('app.media.earpiece'); // 自定义资源。
+   @Entry
+   @Component
+   struct CastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.startIcon'); // 自定义资源。
 
-   // 设备列表显示状态变化回调（可选）。
-   private onStateChange(state: AVCastPickerState) {
-     if (state === AVCastPickerState.STATE_APPEARING) {
-       console.info('The picker starts showing.');
-     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
-       console.info('The picker finishes presenting.');
-     }
-   }
-
-   build() {
-     Row() {
-       Column() {
-         AVInputCastPicker(
-           {
-             customPicker: (): void => this.ImageBuilder(), // 新增自定义参数。
-             onStateChange: this.onStateChange
-           }
-         ).size({ height: 45, width:45 })
+     // 设备列表显示状态变化回调（可选）。
+     private onStateChange(state: AVCastPickerState) {
+        if (state === AVCastPickerState.STATE_APPEARING) {
+         console.info('The picker starts showing.');
+       } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+         console.info('The picker finishes presenting.');
        }
      }
-   }
+ 
+     build() {
+       Row() {
+         Column() {
+           AVInputCastPicker(
+             {
+               customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
+               onStateChange: this.onStateChange
+             }
+           ).size({ height: 45, width: 45 })
+         }
+       }
+     }
 
-   // 自定义内容。
-   @Builder
-   ImageBuilder() {
-     Image(this.pickerImage)
-       .size({ width: '100%', height: '100%' })
-       .backgroundColor('#00000000')
-       .fillColor(Color.Black)
+     // 自定义内容。
+     @Builder
+     ImageBuilder() {
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
+     }
    }
    ```
 

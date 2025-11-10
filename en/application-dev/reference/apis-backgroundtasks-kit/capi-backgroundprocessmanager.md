@@ -1,5 +1,12 @@
 # BackgroundProcessManager
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @hongjianfeng-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## Overview
 
 The **BackgroundProcessManager** module provides C APIs for managing the scheduling policy of background child processes.

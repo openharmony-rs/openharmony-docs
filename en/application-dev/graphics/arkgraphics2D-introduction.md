@@ -1,5 +1,12 @@
 # Introduction to ArkGraphics 2D
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
+<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Tester: @yhl0101; @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ArkGraphics 2D provides APIs for drawing and displaying graphics. With this set of APIs, you'll find your application development easier and more efficient.
 
 ## Available Capabilities
@@ -12,9 +19,9 @@ ArkGraphics 2D provides APIs for drawing and displaying graphics. With this set 
 
 - High Dynamic Range (HDR) capability. For details, see [@ohos.graphics.hdrCapability (HDR Capability)](../reference/apis-arkgraphics2d/js-apis-hdrCapability.md).
 
-- Self-drawing capabilities, which you can use to customize and draw UI effects, basic shapes, texts, and images. For details, see [@ohos.graphics.drawing](../reference/apis-arkgraphics2d/js-apis-graphics-drawing.md).
+- Self-drawing capabilities, which you can use to customize and draw UI effects, basic shapes, texts, and images. For details, see [@ohos.graphics.drawing](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md).
 
-- Native capabilities related to graphics drawing and display. For details, see [NativeWindow](../reference/apis-arkgraphics2d/_native_window.md), [NativeBuffer](../reference/apis-arkgraphics2d/_o_h___native_buffer.md), [NativeImage](../reference/apis-arkgraphics2d/_o_h___native_image.md), [NativeVsync](../reference/apis-arkgraphics2d/_native_vsync.md), and [Drawing](../reference/apis-arkgraphics2d/_drawing.md).
+- Native capabilities related to graphics drawing and display. For details, see [NativeWindow](../reference/apis-arkgraphics2d/capi-nativewindow.md), [NativeBuffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md), [NativeImage](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md), [NativeVsync](../reference/apis-arkgraphics2d/capi-nativevsync.md), and [Drawing](../reference/apis-arkgraphics2d/capi-drawing.md).
 
 ## Use Scenarios
 

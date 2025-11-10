@@ -49,10 +49,11 @@ AppStartup supports startup tasks in automatic or manual mode. By default, autom
 
 2. [Setting Startup Parameters](#setting-startup-parameters): In the startup parameter file, set parameters such as the timeout interval and startup task listener.
 3. [Adding a Startup Task for Each Component to Be Initialized](#adding-a-startup-task-for-each-component-to-be-initialized): Implement the [StartupTask](../reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md) interface.
-4. [Optional Operations](optional-operations): You can finely control the behavior of AppStartup in complex scenarios.
+4. [Optional Operations](#optional-operations): You can finely control the behavior of AppStartup in complex scenarios.
    - [Using AppStartup in the HSP and HAR](#using-appstartup-in-the-hsp-and-har): Configure startup tasks and .so file preloading tasks in the HSP and HAR to manage dependencies across modules, making large applications start faster and be easier to maintain.
    - [Changing Startup Mode](#changing-startup-mode): Switch the startup task and .so file preloading task to manual mode to decide exactly when they run, cutting down on startup time.
    - [Adding Task Matching Rules](#adding-task-matching-rules): Use rules to filter which tasks run, ensuring only relevant tasks load based on the situation.
+   - [Setting the Startup Task Scheduling Phase](#setting-the-startup-task-scheduling-phase): Set the scheduling phase of startup tasks to execute them earlier, thereby reducing startup time.
 
 
 ## Defining an AppStartup Configuration File
@@ -176,7 +177,7 @@ It is assumed that the application has six startup tasks. The dependencies betwe
        }
      ],
      "appPreloadHintStartupTasks": [
-       // A .so file preloading file.
+       // A .so file preloading task.
      ],
      "configEntry": "./ets/startup/StartupConfig.ets"
    }
@@ -193,6 +194,7 @@ It is assumed that the application has six startup tasks. The dependencies betwe
 | runOnThread | Thread where the startup task is executed.<br>- **mainThread**: executed in the main thread.<br>- **taskPool**: executed in an asynchronous thread.| String| Optional, defaults to **mainThread**|
 | waitOnMainThread | Whether the main thread needs to wait until the startup task finishes execution. This parameter is valid only when **runOnThread** is set to **taskPool**.<br>- **true**: The main thread loads the application home page only the startup task finishes execution.<br>- **false**: The main thread does not wait for the startup task to finish execution.| Boolean| Optional, defaults to **true**|
 | matchRules | Used to filter startup tasks that should be initiated in automatic mode to expedite the application launch process. It is ideal for scenarios where you need to quickly pull up a particular page, such as transitions triggered by home screen widgets, notifications, or intent calls, to provide a seamless one-step experience for accessing functional services. For details, see [Adding Task Matching Rules](#adding-task-matching-rules).<br>**NOTE**<br>- This field is supported since API version 20 and can be configured only in HAPs.<br>- This field takes precedence over **excludeFromAutoStart**. If none of the startup tasks match, the tasks are processed according to their **excludeFromAutoStart** settings.| Object| Optional|
+| schedulerPhase | Scheduling phase for startup tasks. For details about the setting procedure, see [Setting the Startup Task Scheduling Phase](#setting-the-startup-task-scheduling-phase).<br>- **preAbilityStageLoad**: The startup task and its dependent tasks are scheduled and executed before the AbilityStage module is loaded.<br>- **postAbilityStageLoad**: The startup task and its dependent tasks are scheduled and executed after the AbilityStage module is loaded.<br> **NOTE**<br>- This field is supported since API version 21 and can be configured only in HAPs.<br>- "AbilityStage module loading" here refers to the loading of the **AbilityStage.ets** file and its dependent modules. For details, see [Loading Process of Modular Operation](../arkts-utils/module-principle.md#loading-process-of-modular-operation).| String| Optional, defaults to **postAbilityStageLoad**|
 
 ### Defining .so File Preloading Task Configuration
 
@@ -466,7 +468,7 @@ export default class EntryAbility extends UIAbility {
     let startParams = ['StartupTask_005', 'StartupTask_006'];
     try {
       startupManager.run(startParams).then(() => {
-        console.log(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
+        console.info(`StartupTest startupManager run then, startParams = ${JSON.stringify(startParams)}.`);
       }).catch((error: BusinessError) => {
         console.error(`StartupTest promise catch error, error = ${JSON.stringify(error)}.`);
         console.error(`StartupTest promise catch error, startParams = ${JSON.stringify(startParams)}.`);
@@ -536,7 +538,7 @@ You can add match rules in either of the following ways:
   | uris | Range of URIs for tasks executed in automatic mode. When the UIAbility is launched, **uri** in the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) is matched against the configured **uris** array. The format is `scheme://host/path`, and other parts of the URI (such as port and fragment) are ignored.| String array| Optional, defaults to empty| The UIAbility is started through a specific URI.|
   | actions | Range of actions for tasks executed in automatic mode. When the UIAbility is launched, **action** in the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) is matched against the configured **actions** array.| String array| Optional, defaults to empty| The UIAbility is started through a specific action.|
   | insightIntents | Range of intent names for tasks executed in automatic mode. When the UIAbility is launched, **intentName** is matched against the configured **insightIntents** array.| String array| Optional, defaults to empty| The UIAbility is started through a specific intent name.|
-  | customization | Range of custom rules for tasks executed in automatic mode. Custom rules are returned by [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#startupconfigentryonrequestcustommatchrule20) of StartupConfigEntry. When the UIAbility is started, the custom rule is matched against the configured **customization** array.<br>**NOTE**<br>Only tasks in **startupTasks** are supported.| String array| Optional, defaults to empty| If the **uris**, **actions**, and **insightIntents** fields do not meet your needs, you can use **customization** to customize rules.|
+  | customization | Range of custom rules for tasks executed in automatic mode. Custom rules are returned by [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20) of StartupConfigEntry. When the UIAbility is started, the custom rule is matched against the configured **customization** array.<br>**NOTE**<br>Only tasks in **startupTasks** are supported.| String array| Optional, defaults to empty| If the **uris**, **actions**, and **insightIntents** fields do not meet your needs, you can use **customization** to customize rules.|
 
   > **NOTE**
   >
@@ -588,7 +590,7 @@ Suppose you want to automatically execute StartupTask_004 and libentry_006 tasks
 
 Suppose you want to automatically execute StartupTask_006 and .so file preloading tasks with **excludeFromAutoStart=false** when a user taps a weather widget to jump to the weather screen. If the custom parameter **fromType** in the Want when launching the weather UIAbility is **card**, you can match it via customization. Here is an example:
 
-  1. Modify the **MyStartupConfigEntry.ets** file in [Setting Startup Parameters](#setting-startup-parameters) and add [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#startupconfigentryonrequestcustommatchrule20).
+  1. Modify the **MyStartupConfigEntry.ets** file in [Setting Startup Parameters](#setting-startup-parameters) and add [onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20).
 
       ```ts
       import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
@@ -630,3 +632,31 @@ Suppose you want to automatically execute StartupTask_006 and .so file preloadin
         "configEntry": "./ets/startup/StartupConfig.ets"
       }
       ```
+
+### Setting the Startup Task Scheduling Phase
+
+Starting from API version 21, configuring the startup task scheduling phase is supported. By default, startup tasks begin execution after the AbilityStage module is loaded but before the [AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle callback. For large applications, loading the AbilityStage module can be time-consuming. You can set the **schedulerPhase** field of a startup task to **preAbilityStageLoad**. This schedules the task before the AbilityStage module loads, allowing it to execute concurrently with the module loading on an asynchronous thread, thereby reducing application startup time.
+
+> **NOTE**
+>
+> Scheduling the startup task before the AbilityStage module loads changes the original execution order. If the startup task has dependencies on the AbilityStage module being loaded, unexpected results may occur. You can follow the instructions provided in [Side Effects and Optimization of Module Loading](../arkts-utils/arkts-module-side-effects.md) to adapt any dependent parts.
+
+For example, the home page of an application needs to obtain feed stream data through network requests, and you want this task to run concurrently with the AbilityStage module loading on an asynchronous thread. Assuming the network request task is StartupTask_004 defined in [Defining Startup Task Configuration](#defining-startup-task-configuration), the development procedure is as follows:
+
+  1. Configure the task to be scheduled before the AbilityStage module loads. In the **startupconfig.json** file, set the **schedulerPhase** field of StartupTask_004 to **preAbilityStageLoad**.
+  2. Configure the task to execute concurrently with AbilityStage module loading on an asynchronous thread. Set the **runOnThread** field of StartupTask_004 to **taskPool** and the **waitOnMainThread** field to **false**.
+
+  ```json
+  {
+    "startupTasks": [
+      {
+        "name": "StartupTask_004",
+        "srcEntry": "./ets/startup/StartupTask_004.ets",
+        "runOnThread": "taskPool",
+        "waitOnMainThread": false,
+        "schedulerPhase": "preAbilityStageLoad"
+      }
+    ],
+    "configEntry": "./ets/startup/StartupConfig.ets"
+  }
+  ```

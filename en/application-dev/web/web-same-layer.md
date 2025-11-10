@@ -132,7 +132,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
 
    The **\<embed>** and **\<object>** tags support same-layer rendering, and the **type** can be specified randomly. They are case insensitive and will be converted to lowercase letters by the ArkWeb kernel. The **tag** string is matched using the entire string, and the **type** string is matched using the prefix.
 
-   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **\<object>** or **\<embed>** type, for example, **registerNativeEmbedRule** ("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
+   If this API is not used or receives an invalid string (empty string), the ArkWeb kernel uses the default setting, that is, "embed" + "native/" prefix. If the specified **type** is the same as the W3C standard **\<object>** or **\<embed>** type, for example, **registerNativeEmbedRule**("**object**," "**application**/**pdf**"), ArkWeb will comply with the W3C standard behavior and will not identify it as a same-layer tag.
 
    - Use the \<embed> tags.
 

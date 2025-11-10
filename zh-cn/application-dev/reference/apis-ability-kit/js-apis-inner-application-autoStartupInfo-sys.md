@@ -1,7 +1,7 @@
 # AutoStartupInfo (系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao-->
+<!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->

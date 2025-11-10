@@ -1,5 +1,10 @@
 # Vibrator Overview
-
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **vibrator** module extends the vibrator service via maximizing utilization of vibrator hardware capabilities. By innovatively integrating vibration and interaction, the module takes user interaction efficiency and usability to the next level.
 
@@ -14,7 +19,7 @@ The vibrator is a Misc device that consists of four modules: Vibrator API, Vibra
 
 - Vibrator API: provides basic vibrator APIs, including the APIs for obtaining the vibrator list, querying the vibrator by effect, and triggering and stopping vibration.
 
-- Vibrator Framework: manages the framework layer of the vibrator and communicates with the Misc Device Service.
+- Vibrator framework: manages the framework layer of the vibrator and communicates with the Misc Device Service.
 
 - Misc device service: manages services of controllers.
 

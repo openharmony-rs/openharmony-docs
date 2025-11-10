@@ -4,13 +4,13 @@
 <!--Owner: @dutie123-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。
 
 > **说明：**
 >
-> - 本模块首批接口从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 

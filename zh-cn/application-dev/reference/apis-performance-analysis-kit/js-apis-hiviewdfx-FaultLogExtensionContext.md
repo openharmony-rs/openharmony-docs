@@ -22,8 +22,9 @@ FaultLogExtensionContext模块提供访问[FaultLogExtensionAbility](js-apis-hiv
 import { FaultLogExtensionAbility } from '@kit.PerformanceAnalysisKit';
 
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
-    onFaultReportReady {
+    onFaultReportReady() {
         let context = this.context; // 获取FaultLogExtensionContext
+        console.info('cache dir is ' + context.cacheDir); // 访问context中的成员
     }
 }
 ```

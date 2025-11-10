@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。
 
@@ -277,14 +277,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             this.width1 = 10;
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             this.height1 = 10;
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -341,14 +341,14 @@ struct Index {
       Button($r("app.string.EntryAbility_label"))
         .margin(10)
         .onClick(() => {
-          console.log(TEST_TAG, "onClick");
+          console.info(TEST_TAG, "onClick");
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.log(TEST_TAG, "setGroup1");
+            console.info(TEST_TAG, "setGroup1");
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.log(TEST_TAG, "setGroup2");
+            console.info(TEST_TAG, "setGroup2");
           }
         })
       MyImage1({ modifier: this.myModifier })
@@ -499,7 +499,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Red)
+    instance.backgroundColor(Color.Gray)
   }
 }
 
@@ -524,7 +524,7 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
+    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }
@@ -570,3 +570,7 @@ struct ChildComponent {
 | [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect)             | 不支持   | is not callable           | -                                         |
 | [bindMenu](ts-universal-attributes-menu.md#bindmenu11)                 | 部分支持 | -                         | 不支持入参为CustomBuilder。               |
 | [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview15)              | 部分支持 | Builder is not supported. | 不支持入参为CustomBuilder。               |
+| [onVisibleAreaChange](ts-universal-component-visible-area-change-event.md#onvisibleareachange)              | 部分支持 | Method not implemented. | 从API version 20开始支持。              |
+| [onTouchIntercept](ts-universal-attributes-on-touch-intercept.md#ontouchintercept)              | 部分支持 | is not callable. | 从API version 20开始支持。              |
+| [onPreDrag](ts-universal-events-drag-drop.md#onpredrag12)              | 部分支持 | Method not implemented. | 从API version 20开始支持。              |
+| [onChildTouchTest](ts-universal-attributes-on-child-touch-test.md#onchildtouchtest11)              | 部分支持 | is not callable. | 从API version 20开始支持。              |

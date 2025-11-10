@@ -1,5 +1,12 @@
 # ArkTS Modular Loading
 
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123;@yao_dashuai-->
+<!--Tester: @kir175; @zsw_zhushiwei-->
+<!--Adviser: @huipeizi-->
+
 
 ##  Error Messages Related to Modular Loading Displayed at the Runtime of ArkTS Applications
 ### "Cannot find dynamic-import module 'xxxx'"
@@ -10,7 +17,7 @@ This error indicates that the module to load is not compiled into the applicatio
 
 An expression is dynamically loaded as an input parameter, but the module path is incorrect.
 ``` typescript
-  import(module).then(m=>{m.foo();}).catch((e: Error)=>{console.info(e.message)});
+  import(module).then(m=>{m.foo();}).catch((e: Error)=>{console.error(e.message)});
 ```
 
 **Locating method**
@@ -18,11 +25,11 @@ An expression is dynamically loaded as an input parameter, but the module path i
 Print the path information of the module, and check whether the path is correct.
 
 ### "Cannot find module 'xxxx' , which is application Entry Point" 
-This error indicates that the entry file is not found during application startup.
+This error indicates that the application entry file is not found during application startup.
 
 **Possible cause**
 
-The entry file is not found during application startup.
+The application entry file is not found during application startup.
 
 **Locating method**
 
@@ -169,7 +176,7 @@ export function A() {
 import { a } from './A'
 export class Animal {
   static {
-    console.log("this is in class");
+    console.info("this is in class");
     let str = a; // Error: a is not initialized
   }
 }
@@ -181,7 +188,7 @@ export class Animal {
 import { a } from './A'
 export class Animal {
   static {
-    console.log("this is in class");
+    console.info("this is in class");
   }
   str = a; // Modification point
 }
@@ -198,8 +205,8 @@ The ArkTS coding specification is a subset of the ECMAScript specification. When
 ### Access Before const/let Declaration
 
 ``` typescript
-console.log(a); // Error: Variable 'a' is used before being assigned.
-console.log(b); // Error: Variable 'b' is used before being assigned.
+console.info(a); // Error: Variable 'a' is used before being assigned.
+console.info(b); // Error: Variable 'b' is used before being assigned.
 
 let a = '1';
 const b = '2';
@@ -210,8 +217,8 @@ const b = '2';
 let a = '1';
 const b = '2';
 
-console.log(a);
-console.log(b);
+console.info(a);
+console.info(b);
 ```
 
 

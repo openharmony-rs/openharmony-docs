@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 - [Access Control Overview](access-token-overview.md)
 - Application Permission Management<!--app-permission-mgmt-->
@@ -16,7 +17,7 @@
     - [Requesting User Authorization for the Second Time](request-user-authorization-second.md)
     - [Requesting One-Time User Authorization](one-time-authorization.md)
     <!--Del-->
-    - [Declaring Permissions](declare-permissions-in-acl.md)
+    - [Requesting Restricted Permissions](declare-permissions-in-acl.md)
     <!--DelEnd-->
   - [Application Permissions](app-permissions.md)
     - [Open system_grant Permissions](permissions-for-all.md)

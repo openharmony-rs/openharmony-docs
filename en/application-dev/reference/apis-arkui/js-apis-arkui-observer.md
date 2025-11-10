@@ -1,11 +1,20 @@
 # @ohos.arkui.observer (Observer)
 
-The **Observer** module provides APIs for listening for UI component behavior changes.
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
+
+The **Observer** module provides APIs for listening for UI component behavior changes. [UIObserver](./arkts-apis-uicontext-uiobserver.md) is recommended for component observation.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - UIObserver can only listen for relevant information within the current process and does not support obtaining information in cross-process scenarios<!--Del--> such as [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)<!--DelEnd-->.
+
 
 ## Modules to Import
 
@@ -25,12 +34,12 @@ Describes the state of the **NavDestination** component.
 | ON_HIDDEN | 1   | The **NavDestination** component is hidden. **Atomic service API**: This API can be used in atomic services since API version 12.|
 | ON_APPEAR<sup>12+</sup> | 2   | The **NavDestination** component is attached to the component tree. **Atomic service API**: This API can be used in atomic services since API version 12.|
 | ON_DISAPPEAR<sup>12+</sup> | 3   | The **NavDestination** component is detached from the component tree. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| ON_WILL_SHOW<sup>12+</sup> | 4   | The **NavDestination** is about to be displayed. **Atomic service API**: This API can be used in atomic services since API version 12.|
+| ON_WILL_SHOW<sup>12+</sup> | 4   | The **NavDestination** component is about to be displayed. **Atomic service API**: This API can be used in atomic services since API version 12.|
 | ON_WILL_HIDE<sup>12+</sup> | 5   | The **NavDestination** component is about to be hidden. **Atomic service API**: This API can be used in atomic services since API version 12.|
 | ON_WILL_APPEAR<sup>12+</sup>| 6   | The **NavDestination** component is about to be mounted to the component tree. **Atomic service API**: This API can be used in atomic services since API version 12.|
 | ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | The **NavDestination** component is about to be unmounted from the component tree. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| ON_ACTIVE<sup>18+</sup> | 8 | The **NavDestination** component is active. **Atomic service API**: This API can be used in atomic services since API version 18.|
-| ON_INACTIVE<sup>18+</sup> | 9 | The **NavDestination** component is inactive. **Atomic service API**: This API can be used in atomic services since API version 18.|
+| ON_ACTIVE<sup>17+</sup> | 8 | The **NavDestination** component is active. **Atomic service API**: This API can be used in atomic services since API version 17.|
+| ON_INACTIVE<sup>17+</sup> | 9 | The **NavDestination** component is inactive. **Atomic service API**: This API can be used in atomic services since API version 17.|
 | ON_BACKPRESS<sup>12+</sup> | 100   | The back button is pressed on the **NavDestination** component. **Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## ScrollEventType<sup>12+</sup>
@@ -64,7 +73,7 @@ Enumerates the states of a page during routing.
 
 ## TabContentState<sup>12+</sup>
 
-Enumerates the states of the **NavDestination** component.
+Enumerates the **TabContent** component states.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -81,44 +90,43 @@ Provides information about the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                        |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | Yes  | ID of the **Navigation** component that contains the target **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | Yes  | Name of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| state        | [NavDestinationState](#navdestinationstate)        | Yes  | State of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| index<sup>12+</sup>        | number        | Yes  | Index of the **NavDestination** component in the navigation stack.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
-| param<sup>12+</sup>        | Object        | No  | Parameters of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
-| navDestinationId<sup>12+</sup>        | string        | Yes  | Unique ID of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
-| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode11)        | No  | Mode of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.              |
-| uniqueId<sup>15+</sup>        | number        | No  | Unique ID of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.            |
+| Name        | Type                                              | Read-Only| Optional| Description                                        |
+| ------------ | -------------------------------------------------  | --- | -----|--------------------------------------------- |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | No| No| ID of the **Navigation** component that contains the target **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | No| No| Name of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| state        | [NavDestinationState](#navdestinationstate)     | No| No| State of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| index<sup>12+</sup>        | number   | No | No  | Index of the **NavDestination** component in the navigation stack.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> Value range: [0, +∞)     |
+| param<sup>12+</sup>        | Object   | No| Yes  | Parameters of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
+| navDestinationId<sup>12+</sup>        | string    | No | No | Unique ID of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
+| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode11)   | No | Yes  | Mode of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.              |
+| uniqueId<sup>15+</sup>        | number     | No| Yes| Unique ID of the **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.            |
 
 ## NavigationInfo<sup>12+</sup>
 
 Provides information about the **Navigation** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                        |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | string | Yes  | ID of the **Navigation** component.|
-| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | Yes  | Routing stack of the **Navigation** component.                  |
+| Name        | Type                                        | Read-Only  | Optional| Description                                        |
+| ------------ | ---------------------------------------------| ----- | ---- | -------------------------------------------- |
+| navigationId | string | No| No  | ID of the **Navigation** component.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | No| No  | Navigation controller of the **Navigation** component.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                  |
+| uniqueId<sup>20+</sup>         | number | No| Yes  | Unique ID of the **Navigation** component, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).<br> **Atomic service API**: This API can be used in atomic services since API version 20.                 |
 
 ## ScrollEventInfo<sup>12+</sup>
 
 Provides the scroll event information.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                        |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| id           | string                                             | Yes  | ID of the scrollable component.                              |
-| uniqueId           | number                                             | Yes  | Unique ID of the scrollable component.                              |
-| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | Yes  | Type of the scroll event.                            |
-| offset       | number                                             | Yes  | Current offset of the scrollable component.                       |
+| Name        | Type                                              | Read-Only| Optional| Description                                        |
+| ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                             | No| No| ID of the scrollable component.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| uniqueId           | number                                             | No| No| Unique ID of the scrollable component.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | No| No| Enumerates the scroll event types.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| offset       | number                                             | No| No| Current offset of the scrollable component.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| axis<sup>20+</sup>         | [Axis](arkui-ts/ts-appendix-enums.md#axis)         | No| Yes| Scroll direction of the scrollable component.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## ObserverOptions<sup>12+</sup>
 
@@ -128,9 +136,9 @@ Describes the observer options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                        |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| id           | string                                             | Yes  | Component ID.                              |
+| Name        | Type                                              | Read-Only| Optional| Description                                        |
+| ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                             | No  | No| Component ID.                              |
 
 ## RouterPageInfo
 
@@ -140,14 +148,14 @@ Provides the information about a page during routing.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                        | Mandatory| Description                                          |
-| -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context of the router page that invokes the lifecycle callback.|
-| index                | number                                                       | Yes  | Position of the router page that invokes the lifecycle callback, in the navigation stack.        |
-| name                 | string                                                       | Yes  | Name of the page that invokes the lifecycle callback.          |
-| path                 | string                                                       | Yes  | Path of the page that invokes the lifecycle callback.          |
-| state                | [RouterPageState](#routerpagestate)                          | Yes  | State of the router page that invokes the lifecycle callback.          |
-| pageId<sup>12+</sup> | string                                                       | Yes  | Unique ID of the router page that invokes the lifecycle callback.      |
+| Name                | Type                                                  | Read-Only  | Optional| Description                                          |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | No| No  | Context of the router page that invokes the lifecycle callback.|
+| index                | number                                                  | No  | No  | Position of the router page that invokes the lifecycle callback, in the navigation stack.<br> Value range: [0, +∞)        |
+| name                 | string                                                  | No  | No  | Name of the page that invokes the lifecycle callback.          |
+| path                 | string                                                  | No  | No  | Path of the page that invokes the lifecycle callback.          |
+| state                | [RouterPageState](#routerpagestate)                     | No  | No  | State of the router page that invokes the lifecycle callback.          |
+| pageId<sup>12+</sup> | string                                                  | No  | No  | Unique ID of the router page that invokes the lifecycle callback.      |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -157,10 +165,10 @@ Provides the information contained in the callback when the screen pixel density
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                     | Mandatory| Description                                  |
-| ------- | ----------------------------------------- | ---- | -------------------------------------- |
-| context | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context corresponding to the page when the screen pixel density changes.|
-| density | number                                    | Yes  | Screen pixel density after the change.<br>Value range: [0, +∞)                |
+| Name   | Type                                     | Read-Only| Optional| Description                                  |
+| ------- | ----------------------------------------- | ---- | ---- | -------------------------------------- |
+| context | [UIContext](./arkts-apis-uicontext-uicontext.md) | No  | No | Context corresponding to the page when the screen pixel density changes.|
+| density | number                                    | No  | No  | Screen pixel density after the change.<br>Value range: [0, +∞)                |
 
 ## NavDestinationSwitchInfo<sup>12+</sup>
 
@@ -170,12 +178,12 @@ Provides the information about page switching of the **Navigation** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| context      | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information corresponding to **Navigation** component that triggers page switching.|
-| from         | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | Yes  | Source page for page switching.        |
-| to           | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | Yes  | Destination page for page switching.        |
-| operation    | [NavigationOperation](./arkui-ts/ts-basic-components-navigation.md#navigationoperation11)| Yes  | Page switching operation type.        |
+| Name        | Type                                        | Read-Only  | Optional| Description                                         |
+| ------------ | -------------------------------------------- | ------ | ---- | -------------------------------------------- |
+| context      | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | No| No  | Context information corresponding to **Navigation** component that triggers page switching.|
+| from         | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | No| No  | Source page for page switching.        |
+| to           | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | No| No  | Destination page for page switching.        |
+| operation    | [NavigationOperation](./arkui-ts/ts-basic-components-navigation.md#navigationoperation11)| No| No  | Page switching operation type.        |
 
 ## NavDestinationSwitchObserverOptions<sup>12+</sup>
 
@@ -185,9 +193,92 @@ Provides the observer options for the page switching event of the **Navigation**
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | Yes  | ID of the target **Navigation** component.|
+| Name        | Type                                         | Read-Only | Optional| Description                                         |
+| ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | No| No  | ID of the target **Navigation** component.|
+
+## TextChangeEventInfo<sup>22+</sup>
+Provides information about text changes in input fields.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name        | Type                                        | Read-Only | Optional| Description                                         |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                       | No  | No  | ID of the text input component.|
+| uniqueId     | number                                       | No  | No  | Unique ID of the text input component.|
+| content        | string                                       | No  | No  | Text content after the change.|
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
+
+Subscribes to text change events in input boxes.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text change events.|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
+
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
+
+Unsubscribes from text change events in input fields.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text change events.|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22) | No  | Callback function. Callback used to return the text change information.|
+
+## uiObserver.on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeEventInfo\>): void
+
+Subscribes to text change events for a specific input field identified by ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text change events.|
+| identity | [ObserverOptions](#observeroptions12) | Yes  | ID of the target text input component.                            |
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | Yes  | Callback function. Callback used to return the text change information.|
+
+## uiObserver.off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChangeEventInfo\>): void
+
+Unsubscribes from text change events for a specific input field identified by ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text change events.|
+| identity | [ObserverOptions](#observeroptions12) | Yes  | ID of the target text input component.|
+| callback | Callback\<[TextChangeEventInfo](#textchangeeventinfo22)\> | No  | Callback function. Callback used to return the text change information.|
 
 ## TabContentInfo<sup>12+</sup>
 
@@ -197,14 +288,29 @@ Provides the **TabContent** switching information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                                              | Mandatory| Description                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| tabContentId | string                                             | Yes  | ID of the **TabContent** component.                         |
-| tabContentUniqueId | number                                       | Yes  | Unique ID of the **TabContent** component.                   |
-| state        | [TabContentState](#tabcontentstate12)              | Yes  | State of the **TabContent** component.                       |
-| index        | number                                             | Yes  | Index of the **TabContent** component. The index is zero-based.       |
-| id           | string                                             | Yes  | ID of the **Tabs** component.                               |
-| uniqueId     | number                                             | Yes  | Unique ID of the **Tabs** component.                         |
+| Name        | Type                                        | Read-Only | Optional| Description                                         |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| tabContentId | string                                       | No  | No  | ID of the **TabContent** component.                         |
+| tabContentUniqueId | number                                 | No  | No  | Unique ID of the **TabContent** component.                   |
+| state        | [TabContentState](#tabcontentstate12)        | No  | No  | State of the **TabContent** component.                       |
+| index        | number                                       | No  | No  | Index of the **TabContent** component. The index is zero-based.       |
+| id           | string                                       | No  | No  | ID of the **Tabs** component.                               |
+| uniqueId     | number                                       | No  | No  | Unique ID of the **Tabs** component.                         |
+| lastIndex<sup>22+</sup>    | number                                       | No  | Yes  | Index of the previously focused **TabContent** component. The index is zero-based. This parameter is available only in the callback function of [tabChange](#uiobserverontabchange22).    |
+
+## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
+
+Provides information about window size layout breakpoint changes.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                | Type                                                  | Read-Only  | Optional| Description                                          |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | No  | No  | Layout breakpoint for window width.       |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| No  | No  | Layout breakpoint for window height.       |
+
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -220,8 +326,8 @@ Subscribes to status changes of the **NavDestination** component.
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | Yes  | Callback used to return the current state of the **NavDestination** component.                            |
+| type     | string                                                | Yes  | Event type. Set to **'navDestinationUpdate'** for **NavDestination** component status change events.|
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | Yes  | Callback function. It provides the current state of the **NavDestination** component.                            |
 
 **Example**
 
@@ -252,7 +358,7 @@ struct Index {
 
   aboutToAppear() {
     uiObserver.on('navDestinationUpdate', (info) => {
-      console.info('NavDestination state update', JSON.stringify(info));
+      console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
@@ -290,8 +396,8 @@ Unsubscribes from status changes of the **NavDestination** component.
 
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | No  | Callback used to return the current state of the **NavDestination** component.                            |
+| type     | string                                                | Yes  | Event type. Set to **'navDestinationUpdate'** for **NavDestination** component status change events.|
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | No  | Callback function. It provides the current state of the **NavDestination** component.                            |
 
 **Example**
 
@@ -311,9 +417,9 @@ Subscribes to status changes of the **NavDestination** component.
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the **Navigation** component that contains the target **NavDestination** component.                                              |
-| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | Yes  | Callback used to return the current state of the **NavDestination** component.                            |
+| type     | string                                                               | Yes  | Event type. Set to **'navDestinationUpdate'** for **NavDestination** component status change events.|
+| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target **Navigation** component.                                              |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | Yes  | Callback function. It provides the current state of the **NavDestination** component.                            |
 
 **Example**
 
@@ -344,7 +450,7 @@ struct Index {
 
   aboutToAppear() {
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
-      console.info('NavDestination state update', JSON.stringify(info));
+      console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
@@ -383,9 +489,9 @@ Unsubscribes from status changes of the **NavDestination** component.
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the **Navigation** component that contains the target **NavDestination** component.                                              |
-| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | No  | Callback used to return the current state of the **NavDestination** component.                            |
+| type     | string                                                               | Yes  | Event type. Set to **'navDestinationUpdate'** for **NavDestination** component status change events.|
+| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target **Navigation** component.                                              |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | No  | Callback function. It provides the current state of the **NavDestination** component.                            |
 
 **Example**
 
@@ -395,7 +501,7 @@ See the example for [uiObserver.on('navDestinationUpdate')](#uiobserveronnavdest
 
 on(type: 'scrollEvent', callback: Callback\<ScrollEventInfo\>): void
 
-Subscribes to the start and end of a scroll event.
+Subscribes to the start and end of scroll events of all scrollable components. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -406,17 +512,17 @@ Subscribes to the start and end of a scroll event.
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.                  |
-| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | Yes  | Callback used to return the Callback used to return the information about the scroll event.                                          |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | Yes  | Callback function. Callback used to return the information about the scroll event.                                          |
 
 **Example**
 
-See the example for [offscrollevent](#uiobserveroffscrollevent12-1).
+See the example for [uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1).
 
 ## uiObserver.off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', callback?: Callback\<ScrollEventInfo\>): void
 
-Unsubscribes from the start and end of a scroll event.
+Unsubscribes from the start and end of scroll events of all scrollable components. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -427,17 +533,17 @@ Unsubscribes from the start and end of a scroll event.
 | Name  | Type                                                 | Mandatory| Description                                                                    |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.                  |
-| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | No  | Callback used to return the Callback used to return the information about the scroll event.                                          |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | No  | Callback function. Callback used to return the information about the scroll event.                                          |
 
 **Example**
 
-See the example for [offscrollevent](#uiobserveroffscrollevent12-1).
+See the example for [uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1).
 
 ## uiObserver.on('scrollEvent')<sup>12+</sup>
 
 on(type: 'scrollEvent', options: ObserverOptions, callback: Callback\<ScrollEventInfo\>): void
 
-Subscribes to the start and end of a scroll event.
+Subscribes to the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -449,17 +555,17 @@ Subscribes to the start and end of a scroll event.
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.                  |
 | options  | [ObserverOptions](#observeroptions12)                                  | Yes  | ID of the target scrollable component.                                                |
-| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | Yes  | Callback used to return the Callback used to return the information about the scroll event.                                           |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | Yes  | Callback function. Callback used to return the information about the scroll event.                                           |
 
 **Example**
 
-See the example for [offscrollevent](#uiobserveroffscrollevent12-1).
+See the example for [uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1).
 
 ## uiObserver.off('scrollEvent')<sup>12+</sup>
 
 off(type: 'scrollEvent', options: ObserverOptions, callback?: Callback\<ScrollEventInfo\>): void
 
-Unsubscribes from the start and end of a scroll event.
+Unsubscribes from the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -471,7 +577,7 @@ Unsubscribes from the start and end of a scroll event.
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.                  |
 | options  | [ObserverOptions](#observeroptions12)                                  | Yes  | ID of the target scrollable component.                                                |
-| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | No  | Callback used to return the Callback used to return the information about the scroll event.                                           |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | No  | Callback function. Callback used to return the information about the scroll event.                                           |
 
 **Example**
 
@@ -482,7 +588,7 @@ import { uiObserver } from '@kit.ArkUI'
 @Component
 struct Index {
   scroller: Scroller = new Scroller();
-  options: uiObserver.ObserverOptions = { id: "testId" };
+  options: uiObserver.ObserverOptions = { id: 'testId' };
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
 
   build() {
@@ -502,7 +608,7 @@ struct Index {
             }, (item: string) => item)
           }.width('100%')
         }
-        .id("testId")
+        .id('testId')
         .height('80%')
       }
       .width('100%')
@@ -511,7 +617,7 @@ struct Index {
         Button('UIObserver on')
           .onClick(() => {
             uiObserver.on('scrollEvent', (info) => {
-              console.info('scrollEventInfo', JSON.stringify(info));
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
@@ -524,12 +630,12 @@ struct Index {
         Button('UIObserverWithId on')
           .onClick(() => {
             uiObserver.on('scrollEvent', this.options, (info) => {
-              console.info('scrollEventInfo', JSON.stringify(info));
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
-            uiObserver.off('scrollEvent', this.options);
+            uiObserver.off('scrollEvent',this.options);
           })
       }
     }
@@ -553,8 +659,8 @@ Subscribes to state changes of the page during routing.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.|
-| callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | Yes  | Callback used to return the If **pageInfo** is passed, the current page state is returned.                |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
+| callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | Yes  | Callback function. If **pageInfo** is passed, the current page state is returned.                |
 
 **Example**
 
@@ -570,7 +676,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Subscribe to the target events within the scope of the page under the ability context.
     uiObserver.on('routerPageUpdate', this.context, (info: uiObserver.RouterPageInfo) => {
-      console.info('[uiObserver][abilityContext] got info: ' + JSON.stringify(info))
+      console.info(`[uiObserver][abilityContext] got info: ${JSON.stringify(info)}`)
     })
   }
 
@@ -582,7 +688,7 @@ export default class EntryAbility extends UIAbility {
         this.uiContext = windowInfo.getUIContext();
         // Subscribe to the target events within the scope of the page under the UI context.
         uiObserver.on('routerPageUpdate', this.uiContext, (info: uiObserver.RouterPageInfo)=>{
-          console.info('[uiObserver][uiContext] got info: ' + JSON.stringify(info))
+          console.info(`[uiObserver][uiContext] got info: ${JSON.stringify(info)}`)
         })
       })
     });
@@ -607,7 +713,7 @@ Unsubscribes to state changes of the page during routing.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | No  | Callback to be unregistered.                |
 
 **Example**
@@ -651,9 +757,9 @@ Subscribes to the pixel density changes of the screen.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.|
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.|
-| callback | Callback\<[DensityInfo](#densityinfo12)\>        | Yes  | Callback used to return the screen pixel density after the change.                |
+| type     | string                                                       | Yes  | Event type. Set to **'densityUpdate'** for screen pixel density change events.|
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | Yes  | Callback function. It provides information about the screen pixel density after the change.                |
 
 **Example**
 
@@ -664,7 +770,7 @@ import { uiObserver } from '@kit.ArkUI';
 @Component
 struct Index {
   @State density: number = 0;
-  @State message: string = 'Listener not registered'
+  @State message: string = 'Listener not registered';
 
   densityUpdateCallback = (info: uiObserver.DensityInfo) => {
     this.density = info.density;
@@ -676,7 +782,7 @@ struct Index {
       Text(this.message)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-      Button ('Subscribe to Screen Pixel Density Changes')
+      Button('Subscribe to Screen Pixel Density Changes')
         .onClick(() => {
           this.message = 'Listener registered'
           uiObserver.on('densityUpdate', this.getUIContext(), this.densityUpdateCallback);
@@ -690,7 +796,7 @@ struct Index {
 
 off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\>): void
 
-Unsubscribes from the pixel density changes of the screen.
+Unsubscribes from screen pixel density changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -700,8 +806,8 @@ Unsubscribes from the pixel density changes of the screen.
 
 | Name  | Type                                     | Mandatory| Description                                                                                          |
 | -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
-| type     | string                                    | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.                                         |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.                                                            |
+| type     | string                                    | Yes  | Event type. Set to **'densityUpdate'** for screen pixel density change events.                                         |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.                                                            |
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | No  | Callback to be unregistered. If this parameter is not specified, this API unregisters all callbacks for the **densityUpdate** event under the current UI context.|
 
 ```ts
@@ -723,13 +829,13 @@ struct Index {
       Text(this.message)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-      Button ('Subscribe to Screen Pixel Density Changes')
+      Button('Subscribe to Screen Pixel Density Changes')
         .margin({ bottom: 10 })
         .onClick(() => {
           this.message = 'Listener registered'
           uiObserver.on('densityUpdate', this.getUIContext(), this.densityUpdateCallback);
         })
-      Button ('Unsubscribe from Screen Pixel Density Changes')
+      Button('Unsubscribe from Screen Pixel Density Changes')
         .onClick(() => {
           this.message = 'Listener not registered'
           uiObserver.off('densityUpdate', this.getUIContext(), this.densityUpdateCallback);
@@ -754,7 +860,7 @@ Subscribes to the dispatch of drawing instructions in each frame.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event event. The value **'willDraw'** indicates whether drawing is about to occur.|
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.|
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
 | callback | Callback\<void\>        | Yes  | Callback used to return the                |
 
 **Example**
@@ -766,7 +872,7 @@ import { uiObserver } from '@kit.ArkUI';
 @Component
 struct Index {
   willDrawCallback = () => {
-    console.info("willDraw instruction dispatched.")
+    console.info("willDraw instruction dispatched.");
   }
   build() {
     Column() {
@@ -794,7 +900,7 @@ Unsubscribes from the dispatch of drawing instructions in each frame.
 | Name  | Type                                     | Mandatory| Description                                                 |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                    | Yes  | Event event. The value **'willDraw'** indicates whether drawing is about to occur.|
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.                   |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.                   |
 | callback | Callback\<void\>   | No  | Callback to be unregistered.                               |
 
 ```ts
@@ -838,7 +944,7 @@ Subscribes to layout completion status in each frame.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'didLayout'** indicates whether the layout has been completed.|
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.|
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
 | callback | Callback\<void\>        | Yes  | Callback used to return the                |
 
 **Example**
@@ -878,7 +984,7 @@ Unsubscribes from layout completion status in each frame.
 | Name  | Type                                     | Mandatory| Description                                                 |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                    | Yes  | Event type. The value **'didLayout'** indicates whether the layout has been completed.|
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page to be listened for.                   |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.                   |
 | callback | Callback\<void\>   | No  | Callback to be unregistered.                               |
 
 ```ts
@@ -898,7 +1004,7 @@ struct Index {
         .onClick(() => {
           uiObserver.on('didLayout', this.getUIContext(), this.didLayoutCallback);
         })
-      Button ('Unsubscribe from Layout Completion')
+      Button('Unsubscribe from Layout Completion')
         .onClick(() => {
           uiObserver.off('didLayout', this.getUIContext(), this.didLayoutCallback);
         })
@@ -911,7 +1017,7 @@ struct Index {
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-Subscribes to the page switching event of the **Navigation** component.
+Subscribes to **Navigation** component page switch events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -921,9 +1027,9 @@ Subscribes to the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page switching event to be listened for.|
-| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the information about the page switching event.                |
+| type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switch events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switch events.|
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback function. It provides page switch event information through **NavDestinationSwitchInfo**.                |
 
 **Example**
 
@@ -933,21 +1039,21 @@ Subscribes to the page switching event of the **Navigation** component.
 // uiObserver.off('navDestinationSwitch', UIAbilityContext, callback)
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, window } from '@kit.ArkUI';
-import { hilog } from "@kit.PerformanceAnalysisKit"
+import { hilog } from "@kit.PerformanceAnalysisKit";
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+    uiObserver.on('navDestinationSwitch', this.context, callbackFunc);
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    uiObserver.off('navDestinationSwitch', this.context, callBackFunc);
+    uiObserver.off('navDestinationSwitch', this.context, callbackFunc);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -995,7 +1101,7 @@ struct PageOne {
   }
 }
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1010,11 +1116,11 @@ struct Index {
   }
 
   aboutToAppear() {
-    uiObserver.on('navDestinationSwitch', this.getUIContext(), callBackFunc)
+    uiObserver.on('navDestinationSwitch', this.getUIContext(), callbackFunc)
   }
 
   aboutToDisappear() {
-    uiObserver.off('navDestinationSwitch', this.getUIContext(), callBackFunc)
+    uiObserver.off('navDestinationSwitch', this.getUIContext(), callbackFunc)
   }
 
   build() {
@@ -1047,8 +1153,8 @@ Unsubscribes from the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page switching event to be listened for.|
+| type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switch events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switch events.|
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered.                |
 
 **Example**
@@ -1059,7 +1165,7 @@ See the example for [uiObserver.on('navDestinationSwitch')](#uiobserveronnavdest
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-Subscribes to the page switching event of the **Navigation** component.
+Subscribes to **Navigation** component page switch events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1069,10 +1175,10 @@ Subscribes to the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page switching event to be listened for.|
+| type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switch events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switch events.|
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | Yes  | Observer options.  |
-| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the information about the page switching event.                |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback function. It provides page switch event information through **NavDestinationSwitchInfo**.                |
 
 **Example**
 
@@ -1084,7 +1190,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, window } from '@kit.ArkUI';
 import { hilog } from "@kit.PerformanceAnalysisKit"
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1093,14 +1199,14 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     uiObserver.on('navDestinationSwitch', this.context, {
       navigationId: "myNavId"
-    }, callBackFunc);
+    }, callbackFunc);
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     uiObserver.off('navDestinationSwitch', this.context, {
       navigationId: "myNavId"
-    }, callBackFunc);
+    }, callbackFunc);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -1148,7 +1254,7 @@ struct PageOne {
   }
 }
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1163,11 +1269,11 @@ struct Index {
   }
 
   aboutToAppear() {
-    uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFunc)
+    uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callbackFunc)
   }
 
   aboutToDisappear() {
-    uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFunc)
+    uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callbackFunc)
   }
 
   build() {
@@ -1201,8 +1307,8 @@ Unsubscribes from the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | Yes  | Context information, which is used to specify the scope of the page switching event to be listened for.|
+| type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switch events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switch events.|
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | Yes  | Observer options.  |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered.                |
 
@@ -1214,7 +1320,7 @@ See the example for [uiObserver.on('navDestinationSwitch')](#uiobserveronnavdest
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-Subscribes to the **TabContent** switching event.
+Subscribes to **TabContent** switch events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1224,8 +1330,8 @@ Subscribes to the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback used to return the information about the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Event type. Set to **'tabContentUpdate'** for **TabContent** switch events.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback function. It provides information about **TabContent** switch events through **TabContentInfo**.|
 
 **Example**
 
@@ -1233,7 +1339,7 @@ Subscribes to the **TabContent** switching event.
 import { uiObserver } from '@kit.ArkUI';
 
 function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabContentUpdate', JSON.stringify(info));
+  console.info(`tabContentUpdate ${JSON.stringify(info)}`);
 }
 
 @Entry
@@ -1290,7 +1396,7 @@ Unsubscribes from the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Event type. Set to **'tabContentUpdate'** for **TabContent** switch events.|
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | No  | Callback to be unregistered.|
 
 **Example**
@@ -1301,7 +1407,7 @@ See the example for [uiObserver.on('tabContentUpdate')](#uiobserverontabcontentu
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-Subscribes to the **TabContent** switching event.
+Subscribes to **TabContent** page switch events for the specified **Tabs** component ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1311,9 +1417,9 @@ Subscribes to the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Event type. Set to **'tabContentUpdate'** for **TabContent** switch events.|
 | options  | [ObserverOptions](#observeroptions12)                        | Yes  | ID of the target **Tabs** component.|
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback used to return the information about the **TabContent** switching event.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback function. It provides information about **TabContent** switch events through **TabContentInfo**.|
 
 **Example**
 
@@ -1321,7 +1427,7 @@ Subscribes to the **TabContent** switching event.
 import { uiObserver } from '@kit.ArkUI';
 
 function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabContentUpdate', JSON.stringify(info));
+  console.info(`tabContentUpdate ${JSON.stringify(info)}`);
 }
 
 @Entry
@@ -1368,7 +1474,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
-Unsubscribes from the **TabContent** switching event.
+Unsubscribes from **TabContent** page switch events for the specified **Tabs** component ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1378,10 +1484,237 @@ Unsubscribes from the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Event type. Set to **'tabContentUpdate'** for **TabContent** switch events.|
 | options  | [ObserverOptions](#observeroptions12)                        | Yes  | ID of the target **Tabs** component.|
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | No  | Callback to be unregistered.|
 
 **Example**
 
 See the example for [uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1).
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
+
+Subscribes to tab change events of **Tabs** components. Simultaneous subscription to multiple **Tabs** components is supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. Set to **'tabChange'** for **Tabs** component tab change events.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback function. It provides information about **Tabs** component tab change events through **TabContentInfo**.|
+
+**Example**
+
+```ts
+// Index.ets
+// This example demonstrates how to subscribe to tab change events of Tabs components.
+// It simultaneously subscribes to two Tabs components with IDs 'tabsId1' and 'tabsId2'.
+// When the two Tabs components are initialized, the tab pages with IDs 'tabContentId0' and 'tabContentId5' (located at page index 0) are displayed.
+// When users swipe the Tabs component with ID 'tabsId1', the tab page at index 0 is hidden, and the tab page with ID 'tabContentId1' (at index 1) is displayed.
+import { uiObserver } from '@kit.ArkUI';
+
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    uiObserver.on('tabChange', callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    uiObserver.off('tabChange', callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId1')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId2')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
+
+Unsubscribes from tab change events of all **Tabs** components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. Set to **'tabChange'** for **Tabs** component tab change events.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | No  | Callback to be unregistered.|
+
+**Example**
+
+See the example for [uiObserver.on('tabChange')](#uiobserverontabchange22).
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
+
+Subscribes to tab change events for the specified **Tabs** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. Set to **'tabChange'** for **Tabs** component tab change events.|
+| options  | [ObserverOptions](#observeroptions12)                        | Yes  | ID of the target **Tabs** component.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | Yes  | Callback function. It provides information about **Tabs** component tab change events through **TabContentInfo**.|
+
+**Example**
+
+```ts
+// Index.ets
+// This example demonstrates how to subscribe to tab change events of the Tabs component with ID 'tabsId'.
+// During Tabs component initialization, the tab page with ID 'tabContentId0' (at index 0) is displayed. After swiping, the tab page at index 0 is hidden, and the tab page with ID 'tabContentId1' (at index 1) becomes visible.
+import { uiObserver } from '@kit.ArkUI';
+
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    uiObserver.on('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    uiObserver.off('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
+
+Unsubscribes from tab change events for the specified **Tabs** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. Set to **'tabChange'** for **Tabs** component tab change events.|
+| options  | [ObserverOptions](#observeroptions12)                        | Yes  | ID of the target **Tabs** component.|
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | No  | Callback to be unregistered.|
+
+**Example**
+
+See the example for [uiObserver.on('tabChange')](#uiobserverontabchange22-1).

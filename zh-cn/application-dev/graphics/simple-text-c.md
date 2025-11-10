@@ -24,7 +24,9 @@
 
 画布Canvas对象具体可见[画布的获取与绘制结果的显示](canvas-get-result-draw-c.md)。
 
-```c++
+<!-- @[ndk_drawing_simple_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+``` C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置文本对齐方式为居中
@@ -37,7 +39,7 @@ OH_Drawing_SetTextStyleFontSize(txtStyle, 60);
 OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
 
 // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateFontCollection();
 // 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
 OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
 
@@ -45,18 +47,14 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // 设置文本内容，并将文本添加到 handler 中
 const char *text = "Hello World Drawing\n";
-// 此处可以使用 OH_Drawing_TypographyHandlerAddEncodedText 添加不同编码的文本。
-// OH_Drawing_TypographyHandlerAddText 只支持UTF-8编码的文本
-OH_Drawing_TypographyHandlerAddText(handler, text);  
+OH_Drawing_TypographyHandlerAddText(handler, text);
 
 OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// 设置排版宽度
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// 设置文本在画布上绘制的起始位置
-double position[2] = {0, 1140};
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
 // 将文本绘制到画布上
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
 
 // 释放内存
 OH_Drawing_DestroyTypographyStyle(typoStyle);

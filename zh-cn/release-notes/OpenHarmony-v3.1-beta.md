@@ -33,8 +33,8 @@
 ### 前提条件
 
 1.  注册码云gitee账号。
-2.  注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
-3.  安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+2.  注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
+3.  安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
 
     ```
     git config --global user.name "yourname"
@@ -45,7 +45,7 @@
 4.  安装码云repo工具，可以执行如下命令。
 
     ```
-    curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中
+    curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中
     chmod a+x /usr/local/bin/repo
     pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
     ```
@@ -55,10 +55,10 @@
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -68,7 +68,7 @@ repo forall -c 'git lfs pull'
 通过repo + https 下载。
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1-Beta --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -139,7 +139,7 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples &amp; Codelabs
@@ -151,27 +151,27 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- |
-| [Ets公共事件](https://gitee.com/openharmony/app_samples/tree/master/Notification/CommonEvent) | 本示例展示了在ArkTS中如何使用CommonEvent的接口完成创建订阅者、订阅公共事件、发布公共事件、取消订阅的功能。 | ArkTS |
-| [空气质量](https://gitee.com/openharmony/app_samples/tree/master/common/AirQuality) | 本示例使用JS实现了一个简单空气质量应用，使用折行显示能力显示空气质量信息，使用柱形图展示历史记录。 | JS |
-| [分布式计算器](https://gitee.com/openharmony/app_samples/tree/master/common/DistributeCalc) | 本示例使用JS分布式能力实现了一个简单的计算器应用，可以进行简单的数值计算，支持远程拉起另一个计算器FA，两个FA进行协同计算。 | JS |
-| [EtsNotification](https://gitee.com/openharmony/app_samples/tree/master/common/Notification) | 本示例展示了在ArkTS中如何创建和删除Slot通道，如何发布和取消通知。 | ArkTS |
-| [Ets资源管理](https://gitee.com/openharmony/app_samples/tree/master/common/ResourceManager) | 本示例展示了在ArkTS中如何调用资源管理的API接口实现字符串和图片资源信息的获取。 | ArkTS |
-| [kikainput](https://gitee.com/openharmony/app_samples/tree/master/CompleteApps/KikaInput) | kikainput是一个轻量级的输入法应用，支持在运行OpenHarmony&nbsp;OS的智能终端上。 | JS |
-| [ArkTS分布式数据管理](https://gitee.com/openharmony/app_samples/tree/master/data/Kvstore) | 本示例展示了在ArkTS中分布式数据管理的使用，包括KVManager对象实例的创建和KVStore数据流转的使用。 | ArkTS |
-| [轻量级数据存储](https://gitee.com/openharmony/app_samples/tree/master/data/LiteStorage) | 轻量级数据存储主要提供轻量级Key-Value操作，支持本地应用存储少量数据。本示例通过对购物车商品的添加和删除并保存退出的操作，使得再次打开应用时依然可以保留退出前的购物车信息，体现了轻量级存储在保存轻量级数据时的作用。 | ArkTS |
-| [Ets进程信息](https://gitee.com/openharmony/app_samples/tree/master/ETSUI/Process) | 本示例展示了在ArkTS中如何获取进程信息和启动一个子进程运行一段shell，包括当前系统运行时间、获取进程当前工作目录、更改进程当前工作目录、发送signal到指定的进程、启动一个子进程、关闭子进程、退出当前系统的功能。 | ArkTS |
-| [Ets运行锁](https://gitee.com/openharmony/app_samples/tree/master/common/Runninglock) | 本示例展示了阻止系统休眠的运行锁功能，通过黑白色壁纸模拟息屏、亮屏状态，来展示系统的休眠状态，从而对运行锁的功能进行测试，使得该运行锁在打开后可以阻止系统休眠。 | ArkTS |
-| [字符串编解码](https://gitee.com/openharmony/app_samples/tree/master/Util/UtilStringCodec) | 本示例对字符串进行了特定格式的输出，对错误码的内容进行了文本输出，对字符串的编码和解码做了演示结果。 | ArkTS |
-| [Js音频播放和管理](https://gitee.com/openharmony/app_samples/tree/master/media/JsAudioPlayer) | 本示例展示了JS音频播放的使用方法，以及音频的音量大小设置。 | JS |
-| [JsVideo](https://gitee.com/openharmony/app_samples/tree/master/media/JsVideo) | 本示例使用JS&nbsp;UI中的&lt;video/&gt;组件，实现视频播放。可以通过video自带的控制栏进行播放、暂停等操作。 | JS |
-| [测试打点](https://gitee.com/openharmony/app_samples/tree/master/DFX/JsDotTest) | 本示例展示了测试打点功能，包括应用打点与性能打点两部分。 | JS |
-| [JsWorker](https://gitee.com/openharmony/app_samples/tree/master/thread/JsWorker) | 本示例展示了在JS中如何启动一个worker线程，并实现worker线程和宿主线程的通信。 | JS |
-| [画布组件](https://gitee.com/openharmony/app_samples/tree/master/UI/JsCanvas) | &lt;canvas/>组件可以自定义绘制图形，本示例展示了&lt;canvas\>组件的使用方法 | JS |
-| [JS页面弹窗](https://gitee.com/openharmony/app_samples/tree/master/UI/JsDialog) | JS中支持用户自定义弹窗，&lt;dialog/&gt;组件作为容器组件，用户可以自定义弹窗的样式和布局。本示例完成了添加和删除联系人功能，在添加和删除时使用自定义弹窗来实现。 | JS |
-| [JSList商品列表](https://gitee.com/openharmony/app_samples/tree/master/UI/JsList) | 本示例展示了list控件在商品分类列表中的应用，在listGroup里采用两个list-item分别展示了Group收缩和Group展开的两种列表形态，点击后会弹出相应的list列表。 | JS |
-| [JSPanel](https://gitee.com/openharmony/app_samples/tree/master/UI/JsPanel) | JS提供一种轻量级的内容展示面板，此面板可滑动，可自定义触发方式、弹出高度等属性。本示例通过可滑动面板展示了商品详细信息与平台保障。 | JS |
-| [JsSvg](https://gitee.com/openharmony/app_samples/tree/master/UI/JsSvg) | 本示例展示了JS中<svg\>组件及其子组件的使用，包括<svg\>、<rect\>、<circle\>、<ellipse\>、<path\>、<line\>、<polygon\>、<polyline\>、<text\>、<animate\>、<animateTransform\> 。 | JS |
-| [JS自定义组件](https://gitee.com/openharmony/app_samples/tree/master/UI/JSUICustomComponent) | 自定义组件是用户根据业务需求，将已有的组件组合，封装成的新组件，可以在工程中多次调用，提高代码的可读性。本示例展示了JS中自定义组件的使用，包括基本用法、自定义事件、Props和事件参数。 | JS |
+| [Ets公共事件](https://gitcode.com/openharmony/app_samples/tree/master/Notification/CommonEvent) | 本示例展示了在ArkTS中如何使用CommonEvent的接口完成创建订阅者、订阅公共事件、发布公共事件、取消订阅的功能。 | ArkTS |
+| [空气质量](https://gitcode.com/openharmony/app_samples/tree/master/common/AirQuality) | 本示例使用JS实现了一个简单空气质量应用，使用折行显示能力显示空气质量信息，使用柱形图展示历史记录。 | JS |
+| [分布式计算器](https://gitcode.com/openharmony/app_samples/tree/master/common/DistributeCalc) | 本示例使用JS分布式能力实现了一个简单的计算器应用，可以进行简单的数值计算，支持远程拉起另一个计算器FA，两个FA进行协同计算。 | JS |
+| [EtsNotification](https://gitcode.com/openharmony/app_samples/tree/master/common/Notification) | 本示例展示了在ArkTS中如何创建和删除Slot通道，如何发布和取消通知。 | ArkTS |
+| [Ets资源管理](https://gitcode.com/openharmony/app_samples/tree/master/common/ResourceManager) | 本示例展示了在ArkTS中如何调用资源管理的API接口实现字符串和图片资源信息的获取。 | ArkTS |
+| [kikainput](https://gitcode.com/openharmony/app_samples/tree/master/CompleteApps/KikaInput) | kikainput是一个轻量级的输入法应用，支持在运行OpenHarmony&nbsp;OS的智能终端上。 | JS |
+| [ArkTS分布式数据管理](https://gitcode.com/openharmony/app_samples/tree/master/data/Kvstore) | 本示例展示了在ArkTS中分布式数据管理的使用，包括KVManager对象实例的创建和KVStore数据流转的使用。 | ArkTS |
+| [轻量级数据存储](https://gitcode.com/openharmony/app_samples/tree/master/data/LiteStorage) | 轻量级数据存储主要提供轻量级Key-Value操作，支持本地应用存储少量数据。本示例通过对购物车商品的添加和删除并保存退出的操作，使得再次打开应用时依然可以保留退出前的购物车信息，体现了轻量级存储在保存轻量级数据时的作用。 | ArkTS |
+| [Ets进程信息](https://gitcode.com/openharmony/app_samples/tree/master/ETSUI/Process) | 本示例展示了在ArkTS中如何获取进程信息和启动一个子进程运行一段shell，包括当前系统运行时间、获取进程当前工作目录、更改进程当前工作目录、发送signal到指定的进程、启动一个子进程、关闭子进程、退出当前系统的功能。 | ArkTS |
+| [Ets运行锁](https://gitcode.com/openharmony/app_samples/tree/master/common/Runninglock) | 本示例展示了阻止系统休眠的运行锁功能，通过黑白色壁纸模拟息屏、亮屏状态，来展示系统的休眠状态，从而对运行锁的功能进行测试，使得该运行锁在打开后可以阻止系统休眠。 | ArkTS |
+| [字符串编解码](https://gitcode.com/openharmony/app_samples/tree/master/Util/UtilStringCodec) | 本示例对字符串进行了特定格式的输出，对错误码的内容进行了文本输出，对字符串的编码和解码做了演示结果。 | ArkTS |
+| [Js音频播放和管理](https://gitcode.com/openharmony/app_samples/tree/master/media/JsAudioPlayer) | 本示例展示了JS音频播放的使用方法，以及音频的音量大小设置。 | JS |
+| [JsVideo](https://gitcode.com/openharmony/app_samples/tree/master/media/JsVideo) | 本示例使用JS&nbsp;UI中的&lt;video/&gt;组件，实现视频播放。可以通过video自带的控制栏进行播放、暂停等操作。 | JS |
+| [测试打点](https://gitcode.com/openharmony/app_samples/tree/master/DFX/JsDotTest) | 本示例展示了测试打点功能，包括应用打点与性能打点两部分。 | JS |
+| [JsWorker](https://gitcode.com/openharmony/app_samples/tree/master/thread/JsWorker) | 本示例展示了在JS中如何启动一个worker线程，并实现worker线程和宿主线程的通信。 | JS |
+| [画布组件](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsCanvas) | &lt;canvas/>组件可以自定义绘制图形，本示例展示了&lt;canvas\>组件的使用方法 | JS |
+| [JS页面弹窗](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsDialog) | JS中支持用户自定义弹窗，&lt;dialog/&gt;组件作为容器组件，用户可以自定义弹窗的样式和布局。本示例完成了添加和删除联系人功能，在添加和删除时使用自定义弹窗来实现。 | JS |
+| [JSList商品列表](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsList) | 本示例展示了list控件在商品分类列表中的应用，在listGroup里采用两个list-item分别展示了Group收缩和Group展开的两种列表形态，点击后会弹出相应的list列表。 | JS |
+| [JSPanel](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsPanel) | JS提供一种轻量级的内容展示面板，此面板可滑动，可自定义触发方式、弹出高度等属性。本示例通过可滑动面板展示了商品详细信息与平台保障。 | JS |
+| [JsSvg](https://gitcode.com/openharmony/app_samples/tree/master/UI/JsSvg) | 本示例展示了JS中<svg\>组件及其子组件的使用，包括<svg\>、<rect\>、<circle\>、<ellipse\>、<path\>、<line\>、<polygon\>、<polyline\>、<text\>、<animate\>、<animateTransform\> 。 | JS |
+| [JS自定义组件](https://gitcode.com/openharmony/app_samples/tree/master/UI/JSUICustomComponent) | 自定义组件是用户根据业务需求，将已有的组件组合，封装成的新组件，可以在工程中多次调用，提高代码的可读性。本示例展示了JS中自定义组件的使用，包括基本用法、自定义事件、Props和事件参数。 | JS |
 
 
 #### 新增Codelabs
@@ -180,12 +180,12 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- |
-| [分布式手写板（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/Distributed/DistributeDatabaseDrawEts) | 基于分布式能力，实现多设备同步书写互动。 | ArkTS |
-| [分布式数据库](https://gitee.com/openharmony/codelabs/tree/master/Data/JsDistributedData) | 基于分布式数据接口，实现多种设备上一致的数据访问体验。 | JS |
-| [购物应用（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/ShoppingEts) | 基于OpenHarmony ArkUI丰富的组件实现购物商城应用。 | ArkTS |
-| [转场动画的使用（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/TransitionAnimation) | 基于OpenHarmony ArkUI转场动画，实现了页面间转场、组件内转场以及共享元素转场。 | ArkTS |
-| [基础组件Slider的使用（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/SliderExample) | 基于OpenHarmony&nbsp;eTS&nbsp;UI，使用slider组件，实现可调节风车大小和转速的动画效果。 | ArkTS |
-| [自定义弹窗（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/CustomDialog) | 基于OpenHarmony ArkUI，实现警告弹窗和自定义弹窗。 | ArkTS |
+| [分布式手写板（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/DistributeDatabaseDrawEts) | 基于分布式能力，实现多设备同步书写互动。 | ArkTS |
+| [分布式数据库](https://gitcode.com/openharmony/codelabs/tree/master/Data/JsDistributedData) | 基于分布式数据接口，实现多种设备上一致的数据访问体验。 | JS |
+| [购物应用（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ShoppingEts) | 基于OpenHarmony ArkUI丰富的组件实现购物商城应用。 | ArkTS |
+| [转场动画的使用（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TransitionAnimation) | 基于OpenHarmony ArkUI转场动画，实现了页面间转场、组件内转场以及共享元素转场。 | ArkTS |
+| [基础组件Slider的使用（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SliderExample) | 基于OpenHarmony&nbsp;eTS&nbsp;UI，使用slider组件，实现可调节风车大小和转速的动画效果。 | ArkTS |
+| [自定义弹窗（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/CustomDialog) | 基于OpenHarmony ArkUI，实现警告弹窗和自定义弹窗。 | ArkTS |
 
 
 ## 修复缺陷列表
@@ -194,11 +194,11 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
-| [I48IM7](https://gitee.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | 运行hilog压力测试，hilogd异常重启，且hilog命令一直无法使用。 |
+| [I48IM7](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | 运行hilog压力测试，hilogd异常重启，且hilog命令一直无法使用。 |
 | I48YPH | 【软总线-组网】测试发现和组网性能(循环离网-发现-组网)110次组网失败3次。 |
-| [I4BVVW](https://gitee.com/openharmony/communication_dsoftbus/issues/I4BVVW) | 【软总线-组网】标准系统与手机开关网络自组网成功率97%失败3次需分析失败原因。 |
+| [I4BVVW](https://gitcode.com/openharmony/communication_dsoftbus/issues/I4BVVW) | 【软总线-组网】标准系统与手机开关网络自组网成功率97%失败3次需分析失败原因。 |
 | I4BXY1 | 视频录制后前几秒没声音，播放声画不同步，在板子播放会卡顿，音源较远时，有杂音。 |
-| [3ZJ1D](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | XTS权限用例压测用户态概率失败。 |
+| [3ZJ1D](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | XTS权限用例压测用户态概率失败。 |
 
 
 ## 遗留缺陷列表
@@ -207,9 +207,9 @@ _[Changelog](api-diff/v3.1-beta/changelog-v3.1-beta.md)_
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 |
 | -------- | -------- | -------- | -------- |
-| [I4NRS5](https://gitee.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | 【内核子系统】存在cve漏洞 | Linux内核还未发布补丁，暂时挂起，待社区发布补丁后升级同步。 | 待社区发布补丁 |
-| [I4MGJM](https://gitee.com/openharmony/drivers_peripheral/issues/I4MGJM) | 【hdf/camera】RK3568单板跑camera&nbsp;HDI用例失败 | 拍照和预览正常，可以正常录像，点击结束按钮，不能结束。 | 2021/12/31 |
+| [I4NRS5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | 【内核子系统】存在cve漏洞 | Linux内核还未发布补丁，暂时挂起，待社区发布补丁后升级同步。 | 待社区发布补丁 |
+| [I4MGJM](https://gitcode.com/openharmony/drivers_peripheral/issues/I4MGJM) | 【hdf/camera】RK3568单板跑camera&nbsp;HDI用例失败 | 拍照和预览正常，可以正常录像，点击结束按钮，不能结束。 | 2021/12/31 |
 | I4OECR | XTS运行报ark异常栈（低概率问题） | XTS压力测试低概率偶现(48小时出现1次)，仅Log中上报异常栈，对功能无影响。 | 2022/1/5 |
-| [I4OBTW](https://gitee.com/openharmony/ability_ability_runtime/issues/I4OBTW) | 全量执行XTS用例，安装应用后出现批量aa&nbsp;start&nbsp;失败，影响社区流水线稳定性测试 | XTS压力测试，短时间内批量安装100个应用包，低概率(2个/100个)出现应用无法启动。用户使用无影响。 | 2022/1/5 |
+| [I4OBTW](https://gitcode.com/openharmony/ability_ability_runtime/issues/I4OBTW) | 全量执行XTS用例，安装应用后出现批量aa&nbsp;start&nbsp;失败，影响社区流水线稳定性测试 | XTS压力测试，短时间内批量安装100个应用包，低概率(2个/100个)出现应用无法启动。用户使用无影响。 | 2022/1/5 |
 | I4OLHF | 【Ark子系统】&nbsp;由进程com.amsst.amsMissionSnapshotTest导致测试进程异常 | 低概率、偶现，高压力测试偶现问题。 | 2022/1/5 |
 | I4OLUK | 【Ark子系统】&nbsp;由进程com.ohos.systemui导致进程栈异常 | 低概率、偶现，高压力测试偶现问题。 | 2022/1/5 |

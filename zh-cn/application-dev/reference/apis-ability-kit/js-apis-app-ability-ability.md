@@ -39,7 +39,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 > **说明：**
 >
-> 该回调方法在实际触发时存在一定限制。如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
+> 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -59,7 +59,7 @@ import { UIAbility, Configuration } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onConfigurationUpdate(config: Configuration) {
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(config)}`);
   }
 }
 ```
@@ -88,7 +88,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
-    console.log(`onMemoryLevel, level: ${JSON.stringify(level)}`);
+    console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }
 }
 ```

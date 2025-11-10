@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 创建ImageSource，解码得到Picture，以及释放ImageSource实例。
 

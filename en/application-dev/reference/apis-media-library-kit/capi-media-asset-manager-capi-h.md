@@ -5,7 +5,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -174,7 +174,7 @@ Requests a moving photo based on different policies.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED**: unsupported operation.<br>**MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED**: unsupported operation.<br>      **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MediaAssetManager_RequestImage()
 
@@ -205,7 +205,7 @@ Requests an image based on different policies.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.<br>**MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED**: unsupported operation.<br>**MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>**MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED**: unsupported operation.<br>      **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
 
 ### OH_MediaAssetManager_Release()
 
@@ -230,4 +230,4 @@ Releases an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.m
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>**MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>1. A mandatory parameter is not specified.<br>2. A parameter type is incorrect.<br>3. Parameter verification fails.|
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.|

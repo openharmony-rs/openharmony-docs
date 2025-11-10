@@ -1,4 +1,4 @@
-# 安全和高效的使用N-API开发Native模块
+# 安全和高效地使用N-API开发Native模块
 
 <!--Kit: Common-->
 <!--Subsystem: Demo&Sample-->
@@ -11,7 +11,7 @@
 
 N-API 是 Node.js Addon Programming Interface 的缩写，是 Node.js 提供的一组 C++ API，封装了[V8 引擎](https://dev.nodejs.cn/learn/the-v8-javascript-engine/)的能力，用于编写 Node.js 的 Native 扩展模块。通过 N-API，开发者可以使用 C++ 编写高性能的 Node.js 模块，同时保持与 Node.js 的兼容性。 
 
-[Node.js 官网](https://nodejs.org/api/n-api.html)中已经给出 N-API 接口基础能力的介绍，同时，[方舟 ArkTS 运行时](https://gitee.com/openharmony/arkcompiler_ets_runtime)提供的 N-API 接口，封装了方舟引擎的能力，在功能上与 Node.js 社区保持一致，这里不再赘述。 
+[Node.js 官网](https://nodejs.org/api/n-api.html)中已经给出 N-API 接口基础能力的介绍，同时，[方舟 ArkTS 运行时](https://gitcode.com/openharmony/arkcompiler_ets_runtime)提供的 N-API 接口，封装了方舟引擎的能力，在功能上与 Node.js 社区保持一致，这里不再赘述。 
 
 本文将结合应用开发场景，分别从对象生命周期管理、跨语言调用开销、异步操作和线程安全四个角度出发，给出安全、高效的 N-API 开发指导。 
 
@@ -35,7 +35,7 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-在 for 循环中会创建大量的 handle，消耗大量资源。为了减小内存开销，N-API 提供创建局部 scope 的能力，在局部 scope 中间所创建 handle 的生命周期将与局部 scpoe 保持一致。一旦不再需要这些 handle，就可以直接关闭局部 scope。
+在 for 循环中会创建大量的 handle，消耗大量资源。为了减小内存开销，N-API 提供创建局部 scope 的能力，在局部 scope 中间所创建 handle 的生命周期将与局部 scope 保持一致。一旦不再需要这些 handle，就可以直接关闭局部 scope。
 
 * 打开和关闭 scope 的方法为 napi_open_handle_scope 和 napi_close_handle_scope；
 * N-API 中 scope 的层次结构是一个嵌套的层次结构，任何时候只有一个存活的 scope，所有新创建的 handle 都将在该 scope 处于存活状态时与之关联；
@@ -92,7 +92,7 @@ static napi_value TestDefineClass(napi_env env, napi_callback_info info) {
 
   status = napi_define_class(NULL, "TrackedFunction", NAPI_AUTO_LENGTH, TestDefineClass, NULL, 1, &property_descriptor,&result);
   SaveConstructor(env, result);
-  ...
+  // ...
 }
 ```
 ```cpp
@@ -145,7 +145,7 @@ napi_remove_wrap(env, jsobject, &result);
 开发者可以通过如下示例将耗时任务用异步方式实现，大概逻辑包括以下三步： 
 * 用 napi_create_promise 接口创建 promise，将创建一个 deferred 对象并与 promise 一起返回，deferred 对象会绑定到已创建的 promise；
 * 执行耗时任务，并将执行结果传递给 promise；
-* 使用 napi_resolve_deferred 或 napi_reject_deffered 接口来 resolve 或 reject 创建的 promise，并释放 deferred 对象。此处不建议执行耗时操作，否则会阻塞主线程，导致丢帧等问题。  
+* 使用 napi_resolve_deferred 或 napi_reject_deferred 接口来 resolve 或 reject 创建的 promise，并释放 deferred 对象。此处不建议执行耗时操作，否则会阻塞主线程，导致丢帧等问题。  
 
 ```cpp
 // 在executeCB、completeCB之间传递数据
@@ -164,7 +164,7 @@ static void addExecuteCB(napi_env env, void *data) {
     addonData->result = addonData->args[0] + addonData->args[1];
 };
 
-// 3、使用 napi_resolve_deferred 或 napi_reject_deffered 接口来 resolve 或 reject 创建的 promise，并释放 deferred 对象。此处不建议执行耗时操作，否则会阻塞主线程，导致丢帧等问题。  
+// 3、使用 napi_resolve_deferred 或 napi_reject_deferred 接口来 resolve 或 reject 创建的 promise，并释放 deferred 对象。此处不建议执行耗时操作，否则会阻塞主线程，导致丢帧等问题。  
 static void addPromiseCompleteCB(napi_env env, napi_status status, void *data) {
     AddonData *addonData = (AddonData *)data;
     napi_value result = nullptr;
@@ -252,7 +252,7 @@ struct TestAdd {
 
 ### 指定异步任务调度优先级
 
-Function Flow 编程模型（[Function Flow Runtime，FFRT](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-development-guideline.md)）是一种基于任务和数据驱动的并发编程模型，允许开发者通过任务及其依赖关系描述的方式进行应用开发。方舟 ArkTS 运行时提供了扩展 qos 信息的接口，支持传入 qos，并调用 FFRT，根据系统资源使用情况降低功耗、提升性能。 
+Function Flow 编程模型（[Function Flow Runtime，FFRT](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-development-guideline.md)）是一种基于任务和数据驱动的并发编程模型，允许开发者通过任务及其依赖关系描述的方式进行应用开发。方舟 ArkTS 运行时提供了扩展 qos 信息的接口，支持传入 qos，并调用 FFRT，根据系统资源使用情况降低功耗、提升性能。 
 
 * 接口示例：napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos)（） 
   * [in] env:调用API的环境；

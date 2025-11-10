@@ -1,15 +1,21 @@
-# Border
+# Border Styling
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The border attributes are used to set border styles for components.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 
 ## border
 
-border(value: BorderOptions)
+border(value: BorderOptions): T
 
 Sets the border.
 
@@ -23,11 +29,22 @@ Sets the border.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BorderOptions](#borderoptions) | Yes  | Unified border style.<br>**NOTE**<br>The default value is **0**, indicating that the border is not displayed.<br>The border of a component is displayed above the content of its child components since API version 9.|
+| value  | [BorderOptions](./ts-types.md#borderoptions) | Yes  | Unified border style.<br>**NOTE**<br>The default value is **0**, indicating that no border is displayed.<br>Since API version 9, the parent node's border is displayed above child node content.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
+
+
+>  **NOTE**
+>
+>  When neither **color** nor **radius** is specified, set [borderColor](#bordercolor) and [borderRadius](#borderradius) after [border](#border) to ensure they take effect.
 
 ## borderStyle
 
-borderStyle(value: BorderStyle | EdgeStyles)
+borderStyle(value: BorderStyle | EdgeStyles): T
 
 Sets the border style.
 
@@ -41,11 +58,17 @@ Sets the border style.
 
 | Name| Type                                                        | Mandatory| Description                                              |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | [BorderStyle](ts-appendix-enums.md#borderstyle) \| [EdgeStyles](#edgestyles9)<sup>9+</sup>| Yes  | Border style.<br>Default value: **BorderStyle.Solid**|
+| value  | [BorderStyle](ts-appendix-enums.md#borderstyle) \| [EdgeStyles](./ts-types.md#edgestyles9)<sup>9+</sup> | Yes  | Border style.<br>Default value: **BorderStyle.Solid**|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## borderWidth
 
-borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths)
+borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T
 
 Sets the border width.
 
@@ -59,11 +82,17 @@ Sets the border width.
 
 | Name| Type                                                        | Mandatory| Description                              |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length) \| [EdgeWidths](#edgewidths9)<sup>9+</sup> \| [LocalizedEdgeWidths](#localizededgewidths12)<sup>12+</sup> | Yes  | Border width. Percentage values are not supported. |
+| value  | [Length](ts-types.md#length) \| [EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup> \| [LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | Yes  | Border width. This parameter cannot be set in percentage.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## borderColor
 
-borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors)
+borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 
 Sets the border color.
 
@@ -77,13 +106,19 @@ Sets the border color.
 
 | Name| Type                                                        | Mandatory| Description                                        |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](#edgecolors9)<sup>9+</sup> \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | Yes  | Border color.<br>Default value: **Color.Black**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup> \| [LocalizedEdgeColors](./ts-types.md#localizededgecolors12)<sup>12+</sup> | Yes  | Border color.<br>Default value: **Color.Black**|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## borderRadius
 
-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses)
+borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
-Sets the radius of the border rounded corners. The radius is restricted by the component size. The maximum value is half of the component width or height.
+Sets the border radius. The radius value is restricted by the component size, with the maximum value being half of the component's width or height.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -95,135 +130,20 @@ Sets the radius of the border rounded corners. The radius is restricted by the c
 
 | Name| Type                                                        | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length) \| [BorderRadiuses](#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | Yes  | Radius of the border rounded corners. The value can be expressed as a percentage of the component's width.|
+| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | Yes  | Border radius of the component. Percentage values relative to component width are supported. The maximum value is half the component's width or height. When combined with the [.clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
 
-## BorderOptions
+**Return value**
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-| Name  | Type                                                    | Mandatory| Description              |
-| ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| width  | [Length](ts-types.md#length) \| [EdgeWidths](#edgewidths9)<sup>9+</sup> \| [LocalizedEdgeWidths](#localizededgewidths12)<sup>12+</sup> | No  | Border width.    |
-| color  | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](#edgecolors9)<sup>9+</sup> \| [LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No  | Border color.    |
-| radius | [Length](ts-types.md#length) \| [BorderRadiuses](#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | No  | Radius of the border rounded corners.|
-| style  | [BorderStyle](ts-appendix-enums.md#borderstyle) \| [EdgeStyles](#edgestyles9)<sup>9+</sup>| No  | Sets the border.    |
-| dashGap<sup>12+</sup>  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [EdgeWidths](#edgewidths9) \| [LocalizedEdgeWidths](#localizededgewidths12) | No | Gap between dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.    |
-| dashWidth<sup>12+</sup>  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [EdgeWidths](#edgewidths9) \| [LocalizedEdgeWidths](#localizededgewidths12) | No  | Width of dashed line segments. It takes effect when the border style is set to dashed.<br>Percentage values are not supported.    |
-
-## EdgeWidths<sup>9+</sup>
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-| Name    | Type                        | Mandatory  | Description     |
-| ------ | ---------------------------- | ---- | ------- |
-| left   | [Length](ts-types.md#length) | No   | Width of the left border.|
-| right  | [Length](ts-types.md#length) | No   | Width of the right border.|
-| top    | [Length](ts-types.md#length) | No   | Width of the top border.|
-| bottom | [Length](ts-types.md#length) | No   | Width of the bottom border.|
-
-## LocalizedEdgeWidths<sup>12+</sup>
-
-Represents the edge widths in different directions of a component.
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-| Name    | Type                        | Mandatory  | Description     |
-| ------ | ---------------------------- | ---- | ------- |
-| start   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | Width of the left border.<br>Width of the right border for right-to-left scripts.|
-| end     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | Width of the right border.<br>Width of the left border for right-to-left scripts.|
-| top     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | Width of the top border.|
-| bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No   | Width of the bottom border.|
-
-## EdgeColors<sup>9+</sup>
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-| Name    | Type                                    | Mandatory  | Description     |
-| ------ | ---------------------------------------- | ---- | ------- |
-| left   | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the left border.|
-| right  | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the right border.|
-| top    | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the top border.|
-| bottom | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the bottom border.|
-
-## LocalizedEdgeColors<sup>12+</sup>
-
-Describes the edge colors of a component.
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-| Name    | Type                                    | Mandatory  | Description     |
-| ------ | ---------------------------------------- | ---- | ------- |
-| start   | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the left border.<br>Color of the right border for right-to-left scripts.|
-| end     | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the right border.<br>Color of the left border for right-to-left scripts.|
-| top     | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the top border.|
-| bottom  | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the bottom border.|
-
-## BorderRadiuses<sup>9+</sup>
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-| Name         | Type                        | Mandatory  | Description      |
-| ----------- | ---------------------------- | ---- | -------- |
-| topLeft     | [Length](ts-types.md#length) | No   | Radius of the upper left rounded corner.|
-| topRight    | [Length](ts-types.md#length) | No   | Radius of the upper right rounded corner.|
-| bottomLeft  | [Length](ts-types.md#length) | No   | Radius of the lower left rounded corner.|
-| bottomRight | [Length](ts-types.md#length) | No   | Radius of the lower right rounded corner.|
-
-## LocalizedBorderRadiuses<sup>12+</sup>
-
-Describes the corner radius of a component's border.
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-| Name         | Type                        | Mandatory  | Description      |
-| ----------- | ---------------------------- | ---- | -------- |
-| topStart     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No   | Radius of the upper left rounded corner.<br>Radius of the upper right rounded corner for right-to-left scripts.|
-| topEnd       | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No   | Radius of the upper right rounded corner.<br>Radius of the upper left rounded corner for right-to-left scripts.|
-| bottomStart  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No   | Radius of the lower left rounded corner.<br>Radius of the lower right rounded corner for right-to-left scripts.|
-| bottomEnd    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | No   | Radius of the lower right rounded corner.<br>Radius of the lower left rounded corner for right-to-left scripts.|
-
-## EdgeStyles<sup>9+</sup>
-
-To reference this object, at least one parameter must be passed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-| Name    | Type                                    | Mandatory  | Description     |
-| ------ | ---------------------------------------- | ---- | ------- |
-| left   | [BorderStyle](ts-appendix-enums.md#borderstyle) | No   | Style of the left border.|
-| right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | No   | Style of the right border.|
-| top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | No   | Style of the top border.|
-| bottom | [BorderStyle](ts-appendix-enums.md#borderstyle) | No   | Style of the bottom border.|
 
 ## Example
 
-### Example 1
+### Example 1: Setting Basic Styles
+
+This example shows how to set the border width, color, border radius, and styles such as dotted or dashed lines.
 
 ```ts
 // xxx.ets
@@ -265,11 +185,12 @@ struct BorderExample {
 
 ![en-us_image_0000001211898466](figures/en-us_image_0000001211898466.gif)
 
-### Example 2
+### Example 2: Setting the Border Width Type and Border Color
+
+In this example, the **width**, **radius**, and **color** properties of the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
+
 ```ts
 // xxx.ets
-// The width, radius, and color attributes of border use the LocalizedEdgeWidths and LocalizedEdgeColors types.
-
 import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component

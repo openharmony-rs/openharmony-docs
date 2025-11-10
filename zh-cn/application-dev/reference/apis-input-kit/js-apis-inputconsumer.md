@@ -45,8 +45,8 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | number  | 否      | 否      | 按键键值。<br>当前仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
-| action    | number  | 否      | 否      | 按键事件类型。当前仅支持取值为1，表示按键按下。 |
+| key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
+| action    | number  | 否      | 否      | 订阅指定的按键事件。<br/>**说明：** 从API version 21开始，支持取值为1和2，取值为1表示订阅按键按下事件，取值为2表示同时订阅按键按下事件和按键抬起事件。<br/>对于API version 20及之前的版本，仅支持取值为1，表示订阅按键按下事件。 |
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
 ## inputConsumer.getAllSystemHotkeys
@@ -84,7 +84,7 @@ struct Index {
       Text()
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.log(`List of system hotkeys : ${JSON.stringify(data)}`);
+            console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
           });
         })
     }
@@ -134,12 +134,12 @@ struct Index {
           let leftCtrlKey = 2072;
           let zKey = 2042;
           let hotkeyOptions: inputConsumer.HotkeyOptions = {
-            preKeys: [ leftCtrlKey ],
+            preKeys: [leftCtrlKey],
             finalKey: zKey,
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
           try {
             inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
@@ -193,13 +193,13 @@ struct Index {
           let zKey = 2042;
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
-          let hotkeyOption: inputConsumer.HotkeyOptions = {preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true};
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
             inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
-            console.log(`Unsubscribe success`);
+            console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -223,13 +223,13 @@ struct Index {
           let zKey = 2042;
           // 取消订阅所有应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
-          let hotkeyOption: inputConsumer.HotkeyOptions = {preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true};
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
             inputConsumer.off("hotkeyChange", hotkeyOption);
-            console.log(`Unsubscribe success`);
+            console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -257,7 +257,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | ---------- | --------------------------             | ----  | ---------- |
 | type       | string                                 | 是     | 事件类型，固定取值为'keyPressed'。        |
 | options    | [KeyPressedConfig](#keypressedconfig16)| 是     | 按键事件消费设置。           |
-| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。 |
+| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码**：
 
@@ -287,7 +287,7 @@ struct Index {
               isRepeat: false,
             }
             inputConsumer.on('keyPressed', options, (event: KeyEvent) => {
-              console.log(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Subscribe success ${JSON.stringify(event)}`);
             });
           } catch (error) {
             console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -339,7 +339,7 @@ struct Index {
           try {
             // 取消指定回调函数
             inputConsumer.off('keyPressed', (event: KeyEvent) => {
-              console.log(`Unsubscribe success ${JSON.stringify(event)}`);
+              console.info(`Unsubscribe success ${JSON.stringify(event)}`);
             });
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");

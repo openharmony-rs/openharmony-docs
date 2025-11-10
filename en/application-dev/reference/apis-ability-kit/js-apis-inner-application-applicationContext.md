@@ -1,14 +1,13 @@
-# ApplicationContext (Application-level Context)
+# ApplicationContext (Application Context)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The ApplicationContext module inherits from [Context](js-apis-inner-application-context.md). It provides application-level context capabilities, including APIs for registering and unregistering the lifecycle of application components.
-
-You can obtain the application-level context by calling [getApplicationContext](js-apis-app-ability-application.md#applicationgetapplicationcontext14).
+ApplicationContext inherits from [Context](js-apis-inner-application-context.md) and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
 
 > **NOTE**
 >
@@ -42,7 +41,7 @@ Registers a listener for the lifecycle of a UIAbility within the application. Th
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | ID of the callback registered. (The ID is incremented by 1 each time such an event is registered. If it exceeds the upper limit of 2^63-1, **-1** is returned). This ID is used to unregister the corresponding callback in [ApplicationContext.off('abilityLifecycle')](#applicationcontextoffabilitylifecycle).|
+| number | ID of the callback registered. This ID is used to unregister the corresponding callback in [ApplicationContext.off('abilityLifecycle')](#applicationcontextoffabilitylifecycle).|
 
 **Error codes**
 
@@ -62,38 +61,38 @@ let lifecycleId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let AbilityLifecycleCallback: AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
       },
       onWindowStageCreate(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageCreate windowStage: ${windowStage}`);
       },
       onWindowStageActive(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageActive windowStage: ${windowStage}`);
       },
       onWindowStageInactive(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageInactive windowStage: ${windowStage}`);
       },
       onWindowStageDestroy(ability, windowStage) {
-        console.log(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
-        console.log(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onWindowStageDestroy windowStage: ${windowStage}`);
       },
       onAbilityDestroy(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityDestroy ability: ${ability}`);
       },
       onAbilityForeground(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityForeground ability: ${ability}`);
       },
       onAbilityBackground(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityBackground ability: ${ability}`);
       },
       onAbilityContinue(ability) {
-        console.log(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
+        console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
       }
     }
     // 1. Obtain applicationContext through the context property.
@@ -102,9 +101,9 @@ export default class EntryAbility extends UIAbility {
       // 2. Register a listener for application lifecycle changes through applicationContext.
       lifecycleId = applicationContext.on('abilityLifecycle', AbilityLifecycleCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+    console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
   }
 }
 ```
@@ -146,17 +145,17 @@ let lifecycleId: number;
 export default class EntryAbility extends UIAbility {
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();
-    console.log(`stage applicationContext: ${applicationContext}`);
+    console.info(`stage applicationContext: ${applicationContext}`);
     try {
       applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
         if (error) {
           console.error(`unregisterAbilityLifecycleCallback fail, err: ${JSON.stringify(error)}`);
         } else {
-          console.log(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error code: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -183,7 +182,7 @@ Unregisters a listener for the lifecycle of a UIAbility within the application. 
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -204,11 +203,11 @@ let lifecycleId: number;
 export default class MyAbility extends UIAbility {
   onDestroy() {
     let applicationContext = this.context.getApplicationContext();
-    console.log(`stage applicationContext: ${applicationContext}`);
+    console.info(`stage applicationContext: ${applicationContext}`);
     try {
       applicationContext.off('abilityLifecycle', lifecycleId);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -222,7 +221,8 @@ Registers a listener for system environment changes. This API uses an asynchrono
 
 > **NOTE**
 >
-> You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike **onConfigurationUpdate**, this API offers greater flexibility. It can be used both within application components and pages.
+> - You can also use [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to listen for system environment changes. Unlike [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) of **Ability**, this API offers greater flexibility. It can be used both within application components and pages. However, the environment variables that can be subscribed to are different from those of [onConfigurationUpdate](../apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate). For example, this API cannot be used to subscribe to direction, screen density, and display ID changes. For details, see the description of each environment variable in [Configuration](../apis-ability-kit/js-apis-app-ability-configuration.md#configuration).
+> - There are certain restrictions when this API is triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the callback for the current API even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -239,7 +239,7 @@ Registers a listener for system environment changes. This API uses an asynchrono
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | ID of the callback registered. (The ID is incremented by 1 each time such an event is registered. If it exceeds the upper limit of 2^63-1, **-1** is returned). This ID is used to unregister the corresponding callback in [ApplicationContext.off('environment')](#applicationcontextoffenvironment).|
+| number | ID of the callback registered. This ID is used to unregister the corresponding callback in [ApplicationContext.off('environment')](#applicationcontextoffenvironment).|
 
 **Error codes**
 
@@ -259,13 +259,13 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate')
+    console.info('MyAbility onCreate')
     let environmentCallback: EnvironmentCallback = {
       onConfigurationUpdated(config) {
-        console.log(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
+        console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
       },
       onMemoryLevel(level) {
-        console.log(`onMemoryLevel level: ${level}`);
+        console.info(`onMemoryLevel level: ${level}`);
       }
     };
     // 1. Obtain an applicationContext object.
@@ -274,9 +274,9 @@ export default class EntryAbility extends UIAbility {
       // 2. Register a listener for system environment changes through applicationContext.
       callbackId = applicationContext.on('environment', environmentCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log(`registerEnvironmentCallback callbackId: ${callbackId}`);
+    console.info(`registerEnvironmentCallback callbackId: ${callbackId}`);
   }
 }
 ```
@@ -323,11 +323,11 @@ export default class EntryAbility extends UIAbility {
         if (error) {
           console.error(`unregisterEnvironmentCallback fail, err: ${JSON.stringify(error)}`);
         } else {
-          console.log(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -354,7 +354,7 @@ Unregisters the listener for system environment changes. This API uses a promise
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -417,7 +417,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let applicationStateChangeCallback: ApplicationStateChangeCallback = {
       onApplicationForeground() {
         console.info('applicationStateChangeCallback onApplicationForeground');
@@ -433,9 +433,9 @@ export default class MyAbility extends UIAbility {
       // 2. Register a listener for application process state changes through applicationContext.
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
-      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
-    console.log('Register applicationStateChangeCallback');
+    console.info('Register applicationStateChangeCallback');
   }
 }
 ```
@@ -445,10 +445,6 @@ export default class MyAbility extends UIAbility {
 off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): void
 
 Unregisters the listener for application process state changes. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
-
-> **NOTE**
->
-> A listener must have been registered by calling [ApplicationContext.on('applicationStateChange')](#applicationcontextonapplicationstatechange10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -504,7 +500,7 @@ export default class MyAbility extends UIAbility {
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-Obtains information about the running processes. This API uses a promise to return the result.
+Obtains the information about running processes. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -536,9 +532,9 @@ export default class MyAbility extends UIAbility {
   onForeground() {
     let applicationContext = this.context.getApplicationContext();
     applicationContext.getRunningProcessInformation().then((data) => {
-      console.log(`The process running information is: ${JSON.stringify(data)}`);
+      console.info(`The process running information is: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
-      console.error(`error: ${JSON.stringify(error)}`);
+      console.error(`error code: ${error.code}, error msg: ${error.message}`);
     });
   }
 }
@@ -548,7 +544,7 @@ export default class MyAbility extends UIAbility {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-Obtains information about the running processes. This API uses an asynchronous callback to return the result.
+Obtains the information about running processes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -582,7 +578,7 @@ export default class MyAbility extends UIAbility {
       if (err) {
         console.error(`getRunningProcessInformation failed, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`The process running information is: ${JSON.stringify(data)}`);
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
     })
   }
@@ -799,13 +795,11 @@ Sets the language for the application. This API can be called only by the main t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
-
 
 **Example**
 
@@ -833,9 +827,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -873,9 +870,12 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-Clears up the application data and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+
 
 > **NOTE**
+> 
+> For details about the application file path, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The figure shows only the application file paths in the EL1 and EL2 directories. For the application file paths in other directories, refer to EL1.
 >
 > This API stops the application process. After the application process is stopped, all subsequent callbacks will not be triggered.
 
@@ -917,7 +917,11 @@ export default class MyAbility extends UIAbility {
 
 restartApp(want: Want): void
 
-Restarts the application and starts the specified UIAbility. The **onDestroy** callback is not triggered during the restart. This API can be called only by the main thread, and the application to restart must be active.
+Restarts the application and starts the specified UIAbility. This API can be called only by the main thread, and the application to restart must be active.
+
+> **NOTE**
+>
+> When this API is called to restart the application, the **onDestroy** lifecycle callback of the ability in the application is not triggered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -926,7 +930,7 @@ Restarts the application and starts the specified UIAbility. The **onDestroy** c
 **Parameters**
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. No verification is performed on the bundle name passed in.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. The ability name is verified, but the bundle name is not.|
 
 **Error codes**
 
@@ -943,20 +947,43 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
 
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    let applicationContext = this.context.getApplicationContext();
-    let want: Want = {
-      bundleName: 'com.example.myapp',
-      abilityName: 'EntryAbility'
-    };
-    try {
-      applicationContext.restartApp(want);
-    } catch (error) {
-      console.error(`restartApp fail, error: ${JSON.stringify(error)}`);
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let want: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility'
+          };
+          if (this.context) {
+            try {
+              this.context.restartApp(want);
+            } catch (err) {
+              hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+            }
+          } else {
+            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+          }
+        })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -1023,11 +1050,10 @@ Sets the font for this application. This API can be called only by the main thre
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
@@ -1035,7 +1061,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { font } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -1047,10 +1072,10 @@ struct Index {
   aboutToAppear() {
     this.getUIContext().getFont().registerFont({
       familyName: 'fontName',
-      familySrc: $rawfile('font/medium.ttf')
-    })
+      familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf' is used only as an example. Replace it with the actual font resource file.
+    });
 
-    this.context.getApplicationContext().setFont("fontName");
+    this.context.getApplicationContext().setFont('fontName');
   }
 
   build() {
@@ -1071,12 +1096,11 @@ struct Index {
 
 setSupportedProcessCache(isSupported : boolean): void
 
-Sets whether the current application's process can quickly start up after being cached. This API can be called only by the main thread.
+Sets whether the current application's process supports resource caching, so that the cached process resources can be reused when the application is started again. This API can be called only by the main thread.
 
 This setting applies only to the current process instance and does not affect others. If the application process instance is terminated, the previously set state will not be preserved and must be reset.
 
 > **NOTE**
-> - Currently, this API takes effect only for phones and 2-in-1 devices.
 > - This API only sets the application to be ready for quick startup after caching. It does not mean that quick startup will be triggered. Other conditions must be considered to determine whether to trigger quick startup.
 > - To ensure that this API is effective before the process exits, it should be called as soon as possible. You are advised to call this API within the **onCreate()** callback of the [AbilityStage](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md).
 > - If this API is called multiple times within the same process, the outcome of the final call is used. In cases where there are multiple AbilityStage instances, to achieve the desired result, this API must be called and configured with the same value in each AbilityStage.
@@ -1085,10 +1109,12 @@ This setting applies only to the current process instance and does not affect ot
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones and 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| isSupported | boolean | Yes| Whether process cache is supported. **true** if supported, **false** otherwise.|
+| isSupported | boolean | Yes| Whether the application's process supports resource caching. **true** if supported, **false** otherwise.|
 
 **Error codes**
 
@@ -1138,14 +1164,6 @@ Sets the scale ratio for the font size of this application. This API can be call
 | ------ | ------------- | ---- | -------------------- |
 | fontSizeScale | number | Yes  | Font scale ratio. The value is a non-negative number. When the application's [fontSizeScale](../../quick-start/app-configuration-file.md#configuration) is set to **followSystem** and the value set here exceeds the value of [fontSizeMaxScale](../../quick-start/app-configuration-file.md#configuration), the value of [fontSizeMaxScale](../../quick-start/app-configuration-file.md#configuration) takes effect.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. |
-
 **Example**
 
 ```ts
@@ -1172,11 +1190,9 @@ getCurrentInstanceKey(): string
 
 Obtains the unique instance ID of this application. This API can be called only by the main thread.
 
-> **NOTE**
->
-> This API takes effect only for 2-in-1 devices.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000078 is returned.
 
 **Return value**
 
@@ -1210,7 +1226,7 @@ class MyAbilityStage extends AbilityStage {
       let message = (error as BusinessError).message;
       console.error(`getCurrentInstanceKey fail, code: ${code}, msg: ${message}`);
     }
-    console.log(`currentInstanceKey: ${currentInstanceKey}`);
+    console.info(`currentInstanceKey: ${currentInstanceKey}`);
   }
 }
 ```
@@ -1220,10 +1236,6 @@ class MyAbilityStage extends AbilityStage {
 getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 
 Obtains the unique instance IDs of all multi-instances of this application. This API uses a promise to return the result. It can be called only by the main thread.
-
-> **NOTE**
->
-> This API takes effect only for 2-in-1 devices.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1262,5 +1274,3 @@ class MyAbilityStage extends AbilityStage {
   }
 }
 ```
-
-<!--no_check-->

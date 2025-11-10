@@ -1,5 +1,12 @@
 # 开发说明
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 API参考主要用于开发者查阅应用开发相关的各类API说明。为了方便开发者使用API文档，对文档描述中的常用字段进行说明。
 
 ## 版本说明
@@ -26,7 +33,7 @@ API参考采用两种方式标记组件或接口开始支持的版本号：
 ## 服务卡片说明
 
 将应用/元服务的重要信息或操作前置到[服务卡片](../form/formkit-overview.md)（简称“卡片”），可达到服务直达、减少跳转层级的体验效果。
-- 对于支持在ArkTS卡片UI界面中使用的接口，将会添加“**卡片能力**”的标记： 从API version x开始，该接口支持在ArkTS卡片UI界面中使用。
+- 对于支持在ArkTS卡片UI界面中使用的接口，将会添加“**卡片能力**”的标记，如：从API version 12开始，该接口支持在ArkTS卡片UI界面中使用。
 - 如果接口不支持在ArkTS卡片UI界面中使用，则不做特殊说明。
 
 ## 权限说明

@@ -8,7 +8,7 @@ OpenHarmony默认提供了热检测的特性。设备在运行过程中会产生
 
 ### 约束与限制
 
-产品定制的配置路径，需要根据[配置策略](https://gitee.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -24,11 +24,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍热检测的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍热检测的定制方法。
 
-1. 在产品目录[（/vendor/hihope/rk3568）](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)下创建thermal文件夹。
+1. 在产品目录[（/vendor/hihope/rk3568）](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)下创建thermal文件夹。
 
-2. 参考[默认热检测的配置文件夹](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile)创建目标文件夹，并安装到`//vendor/hihope/rk3568/thermal`，文件格式如下：
+2. 参考[默认热检测的配置文件夹](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile)创建目标文件夹，并安装到`//vendor/hihope/rk3568/thermal`，文件格式如下：
      
     ```text
     profile
@@ -36,7 +36,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── thermal_hdi_config.xml
     ```
 
-3. 参考[默认热检测的配置文件夹中的thermal_hdi_config.xml](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml)编写定制的thermal_hdi_config.xml。包含热检测配置说明及定制后的热检测配置如下：
+3. 参考[默认热检测的配置文件夹中的thermal_hdi_config.xml](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml)编写定制的thermal_hdi_config.xml。包含热检测配置说明及定制后的热检测配置如下：
 
     **表1** 热检测配置说明
 
@@ -73,9 +73,9 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
         </group>
     </polling>
     ```
-    获取真实节点温度的路径参考[热日志文档](../subsystems/subsys-thermal_log.md)中获取thermal zone温度的路径，获取模拟节点温度的路径参考[热检测的默认配置](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml)。
+    获取真实节点温度的路径参考[热日志文档](../subsystems/subsys-thermal_log.md)中获取thermal zone温度的路径，获取模拟节点温度的路径参考[热检测的默认配置](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml)。
 
-5. 参考[默认热检测配置文件夹中的BUILD.gn](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/BUILD.gn)编写BUILD.gn文件，将thermal_hdi_config.xml打包到`//vendor/etc/thermal_config/hdf`目录下：
+5. 参考[默认热检测配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/BUILD.gn)编写BUILD.gn文件，将thermal_hdi_config.xml打包到`//vendor/etc/thermal_config/hdf`目录下：
 
     ```shell
     import("//build/ohos.gni")
@@ -88,7 +88,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-6. 将编译目标添加到[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
+6. 将编译目标添加到[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的"module_list"中，例如：
 
     ```json
     {
@@ -144,7 +144,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ```
 
 ## 参考 
-开发过程中可参考的配置文件路径：[默认热检测的配置源码路径](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile/)
+开发过程中可参考的配置文件路径：[默认热检测的配置源码路径](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile/)
 
 打包路径：`/vendor/etc/thermal_config/hdf`
 

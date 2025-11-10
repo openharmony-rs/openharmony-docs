@@ -1,5 +1,12 @@
 # AutoFillRect (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 AutoFillRect describes the rectangle used for auto-fill.
 
 > **NOTE**
