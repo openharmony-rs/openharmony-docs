@@ -42,13 +42,13 @@ struct Index {
 ```
 ![ui_parallel002](figures/ui_parallel002.png)
 
-开发者可以使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。如果[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)中使用了状态变量，状态变量更新时，[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)将重新执行并更新[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)。
+开发者可以使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。
 
 如下示例演示了如何使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行数据传递。
 
 ```ts
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-import { memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+import { ParallelizeUI } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -56,9 +56,9 @@ struct Index {
   @State str: string = 'Hello';
   build() {
     Column() {
-      const str = memorizeUpdatedState<string>(() => {return this.str})
+      const str = ParallelizeUI<string>(() => {return this.str})
       ParallelizeUI() {
-        Text(str.value) // 使用memorizeUpdatedState进行数据传递
+        Text(str.value) // 使用ParallelizeUI进行数据传递
         .fontSize(50)
       }
       Text('World')
@@ -84,7 +84,7 @@ struct Index {
 ```ts
 import { Entry, Text, Column, Component, Button, ClickEvent, FontWeight, Stack, Position,
   TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid } from '@ohos.arkui.component';
-import { State, memorizeUpdatedState } from '@ohos.arkui.stateManagement';
+import { State, ParallelizeUI } from '@ohos.arkui.stateManagement';
 import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class WeatherInfo {
@@ -145,7 +145,7 @@ struct Page {
         })
         .width(200)
         .height(50)
-      let prop1 = memorizeUpdatedState<WeatherInfo>(() => {
+      let prop1 = ParallelizeUI<WeatherInfo>(() => {
         return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather);
       })
       Grid() {
@@ -154,7 +154,7 @@ struct Page {
           GridItem() {
             Row() {
               Column() {
-                Text(prop1.value.city).fontSize('25') // 使用memorizeUpdatedState进行数据传递
+                Text(prop1.value.city).fontSize('25') // 使用ParallelizeUI进行数据传递
                 Text(prop1.value.temperature.toString()).fontSize('25')
               }
               Image($r(prop1.value.getImg()))
