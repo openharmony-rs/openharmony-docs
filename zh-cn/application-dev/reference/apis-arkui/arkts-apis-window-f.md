@@ -260,7 +260,7 @@ export default class EntryAbility extends UIAbility {
                   return;
                 }
                 windowClass = data;
-                console.info(`Succeeded in obtaining the top window. Window id: ${data.getWindowProperties().id}`);
+                console.info(`Succeeded in obtaining the top window. Window id: ${windowClass.getWindowProperties().id}`);
               });
             } catch (exception) {
               console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`);
