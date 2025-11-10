@@ -555,9 +555,9 @@ try {
 
 ## wifiManager.disableNetwork<sup>9+</sup>
 
-disableNetwork(netId: number): void
+disableNetwork(netId: number, blockDuration: number): void
 
-去使能网络配置。
+在一段时间内去使能网络配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -570,6 +570,7 @@ disableNetwork(netId: number): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | netId | number | 是 | 网络配置ID。 |
+  | blockDuration | number | 是 | 拉黑时长，单位：秒。 |
 
 **错误码：**
 
@@ -579,7 +580,6 @@ disableNetwork(netId: number): void
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled. |
@@ -590,7 +590,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
 	let netId = 0;
-	wifiManager.disableNetwork(netId);		
+	let blockDuration = 300;
+	wifiManager.disableNetwork(netId, blockDuration);	
 } catch (error) {
 	console.error("failed:" + JSON.stringify(error));
 }
