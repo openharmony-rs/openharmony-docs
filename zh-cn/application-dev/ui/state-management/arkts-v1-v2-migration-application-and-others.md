@@ -41,7 +41,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = { 'count': 47 };
+  public para: Record<string, number> = { 'count': 47 };
   public storage: LocalStorage = new LocalStorage(this.para);
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -420,10 +420,10 @@ let localStorageA: LocalStorage = new LocalStorage();
 localStorageA.setOrCreate('propA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('PropB', 'PropB');
+localStorageB.setOrCreate('propB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('PropC', 'PropC');
+localStorageC.setOrCreate('propC', 'propC');
 
 @Entry
 @Component
@@ -493,14 +493,14 @@ struct PageOneStack {
 @Component
 struct PageTwoStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropB') propB: string = 'Hello World';
+  @LocalStorageLink('propB') propB: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
         // 显示'Hello'，当前LocalStorage实例localStorageB没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropB'
+        // 显示'propB'
         Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -522,14 +522,14 @@ struct PageTwoStack {
 @Component
 struct PageThreeStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropC') propC: string = 'pageThreeStack';
+  @LocalStorageLink('propC') propC: string = 'pageThreeStack';
 
   build() {
     NavDestination() {
       Column() {
         // 显示'Hello'，当前LocalStorage实例localStorageC没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropC'
+        // 显示'propC'
         Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -1189,13 +1189,13 @@ class Data {
 }
 
 PersistentStorage.persistProp('numProp', 47);
-PersistentStorage.persistProp('DataProp', new Data());
+PersistentStorage.persistProp('dataProp', new Data());
 
 @Entry
 @Component
 struct Index {
   @StorageLink('numProp') numProp: number = 48;
-  @StorageLink('DataProp') dataProp: Data = new Data();
+  @StorageLink('dataProp') dataProp: Data = new Data();
 
   build() {
     Column() {
@@ -1207,13 +1207,13 @@ struct Index {
         .fontSize(30)
 
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-      Text(`DataProp.name: ${this.dataProp.name}`)
+      Text(`dataProp.name: ${this.dataProp.name}`)
         .onClick(() => {
           this.dataProp.name += 'a';
         })
         .fontSize(30)
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-      Text(`DataProp.id: ${this.dataProp.id}`)
+      Text(`dataProp.id: ${this.dataProp.id}`)
         .onClick(() => {
           this.dataProp.id += 1;
         })
@@ -1824,8 +1824,8 @@ struct MyImage1 {
   @Link modifier: CommonModifier;
 
   build() {
-    // 此处'app.media.img'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    Image($r('app.media.img'))
+    // 此处'app.media.app_icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.app_icon'))
       .attributeModifier(this.modifier as MyModifier)
   }
 }
@@ -1895,8 +1895,8 @@ struct MyImage1 {
   @Param @Require modifier: CommonModifier;
 
   build() {
-    // 此处'app.media.img2'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    Image($r('app.media.img2'))
+    // 此处'app.media.app_icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.app_icon'))
       .attributeModifier(this.modifier as MyModifier)
   }
 }
@@ -1996,7 +1996,6 @@ struct MyImage1 {
 @Component
 struct Index {
   @State myModifier: TextModifier = new MyModifier().width(100).height(100).margin(10);
-  // 临时存储的index数字
   index: number = 0;
 
   build() {
@@ -2077,7 +2076,6 @@ struct MyImage1 {
 struct Index {
   // 使用makeObserved的能力观测TextModifier
   @Local myModifier: TextModifier = UIUtils.makeObserved(new MyModifier().width(100).height(100).margin(10));
-  // 临时存储的index数字
   index: number = 0;
 
   build() {
