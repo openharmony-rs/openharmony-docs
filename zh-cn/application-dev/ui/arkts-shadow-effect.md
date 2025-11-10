@@ -11,7 +11,7 @@
 
 
 
-<!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/Shadow.ets) -->
+<!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Shadow/entry/src/main/ets/pages/Shadow.ets) -->
 
 ``` TypeScript
 @Entry
