@@ -16,7 +16,6 @@ SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置�
 <!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
 ``` TypeScript
-// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
 SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   .fontSize(96)
   .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -37,7 +36,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Text() {
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolSpan($r('sys.symbol.ohos_trash'))
       .fontWeight(FontWeight.Normal)
       .fontSize(96)
@@ -55,7 +53,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('48')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(48)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -66,7 +63,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('72')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(72)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -77,7 +73,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('96')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -98,7 +93,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Light')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Lighter)
           .fontSize(96)
@@ -108,7 +102,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Normal')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Normal)
           .fontSize(96)
@@ -118,7 +111,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Bold')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_trash'))
           .fontWeight(FontWeight.Bold)
           .fontSize(96)
@@ -138,7 +130,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Black')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .fontColor([Color.Black])
@@ -148,7 +139,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Green')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .fontColor([Color.Green])
@@ -158,7 +148,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     Column() {
       Text('Pink')
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .fontColor([Color.Pink])
@@ -179,7 +168,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.single_color'资源文件中的value值为"单色"
       Text($r('app.string.single_color'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -191,7 +179,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.multi_color'资源文件中的value值为"多色"
       Text($r('app.string.multi_color'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
@@ -203,7 +190,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.hierarchical'资源文件中的value值为"分层"
       Text($r('app.string.hierarchical'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
           .fontSize(96)
           .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
@@ -225,7 +211,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.no_action'资源文件中的value值为"无动效"
       Text($r('app.string.no_action'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.NONE)
@@ -236,7 +221,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.overall_scaling_animation_effect'资源文件中的value值为"整体缩放动效"
       Text($r('app.string.overall_scaling_animation_effect'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.SCALE)
@@ -247,7 +231,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       // 'app.string.hierarchical_animation'资源文件中的value值为"层级动效"
       Text($r('app.string.hierarchical_animation'));
       Text() {
-        // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
         SymbolSpan($r('sys.symbol.ohos_wifi'))
           .fontSize(96)
           .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
@@ -280,7 +263,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   Column() {
     // 'app.string.variable_color_animation'资源文件中的value值为"可变颜色动效"
     Text($r('app.string.variable_color_animation'));
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -308,7 +290,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   Column() {
     // 'app.string.bounce_animation'资源文件中的value值为"弹跳动效"
     Text($r('app.string.bounce_animation'));
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
       .fontSize(96)
       .fontColor([Color.Gray])
@@ -338,7 +319,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   Column() {
     // 'app.string.disable_animation'资源文件中的value值为"禁用动效"
     Text($r('app.string.disable_animation'));
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
       .fontSize(96)
       .renderingStrategy(this.renderMode)
@@ -368,7 +348,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   Column() {
     // 'app.string.quick_replacement_animation'资源文件中的value值为"快速替换动效"
     Text($r('app.string.quick_replacement_animation'));
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
       .fontSize(96)
       .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE),
@@ -405,7 +384,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   Column() {
     // 'app.string.shadow_ability'资源文件中的value值为"阴影能力"
     Text($r('app.string.shadow_ability'));
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
@@ -442,7 +420,6 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       .fontSize(18)
       .fontColor(0xCCCCCC)
       .textAlign(TextAlign.Center)
-    // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
     SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
       .fontSize(96)
       .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
@@ -464,7 +441,6 @@ SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/a
 <!-- @[symbol_glyph_span_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
 ``` TypeScript
-// $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
 SymbolGlyph($r('sys.symbol.ohos_wifi'))
   .fontSize(96)
   .fontColor([this.wifiColor])
@@ -490,7 +466,6 @@ import resourceGetString from '../../common/resource';
 @Component
 struct SymbolMusicDemo {
   @State triggerValueReplace: number = 0;
-  // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
   @State symbolSources: Resource[] =
     [$r('sys.symbol.repeat'), $r('sys.symbol.repeat_1'), $r('sys.symbol.arrow_left_arrow_right')];
   @State symbolSourcesIndex: number = 0;
@@ -543,21 +518,18 @@ struct SymbolMusicDemo {
 
         Row({ space: 5 }) {
           Text() {
-            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.arrow_down_circle_badge_vip_circle_filled'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
           }
 
           Text() {
-            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.heart_badge_plus'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
           }
 
           Text() {
-            // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontColor([this.fontColorValue])
               .fontSize(20)
@@ -574,11 +546,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -593,11 +563,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -612,11 +580,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -631,11 +597,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -650,11 +614,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -669,11 +631,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
@@ -688,11 +648,9 @@ struct SymbolMusicDemo {
         }.width('82%')
 
         Row({ space: 5 }) {
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.play_arrow_triangle_2_circlepath'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
-          // $r('sys.symbol.xxx')需要替换成开发者需要的系统资源
           SymbolGlyph($r('sys.symbol.trash'))
             .fontColor([this.fontColorValue])
             .fontSize(20)
