@@ -274,6 +274,88 @@ struct TodoList {
 
 <!-- @[Main_ObservedV2Trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/ObservedV2TracePage.ets
+@ObservedV2
+class Task {
+  public taskName: string = '';
+  @Trace public isFinish: boolean = false;
+
+  constructor (taskName: string, isFinish: boolean) {
+    this.taskName = taskName;
+    this.isFinish = isFinish;
+  }
+}
+
+@ComponentV2
+struct TaskItem {
+  @Param task: Task = new Task('', false);
+  @Event deleteTask: () => void = () => {};
+
+  build() {
+    Row() {
+      // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+      Image(this.task.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+        .width(28)
+        .height(28)
+      Text(this.task.taskName)
+        .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+      Button('Delete')
+        .onClick(() => this.deleteTask())
+    }
+    .onClick(() => this.task.isFinish = !this.task.isFinish)
+  }
+}
+
+@Entry
+@ComponentV2
+struct TodoList {
+  @Local tasks: Task[] = [
+    new Task('task1', false),
+    new Task('task2', false),
+    new Task('task3', false),
+  ];
+  @Local newTaskName: string = '';
+
+  finishAll(ifFinish: boolean) {
+    for (let task of this.tasks) {
+      task.isFinish = ifFinish;
+    }
+  }
+
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Repeat<Task>(this.tasks)
+        .each((obj: RepeatItem<Task>) => {
+          TaskItem({
+            task: obj.item,
+            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+          })
+        })
+      Row() {
+        Button('All Completed')
+          .onClick(() => this.finishAll(true))
+        Button('All Not Completed')
+          .onClick(() => this.finishAll(false))
+      }
+      Row() {
+        TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
+          .onChange((value) => this.newTaskName = value)
+          .width('70%')
+        Button('+')
+          .onClick(() => {
+            this.tasks.push(new Task(this.newTaskName, false));
+            this.newTaskName = '';
+          })
+      }
+    }
+  }
+}
+```
+
 ### 添加\@Monitor，\@Computed，实现监听状态变量和计算属性
 
 在当前任务列表功能基础上，为了提升体验，可以增加一些额外的功能，如任务状态变化的监听和未完成任务数量的动态计算。为此，引入\@Monitor和\@Computed装饰器。\@Monitor用于深度监听状态变量，在属性变化时触发自定义回调方法。\@Computed用于装饰getter方法，检测被计算的属性变化。被计算的值变化时，仅计算一次，减少重复计算开销。
