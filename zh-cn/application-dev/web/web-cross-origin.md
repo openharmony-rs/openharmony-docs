@@ -25,6 +25,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
   
   ``` TypeScript
+  // main/ets/pages/LocCrossOriginResAccSol_one.ets
   import { webview } from '@kit.ArkWeb';
   
   @Entry
@@ -137,6 +138,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
   
   ``` TypeScript
+  // main/ets/pages/LocCrossOriginResAccSol_two.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -219,6 +221,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
  <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->
  
  ``` JavaScript
+ // main/resources/resfile/js/script.js
  const body = document.body;
  const element = document.createElement('div');
  element.textContent = 'success';

@@ -47,14 +47,10 @@
   <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  webTag: string = 'ArkWeb1';
-  controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-  @State testObjtest: testObj = new testObj();
-  
-  aboutToAppear() {
-    console.info('aboutToAppear');
-    //初始化web Native Development Kit
-    testNapi.nativeWebInit(this.webTag);
+    // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
+    webTag: string = 'ArkWeb1';
+    controller: webview.WebviewController = new webview.WebviewController(this.webTag);
+  // ···
   ```
 
 * C++侧
@@ -139,15 +135,16 @@
   ``` C++
   // 注册对象
   OH_LOG_Print(
-      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit registerJavaScriptProxyEx begin");
   ArkWeb_ProxyMethodWithResult method1 = {
       "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult method2 = {
       "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // 调用Native Development Kit接口注册对象
-  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
+  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method2调用此文件下的ProxyMethod1和ProxyMethod2方法了
   ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
+  // 参数permission为空，表示不进行权限管控
   controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
   ```
 
@@ -357,6 +354,7 @@
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->
   
   ``` TypeScript
+  // entry4/src/main/cpp/types/libentry4/index.d.ts
   export const nativeWebInit: (webName: string) => void;
   export const runJavaScript: (webName: string, jsCode: string) => void;
   ```
