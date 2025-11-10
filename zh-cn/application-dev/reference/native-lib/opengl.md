@@ -10,6 +10,7 @@
 ## 支持的能力
 
 从API version 20开始，支持使用OpenGL 3.0。
+
 从API version 22开始，支持使用OpenGL 4.2。
 
 ## 标准库中导出的符号列表
