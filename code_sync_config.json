@@ -22225,5 +22225,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-update-by-proxy-sys.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"process_data_form_ability",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"widget_process_data_card",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"persistent_data_form_ability",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"widget_persistent_data_card",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
