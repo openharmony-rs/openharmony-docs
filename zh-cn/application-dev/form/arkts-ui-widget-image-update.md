@@ -208,8 +208,8 @@
         .width('100%').height('100%')
         // $r('app.media.ImageDisp')需要替换为开发者所需的资源文件
         .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
-        .backgroundImageSize(ImageSize.Cover) 
-      } 
+        .backgroundImageSize(ImageSize.Cover)
+      }
     }
     ```
 
