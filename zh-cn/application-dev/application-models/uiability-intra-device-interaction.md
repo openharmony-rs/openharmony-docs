@@ -490,7 +490,8 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-    
+     // ···
+     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
@@ -636,7 +637,7 @@ export default class ColdStartAbility extends UIAbility {
 
         <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
         
-        ```JSON5
+        ``` JSON5
         {
           "module": {
             // ···
