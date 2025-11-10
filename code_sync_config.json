@@ -22735,5 +22735,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/deep-linking-startup.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":354,
+						"name":"skills_custom",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"deep_ability",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"deep_open",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"deep_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"deep_web",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
