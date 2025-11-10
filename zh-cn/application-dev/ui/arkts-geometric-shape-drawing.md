@@ -334,22 +334,22 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 - 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
-
+  
   ``` TypeScript
   import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
   import { image } from '@kit.ImageKit';
   import { drawing } from '@kit.ArkGraphics2D';
-
+  
   let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
   let ctx = offCanvas.getContext('2d');
-
+  
   class DrawingRenderNode extends RenderNode {
     private verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
-
+  
     setVerts(verts: Array<number>): void {
       this.verts_ = verts
     }
-
+  
     async draw(context: DrawContext) {
       const canvas = context.canvas;
       let pixelMap = ctx.getPixelMap(0, 0, 150, 150);
@@ -361,7 +361,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
       canvas.detachBrush();
     }
   }
-
+  
   const renderNode = new DrawingRenderNode();
   renderNode.frame = {
     x: 0,
@@ -369,13 +369,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     width: 150,
     height: 150
   };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new FrameNode(uiContext);
-
+  
       const rootRenderNode = this.rootNode.getRenderNode();
       if (rootRenderNode !== null) {
         rootRenderNode.appendChild(renderNode);
@@ -383,7 +383,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
       return this.rootNode;
     }
   }
-
+  
   @Entry
   @Component
   struct Mesh {
@@ -393,29 +393,29 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     @State shapeWidth: number = 150;
     @State strokeWidth: number = 1;
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
-
+  
     aboutToAppear(): void {
-      // 'common/image/startIcon.png'需要替换为开发者所需的图像资源文件
-      let img: ImageBitmap = new ImageBitmap('common/image/startIcon.png');
+      // 'common/image/image.png'需要替换为开发者所需的图像资源文件
+      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
-
+  
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor(Color.Red)
+          .backgroundColor(Color.Blue)
           .width(150)
           .height(150)
           .onClick(() => {
-            // 'common/image/startIcon.png'需要替换为开发者所需的图像资源文件
-            let img: ImageBitmap = new ImageBitmap('common/image/startIcon.png');
+            // 'common/image/image.png'需要替换为开发者所需的图像资源文件
+            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();
             this.strokeWidth += 1;
           })
-
+  
         NodeContainer(this.myNodeController)
           .width(150)
           .height(150)
@@ -433,7 +433,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .onClick(() => {
             this.showShape = !this.showShape;
           })
-
+  
         if (this.showShape) {
           Shape(this.pixelMap) {
             Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
@@ -448,7 +448,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .strokeWidth(this.strokeWidth)
           .strokeLineJoin(LineJoinStyle.Miter)
           .strokeMiterLimit(5)
-
+  
           Shape(this.pixelMap) {
             Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
           }
@@ -463,7 +463,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .strokeMiterLimit(5)
           .onDragStart(() => {
           })
-
+  
           // mesh只对shape传入pixelMap时生效，此处不生效
           Shape() {
             Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
