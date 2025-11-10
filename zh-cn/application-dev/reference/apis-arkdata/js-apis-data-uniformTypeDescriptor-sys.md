@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -29,6 +31,8 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -85,6 +89,8 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
