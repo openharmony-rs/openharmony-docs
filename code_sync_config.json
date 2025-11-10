@@ -22270,5 +22270,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-appstoragev2.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2.ets",
+				"functions":[
+					{
+						"end_line":101,
+						"name":"appStorageV2_index",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/Sample.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"appStorageV2_sample",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageOne.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"appStorageV2_pageOne",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PageTwo.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"appStorageV2_pageTwo",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
