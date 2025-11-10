@@ -23380,5 +23380,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-require.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"scene_require_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"parent_require_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"page_one_require_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/Example.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"example_require_start",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
