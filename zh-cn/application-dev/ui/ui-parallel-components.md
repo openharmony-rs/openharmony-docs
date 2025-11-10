@@ -8,7 +8,7 @@
 ![ui_parallel003](figures/page.png)
 
 ## 约束与限制
-  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)创建[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)传递到[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部使用。尝试使用外部定义的状态变量可能会导致读写安全问题。
+  * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)组件。[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)内部只能使用上述组件，其他组件将触发运行时错误，导致应用崩溃。
   * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持并行化创建，创建完成后的更新操作仍在主线程完成。
@@ -42,9 +42,9 @@ struct Index {
 ```
 ![ui_parallel002](figures/ui_parallel002.png)
 
-开发者可以使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)获取一个[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)来传递数据。该函数返回一个[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)，后续可直接通过`.value`获取其中的值。此值为[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)执行的返回结果。如果[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)中使用了状态变量，状态变量更新时，[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)将重新执行并更新[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)。
+开发者可以使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。如果[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)中使用了状态变量，状态变量更新时，[RememberFactory](state-management-static/arkts-static-memorizeUpdatedState.md#rememberfactory)将重新执行并更新[MemoState](state-management-static/arkts-static-memorizeUpdatedState.md#memostate)。
 
-如下示例演示了如何使用[memorizeUpdatedState](state-management-static/arkts-static-memorizeUpdatedState.md)进行数据传递。
+如下示例演示了如何使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行数据传递。
 
 ```ts
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
