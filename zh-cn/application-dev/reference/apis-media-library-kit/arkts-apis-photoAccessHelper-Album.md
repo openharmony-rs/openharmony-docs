@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md)
 
@@ -18,10 +19,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称           | 类型    | 可读   | 可写  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| imageCount<sup>11+</sup> | number | 是   | 否   | 相册中图片数量。|
-| videoCount<sup>11+</sup> | number | 是   | 否   | 相册中视频数量。|
+| imageCount<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 相册中图片数量。|
+| videoCount<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 相册中视频数量。|
 
 ## commitModify
 
@@ -32,6 +37,10 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -87,6 +96,10 @@ commitModify(): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

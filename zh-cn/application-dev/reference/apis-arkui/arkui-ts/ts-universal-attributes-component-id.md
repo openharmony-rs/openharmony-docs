@@ -4,6 +4,8 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 若同一个组件设置了多个id或者key，最后设置的生效。
@@ -12,7 +14,9 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 ### id
 
-id(value: string): T
+ArkTS-Dyn: id(value: string): T
+
+ArkTS-Sta: id(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。当未设置id时，组件默认id为空。
 
@@ -22,21 +26,27 @@ id(value: string): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | string   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ### key<sup>12+</sup>
 
-key(value: string): T
+ArkTS-Dyn: key(value: string): T
+
+ArkTS-Sta: key(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -44,17 +54,21 @@ key(value: string): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 名称   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br/> |
+| value   | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：'' |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 接口
 

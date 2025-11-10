@@ -2,6 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
 
@@ -21,6 +23,10 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                                        | 必填 | 说明                                                         |
@@ -37,10 +43,26 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+  if (err) {
+    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getAVPlaybackState : SUCCESS');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getAVPlaybackState((err: BusinessError | null, state: avSession.AVPlaybackState | undefined) => {
   if (err) {
     console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -59,6 +81,10 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                                        | 说明                                                         |
@@ -75,12 +101,26 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
 }).catch((err: BusinessError) => {
+  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('getAVPlaybackState : SUCCESS');
+}).catch(async(err: BusinessError) => {
   console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -94,6 +134,10 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -111,6 +155,8 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -124,6 +170,21 @@ aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderTyp
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+  if (decoderTypes.length > 0 ) {
+    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+  }
+}).catch(async(err: BusinessError) => {
+  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getRecommendedResolutionLevel<sup>19+</sup>
 
 getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLevel>
@@ -133,6 +194,10 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -156,6 +221,8 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -164,6 +231,19 @@ let resolutionLeve = avSession.ResolutionLevel;
 aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve) => {
   console.info('getRecommendedResolutionLevel successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
+aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve: avSession.ResolutionLevel) => {
+  console.info('getRecommendedResolutionLevel successfully');
+}).catch(async(err: BusinessError) => {
   console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -177,6 +257,10 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -194,6 +278,8 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import type hdrCapability from './@ohos.graphics.hdrCapability';
@@ -208,9 +294,27 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import type hdrCapability from './@ohos.graphics.hdrCapability';
+
+aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+  if (hdrFormats.length > 0 ) {
+    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+  }
+}).catch(async(err: BusinessError) => {
+  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getSupportedPlaySpeeds<sup>19+</sup>
 
-getSupportedPlaySpeeds(): Promise\<Array\<number>>
+ArkTS-Dyn: getSupportedPlaySpeeds(): Promise\<Array\<number>>
+
+ArkTS-Sta: getSupportedPlaySpeeds(): Promise\<Array\<double>>
 
 获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
 
@@ -218,11 +322,15 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                                                        | 说明                                                         |
-| --------- | ------------------------------------------------------------ |
-| Promise\<Array\<number\>\> | Promise对象。返回远端设备所支持的倍速播放列表。 |
+| 类型                                                         | 说明                                            |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| ArkTS-Dyn: Promise\<Array\<number\>\><br>ArkTS-Sta: Promise\<Array\<double\>\> | Promise对象。返回远端设备所支持的倍速播放列表。 |
 
 **错误码：**
 
@@ -234,6 +342,8 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -243,6 +353,21 @@ aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
     console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
+  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getSupportedPlaySpeeds().then((nums: double[]) => {
+  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+  if (nums.length > 0 ) {
+    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+  }
+}).catch(async(err: BusinessError) => {
   console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -258,6 +383,10 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                  | 必填 | 说明                           |
@@ -272,7 +401,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -282,6 +411,8 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 | 6600109  | The remote connection is not established. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -294,25 +425,41 @@ aVCastController.sendControlCommand(avCommand).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avCommand: avSession.AVCastControlCommand = {command:'play'};
+aVCastController.sendControlCommand(avCommand).then(() => {
+  console.info('SendControlCommand successfully');
+}).catch(async(err: BusinessError) => {
+  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## sendControlCommand<sup>10+</sup>
 
 sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>): void
 
 通过会话控制器发送命令到其对应的会话。结果通过callback异步回调方式返回。
 
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                           |
-| -------- | ------------------------------------- | ---- | ------------------------------ |
-| command  | [AVCastControlCommand](arkts-apis-avsession-i.md#avcastcontrolcommand10) | 是   | 会话的相关命令和命令相关参数。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| command  | [AVCastControlCommand](arkts-apis-avsession-i.md#avcastcontrolcommand10) | 是   | 会话的相关命令和命令相关参数。                               |
+| callback | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
@@ -323,11 +470,28 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+  if (err) {
+    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('SendControlCommand successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avCommand: avSession.AVCastControlCommand = {command:'play'};
+aVCastController.sendControlCommand(avCommand, (err: BusinessError | null) => {
   if (err) {
     console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -344,16 +508,20 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | item | [AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10) | 是   | 播放列表中单项的相关属性。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -362,6 +530,8 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 6600109  | The remote connection is not established. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -393,6 +563,38 @@ aVCastController.prepare(playItem, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 此时会进行加载和缓冲，不会触发实际的播放。
+aVCastController.prepare(playItem, (err: BusinessError | null) => {
+  if (err) {
+    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('prepare successfully');
+  }
+});
+```
+
 ## prepare<sup>10+</sup>
 
 prepare(item: AVQueueItem): Promise\<void>
@@ -403,6 +605,10 @@ prepare(item: AVQueueItem): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -418,7 +624,7 @@ prepare(item: AVQueueItem): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -427,6 +633,38 @@ prepare(item: AVQueueItem): Promise\<void>
 | 6600109  | The remote connection is not established. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 此时会进行加载和缓冲，不会触发实际的播放。
+aVCastController.prepare(playItem).then(() => {
+  console.info('prepare successfully');
+}).catch((err: BusinessError) => {
+  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -451,7 +689,7 @@ let playItem: avSession.AVQueueItem = {
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
 aVCastController.prepare(playItem).then(() => {
   console.info('prepare successfully');
-}).catch((err: BusinessError) => {
+}).catch(async(err: BusinessError) => {
   console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -464,16 +702,20 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | item | [AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10) | 是   | 播放列表中单项的相关属性。 |
-| callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -482,6 +724,8 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 | 6600109  | The remote connection is not established. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -514,6 +758,39 @@ aVCastController.start(playItem, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+
+// 启动播放。
+aVCastController.start(playItem, (err: BusinessError | null) => {
+  if (err) {
+    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('start successfully');
+  }
+});
+```
+
 ## start<sup>10+</sup>
 
 start(item: AVQueueItem): Promise\<void>
@@ -523,6 +800,10 @@ start(item: AVQueueItem): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -538,7 +819,7 @@ start(item: AVQueueItem): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -547,6 +828,8 @@ start(item: AVQueueItem): Promise\<void>
 | 6600109  | The remote connection is not established. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -576,6 +859,36 @@ aVCastController.start(playItem).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 设置播放参数，开始播放。
+let playItem: avSession.AVQueueItem = {
+  itemId: 0,
+  description: {
+    assetId: '12345',
+    mediaType: 'AUDIO',
+    mediaUri: 'http://resource1_address',
+    mediaSize: 12345,
+    startPosition: 0,
+    duration: 0,
+    artist: 'mysong',
+    albumTitle: 'song1_title',
+    albumCoverUri: "http://resource1_album_address",
+    lyricUri: "http://resource1_lyric_address",
+    appName: 'MyMusic'
+  }
+};
+// 启动播放。
+aVCastController.start(playItem).then(() => {
+  console.info('start successfully');
+}).catch(async(err: BusinessError) => {
+  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getCurrentItem<sup>10+</sup>
 
 getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
@@ -584,11 +897,15 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                                  | 必填 | 说明                                  |
-| -------- | ------------------------------------- | ---- | ------------------------------------- |
-| callback | AsyncCallback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -600,10 +917,26 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+  if (err) {
+    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentItem successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getCurrentItem((err: BusinessError | null, value: avSession.AVQueueItem | undefined) => {
   if (err) {
     console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -622,6 +955,10 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -638,12 +975,26 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
   console.info('getCurrentItem successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('getCurrentItem successfully');
+}).catch(async(err: BusinessError) => {
   console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -655,6 +1006,10 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 获取当前支持的命令。结果通过callback异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -672,10 +1027,26 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+  if (err) {
+    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getValidCommands successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getValidCommands((err: BusinessError | null, state: avSession.AVCastControlCommandType[] | undefined) => {
   if (err) {
     console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -691,6 +1062,10 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 获取当前支持的命令。结果通过Promise异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -708,12 +1083,26 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
   console.info('getValidCommands successfully');
 }).catch((err: BusinessError) => {
+  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('getValidCommands successfully');
+}).catch(async(err: BusinessError) => {
   console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -727,6 +1116,10 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -743,7 +1136,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -752,8 +1145,23 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  // 根据assetId获取对应的DRM url。
+  let drmUrl = 'http://license.xxx.xxx.com:8080/drmproxy/getLicense';
+  // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
+  let licenseResponseData: Uint8Array = new Uint8Array();
+  console.info(`Succeeded in get license by ${drmUrl}.`);
+  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let keyRequestCallback: avSession.KeyRequestCallback = (assetId: string, requestData: Uint8Array) => {
   // 根据assetId获取对应的DRM url。
   let drmUrl = 'http://license.xxx.xxx.com:8080/drmproxy/getLicense';
   // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
@@ -771,11 +1179,15 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                       | 必填 | 说明                                                         |
-| -------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<void>       | 是   | 回调函数。当命令执行成功，err为undefined，否则返回错误对象。 |
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当命令执行成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令执行成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -787,10 +1199,26 @@ release(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.release((err: BusinessError) => {
+  if (err) {
+    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('release successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.release((err: BusinessError | null) => {
   if (err) {
     console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -809,6 +1237,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -825,6 +1257,8 @@ release(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -833,30 +1267,45 @@ aVCastController.release().then(() => {
 }).catch((err: BusinessError) => {
   console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
 });
+```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.release().then(() => {
+  console.info('release successfully');
+}).catch(async(err: BusinessError) => {
+  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
-设置播放状态变化的监听事件。
+设置播放状态变化的监听事件。结果通过callback异步回调方式返回。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段变化。 |
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。                      |
+| filter   | Array\<string\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array\<string\> 表示关注Array中的字段变化。 |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -864,6 +1313,8 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
@@ -876,15 +1327,93 @@ aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSes
 });
 ```
 
+## onPlaybackStateChange<sup>22+</sup>
+
+onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void
+
+设置播放状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| filter   | Array\<string\> | 是   | Array\<string\> 表示关注Array中的字段变化。 |
+| callback | Callback\<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)> | 是   | 回调函数，参数state是变化后的播放状态。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+let playbackFilter: Array<string> = ['state', 'speed', 'loopMode'];
+aVCastController.onPlaybackStateChange(playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+  console.info(`onPlaybackStateChange state : ${playbackState.state}`);
+});
+```
+
+## onPlaybackStateChangeAll<sup>22+</sup>
+
+onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void
+
+设置播放状态变化的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)> | 是   | 回调函数，参数state是变化后的播放状态。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onPlaybackStateChangeAll((playbackState: avSession.AVPlaybackState) => {
+  console.info(`onPlaybackStateChangeAll state : ${playbackState.state}`);
+});
+```
+
 ## off('playbackStateChange')<sup>10+</sup>
 
 off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): void
 
 媒体控制器取消监听播放状态变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -895,7 +1424,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -904,19 +1433,60 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('playbackStateChange');
+```
+
+## offPlaybackStateChange<sup>22+</sup>
+
+offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void
+
+媒体控制器取消监听播放状态变化的事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                     |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offPlaybackStateChange();
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
 
 on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
-设置投播当前播放媒体内容的监听事件。
+设置投播当前播放媒体内容的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -927,7 +1497,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -936,9 +1506,47 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
   console.info(`on mediaItemChange state : ${item.itemId}`);
+});
+```
+
+## onMediaItemChange<sup>22+</sup>
+
+onMediaItemChange(callback: Callback\<AVQueueItem>): void
+
+设置投播当前播放媒体内容的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onMediaItemChange((item: avSession.AVQueueItem) => {
+  console.info(`onMediaItemChange state : ${item.itemId}`);
 });
 ```
 
@@ -948,9 +1556,13 @@ off(type: 'mediaItemChange'): void
 
 取消设置投播当前播放媒体内容的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -960,7 +1572,7 @@ off(type: 'mediaItemChange'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -969,19 +1581,54 @@ off(type: 'mediaItemChange'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('mediaItemChange');
+```
+
+## offMediaItemChange<sup>22+</sup>
+
+offMediaItemChange(): void
+
+取消设置投播当前播放媒体内容的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offMediaItemChange();
 ```
 
 ## on('playNext')<sup>10+</sup>
 
 on(type: 'playNext', callback: Callback\<void>): void
 
-设置播放下一首资源的监听事件。
+设置播放下一首资源的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -992,7 +1639,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1001,9 +1648,47 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('playNext', () => {
   console.info('on playNext');
+});
+```
+
+## onPlayNext<sup>22+</sup>
+
+onPlayNext(callback: NoParamCallback): void
+
+设置播放下一首资源的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | NoParamCallback         | 是   | 回调函数。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onPlayNext(() => {
+  console.info('onPlayNext');
 });
 ```
 
@@ -1013,9 +1698,13 @@ off(type: 'playNext'): void
 
 取消设置播放下一首资源的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1025,7 +1714,7 @@ off(type: 'playNext'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1034,19 +1723,53 @@ off(type: 'playNext'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('playNext');
+```
+
+## offPlayNext<sup>22+</sup>
+
+offPlayNext(): void
+
+取消设置播放下一首资源的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offPlayNext();
 ```
 
 ## on('playPrevious')<sup>10+</sup>
 
 on(type: 'playPrevious', callback: Callback\<void>): void
 
-设置播放上一首资源的监听事件。
+设置播放上一首资源的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1057,7 +1780,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1066,9 +1789,47 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('playPrevious', () => {
   console.info('on playPrevious');
+});
+```
+
+## onPlayPrevious<sup>22+</sup>
+
+onPlayPrevious(callback: NoParamCallback): void
+
+设置播放上一首资源的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | NoParamCallback         | 是   | 回调函数。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onPlayPrevious(() => {
+  console.info('onPlayPrevious');
 });
 ```
 
@@ -1078,9 +1839,13 @@ off(type: 'playPrevious'): void
 
 取消设置播放上一首资源的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1090,7 +1855,7 @@ off(type: 'playPrevious'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1099,28 +1864,63 @@ off(type: 'playPrevious'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('playPrevious');
+```
+
+## offPlayPrevious<sup>22+</sup>
+
+offPlayPrevious(): void
+
+取消设置播放上一首资源的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offPlayPrevious();
 ```
 
 ## on('requestPlay')<sup>11+</sup>
 
 on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
-设置请求播放的监听事件。
+设置请求播放的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。  | 
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1129,9 +1929,47 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
   console.info(`on requestPlay state : ${item.itemId}`);
+});
+```
+
+## onRequestPlay<sup>22+</sup>
+
+onRequestPlay(callback: Callback\<AVQueueItem>): void
+
+设置请求播放的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>当监听事件注册成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onRequestPlay((item: avSession.AVQueueItem) => {
+  console.info(`onRequestPlay state : ${item.itemId}`);
 });
 ```
 
@@ -1141,18 +1979,22 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 取消设置请求播放的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                     |
-| -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。    |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。                |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1161,28 +2003,68 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('requestPlay');
+```
+
+## offRequestPlay<sup>22+</sup>
+
+offRequestPlay(callback?: Callback\<AVQueueItem>): void
+
+取消设置请求播放的监听事件。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offRequestPlay();
 ```
 
 ## on('endOfStream')<sup>11+</sup>
 
 on(type: 'endOfStream', callback: Callback\<void>): void
 
-设置播放结束的监听事件。
+设置播放结束的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | string                                                      | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
-| callback | Callback\<void\>                                            | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。      |
+| 参数名   | 类型             | 必填 | 说明                                                         |
+| -------- | ---------------- | ---- | ------------------------------------------------------------ |
+| type     | string           | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
+| callback | Callback\<void\> | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1191,9 +2073,47 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('endOfStream', () => {
   console.info('on endOfStream');
+});
+```
+
+## onEndOfStream<sup>22+</sup>
+
+onEndOfStream(callback: NoParamCallback): void
+
+设置播放结束的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明                                                         |
+| -------- | ---------------- | ---- | ------------------------------------------------------------ |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onEndOfStream(() => {
+  console.info('onEndOfStream');
 });
 ```
 
@@ -1203,18 +2123,22 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 取消设置播放结束的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                     |
-| -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。    |
-| callback | Callback\<void\>                                            | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。   |
+| 参数名   | 类型             | 必填 | 说明                                                         |
+| -------- | ---------------- | ---- | ------------------------------------------------------------ |
+| type     | string           | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。                |
+| callback | Callback\<void\> | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1223,30 +2147,70 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('endOfStream');
+```
+
+## offEndOfStream<sup>22+</sup>
+
+offEndOfStream(callback?: NoParamCallback): void
+
+取消设置播放结束的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明                                                         |
+| -------- | ---------------- | ---- | ------------------------------------------------------------ |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offEndOfStream();
 ```
 
 ## on('seekDone')<sup>10+</sup>
 
 on(type: 'seekDone', callback: Callback\<number>): void
 
-设置seek结束的监听事件。
+设置seek结束的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
-| callback | Callback\<number\>         | 是   | 回调函数，返回seek后播放的位置。                      |
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                                      | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
+| callback |  Callback\<number\> | 是   | 回调函数，返回seek后播放的位置。                             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1255,9 +2219,47 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('seekDone', (pos: number) => {
   console.info(`on seekDone pos：${pos} `);
+});
+```
+
+## onSeekDone<sup>22+</sup>
+
+onSeekDone(callback: Callback\<int>): void
+
+设置seek结束的监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<int\> | 是   | 回调函数，返回seek后播放的位置。                             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onSeekDone((pos: int) => {
+  console.info(`onSeekDone pos：${pos} `);
 });
 ```
 
@@ -1267,9 +2269,13 @@ off(type: 'seekDone'): void
 
 取消设置seek结束的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1279,7 +2285,7 @@ off(type: 'seekDone'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1288,17 +2294,51 @@ off(type: 'seekDone'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('seekDone');
+```
+
+## offSeekDone<sup>22+</sup>
+
+offSeekDone(): void
+
+取消设置seek结束的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offSeekDone();
 ```
 
 ## on('validCommandChange')<sup>11+</sup>
 
 on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
 
-会话支持的有效命令变化监听事件。
+会话支持的有效命令变化监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1309,7 +2349,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1319,8 +2359,48 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
+  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+});
+```
+
+## onValidCommandChange<sup>22+</sup>
+
+onValidCommandChange(callback: Callback<Array\<AVCastControlCommandType>>): void
+
+会话支持的有效命令变化监听事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\>   | 是   | 回调函数。参数commands是有效命令的集合。                     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onValidCommandChange((validCommands: avSession.AVCastControlCommandType[]) => {
   console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
   console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
 });
@@ -1332,7 +2412,11 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 媒体控制器取消监听会话有效命令变化的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1343,7 +2427,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
@@ -1353,27 +2437,69 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('validCommandChange');
 ```
 
+## offValidCommandChange<sup>22+</sup>
+
+offValidCommandChange(callback?: Callback<Array\<AVCastControlCommandType>>): void
+
+媒体控制器取消监听会话有效命令变化的事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\> | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offValidCommandChange();
+```
+
 ## on('videoSizeChange')<sup>12+</sup>
+
 on(type: 'videoSizeChange', callback: (width: number, height: number) => void): void
 
-媒体控制器监听视频尺寸变化变化的事件。
+媒体控制器监听视频尺寸变化变化的事件。使用callback异步回调。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
+| callback | (width: int, height: int) => void | 是   | 回调函数。返回视频尺寸。                                                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1382,8 +2508,46 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+});
+```
+
+## onVideoSizeChange<sup>22+</sup>
+
+onVideoSizeChange(callback: VideoSizeEvent): void
+
+媒体控制器监听视频尺寸变化变化的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | VideoSizeEvent | 是   | 回调函数。返回视频尺寸。                                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onVideoSizeChange((width: int, height: int) => {
   console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
 });
 ```
@@ -1394,14 +2558,46 @@ off(type: 'videoSizeChange'): void
 
 媒体控制器取消监听视频尺寸变化的事件。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
-| callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+aVCastController.off('videoSizeChange');
+```
+
+## offVideoSizeChange<sup>22+</sup>
+
+offVideoSizeChange(): void
+
+媒体控制器取消监听视频尺寸变化的事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -1409,23 +2605,29 @@ off(type: 'videoSizeChange'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-aVCastController.off('videoSizeChange');
+aVCastController.offVideoSizeChange();
 ```
 
 ## on('error')<sup>10+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听远端播放器的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。
+监听远端播放器的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1436,7 +2638,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1451,10 +2653,56 @@ on(type: 'error', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.on('error', (error: BusinessError) => {
+  console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听远端播放器的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 错误事件回调方法：远端播放过程中发生的错误，会提供错误码ID和错误信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 5400101  | No memory.            |
+| 5400102  | Operation not allowed.   |
+| 5400103  | I/O error.             |
+| 5400104  | Time out.      |
+| 5400105  | Service died.         |
+| 5400106  | Unsupport format.     |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onError((error: BusinessError) => {
   console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1465,9 +2713,13 @@ off(type: 'error'): void
 
 取消监听播放的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1477,7 +2729,7 @@ off(type: 'error'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1492,19 +2744,59 @@ off(type: 'error'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('error')
+```
+
+## offError<sup>22+</sup>
+
+offError(): void
+
+取消监听播放的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 5400101  | No memory.            |
+| 5400102  | Operation not allowed.   |
+| 5400103  | I/O error.             |
+| 5400104  | Time out.      |
+| 5400105  | Service died.         |
+| 5400106  | Unsupport format.     |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offError()
 ```
 
 ## on('keyRequest')<sup>12+</sup>
 
 on(type: 'keyRequest', callback: KeyRequestCallback): void
 
-在线DRM资源投播时，设置许可证请求的事件监听。
+在线DRM资源投播时，设置许可证请求的事件监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1516,7 +2808,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
@@ -1524,6 +2816,8 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
@@ -1532,26 +2826,68 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 aVCastController.on('keyRequest', keyRequestCallback);
 ```
 
+## onKeyRequest<sup>22+</sup>
+
+onKeyRequest(callback: KeyRequestCallback): void
+
+在线DRM资源投播时，设置许可证请求的事件监听。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                      |
+| ------ | ------ | ---- | ----------------------------------------- |
+| callback | [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 是   | 回调函数，媒体资源及许可证请求数据。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+let keyRequestCallback: avSession.KeyRequestCallback = (assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+}
+aVCastController.onKeyRequest(keyRequestCallback);
+```
+
 ## off('keyRequest')<sup>12+</sup>
 
 off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 取消监听许可证请求的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持的事件是`'keyRequest'`。 |
-| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
@@ -1560,19 +2896,59 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('keyRequest');
+```
+
+## offKeyRequest<sup>22+</sup>
+
+offKeyRequest(callback?: KeyRequestCallback): void
+
+取消监听许可证请求的事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                      |
+| ------ | ------ | ---- | ----------------------------------------- |
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offKeyRequest();
 ```
 
 ## on('castControlGenericError')<sup>13+</sup>
 
 on(type: 'castControlGenericError', callback: ErrorCallback): void
 
-监听投播通用错误事件。
+监听投播通用错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1582,6 +2958,8 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 | callback | ErrorCallback | 是   | 投播通用错误事件回调方法。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1603,8 +2981,63 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlGenericError', (error: BusinessError) => {
+  console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlGenericError<sup>22+</sup>
+
+onCastControlGenericError(callback: ErrorCallback): void
+
+监听投播通用错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播通用错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 6611000  | The error code for cast control is unspecified.      |
+| 6611001  | An unspecified error occurs in the remote player.   |
+| 6611002  | The playback position falls behind the live window.     |
+| 6611003  | The process of cast control times out.    |
+| 6611004  | The runtime check failed.      |
+| 6611100  | Cross-device data transmission is locked.    |
+| 6611101  | The specified seek mode is not supported.   |
+| 6611102  | The position to seek to is out of the range of the media asset or the specified seek mode is not supported.  |
+| 6611103  | The specified playback mode is not supported.       |
+| 6611104  | The specified playback speed is not supported.    |
+| 6611105  | The action failed because either the media source device or the media sink device has been revoked.   |
+| 6611106  | The parameter is invalid, for example, the url is illegal to play.  |
+| 6611107  | Allocation of memory failed.  |
+| 6611108  | Operation is not allowed.    |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlGenericError((error: BusinessError) => {
   console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1615,18 +3048,24 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 取消监听投播通用的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlGenericError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1634,19 +3073,51 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlGenericError');
+```
+
+## offCastControlGenericError<sup>22+</sup>
+
+offCastControlGenericError(callback?: ErrorCallback): void
+
+取消监听投播通用的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlGenericError();
 ```
 
 ## on('castControlIoError')<sup>13+</sup>
 
 on(type: 'castControlIoError', callback: ErrorCallback): void
 
-监听投播输入/输出的错误事件。
+监听投播输入/输出的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1656,6 +3127,8 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 | callback | ErrorCallback | 是   | 投播输入/输出的错误事件回调方法。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1680,8 +3153,66 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlIoError', (error: BusinessError) => {
+  console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlIoError<sup>22+</sup>
+
+onCastControlIoError(callback: ErrorCallback): void
+
+监听投播输入/输出的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播输入/输出的错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 6612000  | An unspecified input/output error occurs.     |
+| 6612001  | Network connection failure.   |
+| 6612002  | Network timeout.     |
+| 6612003  | Invalid "Content-Type" HTTP header.    |
+| 6612004  | The HTTP server returns an unexpected HTTP response status code.      |
+| 6612005  | The file does not exist.    |
+| 6612006  | No permission is granted to perform the IO operation.   |
+| 6612007  | Access to cleartext HTTP traffic is not allowed by the app's network security configuration. |
+| 6612008  | Reading data out of the data bound.    |
+| 6612100  | The media does not contain any contents that can be played.   |
+| 6612101  | The media cannot be read, for example, because of dust or scratches.   |
+| 6612102  | This resource is already in use. |
+| 6612103  | The content using the validity interval has expired.  |
+| 6612104  | Using the requested content to play is not allowed.    |
+| 6612105  | The use of the allowed content cannot be verified.  |
+| 6612106  | The number of times this content has been used as requested has reached the maximum allowed number of uses.  |
+| 6612107  | An error occurs when sending packet from source device to sink device.    |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlIoError((error: BusinessError) => {
   console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1692,18 +3223,24 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 取消监听投播输入/输出的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlIoError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1711,19 +3248,59 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlIoError');
+```
+
+## offCastControlIoError<sup>22+</sup>
+
+offCastControlIoError(callback?: ErrorCallback): void
+
+取消监听投播输入/输出的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 401 |  Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlIoError();
 ```
 
 ## on('castControlParsingError')<sup>13+</sup>
 
 on(type: 'castControlParsingError', callback: ErrorCallback): void
 
-监听投播解析的错误事件。
+监听投播解析的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1733,6 +3310,8 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 | callback | ErrorCallback | 是   | 投播解析的错误事件回调方法。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID  | 错误信息              |
 | -------- | --------------------- |
@@ -1745,8 +3324,54 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlParsingError', (error: BusinessError) => {
+  console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlParsingError<sup>22+</sup>
+
+onCastControlParsingError(callback: ErrorCallback): void
+
+监听投播解析的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播解析的错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID  | 错误信息              |
+| -------- | --------------------- |
+| 6613000  | Unspecified error related to content parsing.     |
+| 6613001  | Parsing error associated with media container format bit streams.   |
+| 6613002  | Parsing error associated with the media manifest.     |
+| 6613003  | An error occurs when attempting to extract a file with an unsupported media container format or an unsupported media container feature.    |
+| 6613004  | Unsupported feature in the media manifest.    |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlParsingError((error: BusinessError) => {
   console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1757,18 +3382,24 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 取消监听投播解析的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlParsingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1776,19 +3407,51 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlParsingError');
+```
+
+## offCastControlParsingError<sup>22+</sup>
+
+offCastControlParsingError(callback?: ErrorCallback): void
+
+取消监听投播解析的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlParsingError();
 ```
 
 ## on('castControlDecodingError')<sup>13+</sup>
 
 on(type: 'castControlDecodingError', callback: ErrorCallback): void
 
-监听投播解码的错误事件。
+监听投播解码的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1798,6 +3461,8 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 | callback | ErrorCallback | 是   | 投播解码的错误事件回调方法。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1811,8 +3476,55 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDecodingError', (error: BusinessError) => {
+  console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlDecodingError<sup>22+</sup>
+
+onCastControlDecodingError(callback: ErrorCallback): void
+
+监听投播解码的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播解码的错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 6614000  | Unspecified decoding error.     |
+| 6614001  | Decoder initialization failed.   |
+| 6614002  | Decoder query failed.     |
+| 6614003  | Decoding the media samples failed.    |
+| 6614004  | The format of the content to decode exceeds the capabilities of the device.    |
+| 6614005  | The format of the content to decode is not supported.    |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlDecodingError((error: BusinessError) => {
   console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1823,18 +3535,24 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 取消监听投播解码的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1842,19 +3560,52 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlDecodingError');
+```
+
+## offCastControlDecodingError<sup>22+</sup>
+
+offCastControlDecodingError(callback?: ErrorCallback): void
+
+取消监听投播解码的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlDecodingError();
 ```
 
 ## on('castControlAudioRendererError')<sup>13+</sup>
 
 on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
-监听投播音频渲染器的错误事件。
+监听投播音频渲染器的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1865,7 +3616,7 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1876,8 +3627,52 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+  console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlAudioRendererError<sup>22+</sup>
+
+onCastControlAudioRendererError(callback: ErrorCallback): void
+
+监听投播音频渲染器的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播音频渲染器的错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 6615000  | Unspecified errors related to the audio renderer.     |
+| 6615001  | Initializing the audio renderer failed.   |
+| 6615002  | The audio renderer fails to write data.     |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlAudioRendererError((error: BusinessError) => {
   console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1888,18 +3683,24 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 取消监听投播音频渲染器的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlAudioRendererError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1907,19 +3708,51 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlAudioRendererError');
+```
+
+## offCastControlAudioRendererError<sup>22+</sup>
+
+offCastControlAudioRendererError(callback?: ErrorCallback): void
+
+取消监听投播音频渲染器的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlAudioRendererError();
 ```
 
 ## on('castControlDrmError')<sup>13+</sup>
 
 on(type: 'castControlDrmError', callback: ErrorCallback): void
 
-监听投播drm的错误事件。
+监听投播drm的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -1929,6 +3762,8 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1946,8 +3781,59 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDrmError', (error: BusinessError) => {
+  console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
+})
+```
+
+## onCastControlDrmError<sup>22+</sup>
+
+onCastControlDrmError(callback: ErrorCallback): void
+
+监听投播drm的错误事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | --------------------- |
+| 6616000  | Unspecified error related to DRM.     |
+| 6616001  | The chosen DRM protection scheme is not supported by the device.  |
+| 6616002  | Device provisioning failed.    |
+| 6616003  | The DRM-protected content to play is incompatible.     |
+| 6616004  | Failed to obtain a license.   |
+| 6616005  | The operation is disallowed by the license policy.     |
+| 6616006  | An error occurs in the DRM system.     |
+| 6616007  | The device has revoked DRM privileges.   |
+| 6616008  | The DRM license being loaded into the open DRM session has expired.      |
+| 6616100  | An error occurs when the DRM processes the key response.     |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+aVCastController.onCastControlDrmError((error: BusinessError) => {
   console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
@@ -1958,18 +3844,24 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 取消监听投播drm的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDrmError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1977,6 +3869,34 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 aVCastController.off('castControlDrmError');
+```
+
+## offCastControlDrmError<sup>22+</sup>
+
+offCastControlDrmError(callback?: ErrorCallback): void
+
+取消监听投播drm的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | ErrorCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.offCastControlDrmError();
 ```

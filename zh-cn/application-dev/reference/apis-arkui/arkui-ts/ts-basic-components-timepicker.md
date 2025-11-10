@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件不建议开发者在动效过程中修改属性数据。
@@ -452,11 +454,15 @@ type OnTimePickerChangeCallback = (value: TimePickerResult) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称                 | 类型   | 只读 | 可选 | 说明                                |
 | -------------------- | ------ | ---- | ---- | ----------------------------------- |
-| hour                 | number | 否   | 否   | 选中时间的时。<br/>取值范围：[0-23] |
-| minute               | number | 否   | 否   | 选中时间的分。<br/>取值范围：[0-59] |
-| second<sup>11+</sup> | number | 否   | 否   | 选中时间的秒。<br/>取值范围：[0-59] |
+| hour                 | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中时间的时。<br/>取值范围：[0-23] |
+| minute               | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中时间的分。<br/>取值范围：[0-59] |
+| second<sup>11+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中时间的秒。<br/>取值范围：[0-59] |
 
 ## 示例
 

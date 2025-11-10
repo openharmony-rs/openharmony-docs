@@ -8,7 +8,7 @@
 - [TonePlayer](#toneplayer9)：用于管理和播放DTMF（Dual Tone Multi Frequency，双音多频）音调，如拨号音、通话回铃音等。
 
 > **说明：**
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.audio (音频管理)](arkts-apis-audio.md)。
 
@@ -24,6 +24,10 @@ import { audio } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                                    | 类型      | 只读 | 说明               |
 | --------------------------------------- | ----------| ---- | ------------------ |
 | LOCAL_NETWORK_ID<sup>9+</sup>           | string    | 是 | 本地设备网络id。 |
@@ -38,12 +42,16 @@ createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback&lt;TonePlay
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                             | 必填 | 说明            |
 | -------- | ----------------------------------------------- | ---- | -------------- |
 | options  | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)        | 是   | 配置音频渲染器信息。|
-| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | 是   | 回调函数。当获取DTMF播放器成功，err为undefined，data为获取到的DTMF播放器对象；否则为错误对象。|
+| callback | AsyncCallback<[TonePlayer](#toneplayer9)>       | 是   | 回调函数。<br>ArkTS-Dyn：当获取DTMF播放器成功，err为undefined，data为获取到的DTMF播放器对象；否则为错误对象。<br>ArkTS-Sta：当获取DTMF播放器成功，err为null，data为获取到的DTMF播放器对象；否则为错误对象。|
 
 **示例：**
 
@@ -76,6 +84,10 @@ createTonePlayer(options: AudioRendererInfo): Promise&lt;TonePlayer&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -113,6 +125,10 @@ createAsrProcessingController(audioCapturer: AudioCapturer): AsrProcessingContro
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -181,8 +197,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                         | 值      | 说明       |
 | ---------------------------- | ------ | ---------- |
-| ULTRASONIC<sup>10+</sup>     | 10     | 超声波。|
-| ALL<sup>9+</sup>             | 100    | 所有公共音频流。|
+| ULTRASONIC<sup>10+</sup>     | 10     | 超声波。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20|
+| ALL<sup>9+</sup>             | 100    | 所有公共音频流。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20|
 
 ## InterruptRequestResultType<sup>9+</sup>
 
@@ -191,6 +207,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                         | 值      | 说明       |
 | ---------------------------- | ------ | ---------- |
@@ -204,6 +224,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                            |  值     | 说明                        |
 | ------------------------------- | ------ |---------------------------|
@@ -220,6 +244,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                            |  值     | 说明                        |
 | ------------------------------- | ------ |------------------------------|
 | RENDER_EFFECT_FLAG  | 0      | 下行音效类型。   |
@@ -232,6 +260,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称               | 类型 | 只读 | 可选 | 说明       |
 | ------------------ | ---- | ---- |---| --------- |
@@ -249,11 +281,11 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                      |  值    | 说明                          |
 | ------------------------------------------| ------ |-----------------------------|
-| STREAM_USAGE_SYSTEM<sup>10+</sup>         | 9      | 系统音(如屏幕锁定或按键音)。 |
-| STREAM_USAGE_DTMF<sup>10+</sup>           | 14     | 拨号音。 |
-| STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | 强制音(如相机快门音)。 |
-| STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | 超声波（目前仅提供给MSDP使用）。 |
-| STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | 通话辅助语音。 |
+| STREAM_USAGE_SYSTEM<sup>10+</sup>         | 9      | 系统音(如屏幕锁定或按键音)。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
+| STREAM_USAGE_DTMF<sup>10+</sup>           | 14     | 拨号音。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
+| STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | 强制音(如相机快门音)。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
+| STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | 超声波（目前仅提供给MSDP使用）。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
+| STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | 通话辅助语音。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
 
 ## InterruptRequestType<sup>9+</sup>
 
@@ -262,6 +294,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                               |  值     | 说明                       |
 | ---------------------------------- | ------ | ------------------------- |
@@ -275,6 +311,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                               | 值 | 说明       |
 | ---------------------------------- |---|----------|
 | FLAG_SHOW_SYSTEM_UI | 1 | 拉起系统音量条。 |
@@ -286,6 +326,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
@@ -302,6 +346,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | BYPASS | 0 |BYPASS AEC|
@@ -315,6 +363,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  | 值 | 说明       |
 |-----|---|----------|
 | BYPASS  | 0 | 不启用检测模型。 |
@@ -327,6 +379,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                      | 值 | 说明                                    |
 |-------------------------|---|---------------------------------------|
@@ -342,6 +398,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称             | 值 | 说明                  |
 |----------------|---|---------------------|
@@ -359,10 +419,14 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型                                                            | 只读 | 可选 | 说明             |
 | --------------| -------------------------------------------------------------- | ---- |---| ---------------- |
 | requestResult | [InterruptRequestResultType](#interruptrequestresulttype9)     | 否 | 否 | 表示音频请求中断类型。 |
-| interruptNode | number                                                         | 否 | 否 | 音频请求中断的节点。 |
+| interruptNode | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                         | 否 | 否 | 音频请求中断的节点。 |
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -372,9 +436,13 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型                                | 只读 | 可选 | 说明                                        |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeGroupId | number                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
+| volumeGroupId | ArkTS-Dyn: number<br>ArkTS-Sta: int                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
 | networkId  | string                              | 否 | 否 | 网络id。 |
 
 ## ConnectType<sup>9+</sup>
@@ -384,6 +452,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                            |  值     | 说明                   |
 | :------------------------------ | :----- | :--------------------- |
@@ -398,6 +470,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 ## VolumeGroupInfo<sup>9+</sup>
 
 音量组信息。
@@ -406,13 +482,17 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                        | 类型                       | 只读 | 可选 | 说明       |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | 是   | 否   | 组网络id。  |
-| groupId<sup>9+</sup>       | number                     | 是   | 否   | 组设备组id。 |
-| mappingId<sup>9+</sup>     | number                     | 是   | 否   | 组映射id。 |
-| groupName<sup>9+</sup>     | string                     | 是   | 否   | 组名。 |
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
+| networkId     | string                     | 是   | 否   | 组网络id。  |
+| groupId       | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 组设备组id。 |
+| mappingId     | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 组映射id。 |
+| groupName     | string                     | 是   | 否   | 组名。 |
+| type          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
 
 ## SourceType<sup>8+</sup>
 
@@ -424,9 +504,9 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |
-| SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE |
-| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
-| SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
+| SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
+| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
+| SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 20 |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -435,6 +515,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   |  值     | 说明                                          |
 | :--------------------- | :----- | :-------------------------------------------- |
@@ -456,6 +540,10 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string\>): Promise&l
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -483,6 +571,8 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string\>): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -498,6 +588,23 @@ audioManager.setExtraParameters('key_example', kvpairs).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvpairs = {} as Record<string, string>;
+kvpairs = {
+  'key_example': 'value_example'
+};
+
+audioManager.setExtraParameters('key_example', kvpairs).then(() => {
+  console.info('Promise returned to indicate a successful setting of the extra parameters.');
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to set the audio extra parameters ${err}`);
+});
+```
+
 ### getExtraParameters<sup>11+</sup>
 
 getExtraParameters(mainKey: string, subKeys?: Array\<string>): Promise\<Record\<string, string>>
@@ -507,6 +614,10 @@ getExtraParameters(mainKey: string, subKeys?: Array\<string>): Promise\<Record\<
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -533,6 +644,8 @@ getExtraParameters(mainKey: string, subKeys?: Array\<string>): Promise\<Record\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -540,6 +653,19 @@ let subKeys: Array<String> = ['key_example'];
 audioManager.getExtraParameters('key_example', subKeys).then((value: Record<string, string>) => {
   console.info(`Promise returned to indicate that the value of the audio extra parameters is obtained ${value}.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to get the audio extra parameters ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subKeys: Array<String> = ['key_example'];
+audioManager.getExtraParameters('key_example', subKeys).then((value: Record<string, string>) => {
+  console.info(`Promise returned to indicate that the value of the audio extra parameters is obtained ${value}.`);
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to get the audio extra parameters ${err}`);
 });
 ```
@@ -554,19 +680,39 @@ setAudioScene\(scene: AudioScene, callback: AsyncCallback<void\>\): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                 |
 | :------- | :----------------------------------- | :--- | :------------------- |
 | scene    | [AudioScene](arkts-apis-audio-e.md#audioscene8) | 是   | 音频场景模式。       |
-| callback | AsyncCallback<void\>                 | 是   | 回调函数。当设置音频场景模式成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\>                 | 是   | 回调函数。<br>ArkTS-Dyn：当设置音频场景模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置音频场景模式成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set the audio scene mode. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful setting of the audio scene mode.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to set the audio scene mode. ${err}`);
     return;
@@ -585,6 +731,10 @@ setAudioScene\(scene: AudioScene\): Promise<void\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                 | 必填 | 说明           |
@@ -599,12 +749,26 @@ setAudioScene\(scene: AudioScene\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
   console.info('Promise returned to indicate a successful setting of the audio scene mode.');
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to set the audio scene mode ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
+  console.info('Promise returned to indicate a successful setting of the audio scene mode.');
+}).catch (async (err: BusinessError) => {
   console.error(`Failed to set the audio scene mode ${err}`);
 });
 ```
@@ -618,6 +782,10 @@ getEffectManager(): AudioEffectManager
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -655,6 +823,10 @@ disableSafeMediaVolume(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明                          |
@@ -672,12 +844,24 @@ disableSafeMediaVolume(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.disableSafeMediaVolume().then(() => {
   console.info('disableSafeMediaVolume success.');
 }).catch ((err: BusinessError) => {
+  console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+audioManager.disableSafeMediaVolume().then(() => {
+  console.info('disableSafeMediaVolume success.');
+}).catch (async (err: BusinessError) => {
   console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
 });
 ```
@@ -693,9 +877,13 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -723,9 +911,13 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 > **说明：**
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeGroupManager中的[on('ringerModeChange')](arkts-apis-audio-AudioVolumeGroupManager.md#onringermodechange9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -756,18 +948,39 @@ getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos\
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                 |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------- |
 | networkId | string                                    | 是   | 设备的网络id。本地设备audio.LOCAL_NETWORK_ID。    |
-| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | 是   | 回调函数。当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。 |
+| callback  | AsyncCallback&lt;[VolumeGroupInfos](#volumegroupinfos9)&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。<br>ArkTS-Sta：当获取音量组信息列表成功，err为null，data为获取到的音量组信息列表；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessError, value: audio.VolumeGroupInfos) => {
+  if (err) {
+    console.error(`Failed to obtain the volume group infos list. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the volume group infos list is obtained.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessError<void> | null, value: audio.VolumeGroupInfos | undefined) => {
   if (err) {
     console.error(`Failed to obtain the volume group infos list. ${err}`);
     return;
@@ -785,6 +998,10 @@ getVolumeGroupInfos(networkId: string\): Promise<VolumeGroupInfos\>
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -816,6 +1033,10 @@ getVolumeGroupInfosSync(networkId: string\): VolumeGroupInfos
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -854,7 +1075,9 @@ try {
 
 ### getAppVolumePercentageForUid<sup>19+</sup>
 
-getAppVolumePercentageForUid(uid: number\): Promise<number\>
+ArkTS-Dyn: getAppVolumePercentageForUid(uid: number\): Promise<number\>
+
+ArkTS-Sta: getAppVolumePercentageForUid(uid: int\): Promise<int\>
 
 根据应用ID获取指定应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -862,17 +1085,21 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                               |
 | ---------- | ---------------------------------------- | ---- |----------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。 |
 
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为0到100）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回应用的音量（范围为0到100）。 |
 
 **错误码：**
 
@@ -886,6 +1113,8 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 
@@ -894,9 +1123,21 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: int) => {
+  console.info(`app volume is ${value}.`);
+});
+```
+
 ### setAppVolumePercentageForUid<sup>19+</sup>
 
-setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
+ArkTS-Dyn: setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
+
+ArkTS-Sta: setAppVolumePercentageForUid(uid: int, volume: int\): Promise<void\>
 
 根据应用ID设置指定应用的音量（范围为0到100）。使用Promise异步回调。
 
@@ -904,12 +1145,16 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
-| uid    | number                                   | 是   | 表示应用ID。   |
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。   |
+| volume    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 要设置的音量值。 |
 
 **返回值：**
 
@@ -930,6 +1175,8 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 let volume: number = 20;    // 要设置的音量值。
@@ -939,9 +1186,22 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+let volume: int = 20;    // 要设置的音量值。
+
+audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
+  console.info(`set app volume success.`);
+});
+```
+
 ### isAppVolumeMutedForUid<sup>19+</sup>
 
-isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
+ArkTS-Dyn: isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
+
+ArkTS-Sta: isAppVolumeMutedForUid(uid: int, owned: boolean\): Promise<boolean\>
 
 根据应用ID查询应用音量是否已静音。使用Promise异步回调。
 
@@ -953,11 +1213,15 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                                        |
 | ---------- | ---------------------------------------- | ---- |-------------------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。                                    |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。                                    |
 | owned    | boolean                                   | 是   | 要查询的静音状态。true查询当前调用者的静音状态，false查询应用的静音状态。 |
 
 **返回值：**
@@ -978,6 +1242,8 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
 
@@ -986,9 +1252,21 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
+  console.info(`app muted state is ${value}.`);
+});
+```
+
 ### setAppVolumeMutedForUid<sup>19+</sup>
 
-setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
+ArkTS-Dyn: setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
+
+ArkTS-Sta: setAppVolumeMutedForUid(uid: int, muted: boolean\): Promise<void\>
 
 根据应用ID设置应用静音状态。使用Promise异步回调。
 
@@ -996,11 +1274,15 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                             |
 | ---------- | ---------------------------------------- | ---- |--------------------------------|
-| uid    | number                                   | 是   | 表示应用ID。                         |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 表示应用ID。                         |
 | owned    | boolean                                   | 是   | 设置应用的静音状态。true设置为静音，false解除静音。 |
 
 **返回值：**
@@ -1022,8 +1304,20 @@ setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let uid: number = 20010041; // 应用ID。
+
+audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
+  console.info(`set app mute state success.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let uid: int = 20010041; // 应用ID。
 
 audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
   console.info(`set app mute state success.`);
@@ -1036,9 +1330,15 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>)
 
 监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAppVolumeChangeForUid](#onAppVolumeChangeForUid22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -1070,15 +1370,66 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
 });
 ```
 
+### onAppVolumeChangeForUid<sup>22+</sup>
+
+onAppVolumeChangeForUid(uid: int, callback: Callback\<VolumeEvent>): void
+
+监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('appVolumeChangeForUid')](#onappVolumeChangeForUid19)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                |
+| -------- | -------------------------------------- | ---- |-----------------------------------|
+| uid | int |  是   | 表示应用ID。                          |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。                  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let uid: int = 20010041; // 应用ID。
+
+audioVolumeManager.onAppVolumeChangeForUid(uid, (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ### off('appVolumeChangeForUid')<sup>19+</sup>
 
 off(type: 'appVolumeChangeForUid', callback?: Callback\<VolumeEvent>): void
 
 取消监听指定应用应用级音量变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAppVolumeChangeForUid](#offAppVolumeChangeForUid22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -1115,15 +1466,69 @@ audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 ```
 
+### offAppVolumeChangeForUid<sup>22+</sup>
+
+offAppVolumeChangeForUid(callback?: Callback\<VolumeEvent>): void
+
+取消监听指定应用应用级音量变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('appVolumeChangeForUid')](#offappVolumeChangeForUid19)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offAppVolumeChangeForUid();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onAppVolumeChangeForUid(appVolumeChangeForUidCallback);
+
+audioVolumeManager.offAppVolumeChangeForUid(appVolumeChangeForUidCallback);
+```
+
 ### on('activeVolumeTypeChange')<sup>20+</sup>
 
 on(type: 'activeVolumeTypeChange', callback: Callback\<AudioVolumeType>): void
 
 监听当前活跃流变化事件（当活跃流发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1143,6 +1548,7 @@ on(type: 'activeVolumeTypeChange', callback: Callback\<AudioVolumeType>): void
 
 **示例：**
 
+
 ```ts
 audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeType) => {
   console.info(`VolumeType of stream: ${volumeType} `);
@@ -1155,9 +1561,13 @@ off(type: 'activeVolumeTypeChange', callback?: Callback\<AudioVolumeType>): void
 
 取消监听当前活跃流变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1197,7 +1607,9 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 
 ### setVolume<sup>9+</sup>
 
-setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setVolume(volumeType: AudioVolumeType, volume: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置指定流的音量。使用callback异步回调。
 
@@ -1209,15 +1621,21 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn：当设置指定流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置指定流的音量成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1231,9 +1649,25 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to set the volume. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful volume setting.');
+});
+```
+
 ### setVolume<sup>9+</sup>
 
-setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volumeType: AudioVolumeType, volume: int): Promise&lt;void&gt;
 
 设置指定流的音量。使用Promise异步回调。
 
@@ -1245,12 +1679,16 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
 
 **返回值：**
 
@@ -1268,7 +1706,9 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 ### setVolumeWithFlag<sup>12+</sup>
 
-setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolumeWithFlag(volumeType: AudioVolumeType, volume: int, flags: int): Promise&lt;void&gt;
 
 设置指定流的音量，同时指定本次修改音量是否要显示系统音量条。使用Promise异步回调。
 
@@ -1280,13 +1720,17 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                   |
 | ---------- | ----------------------------------- | ---- |--------------------------------------|
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                               |
-| volume     | number                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
-| flags      | number                              | 是   | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 音量等级，可设置范围通过[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)和[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)获取。 |
+| flags      | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 是   | 是否需要显示系统音量条，0为不需要显示，1为需要显示。 |
 
 **返回值：**
 
@@ -1304,6 +1748,16 @@ setVolumeWithFlag(volumeType: AudioVolumeType, volume: number, flags: number): P
 | 202     | Not system App.                             |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).then(() => {
+  console.info('Promise returned to indicate a successful volume setting.');
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 audioVolumeGroupManager.setVolumeWithFlag(audio.AudioVolumeType.MEDIA, 10, 1).then(() => {
@@ -1325,20 +1779,40 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                  |
 | ---------- | ----------------------------------- | ---- | ------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                          |
 | mute       | boolean                             | 是   | 静音状态，true为静音，false为非静音。 |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置指定音量流静音成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn：当设置指定音量流静音成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置指定音量流静音成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to mute the stream. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the stream is muted.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to mute the stream. ${err}`);
     return;
@@ -1360,6 +1834,10 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1396,19 +1874,39 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                            | 必填 | 说明                     |
 | -------- | ------------------------------- | ---- | ------------------------ |
 | mode     | [AudioRingMode](arkts-apis-audio-e.md#audioringmode) | 是   | 音频铃声模式。           |
-| callback | AsyncCallback&lt;void&gt;       | 是   | 回调函数。当设置铃声模式成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt;       | 是   | 回调函数。<br>ArkTS-Dyn：当设置铃声模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置铃声模式成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set the ringer mode. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate a successful setting of the ringer mode.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`Failed to set the ringer mode. ${err}`);
     return;
@@ -1430,6 +1928,10 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1462,6 +1964,10 @@ setMicMute(mute: boolean): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1508,12 +2014,16 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                             |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当调节当前最高优先级的流的音量成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn：当调节当前最高优先级的流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当调节当前最高优先级的流的音量成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -1528,6 +2038,8 @@ adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1540,6 +2052,22 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to adjust the volume by step. ${err}`);
+    return;
+  } else {
+    console.info('Success to adjust the volume by step.');
+  }
+});
+```
+
 ### adjustVolumeByStep<sup>10+</sup>
 
 adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
@@ -1553,6 +2081,10 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1579,12 +2111,26 @@ adjustVolumeByStep(adjustType: VolumeAdjustType): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
   console.info('Success to adjust the volume by step.');
 }).catch((error: BusinessError) => {
+  console.error('Fail to adjust the volume by step.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the volume by step.');
+}).catch(async (error: BusinessError) => {
   console.error('Fail to adjust the volume by step.');
 });
 ```
@@ -1603,13 +2149,17 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是   | 音量流类型。                                             |
 | adjustType | [VolumeAdjustType](#volumeadjusttype10) | 是   | 音量调节方向。                                       |
-| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当单步设置指定流的音量成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;           | 是   | 回调函数。<br>ArkTS-Dyn：当单步设置指定流的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当单步设置指定流的音量成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -1624,6 +2174,8 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1635,6 +2187,21 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
   }
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to adjust the system volume by step ${err}`);
+  } else {
+    console.info('Success to adjust the system volume by step.');
+  }
+});
+```
+
 ### adjustSystemVolumeByStep<sup>10+</sup>
 
 adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType): Promise&lt;void&gt;
@@ -1648,6 +2215,10 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1675,6 +2246,8 @@ adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustTy
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1684,6 +2257,19 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
   console.error('Fail to adjust the system volume by step.');
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, audio.VolumeAdjustType.VOLUME_UP).then(() => {
+  console.info('Success to adjust the system volume by step.');
+}).catch(async (error: BusinessError) => {
+  console.error('Fail to adjust the system volume by step.');
+});
+```
+
 ## AudioEffectManager<sup>18+</sup>
 
 音频效果管理。在使用AudioEffectManager的接口前，需要使用[getEffectManager](#geteffectmanager18)获取AudioEffectManager实例。
@@ -1700,6 +2286,10 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1731,7 +2321,6 @@ try {
 }
 ```
 
-
 ### getAudioEffectProperty<sup>18+</sup>
 
 getAudioEffectProperty(): Array\<AudioEffectProperty>
@@ -1743,6 +2332,10 @@ getAudioEffectProperty(): Array\<AudioEffectProperty>
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1785,6 +2378,10 @@ setAudioEffectProperty(propertyArray: Array\<AudioEffectProperty>): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1832,14 +2429,21 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCall
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | inputAudioDevices           | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输入设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输入设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn：当选择音频输入设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当选择音频输入设备成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1870,6 +2474,38 @@ async function selectInputDevice(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.INPUT_DEVICE,
+  deviceType : audio.DeviceType.MIC,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectInputDevice(){
+  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select input devices result callback: SUCCESS');
+    }
+  });
+}
+```
+
 ### selectInputDevice<sup>9+</sup>
 
 selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -1879,6 +2515,10 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1893,6 +2533,8 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt
 | Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -1922,6 +2564,35 @@ async function getRoutingManager(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.INPUT_DEVICE,
+  deviceType : audio.DeviceType.MIC,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function getRoutingManager(){
+  audioRoutingManager.selectInputDevice(inputAudioDeviceDescriptor).then(() => {
+    console.info('Select input devices result promise: SUCCESS');
+  }).catch(async (err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
 ### selectOutputDevice<sup>9+</sup>
 
 selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback&lt;void&gt;): void
@@ -1932,14 +2603,21 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCa
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn：当选择音频输出设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当选择音频输出设备成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1969,6 +2647,37 @@ async function selectOutputDevice(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDevice(){
+  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select output devices result callback: SUCCESS'); }
+  });
+}
+```
+
 ### selectOutputDevice<sup>9+</sup>
 
 selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -1978,6 +2687,10 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1992,6 +2705,8 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&
 | Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2021,6 +2736,35 @@ async function selectOutputDevice(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDevice(){
+  audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor).then(() => {
+    console.info('Select output devices result promise: SUCCESS');
+  }).catch(async (err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
 ### selectOutputDeviceByFilter<sup>9+</sup>
 
 selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback&lt;void&gt;): void
@@ -2031,15 +2775,22 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | filter                      | [AudioRendererFilter](#audiorendererfilter9)                 | 是   | 过滤条件类。               |
 | outputAudioDevices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | 是   | 输出设备类。               |
-| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
+| callback                    | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。<br>ArkTS-Dyn：当选择音频输出设备成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当选择音频输出设备成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2078,6 +2829,46 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDeviceByFilter(){
+  audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Result ERROR: ${err}`);
+    } else {
+      console.info('Select output devices by filter result callback: SUCCESS'); }
+  });
+}
+```
+
 ### selectOutputDeviceByFilter<sup>9+</sup>
 
 selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -2087,6 +2878,10 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2102,6 +2897,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2140,6 +2937,44 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.SPEAKER,
+  id : 1,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function selectOutputDeviceByFilter(){
+  audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor).then(() => {
+    console.info('Select output devices by filter result promise: SUCCESS');
+  }).catch(async (err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  })
+}
+```
+
 ### selectInputDeviceByFilter<sup>18+</sup>
 
 selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -2149,6 +2984,10 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2174,6 +3013,8 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2213,6 +3054,45 @@ async function selectInputDeviceByFilter(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
+    uid : 20010041,
+    capturerInfo : {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+    }
+};
+
+let inputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
+    deviceRole : audio.DeviceRole.INPUT_DEVICE,
+    deviceType : audio.DeviceType.MIC,
+    id : 1,
+    name : "",
+    address : "",
+    sampleRates : [44100],
+    channelCounts : [2],
+    channelMasks : [0],
+    networkId : audio.LOCAL_NETWORK_ID,
+    interruptGroupId : 1,
+    volumeGroupId : 1,
+    displayName : "",
+}];
+
+async function selectInputDeviceByFilter(){
+    let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
+    let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioManager的方法创建AudioRoutingManager实例。
+    audioRoutingManager.selectInputDeviceByFilter(inputAudioCapturerFilter, inputAudioDeviceDescriptor).then(() => {
+        console.info('Select input devices by filter result promise: SUCCESS');
+    }).catch(async (err: BusinessError) => {
+        console.error(`Result ERROR: ${err}`);
+    })
+}
+```
+
 ### getPreferredOutputDeviceByFilter<sup>18+</sup>
 
 getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescriptors
@@ -2222,6 +3102,10 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2245,6 +3129,7 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 | 6800101 |  Parameter verification failed.|
 
 **示例：**
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2275,6 +3160,10 @@ getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescrip
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2335,6 +3224,10 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
@@ -2359,6 +3252,8 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2390,6 +3285,36 @@ async function excludeOutputDevices(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage = audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+let excludedDevices: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 3,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function excludeOutputDevices(){
+  audioRoutingManager.excludeOutputDevices(usage, excludedDevices).then(() => {
+    console.info('Exclude Output Devices result callback: SUCCESS');
+  }).catch(async (err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  })
+}
+```
+
 ### unexcludeOutputDevices<sup>18+</sup>
 
 unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promise&lt;void&gt;
@@ -2401,6 +3326,10 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2426,6 +3355,8 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -2457,6 +3388,36 @@ async function unexcludeOutputDevices(){
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+let unexcludedDevices: audio.AudioDeviceDescriptors = [{
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 3,
+  name : "",
+  address : "",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : "",
+}];
+
+async function unexcludeOutputDevices(){
+  audioRoutingManager.unexcludeOutputDevices(usage, unexcludedDevices).then(() => {
+    console.info('Unexclude Output Devices result callback: SUCCESS');
+  }).catch(async (err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  })
+}
+```
+
 ### unexcludeOutputDevices<sup>18+</sup>
 
 unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
@@ -2468,6 +3429,10 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2493,6 +3458,8 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2503,6 +3470,22 @@ async function unexcludeOutputDevices(){
   audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
     console.info('Unexclude Output Devices result promise: SUCCESS');
   }).catch((err: BusinessError) => {
+    console.error(`Result ERROR: ${err}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let usage: audio.DeviceUsage.MEDIA_OUTPUT_DEVICES;
+
+async function unexcludeOutputDevices(){
+  audioRoutingManager.unexcludeOutputDevices(usage).then(() => {
+    console.info('Unexclude Output Devices result promise: SUCCESS');
+  }).catch(async (err: BusinessError) => {
     console.error(`Result ERROR: ${err}`);
   });
 }
@@ -2519,6 +3502,10 @@ getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2563,9 +3550,13 @@ async function getExcludedDevices(){
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| clientUid          | number                                    | 是   | 否   | 音频渲染器客户端应用程序的Uid。 |
+| clientUid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                    | 是   | 否   | 音频渲染器客户端应用程序的Uid。 |
 | rendererState      | [AudioState](arkts-apis-audio-e.md#audiostate8)                 | 是   | 否   | 音频状态。|
 
 ## AudioCapturerChangeInfo<sup>9+</sup>
@@ -2576,9 +3567,13 @@ async function getExcludedDevices(){
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| clientUid          | number                                    | 是   | 否   | 音频采集器客户端应用程序的Uid。 |
+| clientUid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                    | 是   | 否   | 音频采集器客户端应用程序的Uid。 |
 | capturerState      | [AudioState](arkts-apis-audio-e.md#audiostate8)                 | 是   | 否   | 音频状态。|
 
 ## AudioDeviceDescriptor
@@ -2589,10 +3584,10 @@ async function getExcludedDevices(){
 
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>        | string                     | 是   | 否   | 设备组网的ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| interruptGroupId<sup>9+</sup> | number                     | 是   | 否   | 设备所处的焦点组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| volumeGroupId<sup>9+</sup>    | number                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| dmDeviceType<sup>18+</sup>    | number                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| networkId<sup>9+</sup>        | string                     | 是   | 否   | 设备组网的ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20|
+| interruptGroupId<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 设备所处的焦点组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20|
+| volumeGroupId<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20|
+| dmDeviceType<sup>18+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 20|
 
 ## AudioRendererFilter<sup>9+</sup>
 
@@ -2600,11 +3595,15 @@ async function getExcludedDevices(){
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
-| rendererId   | number                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 **示例：**
 
@@ -2627,9 +3626,13 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | capturerInfo | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8) |  否  | 是 | 表示采集器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Capturer|
 
 **示例：**
@@ -2654,6 +3657,10 @@ let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 参数名                 | 类型                                                         | 只读 | 可选 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- |---| ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 否 | 否 | 指定设备的描述。     |
@@ -2672,6 +3679,10 @@ isSpatializationSupported(): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2710,6 +3721,10 @@ isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boo
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2773,6 +3788,10 @@ isHeadTrackingSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -2811,6 +3830,10 @@ isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boole
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2873,11 +3896,15 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): 
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2898,6 +3925,7 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): 
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2922,11 +3950,15 @@ setSpatializationEnabled(enable: boolean): Promise&lt;void&gt;
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2976,6 +4008,10 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
@@ -3002,6 +4038,8 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -3030,6 +4068,34 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enabled: boolean = true;
+
+audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch(async (err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
 ### isSpatializationEnabled<sup>(deprecated)</sup>
 
 isSpatializationEnabled(): boolean
@@ -3039,9 +4105,13 @@ isSpatializationEnabled(): boolean
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -3081,6 +4151,10 @@ isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3143,9 +4217,13 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onspatializationenabledchangeforanydevice12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3180,9 +4258,15 @@ on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpat
 
 监听空间音频渲染开关状态变化事件（当空间音频渲染开关状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSpatializationEnabledChangeForAnyDevice](#onSpatializationEnabledChangeForAnyDevice22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3212,6 +4296,48 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioS
 });
 ```
 
+### onSpatializationEnabledChangeForAnyDevice<sup>22+</sup>
+
+onSpatializationEnabledChangeForAnyDevice(callback: Callback<AudioSpatialEnabledStateForDevice\>): void
+
+监听空间音频渲染开关状态变化事件（当空间音频渲染开关状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('spatializationEnabledChangeForAnyDevice')](#onspatializationEnabledChangeForAnyDevice12)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                           |
+| :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和空间音频渲染开关状态。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.onSpatializationEnabledChangeForAnyDevice((audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+});
+```
+
 ### off('spatializationEnabledChange')<sup>(deprecated)</sup>
 
 off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
@@ -3221,9 +4347,13 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3264,9 +4394,15 @@ off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSp
 
 取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSpatializationEnabledChangeForAnyDevice](#offSpatializationEnabledChangeForAnyDevice22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3304,6 +4440,56 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', spatial
 audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatializationEnabledChangeForAnyDeviceCallback);
 ```
 
+### offSpatializationEnabledChangeForAnyDevice<sup>22+</sup>
+
+offSpatializationEnabledChangeForAnyDevice(callback?: Callback<AudioSpatialEnabledStateForDevice\>): void
+
+取消监听空间音频渲染开关状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('spatializationEnabledChangeForAnyDevice')](#offspatializationEnabledChangeForAnyDevice12)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                           |
+| :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 是   | 回调函数，返回设备信息和空间音频渲染开关状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.offSpatializationEnabledChangeForAnyDevice();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let spatializationEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+};
+
+audioSpatializationManager.onSpatializationEnabledChangeForAnyDevice(spatializationEnabledChangeForAnyDeviceCallback);
+
+audioSpatializationManager.offSpatializationEnabledChangeForAnyDevice(spatializationEnabledChangeForAnyDeviceCallback);
+```
+
 ### setHeadTrackingEnabled<sup>(deprecated)</sup>
 
 setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3313,11 +4499,15 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3338,6 +4528,7 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3362,11 +4553,15 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3392,6 +4587,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3407,7 +4603,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enable: boolean): Promise&lt;void&gt;
 
 根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
@@ -3416,6 +4612,10 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3442,6 +4642,8 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 | 6800101 | Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -3470,6 +4672,34 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enable: boolean = true;
+
+audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then(() => {
+  console.info(`setHeadTrackingEnabled success`);
+}).catch(async (err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
 ### isHeadTrackingEnabled<sup>(deprecated)</sup>
 
 isHeadTrackingEnabled(): boolean
@@ -3479,9 +4709,13 @@ isHeadTrackingEnabled(): boolean
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -3521,6 +4755,10 @@ isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3583,9 +4821,13 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3620,9 +4862,15 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 
 监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onHeadTrackingEnabledChangeForAnyDevice](#onHeadTrackingEnabledChangeForAnyDevice22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3652,6 +4900,48 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpa
 });
 ```
 
+### onHeadTrackingEnabledChangeForAnyDevice<sup>22+</sup>
+
+onHeadTrackingEnabledChangeForAnyDevice(callback: Callback<AudioSpatialEnabledStateForDevice\>): void
+
+监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('headTrackingEnabledChangeForAnyDevice')](#headTrackingEnabledChangeForAnyDevice12)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 是   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+audioSpatializationManager.onHeadTrackingEnabledChangeForAnyDevice((audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+});
+```
+
 ### off('headTrackingEnabledChange')<sup>(deprecated)</sup>
 
 off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
@@ -3661,9 +4951,13 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -3706,9 +5000,15 @@ off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpat
 
 取消监听头动跟踪开关状态变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offHeadTrackingEnabledChangeForAnyDevice](#offHeadTrackingEnabledChangeForAnyDevice22)。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -3746,6 +5046,56 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrack
 audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
 ```
 
+### offHeadTrackingEnabledChangeForAnyDevice<sup>22+</sup>
+
+offHeadTrackingEnabledChangeForAnyDevice(callback?: Callback<AudioSpatialEnabledStateForDevice\>): void
+
+取消监听头动跟踪开关状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('headTrackingEnabledChangeForAnyDevice')](#offheadTrackingEnabledChangeForAnyDevice12)。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+};
+
+audioSpatializationManager.onHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
+
+audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
+```
+
 ### updateSpatialDeviceState<sup>11+</sup>
 
 updateSpatialDeviceState(spatialDeviceState: AudioSpatialDeviceState): void
@@ -3757,6 +5107,10 @@ updateSpatialDeviceState(spatialDeviceState: AudioSpatialDeviceState): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3809,6 +5163,10 @@ setSpatializationSceneType(spatializationSceneType: AudioSpatializationSceneType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
@@ -3851,6 +5209,10 @@ getSpatializationSceneType(): AudioSpatializationSceneType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -3888,6 +5250,10 @@ try {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
 | address | string         | 否 | 否 | 空间化设备地址。|
@@ -3916,6 +5282,10 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                               |  值     | 说明                       |
 | ---------------------------------- | ------ | ------------------------- |
 | SPATIAL_DEVICE_TYPE_NONE                   | 0      |  无空间化设备类型。  |
@@ -3932,6 +5302,10 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                               |  值     | 说明                       |
 | ---------------------------------- | ------ | ------------------------- |
@@ -3950,34 +5324,34 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 
 | 名称                                              |  值    | 说明                          |
 | :------------------------------------------------ | :----- | :----------------------------|
-| TONE_TYPE_DIAL_0                                  | 0      | 键0的DTMF音。                 |
-| TONE_TYPE_DIAL_1                                  | 1      | 键1的DTMF音。                 |
-| TONE_TYPE_DIAL_2                                  | 2      | 键2的DTMF音。                 |
-| TONE_TYPE_DIAL_3                                  | 3      | 键3的DTMF音。                 |
-| TONE_TYPE_DIAL_4                                  | 4      | 键4的DTMF音。                 |
-| TONE_TYPE_DIAL_5                                  | 5      | 键5的DTMF音。                 |
-| TONE_TYPE_DIAL_6                                  | 6      | 键6的DTMF音。                 |
-| TONE_TYPE_DIAL_7                                  | 7      | 键7的DTMF音。                 |
-| TONE_TYPE_DIAL_8                                  | 8      | 键8的DTMF音。                 |
-| TONE_TYPE_DIAL_9                                  | 9      | 键9的DTMF音。                 |
-| TONE_TYPE_DIAL_S                                  | 10     | 键*的DTMF音。                 |
-| TONE_TYPE_DIAL_P                                  | 11     | 键#的DTMF音。                 |
-| TONE_TYPE_DIAL_A                                  | 12     | 键A的DTMF音。                 |
-| TONE_TYPE_DIAL_B                                  | 13     | 键B的DTMF音。                 |
-| TONE_TYPE_DIAL_C                                  | 14     | 键C的DTMF音。                 |
-| TONE_TYPE_DIAL_D                                  | 15     | 键D的DTMF音。                 |
-| TONE_TYPE_COMMON_SUPERVISORY_DIAL                 | 100    | 呼叫监管音调，拨号音。          |
-| TONE_TYPE_COMMON_SUPERVISORY_BUSY                 | 101    | 呼叫监管音调，忙。              |
-| TONE_TYPE_COMMON_SUPERVISORY_CONGESTION           | 102    | 呼叫监管音调，拥塞。            |
-| TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK            | 103    | 呼叫监管音调，无线电 ACK。      |
-| TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE  | 104    | 呼叫监管音调，无线电不可用。     |
-| TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING         | 106    | 呼叫监管音调，呼叫等待。        |
-| TONE_TYPE_COMMON_SUPERVISORY_RINGTONE             | 107    | 呼叫监管音调，铃声。            |
-| TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING<sup>18+</sup>  | 108  | 呼叫保持音调。            |
-| TONE_TYPE_COMMON_PROPRIETARY_BEEP                 | 200    | 专有声调，一般蜂鸣声。          |
-| TONE_TYPE_COMMON_PROPRIETARY_ACK                  | 201    | 专有声调，ACK。                |
-| TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | 专有声调，PROMPT。             |
-| TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | 专有声调，双重蜂鸣声。          |
+| TONE_TYPE_DIAL_0                                  | 0      | 键0的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_1                                  | 1      | 键1的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_2                                  | 2      | 键2的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_3                                  | 3      | 键3的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_4                                  | 4      | 键4的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_5                                  | 5      | 键5的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_6                                  | 6      | 键6的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_7                                  | 7      | 键7的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_8                                  | 8      | 键8的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_9                                  | 9      | 键9的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_S                                  | 10     | 键*的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_P                                  | 11     | 键#的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_A                                  | 12     | 键A的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_B                                  | 13     | 键B的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_C                                  | 14     | 键C的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_DIAL_D                                  | 15     | 键D的DTMF音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                 |
+| TONE_TYPE_COMMON_SUPERVISORY_DIAL                 | 100    | 呼叫监管音调，拨号音。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20          |
+| TONE_TYPE_COMMON_SUPERVISORY_BUSY                 | 101    | 呼叫监管音调，忙。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20              |
+| TONE_TYPE_COMMON_SUPERVISORY_CONGESTION           | 102    | 呼叫监管音调，拥塞。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20            |
+| TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK            | 103    | 呼叫监管音调，无线电 ACK。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20      |
+| TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE  | 104    | 呼叫监管音调，无线电不可用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20     |
+| TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING         | 106    | 呼叫监管音调，呼叫等待。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20        |
+| TONE_TYPE_COMMON_SUPERVISORY_RINGTONE             | 107    | 呼叫监管音调，铃声。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20            |
+| TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING<sup>18+</sup>  | 108  | 呼叫保持音调。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 20            |
+| TONE_TYPE_COMMON_PROPRIETARY_BEEP                 | 200    | 专有声调，一般蜂鸣声。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20          |
+| TONE_TYPE_COMMON_PROPRIETARY_ACK                  | 201    | 专有声调，ACK。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                |
+| TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | 专有声调，PROMPT。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20             |
+| TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | 专有声调，双重蜂鸣声。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20          |
 
 ## TonePlayer<sup>9+</sup>
 
@@ -3996,19 +5370,40 @@ load(type: ToneType, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名          | 类型                        | 必填  | 说明                            |
 | :--------------| :-------------------------- | :-----| :------------------------------ |
 | type           | [ToneType](#tonetype9)       | 是    | 配置的音调类型。                 |
-| callback       | AsyncCallback<void\>        | 是    | 回调函数。当加载DTMF音调配置成功，err为undefined，否则为错误对象。 |
+| callback       | AsyncCallback<void\>        | 是    | 回调函数。<br>ArkTS-Dyn：当加载DTMF音调配置成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当加载DTMF音调配置成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
+  if (err) {
+    console.error(`callback call load failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call load success');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call load failed error: ${err.message}`);
     return;
@@ -4027,6 +5422,10 @@ load(type: ToneType): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4060,18 +5459,39 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当启动DTMF音调播放成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当启动DTMF音调播放成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当启动DTMF音调播放成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.start((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call start failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call start success');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.start((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call start failed error: ${err.message}`);
     return;
@@ -4090,6 +5510,10 @@ start(): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4117,18 +5541,39 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当停止当前正在播放的音调成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当停止当前正在播放的音调成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止当前正在播放的音调成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.stop((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call stop error: ${err.message}`);
+    return;
+  } else {
+    console.error('callback call stop success ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.stop((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call stop error: ${err.message}`);
     return;
@@ -4147,6 +5592,10 @@ stop(): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4174,18 +5623,39 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                            |
 | :------- | :------------------- | :--- | :---------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当释放与此TonePlayer对象关联的资源成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放与此TonePlayer对象关联的资源成功，err为null，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 tonePlayer.release((err: BusinessError) => {
+  if (err) {
+    console.error(`callback call release failed error: ${err.message}`);
+    return;
+  } else {
+    console.info('callback call release success ');
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+tonePlayer.release((err: BusinessError<void> | null) => {
   if (err) {
     console.error(`callback call release failed error: ${err.message}`);
     return;
@@ -4204,6 +5674,10 @@ release(): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4238,6 +5712,10 @@ setAsrAecMode(mode: AsrAecMode): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4278,6 +5756,10 @@ getAsrAecMode(): AsrAecMode
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -4309,6 +5791,10 @@ setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4349,6 +5835,10 @@ getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                      |说明 |
@@ -4379,6 +5869,10 @@ isWhispering(): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4411,6 +5905,10 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                  | 必填 | 说明     |
@@ -4440,7 +5938,6 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDetectionMode.BYPASS);
 ```
 
-
 ### getAsrWhisperDetectionMode<sup>12+</sup>
 
 getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
@@ -4450,6 +5947,10 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -4472,7 +5973,6 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 let mode = asrProcessingController.getAsrWhisperDetectionMode();
 ```
 
-
 ### setAsrVoiceControlMode<sup>12+</sup>
 
 setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
@@ -4482,6 +5982,10 @@ setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4522,6 +6026,10 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

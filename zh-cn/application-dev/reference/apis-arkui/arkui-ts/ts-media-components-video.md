@@ -4,11 +4,11 @@
 
 >  **说明：**
 >
->  -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  -该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
->  -Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
->  -Video组件在使用expandSafeArea扩展到安全区域时，组件视频显示内容区域不支持扩展。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
+>  - Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
+>  - Video组件在使用expandSafeArea扩展到安全区域时，组件视频显示内容区域不支持扩展。
 
 ## 权限列表
 
@@ -85,13 +85,13 @@ ArkTS-Sta: muted(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否静音。<br/>true：开启静音；false：关闭静音。<br/>默认值：false<br/> |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否静音。<br/>true：开启静音；false：关闭静音。<br/>默认值：false |
 
 > **说明：**
 >
@@ -111,13 +111,13 @@ ArkTS-Sta: autoPlay(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                             |
 | ------ | ------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否自动播放。<br/>true：开启自动播放；false：关闭自动播放。<br/>默认值：false<br/> |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否自动播放。<br/>true：开启自动播放；false：关闭自动播放。<br/>默认值：false |
 
 ### controls
 
@@ -133,13 +133,13 @@ ArkTS-Sta: controls(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                            |
 | ------ | ------- | ---- | ----------------------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 控制视频播放的控制栏是否显示。<br/>true：控制栏显示；false：控制栏不显示。<br/>默认值：true<br/> |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 控制视频播放的控制栏是否显示。<br/>true：控制栏显示；false：控制栏不显示。<br/>默认值：true |
 
 > **说明：**
 >
@@ -159,13 +159,13 @@ ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                             |
 | ------ | ----------------------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: [ImageFit](ts-appendix-enums.md#imagefit)<br/>ArkTS-Sta: [ImageFit](ts-appendix-enums.md#imagefit) \| undefined | 是   | 视频填充模式。<br/>默认值：Cover<br/>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与Cover一致。<br/>异常值：若设置异常值undefined、null，或不在[ImageFit](ts-appendix-enums.md#imagefit)枚举范围内的值，作用效果均与Cover一致。<br/>|
+| value  | ArkTS-Dyn: [ImageFit](ts-appendix-enums.md#imagefit)<br/>ArkTS-Sta: [ImageFit](ts-appendix-enums.md#imagefit) \| undefined | 是   | 视频填充模式。<br/>默认值：Cover<br/>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与Cover一致。<br/>异常值：若设置异常值undefined、null，或不在[ImageFit](ts-appendix-enums.md#imagefit)枚举范围内的值，作用效果均与Cover一致。|
 
 ### loop
 
@@ -181,13 +181,13 @@ ArkTS-Sta: loop(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否单个视频循环播放。<br/>true：开启循环播放；false：关闭循环播放。<br/>默认值：false<br/> |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否单个视频循环播放。<br/>true：开启循环播放；false：关闭循环播放。<br/>默认值：false |
 
 ### enableAnalyzer<sup>12+</sup>
 
@@ -242,11 +242,11 @@ ArkTS-Sta: enableShortcutKey(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 参数名  | 类型    | 必填 | 说明                                   |
 | ------- | ------- | ---- | -------------------------------------- |
-| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用快捷键响应。<br/>true：开启快捷键响应；false：关闭快捷键响应。<br/>默认值：false<br/> |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用快捷键响应。<br/>true：开启快捷键响应；false：关闭快捷键响应。<br/>默认值：false |
 
 ## 事件
 
@@ -266,7 +266,7 @@ ArkTS-Sta: onStart(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -288,7 +288,7 @@ ArkTS-Sta: onPause(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -310,7 +310,7 @@ ArkTS-Sta: onFinish(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -332,7 +332,7 @@ ArkTS-Sta: onError(event: VoidCallback | ErrorCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -361,7 +361,7 @@ ArkTS-Sta: onStop(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ### onPrepared
 
@@ -377,7 +377,7 @@ ArkTS-Sta: onPrepared(callback: Callback\<PreparedInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -399,7 +399,7 @@ ArkTS-Sta: onSeeking(callback: Callback\<PlaybackInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -421,7 +421,7 @@ ArkTS-Sta: onSeeked(callback: Callback\<PlaybackInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -443,7 +443,7 @@ ArkTS-Sta: onUpdate(callback: Callback\<PlaybackInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -465,7 +465,7 @@ ArkTS-Sta: onFullscreenChange(callback: Callback\<FullscreenInfo> | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 

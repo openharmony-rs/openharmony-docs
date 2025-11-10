@@ -15,6 +15,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.window (窗口)](arkts-apis-window.md)。
@@ -78,6 +79,10 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 1    | 表示APP未定义窗口模式。       |
@@ -107,6 +112,10 @@ import { window } from '@kit.ArkUI';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
@@ -164,12 +173,16 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明                                         |
 | ------ | -------- | ---- | ---- | --------------------------------------------|
-| x      | number   | 否   | 是   | X轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
-| y      | number   | 否   | 是   | Y轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
-| pivotX | number   | 否   | 是   | 缩放中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
-| pivotY | number   | 否   | 是   | 缩放中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | X轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | Y轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
+| pivotX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | 缩放中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
+| pivotY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | 缩放中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
 
 ## RotateOptions<sup>9+</sup>
 
@@ -179,13 +192,17 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明                                          |
 | ------ | -------- | ---- |---- |---------------------------------------------|
-| x      | number   | 否   | 是  | 绕X轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| y      | number   | 否   | 是  | 绕Y轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| z      | number   | 否   | 是  | 绕Z轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| pivotX | number   | 否   | 是  | 旋转中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
-| pivotY | number   | 否   | 是  | 旋转中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。  |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕X轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕Y轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| z      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕Z轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| pivotX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 旋转中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
+| pivotY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 旋转中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。  |
 
 ## TranslateOptions<sup>9+</sup>
 
@@ -195,11 +212,15 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明                         |
 | ---- | -------- | ---- | ---- | ---------------------------- |
-| x    | number   | 否   | 是  | X轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
-| y    | number   | 否   | 是  | Y轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
-| z    | number   | 否   | 是  | Z轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | X轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | Y轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| z    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | Z轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
 
 
 ## StartAnimationSystemParams<sup>20+</sup>
@@ -2060,7 +2081,9 @@ export default class EntryAbility extends UIAbility {
 
 ### opacity<sup>9+</sup>
 
-opacity(opacity: number): void
+ArkTS-Dyn: opacity(opacity: number): void
+
+ArkTS-Sta: opacity(opacity: double): void
 
 设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
@@ -2068,11 +2091,15 @@ opacity(opacity: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                 |
 | ------- | ------ | ---- |----------------------------------------------------|
-| opacity | number | 是   | 不透明度。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示完全透明，1.0表示完全不透明。 |
+| opacity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示完全透明，1.0表示完全不透明。 |
 
 **错误码：**
 
@@ -2104,6 +2131,10 @@ scale(scaleOptions: ScaleOptions): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2147,6 +2178,10 @@ rotate(rotateOptions: RotateOptions): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2192,6 +2227,10 @@ translate(translateOptions: TranslateOptions): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型                                   | 必填 | 说明                 |
@@ -2226,13 +2265,17 @@ try {
 
 ### getTransitionController<sup>9+</sup>
 
- getTransitionController(): TransitionController
+getTransitionController(): TransitionController
 
 获取窗口属性转换控制器。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2258,7 +2301,9 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 ### setBlur<sup>9+</sup>
 
-setBlur(radius: number): void
+ArkTS-Dyn: setBlur(radius: number): void
+
+ArkTS-Sta: setBlur(radius: double): void
 
 设置窗口模糊。
 
@@ -2266,11 +2311,15 @@ setBlur(radius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- |--------------------------------------------------|
-| radius | number | 是   | 表示窗口模糊的半径值。该参数为浮点数，单位为px，取值范围为[0, +∞)，取值为0.0时表示关闭窗口模糊。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口模糊的半径值。该参数为浮点数，单位为px，取值范围为[0, +∞)，取值为0.0时表示关闭窗口模糊。 |
 
 **错误码：**
 
@@ -2295,7 +2344,9 @@ try {
 
 ### setBackdropBlur<sup>9+</sup>
 
-setBackdropBlur(radius: number): void
+ArkTS-Dyn: setBackdropBlur(radius: number): void
+
+ArkTS-Sta: setBackdropBlur(radius: double): void
 
 设置窗口背景模糊。
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
@@ -2305,11 +2356,15 @@ setBackdropBlur(radius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                    |
 | ------ | ------ | ---- |-------------------------------------------------------|
-| radius | number | 是   | 表示窗口背景模糊的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0表示关闭窗口背景模糊。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口背景模糊的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0表示关闭窗口背景模糊。 |
 
 **错误码：**
 
@@ -2343,6 +2398,10 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型      | 必填 | 说明                   |
@@ -2372,7 +2431,9 @@ try {
 
 ### setShadow<sup>9+</sup>
 
-setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
+ArkTS-Dyn: setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
+
+ArkTS-Sta: setShadow(radius: double, color?: string, offsetX?: double, offsetY?: double): void
 
 设置窗口边缘阴影。
 
@@ -2380,14 +2441,18 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                          |
 | ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
 | color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`。 |
-| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。                              |
-| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。                              |
+| offsetX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。                              |
+| offsetY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。                              |
 
 **错误码：**
 
@@ -2412,7 +2477,9 @@ try {
 
 ### setCornerRadius<sup>9+</sup>
 
-setCornerRadius(cornerRadius: number): void
+ArkTS-Dyn: setCornerRadius(cornerRadius: number): void
+
+ArkTS-Sta: setCornerRadius(cornerRadius: double): void
 
 设置窗口圆角半径。
 
@@ -2420,11 +2487,15 @@ setCornerRadius(cornerRadius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                 |
 | ----------- | ------- | ---- |----------------------------------------------------|
-| cornerRadius | number | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
+| cornerRadius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
 
 **错误码：**
 
@@ -2457,6 +2528,10 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -2477,12 +2552,28 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
     {left: 400, top: 100, width: 200, height:200}]);
 } catch (exception) {
   console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
+    {left: 400, top: 100, width: 200, height:200}]);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set touchable areas. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -4136,6 +4227,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                  | 类型          | 只读 | 可选 | 说明             |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
 | toWindow<sup>9+</sup> | [Window](arkts-apis-window-Window.md) | 否   | 否   | 动画的目标窗口。 |
@@ -4149,6 +4244,10 @@ completeTransition(isCompleted: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4195,6 +4294,25 @@ completeTransition(isCompleted: boolean): void
   console.info('complete transition end');
 };
 ```
+## TransitionControllerCallback<sup>22+</sup>
+
+type TransitionControllerCallback = (context: window.TransitionContext) => void
+
+属性转换控制器的属性类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型      | 说明                          |
+| -----------| ---------------------------- |
+| (context: window.TransitionContext) => void | 表示入参为[TransitionContext](#TransitionContext9)的函数类型。 |
 
 ## TransitionController<sup>9+</sup>
 
@@ -4221,6 +4339,20 @@ promise.then((data) => {
   console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| animationForShown<sup>22+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
+| animationForHidden<sup>22+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
 
 ### animationForShown<sup>9+</sup>
 
@@ -4228,9 +4360,13 @@ animationForShown(context: TransitionContext): void
 
 窗口显示时的自定义动画配置。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4311,9 +4447,13 @@ animationForHidden(context: TransitionContext): void
 
 窗口隐藏时的自定义动画配置。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4384,7 +4524,7 @@ try {
     console.info('complete transition end');
   });
 } catch (error) {
-  console.error(`HideWindowWithCustomAnimation error code: ${error.code}, message: ${error.message}` );
+  console.error(`HideWindowWithCustomAnimation error code: ${error.code}, message: ${error.message}`);
 }
 ```
 

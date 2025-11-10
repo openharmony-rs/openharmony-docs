@@ -4,7 +4,7 @@
 
 ## 概述
 
-\@Param装饰器，用于\@ComponentV2装饰的自定义组件中，定义组件从外部传入的状态。\@Param装饰的变量为状态变量，具有观察变化的能力，当它变化时，会触发绑定的UI组件刷新。\@Param装饰的变量为只读变量，因此无法在组件内部直接修改。
+\@Param装饰器，用于[\@ComponentV2](./arkts-static-componentv2.md#componentv2)装饰的自定义组件中，定义组件从外部传入的状态。\@Param装饰的变量为状态变量，具有观察变化的能力，当它变化时，会触发绑定的UI组件刷新。\@Param装饰的变量为只读变量，因此无法在组件内部直接修改。
 
 \@Param装饰器具有以下能力：
 
@@ -12,8 +12,8 @@
 - \@Param装饰的变量能够从父组件传入初始化，如果传入的数据源是状态变量，数据源的修改会同步给\@Param。
 
 - \@Param装饰的变量变化时，会刷新使用该变量的组件。
-- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内置类型。
-- \@Param支持null、undefined以及联合类型。
+- \@Param支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰date类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
+- \@Param支持null、undefined以及[联合类型](#联合类型)。
 
 在静态语言上下文中使用时，需要导入装饰器：
 

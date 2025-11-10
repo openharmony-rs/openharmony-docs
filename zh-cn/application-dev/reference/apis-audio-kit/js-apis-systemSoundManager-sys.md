@@ -3,7 +3,7 @@
 系统声音管理提供管理系统声音的一些基础能力，包括对系统铃声的资源设置与读取、获取系统铃声播放器等。
 
 > **说明：**
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
 
@@ -21,11 +21,11 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                                      | 类型 | 值   | 说明      |
 |------------------------------------------|---|-----|---------|
-| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | number | 1   | 铃声类别。   |
-| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | number | 2   | 短信铃声类别。 |
-| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | 通知铃声类别。 |
-| TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | 闹钟铃声类别。 |
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。 |
+| TONE_CATEGORY_RINGTONE<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 1   | 铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20   |
+| TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 2   | 短信铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 4   | 通知铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_ALARM<sup>12+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long | 8   | 闹钟铃声类别。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br> **ArkTS-Dyn起始版本：** 20 |
 
 ## RingtoneType
 
@@ -37,10 +37,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                            | 值  | 说明                                                                     |
 | ------------------------------- |----|------------------------------------------------------------------------|
-| RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_0替代。 |
-| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。                                                              |
-| RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从 API version 11 开始废弃。建议使用该枚举中的RINGTONE_TYPE_SIM_CARD_1替代。 |
-| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。                                                              |
+| RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | 默认铃声类型。<br/> 从API version 10 开始支持，从 API version 11 开始废弃。建议使用该枚举中的[RINGTONE_TYPE_SIM_CARD_0](#RINGTONE_TYPE_SIM_CARD_0)替代。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br> **ArkTS-Dyn起始版本：** 10 |
+| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | sim卡1的铃声。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20                                                              |
+| RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | 多SIM卡铃声类型。<br/> 从API version 10 开始支持，从 API version 11 开始废弃。建议使用该枚举中的[RINGTONE_TYPE_SIM_CARD_1](#RINGTONE_TYPE_SIM_CARD_1)替代。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br> **ArkTS-Dyn起始版本：** 10 |
+| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | sim卡2的铃声。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20                                                              |
 
 ## SystemToneType<sup>11+</sup>
 
@@ -49,6 +49,10 @@ import { systemSoundManager } from '@kit.AudioKit';
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                            | 值   | 说明         |
 | ------------------------------- |-----|------------|
@@ -65,10 +69,14 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                         | 值   | 说明         |
 | ----------------------------|-----|------------|
-| PRE_INSTALLED<sup>12+</sup> | 0   | 预安装铃声类型。 |
-| CUSTOMIZED<sup>12+</sup>    | 1   | 自定义铃声类型。 |
+| PRE_INSTALLED | 0   | 预安装铃声类型。 |
+| CUSTOMIZED    | 1   | 自定义铃声类型。 |
 
 ## ToneAttrs<sup>12+</sup>
 
@@ -83,6 +91,10 @@ getTitle(): string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -113,6 +125,10 @@ setTitle(title: string): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -147,6 +163,10 @@ getFileName(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明   |
@@ -177,6 +197,10 @@ setFileName(name: string): void
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -211,6 +235,10 @@ getUri(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                                      |
@@ -241,6 +269,10 @@ getCustomizedType(): ToneCustomizedType
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                         | 说明      |
@@ -263,7 +295,9 @@ toneAttrs.getCustomizedType();
 
 ### setCategory<sup>12+</sup>
 
-setCategory(category: number): void
+ArkTS-Dyn: setCategory(category: number): void
+
+ArkTS-Sta: setCategory(category: long): void
 
 设置铃声类别。
 
@@ -271,11 +305,15 @@ setCategory(category: number): void
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型      | 必填 | 说明       |
 |----------| ---------| ---- |----------|
-| category | number   | 是   | 铃声类别，取值参考[铃声类别的常量](#常量)。  |
+| category | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 铃声类别，取值参考[铃声类别的常量](#常量)。  |
 
 **错误码：**
 
@@ -296,7 +334,9 @@ toneAttrs.setCategory(categoryValue);
 
 ### getCategory<sup>12+</sup>
 
-getCategory(): number
+ArkTS-Dyn: getCategory(): number
+
+ArkTS-Sta: getCategory(): long
 
 获取铃声类别。
 
@@ -304,11 +344,15 @@ getCategory(): number
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明     |
 |--------|--------|
-| number | 铃声类别，取值参考[铃声类别的常量](#常量)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 铃声类别，取值参考[铃声类别的常量](#常量)。 |
 
 **错误码：**
 
@@ -335,6 +379,10 @@ type ToneAttrsArray = Array&lt;[ToneAttrs](#toneattrs12)&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                     | 说明      |
 |----------------------------------------|---------|
 | Array&lt;[ToneAttrs](#toneattrs12)&gt; | 铃音属性数组。 |
@@ -348,6 +396,10 @@ createCustomizedToneAttrs(): ToneAttrs
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -364,9 +416,11 @@ createCustomizedToneAttrs(): ToneAttrs
 | 202     | Caller is not a system application. |
 
 **示例：**
+
 ```ts
 let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomizedToneAttrs();
 ```
+
 ## ToneHapticsFeature<sup>13+</sup>
 
 枚举，系统振动风格定义。
@@ -374,6 +428,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                          | 值 | 说明                 |
 | ----------------------------- | -- | -------------------- |
@@ -387,6 +445,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                     | 值 | 说明         |
 | ------------------------|----|--------|
@@ -404,6 +466,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                          | 值 | 说明                 |
 | ----------------------------- | -- | -------------------- |
 | NONE        | 0  | 无振动模式。 |
@@ -417,6 +483,10 @@ let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomize
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 类型 | 只读 | 可选 | 说明                 |
 | ------------ | -- | -- | -- | -------------------- |
@@ -436,6 +506,10 @@ getUri(): string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -467,6 +541,10 @@ getTitle(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明  |
@@ -497,6 +575,10 @@ getFileName(): string
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明  |
@@ -525,6 +607,10 @@ type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                     | 说明      |
 |----------------------------------------|---------|
 | Array&lt;[ToneHapticsAttrs](#tonehapticsattrs14)&gt; | 系统铃音的振动属性数组。 |
@@ -539,6 +625,10 @@ getSystemSoundManager(): SystemSoundManager
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                          | 说明         |
@@ -546,6 +636,7 @@ getSystemSoundManager(): SystemSoundManager
 | [SystemSoundManager](#systemsoundmanager) | 系统声音管理类。 |
 
 **示例：**
+
 ```ts
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 ```
@@ -563,9 +654,13 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[setRingtoneUri](#setringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -606,9 +701,13 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[setRingtoneUri](#setringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -652,9 +751,13 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtoneUri](#getringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -693,9 +796,13 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise&lt;string&gt
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtoneUri](#getringtoneuri11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -737,9 +844,13 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtonePlayer](#getringtoneplayer11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -780,9 +891,13 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise&lt;Ringto
 > **说明：**
 > 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用[getRingtonePlayer](#getringtoneplayer11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -827,6 +942,10 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise&l
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                            | 必填 | 说明                     |
@@ -853,6 +972,8 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -870,6 +991,24 @@ systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
+  console.info(`Promise returned to indicate a successful setting of the system ringtone uri.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to set the system ringtone uri ${err}`);
+});
+```
+
 ### getRingtoneUri<sup>11+</sup>
 
 getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
@@ -879,6 +1018,10 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -905,6 +1048,8 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -921,6 +1066,23 @@ systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) =>
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) => {
+  console.info(`Promise returned to indicate that the value of the system ringtone uri is obtained ${value}.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the system ringtone uri ${err}`);
+});
+```
+
 ### getRingtonePlayer<sup>11+</sup>
 
 getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;RingtonePlayer&gt;
@@ -930,6 +1092,10 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;Ringtone
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -955,6 +1121,8 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;Ringtone
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -973,6 +1141,25 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
+  console.info(`Promise returned to indicate that the value of the system ringtone player is obtained.`);
+  systemRingtonePlayer = value;
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the system ringtone player ${err}`);
+});
+```
+
 ### setSystemToneUri<sup>11+</sup>
 
 setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promise&lt;void&gt;
@@ -982,6 +1169,10 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1009,6 +1200,8 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1026,6 +1219,24 @@ systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
+  console.info(`Promise returned to indicate a successful setting of the system tone uri.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to set the system tone uri ${err}`);
+});
+```
+
 ### getSystemToneUri<sup>11+</sup>
 
 getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&gt;
@@ -1035,6 +1246,10 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1061,6 +1276,8 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1077,6 +1294,23 @@ systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) 
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) => {
+  console.info(`Promise returned to indicate that the value of the system tone uri is obtained ${value}.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the system tone uri ${err}`);
+});
+```
+
 ### getSystemTonePlayer<sup>11+</sup>
 
 getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;SystemTonePlayer&gt;
@@ -1086,6 +1320,10 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;Syst
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1111,6 +1349,8 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;Syst
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1129,6 +1369,25 @@ systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: syste
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
+let systemTonePlayer: systemSoundManager.SystemTonePlayer | undefined = undefined;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: systemSoundManager.SystemTonePlayer) => {
+  console.info(`Promise returned to indicate that the value of the system tone player is obtained.`);
+    systemTonePlayer = value;
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the system tone player ${err}`);
+});
+```
+
 ### getDefaultRingtoneAttrs<sup>12+</sup>
 
 getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;ToneAttrs&gt;
@@ -1138,6 +1397,10 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1164,6 +1427,8 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1180,6 +1445,23 @@ systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: s
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
+  console.info(`Promise returned to indicate that the value of the attributes of the default ringtone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the default ring tone attrs ${err}`);
+});
+```
+
 ### getRingtoneAttrList<sup>12+</sup>
 
 getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAttrsArray&gt;
@@ -1189,6 +1471,10 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1215,6 +1501,8 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1231,6 +1519,23 @@ systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: syste
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
+  console.info(`Promise returned to indicate that the value of the attribute list of ringtone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the attribute list of ringtone ${err}`);
+});
+```
+
 ### getDefaultSystemToneAttrs<sup>12+</sup>
 
 getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&lt;ToneAttrs&gt;
@@ -1240,6 +1545,10 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1266,6 +1575,8 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1282,6 +1593,23 @@ systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value:
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
+  console.info(`Promise returned to indicate that the value of the attributes of the system ringtone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the system tone attrs ${err}`);
+});
+```
+
 ### getSystemToneAttrList<sup>12+</sup>
 
 getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;ToneAttrsArray&gt;
@@ -1291,6 +1619,10 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1317,6 +1649,8 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1333,6 +1667,23 @@ systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: sys
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
+  console.info(`Promise returned to indicate that the value of the attribute list of system tone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the attribute list of system tone ${err}`);
+});
+```
+
 ### getDefaultAlarmToneAttrs<sup>12+</sup>
 
 getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
@@ -1342,6 +1693,10 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1367,6 +1722,8 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1382,6 +1739,22 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: systemSoundManager.ToneAttrs) => {
+  console.info(`Promise returned to indicate that the value of the attributes of the default alarm tone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the default alarm tone attrs ${err}`);
+});
+```
+
 ### setAlarmToneUri<sup>12+</sup>
 
 setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
@@ -1391,6 +1764,10 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1406,6 +1783,8 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1423,6 +1802,23 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
+  console.info(`Promise returned to indicate a successful setting of the alarm tone uri.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to set the alarm tone uri ${err}`);
+});
+```
+
 ### getAlarmToneUri<sup>12+</sup>
 
 getAlarmToneUri(context: Context): Promise&lt;string&gt;
@@ -1432,6 +1828,10 @@ getAlarmToneUri(context: Context): Promise&lt;string&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1446,6 +1846,8 @@ getAlarmToneUri(context: Context): Promise&lt;string&gt;
 | Promise&lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1462,6 +1864,22 @@ systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
+  console.info(`Promise returned to indicate that the value of alarm tone uri.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the alarm tone uri ${err}`);
+});
+```
+
 ### getAlarmToneAttrList<sup>12+</sup>
 
 getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
@@ -1471,6 +1889,10 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1496,6 +1918,8 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1511,15 +1935,37 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoundManager.ToneAttrsArray) => {
+  console.info(`Promise returned to indicate that the value of the attribute list of alarm tone is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the attribute list of alarm tone ${err}`);
+});
+```
+
 ### openAlarmTone<sup>12+</sup>
 
-openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+ArkTS-Dyn: openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+
+ArkTS-Sta: openAlarmTone(context: Context, uri: string): Promise&lt;int&gt;
 
 打开闹铃文件。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1532,7 +1978,7 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise对象，返回fd。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -1546,6 +1992,8 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1563,9 +2011,28 @@ systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.openAlarmTone(context, uri).then((value: int) => {
+  console.info(`Promise returned to indicate the value of fd.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to open alarm tone ${err}`);
+});
+```
+
 ### close<sup>12+</sup>
 
-close(fd: number): Promise&lt;void&gt;
+ArkTS-Dyn: close(fd: number): Promise&lt;void&gt;
+
+ArkTS-Sta: close(fd: int): Promise&lt;void&gt;
 
 关闭闹铃文件。使用Promise异步回调。
 
@@ -1573,11 +2040,15 @@ close(fd: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 |-----| --------| ---- |----------------------------------------------|
-| fd  | number  | 是   | 文件描述符，通过[openAlarmTone](#openalarmtone12)获取。 |
+| fd  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 文件描述符，通过[openAlarmTone](#openalarmtone12)获取。 |
 
 **返回值：**
 
@@ -1597,6 +2068,8 @@ close(fd: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1613,6 +2086,23 @@ systemSoundManagerInstance.close(fd).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let fd = 50; // 需更改为目标铃声的fd。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.close(fd).then(() => {
+  console.info(`Promise returned to indicate that the fd has been close.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to close fd ${err}`);
+});
+```
+
 ### addCustomizedTone<sup>12+</sup>
 
 addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string): Promise&lt;string&gt;
@@ -1624,6 +2114,10 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1653,6 +2147,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1678,9 +2174,37 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let title = 'test'; // 需更改为实际名称。
+let fileName = 'displayName_test'; // 需更改为实际文件名。
+let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
+
+let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
+toneAttrs.setTitle(title);
+toneAttrs.setFileName(fileName);
+toneAttrs.setCategory(categoryValue);
+
+let path = 'file://data/test.ogg'; // 需更改为实际铃音uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((value: string) => {
+  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to add customized tone ${err}`);
+});
+```
+
 ### addCustomizedTone<sup>12+</sup>
 
-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?: number, length?: number): Promise&lt;string&gt;
+ArkTS-Dyn: addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?: number, length?: number): Promise&lt;string&gt;
+
+ArkTS-Sta: addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: int, offset?: long, length?: long): Promise&lt;string&gt;
 
 通过文件描述符fd将自定义铃音添加到铃音库。使用Promise异步回调。
 
@@ -1690,15 +2214,19 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                                                                     |
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是  | 当前应用的上下文。                                                              |
 | toneAttr | [ToneAttrs](#toneattrs12) | 是  | 铃音属性。                                                                  |
-| fd  | number    | 是  | 文件描述符，可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。 |
-| offset | number    | 否  | 读取数据的偏移量（以字节为单位）。默认情况下为0。                                              |
-| length | number    | 否  | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。                                 |
+| fd  | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是  | 文件描述符，可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long    | 否  | 读取数据的偏移量（以字节为单位）。默认情况下为0。                                              |
+| length | ArkTS-Dyn: number<br>ArkTS-Sta: long    | 否  | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。                                 |
 
 **返回值：**
 
@@ -1719,6 +2247,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 | 5400103 | I/O error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1747,6 +2277,34 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let title = 'test'; // 需更改为实际名称。
+let fileName = 'displayName_test'; // 需更改为实际文件名。
+let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
+
+let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
+toneAttrs.setTitle(title);
+toneAttrs.setFileName(fileName);
+toneAttrs.setCategory(categoryValue);
+
+let fd = 10; // 需更改为实际铃音fd。
+let offset = 0; // 需更改为实际所需偏移量。
+let length = 50; // 需更改为实际所需数据长度。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, length).then((value: string) => {
+  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to add customized tone ${err}`);
+});
+```
+
 ### removeCustomizedTone<sup>12+</sup>
 
 removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
@@ -1758,6 +2316,10 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1786,6 +2348,8 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1802,6 +2366,23 @@ systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
+  console.info(`Promise returned to indicate that the customized tone has been deleted.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to delete customized tone ${err}`);
+});
+```
+
 ### getToneHapticsSettings<sup>14+</sup>
 
 getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;ToneHapticsSettings&gt;
@@ -1811,6 +2392,10 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1838,6 +2423,8 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1854,6 +2441,23 @@ systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: sy
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: systemSoundManager.ToneHapticsSettings) => {
+  console.info(`Promise returned to indicate that the value of the tone haptics settings is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the tone haptics settings ${err}`);
+});
+```
+
 ### setToneHapticsSettings<sup>14+</sup>
 
 setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: ToneHapticsSettings): Promise&lt;void&gt;
@@ -1863,6 +2467,10 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1892,6 +2500,8 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1912,6 +2522,27 @@ systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSett
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
+let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
+  mode: systemSoundManager.ToneHapticsMode.NON_SYNC,
+  hapticsUri: '/data/storage/el2/base/haptics/synchronized/alarms/test.json', // 需更改为通过getToneHapticsList获取的Uri。
+}
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSettings).then(() => {
+  console.info(`Promise returned to indicate a successful setting of the tone haptics.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to set the tone haptics settings ${err}`);
+});
+```
+
 ### getToneHapticsList<sup>14+</sup>
 
 getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapticsAttrsArray&gt;
@@ -1921,6 +2552,10 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1948,6 +2583,8 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1963,6 +2600,22 @@ systemSoundManagerInstance.getToneHapticsList(context, false).then((value: syste
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getToneHapticsList(context, false).then((value: systemSoundManager.ToneHapticsAttrsArray) => {
+  console.info(`Promise returned to indicate that the value of the attribute list of tone haptics is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the attribute list of tone haptics ${err}`);
+});
+```
+
 ### getHapticsAttrsSyncedWithTone<sup>14+</sup>
 
 getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt;ToneHapticsAttrs&gt;
@@ -1972,6 +2625,10 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2000,6 +2657,8 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -2016,15 +2675,38 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // 需更改为实际铃音uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then((value: systemSoundManager.ToneHapticsAttrs) => {
+  console.info(`Promise returned to indicate that the value of the attribute of tone haptics is obtained.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to get the attribute of tone haptics ${err}`);
+});
+```
+
 ### openToneHaptics<sup>14+</sup>
 
-openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+ArkTS-Dyn: openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+
+ArkTS-Sta: openToneHaptics(context: Context, hapticsUri: string): Promise&lt;int&gt;
 
 打开系统铃音的振动。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2037,7 +2719,7 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise对象，返回fd。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回fd。 |
 
 **错误码：**
 
@@ -2052,6 +2734,8 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 | 20700003 | Unsupported operation. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2069,6 +2753,23 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: num
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { AppStorage } from '@kit.ArkUI';
+
+let context = AppStorage.get<common.UIAbilityContext>('context') as common.UIAbilityContext;
+let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // 需更改为目标统铃音的振动的uri。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: int) => {
+  console.info(`Promise returned to indicate the value of fd.`);
+}).catch (async (err: BusinessError) => {
+  console.error(`Failed to open haptics ${err}`);
+});
+```
+
 ## RingtonePlayer<sup>10+</sup>
 
 type RingtonePlayer = _RingtonePlayer;
@@ -2076,6 +2777,10 @@ type RingtonePlayer = _RingtonePlayer;
 系统铃音播放器对象。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型              |说明     |
 |-----------------|-------|
@@ -2089,6 +2794,10 @@ type SystemTonePlayer = _SystemTonePlayer;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型              | 说明        |
 |-----------------|-----------|
 | _SystemTonePlayer | 系统提示音播放器。 |
@@ -2100,6 +2809,10 @@ type RingtoneOptions = _RingtoneOptions;
 系统铃音播放器配置项。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型              | 说明          |
 |-----------------|-------------|
@@ -2113,9 +2826,13 @@ type SystemToneOptions = _SystemToneOptions;
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型              | 说明            |
 |-----------------|---------------|
-| _SystemToneOptions | 系统提示音音播放器配置项。 |
+| _SystemToneOptions | 系统提示音播放器配置项。 |
 
 
 
