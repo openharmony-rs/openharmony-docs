@@ -519,82 +519,13 @@ export default class EntryAbility extends UIAbility {
 > this.getUIContext().getSharedLocalStorage()只在模拟器或者实机上才有效，在Previewer预览器中使用不生效。
 
 
-在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到Page页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
+在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到PageFiveShareChange页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
 
 <!-- @[localtorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
 
-``` TypeScript
-// PageFiveShare.ets
-// 预览器上不支持获取页面共享的LocalStorage实例
-@Entry({ useSharedStorage: true })
-@Component
-struct PageFiveShare {
-  // 可以使用@LocalStorageLink/Prop与LocalStorage实例中的变量建立联系
-  @LocalStorageLink('PropA') propA: number = 1;
-  pageStack: NavPathStack = new NavPathStack();
-
-  build() {
-    Navigation(this.pageStack) {
-      Row() {
-        Column() {
-          Text(`${this.propA}`)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-          Button('To Page')
-            .onClick(() => {
-              this.pageStack.pushPathByName('Page', null);
-            })
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
-  }
-}
-```
 
 <!-- @[localtorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
 
-``` TypeScript
-
-@Builder
-export function PageBuilder() {
-  PageFiveShareChange()
-}
-
-// PageFiveShareChange组件获得了父亲Index组件的LocalStorage实例
-@Component
-struct PageFiveShareChange {
-  @LocalStorageLink('PropA') propA: number = 2;
-  pathStack: NavPathStack = new NavPathStack();
-
-  build() {
-    NavDestination() {
-      Row(){
-        Column() {
-          Text(`${this.propA}`)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-
-          Button('Change propA')
-            .onClick(() => {
-              this.propA = 100;
-            })
-
-          Button('Back Index')
-            .onClick(() => {
-              this.pathStack.pop();
-            })
-        }
-        .width('100%')
-      }
-    }
-    .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack;
-    })
-  }
-}
-```
 
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
@@ -696,7 +627,7 @@ struct ChildSix {
    
    @Entry(localStorageInstance)
    @Component
-   struct AIndex {
+   struct Index {
      // 'PropA'，和localStorageInstance中'PropA'的双向同步
      @LocalStorageLink('PropA') propA: string = 'Hello World';
      @State count: number = 0;
@@ -708,7 +639,7 @@ struct ChildSix {
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
            // 使用LocalStorage 实例localStorageChange
-           AChild(localStorageChange)
+           ChildOne(localStorageChange)
          }
          .width('100%')
        }
@@ -717,7 +648,7 @@ struct ChildSix {
    }
    
    @Component
-   struct AChild {
+   struct ChildOne {
      build() {
        Text('hello')
          .fontSize(50)
