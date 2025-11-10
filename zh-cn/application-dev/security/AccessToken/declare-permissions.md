@@ -34,7 +34,9 @@
 ``` JSON5
 {
   "module": {
-	// ···
+    // ···
+    // 1.ohos.permission.APPROXIMATELY_LOCATION与ohos.permission.LOCATION为user_grant权限，reason和usedScene为必填字段。
+    // 2.ohos.permission.USE_BLUETOOTH为system_grant权限，reason和usedScene为选填字段。
     "requestPermissions": [
       {
         "name": "ohos.permission.APPROXIMATELY_LOCATION",
@@ -54,7 +56,10 @@
             "FormAbility"
           ],
           "when": "inuse"
-        },
+        }
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
       }
     ]
   }
