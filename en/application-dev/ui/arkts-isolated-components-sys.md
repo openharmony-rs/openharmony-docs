@@ -1,4 +1,10 @@
 # Cross-Thread Embedded Component (IsolatedComponent, for System Applications Only)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **IsolatedComponent** is a tool for building isolated components, enabling you to create independent and reusable components that can be used across different applications without conflicts.
 
@@ -8,7 +14,7 @@ Each **IsolatedComponent** exists independently with its own scope and lifecycle
 
 [IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md): a component designed to embed and display a UI provided by an independent .abc file within the current page, with the displayed content executed in a restricted Worker thread.
 
-This component is primarily used in modular development scenarios requiring hot updates for .abc files.
+This component is primarily designed for modular development scenarios that require hot updates for .abc files. (The .abc files loaded by **IsolatedComponent** can be dynamically replaced, enabling content updates without reinstalling the application.)
 
 ## Constraints
 
@@ -81,6 +87,7 @@ In the scenario where the **IsolatedComponent** is used, components often need t
 ```ts
 // OhCardWorker.ets
 import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {}
@@ -178,7 +185,7 @@ struct Index {
         // 1. Verify the .abc file.
         Button("verifyAbc").onClick(() => {
           let abcFilePath = `${this.context.filesDir}/${this.fileName}.abc`;
-          console.log("abcFilePath: " + abcFilePath);
+          console.info("abcFilePath: " + abcFilePath);
           VerifyAbc([abcFilePath], false);
         }).height(100).width(200)
 

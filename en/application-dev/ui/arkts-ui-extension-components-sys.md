@@ -1,4 +1,10 @@
 # Cross-Process Application Capability Extension (UIExtension, for System Applications Only)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **UIExtension** allows you to embed UI extensions from one application into another, providing a seamless experience as users interact with different application functionalities within a single application UI.
 
@@ -15,7 +21,7 @@
   Defined and used in the provider application, **UIExtensionAbility** allows the provider to run in a separate process and creates UI extensions that can be embedded in the host application's window.
 
 
-## Working Principle
+## Implementation Principles
 
 UIExtension offers a capability for cross-process application sharing. It is embedded into the host application (system application) process in the form of a component using the **UIExtensionComponent**. When the host application starts, it triggers the Application Management Service (AMS) to start the provider application process. AMS is mainly responsible for the management tasks of application startup, exit, and switching.
 
@@ -85,7 +91,7 @@ The details are as follows.
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | Not supported  | The **EmbeddedComponent** is a component used to embed into the current page the UI provided by another [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) in the same application. The EmbeddedUIExtensionAbility runs in an independent process for UI layout and rendering.| Due to its cross-application scheduling capability, UIExtension does not support nested launching of this component. |
 | [RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | Not supported  | **RemoteWindow** is a component that enables remote management of application windows, offering the capability to create synchronized animations between the application window and components during application startup and exit.| The components in UIExtension are already in another process and cannot affect or control the host application's window.|
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | Not supported  | The **RichText** component parses and displays HTML text.                        | —                                                            |
-| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | Not supported       | The **FolderStack** component extends the **Stack** component by adding the hover feature for foldable devices. With the **upperItems** parameter set, it can automatically avoid the crease area of the foldable device and move the content to the upper half screen. The **FolderStack** component is usually used in modular development scenarios where .abc file hot update is required. | The component's capabilities require linkage with the host application's window, necessitating access to the host application's main window information within the provider. Therefore, this component is not supported at present. |
+| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | Not supported  | The **FolderStack** component extends the **Stack** component by adding the hover feature for foldable devices. With the **upperItems** parameter set, it can automatically avoid the crease area of the foldable device and move the content to the upper half screen. This component is primarily designed for modular development scenarios that require hot updates for .abc files. (The .abc files loaded by **IsolatedComponent** can be dynamically replaced, enabling content updates without reinstalling the application.) | The component's capabilities require linkage with the host application's window, necessitating access to the host application's main window information within the provider. Therefore, this component is not supported at present.|
 | [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | Not supported  | The **XComponent** can accept and display the EGL/OpenGL ES and media data input.  | —                                                            |
 | [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) | Not supported  | The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call.| This component facilitates cross-process component calls. However, nesting it within UIExtension can complicate the process relationships, potentially leading to functional and performance issues.|
 | [HyperLink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md) | Not supported  | The **Hyperlink** component implements a link from a location in the component to another location.                    | —                                                            |
@@ -97,7 +103,7 @@ The details are as follows.
 
 **Node-API**
 
-The capabilities provided by Node-APIs in the **UIExtension** scenario must account for their potential to extend beyond the current component and interact with the host application's components and process context. Specifically, the following are not supported.
+The capabilities provided by Node-APIs in the **UIExtension** scenario must account for their potential to extend beyond the current component and interact with the host application's components and process context. Specifically, the following are not supported:
 
 - The API may require information from the host application's context or window, such as **UIContext**.
 - The API may control or influence not just the component itself but also other components or aspects of the host application, such as UI appearance.
@@ -172,12 +178,12 @@ When using the UIExtension capabilities, comply with the following design constr
 
 | Scenario    | Category                      | Supported or Not| Synchronous/Asynchronous (Host and Provider)| Remarks                                                        |
 | -------- | -------------------------- | -------- | ------------------------- | ------------------------------------------------------------ |
-| Universal event| Click event (**Click**)         | Supported    | Asynchronous                     | —                                                            |
-| Universal event| Touch event (**Touch**)         | Supported    | Asynchronous                     | —                                                            |
-| Universal event| Drag event (**onDrag*XXX***)     | Supported    | Asynchronous                     | —                                                            |
-| Universal event| Key event (**KeyEvent**)      | Supported    | Synchronous                     | Circular nesting or excessive nesting can cause unresponsiveness in applications. To address this issue, a default timeout mechanism is provided for managing waiting periods. If the timeout threshold is exceeded, the waiting is automatically aborted. From the perspective of the upper layer, this is treated as if the event was not processed at all.|
-| Universal event| Focus event (**onFocus**/**onBlur**)| Supported    | Synchronous                     | Circular nesting or excessive nesting can cause unresponsiveness in applications. To address this issue, a default timeout mechanism is provided for managing waiting periods. If the timeout threshold is exceeded, the waiting is automatically aborted. From the perspective of the upper layer, this is treated as if the event was not processed at all.|
-| Universal event| Mouse event (**onHove**/**onMouse**) | Supported    | Asynchronous                     | —                                                            |
+| Universal event| [Click event](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md) (Click)         | Supported    | Asynchronous                     | —                                                            |
+| Universal event| [Touch event](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md) (Touch)         | Supported    | Asynchronous                     | —                                                            |
+| Universal event| [Drag event](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md) (onDragXXX)     | Supported    | Asynchronous                     | —                                                            |
+| Universal event| [Key event](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md) (KeyEvent)      | Supported    | Synchronous                     | Circular nesting or excessive nesting can cause unresponsiveness in applications. To address this issue, a default timeout mechanism is provided for managing waiting periods. If the timeout threshold is exceeded, the waiting is automatically aborted. From the perspective of the upper layer, this is treated as if the event was not processed at all.|
+| Universal event| [Focus event](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md) (onFocus/onBlur)| Supported    | Synchronous                     | Circular nesting or excessive nesting can cause unresponsiveness in applications. To address this issue, a default timeout mechanism is provided for managing waiting periods. If the timeout threshold is exceeded, the waiting is automatically aborted. From the perspective of the upper layer, this is treated as if the event was not processed at all.|
+| Universal event| [Mouse event](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md) (onHove/onMouse)| Supported    | Asynchronous                     | —                                                            |
 | Gesture handling| —                          | Supported    | Asynchronous                     | —                                                            |
 | Accessibility  | —                          | Supported    | Synchronous                     | Circular nesting or excessive nesting can cause unresponsiveness in applications. To address this issue, a default timeout mechanism is provided for managing waiting periods. If the timeout threshold is exceeded, the waiting is automatically aborted. From the perspective of the upper layer, this is treated as if the event was not processed at all.|
 

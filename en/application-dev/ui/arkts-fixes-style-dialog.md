@@ -1,4 +1,10 @@
 # Fixed-Style Dialog Box
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The fixed-style dialog box uses a predefined layout format, allowing you to focus on providing the required text content without worrying about specific display layout details. This simplifies usage and improves convenience.
 
@@ -29,36 +35,45 @@ Since API version 19, the dialog boxes created using **showDialog**, **ActionShe
 
 ## Action Menu (showActionMenu)
 
-The action menu is implemented by obtaining the **PromptAction** object from the [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11) method in **UIContext** and then calling the [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11) API through this object. It can be used in callbacks or in classes you define.
+The action menu is implemented by obtaining the **PromptAction** object using the **getPromptAction** API in **UIContext** and then calling the [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11) API through this object. It can be used in callbacks or in classes you define.
+
+In **showActionMenu**, the maximum font scale factor for **title** is 2.
 
 After an action menu is created and displayed, the index of the selected button in the **buttons** array will be returned asynchronously as the response result.
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
 
-let uiContext = this.getUIContext();
-let promptAction: PromptAction = uiContext.getPromptAction();
-try {
-  promptAction.showActionMenu({
-    title: 'showActionMenu Title Info',
-    buttons: [
-      {
-        text: 'item1',
-        color: '#666666'
-      },
-      {
-        text: 'item2',
-        color: '#000000'
-      },
-    ]
-  })
-    .then(data => {
-      console.info('showActionMenu success, click button: ' + data.index);
-    })
-    .catch((err: Error) => {
-      console.error('showActionMenu error: ' + err);
-    })
-} catch (error) {
+  build() {
+    Column() {
+      Button('showActionMenu')
+        .onClick(() => {
+          this.promptAction.showActionMenu({
+            title: 'showActionMenu Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666'
+              },
+              {
+                text: 'item2',
+                color: '#000000'
+              },
+            ]
+          })
+            .then(data => {
+              console.info('showActionMenu success, click button: ' + data.index);
+            })
+            .catch((err: Error) => {
+              console.error('showActionMenu error: ' + err);
+            })
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -66,38 +81,55 @@ try {
 
 ## Common Dialog Box (showDialog)
 
-The common dialog box is implemented by obtaining the **PromptAction** object from the **getPromptAction** method in **UIContext** and then calling the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) API through this object. It can be used in callbacks or in classes you define.
+The common dialog box is implemented by obtaining the **PromptAction** object using the **getPromptAction** API in **UIContext** and then calling the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) API through this object. It can be used in callbacks or in classes you define.
+
+In **showDialog**, the maximum font scale factor for **title** is 2.
 
 After a common dialog box is created and displayed, the index of the selected button in the **buttons** array will be returned asynchronously as the response result.
 
 ```ts
 // xxx.ets
 import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let uiContext = this.getUIContext();
-let promptAction: PromptAction = uiContext.getPromptAction();
-try {
-  promptAction.showDialog({
-    title: 'showDialog Title Info',
-    message: 'Message Info',
-    buttons: [
-      {
-        text: 'button1',
-        color: '#000000'
-      },
-      {
-        text: 'button2',
-        color: '#000000'
-      }
-    ]
-  }, (err, data) => {
-    if (err) {
-      console.error('showDialog err: ' + err);
-      return;
-    }
-    console.info('showDialog success callback, click button: ' + data.index);
-  });
-} catch (error) {
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Column() {
+      Button('showDialog')
+        .onClick(() => {
+          try {
+            this.promptAction.showDialog({
+              title: 'showDialog Title Info',
+              message: 'Message Info',
+              buttons: [
+                {
+                  text: 'button1',
+                  color: '#000000'
+                },
+                {
+                  text: 'button2',
+                  color: '#000000'
+                }
+              ]
+            }, (err, data) => {
+              if (err) {
+                console.error('showDialog err: ' + err);
+                return;
+              }
+              console.info('showDialog success callback, click button: ' + data.index);
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showDialog args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -335,7 +367,9 @@ struct TextPickerDialogExample {
 
 The action sheet is ideal for presenting multiple action options, especially when the UI only needs to display a list of actions without additional content.
 
-You use the [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) API in UIContext to implement an action sheet.
+You use the [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) API in **UIContext** to implement an action sheet.
+
+In **showActionSheet**, the maximum font scale factor for **title** is 2.
 
 This example shows how to configure the style and animation effects of the action sheet by setting APIs like **width**, **height**, and **transition**.
 
@@ -405,7 +439,9 @@ The alert dialog box is used when you need to ask a question or get permission f
 * The alert dialog box interrupts the current task. Therefore, only use it to provide necessary information and useful operations.
 * Avoid using alert dialog boxes to provide information only; users do not like to be interrupted by information-rich but non-operable alerts.
 
-You use the [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) API in UIContext to implement an alert dialog box.
+You use the [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) API in **UIContext** to implement an alert dialog box.
+
+In **showAlertDialog**, the maximum font scale factor for **title** is 2.
 
 This example shows how to configure the style and animation effects of an alert dialog with multiple buttons by setting APIs like **width**, **height**, and **transition**.
 
