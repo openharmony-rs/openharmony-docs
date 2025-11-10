@@ -1198,6 +1198,16 @@ struct Page {
 
 <!-- @[StateArrayNo2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo2.ets) -->
 
+``` TypeScript
+public loadData() {
+  let tempList = new ChildList();
+  for (let i = 1; i < 6; i++) {
+    tempList.push(new Child(i));
+  }
+  this.childList = tempList;
+}
+```
+
 
 ChildList类型在定义的时候使用了@Observed进行装饰，所以用new创建的对象tempList具有被观测的能力，因此在点击“X”按钮删除其中一条内容时，变量childList就能够观测到变化，所以触发了ForEach的刷新，最终UI渲染刷新。
 
