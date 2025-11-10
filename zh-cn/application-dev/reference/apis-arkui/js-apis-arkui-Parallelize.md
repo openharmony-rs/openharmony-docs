@@ -22,11 +22,9 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 **ArkTS-Sta起始版本：** 20
 
-**参数：**
-
 | 名称      | 类型     | 只读 | 可选 | 说明                |
 | -------- | -------- | --- |-----|--------------------- |
-| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。其中，false表示不开启并行化创建，true表示开启并行化创建。<br/>默认值：true  |
+| enable   | boolean  | 否   | 是| 是否开启UI创建并行化。<br/>true：开启并行化创建；false：不开启并行化创建。<br/>默认值：true  |
 
 
 
@@ -45,7 +43,7 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时的可选参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
 | content_  | () => void | 是   | 定义要创建的UI内容，通过尾随闭包"{...}"的形式传入。 |
 
 > **说明：**
@@ -70,7 +68,7 @@ struct Index {
 
   build() {
     Column() {
-      // ParallelOption参数未传入，默认值为undefined，默认开启并行创建。并行创建Row组件和Image组件。
+      // ParallelOption参数传入undefined，默认开启并行创建。并行创建Row组件和Image组件。
       ParallelizeUI(undefined) {
         Row() {
           Image($r('app.media.startIcon'))
@@ -83,7 +81,7 @@ struct Index {
         .backgroundColor('#F5F5F5')
       }
 
-      // ParallelOption.enable参数为false，不开启并行创建。串行创建Stack组件和Text组件。
+      // options参数类型为ParallelOption时，ParallelOption.enable参数选择false，不开启并行创建。串行创建Stack组件和Text组件。
       ParallelizeUI({ enable: false }) {
         Stack() {
           Text(this.count.toString())
@@ -97,7 +95,7 @@ struct Index {
         .borderRadius(8)
       }
 
-      // ParallelOption.enable参数为false，不开启并行创建。串行创建List组件和ListItem等组件。
+      // options参数类型为ParallelOption时，ParallelOption.enable参数选择false，不开启并行创建。串行创建List组件和ListItem等组件。
       ParallelizeUI({ enable: false }) {
         List({ space: 8 }) {
           ForEach(this.listData, (item: string) => {
@@ -126,7 +124,7 @@ struct Index {
         .height(180)
       }
 
-      // ParallelOption.enable参数为true，开启并行创建。并行创建Grid组件和GridItem等组件。
+      // options参数类型为ParallelOption时，ParallelOption.enable参数选择true，开启并行创建。并行创建Grid组件和GridItem等组件。
       ParallelizeUI({ enable: true }) {
         Grid() {
           GridItem() {
@@ -181,8 +179,8 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时的可选参数。|
-| param  | () => T | 是   | 用于封装外部定义的状态变量，确保在多线程并行创建过程中状态访问的安全性。 |
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
+| param  | () => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。 |
 | content_  | (param: T) => void | 是   | 定义要创建的UI内容。|
 
 
@@ -216,7 +214,7 @@ struct Index {
         })
 
       // 外部状态变量可以通过param参数传入
-      ParallelizeUI(undefined, () => {
+      ParallelizeUI<Param>(undefined, () => {
         return new Param('Counter A', this.baseCount * 2)
       }, (param: Param) => {
         Text(param.title)
@@ -269,10 +267,10 @@ ParallelizeUI<V, T>(
 
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时的可选参数。|
+| options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数。|
 | arr  | Array\<V\> | 是   | 数据源，为Array类型的数组。 |
-| param  | (item: V, index: int) => T | 是   | 生成并行创建时使用的数据的函数，该函数会在主线程调用。 |
-| content_  | (param: T) => void | 是   | 定义要创建的UI内容。- param参数（必选）：由param函数调用后返回的对象。 |
+| param  | (item: V, index: int) => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
+| content_  | (param: T) => void | 是   | 定义要创建的UI内容。- param参数（必选）：param函数调用后返回的对象。 |
 
 
 **示例：**
@@ -313,6 +311,7 @@ struct Index {
       List({space:5}) {
         // 在List容器中使用时，仅按需并行创建当前可见的节点。
         ParallelizeUI<Int, Info>(undefined, this.arr,
+          // item是当前数据项，index是数据项索引值。
           (item:Int, index: Int) => {
             return new Info(${item}, this.stateVar)
           },
