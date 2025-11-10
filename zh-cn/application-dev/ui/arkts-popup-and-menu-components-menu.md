@@ -291,7 +291,6 @@ export struct SupportAvoidCentralAxisMenuExample {
       .height('100%')
       .width('100%')
     }
-    .backgroundColor('#f1f2f3')
     // ···
 ```
 
@@ -320,7 +319,7 @@ export struct EventTransSubWindowMenuExample {
       })
       .width('100%')
       .height('100%')
-    }.backgroundColor('#f1f2f3')
+    }
     // ···
   }
 
@@ -394,7 +393,7 @@ export struct BindComponentMenuExample {
       .width('100%')
       .height('100%')
       .backgroundColor('#F5F5F5')
-    }.backgroundColor('#f1f2f3')
+    }
     // ···
   }
 }
