@@ -92,6 +92,42 @@ struct TodoList {
 
 <!-- @[Main_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ParamPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/ParamPage.ets
+@ComponentV2
+struct TaskItem {
+  @Param taskName: string = '';
+  @Param @Once isFinish: boolean = false;
+
+  build() {
+    Row() {
+      // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+      Image(this.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+        .width(28)
+        .height(28)
+      Text(this.taskName)
+        .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+    }
+    .onClick(() => this.isFinish = !this.isFinish)
+  }
+}
+
+@Entry
+@ComponentV2
+struct TodoList {
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      TaskItem({ taskName: 'Task 1', isFinish: false })
+      TaskItem({ taskName: 'Task 2', isFinish: false })
+      TaskItem({ taskName: 'Task 3', isFinish: false })
+    }
+  }
+}
+```
+
 ### 添加\@Event，实现组件对外输出
 
 实现任务名称动态设置后，任务列表内容固定。为了实现任务列表的动态扩展，需要增加任务项的添加和删除功能。为此，引入\@Event装饰器，用于子组件向父组件输出数据。
