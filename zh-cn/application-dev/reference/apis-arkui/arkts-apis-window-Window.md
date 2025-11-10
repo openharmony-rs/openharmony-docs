@@ -1488,15 +1488,15 @@ let config: window.Configuration = {
 };
 try {
   window.createWindow(config, (err: BusinessError<void> | null, data) => {
-    const errCode: number = err.code;
+    const errCode = err?.code;
     if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to create the system window. Cause code: ${err?.code}, message: ${err?.message}`);
       return;
     }
     windowClass = data;
     windowClass.setUIContent("pages/Test");
     let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+    let promise = windowClass!.setSystemAvoidAreaEnabled(enabled);
     promise.then(() => {
       let enable = windowClass?.isSystemAvoidAreaEnabled();
     }).catch((err: Error) => {
