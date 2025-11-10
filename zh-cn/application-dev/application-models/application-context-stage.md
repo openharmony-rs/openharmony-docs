@@ -342,7 +342,6 @@ export default class EntryAbility extends UIAbility {
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
-  
   @Entry
   @Component
   struct ApplicationContextCache {
@@ -399,7 +398,7 @@ export default class EntryAbility extends UIAbility {
           // ···
           Button() {
             Text('create file')
-          // ···
+        		// ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // 获取应用文件路径
@@ -483,7 +482,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
 
 ``` TypeScript
-// Index.ets
+// AreaContext.ets
 import { contextConstant, common } from '@kit.AbilityKit';
 
 @Entry
@@ -549,6 +548,7 @@ struct AreaContext {
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+  
 const TAG = '[LifecycleAbility]';
 const DOMAIN = 0xF811;
 
