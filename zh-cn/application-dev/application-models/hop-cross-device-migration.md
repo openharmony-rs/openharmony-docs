@@ -1,5 +1,5 @@
 # 跨端迁移
-<!--Kit: C-->
+<!--Kit: -->
 <!--Subsystem: -->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
