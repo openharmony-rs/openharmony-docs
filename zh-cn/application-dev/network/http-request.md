@@ -530,13 +530,13 @@ HTTP拦截器模块提供了一种强大且可定制的机制，允许开发者�
 | 重定向拦截点（REDIRECTION）       | 收到重定向响应并准备发送新请求之前。允许修改重定向的目标URL或请求信息。 | 当出参为ture时，此时入参中的request值为原始值，可以修改URL，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 | 最终响应拦截点（FINAL_RESPONSE）    | 获得最终响应之后。最后一个拦截点，适合对响应进行统一解密、解析、日志记录、错误处理。 | 当出参为ture时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 
-### 触发拦截点顺序规则说明
-
 **顺序执行**：拦截器严格按照INITIAL_REQUEST->CACHE_CHECKED->NETWORK_CONNECT->(REDIRECTION)->FINAL_RESPONSE的顺序被触发调用。
 
 **重定向循环**：这是流程中最关键的一个循环。当REDIRECTION拦截器被触发后，流程会跳回到NETWORK_CONNECT阶段，重新开始一个新的“请求周期”，直到不再发生重定向为止。这确保了重定向后的新请求也能被所有必要的拦截器（如认证头添加、日志记录等）正确处理。
 
 **缓存拦截**：CACHE_CHECKED是一个决策点。如果缓存存在且有效，请求会在此处经过CACHE_CHECKED处理后，直接跳转到FINAL_RESPONSE阶段返回缓存数据，从而避免不必要的网络操作。
+
+### HTTP拦截器开发步骤
 
 1.  导入HTTP请求拦截器所需模块。
 
@@ -548,9 +548,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-2.  创建HttpRequest对象
-
-    调用[createHttp()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
+2.  调用[createHttp()](../js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
  <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -559,9 +557,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let httpRequest: http.HttpRequest = http.createHttp();
 ```
 
-3.  创建拦截器链对象
-
-    调用HttpInterceptorChain()方法，创建拦截器链对象。
+3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
 <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -570,7 +566,7 @@ let httpRequest: http.HttpRequest = http.createHttp();
 let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
 ```
 
-4.  创建拦截器类实现http.HttpInterceptor接口
+4.  创建拦截器类实现http.HttpInterceptor接口。
 
 <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -671,9 +667,7 @@ class FinalHttpInterceptor implements http.HttpInterceptor {
 }
 ```
 
-5.  将需要的拦截器实例加入到拦截器链中
-
-    调用addChain()方法，将拦截器加入到拦截器链中。
+5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
 
 <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -686,9 +680,7 @@ chain.addChain([
 ]);
 ```
 
-6.  将请求应用到拦截器链
-
-    调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
+6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
 
 <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -697,7 +689,7 @@ chain.addChain([
 chain.apply(httpRequest);
 ```
 
-7.  创建请求可选项
+7.  创建请求可选项。
 
 <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -710,9 +702,7 @@ let options: http.HttpRequestOptions = {
 };
 ```
 
-8.  发起HTTP请求，解析服务器响应事件
-
-    调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
+8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
 <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -730,7 +720,7 @@ httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpRes
 });
 ```
 
-9.  调用destroy()方法销毁
+9.  调用destroy()方法销毁http请求。
 
 <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
