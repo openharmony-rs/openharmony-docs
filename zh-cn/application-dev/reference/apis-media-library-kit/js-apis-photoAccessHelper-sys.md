@@ -10173,7 +10173,6 @@ async function example(context: Context) {
 | EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | 文件的旋转角度信息。**系统接口**：此接口为系统接口。 |
 | HAS_APPLINK<sup>21+</sup>  | 'has_applink' | 文件记忆链接的状态信息。**系统接口**：此接口为系统接口。 |
 | APPLINK<sup>21+</sup>  | 'applink' | 文件记忆链接的信息。**系统接口**：此接口为系统接口。 |
-| HDR_MODE<sup>21+</sup>  | 'hdr_mode' | 文件的HDR模式。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
