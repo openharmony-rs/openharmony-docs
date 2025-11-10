@@ -66,7 +66,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
   @Entry
   @Component
   struct NavigationExample {
-    @State TooTmp: ToolbarItem = {
+    @State toolTmp: ToolbarItem = {
       'value': "func",
       'icon': "./image/ic_public_highlights.svg",  // Icon resource in the image folder in the current directory.
       'action': () => {}
@@ -75,7 +75,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
     private arr: number[] = [1, 2, 3];
 
     @Builder
-    PageMap(name: string) {
+    pageMap(name: string) {
       if (name === "NavDestinationTitle1") {
         pageOneTmp();
       } else if (name === "NavDestinationTitle2") {
@@ -88,7 +88,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
     build() {
       Column() {
         Navigation(this.pageInfos) {
-          TextInput({ placeholder: 'Search...' })
+          TextInput({ placeholder: 'search...' })
             .width("90%")
             .height(40)
             .backgroundColor('#FFFFFF')
@@ -115,7 +115,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
         }
         .title("Main Title")
         .mode(NavigationMode.Split)
-        .navDestination(this.PageMap)
+        .navDestination(this.pageMap)
         .menus([
           {
             value: "", icon: "./image/ic_public_search.svg", action: () => {
@@ -676,13 +676,13 @@ To facilitate the decoupling of components from pages, custom components within 
    // Used in UIAbility
    import { UIContext, uiObserver } from '@kit.ArkUI';
   
-   // callBackFunc is a callback defined by you.
-   function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
-   uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+   // callbackFunc is a callback defined by you.
+   function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
+   uiObserver.on('navDestinationSwitch', this.context, callbackFunc);
   
    // The getUIContext() API of the window can be used to obtain the corresponding UIContent.
    uiContext: UIContext | null = null;
-   uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
+   uiObserver.on('navDestinationSwitch', this.uiContext, callbackFunc);
   ```
 
 ## Page Transition
@@ -1004,8 +1004,8 @@ export function PageOneBuilder(name: string, param: string) {
 @Component
 export struct PageOne {
   pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
-  @State value: String = '';
+  name: string = '';
+  @State value: string = '';
 
   build() {
     NavDestination() {
@@ -1063,7 +1063,7 @@ export function PageTwoBuilder(name: string) {
 @Component
 export struct PageTwo {
   pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
+  name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
 
   build() {
