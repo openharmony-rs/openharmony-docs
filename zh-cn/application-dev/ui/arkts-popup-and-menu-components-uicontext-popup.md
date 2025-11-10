@@ -19,6 +19,7 @@
    enableArrow: true
  })
    .then(() => {
+     // 全局变量定义：const DOMAIN = 0xFF00;
      hilog.info(DOMAIN, 'popupBuildText', 'openPopup success');
    })
    .catch((err: BusinessError) => {
@@ -71,6 +72,7 @@
       buttons: [{
         text: 'confirm',
         action: () => {
+          // 全局变量定义：const DOMAIN = 0xFF00;
           hilog.info(DOMAIN, 'popupBuildText', 'confirm button click');
         },
         fontSize: 15,
@@ -124,6 +126,7 @@
     enableArrow: false
   }, true)
     .then(() => {
+      // 全局变量定义：const DOMAIN = 0xFF00;
       hilog.info(DOMAIN, 'popupBuildText', 'updatePopup success');
     })
     .catch((err: BusinessError) => {
@@ -141,6 +144,7 @@
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
     .then(() => {
+      // 全局变量定义：const DOMAIN = 0xFF00;
       hilog.info(DOMAIN, 'popupBuildText', 'closePopup success');
     })
     .catch((err: BusinessError) => {
@@ -237,7 +241,6 @@
   <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
   ``` TypeScript
-  // entry/src/main/ets/pages/OpenPopup.ets
   import { PromptActionClass } from './PopupMainPage';
   import { ComponentContent, PromptAction } from '@kit.ArkUI';
   
