@@ -18,13 +18,13 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                          |
 | ---------- | -------------------------- | -- | -- |-----------------------------------------------------------------------------|
-| name       | string                     | 否 | 否 | 窗口名字。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
-| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                        |
-| ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | 否 | 是 | 当前物理屏幕id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
-| parentId   | number                     | 否 | 是 | 父窗口id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
-| decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager |
+| name       | string                     | 否 | 否 | 窗口名字。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22                                              |
+| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22                       |
+| ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22|
+| displayId  | ArkTS-Dyn: number<br/>ArkTS-Sta: long                     | 否 | 是 | 当前物理屏幕id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core  <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22   |
+| parentId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                     | 否 | 是 | 父窗口id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22                                              |
+| decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager  <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22|
 
 ## SystemBarProperties
 
@@ -446,14 +446,14 @@
 
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
-| title<sup>11+</sup>    | string | 否 | 否 | 子窗口标题。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示装饰。true表示子窗口显示装饰，false表示子窗口不显示装饰。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性时生效。WINDOW_MODALITY表示子窗口模态类型为模窗口子窗，APPLICATION_MODALITY表示子窗口模态类型为模应用子窗。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
-| windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| zLevel<sup>18+</sup>    | number | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
-| outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备中可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
+| title<sup>11+</sup>    | string | 否 | 否 | 子窗口标题。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22      |
+| decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示装饰。true表示子窗口显示装饰，false表示子窗口不显示装饰。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22       |
+| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22      |
+| modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性时生效。WINDOW_MODALITY表示子窗口模态类型为模窗口子窗，APPLICATION_MODALITY表示子窗口模态类型为模应用子窗。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22       |
+| windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
+| zLevel<sup>18+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
+| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 22|
+| outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备中可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
 
 ## KeyFramePolicy<sup>20+</sup>
 
