@@ -1415,6 +1415,10 @@ isSystemAvoidAreaEnabled(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -1435,6 +1439,8 @@ isSystemAvoidAreaEnabled(): boolean
 | 1300004 | Unauthorized operation. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1465,6 +1471,41 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let windowClass: window.Window | undefined = undefined;
+let config: window.Configuration = {
+  name: "test",
+  windowType: window.WindowType.TYPE_DIALOG,
+  decorEnabled: true,
+  ctx: this.context
+};
+try {
+  window.createWindow(config, (err: BusinessError<void> | null, data) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    windowClass = data;
+    windowClass.setUIContent("pages/Test");
+    let enabled = true;
+    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+    promise.then(() => {
+      let enable = windowClass?.isSystemAvoidAreaEnabled();
+    }).catch((err: Error) => {
+      console.error(`Failed to obtain whether the system window can get avoid area. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
