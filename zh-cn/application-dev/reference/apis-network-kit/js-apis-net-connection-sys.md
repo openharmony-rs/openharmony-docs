@@ -27,6 +27,10 @@ getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
@@ -44,11 +48,23 @@ getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getGlobalHttpProxy((error: BusinessError|null, data: connection.HttpProxy|undefined) => {
   console.error(JSON.stringify(error));
   console.info(JSON.stringify(data));
 });
@@ -63,6 +79,10 @@ getGlobalHttpProxy(): Promise\<HttpProxy>;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -80,6 +100,7 @@ getGlobalHttpProxy(): Promise\<HttpProxy>;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -88,6 +109,19 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
   console.info(JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(JSON.stringify(data));
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 });
 ```
 
@@ -102,6 +136,10 @@ setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -123,6 +161,7 @@ setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +178,28 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
         console.error(`setGlobalHttpProxy failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setGlobalHttpProxy success.`);
+    console.info(`setGlobalHttpProxy success.`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let exclusionStr = "192.168,baidu.com";
+let exclusionArray = exclusionStr.split(',');
+let httpProxy: connection.HttpProxy = {
+  host: "192.168.xx.xxx",
+  port: 8080,
+  exclusionList: exclusionArray
+}
+connection.setGlobalHttpProxy(httpProxy, (err: BusinessError|null) => {
+  if (err) {
+    console.error(`setGlobalHttpProxy failed, callback: err->${JSON.stringify(err)}`);
+    return;
+  }
+  console.info(`setGlobalHttpProxy success.`);
 });
 ```
 
@@ -154,6 +214,10 @@ setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -180,6 +244,7 @@ setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -197,6 +262,24 @@ connection.setGlobalHttpProxy({
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let exclusionStr = "192.168,baidu.com";
+let exclusionArray = exclusionStr.split(',');
+connection.setGlobalHttpProxy({
+  host: "192.168.xx.xxx",
+  port: 8080,
+  exclusionList: exclusionArray
+} as connection.HttpProxy).then(() => {
+  console.info("success");
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
+});
+```
 
 ## connection.enableAirplaneMode
 
@@ -233,7 +316,6 @@ enableAirplaneMode(callback: AsyncCallback\<void>): void
 **示例：**
 
 ArkTS-Dyn示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,12 +326,11 @@ connection.enableAirplaneMode((error: BusinessError) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.enableAirplaneMode((error: BusinessError | null) => {
+connection.enableAirplaneMode((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -287,11 +368,21 @@ enableAirplaneMode(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.enableAirplaneMode().then((error: void) => {
   console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.enableAirplaneMode().then(() => {
+  console.info("enableAirplaneMode success");
 });
 ```
 
@@ -329,11 +420,22 @@ disableAirplaneMode(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.disableAirplaneMode((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.disableAirplaneMode((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -371,6 +473,7 @@ disableAirplaneMode(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
@@ -379,6 +482,14 @@ connection.disableAirplaneMode().then((error: void) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+
+connection.disableAirplaneMode().then(() => {
+  console.error("disableAirplaneMode success");
+});
+```
 
 ## connection.factoryReset<sup>11+</sup>
 
@@ -391,6 +502,10 @@ factoryReset(): Promise\<void\>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -409,13 +524,27 @@ factoryReset(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.factoryReset().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.factoryReset().then(() => {
+  console.info("success");
+}).catch((error: Error) => {
+  let businessError = error as BusinessError;
+  console.error(JSON.stringify(businessError));
 })
 ```
