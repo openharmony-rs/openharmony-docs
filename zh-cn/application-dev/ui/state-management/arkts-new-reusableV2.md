@@ -346,10 +346,10 @@ struct ReusableV2Component {
 
 建议按如下步骤进行操作：
 
-1. 点击`改值`按钮，可以观察到UI变化，\@Monitor触发并输出日志`info.age change`以及`info.age onRender`，说明此时能够正常监听到变化以及触发UI刷新。
-2. 点击`复用/回收`按钮，此时调用`aboutToRecycle`回调并输出`aboutToRecycle`的日志，但\@Monitor不被触发，且`onRender`方法不被回调。
-3. 点击`改值`按钮，UI无变化，\@Monitor不触发且`onRender`方法不被回调。
-4. 点击`复用/回收`按钮，此时调用`aboutToReuse`回调并输出`aboutToReuse`的日志，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`，UI发生变化。
+1. 点击`Change value`按钮，可以观察到UI变化，\@Monitor触发并输出日志`info.age change`以及`info.age onRender`，说明此时能够正常监听到变化以及触发UI刷新。
+2. 点击`Reuse/Recycle`按钮，此时调用`aboutToRecycle`回调并输出`aboutToRecycle`的日志，但\@Monitor不被触发，且`onRender`方法不被回调。
+3. 点击`Change value`按钮，UI无变化，\@Monitor不触发且`onRender`方法不被回调。
+4. 点击`Reuse/Recycle`按钮，此时调用`aboutToReuse`回调并输出`aboutToReuse`的日志，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`，UI发生变化。
 
 如果去掉`aboutToReuse`方法中的自增操作，则上述第四步不会触发\@Monitor回调。
 
@@ -513,7 +513,7 @@ struct ReusableV2Component {
 }
 ```
 
-开发者可以尝试点击各个变量，并点击`回收/复用`按钮查看复用后的重置情况。
+开发者可以尝试点击各个变量，并点击`Recycle/Reuse`按钮查看复用后的重置情况。
 
 需要注意的是，上面的例子中`noDecoInfo`未被重置，如果存在监听`noDecoInfo.age`的\@Monitor，因为noDecoInfo本身未产生变化，所以该\@Monitor也不会被重置，因此在后续第一次更改`noDecoInfo.age`时，`IMonitorValue`的`before`值将不会被重置，仍是复用前的值。
 
@@ -580,7 +580,7 @@ struct ReusableV2Component {
 建议按照下列步骤进行操作：
 
 1. 点击`noDecoInfo.age: 30`，UI刷新为`noDecoInfo.age: 31`，\@Monitor触发并输出日志`age change from 30 to 31`。
-2. 点击`回收/复用`两次，UI刷新为`noDecoInfo.age: 35`，\@Monitor触发并输出日志`age change from 31 to 35`。
+2. 点击`Recycle/Reuse`两次，UI刷新为`noDecoInfo.age: 35`，\@Monitor触发并输出日志`age change from 31 to 35`。
 3. 点击`noDecoInfo.age: 35`，UI刷新为`noDecoInfo.age: 36`，\@Monitor触发并输出日志`age change from 35 to 36`。
 
 由于冻结机制的存在，在aboutToRecycle中赋值不会被\@Monitor观察到。而在经历完变量重置后，变量又会被赋予新的值，因此对于组件内状态变量来说，在aboutToRecycle中赋值不会有明显的效果；而常量（例如上面的`noDecoInfo`）由于冻结机制的存在，在aboutToRecycle中更改`age`也不会被观察到，并且因为不会被重置，所以相关的\@Monitor也不会被重置，即这里的`age`值本身未被重置，也就不会重置与之绑定的\@Monitor。最终表现出来的现象即：第二步回调的\@Monitor中，`monitor.value()?.before`得到的值为31，而非age的初始值30。
@@ -639,7 +639,7 @@ struct ReusableV2Component {
 
 Repeat组件懒加载场景中，将会优先使用Repeat组件的缓存池，正常滑动场景、更新场景不涉及组件的回收与复用。当Repeat的缓存池需要扩充时将会向自定义组件要求新的子组件，此时如果复用池中有可复用的节点，将会进行复用。
 
-下面的例子中，先点击`改变condition`会让3个节点进入复用池，而后向下滑动List组件时，可以观察到日志输出`ReusableV2Component aboutToReuse`，表明Repeat可以使用自定义组件的复用池填充自己的缓存池。
+下面的例子中，先点击`Change condition`会让3个节点进入复用池，而后向下滑动List组件时，可以观察到日志输出`ReusableV2Component aboutToReuse`，表明Repeat可以使用自定义组件的复用池填充自己的缓存池。
 
 <!-- @[RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatPage.ets) -->
 
@@ -783,7 +783,7 @@ struct ReusableV2Component {
 >
 >推荐开发者使用Repeat组件的非懒加载场景代替[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)组件
 
-下面的例子中使用了ForEach组件渲染了数个可复用组件，由于每次点击`点击修改`按钮时key值都会发生变化，因此从第二次点击开始都会触发回收与复用（由于ForEach先判断有无可复用节点时复用池仍未初始化，因此第一次点击会创建新的节点，而后初始化复用池同时回收节点）。
+下面的例子中使用了ForEach组件渲染了数个可复用组件，由于每次点击`Click to change`按钮时key值都会发生变化，因此从第二次点击开始都会触发回收与复用（由于ForEach先判断有无可复用节点时复用池仍未初始化，因此第一次点击会创建新的节点，而后初始化复用池同时回收节点）。
 
 <!-- @[ComponentForEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentForEachPage.ets) -->
 
