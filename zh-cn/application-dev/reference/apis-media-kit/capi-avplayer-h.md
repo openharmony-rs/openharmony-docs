@@ -916,7 +916,7 @@ OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| bool loop | 循环播放开关。true-开启循环播放，false-关闭循环播放。  |
+| bool loop | 循环播放开关。true表示开启循环播放，false表示关闭循环播放。  |
 
 **返回：**
 
@@ -1107,7 +1107,7 @@ OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySessio
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) *mediaKeySession | 具有解密功能的媒体密钥会话实例。 |
-| bool secureVideoPath | 是否需要安全解码器。true-是，false-否。 |
+| bool secureVideoPath | 是否需要安全解码器。true表示需要安全解码器，false表示不需要安全解码器。 |
 
 **返回：**
 
