@@ -595,6 +595,83 @@ class Father {
 
 <!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Person {
+  @State person: Father = new Father('Hello', new Son('world'));
+
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+        Button('change Father name')
+          .width(312)
+          .height(40)
+          .margin(12)
+          .fontColor('#FFFFFF')
+          .onClick(() => {
+            this.person.name = 'Hi';
+          })
+        Button('change Son title')
+          .width(312)
+          .height(40)
+          .margin(12)
+          .fontColor('#FFFFFF')
+          .onClick(() => {
+            this.person.son.title = 'ArkUI';
+          })
+        Text(this.person.name)
+          .fontSize(16)
+          .margin(12)
+          .width(312)
+          .height(40)
+          .backgroundColor('#ededed')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+          .fontColor('#e6000000')
+          .onClick(() => {
+            this.person.name = 'Bye';
+          })
+        Text(this.person.son.title)
+          .fontSize(16)
+          .margin(12)
+          .width(312)
+          .height(40)
+          .backgroundColor('#ededed')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+          .onClick(() => {
+            this.person.son.title = 'openHarmony';
+          })
+        Child({ child: this.person.son })
+      }
+    }
+  }
+}
+
+
+@Component
+struct Child {
+  @Prop child: Son = new Son('');
+
+  build() {
+    Column() {
+      Text(this.child.title)
+        .fontSize(16)
+        .margin(12)
+        .width(312)
+        .height(40)
+        .backgroundColor('#ededed')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+        .onClick(() => {
+          this.child.title = 'Bye Bye';
+        })
+    }
+  }
+}
+```
+
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
 ### 装饰Map类型变量
