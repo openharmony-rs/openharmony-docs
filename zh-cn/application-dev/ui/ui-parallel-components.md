@@ -89,7 +89,7 @@ struct Index {
 ```ts
 import { Entry, Text, Column, Component, Button, ClickEvent, FontWeight, Stack, Position,
   TextAlign, Alignment, Margin, Row, GridItem, Image ,ImageFit, $r, Grid } from '@ohos.arkui.component';
-import { State, ParallelizeUI } from '@ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 class WeatherInfo {
@@ -154,24 +154,26 @@ struct Page {
         return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather);
       })
       Grid() {
-        // 并行创建多个组件
-        ParallelizeUI() {
-          GridItem() {
-            Row() {
-              Column() {
-                Text(prop1.value.city).fontSize('25') // 使用ParallelizeUI进行数据传递
-                Text(prop1.value.temperature.toString()).fontSize('25')
+        ParallelizeUI<WeatherInfo>(undefined,
+          () => { return new WeatherInfo(this.infos[0].city, this.infos[0].temperature, this.infos[0].weather); },
+          (prop1: WeatherInfo) => {
+            // 并行创建多个组件
+            GridItem() {
+              Row() {
+                Column() {
+                  Text(prop1.city).fontSize('25')
+                  Text(prop1.temperature.toString()).fontSize('25')
+                }
+                Image($r(prop1.getImg()))
+                  .objectFit(ImageFit.Contain)
               }
-              Image($r(prop1.value.getImg()))
-                .objectFit(ImageFit.Contain)
+              .width('100%')
+              .height('100%')
             }
             .width('100%')
-            .height('100%')
-          }
-          .width('100%')
-          .height(100)
-          .borderWidth(2).borderColor(0xAFEEEE)
-        }
+            .height(100)
+            .borderWidth(2).borderColor(0xAFEEEE)
+        })
         // 其余组件串行创建
         for (let i = 1; i < this.infos.length; i++) {
           GridItem() {
