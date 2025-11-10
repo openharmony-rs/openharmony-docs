@@ -53,29 +53,29 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
     <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
-
+    
     ``` TypeScript
     import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-
+    
     const TAG: string = '[EmbeddedUIExtAbility]';
-
+    
     export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
       onCreate() {
         console.info(TAG, `onCreate`);
       }
-
+    
       onForeground() {
         console.info(TAG, `onForeground`);
       }
-
+    
       onBackground() {
         console.info(TAG, `onBackground`);
       }
-
+    
       onDestroy() {
         console.info(TAG, `onDestroy`);
       }
-
+    
       onSessionCreate(want: Want, session: UIExtensionContentSession) {
         console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
         let param: Record<string, UIExtensionContentSession> = {
@@ -84,7 +84,7 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
         let storage: LocalStorage = new LocalStorage(param);
         session.loadContent('pages/extension', storage);
       }
-
+    
       onSessionDestroy(session: UIExtensionContentSession) {
         console.info(TAG, `onSessionDestroy`);
       }
