@@ -101,8 +101,8 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 
 ## File
 
-Defines a file object, which
-inherits [FileMeta](#filemeta) and [FileData](#filedata).
+Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+ 
 
 > **NOTE**
 >
@@ -112,8 +112,8 @@ inherits [FileMeta](#filemeta) and [FileData](#filedata).
 
 ## File<sup>12+</sup>
 
-Defines a file object, which
-inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+ 
 
 > **NOTE**
 >

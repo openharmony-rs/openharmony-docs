@@ -47,9 +47,9 @@ Enumerates the error codes for a permission policy.
 
 ## PolicyErrorResult<sup>11+</sup>
 
-Represents the detailed permission policy error result, which can be used when **persistPermission**, **revokePermission**, **activatePermission**, or **deactivatePermission** throws an error.
-
 type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
+
+Represents the detailed permission policy error result, which can be used when **persistPermission**, **revokePermission**, **activatePermission**, or **deactivatePermission** throws an error.
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 

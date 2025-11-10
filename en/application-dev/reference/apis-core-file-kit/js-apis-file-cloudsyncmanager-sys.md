@@ -114,7 +114,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
-Notifies the cloud sync service of the application data change in the cloud. This API uses a promise to return the result.
+Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -160,7 +160,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-Notifies the cloud sync service of the application data change in the cloud. This API uses an asynchronous callback to return the result.
+Notifies the device-cloud service that the cloud data of a specific application under a specified account has been changed. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -216,7 +216,7 @@ Represents the cloud data change information.
 
 notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
-Notifies the cloud sync service of the application data change in the cloud. This API uses a promise to return the result.
+Notifies the device-cloud service of the cloud data change information of a specified user. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -265,7 +265,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
-Notifies the cloud sync service of the application data change in the cloud. This API uses an asynchronous callback to return the result.
+Notifies the device-cloud service of the cloud data change information of a specified user. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -512,7 +512,7 @@ Enumerates the actions that can be taken to clear local cloud data.
 
 clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt;
 
-Clears the cloud data locally. This API uses a promise to return the result.
+Callback used to clear the cloud data locally. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -563,7 +563,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
 
-Clears the cloud data locally. This API uses an asynchronous callback to return the result.
+Callback used to clear the cloud data locally. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
