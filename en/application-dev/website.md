@@ -4315,7 +4315,7 @@
             - [DeviceInfo](reference/apis-basic-services-kit/capi-deviceinfo.md)
             - [OsAccount](reference/apis-basic-services-kit/capi-osaccount.md)
             - [OH_BatteryInfo](reference/apis-basic-services-kit/capi-oh-batteryinfo.md)
-            - [OH_Scan](reference/apis-basic-services-kit/c-apis-scan.md)
+            - [OH_Scan](reference/apis-basic-services-kit/c-apis-scan-module.md)
             - [OH_Print](reference/apis-basic-services-kit/_o_h___print.md)
             - [Pasteboard](reference/apis-basic-services-kit/capi-pasteboard.md)
             - [TimeService](reference/apis-basic-services-kit/capi-timeservice.md)
