@@ -1586,6 +1586,67 @@ struct Page {
 
 <!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateManagement]';
+
+@Observed
+class StyleList extends Array<TextStyles> {
+}
+
+@Observed
+class TextStyles {
+  public fontSize: number;
+
+  constructor(fontSize: number) {
+    this.fontSize = fontSize;
+  }
+}
+
+@Component
+struct TextComponent {
+  @ObjectLink textStyle: TextStyles;
+
+  build() {
+    Text('Hello World')
+      .fontSize(this.textStyle.fontSize)
+  }
+}
+
+@Entry
+@Component
+struct Page {
+  @State styleList: StyleList = new StyleList();
+
+  aboutToAppear() {
+    for (let i = 15; i < 50; i++) {
+      this.styleList.push(new TextStyles(i));
+    }
+  }
+
+  build() {
+    Column() {
+      Text('Font Size List')
+        .fontSize(50)
+        .onClick(() => {
+          for (let i = 0; i < this.styleList.length; i++) {
+            this.styleList[i].fontSize++;
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
+        })
+      List() {
+        ForEach(this.styleList, (item: TextStyles) => {
+          ListItem() {
+            TextComponent({ textStyle: item })
+          }
+        })
+      }
+    }
+  }
+}
+```
+
 
 
 上述代码的运行效果如下。
