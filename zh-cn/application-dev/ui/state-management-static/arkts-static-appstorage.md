@@ -34,7 +34,7 @@ import { AppStorage } from '@ohos.arkui.stateManagement';
 
 \@StoragePropRef(key)与AppStorage中key对应的属性建立单向数据同步：
 
-1. 不同于动态Arkts的[@StorageProp](..\state-management\arkts-appstorage.md\#storageprop)，@StoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回AppStorage中。但对于复杂类型，修改属性会在AppStorage中体现。
+1. 不同于动态Arkts的[@StorageProp](../state-management/arkts-appstorage.md#storageprop)，@StoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回AppStorage中。但对于复杂类型，修改属性会在AppStorage中体现。
 
 2. AppStorage修改key对应的属性时，该修改会被同步到所有绑定AppStorage对应key的属性上，覆盖本地的修改。
 
@@ -53,7 +53,7 @@ import { StoragePropRef } from '@ohos.arkui.stateManagement';
 | \@StoragePropRef变量装饰器 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ |
 | 装饰器参数               | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型        | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>不支持any。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@StoragePropRef("AA") a: number \| null = null`能通过编译，`@StoragePropRef("AA") a: number = null`无法通过编译。 |
+| 允许装饰的变量类型        | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和AppStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>不支持any。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@StoragePropRef('AA') a: number \| null = null`能通过编译，`@StoragePropRef('AA') a: number = null`无法通过编译。 |
 | 同步类型                | 单向同步：从AppStorage的对应属性到组件的状态变量。<br/>组件本地的修改是允许的，但是AppStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值       | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
 
@@ -363,7 +363,7 @@ struct DateSample {
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick((e: ClickEvent) => {
-          AppStorage.setOrCreate("date", new Date('2023-07-08'));
+          AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
       Button('increase the year by 1')
         .margin(10)

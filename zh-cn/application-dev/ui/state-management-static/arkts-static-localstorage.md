@@ -4,7 +4,7 @@ LocalStorage是页面级的UI状态存储，通过[\@Entry](./arkts-static-creat
 
 本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStoragePropRef](#localstoragepropref)和[\@LocalStorageLink](#localstoragelink)。
 
-在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
+在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](../state-management/arkts-state-management-overview.md)。
 
 LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#localstorage9)阅读。
 
@@ -48,7 +48,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 ```
 
-1. 不同于动态Arkts的[@LocalStorageProp](..\state-management\arkts-localstorage.md\#localstorageprop)，@LocalStoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回AppStorage中。但对于复杂类型，修改属性会在LocalStorage中体现。
+1. 不同于动态Arkts的[@LocalStorageProp](../state-management/arkts-localstorage.md#localstorageprop)，@LocalStoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回AppStorage中。但对于复杂类型，修改属性会在LocalStorage中体现。
 2. LocalStorage修改key对应的属性时，该修改会被同步到所有绑定LocalStorage对应key的属性上，覆盖本地的修改。
 
 
@@ -67,7 +67,7 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 | 传递/访问规则        | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | 从父节点初始化和更新 | 禁止，\@LocalStoragePropRef不支持从父节点初始化，只能从LocalStorage中key对应的属性初始化，如果没有对应的key，将使用本地默认值初始化。 |
-| 初始化子节点         | 支持，可用于初始化\@State、\@Link、\@PropRef、\@Provide。       |
+| 初始化子节点         | 支持，可用于初始化[\@State](./arkts-static-state.md)、[\@Link](./arkts-static-link.md)、[\@PropRef](./arkts-static-propref.md)、[\@Provide](./arkts-static-provide-and-consume.md)。       |
 | 是否支持组件外访问   | 否。                                                         |
 
 ### 观察变化和行为表现
@@ -657,23 +657,23 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct MapSample {
-  @LocalStorageLink('map') message: Map<number, string> = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
+  @LocalStorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
       Column() {
         Text(`${this.message}`)
         Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
+          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
         Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, "d");
+          this.message.set(4, 'd');
         })
         Button('clear').onClick((e: ClickEvent) => {
           this.message.clear();
         })
         Button('replace the existing one').onClick((e: ClickEvent) => {
-          this.message.set(0, "aa");
+          this.message.set(0, 'aa');
         })
         Button('delete the existing one').onClick((e: ClickEvent) => {
           this.message.delete(0);

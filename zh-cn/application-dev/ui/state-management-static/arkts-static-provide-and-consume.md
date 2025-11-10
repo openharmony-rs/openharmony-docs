@@ -472,7 +472,7 @@ allowOverride：是否允许@Provide重写。
 
 | 名称          | 类型    | 必填 | 说明                                                         |
 | ------------- | ------- | ---- | ------------------------------------------------------------ |
-| allowOverride | boolean | 否   | 是否允许@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的@Provide，运行时会报错。 |
+| allowOverride | boolean | 否   | 是否允许@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的@Provide，运行时会报错。false为不允许重写；true为允许重写，默认为false。 |
 
 ```ts
 @Component
