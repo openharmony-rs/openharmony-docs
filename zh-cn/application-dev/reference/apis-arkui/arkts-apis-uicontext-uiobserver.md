@@ -2427,3 +2427,182 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 **示例：**
 
 参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。
+
+## onSwiperContentUpdate<sup>23+</sup>
+
+onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
+
+监听Swiper内容的切换事件。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                          | 必填 | 说明                                                         |
+| -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+
+**示例：**
+
+```ts
+// Index.ets
+import { SwiperContentInfo } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: SwiperContentInfo) {
+  console.info('swiperContentUpdate', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+
+  aboutToAppear(): void {
+    // 注册swiperContentUpdate监听回调
+    this.getUIContext().getUIObserver().onSwiperContentUpdate(callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 取消swiperContentUpdate监听回调
+    this.getUIContext().getUIObserver().offSwiperContentUpdate(callbackFunc);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Swiper(this.swiperController) {
+        Column() {
+          Text("SwiperItem1")
+        }.width('100%').height('100%').backgroundColor('#00CB87')
+
+        Column() {
+          Text("SwiperItem2")
+        }.width('100%').height('100%').backgroundColor('#007DFF')
+
+        Column() {
+          Text("SwiperItem3")
+        }.width('100%').height('100%').backgroundColor('#FFBF00')
+
+        Column() {
+          Text("SwiperItem4")
+        }.width('100%').height('100%').backgroundColor('#E67C92')
+      }
+      .width(360)
+      .height(300)
+    }.width('100%')
+  }
+}
+```
+
+## offSwiperContentUpdate<sup>23+</sup>
+
+offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
+
+取消监听Swiper内容的切换事件。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                         | 必填 | 说明                                                         |
+| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+
+**示例：**
+
+参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
+
+## onSwiperContentUpdate<sup>23+</sup>
+
+onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
+
+通过Swiper组件的id监听Swiper内容的切换事件。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+
+**示例：**
+
+```ts
+// Index.ets
+import { SwiperContentInfo } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: SwiperContentInfo) {
+  console.info('swiperContentUpdate', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+
+  aboutToAppear(): void {
+    // 通过id注册swiperContentUpdate监听回调
+    this.getUIContext().getUIObserver().onSwiperContentUpdate({ id: 'swiperId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 通过id取消swiperContentUpdate监听回调
+    this.getUIContext().getUIObserver().offSwiperContentUpdate({ id: 'swiperId' }, callbackFunc);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Swiper(this.swiperController) {
+        Column() {
+          Text("SwiperItem1")
+        }.width('100%').height('100%').backgroundColor('#00CB87')
+
+        Column() {
+          Text("SwiperItem2")
+        }.width('100%').height('100%').backgroundColor('#007DFF')
+
+        Column() {
+          Text("SwiperItem3")
+        }.width('100%').height('100%').backgroundColor('#FFBF00')
+
+        Column() {
+          Text("SwiperItem4")
+        }.width('100%').height('100%').backgroundColor('#E67C92')
+      }
+      .id("swiperId")
+      .width(360)
+      .height(300)
+    }.width('100%')
+  }
+}
+```
+
+## offSwiperContentUpdate<sup>23+</sup>
+
+offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
+
+取消通过Swiper组件id监听的Swiper内容切换事件。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+
+**示例：**
+
+参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
