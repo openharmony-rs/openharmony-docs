@@ -21830,5 +21830,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-environment.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/ShowDetails.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"showfirst_details",
+						"start_line":16
+					},
+					{
+						"end_line":26,
+						"name":"showsecond_details",
+						"start_line":24
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/UiEnvironment.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"ui_Environment",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/pages/AppliedLogic.ets",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"applied_logic",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnvirommentProjet/entry/src/main/ets/entryability/EntryAbilityDemo.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"limiting_condition",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
