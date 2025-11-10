@@ -225,7 +225,7 @@ private source_;
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
 
-构造函数参数。
+构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -319,7 +319,7 @@ private source_;
 
 constructor(source: SubscribedAbstractProperty\<T\>, subscribeMe?: IPropertySubscriber, info?: string);
 
-构造函数参数。
+构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
