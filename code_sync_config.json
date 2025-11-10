@@ -22010,5 +22010,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-image-update.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"refresh_import",
+						"start_line":16
+					},
+					{
+						"end_line":137,
+						"name":"local_file_refresh",
+						"start_line":26
+					},
+					{
+						"end_line":138,
+						"name":"network_file_refresh",
+						"start_line":25
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"widget_image_update_card",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
