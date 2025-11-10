@@ -20,7 +20,7 @@
   * 并行模式下，UI的最终挂载时机由框架控制，开发者无需手动同步。
   * 如果节点已挂载，则`update`操作将按串行方式执行，确保UI一致性。
   * 并行模式适合重计算量大、耗时长的UI构建；对于轻量UI，默认串行模式即可满足需求。
-  * 当前[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)并行化构建不支持[Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md)、[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)组件。
+  * 当前[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)并行化构建不支持[Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md)、[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)组件，使用这些组件时将触发运行时错误，导致应用崩溃。
 
 ## BuilderNode并行化构建场景示例
 
