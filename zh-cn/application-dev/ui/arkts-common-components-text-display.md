@@ -881,51 +881,6 @@ struct Index {
 
   <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
   
-  ``` TypeScript
-  import { TextMenuController } from '@kit.ArkUI';
-  
-  // xxx.ets
-  @Entry
-  @Component
-  export struct DisableMenuItems {
-    aboutToAppear(): void {
-      // 禁用搜索菜单
-      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
-    }
-  
-    aboutToDisappear(): void {
-      // 恢复系统服务菜单
-      TextMenuController.disableMenuItems([])
-    }
-  
-    build() {
-      NavDestination() {
-        Row() {
-          Column() {
-            // 'app.string.Service_MenuItems_Text'资源文件中的value值为'这是一段文本，长按弹出文本选择菜单。'
-            Text($r('app.string.Service_MenuItems_Text'))
-              .height(60)
-              .fontStyle(FontStyle.Italic)
-              .fontWeight(FontWeight.Bold)
-              .textAlign(TextAlign.Center)
-              .copyOption(CopyOptions.InApp)
-              .editMenuOptions({
-                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                  // menuItems不包含搜索
-                  return menuItems;
-                },
-                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                  return false
-                }
-              })
-          }.width('100%')
-        }
-        .height('100%')
-      }
-      // ···
-    }
-  }
-  ```
 
   ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
@@ -934,86 +889,6 @@ struct Index {
 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
-  
-  ``` TypeScript
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
-  // xxx.ets
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  const DOMAIN = 0x0000;
-  @Entry
-  @Component
-  
-  export struct PrepareMenu {
-    @State text: string = 'Text editMenuOptions';
-    @State endIndex: number = 0;
-    onCreateMenu = (menuItems: Array<TextMenuItem>) => {
-      let item1: TextMenuItem = {
-        content: 'create1',
-        icon: $r('app.media.startIcon'),
-        id: TextMenuItemId.of('create1'),
-      };
-      let item2: TextMenuItem = {
-        content: 'create2',
-        id: TextMenuItemId.of('create2'),
-        icon: $r('app.media.startIcon'),
-      };
-      menuItems.push(item1);
-      menuItems.unshift(item2);
-      return menuItems;
-    }
-    onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
-      if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
-        return true;
-      }
-      if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
-        return true;
-      }
-      if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
-        return true;
-      }
-      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
-        return false;
-      }
-      return false;
-    }
-    onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
-      let item1: TextMenuItem = {
-        content: 'prepare1_' + this.endIndex,
-        icon: $r('app.media.startIcon'),
-        id: TextMenuItemId.of('prepare1'),
-      };
-      menuItems.unshift(item1);
-      return menuItems;
-    }
-    @State editMenuOptions: EditMenuOptions = {
-      onCreateMenu: this.onCreateMenu,
-      onMenuItemClick: this.onMenuItemClick,
-      onPrepareMenu: this.onPrepareMenu
-    };
-  
-    build() {
-      NavDestination() {
-      Column() {
-        Text(this.text)
-          .fontSize(20)
-          .copyOption(CopyOptions.LocalDevice)
-          .editMenuOptions(this.editMenuOptions)
-          .margin({ top: 100 })
-          .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
-            this.endIndex = selectionEnd;
-          })
-      }
-      .width('90%')
-      .margin('5%')
-      }
-      // ···
-    }
-  }
-  ```
   
 
 ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
@@ -1032,21 +907,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 - 如果在单击的交互方式之外，还需要文本选择菜单与鼠标右键菜单中显示的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true，且[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)设置为CopyOptions.LocalDevice，具体示例如下所示：
   <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) -->
   
-  ``` TypeScript
-  // 'app.string.AIMenu_Text_One'资源文件中的value值为'电话号码：(86) (755) ********  \n \n 链接：www.********.com
-  // \n \n 邮箱：***@example.com\n \n 地址：XX省XX市XX区XXXX \n \n 时间：XX年XX月XX日XXXX'
-  Text($r('app.string.AIMenu_Text_One'))
-    .fontSize(16)
-    .copyOption(CopyOptions.LocalDevice)
-    .enableDataDetector(true)// 使能实体识别
-    .dataDetectorConfig({
-      // 配置识别样式
-      // types可支持PHONE_NUMBER电话号码、URL链接、EMAIL邮箱、ADDRESS地址、DATE_TIME时间
-      // types设置为null或者[]时，识别所有类型的实体
-      types: [], onDetectResultUpdate: (result: string) => {
-      }
-    })
-  ```
 
 - 如果需要调整识别出的样式，可以通过[dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11)实现，具体可以参考[TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)配置项。
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例12文本扩展自定义菜单)。 
@@ -1058,107 +918,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   
-  ``` TypeScript
-  import { ComponentCard } from '../../common/Card';
-  
-  @Entry
-  @Component
-  export struct TextHotSearch {
-    build() {
-      NavDestination() {
-        Column({ space: 12 }) {
-          // ···
-            Column() {
-              Row() {
-                Text('1').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_one'资源文件中的value值为'我是热搜词条1'
-                Text($r('app.string.TextHotSearch_textContent_one'))
-                  .fontSize(12)
-                  .fontColor(Color.Blue)
-                  .maxLines(1)
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-                  .fontWeight(300)
-                // 'app.string.TextHotSearch_textContent_two'资源文件中的value值为'爆'
-                Text($r('app.string.TextHotSearch_textContent_two'))
-                  .margin({ left: 6 })
-                  .textAlign(TextAlign.Center)
-                  .fontSize(10)
-                  .fontColor(Color.White)
-                  .fontWeight(600)
-                  .backgroundColor(0x770100)
-                  .borderRadius(5)
-                  .width(15)
-                  .height(14)
-              }.width('100%').margin(5)
-  
-              Row() {
-                Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_three'资源文件中的value值为'我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2'
-                Text($r('app.string.TextHotSearch_textContent_three'))
-                  .fontSize(12)
-                  .fontColor(Color.Blue)
-                  .fontWeight(300)
-                  .constraintSize({ maxWidth: 200 })
-                  .maxLines(1)
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热'
-                Text($r('app.string.TextHotSearch_textContent_four'))
-                  .margin({ left: 6 })
-                  .textAlign(TextAlign.Center)
-                  .fontSize(10)
-                  .fontColor(Color.White)
-                  .fontWeight(600)
-                  .backgroundColor(0xCC5500)
-                  .borderRadius(5)
-                  .width(15)
-                  .height(14)
-              }.width('100%').margin(5)
-  
-              Row() {
-                Text('3').fontSize(14).fontColor(Color.Orange).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_five'资源文件中的value值为'我是热搜词条3'
-                Text($r('app.string.TextHotSearch_textContent_five'))
-                  .fontSize(12)
-                  .fontColor(Color.Blue)
-                  .fontWeight(300)
-                  .maxLines(1)
-                  .constraintSize({ maxWidth: 200 })
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热' 
-                Text($r('app.string.TextHotSearch_textContent_four'))
-                  .margin({ left: 6 })
-                  .textAlign(TextAlign.Center)
-                  .fontSize(10)
-                  .fontColor(Color.White)
-                  .fontWeight(600)
-                  .backgroundColor(0xCC5500)
-                  .borderRadius(5)
-                  .width(15)
-                  .height(14)
-              }.width('100%').margin(5)
-  
-              Row() {
-                Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_six'资源文件中的value值为'我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4'
-                Text($r('app.string.TextHotSearch_textContent_six'))
-                  .fontSize(12)
-                  .fontColor(Color.Blue)
-                  .fontWeight(300)
-                  .constraintSize({ maxWidth: 200 })
-                  .maxLines(1)
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-              }.width('100%').margin(5)
-            }.width('100%')
-          // ···
-        }
-        .width('100%')
-        .height('100%')
-        .padding({ left: 12, right: 12 })
-      }
-      // ···
-    }
-  }
-  ```
 
 ![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
@@ -1184,40 +943,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 示例代码如下：
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
   
-  ``` TypeScript
-  import { util } from '@kit.ArkTS';
-  import { UIContext } from '@kit.ArkUI';
-  import common from '@ohos.app.ability.common';
-  @Entry
-  @Component
-  export struct WordBreakd {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_WordBreak'资源文件中的value值为'混合Hello World! honorificabilitudinitatibus'
-    @State message: string = this.manager.getStringByNameSync('Text_WordBreak');
-    build() {
-      NavDestination() {
-      Column() {
-        Text(this.message)
-          .id('HelloWorld')
-          .fontSize('25fp')
-          .maxLines(1)
-          .textOverflow({ overflow: TextOverflow.Ellipsis})
-          .onClick(() => {
-            this.message = 'Welcome try try try 1235628327434348';
-          })
-          .border({ width: 1})
-          .wordBreak(WordBreak.BREAK_ALL) // 修改断词模式
-      }
-      .width(300)
-      .border({ width: 1, color: Color.Blue})
-      .margin({left: 30, top: 50})
-      }
-      // ···
-    }
-  }
-  ```
   
 
 ### Text组件如何实现行末展开样式
@@ -1243,46 +968,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 示例代码如下：
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
   
-  ``` TypeScript
-  import { common } from '@kit.AbilityKit';
-  
-  @Entry
-  @Component
-  export struct HeightAdaptivePolicy {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_Adaptive_Layout'资源文件中的value值为'混合Hello World! 多行文本 中英文数字混合 1282378283 ~'
-    @State message: string = this.manager.getStringByNameSync('Text_Adaptive_Layout');
-    @State fontSize: number = 25;
-    build() {
-      NavDestination() {
-        Column({ space: 10 }) {
-          Text(this.message)
-            .id('HelloWorld')
-            .fontSize(this.fontSize)
-            .textOverflow({ overflow: TextOverflow.Ellipsis })
-            .border({ width: 1 })
-            .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST) // 调整自适应布局策略
-            .width(300)
-            .height(200)
-          Row() {
-            Button('fontSize+5')
-              .onClick(() => {
-                this.fontSize += 5;
-              })
-            Button('fontSize-5')
-              .onClick(() => {
-                this.fontSize -= 5;
-              })
-          }
-        }
-        .margin({ left: 30, top: 50 })
-      }
-      // ···
-    }
-  }
-  ```
 
 ![](figures/EllipsisDemo2.gif)
 
@@ -1321,100 +1006,6 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 示例代码如下：
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) -->
   
-  ``` TypeScript
-  import { LengthMetrics } from '@kit.ArkUI';
-  import { common } from '@kit.AbilityKit';
-  
-  @Entry
-  @Component
-  export struct LengthMetric {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_Add_Tags_Front_and_Post'资源文件中的value值为'这是一段长文本，超长部分折行，前后添加标签'
-    @State message: string = this.manager.getStringByNameSync('Text_Add_Tags_Front_and_Post');
-    // 'Text_Add_Tags_Front'前标签'
-    @State frontTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Front');
-    // 'Text_Add_Tags_Post'资源文件中的value值为'后标签'
-    @State backTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Post');
-    @State frontPaddingVp: number = 20;
-    @State backPaddingVp: number = 10;
-    @State fontTagWidthVp: Length = 0;
-    @State backTagWidthVp: Length = 0;
-    @State backOffsetVpX: Length = 0;
-    @State backOffsetVpY: Length = 0;
-    @State messageLines: number = 0;
-    @State stackWidthVp: number = 300;
-  
-    // 显示之前，测算前后标签的位置，中间文本的缩进距离
-    aboutToAppear(): void {
-      // 计算前标签的宽度fontTagWidthVp，作为message的首行缩进距离
-      let frontTagSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
-        textContent: this.frontTag,
-      });
-      this.fontTagWidthVp = this.getUIContext().px2vp(Number(frontTagSize.width)) + this.frontPaddingVp * 2
-  
-      // 计算frontTag+message占据的行数
-      let linesFrontTagPlusMessage = 0;
-      let mutableStr = new MutableStyledString(this.message,
-        [{
-          start: 0,
-          length: 1,
-          styledKey: StyledStringKey.PARAGRAPH_STYLE,
-          styledValue: new ParagraphStyle({ textIndent: LengthMetrics.vp(this.fontTagWidthVp) })
-        }]
-      )
-      let paragraphArr = this.getUIContext()
-        .getMeasureUtils()
-        .getParagraphs(mutableStr, { constraintWidth: LengthMetrics.vp(this.stackWidthVp) });
-      for (let i = 0; i < paragraphArr.length; ++i) {
-        linesFrontTagPlusMessage += paragraphArr[i].getLineCount();
-      }
-  
-      // 后标签offsetX的偏移量backOffsetVpX=frontTag+message最后一行的宽度
-      this.backOffsetVpX =
-        this.getUIContext().px2vp((paragraphArr[paragraphArr.length-1].getLineWidth(linesFrontTagPlusMessage - 1)))
-      // 后标签offsetY的偏移量backOffsetVpY=frontTag+message总高度-最后一行的高度。
-      let heightFrontTagPlusMessageVp = 0;
-      for (let i = 0; i < paragraphArr.length; ++i) {
-        heightFrontTagPlusMessageVp += this.getUIContext().px2vp(paragraphArr[i].getHeight());
-      }
-      let lastLineHeight =
-        this.getUIContext().px2vp(paragraphArr[paragraphArr.length-1].getLineHeight(linesFrontTagPlusMessage - 1))
-      this.backOffsetVpY = heightFrontTagPlusMessageVp - lastLineHeight
-    }
-  
-    build() {
-      NavDestination() {
-        Column({ space: 20 }) {
-          Blank()
-            .height(200)
-          Stack() {
-            Text(this.frontTag)
-              .padding({ left: this.frontPaddingVp, right: this.frontPaddingVp })
-              .backgroundColor('rgb(39, 135, 217)')
-            Text(this.message)
-              .textIndent(this.fontTagWidthVp)
-              .padding(0)
-            Text(this.backTag)
-              .padding({ left: this.backPaddingVp, right: this.backPaddingVp })
-              .backgroundColor('rgb(0, 74, 175)')
-              .offset({
-                x: this.backOffsetVpX,
-                y: this.backOffsetVpY
-              })
-          }
-          .alignContent(Alignment.TopStart) // 顶部起始端对齐
-          .width(this.stackWidthVp)
-        }
-        .height('100%')
-        .width('90%')
-        .padding('5%')
-      }
-      // ···
-    }
-  }
-  ```
   
 ![](figures/text_tag_case_2.png)
 
@@ -1430,102 +1021,6 @@ emoji表情有时以表情符号的形式表示。如何将表情符号转换为
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
-  ``` TypeScript
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
-  import { common } from '@kit.AbilityKit';
-  @Entry
-  @Component
-  export struct DisplayedTogether {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_Full_Text'资源文件中的value值为
-    // '你好我是Text[grin]，你好我[rolling_on_the_floor_laughing]是Text，[slightly_smiling_face]你好我是Text[grin]'
-    @State fulltext: string = this.manager.getStringByNameSync('Text_Full_Text');
-  
-    static classifyTextAndEmojis(input: string): Map<string, string[]> {
-      const emojiRegex = /\[([a-zA-Z_]+)\]/g; // 根据实际情况编写正则表达式
-      const resultMap = new Map<string, string[]>(); // 用map记录普通文本和表情
-      resultMap.set('text', []);
-      resultMap.set('emojis', []);
-  
-      let lastIndex = 0;
-      let match: RegExpExecArray | null = null;
-  
-      while ((match = emojiRegex.exec(input)) !== null) {
-        // 添加普通文本
-        if (match.index > lastIndex) {
-          resultMap.get('text')?.push(input.substring(lastIndex, match.index));
-        }
-        // 添加匹配到的表情
-        resultMap.get('emojis')?.push(match[1]);
-        lastIndex = match.index + match[0].length;
-      }
-      // 添加最后一段文本
-      if (lastIndex < input.length) {
-        resultMap.get('text')?.push(input.substring(lastIndex));
-      }
-      return resultMap;
-    }
-  
-    static getEmojiImg(emojis: string[]): Resource[] { // 根据正则匹配结果返回自定义表情资源
-      let emojisImg: Resource[] = []
-      for (let i = 0; i < emojis.length; i++) {
-        switch (emojis[i]) {
-          case 'rolling_on_the_floor_laughing':
-            emojisImg.push($r('app.media.rolling_on_the_floor_laughing'))
-          case 'slightly_smiling_face':
-            emojisImg.push($r('app.media.slightly_smiling_face'))
-          case 'grin':
-            emojisImg.push($r('app.media.grin'))
-          default:
-        }
-      }
-      return emojisImg
-    }
-  
-    build() {
-      NavDestination() {
-        Column() {
-          // 'app.string.Text_emoji'资源文件中的value值为'用户输入带表情的文本，例如：你好[grin]'
-          TextInput({
-            placeholder: $r('app.string.Text_emoji')
-          })
-            .width('80%')
-            .padding(10)
-            .border({ width: 1, color: '#EEEEEE' })
-            .onChange((value: string) => {
-              // 输入变化时，更新 fulltext
-              this.fulltext = value;
-            });
-  
-          Text() {
-            ForEach(DisplayedTogether.classifyTextAndEmojis(this.fulltext).get('text'),
-              (item: string, index: number) => { // 展示文本和自定义表情资源
-                Span(item)
-                  .fontSize(18)
-                  .fontColor('#666666')
-                  .fontWeight(FontWeight.Regular)
-  
-                ImageSpan(DisplayedTogether.getEmojiImg(
-                  DisplayedTogether.classifyTextAndEmojis(this.fulltext).get('emojis'))[index])
-                  .verticalAlign(ImageSpanAlignment.BOTTOM)
-                  .height(24)
-              })
-          }
-          .width('80%')
-          .padding(15)
-        }
-        .width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
-        .alignItems(HorizontalAlign.Center)
-        .padding(20)
-      }
-      // ···
-    }
-  }
-  ```
 
 ![](figures/text-emoji.png)
 
@@ -1542,34 +1037,6 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 以下示例展示了限制Text组件不超过三行的场景。
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @Component
-  export struct TextLong {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_Long_String'资源文件中的value值为'这是一段超长文本'
-    @State message: string = this.manager.getStringByNameSync('Text_Long_String').repeat(50);
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Text(this.message)
-            .height('auto')
-            .maxLines(3)
-        }
-        .height(200)
-        .width('80%')
-        .margin('10%')
-        .borderWidth(1)
-        .justifyContent(FlexAlign.Center)
-      }
-      // ···
-    }
-  }
-  ```
 
 
 ![](figures/text_too_long_maxLines.png)
@@ -1580,33 +1047,5 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
-  ``` TypeScript
-  @Entry
-  @Component
-  export struct TextLongTow {
-    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    private manager = this.context.resourceManager;
-  
-    // 'Text_Long_String'资源文件中的value值为'这是一段超长文本'
-    @State message: string = this.manager.getStringByNameSync('Text_Long_String').repeat(50);
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Scroll() {
-            Text(this.message)
-          }
-          .scrollBar(BarState.Off)
-        }
-        .height(200)
-        .width('80%')
-        .margin('10%')
-        .borderWidth(1)
-        .justifyContent(FlexAlign.Center)
-      }
-      // ···
-    }
-  }
-  ```
 
 ![](figures/text_too_long_scroll.gif)
