@@ -538,7 +538,7 @@ HTTP拦截器模块提供了一种强大且可定制的机制，允许开发者�
 
 **缓存拦截**：CACHE_CHECKED是一个决策点。如果缓存存在且有效，请求会在此处经过CACHE_CHECKED处理后，直接跳转到FINAL_RESPONSE阶段返回缓存数据，从而避免不必要的网络操作。
 
-1.  导入HTTP请求拦截器所需模块
+1.  导入HTTP请求拦截器所需模块。
 
 <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
 
