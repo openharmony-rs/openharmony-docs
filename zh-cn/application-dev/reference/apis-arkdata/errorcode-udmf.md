@@ -40,7 +40,7 @@ The format of one or more type descriptors are invalid.
 
 **可能原因**
 
-调用[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformTypeDescriptorregisterTypeDescriptors)时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
+调用[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
 
 1. 标准化数据类型描述符列表为空、长度超过50，或当前应用注册的标准化数据类型描述符数量总计超过200。
 
@@ -70,7 +70,7 @@ The content of one or more type descriptors are invalid.
 
 **可能原因**
 
-[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformTypeDescriptorregisterTypeDescriptors)传入的标准化数据类型描述符内容错误，可能原因有：
+[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)传入的标准化数据类型描述符内容错误，可能原因有：
 
 1. 任意一个标准化数据类型描述符中，typeId与已注册的类型ID重复。
 
@@ -96,7 +96,7 @@ One or more typeIds are invalid or do not exist.
 
 **可能原因**
 
-调用[unregisterTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformTypeDescriptorunregisterTypeDescriptors)时，传入的标准化数据类型ID列表错误，具体可能原因有：
+调用[unregisterTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorunregistertypedescriptors)时，传入的标准化数据类型ID列表错误，具体可能原因有：
 
 1. 标准化数据类型ID列表为空、或长度超过50。
 
@@ -104,7 +104,7 @@ One or more typeIds are invalid or do not exist.
 
 3. 任意一个标准化数据类型ID不是以当前应用的包名开头。
 
-4. 任意一个标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformTypeDescriptorregisterTypeDescriptors)注册。
+4. 任意一个标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)注册。
 
 **处理步骤**
 
