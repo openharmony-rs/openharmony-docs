@@ -11048,7 +11048,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/InitialRendering.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":67,
 						"name":"initial_rendering",
 						"start_line":16
 					}
@@ -11068,7 +11068,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":70,
 						"name":"add_data",
 						"start_line":17
 					},
@@ -11083,7 +11083,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DataDeletion.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"delete_data",
 						"start_line":16
 					}
@@ -11093,7 +11093,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/SwappingData.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"swap_data",
 						"start_line":16
 					}
@@ -11103,7 +11103,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingIndividualDataItems.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"change_individual_data",
 						"start_line":16
 					}
@@ -11113,7 +11113,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingMultipleDataItems.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":80,
 						"name":"change_multiple_data",
 						"start_line":16
 					}
@@ -11123,7 +11123,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData.ets",
 				"functions":[
 					{
-						"end_line":91,
+						"end_line":92,
 						"name":"precisely_modifying_data",
 						"start_line":16
 					}
@@ -11133,7 +11133,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData2.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":85,
 						"name":"precisely_modifying_data_two",
 						"start_line":16
 					}
@@ -11188,7 +11188,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":76,
 						"name":"drag_sorting",
 						"start_line":16
 					}
@@ -11198,7 +11198,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UnexpectedRenderingResults.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":82,
 						"name":"unexpected_rendering_results",
 						"start_line":16
 					}
@@ -11228,7 +11228,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ScreenFlickeringInList.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"screen_flickering_in_list",
 						"start_line":16
 					}
