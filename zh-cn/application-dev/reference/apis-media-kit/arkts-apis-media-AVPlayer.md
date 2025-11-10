@@ -1166,23 +1166,25 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer = await media.createAVPlayer();
-let audioTrackIndex: Object = 0;
-avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-  if (arrList != null) {
-    for (let i = 0; i < arrList.length; i++) {
-      if (i != 0) {
-        // 获取音频轨道列表。
-        audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+async function  test(){
+  let avPlayer: media.AVPlayer = await media.createAVPlayer();
+  let audioTrackIndex: Object = 0;
+  avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+    if (arrList != null) {
+      for (let i = 0; i < arrList.length; i++) {
+        if (i != 0) {
+          // 获取音频轨道列表。
+          audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+        }
       }
+    } else {
+      console.error(`Failed to get TrackDescription, error:${error}`);
     }
-  } else {
-    console.error(`Failed to get TrackDescription, error:${error}`);
-  }
-});
+  });
 
-// 选择其中一个音频轨道。
-avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+  // 选择其中一个音频轨道。
+  avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+}
 ```
 
 ## deselectTrack<sup>12+</sup>
