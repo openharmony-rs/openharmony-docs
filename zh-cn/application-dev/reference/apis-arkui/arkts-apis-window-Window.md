@@ -1494,7 +1494,7 @@ try {
       return;
     }
     windowClass = data;
-    windowClass.setUIContent("pages/Test");
+    windowClass!.setUIContent("pages/Test");
     let enabled = true;
     let promise = windowClass!.setSystemAvoidAreaEnabled(enabled);
     promise.then(() => {
