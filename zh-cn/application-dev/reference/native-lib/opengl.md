@@ -60,7 +60,9 @@ libEGL.so
 **查询当前设备是否支持OpenGL**
 
 从API version 22开始，支持使用OH_Graphics_QueryGL接口判断设备是否支持使用OpenGL功能以及是否需要回退使用OpenGL ES 。
+
 **设备行为差异：**此接口在PC、Tablet设备上可正常调用，在其他设备上返回为空。
+
 具体示例如下：
 
 ```c++
