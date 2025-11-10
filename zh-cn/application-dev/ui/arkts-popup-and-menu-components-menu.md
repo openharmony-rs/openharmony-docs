@@ -59,7 +59,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 class Tmp {
-  private iconStr2: ResourceStr = $r('app.media.view_list_filled')
+  public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
     this.iconStr2 = val;
@@ -68,7 +68,7 @@ class Tmp {
 
 @Entry
 @Component
-export struct menuExample  {
+export struct BuilderCustomMenuExample {
   @State select: boolean = true;
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.view_list_filled');
@@ -117,6 +117,7 @@ export struct menuExample  {
           builder: this.SubMenu
         })
       }
+
       // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
       MenuItem({
         startIcon: this.iconStr2,
@@ -125,8 +126,10 @@ export struct menuExample  {
       })
     }
   }
+
   build() {
     // ···
+  }
 }
 ```
 
