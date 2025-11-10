@@ -20156,6 +20156,16 @@
 						"end_line":83,
 						"name":"Last_space",
 						"start_line":65
+					},
+					{
+						"end_line":97,
+						"name":"text_VerticalAlign",
+						"start_line":85
+					},
+					{
+						"end_line":106,
+						"name":"copy_Option",
+						"start_line":101
 					}
 				]
 			},
@@ -20176,6 +20186,76 @@
 						"end_line":68,
 						"name":"Enable_AutoSpacing",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ShaderStyle.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"Shader_Style",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"General_Events",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"set_selection_menu_with_bindselectionmenu",
+						"start_line":23
+					},
+					{
+						"end_line":119,
+						"name":"set_selection_menu_with_bindselectionmenu_sec",
+						"start_line":102
+					},
+					{
+						"end_line":46,
+						"name":"Right_Click_Text_CustomMenu",
+						"start_line":27
+					},
+					{
+						"end_line":131,
+						"name":"set_selection_menu_with_editmenuoptions",
+						"start_line":123
+					},
+					{
+						"end_line":88,
+						"name":"onCreate_Menu",
+						"start_line":47
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"Selection_Change",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"Service_MenuItems",
+						"start_line":15
 					}
 				]
 			}
