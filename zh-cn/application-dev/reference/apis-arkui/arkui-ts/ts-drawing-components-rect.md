@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 
 ## 子组件
@@ -75,7 +77,9 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 ### radiusWidth
 
-radiusWidth(value: [Length](ts-types.md#length) )
+ArkTS-Dyn: radiusWidth(value: [Length](ts-types.md#length) )
+
+ArkTS-Sta: radiusWidth(value: double | string | undefined)
 
 设置圆角的宽度，仅设置宽时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。 异常值按照默认值处理。
 
@@ -85,15 +89,21 @@ radiusWidth(value: [Length](ts-types.md#length) )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp |
 
 ### radiusHeight
 
-radiusHeight(value: [Length](ts-types.md#length))
+ArkTS-Dyn: radiusHeight(value: [Length](ts-types.md#length))
+
+ArkTS-Sta: radiusHeight(value: double | string | undefined)
 
 设置圆角的高度，仅设置高时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。  异常值按照默认值处理。
 
@@ -103,15 +113,21 @@ radiusHeight(value: [Length](ts-types.md#length))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp |
 
 ### radius
 
-radius(value: [Length](ts-types.md#length) | Array&lt;any&gt;)
+ArkTS-Dyn: radius(value: [Length](ts-types.md#length) | Array&lt;any&gt;)
+
+ArkTS-Sta: radius(value: [Length](ts-types.md#length) | Array\<RadiusItem\> | undefined)
 
 设置圆角半径大小，取值范围≥0，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
@@ -121,11 +137,15 @@ radius(value: [Length](ts-types.md#length) | Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; <br/>ArkTS-Sta: [Length](ts-types.md#length) \| Array\<[RadiusItem](#radiusitem22)> \| undefined | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp |
 
 ### fill
 
@@ -326,6 +346,22 @@ antiAlias(value: boolean)
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true |
+
+## RadiusItem<sup>22+</sup>
+
+type RadiusItem = [Length, Length]
+
+设置圆角的宽度和高度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+| [[Length](ts-types.md#length), [Length](ts-types.md#length)] | 第一个参数是圆角的宽度，第二个参数是圆角的高度。 |
 
 ## 示例
 
