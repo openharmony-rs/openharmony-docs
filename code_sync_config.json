@@ -5874,7 +5874,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":44,
 						"name":"get_vpn_id_ability",
 						"start_line":16
 					}
@@ -5884,7 +5884,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":44,
 						"name":"destroy_vpn_ability",
 						"start_line":16
 					}
