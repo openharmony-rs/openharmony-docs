@@ -1164,6 +1164,55 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 - BottomView：负责提供与任务操作相关的按钮和输入框，如"全部完成"、"全部未完成"，"设置"三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
   <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) -->
+  
+  ``` TypeScript
+  // src/main/ets/view/BottomView.ets
+  import { common, Want } from '@kit.AbilityKit';
+  import TaskViewModel from '../viewmodel/TaskViewModel';
+  import TaskListViewModel from '../viewmodel/TaskListViewModel';
+  
+  @Builder export function actionButton(text: string|Resource, onClick:() => void) {
+    Button(text, { buttonStyle: ButtonStyleMode.NORMAL })
+      .onClick(onClick)
+      .margin({ left: 10, right: 10, top: 5, bottom: 5 })
+  }
+  
+  @ComponentV2
+  export default struct BottomView {
+    @Param taskList: TaskListViewModel = new TaskListViewModel();
+    @Local newTaskName: string = '';
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  
+    build() {
+      Column() {
+        Row() {
+          actionButton('All Completed', (): void => this.taskList.finishAll(true))
+          actionButton('All Not Completed', (): void => this.taskList.finishAll(false))
+          actionButton('Setting', (): void => {
+            let wantInfo: Want = {
+              deviceId: '', // deviceId为空表示本设备。
+              bundleName: 'com.samples.statemgmtv2mvvm', // 替换成AppScope/app.json5里的bundleName。
+              abilityName: 'SettingAbility',
+            };
+            this.context.startAbility(wantInfo);
+          })
+        }
+        .margin({ top: 10, bottom: 5 })
+        Row() {
+          TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
+            .onChange((value) => this.newTaskName = value)
+            .width('70%')
+          actionButton('+', (): void => {
+            let newTask = new TaskViewModel();
+            newTask.taskName = this.newTaskName;
+            this.taskList.addTask(newTask);
+            this.newTaskName = '';
+          })
+        }
+      }
+    }
+  }
+  ```
 
 - TodoListPage：todolist的主页面，包含以上的三个View组件（TitleView、ListView、BottomView），用于统一展示待办事项的各个部分，管理任务列表和用户设置。TodoListPage负责从ViewModel中获取数据，并将数据传递给各个子View组件进行渲染，通过PersistenceV2持久化任务数据，确保数据在应用重启后仍能保持一致。
 
