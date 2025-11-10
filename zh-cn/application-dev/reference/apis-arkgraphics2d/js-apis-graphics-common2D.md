@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -28,12 +30,16 @@ ARGB格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| alpha | number | 否   | 否   | 颜色的A分量（透明度），值是0~255的整数。 |
-| red   | number | 否   | 否   | 颜色的R分量（红色），值是0~255的整数。 |
-| green | number | 否   | 否   | 颜色的G分量（绿色），值是0~255的整数。 |
-| blue  | number | 否   | 否   | 颜色的B分量（蓝色），值是0~255的整数。 |
+| alpha | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 颜色的A分量（透明度），值是0~255的整数。 |
+| red   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 颜色的R分量（红色），值是0~255的整数。 |
+| green | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 颜色的G分量（绿色），值是0~255的整数。 |
+| blue  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 颜色的B分量（蓝色），值是0~255的整数。 |
 
 ## Rect
 
@@ -43,12 +49,16 @@ ARGB格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                           |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| left   | number | 否   | 否   | 矩形区域的左上角横坐标，浮点数。 |
-| top    | number | 否   | 否   | 矩形区域的左上角纵坐标，浮点数。 |
-| right  | number | 否   | 否   | 矩形区域的右下角横坐标，浮点数。 |
-| bottom | number | 否   | 否   | 矩形区域的右下角纵坐标，浮点数。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 矩形区域的左上角横坐标，浮点数。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 矩形区域的左上角纵坐标，浮点数。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 矩形区域的右下角横坐标，浮点数。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 矩形区域的右下角纵坐标，浮点数。 |
 
 ## Point<sup>12+</sup>
 
@@ -58,16 +68,24 @@ ARGB格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                           |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| x      | number | 否   | 否   | 横坐标，浮点数。               |
-| y      | number | 否   | 否   | 纵坐标，浮点数。               |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 横坐标，浮点数。               |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | 纵坐标，浮点数。               |
 
 ## Color4f<sup>20+</sup>
 
 ARGB格式的颜色描述。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
@@ -82,6 +100,10 @@ ARGB格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                           |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| z      | number | 否   | 否   | z轴坐标，浮点数。               |
+| z      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | z轴坐标，浮点数。               |
