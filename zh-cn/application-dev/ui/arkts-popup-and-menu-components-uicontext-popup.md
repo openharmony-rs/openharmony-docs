@@ -162,15 +162,14 @@
 
 以下示例通过[HAR](../quick-start/har-package.md)包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
 
-  <!-- [main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
+  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
   ``` TypeScript
-  // entry/src/main/ets/components/MainPage.ets
   import { BusinessError } from '@kit.BasicServicesKit';
   import { ComponentContent, TargetInfo, PromptAction } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
-  const DOMAIN = 0x0000;
+  const DOMAIN = 0xFF00;
   
   export class PromptActionClass {
     private promptAction: PromptAction | null = null;
@@ -210,7 +209,7 @@
           });
       }
     }
-
+  
     public closePopup() {
       if (this.promptAction != null) {
         this.promptAction.closePopup(this.contentNode)
@@ -222,7 +221,7 @@
           });
       }
     }
-
+  
     public updatePopup(options: PopupCommonOptions) {
       if (this.promptAction != null) {
         this.promptAction.updatePopup(this.contentNode, options, this.isPartialUpdate)
