@@ -125,43 +125,43 @@ export default class EntryAbility extends UIAbility {
   import { common, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   const DOMAIN = 0x0000;
-  
+
   @Entry
   @Component
   struct BasicUsage {
-  // ···
-  
+    // ···
     // 页面展示
     build() {
       // ···
-       Column() {
-          // ···
-          Button('FuncAbilityB')
-            .onClick(() => {
-              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-              try {
-                context.terminateSelf((err: BusinessError) => {
-                  if (err.code) {
-                    // 处理业务逻辑错误
-                    hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
-                    return;
-                  }
-                  // 执行正常业务
-                  hilog.info(DOMAIN, 'terminateSelf', `terminateSelf succeed.`);
-                });
-              } catch (err) {
-                // 捕获同步的参数错误
-                let code = (err as BusinessError).code;
-                let message = (err as BusinessError).message;
-                hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
-              }
-            })
-            // ···
-        }
+      Column() {
         // ···
-     }
+        Button('FuncAbilityB')
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            try {
+              context.terminateSelf((err: BusinessError) => {
+                if (err.code) {
+                  // 处理业务逻辑错误
+                  hilog.error(DOMAIN, 'terminateSelf',
+                    `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  return;
+                }
+                // 执行正常业务
+                hilog.info(DOMAIN, 'terminateSelf', `terminateSelf succeed.`);
+              });
+            } catch (err) {
+              // 捕获同步的参数错误
+              let code = (err as BusinessError).code;
+              let message = (err as BusinessError).message;
+              hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
+            }
+          })
+        // ···
+      }
+      // ···
+    }
   }
   ```
 
