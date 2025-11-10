@@ -38,40 +38,56 @@
     ]
   }
   ```
- > **说明：**
+  > **说明：**
   >
   > 在使用定时刷新时，需要在form_config.json配置文件中设置`updateEnabled`字段为`true`，以启用周期性刷新功能。
 
 - 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以在接口调用后的5分钟内刷新卡片内容。
 
-  ```ts
-  import { FormExtensionAbility, formProvider } from '@kit.FormKit';
+  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
+  
+  ``` TypeScript
+  // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   
   const TAG: string = 'UpdateByTimeFormAbility';
   const FIVE_MINUTE: number = 5;
   const DOMAIN_NUMBER: number = 0xFF00;
   
   export default class UpdateByTimeFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // Called to return a FormBindingData object.
+      let formData = {};
+      return formBindingData.createFormBindingData(formData);
+    }
+  // ···
     onFormEvent(formId: string, message: string): void {
-      // Called when a specified message event defined by the form provider is triggered.
+      // 当卡片提供方的postCardAction接口的message事件被触发时调用
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
       try {
         // 设置过5分钟后更新卡片内容
         formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError) => {
           if (err) {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG,
+              `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
             hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
           }
         });
       } catch (err) {
-        hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code},
+           message: ${(err as BusinessError).message}`);
       }
     }
-    // ... 
+    onAcquireFormState(want: Want): formInfo.FormState {
+      // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+      return formInfo.FormState.READY;
+    }
   }
   ```
 
