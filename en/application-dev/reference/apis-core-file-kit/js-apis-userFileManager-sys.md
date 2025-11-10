@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @zengyawen-->
 
 The **userFileManager** module provides user data management capabilities, including accessing and modifying user media data.
 
@@ -1360,7 +1360,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getActivePeersDemo');
   mgr.getActivePeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1395,7 +1395,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   try {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getActivePeers();
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1431,7 +1431,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getAllPeersDemo');
   mgr.getAllPeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1467,7 +1467,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getAllPeers();
 
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1603,6 +1603,10 @@ async function example(mgr: userFileManager.UserFileManager) {
     // Obtain the album URI.
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('getPhotoIndexPromise albums is undefined');
+      return;
+    }
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     predicates.orderByAsc(userFileManager.ImageVideoKey.DATE_MODIFIED.toString());
     let fetchOptions: userFileManager.FetchOptions = {
@@ -1732,11 +1736,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    // The image file has been changed. Do something.
+    // The image file has been changed. Go to the next step.
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    // The image file has been changed. Do something.
+    // The image file has been changed. Go to the next step.
   }
   // Register onCallback1.
   mgr.on(fileAsset.uri, false, onCallback1);
@@ -1846,7 +1850,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // The image file has been changed. Do something.
+    // The image file has been changed. Go to the next step.
   });
   try {
     let testFileName: string = 'testFile' + Date.now() + '.jpg';
@@ -1895,7 +1899,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // The image file has been changed. Do something.
+    // The image file has been changed. Go to the next step.
   });
 
   mgr.off('imageChange', () => {
@@ -4577,7 +4581,7 @@ Enumerates the album types.
 
 ## AlbumSubType<sup>10+</sup>
 
-Enumerate the album subtypes.
+Enumerates the album subtypes.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -4665,7 +4669,7 @@ Defines the key album information.
 
 ## PhotoCreateOptions<sup>10+</sup>
 
-Options for creating an image or video asset.
+Defines the options for creating an image or video asset.
 
 **System API**: This is a system API.
 
