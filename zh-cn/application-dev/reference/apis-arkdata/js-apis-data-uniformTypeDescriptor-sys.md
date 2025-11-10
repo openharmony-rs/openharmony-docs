@@ -22,7 +22,9 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
-注册一组标准化数据类型到系统中。
+注册一组标准化数据类型到系统中。使用Promise异步回调。
+
+**原子化服务API：** 该接口支持在原子化服务中使用。
 
 **需要权限:** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 
@@ -53,7 +55,7 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| Promise\<void> | 异步操作返回的Promise对象，无具体返回值。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -62,7 +64,7 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
+| 202          | Permission denied, non-system app called the system api. |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 20400002       |  The format of one or more type descriptors are invalid. |
 | 20400003       | The content of one or more type descriptors violate rules. |
@@ -70,7 +72,6 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 **示例：**
 
 ```ts
-import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -81,7 +82,7 @@ try {
     typeDescriptor.mimeTypes = ['application/myImage'];
     typeDescriptor.description = 'myHap defined image type';
     await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
-    console.log('Type descriptors registered successfully.');
+    console.info('Type descriptors registered successfully.');
 } catch(e) {
     let error: BusinessError = e as BusinessError;
     console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -92,7 +93,9 @@ try {
 
 unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
-从系统中注销一个或多个标准化数据类型。
+从系统中注销一个或多个标准化数据类型。使用Promise异步回调。
+
+**原子化服务API：** 该接口支持在原子化服务中使用。
 
 **需要权限:** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 
@@ -115,7 +118,7 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| Promise\<void> | 异步操作返回的Promise对象，无具体返回值。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -124,20 +127,19 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
-| 202          | Permission verification failed. A non-system application calls a system API. |
+| 202          | Permission denied, non-system app called the system api. |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 20400004       |  One or more typeIds are invalid or do not exist. |
 
 **示例：**
 
 ```ts
-import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     const typeIds = ['com.example.myHap.image'];
     await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
-    console.log('Type descriptors unregistered successfully.');
+    console.info('Type descriptors unregistered successfully.');
 } catch (e) {
     const error: BusinessError = e as BusinessError;
     console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
