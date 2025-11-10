@@ -44,15 +44,17 @@ The format of one or more type descriptors are invalid.
 
 1. 标准化数据类型描述符列表为空、其中元素个数超过50，或当前应用注册的标准化数据类型描述符数量总计超过200。
 
-2. 任意一个标准化数据类型描述符中，typeId为空字符串、长度超过127，或包含非字母、数字、中划线（-）、点号（.）字符。
+2. 任意一个标准化数据类型描述符格式错误，具体可能原因包括：
 
-3. 任意一个标准化数据类型描述符中，belongingToTypes为空列表、其中元素个数超过50，或其中包含空字符串、或任意元素长度超过127。
+    2.1 typeId为空字符串、长度超过127，或包含非字母、数字、中划线（-）、点号（.）字符。
+    
+    2.2 belongingToTypes为空列表、其中元素个数超过50，或其中包含空字符串、或任意元素长度超过127。
 
-4. 任意一个标准化数据类型描述符中，description、referenceURL或iconFile长度超过255。
+    2.3 description、referenceURL或iconFile长度超过255。
 
-5. 任意一个标准化数据类型描述符中，filenameExtensions的元素个数超过50，或包含空字符串，或任意元素长度超过127，或任意元素首字符不是点号。
+    2.4 filenameExtensions的元素个数超过50，或包含空字符串，或任意元素长度超过127，或任意元素首字符不是点号。
 
-6. 任意一个标准化数据类型描述符中，mimeTypes的元素个数超过50，或包含空字符串，或任意元素长度超过127。
+    2.5 mimeTypes的元素个数超过50，或包含空字符串，或任意元素长度超过127。
 
 **处理步骤**
 
@@ -100,11 +102,13 @@ One or more typeIds are invalid or do not exist.
 
 1. 标准化数据类型ID列表为空、或其中元素个数超过50。
 
-2. 任意一个标准化数据类型ID对应的标准化数据类型在系统中未注册。
+2. 任意一个标准化数据类型ID无效，具体可能原因包括：
 
-3. 任意一个标准化数据类型ID不是以当前应用的包名开头。
+    2.1 标准化数据类型ID对应的标准化数据类型在系统中未注册。
 
-4. 任意一个标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)注册。
+    2.2 标准化数据类型ID不是以当前应用的包名开头。
+
+    2.3 标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)注册。
 
 **处理步骤**
 
