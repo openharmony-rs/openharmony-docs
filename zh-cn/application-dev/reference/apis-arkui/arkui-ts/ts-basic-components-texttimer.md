@@ -1,9 +1,9 @@
 # TextTimer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 通过文本显示计时信息并控制其计时器状态的组件。
@@ -12,7 +12,7 @@
 
 >  **说明：**
 >
-> 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
