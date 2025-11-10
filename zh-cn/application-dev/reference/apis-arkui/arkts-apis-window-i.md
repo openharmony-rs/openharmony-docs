@@ -130,10 +130,14 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| x      | number   | 否   | 否   | x坐标，单位为px，该参数应为整数。 |
-| y      | number   | 否   | 否   | y坐标，单位为px，该参数应为整数。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | x坐标，单位为px，该参数应为整数。 |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | y坐标，单位为px，该参数应为整数。 |
 
 ## RectChangeOptions<sup>12+</sup>
 
@@ -214,12 +218,16 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。  |
+| maxWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大宽度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。  |
+| maxHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大高度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。  |
+| minWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小宽度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。  |
+| minHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小高度。单位为px，该参数为整数。值默认为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。  |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -244,9 +252,13 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| displayId | number | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。此参数不填或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。 |
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。此参数不填或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。 |
 
 ## WindowDensityInfo<sup>15+</sup>
 
