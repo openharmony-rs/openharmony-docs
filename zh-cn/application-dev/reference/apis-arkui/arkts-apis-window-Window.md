@@ -9290,7 +9290,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 设置窗口独占激活态属性。独占激活态表示窗口获焦时，会导致当前父子窗口链中处于激活态的其他窗口失去激活态。使用Promise异步回调。
 
-此接口对主窗、模态窗、dialog窗口不生效。
+此接口对主窗、模态窗不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
