@@ -16723,7 +16723,7 @@
 						"start_line":43
 					},
 					{
-						"end_line":120,
+						"end_line":159,
 						"name":"set_the_divider",
 						"start_line":18
 					},
@@ -16798,7 +16798,7 @@
 						"start_line":24
 					},
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"bind_the_swipeAction_property_to_left_swipe_list_item",
 						"start_line":49
 					}
@@ -16808,7 +16808,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/TaggedListItems.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":48,
 						"name":"add_tags_to_list_items",
 						"start_line":29
 					}
@@ -16903,9 +16903,9 @@
 						"start_line":18
 					},
 					{
-						"end_line":125,
+						"end_line":136,
 						"name":"construct_list_structure",
-						"start_line":60
+						"start_line":61
 					}
 				]
 			},
