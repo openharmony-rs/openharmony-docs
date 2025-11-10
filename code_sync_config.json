@@ -23542,7 +23542,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":83,
 						"name":"Internal_Module_Modifier_V1",
 						"start_line":15
 					}
@@ -23552,7 +23552,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":85,
 						"name":"Internal_Module_Modifier_V2",
 						"start_line":15
 					}
