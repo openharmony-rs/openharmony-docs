@@ -1217,6 +1217,49 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 - TodoListPage：todolist的主页面，包含以上的三个View组件（TitleView、ListView、BottomView），用于统一展示待办事项的各个部分，管理任务列表和用户设置。TodoListPage负责从ViewModel中获取数据，并将数据传递给各个子View组件进行渲染，通过PersistenceV2持久化任务数据，确保数据在应用重启后仍能保持一致。
 
   <!-- @[Main_TodoListPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/TodoListPage.ets) -->
+  
+  ``` TypeScript
+  // src/main/ets/pages/TodoListPage.ets
+  import TaskListViewModel from '../viewmodel/TaskListViewModel';
+  import { common } from '@kit.AbilityKit';
+  import { AppStorageV2, PersistenceV2 } from '@kit.ArkUI';
+  import { Setting } from '../pages/SettingPage';
+  import TitleView from '../view/TitleView';
+  import ListView from '../view/ListView';
+  import BottomView from '../view/BottomView';
+  
+  @Entry
+  @ComponentV2
+  struct TodoList {
+    @Local taskList: TaskListViewModel = PersistenceV2.connect(TaskListViewModel, 'TaskList', () => new TaskListViewModel())!;
+    @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  
+    async aboutToAppear() {
+      if (this.taskList.tasks.length === 0) {
+        await this.taskList.loadTasks(this.context);
+      }
+    }
+  
+    @Computed
+    get tasksUnfinished(): number {
+      return this.taskList.tasks.filter(task => !task.isFinish).length;
+    }
+  
+    build() {
+      Column() {
+        TitleView({ tasksUnfinished: this.tasksUnfinished })
+        ListView({ taskList: this.taskList, setting: this.setting });
+        BottomView({ taskList: this.taskList });
+      // ···
+      }
+      .height('100%')
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
+      .margin({ left: 15 })
+    }
+  }
+  ```
 
 - SettingPage：设置页面，负责管理是否显示已完成任务的设置。通过AppStorageV2应用全局存储用户的设置，用户通过Toggle开关切换showCompletedTask状态。
 
