@@ -1028,6 +1028,11 @@ public loadData() {
 
 <!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) -->
 
+``` TypeScript
+@State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
+@State ancestor: Ancestor = new Ancestor(this.childList);
+```
+
 
 但是由于这里的childList实际上是被@State装饰了，根据当前状态管理的观测能力，尽管右边赋值的是一个Child[]类型的数据，它并没有被@Observed装饰，这里的childList却依然具备了被观测的能力，所以能够正常的触发UI的刷新。当去掉childList的@State的装饰器后，不去重置数据源，也无法通过点击“X”按钮触发刷新。
 
