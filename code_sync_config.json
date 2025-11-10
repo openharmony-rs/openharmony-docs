@@ -21995,5 +21995,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-passive-refresh.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts",
+				"functions":[
+					{
+						"end_line":80,
+						"name":"set_form_next_refreshime",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
