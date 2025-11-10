@@ -227,58 +227,6 @@ struct AddLog {
 
 <!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) -->
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN_NUMBER: number = 0XFF00;
-const TAG: string = '[Sample_StateTrack]';
-class Log {
-  @Track public logInfo: string;
-  public owner: string;
-  public id: number;
-  public time: Date;
-  public location: string;
-  public reason: string;
-
-  constructor(logInfo: string) {
-    this.logInfo = logInfo;
-    this.owner = 'OH';
-    this.id = 0;
-    this.time = new Date();
-    this.location = 'CN';
-    this.reason = 'NULL';
-  }
-}
-
-@Entry
-@Component
-struct AddLog3 {
-  @State log: Log = new Log('origin info.');
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.log.logInfo)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            // 没有被@Track装饰的属性可以在点击事件中使用。
-            hilog.info(DOMAIN_NUMBER, TAG, 'owner: ' + this.log.owner +
-              ' id: ' + this.log.id +
-              ' time: ' + this.log.time +
-              ' location: ' + this.log.location +
-              ' reason: ' + this.log.reason);
-            this.log.time = new Date();
-            this.log.id++;
-
-            this.log.logInfo += ' info.';
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 
 处理步骤：
