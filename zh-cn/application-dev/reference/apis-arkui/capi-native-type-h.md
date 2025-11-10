@@ -8998,7 +8998,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 设置可见区域计算模式。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
@@ -9079,7 +9079,7 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 获取可见区域计算模式。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
