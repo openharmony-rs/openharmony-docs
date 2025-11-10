@@ -399,7 +399,7 @@ column->AddChild(button);
 
 <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
 
-```C
+``` C
 std::shared_ptr<ArkUIBaseNode> CreateAnimator()
 {
     auto column = std::make_shared<ArkUIColumnNode>();
