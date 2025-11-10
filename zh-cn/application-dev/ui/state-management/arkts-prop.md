@@ -278,6 +278,46 @@ struct ParentComponent {
 
 <!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
 
+``` TypeScript
+class Book {
+  public title: string;
+  public pages: number;
+  public readIt: boolean = false;
+
+  constructor(title: string, pages: number) {
+    this.title = title;
+    this.pages = pages;
+  }
+}
+
+@Component
+struct ReaderComp {
+  @Prop book: Book = new Book('', 0);
+
+  build() {
+    Row() {
+      Text(this.book.title)
+      Text(`...has${this.book.pages} pages!`)
+      Text(`...${this.book.readIt ? 'I have read' : 'I have not read it'}`)
+        .onClick(() => this.book.readIt = true)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Library {
+  @State book: Book = new Book('100 secrets of C++', 765);
+
+  build() {
+    Column() {
+      ReaderComp({ book: this.book })
+      ReaderComp({ book: this.book })
+    }
+  }
+}
+```
+
 ### 从父组件中的\@State数组项到\@Prop class类型的同步
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
