@@ -1093,5 +1093,34 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
+  ``` TypeScript
+  @Entry
+  @Component
+  export struct TextLongTow {
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    private manager = this.context.resourceManager;
+  
+    // 'Text_Long_String'资源文件中的value值为'这是一段超长文本'
+    @State message: string = this.manager.getStringByNameSync('Text_Long_String').repeat(50);
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Scroll() {
+            Text(this.message)
+          }
+          .scrollBar(BarState.Off)
+        }
+        .height(200)
+        .width('80%')
+        .margin('10%')
+        .borderWidth(1)
+        .justifyContent(FlexAlign.Center)
+      }
+      // ···
+    }
+  }
+  ```
+  
 
 ![](figures/text_too_long_scroll.gif)
