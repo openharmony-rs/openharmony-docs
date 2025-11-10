@@ -139,6 +139,58 @@ struct PageTwo {
 ![freezeWithTab](./figures/freezewithTabs.png)
 <!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component
+struct TabContentTest {
+  @State @Watch('onMessageUpdated') message: number = 0;
+  private data: number[] = [0, 1];
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `TabContent message callback func ${this.message}`);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+        Tabs() {
+          ForEach(this.data, (item: number) => {
+            TabContent() {
+              FreezeChild({ message: this.message, index: item })
+            }.tabBar(`tab${item}`)
+          }, (item: number) => item.toString())
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Link @Watch('onMessageUpdated') message: number;
+  index: number = 0;
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}, index: ${this.index}`)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 在上面的示例中：
 
 1.点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
