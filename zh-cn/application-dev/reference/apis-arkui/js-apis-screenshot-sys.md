@@ -127,7 +127,7 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 
 save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取屏幕截图。
+获取屏幕截图，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -240,7 +240,7 @@ try {
 
 saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
 
-获取屏幕截图。SDR为标准动态范围图，HDR为高动态范围图。
+获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。
 - 当物理屏不存在HDR资源时，与[save](#screenshotsave)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](#screenshotsave)接口的裁剪、拉伸、旋转功能。
 <br><br>
