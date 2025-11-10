@@ -19698,7 +19698,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":30,
 						"name":"creat_symbol_glyph",
 						"start_line":25
 					}
@@ -19708,34 +19708,34 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":35,
 						"name":"creat_symbol_span",
 						"start_line":29
 					},
 					{
-						"end_line":75,
+						"end_line":71,
 						"name":"symbol_span_font_size",
-						"start_line":40
+						"start_line":39
 					},
 					{
-						"end_line":111,
+						"end_line":104,
 						"name":"symbol_span_font_weight",
-						"start_line":79
+						"start_line":75
 					},
 					{
-						"end_line":147,
+						"end_line":137,
 						"name":"symbol_span_font_color",
-						"start_line":115
+						"start_line":108
 					},
 					{
-						"end_line":189,
+						"end_line":176,
 						"name":"symbol_span_rendering_strategy",
-						"start_line":151
+						"start_line":141
 					},
 					{
-						"end_line":229,
+						"end_line":213,
 						"name":"symbol_span_effect_strategy",
-						"start_line":194
+						"start_line":181
 					}
 				]
 			},
@@ -19748,7 +19748,7 @@
 						"start_line":22
 					},
 					{
-						"end_line":54,
+						"end_line":53,
 						"name":"symbol_variable_color",
 						"start_line":40
 					},
@@ -19758,9 +19758,9 @@
 						"start_line":25
 					},
 					{
-						"end_line":71,
+						"end_line":69,
 						"name":"symbol_bouncing_effect",
-						"start_line":57
+						"start_line":56
 					},
 					{
 						"end_line":33,
@@ -19768,9 +19768,9 @@
 						"start_line":26
 					},
 					{
-						"end_line":89,
+						"end_line":86,
 						"name":"symbol_disable_effect",
-						"start_line":74
+						"start_line":72
 					},
 					{
 						"end_line":31,
@@ -19778,9 +19778,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":106,
+						"end_line":102,
 						"name":"symbol_quick_replacement",
-						"start_line":92
+						"start_line":89
 					}
 				]
 			},
@@ -19793,7 +19793,7 @@
 						"start_line":22
 					},
 					{
-						"end_line":62,
+						"end_line":61,
 						"name":"shadow_color_1",
 						"start_line":47
 					},
@@ -19803,9 +19803,9 @@
 						"start_line":33
 					},
 					{
-						"end_line":77,
+						"end_line":75,
 						"name":"shadow_color_2",
-						"start_line":65
+						"start_line":64
 					}
 				]
 			},
@@ -19818,7 +19818,7 @@
 						"start_line":21
 					},
 					{
-						"end_line":37,
+						"end_line":36,
 						"name":"symbol_glyph_span_add_event",
 						"start_line":29
 					}
@@ -19828,7 +19828,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolSceneExample.ets",
 				"functions":[
 					{
-						"end_line":252,
+						"end_line":234,
 						"name":"symbol_glyph_span_scene_example",
 						"start_line":18
 					}
