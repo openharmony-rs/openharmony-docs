@@ -134,6 +134,52 @@ struct ReusableV2Component {
 - V2的复用组件当前不支持直接用于[Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)的template中，但是可以用在template中的V2自定义组件中。
 
   <!-- @[RepeatTemplatePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatTemplatePage.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @ComponentV2
+  struct Index {
+    @Local arr: number[] = [1, 2, 3, 4, 5];
+    build() {
+      Column() {
+        List() {
+          Repeat(this.arr)
+            .each(() => {})
+            .virtualScroll()
+            .templateId(() => 'a')
+            .template('a', (ri) => {
+              ListItem() {
+                Column() {
+                  NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  @ComponentV2
+  struct NormalV2Component {
+    @Require @Param val: number;
+    build() {
+      ReusableV2Component({ val: this.val })
+    }
+  }
+  @Builder
+  function ReusableV2Builder(param: number) {
+    ReusableV2Component({ val: param })
+  }
+  @ReusableV2
+  @ComponentV2
+  struct ReusableV2Component {
+    @Require @Param val: number;
+    build() {
+      Column() {
+        Text(`val: ${this.val}`)
+      }
+    }
+  }
+  ```
 
 ## 回收与复用的生命周期
 
