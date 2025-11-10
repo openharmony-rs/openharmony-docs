@@ -55,6 +55,36 @@
 页面1：
 <!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component({ freezeWhenInactive: true })
+struct PageOne {
+  @StorageLink('PropA') @Watch('first') storageLink: number = 47;
+
+  first() {
+    hilog.info(DOMAIN, TAG, 'first page ' + `${this.storageLink}`);
+  }
+
+  build() {
+    Column() {
+      Text(`From first Page ${this.storageLink}`).fontSize(50)
+      Button('first page storageLink + 1').fontSize(30)
+        .onClick(() => {
+          this.storageLink += 1;
+        })
+      Button('go to next page').fontSize(30)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' });
+        })
+    }
+  }
+}
+```
+
 页面2：
 <!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
 
