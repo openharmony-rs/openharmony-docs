@@ -922,4 +922,63 @@ struct Child {
 
 <!-- @[prop_fifteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFifteen.ets) -->
 
+``` TypeScript
+class Score {
+  public value: number;
+
+  constructor(value: number) {
+    this.value = value;
+  }
+
+  static changeScore1(score: Score) {
+    score.value += 1;
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State score: Score = new Score(1);
+
+  build() {
+    Column({ space: 8 }) {
+      Text(`The value in Parent is ${this.score.value}.`)
+        .fontSize(30)
+        .fontColor(Color.Red)
+      Child({ score: this.score })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct Child {
+  @Prop score: Score;
+
+  changeScore2(score: Score) {
+    score.value += 2;
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text(`The value in Child is ${this.score.value}.`)
+        .fontSize(30)
+      Button(`changeScore1`)
+        .onClick(() => {
+          // 通过赋值添加 Proxy 代理
+          let score1 = this.score;
+          Score.changeScore1(score1);
+        })
+      Button(`changeScore2`)
+        .onClick(() => {
+          // 通过赋值添加 Proxy 代理
+          let score2 = this.score;
+          this.changeScore2(score2);
+        })
+    }
+  }
+}
+```
+
 <!--no_check-->
