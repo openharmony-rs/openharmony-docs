@@ -48,7 +48,13 @@ struct Index {
 
 ```ts
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-import { ParallelizeUI } from '@ohos.arkui.stateManagement';
+
+class Param {
+  str: string;
+  constructor(str: string) {
+    this.str = str;
+  }
+}
 
 @Entry
 @Component
@@ -56,11 +62,10 @@ struct Index {
   @State str: string = 'Hello';
   build() {
     Column() {
-      const str = ParallelizeUI<string>(() => {return this.str})
-      ParallelizeUI() {
-        Text(str.value) // 使用ParallelizeUI进行数据传递
-        .fontSize(50)
-      }
+      ParallelizeUI<Param>(undefined, () => { return new Param(this.str); }, (param: Param) => {
+        Text(param.str)
+          .fontSize(50)
+      })
       Text('World')
         .fontSize(50)
       Button('UpperCase')
