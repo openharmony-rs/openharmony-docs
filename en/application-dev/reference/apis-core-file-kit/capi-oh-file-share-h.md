@@ -34,7 +34,7 @@ Provides APIs for persisting permissions, activating or deactivating persistent 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | Enumerates the URI operation mode.|
-| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | Enumerates the permission policy error code.|
+| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | Enumerates the error codes for a permission policy.|
 
 ### Functions
 
@@ -74,7 +74,7 @@ enum FileShare_PolicyErrorCode
 
 **Description**
 
-Enumerates the permission policy error code.
+Enumerates the error codes for a permission policy.
 
 **Since**: 12
 
