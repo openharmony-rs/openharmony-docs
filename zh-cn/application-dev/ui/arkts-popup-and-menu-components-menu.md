@@ -30,6 +30,8 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 <!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
 
 ``` TypeScript
+// 全局变量定义：const TAG: string = 'DialogProject';
+// 全局变量定义：const DOMAIN_NUMBER: number = 0xFF00;
 Button('click for Menu')
   .bindMenu([
     {
