@@ -384,7 +384,7 @@ struct Child {
 - 装饰的变量为内置类型时，可观察变量整体赋值和API调用的变化。
 
   | 类型  | 可观测变化的API                                              |
-      | ----- | ------------------------------------------------------------ |
+  | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
   | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
   | Map   | set, clear, delete                                           |
@@ -394,114 +394,97 @@ struct Child {
 
 \@Param装饰器存在以下使用限制：
 
-- \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
-  <!-- @[Param_Restrict_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictV2.ets) -->
-  
-  ``` TypeScript
-  @ComponentV2
-  struct MyComponent {
-    @Param message: string = 'Hello World'; // 正确用法
-  
-    build() {
-    }
-  }
-  
-  @Component
-  struct TestComponent {
-    // @Param message: string = 'Hello World'; // 错误用法，编译时报错
-    build() {
-    }
-  }
+  ```ts	
+  @ComponentV2	
+  struct MyComponent {	
+    @Param message: string = 'Hello World'; // 正确用法	
+    build() {	 
+    }	
+  }	
+  @Component	
+  struct TestComponent {	
+    @Param message: string = 'Hello World'; // 错误用法，编译时报错	
+    build() {	
+    }	
+  }	
   ```
 
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。当存在外部传入值时，优先使用外部传入值。不允许既不使用本地初始值，也不使用外部传入值。
-  <!-- @[Param_Restrict_Initialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictInitialize.ets) -->
-  
-  ``` TypeScript
-  @ComponentV2
-  struct ChildComponent {
-    @Param param1: string = 'Initialize local';
-    @Param param2: string = 'Initialize local and put in';
-    @Require @Param param3: string;
-  
-    // @Param param4: string; // 错误用法，外部未传入初始化且本地也无初始值，编译报错
-    build() {
-      Column() {
-        Text(`${this.param1}`) // 本地初始化，显示Initialize local
-        Text(`${this.param2}`) // 外部传入初始化，显示Put in
-        Text(`${this.param3}`) // 外部传入初始化，显示Put in
-      }
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct MyComponent {
-    @Local message: string = 'Put in';
-  
-    build() {
-      Column() {
-        ChildComponent({
-          param2: this.message,
-          param3: this.message
-        })
-      }
-    }
-  }
+
+```ts	
+  @ComponentV2	
+  struct ChildComponent {	
+    @Param param1: string = 'Initialize local';	
+    @Param param2: string = 'Initialize local and put in';	
+    @Require @Param param3: string;	
+    @Param param4: string; // 错误用法，外部未传入初始化且本地也无初始值，编译报错	
+    build() {	
+      Column() {	
+        Text(`${this.param1}`) // 本地初始化，显示Initialize local	
+        Text(`${this.param2}`) // 外部传入初始化，显示Put in	
+        Text(`${this.param3}`) // 外部传入初始化，显示Put in	
+      }	
+    }	
+  }	
+  @Entry	
+  @ComponentV2	
+  struct MyComponent {	
+    @Local message: string = 'Put in';	
+    build() {	
+      Column() {	
+        ChildComponent({	
+          param2: this.message,	
+          param3: this.message	
+        })	
+      }	
+    }	
+  }	
   ```
 
 - 使用`@Param`装饰的变量在子组件中无法被直接修改。但是，如果装饰的变量是对象类型，在子组件中可以修改对象的属性。
-
-  <!-- @[Param_Restrict_Modify_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictModifyObject.ets) -->
-  
-  ``` TypeScript
-  @ObservedV2
-  class Info {
-    @Trace public name: string;
-  
-    constructor(name: string) {
-      this.name = name;
-    }
+  ```ts
+  @ObservedV2	
+  class Info {	
+    @Trace name: string;
+    constructor(name: string) {	
+      this.name = name;	
+    }	
   }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
+  @Entry	
+  @ComponentV2	
+  struct Index {	
     @Local info: Info = new Info('Tom');
-  
-    build() {
-      Column() {
-        Text(`Parent info.name ${this.info.name}`)
-        Button('Parent change info')
-          .onClick(() => {
-            // 父组件更改@Local变量，会同步子组件对应@Param变量
-            this.info = new Info('Lucy');
-          })
-        Child({ info: this.info })
-      }
-    }
+    build() {	
+      Column() {	
+        Text(`Parent info.name ${this.info.name}`)	
+        Button('Parent change info')	
+          .onClick(() => {	
+            // 父组件更改@Local变量，会同步子组件对应@Param变量	
+            this.info = new Info('Lucy');	
+        })	
+        Child({ info: this.info })	
+      }	
+    }	
   }
-  
-  @ComponentV2
-  struct Child {
+  @ComponentV2	
+  struct Child {	
     @Require @Param info: Info;
-  
-    build() {
-      Column() {
-        Text(`info.name: ${this.info.name}`)
-        Button('change info')
-          .onClick(() => {
-            // 错误用法，不允许在子组件中更改@Param变量，编译时会报错
-            // 错误用法：this.info = new Info('Jack');
-          })
-        Button('Child change info.name')
-          .onClick(() => {
-            // 允许在子组件中更改对象中属性，该修改会同步到父组件数据源上，当属性被@Trace装饰时，可观测到对应UI刷新
-            this.info.name = 'Jack';
-          })
-      }
-    }
-  }
+    build() {	
+      Column() {	
+        Text(`info.name: ${this.info.name}`)	
+        Button('change info')	
+          .onClick(() => {	
+            // 错误用法，不允许在子组件中更改@Param变量，编译时会报错	
+            this.info = new Info('Jack');	
+          })	
+        Button('Child change info.name')	
+          .onClick(() => {	
+            // 允许在子组件中更改对象中属性，该修改会同步到父组件数据源上，当属性被@Trace装饰时，可观测到对应UI刷新	
+            this.info.name = 'Jack';	
+          })	
+      }	
+    }	
+  }	
   ```
 
 ## 使用场景
