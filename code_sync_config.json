@@ -20268,21 +20268,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets",
 				"functions":[
 					{
-						"end_line":107,
-						"name":"call_bind_menu",
-						"start_line":97
-					},
-					{
-						"end_line":135,
-						"name":"builder_menu_content",
-						"start_line":18
-					},
-					{
-						"end_line":114,
-						"name":"bind_menu_property",
-						"start_line":111
-					},
-					{
 						"end_line":122,
 						"name":"create_right_click_menu",
 						"start_line":119
@@ -20336,6 +20321,31 @@
 						"end_line":58,
 						"name":"bindComponent_menu",
 						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"create_default_menu",
+						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets",
+				"functions":[
+					{
+						"end_line":110,
+						"name":"builder_custom_menu",
+						"start_line":16
+					},
+					{
+						"end_line":99,
+						"name":"bind_menu",
+						"start_line":96
 					}
 				]
 			}
