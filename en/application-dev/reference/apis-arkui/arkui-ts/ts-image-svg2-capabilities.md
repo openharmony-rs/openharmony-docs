@@ -1,4 +1,4 @@
-# SVG Parsing Capability
+# Enhanced SVG Parsing Capabilities
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->

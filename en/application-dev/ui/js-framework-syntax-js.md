@@ -287,8 +287,8 @@ Customize the child component.
 ```html
 <!-- child.hml -->
 <div class="item" onclick="textClicked">
-  <text class="text-style" onclick="childClicked">Child component clicked</text>
-  <text class="text-style" if="{{isShow}}">Hello child component</text>
+  <text class="text-style" onclick="childClicked">child component clicked</text>
+  <text class="text-style" if="{{isShow}}">hello child component</text>
 </div>
 ```
 
@@ -297,7 +297,7 @@ Customize the child component.
 export default {
   data: {
     isShow: false,
-    text: 'I am the child component!',
+    text: 'I am child component!',
   },
   childClicked () {
     this.isShow = !this.isShow;
