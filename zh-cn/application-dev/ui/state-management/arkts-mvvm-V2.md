@@ -138,6 +138,61 @@ struct TodoList {
 
 <!-- @[Main_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets) --> 
 
+``` TypeScript
+// src/main/ets/pages/EventPage.ets
+@ComponentV2
+struct TaskItem {
+  @Param taskName: string = '';
+  @Param @Once isFinish: boolean = false;
+  @Event deleteTask: () => void = () => {};
+
+  build() {
+    Row() {
+      // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+      Image(this.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+        .width(28)
+        .height(28)
+      Text(this.taskName)
+        .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+      Button('Delete')
+        .onClick(() => this.deleteTask())
+    }
+    .onClick(() => this.isFinish = !this.isFinish)
+  }
+}
+
+@Entry
+@ComponentV2
+struct TodoList {
+  @Local tasks: string[] = ['task1','task2','task3'];
+  @Local newTaskName: string = '';
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      ForEach(this.tasks, (task: string) => {
+        TaskItem({
+          taskName: task,
+          isFinish: false,
+          deleteTask: () => this.tasks.splice(this.tasks.indexOf(task), 1)
+        })
+      })
+      Row() {
+        TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
+          .onChange((value) => this.newTaskName = value)
+          .width('70%')
+        Button('+')
+          .onClick(() => {
+            this.tasks.push(this.newTaskName);
+            this.newTaskName = '';
+          })
+      }
+    }
+  }
+}
+```
+
 
 ### 添加Repeat，实现子组件复用
 
