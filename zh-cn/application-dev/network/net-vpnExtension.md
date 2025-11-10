@@ -70,7 +70,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 <!-- @[start_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StartVpn.ets) -->
 
 ``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 // ···
@@ -133,8 +133,9 @@ struct StartVpn {
 您可参考如下示例：
 
 <!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+
 ``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
@@ -223,8 +224,7 @@ Destroy() {
 <!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 // ···
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = '';
@@ -249,8 +249,7 @@ export class VpnTest extends VpnExtensionAbility {
 <!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) -->
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 // ···
 export class VpnTest extends VpnExtensionAbility {
@@ -265,7 +264,6 @@ export class VpnTest extends VpnExtensionAbility {
     // ···
   }
 };
-
 ```
 
 ## 服务生命周期
