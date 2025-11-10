@@ -886,7 +886,9 @@ eSIM.setProfileNickname(1, 'testId', 'testName').then((data: eSIM.ResultCode) =>
 
 ## eSIM.resetMemory
 
-resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
+ArkTS-Dyn: resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
+
+ArkTS-Sta: resetMemory\(slotId: int, options?: ResetOption\): Promise\<ResultCode\>
 
 清除所有特定配置文件并重置eUICC。使用Promise异步回调。
 
@@ -896,11 +898,15 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | options | [ResetOption](#resetoption18) | 否 | 重置状态。 |
 
 **返回值：**

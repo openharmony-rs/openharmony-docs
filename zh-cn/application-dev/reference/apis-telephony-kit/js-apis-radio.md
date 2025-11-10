@@ -220,6 +220,10 @@ getNetworkState\(callback: AsyncCallback\<NetworkState\>\): void
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                           | 必填 | 说明       |
@@ -241,6 +245,8 @@ getNetworkState\(callback: AsyncCallback\<NetworkState\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -253,10 +259,25 @@ radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.getNetworkState((err: BusinessError | null, data: radio.NetworkState) => {
+    if (err?.code) {
+        console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## radio.getNetworkState
 
-getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
+ArkTS-Dyn: getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
+
+ArkTS-Sta: getNetworkState\(slotId: int, callback: AsyncCallback\<NetworkState\>\): void
 
 获取网络状态。使用callback异步回调。
 
@@ -264,11 +285,15 @@ getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                           | 必填 | 说明                                   |
 | -------- | ---------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<[NetworkState](#networkstate)\> | 是   | 回调函数。返回当前网络状态。                             |
 
 **错误码：**
@@ -286,6 +311,8 @@ getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -299,10 +326,26 @@ radio.getNetworkState(slotId, (err: BusinessError, data: radio.NetworkState) => 
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: int = 0;
+radio.getNetworkState(slotId, (err: BusinessError | null, data: radio.NetworkState) => {
+    if (err?.code) {
+        console.error(`getNetworkState failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`getNetworkState success, callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## radio.getNetworkState
 
-getNetworkState\(slotId?: number\): Promise\<NetworkState\>
+ArkTS-Dyn: getNetworkState\(slotId?: number\): Promise\<NetworkState\>
+
+ArkTS-Sta: getNetworkState\(slotId?: int\): Promise\<NetworkState\>
 
 获取网络状态。使用Promise异步回调。
 
@@ -310,11 +353,15 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/> 未指定卡槽时，默认为卡槽1。 |
+| 参数名 | 类型                                 | 必填 | 说明                                                         |
+| ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/> 未指定卡槽时，默认为卡槽1。 |
 
 **返回值：**
 
@@ -337,6 +384,8 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -348,6 +397,18 @@ radio.getNetworkState(slotId).then((data: radio.NetworkState) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: int = 0;
+radio.getNetworkState(slotId).then((data: radio.NetworkState) => {
+    console.info(`getNetworkState success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNetworkState failed, promise: err->${JSON.stringify(err)}`);
+});
+```
 
 ## radio.getNetworkSelectionMode
 
@@ -676,17 +737,23 @@ console.info(`the country ISO is ${JSON.stringify(countryISO)}`);
 
 ## radio.getPrimarySlotId<sup>7+</sup>
 
-getPrimarySlotId\(callback: AsyncCallback\<number\>\): void
+ArkTS-Dyn: getPrimarySlotId\(callback: AsyncCallback\<number\>\): void
+
+ArkTS-Sta: getPrimarySlotId\(callback: AsyncCallback\<int\>\): void
 
 获取主卡所在卡槽的索引号。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<number\> | 是   | 回调函数。返回主卡所在卡槽的索引号。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | ArkTS-Dyn: AsyncCallback<number><br/>ArkTS-Sta: AsyncCallback<int> | 是   | 回调函数。返回主卡所在卡槽的索引号。 |
 
 **错误码：**
 
@@ -701,6 +768,8 @@ getPrimarySlotId\(callback: AsyncCallback\<number\>\): void
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -714,20 +783,39 @@ radio.getPrimarySlotId((err: BusinessError, data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.getPrimarySlotId((err: BusinessError | null, data: number) => {
+    if (err?.code) {
+        console.error(`getPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`getPrimarySlotId success, callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## radio.getPrimarySlotId<sup>7+</sup>
 
-getPrimarySlotId\(\): Promise\<number\>
+ArkTS-Dyn: getPrimarySlotId\(\): Promise\<number\>
+
+ArkTS-Sta: getPrimarySlotId\(\): Promise\<int\>
 
 获取主卡所在卡槽的索引号。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
-| 类型                                                        | 说明                                                         |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以Promise形式返回获取设备主卡所在卡槽的索引号的结果。 |
+| 类型                                                   | 说明                                                  |
+| ------------------------------------------------------ | ----------------------------------------------------- |
+| ArkTS-Dyn: Promise<number><br/>ArkTS-Sta: Promise<int> | 以Promise形式返回获取设备主卡所在卡槽的索引号的结果。 |
 
 **错误码：**
 
@@ -741,6 +829,8 @@ getPrimarySlotId\(\): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -751,21 +841,38 @@ radio.getPrimarySlotId().then((data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+radio.getPrimarySlotId().then((data: int) => {
+    console.info(`getPrimarySlotId success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
+});
+```
 
 ## radio.getSignalInformation<sup>7+</sup>
 
-getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInformation\>\>\): void
+ArkTS-Dyn: getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInformation\>\>\): void
+
+ArkTS-Sta: getSignalInformation\(slotId: int, callback: AsyncCallback\<Array\<SignalInformation\>\>\): void
 
 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                       |
-| callback | AsyncCallback\<Array\<[SignalInformation](#signalinformation)\>\> | 是   | 回调函数，返回从[SignalInformation](#signalinformation)中派生出的子类对象的数组。|
+| slotId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                   |
+| callback | AsyncCallback\<Array\<[SignalInformation](#signalinformation)\>\> | 是   | 回调函数，返回从[SignalInformation](#signalinformation)中派生出的子类对象的数组。 |
 
 **错误码：**
 
@@ -780,6 +887,8 @@ getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInfo
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -794,20 +903,40 @@ radio.getSignalInformation(slotId, (err: BusinessError, data: Array<radio.Signal
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getSignalInformation(slotId, (err: BusinessError | null, data: Array<radio.SignalInformation>) => {
+    if (err?.code) {
+        console.error(`getSignalInformation failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`getSignalInformation success, callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## radio.getSignalInformation<sup>7+</sup>
 
-getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
+ArkTS-Dyn: getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
+
+ArkTS-Sta: getSignalInformation\(slotId: int\): Promise\<Array\<SignalInformation\>\>
 
 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -829,10 +958,25 @@ getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
+radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
+    console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSignalInformation failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: int = 0;
 radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
     console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -955,6 +1099,10 @@ isNRSupported\(\): boolean
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型    | 说明                             |
@@ -971,17 +1119,23 @@ console.info("Result: "+ result);
 
 ## radio.isNRSupported<sup>9+</sup>
 
-isNRSupported\(slotId: number\): boolean
+ArkTS-Dyn: isNRSupported\(slotId: number\): boolean
+
+ArkTS-Sta: isNRSupported\(slotId: int\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -991,12 +1145,21 @@ isNRSupported\(slotId: number\): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let slotId: number = 0;
 let result: boolean = radio.isNRSupported(slotId);
 console.info("Result: "+ result);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let slotId: int = 0;
+let result: boolean = radio.isNRSupported(slotId);
+console.info("Result: "+ result);
+```
 
 ## radio.isRadioOn<sup>7+</sup>
 
@@ -1453,6 +1616,10 @@ console.info(`operator name is ${JSON.stringify(operatorName)}`);
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                 | 值   | 说明                                                         |
 | -------------------- | ---- | ------------------------------------------------------------ |
 | NETWORK_TYPE_UNKNOWN | 0    | 未知网络类型。                                               |
@@ -1469,17 +1636,17 @@ console.info(`operator name is ${JSON.stringify(operatorName)}`);
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-|       名称           |                 类型                | 只读 | 可选 |                          说明                                |
+| 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| longOperatorName     | string                              |  否  |  否  | 注册网络的长运营商名称。                                     |
-| shortOperatorName    | string                              |  否  |  否  | 注册网络的短运营商名称。                                     |
-| plmnNumeric          | string                              |  否  |  否  | 注册网络的PLMN码。                                           |
-| isRoaming            | boolean                             |  否  |  否  | 是否处于漫游状态。                                           |
-| regState             | [RegState](#regstate)               |  否  |  否  | 设备的网络注册状态。                                         |
-| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  否  |  否  | 设备的无线接入技术。                                         |
-| nsaState             | [NsaState](#nsastate)               |  否  |  否  | 设备的NSA网络注册状态。                                      |
-| isCaActive           | boolean                             |  否  |  否  | CA的状态。                                                   |
-| isEmergency          | boolean                             |  否  |  否  | 此设备是否只允许拨打紧急呼叫。                               |
+| longOperatorName     | string                              | 否   | 否   | 注册网络的长运营商名称。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| shortOperatorName    | string                              | 否   | 否   | 注册网络的短运营商名称。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| plmnNumeric          | string                              | 否   | 否   | 注册网络的PLMN码。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| isRoaming            | boolean                             | 否   | 否   | 是否处于漫游状态。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| regState             | [RegState](#regstate)               | 否   | 否   | 设备的网络注册状态。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) | 否   | 否   | 设备的无线接入技术。<br />**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
+| nsaState             | [NsaState](#nsastate)               | 否   | 否   | 设备的NSA网络注册状态。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| isCaActive           | boolean                             | 否   | 否   | CA的状态。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
+| isEmergency          | boolean                             | 否   | 否   | 此设备是否只允许拨打紧急呼叫。<br />**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 22 |
 
 
 ## RegState
@@ -1487,6 +1654,10 @@ console.info(`operator name is ${JSON.stringify(operatorName)}`);
 网络注册状态。
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 值   | 说明                       |
 | ----------------------------- | ---- | -------------------------- |

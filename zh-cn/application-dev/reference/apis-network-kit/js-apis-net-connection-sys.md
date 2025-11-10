@@ -3,8 +3,12 @@
 网络连接管理提供管理网络一些基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
 
 > **说明：**
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.connection (网络连接管理)](js-apis-net-connection.md)。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.connection (网络连接管理)](js-apis-net-connection.md)。
 
 ## 导入模块
 
@@ -206,6 +210,10 @@ enableAirplaneMode(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                              | 必填 | 说明               |
@@ -224,11 +232,24 @@ enableAirplaneMode(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.enableAirplaneMode((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.enableAirplaneMode((error: BusinessError | null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -244,6 +265,10 @@ enableAirplaneMode(): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -281,6 +306,10 @@ disableAirplaneMode(callback: AsyncCallback\<void>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -320,6 +349,10 @@ disableAirplaneMode(): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
