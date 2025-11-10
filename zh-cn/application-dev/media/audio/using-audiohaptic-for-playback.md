@@ -31,8 +31,8 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 
    // 方法1：使用registerSource接口注册资源。
-   let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
-   let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+   let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
+   let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的Uri。
    let idForUri = 0;
 
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
@@ -47,14 +47,14 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // 需要改成rawfile目录下的对应文件。
+   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
    let audioFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: audioFile.fd,
      offset: audioFile.offset,
      length: audioFile.length,
    };
 
-   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // 需要改成rawfile目录下的对应文件。
+   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
    let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: hapticFile.fd,
      offset: hapticFile.offset,
@@ -73,10 +73,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    ```ts
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
-   audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
+   audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
 
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
-   audioHapticManagerInstance.setStreamUsage(id, usage);
+   audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
 3. 创建AudioHapticPlayer实例。
@@ -85,7 +85,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
-   audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
+   audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
      console.info(`Create the audio haptic player successfully.`);
      audioHapticPlayer = value;
    }).catch((err: BusinessError) => {
@@ -126,7 +126,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 7. 将已注册的音频及振动资源移除注册。
 
    ```ts
-   audioHapticManagerInstance.unregisterSource(id).then(() => {
+   audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
    }).catch((err: BusinessError) => {
      console.error(`Failed to unregister source ${err}`);
