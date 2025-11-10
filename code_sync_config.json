@@ -7094,9 +7094,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"local_resource",
-						"start_line":22
+						"start_line":23
 					},
 					{
 						"end_line":32,
@@ -7104,14 +7104,14 @@
 						"start_line":29
 					},
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"resource_icon",
-						"start_line":33
+						"start_line":34
 					},
 					{
-						"end_line":41,
+						"end_line":42,
 						"name":"rawfile_resource",
-						"start_line":38
+						"start_line":39
 					},
 					{
 						"end_line":48,
@@ -7204,7 +7204,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":45,
 						"name":"image_renderingmode",
 						"start_line":17
 					}
@@ -7234,7 +7234,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":59,
 						"name":"event_invocation",
 						"start_line":20
 					}
