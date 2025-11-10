@@ -27,7 +27,7 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 菜单需要调用bindMenu接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
 
-<!-- @[call_bind_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
+<!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
 
 ``` TypeScript
 Button('click for Menu')
@@ -49,7 +49,7 @@ Button('click for Menu')
 
 ### 使用@Builder自定义菜单内容
 
-<!-- @[builder_menu_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
+<!-- @[builder_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -132,7 +132,7 @@ export struct menuExample  {
 
 ### 使用bindMenu属性绑定组件
 
-<!-- @[bind_menu_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
+<!-- @[bind_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
 
 ``` TypeScript
 Button('click for Menu')
