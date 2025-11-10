@@ -55,8 +55,68 @@
 页面1：
 <!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component({ freezeWhenInactive: true })
+struct PageOne {
+  @StorageLink('PropA') @Watch('first') storageLink: number = 47;
+
+  first() {
+    hilog.info(DOMAIN, TAG, 'first page ' + `${this.storageLink}`);
+  }
+
+  build() {
+    Column() {
+      Text(`From first Page ${this.storageLink}`).fontSize(50)
+      Button('first page storageLink + 1').fontSize(30)
+        .onClick(() => {
+          this.storageLink += 1;
+        })
+      Button('go to next page').fontSize(30)
+        .onClick(() => {
+          this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' });
+        })
+    }
+  }
+}
+```
+
 页面2：
 <!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component({ freezeWhenInactive: true })
+struct PageTwo {
+  @StorageLink('PropA') @Watch('second') storageLink: number = 1;
+
+  second() {
+    hilog.info(DOMAIN, TAG, 'second page: ' + `${this.storageLink}`);
+  }
+
+  build() {
+    Column() {
+      Text(`second Page ${this.storageLink}`).fontSize(50)
+      Button('back')
+        .onClick(() => {
+          this.getUIContext().getRouter().back();
+        })
+      Button('second page storageLink + 2').fontSize(30)
+        .onClick(() => {
+          this.storageLink += 2;
+        })
+    }
+  }
+}
+```
 
 在上面的示例中：
 
@@ -79,6 +139,58 @@
 ![freezeWithTab](./figures/freezewithTabs.png)
 <!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component
+struct TabContentTest {
+  @State @Watch('onMessageUpdated') message: number = 0;
+  private data: number[] = [0, 1];
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `TabContent message callback func ${this.message}`);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+        Tabs() {
+          ForEach(this.data, (item: number) => {
+            TabContent() {
+              FreezeChild({ message: this.message, index: item })
+            }.tabBar(`tab${item}`)
+          }, (item: number) => item.toString())
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Link @Watch('onMessageUpdated') message: number;
+  index: number = 0;
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}, index: ${this.index}`)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 在上面的示例中：
 
 1.点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
@@ -94,6 +206,149 @@
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 <!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+// 用于处理数据监听的IDataSource的基本实现
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, TAG, 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+}
+
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Entry
+@Component
+struct LazyforEachTest {
+  private data: MyDataSource = new MyDataSource();
+  @State @Watch('onMessageUpdated') message: number = 0;
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `LazyforEach message callback func ${this.message}`);
+  }
+
+  aboutToAppear() {
+    for (let i = 0; i <= 20; i++) {
+      this.data.pushData(`Hello ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change message').onClick(() => {
+        this.message++;
+      })
+      List({ space: 3 }) {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            FreezeChild({ message: this.message, index: item })
+          }
+        }, (item: string) => item)
+      }.cachedCount(5).height(500)
+    }
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Link @Watch('onMessageUpdated') message: number;
+  index: string = '';
+
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, `FreezeChild aboutToAppear index: ${this.index}`);
+  }
+
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}, index: ${this.index}`)
+      .width('90%')
+      .height(160)
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
 
 在上面的示例中：
 
@@ -111,6 +366,192 @@
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
 <!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Entry
+@Component
+struct MyNavigationTestStack {
+  @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+  @State @Watch('info') message: number = 0;
+  @State logNumber: number = 0;
+
+  info() {
+    hilog.info(DOMAIN, TAG, `freeze-test MyNavigation message callback ${this.message}`);
+  }
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      PageOneStack({ message: this.message, logNumber: this.logNumber })
+    } else if (name === 'pageTwo') {
+      PageTwoStack({ message: this.message, logNumber: this.logNumber })
+    } else if (name === 'pageThree') {
+      PageThreeStack({ message: this.message, logNumber: this.logNumber })
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change message')
+        .onClick(() => {
+          this.message++;
+        })
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
+
+@Component
+struct PageOneStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @State index: number = 1;
+  @Link message: number;
+  @Link logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageTwoStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @State index: number = 2;
+  @Link message: number;
+  @Link logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageThree', null);
+          })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageThreeStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @State index: number = 3;
+  @Link message: number;
+  @Link logNumber: number;
+
+  build() {
+    NavDestination() {
+      Column() {
+        NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
+        Text('cur stack size:' + `${this.pageInfo.size()}`)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageOne', null);
+          })
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageThree')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct NavigationContentMsgStack {
+  @Link @Watch('info') message: number;
+  @Link index: number;
+  @Link logNumber: number;
+
+  info() {
+    hilog.info(DOMAIN, TAG, `freeze-test NavigationContent message callback ${this.message}`);
+    hilog.info(DOMAIN, TAG, `freeze-test ---- called by content ${this.index}`);
+    this.logNumber++;
+  }
+
+  build() {
+    Column() {
+      Text('msg:' + `${this.message}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text('log number:' + `${this.logNumber}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+```
 
 
 在上面的示例中：
@@ -146,6 +587,64 @@
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
 <!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('descChange') desc: string;
+  @State count: number = 0;
+
+  descChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.count = params.count as number;
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent desc: ${this.desc}`)
+        .fontSize(20)
+      Text(`ChildComponent count ${this.count}`)
+        .fontSize(20)
+    }.border({ width: 2, color: Color.Pink })
+  }
+}
+
+@Entry
+@Component
+struct Page {
+  @State desc: string = 'Hello World';
+  @State flag: boolean = true;
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button(`change desc`).onClick(() => {
+        this.desc += '!';
+      })
+      Button(`change flag`).onClick(() => {
+        this.count++;
+        this.flag = !this.flag;
+      })
+      if (this.flag) {
+        ChildComponent({ desc: this.desc, count: this.count })
+      }
+    }
+    .height('100%')
+  }
+}
+```
+
 在上面的示例中：
 
 1. 点击`change flag`，改变`flag`为false：
@@ -163,6 +662,161 @@
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 <!-- @[arkts_custom_components_freeze7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets) -->
+
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+// 用于处理数据监听的IDataSource的基本实现
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, TAG, 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+}
+
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Reusable
+@Component({freezeWhenInactive: true})
+struct ChildComponent {
+  @Link @Watch('descChange') desc: string;
+  @State item: string = '';
+  @State index: number = 0;
+
+  descChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.item = params.item;
+    this.index = params.index;
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent index: ${this.index} item: ${this.item}`)
+        .fontSize(20)
+      Text(`desc: ${this.desc}`)
+        .fontSize(20)
+    }.border({width: 2, color: Color.Pink})
+  }
+}
+
+@Entry
+@Component
+struct Page {
+  @State desc: string = 'Hello World';
+  private data: MyDataSource = new MyDataSource();
+
+  aboutToAppear() {
+    for (let i = 0; i < 50; i++) {
+      this.data.pushData(`Hello ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button(`change desc`).onClick(() => {
+        hiTraceMeter.startTrace('change desc', 1);
+        this.desc += '!';
+        hiTraceMeter.finishTrace('change desc', 1);
+      })
+      List({ space: 3 }) {
+        LazyForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            ChildComponent({index: index, item: item, desc: this.desc}).reuseId(index % 10 < 5 ? '1': '0')
+          }
+        }, (item: string) => item)
+      }.cachedCount(5)
+    }
+    .height('100%')
+  }
+}
+```
 
 在上面的示例中：
 
@@ -186,6 +840,171 @@
 - 通过滑动从LazyForEach的缓存区域下树，进入复用池。
 - if条件切换通知子节点下树，进入复用池。
 <!-- @[arkts_custom_components_freeze8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse2.ets) -->
+
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, TAG, 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+}
+
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('descChange') desc: string;
+  @State item: string = '';
+  @State index: number = 0;
+
+  descChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    this.item = params.item;
+    this.index = params.index;
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent index: ${this.index} item: ${this.item}`)
+        .fontSize(20)
+      Text(`desc: ${this.desc}`)
+        .fontSize(20)
+    }.border({ width: 2, color: Color.Pink })
+  }
+}
+
+@Entry
+@Component
+struct Page {
+  @State desc: string = 'Hello World';
+  @State flag: boolean = true;
+  private data: MyDataSource = new MyDataSource();
+
+  aboutToAppear() {
+    for (let i = 0; i < 50; i++) {
+      this.data.pushData(`Hello ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button(`change desc`).onClick(() => {
+        hiTraceMeter.startTrace('change desc', 1);
+        this.desc += '!';
+        hiTraceMeter.finishTrace('change desc', 1);
+      })
+      Button(`change flag`).onClick(() => {
+        hiTraceMeter.startTrace('change flag', 1);
+        this.flag = !this.flag;
+        hiTraceMeter.finishTrace('change flag', 1);
+      })
+      List({ space: 3 }) {
+        LazyForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            ChildComponent({ index: index, item: item, desc: this.desc }).reuseId(index % 10 < 5 ? '1' : '0')
+          }
+        }, (item: string) => item)
+      }
+      .cachedCount(5)
+      .height('60%')
+      if (this.flag) {
+        ChildComponent({ index: -1, item: 'Hello', desc: this.desc }).reuseId('1')
+      }
+    }
+    .height('100%')
+  }
+}
+```
 
 
 在上面的示例中：
@@ -213,6 +1032,177 @@
 
 代码示例如下：
 <!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->
+
+``` TypeScript
+// index.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Component
+struct ChildOfParamComponent {
+  @Prop @Watch('onChange') childVal: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `Appmonitor ChildOfParamComponent: childVal changed:${this.childVal}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Child Param: ${this.childVal}`)
+    }
+  }
+}
+
+@Component
+struct ParamComponent {
+  @Prop @Watch('onChange') paramVal: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: paramVal changed:${this.paramVal}`);
+  }
+
+  build() {
+    Column() {
+      Text(`val: ${this.paramVal}`)
+      ChildOfParamComponent({ childVal: this.paramVal })
+    }
+  }
+}
+
+@Component
+struct DelayComponent {
+  @Prop @Watch('onChange') delayVal: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Delay Param: ${this.delayVal}`)
+    }
+  }
+}
+
+@Component({ freezeWhenInactive: true })
+struct TabsComponent {
+  private controller: TabsController = new TabsController();
+  @State @Watch('onChange') tabState: number = 47;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `Appmonitor TabsComponent: tabState changed:${this.tabState}`);
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Button(`Incr state ${this.tabState}`)
+        .fontSize(25)
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, 'Button increment state value');
+          this.tabState = this.tabState + 1;
+        })
+      Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller }) {
+        TabContent() {
+          ParamComponent({ paramVal: this.tabState })
+        }.tabBar('Update')
+        TabContent() {
+          DelayComponent({ delayVal: this.tabState })
+        }.tabBar('DelayUpdate')
+      }
+      .vertical(false)
+      .scrollable(true)
+      .barMode(BarMode.Fixed)
+      .barWidth(400)
+      .barHeight(150)
+      .animationDuration(400)
+      .width('100%')
+      .height(200)
+      .backgroundColor(0xF5F5F5)
+    }
+  }
+}
+
+@Entry
+@Component
+struct MyNavigationTestStack {
+  @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      PageOneStack()
+    } else if (name === 'pageTwo') {
+      PageTwoStack()
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
+
+@Component
+struct PageOneStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        TabsComponent()
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageTwoStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+```
 
 
 代码运行结果图如下：
@@ -246,6 +1236,168 @@
 Navigation和TabContent混用时，之所以会解锁TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
 <!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) -->
 
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+// 用于处理数据监听的IDataSource的基本实现
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, TAG, 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, TAG, 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+}
+
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = [];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @State desc: string = '';
+  @Link @Watch('sumChange') sum: number;
+
+  sumChange() {
+    hilog.info(DOMAIN, TAG, `sum: Change ${this.sum}`);
+  }
+
+  aboutToReuse(params: Record<string, Object>): void {
+    this.desc = params.desc as string;
+    this.sum = params.sum as number;
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Divider()
+        .color('#ff11acb8')
+      Text(`subcomponent: ${this.desc}`)
+        .fontSize(30)
+        .fontWeight(30)
+      Text(`${this.sum}`)
+        .fontSize(30)
+        .fontWeight(30)
+    }
+  }
+}
+
+@Entry
+@Component({ freezeWhenInactive: true })
+struct Page {
+  private data: MyDataSource = new MyDataSource();
+  @State sum: number = 0;
+  @State desc: string = '';
+
+  aboutToAppear() {
+    for (let index = 0; index < 20; index++) {
+      this.data.pushData(index.toString());
+    }
+  }
+
+  build() {
+    Column() {
+      Button(`add sum`).onClick(() => {
+        this.sum++;
+      })
+        .fontSize(30)
+        .margin(20)
+      List() {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            ChildComponent({ desc: item, sum: this.sum })
+          }
+          .width('100%')
+          .height(100)
+        }, (item: string) => item)
+      }.cachedCount(5)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 在组件复用场景中，已经对LazyForEach的节点进行了详细说明，分为屏上节点和cachedCount节点。
 
@@ -275,6 +1427,112 @@ Navigation和TabContent混用时，之所以会解锁TabContent标签的子节�
 
 在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。具体示例见[BuilderNode对象继承组件冻结](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)。
 <!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
+
+``` TypeScript
+import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+// 定义一个Params类，用于传递参数
+class Params {
+  public index: number = 0;
+
+  constructor(index: number) {
+    this.index = index;
+  }
+}
+
+// 定义一个BuildNodeChild组件，它包含一个message属性和一个index属性
+@Component
+struct BuildNodeChild {
+  @StorageProp('buildNodeTest') @Watch('onMessageUpdated') message: string = 'hello world';
+  @State index: number = 0;
+
+  // 当message更新时，调用此方法
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeBuildNode builderNodeChild message callback func ${this.message},index:${this.index}`);
+  }
+
+  build() {
+    Text(`buildNode Child message: ${this.message}`).fontSize(30)
+  }
+}
+
+// 定义一个buildText函数，它接收一个Params参数并构建一个Column组件
+@Builder
+function buildText(params: Params) {
+  Column() {
+    BuildNodeChild({ index: params.index })
+  }
+}
+
+// 定义一个TextNodeController类，继承自NodeController
+class TextNodeController extends NodeController {
+  private textNode: BuilderNode<[Params]> | null = null;
+  private index: number = 0;
+
+  // 构造函数接收一个index参数
+  constructor(index: number) {
+    super();
+    this.index = index;
+  }
+
+  // 创建并返回一个FrameNode
+  makeNode(context: UIContext): FrameNode | null {
+    this.textNode = new BuilderNode(context);
+    this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.index));
+    return this.textNode.getFrameNode();
+  }
+}
+
+// 定义一个Index组件，它包含一个message属性和一个data数组
+@Entry
+@Component
+struct Index {
+  @StorageLink('buildNodeTest') message: string = 'hello';
+  private data: number[] = [0, 1];
+
+  build() {
+    Row() {
+      Column() {
+        Button('change').fontSize(30)
+          .onClick(() => {
+            this.message += 'a';
+          })
+        Tabs() {
+          ForEach(this.data, (item: number) => {
+            TabContent() {
+              FreezeBuildNode({ index: item })
+            }.tabBar(`tab${item}`)
+          }, (item: number) => item.toString())
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+// 定义一个FreezeBuildNode组件，它包含一个message属性和一个index属性
+@Component({ freezeWhenInactive: true })
+struct FreezeBuildNode {
+  @StorageProp('buildNodeTest') @Watch('onMessageUpdated') message: string = '1111';
+  @State index: number = 0;
+
+  // 当message更新时，调用此方法
+  onMessageUpdated() {
+    hilog.info(DOMAIN, TAG, `FreezeBuildNode message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    NodeContainer(new TextNodeController(this.index))
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#FFF0F0F0')
+  }
+}
+```
 
 
 在上面的示例中：
