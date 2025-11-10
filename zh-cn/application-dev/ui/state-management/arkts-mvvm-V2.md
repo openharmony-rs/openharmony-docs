@@ -153,6 +153,62 @@ Repeat支持两种场景：懒加载场景和非懒加载场景。
 
 <!-- @[Main_Repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/RepeatPage.ets
+@ComponentV2
+struct TaskItem {
+  @Param taskName: string = '';
+  @Param @Once isFinish: boolean = false;
+  @Event deleteTask: () => void = () => {};
+
+  build() {
+    Row() {
+      // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+      Image(this.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+        .width(28)
+        .height(28)
+      Text(this.taskName)
+        .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+      Button('Delete')
+        .onClick(() => this.deleteTask())
+    }
+    .onClick(() => this.isFinish = !this.isFinish)
+  }
+}
+
+@Entry
+@ComponentV2
+struct TodoList {
+  @Local tasks: string[] = ['task1','task2','task3'];
+  @Local newTaskName: string = '';
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Repeat<string>(this.tasks)
+        .each((obj: RepeatItem<string>) => {
+          TaskItem({
+            taskName: obj.item,
+            isFinish: false,
+            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+          })
+        })
+      Row() {
+        TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
+          .onChange((value) => this.newTaskName = value)
+          .width('70%')
+        Button('+')
+          .onClick(() => {
+            this.tasks.push(this.newTaskName);
+            this.newTaskName = '';
+          })
+      }
+    }
+  }
+}
+```
+
 ### 添加\@ObservedV2，\@Trace，实现类属性观测变化
 
 实现多个功能后，任务列表管理变得复杂。为了有效处理任务数据的变化，特别是在多层嵌套结构中，需要确保属性变化能够被深度观测并自动更新UI。为此，引入了\@ObservedV2和\@Trace装饰器。与仅能观测对象及其第一层变化的\@Local不同，\@ObservedV2和\@Trace适用于多层嵌套和继承等复杂场景。在\@ObservedV2装饰的类中，\@Trace装饰的属性变化时，会触发绑定的UI组件刷新。
