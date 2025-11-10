@@ -1314,11 +1314,15 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称     | 类型 | 只读 | 可选 | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| screenId | number   | 否   | 否   | 屏幕的id，该参数应为整数。          |
-| startX   | number   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
-| startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
+| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的id，该参数应为整数。          |
+| startX   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
+| startY   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
 
 ## MultiScreenMode<sup>13+</sup>
 
@@ -1327,6 +1331,10 @@ screen.stopExpand(expandScreenIds).then(() => {
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 值  | 说明                            |
 | ------------------ | ---- | -------------------------------- |
@@ -1341,11 +1349,15 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| id       | number   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
-| startX   | number   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
-| startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
+| id       | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
+| startX   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
+| startY   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 
 ## VirtualScreenOption
 
@@ -1355,12 +1367,16 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称。               |
-| width     | number   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为整数。 |
-| height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
-| density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
+| width     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为整数。 |
+| height    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
+| density   | ArkTs-Dyn: number <br> ArkTs-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 
 ## Screen
@@ -1375,17 +1391,16 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。                           |
-| rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的id，该参数为整数。|
-| parent            | number                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。             |
-| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。   |
-| activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
-| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
-| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br> **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中不可用。  |       
+| id                | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22      |
+| rsId<sup>21+</sup> |ArkTs-Dyn: number <br> ArkTs-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 22|
+| parent            | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22     |
+| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
+| activeModeIndex   | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
+| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
+| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 22     |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。<br> **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中不可用。 <br/> **ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 22 |       
 
 ### setOrientation
 
@@ -1791,6 +1806,10 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
 | UNSPECIFIED        | 0    | 表示未指定屏幕方向，由系统指定。 |
@@ -1807,6 +1826,10 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
 | SCREEN_MAIN         | 0    | 表示屏幕为默认主屏。 |
@@ -1822,12 +1845,16 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | number   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
-| width       | number   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
-| height      | number   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
-| refreshRate | number   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
+| id          | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
+| width       | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
+| height      | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
+| refreshRate | ArkTs-Dyn: number <br> ArkTs-Sta: int   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
 
 ## Rect<sup>19+</sup>
 
@@ -1837,9 +1864,13 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| left    | number   | 否   | 否   | 矩形左上角顶点的X轴坐标，单位为px，该参数应为整数。 |
-| top     | number   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
-| width   | number   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
-| height  | number   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
+| left    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形左上角顶点的X轴坐标，单位为px，该参数应为整数。 |
+| top     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
+| width   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
+| height  | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
