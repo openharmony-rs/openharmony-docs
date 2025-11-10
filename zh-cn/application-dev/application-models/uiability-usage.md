@@ -105,6 +105,7 @@ export default class EntryAbility extends UIAbility {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
         // Want参数信息
+      // ···
       };
       context.startAbility(want);
     }
