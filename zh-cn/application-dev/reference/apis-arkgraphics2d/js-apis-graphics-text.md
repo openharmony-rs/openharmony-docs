@@ -2802,6 +2802,10 @@ addPlaceholder(placeholderSpan: PlaceholderSpan): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名          | 类型                                 | 必填 | 说明                                                |
@@ -2810,11 +2814,10 @@ addPlaceholder(placeholderSpan: PlaceholderSpan): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myParagraphStyle: text.ParagraphStyle = {
@@ -2846,6 +2849,42 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+function textFunc() {
+  let myParagraphStyle: text.ParagraphStyle = {
+    align: text.TextAlign.END,
+  };
+  let myPlaceholderSpan: text.PlaceholderSpan = {
+    width: 100,
+    height: 100,
+    align: text.PlaceholderAlignment.ABOVE_BASELINE,
+    baseline: text.TextBaseline.ALPHABETIC,
+    baselineOffset: 100
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addPlaceholder(myPlaceholderSpan);
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### build
 
 build(): Paragraph
@@ -2856,6 +2895,10 @@ build(): Paragraph
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                     | 说明                           |
@@ -2864,9 +2907,10 @@ build(): Paragraph
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2897,6 +2941,41 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color : {alpha: 255, red: 255, green: 0, blue: 0},
+    fontSize : 20,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle : myTextStyle,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText("123456789");
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(200);
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### buildLineTypeset<sup>18+</sup>
 
 buildLineTypeset(): LineTypeset
@@ -2907,6 +2986,10 @@ buildLineTypeset(): LineTypeset
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                     | 说明                           |
@@ -2914,6 +2997,8 @@ buildLineTypeset(): LineTypeset
 | [LineTypeset](#linetypeset18)  | 可用于后续渲染的LineTypeset对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -2942,9 +3027,41 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+function test() {
+  let myParagraphStyle: text.ParagraphStyle = {
+    align: text.TextAlign.JUSTIFY,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText("123456789");
+  let lineTypeset = paragraphBuilder.buildLineTypeset();
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = test;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### addSymbol
 
-addSymbol(symbolId: number): void
+ArkTS-Dyn: addSymbol(symbolId: number): void
+
+ArkTS-Sta: addSymbol(symbolId: int): void
 
 向正在构建的文本段落中插入具体符号。
 
@@ -2952,13 +3069,19 @@ addSymbol(symbolId: number): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                                        |
 | -------- | ------- | ---- | ----------------------------------------------------------- |
-| symbolId | number  | 是   | 要设置的symbol码位，十六进制，当前支持的取值范围为：0xF0000-0xF0C97。可设置的symbol码位（即列表视图下的unicode值）请见[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)。|
+| symbolId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要设置的symbol码位，十六进制，当前支持的取值范围为：0xF0000-0xF0C97。可设置的symbol码位（即列表视图下的unicode值）请见[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -2992,6 +3115,41 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+function textFunc() {
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addSymbol(0xF0000);
+  let paragraph = paragraphBuilder.build();
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ## TypographicBounds<sup>18+</sup>
 
 文本行的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版边界相同，即与字符本身无关。
@@ -3000,12 +3158,16 @@ struct Index {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
-| ascent | number | 否 | 否 | 文本行的上升高度，浮点数。 |
-| descent | number | 否 | 否 | 文本行的下降高度，浮点数。 |
-| leading | number | 否 | 否 | 文本行的行间距，浮点数。 |
-| width | number | 否 | 否 | 排版边界的总宽度，浮点数。 |
+| ascent | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 文本行的上升高度，浮点数。 |
+| descent | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 文本行的下降高度，浮点数。 |
+| leading | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 文本行的行间距，浮点数。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 排版边界的总宽度，浮点数。 |
 
 >**说明：**
 >
@@ -3023,7 +3185,9 @@ struct Index {
 
 ## CaretOffsetsCallback<sup>18+</sup>
 
-type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean) => boolean
+ArkTS-Dyn: type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean) => boolean
+
+ArkTS-Sta: type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean
 
 将文本行中每个字符的偏移量和索引值作为参数的回调方法。
 
@@ -3031,11 +3195,15 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | - | - | - | - |
-| offset | number | 是 | 文本行中每个字符的偏移量，浮点数。 |
-| index | number | 是 | 文本行中每个字符的索引值，整数。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 文本行中每个字符的偏移量，浮点数。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 文本行中每个字符的索引值，整数。 |
 | leadingEdge | boolean | 是 | 光标是否位于字符的前缘，true表示位于字符前缘，即偏移量不包含该字符宽度，false表示位于字符后缘，即偏移量包含该字符宽度。 |
 
 **返回值：**
@@ -3051,7 +3219,9 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 下列API示例中都需先使用[Paragraph](#paragraph)类的[getTextLines()](#gettextlines)接口或者[LineTypeset](#linetypeset18)类的[createLine()](#createline18)接口获取到TextLine对象实例，再通过此实例调用对应方法。
 ### getGlyphCount
 
-getGlyphCount(): number
+ArkTS-Dyn: getGlyphCount(): number
+
+ArkTS-Sta: getGlyphCount(): int
 
 获取文本行中字形的数量。
 
@@ -3059,11 +3229,15 @@ getGlyphCount(): number
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| number  | 该文本行中字形数量，整数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 该文本行中字形数量，整数。 |
 
 **示例：**
 
@@ -3080,6 +3254,10 @@ getTextRange(): Range
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3103,6 +3281,10 @@ getGlyphRuns(): Array\<Run>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型         | 说明                         |
@@ -3117,7 +3299,9 @@ let runs = lines[0].getGlyphRuns();
 
 ### paint
 
-paint(canvas: drawing.Canvas, x: number, y: number): void
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
+
+ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以坐标点(x, y)为左上角位置绘制该文本行。
 
@@ -3125,16 +3309,21 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标canvas。      |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
+|    x   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
+|    y   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { drawing } from '@kit.ArkGraphics2D'
@@ -3158,7 +3347,47 @@ struct Index {
       Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap) {
+    let canvas = new drawing.Canvas(pixelmap);
+    lines[0].paint(canvas, 0, 0);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick((e: ClickEvent) => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -3170,7 +3399,9 @@ struct Index {
 
 ### createTruncatedLine<sup>18+</sup>
 
-createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string): TextLine
+ArkTS-Dyn: createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string): TextLine
+
+ArkTS-Sta: createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine | undefined
 
 创建一个截断的文本行对象。
 
@@ -3178,11 +3409,15 @@ createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string)
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | -| - | - |-------------------------------|
-| width | number | 是 | 截断后的行宽度，浮点数。                  |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 截断后的行宽度，浮点数。                  |
 | ellipsisMode | [EllipsisMode](#ellipsismode) | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
 | ellipsis | string | 是 | 截断的标记字符串。                     |
 
@@ -3190,10 +3425,11 @@ createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string)
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| [TextLine](#textline)  | 截断的文本行对象。|
+| ArkTS-Dyn: [TextLine](#textline)<br>ArkTS-Sta: [TextLine](#textline) \| undefined  | 截断的文本行对象。|
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { drawing, text, common2D } from '@kit.ArkGraphics2D'
@@ -3216,7 +3452,46 @@ struct Index {
       Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit';
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap) {
+    let canvas = new drawing.Canvas(pixelmap);
+    let truncatedTextLine = lines[0].createTruncatedLine(100, text.EllipsisMode.START, "...");
+    truncatedTextLine.paint(canvas, 0, 100);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick((e: ClickEvent) => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -3245,6 +3520,10 @@ getTypographicBounds(): TypographicBounds
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3280,6 +3559,10 @@ getImageBounds(): common2D.Rect
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型         | 说明                         |
@@ -3294,7 +3577,9 @@ let imageBounds = lines[0].getImageBounds();
 
 ### getTrailingSpaceWidth<sup>18+</sup>
 
-getTrailingSpaceWidth(): number
+ArkTS-Dyn: getTrailingSpaceWidth(): number
+
+ArkTS-Sta: getTrailingSpaceWidth(): double
 
 获取文本行尾部空白字符的宽度。
 
@@ -3302,11 +3587,15 @@ getTrailingSpaceWidth(): number
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 文本行尾部空白字符的宽度，浮点数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 文本行尾部空白字符的宽度，浮点数。|
 
 **示例：**
 
@@ -3316,13 +3605,19 @@ let trailingSpaceWidth = lines[0].getTrailingSpaceWidth();
 
 ### getStringIndexForPosition<sup>18+</sup>
 
-getStringIndexForPosition(point: common2D.Point): number
+ArkTS-Dyn: getStringIndexForPosition(point: common2D.Point): number
+
+ArkTS-Sta: getStringIndexForPosition(point: common2D.Point): int
 
 获取给定位置在原始字符串中的字符索引。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3334,7 +3629,7 @@ getStringIndexForPosition(point: common2D.Point): number
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 给定位置在文本行中对应的字符串索引，整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 给定位置在文本行中对应的字符串索引，整数。|
 
 **示例：**
 
@@ -3345,7 +3640,9 @@ let index = lines[0].getStringIndexForPosition(point);
 
 ### getOffsetForStringIndex<sup>18+</sup>
 
-getOffsetForStringIndex(index: number): number
+ArkTS-Dyn: getOffsetForStringIndex(index: number): number
+
+ArkTS-Sta: getOffsetForStringIndex(index: int): double
 
 获取文本行中给定字符串索引处的偏移量。
 
@@ -3353,17 +3650,21 @@ getOffsetForStringIndex(index: number): number
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -| - | - | - |
-| index | number | 是 | 要获取偏移量的字符串索引，整数。|
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要获取偏移量的字符串索引，整数。|
 
 **返回值：**
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 给定字符串索引处的偏移量，浮点数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 给定字符串索引处的偏移量，浮点数。|
 
 **示例：**
 
@@ -3381,6 +3682,10 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3389,8 +3694,17 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 function callback(offset: number, index: number, leadingEdge: boolean): boolean {
+  console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
+  return index > 50;
+}
+lines[0].enumerateCaretOffsets(callback);
+```
+ArkTS-Sta示例：
+```ts
+function callback(offset: double, index: int, leadingEdge: boolean): boolean {
   console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
   return index > 50;
 }
@@ -3399,7 +3713,9 @@ lines[0].enumerateCaretOffsets(callback);
 
 ### getAlignmentOffset<sup>18+</sup>
 
-getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
+ArkTS-Dyn: getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
+
+ArkTS-Sta: getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double
 
 获取文本行根据对齐因子和对齐宽度计算的对齐所需偏移量。
 
@@ -3407,18 +3723,22 @@ getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -| - | - | - |
-| alignmentFactor | number | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于1.0表示右对齐。|
-| alignmentWidth | number | 是 | 对齐宽度，即文本行的宽度，浮点数。小于文本行的实际宽度时，返回0。|
+| alignmentFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于1.0表示右对齐。|
+| alignmentWidth | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 对齐宽度，即文本行的宽度，浮点数。小于文本行的实际宽度时，返回0。|
 
 **返回值：**
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 计算得到的对齐所需偏移量，浮点数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 计算得到的对齐所需偏移量，浮点数。|
 
 **示例：**
 
@@ -3434,7 +3754,9 @@ let alignmentOffset = lines[0].getAlignmentOffset(0.5, 500);
 
 ### getGlyphCount
 
-getGlyphCount(): number
+ArkTS-Dyn: getGlyphCount(): number
+
+ArkTS-Sta: getGlyphCount(): int
 
 获取该排版单元中字形的数量。
 
@@ -3442,11 +3764,15 @@ getGlyphCount(): number
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明                |
 | ------- | -------------------- |
-| number  | 该排版单元中字形数量，整数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int  | 该排版单元中字形数量，整数。 |
 
 **示例：**
 
@@ -3456,7 +3782,9 @@ let glyphs = runs[0].getGlyphCount();
 
 ### getGlyphs
 
-getGlyphs(): Array\<number>
+ArkTS-Dyn: getGlyphs(): Array\<number>
+
+ArkTS-Sta: getGlyphs(): Array\<int>
 
 获取该排版单元中每个字符的字形序号。
 
@@ -3464,11 +3792,15 @@ getGlyphs(): Array\<number>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                             |
 | --------------- | -------------------------------- |
-| Array\<number>  | 该排版单元中每个字符对应的字形序号。|
+| ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 该排版单元中每个字符对应的字形序号。|
 
 **示例：**
 
@@ -3478,7 +3810,9 @@ let glyph = runs[0].getGlyphs();
 
 ### getGlyphs<sup>18+</sup>
 
-getGlyphs(range: Range): Array\<number>
+ArkTS-Dyn: getGlyphs(range: Range): Array\<number>
+
+ArkTS-Sta: getGlyphs(range: Range): Array\<int> | undefined
 
 获取该排版单元指定范围内每个字符的字形序号。
 
@@ -3486,19 +3820,25 @@ getGlyphs(range: Range): Array\<number>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 是   | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
+| range    | [Range](#range)   | 是   | ArkTS-Dyn: 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。<br>ArkTS-Sta: 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，该方法将返回undefined。range.start和range.end均为0，默认获取整个字形序号范围。|
 
 **返回值：**
 
 | 类型            | 说明                             |
 | --------------- | -------------------------------- |
-| Array\<number>  | 该排版单元中每个字符对应的字形序号。|
+| ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> \| undefined  | 该排版单元中每个字符对应的字形序号。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3527,6 +3867,34 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+function textFunc() {
+  let glyphs = runs[0].getGlyphs({start:0, end:0}); // 获取渲染块全部字形序号
+  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形序号
+  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
+  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### getPositions
 
 getPositions(): Array<common2D.Point>
@@ -3536,6 +3904,10 @@ getPositions(): Array<common2D.Point>
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3550,7 +3922,9 @@ let positions = runs[0].getPositions();
 ```
 ### getPositions<sup>18+</sup>
 
-getPositions(range: Range): Array<common2D.Point>
+ArkTS-Dyn: getPositions(range: Range): Array<common2D.Point>
+
+ArkTS-Sta: getPositions(range: Range): Array<common2D.Point> | undefined
 
 获取该排版单元指定范围内每个字形相对于每行的字形位置数组。
 
@@ -3558,19 +3932,25 @@ getPositions(range: Range): Array<common2D.Point>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 是   | 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
+| range    | [Range](#range)   | 是   | ArkTS-Dyn: 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。<br>ArkTS-Sta: 要获取的字形位置范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，该方法将返回undefined。range.start和range.end均为0，默认获取整个字形位置范围。|
 
 **返回值：**
 
 | 类型                   | 说明                                   |
 | ---------------------- | ------------------------------------- |
-| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 该排版单元中每个字形相对于每行的字形位置。 |
+| ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)><br>ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| undefined  | 该排版单元中每个字形相对于每行的字形位置。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3599,6 +3979,35 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+function textFunc() {
+  let positions = runs[0].getPositions({start:0, end:0}); // 获取渲染块全部字形位置
+  let positionsRange = runs[0].getPositions({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形位置
+  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1是非法参数，将返回undefined
+  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10是非法参数，将返回undefined
+}
+
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### getOffsets
 
 getOffsets(): Array<common2D.Point>
@@ -3608,6 +4017,10 @@ getOffsets(): Array<common2D.Point>
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3631,6 +4044,10 @@ getFont(): drawing.Font
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3645,7 +4062,9 @@ let font = runs[0].getFont();
 
 ### paint
 
-paint(canvas: drawing.Canvas, x: number, y: number): void
+ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
+
+ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
 在画布上以(x, y)为左上角位置绘制排版单元。
 
@@ -3653,15 +4072,21 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标 canvas。      |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标。浮点数。|
+|    x   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
+|    y   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 是   | 绘制的左上角位置的纵坐标。浮点数。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3686,7 +4111,48 @@ struct Index {
       Button().onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap) {
+    let canvas = new drawing.Canvas(pixelmap);
+    runs[0].paint(canvas, 0, 0);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick((e: ClickEvent) => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
           this.pixelmap = image.createPixelMapSync(color, opts);
         }
         this.fun(this.pixelmap);
@@ -3706,6 +4172,10 @@ getStringRange(): Range
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3723,7 +4193,9 @@ let length = runStringRange.end;
 
 ### getStringIndices<sup>18+</sup>
 
-getStringIndices(range?: Range): Array\<number>
+ArkTS-Dyn: getStringIndices(range?: Range): Array\<number>
+
+ArkTS-Sta: getStringIndices(range?: Range): Array\<int> | undefined
 
 获取排版单元指定范围内字形的字符索引，该索引是相对于整个段落的偏移。
 
@@ -3731,19 +4203,25 @@ getStringIndices(range?: Range): Array\<number>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 否   | 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。不传该参数时，默认获取整个渲染块。|
+| range    | [Range](#range)   | 否   | ArkTS-Dyn: 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。不传该参数时，默认获取整个渲染块。<br>ArkTS-Sta: 要获取的字符索引范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入undefined时，该方法将返回undefined。range.start和range.end均为0，默认获取整个渲染块。|
 
 **返回值：**
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Array\<number>  | 返回每个字符的索引。|
+| ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> \| undefined  | 返回每个字符的索引。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -3772,6 +4250,36 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!--code_no_check-->
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { text } from "@kit.ArkGraphics2D";
+
+function textFunc() {
+  let indices = runs[0].getStringIndices({start:0, end:0}); // 获取渲染块全部字符索引
+  let indicesRange = runs[0].getStringIndices({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字符索引
+  indicesRange = runs[0].getStringIndices({start:-1, end:2}); // -1是非法参数，将返回undefined
+  indicesRange = runs[0].getStringIndices({start:0, end:-10}); // -10是非法参数，将返回undefined
+  let indicesUndefined = runs[0].getStringIndices(undefined); // undefined是非法参数，将返回undefined
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
 ### getImageBounds<sup>18+</sup>
 
 getImageBounds(): common2D.Rect
@@ -3791,6 +4299,10 @@ getImageBounds(): common2D.Rect
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3824,6 +4336,10 @@ getTypographicBounds(): TypographicBounds
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3846,6 +4362,10 @@ getTextDirection(): TextDirection
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                   | 说明           |
@@ -3860,7 +4380,9 @@ let textDirection = runs[0].getTextDirection();
 
 ### getAdvances<sup>20+</sup>
 
-getAdvances(range: Range): Array<common2D.Point>
+ArkTS-Dyn: getAdvances(range: Range): Array<common2D.Point>
+
+ArkTS-Sta: getAdvances(range: Range): Array<common2D.Point> | undefined
 
 获取该排版单元指定范围内每个字形的字形宽度数组。
 
@@ -3868,25 +4390,39 @@ getAdvances(range: Range): Array<common2D.Point>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 是   | 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
+| range    | [Range](#range)   | 是   | ArkTS-Dyn: 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。<br>ArkTS-Sta: 要获取的字形位置范围。range.start表示范围开始的位置，range.end表示范围的长度。如果长度是0表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，该方法将返回undefined。|
 
 **返回值：**
 
 | 类型                   | 说明                                   |
 | ---------------------- | ------------------------------------- |
-| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，y值为保留字段，默认返回0。 |
+| ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)><br>ArkTS-Sta: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| undefined  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，y值为保留字段，默认返回0。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let advancesRange = runs[0].getAdvances({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形宽度
 advancesRange = runs[0].getAdvances({start:-1, end:2}); // -1是非法参数，将返回undefined
 advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10是非法参数，将返回undefined
 let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回undefined
+```
+
+ArkTS-Sta示例：
+
+```ts
+let advancesRange = runs[0].getAdvances({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形宽度
+advancesRange = runs[0].getAdvances({start:-1, end:2}); // -1是非法参数，将返回undefined
+advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10是非法参数，将返回undefined
 ```
 
 ## TextTab<sup>18+</sup>
@@ -3897,10 +4433,14 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称               | 类型                    | 只读 | 可选 | 说明                                               |
 | -----------------  | ----------------------- | ---- | ---  | -------------------------------------------------- |
 | alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，其他枚举值为左对齐，默认为左对齐。 |
-| location           | number                  | 否   |  否  | 制表符之后的文本对齐位置，浮点数，单位为物理像素px，最小值为1.0，当该值小于1.0时，该制表符会被替换为一个空格。 |
+| location           | ArkTS-Dyn: number<br>ArkTS-Sta: double                  | 否   |  否  | 制表符之后的文本对齐位置，浮点数，单位为物理像素px，最小值为1.0，当该值小于1.0时，该制表符会被替换为一个空格。 |
 
 **示例：**
 
@@ -3926,8 +4466,8 @@ alignment为RIGHT，location为100，文本为"aabcdef/tg hi/tjkl/tmno/tp qr"：
 
 | 名称 | 值 | 说明 |
 | - | - | - |
-| ALL | 1 << 0 | 所有字体类型，包括系统字体类型、风格字体类型和用户已安装字体类型。 |
-| GENERIC  | 1 << 1 | 系统字体类型。 |
-| STYLISH  | 1 << 2 | 风格字体类型。风格字体类型是专为2in1设备设计的字体类型。 |
-| INSTALLED  | 1 << 3 | 用户已安装的字体类型。 |
-| CUSTOMIZED<sup>18+</sup>  | 1 << 4 | 自定义字体类型。 |
+| ALL | 1 << 0 | 所有字体类型，包括系统字体类型、风格字体类型和用户已安装字体类型。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| GENERIC  | 1 << 1 | 系统字体类型。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| STYLISH  | 1 << 2 | 风格字体类型。风格字体类型是专为2in1设备设计的字体类型。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| INSTALLED  | 1 << 3 | 用户已安装的字体类型。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| CUSTOMIZED<sup>18+</sup>  | 1 << 4 | 自定义字体类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
