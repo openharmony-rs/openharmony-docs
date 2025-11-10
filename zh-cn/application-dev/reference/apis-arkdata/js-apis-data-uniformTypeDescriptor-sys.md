@@ -32,24 +32,9 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| typeDescriptors    | Array\<[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)>  | 是    |待注册的标准化数据类型描述符列表。列表不可为空，长度不超过50。|
-
-**约束限制：**
-
-[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)格式要求：
-1. typeId不可为空字符串，长度不超过127且仅包含字母、数字、中划线（-）和点号（.）；
-2. belongingToTypes长度不超过50。每项不可为空字符串，长度不超过127；
-3. description/referenceURL/iconFile每项长度不超过255；
-4. filenameExtensions长度不超过50。每项不可为空字符串，长度不超过127且首字符为点号；
-5. mimeTypes长度不超过50。每项不可为空字符串，长度不超过127；
-
-[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)内容要求：
-1. typeId必须唯一，不能与已注册类型的typeId重复；
-2. typeId必须以当前应用的包名开头；
-3. belongingToTypes中的标准化数据类型ID必须为[预置数据类型](../../database/uniform-data-type-list.md)或本次注册的其他标准化数据类型的typeId；
-4. 标准化数据类型之间不能存在循环依赖关系；
+| 参数名  | 类型 | 必填  | 说明 |
+|--------|------|------|------|
+| typeDescriptors | Array\<[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)> | 是 | 待注册的标准化数据类型描述符列表。列表不可为空，长度不超过 50。<br>**[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)格式要求：**<br>1. typeId不可为空字符串，长度不超过127且仅包含字母、数字、中划线（-）和点号（.）。<br>2.  belongingToTypes长度不超过50。每项不可为空字符串，长度不超过127。<br>3. description/referenceURL/iconFile每项长度不超过255。<br>4. filenameExtensions长度不超过50。每项不可为空字符串，长度不超过127且首字符为点号。<br>5. mimeTypes长度不超过50。每项不可为空字符串，长度不超过127。<br>**[TypeDescriptor](js-apis-data-uniformTypeDescriptor.md#TypeDescriptor11)内容要求：**<br>1. typeId必须唯一，不能与已注册类型的typeId重复。<br>2. typeId必须以当前应用的包名开头。<br>3. belongingToTypes中的标准化数据类型ID必须为[预置数据类型](../../database/uniform-data-type-list.md)或本次注册的其他标准化数据类型的typeId。<br>4. 标准化数据类型之间不能存在循环依赖关系。 |
 
 **返回值：**
 
@@ -103,16 +88,9 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| typeIds    | Array\<string>  | 是    |待注销的typeId列表。列表不可为空，长度不超过50。  |
-
-**约束限制：**
-
-1. typeId对应的标准化数据类型必须在系统中已注册；
-2. typeId必须以当前应用的包名开头；
-3. typeId对应的标准化数据类型必须已通过[registerTypeDescriptors](#uniformTypeDescriptorregisterTypeDescriptors)接口注册；
-
+| 参数名  | 类型 | 必填  | 说明 |
+| -------- | ------ | ---- | ---- |
+| typeIds | Array\<string> | 是 | 待注销的 typeId 列表。列表不可为空，长度不超过 50。<br>**typeId约束限制：**<br>1. typeId 对应的标准化数据类型必须在系统中已注册；<br>2. typeId 必须以当前应用的包名开头；<br>3. typeId 对应的标准化数据类型必须已通过 [registerTypeDescriptors](#uniformTypeDescriptorregisterTypeDescriptors) 接口注册。 |
 
 **返回值：**
 
