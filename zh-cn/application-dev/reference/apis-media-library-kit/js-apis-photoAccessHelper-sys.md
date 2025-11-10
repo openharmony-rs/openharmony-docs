@@ -11059,7 +11059,7 @@ async function example(context: Context) {
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_CHANGE_YUV_READY<sup>23+</sup>         | 3    | 分段式拍照场景下高质量图已准备完成。     |
+| NOTIFY_CHANGE_YUV_READY<sup>23+</sup>         | 3    | 分段式拍照场景下高质量图已准备完成。<br>图像质量可在请求图像的回调中判断：[OnDataPrepared](arkts-apis-photoAccessHelper-QuickImageDataHandler.md#onDataPrepared<sup>13+</sup>)。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumType
 
