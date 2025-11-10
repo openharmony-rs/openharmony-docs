@@ -234,8 +234,9 @@
 |FUNC|glVertexAttribPointer                
 |FUNC|glViewport
 
-## API22 OpenGL4.2将要开放的功能函数
+## Native api中导出的OpenGL 4.2符号列表
 
+从API version 22开始，支持使用OpenGL 4.2中的以下接口。
 |符号类型|符号名|
 | --- | --- |
 |FUNC|glDrawRangeElements|
