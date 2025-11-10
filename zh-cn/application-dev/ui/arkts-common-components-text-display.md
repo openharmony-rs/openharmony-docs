@@ -989,6 +989,39 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 示例代码如下：
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
   
+  ``` TypeScript
+  import common from '@ohos.app.ability.common';
+  @Entry
+  @Component
+  export struct WordBreakd {
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    private manager = this.context.resourceManager;
+  
+    // 'Text_WordBreak'资源文件中的value值为'混合Hello World! honorificabilitudinitatibus'
+    @State message: string = this.manager.getStringByNameSync('Text_WordBreak');
+    build() {
+      NavDestination() {
+      Column() {
+        Text(this.message)
+          .id('HelloWorld')
+          .fontSize('25fp')
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis})
+          .onClick(() => {
+            this.message = 'Welcome try try try 1235628327434348';
+          })
+          .border({ width: 1})
+          .wordBreak(WordBreak.BREAK_ALL) // 修改断词模式
+      }
+      .width(300)
+      .border({ width: 1, color: Color.Blue})
+      .margin({left: 30, top: 50})
+      }
+      // ···
+    }
+  }
+  ```
+  
   
 
 ### Text组件如何实现行末展开样式
