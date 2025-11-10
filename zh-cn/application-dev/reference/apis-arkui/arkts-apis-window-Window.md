@@ -342,7 +342,9 @@ promise.then(() => {
 
 ## moveWindowTo<sup>9+</sup>
 
-moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: moveWindowTo(x: int, y: int, callback: AsyncCallback&lt;void&gt;): void
 
 移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
@@ -360,12 +362,16 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -380,6 +386,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -397,9 +404,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.moveWindowTo(300, 300, (err: BusinessError<void> | null) => {
+    if (err?.code) {
+      console.error(`Failed to move the window. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in moving the window.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## moveWindowTo<sup>9+</sup>
 
-moveWindowTo(x: number, y: number): Promise&lt;void&gt;
+ArkTS-Dyn: moveWindowTo(x: number, y: number): Promise&lt;void&gt;
+
+ArkTS-Sta: moveWindowTo(x: int, y: int): Promise&lt;void&gt;
 
 移动窗口位置，使用Promise异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
@@ -417,12 +444,16 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
@@ -442,6 +473,7 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -454,6 +486,23 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = windowClass.moveWindowTo(300, 300);
+  promise.then(() => {
+    console.info('Succeeded in moving the window.');
+  }).catch((err: Error) => {
+    console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -860,7 +909,9 @@ try {
 
 ## resize<sup>9+</sup>
 
-resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: resize(width: int, height: int, callback: AsyncCallback&lt;void&gt;): void
 
 改变当前窗口大小，使用callback异步回调。
 
@@ -880,12 +931,16 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height   | number                    | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width    | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| height   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                |
 
 **错误码：**
@@ -900,6 +955,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -917,9 +973,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.resize(500, 1000, (err: BusinessError<void> | null) => {
+    if (err?.code) {
+      console.error(`Failed to change the window size. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in changing the window size.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## resize<sup>9+</sup>
 
-resize(width: number, height: number): Promise&lt;void&gt;
+ArkTS-Dyn: resize(width: number, height: number): Promise&lt;void&gt;
+
+ArkTS-Sta: resize(width: int, height: int): Promise&lt;void&gt;
 
 改变当前窗口大小，使用Promise异步回调。调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
@@ -939,12 +1015,16 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
-| height | number | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标窗口的宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标窗口的高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数。 |
 
 **返回值：**
 
@@ -964,6 +1044,7 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -976,6 +1057,23 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to change the window size. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = windowClass.resize(500, 1000);
+  promise.then(() => {
+    console.info('Succeeded in changing the window size.');
+  }).catch((err: Error) => {
+    console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1197,6 +1295,10 @@ getGlobalRect(): Rect
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -1215,12 +1317,24 @@ getGlobalRect(): Rect
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   let rect = windowClass.getGlobalRect();
   console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
 } catch (exception) {
   console.error(`Failed to get window rect. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  let rect = windowClass.getGlobalRect();
+  console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to get window rect. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3000,9 +3114,15 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
 开启窗口尺寸变化的监听。仅在主线程调用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3031,15 +3151,54 @@ try {
 }
 ```
 
+## onWindowSizeChange<sup>22+</sup>
+
+onWindowSizeChange(callback: Callback&lt;Size&gt;): void
+
+开启窗口尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowSizeChange')](#onwindowsizechange7)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt; | 是   | 回调函数。返回当前的窗口尺寸。                           |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowSizeChange((data) => {
+    console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to enable the listener for window size changes. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowSizeChange')<sup>7+</sup>
 
 off(type: 'windowSizeChange', callback?: Callback&lt;Size&gt;): void
 
 关闭窗口尺寸变化的监听。仅在主线程调用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange22)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3071,6 +3230,45 @@ try {
   windowClass.off('windowSizeChange');
 } catch (exception) {
   console.error(`Failed to disable the listener for window size changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowSizeChange<sup>22+</sup>
+
+offWindowSizeChange(callback?: Callback&lt;Size&gt;): void
+
+关闭窗口尺寸变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowSizeChange')](#offwindowsizechange7)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt; | 否   | 回调函数。返回当前的窗口尺寸。如果传入参数，则关闭该监听。如果未传入参数，则关闭窗口尺寸变化的监听。                           |
+
+**示例：**
+
+```ts
+const callback = (size: window.Size) => {
+  // ...
+}
+try {
+  // 通过onWindowSizeChange接口开启监听
+  windowClass.onWindowSizeChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowSizeChange(callback);
+  // 如果通过onWindowSizeChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowSizeChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window size changes. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -4705,9 +4903,15 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 >
 > 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStatusChange](#onwindowstatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4737,15 +4941,62 @@ try {
 }
 ```
 
+## onWindowStatusChange<sup>22+</sup>
+
+onWindowStatusChange(callback: Callback&lt;WindowStatusType&gt;): void
+
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStatusChange')](#onwindowstatuschange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 是   | 回调函数。返回当前的窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+try {
+    windowClass.onWindowStatusChange((WindowStatusType) => {
+        console.info('Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
+    });
+} catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowStatusChange')<sup>11+</sup>
 
 off(type: 'windowStatusChange', callback?: Callback&lt;WindowStatusType&gt;): void
 
 关闭窗口模式变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStatusChange](#offwindowstatuschange22)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4776,6 +5027,51 @@ try {
     windowClass.off('windowStatusChange');
 } catch (exception) {
     console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowStatusChange<sup>22+</sup>
+
+offWindowStatusChange(callback?: Callback&lt;WindowStatusType&gt;): void
+
+关闭窗口模式变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStatusChange')](#offwindowstatuschange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 否   | 回调函数。返回当前的窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口模式变化的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+const callback = (windowStatusType: window.WindowStatusType) => {
+    // ...
+}
+try {
+    windowClass.onWindowStatusChange(callback);
+    windowClass.offWindowStatusChange(callback);
+    // 如果通过onWindowStatusChange开启多个callback进行监听，同时关闭所有监听：
+    windowClass.offWindowStatusChange();
+} catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5009,9 +5305,15 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 
 开启窗口矩形（窗口位置及窗口大小）变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5043,15 +5345,64 @@ try {
 }
 ```
 
+## onWindowRectChange<sup>22+</sup>
+
+onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
+
+开启窗口矩形（窗口位置及窗口大小）变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowRectChange')](#onwindowrectchange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowRectChange((data: window.RectChangeOptions) => {
+      console.info(`Succeeded window rect changes. Data: ` + JSON.stringify(data));
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window rect changes. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowRectChange')<sup>12+</sup>
 
 off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 关闭窗口矩形（窗口位置及窗口大小）变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5085,6 +5436,54 @@ try {
   windowClass.off('windowRectChange');
 } catch (exception) {
   console.error(`Failed to disable the listener for window rect changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowRectChange<sup>22+</sup>
+
+offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
+
+关闭窗口矩形（窗口位置及窗口大小）变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowRectChange')](#offwindowrectchange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 否   | 回调函数。返回当前的窗口矩形及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口矩形变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (rectChangeOptions: window.RectChangeOptions) => {
+  // ...
+}
+
+try {
+  windowClass.onWindowRectChange(callback);
+  windowClass.offWindowRectChange(callback);
+  // 如果通过onWindowRectChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowRectChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window rect changes. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -7195,6 +7594,10 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明 |
@@ -7220,6 +7623,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7244,6 +7648,36 @@ export default class EntryAbility extends UIAbility {
       }).catch((err: BusinessError) => {
         console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
       });
+    });
+  }
+};
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      if (windowClass != undefined) {
+        let promise = windowClass.maximize();
+        promise.then(() => {
+        console.info('Succeeded in maximizing the window.');
+        }).catch((err: Error) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      }
     });
   }
 };
@@ -7355,6 +7789,10 @@ recover(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -7373,6 +7811,7 @@ recover(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7396,6 +7835,36 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to recover the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      if (!windowClass) {
+        console.error('Failed to get main window.');
+        return;
+      }
+      let promise = windowClass.recover();
+      promise.then(() => {
+        console.info('Succeeded in recovering the window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -8361,6 +8830,10 @@ getWindowStatus(): WindowStatusType
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                           | 说明                                   |
@@ -8378,11 +8851,22 @@ getWindowStatus(): WindowStatusType
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   let windowStatusType = windowClass.getWindowStatus();
 } catch (exception) {
   console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  let windowStatusType = windowClass.getWindowStatus();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to obtain the window status of window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -9229,6 +9713,10 @@ startMoving(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在Phone设备、2in1设备和Tablet设备上可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -9249,6 +9737,7 @@ startMoving(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // ets/pages/Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9317,9 +9806,82 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// ets/pages/Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private isTouchDown: boolean = false;
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type === TouchType.Down) {
+              try {
+                let windowClass: window.Window = window.findWindow("subWindow");
+                if (!windowClass) {
+                  console.error('Failed to find window.');
+                  return;
+                }
+                windowClass.startMoving().then(() => {
+                  console.info('Succeeded in starting moving window.')
+                }).catch((err: Error) => {
+                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to start moving window. Cause code: ${err.code}, message: ${err.message}`);
+              }
+            }
+          })
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if(event.type == TouchType.Down){
+              this.isTouchDown = true;
+            } else if (event.type === TouchType.Move && this.isTouchDown) {
+              try {
+                let context = this.getUIContext()?.getHostContext();
+                if (!context) {
+                  console.error('Failed to get host context.');
+                  return;
+                }
+                window.getLastWindow(context).then((data)=>{
+                  if (!data) {
+                    console.error('Failed to get last window.');
+                    return Promise.resolve();
+                  }
+                  let windowClass: window.Window = data;
+                  windowClass.startMoving().then(() => {
+                    console.info('Succeeded in starting moving window.')
+                  }).catch((err: Error) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to start moving window. Cause code: ${err.code}, message: ${err.message}`);
+              }
+            } else {
+              this.isTouchDown = false;
+            }
+          })
+      }.width('100%')
+    }.height('100%').width('100%')
+  }
+}
+```
+
 ## startMoving<sup>15+</sup>
 
-startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
+ArkTS-Dyn: startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
+
+ArkTS-Sta: startMoving(offsetX: int, offsetY: int): Promise&lt;void&gt;
 
 指定鼠标在窗口内的位置并移动窗口，使用Promise异步回调。
 
@@ -9335,12 +9897,16 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型       | 必填     | 说明                                                 |
 | --------- | --------- | ------- |----------------------------------------------------|
-| offsetX | number | 是 | 窗口移动时预期鼠标位置相对窗口左上角的x轴偏移量，单位为px，该参数仅支持整数输入，浮点数向下取整。负值为非法参数，大于窗口宽度为非法参数，窗口宽度可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
-| offsetY | number | 是 | 窗口移动时预期鼠标位置相对窗口左上角的y轴偏移量，单位为px，该参数仅支持整数输入，浮点数向下取整。负值为非法参数，大于窗口高度为非法参数，窗口高度可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
+| offsetX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口移动时预期鼠标位置相对窗口左上角的x轴偏移量，单位为px，该参数仅支持整数输入，浮点数向下取整。负值为非法参数，大于窗口宽度为非法参数，窗口宽度可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
+| offsetY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口移动时预期鼠标位置相对窗口左上角的y轴偏移量，单位为px，该参数仅支持整数输入，浮点数向下取整。负值为非法参数，大于窗口高度为非法参数，窗口高度可以在窗口属性[WindowProperties](arkts-apis-window-i.md#windowproperties)中获取。 |
 
 **返回值：**
 
@@ -9363,6 +9929,7 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // ets/pages/Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9416,6 +9983,73 @@ struct Index {
                 });
               } catch (exception) {
                 console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            } else {
+              this.isTouchDown = false;
+            }
+          })
+      }.width('100%')
+    }.height('100%').width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// ets/pages/Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private isTouchDown: boolean = false;
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type === TouchType.Down) {
+              try {
+                let windowClass: window.Window = window.findWindow("subWindow");
+                if (!windowClass) {
+                  console.error('Failed to find window.');
+                  return;
+                }
+                windowClass.startMoving(100, 50).then(() => {
+                  console.info('Succeeded in starting moving window.')
+                }).catch((err: Error) => {
+                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to start moving window. Cause code: ${err.code}, message: ${err.message}`);
+              }
+            }
+          })
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if(event.type == TouchType.Down){
+              this.isTouchDown = true;
+            } else if (event.type === TouchType.Move && this.isTouchDown) {
+              try {
+                let context = this.getUIContext()?.getHostContext();
+                if (!context) {
+                  console.error('Failed to get host context.');
+                  return;
+                }
+                window.getLastWindow(context).then((data)=>{
+                  let windowClass: window.Window = data;
+                  windowClass.startMoving(100, 50).then(() => {
+                    console.info('Succeeded in starting moving window.')
+                  }).catch((err: Error) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to start moving window. Cause code: ${err.code}, message: ${err.message}`);
               }
             } else {
               this.isTouchDown = false;
