@@ -1264,6 +1264,43 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 - SettingPage：设置页面，负责管理是否显示已完成任务的设置。通过AppStorageV2应用全局存储用户的设置，用户通过Toggle开关切换showCompletedTask状态。
 
   <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
+  
+  ``` TypeScript
+  // src/main/ets/pages/SettingPage.ets
+  import { AppStorageV2 } from '@kit.ArkUI';
+  import { common } from '@kit.AbilityKit';
+  
+  @ObservedV2
+  export class Setting {
+    @Trace public showCompletedTask: boolean = true;
+  }
+  
+  @Entry
+  @ComponentV2
+  struct SettingPage {
+    @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  
+    build(){
+      Column(){
+        Text('Setting')
+          .fontSize(40)
+          .margin({ bottom: 10 })
+        Row() {
+          Text('Show completed tasks')
+          Toggle({ type: ToggleType.Switch, isOn:this.setting.showCompletedTask })
+            .onChange((isOn) => {
+              this.setting.showCompletedTask = isOn;
+            })
+        }
+        Button('Back to To do')
+          .onClick(()=>this.context.terminateSelf())
+          .margin({ top: 10 })
+      }
+      .alignItems(HorizontalAlign.Start)
+    }
+  }
+  ```
 
 ## 总结
 
