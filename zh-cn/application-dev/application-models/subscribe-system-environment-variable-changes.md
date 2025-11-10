@@ -284,18 +284,18 @@ export default class EnvAbility5 extends UIAbility {
 
 例如，在[AbilityStage.onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)回调方法中实现监测系统语言的变化。
 
-<!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility8.ets) --> 
+<!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbilityStage/EnvAbilityStage.ets) --> 
 
 ``` TypeScript
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG: string = '[EnvAbility8]';
+const TAG: string = '[EnvAbilityStage]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let systemLanguage: string | undefined; // 系统当前语言
 
-export default class EnvAbility8 extends AbilityStage {
+export default class EnvAbilityStage extends AbilityStage {
   onCreate(): void {
     systemLanguage = this.context.config.language; // Module首次加载时，获取系统当前语言
     hilog.info(DOMAIN_NUMBER, TAG, `systemLanguage is ${systemLanguage}`);
