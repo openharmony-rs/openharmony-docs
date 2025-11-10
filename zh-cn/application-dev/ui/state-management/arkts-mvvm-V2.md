@@ -978,6 +978,26 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
 - TaskViewModel：封装单个任务的数据和状态变更逻辑，通过状态装饰器监控数据的变化。
 
   <!-- @[ViewModel_TaskViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskViewModel.ets) -->
+  
+  ``` TypeScript
+  // src/main/ets/viewmodel/TaskViewModel.ets
+  import TaskModel from '../model/TaskModel';
+  
+  @ObservedV2
+  export default class TaskViewModel {
+    @Trace public taskName: string = 'Todo';
+    @Trace public isFinish: boolean = false;
+  
+    updateTask(task: TaskModel) {
+      this.taskName = task.taskName;
+      this.isFinish = task.isFinish;
+    }
+  
+    updateIsFinish(): void {
+      this.isFinish = !this.isFinish;
+    }
+  }
+  ```
 
 - TaskListViewModel：封装了任务列表以及管理功能，包括加载任务、批量更新任务状态，以及添加和删除任务。
 
