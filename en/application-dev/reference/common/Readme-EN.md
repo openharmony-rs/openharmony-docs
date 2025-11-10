@@ -1,5 +1,12 @@
 # Common Basic Capability<!--common-basic-api-->
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
 - ArkTS APIs<!--common-basic-arkts-->
   - [Console](js-apis-logs.md)
   - [loadNativeModule (Synchronously and Dynamically Loading a System Library)](js-apis-common-load-native-module.md)

@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Directory Structure
 
@@ -74,7 +74,7 @@ Application resources can be accessed via an absolute or relative path. An absol
 > - Use an absolute path if you want to dynamically change the resource file path through data binding in a **.js** file.
 
 
-## Media File Format
+## Media File Formats
 
 **Table 1** Supported image formats
 

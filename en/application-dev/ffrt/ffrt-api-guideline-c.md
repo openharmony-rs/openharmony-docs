@@ -564,6 +564,10 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 
 `ffrt_submit_f` is a simplified form of `ffrt_submit_base`. When the callback function does not need to be destroyed, the API packages the task function and its parameters into a common task structure. Then, `ffrt_submit_base` is called to submit the task.
 
+> **NOTE**
+>
+> This API is supported since API version 20.
+
 **Example**
 
 ```cpp
@@ -650,6 +654,10 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 **Description**
 
 Adds the return value of the task handle compared with `ffrt_submit_f`.
+
+> **NOTE**
+>
+> This API is supported since API version 20.
 
 **Example**
 
@@ -1008,6 +1016,7 @@ Parameters
 Description
 
 - Sets the callback function to be executed after a queue task times out.
+- You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.
 
 **ffrt_queue_attr_get_callback**
 
@@ -1076,7 +1085,7 @@ Description
 - Sets the running mode of tasks in the queue. By default, the coroutine mode is used.
 
 > **NOTE**
-
+>
 > This API is supported since API version 20.
 
 **ffrt_queue_attr_get_thread_mode**
@@ -1098,7 +1107,7 @@ Description
 - Obtains the running mode of tasks in the queue.
 
 > **NOTE**
-
+>
 > This API is supported since API version 20.
 
 **Example**
@@ -1210,6 +1219,10 @@ Description
 
 - Submits a task to the queue when the callback function does not need to be destroyed.
 
+> **NOTE**
+>
+> This API is supported since API version 20.
+
 **ffrt_queue_submit_h**
 
 ```c
@@ -1250,6 +1263,10 @@ Return Values
 Description
 
 - Submits a task to the queue and returns the task handle when the callback function does not need to be destroyed.
+
+> **NOTE**
+>
+> This API is supported since API version 20.
 
 **ffrt_queue_wait**
 
@@ -1687,6 +1704,10 @@ Description
 
 - Initializes the read-write lock.
 
+> **NOTE**
+>
+> This API is supported since API version 18.
+
 **ffrt_rwlock_wrlock**
 
 ```c
@@ -1704,6 +1725,10 @@ Return Values
 Description
 
 - Adds a write lock to the specified read-write lock.
+
+> **NOTE**
+>
+> This API is supported since API version 18.
 
 **ffrt_rwlock_rdlock**
 
@@ -1723,6 +1748,10 @@ Description
 
 - Adds a read lock to the specified read-write lock.
 
+> **NOTE**
+>
+> This API is supported since API version 18.
+
 **ffrt_rwlock_trywrlock**
 
 ```c
@@ -1740,6 +1769,10 @@ Return Values
 Description
 
 - Adds a write lock to the specified read-write lock.
+
+> **NOTE**
+>
+> This API is supported since API version 18.
 
 **ffrt_rwlock_tryrdlock**
 
@@ -1759,6 +1792,10 @@ Description
 
 - Adds a read lock to the specified read-write lock.
 
+> **NOTE**
+>
+> This API is supported since API version 18.
+
 **ffrt_rwlock_unlock**
 
 ```c
@@ -1777,6 +1814,10 @@ Description
 
 - Unlocks the specified read-write lock.
 
+> **NOTE**
+>
+> This API is supported since API version 18.
+
 **ffrt_rwlock_destroy**
 
 ```c
@@ -1794,6 +1835,10 @@ Return Values
 Description
 
 - Destroys a specified read-write lock.
+
+> **NOTE**
+>
+> This API is supported since API version 18.
 
 **Example**
 
@@ -2069,8 +2114,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec);
 
 **Description**
 
+- This API can be called inside or outside an FFRT task.
 - Provides performance implementation similar to C11 sleep and Linux usleep.
-- This API can be called only inside an FFRT task. If it is called outside an FFRT task, undefined behavior may occur.
 - The sleep precision of this API is μs.
 - The traditional function `sleep` may cause unexpected kernel mode trap. **ffrt_usleep** solves this problem and therefore provides better performance if used properly.
 
@@ -2100,8 +2145,8 @@ FFRT_C_API void ffrt_yield();
 
 **Description**
 
+- This API can be called inside or outside an FFRT task.
 - Yields CPU execution resources for other executable tasks. If there is no other executable task, `yield` is invalid.
-- This API can be called only inside an FFRT task. If it is called outside an FFRT task, undefined behavior may occur.
 - The exact behavior of this API depends on the implementation, especially the mechanism and system state of the FFRT scheduler in use.
 
 **Example**
@@ -2166,6 +2211,7 @@ Return Values
 Description
 
 - Starts a timer. If the timer expires and is not stopped, the callback function is executed. If `repeat` is set to `repeat`, the timer is set again after it expires.
+- You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_timer_stop**
 
@@ -2365,6 +2411,7 @@ Return Values
 Description
 
 - Manages FD listening on the loop. Event listening and callback are processed on the loop thread.
+- You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_loop_timer_start**
 
@@ -2389,6 +2436,7 @@ Return Values
 Description
 
 - Starts a timer on the loop. The usage is the same as that of `ffrt_timer_start`. The only difference is that the listening and callback execution of the timer are processed on the loop thread.
+- You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **ffrt_loop_timer_stop**
 
@@ -2601,6 +2649,10 @@ Description
 
 - Initializes a fiber. The pointer and arguments for starting the fiber process, and the stack space used at runtime need to be transferred. The fiber does not manage any memory; the lifecycle of the stack is managed by the caller.
 
+> **NOTE**
+>
+> This API is supported since API version 20.
+
 **ffrt_fiber_switch**
 
 Declaration
@@ -2618,3 +2670,7 @@ Description
 
 - When the fiber context is switched, the thread that calls this function suspends the current task, saves the context to the `from` fiber, restores the context of the `to` fiber, and executes the task specified by `to`.
 - Note that `from` and `to` are not verified. The caller must ensure the validity of these addresses to prevent process crashes.
+
+> **NOTE**
+>
+> This API is supported since API version 20.

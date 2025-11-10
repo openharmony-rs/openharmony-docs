@@ -366,7 +366,7 @@ Checks whether taking moving photos is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of taking moving photos. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -518,7 +518,7 @@ Checks whether mirror photography is supported.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of mirror photography. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -588,7 +588,7 @@ Obtains the supported video codec types of moving photos.
 
 | Type           | Description               |
 | -------------- |-------------------|
-| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types.|
+| Array\<[VideoCodecType](arkts-apis-camera-e.md#videocodectype13)\> | Array holding the supported video codec types. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -1083,7 +1083,7 @@ Obtains the photo rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree. If the API call fails, undefined is returned.|
 
 **Error codes**
 

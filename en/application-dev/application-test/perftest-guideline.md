@@ -9,48 +9,54 @@
 
 ## Overview
 
-PerfTest provides white-box performance test capabilities for specified code segments during running, to measure the performance of specified application processes. The framework implements automatic tests through the multi-round iteration execution mechanism and environment reset mechanism, and collects and measures basic data such as the time consumption and CPU usage, and scenario-based performance data such as the startup latency and sliding frame rate. The performance test script that uses the PerfTest APIs must be developed based on the unit test framework.
+PerfTest provides white-box performance test capabilities for specified code segments at runtime, measuring the performance of specified application processes. The framework implements automatic tests through the multi-round iteration execution mechanism and environment reset mechanism, and collects and measures basic data such as the time consumption and CPU usage, and scenario-based performance data such as the startup latency and scrolling frame rate. Performance test scripts that use the PerfTest APIs must be developed based on JsUnit.
 
 ## Implementation Principles
 
-PerfTest provides ArkTS APIs for external systems, including performance test policy setting, performance test execution, and test result obtaining. <!--RP1-->For details, see [API Reference](../reference/apis-test-kit/js-apis-perftest.md)<!--RP1End-->.
+The following figure shows the PerfTest feature design.
 
-The cross-language communication layer is responsible for converting ArkTS APIs at the upper layer and C++ APIs at the lower layer, including parameter verification, JSON serialization object processing, and exception handling. As the client of PerfTest, it provides the startup entry and function calling APIs. This layer is loaded and run by the test application. It communicates with the server through IPC to implement function calling and lifecycle management. In addition, this layer is responsible for managing the calling of ArkTS callback functions by the C++ layer.
+![perftest](figures/perftest.PNG)
 
-The PerfTest server is responsible for the main function processing of the white-box performance test framework, including the following two parts:
+PerfTest provides ArkTS APIs for setting performance test strategies, executing performance tests, and obtaining test results. <!--RP1-->For details, see [@ohos.test.PerfTest](../reference/apis-test-kit/js-apis-perftest.md)<!--RP1End-->.
 
-- General framework running capabilities: manage C++ APIs and error codes, including API calling, parameter parsing, and exception handling. The PerfTest server runs as an independent process. It communicates with the client through IPC, listens to the client lifecycle, and keeps the process alive and starts or stops the process as required.
+The cross-language communication layer bridges ArkTS and C++ APIs, performing parameter validation, JSON serialization/deserialization, and exception handling. As the client of PerfTest, it provides the startup entry and feature calling APIs. Loaded and run by the test application, this layer implements feature calling and lifecycle management by communicating with the server through IPC. In addition, it manages the calling of ArkTS callbacks from the C++ layer.
 
-- White-box performance test capabilities: responsible for test task scheduling and performance data collection. Automatically perform performance tests on the running of test code segments, performance data collection, data processing, and data storage based on user-defined test policies. Currently, the following performance indicators can be collected: time consumption, CPU usage, memory usage, application startup latency, page switching latency, and list sliding frame rate.
+The PerfTest server processes the following main features:
+
+- General framework running capability: manages C++ APIs and error codes, including API calling, parameter parsing, and exception handling. The PerfTest server runs as an independent process and communicates with the client through IPC. It listens for the client lifecycle, implementing process keepalive and on-demand start and stop.
+
+- White-box performance test capability: schedules test tasks and collects performance data. It implements the automated performance test process for test code segment running, performance data collection, data processing, and data storage based on custom test strategies. Currently, the following performance metrics can be collected: time consumption, CPU usage, memory usage, application launch latency, page switching latency, and list scrolling frame rate.
 
 ## How to Develop
 
 The following figure shows the process of performing a white-box performance test using the PerfTest APIs.
 
-1. Define a performance test policy, including the test metric list, code segment to be tested, environment reset code segment, name of the app package to be tested, number of test iterations, and timeout interval for executing the code segment once. The white-box performance test is performed based on the policy.
+![perftest-run](figures/perftest-run.png)
 
-2. Create a test task, configure the test policy, and prepare the test environment.
+1. Define a performance test strategy, including the test metric list, code segment to be tested, environment reset code segment, bundle name of the application to be tested, number of test iterations, and timeout interval for executing the code segment once. The white-box performance test is performed based on the strategy.
 
-3. Start the test. Multiple rounds of tests are performed based on the number of test iterations. In each round of test, the performance data generated during the execution of the code segment to be tested is collected, and the environment reset code segment is executed to restore the environment. After the test is complete, the data is processed and saved.
+2. Create a test task, configure the test strategy, and set up the test environment.
 
-4. Obtain the measured data values. The result is stored in an object. You can obtain the detailed data of each round of test and statistics such as the maximum value, minimum value, and average value.
+3. Start the test. Multiple tests are performed based on the number of test iterations. In each test, the performance data during the code execution is collected, and the environment reset code is executed to restore the environment. After the test is complete, process and save the data.
+
+4. Obtain the collected data, which is stored in the object. You can obtain the detailed data, maximum value, minimum value, and average value of each test.
 
 5. Destroy the created object to release the memory.
 
 The following describes how to collect the execution duration and CPU usage of a specified code segment.
 
-### Defining a Test Policy
+### Defining a Test Strategy
 
-1. Define the test metric list.
+1. Define a test metric list.
 
-    Define the list of performance metrics to be tested `metrics`. The type is `Array<PerfMetric>`. <!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End--> is the enumeration of performance metrics that can be collected by the framework.
+    Define the **metrics** whose type is **Array\<PerfMetric>**. <!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End--> indicates the performance metrics supported by the framework.
     ```ts
     let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ];
     ```
 
 2. Define the code segment to be tested and the environment reset code segment.
 
-    The code segment to be tested `actionCode` is a callback function of the `Callback<Callback<boolean>>` type. The framework automatically calls this callback function during the test and collects performance data. At the end of the execution, the input parameter `Callback<boolean>` function needs to be called to notify the framework that the execution is complete. Otherwise, the code segment execution times out. For example, when testing the performance of the `Utils.CalculateTest` method, you can call `finish(true)` to notify the framework that the code segment execution is complete.
+    The code segment to be tested **actionCode** is a callback of the **Callback\<Callback\<boolean>>** type. The framework automatically calls this callback during the test and collects performance data. You need to call the input parameter **Callback\<boolean>** function to notify the framework that the execution is complete. Otherwise, the code segment execution times out. For example, when testing the performance of the **Utils.CalculateTest** method, you can call **finish(true)** to notify the framework that the code segment execution is complete.
     ```ts
     let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {
         Utils.CalculateTest();
@@ -58,7 +64,7 @@ The following describes how to collect the execution duration and CPU usage of a
     };
     ```
 
-    In addition, the framework supports the definition of the environment reset code segment `resetCode`, which is used to reset the environment after a single test. The type and usage of `resetCode` are the same as those of `actionCode`. `resetCode` is executed after `actionCode` is executed, but application performance data is not collected during the execution.
+    In addition, the framework supports the definition of the environment reset code segment **resetCode**, which is used to reset the environment after a single test. The type and usage of the code segment are the same as those of **actionCode**. **resetCode** is executed after **actionCode**, but application performance data is not collected during the execution.
     ```ts
     let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {
         Utils.Reset();
@@ -66,23 +72,23 @@ The following describes how to collect the execution duration and CPU usage of a
     };
     ```
 
-3. Construct a test policy object.
+3. Construct a test strategy object.
 
-    In addition to the attributes defined in the preceding steps, the framework also supports the definition of other test policies to help developers perform more accurate automatic performance tests. All test policies are defined and saved through the <!--RP3-->[PerfTestStrategy](../reference/apis-test-kit/js-apis-perftest.md#perfteststrategy)<!--RP3End--> object. During the performance test, data is collected based on the policy.
+    In addition to the properties defined in the preceding steps, PerfTest can also define other test strategies to help you perform more accurate automated performance tests. All test strategies are defined and saved through the <!--RP3-->[PerfTestStrategy](../reference/apis-test-kit/js-apis-perftest.md#perfteststrategy)<!--RP3End--> object. During the performance test, data is collected based on the strategy.
     ```ts
     let perfTestStrategy: PerfTestStrategy = {
-        metrics: metrics,   // Defined in step 1
-        actionCode: actionCode,   // Defined in step 2
-        resetCode: resetCode,   // Defined in step 2
-        bundleName: "com.example.test", // Bundle name of the app to be tested
-        iterations: 10,  // Number of test iterations
-        timeout: 20000  // Timeout interval for executing a code segment, in ms
+        metrics: metrics,   // Defined in step 1.
+        actionCode: actionCode,   // Defined in step 2.
+        resetCode: resetCode,   // Defined in step 2.
+        bundleName: "com.example.test", // Bundle name of the application to be tested.
+        iterations: 10,  // Number of test iterations.
+        timeout: 20000  // Timeout interval for executing a code segment, in milliseconds.
     };
     ```
 
 ### Creating a Test Task and Starting the Test
 
-  When using <!--RP4-->[PerfTest.create()](../reference/apis-test-kit/js-apis-perftest.md#create)<!--RP4End--> to create a test task, pass the `PerfTestStrategy` object defined above. Then, call the <!--RP5-->[PerfTest.run()](../reference/apis-test-kit/js-apis-perftest.md#run)<!--RP5End--> asynchronous API to start the test. The test automatically iteratively executes the code segment to be tested and collects performance data. Use the await syntax sugar to synchronously wait for the execution to complete before performing subsequent operations.
+  To create a test task, pass the **PerfTestStrategy** object defined above in <!--RP4-->[PerfTest.create()](../reference/apis-test-kit/js-apis-perftest.md#create)<!--RP4End-->. Then, call the <!--RP5-->[PerfTest.run()](../reference/apis-test-kit/js-apis-perftest.md#run)<!--RP5End--> asynchronous API to start the test. The test automatically iteratively executes the code segment and collects performance data. Use the **await** syntax sugar to synchronously wait for the execution to complete and then perform subsequent operations.
   ```ts
   let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
   await perfTest.run();
@@ -90,24 +96,24 @@ The following describes how to collect the execution duration and CPU usage of a
 
 ### Obtaining the Test Result
 
-  After the performance test is complete, call <!--RP6-->[PerfTest.getMeasureResult()](../reference/apis-test-kit/js-apis-perftest.md#getmeasureresult)<!--RP6End--> to obtain the test result of each indicator. The result is stored in the <!--RP7-->[PerfMeasureResult](../reference/apis-test-kit/js-apis-perftest.md#perfmeasureresult)<!--RP7End--> object. If the test is not complete or the indicator is not defined, an error code is thrown.
+  After the performance test is complete, call <!--RP6-->[PerfTest.getMeasureResult()](../reference/apis-test-kit/js-apis-perftest.md#getmeasureresult)<!--RP6End--> to obtain the metrics. The test result is stored in the <!--RP7-->[PerfMeasureResult](../reference/apis-test-kit/js-apis-perftest.md#perfmeasureresult)<!--RP7End--> object. If the test is not complete or the metric is not defined, an error code is thrown.
   ```ts
   let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION);
   let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE);
   ```
 
-### Destroying Created Objects
+### Destroying the Created Object
 
-  After the performance test is complete, if the `PerfTest` object is no longer needed, you can call <!--RP8-->[PerfTest.destroy()](../reference/apis-test-kit/js-apis-perftest.md#destroy)<!--RP8End--> to destroy the object to release memory.
+  After the test, if the **PerfTest** object is no longer needed, you can call <!--RP8-->[PerfTest.destroy()](../reference/apis-test-kit/js-apis-perftest.md#destroy)<!--RP8End--> to destroy the object to release memory.
   ```ts
   perfTest.destroy();
   ```
 
-## Complete Sample Code
+## Sample Code
 
-### Example of Collecting Basic Performance Data
+### Collecting Basic Performance Data
 
-The following uses the basic performance data of a specified logic execution in an application as an example. The application defines a method named 'Utils.CalculateTest()'. During the performance test, this method is executed to collect the execution duration and application CPU usage.
+The following example describes how to collect basic performance data during the execution of a specified logic in an application. In the application, a method named **Utils.CalculateTest()** is defined. During the performance test, this method is executed to collect the execution duration and application CPU usage.
 
 1. Add the **Utils.ets** file to the **main** > **ets** > **utils** folder and compile the custom function in the file.
 
@@ -135,7 +141,7 @@ The following uses the basic performance data of a specified logic execution in 
     export default function PerfTestTest() {
       describe('PerfTestTest', () => {
         it('testExample1', 0, async (done: Function) => {
-          let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ]; // Define the indicators to be tested.
+          let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ]; // Define the metrics to be tested.
           let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean >) => { // Define the code segment to be tested.
             Utils.CalculateTest();
             finish(true);
@@ -148,9 +154,9 @@ The following uses the basic performance data of a specified logic execution in 
             metrics: metrics,
             actionCode: actionCode,
             resetCode: resetCode,
-            bundleName: "com.example.test", // Define the package name of the app to be tested. Replace it with the actual package name.
-            iterations: 10, // Define the number of test iterations.
-            timeout: 20000 // Define the timeout interval for executing the code segment at a time.
+            bundleName: "com.example.test", // Bundle name of the application to be tested. Replace it with the actual bundle name.
+            iterations: 10,  // Number of test iterations.
+            timeout: 20000  // Timeout interval for executing a code segment.
           };
           try {
             let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // Create a test task object PerfTest.
@@ -170,11 +176,11 @@ The following uses the basic performance data of a specified logic execution in 
     }
     ```
 
-### Scenario-based Performance Data Collection Example
+### Collecting Scenario-based Performance Data
 
-The following uses the frame rate of scrolling in the list of an app as an example to describe how to open a specified app, use the UI test framework API to search for scrollable components of the Scroll type, perform scrolling operations, and collect the frame rate data during the scrolling.
+The following example describes how to test the frame rate of list scrolling in an application as follows: Open a specified application, use the UITest API to search for the **Scroll** component, scroll the list, and collect the frame rate of list scrolling.
 
-1. Write the code of the **Index.ets** page in the **main** > **ets** > **pages** folder as the test demo.
+1. Write the **Index.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
 
     ```ts
     @Entry
@@ -210,7 +216,7 @@ The following uses the frame rate of scrolling in the list of an app as an examp
     }
     ```
 
-2. Write the test code in the **PerfTest.test.ets** file in the **ohosTest** > **ets** > **test** folder.
+2. Compile the test code in the **PerfTest.test.ets** file in the **ohosTest** > **ets** > **test** folder.
 
     ```ts
     import { describe, it, expect, Level } from '@ohos/hypium';
@@ -225,29 +231,29 @@ The following uses the frame rate of scrolling in the list of an app as an examp
             let driver = Driver.create();
             await driver.delayMs(1000);
             const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-            //Replace bundleName and abilityName with the actual bundle name and ability name of the app to be started.
+            // Replace the bundleName and abilityName with the actual ones.
             const want: Want = {
                 bundleName: bundleName,
                 abilityName: 'EntryAbility'
             };
-            await delegator.startAbility(want); // Start the test app.
+            await delegator.startAbility(want); // Start the test application.
             await driver.delayMs(1000);
             let scroll = await driver.findComponent(ON.type('Scroll'));
             await driver.delayMs(1000);
             let center = await scroll.getBoundsCenter(); // Obtain the coordinates of the Scroll component.
             await driver.delayMs(1000);
             let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS]  // Specify the test metric to the frame rate during list scrolling.
-            let actionCode = async (finish: Callback<boolean>) => { // Use uitest to scroll the list in the test code segment.
+            let actionCode = async (finish: Callback<boolean>) => { // Use UITest to scroll the list in the test code segment.
                 await driver.fling({x: center.x, y: Math.floor(center.y * 3 / 2)}, {x: center.x, y: Math.floor(center.y / 2)}, 50, 20000);
                 await driver.delayMs(3000);
                 finish(true);
             };
-            let resetCode = async (finish: Callback<boolean>) => {  // Scroll to the top of the list.
+            let resetCode = async (finish: Callback<boolean>) => {  // Reset the environment by scrolling to the top of the list.
                 await scroll.scrollToTop(40000);
                 await driver.delayMs(1000);
                 finish(true);
             };
-            let perfTestStrategy: PerfTestStrategy = { // Define a test strategy.
+            let perfTestStrategy: PerfTestStrategy = {  // Define a test strategy.
                 metrics: metrics,
                 actionCode: actionCode,
                 resetCode: resetCode,

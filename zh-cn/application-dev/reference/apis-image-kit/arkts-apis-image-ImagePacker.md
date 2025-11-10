@@ -10,7 +10,9 @@
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-图片编码器类，用于图片压缩和编码。在调用ImagePacker的方法前，需要先通过[createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例，当前支持格式有：jpeg、webp、png、heif<sup>12+</sup>（不同硬件设备支持情况不同）。
+图片编码器类，用于图片压缩和编码。在调用ImagePacker的方法前，需要先通过[createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例。
+
+当前支持的格式有：jpeg、webp、png、heif<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
 
 ## 导入模块
 
@@ -24,7 +26,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式 jpeg、webp、png、heic<sup>12+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式。 |
 
 ## packToData<sup>13+</sup>
 

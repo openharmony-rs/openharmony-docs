@@ -407,7 +407,7 @@ try {
 
 getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
-Obtains applications that are running in the foreground. This API uses an asynchronous callback to return the result. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md).
+Obtains applications that are running in the foreground. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -459,7 +459,7 @@ try {
 
 getForegroundApplications(): Promise\<Array\<AppStateData>>
 
-Obtains applications that are running in the foreground. This API uses a promise to return the result. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md).
+Obtains applications that are running in the foreground. The application information is defined by [AppStateData](js-apis-inner-application-appStateData.md). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -1221,7 +1221,7 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-Checks whether an application is running. This API uses a promise to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1239,7 +1239,7 @@ Checks whether an application is running. This API uses a promise to return the 
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<boolean> | Promise used to return the result. **true** if the application is running, **false** otherwise.|
+| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
@@ -1271,7 +1271,7 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-Checks whether an application is running. This API uses an asynchronous callback to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1283,8 +1283,8 @@ Checks whether an application is running. This API uses an asynchronous callback
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| bundleName    | string   | Yes   | Bundle name of the shared library.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if the application is running, **false** otherwise.|
+| bundleName    | string   | Yes   | Bundle name.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
@@ -1461,7 +1461,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-Obtains the information about running applications in multi-app mode. This API uses a promise to return the result. The multi-app mode means that an application can be simultaneously logged in with different accounts on the same device.
+Obtains the information about running applications in multi-app mode. The multi-app mode means that an application can be simultaneously logged in with different accounts on the same device. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 

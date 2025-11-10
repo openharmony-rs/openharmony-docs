@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
@@ -1395,7 +1395,7 @@ struct TextExample {
   static getEmojiImg(emojis: string[]): Resource[] { // 根据正则匹配结果返回自定义表情资源
     let emojisImg: Resource[] = []
     for (let i = 0; i < emojis.length; i++) {
-      switch (emojis[i]) {
+      switch (emojis[i]) { // $r("...")需要替换为开发者所需的图像资源
         case 'rolling_on_the_floor_laughing':
           emojisImg.push($r("app.media.rolling_on_the_floor_laughing"))
         case 'slightly_smiling_face':

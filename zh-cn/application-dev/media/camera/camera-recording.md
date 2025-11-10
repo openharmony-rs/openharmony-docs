@@ -84,7 +84,7 @@
      };
      // 创建视频录制的参数，预览流与录像输出流的分辨率的宽(videoFrameWidth)高(videoFrameHeight)比要保持一致。
      let avMetadata: media.AVMetadata = {
-      videoOrientation: '90' // rotation的值90，是通过getPhotoRotation接口获取到的值，具体请参考说明中获取录像旋转角度的方法。
+      videoOrientation: '90' // rotation的值90，是通过getVideoRotation接口获取到的值，具体请参考说明中获取录像旋转角度的方法。
      }
      
      let aVRecorderConfig: media.AVRecorderConfig = {

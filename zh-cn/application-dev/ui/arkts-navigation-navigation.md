@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件导航（Navigation）主要用于实现Navigation页面（NavDestination）间的跳转，支持在不同Navigation页面间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。本文将从组件导航（Navigation）的显示模式、路由操作、子页面管理、跨包跳转以及跳转动效等几个方面进行详细介绍。
 
@@ -342,7 +342,7 @@ struct Index {
 
 ### 页面跳转
 
-NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分为以下三类：
+NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10)、[pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)、[pushDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11)、[pushDestinationByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestinationbyname11)）去实现页面跳转的功能，主要分为以下三类：
 
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
@@ -378,7 +378,7 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 
 ### 页面返回
 
-NavPathStack通过Pop相关接口去实现页面返回功能。
+NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
 
 ```ts
 // 返回到上一页
@@ -393,7 +393,7 @@ this.pageStack.clear();
 
 ### 页面替换
 
-NavPathStack通过Replace相关接口去实现页面替换功能。
+NavPathStack通过Replace相关接口（如[replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)、[replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)、[replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)）去实现页面替换功能。
 
 ```ts
 // 将栈顶页面替换为PageOne
@@ -410,7 +410,7 @@ this.pageStack.replaceDestination({name: "PageOne", param: "PageOne Param"})
 
 ### 页面删除
 
-NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的功能。
+NavPathStack通过Remove相关接口（如[removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)、[removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11)、[removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)）去实现删除路由栈中特定页面的功能。
 
 ```ts
 // 删除栈中name为PageOne的所有页面
@@ -423,7 +423,7 @@ this.pageStack.removeByNavDestinationId("1");
 
 ### 移动页面
 
-NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈顶的功能。
+NavPathStack通过Move相关接口（如[moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)、[moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)）去实现移动路由栈中特定页面到栈顶的功能。
 
 ```ts
 // 移动栈中name为PageOne的页面到栈顶
@@ -479,7 +479,7 @@ struct DemoNavDestination {
 }
 ```
 
-其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
+其他业务场景，可以通过主动调用NavPathStack的Get相关接口（如[getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）去获取指定页面的参数。
 
 ```ts
 // 获取栈中所有页面name集合

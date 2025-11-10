@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用来展示列表具体item，必须配合List来使用。
 

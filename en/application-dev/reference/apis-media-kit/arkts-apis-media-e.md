@@ -73,11 +73,11 @@ Enumerates the codec MIME types.
 | Name        | Value                   | Description                    |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | Video in H.263 format.     |
-| VIDEO_AVC    | 'video/avc'           | Video in AVC format.      |
+| VIDEO_AVC    | 'video/avc'           | Video in AVC format. |
 | VIDEO_MPEG2  | 'video/mpeg2'         | Video in MPEG-2 format.    |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | Video in MPEG-4 format.    |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | Video in VP8 format.      |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.|
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format. |
 | AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_VORBIS | 'audio/vorbis'        | Audio in Vorbis format.   |
 | AUDIO_FLAC   | 'audio/flac'          | Audio in FLAC format.     |
@@ -108,6 +108,8 @@ Enumerates the media description keys.
 | MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
 ## PlaybackInfoKey<sup>12+</sup>
 
@@ -245,7 +247,7 @@ Enumerates the container format types (CFTs).
 
 | Name       | Value   | Description                 |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | Video container format MP4.|
+| CFT_MPEG_4  | 'mp4' | Video container format MP4. |
 | CFT_MPEG_4A | 'm4a' | Audio container format M4A.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | CFT_MP3<sup>12+</sup>  | 'mp3' | Audio container format MP3.|
 | CFT_WAV<sup>12+</sup>  | 'wav' | Audio container format WAV.|

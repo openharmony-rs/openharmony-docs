@@ -4,10 +4,10 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-网格对象的编辑排序是用于网格对象的编辑、拖动排序、新增和删除。
+网格对象排序组件，用于网格对象的编辑、拖动排序、新增和删除。
 
 
 >  **说明：**

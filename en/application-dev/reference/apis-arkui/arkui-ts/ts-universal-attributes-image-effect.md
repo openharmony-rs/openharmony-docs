@@ -128,7 +128,7 @@ Applies a shadow effect to the component. Compared with [shadow](#shadow), this 
 
 | Name | Type                                                        | Mandatory                                                        | Description|
 | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
-| options | Optional\<[ShadowOptions](#shadowoptions) \| [ShadowStyle](#shadowstyle10<sup>10+</sup>> | Yes|   Shadow of the component.<br>When the value type is **ShadowOptions**, the blur radius, shadow color, and offset along the x-axis and y-axis can be specified.<br>When the value type is **ShadowStyle**, the shadow style can be specified.<br>If **options** is **undefined**, the component reverts to its original effect with no shadow.  |
+| options | Optional\<[ShadowOptions](#shadowoptions) \| [ShadowStyle](#shadowstyle10)<sup>10+</sup>> | Yes|   Shadow of the component.<br>When the value type is **ShadowOptions**, the blur radius, shadow color, and offset along the x-axis and y-axis can be specified.<br>When the value type is **ShadowStyle**, the shadow style can be specified.<br>If **options** is **undefined**, the component reverts to its original effect with no shadow.  |
 
 **Return value**
 

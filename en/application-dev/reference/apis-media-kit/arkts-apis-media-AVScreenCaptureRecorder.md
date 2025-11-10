@@ -316,7 +316,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-    console.error(`avScreenCaptureRecorder Code: ${err.code}, message: ${err.message}`);
+    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

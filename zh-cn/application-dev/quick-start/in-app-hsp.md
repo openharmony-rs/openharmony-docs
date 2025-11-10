@@ -191,6 +191,7 @@ export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
 在使用方的代码中，可以这样使用：
+<!--deprecated_code_no_check-->
 ```ts
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';

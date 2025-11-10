@@ -6,24 +6,24 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @foryourself-->
 
-Mechanic Manager is supported since API version 20. With the rapid development of smart devices, the demand for interaction between mobile phones and third-party accessory devices (such as gimbals and robotic arms) is growing. However, there remains a lack of a unified and comprehensive connection and control solution. To address this issue, Mechanic Kit offers a complete integration solution for third-party accessories.
+Mechanic Kit is a set of APIs provided by `mechanicManager`. Starting from API version 20, applications can use Mechanic Kit to control mechanic devices. Mechanic Kit offers a complete integration solution for third-party mechanic devices, supporting interaction between mobile phones and devices such as gimbals and robotic arms.
 
-Mechanic Kit enables device connection management, intelligent tracking, and status monitoring through its `mechanicManager` module. It provides key capabilities such as intelligent tracking<!--Del--> and precise control<!--DelEnd-->, facilitating development of high-quality device interaction applications. 
+Functions provided by Mechanic Kit include device connection management and intelligent tracking<!--Del-->, as well as status monitoring and precise control<!--Del-->, helping developers to build high-quality device interaction applications.
 
-The `mechanicManager` module supports the control of and interaction with connected mechanic devices, including connection management, device control, and status monitoring.
+Through Mechanic Kit, your applications can control and interact with mechanic devices, providing functions such as connection management, control, and monitoring.
 
 ## When to Use
 
 Mechanic Kit primarily targets interaction control scenarios involving intelligent mechanic devices such as gimbals and robotic arms.
 
-- **Intelligent photography assistance**: Implement automated photography functions such as face tracking and object tracking using mechanic devices, improving photography quality and user experience.
-- **Photography control**: With a mobile phone serving as the control terminal, manipulate mechanic devices like gimbals or robotic arms for precise angle adjustment and motion trajectory control.
+- **Intelligent photographying assistance**: Enable face tracking and object tracking through mechanic devices to enhance photographying quality.
+- **Photographying control**: With mobile phones serving as control terminals, manipulate mechanic devices like gimbals or robotic arms for precise angle adjustment and motion trajectory control.
 
-With the device connection, intelligent tracking, and precise control capabilities provided by Mechanic Kit, you can mechanic device control applications efficiently.
+Mechanic Kit provides device connection, intelligent tracking, and precise control functions, making it more convenient to build mechanic accessory control applications. 
 
 ## Capabilities
 
-Mechanic Kit provides developers with comprehensive mechanic device control capabilities, including:
+Mechanic Kit provides developers with comprehensive mechanic device control capabilities.
 
 ### Managing Device Connections
 
@@ -56,12 +56,17 @@ Mechanic Kit provides developers with comprehensive mechanic device control capa
 
 ![Schematic diagram](figures/guide_mechanic.png)
 
+**Intelligent tracking mechanism**: After detecting a face, the camera driver reports the face to the camera service. The camera service reports the face location and camera parameters to the Mechanic Manager service. The Mechanic Manager service converts the information into a rotation instruction and delivers the instruction to the mechanic device via Bluetooth. The application can manage intelligent tracking through open APIs.
+
+**Precise device control mechanism**: An application controls the mechanical device through the APIs provided by Mechanic Kit and rotates the device at a specified speed or along a specified trajectory.
+
 ## Constraints
 
-Before using the mechanic device management capability, ensure that the following conditions are met:
+Before using Mechanic Kit, ensure that the following conditions are met:
 
+- **Mechanical device**: The mechanic device must comply with the Mechanic Kit specifications.
+- **Development device**: To support intelligent tracking, the camera driver on the development device must have the face detection capability and support the reporting of face metadata, which complies with the HDI specifications.
 - **Device connection requirements**: The development device must be connected to the mechanic device to ensure that the communication link is normal.
-- **Protocol compatibility**: Mechanical body accessories must support the Mechanic Kit protocol to ensure the accuracy of instruction transmission and status feedback.
 - **Camera permission**: An application in the foreground must obtain the camera permission to support visual functions such as intelligent tracking.
 - **System permission**: Some advanced functions (such as rotation control) require system application permissions.
 - **Hardware restriction**: The operation range is limited by the movement limit of the mechanic device.

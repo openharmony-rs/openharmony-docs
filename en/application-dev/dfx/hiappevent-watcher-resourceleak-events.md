@@ -11,7 +11,7 @@
 
 Resource leaks occur when resources, such as handles, threads, or memory, are not properly released during application running. As a result, the resources are occupied for a long time and cannot be used by other applications. If a certain type of resource is exhausted, the system may crash or restart.
 
-This section describes the fields of resource leak events. For details about how to use the HiAppEvent API to subscribe to system resource leak events, refer to the following documents. Currently, ArkTS and C/C++ APIs are provided.
+This topic describes the fields of the resource leak event. For details about how to use the ArkTs and C/C++ APIs provided by HiAppEvent to subscribe to system resource leak events, see the following documents:  
 
 - - [Subscribing to Resource Leak Events (ArkTS)](hiappevent-watcher-resourceleak-events-arkts.md)
 
@@ -21,25 +21,25 @@ This section describes the fields of resource leak events. For details about how
 
 For details about the detection principles, see [Resource Leak Detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines).
 
-## Custom Specifications
+## Customizing Specifications
 
 ### Available APIs
 
 | Name| Description|
 | -------- | -------- |
-| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | Sets the specifications of resource leak logs. name must be the resource leak event name constant hiappevent.event.RESOURCE_OVERLIMIT. **Only JS memory leak is supported.**<br>Note: This API is supported since API version 20.|
+| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | Sets the specifications of the resource leak log. **name** must be the resource leak event name constant **hiappevent.event.RESOURCE_OVERLIMIT**. Only JS memory leak is supported.<br>Note: This API is supported since API version 20.|
 
-### Parameter Settings
+### Parameters
 
-You can use the APIs provided by HiAppEvent to set the specifications of RESOURCE_OVERLIMIT logs and callback events in Record&lt;string, ParamType>. The specific parameter descriptions are as follows.
+You can use the HiAppEvent APIs to set the log and callback event specifications of **RESOURCE_OVERLIMIT** in **Record<string, ParamType>**. The specific parameter descriptions are as follows.
 
 | Name         | Type  | Mandatory| Description                                                        |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| js_heap_logtype | string | No  | event: No heap snapshot is transferred when an OOM occurs.<br>event_rawheap: The system generates and transfers a heap snapshot when an OOM occurs.<br>**Note**: Only the preceding two values are supported. If other values are passed, the method fails to be called and no effect is generated.|
+| js_heap_logtype | string | No  | **event**: No heap snapshot is transferred when an OOM error occurs.<br>**event_rawheap**: The system generates and transfers a heap snapshot when an OOM error occurs.<br>Note: Only the preceding two values are supported. If other values are passed in, the API fails to be called and takes no effect.|
 
 > **NOTE**
 >
-> Even if js_heap_logtype is set to event_rawheap, the heap snapshot file may not be generated. This is because the app may exit in advance due to screen freezing caused by performance problems when the heap snapshot is generated.
+> Even if the **js_heap_logtype** parameter is set to **event_rawheap**, the heap snapshot file may not be generated because the application may exit in advance due to a freeze event triggered by a performance problem.
 
 Parameter configuration example:
 
@@ -54,11 +54,11 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 
 > **NOTE**
 >
-> When the setEventConfig API is called, the content called each time takes effect only within the current app lifecycle. After the app is restarted, you need to call the setEventConfig API again.
+> When the **setEventConfig** API is called, it takes effect only in the current application lifecycle. After the application restarts, you need to call the **setEventConfig** API again.
 >
-> The setEventConfig API can be called for multiple times within the same app lifecycle. The value of the last successful call is used.
+> You can call the **setEventConfig** API multiple times within the same application lifecycle. The last successful call takes effect.
 >
-> During debugging and self-testing, if the number of OOMs triggered in a day is too large, you may fail to receive the JS memory leak event returned by the HiAppEvent. You can change the system time to one day later to avoid this problem.
+> During debugging and self-testing, if the OOM error occurs too many times in a single day, you may fail to receive the JS memory leak event returned by the HiAppEvent. You can adjust the system time to one day later to avoid this issue.
 
 ## params
 
@@ -83,8 +83,8 @@ The **params** parameter in the event information is described as follows.
 | Value| Description|
 | -------- | -------- |
 | pss_memory | PSS memory leak.|
-| ion_memory | ION memory leak.<br>**Note**: This field is supported since API version 20.|
-| gpu_memory | GPU memory leak.<br>**Note**: This field is supported since API version 20.|
+| ion_memory | ION memory leak.<br />Note: This field is supported since API version 20.|
+| gpu_memory | GPU memory leak.<br />Note: This field is supported since API version 20.|
 | js_heap | JS memory leak.|
 | fd | Handle leak.|
 | thread | Thread leak.|
@@ -96,15 +96,15 @@ The **params** parameter in the event information is described as follows.
 | rss | number | Size of the memory allocated for a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | vss | number | Size of the virtual memory applied by a process from the system (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | pss | number | Size of the physical memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
-| ion | number | Size of the ION memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br>**Note**: This field is supported since API version 20.|
-| gpu | number | Size of the GPU memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br>**Note**: This field is supported since API version 20.|
+| ion | number | Size of the ION memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br />Note: This field is supported since API version 20.|
+| gpu | number | Size of the GPU memory actually used by a process (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.<br />Note: This field is supported since API version 20.|
 | sys_free_mem | number | Size of the free memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | sys_avail_mem | number | Size of the available memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | sys_total_mem | number | Size of the total memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | limit_size | number | Limit of memory size (only available for **js_heap**), in KB.|
 | live_object_size | number | Size of the used memory (only available for **js_heap**), in KB.|
 
-### fd field description
+### fd
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
@@ -118,7 +118,7 @@ The **params** parameter in the event information is described as follows.
 | -------- | -------- | -------- |
 | num | number | Total number of threads.|
 
-## Parameters for Customizing Events
+## Customizing params
 
 Currently, the resource leak event reports the JS memory leak event information, which may not meet your personal requirements. Therefore, the **setEventParam** method is provided to customize event reporting information.
 

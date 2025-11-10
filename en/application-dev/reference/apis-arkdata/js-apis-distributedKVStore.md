@@ -5298,7 +5298,7 @@ Unsubscribes from data changes.
 
 | Name  | Type                                                 | Mandatory| Description                                                    |
 | -------- | --------------------------------------------------------- | ---- | -------------------------------------------------------- |
-| event    | string                                                    | Yes  | Event type. The value is **dataChange**, which indicates data changes.|
+| event    | string                                                    | Yes  | Event type. The value is **dataChange**, which indicates a data change event.|
 | listener | Callback&lt;[ChangeNotification](#changenotification)&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
 
 **Error codes**

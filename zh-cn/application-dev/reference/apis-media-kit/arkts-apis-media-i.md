@@ -74,7 +74,7 @@ SEI信息内容，描述SEI信息的负载类型和数据。
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | 否  | 否  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| [key: string] | Object | 否  | 是  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
 
 **示例：**
 
@@ -116,7 +116,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | 否  | 否  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+| [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -339,18 +339,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // 成功打开资源，返回唯一的句柄, 保证uuid和request对应。
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // 判断uuid是否合法、存储read请求，不要在read请求阻塞去推送数据和头信息。
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // 清除当前uuid相关资源。
     requests.remove(uuid);
   }

@@ -1813,7 +1813,7 @@ try {
 
 **Error code: 10605080**
 
-ArkTS does not support iteration over object contents by the **for .. in** loop. For objects, iteration over properties at runtime is considered redundant because object layout is known at compile time and cannot change at runtime.
+ArkTS does not support iteration over object contents by the **for ... in** loop. For objects, iteration over properties at runtime is considered redundant because object layout is known at compile time and cannot change at runtime.
 
 **TypeScript**
 
@@ -2754,7 +2754,7 @@ import { normalize } from 'someModule'
 
 **Error code: 10605129**
 
-ArkTS does not support wildcards in module names, because import is a compile-time feature in ArkTS, not a runtime feature.
+ArkTS does not support wildcards in module names because import is a compile-time feature in ArkTS, not a runtime feature.
 
 **TypeScript**
 
@@ -2824,7 +2824,7 @@ mathLib.isPrime(2)
 
 **Error code: 10605132**
 
-ArkTS does not support **new.target**, because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
+ArkTS does not support **new.target** because there is no concept of runtime prototype inheritance in the language. This feature is considered not applicable to static typing.
 
 ### Definite Assignment Assertions Are Not Supported
 

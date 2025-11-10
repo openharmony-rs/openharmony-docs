@@ -16,7 +16,7 @@ Since API version 18, a system application is supported to publish notifications
 
 ## Available APIs
 
-| **API** | **Description**| **Note**|
+| **API** | **Description**| **Description**|
 | -------- | -------- |-------- |
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request: NotificationRequest, callback: AsyncCallback\<void\>): void | Publishes a notification.| For details, see the description of the **notDistributed** and **forceDistributed** fields in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md) object.|
 

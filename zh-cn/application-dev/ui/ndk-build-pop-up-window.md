@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 可以通过创建弹窗控制器和创建自定义弹窗的内容对象两种方法显示自定义弹窗，设置其样式和内容。
@@ -270,7 +270,7 @@
 
 ## 弹窗的生命周期
 
-弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
+从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
 registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->
 registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。

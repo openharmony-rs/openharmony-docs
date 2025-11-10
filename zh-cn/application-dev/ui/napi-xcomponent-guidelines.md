@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -13,9 +13,12 @@ XComponent组件作为一种渲染组件，可用于EGL/OpenGLES和媒体数据�
 XComponent持有一个Surface，开发者能通过调用[NativeWindow](../graphics/native-window-guidelines.md)等接口，申请并提交Buffer至图形队列，以此方式将自绘制内容传送至该Surface。XComponent负责将此Surface整合进UI界面，其中展示的内容正是开发者传送的自绘制内容。Surface的默认位置与大小与XComponent组件一致，开发者可利用[setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)接口自定义调整Surface的位置和大小。XComponent组件负责创建Surface，并通过回调将Surface的相关信息告知应用。应用可以通过一系列接口设定Surface的属性。该组件本身不对所绘制的内容进行感知，亦不提供渲染绘制的接口。
 
 目前XComponent组件主要有三个应用场景：
-1. [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期)，该场景在ArkTS侧获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。
-2. [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)，该场景根据XComponent组件对应的ArkUI_NodeHandle中创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。
-3. [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期)，该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。
+
+| XComponent组件应用场景                | 场景简介                                      | 场景特点                                        |
+|--------------------------------------|-----------------------------------------------|------------------------------------------------|
+| [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期) | 该场景在ArkTS侧获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。 | 适用于视频播放、相机预览等场景，该场景需要在ArkTS侧获取SurfaceId，并将SurfaceId传入对应接口。 |
+| [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期) | 该场景根据XComponent组件对应的ArkUI_NodeHandle中创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。 | 适用于如下场景：<br>1.有较复杂的交互逻辑、对频繁跨语言调用导致性能损耗敏感的场景。<br>2.希望能控制Surface生命周期触发时机的场景。 |
+| [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期) | 该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。 | 与[使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)类似，但交互事件接口不够丰富，且使用不当容易出现稳定性问题，建议使用SurfaceHolder的接口。 |
 
 ## 约束与限制
 

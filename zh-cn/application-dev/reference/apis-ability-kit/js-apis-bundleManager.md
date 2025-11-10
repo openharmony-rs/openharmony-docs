@@ -231,7 +231,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的bundleFlags获取当前应用的BundleInfo，使用Promise异步回调。
+根据给定的bundleFlags获取当前应用的BundleInfo。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -283,7 +283,7 @@ try {
 
 getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleFlags获取当前应用的BundleInfo，使用callback异步回调。
+根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -332,7 +332,7 @@ try {
 
 getProfileByAbility(moduleName: string, abilityName: string, metadataName: string, callback: AsyncCallback\<Array\<string\>\>): void
 
-根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串，使用callback异步回调。
+根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
 > 说明：
 > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
@@ -391,7 +391,7 @@ try {
 
 getProfileByAbility(moduleName: string, abilityName: string, metadataName?: string): Promise\<Array\<string\>\>
 
-根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串，使用Promise异步回调。
+根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
 > 说明：
 > 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
@@ -552,7 +552,7 @@ try {
 
 getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName: string, callback: AsyncCallback\<Array\<string\>\>): void
 
-根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，使用callback异步回调。
+根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
 >如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
@@ -609,7 +609,7 @@ try {
 
 getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, metadataName?: string): Promise\<Array\<string\>\>
 
-根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，使用Promise异步回调。
+根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
 >如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
@@ -883,7 +883,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName、bundleFlags和userId获取[BundleInfo](./js-apis-bundleManager-bundleInfo.md)，使用callback异步回调。
+根据给定的bundleName、bundleFlags和userId获取[BundleInfo](./js-apis-bundleManager-bundleInfo.md)。使用callback异步回调。
 
 获取调用方自身信息时不需要权限。
 
@@ -966,7 +966,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的bundleName和bundleFlags获取BundleInfo，使用callback异步回调。
+根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1022,7 +1022,7 @@ try {
 
 getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
 
-根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用Promise异步回调。
+根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -1217,7 +1217,7 @@ try {
 
 getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
-根据给定的uid获取对应应用的bundleName，使用callback异步回调。
+根据给定的uid获取对应应用的bundleName。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1266,7 +1266,7 @@ try {
 
 getBundleNameByUid(uid: number): Promise\<string>
 
-根据给定的uid获取对应应用的bundleName，使用Promise异步回调。
+根据给定的uid获取对应应用的bundleName。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1469,7 +1469,7 @@ try {
 
 getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
-获取指定资源标识符和组件信息标志对应的Ability信息，使用Promise异步回调。
+获取指定资源标识符和组件信息标志对应的Ability信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

@@ -266,8 +266,6 @@
           <!--Del-->
           - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
           - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
-          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
-          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [应用间配置共享 (ArkTS)](database/share-config.md)
         - 多对多跨应用数据共享<!--many-to-many-data-share-->
@@ -519,8 +517,8 @@
           - [弹窗概述](ui/arkts-dialog-overview.md)
           - 弹出框 (Dialog)<!--arkts-use-dialogs-->
             - [弹出框概述](ui/arkts-base-dialog-overview.md)
-            - [不依赖UI组件的全局自定义弹出框 (openCustomDialog) (推荐)](ui/arkts-uicontext-custom-dialog.md)
-            - [基础自定义弹出框 (CustomDialog) (不推荐)](ui/arkts-common-components-custom-dialog.md)
+            - [不依赖UI组件的全局自定义弹出框 (openCustomDialog)](ui/arkts-uicontext-custom-dialog.md)
+            - [基础自定义弹出框 (CustomDialog)](ui/arkts-common-components-custom-dialog.md)
             - [固定样式弹出框](ui/arkts-fixes-style-dialog.md)
             - [页面级弹出框](ui/arkts-embedded-dialog.md)
             - [弹出框层级管理](ui/arkts-dialog-levelorder.md)
@@ -732,12 +730,14 @@
         - [UI预览](ui/ui-ide-previewer.md)
         - [UI调优](ui/ui-inspector-profiler.md)
         - [UI高性能开发](ui/ui-performance-overview.md)
+        - UI开发常见问题<!--ui-development-faq-->
+          - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
         - [管理应用窗口（FA模型）](windowmanager/application-window-fa.md)
-        - [窗口元数据配置](windowmanager/window-config-m.md)
         - [窗口旋转](windowmanager/window-rotation.md)
+        - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
         - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability-sys.md)
@@ -830,7 +830,7 @@
       - [延迟任务(ArkTS)](task-management/work-scheduler.md)
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
-      - 设备使用信息统计（ArkTS）<!--device-usage-statistics--
+      - 设备使用信息统计（ArkTS）<!--device-usage-statistics-->
         - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
         - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
@@ -1335,7 +1335,7 @@
         - 账号管理<!--account-management-->
           <!--Del-->
           - [账号管理概述](basic-services/account/account-overview-sys.md)
-          - 系统账号 <!--os-account-->
+          - 系统账号（仅对系统应用开放）<!--os-account-->
             - [管理系统账号](basic-services/account/manage-os-account-sys.md)
             - [使用约束管控系统账号](basic-services/account/control-os-account-by-constraints-sys.md)
             - [管理系统账号凭据](basic-services/account/manage-os-account-credential-sys.md)
@@ -1390,20 +1390,20 @@
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
         - [Function Flow Runtime并发范式](ffrt/ffrt-concurrency-paradigm.md)
         - Function Flow Runtime开发样例(C)<!--ffrt-example-c-->
-          - [串行队列(C)](ffrt/ffrt-concurrency-serial-queue-c.md)
-          - [并发队列(C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
-          - [图依赖并发(C)](ffrt/ffrt-concurrency-graph-c.md)
+          - [Function Flow Runtime串行队列(C)](ffrt/ffrt-concurrency-serial-queue-c.md)
+          - [Function Flow Runtime并发队列(C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
+          - [Function Flow Runtime图依赖并发(C)](ffrt/ffrt-concurrency-graph-c.md)
         - Function Flow Runtime开发样例(C++)<!--ffrt-example-cpp-->
-          - [串行队列(C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
-          - [并发队列(C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
-          - [图依赖并发(C++)](ffrt/ffrt-concurrency-graph-cpp.md)
-          - [任务伙伴(C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
+          - [Function Flow Runtime串行队列(C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
+          - [Function Flow Runtime并发队列(C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
+          - [Function Flow Runtime图依赖并发(C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime任务伙伴(C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
         - [Function Flow Runtime开发指导](ffrt/ffrt-development-guideline.md)
         - [Function Flow Runtime C API](ffrt/ffrt-api-guideline-c.md)
       - Input Kit（多模输入服务）<!--input-kit-->
         - [Input Kit简介](device/input/input-overview.md)
         - [输入设备开发指导](device/input/inputdevice-guidelines.md)
-        - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
+        - [优先响应系统功能键开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)<!--Del-->
         - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
         - [事件注入开发指导（仅对系统应用开放）](device/input/inputeventclient-guidelines-sys.md)
@@ -1532,9 +1532,7 @@
         - 命令行工具<!--perform-command-line-utilities-->
           - [hdc](dfx/hdc.md)
           - [hilog](dfx/hilog.md)
-          - hidumper<!--hidumper-tool-->
-            - [hidumper](dfx/hidumper.md)
-            - [PrivacyManagerService](dfx/hidumper-PrivacyManagerService.md)
+          - [hidumper](dfx/hidumper.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
@@ -1544,7 +1542,7 @@
           <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
         - [Test Kit简介](application-test/test-kit-overview.md)
-        - 自动化测试框架使用指导<!--arkxtest-->
+        - 自动化测试框架使用指导<!--arkxtest-guidelines-->
           - [单元测试框架使用指导](application-test/unittest-guidelines.md)
           - [UI测试框架使用指导](application-test/uitest-guidelines.md)
           - [白盒性能测试框架使用指导](application-test/perftest-guideline.md)
@@ -1592,7 +1590,6 @@
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
         - [使用AudioRenderer开发音频播放功能](media/audio/using-audiorenderer-for-playback.md)
-        - [响应音频流输出设备变更](media/audio/audio-output-device-change.md)
         <!--Del-->
         - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
@@ -1609,7 +1606,6 @@
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [音频播放流管理](media/audio/audio-playback-stream-management.md)
-        - [管理全局音频输出设备](media/audio/audio-output-device-management.md)
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
@@ -1619,10 +1615,14 @@
         - [使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
         - [管理麦克风](media/audio/mic-management.md)
         - [音频录制流管理](media/audio/audio-recording-stream-management.md)
-        - [管理全局音频输入设备](media/audio/audio-input-device-management.md)
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
+	  - 音频设备路由管理<!--audio-device-->
+	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
@@ -1697,6 +1697,8 @@
         - [白平衡设置(ArkTS)](media/camera/camera-whitebalance.md)
         - [压力管控(ArkTS)](media/camera/camera-system-pressure.md)
         - [相机控制器(ArkTS)](media/camera/camera-control-center.md)
+        - [微距能力设置(ArkTS)](media/camera/camera-macro.md)
+        - [多摄同开(ArkTS)](media/camera/camera-concurrent-open.md)
         <!--Del-->
         - [高性能拍照(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-sys.md)
         - [高性能拍照实践(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
@@ -1718,6 +1720,8 @@
         - [元数据(C/C++)](media/camera/native-camera-metadata.md)
         - [手电筒使用(C/C++)](media/camera/native-camera-torch-use.md)
         - [压力管控(C/C++)](media/camera/native-camera-system-pressure.md)
+        - [微距能力设置(C/C++)](media/camera/native-camera-macro.md)
+        - [多摄同开(C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit（数字版权保护服务）<!--drm-kit-->
       - [DRM Kit 简介](media/drm/drm-overview.md)
       - [数字版权保护(ArkTS)](media/drm/drm-arkts-dev-guide.md)
@@ -1932,7 +1936,6 @@
           <!--Del-->
         - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
-        - [为跨设备协同通知添加快捷回复](notification/notification-quickreply.md)
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
@@ -3579,6 +3582,7 @@
           - [Video组件错误码](reference/apis-arkui/errorcode-video.md)
           - [状态管理错误码](reference/apis-arkui/errorcode-stateManagement.md)
           - [渲染节点错误码](reference/apis-arkui/errorcode-node-render.md)
+          - [反色能力错误码](reference/apis-arkui/errorcode-force-dark.md)
         - 图形图像<!--arkui-graphics-images-arkts-errcode-->
           - [屏幕错误码](reference/apis-arkui/errorcode-display.md)
           - [窗口错误码](reference/apis-arkui/errorcode-window.md)
@@ -4438,7 +4442,9 @@
           - [上传下载错误码](reference/apis-basic-services-kit/errorcode-request.md)
           - [时间时区错误码](reference/apis-basic-services-kit/errorcode-time.md)
           - [事件错误码](reference/apis-basic-services-kit/errorcode-CommonEventService.md)
+          <!--Del-->
           - [系统参数错误码](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
+          <!--DelEnd-->
           - [系统电源管理错误码](reference/apis-basic-services-kit/errorcode-power.md)
           - [账号管理错误码](reference/apis-basic-services-kit/errorcode-account.md)
           <!--Del-->
@@ -5567,7 +5573,7 @@
     - Calendar Kit（日历服务）<!--calendar-api-->
       - ArkTS API<!--calendar-arkts-->
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
-    - Contacts Kit（联系人服务）<!--contacts-->
+    - Contacts Kit（联系人服务）<!--contacts-api-->
       - ArkTS API<!--contacts-arkts-->
         - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
       - 错误码<!--contacts-arkts-errcode-->
@@ -5631,8 +5637,8 @@
       - C API<!--notification-c-->
         - 模块<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - 头文件<!--notification-struct-->
-            - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
+        - 头文件<!--notification-headerfile-->
+          - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - 错误码<!--notification-arkts-errcode-->
         - [通知错误码](reference/apis-notification-kit/errorcode-notification.md)
   - AI<!--ai-api-->

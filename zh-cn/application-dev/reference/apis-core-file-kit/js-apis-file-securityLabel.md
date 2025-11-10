@@ -41,15 +41,26 @@ import { securityLabel } from '@kit.CoreFileKit';
 
 type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
-数据安全级别。
+数据安全等级。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+| 类型 | 说明 |
+| --- | ---------------- |
+| s0 | 数据安全等级"S0" 。|
+| s1 | 数据安全等级"S1" 。|
+| s2 | 数据安全等级"S2" 。|
+| s3 | 数据安全等级"S3" 。|
+| s4 | 数据安全等级"S4" 。|
+
+数据安全等级详细说明请见[数据安全标签](../../database/access-control-by-device-and-data-level.md#数据安全标签)。
+
 
 ## securityLabel.setSecurityLabel
 
 setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
-以异步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置，以Promise形式返回结果。
+设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -58,7 +69,7 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 | 参数名    | 类型       | 必填 | 说明                                         |
 | --------- | ------    | ---- | -------------------------------------------- |
 | path      | string    | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel) | 是   | 文件等级属性，只支持"s0","s1","s2","s3","s4"。 |
+| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
 
 **返回值：**
 
@@ -97,7 +108,7 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
 
-以异步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置，以callback形式返回结果。
+设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -106,8 +117,8 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 | 参数名    | 类型                      | 必填 | 说明                                         |
 | --------- | ------------------------- | ---- | -------------------------------------------- |
 | path      | string                    | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel)   | 是   | 文件等级属性，只支持"s0","s1","s2","s3","s4"。 |
-| callback  | AsyncCallback&lt;void&gt; | 是   | 设置数据标签之后的回调。                   |
+| type      | [DataLevel](#datalevel)   | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
+| callback  | AsyncCallback&lt;void&gt; | 是   | 设置数据安全等级之后的回调。                   |
 
 **错误码：**
 
@@ -142,7 +153,7 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 setSecurityLabelSync(path:string, type:DataLevel):void
 
-以同步方法设置数据标签。数据标签安全等级仅可由低向高或平级设置。
+以同步方法设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -151,7 +162,7 @@ setSecurityLabelSync(path:string, type:DataLevel):void
 | 参数名    | 类型   | 必填 | 说明                                         |
 | --------- | ------ | ---- | -------------------------------------------- |
 | path      | string | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel) | 是   | 文件等级属性，只支持"s0","s1","s2","s3","s4"。 |
+| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
 
 **错误码：**
 
@@ -179,7 +190,7 @@ securityLabel.setSecurityLabelSync(filePath, "s0");
 
 getSecurityLabel(path:string):Promise&lt;string&gt;
 
-异步方法获取数据标签。若未设置过数据标签安全等级则默认返回“s3”，以Promise形式返回结果。
+获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -193,7 +204,7 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | Promise&lt;string&gt; | 返回数据标签。 |
+  | Promise&lt;string&gt; | 返回数据安全等级。 |
 
 **错误码：**
 
@@ -226,7 +237,7 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
 getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
-异步方法获取数据标签。若未设置过数据标签安全等级则默认返回“s3”，以callback形式返回结果。
+获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -235,7 +246,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                       |
   | -------- | --------------------------- | ---- | -------------------------- |
   | path     | string                      | 是   | 文件路径。                   |
-  | callback | AsyncCallback&lt;string&gt; | 是   | 异步获取数据标签之后的回调。 |
+  | callback | AsyncCallback&lt;string&gt; | 是   | 异步获取数据安全等级之后的回调。 |
 
 **错误码：**
 
@@ -270,7 +281,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
 getSecurityLabelSync(path:string):string
 
-以同步方法获取数据标签。若未设置过数据标签安全等级则默认返回“s3”。
+以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -284,7 +295,7 @@ getSecurityLabelSync(path:string):string
 
 | 类型   | 说明         |
 | ------ | ------------ |
-| string | 返回数据标签。 |
+| string | 返回数据安全等级。 |
 
 **错误码：**
 

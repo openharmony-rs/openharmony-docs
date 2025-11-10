@@ -410,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    需开发者填充完整的输入数据后调用。
 
-   如果是结束，需要对flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     uint32_t index = signal_->inQueue_.front();

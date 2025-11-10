@@ -4,7 +4,7 @@
 <!--Owner: @Armstrong15-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 以垂直列表形式显示的菜单。
 

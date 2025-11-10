@@ -7,13 +7,15 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The AbilityDelegator module can listen to and manage the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current status of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), query the UIAbility that is currently in focus, wait for the UIAbility to enter a lifecycle node (for example, wait for the UIAbility to enter the onForeground state), start a specified UIAbility, and set the timeout mechanism.
+The **AbilityDelegator** module can listen for and manage the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
-You can obtain AbilityDelegator by calling [getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator).
+You can obtain **AbilityDelegator** by calling [getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator).
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> 
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 

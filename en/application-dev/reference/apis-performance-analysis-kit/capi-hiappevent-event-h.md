@@ -35,12 +35,12 @@ Defines the names of all predefined events. In addition to custom events associa
 | [EVENT_APP_LAUNCH](#event_app_launch) "APP_LAUNCH"                                                         | Time-consuming launch event.<br>**Since**: 12      |
 | [EVENT_SCROLL_JANK](#event_scroll_jank) "SCROLL_JANK"                                                      | Scrolling frame loss event.<br>**Since**: 12    |
 | [EVENT_CPU_USAGE_HIGH](#event_cpu_usage_high) "CPU_USAGE_HIGH"                                             | High CPU usage event.<br>**Since**: 12|
-| [EVENT_BATTERY_USAGE](#event_battery_usage) "BATTERY_USAGE"                                                | Event indicating battery usage statistics.<br>**Since**: 12   |
+| [EVENT_BATTERY_USAGE](#event_battery_usage) "BATTERY_USAGE"                                                | Battery usage statistics event.<br>**Since**: 12   |
 | [EVENT_RESOURCE_OVERLIMIT](#event_resource_overlimit) "RESOURCE_OVERLIMIT"                                 | Resource leak event.<br>**Since**: 12    |
 | [EVENT_ADDRESS_SANITIZER](#event_address_sanitizer) "ADDRESS_SANITIZER"                                    | Address sanitizer event.<br>**Since**: 12     |
 | [EVENT_MAIN_THREAD_JANK](#event_main_thread_jank) "MAIN_THREAD_JANK"                                       | Main thread jank event.<br>**Since**: 12   |
 | [EVENT_APP_HICOLLIE](#event_app_hicollie) "APP_HICOLLIE"                                                   | Task execution timeout event.<br>**Since**: 18  |
-| [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | Application termination event.<br>**Since**: 20     |
+| [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | Application killed event.<br>**Since**: 20     |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS scope.<br>**Since**: 12       |
 
 ## Macro Description
@@ -149,7 +149,7 @@ High CPU usage event.
 
 **Description**
 
-Event indicating battery usage statistics.
+Battery usage statistics event.
 
 **Since**: 12
 
@@ -209,7 +209,7 @@ Task execution timeout event.
 
 **Description**
 
-Application termination event.
+Application killed event.
 
 **Since**: 20
 

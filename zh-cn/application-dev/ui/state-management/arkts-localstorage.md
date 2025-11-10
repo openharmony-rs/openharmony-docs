@@ -79,7 +79,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | 是否支持组件外访问  | 否。                                                                                  |
 
 
-![zh-cn_image_0000001501936014](figures/zh-cn_image_0000001501936014.png)
+![localstorageprop-initialization](figures/localstorageprop-initialization.png)
 
   **图1** \@LocalStorageProp初始化规则图示
 
@@ -147,7 +147,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | 是否支持组件外访问  | 否。                                                                                  |
 
 
-![zh-cn_image_0000001552855957](figures/zh-cn_image_0000001552855957.png)
+![localstoragelink-initialization](figures/localstoragelink-initialization.png)
 
   **图3** \@LocalStorageLink初始化规则图示
 

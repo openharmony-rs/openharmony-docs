@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供文本宽度、高度等相关计算。
 
@@ -155,7 +155,7 @@ struct TextDemo {
     this.calculateText(this.maxLines, this.fullText);
   }
 
-  getCodePoints(text: string): number[] { // 使用codePonitsAt分割文本
+  getCodePoints(text: string): number[] { // 使用codePointAt分割文本
     const codePoints: number[] = [];
     let index = 0;
     while (index < text.length) {
@@ -201,7 +201,7 @@ struct TextDemo {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // 删掉几个字
-        let textAfterCut = this.displayedText + "..."; // 加上省略号
+        let textAfterCut = this.displayedText + "…"; // 加上省略号
         let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
@@ -212,7 +212,7 @@ struct TextDemo {
           console.info("displayedText: " + this.displayedText);
         }
       }
-      this.displayedText = this.displayedText + '...';
+      this.displayedText = this.displayedText + "…";
     }
   }
 

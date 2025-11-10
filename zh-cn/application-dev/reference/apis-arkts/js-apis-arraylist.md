@@ -461,7 +461,7 @@ arrayList.replaceAllElements((value: number): number => {
 forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void,
 thisArg?: Object): void
 
-在遍历ArrayList实例对象中每一个元素的过程中，对每个元素执行回调函数。
+在遍历ArrayList实例对象的过程中，对每个元素执行回调函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

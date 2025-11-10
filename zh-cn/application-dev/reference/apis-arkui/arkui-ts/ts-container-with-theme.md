@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 WithTheme组件用于设置应用局部页面自定义主题风格，可设置子组件深浅色模式和自定义配色。
 

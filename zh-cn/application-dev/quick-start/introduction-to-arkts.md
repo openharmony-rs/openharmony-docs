@@ -245,10 +245,29 @@ function foo(animal: Animal) {
 `Aliases`类型为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
 
 ```typescript
+// 二维数组类型
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// 函数类型
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString("abc", 3)); // "abcabcabc"
+
+// 泛型函数类型
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// 可为空的对象类型
 type NullableObject = Object | null;
+class cat {}
+let animalData: NullableObject = new cat();
+let emptyData: NullableObject = null;
 ```
 
 ### 运算符
@@ -318,6 +337,32 @@ console.info(String(null === undefined)); // false
 | `a && b`   | 逻辑与 |
 | `a \|\| b` | 逻辑或 |
 | `! a`      | 逻辑非 |
+
+**`instanceof`运算符**
+
+`instanceof`运算符用于在运行时检查一个对象是否是指定类或其子类的实例。
+
+示例如下：
+
+```typescript
+obj instanceof className
+```
+
+返回值类型为`boolean`。
+如果`obj`是`className`类或其子类的实例，则返回值为`true`；否则，返回值为`false`。
+
+示例：
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) console.info("true") // true
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal)  console.info("true") // true
+```
 
 ### 语句
 
@@ -2163,8 +2208,7 @@ console.info("hello");
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // 仅引用了ns的注解，不会导致a.ets的console.info执行
+// 仅引用了Anno注解，不会导致a.ets的console.info执行
 class X {
   // ...
 }

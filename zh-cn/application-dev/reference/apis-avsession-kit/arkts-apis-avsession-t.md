@@ -26,8 +26,8 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 | -----  | ---- |
 | 'audio' | 音频 |
 | 'video' | 视频 |
-| 'voice_call'<sup>11+<sup> | 音频通话。 |
-| 'video_call'<sup>12+<sup> | 视频通话。 |
+| 'voice_call'<sup>11+</sup> | 音频通话。 |
+| 'video_call'<sup>12+</sup> | 视频通话。 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -64,9 +64,9 @@ type ExtraInfo = Record\<string, Object\>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-|参数名| 类型                                |必填| 说明                          |
-|------- | ----------------------------------- | --------| ----------------------------- |
-|ExtraInfo | Record\<string, Object\>  |是 | key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可连接设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包Object对象。 |
+| 类型                                | 说明                          |
+| ----------------------------------- | ----------------------------- |
+|Record\<string, Object\>| key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可连接设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包Object对象。 |
 
 ## KeyRequestCallback<sup>12+</sup>
 

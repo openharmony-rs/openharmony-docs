@@ -266,8 +266,6 @@
           <!--Del-->
           - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
           - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
-          - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
-          - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [Sharing Configurations Between Applications (ArkTS)](database/share-config.md)
         - Many-to-Many Data Sharing<!--many-to-many-data-share-->
@@ -518,8 +516,8 @@
           - [Popup Window Overview](ui/arkts-dialog-overview.md)
           - Using Dialog Boxes (Dialog)<!--arkts-use-dialogs-->
             - [Dialog Box Overview](ui/arkts-base-dialog-overview.md)
-            - [Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)](ui/arkts-uicontext-custom-dialog.md)
-            - [Basic Custom Dialog Box (CustomDialog) (Not Recommended)](ui/arkts-common-components-custom-dialog.md)
+            - [Global Custom Dialog Box Independent of UI Components (openCustomDialog)](ui/arkts-uicontext-custom-dialog.md)
+            - [Basic Custom Dialog Box (CustomDialog)](ui/arkts-common-components-custom-dialog.md)
             - [Fixed-Style Dialog Box](ui/arkts-fixes-style-dialog.md)
             - [Page-Level Dialog Box](ui/arkts-embedded-dialog.md)
             - [Dialog Box Layer Management](ui/arkts-dialog-levelorder.md)
@@ -735,6 +733,7 @@
         - [Window Overview](windowmanager/window-overview.md)
         - [Application Window Development (Stage Model)](windowmanager/application-window-stage.md)
         - [Application Window Development (FA Model)](windowmanager/application-window-fa.md)
+        - [Window Rotation](windowmanager/window-rotation.md)
         - [Window Metadata Configuration](windowmanager/window-config-m.md)
         <!--Del-->
         - [System Window Development (Stage Model Only) (for System Applications Only)](windowmanager/system-window-stage-sys.md)
@@ -929,6 +928,7 @@
       - [Custom Edit Box Development Guide (C/C++)](inputmethod/use-inputmethod-in-custom-edit-box-ndk.md)
       - [Immersive Mode of the Input Method Application](inputmethod/inputmethod-immersive-mode-guide.md)
       - [Managing the Input Method Using hdc Commands](inputmethod/inputmethod-hdc-commands-guide.md)
+      - [Input Box and Input Method Interaction in Non-Focusable Windows](inputmethod/use-inputmethod-in-not-focusable-window.md)
     - IPC Kit<!--ipc-kit-->
       - [Introduction to IPC Kit](ipc/ipc-rpc-overview.md)
       - [IPC and RPC Development (ArkTS)](ipc/ipc-rpc-development-guideline.md)
@@ -1331,7 +1331,7 @@
         - Account Management<!--account-management-->
           <!--Del-->
           - [Account Management Overview](basic-services/account/account-overview-sys.md)
-          - System Accounts<!--os-account-->
+          - System Accounts (for System Applications Only)<!--os-account-->
             - [Managing System Accounts](basic-services/account/manage-os-account-sys.md)
             - [Applying Constraints for System Accounts](basic-services/account/control-os-account-by-constraints-sys.md)
             - [Managing System Account Credentials](basic-services/account/manage-os-account-credential-sys.md)
@@ -1386,19 +1386,20 @@
         - [Introduction to Function Flow Runtime Kit](ffrt/ffrt-overview.md)
         - [Function Flow Runtime Paradigms](ffrt/ffrt-concurrency-paradigm.md)
         - Function Flow Runtime Development Samples (C)<!--ffrt-example-c-->
-          - [Serial Queue (C)](ffrt/ffrt-concurrency-serial-queue-c.md)
-          - [Concurrent Queue (C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
-          - [Task Graph (C)](ffrt/ffrt-concurrency-graph-c.md)
+          - [Function Flow Runtime Serial Queue (C)](ffrt/ffrt-concurrency-serial-queue-c.md)
+          - [Function Flow Runtime Concurrent Queue (C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
+          - [Function Flow Runtime Task Graph (C)](ffrt/ffrt-concurrency-graph-c.md)
         - Function Flow Runtime Development Samples (C++)<!--ffrt-example-cpp-->
-          - [Serial Queue (C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
-          - [Concurrent Queue (C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
-          - [Task Graph (C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime Serial Queue (C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
+          - [Function Flow Runtime Concurrent Queue (C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
+          - [Function Flow Runtime Task Graph (C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime Job Partner (C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
         - [Function Flow Runtime Development](ffrt/ffrt-development-guideline.md)
         - [Function Flow Runtime C API](ffrt/ffrt-api-guideline-c.md)
       - Input Kit<!--input-kit-->
         - [Introduction to Input Kit](device/input/input-overview.md)
         - [Input Device Development](device/input/inputdevice-guidelines.md)
-        - [Key Press Event Listening Development](device/input/keypressed-guidelines.md)
+        - [Preferential Response of System Function Keys](device/input/keypressed-guidelines.md)
         - [Mouse Pointer Development](device/input/pointerstyle-guidelines.md)<!--Del-->
         - [Input Monitor Development (for System Applications Only)](device/input/inputmonitor-guidelines-sys.md)
         - [Event Injection Development (for System Applications Only)](device/input/inputeventclient-guidelines-sys.md)
@@ -1536,7 +1537,8 @@
           - [hisysevent (for System Applications Only)](dfx/hisysevent-sys.md)
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
-        - arkXtest User Guide<!--arkxtest-->
+        - [Test Kit Overview](application-test/test-kit-overview.md)
+        - Automated Test Framework User Guides<!--arkxtest-guidelines-->
           - [JsUnit User Guide](application-test/unittest-guidelines.md)
           - [UITest User Guide](application-test/uitest-guidelines.md)
           - [PerfTest User Guide](application-test/perftest-guideline.md)
@@ -1581,7 +1583,6 @@
       - Audio Playback<!--audio-playback-->
         - [Audio Playback Overview](media/audio/audio-playback-overview.md)
         - [Using AudioRenderer for Audio Playback](media/audio/using-audiorenderer-for-playback.md)
-        - [Responding to Audio Output Device Changes](media/audio/audio-output-device-change.md)
         <!--Del-->
         - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
@@ -1598,7 +1599,6 @@
         - [Spatial Audio Management (for System Applications Only)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [Audio Playback Stream Management](media/audio/audio-playback-stream-management.md)
-        - [Global Audio Output Device Management](media/audio/audio-output-device-management.md)
         <!--Del-->
         - [Distributed Audio Playback (for System Applications Only)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
@@ -1608,10 +1608,14 @@
         - [Using OHAudio for Audio Recording (C/C++)](media/audio/using-ohaudio-for-recording.md)
         - [Microphone Management](media/audio/mic-management.md)
         - [Audio Recording Stream Management](media/audio/audio-recording-stream-management.md)
-        - [Global Audio Input Device Management](media/audio/audio-input-device-management.md)
         - [Shared Audio Input](media/audio/audio-recording-concurrency.md)
         - [Audio Monitoring](media/audio/audio-ear-monitor.md)
         - [Low-Latency Audio Monitoring](media/audio/audio-ear-monitor-loopback.md)
+	  - Audio Device Routing Management<!--audio-device-->
+	    - [Querying and Listening for Audio Input Devices](media/audio/audio-input-device-management.md)
+		- [Querying and Listening for Audio Output Devices](media/audio/audio-output-device-management.md)
+		- [Switching Audio Output Devices](media/audio/audio-output-device-switcher.md)
+	    - [Handling Output Device Changes Gracefully](media/audio/audio-output-device-change.md)
       - Audio Call<!--audio-call-->
         - [Audio Call Overview](media/audio/audio-call-overview.md)
         - [Developing Audio Call](media/audio/audio-call-development.md)
@@ -1686,6 +1690,8 @@
         - [White Balance Settings (ArkTS)](media/camera/camera-whitebalance.md)
         - [Pressure Management (ArkTS)](media/camera/camera-system-pressure.md)
         - [Camera Controller (ArkTS)](media/camera/camera-control-center.md)
+        - [Macro Photography Settings (ArkTS)](media/camera/camera-macro.md)
+        - [Multi-Camera Concurrent Mode (ArkTS)](media/camera/camera-concurrent-open.md)
         <!--Del-->
         - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-sys.md)
         - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
@@ -1707,6 +1713,8 @@
         - [Camera Metadata (C/C++)](media/camera/native-camera-metadata.md)
         - [Using the Flashlight (C/C++)](media/camera/native-camera-torch-use.md)
         - [Pressure Management (C/C++)](media/camera/native-camera-system-pressure.md)
+        - [Macro Photography Settings (C/C++)](media/camera/native-camera-macro.md)
+        - [Multi-Camera Concurrent Mode (C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit<!--drm-kit-->
       - [Introduction to DRM Kit](media/drm/drm-overview.md)
       - [DRM Development (ArkTS)](media/drm/drm-arkts-dev-guide.md)
@@ -1777,7 +1785,7 @@
         - Video Transcoding<!--media-transcoder-arkts-->
           - [Using AVTranscoder to Transcode Videos (ArkTS)](media/media/using-avtranscoder-for-transcodering.md)
           - [Creating an Asynchronous Thread for AVTranscoder Video Transcoding (ArkTS)](media/media/avtranscoder-practice.md)
-          - [FAQs About Transcoding](media/media/avtranscoder-faq.md)
+          - [Transcoding FAQs](media/media/avtranscoder-faq.md)
       - Media Development (C/C++)<!--media-kit-dev--c-->
         - Playback<!--media-playback-c-->
           - [Using AVPlayer to Play Audio (C/C++)](media/media/using-ndk-avplayer-for-playback.md)
@@ -1786,7 +1794,7 @@
         - Recording<!--media-recording-c-->
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
-          - Screen and Stream Capture with AVScreenCapture (C/C++)<!--using-avscreencapture-for-buffer-->
+          - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
             - [Using AVScreenCapture in Basic Scenarios](media/media/avscreencapture-c-basic-process.md)
             - [Using AVScreenCapture in Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
             - [Screen Capture FAQs](media/media/avscreencapture-faqs.md)
@@ -1921,7 +1929,6 @@
           <!--Del-->
         - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
-        - [Enabling Quick Reply for Cross-device Notifications](notification/notification-quickreply.md)
         - [Clearing Repeated Notifications Across Devices](notification/notification-distributed-messageid.md)
   - AI<!--ai-->
     - MindSpore Lite Kit<!--mindspore-lite-kit-->
@@ -2404,7 +2411,9 @@
         - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)
         - [AccessibilityExtensionContext](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
         <!--Del-->
+        - [@ohos.accessibility (Accessibility) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-sys.md)
         - [@ohos.accessibility.config (System Accessibility Configuration) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
+        - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility) (System API)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility-sys.md)
         - [AccessibilityExtensionContext (System API)](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext-sys.md)
         <!--DelEnd-->
       - Error Codes<!--accessibility-arkts-errcode-->
@@ -2657,7 +2666,7 @@
           - [postCardAction](reference/apis-arkui/js-apis-postCardAction.md)
           <!--Del-->
           - [@ohos.arkui.drawableDescriptor (DrawableDescriptor) (System API)](reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)
-          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md)
+          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) 
           - [@ohos.arkui.uiExtension (uiExtension) (System API)](reference/apis-arkui/js-apis-arkui-uiExtension-sys.md)
           - [@ohos.deviceStatus.dragInteraction (Drag Interaction) (System API)](reference/apis-arkui/js-apis-devicestatus-draginteraction-sys.md)
           - [@ohos.pluginComponent (PluginComponentManager) (System API)](reference/apis-arkui/js-apis-plugincomponent-sys.md)
@@ -3468,7 +3477,7 @@
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
       - Error Codes<!--arkui-arkts-errcode-->
         - UI<!--arkui-ui-arkts-errcode-->
-          - [Animator Error Codes](reference/apis-arkui/errorcode-animator.md)
+          - [API Call Error Codes](reference/apis-arkui/errorcode-internal.md)
           - [promptAction Error Codes](reference/apis-arkui/errorcode-promptAction.md)
           - [Router Error Codes](reference/apis-arkui/errorcode-router.md)
           - [Drag Event Error Codes](reference/apis-arkui/errorcode-drag-event.md)
@@ -3491,6 +3500,7 @@
           - [Video Component Error Codes](reference/apis-arkui/errorcode-video.md)
           - [State Management Error Codes](reference/apis-arkui/errorcode-stateManagement.md)
           - [Render Node Error Codes](reference/apis-arkui/errorcode-node-render.md)
+          - [Color Inversion Capability Error Codes](reference/apis-arkui/errorcode-force-dark.md)
         - Graphics<!--arkui-graphics-images-arkts-errcode-->
           - [Display Error Codes](reference/apis-arkui/errorcode-display.md)
           - [Window Error Codes](reference/apis-arkui/errorcode-window.md)
@@ -4350,10 +4360,14 @@
           - [Upload and Download Error Codes](reference/apis-basic-services-kit/errorcode-request.md)
           - [Time and Time Zone Error Codes](reference/apis-basic-services-kit/errorcode-time.md)
           - [Event Error Codes](reference/apis-basic-services-kit/errorcode-CommonEventService.md)
+          <!--Del-->
           - [System Parameter Error Codes](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
+          <!--DelEnd-->
           - [Power Manager Error Codes](reference/apis-basic-services-kit/errorcode-power.md)
           - [Account Management Error Codes](reference/apis-basic-services-kit/errorcode-account.md)
+          <!--Del-->
           - [Update Error Codes](reference/apis-basic-services-kit/errorcode-update.md)
+          <!--DelEnd-->
           - [Print Error Codes](reference/apis-basic-services-kit/errorcode-print.md)
           <!--Del-->
           - [Screen Lock Management Error Codes](reference/apis-basic-services-kit/errorcode-screenlock.md)
@@ -5477,7 +5491,7 @@
     - Calendar Kit<!--calendar-api-->
       - ArkTS APIs<!--calendar-arkts-->
         - [@ohos.calendarManager (Calendar Manager)](reference/apis-calendar-kit/js-apis-calendarManager.md)
-    - Contacts Kit<!--contacts-->
+    - Contacts Kit<!--contacts-api-->
       - ArkTS APIs<!--contacts-arkts-->
         - [@ohos.contact (Contacts)](reference/apis-contacts-kit/js-apis-contact.md)
       - Error Codes<!--contacts-arkts-errcode-->
@@ -5541,8 +5555,8 @@
       - C APIs<!--notification-c-->
         - Modules<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - Header Files<!--notification-struct-->
-            - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
+        - Header Files<!--notification-headerfile-->
+          - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - Error Codes<!--notification-arkts-errcode-->
         - [Notification Error Codes](reference/apis-notification-kit/errorcode-notification.md)
   - AI<!--ai-api-->
@@ -5646,7 +5660,10 @@
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
     - Vulkan<!--vulkan-guide-->
-      - [Vulkan Development](reference/native-lib/vulkan-guidelines.md)
+      - Vulkan Development<!--vulkan-guides-->
+        - [Vulkan Development Overview](reference/native-lib/vulkan-overview.md)
+        - [Vulkan Surface Development](reference/native-lib/vulkan-guidelines.md)
+        - [Vulkan External Memory Development](reference/native-lib/vulkan-oh-external-memory-guidelines.md)
       - [Vulkan Capabilities](reference/native-lib/vulkan.md)
       - Vulkan Extensions<!--vulkan-extensions-->
         - [Vulkan Module](reference/native-lib/capi-vulkan.md)

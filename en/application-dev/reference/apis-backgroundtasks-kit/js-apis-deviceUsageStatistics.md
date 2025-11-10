@@ -1,4 +1,10 @@
 # @ohos.bundleState (Device Usage Statistics)
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: ResourceSchedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -40,7 +46,7 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
   if (err) {
     console.error('BUNDLE_ACTIVE isIdleState callback failed, because: ' + err.code);
   } else {
-    console.log('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
+    console.info('BUNDLE_ACTIVE isIdleState callback succeeded, result: ' + JSON.stringify(res));
   }
 });
 ```
@@ -72,7 +78,7 @@ Checks whether the application specified by **bundleName** is in the idle state.
 import { BusinessError } from '@ohos.base';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
-  console.log('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
+  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
 });

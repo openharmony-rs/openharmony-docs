@@ -181,4 +181,3 @@ Obtains the module metadata array of the current application. After using this f
 | Type| Description|
 | -- | -- |
 | [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
-

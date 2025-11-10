@@ -4902,6 +4902,67 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### convertImageFormat<sup>20+</sup>
+
+convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
+
+复制同一相册（用户创建的相册或应用相册）中的图片，并转换为指定格式。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| title | string | 是    | 转换后的图片标题。|
+| imageFormat | [SupportedImageFormat](#supportedimageformat20) | 是    | 支持的目标格式类型。 |
+
+**返回值：**
+
+| 类型                            | 说明                    |
+| ----------------------------- | --------------------- |
+| Promise\<[PhotoAsset](#photoasset)> | Promise对象，返回转码后文件的PhotoAsset。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied.  | 
+| 202      | Called by non-system application. |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
+| 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('convertImageFormatDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset = await fetchResult.getFirstObject();
+  try {
+    let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
+    console.error(`convertImageFormat success.`);
+  } catch (err) {
+    console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 共享图片资产。
@@ -5464,11 +5525,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### 属性
 
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读 | 可选 | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| compatibleFormat | string | 是    | 是    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
-| formatVersion | string | 是    | 是   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
-| data | string | 是    | 是   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
+| compatibleFormat | string | 否   | 否    | 编辑数据的格式。<br>**系统接口**：此接口为系统接口。    |
+| formatVersion | string | 否   | 否   | 编辑数据格式的版本。<br>**系统接口**：此接口为系统接口。    |
+| data | string | 否   | 否   | 编辑数据的内容。<br>**系统接口**：此接口为系统接口。    |
 
 ### constructor<sup>11+</sup>
 
@@ -9640,11 +9701,11 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subtype           | [PhotoSubtype](#photosubtype) | 否  | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。   |
-| userId<sup>19+</sup>           | number | 否  | 用户id。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| subtype           | [PhotoSubtype](#photosubtype) | 否 | 是 | 图片或者视频的子类型。  |
+| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。   |
+| userId<sup>19+</sup>           | number | 否 | 是 | 用户id。  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -9654,10 +9715,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否  | 获取缩略图的尺寸。  |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否  | 获取的操作类型。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。  |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。  |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -9669,10 +9730,10 @@ async function example(context: Context) {
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
-| bundleName           | string | 是  | 是  |需保存图片/视频文件的应用bundle name。  |
-| appName    | string | 是  | 是  |需保存图片/视频文件的app name。  |
-| appId    | string | 是  | 是  |需保存图片/视频文件的app id。  |
-| tokenId    | number | 是  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
+| bundleName           | string | 否  | 是  |需保存图片/视频文件的应用bundle name。  |
+| appName    | string | 否  | 是  |需保存图片/视频文件的app name。  |
+| appId    | string | 否  | 是  |需保存图片/视频文件的app id。  |
+| tokenId    | number | 否  | 是  |应用标识，将访问权限授予tokenId标识的应用。  |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -9680,9 +9741,9 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                              | 可读 | 可写 | 说明                                              |
+| 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
-| sourceMode           | [SourceMode](#sourcemode11)     | 是   | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件，或是编辑后的文件。**系统接口**：此接口为系统接口。 |
+| sourceMode           | [SourceMode](#sourcemode11)     | 否  | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件或编辑后的文件。<br>**系统接口**：此接口为系统接口。 |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -9708,10 +9769,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId       |string  |是 | 卡片的ID，由图库创建卡片时提供。 |
-|uri          |string  |是 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId       |string  | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|uri          |string  | 否 |否 | 卡片绑定的图片的uri。创建卡片时uri可为空或图片的uri，移除卡片时uri不做校验，传空即可。  |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -9721,10 +9782,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                   | 类型                | 必填 | 说明                                              |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId             |string               |是 | 卡片的ID，由图库创建卡片时提供。 |
-|assetUris          |Array&lt;string&gt;  |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
+| 名称                   | 类型                | 只读 | 可选 | 说明                                              |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId             |string               | 否 |否 | 卡片的ID，由图库创建卡片时提供。 |
+|assetUris          |Array&lt;string&gt;  | 否 |是 | 卡片绑定的图片或相册的uri集合。<br>创建和更新卡片时，assetUris不可为空。<br>单次创建或更新卡片时，assetUris中的uri个数如果超出500个，则只创建或更新500个uri的监听，超出500个后的uri不会被注册。<br>移除卡片时，assetUris可省略。  |
 
 ## ResourceType<sup>11+</sup>
 
@@ -9985,6 +10046,18 @@ async function example(context: Context) {
 | :---------------------------- | :- | :------- |
 | LCD         | 1  | 获取LCD缩略图    |
 | THM          | 2 | 获取THM缩略图    |
+
+## SupportedImageFormat<sup>20+</sup>
+
+枚举，支持转换的图片格式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                           | 值  | 说明       |
+| :---------------------------- | :- | :------- |
+| AVFILE_FORMAT_JPG         | 'jpg'  | jpg格式。    |
 
 ## WatermarkType<sup>14+</sup>
 

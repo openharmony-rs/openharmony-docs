@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)组件提供获取文本和光标信息、插入和删除文本、设置计数器以及文本装饰线的能力。
 为[Search](ts-basic-components-search.md)组件提供获取文本和光标信息、插入和删除文本以及设置文本装饰线的能力。
@@ -65,6 +65,8 @@ getTextContentLineCount(): number
 getCaretOffset(): CaretOffset
 
 返回当前光标所在位置信息。
+
+当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

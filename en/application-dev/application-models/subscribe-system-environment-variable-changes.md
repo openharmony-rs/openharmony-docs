@@ -70,7 +70,7 @@ export default class MyAbility extends UIAbility {
 
 ### Setting Dark/Light Color Mode
 
-By default, your application's dark/light color mode follows the system. You can customize the dark/light color modes of your application or components.
+By default, your application's dark/light color mode follows the system. You can set the dark/light color modes of your application or components. After the setting, you will no longer be able to subscribe to system dark/light color mode changes.
 
 The configuration takes effect in the following priority: UIAbility's or UIExtensionAbility's dark/light color mode > Application's dark/light color mode > System's dark/light color mode.
 

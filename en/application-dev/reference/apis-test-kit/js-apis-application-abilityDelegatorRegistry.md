@@ -1,4 +1,12 @@
 # @ohos.application.abilityDelegatorRegistry (AbilityDelegatorRegistry)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
 The **AbilityDelegatorRegistry** module provides APIs for storing global registers of the registered [AbilityDelegator](js-apis-inner-application-abilityDelegator.md) and [AbilityDelegatorArgs](js-apis-inner-application-abilityDelegatorArgs.md) objects, including obtaining the **AbilityDelegator** and **AbilityDelegatorArgs** objects. The APIs can be used only in the test framework.

@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @huipeizi-->
 
-Describes notification slots. The notification reminder modes vary according to notification slots.
+The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
 
 > **NOTE**
 >

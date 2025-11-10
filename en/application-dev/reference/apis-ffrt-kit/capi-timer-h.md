@@ -41,24 +41,25 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 **Description**
 
 Starts the timer.
+You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
 
 
 **Parameters**
 
-| Name                                                 | Description|
-|------------------------------------------------------| -- |
-| [ffrt_qos_t](capi-type-def-h.md#variables) qos             | QoS.|
-| uint64_t timeout                                     | Timeout, in milliseconds.|
-| void* data                                           | Pointer to the input parameter in the callback function invoked upon a timeout.|
+| Name| Description|
+| -- | -- |
+| [ffrt_qos_t](capi-type-def-h.md#variables) qos| QoS.|
+| uint64_t timeout | Timeout, in milliseconds.|
+| void* data | Pointer to the input parameter in the callback function invoked upon a timeout.|
 | [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | Callback function invoked upon a timeout.|
-| bool repeat                                          | Whether to repeat the timer (not supported yet).|
+| bool repeat | Whether to repeat the timer (not supported yet).|
 
 **Returns**
 
-| Type                         | Description|
-|-----------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables)| Returns the timer handle.|
 
 ### ffrt_timer_stop()
@@ -85,4 +86,4 @@ Stops the timer.
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the timer is stopped successfully;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the timer is stopped successfully; returns **-1** otherwise.|

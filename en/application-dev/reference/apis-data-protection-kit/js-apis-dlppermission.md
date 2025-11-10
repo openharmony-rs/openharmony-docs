@@ -2,8 +2,9 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--SE: @lucky-jinduo-->
-<!--TSE: @nacyli-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. The **dlpPermission** module provides APIs for cross-device file access management, encrypted storage, and access authorization.
 
@@ -22,7 +23,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 isDLPFile(fd: number): Promise&lt;boolean&gt;
 
-Checks whether a file is a DLP file based on the file descriptor (FD). This API uses a promise to return the result.
+Checks whether a file is a DLP file based on the FD. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -102,7 +103,6 @@ import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-
 let file: number | undefined = undefined;
 try {
   file = fileIo.openSync(uri).fd;
@@ -152,15 +152,17 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the application is running in a sandbox.
-    if (inSandbox) {
-      let res: dlpPermission.DLPPermissionInfo = await dlpPermission.getDLPPermissionInfo(); // Obtain the permission information.
-      console.info('res', JSON.stringify(res));
-    }
-  });
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    dlpPermission.isInSandbox().then(async (inSandbox) => { // Check whether the application is running in a sandbox.
+      if (inSandbox) {
+        let res: dlpPermission.DLPPermissionInfo = await dlpPermission.getDLPPermissionInfo(); // Obtain the permission information.
+        console.info('res', JSON.stringify(res));
+      }
+    });
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -570,14 +572,16 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-try {
-  let inSandbox = await dlpPermission.isInSandbox(); // Check whether the application is running in a sandbox.
-  if (inSandbox) {
-    dlpPermission.setRetentionState([uri]); // Set the retention state for a sandbox application.
+async function ExampleFunction() {
+  let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
+  try {
+    let inSandbox = await dlpPermission.isInSandbox(); // Check whether the application is running in a sandbox.
+    if (inSandbox) {
+      dlpPermission.setRetentionState([uri]); // Set the retention state for a sandbox application.
+    }
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
   }
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
 }
 ```
 
@@ -754,11 +758,13 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let res:Array<dlpPermission.RetentionSandboxInfo> = await dlpPermission.getRetentionSandboxList(); // Obtain the sandbox apps in the retention state.
-  console.info('res', JSON.stringify(res))
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    let res:Array<dlpPermission.RetentionSandboxInfo> = await dlpPermission.getRetentionSandboxList(); // Obtain the sandbox apps in the retention state.
+    console.info('res', JSON.stringify(res))
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -881,11 +887,13 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let res:Array<dlpPermission.AccessedDLPFileInfo> = await dlpPermission.getDLPFileAccessRecords(); // Obtain the list of recently accessed DLP files.
-  console.info('res', JSON.stringify(res))
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    let res:Array<dlpPermission.AccessedDLPFileInfo> = await dlpPermission.getDLPFileAccessRecords(); // Obtain the list of recently accessed DLP files.
+    console.info('res', JSON.stringify(res))
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -1101,11 +1109,13 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let res = await dlpPermission.getSandboxAppConfig() // Obtain the sandbox application configuration.
-  console.info('res', JSON.stringify(res));
-} catch (err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+async function ExampleFunction() {
+  try {
+    let res = await dlpPermission.getSandboxAppConfig() // Obtain the sandbox application configuration.
+    console.info('res', JSON.stringify(res));
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  }
 }
 ```
 
@@ -1181,10 +1191,10 @@ Represents the permission information about a DLP file.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | Yes| No| User permission on the DLP file, for example, read-only.|
-| flags | number | Yes| No| Operations that can be performed on the DLP file. It is a combination of different [ActionFlagTypes](#actionflagtype).|
+| dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | No| No| User permission on the DLP file, for example, read-only.|
+| flags | number | No| No| Operations that can be performed on the DLP file. It is a combination of different [ActionFlagTypes](#actionflagtype).|
 
 ## AccessedDLPFileInfo
 
@@ -1192,10 +1202,10 @@ Represents the information about a DLP file opened.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| uri | string | Yes| No| URI of the DLP file. The value contains up to 4095 bytes.|
-| lastOpenTime | number | Yes| No| Time when the file was last opened.|
+| uri | string | No| No| URI of the DLP file. The value contains up to 4095 bytes.|
+| lastOpenTime | number | No| No| Time when the file was last opened.|
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1205,10 +1215,10 @@ Represents information about the trigger of the DLP manager application.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| resultCode | number | Yes| No| Result code returned after the DLP manager application is started and exits.|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| No| Data returned after the DLP manager application is started and exits.|
+| resultCode | number | No| No| Result code returned after the DLP manager application is started and exits.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Data returned after the DLP manager application is started and exits.|
 
 ## RetentionSandboxInfo
 
@@ -1216,8 +1226,8 @@ Represents the sandbox retention information.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| appIndex | number | Yes| No| Index of the DLP sandbox application.|
-| bundleName | string | Yes| No| Bundle name of the application. The value contains 7 to 128 bytes.|
-| docUris | Array&lt;string&gt; | Yes| No| URI list of the DLP files. The array has no length limit, but each string cannot exceed 4095 bytes.|
+| appIndex | number | No| No| Index of the DLP sandbox application.|
+| bundleName | string | No| No| Bundle name of the application. The value contains 7 to 128 bytes.|
+| docUris | Array&lt;string&gt; | No| No| URI list of the DLP files. The array has no length limit, but each string cannot exceed 4095 bytes.|

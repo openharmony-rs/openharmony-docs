@@ -755,7 +755,7 @@ test.foo('', option);
 **Reason for change**
 
 The object literal lacks a type. According to the analysis of **test.foo**, the **option** type comes from the declaration file. Therefore, you only need to import the type.
-In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain t he corresponding type by name.
+In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain the corresponding type by name.
 
 ### Passing Parameters from the Object Literal to the Object Type
 

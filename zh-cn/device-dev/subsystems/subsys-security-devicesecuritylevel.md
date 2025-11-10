@@ -186,11 +186,11 @@ void CheckDestDeviceSecurityLevelAsync(const DeviceIdentify *device, RequestOpti
 
 ### 设备安全等级凭据
 
-为了保证设备安全等级信息的完整性和不可抵赖性。设备的安全等级信息需要封装在“设备安全等级凭据”（简称为“凭据”）文件中在设备间进行传递，凭据中除了包含设备的安全等级信息之外，还可以包含设备型号、设备版本号等其它设备固有属性，同时使用PKI技术对上述信息进行签名。并结合[设备认证](https://gitee.com/openharmony/security_device_auth)、[HUKS](https://gitee.com/openharmony/security_huks)等OpenHarmony其他基础安全能力。最大程度的保证了凭据传递的安全性。
+为了保证设备安全等级信息的完整性和不可抵赖性。设备的安全等级信息需要封装在“设备安全等级凭据”（简称为“凭据”）文件中在设备间进行传递，凭据中除了包含设备的安全等级信息之外，还可以包含设备型号、设备版本号等其它设备固有属性，同时使用PKI技术对上述信息进行签名。并结合[设备认证](https://gitcode.com/openharmony/security_device_auth)、[HUKS](https://gitcode.com/openharmony/security_huks)等OpenHarmony其他基础安全能力。最大程度的保证了凭据传递的安全性。
 
 ### 默认实现
 
-OpenHarmony的设备安全等级管理模块提供了安全等级信息同步与验证的默认实现。它假定所有OpenHarmony设备的安全等级为SL1，并且采用了一套较为宽松的验证方案。详细细节可以参考[相关源码](https://gitee.com/openharmony/security_device_security_level/tree/master/oem_property/ohos)。
+OpenHarmony的设备安全等级管理模块提供了安全等级信息同步与验证的默认实现。它假定所有OpenHarmony设备的安全等级为SL1，并且采用了一套较为宽松的验证方案。详细细节可以参考[相关源码](https://gitcode.com/openharmony/security_device_security_level/tree/master/oem_property/ohos)。
 
 设备制造商可以根据设备实际情况，参考[基本概念](#基本概念)章节的描述，修改默认的设备安全等级信息。与此同时，设备制造商还可以将OpenHarmony中的默认实现替换为更加严格的验证策略，包括但不限于采用更加精确的一机一凭据策略、从服务器定期下载更新的凭据并严格认证凭据的签发者和有效期、使用TEE(Trusted Execution Environment)甚至SE(Secure Element)对凭据文件进行进一步的签名等流程。
 
@@ -365,7 +365,7 @@ eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJ
 
 ### 凭据交换协议
 
-设备安全等级模块在感知到有新设备上线时，会通过[分布式软总线](https://gitee.com/openharmony/communication_dsoftbus)提供的通道向该设备请求其设备安全等级凭据。
+设备安全等级模块在感知到有新设备上线时，会通过[分布式软总线](https://gitcode.com/openharmony/communication_dsoftbus)提供的通道向该设备请求其设备安全等级凭据。
 
 凭据请求报文格式如下：
 

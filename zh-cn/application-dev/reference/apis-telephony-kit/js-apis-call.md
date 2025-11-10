@@ -31,10 +31,10 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 
 **参数：**
 
-| 参数名      | 类型                         | 必填 | 说明                                    |
-| ----------- | ---------------------------- | ---- | --------------------------------------- |
-| phoneNumber | string                       | 是   | 电话号码。                              |
-| callback    | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true为成功，false为失败。 |
+| 参数名      | 类型                         | 只读 | 可选 | 说明                                    |
+| ----------- | ---------------------------- | ---- | ---- | --------------------------------------- |
+| phoneNumber | string                       | 否   | 否   | 电话号码。                              |
+| callback    | AsyncCallback&lt;boolean&gt; | 否   | 否   | 回调函数，返回true为成功，false为失败。 |
 
 **示例：**
 
@@ -63,11 +63,11 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 
 **参数：**
 
-| 参数名      | 类型                         | 必填 | 说明                                    |
-| ----------- | ---------------------------- | ---- | --------------------------------------- |
-| phoneNumber | string                       | 是   | 电话号码。                              |
-| options     | [DialOptions](#dialoptions)  | 是   | 通话参数，选择为语音通话还是视频通话。  |
-| callback    | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true为成功，false为失败。 |
+| 参数名      | 类型                         | 只读 | 可选 | 说明                                    |
+| ----------- | ---------------------------- | ---- | ---- | --------------------------------------- |
+| phoneNumber | string                       | 否   | 否   | 电话号码。                              |
+| options     | [DialOptions](#dialoptions)  | 否   | 否   | 通话参数，选择为语音通话还是视频通话。  |
+| callback    | AsyncCallback&lt;boolean&gt; | 否   | 否   | 回调函数，返回true为成功，false为失败。 |
 
 **示例：**
 
@@ -98,10 +98,10 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 
 **参数：**
 
-| 参数名      | 类型                        | 必填 | 说明                                   |
-| ----------- | --------------------------- | ---- | -------------------------------------- |
-| phoneNumber | string                      | 是   | 电话号码。                             |
-| options     | [DialOptions](#dialoptions) | 否   | 通话参数，选择为语音通话还是视频通话。 |
+| 参数名      | 类型                        | 只读 | 可选 | 说明                                   |
+| ----------- | --------------------------- | ---- | ---- | -------------------------------------- |
+| phoneNumber | string                      | 否   | 否   | 电话号码。                             |
+| options     | [DialOptions](#dialoptions) | 否   | 是   | 通话参数，选择为语音通话还是视频通话。 |
 
 **返回值：**
 
@@ -136,10 +136,10 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **参数：**
 
-| 参数名      | 类型                      | 必填 | 说明                                       |
-| ----------- | ------------------------- | ---- | ------------------------------------------ |
-| phoneNumber | string                    | 是   | 电话号码。                                 |
-| callback    | AsyncCallback&lt;void&gt; | 是   | 以callback形式异步返回跳转拨号界面的结果。 |
+| 参数名      | 类型                      | 只读 | 可选 | 说明                                       |
+| ----------- | ------------------------- | ---- | ---- | ------------------------------------------ |
+| phoneNumber | string                    | 否   | 否   | 电话号码。                                 |
+| callback    | AsyncCallback&lt;void&gt; | 否   | 否   | 以callback形式异步返回跳转拨号界面的结果。 |
 
 **错误码：**
 
@@ -180,9 +180,9 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **参数：**
 
-| 参数名      | 类型   | 必填 | 说明       |
-| ----------- | ------ | ---- | ---------- |
-| phoneNumber | string | 是   | 电话号码。 |
+| 参数名      | 类型   | 只读 | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| phoneNumber | string | 否   | 否   | 电话号码。 |
 
 **返回值：**
 
@@ -226,10 +226,10 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **参数：**
 
-| 参数名      | 类型   | 必填 | 说明       |
-| ----------- | ------ | ---- | ---------- |
-| context | Context | 是   | 应用上下文Context。 |
-| phoneNumber | string | 是   | 电话号码。 |
+| 参数名      | 类型   | 只读 | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| context | Context | 否   | 否   | 应用上下文Context。 |
+| phoneNumber | string | 否   | 否   | 电话号码。 |
 
 **返回值：**
 
@@ -276,9 +276,9 @@ hasCall\(callback: AsyncCallback\<boolean\>\): void
 
 **参数：**
 
-| 参数名   | 类型                         | 必填 | 说明                                                         |
-| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前存在通话，false表示当前不存在通话。 |
+| 参数名   | 类型                         | 只读 | 可选 | 说明                                                         |
+| -------- | ---------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;boolean&gt; | 否   | 否   | 回调函数。返回true表示当前存在通话，false表示当前不存在通话。 |
 
 **示例：**
 
@@ -353,9 +353,9 @@ getCallState\(callback: AsyncCallback\<CallState\>\): void
 
 **参数：**
 
-| 参数名   | 类型                                         | 必填 | 说明                                 |
-| -------- | -------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback&lt;[CallState](#callstate)&gt; | 是   | 回调函数，异步返回获取到的通话状态。 |
+| 参数名   | 类型                                         | 只读 | 可选 | 说明                                 |
+| -------- | -------------------------------------------- | ---- | ---- | ------------------------------------ |
+| callback | AsyncCallback&lt;[CallState](#callstate)&gt; | 否   | 否   | 回调函数，异步返回获取到的通话状态。 |
 
 **示例：**
 
@@ -448,10 +448,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 **参数：**
 
-| 参数名      | 类型                         | 必填 | 说明                                                         |
-| ----------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                       | 是   | 电话号码。                                                   |
-| callback    | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
+| 参数名      | 类型                         | 只读 | 必填 | 说明                                                         |
+| ----------- | ---------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| phoneNumber | string                       | 否   | 否   | 电话号码。                                                   |
+| callback    | AsyncCallback&lt;boolean&gt; | 否   | 否   | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
 
 **错误码：**
 
@@ -490,11 +490,11 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 **参数：**
 
-| 参数名      | 类型                                               | 必填 | 说明                                                         |
-| ----------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                             | 是   | 电话号码。                                                   |
-| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 是   | 电话号码参数。                                               |
-| callback    | AsyncCallback&lt;boolean&gt;                       | 是   | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
+| 参数名      | 类型                                               | 只读 | 可选 | 说明                                                         |
+| ----------- | -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| phoneNumber | string                                             | 否   | 否   | 电话号码。                                                   |
+| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 否   | 否   | 电话号码参数。                                               |
+| callback    | AsyncCallback&lt;boolean&gt;                       | 否   | 否   | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
 
 **错误码：**
 
@@ -534,10 +534,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 **参数：**
 
-| 参数名      | 类型                                               | 必填 | 说明           |
-| ----------- | -------------------------------------------------- | ---- | -------------- |
-| phoneNumber | string                                             | 是   | 电话号码。     |
-| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 否   | 电话号码参数。 |
+| 参数名      | 类型                                               | 只读 | 可选 | 说明           |
+| ----------- | -------------------------------------------------- | ---- | ---- | -------------- |
+| phoneNumber | string                                             | 否   | 否   | 电话号码。     |
+| options     | [EmergencyNumberOptions](#emergencynumberoptions7) | 否   | 是   | 电话号码参数。 |
 
 **返回值：**
 
@@ -582,10 +582,10 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **参数：**
 
-| 参数名      | 类型                        | 必填 | 说明                                 |
-| ----------- | --------------------------- | ---- | ------------------------------------ |
-| phoneNumber | string                      | 是   | 电话号码。                           |
-| callback    | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回格式化电话号码的结果。 |
+| 参数名      | 类型                        | 只读 | 可选 | 说明                                 |
+| ----------- | --------------------------- | ---- | ---- | ------------------------------------ |
+| phoneNumber | string                      | 否   | 否   | 电话号码。                           |
+| callback    | AsyncCallback&lt;string&gt; | 否   | 否   | 回调函数，返回格式化电话号码的结果。 |
 
 **错误码：**
 
@@ -625,11 +625,11 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 **参数：**
 
-| 参数名      | 类型                                         | 必填 | 说明                                 |
-| ----------- | -------------------------------------------- | ---- | ------------------------------------ |
-| phoneNumber | string                                       | 是   | 电话号码。                           |
-| options     | [NumberFormatOptions](#numberformatoptions7) | 是   | 格式化参数，如国家码。               |
-| callback    | AsyncCallback&lt;string&gt;                  | 是   | 回调函数，返回格式化电话号码的结果。 |
+| 参数名      | 类型                                         | 只读 | 可选 | 说明                                 |
+| ----------- | -------------------------------------------- | ---- | ---- | ------------------------------------ |
+| phoneNumber | string                                       | 否   | 否   | 电话号码。                           |
+| options     | [NumberFormatOptions](#numberformatoptions7) | 否   | 否   | 格式化参数，如国家码。               |
+| callback    | AsyncCallback&lt;string&gt;                  | 否   | 否   | 回调函数，返回格式化电话号码的结果。 |
 
 **错误码：**
 
@@ -673,10 +673,10 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 **参数：**
 
-| 参数名      | 类型                                         | 必填 | 说明                   |
-| ----------- | -------------------------------------------- | ---- | ---------------------- |
-| phoneNumber | string                                       | 是   | 电话号码。             |
-| options     | [NumberFormatOptions](#numberformatoptions7) | 否   | 格式化参数，如国家码。 |
+| 参数名      | 类型                                         | 只读 | 可选 | 说明                   |
+| ----------- | -------------------------------------------- | ---- | ---- | ---------------------- |
+| phoneNumber | string                                       | 否   | 否   | 电话号码。             |
+| options     | [NumberFormatOptions](#numberformatoptions7) | 否   | 是   | 格式化参数，如国家码。 |
 
 **返回值：**
 
@@ -723,11 +723,11 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **参数：**
 
-| 参数名      | 类型                        | 必填 | 说明                                                  |
-| ----------- | --------------------------- | ---- | ----------------------------------------------------- |
-| phoneNumber | string                      | 是   | 电话号码。                                            |
-| countryCode | string                      | 是   | 国家码，支持所有国家码，如：中国（CN）。              |
-| callback    | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回将电话号码格式化为E.164表示形式的结果。 |
+| 参数名      | 类型                        | 只读 | 可选 | 说明                                                  |
+| ----------- | --------------------------- | ---- | ---- | ----------------------------------------------------- |
+| phoneNumber | string                      | 否   | 否   | 电话号码。                                            |
+| countryCode | string                      | 否   | 否   | 国家码，支持所有国家码，如：中国（CN）。              |
+| callback    | AsyncCallback&lt;string&gt; | 否   | 否   | 回调函数，返回将电话号码格式化为E.164表示形式的结果。 |
 
 **错误码：**
 
@@ -770,10 +770,10 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 **参数：**
 
-| 参数名      | 类型   | 必填 | 说明                                     |
-| ----------- | ------ | ---- | ---------------------------------------- |
-| phoneNumber | string | 是   | 电话号码。                               |
-| countryCode | string | 是   | 国家码，支持所有国家码，如：中国（CN）。 |
+| 参数名      | 类型   | 只读 | 可选 | 说明                                     |
+| ----------- | ------ | ---- | ---- | ---------------------------------------- |
+| phoneNumber | string | 否   | 否   | 电话号码。                               |
+| countryCode | string | 否   | 否   | 国家码，支持所有国家码，如：中国（CN）。 |
 
 **返回值：**
 

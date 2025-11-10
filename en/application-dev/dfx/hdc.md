@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-HarmonyOS Device Connector (hdc) is a command line tool used to interact with and debug devices, transmit data, view logs, and install applications. hdc can run on Windows, Linux, and macOS, providing developers with efficient and convenient device debugging capabilities.
+HarmonyOS Device Connector (hdc) is a command line tool used to interact with and debug devices, transmit data, view logs, and install applications. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
 
 hdc consists of three parts:
 
@@ -31,7 +31,7 @@ The following figure shows the relationship.
 
 You can obtain hdc in any of the following ways:
 
-1. SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/). No additional configuration is required. hdc is installed in DevEco Studio/sdk/default/openharmony/toolchains by default. On macOS, the SDK is installed in DevEco Studio/Contents.
+1. SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/). No additional configuration is required. hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains** by default. On macOS, the SDK is installed in **DevEco Studio/Contents**.
 
 2. SDK directory of [Command Line Tools](https://developer.huawei.com/consumer/en/download/). hdc is installed in Command Line **Tools/sdk/default/openharmony/toolchains** by default.
 
@@ -119,7 +119,7 @@ hdc -t connect-key shell echo "Hello world"
 | [-s](#remote-connection)| (Optional) Specifies the IP and port in **IP:port** format for listening when the client connects to the server.|
 | [-p](#quick-command-execution)| (Optional) Executes a client command without querying the server process.|
 | [-m](#starting-a-server-in-the-foreground)| (Optional) Starts the server process in the foreground.|
-| [-e](#creating-a-local-port-forwarding)| (Optional) Specifies the IP address for listening on the local host when TCP port forwarding is performed. The default value is **127.0.0.1**. This parameter must be used together with **-m**.<br>Note: This API is supported since API version 20.|
+| [-e](#creating-a-local-port-forwarding)| (Optional) Specifies the IP address for listening on the local host when TCP port forwarding is performed. The default value is **127.0.0.1**. This parameter must be used together with **-m**.<br>If the **-e** parameter is used to specify the listening address, and the address is not the local loopback address (for example, **127.0.0.1**), pay attention to the access security.<br>Note: This API is supported since API version 20.|
 
 ### Commands
 
@@ -144,7 +144,7 @@ hdc -t connect-key shell echo "Hello world"
 | [kill](#terminating-a-service)| Terminates the hdc server process.|
 | [hilog](#printing-device-logs)| Obtains device log information.|
 | [jpid](#displaying-pids-of-started-applications)| Displays the PIDs of started applications on the device.|
-| [track-jpid](#displaying-pids-and-names-of-started-applications-in-real-time)| Displays the PIDs and bundle names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
+| [track-jpid](#displaying-pids-and-names-of-started-applications-in-real-time)| Displays the PIDs and names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
 | [target boot](#restarting-the-target-device)| Restarts the target device.|
 | <!--DelRow--> [target mount](#mounting-the-system-partition-in-readwrite-mode)| Mounts the system partition in read/write mode. (This command is unavailable for non-root devices.)|
 | <!--DelRow--> [smode](#granting-root-permission-to-the-hdc-server)| Grants the root permission to the hdc server on the device. You can use the **-r** option to revoke the granted permission. (This command is unavailable for non-root devices.)|
@@ -632,7 +632,7 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 Installs an application file.
 
 ```shell
-hdc install [-r|-s] src
+hdc install [-r|-s|-cwd path] src
 ```
 
 **Parameters**
@@ -642,6 +642,7 @@ hdc install [-r|-s] src
 | src | Installation package name.|
 | -r | Replaces the existing application (.hap).|
 | -s | Install a shared package (.hsp).|
+| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, if the application is **test.hap** and the directory is **/data**, the actual application file installation path is **/data/test.hap**. If **-cwd "/user/"** is used, the actual application file installation path is **/user/test.hap**.|
 
 **Return value**
 
@@ -701,7 +702,7 @@ AppMod finish
 Run the following commands:
 
 ```shell
-hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
+hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 ```
 
 **Parameters**
@@ -709,11 +710,12 @@ hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Path of the file to send.|
-| DEST | Path of the target file.|
+| DEST | Path of the target file. |
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
+| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
 | -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section9381241102211).|
 | bundlename | Bundle name of the debug-type application.|
 
@@ -733,7 +735,7 @@ FileTransfer finish, Size:10, File count = 1, time:0ms rate:100kB/s
 Run the following commands:
 
 ```shell
-hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
+hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 ```
 
 **Parameters**
@@ -741,11 +743,12 @@ hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Destination path on the local device.|
-| DEST | Path of the file to send.|
+| DEST | Path of the file to send. |
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
+| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
 | -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section9381241102211).|
 | bundlename | Bundle name of the debug application process.|
 
@@ -1019,7 +1022,7 @@ $ hdc -e 0.0.0.0 -m # Specify the local listening IP address 0.0.0.0 for port fo
 | -------- | -------- |
 | hilog [-h] | Displays the log information of the device. You can run the **hdc hilog -h** command to obtain the supported parameters.|
 | jpid | Displays the PIDs of started applications on the device.|
-| track-jpid [-a\|-p] | Displays the PIDs and names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of debug-type applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
+| track-jpid [-a\|-p] | Displays the PIDs and bundle names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
 | target boot [-bootloader\|-recovery] | Restarts the target device. You can use the **-bootloader** option to enter the fastboot mode and the **-recovery** option to enter the recovery mode.|
 | target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the **hdc shell "/bin/begetctl -h \ grep reboot"** command to check the restart mode.|  |
 | <!--DelRow--> target mount | Mounts the system partition in read/write mode. (This command is supported after the device has required the root permission.)|
@@ -1068,8 +1071,8 @@ hdc jpid
 
 | Value| Description|
 | -------- | -------- |
-| PID list| PIDs of the applications that enable JDWP.|
-| [Empty] | No process enables JDWP.|
+| PID list| PIDs of the applications that enable JDWP. |
+| [Empty] | No process enables JDWP. |
 
 **Usage**
 
@@ -1092,15 +1095,15 @@ hdc track-jpid [-a|-p]
 
 | Parameter| Description|
 | -------- | -------- |
-| Not specified| Used to display the PIDs of the started applications.|
-| -a | Used to display the PIDs, bundle names, and process names of the debug-type and release-type applications, but does not display the **debug** and **release** tags.|
-| -p | Used to display the PIDs, bundle names, and process names of the **debug** and **release** applications, but does not display the **debug** and **release** tags.|
+| Not specified| Displays the PIDs of the started applications.|
+| -a | Displays the PIDs, bundle names, and process names of the debug-type and release-type applications, as well as the **debug** and **release** tags.|
+| -p | Displays the PIDs, bundle names, and process names of the **debug** and **release** applications, but does not display the **debug** and **release** tags.|
 
 **Return value**
 
 | Value| Description|
 | -------- | -------- |
-| PID and bundle/process name list| If no parameter is specified, only the PID of the opened application process is displayed. If the -p parameter is specified, the bundle name of the application is displayed. If the -a parameter is specified, both debug and release labels are displayed.|
+| PID and bundle/process name list| If no parameter is specified, only the PIDs of the started applications are displayed. If the **-p** parameter is specified, the bundle names of the applications are displayed. If the **-a** parameter is specified, both **debug** and **release** tags are displayed.|
 | [Empty] | No JDWP-enabled application process is found.|
 
 **Usage**
@@ -1212,7 +1215,7 @@ hdc keygen FILE
 **Usage**
 
 ```shell
-# Generate the key and key.pub files in the current directory.
+# Generate the **key** and **key.pub** files in the current directory.
 $ hdc keygen key 
 ```
 
@@ -1460,7 +1463,7 @@ The following example describes how to set environment variables by setting **OH
 | -------- | -------- | -------- |
 | 3.1.0a | 12 | The **wait** command supports the **-t** parameter. For details, see [Waiting for Device Connection](#waiting-for-device-connection).|
 | 3.1.0e | 15 | - The **file send** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **file recv** command supports the **-b** parameter. For details, see [Transferring Files](#transferring-files).<br>- The **shell** command supports the **-b** parameter. For details, see [Running Interactive Commands](#running-interactive-commands).|
-| 3.2.0b | 20 | - The port forwarding task can listen on the IP address of the remote host. For details, see [Creating a Local Port Forwarding](#creating-a-local-port-forwarding).|
+| 3.2.0b | 20 | - The port forwarding task can listen for the IP address of the remote host. For details, see [Creating a Local Port Forwarding](#creating-a-local-port-forwarding).|
 
 > **NOTE**
 >
@@ -1683,9 +1686,9 @@ When the **hdc list targets** command is executed to query the connected devices
 
 **Possible Causes and Solution**
 
-- If the device is not authorized upon the first connection, unlock the device after connecting to it. The message "Trust this device?" is displayed. In the displayed window, tap Always trust or Trust to complete the authorization.
+- If the device is not authorized upon the first connection, unlock the device after connecting to it. The "Trust this device?" dialog box is displayed. Click **Always trust** or **Trust** to complete the authorization.
 
-- If the authorization dialog box is closed due to timeout or you click **Distrust** in the authorization dialog box, To authorize again, go to Settings > System > Developer options > USB debugging/Wireless debugging on the device, disable the debugging function, and enable it again, or run the hdc kill -r command to restart the service process. The message "Trust this device?" is displayed again. In the displayed window, tap Always trust or Trust to complete the authorization.
+- If the authorization dialog box times out or you click **Don't trust**, restart debugging by going to **Settings** > **System** > **Developer options** > **USB debugging**/**Wireless debugging**, or run **hdc kill -r** to restart the server. Then the screen will display the "Trust this device?" dialog box again. Click **Always trust** or **Trust** to complete the authorization.
 
 ### What should I do if "CryptAcquireContext second failed" is displayed when a hdc command is executed?
 
@@ -2174,7 +2177,7 @@ The parameter is missing, correct your input by referring below: Usage...
 
 **Symptom**
 
-The **hdc shell xxx** command is not supported on the device.
+The** hdc shell xxx** command is not supported on the device.
 
 **Possible Causes**
 

@@ -23,7 +23,7 @@ Task timeout detection includes main thread timeout detection and task execution
 
 1. Triggering process:
 
-   If the main thread times out for 150 ms to 450 ms, the sampling call stack process is triggered and a stack file with the .txt extension is generated. If the main thread times out for 450 ms, the trace collection process is triggered and a stack file with the .trace extension is generated.
+   When the main thread experiences a timeout between 150 ms and 450 ms, it triggers a call stack sampling and generates a stack file in .txt format. When the timeout exceeds 450 ms, it triggers a trace sampling and generates a stack file in .trace format.
 
    150 ms < Main thread processing time < 450 ms: stack sampling is triggered by main thread timeout. For the processes with the same PID, the call stack sampling for a main thread timeout event can be triggered only once. If **Developer Options** is enabled, call stack sampling can be triggered once an hour. No timeout check is performed within 10s after the application starts.
 
@@ -33,7 +33,7 @@ Task timeout detection includes main thread timeout detection and task execution
 
    > **NOTE**
    >
-   > Before starting the timeout detection and trace capturing of the main thread, **disable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) and use the [nolog](performance-analysis-kit-terminology.md) version**.
+   > To enable the main thread checker to collect trace data when a task times out, ensure that the [nolog version](performance-analysis-kit-terminology.md#nolog-version) is used and [Developer Options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432) is disabled
    >
    > You can go to **Settings** > **About phone** to check the software version. The log version ends with **log**.
    >
@@ -66,13 +66,13 @@ Task timeout detection includes main thread timeout detection and task execution
 
 ### Obtaining Logs
 
-Task execution timeout logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
+Main thread jank event logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
 
-**Subscribing to the main thread timeout event using HiAppEvent APIs**
+**Subscribing to the Main Thread Jank Event using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Timeout Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Timeout Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md) field in the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md#event-fields) field in the event.
 
-### Log Specifications 
+### Log Specifications
 
 1. Log aging:
    Generally, the size of a stack file is 7 KB to 10 KB, and the size of a trace file is 1 MB to 5 MB. The **watchdog** directory in the application sandbox can store a maximum of 10 MB data. If the total file size exceeds 10 MB, the directory aging mechanism is automatically triggered to delete a maximum of 100 files based on the file name sequence. The path to **watchdog** is **/data/storage/el2/log/watchdog/**.
@@ -135,7 +135,7 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
    ```
 
 3. Sampling trace specifications:
-   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
+   The size of the trace file is 1 MB to 5 MB. You can visually analyze the trace file using [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host). You can download the tool from [developtools_smartperf_host Release](https://gitcode.com/openharmony/developtools_smartperf_host/releases).
 
    For details about the trace file, see [Loading Trace Files on the Web Client](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md).
 
@@ -153,12 +153,12 @@ The following figure shows the detection principles.
 
 ### Obtaining Logs
 
-You can obtain the task execution timeout logs in either of the following ways:
+You can obtain task execution timeout logs in any of the following ways:
 
-**Subscribing to fault events using HiAppEvent APIs**
+**Subscribing to the Task Execution Timeout Event using HiAppEvent APIs**
 
-HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the task execution timeout event by referring to [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file name based on the [external_log](hiappevent-watcher-apphicollie-events.md) field of the event.
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the task execution timeout event by referring to [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-apphicollie-events.md#event-fields) field in the event.
 
 ### Log Specifications
 
-The log specifications of task execution timeout events are the same as those of app freeze logs. For details, see [App Freeze Log Specifications](appfreeze-guidelines.md).
+The log specifications of task execution timeout events are the same as those of application freeze events. For details, see [Application Freeze Log Specifications](appfreeze-guidelines.md#log-specifications).

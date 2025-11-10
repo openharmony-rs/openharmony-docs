@@ -162,7 +162,7 @@ Only one stream can be created for the current session.
 
 **Description**
 
-This error code is reported if a session for which a transport stream is created
+This error code is reported if a session for which a transport stream is created already exists.
 
 **Possible Causes**
 
@@ -188,7 +188,7 @@ The receive end is not started.
 
 **Solution**
 
-the transmission of transport streams begins.
+Start transmission of transport streams after the receive end is started.
 
 ## 32300003 Bit Rate Not Supported
 

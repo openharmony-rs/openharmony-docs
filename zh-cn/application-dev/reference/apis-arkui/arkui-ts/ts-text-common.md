@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -520,8 +520,8 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | NONE | 0 | 默认状态无效。|
-| WORDS | 1 | 按单词自动大小写。|
-| SENTENCES | 2 | 按句子自动大小写。|
+| WORDS | 1 | 按单词自动大小写，即输入单词的首个字符大写，其他字符小写。|
+| SENTENCES | 2 | 按句子自动大小写，即输入句子的首个字符大写，其他字符小写。|
 | ALL_CHARACTERS | 3 | 按全字符自动大小写。|
 
 ## TextBaseController<sup>12+</sup>
@@ -646,7 +646,7 @@ getCaretOffset(): number
 
 setCaretOffset(offset: number): boolean
 
-设置光标位置。
+设置光标偏移位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

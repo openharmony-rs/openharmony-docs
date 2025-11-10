@@ -17,11 +17,11 @@
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
   - [Application Freeze Detection](appfreeze-guidelines.md)
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [App Killed Detection](appkilled-guidelines.md)
+  - [Application Killed Detection](appkilled-guidelines.md)
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)
@@ -51,10 +51,10 @@
       - Task Execution Timeout Events<!--app-hicollie-events-->
         - [Task Execution Timeout Event Overview](hiappevent-watcher-apphicollie-events.md)
         - [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md)
-      - App Killed Events<!--app-killed-events-->
+      - Application Killed Events<!--app-killed-events-->
         - [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md)
         - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
-        - [Subscribing to App Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
+        - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
   <!--Del-->
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->

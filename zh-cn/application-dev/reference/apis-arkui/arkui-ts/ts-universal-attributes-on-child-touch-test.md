@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在处理触屏事件时，ArkUI会在触屏事件触发前进行按压点和组件区域的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，收集需要响应触屏事件的组件，再基于触摸测试结果分发相应的触屏事件。在父节点，可以通过onChildTouchTest决定子节点的触摸测试方式，影响子组件的触摸测试，从而影响后续的触屏事件分发。具体影响参考[TouchTestStrategy](#touchteststrategy11枚举说明)枚举说明。
 
@@ -19,6 +19,12 @@
 onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
+
+>**说明：**
+>
+>- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
+>
+>- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -35,12 +41,6 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
->**说明：**
->
->- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
->
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## TouchTestInfo<sup>11+</sup>
 

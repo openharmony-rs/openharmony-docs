@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the bigint type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the Bigint type to ensure the precision as required.
 
 ```typescript
 
@@ -233,7 +233,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // Check whether animal is of the Frog type.
     animal.leap(); // animal is of type Frog here.
   }
   animal.sleep(); // Any animal can sleep.
@@ -897,7 +897,7 @@ The following code (invalid in ArkTS) is error-prone:
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +919,7 @@ In ArkTS, you should write code as follows:
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +941,7 @@ The following shows how our code behaves if the field **name** can be **undefine
 class Person {
   name?: string; // The field may be undefined.
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -966,7 +966,7 @@ jack.getName()?.length; // Successful compilation and no runtime error.
 
 **getter and setter**
 
-**setter** and **getter** can be used to provide controlled access to object properties.
+**setter** and **getter** can be used to provide controlled access to class properties.
 
 In the following example, a **setter** is used to forbid setting invalid values of the **_age** property:
 
@@ -1252,7 +1252,7 @@ class Base {
 class Derived extends Base {
   foo() {
     this.x = 'a'; // Access the protected member.
-    this.y = 'b'; // Compile-time error: 'y' is not visible, because it is private.
+    this.y = 'b'; // Compile-time error: 'y' is not visible because it is private.
   }
 }
 ```
@@ -1315,7 +1315,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding bigint), while **V** can be any type.
+The **K** type can be either string or number (excluding Bigint), while **V** can be any type.
 
 ```typescript
 interface PersonInfo {
@@ -1969,7 +1969,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The bigint type is not supported for annotation field.
+> - The Bigint type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal
@@ -2016,7 +2016,7 @@ class Position { // Compile-time error: The name of an annotation cannot be the 
 }
 
 @interface ClassAuthor { // Compile-time error: The name of an annotation cannot be the same as that of another entity visible in the scope where the annotation is defined.
-  data: sting;
+  data: string;
 }
 ```
 Annotations are not types. If annotations are used as types, a compile-time error is reported. For example, type aliases are used for annotations.

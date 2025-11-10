@@ -17,7 +17,7 @@
     - [使用Socket访问网络](socket-connection.md)
     - [使用MDNS访问局域网服务](net-mdns.md)
 
-- 连接网络<!--network-kit-network-connecttion-->
+- 连接网络<!--network-kit-network-connection-->
     - [管理网络连接](net-connection-manager.md)
     - [管理网络连接(C/C++)](native-netmanager-guidelines.md)
     - [连接VPN](net-vpnExtension.md)

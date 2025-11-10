@@ -118,8 +118,7 @@ Worker传输信息序列化异常。
 
 **处理步骤**
 
-确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md
-)。
+确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md)。
 
 ## 10200007 Worker文件路径异常
 

@@ -11,6 +11,7 @@ PerfTest provides white-box performance testing capabilities. It can test perfor
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
 > - The APIs of this module are applicable to phones, tablets, PCs/2-in-1 devices, smart TVs, and head units.
 

@@ -231,7 +231,7 @@ Enumerates the ability flags, which indicate the type of ability information to 
 
 getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
-Obtains the bundle information based on the given bundle flags. This API uses a promise to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -283,7 +283,7 @@ try {
 
 getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-Obtains the bundle information based on the given bundle flags. This API uses an asynchronous callback to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -747,7 +747,7 @@ try {
 
 getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
-Obtains the bundle information of this bundle based on the given bundle flags. This API returns the result synchronously.
+Obtains the bundle information of the current application based on the given bundle flags. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -854,7 +854,7 @@ Obtains the **Want** parameters of the [entry UIAbility](../../quick-start/appli
 
 | Type                               | Description                                       |
 | ----------------------------------- | ------------------------------------------- |
-| [Want](js-apis-app-ability-want.md) | Want object that contains the bundle name and ability name.|
+| [Want](js-apis-app-ability-want.md) | Want object that contains only the bundle name and ability name.|
 
 **Error codes**
 

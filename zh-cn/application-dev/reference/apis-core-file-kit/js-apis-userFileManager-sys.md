@@ -1360,7 +1360,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getActivePeersDemo');
   mgr.getActivePeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1395,7 +1395,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   try {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getActivePeers();
     if (devicesInfo != undefined) {
-      console.log('getActivePeers succeed.');
+      console.info('getActivePeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1431,7 +1431,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('getAllPeersDemo');
   mgr.getAllPeers((err, devicesInfo) => {
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }
@@ -1467,7 +1467,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     let devicesInfo: Array<userFileManager.PeerInfo> = await mgr.getAllPeers();
 
     if (devicesInfo != undefined) {
-      console.log('getAllPeers succeed.');
+      console.info('getAllPeers succeed.');
       for (let i = 0; i < devicesInfo.length; i++) {
         console.info('get distributed info ' + devicesInfo[i].deviceName + devicesInfo[i].networkId);
       }

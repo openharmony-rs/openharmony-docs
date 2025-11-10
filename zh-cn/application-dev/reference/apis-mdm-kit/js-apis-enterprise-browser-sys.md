@@ -68,7 +68,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -132,7 +132,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -183,7 +183,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -241,7 +241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';

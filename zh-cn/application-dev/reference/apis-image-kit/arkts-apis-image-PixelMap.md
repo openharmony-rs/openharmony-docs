@@ -1429,8 +1429,8 @@ clone(): Promise\<PixelMap>
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -1471,8 +1471,8 @@ cloneSync(): PixelMap
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **示例：**
 
@@ -2573,11 +2573,15 @@ async function Unmarshalling() {
 
 ## release<sup>7+</sup>
 
-release():Promise\<void>
+release(): Promise\<void\>
 
-释放PixelMap对象。使用Promise异步回调。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用Promise异步回调。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2609,11 +2613,15 @@ async function Release(pixelMap:image.PixelMap) {
 
 ## release<sup>7+</sup>
 
-release(callback: AsyncCallback\<void>): void
+release(callback: AsyncCallback\<void\>): void
 
-释放PixelMap对象，使用callback形式返回释放结果。
+释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用callback形式返回释放结果。
 
 ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+
+> **注意：**
+>
+> 释放指的是ArkTS对象释放与之关联的native对象的管理权。仅当所有管理该native对象的ArkTS对象都被释放时，native对象占用的内存才会被回收。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

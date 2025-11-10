@@ -30,6 +30,7 @@ The HSP has requirements on the consistency of bundle names and signatures. Inst
         }
     }
     ```
+
 2. Delete the **main_pages.json** file from the **resource\base\profile** folder.
 
 3. Replace the content in the **hvigorfile.ts** file of the HSP module with the following:

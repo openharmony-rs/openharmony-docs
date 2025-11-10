@@ -82,15 +82,11 @@ Describes the rectangular area of the window.
 
 ## AvoidArea<sup>7+</sup>
 
-Describes the area where the window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area. Touch events will not be responded in this area.
+Describes the area to avoid for window content.
 
-Pay attention to the following restrictions on this area:
+When adapting window content for an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding **AvoidArea** specified by [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7).
 
-- The bottom gesture area, apart from the bottom navigation bar area, supports transparent transmission of touch events, and touch and hold events, but not drag events.
-
-- The gesture area on the left and right sides supports transparent transmission of touch events, touch and hold events, and swipe up and down events, but not drag events.
-
-- The bottom navigation bar area supports responding to touch events, touch and hold events, and drag events. However, it does not support transparent transmission of events.
+In the avoid area, the application window content is obscured and does not respond to user click events.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -98,11 +94,17 @@ Pay attention to the following restrictions on this area:
 
 | Name      | Type     | Read-Only| Optional| Description              |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible<sup>9+</sup>    | boolean       | No  | No  | Whether the window can be displayed in the area. **true** if the window can be displayed in the area, **false** otherwise.|
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle on the left of the screen.|
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle at the top of the screen.|
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle on the right of the screen.|
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle at the bottom of the screen.|
+| visible<sup>9+</sup>    | boolean       | No  | No  | Whether the avoid area is visible. **true** if visible, **false** otherwise.|
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle centered to the left of the window's two diagonals.|
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle centered at the top of the window's two diagonals.|
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle centered to the right of the window's two diagonals.|
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | No  | No  | Rectangle centered at the bottom of the window's two diagonals.|
+
+> **NOTE**
+>
+> The figure below shows the meanings of **leftRect**, **topRect**, **rightRect**, and **bottomRect**.
+>
+>  ![avoidArea](figures/avoidArea.png)
 
 ## Size<sup>7+</sup>
 

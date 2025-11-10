@@ -4,7 +4,7 @@
 <!--Owner: @xieziang-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Counter组件用于精确调节数值。
 

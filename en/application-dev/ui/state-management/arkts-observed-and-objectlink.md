@@ -608,7 +608,7 @@ struct IndexPage {
 }
 ```
 
-Since API version 19, \@ObjectLink can also be initialized with the return value of makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
+Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
 
 A complete example is as follows:
 

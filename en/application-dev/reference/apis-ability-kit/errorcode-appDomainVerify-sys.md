@@ -1,10 +1,9 @@
 # Application Domain Name Verification Error Codes
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @hw-xpc-->
-<!--Designer: @zhanglin-->
-<!--Tester: @sunlin-->
+<!--Designer: @xuchuanqi87-->
+<!--Tester: @sl_sunshineGirl-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
