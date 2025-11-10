@@ -153,9 +153,11 @@ struct Index {
             let promise = text.matchFontDescriptors({
               weight: text.FontWeight.W400,
             })
-            promise.then((data) => {
+            promise.then((data: Array<text.FontDescriptor>) => {
               console.info(`Font descriptor array size: ${data.length}`);
-              console.info(`Font descriptor result: ${JSON.stringify(data)}`)
+              for (let i = 0; i < data.length; i++) {
+                console.info(`Font descriptor result: ${JSON.stringify(data[i])}`)
+              }
             }).catch((error: BusinessError) => {
               console.error(`Failed to match the font descriptor, error: ${JSON.stringify(error)}`);
             });
