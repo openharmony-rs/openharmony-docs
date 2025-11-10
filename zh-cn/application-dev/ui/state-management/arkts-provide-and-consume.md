@@ -33,24 +33,23 @@
 - 后代通过使用\@Consume去获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与\@State/\@Link不同的是，前者可以更便捷的在多层级父子组件之间传递。
 
 - \@Provide和\@Consume通过变量名或者变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
-
 ```ts
 // 通过相同的变量名绑定
 @Provide age: number = 0;
 @Consume age: number;
-
+   
 // 通过相同的变量别名绑定
 @Provide('a') id: number = 0;
 @Consume('a') age: number;
-
+   
 // 通过Provide的变量别名和Consume的变量名相同绑定
 @Provide('a') id: number = 0;
 @Consume a: number;
-
+   
 // 通过Provide的变量名和Consume的变量别名绑定
 @Provide id: number = 0;
 @Consume('id') a: number;
-
+   
 ```
 当\@Provide指定变量别名时，会同时保存变量名与变量别名，\@Consume在查找时，会优先以变量别名作为查找值去匹配，如果没有别名则用变量名作为查找值，只要\@Consume提供的查找值与\@Provide保存的变量名或别名中任意一项一致，即可成功建立绑定关系。
 
@@ -142,7 +141,7 @@
     // 错误写法，编译报错
     let change: number = 10;
     @Provide(change) message: string = 'Hello';
-  
+    
     // 正确写法
     let change: string = 'change';
     @Provide(change) message: string = 'Hello';
@@ -156,17 +155,17 @@
     @Component
     struct Child {
       @Consume msg: string;
-  
+    
       build() {
         Text(this.msg)
       }
     }
-  
+    
     @Entry
     @Component
     struct Parent {
       @Provide message: string = 'Hello';
-  
+    
       build() {
         Column() {
           // 错误写法，不允许外部传入初始化
@@ -176,71 +175,72 @@
     }
     ```
 
-    【正例】
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume num: number;
-      // 从API version 20开始，@Consume装饰的变量支持设置默认值
-      @Consume num1: number = 17;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Text(`num1的值：${this.num1}`)
-        }
-      }
-    }
-  
-    @Entry
-    @Component
-    struct Parent {
-      @Provide num: number = 10;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Child()
-        }
-      }
-    }
-    ```
-  
+   【正例】
+   <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Child {
+     @Consume num: number;
+     // 从API version 20开始，@Consume装饰的变量支持设置默认值
+     @Consume num1: number = 17;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Text(`Value of num1: ${this.num1}`)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @Provide num: number = 10;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Child()
+       }
+     }
+   }
+   ```
+
 3. \@Provide的key重复定义时，框架会抛出运行时错误，提醒开发者重复定义key，如果开发者需要重复key，可以使用[allowoverride](#provide支持allowoverride参数)。
 
     ```ts
     // 错误写法，a重复定义
     @Provide('a') count: number = 10;
     @Provide('a') num: number = 10;
-  
+    
     // 正确写法
     @Provide('a') count: number = 10;
     @Provide('b') num: number = 10;
     ```
-  
+
 4. 在API version 20之前，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量。从API version 20开始，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，同时没有设置默认值，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量同时也没有设置默认值。
 
-    【反例】
-  
+   【反例】
+
     ```ts
     @Component
     struct Child {
       @Consume num: number;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num}`)
         }
       }
     }
-  
+    
     @Entry
     @Component
     struct Parent {
       // 错误写法，缺少@Provide
       num: number = 10;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num}`)
@@ -250,42 +250,43 @@
     }
     ```
 
-    【正例】
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume num: number;
-      // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
-      @Consume num_with_defaultValue: number = 6;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Text(`num_with_defaultValue的值：${this.num_with_defaultValue}`)
-        }
-      }
-    }
-  
-    @Entry
-    @Component
-    struct Parent {
-      // 正确写法
-      @Provide num: number = 10;
-
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Child()
-        }
-      }
-    }
-    ```
+   【正例】
+   <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Child {
+     @Consume num: number;
+     // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
+     @Consume numWithDefaultValue: number = 6;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Text(`Value of numWithDefaultValue: ${this.numWithDefaultValue}`)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     // 正确写法
+     @Provide num: number = 10;
+   
+     build() {
+       Column() {
+         Text(`Value of num: ${this.num}`)
+         Child()
+       }
+     }
+   }
+   ```
 
 5. \@Provide与\@Consume不支持装饰Function类型的变量，框架会抛出运行时错误。
 
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
-需要注意类型不相等判断，包括类实例的判断，比如：
+   需要注意类型不相等判断，包括类实例的判断，比如：
 ```ts
 class A {}
 class B {}
@@ -294,7 +295,10 @@ class B {}
 @Consume message: B = new B();
 ```
 在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
-```ts
+
+<!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+
+``` TypeScript
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 @Builder
@@ -356,7 +360,9 @@ struct Child {
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击ToDo和ToDoItem组件内的Button时，count的更改会双向同步在ToDo和ToDoItem中。
 
-```ts
+<!-- @[provide_consume_bidirectional_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBidirectionalSync.ets) -->
+
+``` TypeScript
 @Component
 struct ToDoItem {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件ToDo内的@Provide装饰的变量
@@ -404,6 +410,7 @@ struct ToDo {
   }
 }
 ```
+
 ### 装饰Map类型变量
 
 > **说明：**
@@ -412,7 +419,9 @@ struct ToDo {
 
 以下示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[provide_consume_map_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeMapSync.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Consume message: Map<number, string>
@@ -480,7 +489,9 @@ struct MapSample {
 
 以下示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[provide_consume_set_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeSetSync.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Consume message: Set<number>
@@ -539,7 +550,9 @@ struct SetSample {
 
 以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
+<!-- @[provide_consume_date_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDateSync.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Consume selectedDate: Date;
@@ -596,7 +609,9 @@ struct Parent {
 
 @Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击父组件Parent中的Button改变count的属性或者类型时，Child中也会对应刷新。
 
-```ts
+<!-- @[provide_consume_Provide_Consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
@@ -649,16 +664,24 @@ allowOverride：\@Provide重写选项。
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | allowOverride | string | 否 | 是否允许@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的@Provide，运行时会报错。 |
 
-```ts
+<!-- @[Provide_Consume_Provide_AllowOverride1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
+
+``` TypeScript
 @Component
 struct MyComponent {
-  @Provide({allowOverride : 'reviewVotes'}) reviewVotes: number = 10;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
+
+  build() {
+  }
+
 }
 ```
 
 完整示例如下：
 
-```ts
+<!-- @[Provide_Consume_Provide_AllowOverride2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
+
+``` TypeScript
 @Component
 struct GrandSon {
   // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
@@ -722,31 +745,39 @@ struct GrandParent {
 >
 > 从API version 20开始，\@Consume装饰的变量支持设置默认值。
 
-```ts
+<!-- @[Provide_Consume_Decorated_Variable1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
+
+``` TypeScript
 @Component
 struct MyComponent {
   @Consume('withDefault') defaultValue: number = 10;
+
+  build() {
+  }
+
 }
 ```
 
 完整示例如下：
 
-```ts
+<!-- @[Provide_Consume_Decorated_Variable2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Parent {
   @Provide('firstKey') provideOne: string | undefined = undefined;
   @Provide('secondKey') provideTwo: string = 'the second provider';
 
-  build(){
-    Column(){
-      Row(){
+  build() {
+    Column() {
+      Row() {
         Column() {
           Text(`${this.provideOne}`)
           Text(`${this.provideTwo}`)
         }
 
-        Column(){
+        Column() {
           // 点击change provideOne按钮，provideOne和子组件中的textOne属性会同时变化
           Button('change provideOne')
             .onClick(() => {
@@ -760,7 +791,7 @@ struct Parent {
         }
       }
 
-      Row(){
+      Row() {
         Column() {
           Child()
         }
@@ -778,7 +809,7 @@ struct Child {
   // @Consume装饰的变量在祖先内没有匹配成功的@Provide装饰的变量，但设置了默认值
   @Consume('thirdKey') textThree: string = 'defaultValue';
 
-  build(){
+  build() {
     Column() {
       Text(`${this.textOne}`)
       Text(`${this.textTwo}`)
@@ -819,14 +850,18 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 
 在下面的例子中：
 1. 点击`add Child`:
-    - 构建BuilderNode下的子节点`Child`，`Child`中\@Consume未找到\@Provide，使用本地默认值`default value`初始化。
-    - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
+   - 构建BuilderNode下的子节点`Child`，`Child`中\@Consume未找到\@Provide，使用本地默认值`default value`初始化。
+   - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
 2. \@Provide和\@Consume配对后，建立双向同步关系。点击```Text(`@Provide: ${this.message}`)```和```Text(`@Consume ${this.message}`)```，\@Provide和\@Consume绑定的Text组件刷新，并回调\@Provide和\@Consume的\@Watch方法。
 3. 点击`remove Child`, BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
+<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->
 
-```ts
+``` TypeScript
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Builder
 function buildText() {
@@ -884,7 +919,7 @@ struct Index {
   controller: TextNodeController = new TextNodeController();
 
   onChange() {
-    console.info(`Index Provide change ${this.message}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index Provide change ${this.message}`);
   }
 
   build() {
@@ -931,11 +966,11 @@ struct Child {
   @Consume @Watch('onChange') message: string = 'default value';
 
   onChange() {
-    console.info(`Child Consume change ${this.message}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Child Consume change ${this.message}`);
   }
 
   aboutToDisappear(): void {
-    console.info(`Child aboutToDisappear`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Child aboutToDisappear`);
   }
 
   build() {
@@ -1022,9 +1057,11 @@ struct CustomWidgetChild {
 
 正确示例：
 
-```ts
+<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets) -->
+
+``` TypeScript
 class Tmp {
-  name: string = '';
+  public name: string = '';
 }
 
 @Entry
@@ -1035,12 +1072,12 @@ struct HomePage {
 
   @Builder
   builder2($$: Tmp) {
-    Text(`${$$.name}测试`)
+    Text(`${$$.name} test`)
   }
 
   build() {
     Column() {
-      Button('你好').onClick(() => {
+      Button('Hello').onClick(() => {
         if (this.name == 'ddd') {
           this.name = 'abc';
         } else {
@@ -1180,22 +1217,25 @@ struct ZooGrandChild {
 
 【正例】
 
-```ts
-class Animal {
-  name:string;
-  type:string;
-  age: number;
+<!-- @[provide_consume_This_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets) -->
 
-  constructor(name:string, type:string, age:number) {
+``` TypeScript
+class Animal {
+  public name: string;
+  public type: string;
+  public age: number;
+
+  constructor(name: string, type: string, age: number) {
     this.name = name;
     this.type = type;
     this.age = age;
   }
 
-  static changeName(animal:Animal) {
+  static changeName(animal: Animal) {
     animal.name = 'Jack';
   }
-  static changeAge(animal:Animal) {
+
+  static changeAge(animal: Animal) {
     animal.age += 1;
   }
 }
@@ -1203,25 +1243,25 @@ class Animal {
 @Entry
 @Component
 struct Zoo {
-  @Provide dog:Animal = new Animal('WangCai', 'dog', 2);
+  @Provide dog: Animal = new Animal('WangCai', 'dog', 2);
 
-  changeZooDogAge(animal:Animal) {
+  changeZooDogAge(animal: Animal) {
     animal.age += 2;
   }
 
   build() {
-    Column({ space:10 }) {
+    Column({ space: 10 }) {
       Text(`Zoo: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
         .fontColor(Color.Red)
         .fontSize(30)
       Button('changeAge')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值给临时变量保留Proxy代理
           let newDog = this.dog;
           Animal.changeAge(newDog);
         })
       Button('changeZooDogAge')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值给临时变量保留Proxy代理
           let newDog = this.dog;
           this.changeZooDogAge(newDog);
@@ -1233,9 +1273,8 @@ struct Zoo {
 
 @Component
 struct ZooChild {
-
   build() {
-    Column({ space:10 }) {
+    Column({ space: 10 }) {
       Text(`ZooChild.`)
         .fontColor(Color.Blue)
         .fontSize(30)
@@ -1246,25 +1285,25 @@ struct ZooChild {
 
 @Component
 struct ZooGrandChild {
-  @Consume dog:Animal;
+  @Consume dog: Animal;
 
-  changeZooGrandChildName(animal:Animal) {
+  changeZooGrandChildName(animal: Animal) {
     animal.name = 'Marry';
   }
 
   build() {
-    Column({ space:10 }) {
+    Column({ space: 10 }) {
       Text(`ZooGrandChild: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
         .fontColor(Color.Yellow)
         .fontSize(30)
       Button('changeName')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值给临时变量保留Proxy代理
           let newDog = this.dog;
           Animal.changeName(newDog);
         })
       Button('changeZooGrandChildName')
-        .onClick(()=>{
+        .onClick(() => {
           // 通过赋值给临时变量保留Proxy代理
           let newDog = this.dog;
           this.changeZooGrandChildName(newDog);
