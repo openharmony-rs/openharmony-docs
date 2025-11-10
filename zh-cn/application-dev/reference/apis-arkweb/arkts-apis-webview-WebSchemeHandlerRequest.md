@@ -20,7 +20,7 @@ getHeader(): Array\<WebHeader\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -42,7 +42,7 @@ getRequestUrl(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -64,7 +64,7 @@ getRequestMethod(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -86,7 +86,7 @@ getReferrer(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -108,7 +108,7 @@ isMainFrame(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -130,7 +130,7 @@ hasGesture(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -152,7 +152,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -174,7 +174,7 @@ getRequestResourceType(): WebResourceType
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -196,7 +196,7 @@ getFrameUrl(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

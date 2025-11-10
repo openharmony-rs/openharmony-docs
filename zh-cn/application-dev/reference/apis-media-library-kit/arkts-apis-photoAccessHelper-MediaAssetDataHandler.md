@@ -2,12 +2,17 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
 媒体资源处理器，应用在onDataPrepared方法中可自定义媒体资源处理逻辑。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 ## 导入模块
 
@@ -29,6 +34,10 @@ map支持返回的信息：
 | 'quality'  | 图片质量。高质量为'high'，低质量为'low'。 |
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

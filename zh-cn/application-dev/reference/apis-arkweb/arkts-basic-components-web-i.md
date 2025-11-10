@@ -28,9 +28,9 @@ Web媒体策略的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
-| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20<br>|
-| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。   <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20<br>                    |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20<br>|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22<br>|
+| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。   <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22<br>                    |
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -193,7 +193,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -216,6 +216,10 @@ Web同层渲染的配置。
 定义通知主应用开始下载一个文件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -275,7 +279,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -355,7 +359,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -502,7 +506,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
@@ -552,7 +556,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 | 名称             | 类型      | 必填   | 说明                                       |
@@ -600,7 +604,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
@@ -686,7 +690,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
@@ -806,3 +810,28 @@ Web屏幕捕获的配置。
 | 名称          | 类型                                      | 必填   | 说明         |
 | ----------- | --------------------------------------- | ---- | ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 是    | Web屏幕捕获模式。 |
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型                                  | 只读 | 可选   | 说明                    |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
+| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。             |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
+
+## NativeEmbedParamItem<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | 否    | 否    | param元素的状态变化类型。 |
+| id                | string                              | 否    | 否 | param元素的id信息。             |
+| name              | string                              | 否    | 是 | param元素的参数名称。           |
+| value             | string                              | 否    | 是 | param元素的参数值。          |

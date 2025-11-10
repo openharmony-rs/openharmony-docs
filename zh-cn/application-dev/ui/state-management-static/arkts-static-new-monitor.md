@@ -10,14 +10,14 @@
 
 \@Monitor装饰器用于监听状态变量修改，使得状态变量具有深度监听的能力：
 
-- \@Monitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰的变量无法被\@Monitor监听到变化。
+- \@Monitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器[\@Local](./arkts-static-new-local.md)、[\@Param](./arkts-static-new-param.md)、[\@Provider、\@Consumer](./arkts-static-new-provider-and-consumer.md)、[\@Computed](./arkts-static-new-computed.md)装饰的变量无法被\@Monitor监听到变化。
 
-- \@Monitor装饰器支持在类中与\@ObservedV2、\@Trace配合使用，不允许在未被\@ObservedV2装饰的类中使用\@Monitor装饰器。未被\@Trace装饰的属性无法被\@Monitor监听到变化。
+- \@Monitor装饰器支持在类中与[\@ObservedV2、\@Trace](./arkts-static-new-observedV2-and-trace.md)配合使用，不允许在未被\@ObservedV2装饰的类中使用\@Monitor装饰器。未被\@Trace装饰的属性无法被\@Monitor监听到变化。
 - 当观测的属性变化时，\@Monitor装饰器定义的回调方法将被调用。判断属性是否变化使用的是严格相等（===），当严格相等判断的结果是false（即不相等）的情况下，就会触发\@Monitor的回调。当在一次事件中多次改变同一个属性时，将会使用初始值和最终值进行比较以判断是否变化。
 - 单个\@Monitor装饰器能够同时监听多个属性的变化，当这些属性在一次事件中共同变化时，只会触发一次\@Monitor的回调方法。
 - \@Monitor装饰器具有深度监听的能力，能够监听嵌套类、多维数组、对象数组中指定项的变化。对于嵌套类、对象数组中成员属性变化的监听要求该类被\@ObservedV2装饰且该属性被\@Trace装饰。
 - 在继承类场景中，可以在父子组件中对同一个属性分别定义\@Monitor进行监听，当属性变化时，父子组件中定义的\@Monitor回调均会被调用。
-- 和\@Watch装饰器类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与\@Watch的对比可以查看[\@Monitor与\@Watch的对比](#monitor与watch对比)。
+- 和\@Watch装饰器类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与[\@Watch](./arkts-static-watch.md)的对比可以查看[\@Monitor与\@Watch的对比](#monitor与watch对比)。
 
 在静态上下文中使用时，需导入装饰器：
 

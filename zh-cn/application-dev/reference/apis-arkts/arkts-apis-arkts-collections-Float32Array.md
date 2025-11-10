@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -23,9 +25,9 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
@@ -40,9 +42,9 @@ constructor()
 
 构造函数，用于创建一个空ArkTS Float32Array对象。
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
 
@@ -251,6 +253,7 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名  | 类型   | 必填 | 说明                                        |
 | ------- | ------ | ---- | ------------------------------------------|
 | arrayLike | ArrayLike\<T> | 是 | 用于构造ArrayLike对象。              |
@@ -303,6 +306,7 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | -----------------------------------|
 | arrayLike | Iterable\<number> | 是 | 用于构造的可迭代对象。   |
@@ -887,6 +891,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Float32Array>): Float32Array
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Float32Array> | 是  | 回调函数。 |
@@ -925,6 +930,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Float32Array>): num
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名     | 类型   | 必填 |  说明     |
 | ---------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Float32Array> | 是 | 归约函数。 |
@@ -964,6 +970,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Float32Array>)
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名     | 类型   | 必填 |  说明     |
 | ---------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Float32Array> | 是 | 归约函数。 |
@@ -1002,6 +1009,7 @@ reduce\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Float32Arra
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<U, number, Float32Array> | 是  | 归约函数。 |
@@ -1043,6 +1051,7 @@ reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Float3
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<U, number, Float32Array> | 是  | 归约函数。 |
@@ -1113,6 +1122,7 @@ set(array: ArrayLike\<number>, offset?: number): void
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | 是  | 用于设置的ArrayLike对象。|
@@ -1267,6 +1277,7 @@ at(index: number): number | undefined
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | index  | number | 是   | 要返回的Array元素的索引（从零开始），取值为整数。如果`index < 0`，则会访问`index + Float32Array.length`位置的元素。|
@@ -1306,6 +1317,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | --------------------------------------- |
 | searchElement  | number | 是   | 待搜索的元素。 |

@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## PhotoType
 
@@ -11,6 +12,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -25,6 +30,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认照片类型。 |
@@ -37,6 +46,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 **系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SDR |  0 |  标准动态范围类型。|
@@ -47,6 +60,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 枚举，相册类型，表示是用户相册还是系统预置相册。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值    | 说明      |
 | --------| ---- | ------------|
@@ -61,17 +78,21 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称     | 值          | 说明   |
 | ----- | ---------- | --- |
-| USER\_GENERIC   | 1          | 用户相册。|
-| FAVORITE        | 1025       | 收藏夹。 |
-| VIDEO  | 1026       | 视频相册。|
-| IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
-| ANY    | 2147483647 | 任意相册。|
+| USER\_GENERIC   | 1          | 用户相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20|
+| FAVORITE        | 1025       | 收藏夹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| VIDEO  | 1026       | 视频相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20|
+| IMAGE<sup>12+</sup>               | 1031       | 图片相册。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| ANY    | 2147483647 | 任意相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20|
 
 ## PositionType<sup>16+</sup>
 
 枚举，文件位置，表示文件在本地或云端。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -87,37 +108,41 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 文件uri。<br>**注意：**查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
-| PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符。<br>- 不允许出现非法字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
-| SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
-| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
-| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| DURATION      | 'duration'            | 持续时间（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
-| WIDTH         | 'width'               | 图片宽度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                    |
-| HEIGHT        | 'height'              | 图片高度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
-| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| FAVORITE      | 'is_favorite'            | 收藏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
-| TITLE         | 'title'               | 文件标题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>**注意：**查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：**查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
-| DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
-| BURST_KEY<sup>12+</sup>   | 'burst_key'               | 一组连拍照片的唯一标识：uuid。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| LCD_SIZE<sup>12+</sup>  | 'lcd_size'  | LCD图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| THM_SIZE<sup>12+</sup>  | 'thm_size'  | THUMB图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。       |
-| DETAIL_TIME<sup>13+</sup>  | 'detail_time'  | 大图浏览时间，值为拍摄时对应时区的时间的字符串，不会跟随时区变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。       |
-| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
-| POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
-| MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
+| URI           | 'uri'                 | 文件uri。<br>**注意：** 查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20            |
+| PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20  |
+| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符。<br>- 不允许出现非法字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20      |
+| SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20         |
+| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| DURATION      | 'duration'            | 持续时间（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20            |
+| WIDTH         | 'width'               | 图片宽度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                    |
+| HEIGHT        | 'height'              | 图片高度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20               |
+| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20           |
+| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20  |
+| FAVORITE      | 'is_favorite'            | 收藏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                 |
+| TITLE         | 'title'               | 文件标题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                 |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>**注意：** 查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20      |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：** 查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20           |
+| PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20     |
+| DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20           |
+| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20        |
+| BURST_KEY<sup>12+</sup>   | 'burst_key'               | 一组连拍照片的唯一标识：uuid。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| LCD_SIZE<sup>12+</sup>  | 'lcd_size'  | LCD图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| THM_SIZE<sup>12+</sup>  | 'thm_size'  | THUMB图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20       |
+| DETAIL_TIME<sup>13+</sup>  | 'detail_time'  | 大图浏览时间，值为拍摄时对应时区的时间的字符串，不会跟随时区变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20       |
+| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20   |
+| POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 16<br/>**ArkTS-Sta起始版本：** 20        |
+| MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20                               |
 
 ## AlbumKeys
 
 枚举，相册关键信息。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
@@ -132,6 +157,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | IMAGE_RESOURCE |  1 |  表示图片资源。 |
@@ -143,6 +172,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | JPEG  |  1 |  表示jpeg图片类型。 |
@@ -153,6 +186,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 枚举，通知事件的类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
@@ -167,6 +204,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 枚举，DefaultChangeUri子类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称              | 值                      | 说明                                                         |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
@@ -183,10 +224,10 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称                                    |  值 | 说明       |
 |---------------------------------------|  ---- |----------|
-| IMAGE_TYPE                            |  'image/*' | 图片类型。    |
-| VIDEO_TYPE                            |  'video/*' | 视频类型。    |
-| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。 |
-| MOVING_PHOTO_IMAGE_TYPE<sup>12+</sup> |  'image/movingPhoto' | 动态照片类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| IMAGE_TYPE                            |  'image/*' | 图片类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| VIDEO_TYPE                            |  'video/*' | 视频类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| MOVING_PHOTO_IMAGE_TYPE<sup>12+</sup> |  'image/movingPhoto' | 动态照片类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20  |
 
 ## RecommendationType<sup>11+</sup>
 
@@ -198,16 +239,16 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| QR_OR_BAR_CODE  |  1 | 二维码或条码。 |
-| QR_CODE |  2 | 二维码。 |
-| BAR_CODE |  3 | 条码。 |
-| ID_CARD |  4 | 身份证。 |
-| PROFILE_PICTURE |  5 | 头像。 |
-| PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| QR_OR_BAR_CODE  |  1 | 二维码或条码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| QR_CODE |  2 | 二维码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| BAR_CODE |  3 | 条码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| ID_CARD |  4 | 身份证。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| PROFILE_PICTURE |  5 | 头像。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
 
 **示例：**
 
@@ -274,6 +315,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | FAST_MODE |  0 |  快速模式。 |
@@ -286,6 +331,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
 | ORIGINAL_FORMAT_MODE |  0 |  原视频资源内容模式。  |
@@ -296,6 +345,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 配置完成按钮显示内容。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |

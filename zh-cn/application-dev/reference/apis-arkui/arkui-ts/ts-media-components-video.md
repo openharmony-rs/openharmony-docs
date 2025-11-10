@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
->  Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
->  Video组件在使用expandSafeArea扩展到安全区域时，组件视频显示内容区域不支持扩展。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
+>  - Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
+>  - Video组件在使用expandSafeArea扩展到安全区域时，组件视频显示内容区域不支持扩展。
 
 ## 权限列表
 
@@ -71,7 +73,9 @@ Video(value: VideoOptions)
 
 ### muted
 
-muted(value: boolean)
+ArkTS-Dyn: muted(value: boolean)
+
+ArkTS-Sta: muted(value: boolean | undefined)
 
 设置视频是否静音。
 
@@ -79,11 +83,15 @@ muted(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                         |
 | ------ | ------- | ---- | ---------------------------- |
-| value  | boolean | 是   | 视频是否静音。<br/>true：开启静音；false：关闭静音。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否静音。<br/>true：开启静音；false：关闭静音。<br/>默认值：false |
 
 > **说明：**
 >
@@ -91,7 +99,9 @@ muted(value: boolean)
 
 ### autoPlay
 
-autoPlay(value: boolean)
+ArkTS-Dyn: autoPlay(value: boolean)
+
+ArkTS-Sta: autoPlay(value: boolean | undefined)
 
 设置视频是否自动播放。
 
@@ -99,15 +109,21 @@ autoPlay(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                             |
 | ------ | ------- | ---- | -------------------------------- |
-| value  | boolean | 是   | 是否自动播放。<br/>true：开启自动播放；false：关闭自动播放。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 视频是否自动播放。<br/>true：开启自动播放；false：关闭自动播放。<br/>默认值：false |
 
 ### controls
 
-controls(value: boolean)
+ArkTS-Dyn: controls(value: boolean)
+
+ArkTS-Sta: controls(value: boolean | undefined)
 
 设置控制视频播放的控制栏是否显示。
 
@@ -115,11 +131,15 @@ controls(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                            |
 | ------ | ------- | ---- | ----------------------------------------------- |
-| value  | boolean | 是   | 控制视频播放的控制栏是否显示。<br/>true：控制栏显示；false：控制栏不显示。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 控制视频播放的控制栏是否显示。<br/>true：控制栏显示；false：控制栏不显示。<br/>默认值：true |
 
 > **说明：**
 >
@@ -127,7 +147,9 @@ controls(value: boolean)
 
 ### objectFit
 
-objectFit(value: ImageFit)
+ArkTS-Dyn: objectFit(value: ImageFit)
+
+ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 设置视频的填充模式。
 
@@ -135,15 +157,21 @@ objectFit(value: ImageFit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                             |
 | ------ | ----------------------------------------- | ---- | -------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 视频填充模式。<br/>默认值：Cover<br/>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与Cover一致。<br/>异常值：若设置异常值undefined、null，或不在[ImageFit](ts-appendix-enums.md#imagefit)枚举范围内的值，作用效果均与Cover一致。|
+| value  | ArkTS-Dyn: [ImageFit](ts-appendix-enums.md#imagefit)<br/>ArkTS-Sta: [ImageFit](ts-appendix-enums.md#imagefit) \| undefined | 是   | 视频填充模式。<br/>默认值：Cover<br/>约束：不支持ImageFit类型中的枚举值MATRIX，若设置，则作用效果与Cover一致。<br/>异常值：若设置异常值undefined、null，或不在[ImageFit](ts-appendix-enums.md#imagefit)枚举范围内的值，作用效果均与Cover一致。|
 
 ### loop
 
-loop(value: boolean)
+ArkTS-Dyn: loop(value: boolean)
+
+ArkTS-Sta: loop(value: boolean | undefined)
 
 设置是否单个视频循环播放。
 
@@ -151,11 +179,15 @@ loop(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| value  | boolean | 是   | 是否单个视频循环播放。<br/>true：开启循环播放；false：关闭循环播放。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否单个视频循环播放。<br/>true：开启循环播放；false：关闭循环播放。<br/>默认值：false |
 
 ### enableAnalyzer<sup>12+</sup>
 
@@ -196,7 +228,9 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 ### enableShortcutKey<sup>15+</sup>
 
-enableShortcutKey(enabled: boolean)
+ArkTS-Dyn: enableShortcutKey(enabled: boolean)
+
+ArkTS-Sta: enableShortcutKey(enabled: boolean | undefined)
 
 设置组件支持快捷键响应。
 
@@ -206,9 +240,13 @@ enableShortcutKey(enabled: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名  | 类型    | 必填 | 说明                                   |
 | ------- | ------- | ---- | -------------------------------------- |
-| enabled | boolean | 是   | 是否启用快捷键响应。<br/>true：开启快捷键响应；false：关闭快捷键响应。<br/>默认值：false |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用快捷键响应。<br/>true：开启快捷键响应；false：关闭快捷键响应。<br/>默认值：false |
 
 ## 事件
 
@@ -216,7 +254,9 @@ enableShortcutKey(enabled: boolean)
 
 ### onStart
 
-onStart(event:&nbsp;VoidCallback)
+ArkTS-Dyn: onStart(event:&nbsp;VoidCallback)
+
+ArkTS-Sta: onStart(event: VoidCallback | undefined)
 
 播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -224,15 +264,21 @@ onStart(event:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频播放的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 视频开始播放的回调函数。        |
 
 ### onPause
 
-onPause(event:&nbsp;VoidCallback)
+ArkTS-Dyn: onPause(event:&nbsp;VoidCallback)
+
+ArkTS-Sta: onPause(event: VoidCallback | undefined)
 
 暂停时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -240,15 +286,21 @@ onPause(event:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频暂停的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 视频暂停的回调函数。        |
 
 ### onFinish
 
-onFinish(event:&nbsp;VoidCallback)
+ArkTS-Dyn: onFinish(event:&nbsp;VoidCallback)
+
+ArkTS-Sta: onFinish(event: VoidCallback | undefined)
 
 播放结束时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -256,15 +308,21 @@ onFinish(event:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频播放结束的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 视频播放结束的回调函数。        |
 
 ### onError
 
-onError(event: VoidCallback | ErrorCallback)
+ArkTS-Dyn: onError(event: VoidCallback | ErrorCallback)
+
+ArkTS-Sta: onError(event: VoidCallback | ErrorCallback | undefined)
 
 播放失败时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -272,11 +330,15 @@ onError(event: VoidCallback | ErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | 是   | 视频播放失败时的回调函数，[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)入参用于接收异常信息。|
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup><br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) \| undefined | 是   | 视频播放失败时的回调函数，[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)入参用于接收异常信息。|
 
 以下错误码的详细介绍请参见[Video组件错误码](../errorcode-video.md)，其余错误码请参考[媒体错误码](../../apis-media-kit/errorcode-media.md)。
 
@@ -287,7 +349,9 @@ onError(event: VoidCallback | ErrorCallback)
 
 ### onStop<sup>12+</sup>
 
-onStop(event: Callback&lt;void&gt;)
+ArkTS-Dyn: onStop(event: Callback&lt;void&gt;)
+
+ArkTS-Sta: onStop(event: VoidCallback | undefined)
 
 播放停止时触发该事件(当stop()方法被调用后触发)，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -295,9 +359,15 @@ onStop(event: Callback&lt;void&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 ### onPrepared
 
-onPrepared(callback: Callback\<PreparedInfo>)
+ArkTS-Dyn: onPrepared(callback: Callback\<PreparedInfo>)
+
+ArkTS-Sta: onPrepared(callback: Callback\<PreparedInfo> | undefined)
 
 视频准备完成时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -305,15 +375,21 @@ onPrepared(callback: Callback\<PreparedInfo>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                       |
 | -------- | ------ | ---- | -------------------------- |
-| callback | Callback\<[PreparedInfo](#preparedinfo18对象说明)> | 是   | 当前视频的时长。 |
+| callback | ArkTS-Dyn: Callback\<[PreparedInfo](#preparedinfo18对象说明)><br/>ArkTS-Sta: Callback\<[PreparedInfo](#preparedinfo18对象说明)> \| undefined | 是   | 当前视频的时长。 |
 
 ### onSeeking
 
-onSeeking(callback: Callback\<PlaybackInfo>)
+ArkTS-Dyn: onSeeking(callback: Callback\<PlaybackInfo>)
+
+ArkTS-Sta: onSeeking(callback: Callback\<PlaybackInfo> | undefined)
 
 操作进度条过程时上报时间信息，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -321,15 +397,21 @@ onSeeking(callback: Callback\<PlaybackInfo>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | ArkTS-Dyn: Callback\<[PlaybackInfo](#playbackinfo18对象说明)><br/>ArkTS-Sta: Callback\<[PlaybackInfo](#playbackinfo18对象说明)> \| undefined | 是   | 当前视频播放的进度。 |
 
 ### onSeeked
 
-onSeeked(callback: Callback\<PlaybackInfo>)
+ArkTS-Dyn: onSeeked(callback: Callback\<PlaybackInfo>)
+
+ArkTS-Sta: onSeeked(callback: Callback\<PlaybackInfo> | undefined)
 
 操作进度条完成后，上报播放时间信息，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -337,15 +419,21 @@ onSeeked(callback: Callback\<PlaybackInfo>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | ArkTS-Dyn: Callback\<[PlaybackInfo](#playbackinfo18对象说明)><br/>ArkTS-Sta: Callback\<[PlaybackInfo](#playbackinfo18对象说明)> \| undefined | 是   | 当前视频播放的进度。 |
 
 ### onUpdate
 
-onUpdate(callback: Callback\<PlaybackInfo>)
+ArkTS-Dyn: onUpdate(callback: Callback\<PlaybackInfo>)
+
+ArkTS-Sta: onUpdate(callback: Callback\<PlaybackInfo> | undefined)
 
 播放进度变化时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -353,15 +441,21 @@ onUpdate(callback: Callback\<PlaybackInfo>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | ArkTS-Dyn: Callback\<[PlaybackInfo](#playbackinfo18对象说明)><br/>ArkTS-Sta: Callback\<[PlaybackInfo](#playbackinfo18对象说明)> \| undefined | 是   | 当前视频播放的进度。 |
 
 ### onFullscreenChange
 
-onFullscreenChange(callback: Callback\<FullscreenInfo>)
+ArkTS-Dyn: onFullscreenChange(callback: Callback\<FullscreenInfo>)
+
+ArkTS-Sta: onFullscreenChange(callback: Callback\<FullscreenInfo> | undefined)
 
 在全屏播放与非全屏播放状态之间切换时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -369,11 +463,15 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名     | 类型    | 必填 | 说明                                                  |
 | ---------- | ------- | ---- | ----------------------------------------------------- |
-| callback | Callback\<[FullscreenInfo](#fullscreeninfo18对象说明)> | 是   | 当前视频是否进入全屏播放状态。 |
+| callback | ArkTS-Dyn: Callback\<[FullscreenInfo](#fullscreeninfo18对象说明)><br/>ArkTS-Sta: Callback\<[FullscreenInfo](#fullscreeninfo18对象说明)> \| undefined | 是   | 当前视频是否进入全屏播放状态。 |
 
 ## FullscreenInfo<sup>18+</sup>对象说明
 

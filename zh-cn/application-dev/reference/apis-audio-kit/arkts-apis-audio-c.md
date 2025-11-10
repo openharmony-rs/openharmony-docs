@@ -2,12 +2,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 | 名称                                    | 类型      | 只读 | 说明               |
 | --------------------------------------- | ----------|---| ------------------ |
-| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | number    | 是 | 默认音量组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume       |
-| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | number    | 是 | 默认音频中断组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt       |
+| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音量组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20       |
+| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音频中断组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20       |
 
 **示例：**
 

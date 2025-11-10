@@ -9,8 +9,11 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn动态数据](arkts-sta-interop-dyn-data.md)
       - [ArkTS-Sta使用ArkTS-Dyn全局自定义构建函数](arkts-sta-interop-dyn-builder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta全局自定义构建函数](arkts-dyn-interop-sta-builder.md)
       - [ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象](arkts-sta-interop-dyn-wrappedbuilder.md)
+      - [ArkTS-Dyn使用ArkTS-Sta WrappedBuilder对象](arkts-dyn-interop-sta-wrappedbuilder.md)
       - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
+      - [ArkTS-Dyn @Builder函数初始化ArkTS-Sta自定义组件@BuilderParam成员属性](arkts-dyn-interop-sta-builderparam.md)
       - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
       - [ArkTS-Dyn的Navigation调用ArkTS-Sta的NavDestination页面](arkts-dyn-interop-sta-navigation.md)
@@ -435,6 +438,5 @@
   - [WebGL](../webgl/Readme-CN.md)
 - UI开发调试调优<!--ui-debug-optimize-->
   - [预览](ui-ide-previewer.md)
-  - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
 - [窗口管理](../windowmanager/Readme-CN.md)
 - [屏幕管理](../displaymanager/Readme-CN.md)

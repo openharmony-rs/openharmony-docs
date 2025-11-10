@@ -4,35 +4,44 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 目前支持通过外接鼠标、手写笔以及触控板触发。
 
 ## onHover
 
-onHover(event: (isHover: boolean, event: HoverEvent) => void): T
+ArkTS-Dyn: onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 
-鼠标或手写笔进入或退出组件时触发hover事件。
+ArkTS-Sta: onHover(event: ((isHover: boolean, event: HoverEvent) => void) | undefined): this
+
+鼠标或手写笔进入或退出组件时，触发hover事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| isHover             | boolean                             | 是   | 鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。 |
-| event<sup>11+</sup> | [HoverEvent](#hoverevent10对象说明) | 是   | 设置阻塞事件冒泡属性。                                       |
+| event  | ArkTS-Dyn: (isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void<br/> ArkTS-Sta: ((isHover: boolean, event: [HoverEvent](#hoverevent10对象说明)) => void) \| undefined  | 是   | 鼠标的状态信息。<br />event表示设置阻塞事件冒泡属性，并获取鼠标或手写笔悬浮的位置坐标，从API version 11开始支持。<br />isHover表示鼠标或手写笔是否悬浮在组件上，进入时为true，&nbsp;离开时为false。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onHoverMove<sup>15+</sup>
 
-onHoverMove(event: Callback&lt;HoverEvent&gt;): T
+ArkTS-Dyn: onHoverMove(event: Callback&lt;HoverEvent&gt;): T
+
+ArkTS-Sta: onHoverMove(event: Callback\<HoverEvent> | undefined): this
 
 手写笔悬浮于组件上方时触发悬浮移动事件。
 
@@ -44,13 +53,13 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [HoverEvent](#hoverevent10对象说明) | 是   |设置阻塞事件冒泡属性，以及获取鼠标或手写笔悬浮的位置坐标。                                      |
+| event | ArkTS-Dyn: [HoverEvent](#hoverevent10对象说明) <br/>ArkTS-Sta: [HoverEvent](#hoverevent10对象说明) \|&nbsp;undefined | 是   |设置阻塞事件冒泡属性，以及获取鼠标或手写笔悬浮的位置坐标。                                      |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## HoverEvent<sup>10+</sup>对象说明
 

@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -23,9 +25,9 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
@@ -36,13 +38,14 @@ import { collections } from '@kit.ArkTS';
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint8Array中每个元素所占用的字节数。|
 
 ## constructor
+
 constructor()
 
 构造函数，用于创建一个空ArkTS Uint8Array对象。
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
 
@@ -59,6 +62,7 @@ let uint8Array: collections.Uint8Array = new collections.Uint8Array();
 ```
 
 ## constructor
+
 constructor(length: number)
 
 构造函数，用于创建一个指定长度的ArkTS Uint8Array对象。
@@ -91,6 +95,7 @@ let uint8Array: collections.Uint8Array = new collections.Uint8Array(12);
 ```
 
 ## constructor
+
 constructor(elements: Iterable\<number>)
 
 构造函数，以Iterable创建一个ArkTS Uint8Array对象。
@@ -124,6 +129,7 @@ let array: collections.Uint8Array = new collections.Uint8Array(set);
 ```
 
 ## constructor
+
 constructor(array: ArrayLike\<number> | ArrayBuffer)
 
 构造函数，以ArrayLike或ArkTS ArrayBuffer创建一个ArkTS Uint8Array对象。
@@ -171,6 +177,7 @@ let uint8Array2: collections.Uint8Array = new collections.Uint8Array(uint8Array1
 ```
 
 ## constructor
+
 constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 构造函数，以ArrayBuffer创建一个ArkTS Uint8Array对象。
@@ -207,6 +214,7 @@ console.info("[" + uint8Array1 + "]"); // [2, 3, 4, 5, 6]
 ```
 
 ## from
+
 static from(arrayLike: ArrayLike\<number>): Uint8Array
 
 从一个ArrayLike或者可迭代对象中创建一个ArkTS Uint8Array对象。
@@ -242,6 +250,7 @@ let array: collections.Uint8Array = collections.Uint8Array.from(arrayLike); // a
 ```
 
 ## from
+
 static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>): Uint8Array
 
 从一个ArrayLike中创建一个ArkTS Uint8Array对象。
@@ -251,6 +260,7 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名  | 类型   | 必填 | 说明                                        |
 | ------- | ------ | ---- | ------------------------------------------|
 | arrayLike | ArrayLike\<T> | 是 | 用于构造ArrayLike对象。              |
@@ -294,6 +304,7 @@ let array: collections.Uint8Array = collections.Uint8Array.from<string>(
 ```
 
 ## from
+
 static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, number>): Uint8Array
 
 从一个可迭代对象中创建一个ArkTS Uint8Array对象。
@@ -303,6 +314,7 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | -----------------------------------|
 | arrayLike | Iterable\<number> | 是 | 用于构造的可迭代对象。   |
@@ -444,6 +456,7 @@ console.info(stringArray); // 预期输出：100,110,120
 ```
 
 ## copyWithin
+
 copyWithin(target: number, start: number, end?: number): Uint8Array
 
 从ArkTS Uint8Array指定范围内的元素依次拷贝到目标位置。
@@ -485,6 +498,7 @@ let copied: collections.Uint8Array = array.copyWithin(3, 1, 3);
 ```
 
 ## some
+
 some(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
 测试ArkTS Uint8Array中的是否存在元素满足指定条件。
@@ -524,6 +538,7 @@ uint8Array.some((element: number) => element < 1); // false
 ```
 
 ## every
+
 every(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
 测试ArkTS Uint8Array中的所有元素是否满足指定条件。
@@ -563,6 +578,7 @@ uint8Array.every((element: number) => element > 1);  // true
 ```
 
 ## fill
+
 fill(value: number, start?: number, end?: number): Uint8Array
 
 使用特定值填充ArkTS Uint8Array指定范围的全部元素。
@@ -605,6 +621,7 @@ new collections.Uint8Array(arrayLike).fill(4, 1, 2); // Uint8Array [1, 4, 3]
 ```
 
 ## filter
+
 filter(predicate: TypedArrayPredicateFn\<number, Uint8Array>): Uint8Array
 
 返回一个新ArkTS Uint8Array，其包含满足指定条件的所有元素。
@@ -644,6 +661,7 @@ let filtered: collections.Uint8Array = array.filter((element: number) => element
 ```
 
 ## find
+
 find(predicate: TypedArrayPredicateFn\<number, Uint8Array>): number | undefined
 
 返回ArkTS Uint8Array中第一个满足指定条件的元素的值，如果所有元素都不满足，则返回undefined。
@@ -683,6 +701,7 @@ array.find((element: number) => element > 4); // undefined
 ```
 
 ## findIndex
+
 findIndex(predicate: TypedArrayPredicateFn\<number, Uint8Array>): number
 
 返回ArkTS Uint8Array中第一个满足指定条件的元素索引，如果所有元素都不满足，则返回-1。
@@ -721,6 +740,7 @@ let foundIndex: number = array.findIndex((element: number) => element % 2 === 0)
 ```
 
 ## forEach
+
 forEach(callbackFn: TypedArrayForEachCallback\<number, Uint8Array>): void
 
 对ArkTS Uint8Array中的每个元素执行提供的回调函数。
@@ -756,6 +776,7 @@ uint8Array.forEach((value: number, index: number, array: collections.Uint8Array)
 ```
 
 ## indexOf
+
 indexOf(searchElement: number, fromIndex?: number): number
 
 返回在ArkTS Uint8Array中给定元素的第一个索引，如果不存在，则返回-1。
@@ -840,6 +861,7 @@ console.info(array.lastIndexOf(9, -2) + ''); // 预期输出：-1
 ```
 
 ## join
+
 join(separator?: string): string
 
 将ArkTS Uint8Array的所有元素拼接成一个字符串，元素之间使用指定的分隔符分隔。
@@ -878,6 +900,7 @@ let joined: string = array.join('-'); // "1-2-3-4-5"
 ```
 
 ## map
+
 map(callbackFn: TypedArrayMapCallback\<number, Uint8Array>): Uint8Array
 
 对ArkTS Uint8Array中的每个元素应用指定的回调函数，并使用结果创建一个新的ArkTS Uint8Array对象。
@@ -887,6 +910,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Uint8Array>): Uint8Array
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint8Array> | 是  | 回调函数。 |
@@ -916,6 +940,7 @@ const mapped: collections.Uint8Array = array.map(Math.sqrt); // Uint8Array [5, 6
 ```
 
 ## reduce
+
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>): number
 
 对ArkTS Uint8Array中的每个元素执行归约函数，并返回最终的归约结果。
@@ -925,6 +950,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>): numbe
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名     | 类型   | 必填 |  说明     |
 | ---------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Uint8Array> | 是 | 归约函数。 |
@@ -964,6 +990,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>): 
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名     | 类型   | 必填 |  说明     |
 | ---------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Uint8Array> | 是 | 归约函数。 |
@@ -993,6 +1020,7 @@ console.info(reducedValue + ''); // 预期输出： 15
 ```
 
 ## reduce
+
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>, initialValue: number): number
 
 对ArkTS Uint8Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
@@ -1002,6 +1030,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>, initia
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Uint8Array> | 是  | 归约函数。 |
@@ -1043,6 +1072,7 @@ reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint8A
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<U, number, Uint8Array> | 是  | 归约函数。 |
@@ -1073,6 +1103,7 @@ console.info(reducedValue + ''); // 预期输出： 16
 ```
 
 ## reduce
+
 reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Uint8Array>, initialValue: U): U
 
 对ArkTS Uint8Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
@@ -1113,6 +1144,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ```
 
 ## reverse
+
 reverse(): Uint8Array
 
 反转ArkTS Uint8Array。
@@ -1144,6 +1176,7 @@ let reversed: collections.Uint8Array = array.reverse(); // Uint8Array [5, 4, 3, 
 ```
 
 ## set
+
 set(array: ArrayLike\<number>, offset?: number): void
 
 将传入的ArrayLike元素依次写入到指定的起始位置。
@@ -1153,6 +1186,7 @@ set(array: ArrayLike\<number>, offset?: number): void
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | 是  | 用于设置的ArrayLike对象。|
@@ -1177,6 +1211,7 @@ array.set([1, 2, 3], 3); // Uint8Array [0, 0, 0, 1, 2, 3, 0, 0]
 ```
 
 ## slice
+
 slice(start?: number, end?: number): Uint8Array
 
 返回一个新的ArkTS Uint8Array对象，其包含原ArkTS Uint8Array指定范围的内容。
@@ -1218,6 +1253,7 @@ array.slice(-2); // Uint8Array [4, 5]
 ```
 
 ## sort
+
 sort(compareFn?: TypedArrayCompareFn\<number>): Uint8Array
 
 对ArkTS Uint8Array进行排序，并返回排序后的ArkTS Uint8Array对象。
@@ -1258,6 +1294,7 @@ array.sort((a: number, b: number) => b - a); // Uint8Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
+
 subarray(begin?: number, end?: number): Uint8Array
 
 从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Uint8Array对象。
@@ -1298,6 +1335,7 @@ subArray.set([10, 20, 30]); // Uint8Array [10, 20, 30, 4, 5]
 ```
 
 ## at
+
 at(index: number): number | undefined
 
 返回指定下标的元素，如果不存在，则返回undefined。
@@ -1307,6 +1345,7 @@ at(index: number): number | undefined
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | index  | number | 是   | 要返回的Array元素的索引（从零开始），取值为整数。如果`index < 0`，则会访问`index + Uint8Array.length`位置的元素。|
@@ -1337,6 +1376,7 @@ console.info("element: " + array.at(6));  // element: undefined
 ```
 
 ## includes
+
 includes(searchElement: number, fromIndex?: number): boolean
 
 判断ArkTS Uint8Array是否包含特定元素。
@@ -1346,6 +1386,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | --------------------------------------- |
 | searchElement  | number | 是   | 待搜索的元素。 |
@@ -1378,6 +1419,7 @@ console.info("includes: " + array.includes(3, 3)); // includes: false
 ```
 
 ## entries
+
 entries(): IterableIterator\<[number, number]>
 
 返回一个新的迭代器对象，该对象包含ArkTS Uint8Array中每个元素的键值对。
@@ -1412,6 +1454,7 @@ console.info("value: " + iterator.next().value); // value: 2,33
 ```
 
 ## keys
+
 keys(): IterableIterator\<number>
 
 返回一个新的迭代器对象，该对象包含ArkTS Uint8Array中每个元素的键（下标）。
@@ -1446,6 +1489,7 @@ for (const key of iterator) {
 ```
 
 ## values
+
 values(): IterableIterator\<number>
 
 返回一个新的迭代器对象，该对象包含ArkTS Uint8Array中每个元素的值。

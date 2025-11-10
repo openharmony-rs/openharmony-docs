@@ -22,6 +22,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_RESTARTED"
@@ -42,6 +46,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_DATA_CLEARED"
@@ -57,9 +65,13 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的快速修复事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的安快速修复事件。
+> 三方应用只能监听自身应用的快速修复事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -67,13 +79,17 @@
 
 
 
-### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+<sup>
+### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
 表示撤销快速修复。
 
 在设备上撤销快速修复时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -95,6 +111,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_ADDED"
@@ -114,6 +134,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_REMOVED"
@@ -125,6 +149,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.BUNDLE_REMOVED"
@@ -135,6 +163,10 @@
 表示现有的应用程序包从设备上完全删除的事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -155,6 +187,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_CHANGED"
@@ -174,6 +210,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_CACHE_CLEARED"
@@ -184,6 +224,10 @@
 表示包已经被挂起。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -197,6 +241,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.MY_PACKAGE_SUSPENDED"
@@ -207,6 +255,10 @@
 发送到已被系统解除挂起的包。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -222,6 +274,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.MANAGE_PACKAGE_STORAGE"
@@ -230,13 +286,17 @@
 
 ## Account Kit
 
-### COMMON_EVENT_MINORSMODE_ON<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_ON<sup>12+</sup>
 
 表示用户开启未成年人模式。
 
 在设备上开启未成年人模式，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -246,13 +306,17 @@
 
 
 
-### COMMON_EVENT_MINORSMODE_OFF<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_OFF<sup>12+</sup>
 
 表示用户关闭未成年人模式。
 
 在设备上关闭未成年人模式，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -272,6 +336,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -290,6 +358,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 **取值：** "usual.event.SLOT_CHANGE"
@@ -304,6 +376,10 @@
 如果用户一段时间没有使用设备且屏幕已经关闭情况下，系统延迟后台应用程序CPU和网络访问，将会触发公共事件服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -320,6 +396,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.hardware.usb.action.USB_STATE"
@@ -332,6 +412,10 @@
 当USB的端口状态发生变化，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -346,6 +430,11 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
@@ -358,6 +447,10 @@
 当USB断开时状态发生变化，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -372,6 +465,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.TIME_CHANGED"
@@ -385,6 +482,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.TIME_TICK"
@@ -397,6 +498,10 @@
 当系统时区更改时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -416,6 +521,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.USER_INFO_UPDATED"
@@ -428,6 +537,10 @@
 切换到带有锁屏密码的用户，并且首次解锁会发出触发事件通知服务发布该系统公共事件，事件携带标识该用户的系统账号ID。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -443,6 +556,10 @@
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -461,6 +578,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -478,6 +599,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -490,11 +615,15 @@
 
 表示分布式账号注销的动作。
 
-分布式账号注销成功会时触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号注销成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -511,6 +640,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -525,6 +658,10 @@
 当锁屏解锁时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -555,6 +692,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.BATTERY_CHANGED"
@@ -567,6 +708,10 @@
 当电池电量低于设备设置的低电量百分比值时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备设置低电量百分比值请参考[电量等级定制开发指导](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md)。<!--DelEnd-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -582,6 +727,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.BATTERY_OKAY"
@@ -594,6 +743,10 @@
 当设备连接到外部可识别的充电器类型充电时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -608,6 +761,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.POWER_DISCONNECTED"
@@ -620,6 +777,10 @@
 当系统停止为电池充电时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -634,19 +795,27 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CHARGING"
 
 
 
-### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
 表示设备进入充电空闲模式的公共事件的动作。
 
 当设备处于空闲、正在充电并且温升可接受的一种状态时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -661,6 +830,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.SHUTDOWN"
@@ -673,6 +846,10 @@
 当由电源服务发起的设备灭屏完成时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -687,6 +864,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.SCREEN_ON"
@@ -699,6 +880,10 @@
 当系统节能模式更改时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -713,12 +898,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.THERMAL_LEVEL_CHANGED"
 
 
-### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+</sup>
 
 表示设备即将进入强制睡眠模式的公共事件的动作。
 
@@ -727,11 +916,15 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.ENTER_FORCE_SLEEP"
 
-### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+</sup>
 
 表示设备退出强制睡眠模式的公共事件的动作。
 
@@ -740,11 +933,15 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.EXIT_FORCE_SLEEP"
 
-### COMMON_EVENT_ENTER_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_ENTER_HIBERNATE<sup>15+</sup>
 
 表示设备即将进入休眠模式的公共事件的动作。
 
@@ -752,17 +949,25 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.ENTER_HIBERNATE"
 
-### COMMON_EVENT_EXIT_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_EXIT_HIBERNATE<sup>15+</sup>
 
 表示设备退出休眠模式的公共事件的动作。
 
 当设备退出休眠模式时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -784,6 +989,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
@@ -797,6 +1006,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
@@ -809,6 +1022,10 @@
 当检测到NFC场强离开时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -825,6 +1042,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.wifi.POWER_STATE"
@@ -838,10 +1059,13 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.LOCATION
 
 **取值：** "usual.event.wifi.SCAN_FINISHED"
-
 
 ### COMMON_EVENT_WIFI_SCAN_STATE
 
@@ -855,8 +1079,6 @@ Wi-Fi状态变化。
 
 **取值：** "usual.event.wifi.SCAN_STATE"
 
-
-
 ### COMMON_EVENT_WIFI_RSSI_VALUE
 
   表示Wi-Fi信号强度（RSSI）改变。
@@ -864,6 +1086,10 @@ Wi-Fi状态变化。
   当Wi-Fi信号强度（RSSI）发生变化，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -880,6 +1106,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.wifi.CONN_STATE"
@@ -895,6 +1125,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.wifi.HOTSPOT_STATE"
@@ -907,6 +1141,10 @@ Wi-Fi状态变化。
 当客户端加入当前设备Wi-Fi热点，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -922,6 +1160,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **取值：** "usual.event.wifi.WIFI_HS_STA_LEAVE"
@@ -936,6 +1178,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅方需要的权限：** 无
 
 **取值：** "usual.event.wifi.mplink.STATE_CHANGE"
@@ -949,6 +1195,10 @@ Wi-Fi状态变化。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO和ohos.permission.LOCATION
 
@@ -965,6 +1215,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **取值：** "usual.event.wifi.p2p.STATE_CHANGE"
@@ -977,6 +1231,10 @@ Wi-Fi状态变化。
 当Wi-Fi P2P对等体状态变化，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -991,6 +1249,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **取值：** "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
@@ -1004,6 +1266,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **取值：** "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
@@ -1016,6 +1282,10 @@ Wi-Fi状态变化。
 当Wi-Fi P2P群组信息发生变化，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1032,6 +1302,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.MANAGED_BROWSER_POLICY_CHANGED"
@@ -1046,6 +1320,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.LOCALE_CHANGED
@@ -1053,7 +1331,7 @@ Wi-Fi状态变化。
 
 ## Network Kit
 
-### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+</sup>
 
 指示网络连接状态变化。
 
@@ -1069,6 +1347,10 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1076,7 +1358,7 @@ Wi-Fi状态变化。
 **取值：** usual.event.CONNECTIVITY_CHANGE
 
 
-### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
 
 指示飞行模式状态变化。
 
@@ -1084,18 +1366,26 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.AIRPLANE_MODE
 
 
-### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
 
 指示网络Http代理配置信息更新。
 
 在系统全局代理或者各类网络（以太网、Wi-Fi、蜂窝等）Http代理配置信息发生变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1107,7 +1397,7 @@ Wi-Fi状态变化。
 
 电话服务子系统面向应用发布如下系统公共事件。
 
-### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+</sup>
 
 提示SIM卡状态更新。
 
@@ -1115,13 +1405,17 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.SIM_STATE_CHANGED
 
 
 
-### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
 
 提示呼叫状态更新。
 
@@ -1129,13 +1423,17 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
 **取值：** usual.event.CALL_STATE_CHANGED
 
 
 
-### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
 
 提示网络状态更新。
 
@@ -1143,18 +1441,26 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.NETWORK_STATE_CHANGED
 
 
-### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
 
 提示信号信息更新。
 
 在设备信号信息更新时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1165,11 +1471,15 @@ Wi-Fi状态变化。
 ## Store Kit
 Store Kit面向应用发布如下系统公共事件。
 
-### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+<sup>
+### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
 表示隐私签署结果的公共事件。
 隐私弹框场景下，用户点击同意，会发送此事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1188,6 +1498,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_FIRST_LAUNCH"
@@ -1198,6 +1512,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）当一个包需要被验证时，由系统包验证者发送。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1210,6 +1528,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_VERIFIED"
@@ -1219,6 +1541,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示设备上安装了新版本的应用程序包并替换了旧版本的动作。数据包含包的名称。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1231,6 +1557,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.MY_PACKAGE_REPLACED"
@@ -1242,6 +1572,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGES_UNSUSPENDED"
@@ -1252,6 +1586,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示用户关闭临时系统对话框的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1265,6 +1603,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.UID_REMOVED"
@@ -1275,6 +1617,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示安装在外部存储上的应用程序对系统可用的公共事件的操作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1287,6 +1633,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
@@ -1297,6 +1647,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示设备状态（例如，方向和区域设置）已更改的公共事件的操作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1309,6 +1663,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.DRIVE_MODE"
@@ -1320,6 +1678,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.HOME_MODE"
@@ -1330,6 +1692,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示系统处于办公模式的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1343,6 +1709,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.USER_STARTED"
@@ -1354,6 +1724,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.USER_BACKGROUND"
@@ -1363,6 +1737,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示要启动用户的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -1375,6 +1753,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.USER_STOPPING"
@@ -1384,6 +1766,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示用户已停止的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1396,6 +1782,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **取值：** "usual.event.data.DISK_BAD_REMOVAL"
@@ -1403,9 +1793,13 @@ Store Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_DISK_UNMOUNTED
 
-（预留事件，暂未支持）部存储设备状态变更为卸载时发送此公共事件。
+（预留事件，暂未支持）外部存储设备状态变更为卸载时发送此公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1417,6 +1811,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）外部存储设备状态变更为挂载时发送此公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1430,6 +1828,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **取值：** "usual.event.data.DISK_REMOVED"
@@ -1440,6 +1842,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）外部存储设备状态变更为插卡情况下无法挂载时发送此公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1452,6 +1858,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **取值：** "usual.event.data.DISK_EJECT"
@@ -1463,6 +1873,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.DATE_CHANGED
@@ -1472,6 +1886,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示已连接USB附件的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1484,6 +1902,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.data.DISK_MOUNTED"
@@ -1492,6 +1914,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）蓝牙免提通信连接状态公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1504,6 +1930,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
@@ -1513,6 +1943,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙A2DP连接状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1526,6 +1960,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
@@ -1538,6 +1976,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
@@ -1548,6 +1990,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙A2DP的AVRCP连接状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1560,6 +2006,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
@@ -1570,6 +2020,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙A2DP音频编解码状态更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1584,9 +2038,13 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.USER_FOREGROUND“
+**取值：** "usual.event.USER_FOREGROUND"
 
 
 
@@ -1595,6 +2053,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示发现远程蓝牙设备的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.LOCATION和ohos.permission.USE_BLUETOOTH
 
@@ -1608,6 +2070,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
@@ -1619,6 +2085,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
@@ -1628,6 +2098,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示低电平（ACL）连接已从远程蓝牙设备断开的普通事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1640,6 +2114,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.remotedevice.NAME_UPDATE"
@@ -1649,6 +2127,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）远程蓝牙设备连接状态更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1661,6 +2143,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
@@ -1670,6 +2156,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）远程蓝牙设备SDP状态公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1681,6 +2171,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.remotedevice.UUID_VALUE"
@@ -1690,6 +2184,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示远程蓝牙设备配对请求的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.DISCOVER_BLUETOOTH
 
@@ -1701,6 +2199,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
@@ -1710,6 +2212,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示远程蓝牙设备连接请求的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1721,6 +2227,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
@@ -1730,6 +2240,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示取消与远程蓝牙设备的连接的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1741,6 +2255,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
@@ -1750,6 +2268,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙免提音频状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1761,6 +2283,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
@@ -1770,6 +2296,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙免提呼叫状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1781,6 +2311,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.host.STATE_UPDATE"
@@ -1791,6 +2325,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.bluetooth.host.REQ_DISCOVERABLE"
@@ -1800,6 +2338,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示用户打开蓝牙请求的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1812,6 +2354,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.host.REQ_DISABLE"
@@ -1821,6 +2367,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）设备蓝牙扫描模式更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1834,15 +2384,23 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.host.DISCOVERY_STARTED"
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED
-设备上蓝牙扫描完成的公共事件的动作。
+表示设备上蓝牙扫描完成的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -1850,9 +2408,13 @@ Store Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE
-指示设备蓝牙适配器名称已更改的公共事件的操作。
+指示蓝牙适配器设备名称已更改的公共事件操作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -1863,6 +2425,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙A2DP宿连接状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1875,6 +2441,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
@@ -1884,6 +2454,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示蓝牙A2DP宿的音频状态已更改的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1895,6 +2469,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
 **取值：** "usual.event.ABILITY_ADDED"
@@ -1904,6 +2482,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示已删除能力的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -1916,6 +2498,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
 **取值：** "usual.event.ABILITY_UPDATED"
@@ -1926,15 +2512,23 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.location.MODE_STATE_CHANGED"
 
 
 ### COMMON_EVENT_IVI_SLEEP
-（预留事件，暂未支持）表示表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的动作。
+（预留事件，暂未支持）表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1947,6 +2541,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_PAUSE"
@@ -1958,6 +2556,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_STANDBY"
@@ -1968,6 +2570,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_LASTMODE_SAVE"
@@ -1977,6 +2583,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示车辆电源系统电压异常的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -1989,6 +2599,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_HIGH_TEMPERATURE"
@@ -1998,6 +2612,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示IVI温度极高。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -2011,6 +2629,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_TEMPERATURE_ABNORMAL"
@@ -2020,6 +2642,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示车辆电源系统电压恢复正常的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -2031,6 +2657,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "common.event.IVI_TEMPERATURE_RECOVERY"
@@ -2040,6 +2670,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）表示电池服务处于活动状态的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -2052,6 +2686,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_APP_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
@@ -2061,6 +2699,10 @@ Store Kit面向应用发布如下系统公共事件。
 （预留事件，暂未支持）删除账户的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -2073,6 +2715,10 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
 **取值：** "usual.event.data.FOUNDATION_READY"
@@ -2084,8 +2730,24 @@ Store Kit面向应用发布如下系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.SPN_INFO_CHANGED"
 <!--no_check-->
  
+### COMMON_EVENT_LOCKED_BOOT_COMPLETED
+（预留事件，暂未支持）表示设备完成启动过程但仍处于锁定状态
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+ 
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.LOCKED_BOOT_COMPLETED"

@@ -4,19 +4,27 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - onClick以及旋转、捏合手势经过自定义事件分发之后可能会因为未命中触摸热区导致事件不响应。
 
 ## onChildTouchTest
 
-onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
+ArkTS-Dyn: onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
+
+ArkTS-Sta: onChildTouchTest(event: ((value: Array<TouchTestInfo>) => TouchResult) | undefined): this
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -28,7 +36,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 >**说明：**
 >

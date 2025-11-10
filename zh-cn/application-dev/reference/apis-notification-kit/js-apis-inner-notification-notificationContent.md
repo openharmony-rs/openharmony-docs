@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationContent
 
@@ -14,13 +15,13 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 11开始不再维护，建议使用notificationContentType代替。       |
-| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | 否  | 是  | 通知内容类型。       |
-| normal         | [NotificationBasicContent](#notificationbasiccontent)                      | 否  | 是  | 基本类型通知内容。   |
-| longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | 否  | 是  | 长文本类型通知内容。 |
-| multiLine      | [NotificationMultiLineContent](#notificationmultilinecontent)              | 否  | 是  | 多行类型通知内容。   |
-| picture        | [NotificationPictureContent](#notificationpicturecontent)                  | 否  | 是  | 图片类型通知内容。   |
-| systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | 否  | 是  | 系统实况窗类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。|
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 11开始不再维护，建议使用notificationContentType代替。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：7       |
+| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | 否  | 是  | 通知内容类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20       |
+| normal         | [NotificationBasicContent](#notificationbasiccontent)                      | 否  | 是  | 基本类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20   |
+| longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | 否  | 是  | 长文本类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
+| multiLine      | [NotificationMultiLineContent](#notificationmultilinecontent)              | 否  | 是  | 多行类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20   |
+| picture        | [NotificationPictureContent](#notificationpicturecontent)                  | 否  | 是  | 图片类型通知内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20   |
+| systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | 否  | 是  | 系统实况窗类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20|
 
 ## NotificationBasicContent
 
@@ -30,10 +31,10 @@
 
 | 名称           | 类型    | 只读 | 可选 | 说明                               |
 | -------------- | ------ | ---- |-----| ---------------------------------- |
-| title          | string |  否  |  否  | 通知标题（不可为空字符串，大小不超过1024字节，超出部分会被截断）。         |
-| text           | string |  否  |  否  | 通知内容（不可为空字符串，大小不超过3072字节，超出部分会被截断）。         |
-| additionalText | string |  否  |  是  | 通知附加内容，是对通知内容的补充（大小不超过3072字节，超出部分会被截断）。   |
-| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  |  是  | 通知在锁屏界面显示的图片。当前仅支持实况窗类型通知。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。   |
+| title          | string |  否  |  否  | 通知标题（不可为空字符串，大小不超过1024字节，超出部分会被截断）。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20         |
+| text           | string |  否  |  否  | 通知内容（不可为空字符串，大小不超过3072字节，超出部分会被截断）。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20         |
+| additionalText | string |  否  |  是  | 通知附加内容，是对通知内容的补充（大小不超过3072字节，超出部分会被截断）。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20   |
+| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  |  是  | 通知在锁屏界面显示的图片。当前仅支持实况窗类型通知。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20   |
 
 ## NotificationLongTextContent
 
@@ -44,6 +45,10 @@
 > 实际显示效果依赖于设备能力和通知中心UI样式。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
@@ -64,6 +69,10 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 | 名称           | 类型            | 只读 | 可选 | 说明                             |
 | -------------- | --------------- | --- | --- | -------------------------------- |
 | briefText      | string          | 否  | 否  | 通知概要内容，是对通知内容的总结（不可为空字符串，大小不超过1024字节，超出部分会被截断）。 |
@@ -81,6 +90,10 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 | 名称           | 类型                                          | 只读 | 可选 | 说明                               |
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
 | briefText      | string                                       |  否  | 否  | 通知概要内容，是对通知内容的总结（不可为空字符串，大小不超过1024字节，超出部分会被截断）。 |
@@ -94,9 +107,13 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称                         | 类型                                             | 只读| 可选 | 说明                               |
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
-| typeCode<sup>11+</sup>       | number                                          | 否  | 否  | 类型标识符，标记调用方业务类型。       |
+| typeCode<sup>11+</sup>       | ArkTS-Dyn: number<br/>ArkTS-Sta: int            | 否  | 否  | 类型标识符，标记调用方业务类型。       |
 | capsule<sup>11+</sup>        | [NotificationCapsule](#notificationcapsule11)   | 否  | 是  | 实况通知的胶囊。                     |
 | button<sup>11+</sup>         | [NotificationButton](#notificationbutton11)     | 否  | 是  | 实况通知的按钮。                     |
 | time<sup>11+</sup>           | [NotificationTime](#notificationtime11)         | 否  | 是  | 实况通知的时间。                     |
@@ -108,6 +125,10 @@
 描述通知胶囊。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
 
 | 名称            | 类型                                          | 只读 | 可选 | 说明                            |
 | --------------- | -------------------------------------------- | --- | --- | -------------------------------- |
@@ -124,9 +145,9 @@
 
 | 名称  | 类型                                                   | 只读 | 可选 | 说明             |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
-| names | Array\<string\>                                       | 否  |  是 | 按钮名称（最多支持3个）。   |
-| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图片（最多支持3个）。   |
-| iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | 否  |  是 | 按钮资源（最多支持3个）。   |
+| names | Array\<string\>                                       | 否  |  是 | 按钮名称（最多支持3个）。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20   |
+| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | 否  |  是 | 按钮图片（最多支持3个）。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20   |
+| iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | 否  |  是 | 按钮资源（最多支持3个）。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20   |
 
 ## NotificationTime<sup>11+</sup>
 
@@ -134,9 +155,13 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称           | 类型              | 只读 | 可选 | 说明                             |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
-| initialTime    | number           | 否  | 是  | 计时起始时间。单位：ms。                |
+| initialTime    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 计时起始时间。单位：ms。                |
 | isCountDown    | boolean          | 否  | 是  | 是否倒计时。默认为false。<br> - true：是。<br> - false：否。 |
 | isPaused       | boolean          | 否  | 是  | 是否暂停。默认为false。<br> - true：是。<br> - false：否。   |
 | isInTitle      | boolean          | 否  | 是  | 时间是否展示在title中。默认为false。<br> - true：是。<br> - false：否。|
@@ -160,8 +185,12 @@ time: {
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 | 名称           | 类型            | 只读 | 可选 | 说明                             |
 | -------------- | --------------- | --- | --- | -------------------------------- |
-| maxValue        | number         | 否  | 是  | 进度最大值。                       |
-| currentValue    | number         | 否  | 是  | 进度当前值。                       |
+| maxValue        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 进度最大值。                       |
+| currentValue    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 进度当前值。                       |
 | isPercentage    | boolean        | 否  | 是  | 是否按百分比展示。默认为false。<br> - true：是。<br> - false：否。|

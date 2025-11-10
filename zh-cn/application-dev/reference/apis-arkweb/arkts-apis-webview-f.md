@@ -24,7 +24,7 @@ once(type: string, callback: Callback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

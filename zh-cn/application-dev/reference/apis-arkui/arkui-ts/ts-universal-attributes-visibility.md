@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## visibility
 
-visibility(value: Visibility): T
+ArkTS-Dyn: visibility(value: Visibility): T
+
+ArkTS-Sta: visibility(value: Visibility | undefined): this
 
 控制组件的显示或隐藏。当未设置visibility时，组件默认为显示。
 
@@ -18,18 +22,21 @@ visibility(value: Visibility): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Visibility](ts-appendix-enums.md#visibility) | 是   | 控制当前组件显示或隐藏。根据具体场景需要可使用[条件渲染](../../../ui/state-management/arkts-rendering-control-ifelse.md)代替。 |
+| value  | ArkTS-Dyn: [Visibility](ts-appendix-enums.md#visibility)<br/>ArkTS-Sta: [Visibility](ts-appendix-enums.md#visibility)&nbsp;\|&nbsp;undefined | 是   | 控制当前组件显示或隐藏。根据具体场景需要可使用[条件渲染](../../../ui/state-management/arkts-rendering-control-ifelse.md)代替。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
-
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 示例
 
