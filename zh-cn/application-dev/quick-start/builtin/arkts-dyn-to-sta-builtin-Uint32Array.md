@@ -43,7 +43,10 @@
 **示例：**  
   ```typescript
   let a = new Uint32Array(3);
-  let iter = a.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of a) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 建议仅使用for...of访问迭代器，不要显示访问迭代器。
@@ -98,7 +101,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `every(predicate: (value: number, index: number, array: Uint32Array) => boolean): boolean`
+  `every(predicate: (value: number, index: int, array: Uint32Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -109,7 +112,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 predicate函数返回值说明：
@@ -130,7 +133,7 @@ predicate函数返回值说明：
       this.base = base;
     }
     callEvery(arr: Uint32Array) {
-      return arr.every((value: number, index: number, arr: Uint32Array)=>{return value < this.base})
+      return arr.every((value: number, index: int, arr: Uint32Array)=>{return value < this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -192,7 +195,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `filter(predicate: (value: number, index: number, array: Uint32Array) => boolean): Uint32Array`
+  `filter(predicate: (value: number, index: int, array: Uint32Array) => boolean): Uint32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -203,7 +206,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 predicate函数返回值说明：
@@ -224,7 +227,7 @@ predicate函数返回值说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.filter((value: number, index: number, arr: Uint32Array)=>{return value < this.base})
+      return arr.filter((value: number, index: int, arr: Uint32Array)=>{return value < this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -286,7 +289,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `find(predicate: (value: number, index: number, obj: Uint32Array) => boolean): number | undefined`
+  `find(predicate: (value: number, index: int, obj: Uint32Array) => boolean): number | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -297,7 +300,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | obj | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 predicate函数返回值说明：
@@ -318,7 +321,7 @@ predicate函数返回值说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.find((value: number, index: number, arr: Uint32Array)=>{return value >= this.base})
+      return arr.find((value: number, index: int, arr: Uint32Array)=>{return value >= this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -380,7 +383,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `findIndex(predicate: (value: number, index: number, obj: Uint32Array) => boolean): number`
+  `findIndex(predicate: (value: number, index: int, obj: Uint32Array) => boolean): int`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -391,7 +394,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | obj | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 predicate函数返回值说明：
@@ -402,7 +405,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回第一个符合条件的元素的索引，否则返回-1表示未找到满足的元素。 |
+  | int | 返回第一个符合条件的元素的索引，否则返回-1表示未找到满足的元素。 |
 
 **示例：**
   ```typescript
@@ -412,7 +415,7 @@ predicate函数返回值说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.findIndex((value: number, index: number, arr: Uint32Array)=>{return value >= this.base})
+      return arr.findIndex((value: number, index: int, arr: Uint32Array)=>{return value >= this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -464,7 +467,7 @@ callbackfn函数参数说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `forEach(callbackfn: (value: number, index: number, array: Uint32Array) => void): void`
+  `forEach(callbackfn: (value: number, index: int, array: Uint32Array) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -475,7 +478,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 **示例：**
@@ -486,7 +489,7 @@ callbackfn函数参数说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.forEach((value: number, index: number, arr: Uint32Array)=>{console.info(value + this.base)})
+      return arr.forEach((value: number, index: int, arr: Uint32Array)=>{console.info(value + this.base)})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -548,7 +551,7 @@ callbackfn函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `map(callbackfn: (value: number, index: number, array: Uint32Array) => number): Uint32Array`
+  `map(callbackfn: (value: number, index: int, array: Uint32Array) => number): Uint32Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -559,7 +562,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 callbackfn函数返回值说明：
@@ -580,7 +583,7 @@ callbackfn函数返回值说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.map((value: number, index: number, arr: Uint32Array)=>{return value + this.base})
+      return arr.map((value: number, index: int, arr: Uint32Array)=>{return value + this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);
@@ -642,7 +645,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `some(predicate: (value: number, index: number, array: Uint32Array) => boolean): boolean`
+  `some(predicate: (value: number, index: int, array: Uint32Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -653,7 +656,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | Uint32Array | 是 | 调用的原始Uint32Array对象。 |
 
 predicate函数返回值说明：
@@ -674,7 +677,7 @@ predicate函数返回值说明：
       this.base = base;
     }
     call(arr: Uint32Array) {
-      return arr.some((value: number, index: number, arr: Uint32Array)=>{return value > this.base})
+      return arr.some((value: number, index: int, arr: Uint32Array)=>{return value > this.base})
     }
   }
   let arr: Uint32Array = new Uint32Array([1, 2, 3]);

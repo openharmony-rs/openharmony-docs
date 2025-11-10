@@ -26,7 +26,7 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 | 装饰器参数          | 无。                                                         |
 | 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型)、[Date](#装饰date类型)、[Map](#装饰map类型)、[Set](#装饰Set类型)等内嵌类型。支持null、undefined以及联合类型。 |
 | 初始化规则          | 定义本地默认值时：<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。<br>未定义本地默认值时：<br>必须从父组件传入变量进行初始化。 |
-| 同步规则            | **在子组件使用时：**<br/>与父组件中传入的变量单向同步。<br/>当父组件传入的变量改变时（非undefined类型）会更新\@PropRef，覆盖\@PropRef在子组件的修改<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、\@Provide。<br/>\@PropRef变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
+| 同步规则            | **在子组件使用时：**<br/>与父组件中传入的变量单向同步。<br/>当父组件传入的变量改变时（非undefined类型）会更新\@PropRef，覆盖\@PropRef在子组件的修改<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、[\@State](./arkts-static-state.md)、[\@Link](./arkts-static-link.md)、\@PropRef、[\@Provide](./arkts-static-provide-and-consume.md)。<br/>\@PropRef变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
 ## 观察变化
 
@@ -54,7 +54,7 @@ import { PropRef } from '@ohos.arkui.stateManagement';
           .onClick((e: ClickEvent) => {
             // 对数据源的更改会同步给子组件
             this.count++;
-            this.message += " World";
+            this.message += ' World';
             this.flag = !this.flag;
         })
         Child({

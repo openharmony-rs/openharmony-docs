@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 管理音频音量和设备。
 
@@ -22,18 +23,38 @@ getAudioScene\(callback: AsyncCallback<AudioScene\>\): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                         |
 | :------- | :-------------------------------------------------- | :--- | :--------------------------- |
-| callback | AsyncCallback<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 是   | 回调函数。当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。 |
+| callback | AsyncCallback<[AudioScene](arkts-apis-audio-e.md#audioscene8)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频场景模式成功，err为undefined，data为获取到的音频场景模式；否则为错误对象。<br>ArkTS-Sta：当获取音频场景模式成功，err为null，data为获取到的音频场景模式；否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
+  if (err) {
+    console.error(`Failed to obtain the audio scene mode. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the audio scene mode is obtained ${value}.`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioScene((err: BusinessError | null, value: audio.AudioScene | undefined) => {
   if (err) {
     console.error(`Failed to obtain the audio scene mode. ${err}`);
     return;
@@ -50,6 +71,10 @@ getAudioScene\(\): Promise<AudioScene\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                          | 说明                         |
@@ -58,12 +83,26 @@ getAudioScene\(\): Promise<AudioScene\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioManager.getAudioScene().then((value: audio.AudioScene) => {
   console.info(`Promise returned to indicate that the audio scene mode is obtained ${value}.`);
 }).catch ((err: BusinessError) => {
+  console.error(`Failed to obtain the audio scene mode ${err}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioScene().then((value: audio.AudioScene) => {
+  console.info(`Promise returned to indicate that the audio scene mode is obtained ${value}.`);
+}).catch(async (err: BusinessError) => {
   console.error(`Failed to obtain the audio scene mode ${err}`);
 });
 ```
@@ -76,6 +115,10 @@ getAudioSceneSync\(\): AudioScene
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                          | 说明                         |
@@ -83,6 +126,22 @@ getAudioSceneSync\(\): AudioScene
 | [AudioScene](arkts-apis-audio-e.md#audioscene8) | 音频场景模式。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: audio.AudioScene = audioManager.getAudioSceneSync();
+  console.info(`indicate that the audio scene mode is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the audio scene mode ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -102,7 +161,11 @@ on(type: 'audioSceneChange', callback: Callback\<AudioScene\>): void
 
 监听音频场景变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -125,7 +188,11 @@ off(type: 'audioSceneChange', callback?: Callback\<AudioScene\>): void
 
 取消监听音频场景变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -158,6 +225,10 @@ getVolumeManager(): AudioVolumeManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                      | 说明                          |
@@ -179,6 +250,10 @@ getStreamManager(): AudioStreamManager
 获取音频流管理器。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -202,6 +277,10 @@ getRoutingManager(): AudioRoutingManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                       | 说明                          |
@@ -224,6 +303,10 @@ getSessionManager(): AudioSessionManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                           | 说明                          |
@@ -245,6 +328,10 @@ getSpatializationManager(): AudioSpatializationManager
 获取空间音频管理器。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -272,7 +359,11 @@ setAudioParameter(key: string, value: string, callback: AsyncCallback&lt;void&gt
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -309,7 +400,11 @@ setAudioParameter(key: string, value: string): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MODIFY_AUDIO_SETTINGS
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -343,7 +438,11 @@ getAudioParameter(key: string, callback: AsyncCallback&lt;string&gt;): void
 > **说明：**
 > 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -377,7 +476,11 @@ getAudioParameter(key: string): Promise&lt;string&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -415,7 +518,11 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -455,7 +562,11 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 仅设置铃声（即volumeType为AudioVolumeType.RINGTONE）在静音和非静音状态切换时需要该权限。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -487,7 +598,11 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -519,7 +634,11 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -550,7 +669,11 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -582,7 +705,11 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -613,7 +740,11 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -645,7 +776,11 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -678,7 +813,11 @@ mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback&lt;void
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -713,7 +852,11 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -730,7 +873,6 @@ mute(volumeType: AudioVolumeType, mute: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-
 ```ts
 audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
   console.info('Promise returned to indicate that the stream is muted.');
@@ -746,7 +888,11 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismute9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -778,7 +924,11 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismute9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -809,7 +959,11 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isActive](arkts-apis-audio-AudioStreamManager.md#isactive9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -841,7 +995,11 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isActive](arkts-apis-audio-AudioStreamManager.md#isactive9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -876,7 +1034,11 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 
 仅在静音和非静音状态切换时需要该权限。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -913,7 +1075,11 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 
 仅在静音和非静音状态切换时需要该权限。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -944,7 +1110,11 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -975,7 +1145,11 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1000,7 +1174,11 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1010,6 +1188,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 | callback   | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | 是   | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1031,7 +1210,11 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1062,7 +1245,11 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1095,7 +1282,11 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise&lt;void&
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1112,7 +1303,6 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise&lt;void&
 
 **示例：**
 
-
 ```ts
 audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(() => {
   console.info('Promise returned to indicate that the device is set to the active status.');
@@ -1128,7 +1318,11 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback&lt;boolean&
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1160,7 +1354,11 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise&lt;boolean&gt;
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1193,7 +1391,11 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限：** ohos.permission.MICROPHONE
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1227,7 +1429,11 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.MICROPHONE
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1260,7 +1466,11 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 
 **需要权限：** ohos.permission.MICROPHONE
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1293,7 +1503,11 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 
 **需要权限：** ohos.permission.MICROPHONE
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1318,7 +1532,11 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction\>): void
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[on('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#ondevicechange9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1347,7 +1565,11 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[off('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#offdevicechange9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1386,7 +1608,11 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback\<InterruptAc
 > **说明：**
 > 从API version 7开始支持，从API version 11开始废弃，建议使用[on('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1428,7 +1654,11 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback\<Interrupt
 > **说明：**
 > 从API version 7开始支持，从API version 11开始废弃，建议使用[off('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

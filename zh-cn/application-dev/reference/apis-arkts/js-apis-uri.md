@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -23,21 +25,21 @@ import { uri } from '@kit.ArkTS';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| scheme | string | 否 | 否 | ArkTS1.1：获取和设置URI的协议部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的协议部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| userInfo | string | 否 | 否 | ArkTS1.1：获取和设置URI的用户信息部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| host | string | 是 | 否 | 获取URI的主机名部分（不带端口），若无此部分则返回null对象。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| port | string | 是 | 否 | 获取URI的端口部分。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| path | string | 否 | 否 | ArkTS1.1：获取和设置URI的路径部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| query | string | 否 | 否 | ArkTS1.1：获取和设置URI的查询部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fragment | string | 否 | 否 | ArkTS1.1：获取和设置URI的片段部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| authority | string | 否 | 否 | ArkTS1.1：获取和设置URI的解码权限组件部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的解码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。 <br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ssp | string | 否 | 否 | ArkTS1.1：获取和设置URI的解码案特定部分（方案特定部分是URI的一部分，它包含了特定于协议或方案的信息）。<br/>ArkTS1.2：获取和设置URI的解码案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| encodedUserInfo<sup>12+</sup>  | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码用户信息部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的编码用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| encodedPath<sup>12+</sup>      | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码路径部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的编码路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| encodedQuery<sup>12+</sup>     | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码查询部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的编码查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| encodedFragment<sup>12+</sup>  | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码片段部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的编码片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| encodedAuthority<sup>12+</sup> | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码权限组件部分，若无此部分则返回null对象。<br/>ArkTS1.2：获取和设置URI的编码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| encodedSSP<sup>12+</sup>       | string | 否   | 否   | ArkTS1.1：获取和设置URI的编码方案特定部分。<br/>ArkTS1.2：获取和设置URI的编码方案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
+| scheme | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的协议部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的协议部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| userInfo | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| host | string | 是 | 否 | 获取URI的主机名部分（不带端口），若无此部分则返回null对象。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| port | string | 是 | 否 | 获取URI的端口部分。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| path | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| query | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| fragment | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| authority | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的解码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。 <br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| ssp | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码案特定部分（方案特定部分是URI的一部分，它包含了特定于协议或方案的信息）。<br/>ArkTS-Sta：获取和设置URI的解码案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedUserInfo<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedPath<sup>12+</sup>      | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedQuery<sup>12+</sup>     | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedFragment<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedAuthority<sup>12+</sup> | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| encodedSSP<sup>12+</sup>       | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码方案特定部分。<br/>ArkTS-Sta：获取和设置URI的编码方案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
 
 ### 命名规则
 
@@ -140,6 +142,10 @@ constructor(uri: string)
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -152,7 +158,7 @@ constructor(uri: string)
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200002 | Invalid uri string. |
 
 **示例：**
@@ -175,6 +181,10 @@ toString(): string
 **系统能力：** SystemCapability.Utils.Lang
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -199,6 +209,10 @@ equalsTo(other: URI): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -217,7 +231,7 @@ equalsTo(other: URI): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -236,6 +250,10 @@ checkIsAbsolute(): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -274,6 +292,10 @@ normalize(): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -305,6 +327,10 @@ checkRelative(): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                       |
@@ -329,6 +355,10 @@ checkOpaque(): boolean
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -355,6 +385,10 @@ checkHierarchical(): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                         |
@@ -372,7 +406,9 @@ console.info(`${uriInstance1.checkHierarchical()}`); // false
 
 ### getQueryValue<sup>12+</sup>
 
-getQueryValue(key:string): string
+ArkTS-Dyn: getQueryValue(key:string): string
+
+ArkTS-Sta: getQueryValue(key:string): string | null
 
 根据给定的查询关键词，从URI查询参数部分中提取出该关键词对应的第一个值，若查询参数中存在已编码过的内容，需将对应Key进行解码后获取Value。
 
@@ -381,6 +417,10 @@ getQueryValue(key:string): string
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -392,7 +432,7 @@ getQueryValue(key:string): string
 
 | 类型   | 说明                          |
 | ------ | ----------------------------- |
-| string | 返回第一个此URI查询参数的值，若未找到对应值则返回null对象。 |
+| ArkTS-Dyn: string <br> ArkTS-Sta: string \| null | 返回第一个此URI查询参数的值，若未找到对应值则返回null对象。 |
 
 **错误码：**
 
@@ -400,7 +440,7 @@ getQueryValue(key:string): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -422,6 +462,10 @@ addQueryValue(key:string, value:string): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -441,7 +485,7 @@ addQueryValue(key:string, value:string): URI
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -461,6 +505,10 @@ addSegment(pathSegment:string): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明               |
@@ -479,7 +527,7 @@ addSegment(pathSegment:string): URI
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -499,6 +547,10 @@ addEncodedSegment(pathSegment:string): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明               |
@@ -517,7 +569,7 @@ addEncodedSegment(pathSegment:string): URI
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -536,6 +588,10 @@ getQueryNames(): string[]
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -563,6 +619,10 @@ getQueryValues(key:string): string[]
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                    |
@@ -581,7 +641,7 @@ getQueryValues(key:string): string[]
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -600,6 +660,10 @@ getBooleanQueryValue(key:string,defaultValue:boolean): boolean
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -620,7 +684,7 @@ getBooleanQueryValue(key:string,defaultValue:boolean): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -647,6 +711,10 @@ clearQuery(): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型 | 说明                                  |
@@ -669,6 +737,10 @@ getLastSegment(): string
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -693,6 +765,10 @@ getSegment(): string[]
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                        |
@@ -716,6 +792,10 @@ createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                            |
@@ -736,7 +816,7 @@ createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 
 **示例：**
 
@@ -755,7 +835,11 @@ equals(other: URI): boolean
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[equalsTo<sup>9+</sup>](#equalsto9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 

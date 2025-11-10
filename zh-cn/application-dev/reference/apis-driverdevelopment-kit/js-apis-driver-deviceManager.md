@@ -14,7 +14,9 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 
 ## deviceManager.queryDevices
 
-queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
+ArkTS-Dyn: queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt;
+
+ArkTS-Sta: queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 获取接入主设备的外部设备列表。如果没有设备接入，那么将会返回一个空的列表。
 
@@ -22,11 +24,16 @@ queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                 |
 | ------- | ------ | ---- | ------------------------------------ |
-| busType | int | 否   | 设备总线类型，不填则查找所有类型设备。 |
+| busType | number | 否   | 设备总线类型，不填则查找所有类型设备。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| busType | int | 否   | 设备总线类型，不填则查找所有类型设备。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 **返回值：**
 
@@ -38,8 +45,8 @@ queryDevices(busType?: int): Array&lt;Readonly&lt;Device&gt;&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
-| 22900001 | ExternalDeviceManager service exception or busType parameter error. |
+| 201      | The permission check failed. <br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20|
+| 22900001 | ExternalDeviceManager service exception or busType parameter error.<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -384,7 +391,9 @@ try {
 ```
 ## deviceManager.bindDriverWithDeviceId<sup>19+</sup>
 
-bindDriverWithDeviceId(deviceId: longr, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+ArkTS-Dyn: bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
+
+ArkTS-Sta: bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback&lt;long&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
 根据queryDevices()返回的设备信息绑定设备。
 
@@ -394,11 +403,16 @@ bindDriverWithDeviceId(deviceId: longr, onDisconnect: AsyncCallback&lt;long&gt;)
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名       | 类型                        | 必填 | 说明                         |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | long                     | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId     | number                     | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| deviceId     | long                     | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | onDisconnect | AsyncCallback&lt;long&gt; | 是   | 绑定设备断开的回调。           |
 
 **返回值：**
@@ -411,9 +425,9 @@ bindDriverWithDeviceId(deviceId: longr, onDisconnect: AsyncCallback&lt;long&gt;)
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201      | The permission check failed.             |
-| 26300001  | ExternalDeviceManager service exception. |
-| 26300002  | The driver service does not allow any client to bind. |
+| 201      | The permission check failed. <br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 26300001  | ExternalDeviceManager service exception.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
+| 26300002  | The driver service does not allow any client to bind.<br>**ArkTS-Dyn起始版本**：19<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -438,7 +452,9 @@ try {
 
 ## deviceManager.unbindDriverWithDeviceId<sup>19+</sup>
 
-unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
+ArkTS-Dyn: unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
 
 解除设备绑定。
 
@@ -446,17 +462,23 @@ unbindDriverWithDeviceId(deviceId: long): Promise&lt;int&gt;
 
 **系统能力：**  SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                           |
 | -------- | ------ | ---- | ------------------------------ |
-| deviceId | long | 是   | 设备ID，通过queryDevices获得。 |
+| deviceId | number | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| deviceId | long | 是   | 设备ID，通过queryDevices获得。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 **返回值：**
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回设备ID。 |
+| Promise&lt;number&gt; | Promise对象，返回设备ID。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
+| Promise&lt;int&gt; | Promise对象，返回设备ID。<br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
 
 **错误码：**
 
@@ -490,10 +512,15 @@ try {
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 | 名称        | 类型                | 必填 | 说明       |
 | ----------- | ------------------- | ---- | ---------- |
 | busType     | [BusType](#bustype) | 是   | 总线类型。 |
-| deviceId    | long             | 是   | 设备ID。   |
+| deviceId    | number             | 是   | 设备ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| deviceId    | long             | 是   | 设备ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | description | string              | 是   | 设备描述。 |
 
 ## USBDevice
@@ -502,8 +529,14 @@ USB设备信息，继承自[Device](#device)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 | 名称      | 类型   | 必填 | 说明                |
 | --------- | ------ | ---- | ------------------- |
+| vendorId  | number | 是   | USB设备Vendor ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| productId |number | 是   | USB设备Product ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | vendorId  | int | 是   | USB设备Vendor ID。  |
 | productId |int | 是   | USB设备Product ID。 |
 
@@ -523,7 +556,12 @@ USB设备信息，继承自[Device](#device)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 | 名称      | 类型   | 必填 | 说明                |
 | --------- | ------ | ---- | ------------------- |
-| deviceId<sup>11+</sup>  | number | 是   | 设备ID。  |
+| deviceId<sup>11+</sup>  | number | 是   | 设备ID。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| deviceId<sup>11+</sup>  | long | 是   | 设备ID。  <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | remote<sup>11+</sup> | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 是   | 远程驱动程序对象。 |

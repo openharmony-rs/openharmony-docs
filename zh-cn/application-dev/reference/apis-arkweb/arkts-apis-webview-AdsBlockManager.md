@@ -106,7 +106,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -244,7 +244,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -378,7 +378,7 @@ static clearAdsBlockDisallowedList(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -504,7 +504,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -648,7 +648,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -782,7 +782,7 @@ static clearAdsBlockAllowedList(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 

@@ -69,8 +69,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.isSharingSupported((error: BusinessError<void>|null, data: boolean|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -133,10 +133,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .isSharingSupported()
   .then((data: boolean) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -151,6 +151,10 @@ isSharing(callback: AsyncCallback\<boolean>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -170,6 +174,8 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -180,7 +186,19 @@ sharing.isSharing((error: BusinessError, data: boolean) => {
 });
 ```
 
-## sharing.isSharing
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+sharing.isSharing((error: BusinessError | null, data: boolean) => {
+  console.error(JSON.stringify(error));
+  console.log(JSON.stringify(data));
+});
+```
+
+## sharingisSharing
 
 isSharing(): Promise\<boolean>
 
@@ -191,6 +209,10 @@ isSharing(): Promise\<boolean>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -236,6 +258,10 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
@@ -261,12 +287,26 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing.startSharing(SHARING_WIFI, (error: BusinessError | null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -282,6 +322,10 @@ startSharing(type: SharingIfaceType): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -340,6 +384,10 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
@@ -364,12 +412,26 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing.stopSharing(SHARING_WIFI, (error: BusinessError | null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -385,6 +447,10 @@ stopSharing(type: SharingIfaceType): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -485,8 +551,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsRxBytes((error: BusinessError<void>|null, data: int|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -551,10 +617,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsRxBytes()
   .then((data: int) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -613,8 +679,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsTxBytes((error: BusinessError<void>|null, data: int|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -679,10 +745,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsTxBytes()
   .then((data: int) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -741,8 +807,8 @@ import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sharing.getStatsTotalBytes((error: BusinessError<void>|null, data: int|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -807,10 +873,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sharing
   .getStatsTotalBytes()
   .then((data: int) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -871,8 +937,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_NIC_CAN_SERVER = sharing.SharingIfaceState.SHARING_NIC_CAN_SERVER;
 sharing.getSharingIfaces(SHARING_NIC_CAN_SERVER, (error: BusinessError<void>|null, data: string[]|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -944,10 +1010,10 @@ let SHARING_NIC_CAN_SERVER = sharing.SharingIfaceState.SHARING_NIC_CAN_SERVER;
 sharing
   .getSharingIfaces(SHARING_NIC_CAN_SERVER)
   .then((data: string[]) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -1008,8 +1074,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = sharing.SharingIfaceType.SHARING_WIFI;
 sharing.getSharingState(SHARING_WIFI, (error: BusinessError<void>|null, data: sharing.SharingIfaceState|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(!data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${!data}`);
 });
 ```
 
@@ -1081,10 +1147,10 @@ let SHARING_WIFI = sharing.SharingIfaceType.SHARING_WIFI;
 sharing
   .getSharingState(SHARING_WIFI)
   .then((data: sharing.SharingIfaceState) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -1145,8 +1211,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = sharing.SharingIfaceType.SHARING_WIFI;
 sharing.getSharableRegexes(SHARING_WIFI, (error: BusinessError<void>|null, data: string[]|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(JSON.stringify(data));
+  console.error(`error: ${error}`);
+  console.info(`data: ${data}`);
 });
 ```
 
@@ -1218,10 +1284,10 @@ let SHARING_WIFI = sharing.SharingIfaceType.SHARING_WIFI;
 sharing
   .getSharableRegexes(SHARING_WIFI)
   .then((data: string[]) => {
-    console.info(JSON.stringify(data));
+    console.info(`data: ${data}`);
   })
   .catch((error: Error) => {
-    console.error(JSON.stringify(error));
+    console.error(`error: ${error}`);
   });
 ```
 
@@ -1236,6 +1302,10 @@ on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1274,6 +1344,10 @@ off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                         |
@@ -1310,6 +1384,10 @@ on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStat
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1348,6 +1426,10 @@ off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingSt
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                                        | 必填 | 说明                                     |
@@ -1385,6 +1467,10 @@ on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                           |
@@ -1421,6 +1507,10 @@ off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

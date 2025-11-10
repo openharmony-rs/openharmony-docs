@@ -4,22 +4,30 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## onTouchIntercept
 
-onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>)
+ArkTS-Dyn: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>)
+
+ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 参数类型                    | 必填  | 参数描述                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-universal-attributes-hit-test-behavior.md#hittestmode枚举说明)> | 是     |  给组件绑定自定义事件拦截回调，并使能在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸碰撞测试模式](ts-universal-attributes-hit-test-behavior.md)。 |
+| callback      | ArkTS-Dyn: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-universal-attributes-hit-test-behavior.md#hittestmode枚举说明)><br/>ArkTS-Sta: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-universal-attributes-hit-test-behavior.md#hittestmode枚举说明)> \| undefined  | 是     |  给组件绑定自定义事件拦截回调，并使能在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸碰撞测试模式](ts-universal-attributes-hit-test-behavior.md)。 |
 
 
 ## 示例

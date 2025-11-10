@@ -19,7 +19,7 @@ import { Link } from '@ohos.arkui.stateManagement';
 | 装饰器参数         | 无。                                                         |
 | 允许装饰的变量类型  | 支持Object、class、string、number、boolean、enum、interface等基本类型。<br/>支持Array、Date、Map、Set等内嵌类型。<br/>支持null、undefined以及联合类型。 |
 | 初始化规则         | 禁止本地初始化。使用父组件传入的变量进行初始化。                                         |
-| 同步规则           | **在子组件使用时：**<br/>与父组件\@State、\@Link、\@PropRef、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StoragePropRef、\@LocalStorageLink和\@LocalStoragePropRef建立双向绑定。允许父组件中\@State、\@Link、\@PropRef、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StoragePropRef、\@LocalStorageLink和\@LocalStoragePropRef装饰变量初始化子组件\@Link。<br/>**在父组件使用时：**<br/>可用于初始化常规变量、\@State、\@Link、\@PropRef、\@Provide。 |
+| 同步规则           | **在子组件使用时：**<br/>与父组件[\@State](./arkts-static-state.md)、\@Link、[\@PropRef](./arkts-static-propref.md)、[\@Provide、\@Consume](./arkts-static-provide-and-consume.md)、[\@ObjectLink](./arkts-static-observed-and-objectlink.md)、[\@StorageLink](./arkts-static-appstorage.md#storagelink)、[\@StoragePropRef](./arkts-static-appstorage.md#storagepropref)、[\@LocalStorageLink](./arkts-static-localstorage.md#localstoragelink)和[\@LocalStoragePropRef](./arkts-static-localstorage.md#localstoragepropref)建立双向绑定。允许父组件中\@State、\@Link、\@PropRef、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StoragePropRef、\@LocalStorageLink和\@LocalStoragePropRef装饰变量初始化子组件\@Link。<br/>**在父组件使用时：**<br/>可用于初始化常规变量、\@State、\@Link、\@PropRef、\@Provide。 |
 
 ## 观察变化和行为表现
 

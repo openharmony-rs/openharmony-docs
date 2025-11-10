@@ -50,7 +50,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 2、单个key支持数据大小约8k，过大会导致持久化失败。
 
-3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持buildin的构造对象（如Date、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
+3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
 
 4、不支持循环引用的对象。
 
@@ -62,12 +62,35 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 ```ts
 // EntryAbility.ets
 // 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
-import { PersistenceV2 } from '@kit.ArkUI';
+import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
 
 // 在EntryAbility外部定义class
 @ObservedV2
 class Storage {
   @Trace isPersist: boolean = false;
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储userName
+    const isPersistEle = new jsonx.JsonElement();
+    isPersistEle.setBoolean(this.isPersist);
+    root.setElement('isPersist', isPersistEle);
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.isPersist = json.getElement('isPersist').asBoolean();
+  }
+}
+
+const toJsonStorage = (s: Storage) => {
+  return s.toJson();
+}
+
+const fromJsonStorage = (json: jsonx.JsonElement): Storage => {
+  let s = new Storage();
+  s.fromJson(json);
+  return s;
 }
 
 // 在onWindowStageCreate的loadContent回调中调用PersistenceV2
@@ -76,7 +99,13 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
     if (err.code) {
       return;
     }
-    PersistenceV2.connect(Storage, () => new Storage());
+    PersistenceV2.connect<Storage>(
+      Type.from<Storage>(),
+      toJsonStorage,
+      fromJsonStorage,
+      (): Storage => {
+        return new Storage();
+      })!;
   });
 }
 ```
@@ -91,7 +120,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 'use static'
 
 // 使用connect存储数据
-import { PersistenceV2, Type } from '@kit.ArkUI';
+import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
+  Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
 
 // 接受序列化失败的回调
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
@@ -99,47 +129,90 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 
 @ObservedV2
-class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+class Info {
+  @Trace userInfo: int = 1;
 }
 
 @ObservedV2
-export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功
-  @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储userName
+    const userNameEle = new jsonx.JsonElement();
+    userNameEle.setString(this.userName);
+    root.setElement('userName', userNameEle);
+    // 存储userId
+    const userIdEle = new jsonx.JsonElement();
+    userIdEle.setInteger(this.userId);
+    root.setElement('userId', userIdEle);
+    // 存储info对象
+    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    const infoEle = new jsonx.JsonElement();
+    infoEle.setInteger(this.info.userInfo);
+    inforoot.setElement('userInfo', infoEle);
+    root.setElement('inforoot', inforoot);
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.userName = json.getElement('userName').asString();
+    this.userId = json.getElement('userId').asInteger();
+    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
+  }
+}
+
+const toJsonPerson = (person: Person) => {
+  return person.toJson();
+}
+
+const fromJsonPerson = (json: jsonx.JsonElement): Person => {
+  let person = new Person();
+  person.fromJson(json);
+  return person;
 }
 
 @Entry
 @ComponentV2
-struct Page1 {
+struct Index {
+  // 调用connect存储key为Person的对象，并返回。
+  @Local cp1: Person = PersistenceV2.connect<Person>(
+    Type.from<Person>(),
+    'Person',
+    toJsonPerson,
+    fromJsonPerson,
+    (): Person => {
+      return new Person();
+    })!;
   @Local refresh: number = 0;
-  // 使用key:connect2存储
-  @Local p: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
 
   build() {
-    Column({space: 5}) {
-      /**************************** 显示数据 **************************/
-      Text('Key connect2: ' + this.p.father.childId.toString())
-        .onClick(() => {
-          this.p.father.childId += 1;
+    Column() {
+      Button('Change userId userName userInfo')
+        .onClick((e: ClickEvent) => {
+          this.cp1.userId++;
+          this.cp1.userName += 'A';
+          this.cp1.info.userInfo += 100;
+          console.info(`cp1 userId ${this.cp1.userId}`);
         })
-        .fontSize(25)
-        .fontColor(Color.Red)
+      Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+      Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+      Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
 
-      /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
-      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
-        .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
-          this.p.father.groupId += 1;
-          PersistenceV2.save('connect2');
-          this.refresh += 1
+      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+        .onClick((e: ClickEvent) => {
+          this.cp1.userId++;
+          PersistenceV2.save('Person'); // 调用save存储该对象。
+          this.refresh += 1;
         })
         .fontSize(25)
     }
     .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -148,7 +221,10 @@ struct Page1 {
 'use static'
 
 // 迁移到globalConnect
-import { PersistenceV2, Type } from '@kit.ArkUI';
+import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
+  Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
+
+import contextConstant from '@ohos.app.ability.contextConstant';
 
 // 接受序列化失败的回调
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
@@ -156,68 +232,149 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 
 @ObservedV2
-class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+class Info {
+  @Trace userInfo: int = 1;
 }
 
 @ObservedV2
-export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功
-  @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储userName
+    const userNameEle = new jsonx.JsonElement();
+    userNameEle.setString(this.userName);
+    root.setElement('userName', userNameEle);
+    // 存储userId
+    const userIdEle = new jsonx.JsonElement();
+    userIdEle.setInteger(this.userId);
+    root.setElement('userId', userIdEle);
+    // 存储info对象
+    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    const infoEle = new jsonx.JsonElement();
+    infoEle.setInteger(this.info.userInfo);
+    inforoot.setElement('userInfo', infoEle);
+    root.setElement('inforoot', inforoot);
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.userName = json.getElement('userName').asString();
+    this.userId = json.getElement('userId').asInteger();
+    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
+  }
+}
+
+const toJsonPerson = (person: Person) => {
+  return person.toJson();
+}
+
+const fromJsonPerson = (json: jsonx.JsonElement): Person => {
+  let person = new Person();
+  person.fromJson(json);
+  return person;
 }
 
 // 用于判断是否完成数据迁移的辅助数据
 @ObservedV2
 class StorageState {
   @Trace isCompleteMoving: boolean = false;
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储userName
+    const movingStateEle = new jsonx.JsonElement();
+    movingStateEle.setBoolean(this.isCompleteMoving);
+    root.setElement('movingState', movingStateEle);
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.isCompleteMoving = json.getElement('movingState').asBoolean();
+  }
+}
+
+const toJsonState = (s: StorageState) => {
+  return s.toJson();
+}
+
+const fromJsonState = (json: jsonx.JsonElement): StorageState => {
+  let s = new StorageState();
+  s.fromJson(json);
+  return s;
 }
 
 function move() {
-  let movingState = PersistenceV2.globalConnect({type: StorageState, defaultCreator: () => new StorageState()})!;
+  let movingState =
+    PersistenceV2.globalConnect({ type: Type.from<StorageState>(), defaultCreator: () => new StorageState() },
+      toJsonState, fromJsonState)!;
   if (!movingState.isCompleteMoving) {
-    let p: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
-    PersistenceV2.remove('connect2');
-    let p1 = PersistenceV2.globalConnect({type: Sample, key: 'connect2', defaultCreator: () => p})!;  // 使用默认构造函数也可以
-    // 赋值数据，@Trace修饰的会自动保存
-    p1.father = p.father;
+    let p: Person = PersistenceV2.connect<Person>(
+      Type.from<Person>(),
+      'Person',
+      toJsonPerson,
+      fromJsonPerson,
+      (): Person => {
+        return new Person();
+      })!;
+    PersistenceV2.remove('Person');
+
+    let p1 = PersistenceV2.globalConnect<Person>({
+      type: Type.from<Person>(),
+      key: 'Person',
+      defaultCreator: (): Person => p,
+      areaMode: contextConstant.AreaMode.EL1 // EL1-EL5代表5种加密等级。
+    }, toJsonPerson, fromJsonPerson)!;
     // 将迁移标志设置为true
     movingState.isCompleteMoving = true;
   }
 }
 
-move();
-
 @Entry
 @ComponentV2
-struct Page1 {
+struct Index {
+  // 调用globalConnect存储key为Person的对象，并返回。
+  @Local cp1: Person = PersistenceV2.globalConnect<Person>({
+    type: Type.from<Person>(),
+    key: 'Person',
+    defaultCreator: (): Person => {
+      return new Person();
+    },
+    areaMode: contextConstant.AreaMode.EL1 // EL1-EL5代表5种加密等级。
+  }, toJsonPerson, fromJsonPerson)!;
   @Local refresh: number = 0;
-  // 使用key:connect2存入数据
-  @Local p: Sample = PersistenceV2.globalConnect({type: Sample, key:'connect2', defaultCreator:() => new Sample()})!;
+  // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+  static {
+    move();
+  }
 
   build() {
-    Column({space: 5}) {
-      /**************************** 显示数据 **************************/
-      Text('Key connect2: ' + this.p.father.childId.toString())
-        .onClick(() => {
-          this.p.father.childId += 1;
+    Column() {
+      Button('Change userId userName userInfo')
+        .onClick((e: ClickEvent) => {
+          this.cp1.userId++;
+          this.cp1.userName += 'A';
+          this.cp1.info.userInfo += 100;
+          console.info(`cp1 userId ${this.cp1.userId}`);
         })
-        .fontSize(25)
-        .fontColor(Color.Red)
+      Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+      Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+      Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
 
-      /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
-      Text('save key connect2: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
-        .onClick(() => {
-          // 未被@Trace保存的对象无法自动存储，需要调用key存储
-          this.p.father.groupId += 1;
-          PersistenceV2.save('connect2');
-          this.refresh += 1
+      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+        .onClick((e: ClickEvent) => {
+          this.cp1.userId++;
+          PersistenceV2.save('Person'); // 调用save存储该对象。
+          this.refresh += 1;
         })
         .fontSize(25)
     }
     .width('100%')
+    .height('100%')
   }
 }
 ```

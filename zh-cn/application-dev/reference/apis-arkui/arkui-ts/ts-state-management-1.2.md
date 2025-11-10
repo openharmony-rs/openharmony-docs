@@ -18,8 +18,6 @@ import { AppStorage, LocalStorage, PersistentStorage, Environment, LayoutDirecti
 
 AppStorage具体UI使用说明，详见[AppStorage(应用全局的UI状态存储)](../../../ui/state-management-static/arkts-static-appstorage.md)
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ### ref
 
 static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
@@ -46,8 +44,8 @@ static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
 AppStorage.setOrCreate('PropA', 47);
-let refToPropA1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
-let refToPropA2: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA'); // refToPropA2.get() == 47
+let refToPropA1: AbstractProperty<int> | undefined = AppStorage.ref<int>('PropA');
+let refToPropA2: AbstractProperty<int> | undefined = AppStorage.ref<int>('PropA'); // refToPropA2.get() == 47
 refToPropA1?.set(48); // 同步修改AppStorage: refToPropA1.get() == refToPropA2.get() == 48
 ```
 
@@ -78,8 +76,8 @@ static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&l
 import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
 AppStorage.setOrCreate('PropA', 47);
-let ref1: AbstractProperty<number> = AppStorage.setAndRef<number>('PropB', 49)!; // 用默认值49创建PropB
-let ref2: AbstractProperty<number> = AppStorage.setAndRef<number>('PropA', 50)!; // PropA已存在，值为47
+let ref1: AbstractProperty<int> = AppStorage.setAndRef<int>('PropB', 49)!; // 用默认值49创建PropB
+let ref2: AbstractProperty<int> = AppStorage.setAndRef<int>('PropA', 50)!; // PropA已存在，值为47
 ```
 ### link
 
@@ -110,8 +108,8 @@ static link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp
 import { AppStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
 AppStorage.setOrCreate('PropA', 47);
-let linkToPropA1: SubscribedAbstractProperty<number> = AppStorage.link<number>('PropA')!;
-let linkToPropA2: SubscribedAbstractProperty<number> = AppStorage.link<number>('PropA')!; // linkToPropA2.get() == 47
+let linkToPropA1: SubscribedAbstractProperty<int> = AppStorage.link<int>('PropA')!;
+let linkToPropA2: SubscribedAbstractProperty<int> = AppStorage.link<int>('PropA')!; // linkToPropA2.get() == 47
 linkToPropA1.set(48); // 双向同步: linkToPropA1.get() == linkToPropA2.get() == 48
 ```
 
@@ -140,9 +138,9 @@ static setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 ```ts
 import { AppStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-let link1: SubscribedAbstractProperty<number> = AppStorage.setAndLink<number>('PropB', 49); // 用默认值49创建PropB
-let link2: SubscribedAbstractProperty<number> = AppStorage.setAndLink<number>('PropA', 50); // PropA已存在，值为47
+AppStorage.setOrCreate<int>('PropA', 47);
+let link1: SubscribedAbstractProperty<int> = AppStorage.setAndLink<int>('PropB', 49); // 用默认值49创建PropB
+let link2: SubscribedAbstractProperty<int> = AppStorage.setAndLink<int>('PropA', 50); // PropA已存在，值为47
 ```
 
 ### has
@@ -178,8 +176,6 @@ static get&lt;T&gt;(propName: string): T | undefined
 
 获取propName在[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中对应的属性值。如果不存在则返回undefined。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -198,8 +194,8 @@ static get&lt;T&gt;(propName: string): T | undefined
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-let value: number = AppStorage.get<number>('PropA') as number; // 47
+AppStorage.setOrCreate<int>('PropA', 47);
+let value: int = AppStorage.get<int>('PropA') as int; // 47
 ```
 
 ### set
@@ -227,9 +223,9 @@ static set&lt;T&gt;(propName: string, newValue: T): boolean
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 48);
-let res: boolean = AppStorage.set<number>('PropA', 47) // true
-let res1: boolean = AppStorage.set<number>('PropB', 47) // false
+AppStorage.setOrCreate<int>('PropA', 48);
+let res: boolean = AppStorage.set<int>('PropA', 47) // true
+let res1: boolean = AppStorage.set<int>('PropB', 47) // false
 ```
 
 ### setOrCreate
@@ -252,7 +248,7 @@ static setOrCreate&lt;T&gt;(propName: string, newValue: T): void
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('simpleProp', 121);
+AppStorage.setOrCreate<int>('simpleProp', 121);
 ```
 
 ### delete
@@ -288,11 +284,11 @@ static delete(propName: string): boolean
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-AppStorage.link<number>('PropA');
+AppStorage.setOrCreate<int>('PropA', 47);
+AppStorage.link<int>('PropA');
 let res: boolean = AppStorage.delete('PropA'); // false，PropA 还存在订阅者
 
-AppStorage.setOrCreate<number>('PropB', 48);
+AppStorage.setOrCreate<int>('PropB', 48);
 let res1: boolean = AppStorage.delete('PropB'); // true，PropB 已从AppStorage成功删除
 ```
 
@@ -314,7 +310,7 @@ static keys(): IterableIterator&lt;string&gt;
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropB', 48);
+AppStorage.setOrCreate<int>('PropB', 48);
 let keys: IterableIterator<string> = AppStorage.keys();
 ```
 
@@ -338,13 +334,13 @@ static clear(): boolean
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
+AppStorage.setOrCreate<int>('PropA', 47);
 let res: boolean = AppStorage.clear(); // true，已经没有订阅者
 ```
 
 ### size
 
-static size(): number
+static size(): int
 
 返回[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中的属性数量。
 
@@ -354,14 +350,14 @@ static size(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 返回AppStorage中属性的数量。 |
+| int | 返回AppStorage中属性的数量。 |
 
 **示例：**
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropB', 48);
-let res: number = AppStorage.size(); // 1
+AppStorage.setOrCreate<int>('PropB', 48);
+let res: int = AppStorage.size(); // 1
 ```
 
 ## LocalStorage
@@ -447,7 +443,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let value: number = storage.get<number>('PropA') as number; // 47
+let value: int = storage.get<int>('PropA') as int; // 47
 ```
 
 ### set
@@ -478,8 +474,8 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let res: boolean = storage.set<number>('PropA', 47); // true
-let res1: boolean = storage.set<number>('PropB', 47); // false
+let res: boolean = storage.set<int>('PropA', 47); // true
+let res1: boolean = storage.set<int>('PropB', 47); // false
 ```
 
 ### setOrCreate
@@ -511,9 +507,9 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let res: boolean = storage.setOrCreate<number>('PropA', 121); // true
-let res1: boolean = storage.setOrCreate<number | null>('PropB', 111); // true
-let res2: boolean = storage.setOrCreate<number | null>('PropB', null); // true 
+let res: boolean = storage.setOrCreate<int>('PropA', 121); // true
+let res1: boolean = storage.setOrCreate<int | null>('PropB', 111); // true
+let res2: boolean = storage.setOrCreate<int | null>('PropB', null); // true 
 ```
 
 ### ref
@@ -541,8 +537,8 @@ import { LocalStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let refToPropA1: AbstractProperty<number> | undefined = storage.ref<number>('PropA');
-let refToPropA2: AbstractProperty<number> | undefined = storage.ref<number>('PropA'); // refToPropA2.get() == 47
+let refToPropA1: AbstractProperty<int> | undefined = storage.ref<int>('PropA');
+let refToPropA2: AbstractProperty<int> | undefined = storage.ref<int>('PropA'); // refToPropA2.get() == 47
 refToPropA1?.set(48); // refToPropA1.get() == refToPropA2.get() == 48
 ```
 
@@ -574,8 +570,8 @@ import { LocalStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let ref1: AbstractProperty<number> = storage.setAndRef<number>('PropB', 49); // 用默认值49创建PropB
-let ref2: AbstractProperty<number> = storage.setAndRef<number>('PropA', 50); // PropA已存在，值为47
+let ref1: AbstractProperty<int> = storage.setAndRef<int>('PropB', 49); // 用默认值49创建PropB
+let ref2: AbstractProperty<int> = storage.setAndRef<int>('PropA', 50); // PropA已存在，值为47
 ```
 
 ### link
@@ -608,8 +604,8 @@ import { LocalStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManag
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let linkToPropA1: SubscribedAbstractProperty<number> = storage.link<number>('PropA')!;
-let linkToPropA2: SubscribedAbstractProperty<number> = storage.link<number>('PropA')!; // linkToPropA2.get() == 47
+let linkToPropA1: SubscribedAbstractProperty<int> = storage.link<int>('PropA')!;
+let linkToPropA2: SubscribedAbstractProperty<int> = storage.link<int>('PropA')!; // linkToPropA2.get() == 47
 linkToPropA1.set(48); // 双向同步: linkToPropA1.get() == linkToPropA2.get() == 48
 ```
 
@@ -640,8 +636,8 @@ import { LocalStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManag
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let link1: SubscribedAbstractProperty<number> = storage.setAndLink<number>('PropB', 49); // 用默认值49创建PropB
-let link2: SubscribedAbstractProperty<number> = storage.setAndLink<number>('PropA', 50); // PropA已存在，值为47
+let link1: SubscribedAbstractProperty<int> = storage.setAndLink<int>('PropB', 49); // 用默认值49创建PropB
+let link2: SubscribedAbstractProperty<int> = storage.setAndLink<int>('PropA', 50); // PropA已存在，值为47
 ```
 
 ### delete
@@ -678,7 +674,7 @@ let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
 let res: boolean = storage.delete('PropA'); // false，PropA 还存在订阅者
 let res1: boolean = storage.delete('PropB'); // false，PropB 不存在于storage中
-storage.setOrCreate<number>('PropB', 48);
+storage.setOrCreate<int>('PropB', 48);
 let res2: boolean = storage.delete('PropB'); // true，PropB 已从storage成功删除
 ```
 
@@ -707,7 +703,7 @@ let keys: IterableIterator<string> = storage.keys();
 
 ### size
 
-size(): number
+size(): int
 
 返回[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中的属性数量。
 
@@ -717,7 +713,7 @@ size(): number
 
 | 类型   | 说明                         |
 | ------ | ---------------------------- |
-| number | LocalStorage中属性的数量。 |
+| int | LocalStorage中属性的数量。 |
 
 **示例：**
 ```ts
@@ -725,7 +721,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 let para: Record<string, Any> = { 'PropA': 47}
 let storage: LocalStorage = new LocalStorage(para);
-let res: number = storage.size(); // 1
+let res: int = storage.size(); // 1
 ```
 
 ### clear
@@ -777,7 +773,7 @@ get(): T
 import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
 AppStorage.setOrCreate('PropA', 47);
-let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+let ref1: AbstractProperty<int> | undefined = AppStorage.ref<int>('PropA');
 ref1?.get(); //  ref1.get()=47
 ```
 
@@ -800,11 +796,11 @@ set(newValue: T): void
 ```ts
 import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
+AppStorage.setOrCreate<int>('PropA', 47);
+let ref1: AbstractProperty<int> | undefined = AppStorage.ref<int>('PropA');
 ref1?.set(1); //  ref1.get()=1
-let a: Map<string, number> = new Map([['1', 0]]);
-let ref2 = AppStorage.setAndRef<Map<string, number>>('MapA', a);
+let a: Map<string, int> = new Map([['1', 0]]);
+let ref2 = AppStorage.setAndRef<Map<string, int>>('MapA', a);
 ref2.set(a);
 let b: Set<string> = new Set<string>('1');
 let ref3 = AppStorage.setAndRef<Set<string>>('SetB', b);
@@ -833,9 +829,35 @@ info(): string
 ```ts
 import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
 
+AppStorage.setOrCreate<int>('PropA', 47);
+let ref1: AbstractProperty<int> | undefined = AppStorage.ref<int>('PropA');
+ref1?.info(); //  ref1.info()='PropA'
+```
+
+### onChange
+onChange(onChangeFunc: OnChangeType\<T\> | undefined): void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化的事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明                              |
+| -------- | ---- | ---- | ------------------------------------- |
+| onChangeFunc | [OnChangeType\<T\>](#onchangetype) \| undefined    | 否   | 属性变化回调函数。</br>如果传入有效值，则添加到监听属性变化的函数列表中。</br>如果传入undefined，则清除所有监听回调。 |
+
+**示例：**
+
+```ts
+'use static'
+import { AppStorage, AbstractProperty } from '@ohos.arkui.stateManagement';
+
 AppStorage.setOrCreate<number>('PropA', 47);
 let ref1: AbstractProperty<number> | undefined = AppStorage.ref<number>('PropA');
-ref1?.info(); //  ref1.info()='PropA'
+ref1?.onChange((propertyName: string, value: number) => {
+  console.info(`ref for ${propertyName} has changed to ${value}.`);
+});
 ```
 
 ## SubscribedAbstractProperty
@@ -860,8 +882,8 @@ abstract get(): T
 ```ts
 import { AppStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47); 
-let link: SubscribedAbstractProperty<number> = AppStorage.link<number>('PropA')!;    
+AppStorage.setOrCreate<int>('PropA', 47); 
+let link: SubscribedAbstractProperty<int> = AppStorage.link<int>('PropA')!;    
 link.get(); //  prop1.get()=47
 ```
 
@@ -883,8 +905,8 @@ abstract set(newValue: T): void
 ```ts
 import { AppStorage, SubscribedAbstractProperty } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-let link: SubscribedAbstractProperty<number> = AppStorage.link<number>('PropA')!;
+AppStorage.setOrCreate<int>('PropA', 47);
+let link: SubscribedAbstractProperty<int> = AppStorage.link<int>('PropA')!;
 link.set(1); //  link.get()=1
 ```
 
@@ -902,8 +924,8 @@ abstract aboutToBeDeleted(): void
 ```ts
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
-AppStorage.setOrCreate<number>('PropA', 47);
-let link = AppStorage.setAndLink<number>('PropB', 49); // PropA -> 47, PropB -> 49
+AppStorage.setOrCreate<int>('PropA', 47);
+let link = AppStorage.setAndLink<int>('PropB', 49); // PropA -> 47, PropB -> 49
 link.aboutToBeDeleted();
 ```
 
@@ -931,8 +953,8 @@ info(): string
 | ------------ | ------------------------------------- | --- | ---- | ------------------------------------------------------------ |
 | key          | string                                | 否 | 否   | 属性名。                                                     |
 | defaultValue | T | 否 | 否 | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。 |
-| toJson       | ToJsonType\<T\> | 否 | 是 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
-| fromJson     | FromJsonType\<T\> | 否 | 是 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
+| toJson       | ToJsonType\<T\> | 否 | 是 | 默认值为undefined。见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 是 | 默认值为undefined。见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功反序列化。|
 
 ## ToJsonType\<T\>
 
@@ -978,7 +1000,7 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 
 根据上述的初始化流程，如果AppStorage中有该属性，则会使用其值，覆盖掉PersistentStorage文件中的值。由于AppStorage是内存内数据，该行为会导致数据丧失持久化能力。
 
-4. 对于复杂类型(联合类型都是复杂类型)，开发者必须实现toJson和fromJson才能实现持久化，只有boolean、number、string，开发者可以不传入toJson和fromJson。
+4. 对于复杂类型(联合类型都是复杂类型)，开发者必须实现toJson和fromJson才能实现持久化，只有boolean、int、double、long、string，开发者可以不传入toJson和fromJson。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -988,8 +1010,8 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | key          | string | 是   | 属性名。                                                     |
 | defaultValue | T      | 是   | 当在[PersistentStorage](#PersistentStorage)和[AppStorage](#AppStorage)中未查询到key时，使用defaultValue中。|
-| toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功序列化。|
-| fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、number、string外），开发者必须实现该方法才能成功反序列化。|
+| toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#ToJsonType\<T\>)，用于序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#FromJsonType\<T\>)，用于反序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功反序列化。|
 
 **返回值：**
 
@@ -1076,8 +1098,6 @@ static keys(): Array&lt;string&gt;
 
 返回所有持久化属性的属性名的数组。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1097,20 +1117,16 @@ let keys: Array<string> = PersistentStorage.keys();
 
 用于指定环境变量名称及其默认值的键值对对象，作为[envProps](#envprops)参数传入。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型                        | 必填 | 说明                                                     |
 | ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
 | key          | string                      | 是   | 环境变量名称，支持的范围详见[内置环境变量说明](#内置环境变量说明)。 |
-| defaultValue | number \| string \| boolean | 是   | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
+| defaultValue | int \| long \| double \| string \| boolean | 是   | 查询不到环境变量key，则使用defaultValue作为默认值存入AppStorage中。 |
 
 ## Environment
 
 Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1123,8 +1139,6 @@ static envProp&lt;T&gt;(key: string, value: T): boolean
 所以建议在程序启动的时候调用该接口。
 
 在没有调用envProp的情况下，就使用AppStorage读取环境变量是错误的。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1150,8 +1164,6 @@ envProp具体使用，详见[从UI中访问Environment参数](../../../ui/state-
 static envProps(props: EnvPropsOptions[]): void
 
 和[envProp](#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1202,8 +1214,8 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | -------------------- | --------------- | ------------------------------------------------------------ |
 | accessibilityEnabled | boolean         | 无障碍屏幕朗读是否启用，可选值为：<br/>-&nbsp;true：启用；<br/>-&nbsp;false：不启用。<br/>当无法获取环境变量中的accessibilityEnabled的值时，将通过envProp、envProps等接口传入的开发者指定的默认值添加到AppStorage中。 |
 | colorMode            | ColorMode       | 深浅色模式，可选值为：<br/>-&nbsp;ColorMode.LIGHT：浅色模式；<br/>-&nbsp;ColorMode.DARK：深色模式。 |
-| fontScale            | number          | 字体大小比例。                                               |
-| fontWeightScale      | number          | 字重比例。                                                   |
+| fontScale            | int          | 字体大小比例。                                               |
+| fontWeightScale      | double          | 字重比例。                                                   |
 | layoutDirection      | LayoutDirection | 布局方向类型，可选值为：<br/>-&nbsp;LayoutDirection.LTR：从左到右；<br/>-&nbsp;LayoutDirection.RTL：从右到左。<br/>-&nbsp;Auto：跟随系统。 |
 | languageCode         | string          | 当前系统语言，小写字母，例如zh。                             |
 
@@ -1230,3 +1242,15 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 | LTR   | 0    | 从左向右布局。 |
 | RTL   | 1    | 从右向左布局。 |
 | AUTO  | 2    | 自动布局，跟随系统。 |
+
+## OnChangeType
+type OnChangeType\<T\> = (propertyName: string, newValue: T) => void
+
+注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化事件的回调函数类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数名 | 类型                                          | 必填 | 说明                             |
+| ------ | --------------------------------------------- | ---- | ------------------------------------ |
+| propertyName  | string | 是   | 修改的属性名称。 |
+| newValue      | T      | 是   | 修改后属性的值。 |

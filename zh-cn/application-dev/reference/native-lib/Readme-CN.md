@@ -24,10 +24,17 @@
     - [VkNativeBufferUsageOHOS](_vk_native_buffer_usage_o_h_o_s.md)
     - [VkSurfaceCreateInfoOHOS](_vk_surface_create_info_o_h_o_s.md)
 - ArkTS1.2 builtin变更文档<!--arkts1.1-to-arkts1.2-migration-->
+    - [Array](ArkTS-Sta_Array.md)
     - [jsonx](arkts1.2-jsonx.md)
     - [JSON](ArkTS-Sta-json.md)
     - [Mutex （互斥锁)](arkts1.2-mutex.md)
     - [RWLock (读写锁)](arkts1.2-rwlock.md)
+    - [Map](arkts-builtin-api-Map.md)
+    - [Set](arkts-builtin-api-Set.md)
+    - [Boolean](ArkTS-Sta-Boolean.md)
+    - [Byte](ArkTS-Sta-Byte.md)
+    - [Char](ArkTS-Sta-Char.md)
+    - [Int](ArkTS-Sta-Int.md)
 - EAWorker
   - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
   - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)

@@ -110,3 +110,17 @@ export struct MainPage {
 export { MainPage } from from './src/main/ets/components/MainPage';
 ```
 
+- 在项目根目录`build-profile.json5`配置文件中，将`app.products`节点下的`arkTSVersion`字段指定为`1.2`。
+
+```json
+{
+  "app": { 
+    "products": [
+      {
+        "name": "default",
+        "arkTSVersion": "1.2"  // 需显式配置为1.2以支持互操作
+      }
+    ]
+  }
+}
+```

@@ -18,7 +18,7 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -44,8 +44,8 @@ ArkTS-Dyn示例：
         Web({ src: $rawfile("index.html"), controller: this.controller })
           .onAlert((event) => {
             if (event) {
-              console.log("event.url:" + event.url);
-              console.log("event.message:" + event.message);
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
               this.uiContext.showAlertDialog({
                 title: 'onAlert',
                 message: 'text',
@@ -137,6 +137,10 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                  | 必填   | 说明            |
@@ -145,6 +149,7 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -190,6 +195,54 @@ onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Web, Column, Component, Entry, OnBeforeUnloadEvent, $rawfile } from '@kit.ArkUI';
+  import { UIContext, AlertDialogParamWithButtons } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .onBeforeUnload((event: OnBeforeUnloadEvent): boolean => {
+            if (event) {
+              console.info("event.url:" + event.url);
+              console.info("event.message:" + event.message);
+              console.info("event.isReload:" + event?.isReload ?? 'false');
+              this.uiContext.showAlertDialog({
+                title: 'onBeforeUnload',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.result.handleConfirm();
+                  }
+                },
+                cancel: () => {
+                  event.result.handleCancel();
+                }
+              } as AlertDialogParamWithButtons);
+            }
+            return true;
+          })
+      }
+    }
+  }
+  ```
+
   加载的html文件。
   ```html
   <!--index.html-->
@@ -220,7 +273,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -278,7 +331,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
-  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+  import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithButtons } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from '@kit.ArkUI';
 
@@ -298,8 +351,14 @@ ArkTS-Sta示例：
 
               this.uiContext.showAlertDialog({
                 title: 'onConfirm',
-                message: event.message,
-                confirm: {
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.result.handleCancel();
+                  }
+                },
+                secondaryButton: {
                   value: 'ok',
                   action: () => {
                     event.result.handleConfirm();
@@ -308,7 +367,7 @@ ArkTS-Sta示例：
                 cancel: () => {
                   event.result.handleCancel();
                 }
-              } as AlertDialogParamWithConfirm);
+              } as AlertDialogParamWithButtons)
             }
             return true;
           })
@@ -356,7 +415,7 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -560,6 +619,10 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明      |
@@ -568,6 +631,7 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -590,6 +654,38 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
               console.log('getSourceId:' + event.message.getSourceId());
               console.log('getLineNumber:' + event.message.getLineNumber());
               console.log('getMessageLevel:' + event.message.getMessageLevel());
+            }
+            return false;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Button('onconsole message')
+          .onClick(() => {
+            this.controller.runJavaScript('myFunction()');
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onConsole((event) => {
+            if (event) {
+              console.info('getMessage:' + event.message.getMessage());
+              console.info('getSourceId:' + event.message.getSourceId());
+              console.info('getLineNumber:' + event.message.getLineNumber());
+              console.info('getMessageLevel:' + event.message.getMessageLevel());
             }
             return false;
           })
@@ -621,6 +717,11 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+
 **参数：**
 
 | 参数名                | 类型   | 必填   | 说明                                |
@@ -629,6 +730,7 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -655,6 +757,34 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onDownloadStart((event) => {
+            if (event) {
+              console.info('url:' + event.url)
+              console.info('userAgent:' + event.userAgent)
+              console.info('contentDisposition:' + event.contentDisposition)
+              console.info('contentLength:' + event.contentLength)
+              console.info('mimetype:' + event.mimetype)
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onErrorReceive
 
 onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
@@ -665,7 +795,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -961,7 +1091,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1110,7 +1240,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1181,7 +1311,7 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1246,7 +1376,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1502,7 +1632,7 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2407,7 +2537,7 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2478,7 +2608,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2654,6 +2784,10 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -2744,7 +2878,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2906,7 +3040,7 @@ onActivateContent(callback: Callback\<void>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数**
 
@@ -3070,7 +3204,7 @@ onWindowExit(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3170,6 +3304,10 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3178,6 +3316,7 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3202,6 +3341,39 @@ onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .onDataResubmitted((event) => {
             console.log('onDataResubmitted');
+            event.handler.resend();
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 在网页中点击提交之后，点击refresh按钮可以重新提交时的触发函数。
+        Button('refresh')
+          .onClick(() => {
+            try {
+              this.controller.refresh();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .onDataResubmitted((event) => {
+            console.info('onDataResubmitted');
             event.handler.resend();
           })
       }
@@ -3295,7 +3467,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3400,6 +3572,10 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -3408,6 +3584,7 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -3424,6 +3601,31 @@ onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\>)
         Web({ src: 'www.example.com', controller: this.controller })
           .onFaviconReceived((event) => {
             console.log('onFaviconReceived');
+            this.icon = event.favicon;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { image } from '@kit.ImageKit';
+  import { Web, Column, Component, Entry, OnFaviconReceivedEvent, State } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State icon: image.PixelMap | undefined = undefined;
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFaviconReceived((event) => {
+            console.info('onFaviconReceived');
             this.icon = event.favicon;
           })
       }
@@ -3479,7 +3681,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3550,7 +3752,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3617,7 +3819,7 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3732,7 +3934,7 @@ onRequestSelected(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3852,7 +4054,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3921,7 +4123,7 @@ onControllerAttached(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4138,6 +4340,103 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
   }
   ```
 
+## onSafeBrowsingCheckFinish<sup>21+</sup>
+
+onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
+
+网站安全风险检查结束时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | 是 | 收到网站安全风险检查结果时触发的回调。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+export enum ThreatType {
+  UNKNOWN = -1,
+  THREAT_ILLEGAL = 0,
+  THREAT_FRAUD = 1,
+  THREAT_RISK = 2,
+  THREAT_WARNING = 3,
+  THREAT_NONE = 4,
+  THREAT_UNPROCESSED = 5,
+}
+
+export class OnSafeBrowsingCheckResultCallback {
+  threatType: ThreatType = ThreatType.UNKNOWN;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onSafeBrowsingCheckFinish((callback) => {
+          let jsonData = JSON.stringify(callback);
+          let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+          console.info("onSafeBrowsingCheckFinish: [threatType]= " + json.threatType);
+        })
+
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+
+export enum ThreatType {
+  UNKNOWN = -1,
+  THREAT_ILLEGAL = 0,
+  THREAT_FRAUD = 1,
+  THREAT_RISK = 2,
+  THREAT_WARNING = 3,
+  THREAT_NONE = 4,
+  THREAT_UNPROCESSED = 5,
+}
+
+export class OnSafeBrowsingCheckResultCallback {
+  threatType: ThreatType = ThreatType.UNKNOWN;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      // 使用时需要將"https://www.example.com"替换成真实要访问的网站地址。
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onSafeBrowsingCheckFinish((callback) => {
+          console.info("onSafeBrowsingCheckFinish: [threatType]= " + callback);
+        })
+    }
+  }
+}
+```
+
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
 
 onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
@@ -4145,6 +4444,10 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 当同层标签生命周期变化时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4154,6 +4457,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 
@@ -4207,6 +4511,61 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    // API12新增：开启同层渲染BFCache开关
+    let features = new webview.BackForwardCacheSupportedFeatures();
+    features.nativeEmbed = true;
+    features.mediaTakeOver = true;
+    webview.WebviewController.enableBackForwardCache(features);
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+```
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4288,6 +4647,96 @@ export default class EntryAbility extends UIAbility {
               console.log("width = " + event.info.width);
               console.log("height = " + event.info.height);
               console.log("url = " + event.info.url);
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile,State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    @State embedStatus: string = '';
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 默认行为：点击按钮跳转页面，关闭index页面，使同层标签销毁。
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮跳转页面，关闭index页面，使同层标签进入BFCache。
+        Button('Destroy')
+          .onClick(() => {
+            try {
+              this.controller.loadUrl("www.example.com");
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮返回页面，使同层标签离开BFCache。
+        Button('backward')
+          .onClick(() => {
+            try {
+              this.controller.backward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+        // API12新增：使能同层渲染所在的页面支持BFCache后，点击按钮前进页面，使同层标签进入BFCache。
+        Button('forward')
+          .onClick(() => {
+            try {
+              this.controller.forward();
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+
+
+        // API12新增同层标签进入离开BFCache状态：非http与https协议加载的网页，Web内核不支持进入BFCache;
+        // 因此如果要测试ENTER_BFCACHE/LEAVE_BFCACHE状态，需要将index.html放到Web服务器上，使用http或者https协议加载，如：
+        // Web({ src: "http://xxxx/index.html", controller: this.controller })
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((event:NativeEmbedDataInfo):void => {
+            // 当加载页面中有同层标签会触发Create。
+            if (event.status == NativeEmbedStatus.CREATE) {
+              this.embedStatus = 'Create';
+            }
+            // 当页面中同层标签移动或者缩放时会触发Update。
+            if (event.status == NativeEmbedStatus.UPDATE) {
+              this.embedStatus = 'Update';
+            }
+            // 退出页面时会触发Destroy。
+            if (event.status == NativeEmbedStatus.DESTROY) {
+              this.embedStatus = 'Destroy';
+            }
+            // 同层标签所在的页面进入BFCache时，会触发Enter BFCache。
+            if (event.status == NativeEmbedStatus.ENTER_BFCACHE) {
+              this.embedStatus = 'Enter BFCache';
+            }
+            // 同层标签所在的页面离开BFCache时，会触发Leave BFCache。
+            if (event.status == NativeEmbedStatus.LEAVE_BFCACHE) {
+              this.embedStatus = 'Leave BFCache';
+            }
+            console.log("status = " + this.embedStatus);
+            console.log("surfaceId = " + event.surfaceId);
+            console.log("embedId = " + event.embedId);
+            if (event.info) {
+              console.log("id = " + event.info?.id);
+              console.log("type = " + event.info?.type);
+              console.log("src = " + event.info?.src);
+              console.log("width = " + event.info?.width);
+              console.log("height = " + event.info?.height);
+              console.log("url = " + event.info?.url);
             }
           })
       }
@@ -4592,7 +5041,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4623,7 +5072,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
             } else if (viewportFit === ViewportFit.CONTAINS) {
               // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
             } else {
-              // 默认值，可不作处理
+              // 默认值，可不作处理。
             }
           })
       }
@@ -4654,7 +5103,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
           } else if (viewportFit === ViewportFit.CONTAINS) {
             // index.html网页不支持沉浸式布局，可调用expandSafeArea调整web控件布局视口为安全区域。
           } else {
-            // 默认值，可不作处理
+            // 默认值，可不作处理。
           }
         })
       }
@@ -4686,7 +5135,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5251,6 +5700,270 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
   <div>
       <div id="bodyId">
           <embed id="nativeButton" type = "native/button" width="800" height="800" style = "background-color:red"/>
+      </div>
+  </div>
+  </body>
+  </html>
+  ```
+
+## onNativeEmbedObjectParamChange<sup>21+</sup>
+
+onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
+
+当同层渲染object标签内嵌param元素变化时触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback       | [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { NodeController, BuilderNode, NodeRenderType, FrameNode, UIContext } from '@kit.ArkUI';
+
+  declare class Params {
+    text: string;
+    width: number;
+    height: number;
+  }
+
+  declare class NodeControllerParams {
+    surfaceId: string;
+    renderType: NodeRenderType;
+    width: number;
+    height: number;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<[Params]> | undefined | null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: number = 0;
+    private height_: number = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode.getFrameNode();
+    }
+
+    postInputEvent(event: TouchEvent | MouseEvent | undefined): boolean {
+      return this.rootNode?.postInputEvent(event) as boolean;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .registerNativeEmbedRule("object", "native")
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width),
+                  height: this.uiContext!.px2vp(embed.info?.height)
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedObjectParamChange((event) => {
+              console.log("embed id: " + event.embedId);
+              let paramItems = event.paramItems;
+              if (paramItems) {
+                for (let i = 0; i < paramItems.length; ++i) {
+                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+```ts
+  import { Entry, Column, Component, Web } from '@ohos.arkui.component'
+  import webview from '@ohos.web.webview';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { NodeController, FrameNode, UIContext, TouchEvent, MouseEvent, Prop, Color, Button, Stack, NodeContainer, NativeEmbedStatus, wrapBuilder } from '@kit.ArkUI';
+  import { BuilderNode, NodeRenderType } from '@ohos.arkui.node';
+
+
+  export class Params {
+
+    text: string = '';
+    width: double = 1;
+    height: double = 1;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params>  | null = null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: TouchEvent): boolean {
+      return this.rootNode?.postInputEvent(event) ?? false;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params = {} as Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: 'resource://rawfile/index.html', controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .registerNativeEmbedRule("object", "native")
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                  height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedObjectParamChange((event) => {
+              console.log("embed id: " + event.embedId);
+              let paramItems = event.paramItems;
+              if (paramItems) {
+                for (let i = 0; i < paramItems.length; ++i) {
+                  console.log("param info: " + JSON.stringify(paramItems[i]));
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
+加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>同层渲染测试</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  <div>
+      <div id="bodyId">
+          <object id="nativeButton" type ="native/button" width="300" height="300" style="background-color:red">
+            <param id="param-1" name="name-1" value="value1"/>
+          </object>
       </div>
   </div>
   </body>

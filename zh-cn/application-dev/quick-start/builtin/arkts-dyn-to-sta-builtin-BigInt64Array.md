@@ -44,7 +44,10 @@
 **示例：**  
   ```typescript
   let a = new BigInt64Array(3);
-  let iter = a.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of a) {
+    console.info(iter);
+  } // 0 0 0
   ```
 
 - 适配建议：
@@ -96,7 +99,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): boolean`
+  `every(predicate: (value: bigint, index: int, array: BigInt64Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -107,7 +110,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的bigint值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array对象。 |
 
 predicate函数返回值说明：
@@ -130,7 +133,7 @@ predicate函数返回值说明：
   }
   let o = new C(2n);
   let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.every((element: bigint, index: number, array: BigInt64Array) => {
+  let result = arr.every((element: bigint, index: int, array: BigInt64Array) => {
       return element > o.base;
   });
   ```
@@ -184,7 +187,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `filter(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): BigInt64Array`
+  `filter(predicate: (value: bigint, index: int, array: BigInt64Array) => boolean): BigInt64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -195,7 +198,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 predicate函数返回值说明：
@@ -218,7 +221,7 @@ predicate函数返回值说明：
   }
   let o = new C(2n);
   let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.filter((element: bigint, index: number, array: BigInt64Array) => {
+  let result = arr.filter((element: bigint, index: int, array: BigInt64Array) => {
       return element > o.base;
   });
   ```
@@ -272,7 +275,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): bigint | undefined`
+  `find(predicate: (value: bigint, index: int, array: BigInt64Array) => boolean): bigint | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -283,7 +286,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 predicate函数返回值说明：
@@ -306,7 +309,7 @@ predicate函数返回值说明：
   }
   let o = new C(2n);
   let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.find((element: bigint, index: number, array: BigInt64Array) => {
+  let result = arr.find((element: bigint, index: int, array: BigInt64Array) => {
       return element > o.base;
   });
   ```
@@ -361,7 +364,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): number`
+  `findIndex(predicate: (value: bigint, index: int, array: BigInt64Array) => boolean): int`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -372,7 +375,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 predicate函数返回值说明：
@@ -383,12 +386,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `number` | 如果找到满足`predicate`的元素，则返回该元素的索引，否则返回 `-1`表示未找到满足的元素。 |
+  | `int` | 如果找到满足`predicate`的元素，则返回该元素的索引，否则返回`-1`表示未找到满足的元素。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array) :boolean{
+    comp(element: bigint, index: int, array: BigInt64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -439,7 +442,7 @@ callbackfn函数参数说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void): void`
+  `forEach(callbackfn: (value: bigint, index: int, array: BigInt64Array) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -450,7 +453,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 **示例：**  
@@ -465,7 +468,7 @@ callbackfn函数参数说明：
   function main() {
     let o = new C(2n);
     let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-    arr.forEach((element: bigint, index: number, array: BigInt64Array) => {
+    arr.forEach((element: bigint, index: int, array: BigInt64Array) => {
         console.info(element, index);
     });
   }
@@ -520,7 +523,7 @@ callbackfn函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint): BigInt64Array`
+  `map(callbackfn: (value: bigint, index: int, array: BigInt64Array) => bigint): BigInt64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -531,7 +534,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 callbackfn函数返回值说明：
@@ -554,7 +557,7 @@ callbackfn函数返回值说明：
   }
   let o = new C(2n);
   let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.map((element: bigint, index: number, array: BigInt64Array) => {
+  let result = arr.map((element: bigint, index: int, array: BigInt64Array) => {
       return o.base;
   });
   ```
@@ -609,7 +612,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): boolean`
+  `some(predicate: (value: bigint, index: int, array: BigInt64Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -620,7 +623,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
 
 predicate函数返回值说明：
@@ -643,7 +646,7 @@ predicate函数返回值说明：
   }
   let o = new C(2n);
   let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.some((element: bigint, index: number, array: BigInt64Array) => {
+  let result = arr.some((element: bigint, index: int, array: BigInt64Array) => {
       return element > o.base;
   });
   ```

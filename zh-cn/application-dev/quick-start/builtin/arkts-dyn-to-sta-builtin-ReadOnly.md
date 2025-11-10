@@ -51,7 +51,10 @@
 **示例：**  
   ```typescript
   let arr: ReadonlyArray<string> = ["a"];
-  arr.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of arr) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 
@@ -135,7 +138,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `every(predicate: (value: T, index: number, array: readonly T[]) => boolean): boolean`
+  `every(predicate: (value: T, index: int, array: readonly T[]) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -146,7 +149,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | readonly T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -212,7 +215,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `filter(predicate: (value: T, index: number, array: readonly T[]) => boolean): T[]`
+  `filter(predicate: (value: T, index: int, array: readonly T[]) => boolean): T[]`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -223,7 +226,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | readonly T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -289,7 +292,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `find(predicate: (value: T, index: number, obj: readonly T[]) => boolean): T | undefined`
+  `find(predicate: (value: T, index: int, obj: readonly T[]) => boolean): T | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -300,7 +303,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | obj | readonly T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -365,7 +368,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `findIndex(predicate: (value: T, index: number, obj: readonly T[]) => boolean): number`
+  `findIndex(predicate: (value: T, index: int, obj: readonly T[]) => boolean): int`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -376,7 +379,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | obj | readonly  T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -387,7 +390,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 元素索引，-1表示未找到满足的元素。 |
+  | int | 元素索引，-1表示未找到满足的元素。 |
 
 **示例：**  
   ```typescript
@@ -522,7 +525,7 @@ callbackfn函数参数说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `forEach(callbackfn: (value: T, index: number, array: readonly T[]) => void): void`
+  `forEach(callbackfn: (value: T, index: int, array: readonly T[]) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -533,7 +536,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | readonly T[] | 是 | 调用的原始数组。 |
 
 **示例：**  
@@ -588,7 +591,7 @@ callbackfn函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `map<U>(callbackfn: (value: T, index: number, array: readonly T[]) => U): U[]`
+  `map<U>(callbackfn: (value: T, index: int, array: readonly T[]) => U): U[]`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -599,7 +602,7 @@ callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | readonly T[] | 是 | 调用的原始数组。 |
 
 callbackfn函数返回值说明：
@@ -664,7 +667,7 @@ predicate函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `some(predicate: (value: T, index: number, array: readonly T[]) => boolean): boolean`
+  `some(predicate: (value: T, index: int, array: readonly T[]) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -675,7 +678,7 @@ predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | T | 是 | 当前被遍历的数组元素的值。 |
-  | index | number | 是 | 当前元素的索引。 |
+  | index | int | 是 | 当前元素的索引。 |
   | array | readonly T[] | 是 | 调用的原始数组。 |
 
 predicate函数返回值说明：
@@ -734,7 +737,10 @@ predicate函数返回值说明：
 **示例：**  
   ```typescript
   const m: ReadonlyMap<string, string> = new Map<string, string>();
-  let iter = m.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of m) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 
@@ -828,7 +834,10 @@ callbackfn函数参数说明：
 **示例：**  
   ```typescript
   let set: ReadonlySet<string> = new Set<string>(["a"]);
-  set.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of set) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 

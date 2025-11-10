@@ -77,6 +77,12 @@ project/
   }
   ```
 
+  ```TypeScript
+  'use static'
+  //library/index.ets
+  export { PageOne } from './src/main/ets/components/MainPage';
+  ```
+
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
 
   ```json
@@ -87,7 +93,7 @@ project/
   }
   ```
 
-- 在ArkTS-Sta主模块中引入ArkTS-Dyn动态模块的页面。
+- 在ArkTS-Dyn主模块中引入ArkTS-Sta模块的页面。
 
   ```TypeScript
   // entry/src/main/ets/pages/Index.ets

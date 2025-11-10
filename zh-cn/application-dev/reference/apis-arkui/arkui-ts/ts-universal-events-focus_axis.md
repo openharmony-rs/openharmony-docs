@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
->  从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## onFocusAxisEvent
 
-onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
+ArkTS-Dyn: onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
+
+ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 绑定该方法的组件获焦后，游戏手柄上的摇杆、十字键等的操作会触发该回调。
 
@@ -16,17 +20,21 @@ onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | Callback\<[FocusAxisEvent](#focusaxisevent对象说明)> | 是   | 获得FocusAxisEvent对象。 |
+| event  | ArkTS-Dyn: Callback\<[FocusAxisEvent](#focusaxisevent对象说明)><br/>ArkTS-Sta: Callback\<[FocusAxisEvent](#focusaxisevent对象说明)> \| undefined | 是   | 获得FocusAxisEvent对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## FocusAxisEvent对象说明
 

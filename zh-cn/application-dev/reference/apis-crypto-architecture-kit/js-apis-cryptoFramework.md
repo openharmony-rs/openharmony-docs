@@ -1133,10 +1133,10 @@ async function testGenerateAesKeyFun() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
   let key = await symKeyGenerator.generateSymKey();
   let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);    // Display key content.
+  console.info('key blob: '+ encodedKey.data);
   key.clearMem();
   encodedKey = key.getEncoded();
-  console.info('key blob：' + encodedKey.data);    // Display all 0s.
+  console.info('key blob：' + encodedKey.data);
 }
 ```
 
@@ -1193,6 +1193,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1222,10 +1224,48 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.pubKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('26959946667150639794667015087019630673557916260026308143510066298881')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('19277929113566293071110308034699488026831934219452440156649784352033'),
+    y: BigInt('19926808758034470970197974370888749184205991990603949537637343198772')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('26959946667150639794667015087019630673557916260026308143510066298878'),
+    b: BigInt('18958286285566608000408668544493926415504680968679321075787234672564'),
+    g: G,
+    n: BigInt('26959946667150639794667015087019625940457807714424391721682722368061'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testgetAsyKeySpec() {
+  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+  let keyPair = await generatorBySpec.generateKeyPair();
+  let key = keyPair.pubKey;
+  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + p.toString());
 }
 ```
 
@@ -1373,6 +1413,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1384,8 +1426,24 @@ async function testClearMem() {
       let priKey = keyPair.priKey;
       let returnBlob = priKey.getEncodedDer('PKCS8');
       console.info('returnBlob data：' + returnBlob.data);
-      priKey.clearMem(); // For the asymmetric private key, clearMem() releases the internal key struct. After clearMem is executed, getEncoded() is not supported.
+      priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
     });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testClearMem() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  // 使用密钥生成器随机生成非对称密钥对。
+  let keyPair = await eccGenerator.generateKeyPair();
+  let priKey = keyPair.priKey;
+  let returnBlob = priKey.getEncodedDer('PKCS8');
+  console.info('returnBlob data：' + returnBlob.data);
+  priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
 }
 ```
 
@@ -1432,6 +1490,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
@@ -1460,12 +1520,50 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 async function testgetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair(); // Generates an ECC key pair.
+  let keyPair = await generatorBySpec.generateKeyPair();
   let key = keyPair.priKey;
   let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + p.toString(16));
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+// 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('26959946667150639794667015087019630673557916260026308143510066298881')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('19277929113566293071110308034699488026831934219452440156649784352033'),
+    y: BigInt('19926808758034470970197974370888749184205991990603949537637343198772')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('26959946667150639794667015087019630673557916260026308143510066298878'),
+    b: BigInt('18958286285566608000408668544493926415504680968679321075787234672564'),
+    g: G,
+    n: BigInt('26959946667150639794667015087019625940457807714424391721682722368061'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testgetAsyKeySpec() {
+  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+  let keyPair = await generatorBySpec.generateKeyPair();
+  let key = keyPair.priKey;
+  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  console.info('ecc item --- p: ' + p.toString());
+}
+```
+
 ### getEncodedDer<sup>12+</sup>
 
 getEncodedDer(format: string): DataBlob
@@ -1510,6 +1608,8 @@ getEncodedDer(format: string): DataBlob
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1522,6 +1622,21 @@ async function testGetEncodedDer() {
       let returnBlob = priKey.getEncodedDer('PKCS8');
       console.info('returnBlob data：' + returnBlob.data);
     });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGetEncodedDer() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  // 使用密钥生成器随机生成非对称密钥对。
+  let keyPair = await eccGenerator.generateKeyPair();
+  let priKey = keyPair.priKey;
+  let returnBlob = priKey.getEncodedDer('PKCS8');
+  console.info('returnBlob data：' + returnBlob.data);
 }
 ```
 
@@ -1811,6 +1926,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1818,6 +1935,21 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
     console.info('Generate symKey success, algName：' + symKey.algName);
   });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testGenerateSymKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  symKeyGenerator.generateSymKey((err, symKey) => {
+    if (symKey != undefined) {
+      console.info('Generate symKey success, algName：' + symKey.algName);
+    }
+  });
+}
 ```
 
 ### generateSymKey
@@ -1856,6 +1988,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1867,6 +2001,26 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     }).catch((error: BusinessError) => {
       console.error(`Generate symKey failed, ${error.code}, ${error.message}`);
     });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function testGenerateSymKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  try {
+    let symKey = await symKeyGenerator.generateSymKey();
+    if (symKey != undefined) {
+      console.info('Generate symKey success, algName: ' + symKey.algName);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`Generate symKey failed, ${e.code}, ${e.message}`);
+  }
+}
 ```
 
 ### generateSymKeySync<sup>12+</sup>
@@ -1960,6 +2114,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1977,6 +2133,31 @@ function testConvertKey() {
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
     console.info('Convert symKey success, algName: ' + symKey.algName);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function genKeyMaterialBlob(): cryptoFramework.DataBlob {
+  let arr = [
+    0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
+    0xad, 0x47, 0xfc, 0x5a, 0x46, 0x39, 0xee, 0x7c,
+    0xba, 0x3b, 0xc2, 0x71, 0xab, 0xa0, 0x30, 0x72]; // keyLen = 192 (24 bytes)
+  let keyMaterial = new Uint8Array(arr);
+  return { data: keyMaterial };
+}
+
+function testConvertKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  let keyMaterialBlob = genKeyMaterialBlob();
+  symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+    if (symKey != undefined) {
+      console.info('Convert symKey success, algName: ' + symKey.algName);
+    }
   });
 }
 ```
@@ -2022,6 +2203,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2044,6 +2227,34 @@ function testConvertKey() {
     }).catch((error: BusinessError) => {
       console.error(`Convert symKey failed, ${error.code}, ${error.message}`);
     });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function genKeyMaterialBlob(): cryptoFramework.DataBlob {
+  let arr = [
+    0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
+    0xad, 0x47, 0xfc, 0x5a, 0x46, 0x39, 0xee, 0x7c,
+    0xba, 0x3b, 0xc2, 0x71, 0xab, 0xa0, 0x30, 0x72]; // keyLen = 192 (24 bytes)
+  let keyMaterial = new Uint8Array(arr);
+  return { data: keyMaterial };
+}
+
+function testConvertKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  let keyMaterialBlob = genKeyMaterialBlob();
+  try {
+    let symKey = await symKeyGenerator.convertKey(keyMaterialBlob);
+    console.info('Convert symKey success, algName：' + symKey.algName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`Convert symKey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2260,6 +2471,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2271,6 +2484,24 @@ keyGenPromise.then(keyPair => {
 }).catch((error: BusinessError) => {
   console.error("generateKeyPair error.");
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateKeyPair() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyGenPromise = await asyKeyGenerator.generateKeyPair();
+    console.info('generateKeyPair success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair error, ${e.code}, ${e.message}`);
+  }
+}
 ```
 
 ### generateKeyPairSync<sup>12+</sup>
@@ -2305,6 +2536,8 @@ generateKeyPairSync(): KeyPair
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2319,6 +2552,29 @@ try {
 } catch (e) {
   console.error(`sync error, ${e.code}, ${e.message}`);
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateKeyPairSync() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyPairData = asyKeyGenerator.generateKeyPairSync();
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair success');
+    } else {
+      console.error("[Sync]: get key pair result fail!");
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
+}
+
 ```
 
 ### convertKey
@@ -2415,6 +2671,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2430,6 +2688,28 @@ keyGenPromise.then(keyPair => {
 }).catch((error: BusinessError) => {
   console.error("convertKey error.");
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestConvertKey() {
+  let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+  let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
+  let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyPair = await asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob);
+    console.info('convertKey success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertKey error, ${e.code}, ${e.message}`);
+  }
+}
 ```
 
 ### convertKeySync<sup>12+</sup>
@@ -2471,6 +2751,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2489,6 +2771,33 @@ try {
 } catch (e) {
   console.error(`sync error, ${e.code}, ${e.message}`);
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestConvertKeySync() {
+  let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+  let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
+  let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyPairData = asyKeyGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair success');
+    } else {
+      console.error("[Sync]: convert key pair result fail!");
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
+}
+
 ```
 
 **密钥转换说明**
@@ -2542,6 +2851,8 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2576,6 +2887,46 @@ async function TestConvertPemKeyByPromise() {
   }).catch((error: BusinessError) => {
     console.error("convertPemKey error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1Str1024: string  =
+  "-----BEGIN RSA PRIVATE KEY-----\n"
+    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
+    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
+    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
+    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
+    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
+    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
+    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
+    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
+    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
+    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
+    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
+    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
+    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
+    + "-----END RSA PRIVATE KEY-----\n";
+let publicPkcs1Str1024: string  =
+  "-----BEGIN RSA PUBLIC KEY-----\n"
+    + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
+    + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
+    + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
+    + "-----END RSA PUBLIC KEY-----\n";
+async function TestConvertPemKeyByPromise() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try{
+    let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
+    console.info('convertPemKey success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertPemKey error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2625,6 +2976,8 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2656,6 +3009,43 @@ async function TestConvertPemKeyByPromise() {
   }).catch((error: BusinessError) => {
     console.error("convertPemKey error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1EncodingStr : string =
+  "-----BEGIN RSA PRIVATE KEY-----\n"
+    +"Proc-Type: 4,ENCRYPTED\n"
+    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
+    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
+    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
+    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
+    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
+    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
+    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
+    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
+    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
+    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
+    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
+    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
+    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
+    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
+    +"-----END RSA PRIVATE KEY-----\n"
+
+async function TestConvertPemKeyByPromise() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = await asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, "123456");
+    console.info('convertPemKey success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertPemKey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2701,6 +3091,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2737,6 +3129,50 @@ function TestConvertPemKeyBySync() {
     }
   } catch (e) {
     console.error(`Sync error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1Str1024: string  =
+  "-----BEGIN RSA PRIVATE KEY-----\n"
+    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
+    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
+    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
+    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
+    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
+    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
+    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
+    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
+    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
+    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
+    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
+    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
+    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
+    + "-----END RSA PRIVATE KEY-----\n";
+let publicPkcs1Str1024: string  =
+  "-----BEGIN RSA PUBLIC KEY-----\n"
+    + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
+    + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
+    + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
+    + "-----END RSA PUBLIC KEY-----\n";
+function TestConvertPemKeyBySync() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
+    if (keyPairData != null) {
+      console.info('[Sync]: convert pem key pair success');
+    } else {
+      console.error("[Sync]: convert pem key pair result fail!");
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error('`Sync error, errCode: ' + e.code + ', errMsg: ' + e.message);
   }
 }
 ```
@@ -2784,6 +3220,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2815,6 +3253,46 @@ function TestConvertPemKeyBySync() {
       console.error("[Sync]: convert pem key pair result fail!");
     }
   } catch (e) {
+    console.error(`Sync error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1EncodingStr : string =
+  "-----BEGIN RSA PRIVATE KEY-----\n"
+    +"Proc-Type: 4,ENCRYPTED\n"
+    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
+    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
+    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
+    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
+    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
+    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
+    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
+    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
+    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
+    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
+    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
+    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
+    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
+    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
+    +"-----END RSA PRIVATE KEY-----\n"
+function TestConvertPemKeyBySync() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, "123456");
+    if (keyPairData != null) {
+      console.info('[Sync]: convert pem key pair success');
+    } else {
+      console.error("[Sync]: convert pem key pair result fail!");
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync error, ${e.code}, ${e.message}`);
   }
 }
@@ -2862,6 +3340,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2890,8 +3370,45 @@ function genDsa1024KeyPairSpecBigE() {
   return dsaKeyPairSpec;
 }
 
-let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
 let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function TestcreateAsyKeyGeneratorBySpec() {
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  console.info("createAsyKeyGeneratorBySpec success.");
+}
 ```
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
@@ -2954,6 +3471,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2984,7 +3503,51 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
+    if (err) {
+      console.error("generateKeyPair: error.");
+      return;
+    }
+    console.info('generateKeyPair: success.');
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPair()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
     if (err) {
@@ -3032,6 +3595,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3062,7 +3627,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPair()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
   keyGenPromise.then(keyPair => {
@@ -3070,6 +3635,51 @@ function testGenerateKeyPair()
   }).catch((error: BusinessError) => {
     console.error("generateKeyPair error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPair()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let keyPair = await asyKeyGeneratorBySpec.generateKeyPair();
+    console.info('generateKeyPair success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3107,6 +3717,8 @@ generateKeyPairSync(): KeyPair
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3138,7 +3750,56 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGenerateKeyPairSync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair success');
+    } else {
+      console.error("[Sync]: get key pair result fail!");
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGenerateKeyPairSync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
@@ -3190,6 +3851,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3220,7 +3883,51 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
+    if (err) {
+      console.error("generatePriKey: error.");
+      return;
+    }
+    console.info('generatePriKey: success.');
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
@@ -3268,6 +3975,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3299,7 +4008,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
   keyGenPromise.then(priKey => {
@@ -3307,6 +4016,50 @@ function testGeneratePriKey()
   }).catch((error: BusinessError) => {
     console.error("generatePriKey error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKey() {
+  try {
+    let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+    let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+    let keyGenPromise = await asyKeyGeneratorBySpec.generatePriKey();
+    console.info('generatePriKey success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generatePriKey error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3344,6 +4097,8 @@ generatePriKeySync(): PriKey
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3374,7 +4129,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePriKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
@@ -3384,6 +4139,55 @@ function testGeneratePriKeySync()
       console.error("[Sync]: get pri key result fail!");
     }
   } catch (e) {
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePriKeySync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
+    if (priKeyData != null) {
+      console.info('[Sync]: pri key success');
+    } else {
+      console.error("[Sync]: get pri key result fail!");
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync error, ${e.code}, ${e.message}`);
   }
 }
@@ -3425,6 +4229,8 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3455,7 +4261,51 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
+    if (err) {
+      console.error("generatePubKey: error.");
+      return;
+    }
+    console.info('generatePubKey: success.');
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKey()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
     if (err) {
@@ -3503,6 +4353,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3534,7 +4386,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKey()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
   keyGenPromise.then(pubKey => {
@@ -3542,6 +4394,51 @@ function testGeneratePubKey()
   }).catch((error: BusinessError) => {
     console.error("generatePubKey error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKey()
+{
+  try {
+    let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+    let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+    let keyGenPromise = await asyKeyGeneratorBySpec.generatePubKey();
+    console.info('generatePubKey success.');
+  } catch(err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generatePubKey error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3579,6 +4476,8 @@ generatePubKeySync(): PubKey
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3609,7 +4508,7 @@ function genDsa1024KeyPairSpecBigE() {
 
 function testGeneratePubKeySync()
 {
-  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The JS input must be a positive number in big-endian format.
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
@@ -3619,6 +4518,55 @@ function testGeneratePubKeySync()
       console.error("[Sync]: get pub key result fail!");
     }
   } catch (e) {
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+function testGeneratePubKeySync()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
+    if (pubKeyData != null) {
+      console.info('[Sync]: pub key success');
+    } else {
+      console.error("[Sync]: get pub key result fail!");
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync error, ${e.code}, ${e.message}`);
   }
 }
@@ -3668,6 +4616,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3677,6 +4627,23 @@ try {
 } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`genECCCommonParamsSpec error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestgenECCCommonParamsSpec() {
+  try {
+    let ECCCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP160r1');
+    console.info('genECCCommonParamsSpec success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`genECCCommonParamsSpec error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3774,6 +4741,8 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3788,6 +4757,28 @@ async function doTest() {
   let returnPoint: cryptoFramework.Point = {
     x: BigInt('0x' + eccPkX.toString(16)),
     y: BigInt('0x' + eccPkY.toString(16))
+  };
+  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+  console.info('returnData: ' + returnData);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function doTest() {
+  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await generator.generateKeyPair();
+  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+  console.info('ECC_PK_X_BN ：' + eccPkX.toString());
+  console.info('ECC_PK_Y_BN ：' + eccPkY.toString());
+  // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
+  let returnPoint: cryptoFramework.Point = {
+    x: BigInt('' + eccPkX.toString()),
+    y: BigInt('' + eccPkY.toString())
   };
   let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
   console.info('returnData: ' + returnData);
@@ -3846,6 +4837,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3855,6 +4848,23 @@ try {
 } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`genDHCommonParamsSpec error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenDHCommonParamsSpec() {
+  try {
+    let DHCommonParamsSpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(2048);
+    console.info('genDHCommonParamsSpec success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`genDHCommonParamsSpec error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3905,6 +4915,8 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3920,6 +4932,29 @@ try {
 } catch (err) {
   let e: BusinessError = err as BusinessError;
   console.error(`genCipherTextBySpec error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenCipherTextBySpec() {
+  try {
+    let spec : cryptoFramework.SM2CipherTextSpec = {
+      xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627260141789922999'),
+      yCoordinate: BigInt('48563164792857017065725892921053777369510340820930241057309844352421738767712'),
+      cipherTextData: new Uint8Array([100,227,78,195,249,179,43,70,242,69,169,10,65,123]),
+      hashData: new Uint8Array([87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244]),
+    }
+    let data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(spec, 'C1C3C2');
+    console.info('genCipherTextBySpec success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`genCipherTextBySpec error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3960,6 +4995,8 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | 17620001 | memory operation failed.                    |
 | 17630001 | crypto operation error.          |
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3971,6 +5008,25 @@ try {
 } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`getCipherTextSpec error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGetCipherTextSpec() {
+  try {
+    let cipherTextArray = new Uint8Array([48,118,2,32,45,153,88,82,104,221,226,43,174,21,122,248,5,232,105,41,92,95,102,224,216,149,85,236,110,6,64,188,149,70,70,183,2,32,107,93,198,247,119,18,40,110,90,156,193,158,205,113,170,128,146,109,75,17,181,109,110,91,149,5,110,233,209,78,229,96,4,32,87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244,4,14,100,227,78,195,249,179,43,70,242,69,169,10,65,123]);
+    let cipherText : cryptoFramework.DataBlob = {data : cipherTextArray};
+    let spec : cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
+    console.info('getCipherTextSpec success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getCipherTextSpec error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -4022,6 +5078,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4033,6 +5091,24 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCreateCipher() {
+  let cipherAlgName = '3DES192|ECB|PKCS7';
+  try {
+    let cipher = cryptoFramework.createCipher(cipherAlgName);
+    console.info('cipher algName：' + cipher.algName);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -4392,6 +5468,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -4436,6 +5514,62 @@ function cipherByCallback() {
         });
       });
     });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+function cipherByCallback() {
+  let gcmParams = genGcmParamsSpec();
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+  symKeyGenerator.generateSymKey((err, symKey) => {
+    if (symKey != undefined) {
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+        let message = "This is a test";
+        let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+        cipher.update(plainText, (err, encryptUpdate) => {
+          cipher.doFinal(null, (err, tag) => {
+            if (tag != undefined) {
+              gcmParams.authTag = tag;
+            }
+            if (encryptUpdate != undefined) {
+              console.info('encryptUpdate plainText：' + encryptUpdate.data);
+            }
+          });
+        });
+      });
+    }
   });
 }
 ```
@@ -4503,6 +5637,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -4543,6 +5679,53 @@ async function cipherByPromise() {
   let encryptUpdate = await cipher.update(plainText);
   gcmParams.authTag = await cipher.doFinal(null);
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+async function cipherByPromise() {
+  let gcmParams = genGcmParamsSpec();
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+  let symKey = await symKeyGenerator.generateSymKey();
+  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+  let message = "This is a test";
+  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+  let encryptUpdate = await cipher.update(plainText);
+  await cipher.doFinal(null);
+  if(encryptUpdate != undefined) {
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  }
 }
 ```
 
@@ -4602,6 +5785,8 @@ ArkTS-Sta: doFinalSync(data: DataBlob | null): DataBlob | null
 
 此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -4644,6 +5829,53 @@ async function cipherBySync() {
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
 }
 
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+async function cipherBySync() {
+  let gcmParams = genGcmParamsSpec();
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+  let symKey = await symKeyGenerator.generateSymKey();
+  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+  let message = "This is a test";
+  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+  let encryptUpdate = cipher.updateSync(plainText);
+  cipher.doFinalSync(null);
+  if (encryptUpdate != undefined) {
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  }
+}
 ```
 
 ### setCipherSpec<sup>10+</sup>
@@ -5202,6 +6434,8 @@ signSync(data: DataBlob | null): DataBlob
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -5223,6 +6457,37 @@ function signByCallback() {
         });
       });
     });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function signByCallback() {
+  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (keyPair != undefined) {
+      signer.init(keyPair.priKey, err => {
+        signer.update(inputUpdate, err => {
+          signer.sign(inputVerify, (err, signData) => {
+            if (signData != undefined) {
+              console.info('sign output is ' + signData.data);
+            }
+          });
+        });
+      });
+    }
   });
 }
 ```
@@ -5850,6 +7115,8 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -5874,6 +7141,38 @@ function verifyByCallback() {
         });
       });
     });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function verifyByCallback() {
+  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
+  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
+  // 该数据取自Sign中的signData.data。
+  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) }
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (keyPair != undefined) {
+      verifier.init(keyPair.pubKey, err => {
+        verifier.update(inputUpdate, err => {
+          verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+            console.info('verify result is ' + res);
+          });
+        });
+      });
+    }
   });
 }
 ```
@@ -5989,9 +7288,49 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
+  let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
+  console.info('convertKey success');
+  return keyPair;
+}
+
+async function recoverByPromise() {
+  // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
+  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let keyPair = await genKeyPairByData(pkData, skData);
+  // 该数据取自Sign中的signData.data。
+  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+  await verifier.init(keyPair.pubKey);
+  try {
+    let rawSignData = await verifier.recover(signMessageBlob);
+    if (rawSignData != null) {
+      console.info('[Promise]: recover result: ' + rawSignData.data);
+    } else {
+      console.error("[Promise]: get verify recover result fail!");
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`promise error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6363,6 +7702,8 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 **callback示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -6380,7 +7721,29 @@ async function testGenerateSecret() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function testGenerateSecret() {
+  let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+  let globalKeyPair = await eccGen.generateKeyPair();
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+    if (err) {
+      console.error("keyAgreement error.");
+    }
+    if (secret != undefined) {
+      console.info('keyAgreement output is ' + secret.data);
+    }
+  });
+}
+```
+
 **Promise示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6396,6 +7759,26 @@ async function testGenerateSecret() {
   }).catch((error: BusinessError) => {
     console.error("keyAgreement error.");
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+async function testGenerateSecret() {
+  try {
+    let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = await keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('keyAgreement output is ' + keyAgreementPromise.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`keyAgreement error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -6454,16 +7837,37 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Set algName based on the algorithm supported.
+  // 根据支持的算法设置algName。
   let md = cryptoFramework.createMd('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCreateMd()
+{
+  try {
+    // 根据支持的算法设置algName。
+    let md = cryptoFramework.createMd('SHA256');
+    console.info('TestCreateMd success');
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`TestCreateMd error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -6644,6 +8048,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -6654,6 +8060,25 @@ function mdByCallback() {
     md.digest((err, digestOutput) => {
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
+    });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function mdByCallback() {
+  let md = cryptoFramework.createMd('SHA256');
+  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
+    md.digest((err, digestOutput) => {
+      if (digestOutput != undefined) {
+        console.info('[Callback]: MD result: ' + digestOutput.data);
+        console.info('[Callback]: MD len: ' + md.getMdLength());
+      }
     });
   });
 }
@@ -6837,16 +8262,36 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Set algName based on the algorithm supported.
+  // 根据支持的算法设置algName。
   let mac = cryptoFramework.createMac('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCreateMac() {
+  try {
+    // 根据支持的算法设置algName。
+    let mac = cryptoFramework.createMac('SHA256');
+    console.info("TestCreateMac success ");
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`TestCreateMac error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -6891,12 +8336,14 @@ createMac(macSpec: MacSpec): Mac
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Set algName based on the algorithm supported.
+  // 根据支持的算法设置algName。
   let spec: cryptoFramework.HmacSpec = {
     algName: "HMAC",
     mdName: "SHA256",
@@ -6905,6 +8352,28 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCreateMac() {
+  try {
+    // 根据支持的算法设置algName。
+    let spec: cryptoFramework.HmacSpec = {
+      algName: "HMAC",
+      mdName: "SHA256",
+    };
+    let mac = cryptoFramework.createMac(spec);
+    console.info("TestCreateMac success ");
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createMac error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -7186,6 +8655,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 此外，更多HMAC的完整示例可参考开发指导中[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
@@ -7203,6 +8674,33 @@ function hmacByCallback() {
         });
       });
     });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function hmacByCallback() {
+  let mac = cryptoFramework.createMac('SHA256');
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+    if (symKey != undefined) {
+      mac.init(symKey, (err) => {
+        mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err) => {
+          mac.doFinal((err, output) => {
+            if (output != undefined) {
+              console.info('[Callback]: HMAC result: ' + output.data);
+              console.info('[Callback]: MAC len: ' + mac.getMacLength());
+            }
+          });
+        });
+      });
+    }
   });
 }
 ```
@@ -7345,6 +8843,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7373,6 +8873,29 @@ function testGetMacLength() {
   }).catch((error: BusinessError) => {
     console.error("[Promise]: error: " + error.message);
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testGetMacLength() {
+  let mac = cryptoFramework.createMac('SHA256');
+  console.info('Mac algName is: ' + mac.algName);
+  let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+  let keyBlob: cryptoFramework.DataBlob = { data: keyData };
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+
+  let promiseConvertKey = await symKeyGenerator.convertKey(keyBlob);
+  let promiseMacInit = await mac.init(promiseConvertKey);
+  let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
+  let promiseMacUpdate = await mac.update(blob);
+  let macOutput = await mac.doFinal();
+  console.info('[Promise]: HMAC result: ' + macOutput.data);
+  let macLen = mac.getMacLength();
+  console.info('MAC len: ' + macLen);
 }
 ```
 
@@ -7410,6 +8933,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7419,6 +8944,23 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestCreateRandom() {
+  try {
+    let rand = cryptoFramework.createRandom();
+    console.info("createRandom success ");
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createRandom error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -7485,6 +9027,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7496,6 +9040,25 @@ rand.generateRandom(12, (err, randData) => {
     console.info('[Callback]: generate random result: ' + randData.data);
   }
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function TestCreateRandom() {
+  let rand = cryptoFramework.createRandom();
+  rand.generateRandom(12, (err, randData) => {
+    if (err) {
+      console.error("[Callback] err: " + err.code);
+    } else {
+      if (randData != undefined) {
+        console.info('[Callback]: generate random result: ' + randData.data);
+      }
+    }
+  });
+}
 ```
 
 ### generateRandom
@@ -7542,6 +9105,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7553,6 +9118,24 @@ promiseGenerateRand.then(randData => {
 }).catch((error: BusinessError) => {
   console.error("[Promise]: error: " + error.message);
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateRandom() {
+  try {
+    let rand = cryptoFramework.createRandom();
+    let promiseGenerateRand = await rand.generateRandom(12);
+    console.info('[Promise]: rand result: ' + promiseGenerateRand.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`TestGenerateRandom error, ${e.code}, ${e.message}`);
+  }
+}
 ```
 
 ### generateRandomSync<sup>10+</sup>
@@ -7597,6 +9180,8 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7612,6 +9197,28 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateRandomSync() {
+  let rand = cryptoFramework.createRandom();
+  try {
+    let randData = rand.generateRandomSync(12);
+    if (randData != null) {
+      console.info('[Sync]: rand result: ' + randData.data);
+    } else {
+      console.error("[Sync]: get rand result fail!");
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`sync error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -7691,6 +9298,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7709,6 +9318,32 @@ rand.generateRandom(12, (err, randData) => {
     }
   }
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateRandom() {
+  let rand = cryptoFramework.createRandom();
+  rand.generateRandom(12, (err, randData) => {
+    if (err) {
+      console.error("[Callback] err: " + err.code);
+    } else {
+      if (randData != undefined) {
+        console.info('[Callback]: generate random result: ' + randData.data);
+        try {
+          rand.setSeed(randData);
+        } catch (error) {
+          let e: BusinessError = error as BusinessError;
+          console.error(`setSeed error, ${e.code}, ${e.message}`);
+        }
+      }
+    }
+  });
+}
 ```
 
 ## cryptoFramework.createKdf<sup>11+</sup>
@@ -7816,6 +9451,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 - PBKDF2算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7856,6 +9493,59 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
     }
     console.info('key derivation output is ' + secret.data);
   });
+  ```
+
+ArkTS-Sta示例：
+
+- PBKDF2算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.PBKDF2Spec = {
+      algName: 'PBKDF2',
+      password: '123456',
+      salt: new Uint8Array(16),
+      iterations: 10000,
+      keySize: 32
+    };
+    let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+    kdf.generateSecret(spec, (err, secret) => {
+      if (err) {
+        console.error("generateSecret error.");
+        return;
+      }
+      if (secret != undefined) {
+        console.info('generateSecret output is ' + secret.data);
+      }
+    });
+  }
+  ```
+
+- HKDF算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.HKDFSpec = {
+      algName: 'HKDF',
+      key: '123456',
+      salt: new Uint8Array(16),
+      info: new Uint8Array(16),
+      keySize: 32
+    };
+    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+    kdf.generateSecret(spec, (err, secret) => {
+      if (err) {
+        console.error("generateSecret error.");
+        return;
+      }
+      if (secret != undefined) {
+        console.info('generateSecret output is ' + secret.data);
+      }
+    });
+  }
   ```
 
 ### generateSecret<sup>11+</sup>
@@ -7898,6 +9588,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 - PBKDF2算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7938,6 +9630,56 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   }).catch((error: BusinessError) => {
     console.error("key derivation error, " + error.message);
   });
+  ```
+
+ArkTS-Sta示例：
+
+- PBKDF2算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.PBKDF2Spec = {
+      algName: 'PBKDF2',
+      password: '123456',
+      salt: new Uint8Array(16),
+      iterations: 10000,
+      keySize: 32
+    };
+    try {
+      let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+      let kdfPromise = await kdf.generateSecret(spec);
+      console.info('generateSecret output is ' + kdfPromise.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error("TestGenerateSecret error, " + e.message);
+    }
+  }
+  ```
+
+- HKDF算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.HKDFSpec = {
+      algName: 'HKDF',
+      key: '123456',
+      salt: new Uint8Array(16),
+      info: new Uint8Array(16),
+      keySize: 32
+    };
+    try {
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let kdfPromise = await kdf.generateSecret(spec);
+      console.info('generateSecret output is ' + kdfPromise.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error("TestGenerateSecret error, " + e.message);
+    }
+  }
   ```
 
 ### generateSecretSync<sup>12+</sup>
@@ -8058,6 +9800,8 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8077,6 +9821,26 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function testGenEccSignatureSpec() {
+    try {
+      let data =
+        new Uint8Array([48, 69, 2, 33, 0, 216, 15, 76, 238, 158, 165, 108, 76, 72, 63, 115, 52, 255, 51, 149, 54, 224,
+          179, 49, 225, 70, 36, 117, 88, 154, 154, 27, 194, 161, 3, 1, 115, 2, 32, 51, 9, 53, 55, 248, 82, 7, 159, 179,
+          144, 57, 151, 195, 17, 31, 106, 123, 32, 139, 219, 6, 253, 62, 240, 181, 134, 214, 107, 27, 230, 175, 40])
+      let spec: cryptoFramework.EccSignatureSpec = cryptoFramework.SignatureUtils.genEccSignatureSpec(data)
+      console.info('genEccSignatureSpec success');
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ecc error, ${e.code}, ${e.message}`);
+    }
+  }
+  ```
 
 ### genEccSignature<sup>20+</sup>
 
@@ -8117,9 +9881,34 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
+  function testGenEccSignature() {
+    try {
+      let spec: cryptoFramework.EccSignatureSpec = {
+        r: BigInt('97726608965854271693043443511967021777934035174185659091642456228829830775155'),
+        s: BigInt('23084224202834231287427338597254751764391338275617140205467537273296855150376'),
+      }
+
+      let data = cryptoFramework.SignatureUtils.genEccSignature(spec)
+      console.info('genEccSignature success');
+      console.info('data is ' + data)
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`ecc error, ${e.code}, ${e.message}`);
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
 
   function testGenEccSignature() {
     try {

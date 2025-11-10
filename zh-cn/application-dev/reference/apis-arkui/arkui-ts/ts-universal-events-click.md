@@ -4,15 +4,19 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  点击事件遵循[触摸事件](../arkui-ts/ts-universal-events-touch.md#触摸事件)分发流程，触摸事件支持屏蔽、透传等自定义行为。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
+> - 点击事件遵循[触摸事件](../arkui-ts/ts-universal-events-touch.md#触摸事件)分发流程，触摸事件支持屏蔽、透传等自定义行为。
+>
+> - 事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
 
 ## onClick<sup>12+</sup>
 
-onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
+ArkTS-Dyn: onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
+
+ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | undefined): this
 
 点击动作触发该回调。
 
@@ -33,12 +37,16 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | Callback\<[ClickEvent](#clickevent对象说明)> | 是   | 点击事件的回调函数。 |
-| distanceThreshold  | number | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
+| event  | ArkTS-Dyn: Callback\<[ClickEvent](#clickevent对象说明)> <br/>ArkTS-Sta: Callback\<[ClickEvent](#clickevent对象说明)> \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
+| distanceThreshold  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
 
 >  **说明：**
 >
@@ -48,11 +56,13 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onClick
 
-onClick(event: (event: ClickEvent) => void): T
+ArkTS-Dyn: onClick(event: (event: ClickEvent) => void): T
+
+ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 点击动作触发该回调。
 
@@ -70,17 +80,21 @@ onClick(event: (event: ClickEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | (event: [ClickEvent](#clickevent对象说明)) => void | 是   | 点击事件的回调函数。 |
+| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent对象说明)) => void <br/>ArkTS-Sta: (event: [ClickEvent](#clickevent对象说明)) => void \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## ClickEvent对象说明
 

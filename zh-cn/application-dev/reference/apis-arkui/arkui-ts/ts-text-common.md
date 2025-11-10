@@ -2,8 +2,11 @@
 
 >**说明：**
 >
->文本类组件公共接口。
->本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 文本类组件公共接口。
+>
+> - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## CaretStyle<sup>10+</sup>
 
@@ -33,7 +36,9 @@ let layoutManager: LayoutManager = this.controller.getLayoutManager();
 
 ### getLineCount
 
-getLineCount(): number
+ArkTS-Dyn: getLineCount(): number
+
+ArkTS-Sta: getLineCount(): int | undefined
 
 获取组件内容的总行数。
 
@@ -41,15 +46,21 @@ getLineCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 组件内容的总行数。 |
+| ArkTS-Dyn: number <br/> ArkTS-Sta: int \| undefined | 组件内容的总行数。 |
 
 ### getGlyphPositionAtCoordinate
 
-getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
+ArkTS-Dyn: getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
+
+ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undefined
 
 获取较为接近给定坐标的字形的位置信息。
 
@@ -57,22 +68,28 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
-| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
 
 **返回值：**
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-| [PositionWithAffinity](#positionwithaffinity12) | 字形位置信息。|
+| ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br/> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字形位置信息。|
 
 ### getLineMetrics
 
-getLineMetrics(lineNumber: number): LineMetrics
+ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics
+
+ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined
 
 获取指定行的行信息、文本样式信息、以及字体属性信息。
 
@@ -80,27 +97,37 @@ getLineMetrics(lineNumber: number): LineMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| lineNumber | number | 是    | 行号，从0开始。 |
+| lineNumber | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 行号，从0开始。 |
 
 **返回值：**
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| [LineMetrics](#linemetrics12) | 行信息、文本样式信息、以及字体属性信息。<br/>当行号小于0或超出实际行，返回无效值。 |
+| ArkTS-Dyn: [LineMetrics](#linemetrics12) <br/> ArkTS-Sta: [LineMetrics](#linemetrics12) \| undefined | 行信息、文本样式信息、以及字体属性信息。<br/>当行号小于0或超出实际行，返回无效值。 |
 
 ### getRectsForRange<sup>14+</sup>
 
-getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array\<TextBox>
+ArkTS-Dyn: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array\<TextBox>
+
+ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array\<TextBox> | undefined
 
 获取给定的矩形区域宽度以及矩形区域高度的规格下，文本中任意区间范围内的字符或占位符所占的绘制区域信息。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -114,7 +141,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 类型                         | 说明        |
 | --------------------------- | ----------- |
-| Array\<[TextBox](#textbox14)> | 矩形区域数组。|
+| ArkTS-Dyn: Array\<[TextBox](#textbox14)> <br/> ArkTS-Sta: Array\<[TextBox](#textbox14)> \| undefined | 矩形区域数组。|
 
 ## PositionWithAffinity<sup>12+</sup>
 
@@ -576,7 +603,9 @@ closeSelectionMenu(): void
 
 ### getLayoutManager<sup>12+</sup>
 
-getLayoutManager(): LayoutManager
+ArkTS-Dyn: getLayoutManager(): LayoutManager
+
+ArkTS-Sta: getLayoutManager(): LayoutManager | undefined
 
 获取布局管理器对象。
 
@@ -584,11 +613,15 @@ getLayoutManager(): LayoutManager
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。 |
+| ArkTS-Dyn: [LayoutManager](ts-text-common.md#layoutmanager12) <br/> ArkTS-Sta: [LayoutManager](ts-text-common.md#layoutmanager12) \| undefined | 布局管理器对象。 |
 
 ## TextEditControllerEx<sup>12+</sup>
 
@@ -602,7 +635,9 @@ getLayoutManager(): LayoutManager
 
 ### isEditing<sup>12+</sup>
 
-isEditing(): boolean
+ArkTS-Dyn: isEditing(): boolean
+
+ArkTS-Sta: isEditing(): boolean | undefined
 
 获取当前富文本的编辑状态。
 
@@ -610,11 +645,15 @@ isEditing(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| boolean | true为编辑态，false为非编辑态。 |
+| ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | true为编辑态，false为非编辑态。 |
 
 ### stopEditing<sup>12+</sup>
 
@@ -628,7 +667,9 @@ stopEditing(): void
 
 ### getCaretOffset<sup>12+</sup>
 
-getCaretOffset(): number
+ArkTS-Dyn: getCaretOffset(): number
+
+ArkTS-Sta: getCaretOffset(): int | undefined
 
 返回当前光标所在位置。
 
@@ -636,15 +677,21 @@ getCaretOffset(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 当前光标所在位置。 |
+| ArkTS-Dyn: number <br/> ArkTS-Sta: int \| undefined | 当前光标所在位置。 |
 
 ### setCaretOffset<sup>12+</sup>
 
-setCaretOffset(offset: number): boolean
+ArkTS-Dyn: setCaretOffset(offset: number): boolean
+
+ArkTS-Sta: setCaretOffset(offset: int): boolean | undefined
 
 设置光标位置。
 
@@ -652,21 +699,27 @@ setCaretOffset(offset: number): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                |
 | ------ | ------ | ---- | -------------------- |
-| offset | number | 是    | 光标偏移位置。超出所有内容范围时，设置失败。 |
+| offset | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | 光标偏移位置。超出所有内容范围时，设置失败。 |
 
 **返回值：**
 
 | 类型      | 说明        |
 | ------- | --------- |
-| boolean | 光标是否设置成功。<br/>true表示光标设置成功，false表示设置失败。 |
+| ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 光标是否设置成功。<br/>true表示光标设置成功，false表示设置失败。 |
 
 ### getPreviewText<sup>12+</sup>
 
-getPreviewText?(): PreviewText
+ArkTS-Dyn: getPreviewText?(): PreviewText
+
+ArkTS-Sta: getPreviewText?(): PreviewText | undefined
 
 获取预上屏信息。
 
@@ -674,11 +727,15 @@ getPreviewText?(): PreviewText
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | 预上屏信息。 |.
+| ArkTS-Dyn: [PreviewText](#previewtext12) <br/> ArkTS-Sta: [PreviewText](#previewtext12) \| undefined | 预上屏信息。 |
 
 ## StyledStringController<sup>12+</sup>
 
@@ -706,7 +763,9 @@ setStyledString(styledString: StyledString): void
 
 ### getStyledString<sup>12+</sup>
 
-getStyledString(): MutableStyledString
+ArkTS-Dyn: getStyledString(): MutableStyledString
+
+ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 获取富文本组件显示的属性字符串。
 
@@ -714,11 +773,15 @@ getStyledString(): MutableStyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | 富文本组件显示的属性字符串。 |
+| ArkTS-Dyn: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) <br/> ArkTS-Sta: [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) \| undefined | 富文本组件显示的属性字符串。 |
 
 ## DecorationStyleResult<sup>12+</sup>
 

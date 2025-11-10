@@ -4,11 +4,15 @@
 
 > **说明：**
 >
->  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## onVisibleAreaChange
 
-onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
+ArkTS-Dyn: onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
+
+ArkTS-Sta: onVisibleAreaChange(ratios: Array<double> | undefined, event: VisibleAreaChangeCallback | undefined): this
 
 组件可见区域变化时触发该回调。
 
@@ -16,18 +20,22 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
-| event  | [VisibleAreaChangeCallback](ts-types.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
+| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt;&nbsp;\|&nbsp;undefined | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](ts-types.md#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 是   | 组件可见区域变化事件的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 > **说明：**
 >
@@ -40,7 +48,9 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
+ArkTS-Dyn: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
+
+ArkTS-Sta: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions | undefined, event: VisibleAreaChangeCallback | undefined)
 
 设置[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件的回调参数，限制它的执行间隔。
 
@@ -48,12 +58,16 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12) | 是   | 可见区域变化相关的参数。 |
-| event  | [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
+| options  | ArkTS-Dyn: [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12)<br/>ArkTS-Sta: [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12)&nbsp;\|&nbsp;undefined | 是   | 可见区域变化相关的参数。 |
+| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
 
 >**说明：**
 >

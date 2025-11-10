@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -33,7 +35,9 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ### verticalAlign
 
-verticalAlign(value: ImageSpanAlignment)
+ArkTS-Dyn: verticalAlign(value: ImageSpanAlignment)
+
+ArkTS-Sta: verticalAlign(value: ImageSpanAlignment | undefined)
 
 设置图片基于行高的对齐方式。
 
@@ -41,15 +45,21 @@ verticalAlign(value: ImageSpanAlignment)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 是   | 图片基于行高的对齐方式。<br />默认值：ImageSpanAlignment.BOTTOM |
+| value  | ArkTS-Dyn: [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)<br/>ArkTS-Sta: [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) \| undefined | 是   | 图片基于行高的对齐方式。<br />默认值：ImageSpanAlignment.BOTTOM |
 
 ### objectFit
 
-objectFit(value: ImageFit)
+ArkTS-Dyn: objectFit(value: ImageFit)
+
+ArkTS-Sta: objectFit(value: ImageFit | undefined)
 
 设置图片的缩放类型。
 
@@ -57,15 +67,21 @@ objectFit(value: ImageFit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的缩放类型。<br/>默认值：ImageFit.Cover |
+| value  | ArkTS-Dyn: [ImageFit](ts-appendix-enums.md#imagefit)<br/>ArkTS-Sta: [ImageFit](ts-appendix-enums.md#imagefit) \| undefined | 是   | 图片的缩放类型。<br/>默认值：ImageFit.Cover |
 
 ### alt<sup>12+</sup>
 
-alt(value:&nbsp;PixelMap)
+ArkTS-Dyn: alt(value:&nbsp;PixelMap)
+
+ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 
 设置图片加载时显示的占位图。
 
@@ -73,15 +89,21 @@ alt(value:&nbsp;PixelMap)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 加载时显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null |
+| value  | ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 加载时显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
 
 ### colorFilter<sup>14+</sup>
 
-colorFilter(filter: ColorFilter | DrawingColorFilter)
+ArkTS-Dyn: colorFilter(filter: ColorFilter | DrawingColorFilter)
+
+ArkTS-Sta: colorFilter(filter: ColorFilter | DrawingColorFilter | undefined)
 
 为图像设置颜色滤镜效果。
 
@@ -89,11 +111,15 @@ colorFilter(filter: ColorFilter | DrawingColorFilter)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
+| filter  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
 
 ## 事件
 
@@ -101,7 +127,9 @@ colorFilter(filter: ColorFilter | DrawingColorFilter)
 
 ### onComplete<sup>12+</sup>
 
-onComplete(callback: ImageCompleteCallback)
+ArkTS-Dyn: onComplete(callback: ImageCompleteCallback)
+
+ArkTS-Sta: onComplete(callback: ImageCompleteCallback | undefined)
 
 图片数据加载成功和解码成功时均触发该回调，返回成功加载的图片尺寸。
 
@@ -109,15 +137,21 @@ onComplete(callback: ImageCompleteCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageCompleteCallback](#imagecompletecallback12) | 是   | 图片数据加载成功和解码成功时触发的回调。 |
+| callback | ArkTS-Dyn: [ImageCompleteCallback](#imagecompletecallback12)<br/>ArkTS-Sta: [ImageCompleteCallback](#imagecompletecallback12) \| undefined | 是   | 图片数据加载成功和解码成功时触发的回调。 |
 
 ### onError<sup>12+</sup>
 
-onError(callback: ImageErrorCallback)
+ArkTS-Dyn: onError(callback: ImageErrorCallback)
+
+ArkTS-Sta: onError(callback: ImageErrorCallback | undefined)
 
 图片加载异常时触发该回调。
 
@@ -125,11 +159,15 @@ onError(callback: ImageErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9) | 是   | 图片加载异常时触发的回调。 |
+| callback | ArkTS-Dyn: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9)<br/>ArkTS-Sta: [ImageErrorCallback](ts-basic-components-image.md#imageerrorcallback9) \| undefined | 是   | 图片加载异常时触发的回调。 |
 
 ## ImageCompleteCallback<sup>12+</sup>
 

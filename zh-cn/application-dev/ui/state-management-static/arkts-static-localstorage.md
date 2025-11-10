@@ -1,6 +1,6 @@
 # LocalStorage：页面级UI状态存储
 
-LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持UIAbility实例内多个页面间状态共享。
+LocalStorage是页面级的UI状态存储，通过[\@Entry](./arkts-static-create-component.md#entry)装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持UIAbility实例内多个页面间状态共享。
 
 本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStoragePropRef](#localstoragepropref)和[\@LocalStorageLink](#localstoragelink)。
 
@@ -14,9 +14,7 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 - 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过getSharedLocalStorage接口，实现跨页面、跨UIAbility实例共享。
 
-- 组件树的根节点，即被\@Entry装饰的\@Component，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
-
-- \@Component装饰的组件既可以自动继承来自父组件的LocalStorage实例，也可以传入指定的LocalStorage的实例，详见：[自定义组件接收LocalStorage实例](#自定义组件接收localstorage实例)。
+- 组件树的根节点，即被\@Entry装饰的[\@Component](./arkts-static-create-component.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
 - LocalStorage中的所有属性都是可变的。
 
@@ -59,7 +57,7 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 | \@LocalStoragePropRef变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>不支持any。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef("AA") a: number \| null = null`能通过编译，`@LocalStoragePropRef("AA") a: number = null`无法通过编译。 |
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>不支持any。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef('AA') a: number \| null = null`能通过编译，`@LocalStoragePropRef('AA') a: number = null`无法通过编译。 |
 | 同步类型                     | 单向同步：从LocalStorage的对应属性到组件的状态变量。组件本地的修改是允许的，但是LocalStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -118,7 +116,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 | \@LocalStorageLink变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>不支持any。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef("AA") a: number \| null = null`能通过编译，`@LocalStoragePropRef("AA") a: number = null`无法通过编译。 |
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>不支持any。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@LocalStoragePropRef('AA') a: number \| null = null`能通过编译，`@LocalStoragePropRef('AA') a: number = null`无法通过编译。 |
 | 同步类型                     | 双向同步：从LocalStorage的对应属性到自定义组件，从自定义组件到LocalStorage对应属性。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -157,24 +155,33 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Column, Component } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@ohos.arkui.stateManagement';
 
     let storage = new LocalStorage();
     storage.setOrCreate('PropA', 48);
-    
-    @Entry
+    let storageFunc = (): LocalStorage => {
+      return storage;
+    }
+
+
+    @Entry({ storage: 'storageFunc' })
     @Component
     struct Index {
       // 错误写法，编译报错
-      // @LocalStoragePropRef() localStorageProp: number = 1;
-      // @LocalStorageLink() localStorageLink: number = 2;
-      
-      // 正确写法
-      @LocalStoragePropRef('PropA') localStorageProp: number = 1;
-      @LocalStorageLink('PropA') localStorageLink: number = 2;
+      // @LocalStoragePropRef() localStorageProp: int = 1;
+      // @LocalStorageLink() localStorageLink: int = 2;
 
-      build() {}
+      // 正确写法
+      @LocalStoragePropRef('PropA') localStorageProp: int = 1;
+      @LocalStorageLink('PropA') localStorageLink: int = 2;
+
+      build() {
+        Column() {
+          Text(`localStorageProp ${this.localStorageProp}`)
+          Text(`localStorageLink ${this.localStorageLink}`)
+        }
+      }
     }
     ```
 
@@ -541,16 +548,16 @@ import { LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManageme
 
 @Component
 struct StorageLinkComponent {
-  @LocalStorageLink("LinkA") LinkA: number | null = null;
-  @LocalStorageLink("LinkB") LinkB: number | undefined = undefined;
+  @LocalStorageLink('LinkA') LinkA: number | null = null;
+  @LocalStorageLink('LinkB') LinkB: number | undefined = undefined;
 
   build() {
     Column() {
-      Text("@LocalStorageLink接口初始化，@LocalStorageLink取值")
-      Text(this.LinkA + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text('@LocalStorageLink接口初始化，@LocalStorageLink取值')
+      Text(`${this.LinkA}`).fontSize(20).onClick((e: ClickEvent) => {
         this.LinkA ? this.LinkA = null : this.LinkA = 1;
       })
-      Text(this.LinkB + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text(`${this.LinkB}`).fontSize(20).onClick((e: ClickEvent) => {
         this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
       })
     }
@@ -561,16 +568,16 @@ struct StorageLinkComponent {
 
 @Component
 struct StoragePropComponent {
-  @LocalStoragePropRef("PropA") PropA: number | null = null;
-  @LocalStoragePropRef("PropB") PropB: number | undefined = undefined;
+  @LocalStoragePropRef('PropA') PropA: number | null = null;
+  @LocalStoragePropRef('PropB') PropB: number | undefined = undefined;
 
   build() {
     Column() {
-      Text("@LocalStoragePropRef接口初始化，@LocalStoragePropRef取值")
-      Text(this.PropA + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text('@LocalStoragePropRef接口初始化，@LocalStoragePropRef取值')
+      Text(`${this.PropA}`).fontSize(20).onClick((e: ClickEvent) => {
         this.PropA ? this.PropA = null : this.PropA = 1;
       })
-      Text(this.PropB + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text(`${this.PropB}`).fontSize(20).onClick((e: ClickEvent) => {
         this.PropB ? this.PropB = undefined : this.PropB = 1;
       })
     }
@@ -607,7 +614,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct DateSample {
-  @LocalStorageLink("date") selectedDate: Date = new Date('2021-08-08');
+  @LocalStorageLink('date') selectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
@@ -650,7 +657,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct MapSample {
-  @LocalStorageLink("map") message: Map<number, string> = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
+  @LocalStorageLink('map') message: Map<number, string> = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
 
   build() {
     Row() {
@@ -692,7 +699,7 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct SetSample {
-  @LocalStorageLink("set") memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+  @LocalStorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
 
   build() {
     Row() {

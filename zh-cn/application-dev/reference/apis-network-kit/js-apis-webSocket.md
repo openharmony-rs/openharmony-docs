@@ -29,6 +29,10 @@ createWebSocket(): WebSocket
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                                | 说明                                                         |
@@ -60,6 +64,10 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
@@ -83,8 +91,9 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 | 2302998               | It is not allowed to access this domain.   |
 | 2302999               | Internal error.             |
 
-
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { webSocket } from '@kit.NetworkKit';
@@ -94,6 +103,23 @@ let ws = webSocket.createWebSocket();
 let url = "ws://";
 ws.connect(url, (err: BusinessError, value: boolean) => {
   if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let url = "ws://";
+ws.connect(url, (err: BusinessError | null, value: boolean) => {
+  if (!err?.code) {
     console.info("connect success")
   } else {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
@@ -115,6 +141,10 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。
 
@@ -142,6 +172,8 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -166,6 +198,32 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions | undefined;
+if (options !=undefined) {
+  options.header = {
+     name1: "value1",
+     name2: "value2",
+     name3: "value3"
+  };
+  options.caPath = "";
+}
+let url = "ws://"
+ws.connect(url, options, (err: BusinessError | null, value: Object) => {
+  if (!err?.code) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+```
+
 ### connect<sup>6+</sup>
 
 connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
@@ -180,6 +238,10 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。
 
@@ -300,10 +362,10 @@ let url = "ws://";
 const ws : webSocket.WebSocket = webSocket.createWebSocket();
 
 ws.onOpen((data: webSocket.OpenResult | undefined) => {
-  console.info(`onopen value is ${JSON.stringify(data)}`);
+  console.info(`onopen value is ${data?.status}`);
   ws.send('Hello, server!', (err: BusinessError<void>|null, value: boolean|undefined) => {
     if (err?.code) {
-      console.error(`send fail ${JSON.stringify(err)}`);
+      console.error(`send fail: ${err?.code} ${err?.message}`);
     } else {
       console.info(`send success and value is ${value}`);
     }
@@ -311,7 +373,7 @@ ws.onOpen((data: webSocket.OpenResult | undefined) => {
 });
 ws.connect(url, (err: BusinessError<void>|null, value: boolean|undefined) => {
   if (err?.code) {
-    console.error(`test connect fail ${JSON.stringify(err)}`);
+    console.error(`test connect fail ${err?.code} ${err?.message}`);
   } else {
     console.info(`test connect success and value is ${value}`);
   }
@@ -405,16 +467,16 @@ let url = "ws://";
 
 const ws : webSocket.WebSocket = webSocket.createWebSocket();
 ws.onOpen((data: webSocket.OpenResult | undefined) => {
-  hilog.info(domain, tag, `onopen value is ${JSON.stringify(data)}`);
+  hilog.info(domain, tag, `onopen value is ${data?.status}`);
   ws.send('Hello, server!').then((value: boolean) => {
     hilog.info(domain, tag, `send success and value is ${value}`);
   }).catch((err: Error) => {
-    hilog.info(domain, tag, `send fail ${JSON.stringify(err)}`);
+    hilog.info(domain, tag, `send fail ${err}`);
   })
 });
 ws.connect(url, (err: BusinessError<void>|null, value: boolean|undefined) => {
   if (err?.code) {
-    hilog.info(domain, tag, `test connect fail ${JSON.stringify(err)}`);
+    hilog.info(domain, tag, `test connect fail ${err}`);
   } else {
     hilog.info(domain, tag, `test connect success and value is ${value}`);
   }
@@ -641,7 +703,7 @@ let promise = ws.close();
 promise.then((value: boolean) => {
     console.info("close success");
 }).catch((err: Error) => {
-    console.error("close fail, error:" + JSON.stringify(err));
+    console.error(`close fail, error: ${err}`);
 });
 ```
 
@@ -2434,9 +2496,13 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | 否   | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
 | reason | string | 否   | 原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
 
 ## CloseResult<sup>10+</sup>

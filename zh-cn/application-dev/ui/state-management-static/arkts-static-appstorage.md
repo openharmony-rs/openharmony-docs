@@ -18,7 +18,7 @@ AppStorage支持应用的[主线程](../../application-models/thread-model-stage
 
 AppStorage中的属性通过唯一的字符串类型key值访问，支持与UI组件同步，并可在应用业务逻辑中被访问，同时支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
-AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](arkts-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StoragePropRef](#storagepropRef)和[@StorageLink](#storagelink)。
+AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](./arkts-static-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StoragePropRef](#storagepropRef)和[@StorageLink](#storagelink)。
 
 在静态上下文中使用时，需导入AppStorage：
 
@@ -151,23 +151,30 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Column, Component } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
 
-    AppStorage.setOrCreate('PropA', 47);
-    
     @Entry
     @Component
     struct Index {
       // 错误写法，编译报错
-      // @StoragePropRef() storageProp: number = 1;
-      // @StorageLink() storageLink: number = 2;
-    
-      // 正确写法
-      @StoragePropRef('PropA') storageProp: number = 1;
-      @StorageLink('PropA') storageLink: number = 2;
+      // @StoragePropRef() storageProp: int = 1;
+      // @StorageLink() storageLink: int = 2;
 
-      build() {}
+      // 正确写法
+      @StoragePropRef('PropA') storageProp: int = 1;
+      @StorageLink('PropA') storageLink: int = 2;
+      // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+      static {
+        AppStorage.setOrCreate<int>('PropA', 47); 
+      }
+
+      build() {
+        Column() {
+          Text(`storageProp ${this.storageProp}`)
+          Text(`storageLink ${this.storageLink}`)
+        }
+      }
     }
     ```
 
@@ -175,7 +182,7 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
 
 - 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#persistProp)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议调用顺序相反。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-static-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
-- 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+- 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#envprop)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
 
 - 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，不要使用StorageLink以防出现预料之外的UI刷新。
 
@@ -228,9 +235,6 @@ class Data {
   }
 }
 
-AppStorage.setOrCreate('PropA', 47);
-AppStorage.setOrCreate('PropB', new Data(50));
-
 @Entry
 @Component
 struct Index {
@@ -238,6 +242,10 @@ struct Index {
   @LocalStorageLink('LinkA') localStorageLink: number = 1;
   @StorageLink('PropB') storageLinkObject: Data = new Data(1);
   @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+  static {
+    AppStorage.setOrCreate<Double>('PropA', 47);
+    AppStorage.setOrCreate<Data>('PropB', new Data(50));
+  }
 
   build() {
     Column() {
@@ -281,16 +289,16 @@ import { AppStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManage
 
 @Component
 struct StorageLinkComponent {
-  @StorageLink("LinkA") LinkA: number | null = null;
-  @StorageLink("LinkB") LinkB: number | undefined = undefined;
+  @StorageLink('LinkA') LinkA: number | null = null;
+  @StorageLink('LinkB') LinkB: number | undefined = undefined;
 
   build() {
     Column() {
-      Text("@StorageLink接口初始化，@StorageLink取值")
-      Text(this.LinkA + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text('@StorageLink接口初始化，@StorageLink取值')
+      Text(`${this.LinkA}`).fontSize(20).onClick((e: ClickEvent) => {
         this.LinkA ? this.LinkA = null : this.LinkA = 1;
       })
-      Text(this.LinkB + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text(`${this.LinkB}`).fontSize(20).onClick((e: ClickEvent) => {
         this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
       })
     }
@@ -301,16 +309,16 @@ struct StorageLinkComponent {
 
 @Component
 struct StoragePropComponent {
-  @StoragePropRef("PropA") PropA: number | null = null;
-  @StoragePropRef("PropB") PropB: number | undefined = undefined;
+  @StoragePropRef('PropA') PropA: number | null = null;
+  @StoragePropRef('PropB') PropB: number | undefined = undefined;
 
   build() {
     Column() {
-      Text("@StoragePropRef接口初始化，@StoragePropRef取值")
-      Text(this.PropA + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text('@StoragePropRef接口初始化，@StoragePropRef取值')
+      Text(`${this.PropA}`).fontSize(20).onClick((e: ClickEvent) => {
         this.PropA ? this.PropA = null : this.PropA = 1;
       })
-      Text(this.PropB + "").fontSize(20).onClick((e: ClickEvent) => {
+      Text(`${this.PropB}`).fontSize(20).onClick((e: ClickEvent) => {
         this.PropB ? this.PropB = undefined : this.PropB = 1;
       })
     }
@@ -347,7 +355,7 @@ import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct DateSample {
-  @StorageLink("date") selectedDate: Date = new Date('2021-08-08');
+  @StorageLink('date') selectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
@@ -390,26 +398,26 @@ import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct MapSample {
-  @StorageLink("map") message: Map<number, string> = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
+  @StorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
       Column() {
         Text(`${this.message}`)
         Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, "a"], [1, "b"], [3, "c"]]);
+          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
         Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, "d");
+          this.message.set(4, 'd');
         })
         Button('clear').onClick((e: ClickEvent) => {
           this.message.clear();
         })
         Button('replace the existing one').onClick((e: ClickEvent) => {
-          this.message.set(0, "aa");
+          this.message.set(0, 'aa');
         })
         Button('delete the existing one').onClick((e: ClickEvent) => {
-          AppStorage.get<Map<number, string>>("map")?.delete(0);
+          AppStorage.get<Map<number, string>>('map')?.delete(0);
         })
       }
       .width('100%')
@@ -433,7 +441,7 @@ import { AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct SetSample {
-  @StorageLink("set") memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+  @StorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
 
   build() {
     Row() {
@@ -445,7 +453,7 @@ struct SetSample {
           })
         Button('set new one')
           .onClick((e: ClickEvent) => {
-            AppStorage.get<Set<number>>("set")?.add(5);
+            AppStorage.get<Set<number>>('set')?.add(5);
           })
         Button('clear')
           .onClick((e: ClickEvent) => {
