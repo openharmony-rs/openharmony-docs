@@ -973,6 +973,7 @@ try {
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
 | EXTENSION | 1    | 服务扩展能力类型。 |
+| UI_EXTENSION<sup>22+</sup> | 2    | UI扩展能力类型。 |
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 
