@@ -20552,24 +20552,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":103,
 						"name":"open_popup",
-						"start_line":96
+						"start_line":93
 					},
 					{
-						"end_line":84,
+						"end_line":81,
 						"name":"build_text",
-						"start_line":34
+						"start_line":32
 					},
 					{
-						"end_line":122,
+						"end_line":117,
 						"name":"update_popup",
-						"start_line":111
+						"start_line":107
 					},
 					{
-						"end_line":135,
+						"end_line":129,
 						"name":"close_popup",
-						"start_line":126
+						"start_line":121
 					}
 				]
 			},
@@ -20602,7 +20602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":85,
 						"name":"main_page",
 						"start_line":16
 					}
@@ -20617,9 +20617,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets",
 				"functions":[
 					{
-						"end_line":123,
+						"end_line":119,
 						"name":"open_menu",
-						"start_line":111
+						"start_line":108
 					},
 					{
 						"end_line":94,
@@ -20627,9 +20627,9 @@
 						"start_line":91
 					},
 					{
-						"end_line":91,
+						"end_line":88,
 						"name":"build_text",
-						"start_line":41
+						"start_line":39
 					},
 					{
 						"end_line":154,
@@ -20642,14 +20642,14 @@
 						"start_line":95
 					},
 					{
-						"end_line":139,
+						"end_line":134,
 						"name":"update_menu",
-						"start_line":127
+						"start_line":123
 					},
 					{
-						"end_line":153,
+						"end_line":147,
 						"name":"close_menu",
-						"start_line":143
+						"start_line":138
 					}
 				]
 			}
