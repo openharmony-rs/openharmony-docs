@@ -84,38 +84,6 @@ struct ReusableV2Component {
 - 仅能将\@ReusableV2装饰的自定义组件作为V2自定义组件的子组件使用。如果在V1的自定义组件中使用V2的复用组件将导致编译期报错，编译期无法校验到的复杂场景下将会有运行时报错。
 
   <!-- @[UsageRestrictionsPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/UsageRestrictionsPage.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @ComponentV2
-  struct Index {
-    build() {
-      Column() {
-        ReusableV2Component() // 正确用法
-        V1Component()
-      }
-    }
-  }
-  @ReusableV2
-  @ComponentV2
-  struct ReusableV2Component {
-    build() {
-    }
-  }
-  @Builder
-  function v2ReusableBuilder() {
-    ReusableV2Component()
-  }
-  @Component
-  struct V1Component {
-    build() {
-      Column() {
-        ReusableV2Component() // 错误用法，编译报错
-        v2ReusableBuilder() // 错误用法，较复杂场景，运行时报错
-      }
-    }
-  }  
-  ```
 
 - V1和V2支持部分混用场景。
 
@@ -144,54 +112,6 @@ struct ReusableV2Component {
 - V2的复用组件当前不支持直接用于[Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)的template中，但是可以用在template中的V2自定义组件中。
 
   <!-- @[RepeatTemplatePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatTemplatePage.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local arr: number[] = [1, 2, 3, 4, 5];
-    build() {
-      Column() {
-        List() {
-          Repeat(this.arr)
-            .each(() => {})
-            .virtualScroll()
-            .templateId(() => 'a')
-            .template('a', (ri) => {
-              ListItem() {
-                Column() {
-                  ReusableV2Component({ val: ri.item}) // 暂不支持，编译期报错
-                  reusableV2Builder(ri.item) // 暂不支持，运行时报错
-                  NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件  
-                }
-              }
-            })
-        }
-      }
-    }
-  }
-  @ComponentV2
-  struct NormalV2Component {
-    @Require @Param val: number;
-    build() {
-      ReusableV2Component({ val: this.val })
-    }
-  }
-  @Builder
-  function reusableV2Builder(param: number) {
-    ReusableV2Component({ val: param })
-  }
-  @ReusableV2
-  @ComponentV2
-  struct ReusableV2Component {
-    @Require @Param val: number;
-    build() {
-      Column() {
-        Text(`val: ${this.val}`)
-      }
-    }
-  }
-  ```
 
 ## 回收与复用的生命周期
 
