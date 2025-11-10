@@ -105,7 +105,7 @@
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](c-apis-scan.md)
+    - [OH_Scan](c-apis-scan-module.md)
     - [OH_Print](_o_h___print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
