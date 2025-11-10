@@ -846,8 +846,6 @@ class SubBasicDataSource implements IDataSource {
   }
 }
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class MySubDataSource extends SubBasicDataSource {
   private dataArray: SubStringData[] = [];
 
@@ -889,7 +887,7 @@ struct ChangingDataSubproperties {
     List({ space: 3 }) {
       LazyForEach(this.data, (item: SubStringData, index: number) => {
         ListItem() {
-          ChangingDataSubproperties_ChildComponent({ data: item })
+          ChangingDataSubpropertiesChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
@@ -901,7 +899,7 @@ struct ChangingDataSubproperties {
 }
 
 @Component
-struct ChangingDataSubproperties_ChildComponent {
+struct ChangingDataSubpropertiesChildComponent {
   @ObjectLink data: SubStringData;
 
   build() {

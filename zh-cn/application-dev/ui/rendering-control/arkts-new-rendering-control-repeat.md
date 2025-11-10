@@ -101,7 +101,7 @@ Repeat提供渲染模板（template）能力，可以在同一个数据源中渲
 // 在List容器组件中使用Repeat
 @Entry
 @ComponentV2 // 推荐使用V2装饰器
-struct RepeatExample2 {
+struct RepeatExampleWithTemplates {
   @Local dataArr: Array<string> = []; // 数据源
 
   aboutToAppear(): void {
@@ -1260,7 +1260,7 @@ struct RepeatTemplateSingle {
 // 定义一个类，标记为可观察的
 // 类中自定义一个数组，标记为可追踪的
 @ObservedV2
-class ArrayHolder1 {
+class ArrayHolderLocal {
   @Trace public arr: Array<number> = [];
 
   // constructor，用于初始化数组个数
@@ -1273,7 +1273,7 @@ class ArrayHolder1 {
 @Entry
 @ComponentV2
 struct RepeatSingle {
-  @Local arrayHolder: ArrayHolder1 = new ArrayHolder1(100);
+  @Local arrayHolder: ArrayHolderLocal = new ArrayHolderLocal(100);
   @Local totalCount: number = this.arrayHolder.arr.length;
   scroller: Scroller = new Scroller();
 
