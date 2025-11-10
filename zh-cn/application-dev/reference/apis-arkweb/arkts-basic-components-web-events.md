@@ -2822,19 +2822,27 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
 
 ## onFullScreenExit<sup>9+</sup>
 
-onFullScreenExit(callback: () => void)
+ArkTS-Dyn: onFullScreenExit(callback: () => void)
+
+ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
 
 通知开发者Web组件退出全屏模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 退出全屏模式时的回调函数。 |
+| callback |ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 退出全屏模式时的回调函数。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -2856,6 +2864,36 @@ onFullScreenExit(callback: () => void)
             }
           })
           .onFullScreenEnter((event) => {
+            this.handler = event.handler;
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, FullScreenEnterEvent, FullScreenExitHandler } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private handler: FullScreenExitHandler = new FullScreenExitHandler();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFullScreenExit((): void => {
+            console.info("onFullScreenExit...")
+            if (this.handler) {
+              this.handler.exitFullScreen();
+            }
+          })
+          .onFullScreenEnter((event: FullScreenEnterEvent): void => {
             this.handler = event.handler;
           })
       }
@@ -3635,19 +3673,27 @@ ArkTS-Sta示例
 
 ## onAudioStateChanged<sup>10+</sup>
 
-onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
+ArkTS-Dyn: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
+
+ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | undefined): this
 
 设置网页上的音频播放状态发生改变时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> | 是 | 网页上的音频播放状态发生改变时触发。 |
+| callback |ArkTS-Dyn: Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> <br/>ArkTS-Sta: Callback\<[OnAudioStateChangedEvent](./arkts-basic-components-web-i.md#onaudiostatechangedevent12)\> \|  undefined| 是 | 网页上的音频播放状态发生改变时触发。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -3670,6 +3716,31 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
     }
   }
   ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { State, Web, Column, Component, Entry, OnAudioStateChangedEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct AudioPlayer {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State playing: boolean = false;
+
+    build() {
+      Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+          .onAudioStateChanged((event: OnAudioStateChangedEvent): void => {
+            this.playing = event.playing;
+            console.debug('onAudioStateChanged playing: ' + this.playing);
+          })
+      }
+    }
+  }
+  ``` 
 
 ## onFirstContentfulPaint<sup>10+</sup>
 
@@ -3989,19 +4060,27 @@ ArkTS-Sta示例：
 
 ## onScreenCaptureRequest<sup>10+</sup>
 
-onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
+ArkTS-Dyn: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
+
+ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\> | undefined): this
 
 通知收到屏幕捕获请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> | 是 | 通知收到屏幕捕获请求。 |
+| callback |ArkTS-Dyn:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> <br/>ArkTS-Sta:  Callback\<[OnScreenCaptureRequestEvent](./arkts-basic-components-web-i.md#onscreencapturerequestevent12)\> \|  undefined| 是 | 通知收到屏幕捕获请求。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -4037,6 +4116,53 @@ onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEvent\>)
                   event.handler.deny();
                 }
               })
+            }
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry, OnScreenCaptureRequestEvent, WebCaptureMode } from '@kit.ArkUI';
+  import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from "@kit.ArkUI";
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onScreenCaptureRequest((event: OnScreenCaptureRequestEvent) => {
+            if (event) {
+              const dialogOptions: AlertDialogParamWithButtons = {
+                title: 'title: ' + event.handler.getOrigin(),
+                message: 'text',
+                primaryButton: {
+                  value: 'deny',
+                  action: () => {
+                    event.handler.deny();
+                  },
+                } as AlertDialogButtonBaseOptions,
+                secondaryButton: {
+                  value: 'onConfirm',
+                  action: () => {
+                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });
+                  },
+                } as AlertDialogButtonBaseOptions,
+                cancel: () => {
+                  event.handler.deny();
+                }
+              };
+              this.uiContext.showAlertDialog(dialogOptions);
             }
           })
       }
@@ -4447,7 +4573,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

@@ -118,7 +118,7 @@ createPdf函数输入参数。
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 
 | 名称                  | 类型    | 必填 | 说明                                                         |
