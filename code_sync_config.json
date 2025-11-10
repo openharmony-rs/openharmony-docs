@@ -20577,9 +20577,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":66,
 						"name":"content_node",
-						"start_line":64
+						"start_line":63
 					},
 					{
 						"end_line":82,
