@@ -144,8 +144,7 @@ export default class EntryAbility extends UIAbility {
               context.terminateSelf((err: BusinessError) => {
                 if (err.code) {
                   // 处理业务逻辑错误
-                  hilog.error(DOMAIN, 'terminateSelf',
-                    `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                  hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
                   return;
                 }
                 // 执行正常业务
