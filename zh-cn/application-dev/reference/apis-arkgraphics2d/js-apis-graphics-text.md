@@ -2462,10 +2462,7 @@ struct Index {
 ArkTS-Dyn示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2499,10 +2496,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2551,10 +2545,7 @@ popStyle(): void
 ArkTS-Dyn示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2589,10 +2580,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2648,10 +2636,7 @@ addText(text: string): void
 ArkTS-Dyn示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
@@ -2685,10 +2670,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
-import { image } from '@kit.ImageKit';
 
 function textFunc() {
   let myTextStyle: text.TextStyle = {
