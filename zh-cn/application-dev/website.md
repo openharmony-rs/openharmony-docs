@@ -2544,6 +2544,7 @@
         - [@ohos.data.unifiedDataChannel (标准化数据通路)](reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)
         - [@ohos.data.uniformDataStruct (标准化数据结构)](reference/apis-arkdata/js-apis-data-uniformDataStruct.md)
         - [@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)
+        - [@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)（系统接口）](reference/apis-arkdata/js-apis-data-uniformTypeDescriptor-sys.md)
         - [@ohos.data.ValuesBucket (数据集)](reference/apis-arkdata/js-apis-data-valuesBucket.md)
         - [@ohos.data.intelligence (智慧数据平台)](reference/apis-arkdata/js-apis-data-intelligence.md)
         <!--Del-->
