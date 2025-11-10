@@ -39,7 +39,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
   ``` TypeScript
-  //  'images/view.jpg' 需要替换为开发者所需的资源文件
+  //  'images/view.jpg'需要替换为开发者所需的资源文件
   Image('images/view.jpg')
     .width(200)
   ```
@@ -63,8 +63,8 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
   ``` TypeScript
-  //  $r('app.string.LoadingResources') 需要替换为开发者所需的资源文件
-  Image($r('app.string.LoadingResources')) // 实际使用时请替换为真实地址
+  //  $r('app.string.LoadingResources')需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+  Image($r('app.string.LoadingResources'))
   ```
 
 - Resource资源
@@ -80,7 +80,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
   ``` TypeScript
-  //  $r('app.media.icon') 需要替换为开发者所需的资源文件
+  //  $r('app.media.icon')需要替换为开发者所需的资源文件
   Image($r('app.media.icon'))
   ```
 
@@ -95,7 +95,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
   ``` TypeScript
-  //  $rawfile('example1.png') 需要替换为开发者所需的资源文件
+  //  $rawfile('example1.png')需要替换为开发者所需的资源文件
   Image($rawfile('example1.png'))
   ```
 
@@ -116,6 +116,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   @Component
   struct MediaLibraryFile {
     @State imgDatas: string[] = [];
+    // 使用PhotoViewPicker唤起图片选择器，选择图片并且渲染到页面中
     // 获取照片url集
     getAllImg() {
       try {
@@ -142,7 +143,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
     async aboutToAppear() {
       this.getAllImg();
     };
-    // 使用imgDatas的url加载图片。
+    // 使用imgDatas的url加载图片
     build() {
       Column() {
         Grid() {
@@ -163,7 +164,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
   
   ``` TypeScript
-  //  'file://media/Photos/5' 需要替换为开发者所需的资源文件
+  //  'file://media/Photos/5'需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
   Image('file://media/Photos/5')
     .width(200)
   ```
@@ -194,17 +195,18 @@ PixelMap是图片解码后的像素图，具体用法请参考[图片开发指�
   struct HttpExample {
     outData: http.HttpResponse | undefined = undefined;
     code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; //创建PixelMap状态变量。
+    @State image: PixelMap | undefined = undefined; //创建PixelMap状态变量
   
+    // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
     aboutToAppear(): void {
-      http.createHttp().request('', //请填写一个具体的网络图片地址。
+      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
         (error: BusinessError, data: http.HttpResponse) => {
           if (error) {
             hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
             return;
           };
           this.outData = data;
-          //将网络地址成功返回的数据，编码转码成pixelMap的图片格式。
+          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
           if (http.ResponseCode.OK === this.outData.responseCode) {
             let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
             let imageSource: image.ImageSource = image.createImageSource(imageData);
@@ -261,6 +263,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
       iterations: -1
     };
   
+    // 开发者可利用DrawableDescriptor实现图片的分层叠加（如徽章图标），动态属性调整（如颜色滤镜），复杂动画序列等高级效果
     async aboutToAppear() {
       const resManager = this.getUIContext().getHostContext()?.resourceManager;
       if (!resManager) {
@@ -392,8 +395,8 @@ Image加载的SVG图源路径设置方法如下所示：
   <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
   
   ``` TypeScript
-  //  'images/icon.svg' 需要替换为开发者所需的资源文件
-  Image('images/icon.svg')
+  //  'images/icon.svg'需要替换为开发者所需的资源文件
+  Image('/images/icon.svg')
     .width(50)
     .height(50)
   ```
@@ -427,64 +430,70 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   
     build() {
       Scroll(this.scroller) {
-        Column() {
-          Row() {
+        Row() {
+          Column() {
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内
               .objectFit(ImageFit.Contain)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Contain', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
-            Image($r('app.media.ic_img_2'))
+            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+            Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界
               .objectFit(ImageFit.Cover)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 自适应显示。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 自适应显示
               .objectFit(ImageFit.Auto)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Auto', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
   
-          Row() {
+          Column() {
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 不保持宽高比进行放大缩小，使得图片充满显示边界。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 不保持宽高比进行放大缩小，使得图片充满显示边界
               .objectFit(ImageFit.Fill)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Fill', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持宽高比显示，图片缩小或者保持不变。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持宽高比显示，图片缩小或者保持不变
               .objectFit(ImageFit.ScaleDown)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('ScaleDown', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
-              // 保持原有尺寸显示。
+              // 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放
+              // 保持原有尺寸显示
               .objectFit(ImageFit.None)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
         }
@@ -513,6 +522,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           //  $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.None)
             .borderWidth(1)
             .overlay('Interpolation.None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -520,6 +530,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           //  $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.Low)
             .borderWidth(1)
             .overlay('Interpolation.Low', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -531,6 +542,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           //  $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.Medium)
             .borderWidth(1)
             .overlay('Interpolation.Medium', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -538,6 +550,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           //  $r('app.media.grass')需要替换为开发者所需的资源文件
           Image($r('app.media.grass'))
             .width('40%')
+            // 使用interpolation接口对图片进行插值，显著提升清晰度
             .interpolation(ImageInterpolation.High)
             .borderWidth(1)
             .overlay('Interpolation.High', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -566,33 +579,36 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   struct ImageRepetitionStyle {
     build() {
       Column({ space: 10 }) {
-        Row({ space: 5 }) {
+        Column({ space: 25 }) {
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 在水平轴和竖直轴上同时重复绘制图片
             .objectRepeat(ImageRepeat.XY)
             .objectFit(ImageFit.ScaleDown)
-            // 在水平轴和竖直轴上同时重复绘制图片
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在竖直轴上重复绘制图片
             .objectRepeat(ImageRepeat.Y)
             .objectFit(ImageFit.ScaleDown)
-            // 只在竖直轴上重复绘制图片
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
+            // 通过objectRepeat属性设置图片的重复样式方式
+            // 只在水平轴上重复绘制图片
             .objectRepeat(ImageRepeat.X)
             .objectFit(ImageFit.ScaleDown)
-            // 只在水平轴上重复绘制图片
             .overlay('ImageRepeat.X', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
       }.height(150).width('100%').padding(8)
@@ -619,7 +635,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
         Row({ space: 50 }) {
           //  $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
-            // 设置图片的渲染模式为原色
+            // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Original)
             .width(100)
             .height(100)
@@ -628,7 +644,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .overlay('Original', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           //  $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
-            // 设置图片的渲染模式为黑白
+            // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Template)
             .width(100)
             .height(100)
@@ -661,6 +677,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
         Row({ space: 50 }) {
           //  $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
+          // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
               width: 40,
               height: 40
@@ -672,12 +689,14 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .overlay('width:40 height:40', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
           //  $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
+          // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
               width: 90,
               height: 90
             })
             .objectFit(ImageFit.ScaleDown)
-            .width('25%')
+            .width(100)
+            .height(100)
             .aspectRatio(1)
             .border({ width: 1 })
             .overlay('width:90 height:90', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
@@ -711,6 +730,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           //  $r('app.media.example')需要替换为开发者所需的资源文件
           Image($r('app.media.example'))
             .width('40%')
+            // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
             .colorFilter(
                [1, 1, 0, 0, 0,
                 0, 1, 0, 0, 0,
@@ -765,6 +785,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .width(200)
             .height(150)
             .margin(15)
+            // 图片加载成功后，通过onComplete获取图片必要信息
             .onComplete(msg => {
               if(msg){
                 this.widthValue = msg.width;
@@ -772,8 +793,9 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
                 this.componentWidth = msg.componentWidth;
                 this.componentHeight = msg.componentHeight;
               };
+              hilog.info(DOMAIN, TAG, `${msg}`);
             })
-              // 图片获取失败，打印结果
+            // 如果加载失败，使用onError触发回调函数获取结果
             .onError(() => {
               hilog.info(DOMAIN, TAG, 'load image fail');
             })
