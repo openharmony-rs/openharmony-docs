@@ -112,7 +112,7 @@ cpp部分代码：
 // OH_JSVM_CreateStringUtf8的样例方法
 static JSVM_Value CreateStringUtf8(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char *str = u8"你好, World!, successes to create UTF-8 string!";
+    const char *str = u8"你好, World!, succeed in creating UTF-8 string!";
     size_t length = strlen(str);
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateStringUtf8(env, str, length, &result);
@@ -143,7 +143,7 @@ const char *srcCallNative = R"JS(
 
 预期输出结果：
 ```cpp
-JSVM CreateStringUtf8 success: 你好, World!, successes to create UTF-8 string!
+JSVM CreateStringUtf8 success: 你好, World!, succeed in creating UTF-8 string!
 ```
 ### OH_JSVM_GetValueStringUtf16
 
@@ -229,7 +229,7 @@ cpp部分代码：
 // OH_JSVM_CreateStringUtf16的样例方法
 static JSVM_Value CreateStringUtf16(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char16_t *str = u"你好, World!, successes to create UTF-16 string!";
+    const char16_t *str = u"你好, World!, succeed in creating UTF-16 string!";
     std::u16string ustr(str);
     size_t length = ustr.length();
     JSVM_Value result = nullptr;
@@ -264,7 +264,7 @@ const char *srcCallNative = R"JS(
 
 预期输出结果：
 ```cpp
-JSVM CreateStringUtf16 success: 你好, World!, successes to create UTF-16 string!
+JSVM CreateStringUtf16 success: 你好, World!, succeed in creating UTF-16 string!
 ```
 ### OH_JSVM_GetValueStringLatin1
 
@@ -340,7 +340,7 @@ static const int MAX_BUFFER_SIZE = 128;
 // OH_JSVM_CreateStringLatin1的样例方法
 static JSVM_Value CreateStringLatin1(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    const char *str = "Hello, World! éçñ, successes to create Latin1 string!";
+    const char *str = "Hello, World! éçñ, succeed in creating Latin1 string!";
     size_t length = JSVM_AUTO_LENGTH;
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateStringLatin1(env, str, length, &result);
@@ -372,5 +372,5 @@ const char *srcCallNative = R"JS(
 
 预期输出结果：
 ```cpp
-JSVM CreateStringLatin1 success: Hello, World! éçñ, successes to create Latin1 string!
+JSVM CreateStringLatin1 success: Hello, World! éçñ, succeed in creating Latin1 string!
 ```
