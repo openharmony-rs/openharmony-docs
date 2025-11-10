@@ -5,15 +5,16 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-[OpenGL](https://www.khronos.org/opengl/)是一种跨平台的图形API，用于为3D图形处理硬件指定标准的软件接口。OpenHarmony现已支持OpenGL 3.0。
+[OpenGL](https://www.khronos.org/opengl/)是一种跨平台的图形API，用于为3D图形处理硬件指定标准的软件接口。OpenHarmony现已支持OpenGL 4.2。
 
 ## 支持的能力
 
 从API version 20开始，支持使用OpenGL 3.0。
+从API version 22开始，支持使用OpenGL 4.2。
 
 ## 标准库中导出的符号列表
 
-[native api中导出的OpenGL 3.0符号列表](opengl-symbol.md)
+[native api中导出的OpenGL符号列表](opengl-symbol.md)
 
 ## OpenGL扩展接口及示例
 
