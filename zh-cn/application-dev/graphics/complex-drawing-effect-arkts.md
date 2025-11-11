@@ -27,7 +27,7 @@
 
 关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
@@ -76,7 +76,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -138,7 +138,7 @@ canvas.detachPen();
 
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
@@ -175,7 +175,7 @@ canvas.detachBrush();
 
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
@@ -211,7 +211,7 @@ canvas.detachBrush();
 
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
@@ -288,7 +288,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -341,7 +341,7 @@ canvas.detachBrush();
 
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 设置画笔
@@ -387,7 +387,7 @@ canvas.detachPen();
 
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画笔
