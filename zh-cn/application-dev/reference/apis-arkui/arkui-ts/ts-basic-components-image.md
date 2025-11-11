@@ -1520,6 +1520,7 @@ struct ImageExample {
 
 该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](./ts-explicit-animation.md)接口实现了给图片设置扫光效果。
 
+ArkTS-Dyn示例：
 ```ts
 import { curves } from '@kit.ArkUI';
 
@@ -1602,6 +1603,117 @@ struct ImageExample11 {
 }
 ```
 
+ArkTS-Sta示例：
+```
+
+import {
+  Entry,
+  Column,
+  Component,
+  Row,
+  Margin,
+  ItemAlign,
+  ICurve,
+  Position,
+  BusinessError,
+  Stack,
+  ImageError,
+  FlexDirection,
+  Resource,
+  ImageCompleteEvent,
+  Alignment,
+  GradientDirection,
+  Flex,
+  ForEach,
+  ImageFit,
+  Visibility,
+  $r,
+  PixelMap,
+  Padding,
+  Image
+} from '@ohos.arkui.component';
+import { curves } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ImageExample11 {
+  private curve: ICurve = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
+  @State moveImg: string[] = ['imageScanEffect'];
+  @State moveImgVisible: Visibility = Visibility.Visible;
+  @State durationTime: int = 1500;
+  @State iterationsTimes: int = -1;
+  @State private opacityValue: double = 0.5;
+  @State imageWidth: double = 450;
+  @State visible: Visibility = Visibility.Hidden;
+  @State stackBackgroundColor: string = '#E1E4E9';
+  @State linePositionX: double = 0 - this.imageWidth;
+  @State linePositionY: double = 0;
+  @State imgResource: Resource | string = '';
+
+  startupAnimate() {
+    this.moveImg.pop();
+    this.moveImg.push('imageScanEffect');
+    setTimeout(() => {
+      // $r('app.media.img')需要替换为开发者所需的图像资源文件。
+      this.imgResource = $r('app.media.img');
+    }, 3000);
+    this.getUIContext()?.animateTo({
+      duration: this.durationTime,
+      curve: this.curve,
+      tempo: 1,
+      iterations: this.iterationsTimes,
+      delay: 0
+    }, () => {
+      this.linePositionX = this.imageWidth;
+    })
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Stack() {
+          Image(this.imgResource)
+            .width(this.imageWidth)
+            .height(200)
+            .objectFit(ImageFit.Contain)
+            .visibility(this.visible)
+            .onComplete((info?: ImageCompleteEvent) => {
+              this.visible = Visibility.Visible;
+              this.moveImg.pop();
+            })
+            .onError((info: ImageError) => {
+              setTimeout(() => {
+                this.visible = Visibility.Visible;
+                this.moveImg.pop();
+              }, 2600)
+            })
+          ForEach(this.moveImg, (item: string) => {
+            Row()
+              .width(this.imageWidth)
+              .height(200)
+              .visibility(this.moveImgVisible)
+              .position({ x: this.linePositionX, y: this.linePositionY } as Position)
+              .linearGradient({
+                direction: GradientDirection.Right,
+                repeating: false,
+                colors: [[0xE1E4E9, 0], [0xFFFFFF, 0.75], [0xE1E4E9, 1]]
+              })
+              .opacity(this.opacityValue)
+          })
+        }
+        .backgroundColor(this.visible ? this.stackBackgroundColor : undefined)
+        .margin({ top: 20, left: 20, right: 20 } as Margin)
+        .borderRadius(20)
+        .clip(true)
+        .onAppear(() => {
+          this.startupAnimate();
+        })
+      }
+    }
+  }
+}
+```
 ![imageContent](figures/imageScanEffect.gif)
 
 ### 示例14（为图片添加变换效果）
@@ -1672,6 +1784,7 @@ struct Test {
 
 该示例通过[sourceSize](ts-basic-components-image.md#sourcesize)接口自定义图片的解码尺寸。
 
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
@@ -1698,6 +1811,51 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```
+import {
+  Entry,
+  Column,
+  Component,
+  Position,
+  Resource,
+  Alignment,
+  GradientDirection,
+  ImageFit,
+  Visibility,
+  $r,
+  PixelMap,
+  Padding,
+  Image,
+  ImageSourceSize
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.sky'))
+        .sourceSize({width:1393, height:1080} as ImageSourceSize)
+        .height(300)
+        .width(300)
+        .objectFit(ImageFit.Contain)
+        .borderWidth(1)
+      // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.sky'))
+        .sourceSize({width:13, height:10} as ImageSourceSize)
+        .height(300)
+        .width(300)
+        .objectFit(ImageFit.Contain)
+        .borderWidth(1)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 ![sourceSizeExample](figures/sourceSizeExample.png)
 
 ### 示例16（通过renderMode设置图片的渲染模式）

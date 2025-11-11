@@ -287,6 +287,8 @@ onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 通过ImageAnimator组件播放Resource动画。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -365,12 +367,110 @@ struct ImageAnimatorExample {
 }
 ```
 
+ArkTS-Sta示例：
+```
+import {
+  Entry,
+  Column,
+  ColumnOptions,
+  Component,
+  Resource,
+  ImageFit,Margin,
+  $r,
+  Row,
+  Image,FillMode,Button,
+  AnimationStatus,
+  ImageAnimator
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ImageAnimatorExample {
+  @State state: AnimationStatus = AnimationStatus.Initial;
+  @State reverse: boolean = false;
+  @State it: int = 1;
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      ImageAnimator()
+        .images([
+          {
+            // $r('app.media.img1')需要替换为开发者所需的图像资源文件。
+            src: $r('app.media.img1')
+          },
+          {
+            // $r('app.media.img2')需要替换为开发者所需的图像资源文件。
+            src: $r('app.media.img2')
+          },
+          {
+            // $r('app.media.img3')需要替换为开发者所需的图像资源文件。
+            src: $r('app.media.img3')
+          },
+          {
+            // $r('app.media.img4')需要替换为开发者所需的图像资源文件。
+            src: $r('app.media.img4')
+          }
+        ])
+        .duration(4000)
+        .state(this.state)
+        .reverse(this.reverse)
+        .fillMode(FillMode.None)
+        .iterations(this.it)
+        .width(340)
+        .height(240)
+        .margin({ top: 100 } as Margin)
+        .onStart(() => {
+          console.info('Start');
+        })
+        .onPause(() => {
+          console.info('Pause');
+        })
+        .onRepeat(() => {
+          console.info('Repeat');
+        })
+        .onCancel(() => {
+          console.info('Cancel');
+        })
+        .onFinish(() => {
+          console.info('Finish');
+          this.state = AnimationStatus.Stopped;
+        })
+      Row() {
+        Button('start').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Running;
+        }).margin(5)
+        Button('pause').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Paused; // 显示当前帧图片。
+        }).margin(5)
+        Button('stop').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Stopped; // 显示动画的起始帧图片。
+        }).margin(5)
+      }
+
+      Row() {
+        Button('reverse').width(100).padding(5).onClick(() => {
+          this.reverse = !this.reverse;
+        }).margin(5)
+        Button('once').width(100).padding(5).onClick(() => {
+          this.it = 1;
+        }).margin(5)
+        Button('infinite').width(100).padding(5).onClick(() => {
+          this.it = -1; // 无限循环播放。
+        }).margin(5)
+      }
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ![imageAnimator_resource](figures/imageAnimator_resource.gif)
 
 ### 示例2（播放PixelMap动画）
 
 通过ImageAnimator组件播放PixelMap动画。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { image } from '@kit.ImageKit';
@@ -459,12 +559,167 @@ struct ImageAnimatorExample {
 }
 ```
 
+ArkTS-Sta示例：
+```
+import { image } from '@kit.ImageKit';
+import {
+  Entry,
+  Column,
+  ColumnOptions,
+  Component,
+  Resource,
+  ImageFrameInfo,
+  ImageFit,
+  Margin,
+  $r,
+  Row,
+  PixelMap,
+  Image,
+  FillMode,
+  Button,
+  ColumnOptions,
+  AnimationStatus,
+  ImageAnimator,
+  Array
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ImageAnimatorExample {
+  @State imagePixelMap1: PixelMap | string = '';
+  @State imagePixelMap2: PixelMap | string = '';
+  @State imagePixelMap3: PixelMap | string = '';
+  @State imagePixelMap4: PixelMap | string = '';
+  @State state: AnimationStatus = AnimationStatus.Initial;
+  @State reverse: boolean = false;
+  @State iterations: int = 1;
+
+  aboutToAppear() {
+    // $r('app.media.img1')需要替换为开发者所需的图像资源文件。
+    this.getPixmapFromMedia($r('app.media.img1')).then((pixelmap: PixelMap | undefined) => {
+      if (pixelmap) {
+        this.imagePixelMap1 = pixelmap as PixelMap;
+      }
+    })
+    // $r('app.media.img2')需要替换为开发者所需的图像资源文件。
+    this.getPixmapFromMedia($r('app.media.img2')).then((pixelmap: PixelMap | undefined) => {
+      if (pixelmap) {
+        this.imagePixelMap2 = pixelmap as PixelMap;
+      }
+    })
+    // $r('app.media.img3')需要替换为开发者所需的图像资源文件。
+    this.getPixmapFromMedia($r('app.media.img3')).then((pixelmap: PixelMap | undefined) => {
+      if (pixelmap) {
+        this.imagePixelMap3 = pixelmap as PixelMap;
+      }
+    })
+    // $r('app.media.img4')需要替换为开发者所需的图像资源文件。
+    this.getPixmapFromMedia($r('app.media.img4')).then((pixelmap: PixelMap | undefined) => {
+      if (pixelmap) {
+        this.imagePixelMap4 = pixelmap as PixelMap;
+      }
+    })
+  }
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      ImageAnimator()
+        .images([{
+          src: this.imagePixelMap1
+        }, {
+          src: this.imagePixelMap2
+        }, {
+          src: this.imagePixelMap3
+        }, {
+          src: this.imagePixelMap4
+        }])
+        .duration(2000)
+        .state(this.state)
+        .reverse(this.reverse)
+        .fillMode(FillMode.None)
+        .iterations(this.iterations)
+        .width(340)
+        .height(240)
+        .margin({ top: 100 } as Margin)
+        .onStart(() => {
+          console.info('Start');
+        })
+        .onPause(() => {
+          console.info('Pause');
+        })
+        .onRepeat(() => {
+          console.info('Repeat');
+        })
+        .onCancel(() => {
+          console.info('Cancel');
+        })
+        .onFinish(() => {
+          console.info('Finish');
+          this.state = AnimationStatus.Stopped;
+        })
+      Row() {
+        Button('start').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Running;
+        }).margin(5)
+        Button('pause').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Paused; // 显示当前帧图片。
+        }).margin(5)
+        Button('stop').width(100).padding(5).onClick(() => {
+          this.state = AnimationStatus.Stopped; // 显示动画的起始帧图片。
+        }).margin(5)
+      }
+
+      Row() {
+        Button('reverse').width(100).padding(5).onClick(() => {
+          this.reverse = !this.reverse;
+        }).margin(5)
+        Button('once').width(100).padding(5).onClick(() => {
+          this.iterations = 1;
+        }).margin(5)
+        Button('infinite').width(100).padding(5).onClick(() => {
+          this.iterations = -1; // 无限循环播放。
+        }).margin(5)
+      }
+    }.width('100%').height('100%')
+
+  }
+
+  private async getPixmapFromMedia(resource: Resource): Promise<PixelMap | undefined> {
+    let resourceManage = this.getUIContext().getHostContext()?.resourceManager;
+    if (resourceManage === undefined) {
+      return undefined;
+    }
+    let unit8Array = await resourceManage.getMediaContent(resource.id);
+    if (unit8Array === undefined) {
+      return undefined;
+    }
+    let imageSource = image.createImageSource(unit8Array.buffer.slice(0, unit8Array.buffer.byteLength));
+    if (imageSource === undefined) {
+      return undefined;
+    }
+    let createPixelMap: image.PixelMap | undefined = undefined;
+    try {
+      createPixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+    } catch(e) {
+      await imageSource.release();
+      return createPixelMap;
+    }
+    await imageSource.release();
+    return createPixelMap;
+  }
+}
+```
+
 ![imageAnimator](figures/imageAnimator.gif)
 
 ### 示例3（设置不可见自动停播）
 
 通过[monitorInvisibleArea](#monitorinvisiblearea17)属性实现了当ImageAnimator的[state](#state)属性为AnimationStatus.Running时，控制组件在不可见时停止播放，在可见时恢复播放。
 
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
@@ -558,4 +813,134 @@ struct ImageAnimatorAutoPauseTest {
 }
 ```
 
+ArkTS-Sta示例：
+```
+import { image } from '@kit.ImageKit';
+import {
+  Entry,
+  Column,
+  ColumnOptions,
+  Component,
+  Resource,
+  ImageFrameInfo,
+  Alignment,
+  ImageFit,
+  Scroll,
+  Text,
+  Margin,
+  $r,
+  Row,
+  PixelMap,
+  Image,
+  ForEach,
+  ScrollDirection,
+  BarState,
+  FillMode,
+  Color,
+  Button,
+  EdgeEffect,
+  TextAlign,
+  ColumnOptions,
+  AnimationStatus,
+  ImageAnimator,
+  Scroller,
+  Edge,
+  Stack,
+  Array,
+  ScrollState
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ImageAnimatorAutoPauseTest {
+  scroller: Scroller = new Scroller();
+  @State state: AnimationStatus = AnimationStatus.Running;
+  @State reverse: boolean = false;
+  @State iterations: int = 100;
+  @State preCallBack: string = 'Null';
+  private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Scroll(this.scroller) {
+        Column() {
+          ImageAnimator()
+            .images([
+              {
+                // $r('app.media.clouds')需要替换为开发者所需的图像资源文件。
+                src: $r('app.media.clouds')
+              },
+              {
+                // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
+                src: $r('app.media.landscape')
+              },
+              {
+                // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+                src: $r('app.media.sky')
+              },
+              {
+                // $r('app.media.mountain')需要替换为开发者所需的图像资源文件。
+                src: $r('app.media.mountain')
+              }
+            ])
+            .borderRadius(10)
+            .monitorInvisibleArea(true)
+            .clip(true)
+            .duration(4000)
+            .state(this.state)
+            .reverse(this.reverse)
+            .fillMode(FillMode.Forwards)
+            .iterations(this.iterations)
+            .width(340)
+            .height(240)
+            .margin({ top: 100 } as Margin)
+            .onStart(() => {
+              this.preCallBack = "Start";
+              console.info('ImageAnimator Start');
+            })
+            .onPause(() => {
+              this.preCallBack = "Pause";
+              console.info('ImageAnimator Pause');
+            })
+            .onRepeat(() => {
+              console.info('ImageAnimator Repeat');
+            })
+            .onCancel(() => {
+              console.info('ImageAnimator Cancel');
+            })
+            .onFinish(() => {
+              console.info('ImageAnimator Finish');
+            })
+          ForEach(this.arr, (item: int) => {
+            Text(item.toString())
+              .width('90%')
+              .height(150)
+              .backgroundColor(0xFFFFFF)
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .margin({ top: 10 } as Margin)
+          }, (item: int, item1: int) => '' + item)
+        }.width('100%')
+      }
+      .scrollable(ScrollDirection.Vertical) // 滚动方向纵向。
+      .scrollBar(BarState.On) // 滚动条常驻显示。
+      .scrollBarColor(Color.Gray) // 滚动条颜色。
+      .scrollBarWidth(10) // 滚动条宽度。
+      .friction(0.6)
+      .edgeEffect(EdgeEffect.None)
+      .onScrollEdge((side: Edge) => {
+        console.info('To the edge');
+      })
+      .onScrollStop(() => {
+        console.info('Scroll Stop');
+      })
+
+      Text("上次触发的回调（Pause/Start）：" + this.preCallBack)
+        .margin({ top: 60, left: 20 } as Margin)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
 ![imageAnimatorMonitorInvisibleAreaExample](figures/imageAnimatorMonitorInvisibleArea.gif)
