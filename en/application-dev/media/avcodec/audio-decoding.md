@@ -28,7 +28,7 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 
 ## Development Guidelines
 
-Read the [API reference](../../reference/apis-avcodec-kit/_audio_codec.md).
+Read [AudioCodec](../../reference/apis-avcodec-kit/_audio_codec.md) for the API reference.
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
@@ -410,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    You should fill in complete input data before calling this API.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
     ```c++
     uint32_t index = signal_->inQueue_.front();

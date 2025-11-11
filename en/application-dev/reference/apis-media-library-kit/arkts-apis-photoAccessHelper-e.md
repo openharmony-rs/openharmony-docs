@@ -333,6 +333,6 @@ Enumerates the sources of the image or video data.
 
 | Name               | Value  | Description                                                                                                                |
 |-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| ALL | 0   | Image or video from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ALL | 0   | Images and videos from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | CAMERA | 1   | Image or video taken by the camera.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | SCREENSHOT | 2   | Screenshot or screen capture video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|

@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album.
 
@@ -1822,13 +1822,13 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. The default value is null. |
+| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. |
 
 **Return value**
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress.|
+| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress. |
 
 **Error codes**
 
@@ -2466,11 +2466,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2526,11 +2526,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2712,11 +2712,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2772,11 +2772,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2835,11 +2835,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2895,11 +2895,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -4902,6 +4902,67 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### convertImageFormat<sup>20+</sup>
+
+convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
+
+Duplicates an image within the same album (either user-created or application-specific) and converts it to the specified format. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| title | string | Yes   | Title of the new image.|
+| imageFormat | [SupportedImageFormat](#supportedimageformat20) | Yes   | Format of the new image.|
+
+**Return value**
+
+| Type                           | Description                   |
+| ----------------------------- | --------------------- |
+| Promise\<[PhotoAsset](#photoasset)> | Promise used to return the PhotoAsset instance representing the new image file.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied.  |
+| 202      | Called by non-system application. |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
+| 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('convertImageFormatDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset = await fetchResult.getFirstObject();
+  try {
+    let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
+    console.error(`convertImageFormat success.`);
+  } catch (err) {
+    console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 Describes the information about a shared media asset.
@@ -5464,11 +5525,11 @@ Represents the edited media asset data.
 
 ### Properties
 
-| Name          | Type   | Readable  | Writable | Description  |
+| Name          | Type   | Read-Only| Optional| Description  |
 | ------------ | ------ | ---- | ---- | ------- |
-| compatibleFormat | string | Yes   | Yes   | Format of the edited data.<br>**System API**: This is a system API.   |
-| formatVersion | string | Yes   | Yes  | Version of the data format.<br>**System API**: This is a system API.   |
-| data | string | Yes   | Yes  | Content edited.<br>**System API**: This is a system API.   |
+| compatibleFormat | string | No  | No   | Format of the edited data.<br>**System API**: This is a system API.   |
+| formatVersion | string | No  | No  | Version of the data format.<br>**System API**: This is a system API.   |
+| data | string | No  | No  | Content edited.<br>**System API**: This is a system API.   |
 
 ### constructor<sup>11+</sup>
 
@@ -7792,7 +7853,7 @@ A constructor used to create an **Analysis** album instance.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | **Analysis** album to create.|
+| album | [Album](#album) | Yes  | **Analysis** album.|
 
 **Error codes**
 
@@ -7920,9 +7981,9 @@ A constructor used to create a **Highlights** album instance.
 
 **Parameters**
 
-| Name       | Type     | Mandatory  | Description                                |
-| ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | Provides APIs for managing the **Highlights** album, which is an automatically generated collection of memorable photos or videos.|
+| Name  | Type            | Mandatory | Description           |
+| ----- | --------------- | --------- | --------------------- |
+| album | [Album](#album) | Yes       | **Highlights** album. |
 
 **Error codes**
 
@@ -7975,7 +8036,7 @@ Sets the specified attribute value in the highlights album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | attribute | [HighlightAlbumChangeAttribute](#highlightalbumchangeattribute21) | Yes  | Attribute to set.|
-| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value is **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**, the value must be 8 bytes long.|
+| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value is **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**,  the value must be 8 bytes long.|
 
 **Error codes**
 
@@ -8025,7 +8086,7 @@ async function example(context: Context) {
 
 ## AnalysisAlbum<sup>18+</sup> 
 
-**Analysis** album to create.
+Implements an **Analysis** album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -8043,7 +8104,7 @@ A constructor used to create an **Analysis** album instance.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | **Analysis** album to create.|
+| album | [Album](#album) | Yes  | **Analysis** album.|
 
 **Error codes**
 
@@ -9587,26 +9648,26 @@ Defines the key information about an image or video file.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name         | Value             | Description                                                      |
-| ------------- | ------------------- | ---------------------------------------------------------- |
-| DATE_TRASHED  | 'date_trashed'  | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API.                |
-| HIDDEN  | 'hidden'            | Whether the file is hidden. **System API**: This is a system API.                              |
-| CAMERA_SHOT_KEY  | 'camera_shot_key'  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API.           |
-| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | User comment information. **System API**: This is a system API.          |
-| DATE_YEAR<sup>11+</sup>  | 'date_year'            | Year when the file was created. **System API**: This is a system API.          |
-| DATE_MONTH<sup>11+</sup>  | 'date_month'            | Month when the file was created. **System API**: This is a system API.          |
-| DATE_DAY<sup>11+</sup>  | 'date_day'            | Date when the file was created. **System API**: This is a system API.          |
-| PENDING<sup>11+</sup>  | 'pending'            | Pending state. **System API**: This is a system API.          |
-| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
-| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | Effect of the moving photo. **System API**: This is a system API.|
-| CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | Cloud enhancement identifier. **System API**: This is a system API.|
-| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | Whether a thumbnail is generated. **System API**: This is a system API.|
-| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | Whether a thumbnail is visible. **System API**: This is a system API.|
-| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | Watermark type to set. **System API**: This is a system API.|
-| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | Whether automatic cloud enhancement is supported. **System API**: This is a system API.|
-| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs. **System API**: This is a system API.|
-| IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API.|
-| SUM_SIZE<sup>19+</sup>  | 'sum(size)' | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API.|
+| Name                                     | Value                        | Description                                                  |
+| ---------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| DATE_TRASHED                             | 'date_trashed'               | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API. |
+| HIDDEN                                   | 'hidden'                     | Whether the file is hidden. **System API**: This is a system API. |
+| CAMERA_SHOT_KEY                          | 'camera_shot_key'            | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API. |
+| USER_COMMENT<sup>10+</sup>               | 'user_comment'               | User comment information. **System API**: This is a system API. |
+| DATE_YEAR<sup>11+</sup>                  | 'date_year'                  | Year when the file was created. **System API**: This is a system API. |
+| DATE_MONTH<sup>11+</sup>                 | 'date_month'                 | Month when the file was created. **System API**: This is a system API. |
+| DATE_DAY<sup>11+</sup>                   | 'date_day'                   | Date when the file was created. **System API**: This is a system API. |
+| PENDING<sup>11+</sup>                    | 'pending'                    | Pending state. **System API**: This is a system API.         |
+| DATE_TRASHED_MS<sup>12+</sup>            | 'date_trashed_ms'            | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field. |
+| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>   | 'moving_photo_effect_mode'   | Effect of the moving photo. **System API**: This is a system API. |
+| CE_AVAILABLE<sup>13+</sup>               | 'ce_available'               | Cloud enhancement identifier. **System API**: This is a system API. |
+| THUMBNAIL_READY<sup>13+</sup>            | 'thumbnail_ready'            | Whether a thumbnail is generated. **System API**: This is a system API. |
+| THUMBNAIL_VISIBLE<sup>14+</sup>          | 'thumbnail_visible'          | Whether a thumbnail is visible. **System API**: This is a system API. |
+| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>   | 'supported_watermark_type'   | Watermark type to set. **System API**: This is a system API. |
+| IS_CE_AUTO<sup>18+</sup>                 | 'is_auto'                    | Whether automatic cloud enhancement is supported. **System API**: This is a system API. |
+| OWNER_ALBUM_ID<sup>18+</sup>             | 'owner_album_id'             | ID of the album to which the photo belongs. **System API**: This is a system API. |
+| IS_RECENT_SHOW<sup>18+</sup>             | 'is_recent_show'             | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API. |
+| SUM_SIZE<sup>19+</sup>                   | 'sum(size)'                  | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API. |
 
 ## AlbumKeys
 
@@ -9642,11 +9703,11 @@ Options for creating an image or video asset.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subtype           | [PhotoSubtype](#photosubtype) | No | Subtype of the image or video. |
-| cameraShotKey           | string | No | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)  |
-| userId<sup>19+</sup>           | number | No | User ID. |
+| Name                 | Type                          | Read-Only | Optional | Description                                                  |
+| -------------------- | ----------------------------- | --------- | -------- | ------------------------------------------------------------ |
+| subtype              | [PhotoSubtype](#photosubtype) | No        | Yes      | Subtype of the image or video.                               |
+| cameraShotKey        | string                        | No        | Yes      | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) |
+| userId<sup>19+</sup> | number                        | No        | Yes      | User ID.                                                     |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -9656,10 +9717,10 @@ Defines the options for obtaining the thumbnail of an image or video.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No | Size of the thumbnail to obtain. |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No | Operation to perform. |
+| Name             | Type                                                       | Read-Only | Optional | Description                      |
+| ---------------- | ---------------------------------------------------------- | --------- | -------- | -------------------------------- |
+| size             | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No        | Yes      | Size of the thumbnail to obtain. |
+| requestPhotoType | [RequestPhotoType](#requestphototype11)                    | No        | Yes      | Operation to perform.            |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -9669,12 +9730,12 @@ Defines the application information provided to create assets on behalf of the a
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Read-Only| Optional| Description                                             |
-| ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
-| bundleName           | string | Yes | Yes |Bundle name of the target application. |
-| appName    | string | Yes | Yes |Name of the target application. |
-| appId    | string | Yes | Yes |ID of the target application. |
-| tokenId    | number | Yes | Yes |Token ID of the target application. |
+| Name       | Type   | Read-Only | Optional | Description                            |
+| ---------- | ------ | --------- | -------- | -------------------------------------- |
+| bundleName | string | No        | Yes      | Bundle name of the target application. |
+| appName    | string | No        | Yes      | Name of the target application.        |
+| appId      | string | No        | Yes      | ID of the target application.          |
+| tokenId    | number | No        | Yes      | Token ID of the target application.    |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -9682,9 +9743,9 @@ Represents request options.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type                             | Readable| Writable| Description                                             |
-| ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
-| sourceMode           | [SourceMode](#sourcemode11)     | Yes  | Yes  | Type of the asset file requested, which can be the original file or edited file. **System API**: This is a system API.|
+| Name       | Type                        | Read-Only | Optional | Description                                                  |
+| ---------- | --------------------------- | --------- | -------- | ------------------------------------------------------------ |
+| sourceMode | [SourceMode](#sourcemode11) | No        | Yes      | Type of the asset file requested, which can be the original file or edited file.<br>**System API**: This is a system API. |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -9710,10 +9771,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId       |string  |Yes| Widget ID, which is provided when a widget is created in Gallery.|
-|uri          |string  |Yes| URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
+| Name   | Type   | Read-Only | Optional | Description                                                  |
+| ------ | ------ | --------- | -------- | ------------------------------------------------------------ |
+| formId | string | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
+| uri    | string | No        | No       | URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -9723,10 +9784,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId             |string               |Yes| Widget ID, which is provided when a widget is created in Gallery.|
-|assetUris          |Array&lt;string&gt;  |Yes| URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
+| Name      | Type                | Read-Only | Optional | Description                                                  |
+| --------- | ------------------- | --------- | -------- | ------------------------------------------------------------ |
+| formId    | string              | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
+| assetUris | Array&lt;string&gt; | No        | Yes      | URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
 
 ## ResourceType<sup>11+</sup>
 
@@ -9987,6 +10048,18 @@ Enumerates thumbnail types.
 | :---------------------------- | :- | :------- |
 | LCD         | 1  | LCD thumbnail.   |
 | THM          | 2 | THM thumbnail.   |
+
+## SupportedImageFormat<sup>20+</sup>
+
+Enumerates the supported image formats.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name              | Value | Description |
+| :---------------- | :---- | :---------- |
+| AVFILE_FORMAT_JPG | 'jpg' | JPG.        |
 
 ## WatermarkType<sup>14+</sup>
 
