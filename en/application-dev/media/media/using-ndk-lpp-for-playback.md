@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
+Starting from API version 20, the Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
 
 The full playback process includes creating a demuxer, creating a player, setting callback functions, configuring playback parameters (speed and volume), controlling playback (play, pause, resume, stop, and reset), and releasing the player instance.
 
@@ -20,7 +20,7 @@ When the player is in the ready, decoding, rendering, paused, or stopped state, 
 
 This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description to handle the situation based on your service requirements.
 
-- Due to hardware differences, LPP capabilities are only available on certain smartphones. You are advised to use [OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability) to check whether the LPP capabilities are supported. If they are not supported, use [AvCodec](../avcodec/avcodec-kit-intro.md) for playback.
+- Due to hardware differences, LPP capabilities are only available on certain smartphones. You are advised to use [OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability) to check whether the LPP capabilities are supported. This API is available since API version 21. If they are not supported, use [AVCodec](../avcodec/avcodec-kit-intro.md) for playback.
 
 - When an application is playing media data that involves audio, it may be interrupted by other applications according to the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).) It is recommended that the application proactively listen for audio interruption events through [OH_LowPowerAudioSinkCallback_SetInterruptListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setinterruptlistener) and handle the events accordingly to avoid inconsistencies between the application status and the expected effect.
 

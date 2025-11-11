@@ -43,11 +43,11 @@ struct Index {
   private sessionId: string = "";
   private AVSessionController?: avSession.AVSessionController;
   private currentAVSession?: avSession.AVSession;
-  private context = getContext(this) as Context;
+  context = this.getUIContext();
 
   aboutToAppear(): void {
 
-    avSession.createAVSession(this.context, this.tag, "audio").then(async (data: avSession.AVSession) => {
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio").then(async (data: avSession.AVSession) => {
       this.currentAVSession = data;
       this.sessionId = this.currentAVSession.sessionId;
       this.AVSessionController = await this.currentAVSession.getController();

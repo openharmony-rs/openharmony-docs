@@ -32,7 +32,7 @@ import { image } from '@kit.ImageKit';
 | Name             | Type   | Read Only| Optional| Description                      |
 | -----------------| ------- | ---- | ---- | -------------------------- |
 | isEditable<sup>7+</sup>        | boolean | Yes  | No  | Whether the PixelMap is editable. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the PixelMap uses DMA memory. ** true** if the PixelMap uses DMA memory, **false** otherwise.|
+| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the PixelMap uses DMA memory. **true** if the PixelMap uses DMA memory, **false** otherwise.|
 
 ## readPixelsToBuffer<sup>7+</sup>
 
@@ -1429,8 +1429,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **Example**
 
@@ -1471,8 +1471,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **Example**
 
@@ -2573,11 +2573,15 @@ async function Unmarshalling() {
 
 ## release<sup>7+</sup>
 
-release():Promise\<void>
+release(): Promise\<void\>
 
-Releases this PixelMap object. This API uses a promise to return the result.
+Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses a promise to return the result.
 
 ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+
+> **NOTE**
+>
+> Release occurs when an ArkTS object relinquishes control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -2609,11 +2613,15 @@ async function Release(pixelMap:image.PixelMap) {
 
 ## release<sup>7+</sup>
 
-release(callback: AsyncCallback\<void>): void
+release(callback: AsyncCallback\<void\>): void
 
-Releases this PixelMap object. This API uses an asynchronous callback to return the result.
+Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses an asynchronous callback to return the result.
 
 ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+
+> **NOTE**
+>
+> Release refers to an ArkTS object relinquishing control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

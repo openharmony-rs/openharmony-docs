@@ -74,7 +74,7 @@ Defines media information in key-value mode.
 
 | Name         | Type  | Read-Only| Optional | Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | No | No | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
+| [key: string] | Object | No | Yes | For details about the key range supported and the object type and range of each key, see [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
 
 **Example**
 
@@ -116,7 +116,7 @@ Defines the playback information in key-value pairs.
 
 | Name         | Type  | Read-Only| Optional | Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | No | No | For details about the value range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).<br>For details about the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
+| [key: string]| Object | No | Yes | For details about the value range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).<br>For details about the object type and range of each key, see [PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12).|
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -220,7 +220,7 @@ Describes the video transcoding parameters.
 
 | Name           | Type                                   | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s. .|
+| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s. |
 | audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**. |
 | fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported. |
 | videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher. |
