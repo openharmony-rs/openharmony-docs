@@ -47,4 +47,23 @@ The hotkey has been subscribed to by another.
 
 1. 在cmd命令窗口执行(hidumper -s 3101 -a -s)查询已经被注册的快捷键，注册未被三方占用的快捷键。
 
-## 4200003 快捷键已经被三方注册
+## 3800001 多模输入服务内部错误
+
+**错误信息**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**错误描述**
+
+多模输入服务内部错误。
+
+**可能原因**
+
+1. 内存分配失败。
+2. 线程繁忙。
+3. 服务异常退出。
+等预期之外的错误。
+
+**处理步骤**
+
+建议稍后重试。
