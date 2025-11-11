@@ -147,32 +147,32 @@
   - [Universal Attributes](arkui-ts/ts-component-general-attributes.md)
     - Basic Attributes<!--basic-property-->
       - [Component ID](arkui-ts/ts-universal-attributes-component-id.md)
-      - [restoreId](arkui-ts/ts-universal-attributes-restoreId.md)
-      - [Visibility](arkui-ts/ts-universal-attributes-visibility.md)
+      - [Distributed Migration Identifier](arkui-ts/ts-universal-attributes-restoreId.md)
+      - [Visibility Control](arkui-ts/ts-universal-attributes-visibility.md)
       - [Background](arkui-ts/ts-universal-attributes-background.md)
-      - [Overlay](arkui-ts/ts-universal-attributes-overlay.md)
+      - [Overlay Control](arkui-ts/ts-universal-attributes-overlay.md)
       - [Z-order Control](arkui-ts/ts-universal-attributes-z-order.md)
       - [Obscuring](arkui-ts/ts-universal-attributes-obscured.md)
-      - [Color Inversion](arkui-ts/ts-allow-force-dark.md) 
+      - [Color Inversion](arkui-ts/ts-allow-force-dark.md)
     - Layout and Borders<!--layout-property-->
-      - [Size](arkui-ts/ts-universal-attributes-size.md)
+      - [Sizing](arkui-ts/ts-universal-attributes-size.md)
       - [Location](arkui-ts/ts-universal-attributes-location.md)
       - [Layout Constraints](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex Layout](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [Safe Area](arkui-ts/ts-universal-attributes-expand-safe-area.md)
       - [Component-Level Pixel Rounding](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [Page-Level Pixel Rounding](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
-      - [Border](arkui-ts/ts-universal-attributes-border.md)
+      - [Border Styling](arkui-ts/ts-universal-attributes-border.md)
       - [Border Image](arkui-ts/ts-universal-attributes-border-image.md)
     - Visual Effects<!--visual-effect-property-->
-      - [Opacity](arkui-ts/ts-universal-attributes-opacity.md)
+      - [Opacity Control](arkui-ts/ts-universal-attributes-opacity.md)
       - [Transformation](arkui-ts/ts-universal-attributes-transformation.md)
       - [Image Effect](arkui-ts/ts-universal-attributes-image-effect.md)
       - [Shape Clipping](arkui-ts/ts-universal-attributes-sharp-clipping.md)
       - [Color Gradient](arkui-ts/ts-universal-attributes-gradient-color.md)
       - [Foreground Color](arkui-ts/ts-universal-attributes-foreground-color.md)
       - [Foreground Effect](arkui-ts/ts-universal-attributes-foreground-effect.md)
-      - [Outline](arkui-ts/ts-universal-attributes-outline.md)
+      - [Outline Styling](arkui-ts/ts-universal-attributes-outline.md)
       - [Visual Effect](arkui-ts/ts-universal-attributes-filter-effect.md)
       - [Foreground Blur](arkui-ts/ts-universal-attributes-foreground-blur-style.md)
       - [Motion Blur](arkui-ts/ts-universal-attributes-motionBlur.md)
@@ -326,6 +326,7 @@
     - [ImageAnimator](arkui-ts/ts-basic-components-imageanimator.md)
     - [Video](arkui-ts/ts-media-components-video.md)
     - [Image Analysis Types](arkui-ts/ts-image-common.md)
+    - [SVG Tags](arkui-ts/ts-basic-svg.md)
     - [Enhanced SVG Parsing Capabilities](arkui-ts/ts-image-svg2-capabilities.md)
     <!--Del-->
     - [Image (System API)](arkui-ts/ts-basic-components-image-sys.md)
@@ -492,7 +493,6 @@
     - [Pixel Units](arkui-ts/ts-pixel-units.md)
     - [Enums](arkui-ts/ts-appendix-enums.md)
     - [Common Event Callback](arkui-ts/ts-uicommonevent.md)
-    - [SVG Tags](arkui-ts/ts-basic-svg.md)
     <!--Del-->
     - [Enums (System API)](arkui-ts/ts-appendix-enums-sys.md)
     <!--DelEnd-->
@@ -515,9 +515,9 @@
     - [Click Control](arkui-ts/ts-universal-attributes-click.md)
     - [Grid](arkui-ts/ts-universal-attributes-grid.md)
 - JavaScript Components<!--arkui-js-comp-->
-  - [JavaScript-compatible Web-like Development Paradigm (ArkUI.Full)](arkui-js/Readme-EN.md)
-  - [JavaScript-compatible Web-like Development Paradigm (ArkUI.Lite)](arkui-js-lite/Readme-EN.md)
-  - [JavaScript Service Widget UI Components](js-service-widget-ui/Readme-EN.md)
+  - [JavaScript-compatible Web-like Development Paradigm (ArkUI.Full)](arkui-js/Readme-EN.md)<!--arkui-js-full-comp-->
+  - [JavaScript-compatible Web-like Development Paradigm (ArkUI.Lite)](arkui-js-lite/Readme-EN.md)<!--arkui-js-lite-comp-->
+  - [JavaScript Service Widget UI Components](js-service-widget-ui/Readme-EN.md)<!--arkui-card-comp-->
 - C API<!--arkui-c-->
   - Modules<!--arkui-module-->
     - [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -560,7 +560,6 @@
     - [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)
     - [ArkUI_DragAndDropInfo](capi-arkui-nativemodule-arkui-draganddropinfo.md)
     - [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)
-    - [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)
     - [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md)
     - [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)
     - [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)
@@ -673,7 +672,6 @@
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
-    - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)
     - [WindowManager_Rect](capi-windowmanager-rect.md)
     - [OH_PixelmapNative](capi-struct.md)
@@ -707,10 +705,6 @@
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
     - [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
-    - [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)
-    - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
-    - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
-    - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
 - Error Codes<!--arkui-arkts-errcode-->
   - UI<!--arkui-ui-arkts-errcode-->
     - [API Call Error Codes](errorcode-internal.md)
@@ -737,9 +731,10 @@
     - [State Management Error Codes](errorcode-stateManagement.md)
     - [Render Node Error Codes](errorcode-node-render.md)
     - [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md)
+    - [Color Inversion Error Codes](errorcode-force-dark.md)
   - Graphics<!--arkui-graphics-images-arkts-errcode-->
     - [Display Error Codes](errorcode-display.md)
     - [Window Error Codes](errorcode-window.md)
-  - UI Compilation
+  - UI Compilation<!--arkui-compile-arkts-errcode-->
     - [Compilation Error Codes](_ark_ui_compile.md)
 <!--no_check-->
