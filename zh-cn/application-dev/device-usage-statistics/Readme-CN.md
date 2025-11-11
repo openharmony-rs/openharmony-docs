@@ -3,7 +3,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics-overview-sys.md)
