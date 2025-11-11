@@ -25587,7 +25587,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/TodoListPage.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":57,
 						"name":"Main_TodoListPage",
 						"start_line":17
 					}
