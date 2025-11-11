@@ -199,7 +199,8 @@ cpp部分代码
 
 <!-- @[node_api_module_create_object_name_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
 
-```cpp
+``` C++
+// ArkTS Object相关 napi_create_object_with_named_properties
 static napi_value CreateObjectWithNameProperties(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -215,8 +216,9 @@ static napi_value CreateObjectWithNameProperties(napi_env env, napi_callback_inf
     };
     napi_property_descriptor desc[] = {{"name", nullptr, nullptr,
                                         nullptr, nullptr, nullptr, napi_default, nullptr}};
-    napi_status status;
-    status = napi_create_object_with_named_properties(env, &obj, sizeof(desc) / sizeof(desc[0]), key, values);
+    napi_status status = napi_create_object_with_named_properties(
+        env, &obj, sizeof(desc) / sizeof(desc[0]), key, values
+    );
     if (status != napi_ok) {
         return nullptr;
     }
