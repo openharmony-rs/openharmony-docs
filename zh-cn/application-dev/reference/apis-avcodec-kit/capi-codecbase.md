@@ -41,12 +41,13 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | AMR_WB音频解码器的MIME类型。                           |
 | OH_AVCODEC_MIMETYPE_AUDIO_APE | APE音频解码器的MIME类型。                         |
 | OH_AVCODEC_MIMETYPE_AUDIO_ALAC | ALAC（Apple Lossless Audio Codec）音频解码器的MIME类型。 |
-| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3音频解码器的MIME类型。                         |
-| OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | WMA（Windows Media Audio）V1音频解码器的MIME类型。|
-| OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | WMA（Windows Media Audio）V2音频解码器的MIME类型。|
-| OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。|
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM | GSM音频解码器的MIME类型。                         |
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | GSM MS音频解码器的MIME类型。                |
+| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3（Dolby Audio Coding 3）音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | EAC3（Enhanced AC-3）音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | WMA（Windows Media Audio）V1音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | WMA（Windows Media Audio）V2音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM | GSM（Global System for Mobile Communications）音频解码器的MIME类型。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | GSM MS（Microsoft variant）音频解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | VVC(H.266)视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | HEVC(H.265)视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | AVC(H.264)视频编解码器的MIME类型。                     |
