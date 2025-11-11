@@ -266,12 +266,14 @@ try {
 cpp部分代码
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
+
+``` C++
+// 运行指定abc文件 napi_run_script_path
 static napi_value RunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value = nullptr;
     // 注意：记得在应用rawfile目录下放置.abc文件
-    const char *scriptPath = "/entry/resources/rawfile/test.abc";
+    const char *scriptPath = "/entry/src/main/resources/rawfile/test.abc";
     // 使用napi_run_script_path函数执行指定路径中的文件
     napi_status status = napi_run_script_path(env, scriptPath, &value);
     // 检查是否执行成功，如果失败，返回false
