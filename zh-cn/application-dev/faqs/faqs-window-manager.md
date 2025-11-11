@@ -113,7 +113,7 @@ if (windowClass) {
 
 **解决措施**
 
-状态栏字体高亮属性的本质就是让字体变成白色。调用window实例的setWindowSystemBarProperties接口时，如果设置了状态栏内容颜色statusBarContentColor，就以开发者设置的颜色为准，isStatusBarLightIcon状态栏字体高亮属性就不生效；同理，如果设置了导航栏内容颜色navigationBarContentColor，isNavigationBarLightIcon导航栏字体高亮属性就不生效。
+状态栏图标高亮属性的本质就是让图标变成白色。调用window实例的setWindowSystemBarProperties接口时，如果设置了状态栏文字颜色statusBarContentColor，就以开发者设置的颜色为准，isStatusBarLightIcon状态栏图标高亮属性就不生效；同理，如果设置了导航栏内容颜色navigationBarContentColor，isNavigationBarLightIcon导航栏图标高亮属性就不生效。
 
 **参考链接**
 
