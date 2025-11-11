@@ -993,3 +993,187 @@ OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager",
 ```
 
 3. 查看日志打印的对应错误码返回是否正确，以此判断是否成功获取到对应子节点。
+
+## 节点是否处于渲染状态
+
+从API version 23开始，使用[OH_ArkUI_NativeModule_IsInRenderState](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_isinrenderstate)接口，可以查询节点是否在渲染树上。
+
+
+1. ArkTS侧接入Native组件。
+
+   ```ts
+   //Index.ets
+   
+   import testNapi from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Component
+   struct TestContent {
+     private nodeContent: NodeContent = new NodeContent();
+   
+     aboutToAppear() {
+       // 通过C-API创建节点，并添加到管理器nodeContent上
+       testNapi.createNativeNode(this.nodeContent);
+     }
+     build() {
+       Column() {
+         // 显示nodeContent管理器里存放的Native侧的组件
+         ContentSlot(this.nodeContent)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     @State showParent: boolean = true;
+     build() {
+       Row() {
+         Column() {
+           TestContent()
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }   
+   ```
+
+2. 新建`Attribute_util .h`用于设置组件属性。
+
+   ```C++
+   #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
+   #define MYAPPLICATION_ATTRIBUTE_UTIL_H
+   #include <arkui/native_node.h>
+   #include <cstdint>
+   #include <string>
+     class AttributeUtil {
+       public:
+       ArkUI_NativeNodeAPI_1 *api_;
+       ArkUI_NodeHandle node_;
+       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) {
+       this->node_ = node;
+       api_ = api;
+     }
+   int32_t width(float width) {
+     ArkUI_NumberValue NODE_WIDTH_value[] = {width};
+     ArkUI_AttributeItem NODE_WIDTH_Item = {NODE_WIDTH_value, 1};
+     return api_->setAttribute(node_, NODE_WIDTH, &NODE_WIDTH_Item);
+   }
+   int32_t height(float height) {
+     ArkUI_NumberValue NODE_HEIGHT_value[] = {height};
+     ArkUI_AttributeItem NODE_HEIGHT_Item = {NODE_HEIGHT_value, 1};
+     return api_->setAttribute(node_, NODE_HEIGHT, &NODE_HEIGHT_Item);
+   }
+   
+   int32_t buttonLabel(std::string text) {
+     ArkUI_AttributeItem NODE_TRANSLATE_ITEM_LABEL = {.string = text.c_str()};
+     return api_->setAttribute(node_, NODE_BUTTON_LABEL, &NODE_TRANSLATE_ITEM_LABEL);
+   }
+   
+   int32_t text(std::string str) {
+     ArkUI_AttributeItem TEXT_ITEM = {.string = str.c_str()};
+     return api_->setAttribute(node_, NODE_TEXT_CONTENT, &TEXT_ITEM);
+   }
+   
+   int32_t visibility(int isSHow) {
+     ArkUI_NumberValue NODE_VISIBILITY_ITEM_VALUE = {.i32 = isSHow};
+     ArkUI_AttributeItem NODE_VISIBILITY__ITEM = {&NODE_VISIBILITY_ITEM_VALUE, 1};
+     return api_->setAttribute(node_, NODE_VISIBILITY, &NODE_VISIBILITY__ITEM);
+   }
+   
+   int32_t margin(float value) {
+     ArkUI_NumberValue NODE_margin_ITEM_VALUE = {.f32 = value};
+     ArkUI_AttributeItem NODE_MARGIN_ITEM = {&NODE_margin_ITEM_VALUE, 1};
+     return api_->setAttribute(node_, NODE_MARGIN, &NODE_MARGIN_ITEM);
+   }
+   };
+   
+   #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H  
+   ```
+
+3. 在`nai_init.cpp`中，挂载Native节点。
+
+   ```C++
+   #include "napi/native_api.h"
+   #include "AttributeUtil.h"
+   #include <arkui/native_interface.h>
+   #include <arkui/native_node.h>
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   
+   static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+   static ArkUI_NodeHandle textNode = nullptr;
+   static bool showText = false;
+   
+   namespace Event {
+     void onClickFunc(ArkUI_NodeEvent *event) {
+       AttributeUtil textAttr(textNode, nodeAPI);
+       if (showText) {
+         textAttr.visibility(0);
+       } else {
+         textAttr.visibility(1);
+       }
+       showText = !showText;
+       bool isOnRenderTree = false;
+       OH_ArkUI_NativeModule_IsInRenderState(textNode, &isOnRenderTree);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree statie is %{public}d", isOnRenderTree);
+     }
+   } // namespace Event
+   
+   
+   static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info) {
+     size_t argc = 1;
+     napi_value args[1] = {nullptr};
+     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     ArkUI_NodeContentHandle contentHandle;
+     OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+     auto columnTest = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+     AttributeUtil columnAttr(columnTest, nodeAPI);
+     columnAttr.width(300);
+     columnAttr.height(300);
+     auto buttonNode = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+     nodeAPI->addChild(columnTest, buttonNode);
+     AttributeUtil buttonAttr(buttonNode, nodeAPI);
+     buttonAttr.width(200);
+     buttonAttr.height(30);
+     buttonAttr.margin(20);
+     buttonAttr.buttonLabel("change text visibility");
+     nodeAPI->registerNodeEvent(buttonNode, NODE_ON_CLICK, 1, nullptr);
+     nodeAPI->registerNodeEventReceiver(Event::onClickFunc);
+     textNode = nodeAPI->createNode(ARKUI_NODE_TEXT);
+     nodeAPI->addChild(columnTest, textNode);
+     AttributeUtil textAttr(textNode, nodeAPI);
+     textAttr.text("hello word");
+     OH_ArkUI_NodeContent_AddNode(contentHandle, columnTest);
+     return nullptr;
+   }
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports) {
+     napi_property_descriptor desc[] = {
+       {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr}};
+   napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+   return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+     .nm_version = 1,
+     .nm_flags = 0,
+     .nm_filename = nullptr,
+     .nm_register_func = Init,
+     .nm_modname = "entry",
+     .nm_priv = ((void *)0),
+     .reserved = {0},
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+
+    ```
+
+4. 运行程序，点击change text visibility后打印text是否在渲染树上。
+
+![isInRenderState](figures/isInRenderState_c.png)
+
