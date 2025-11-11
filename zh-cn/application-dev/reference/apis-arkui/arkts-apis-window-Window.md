@@ -1699,14 +1699,11 @@ export default class EntryAbility extends UIAbility {
       }
       windowClass = data;
       try {
-        let promise = windowClass.setStatusBarColor(ColorMetrics.numeric(0x112233));
+        let promise = windowClass!.setStatusBarColor(ColorMetrics.numeric(0x112233));
         promise.then(() => {
           console.info('Succeeded in setting the status bar color.');
-        }).catch((err: BusinessError<void> | null) => {
-          const errCode = err?.code;
-          if (errCode) {
-            console.error(`Set the status bar color failed. Cause code: ${err?.code}, message: ${err?.message}`);
-          }
+        }).catch((err: Error) => {
+          console.error(`Set the status bar color failed. Cause code: ${err?.code}, message: ${err.message}`);
         });
       } catch (exception) {
         console.error(`Failed to set the status bar color. Cause ${exception}`);

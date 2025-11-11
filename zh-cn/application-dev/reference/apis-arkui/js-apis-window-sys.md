@@ -2911,7 +2911,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
-import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
+import { UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -2954,7 +2954,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 ```ts
 // EntryAbility.ets
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
