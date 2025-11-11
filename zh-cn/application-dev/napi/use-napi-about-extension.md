@@ -182,9 +182,12 @@ export const createObjectWithProperties: (data: string) => {name:string}; // Ark
 ArkTS侧示例代码
 
 <!-- @[ark_node_api_module_create_object_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-let value = testNapi.createObjectWithProperties('createObject');
-hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_properties:%{public}s', JSON.stringify(value));
+
+``` TypeScript
+// ArkTS Object相关 napi_create_object_with_properties
+let value1 = testNapi.createObjectWithProperties('createObject');
+hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_properties:%{public}s',
+  JSON.stringify(value1));
 ```
 
 
