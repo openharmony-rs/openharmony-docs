@@ -7939,7 +7939,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":67,
 						"name":"uiContextInspector_start",
 						"start_line":15
 					}
