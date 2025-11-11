@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript VM scope.
+Defines the JavaScript VM scope.
 
 **Since**: 11
 

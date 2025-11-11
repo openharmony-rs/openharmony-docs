@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript CPU profiler.
+Defines a JavaScript CPU profiler.
 
 **Since**: 12
 

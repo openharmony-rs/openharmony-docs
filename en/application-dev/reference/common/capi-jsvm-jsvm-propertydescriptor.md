@@ -8,7 +8,7 @@
 
 ## Overview
 
-Property descriptor.
+Defines property descriptor.
 
 **Since**: 11
 
@@ -22,10 +22,10 @@ Property descriptor.
 
 | Name| Description|
 | -- | -- |
-| const char* utf8name | An optional string that describes the attribute key value, encoded in UTF-8. Either **utf8name** or **name** must be provided for a property.|
-| JSVM_Value name | Optional JSVM_Value, which points to the JavaScript string or symbol used as the property key. Either **utf8name** or **name** must be provided for a property.|
-| JSVM_Callback method | Method as the **value** property of the property descriptor object.|
-| JSVM_Callback getter | Callback for getting a property.|
-| JSVM_Callback setter | Callback for setting a property.|
+| const char* utf8name | Property key, which is an optional string in UTF-8 encoding. Either **utf8name** or **name** must be provided for a property.|
+| JSVM_Value name | Optional JSVM value, which points to the JavaScript string or symbol used as the property key. Either **utf8name** or **name** must be provided for a property.|
+| JSVM_Callback method | Method represented using the **value** property of the property descriptor object.|
+| JSVM_Callback getter | Callback used to obtain a property.|
+| JSVM_Callback setter | Callback used to set a property.|
 | JSVM_Value value | Value retrieved by **getter** of the data property.|
 | JSVM_PropertyAttributes attributes | Attributes associated with a specific property.|

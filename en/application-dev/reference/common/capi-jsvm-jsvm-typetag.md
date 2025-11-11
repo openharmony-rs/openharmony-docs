@@ -8,7 +8,7 @@
 
 ## Overview
 
-Type tag, stored as a 128-bit value of two unsigned 64-bit integers. As a UUID, it can tag JavaScript objects to ensure that their types remain unchanged.
+Defines the type tag, which is stored as a 128-bit value of two unsigned 64-bit integers. As a UUID, it can tag JavaScript objects to ensure that their types remain unchanged.
 
 **Since**: 11
 
@@ -22,5 +22,5 @@ Type tag, stored as a 128-bit value of two unsigned 64-bit integers. As a UUID, 
 
 | Name| Description  |
 |----|------|
-| uint64_t lower   | Lower 64 bits|
-| uint64_t upper   | Upper 64 bits|
+| uint64_t lower   | Lower 64 bits.|
+| uint64_t upper   | Upper 64 bits.|

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Options for creating a JavaScript VM.
+Defines options for creating a JavaScript VM.
 
 **Since**: 11
 

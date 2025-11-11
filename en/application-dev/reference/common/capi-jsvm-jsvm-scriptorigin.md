@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides the source information of a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.
+Defines the original information about a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.
 
 **Since**: 12
 

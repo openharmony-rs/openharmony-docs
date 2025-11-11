@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines a JavaScript Data struct.
+JavaScript Data.
 
 **Since**: 18
 
