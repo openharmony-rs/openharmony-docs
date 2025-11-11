@@ -542,7 +542,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
 
-```typescript
+``` TypeScript
 import { http } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -551,17 +551,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
  <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
-```typescript
-// 创建http请求
-let httpRequest: http.HttpRequest = http.createHttp();
-```
+ 
+ ``` TypeScript
+ // 创建http请求
+ let httpRequest: http.HttpRequest = http.createHttp();
+ ```
 
 3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
 
 <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 创建拦截器链
 let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
 ```
@@ -570,7 +570,7 @@ let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
 
 <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 enum InterceptorType {
   INITIAL_REQUEST = 'INITIAL_REQUEST',
   REDIRECTION = 'REDIRECTION',
@@ -684,7 +684,7 @@ chain.addChain([
 
 <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 将当前配置好的拦截器链附加到httpRequest中
 chain.apply(httpRequest);
 ```
@@ -693,7 +693,7 @@ chain.apply(httpRequest);
 
 <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 创建请求可选项
 let options: http.HttpRequestOptions = {
   method: http.RequestMethod.POST,
@@ -710,7 +710,7 @@ let options: http.HttpRequestOptions = {
 // 发起请求
 httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
-    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
     // ···
   } else {
     hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
@@ -724,7 +724,7 @@ httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpRes
 
 <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
-```typescript
+``` TypeScript
 // 销毁请求
 httpRequest.destroy();
 ```
