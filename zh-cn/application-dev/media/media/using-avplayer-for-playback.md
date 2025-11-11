@@ -121,7 +121,7 @@
     }
     ```
 
-5. 准备播放：调用prepare()，AVPlayer进入prepared状态，此时可以获取duration，设置音量。
+5. 准备播放：调用 prepare()方法进入准备播放阶段，AVPlayer 将切换至 prepared 状态，此时可获取视频时长（duration）并调整音量参数。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -135,7 +135,7 @@
     });
     ```
 
-6. 音频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -167,7 +167,7 @@
     });
     ```
 
-7. （可选）更换资源：调用reset()重置资源，AVPlayer重新进入idle状态，允许更换资源url。
+7. （可选）更换资源：调用reset()方法重置播放资源，AVPlayer重新进入idle状态，此时可重新设置资源url。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -188,7 +188,7 @@
     avPlayer.url = url;
     ```
 
-7. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
+8. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
