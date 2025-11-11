@@ -146,7 +146,7 @@ libchild_process.so
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
-    #include "AbilityKit/native_child_process.h"
+    #include <AbilityKit/native_child_process.h>
     // ···
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
@@ -173,7 +173,7 @@ libchild_process.so
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
-    #include "AbilityKit/native_child_process.h"
+    #include <AbilityKit/native_child_process.h>
     // ···
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
