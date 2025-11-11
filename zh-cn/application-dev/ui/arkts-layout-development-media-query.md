@@ -52,7 +52,7 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
     }
   }
 
-    // ···
+// ···
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
     // ···
     });
@@ -167,9 +167,7 @@ Stage模型下的示例：
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// [Start obtain_mediaquery_import]
 import { mediaquery } from '@kit.ArkUI';
-// [End obtain_mediaquery_import]
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -179,40 +177,26 @@ struct MediaQueryExample {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
   // 当设备横屏时条件成立
-  // [Start obtain_mediaquery_listener]
   listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
-  // [End obtain_mediaquery_listener]
 
   // 当满足媒体查询条件时，触发回调
-  // [Start obtain_mediaquery_Portrait]
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
-      // [StartExclude obtain_mediaquery_Portrait]
       this.color = '#FFD700';
       this.text = 'Landscape';
-      // [EndExclude obtain_mediaquery_Portrait]
     } else {
-      // [StartExclude obtain_mediaquery_Portrait]
       this.color = '#DB7093';
       this.text = 'Portrait';
-      // [EndExclude obtain_mediaquery_Portrait]
     }
   }
 
-  // [StartExclude obtain_mediaquery_Portrait]
   aboutToAppear() {
     // 绑定当前应用实例
     // 绑定回调函数
-    // [EndExclude obtain_mediaquery_Portrait]
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      // [StartExclude obtain_mediaquery_Portrait]
       this.onPortrait(mediaQueryResult);
-      // [EndExclude obtain_mediaquery_Portrait]
     });
-    // [StartExclude obtain_mediaquery_Portrait]
   }
-  // [EndExclude obtain_mediaquery_Portrait]
-  // [End obtain_mediaquery_Portrait]
 
   aboutToDisappear() {
     // 解绑listener中注册的回调函数
