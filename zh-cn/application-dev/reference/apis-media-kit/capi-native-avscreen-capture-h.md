@@ -418,7 +418,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMicrophoneEnabled(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| bool isMicrophone | 麦克风开关参数。 |
+| bool isMicrophone | 麦克风开关参数。<br> true表示打开麦克风，false表示关闭麦克风。<br> 默认是true。 |
 
 **返回：**
 
@@ -561,7 +561,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| bool canvasRotation | 指示屏幕数据旋转参数。 |
+| bool canvasRotation | 指示屏幕数据旋转参数。<br> true表示打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向，false表示关闭录屏屏幕数据旋转功能，录制的屏幕数据跟随屏幕旋转。<br> 默认是false。 |
 
 **返回：**
 
@@ -807,7 +807,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ShowCursor(struct OH_AVScreenCapt
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| bool showCursor | 光标显示参数。 |
+| bool showCursor | 光标显示参数。光标显示参数。<br> true表示显示光标，false表示隐藏光标。<br> 默认是true。 |
 
 **返回：**
 
