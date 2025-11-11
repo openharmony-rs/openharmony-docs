@@ -78,6 +78,14 @@ addFrameNode(node: FrameNode): void
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 需要添加的FrameNode。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+
 ### removeFrameNode<sup>12+</sup>
 
 removeFrameNode(node: FrameNode): void
