@@ -1778,9 +1778,6 @@ getCountryCode(): string
 	}
 ```
 
-
-
-
 ## wifiManager.isBandTypeSupported<sup>10+</sup>
 
 isBandTypeSupported(bandType: WifiBandType): boolean
