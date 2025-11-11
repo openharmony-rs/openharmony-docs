@@ -932,7 +932,75 @@ error: install internal error.
 **处理步骤**
 
 请尝试重启设备后重新安装。
+ 
 
+### 9568261 安装器对象构造失败
+**错误信息**
+
+error: install host installer failed.
+
+**错误描述**
+
+获取安装器对象失败。
+
+**可能原因**
+
+安装过程中，内部服务异常。
+
+**处理步骤**
+
+请尝试重启设备后重新安装。
+
+### 9568262 插件安装命令错误
+**错误信息**
+
+error: install parse failed.
+
+**错误描述**
+
+插件安装使用的命令不正确。
+
+**可能原因**
+
+安装插件用了[bm install](#安装命令install)命令。
+
+**处理步骤**
+
+安装插件请使用[bm install-plugin](#安装插件命令install-plugin)命令。
+
+### 9568265 安装过程中内部参数有误
+**错误信息**
+
+error: install param error.
+
+**错误描述**
+
+内部参数不正确。
+
+**可能原因**
+
+安装过程中后台服务出现异常，导致参数发生变化，不符合预期。
+
+**处理步骤**
+
+请尝试重启设备后重新安装。
+
+### 9568270 安装包名称不正确
+**错误信息**
+
+error: install invalid hap name.
+
+**错误描述**
+
+安装包名称后缀不正确。
+
+**可能原因**
+
+安装包名称后缀不正确，非`.hap`、`.hsp`、`.hqf`结尾。
+
+**处理步骤**
+
+检查安装包的名称后缀是否正确。
 
 ### 9568267 entry模块已存在
 **错误信息**
@@ -1193,6 +1261,25 @@ error: install failed due to older sdk version in the device.
 * 场景二：对于需要运行在OpenHarmony设备上的应用，请确认runtimeOS已改为OpenHarmony。
 
 
+
+### 9568299 安装信息异常
+
+**错误信息**
+
+error: install failed due to ark native file is incompatible.
+
+**错误描述**
+
+安装信息异常。
+
+**可能原因**
+
+安装信息为空或者出现异常导致安装失败。
+
+**处理步骤**
+
+设备重启之后再重新安装。
+
 ### 9568300 应用模块名不唯一导致安装失败
 **错误信息**
 
@@ -1342,6 +1429,39 @@ proxyData标签uri属性验证失败。
 
 1. 检查应用定义的proxyData内容是否符合要求，参考[proxyData标签](../quick-start/module-configuration-file.md#proxydata标签)。
 
+### 9568318 签名文件无效
+**错误信息**
+
+error: signature file path is invalid.
+
+**错误描述**
+
+签名文件无效。
+
+**可能原因**
+
+签名文件异常或者安装包损坏。
+
+**处理步骤**
+
+使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+
+### 9568325 由于文件过大，签名验证失败
+**错误信息**
+
+error: signature verification failed due to oversize file.
+
+**错误描述**
+
+由于文件过大，签名验证失败。
+
+**可能原因**
+
+签名文件大小超过限制。
+
+**处理步骤**
+
+使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者重新申请签名证书，在[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
 
 ### 9568336 应用调试类型与已安装应用不一致
 **错误信息**
@@ -1770,6 +1890,91 @@ error: remove sign profile failed.
 ```
 hdc file recv /data/log/hilog/
 ```
+
+### 9568381 应用进程删除失败
+**错误信息**
+
+error: uninstall killing app error.
+
+**错误描述**
+
+卸载应用时应用进程删除失败。
+
+**可能原因**
+
+进程号错误导致应用进程删除失败。
+
+**处理步骤**
+
+设备重启之后再尝试卸载应用。
+
+### 9568382 卸载应用时包名或者模块名称为空
+**错误信息**
+
+error: uninstall invalid name.
+
+**错误描述**
+
+卸载应用时bundleName为空或者moduleName为空。
+
+**可能原因**
+
+卸载应用时，参数bundleName和moduleName异常为空。
+
+**处理步骤**
+
+设备重启之后再尝试卸载应用。
+
+### 9568384 卸载应用时bm工具进程权限异常
+**错误信息**
+
+error: uninstall permission denied.
+
+**错误描述**
+
+卸载应用时bm工具进程权限异常。
+
+**可能原因**
+
+bm工具进程异常或者权限丢失，导致卸载应用时无权限。
+
+**处理步骤**
+
+1. 设备重启之后再尝试卸载应用。
+
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+
+### 9568385 卸载服务异常
+**错误信息**
+
+error: uninstall bundle mgr service error.
+
+**错误描述**
+
+卸载服务异常。
+
+**可能原因**
+
+系统出现未知的异常，导致卸载服务已停止或者异常退出。
+
+**处理步骤**
+
+1. 重启手机后再次尝试卸载应用。
+
+2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
+
+    ```
+    hdc shell
+    cd /data/log/faultlog/faultlogger/
+    ls -ls
+    ```
+
+3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+
+    ```
+    hdc file recv /data/log/faultlog/faultlogger/
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568386 卸载的应用不存在
 **错误信息**
@@ -2337,6 +2542,23 @@ error: failed to install because the device be controlled.
 
 1. 确认设备是否是非法渠道获取的。
 2. 走正常设备激活流程。
+
+### 9568412 卸载请求被应用程序拒绝
+**错误信息**
+
+error: The uninstall request is rejected by the application.
+
+**错误描述**
+
+卸载请求被应用程序拒绝。
+
+**可能原因**
+
+目标应用不允许卸载。
+
+**处理步骤**
+
+暂无处理方案，可以提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
 ### 9568413 应用设备类型不支持当前设备
 
