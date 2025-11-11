@@ -19,11 +19,10 @@
    enableArrow: true
  })
    .then(() => {
-     // 全局变量定义：const DOMAIN = 0xFF00;
-     hilog.info(DOMAIN, 'popupBuildText', 'openPopup success');
+     hilog.info(0xFF00, 'popupBuildText', 'openPopup success');
    })
    .catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'popupBuildText', 'openPopup error: ' + err.code + ' ' + err.message);
+     hilog.error(0xFF00, 'popupBuildText', 'openPopup error: ' + err.code + ' ' + err.message);
    });
  ```
 
@@ -72,8 +71,7 @@
       buttons: [{
         text: 'confirm',
         action: () => {
-          // 全局变量定义：const DOMAIN = 0xFF00;
-          hilog.info(DOMAIN, 'popupBuildText', 'confirm button click');
+          hilog.info(0xFF00, 'popupBuildText', 'confirm button click');
         },
         fontSize: 15,
         fontColor: Color.Black,
@@ -81,7 +79,7 @@
         {
           text: 'cancel',
           action: () => {
-            hilog.info(DOMAIN, 'popupBuildText', 'cancel button click');
+            hilog.info(0xFF00, 'popupBuildText', 'cancel button click');
           },
           fontSize: 15,
           fontColor: Color.Black
@@ -126,11 +124,10 @@
     enableArrow: false
   }, true)
     .then(() => {
-      // 全局变量定义：const DOMAIN = 0xFF00;
-      hilog.info(DOMAIN, 'popupBuildText', 'updatePopup success');
+      hilog.info(0xFF00, 'popupBuildText', 'updatePopup success');
     })
     .catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
+      hilog.error(0xFF00, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
     });
   ```
   
@@ -144,11 +141,10 @@
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
     .then(() => {
-      // 全局变量定义：const DOMAIN = 0xFF00;
-      hilog.info(DOMAIN, 'popupBuildText', 'closePopup success');
+      hilog.info(0xFF00, 'popupBuildText', 'closePopup success');
     })
     .catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
+      hilog.error(0xFF00, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
     });
   ```
   
@@ -168,8 +164,6 @@
   import { BusinessError } from '@kit.BasicServicesKit';
   import { ComponentContent, TargetInfo, PromptAction } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const DOMAIN = 0xFF00;
   
   export class PromptActionClass {
     private promptAction: PromptAction | null = null;
@@ -202,10 +196,10 @@
       if (this.promptAction != null) {
         this.promptAction.openPopup(this.contentNode, this.target, this.options)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'openPopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'openPopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'openPopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'openPopup error: ' + err.code + ' ' + err.message);
           });
       }
     }
@@ -214,10 +208,10 @@
       if (this.promptAction != null) {
         this.promptAction.closePopup(this.contentNode)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'closePopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'closePopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'closePopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'closePopup error: ' + err.code + ' ' + err.message);
           });
       }
     }
@@ -226,10 +220,10 @@
       if (this.promptAction != null) {
         this.promptAction.updatePopup(this.contentNode, options, this.isPartialUpdate)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'updatePopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'updatePopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'updatePopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'updatePopup error: ' + err.code + ' ' + err.message);
           });
       }
     }

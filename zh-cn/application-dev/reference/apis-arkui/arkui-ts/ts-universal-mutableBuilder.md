@@ -19,7 +19,7 @@
 mutableBuilder\<Args extends Object[]\>(builder: BuilderCallback): MutableBuilder\<Args\>
 
 `mutableBuilder`是一个模板函数，它返回一个`MutableBuilder`对象，只接受一个全局的`@Builder`函数作为其参数。
-该函数返回的[MutableBuilder](#mutablebuilder22-1)对象中，`builder`属性方法只能在自定义组件内部使用。
+该函数返回的[MutableBuilder](#mutablebuilder-1)对象中，`builder`属性方法只能在自定义组件内部使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -29,13 +29,13 @@ mutableBuilder\<Args extends Object[]\>(builder: BuilderCallback): MutableBuilde
 
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
-| builder     | [BuilderCallback](#buildercallback22) | 是   | `@Builder`装饰的全局函数。                                       |
+| builder     | [BuilderCallback](#buildercallback) | 是   | `@Builder`装饰的全局函数。                                       |
 
 **返回值：**
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [MutableBuilder&lt;Args&gt;](#mutablebuilder22-1) | MutableBuilder&lt;Args&gt;的实例，用于[全局\@Builder](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)进行赋值和传递的类，实现全局@Builder的动态更新。 |
+| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | MutableBuilder&lt;Args&gt;的实例，用于[全局\@Builder](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)进行赋值和传递的类，实现全局@Builder的动态更新。 |
 
 **示例：**
 
@@ -94,7 +94,7 @@ class MutableBuilder\<Args extends Object[]\> extends WrappedBuilder\<Args\> {
 
 type BuilderCallback = (...args: Args) => void
 
-[mutableBuilder](#mutablebuilder22)函数入参为全局`@Builder`函数。
+mutableBuilder函数入参为全局`@Builder`函数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

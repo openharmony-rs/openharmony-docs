@@ -330,6 +330,10 @@ chainWeight(chainWeight: ChainWeightOptions): T
 
 对形成链的组件进行重新布局。仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。

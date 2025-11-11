@@ -52,15 +52,10 @@
 ### 观察变化
 
 - 当装饰的数据类型为boolean、string、number类型时，可以同步观察到数值的变化，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。
-
-- 当装饰的数据类型为class或者Object时，可以观察到赋值和属性赋值的变化，即`Object.keys(observedObject)`返回的所有属性，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。
-
+- 当装饰的数据类型为class或者Object时，可以观察到赋值和属性赋值的变化，即`Object.keys(observedObject)`返回的所有属性，示例请参考[简单类型和类对象类型的@Link](#简单类型和类对象类型的link)。@Link仅能观察对象本身及其一层属性的变化，无法观察嵌套场景（如嵌套对象、对象数组）内层数据的变化，该场景请参考[\@Observed装饰器与\@ObjectLink装饰器的使用场景](arkts-observed-and-objectlink.md#使用场景)。
 - 当装饰的对象是Array时，可以观察到数组添加、删除、更新数组单元的变化，示例请参考[数组类型的@Link](#数组类型的link)。
-
 - 当装饰的对象是Date时，可以观察到Date的整体赋值，以及通过调用`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`方法更新其属性，示例请参考[装饰Date类型变量](#装饰date类型变量)。
-
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，以及可通过调用Map的`set`、`clear`、`delete`接口更新Map的值，示例请参考[装饰Map类型变量](#装饰map类型变量)。
-
 - 当装饰的变量是Set时，可以观察Set整体的赋值，以及通过调用Set的`add`、`clear`、`delete`接口更新其值，示例请参考[装饰Set类型变量](#装饰set类型变量)。
 ### 框架行为
 
@@ -90,7 +85,7 @@
     ```ts
     // 错误写法，编译报错
     @Link count: number = 10;
-  
+
     // 正确写法
     @Link count: number;
     ```
@@ -182,12 +177,12 @@
     class Info {
       info: string = 'Hello';
     }
-  
+
     @Component
     struct Child {
       @Link msg: string;
       @Link info: string;
-  
+
       build() {
         Text(this.msg + this.info)
       }
@@ -198,7 +193,7 @@
     struct LinkExample {
       @State message: string = 'Hello';
       @State info: Info = new Info();
-  
+
       build() {
         Column() {
           // 错误写法，常规变量不能初始化@Link
@@ -254,7 +249,7 @@
 以下示例中，点击父组件ShufflingContainer中的“Parent View: Set yellowButton”和“Parent View: Set GreenButton”，可以从父组件将变化同步给子组件。
 
   1.点击子组件GreenButton和YellowButton中的Button，子组件会发生相应变化，将变化同步给父组件。因为@Link是双向同步，会将变化同步给@State。
-  
+
   2.当点击父组件ShufflingContainer中的Button时，@State会发生变化，并同步给\@Link，子组件也会进行对应的刷新。
 
 <!-- @[link_class_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithPrimitiveandClassTypes.ets) -->
@@ -406,7 +401,7 @@ struct ArrayTypes {
 
 ![Video-link-UsageScenario-two](figures/Video-link-UsageScenario-two.gif)
 
-ArkUI框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
+状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
 
 ### 装饰Map类型变量
 

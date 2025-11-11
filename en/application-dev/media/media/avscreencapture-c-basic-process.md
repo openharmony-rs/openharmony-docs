@@ -11,6 +11,8 @@ Screen capture enables you to collect screen data for scenarios like screen reco
 
 Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission to maintain capture even when the screen is off but not locked. For details about the configuration, [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
+Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.CUSTOM_SCREEN_RECORDING permission to prevent the privacy protection pop-up from being displayed during screen capture. For details about how to request the permission, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
+
 ## Workflow Overview
 
 Basic screen capture involves creating an AVScreenCapture instance, configuring audio and video parameters, setting callbacks, starting and stopping capture, processing results, and releasing resources.

@@ -77,14 +77,15 @@
 
    <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
-   ``` c++
+   ``` C++
+   // case1: 获取排版后最长行行宽
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f" ,longestLine);
-
+   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f", longestLine);
+   
    // case2:获取排版后段落行数
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
    DRAWING_LOGI("lineCnt: %{public}zu", lineCnt);
-
+   
    // case3:获取段落每行的度量信息
    OH_Drawing_LineMetrics *lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
    int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
@@ -92,14 +93,14 @@
    // lineMetrics为经过排版测量的文字度量信息
    double curLineAscender = lineMetrics[i].ascender;
    double curLineWidth = lineMetrics[i].width;
-      DRAWING_LOGI("第%{public}d行 lineMetrics ascender: %{public}f", i + 1, curLineAscender);
-      DRAWING_LOGI("第%{public}d行 lineMetrics width: %{public}f", i + 1, curLineWidth);
+       DRAWING_LOGI("第%{public}d行 lineMetrics ascender: %{public}f", i + 1, curLineAscender);
+       DRAWING_LOGI("第%{public}d行 lineMetrics width: %{public}f", i + 1, curLineWidth);
    }
-
+   
    // case4:获取段落最长行宽度与带缩进最长行行宽
    double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
-   DRAWING_LOGI("longestLineWithIndent: %{public}f" , longestLineWithIndent);
-
+   DRAWING_LOGI("longestLineWithIndent: %{public}f", longestLineWithIndent);
+   
    OH_Drawing_Font_Metrics fontMetrics;
    // 获取文本字体属性
    bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);

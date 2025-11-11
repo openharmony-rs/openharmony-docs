@@ -1341,7 +1341,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
   
   ``` TypeScript
-  import common from '@ohos.app.ability.common';
+  import { common } from '@kit.AbilityKit';
   @Entry
   @Component
   export struct WordBreakd {

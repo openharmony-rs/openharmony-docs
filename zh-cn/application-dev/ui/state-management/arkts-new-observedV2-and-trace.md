@@ -28,7 +28,6 @@
 - 在嵌套类中，嵌套类中的属性property被\@Trace装饰且嵌套类被\@ObservedV2装饰时，才具有触发UI刷新的能力。
 - 在继承类中，父类或子类中的属性property被\@Trace装饰且该property所在类被\@ObservedV2装饰时，才具有触发UI刷新的能力。
 - 未被\@Trace装饰的属性用在UI中无法感知到变化，也无法触发UI刷新。
-- \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
 
 ## 状态管理V1版本对嵌套类对象属性变化直接观测的局限性
@@ -425,8 +424,8 @@ struct Index {
 }
 ```
 
-- \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
+- \@ObservedV2的类实例无法直接使用JSON.parse反序列化获得（直接使用JSON.parse反序列化获得的对象无法观察属性变化），可搭配三方库[class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察，示例请参考[\@ObservedV2装饰对象的序列化与反序列化](#observedv2装饰对象的序列化与反序列化)。
 
 ## 使用场景
 
@@ -914,30 +913,219 @@ struct DateSample {
 
 ## 常见问题
 
-### router传递的@ObservedV2类型显示异常
+### \@ObservedV2装饰对象的序列化与反序列化
 
-用router传递的@ObservedV2类，由于经过序列化生成的属性名称与类中的原始属性名称不一致，不能直接通过as类型转换成@ObservedV2的实例，需要在反序列化时过滤键值重新生成@ObservedV2实例。
-
-【反例】：
+\@ObservedV2装饰的对象序列化后会为\@Trace装饰的属性添加`__ob_`前缀。
 
 ```ts
-// 文件pages/Index.ets内容
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+```
+
+将@ObservedV2装饰的对象通过JSON.stringify序列化后，再通过JSON.parse反序列化，将失去观察能力。
+
+```ts
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+let parseInfo: Info = JSON.parse(jsonResult);
+
+// 与直接通过new操作符创建的对象不同，JSON.parse获得的对象实际并不是Info的实例，所以无属性观察能力
+let isInfoByNew: boolean = realInfo instanceof Info; // true
+let isInfoByParse: boolean = parseInfo instanceof Info; // false
+```
+
+可以配合三方库[class-transformer](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察。
+
+class-transformer可以通过如下命令安装。
+
+```
+ohpm install class-transformer
+```
+
+```ts
+import { plainToInstance } from 'class-transformer'; // 导入三方库
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+let realInfo: Info = new Info();
+let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
+let parseInfo: Info = JSON.parse(jsonResult);
+
+let transformedInfo: Info = plainToInstance(Info, parseInfo);
+let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
+```
+
+若为多层对象嵌套场景，需要进行额外处理，包括：
+
+- 去除序列化结果中的`__ob_`前缀，否则内层对象无法被正确转换。
+- 使用class-transformer库中提供的@Type装饰器（为与状态管理V2的[@Type装饰器](arkts-new-type.md)区分，示例中重命名为`TypeFromLibrary`）标记里层对象的类型。
+
+使用三方库的@Type装饰器需要安装[reflect-metadata](https://gitcode.com/openharmony-tpc/openharmony_tpc_samples/tree/master/reflect-metadata)。
+
+reflect-metadata可以通过如下命令安装。
+
+```
+ohpm install reflect-metadata@0.2.1
+```
+
+```ts
+import { plainToInstance, Type as TypeFromLibrary} from 'class-transformer'; // 导入三方库
+import 'reflect-metadata'; // 三方库的@Type装饰器需要使用
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 24;
+}
+@ObservedV2
+class InfoWrapper {
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace info: Info = new Info();
+}
+let realWrapper: InfoWrapper = new InfoWrapper();
+let infoWrapperJson: string = JSON.stringify(realWrapper); // '{"__ob_info":{"__ob_name":"Tom","__ob_age":24}}'
+// 去除属性key的'__ob_'前缀，此处仅做演示，开发者需根据实际类型定义情况完成去除key中的'__ob_'前缀
+let jsonHandled = infoWrapperJson.replaceAll('__ob_', ''); // '{"info":{"name":"Tom","age":24}}'
+let wrapperHandled = plainToInstance(InfoWrapper, JSON.parse(jsonHandled));
+
+let isWrapper: boolean = wrapperHandled instanceof InfoWrapper; // true
+let isInfo: boolean = (wrapperHandled.info) instanceof Info; // true
+```
+
+在UI中使用的完整示例如下。
+
+```ts
+import { plainToInstance, Type as TypeFromLibrary } from 'class-transformer'; // 导入三方库
+import 'reflect-metadata'; // 三方库的@Type装饰器需要使用
+
+// 模拟json键值对对象
+let testJSON: Record<string, ESObject> = {
+  'id': 1,
+  'info': {
+    'name': 'Tom',
+    'age': 24
+  },
+  'friends': [
+    {
+      'name': 'John',
+      'age': 23
+    },
+    {
+      'name': 'Mary',
+      'age': 24
+    }
+  ]
+}
 
 @ObservedV2
-export class RouterModel {
-  @Trace id: number = 0;
-  @Trace info: string = 'RouterModel';
+class Info {
+  @Trace name?: string;
+  @Trace age?: number;
+}
+
+@ObservedV2
+class Person {
+  id?: number;
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace info?: Info;
+  // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
+  @TypeFromLibrary(() => Info)
+  @Trace friends?: Info[];
 }
 
 @Entry
 @ComponentV2
 struct Index {
+  @Local person: Person | undefined = undefined;
+  aboutToAppear(): void {
+    this.person = plainToInstance(Person, testJSON); // 直接将对象通过plainToInstance转为Person实例
+  }
+
+  build() {
+    Column() {
+      Text(`name: ${this.person?.info?.name}, age: ${this.person?.info?.age}`)
+        .onClick(() => {
+          if (this.person?.info?.age) {
+            this.person!.info!.age++; // 修改可观察
+          }
+        })
+      ForEach(this.person?.friends, (item: Info) => {
+        Text(`friend name: ${item.name}, age: ${item.age}`)
+          .onClick(() => {
+            if (item.age) {
+              item.age++; // 修改可观察
+            }
+          })
+      })
+
+      Button('Refresh Info')
+        .onClick(() => {
+          let json: string =
+            `{
+              "id":12,
+                "__ob_info":
+                  {
+                    "__ob_name":"Jimmy",
+                    "__ob_age":35
+                   },
+              "__ob_friends":[
+                {
+                  "__ob_name":"Bob",
+                  "__ob_age":30
+                },
+                {
+                  "__ob_name":"Kevin",
+                  "__ob_age":33
+                }
+              ]
+            }`;
+          // 去除'__ob_'前缀后通过JSON.parse与plainToInstance将json字符串转化成Person对象
+          this.person = plainToInstance(Person, JSON.parse(json.replaceAll('__ob_', '')));
+        })
+    }
+  }
+}
+```
+
+### router传递的@ObservedV2类型显示异常
+
+用router传递的@ObservedV2类，由于经过序列化生成的属性名称与类中的原始属性名称不一致，不能直接通过as类型转换成@ObservedV2的实例，需要反序列化重新生成@ObservedV2实例。反序列化相关内容请参考[\@ObservedV2装饰对象的序列化与反序列化](#observedv2装饰对象的序列化与反序列化)。
+
+【反例】
+
+```ts
+// 文件pages/faqs/RouterIndex.ets内容
+
+@ObservedV2
+export class RouterModel {
+  @Trace id: number = -1;
+  @Trace info: string = 'default';
+}
+
+@Entry
+@ComponentV2
+struct RouterIndex {
   @Local paramsInfo: RouterModel = new RouterModel();
   onJumpClick(): void {
-    this.paramsInfo.id = 1;
+    this.paramsInfo.id = 0;
     this.paramsInfo.info = 'RouterModel';
     this.getUIContext().getRouter().pushUrl({
-      url: 'pages/ChildPage',
+      url: 'pages/faqs/ChildPage',
       params: this.paramsInfo // 传递@ObservedV2实例到子页面
     }, (err) => {
       if (err) {
@@ -959,14 +1147,14 @@ struct Index {
   }
 }
 
-// 文件pages/ChildPage.ets内容
+// 文件pages/faqs/ChildPage.ets内容
 
-import { RouterModel } from './Index';
+import { RouterModel } from './RouterIndex';
 
 @Entry
-@Component
+@ComponentV2
 struct Detail {
-  params?: RouterModel
+  @Local params?: RouterModel
   aboutToAppear(): void {
     // 错误使用方式！@ObservedV2类型通过router传递无法直接类型转换
     this.params = this.getUIContext().getRouter().getParams() as RouterModel;
@@ -977,34 +1165,25 @@ struct Detail {
     }
   }
 }
-
 ```
 
 【正例】
 
 ```ts
-// 文件pages/Index.ets继承上方反例pages/Index.ets的内容
+// 文件pages/faqs/RouterIndex.ets继承上方反例pages/faqs/RouterIndex.ets的内容
 
-// 文件pages/ChildPage.ets内容
+// 文件pages/faqs/ChildPage.ets内容
 
-import { RouterModel } from './Index';
+import { RouterModel } from './RouterIndex';
+import { plainToInstance } from 'class-transformer'; // 导入三方库
 
 @Entry
-@Component
+@ComponentV2
 struct Detail {
-  params?: RouterModel
+  @Local params?: RouterModel
   aboutToAppear(): void {
-    //使用JSON.parse遍历每个属性名称和对应的数值，赋值到新的实例中。
-    this.params = new RouterModel();
-    JSON.parse(JSON.stringify(this.getUIContext().getRouter().getParams()),
-      (key:string , value: number | string): number | string => {
-        if (key === '__ob_id') {
-          this.params!.id = value as number;
-        } else if (key === '__ob_info') {
-          this.params!.info = value as string;
-        }
-        return value;
-      })
+    this.params =
+      plainToInstance(RouterModel, JSON.parse(JSON.stringify(this.getUIContext().getRouter().getParams())));
   }
   build() {
     Column() {

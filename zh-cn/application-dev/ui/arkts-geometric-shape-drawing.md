@@ -487,7 +487,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-![ShapeMeshDemo](figures/ShapeMeshDemo.png)
+  ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## 场景示例
 

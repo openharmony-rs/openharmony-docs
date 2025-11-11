@@ -1,4 +1,4 @@
-# Using AVScreenCaptureRecorder to Record Screens and Save Them to Files (ArkTS)
+# Using AVScreenCaptureRecorder to Record Screens and Write Them to Files (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zzs_911-->
@@ -28,7 +28,7 @@ Before your development, configure the following permissions for your applicatio
 - To read images or videos, preferentially use the media library [Picker for access](../medialibrary/photoAccessHelper-photoviewpicker.md).
 - To save images or videos, preferentially use the [security component for storage](../medialibrary/photoAccessHelper-savebutton.md).
 - Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission to maintain capture even when the screen is off but not locked. For details about the configuration, [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
-
+- Starting from API version 22, when you perform screen capture for an application on a PC/2-in-1 device, you can request the ohos.permission.CUSTOM_SCREEN_RECORDING permission to prevent the privacy protection pop-up from being displayed during screen capture. For details about how to request the permission, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 > **NOTE**
 >
 > To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.

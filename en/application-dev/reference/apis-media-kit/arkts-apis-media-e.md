@@ -86,6 +86,20 @@ Enumerates the codec MIME types.
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | Audio in AMR-NB format.|
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | Audio in AMR-WB format.|
 
+## AacProfile<sup>22+</sup>
+
+Enumerates the supported Advanced Audio Coding (AAC) formats.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Media.AVRecorder
+
+| Name        | Value                   | Description                       |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
+| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
+| AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
+
 ## MediaDescriptionKey<sup>8+</sup>
 
 Enumerates the media description keys.
@@ -362,6 +376,18 @@ Enumerates the video fill modes during screen capture.
 | --------------------------------- | ---- | -------------------------------------------- |
 | PRESERVE_ASPECT_RATIO | 0    | Keeps the original aspect ratio, matching the aspect ratio of the physical screen.|
 | SCALE_TO_FILL | 1    | Stretches the image to fit the specified dimensions.|
+
+## PickerMode<sup>22+</sup>
+
+Enumerates the display mode for the screen capture picker.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+| Name                             | Value  | Description                                        |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | Displays only a list of windows.|
+| SCREEN_ONLY | 1    | Displays only a list of screens.|
+| SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

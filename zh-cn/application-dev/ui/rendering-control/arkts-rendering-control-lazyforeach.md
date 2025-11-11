@@ -67,12 +67,11 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class InitialDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -213,10 +212,9 @@ LazyForEach(this.data, (item: string) => {
 <!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
 
 ``` TypeScript
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -281,12 +279,11 @@ struct AddingData {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class DataDeletionSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -358,12 +355,11 @@ struct DataDeletion {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class SwappingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -442,12 +438,11 @@ struct SwappingData {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class ModifyingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -514,12 +509,11 @@ struct ModifyingIndividualDataItems {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class ModifyingMultiSourceEleven extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -592,12 +586,11 @@ struct ModifyingMultipleDataItems {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class PreciseModifyingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -680,12 +673,11 @@ onDatasetChange接口允许开发者一次性通知LazyForEach进行数据添加
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class PreciselyModifyingSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -846,8 +838,6 @@ class SubBasicDataSource implements IDataSource {
   }
 }
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class MySubDataSource extends SubBasicDataSource {
   private dataArray: SubStringData[] = [];
 
@@ -889,7 +879,7 @@ struct ChangingDataSubproperties {
     List({ space: 3 }) {
       LazyForEach(this.data, (item: SubStringData, index: number) => {
         ListItem() {
-          ChangingDataSubproperties_ChildComponent({ data: item })
+          ChangingDataSubpropertiesChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
@@ -901,7 +891,7 @@ struct ChangingDataSubproperties {
 }
 
 @Component
-struct ChangingDataSubproperties_ChildComponent {
+struct ChangingDataSubpropertiesChildComponent {
   @ObjectLink data: SubStringData;
 
   build() {
@@ -1355,10 +1345,9 @@ struct ReceivingExternalInputChildComponent {
 <!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
 
 ``` TypeScript
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class DragAndDropDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -1492,12 +1481,11 @@ struct MyComponent {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class UnexpectedDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
@@ -2105,12 +2093,11 @@ struct MyComponent {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
 
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
-其中BasicDataSource、StringData等名称需要开发者自行修改。**/
 class ScreenFliceringDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 

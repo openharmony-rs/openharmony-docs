@@ -1085,7 +1085,7 @@ OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
 // 添加下划线
 OH_Drawing_SetTextStyleDecoration(txtStyle, TEXT_DECORATION_UNDERLINE);
 // 设置装饰线样式为波浪线样式
-OH_Drawing_SetTextStyleDecorationStyle(txtStyle, ARKUI_TEXT_DECORATION_STYLE_WAVY);
+OH_Drawing_SetTextStyleDecorationStyle(txtStyle, TEXT_DECORATION_STYLE_WAVY);
 // 设置下划线粗细
 OH_Drawing_SetTextStyleDecorationThicknessScale(txtStyle, 1);
 // 设置下划线颜色为蓝色

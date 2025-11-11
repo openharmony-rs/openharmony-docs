@@ -37,6 +37,7 @@ The file declares the video processing types.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | Enumerates the quality levels for detail enhancement.|
+| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | Enumerates the style modes available for video metadata generation. For details about the enumerated values, see [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#variables).|
 | [VideoProcessing_ErrorCode](#videoprocessing_errorcode) | VideoProcessing_ErrorCode | Enumerates the video processing error codes.|
 | [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | Enumerates the video processing states.<br>The video processing state is reported through the callback function [OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate).|
 
@@ -44,7 +45,7 @@ The file declares the video processing types.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | Called when an error occurs during video processing.|
+| [typedef void (\*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)](#oh_videoprocessingcallback_onerror) | OH_VideoProcessingCallback_OnError | Called when an error occurs during video processing.<br> The following error codes defined in [VideoProcessing_ErrorCode](#videoprocessing_errorcode) area available:<br>**VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING**: unsupported processing. For example, conversion between the color space types for input and output is not supported.<br> **VIDEO_PROCESSING_ERROR_INVALID_VALUE**: invalid video property. For example, the video color space is invalid.<br> **VIDEO_PROCESSING_ERROR_NO_MEMORY**: out of memory.<br> **VIDEO_PROCESSING_ERROR_PROCESS_FAILED**: An error occurs during the processing.|
 | [typedef void (\*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)](#oh_videoprocessingcallback_onstate) | OH_VideoProcessingCallback_OnState | Called when the video processing state changes.<br>After [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_start) is called, the video processing state changes to [VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING. After [OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop) is called, the video processing state changes to [VideoProcessing_State](#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED after all buffers are processed.|
 | [typedef void (\*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)](#oh_videoprocessingcallback_onnewoutputbuffer) | OH_VideoProcessingCallback_OnNewOutputBuffer | Called when the output buffer is filled with data.<br>After data is filled in each new output buffer, the index of the buffer is reported. Call [OH_VideoProcessing_RenderOutputBuffer](capi-video-processing-h.md#oh_videoprocessing_renderoutputbuffer) to process rendering based on the index and output the buffer. If this callback function is not registered, the data filled in the output buffer is not reported. Instead, the data is directly processed, rendered, and output.|
 
@@ -56,6 +57,7 @@ The file declares the video processing types.
 | const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | Instance created for metadata generation during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for metadata generation. If metadata generation is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned.<br>**Since**: 12|
 | const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | Instance for detail enhancement during video processing.<br>Call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create such an instance for detail enhancement. If detail enhancement is not supported, [VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING is returned.<br>**Since**: 12|
 | const char* VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | Pointer to the quality level of video detail enhancement. For details, see [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel).<br>You can call [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to set the quality level,<br>and call [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to obtain the quality level.<br>**Since**: 12|
+| const char * VIDEO_METADATA_GENERATOR_STYLE_CONTROL | Style mode available for video metadata generation. For details about the enumerated values, see [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol). Call [OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue) to set the video metadata generation style in the AVFormat parameter. Call [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter) to configure the current video metadata generation style. Call [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter) to obtain the current video metadata generation style.<br>**Since**: 22|
 
 ## Enum Description
 
@@ -67,7 +69,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 **Description**
 
-Enumerates the quality levels for detail enhancement. For details about the enumerated values, see **VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL**. For details about how to set the quality level, see the development guide.
+Enumerates the quality levels for detail enhancement. For details about the enumerated values, see [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](#variables). For details about how to set the quality level, see the development guide.
 
 **Since**: 12
 
@@ -83,6 +85,31 @@ Enumerates the quality levels for detail enhancement. For details about the enum
 [OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)
 
 [OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)
+
+### VideoMetadataGeneratorStyleControl
+
+```
+enum VideoMetadataGeneratorStyleControl
+```
+
+**Description**
+
+Enumerates the style modes available for video metadata generation. For details about the enumerated values, see [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#variables).
+
+**Since**: 22
+
+| Enum Item| Description|
+| -- | -- |
+| VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 0 | Prioritizes brightness optimization in the generated metadata.|
+| VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 1 | Prioritizes contrast optimization in the generated metadata.|
+
+**See also**
+
+[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)
+
+[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)
+
+[OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue)
 
 ### VideoProcessing_ErrorCode
 
@@ -118,9 +145,7 @@ enum VideoProcessing_State
 
 **Description**
 
-Enumerates the video processing states.
-
-The video processing state is reported through the callback function [OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate).
+Enumerates the video processing states. The video processing state is reported through the callback function [OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate).
 
 **Since**: 12
 
@@ -135,7 +160,7 @@ The video processing state is reported through the callback function [OH_VideoPr
 ### OH_VideoProcessingCallback_OnError()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor,VideoProcessing_ErrorCode error, void* userData)
+typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)
 ```
 
 **Description**
@@ -154,7 +179,6 @@ The following error codes are defined in [VideoProcessing_ErrorCode](#videoproce
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -166,7 +190,7 @@ The following error codes are defined in [VideoProcessing_ErrorCode](#videoproce
 ### OH_VideoProcessingCallback_OnState()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state,void* userData)
+typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)
 ```
 
 **Description**
@@ -177,19 +201,18 @@ After [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_s
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
-|  [VideoProcessing_State](#videoprocessing_state) state | Video processing state.|
+| [VideoProcessing_State](#videoprocessing_state) state | Video processing state.|
 | void* userData | Pointer to user-defined data.|
 
 ### OH_VideoProcessingCallback_OnNewOutputBuffer()
 
 ```
-typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index,void* userData)
+typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)
 ```
 
 **Description**
@@ -200,11 +223,10 @@ After data is filled in each new output buffer, the index of the buffer is repor
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
 |  uint32_t index | Index of the output buffer.|
-| void* userData | Pointer to user-defined data.|
+|  void* userData | Pointer to user-defined data.|

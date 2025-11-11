@@ -28,9 +28,9 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | 是 | 否 | 文件名称。 |
-| mtime | number | 是 | 否  | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。 |
-| size | number | 是 | 否  | 文件大小，以字节为单位。 |
+| name | string | 否 | 否 | 文件名称。 |
+| mtime | number | 否 | 否  | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。 |
+| size | number | 否 | 否  | 文件大小，以字节为单位。 |
 
 ## logLibrary.list
 
