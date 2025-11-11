@@ -236,6 +236,7 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 获取UserAuthWidgetMgr对象，用于执行用户身份认证。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，若需要再次进行认证则需重新获取UserAuthInstance。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
