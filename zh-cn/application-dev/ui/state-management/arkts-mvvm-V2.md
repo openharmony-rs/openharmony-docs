@@ -28,6 +28,24 @@
 
 <!-- @[Main_Basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BasicPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/BasicPage.ets
+@Entry
+@ComponentV2
+struct TodoList {
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Text('task1')
+      Text('task2')
+      Text('task3')
+    }
+  }
+}
+```
+
 ### 添加\@Local，实现对组件内部状态观测
 
 完成静态待办列表展示后，为了让用户能够更改任务的完成状态，需要使待办事项能够响应交互并动态更新显示。为此，引入\@Local装饰器管理组件内部的状态。被\@Local装饰的变量发生变化时，触发绑定的UI组件刷新。
