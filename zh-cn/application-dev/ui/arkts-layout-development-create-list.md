@@ -474,8 +474,8 @@ List(
    <!-- @[external_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
    
    ``` TypeScript
-   // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
-   List({ scroller: this.listScroller }) {
+   // listScroller初始化ScrollBar组件的scroller参数，绑定listScroller与列表。
+   ScrollBar({ scroller: this.listScroller})
    ```
 
   **图15** 列表的外置滚动条 
