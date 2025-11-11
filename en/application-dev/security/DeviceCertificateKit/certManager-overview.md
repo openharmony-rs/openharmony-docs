@@ -35,9 +35,9 @@ The certificate management dialog box allows you to view and manage certificates
 
 - Certificate viewing: View the list and details of CA certificates and credentials.
 
-- Certificate installation: Install user CA certificates and credentials from the storage device. For 2-in-1 devices, you can directly call the dialog box API for installing certificates to install CA certificates.
+- Certificate installation: Install user CA certificates and credentials from the storage device. For 2-in-1 devices, you can directly call the dialog box API for installing certificates.
 
-- Certificate deletion: Delete a specified user CA certificate. For 2-in-1 devices, you can directly call the dialog box API for deleting certificates to delete CA certificates.
+- Certificate deletion: Delete a specified user CA certificate. For 2-in-1 devices, you can directly call the dialog box API for destroying certificates.
 
 - Certificate details: For 2-in-1 devices, you can call the dialog box API for viewing certificate details to display certificate details.
 
