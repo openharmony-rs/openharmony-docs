@@ -167,11 +167,11 @@ export let num = 1;
 
 **变更原因：**
 
-ArkTS演进新增对象天然共享特性，函数默认支持跨线程安全共享，无需再使用use shared显示声明。
+ArkTS演进新增对象天然共享特性，函数默认支持跨线程安全共享，无需再使用use concurrent显示声明。
 
 **适配建议：**
 
-删除use shared显示声明。
+删除use concurrent显示声明。
 
 **示例：**
 
@@ -311,21 +311,21 @@ let result: Boolean = taskpool.isConcurrent(test);
 **ArkTS-Sta**
 不支持isConcurrent接口。
 
-## taskpool、process、ArkTSUtils、AsyncLock不需要import
+## taskpool、process、ArkTSUtils、AsyncLock、utils不需要import
 
 **规则：** `arkts-limited-stdlib-no-import-concurrency`
 
 **规则解释：**
 
-taskpool、process、ArkTSUtils、AsyncLock已基于ArkTS实现提供，不依赖于其他模块，不再需要import，且AsyncLock不需要添加`ArkTSUtils.locks.`前缀。
+taskpool、process、ArkTSUtils、AsyncLock和utils已基于ArkTS实现提供，不依赖于其他模块，不再需要import，且AsyncLock不需要添加`ArkTSUtils.locks.`前缀。
 
 **变更原因：**
 
-ArkTS演进为taskpool、process、ArkTSUtils、AsyncLock提供原生支持，无需import即可直接使用，且AsyncLock无需`ArkTSUtils.locks.`前缀。
+ArkTS演进为taskpool、process、ArkTSUtils、AsyncLock和utils提供原生支持，无需import即可直接使用，且AsyncLock无需`ArkTSUtils.locks.`前缀。
 
 **适配建议：**
 
-删除taskpool、process、ArkTSUtils、AsyncLock前的import，删除AsyncLock的`ArkTSUtils.locks.`前缀，改为直接使用，并且process更名为StdProcess。
+删除taskpool、process、ArkTSUtils、AsyncLock和utils前的import，删除AsyncLock的`ArkTSUtils.locks.`前缀，改为直接使用，并且process更名为StdProcess。
 
 **示例：**
 
