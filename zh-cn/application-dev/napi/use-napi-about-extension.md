@@ -575,12 +575,17 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 接口声明
 
 <!-- @[napi_coerce_to_native_binding_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
+
+``` TypeScript
+// 给ArkTS对象绑定回调和回调所需的参数 napi_coerce_to_native_binding_object
 export const getAddress: () => number;
+
 export const getSetSize: () => number;
+
 export const store: (a: number) => void;
+
 export const erase: (a: number) => void;
+
 export const clear: () => void;
 ```
 
