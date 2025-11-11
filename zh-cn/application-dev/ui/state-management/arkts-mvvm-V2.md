@@ -577,6 +577,43 @@ struct TodoList {
 ```
 <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/SettingPage.ets
+import { AppStorageV2 } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+
+@ObservedV2
+export class Setting {
+  @Trace public showCompletedTask: boolean = true;
+}
+
+@Entry
+@ComponentV2
+struct SettingPage {
+  @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build(){
+    Column(){
+      Text('Setting')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Row() {
+        Text('Show completed tasks')
+        Toggle({ type: ToggleType.Switch, isOn:this.setting.showCompletedTask })
+          .onChange((isOn) => {
+            this.setting.showCompletedTask = isOn;
+          })
+      }
+      Button('Back to To do')
+        .onClick(()=>this.context.terminateSelf())
+        .margin({ top: 10 })
+    }
+    .alignItems(HorizontalAlign.Start)
+  }
+}
+```
+
 ### 添加PersistenceV2，实现持久化UI状态存储
 
 为了确保用户重新打开应用时能看到之前的任务状态，建议使用PersistenceV2进行数据持久化存储。PersistenceV2可将数据保存在设备磁盘上，与AppStorageV2的运行时内存相比，它能确保数据在应用关闭后再次启动时保持不变。
