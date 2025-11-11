@@ -4,9 +4,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](js-apis-arkui-UIContext.md#uicontext)说明。
-> 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](js-apis-arkui-UIContext.md#uicontext)说明。
+>
+> - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
 ## 导入模块
 
@@ -430,7 +434,9 @@ struct DragControllerPage {
 
 ### startDrag<sup>11+</sup>
 
-startDrag(): Promise&lt;void&gt;
+ArkTS-Dyn: startDrag(): Promise&lt;void&gt;
+
+ArkTS-Sta: startDrag(): Promise&lt;void&gt; | null
 
 启动拖拽服务，返回Promise对象，回调启动成功和失败的结果。
 
@@ -438,11 +444,15 @@ startDrag(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| ArkTS-Dyn: Promise&lt;void&gt;<br/>ArkTS-Sta: Promise&lt;void&gt; \| null | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -694,7 +704,11 @@ on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinf
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 | 参数名     | 类型  | 必填    | 说明             |
@@ -768,21 +782,42 @@ struct DragControllerPage {
 }
 ```
 
+### onStatusChange<sup>22+</sup>
+
+onStatusChange(callback: Callback&lt;DragAndDropInfo&gt;): void
+
+注册监听拖拽状态改变事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+| 参数名     | 类型  | 必填    | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 是      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+
 ### off('statusChange')<sup>11+</sup>
 
- off(type: 'statusChange', callback?: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
+off(type: 'statusChange', callback?: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
 
 取消注册监听拖拽状态改变事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 | 参数名     | 类型  | 必填    | 说明             |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | 是      | 监听事件，固定为'statusChange'，即取消监听拖拽状态改变事件。|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否      | 回调函数，取消注册了该回调函数的事件， 不设置取消所有监听。|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否      | 回调函数，取消注册了该回调函数的事件。不设置该参数时，默认取消所有监听。|
 
 **示例：**
 
@@ -851,6 +886,23 @@ struct DragControllerPage {
 }
 ```
 
+### offStatusChange<sup>22+</sup>
+
+offStatusChange(callback?: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
+
+取消注册监听拖拽状态改变事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+| 参数名     | 类型  | 必填    | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否      | 回调函数，取消注册了该回调函数的事件。不设置该参数时，默认取消所有监听。|
+
 ## DragAndDropInfo<sup>11+</sup>
 
 拖拽过程中监听到status改变时上报的数据。
@@ -858,6 +910,10 @@ struct DragControllerPage {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型                                                   | 必填 | 说明                                     |
 | -----------   | ------------------------------------------------------ | ---- | ---------------------------------------- |
