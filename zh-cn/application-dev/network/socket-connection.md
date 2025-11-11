@@ -46,7 +46,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 1. 导入所需的socket模块。
 
     <!-- @[tcp_client_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
-        
+    
     ``` TypeScript
     import { socket } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,7 +56,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 2. 创建一个TCPSocket连接，返回一个TCPSocket对象。
 
     <!-- @[tcp_client_worker_tcpClient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
-        
+    
     ``` TypeScript
     // 创建一个TCPSocket连接，返回一个TCPSocket对象。
     let tcpClient: socket.TCPSocket = socket.constructTCPSocketInstance();
@@ -65,7 +65,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 3. （可选）订阅TCPSocket相关的订阅事件。
 
       <!-- @[tcp_client_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
-            
+      
       ``` TypeScript
       class SocketInfo {
         public message: ArrayBuffer = new ArrayBuffer(1);
@@ -105,7 +105,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
     netAddress.port = 5678;
     ```
     <!-- @[tcp_client_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
-       
+    
     ``` TypeScript
       // 绑定本地IP地址和端口。
     // ···
@@ -143,7 +143,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 5. Socket连接使用完毕后，主动关闭。
 
     <!-- @[tcp_client_worker_disConnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
-        
+    
     ``` TypeScript
     // 连接使用完毕后，主动关闭。取消相关事件的订阅。
     setTimeout(() => {
@@ -167,7 +167,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 1. 导入所需的socket模块。
 
     <!-- @[tcp_server_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
-        
+    
     ``` TypeScript
     import { socket } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -177,7 +177,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 2. 创建一个TCPSocketServer连接，返回一个TCPSocketServer对象。
 
     <!-- @[tcp_server_worker_tcpServer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
-        
+    
     ``` TypeScript
     // 创建一个TCPSocketServer连接，返回一个TCPSocketServer对象。
     let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
@@ -191,7 +191,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
     ipAddress.port = 4651;
     ```
     <!-- @[tcp_server_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
-        
+    
     ``` TypeScript
     // 绑定本地IP地址和端口，进行监听。
     tcpServer.listen(ipAddress).then(() => {
@@ -206,7 +206,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 4. 订阅TCPSocketServer的connect事件，用于监听客户端的连接状态。客户端与服务端建立连接后，会返回一个TCPSocketConnection对象，用于与客户端通信，通过该对象可以订阅与客户端的连接关闭、客户端数据接收事件，也可以进行向客户端发送数据、关闭与客户端的连接、取消订阅TCPSocketConnection相关事件的动作。
 
     <!-- @[tcp_server_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
-       
+    
     ``` TypeScript
       class SocketInfo {
         public message: ArrayBuffer = new ArrayBuffer(1);
@@ -269,7 +269,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 5. 取消TCPSocketServer相关事件的订阅。
 
     <!-- @[tcp_server_worker_setTimeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
-        
+    
     ``` TypeScript
     // 设置连接超时（例如 30 秒后取消连接）
     setTimeout(() => {
@@ -508,15 +508,15 @@ let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance
   ```
 <!-- @[local_socket_worker_server_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
 
-  ``` TypeScript
-  server.listen(listenAddr).then(() => {
-    // ···
-    hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
-  }).catch((err: object) => {
-    // ···
-    hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
-  });
-  ```
+``` TypeScript
+server.listen(listenAddr).then(() => {
+  // ···
+  hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
+}).catch((err: object) => {
+  // ···
+  hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
+});
+```
 
 4. 注册LocalSocket的客户端连接事件，以及一些其它事件(可选)，在客户端连接成功时，可以获取到客户端连接会话对象LocalSocketConnection，通过该会话对象可以订阅客户端收到消息(message)事件，以及一些其它事件(可选)，通过该会话对象也可发起主动向客户端发送数据，主动关闭与客户端的连接的动作，订阅事件不再需要时，可以取消LocalSocketConnection相关的事件订阅。
 
@@ -629,7 +629,7 @@ let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
   tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
   ```
   <!-- @[two-way_bindTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-      
+  
   ``` TypeScript
     class SocketInfo {
       public message: ArrayBuffer = new ArrayBuffer(1);
