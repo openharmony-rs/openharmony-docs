@@ -94,7 +94,7 @@ class MutableBuilder\<Args extends Object[]\> extends WrappedBuilder\<Args\> {
 
 type BuilderCallback = (...args: Args) => void
 
-[mutableBuilder](#mutablebuilder)函数入参为全局`@Builder`函数。
+mutableBuilder函数入参为全局`@Builder`函数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
