@@ -975,6 +975,33 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
 
   <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->
   
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  import { util } from '@kit.ArkTS';
+  import TaskModel from'./TaskModel';
+  
+  export default class TaskListModel {
+    public tasks: TaskModel[] = [];
+  
+    constructor(tasks: TaskModel[]) {
+      this.tasks = tasks;
+    }
+  
+    async loadTasks(context: common.UIAbilityContext){
+      let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
+      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM : true };
+      let textDecoder = util.TextDecoder.create('utf-8',textDecoderOptions);
+      let result = textDecoder.decodeToString(getJson);
+      this.tasks =JSON.parse(result).map((task: TaskModel)=>{
+        let newTask = new TaskModel();
+        newTask.taskName = task.taskName;
+        newTask.isFinish = task.isFinish;
+        return newTask;
+      });
+    }
+  }
+  ```
+  
 ### ViewModel层
 
 ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Model数据变化，处理应用逻辑，将数据同步到View层，从而实现UI的自动更新。使用ViewModel实现数据与视图解耦，提高代码可读性和可维护性。
