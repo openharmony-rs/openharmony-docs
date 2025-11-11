@@ -710,7 +710,7 @@ let options: http.HttpRequestOptions = {
 // 发起请求
 httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
-   hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
     // ···
   } else {
     hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
