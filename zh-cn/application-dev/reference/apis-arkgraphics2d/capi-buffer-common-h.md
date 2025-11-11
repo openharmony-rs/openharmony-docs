@@ -38,7 +38,7 @@
 | -- | -- | -- |
 | [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。由native_buffer.h移动至此头文件统一呈现。 |
 | [OH_NativeBuffer_MetadataType](#oh_nativebuffer_metadatatype) | OH_NativeBuffer_MetadataType | OH_NativeBuffer的图像标准。 |
-| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的HDR元数据种类的键值。 |
+| [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
 
 ## 枚举类型说明
 
@@ -122,7 +122,7 @@ enum OH_NativeBuffer_MetadataKey
 
 **描述**
 
-表示OH_NativeBuffer的HDR元数据种类的键值。
+表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
