@@ -42,7 +42,7 @@ struct Index {
 ```
 ![ui_parallel002](figures/ui_parallel002.png)
 
-开发者可以使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量构造出并行构造UI的参数。
+开发者可以使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
 
 如下示例演示了如何使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行参数构造。
 
