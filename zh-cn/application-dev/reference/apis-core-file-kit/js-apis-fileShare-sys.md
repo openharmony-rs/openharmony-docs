@@ -61,14 +61,15 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
     'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
   let bundleName: string = 'com.demo.test';
   try {
-    fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
-    wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION, (err: BusinessError) => {
-      if (err) {
-        console.error("grantUriPermission failed with error: " + JSON.stringify(err));
-        return;
-      }
-      console.info("grantUriPermission success!");
-    });
+    fileShare.grantUriPermission(uri, bundleName,
+      wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION | wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION,
+      (err: BusinessError) => {
+        if (err) {
+          console.error("grantUriPermission failed with error: " + JSON.stringify(err));
+          return;
+        }
+        console.info("grantUriPermission success!");
+      });
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error("grantUriPermission failed with error:" + JSON.stringify(error));
@@ -122,8 +123,8 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
     'file://docs/storage/Users/currentUser/Document/1.txt'; // 推荐使用系统接口生成URI。fileUri.getUriFromPath("沙箱路径");
   let bundleName: string = 'com.demo.test';
   try {
-    fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
-    wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION).then(() => {
+    fileShare.grantUriPermission(uri, bundleName,
+      wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION | wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION).then(() => {
       console.info("grantUriPermission success!");
     }).catch((error: BusinessError) => {
       console.error("grantUriPermission failed with error:" + JSON.stringify(error));
