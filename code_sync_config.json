@@ -1852,7 +1852,7 @@
 					{
 						"end_line":164,
 						"name":"pasteboard_permission",
-						"start_line":18
+						"start_line":17
 					}
 				]
 			}
@@ -1865,12 +1865,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":50,
 						"name":"pasteboard_usedata",
 						"start_line":17
 					},
 					{
-						"end_line":86,
+						"end_line":89,
 						"name":"pasteboard_useudc",
 						"start_line":18
 					}
