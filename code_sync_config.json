@@ -12237,6 +12237,36 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/SerializationAndDeserialization.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"Serialization_And_Deserialization",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"Router_Index",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"Child_Page",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
