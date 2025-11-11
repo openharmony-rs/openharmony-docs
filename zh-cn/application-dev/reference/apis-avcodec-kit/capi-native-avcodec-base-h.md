@@ -468,7 +468,7 @@ enum OH_ScalingMode
 | 枚举项 | 描述 |
 | -- | -- |
 | SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_TO_WINDOW_V2 |
-| SCALING_MODE_SCALE_CROP = 2 |   根据窗口尺寸裁剪图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_CROP_V2   |
+| SCALING_MODE_SCALE_CROP = 2 | 根据窗口尺寸裁剪图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_CROP_V2  |
 
 ### OH_BitsPerSample
 
@@ -909,7 +909,7 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  uint32_t index | 与新输出缓冲区对应的索引。 |
-| [OH_AVMemory](capi-core-oh-avmemory.md) *data | 包含新输出数据的缓冲区。 |
+|  [OH_AVMemory](capi-core-oh-avmemory.md) *data | 包含新输出数据的缓冲区。 |
 | [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 新输出缓冲区的说明。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
