@@ -1083,7 +1083,7 @@ onEditChange(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 | 参数名    | 类型    | 必填 | 说明                 |
 | --------- | ------- | ---- | -------------------- |
-| isEditing | boolean | 是   | 为true表示正在输入。 |
+| isEditing | boolean | 是   | 是否处于编辑态。</br> true：编辑态；false：非编辑态。 |
 
 ### onCopy<sup>8+</sup>
 
