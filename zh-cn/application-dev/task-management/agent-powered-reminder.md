@@ -129,11 +129,11 @@
         actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // 关闭闹钟
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // "app.string.alarm_clock_close"资源文件中的value值为"关闭闹钟"
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // 推迟闹钟
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // "app.string.alarm_clock_postpone"资源文件中的value值为"推迟闹钟"
             type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
           }
         ],
@@ -143,8 +143,8 @@
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题
-        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题, "app.string.alarm_clock"资源文件中的value值为"闹钟"
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容, "app.string.alarm_clock_reach"资源文件中的value值为"闹钟时间已到"
         snoozeTimes: 0,  // 指明延迟提醒次数
         timeInterval: 0,  // 执行延迟提醒间隔（单位：秒）
         daysOfWeek: []  // 指明每周哪几天需要重复提醒
