@@ -34,7 +34,7 @@ import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 ```
 
-<!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
+<!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 function drawRenderNode(canvas: drawing.Canvas) {
