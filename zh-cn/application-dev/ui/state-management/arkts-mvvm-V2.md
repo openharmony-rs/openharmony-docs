@@ -1102,6 +1102,60 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
   <!-- @[View_ListView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/ListView.ets) -->
   
+  ``` TypeScript
+  // src/main/ets/view/ListView.ets
+  import TaskViewModel from '../viewmodel/TaskViewModel';
+  import TaskListViewModel from '../viewmodel/TaskListViewModel';
+  import { Setting } from '../pages/SettingPage';
+  import { ActionButton } from './BottomView';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @ComponentV2
+  struct TaskItem {
+    @Param task: TaskViewModel = new TaskViewModel();
+    @Event deleteTask: () => void = () => {};
+    @Monitor('task.isFinish')
+    onTaskFinished(mon: IMonitor) {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    }
+  
+    build() {
+      Row() {
+        // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+        Image(this.task.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+          .width(28)
+          .height(28)
+          .margin({ left: 15, right: 10 })
+        Text(this.task.taskName)
+          .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+          .fontSize(18)
+        ActionButton('Delete', () => this.deleteTask());
+      }
+      .height('7%')
+      .width('90%')
+      .backgroundColor('#90f1f3f5')
+      .borderRadius(25)
+      .onClick(() => this.task.updateIsFinish())
+    }
+  }
+  
+  @ComponentV2
+  export default struct ListView {
+    @Param taskList: TaskListViewModel = new TaskListViewModel();
+    @Param setting: Setting = new Setting();
+  
+    build() {
+      Repeat<TaskViewModel>(this.taskList.tasks.filter(task => this.setting.showCompletedTask || !task.isFinish))
+        .each((obj: RepeatItem<TaskViewModel>) => {
+          TaskItem({
+            task: obj.item,
+            deleteTask: () => this.taskList.removeTask(obj.item)
+          }).margin(5)
+        })
+    }
+  }
+  ```
+  
 - BottomView：负责提供与任务操作相关的按钮和输入框，如"全部完成"、"全部未完成"，"设置"三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
   <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) -->
