@@ -5658,6 +5658,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/Shadow.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Shadow/entry/src/main/ets/pages/Shadow.ets",
 				"functions":[
 					{
 						"end_line":57,
