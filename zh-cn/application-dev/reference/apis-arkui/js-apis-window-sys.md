@@ -2982,7 +2982,7 @@ export default class EntryAbility extends UIAbility {
       let shouldHide = true;
       try {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
-        mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
+        mainWindow!.hideNonSystemFloatingWindows(shouldHide, (err) => {
           const errCode = err?.code;
           if (errCode) {
             console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
