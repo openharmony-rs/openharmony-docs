@@ -2563,7 +2563,6 @@ try {
 }
 ```
 
-<<<<<<< HEAD
 ArkTS-Sta示例：
 
 ```ts
@@ -2579,9 +2578,6 @@ try {
 ```
 
 ### raiseToAppTop<sup>10+</sup>
-=======
-## raiseToAppTop<sup>10+</sup>
->>>>>>> 4b6d7042caa (overload doc focus)
 
 raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
