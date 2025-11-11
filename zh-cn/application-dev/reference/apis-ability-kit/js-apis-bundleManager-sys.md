@@ -22,16 +22,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
-
-| 名称                                          | 值         | 说明                                                         |
-| --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
-| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
+| 名称                                       | 值         | 说明                                                         |
+| ------------------------------------------ | ---------- | ------------------------------------------------------------ |
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 
 ## ApplicationFlag
 
@@ -58,22 +54,18 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
-
 **系统接口：** 此接口为系统接口。
 
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。 |
-| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。                          |
-| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。                     |
-| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。                            |
-| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。                   |
-| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。                         |
+| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 
 ## ExtensionAbilityFlag
 
@@ -81,19 +73,15 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
-
 **系统接口：** 此接口为系统接口。
 
 | 名称                                        | 值         | 说明                                                         |
 | ------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_EXTENSION_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。 |
-| GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的extensionAbilityInfo。               |
-| GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的extensionAbilityInfo。         |
-| GET_EXTENSION_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的extensionAbilityInfo。                 |
-| GET_EXTENSION_ABILITY_INFO_WITH_SKILL<sup>12+</sup>     | 0x00000010 | 用于获取包含skills的extensionAbilityInfo。                 |
+| GET_EXTENSION_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_EXTENSION_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| GET_EXTENSION_ABILITY_INFO_WITH_SKILL<sup>12+</sup>     | 0x00000010 | 用于获取包含skills的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 
 ## ProfileType<sup>11+</sup>
 
@@ -138,18 +126,14 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 |----------------|---|---|
-| FLAG_INSTALLED|  0x00000001 | 表示指定用户安装应用的状态为已安装状态。 |
-| FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。|
-| FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。|
-| FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。|
+| FLAG_INSTALLED |  0x00000001 | 表示指定用户安装应用的状态为已安装状态。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
+| FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
+| FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
