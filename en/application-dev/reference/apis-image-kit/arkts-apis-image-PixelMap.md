@@ -32,7 +32,7 @@ import { image } from '@kit.ImageKit';
 | Name             | Type   | Read Only| Optional| Description                      |
 | -----------------| ------- | ---- | ---- | -------------------------- |
 | isEditable<sup>7+</sup>        | boolean | Yes  | No  | Whether the PixelMap is editable. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the PixelMap uses DMA memory. ** true** if the PixelMap uses DMA memory, **false** otherwise.|
+| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the PixelMap uses DMA memory. **true** if the PixelMap uses DMA memory, **false** otherwise.|
 
 ## readPixelsToBuffer<sup>7+</sup>
 
@@ -1406,6 +1406,121 @@ function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
 }
 ```
 
+## createCroppedAndScaledPixelMap<sup>22+</sup>
+
+createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap\>
+
+Creates an image that has been cropped and resized based on the specified cropping area, scale factors of the width and height, and anti-aliasing level. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                         |
+| -------- | ------------------- | ---- | ----------------------------- |
+| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimension (in pixels).|
+| x        | number | Yes  | Scale factor of the width. It must not be **0**.|
+| y        | number | Yes  | Scale factor of the height. It must not be **0**.|
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
+
+**Return value**
+
+| Type          | Description                       |
+| -------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise used to return the PixelMap object.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+| 7600204 | Invalid region. |
+| 7600205 | Unsupported memory format or pixel format. |
+| 7600301 | Memory alloc failed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
+  const imageInfo = pixelMap.getImageInfoSync();
+  const region: image.Region = {
+    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
+    x: imageInfo.size.width / 4,
+    y: imageInfo.size.height / 4
+  };
+  const scaleX: number = 2.0;
+  const scaleY: number = 2.0;
+  pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
+    .then((croppedAndScaled: PixelMap) => {
+      console.info('PixelMap crop and scale succeeded.');
+    })
+    .catch((error: BusinessError) => {
+      console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
+## createCroppedAndScaledPixelMapSync<sup>22+</sup>
+
+createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?: AntiAliasingLevel): PixelMap
+
+Creates an image that has been cropped and resized based on the specified cropping area, scale factors of the width and height, and anti-aliasing level. This API returns the result synchronously.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                         |
+| -------- | ------------------- | ---- | ----------------------------- |
+| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimension (in pixels).|
+| x        | number | Yes  | Scale factor of the width. It must not be **0**.|
+| y        | number | Yes  | Scale factor of the height. It must not be **0**.|
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
+
+**Return value**
+
+| Type                            | Description                 |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | PixelMap object. If the operation fails, an error is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+| 7600204 | Invalid region. |
+| 7600205 | Unsupported memory format or pixel format. |
+| 7600301 | Memory alloc failed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
+  const imageInfo = pixelMap.getImageInfoSync();
+  const region: image.Region = {
+    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
+    x: imageInfo.size.width / 4,
+    y: imageInfo.size.height / 4
+  };
+  const scaleX: number = 2.0;
+  const scaleY: number = 2.0;
+  try {
+    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
 ## clone<sup>18+</sup>
 
 clone(): Promise\<PixelMap>
@@ -1429,8 +1544,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **Example**
 
@@ -1471,8 +1586,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 501 | Resource unavailable. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
-| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of createing empty pixelmap. |
-| 62980106 | The image data is to large. This status code is thrown when an error occurs during the process of checking size. |
+| 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
+| 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 
 **Example**
 
@@ -2573,11 +2688,15 @@ async function Unmarshalling() {
 
 ## release<sup>7+</sup>
 
-release():Promise\<void>
+release(): Promise\<void\>
 
-Releases this PixelMap object. This API uses a promise to return the result.
+Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses a promise to return the result.
 
 ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+
+> **NOTE**
+>
+> Release occurs when an ArkTS object relinquishes control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -2609,11 +2728,15 @@ async function Release(pixelMap:image.PixelMap) {
 
 ## release<sup>7+</sup>
 
-release(callback: AsyncCallback\<void>): void
+release(callback: AsyncCallback\<void\>): void
 
-Releases this PixelMap object. This API uses an asynchronous callback to return the result.
+Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses an asynchronous callback to return the result.
 
 ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+
+> **NOTE**
+>
+> Release refers to an ArkTS object relinquishing control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -2741,5 +2864,63 @@ function SetMemoryNameSync(pixelMap:image.PixelMap) {
       console.error(`setMemoryNameSync error. code is ${error.code}, message is ${error.message}`);
     }
   }
+}
+```
+
+## getUniqueId<sup>22+</sup>
+
+getUniqueId(): number
+
+Obtains the unique ID of this PixelMap.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Return value**
+
+| Type  | Description                |
+| ------ | -------------------- |
+| number | Unique ID. The value is a positive integer.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7600201 | The PixelMap has been released. |
+
+**Example**
+
+```ts
+function DemoGetUniqueId(pixelMap: PixelMap) {
+  const uniqueId: number = pixelMap.getUniqueId();
+}
+```
+
+## isReleased<sup>22+</sup>
+
+isReleased(): boolean
+
+Checks whether this PixelMap object is released. If released, any attempt to access the internal data of this object will fail.
+
+> **NOTE**
+>
+> Release refers to an ArkTS object relinquishing control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Return value**
+
+| Type  | Description                |
+| ------ | -------------------- |
+| boolean | Check result for whether the PixelMap object is released. **true** if released; **false** otherwise.|
+
+**Example**
+
+```ts
+async function DemoIsReleased(pixelMap: PixelMap) { // Unreleased PixelMap.
+  pixelMap.isReleased(); // Return false.
+  await pixelMap.release();
+  pixelMap.isReleased(); // Return true.
 }
 ```

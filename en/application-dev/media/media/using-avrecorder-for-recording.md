@@ -99,6 +99,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
      audioBitrate: 112000, // Audio bit rate.
      audioChannels: 2, // Number of audio channels.
      audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported.
+     aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
      audioSampleRate: 48000, // Audio sampling rate.
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
    };
@@ -113,7 +114,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
      profile: avProfile,
      url: 'fd://' + fileFd.toString(), // Obtain the file descriptor of the created audio file by referring to the sample code in Accessing Application Files.
    };
-    
+  
    try {
      await this.avRecorder?.prepare(avConfig);
      console.info('Succeeded in preparing avRecorder');
@@ -169,6 +170,8 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 
 Refer to the sample code below to complete the process of starting, pausing, resuming, and stopping recording.
 
+Before using the sample code, you need to apply for the ohos.permission.MICROPHONE microphone permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
@@ -205,6 +208,7 @@ async function audioRecording(context: common.Context): Promise<void> {
     audioBitrate: 112000, // Audio bit rate.
     audioChannels: 2, // Number of audio channels.
     audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported.
+    aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
     audioSampleRate: 48000, // Audio sampling rate.
     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
   };

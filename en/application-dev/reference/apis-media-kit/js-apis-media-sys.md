@@ -526,7 +526,7 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-### setMetadata<sup>18+</sup>
+### setMetadata<sup>19+</sup>
 setMetadata(metadata: Record\<string, string\>): void
 
 Sets custom metadata for the recording file of AVRecorder.
@@ -744,7 +744,7 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
 
-The caller obtains the surface buffer from this surface and fills in the corresponding data.
+You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
@@ -794,7 +794,7 @@ getInputSurface(): Promise\<string>;
 
 Obtains the surface required for recording. This API uses a promise to return the result.
 
-The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding data.
+You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 

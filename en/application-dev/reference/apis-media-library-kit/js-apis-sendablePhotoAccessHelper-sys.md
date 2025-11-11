@@ -112,11 +112,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -139,7 +137,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### createAsset
 
-createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoAsset&gt;
+createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions): Promise\<PhotoAsset\>
 
 Creates an asset with the specified file name and options. This API uses a promise to return the result.
 
@@ -159,7 +157,7 @@ The file name must meet the following requirements:
 | Name     | Type                                                        | Mandatory| Description                      |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | displayName | string                                                       | Yes  | File name of the asset to create.|
-| options     | [PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
+| options     | [photoAccessHelper.PhotoCreateOptions](js-apis-photoAccessHelper-sys.md#photocreateoptions) | Yes  | Options for creating the asset.    |
 
 **Return value**
 
@@ -173,11 +171,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
-| 14000001 | Invalid display name.                                        |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -323,7 +319,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000011 | Internal system error                                        |
 
 **Example**
