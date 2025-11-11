@@ -4111,10 +4111,6 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
@@ -4238,10 +4234,6 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 在指定时间内将页面滚动指定的偏移量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
