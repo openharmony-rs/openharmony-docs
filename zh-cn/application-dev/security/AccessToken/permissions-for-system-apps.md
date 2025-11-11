@@ -653,6 +653,22 @@
 
 **起始版本**：7
 
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+允许应用降级安装其他应用。
+
+获取该权限后，即使设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
+
 ## ohos.permission.MANAGE_SHORTCUTS
 
 允许应用查询其他应用的快捷方式信息、启动其他应用的快捷方式。

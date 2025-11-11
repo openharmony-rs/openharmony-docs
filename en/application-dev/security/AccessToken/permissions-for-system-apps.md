@@ -653,6 +653,22 @@ Allows an application to install and uninstall other applications except enterpr
 
 **Valid since**: 7
 
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+Allows an application to downgrade and install other applications.
+
+With this permission, the application can overwrite an installed application with an earlier version, even if a later version is already present.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Enable via ACL**: true
+
+**Valid since**: 23
+
 ## ohos.permission.MANAGE_SHORTCUTS
 
 Allows an application to query and start shortcuts of other applications.
