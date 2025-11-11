@@ -1667,11 +1667,14 @@ try {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let enabled = false;
-  windowClass.setImmersiveModeEnabledState(enabled);
+  windowClass!.setImmersiveModeEnabledState(enabled);
 } catch (exception) {
-  console.error(`Failed to set the window immersive mode enabled status: ${exception}`);
+  let error = exception as BusinessError;
+  console.error(`Failed to set the window immersive mode enabled status, cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
