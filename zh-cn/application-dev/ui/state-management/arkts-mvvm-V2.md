@@ -1263,6 +1263,43 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
   <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
   
+  ``` TypeScript
+  // src/main/ets/pages/SettingPage.ets
+  import { AppStorageV2 } from '@kit.ArkUI';
+  import { common } from '@kit.AbilityKit';
+  
+  @ObservedV2
+  export class Setting {
+    @Trace public showCompletedTask: boolean = true;
+  }
+  
+  @Entry
+  @ComponentV2
+  struct SettingPage {
+    @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  
+    build(){
+      Column(){
+        Text('Setting')
+          .fontSize(40)
+          .margin({ bottom: 10 })
+        Row() {
+          Text('Show completed tasks')
+          Toggle({ type: ToggleType.Switch, isOn:this.setting.showCompletedTask })
+            .onChange((isOn) => {
+              this.setting.showCompletedTask = isOn;
+            })
+        }
+        Button('Back to To do')
+          .onClick(()=>this.context.terminateSelf())
+          .margin({ top: 10 })
+      }
+      .alignItems(HorizontalAlign.Start)
+    }
+  }
+  ```
+  
 ## 总结
 
 本指南通过待办事项应用示例，引入状态管理V2装饰器，并通过代码重构实现MVVM架构。最终将数据、业务逻辑和视图展示分层处理，使得代码结构更加清晰且易于维护。开发者通过正确应用Model、View和ViewModel分层结构，能够更好地理解和应用MVVM模式，进而在实际项目中提升开发效率、保证代码质量，并优化数据与UI的同步机制，简化整体开发流程。
