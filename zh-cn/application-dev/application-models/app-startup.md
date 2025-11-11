@@ -67,7 +67,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
    module.json5示例代码如下。
 
     <!-- @[startup_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     {
       "module": {
@@ -289,7 +289,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 <!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
 
 ``` TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
+import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -419,7 +419,7 @@ export default class StartupTask_001 extends StartupTask {
         hsp1、hsp2以及har1的module.json5示例代码如下。
 
         <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
@@ -432,7 +432,7 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
@@ -445,7 +445,7 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
@@ -496,7 +496,6 @@ export default class EntryAbility extends UIAbility {
       console.error(`Startup catch error, errMsg= ${errMsg}.`);
     }
   }
-
 // ···
 }
 ```
@@ -611,9 +610,9 @@ struct Index {
   1. 对[设置启动参数](#设置启动参数)步骤中的MyStartupConfigEntry.ets文件进行修改，新增[onRequestCustomMatchRule](../reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md#onrequestcustommatchrule20)方法。
 
      <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
-
+     
      ``` TypeScript
-     import { StartupConfigEntry, Want } from '@kit.AbilityKit';
+     import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
      // ···
      
      export default class MyStartupConfigEntry extends StartupConfigEntry {
@@ -624,7 +623,6 @@ struct Index {
          }
          return '';
        }
-     
      }
      ```
   2. 对[定义启动任务配置](#定义启动任务配置)步骤中的startup_config.json文件进行修改，增加StartupTask_006任务的matchRules配置。预加载so任务不支持customization字段，按任务原有的excludeFromAutoStart配置处理。
