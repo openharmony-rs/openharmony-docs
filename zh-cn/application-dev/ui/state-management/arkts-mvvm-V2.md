@@ -1079,6 +1079,24 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 - TitleView：负责展示应用的标题和未完成任务的统计信息。
 
   <!-- @[View_TitleView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/TitleView.ets) -->
+  
+  ``` TypeScript
+  // src/main/ets/view/TitleView.ets
+  @ComponentV2
+  export default struct TitleView {
+    @Param tasksUnfinished: number = 0;
+  
+    build() {
+      Column() {
+        Text('To do')
+          .fontSize(40)
+          .margin(10)
+        Text(`All Not Completed：${this.tasksUnfinished}`)
+          .margin({ left: 10, bottom: 10 })
+      }
+    }
+  }
+  ```
 
 - ListView：负责展示任务列表，并根据Setting中的设置筛选是否显示已完成的任务。它依赖于TaskListViewModel来获取任务数据，并通过TaskItem组件进行渲染，包括任务的名称、完成状态以及删除按钮。通过TaskViewModel和TaskListViewModel实现用户的交互，如切换任务完成状态和删除任务。
 
