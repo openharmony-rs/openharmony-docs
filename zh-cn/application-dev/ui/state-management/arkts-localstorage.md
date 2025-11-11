@@ -317,6 +317,7 @@ struct Parent {
 // 创建新实例并使用给定对象初始化
 let paraOneLocal: Record<string, number> = { 'PropA': 47 };
 let storageOneLocal: LocalStorage = new LocalStorage(paraOneLocal);
+
 // 使LocalStorage可从@Component组件访问
 @Entry(storageOneLocal)
 @Component
@@ -366,7 +367,6 @@ let linkToPropA: SubscribedAbstractProperty<object> = storageOne.link('PropA');
 @Entry(storageOne)
 @Component
 struct ParentTwo {
-
   // @LocalStorageLink('PropA')在Parent自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给“PropA”设置47
   @LocalStorageLink('PropA') storageLink: number = 1;
 
