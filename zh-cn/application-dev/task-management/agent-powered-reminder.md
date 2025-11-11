@@ -105,14 +105,14 @@
         },
         actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [{
-          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // “关闭日历提醒”
+          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // "app.string.calendar_close"资源文件中的value值为"关闭日历提醒"
           type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
         }],
         // 点击提醒通知后跳转的目标UIAbility信息
         wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
         ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
-        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题“日历”
-        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容“日历提醒时间到了”
+        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题, "app.string.calendar"资源文件中的value值为"日历"
+        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容, "app.string.calendar_reach"资源文件中的value值为"日历提醒时间到了"
         slotType: notificationManager.SlotType.CONTENT_INFORMATION  // 指明提醒的Slot类型
       }
       ```
