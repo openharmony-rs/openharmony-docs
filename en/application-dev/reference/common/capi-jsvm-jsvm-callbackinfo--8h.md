@@ -8,7 +8,7 @@
 
 ## Overview
 
-An opaque data type passed to the callback. It can be used to obtain additional information about the context in which the function is called.
+Defines an opaque data type passed to the callback. It can be used to obtain additional information about the context in which the function is called.
 
 **Since**: 11
 

@@ -15,11 +15,11 @@
 - C APIs<!--common-basic-c-->
   - Modules<!--common-basic-module-->
     - [Init](init.md)
-    - [Memory](memory.md)
+    - [Memory](capi-memory.md)
     - [JSVM](capi-jsvm.md)
   - Header Files<!--common-basic-headerfile-->
     - [syscap_ndk.h](syscap__ndk_8h.md)
-    - [purgeable_memory.h](purgeable__memory_8h.md)
+    - [purgeable_memory.h](capi-purgeable-memory-h.md)
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
   - Structs<!--common-basic-struct-->
@@ -50,3 +50,4 @@
     - [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)
     - [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+    - [PurgMem*](capi-memory-purgmem.md)

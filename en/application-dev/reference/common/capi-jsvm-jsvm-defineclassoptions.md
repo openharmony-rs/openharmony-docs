@@ -22,7 +22,7 @@ Defines the options of a class.
 
 | Name                                                                           | Description           |
 |-------------------------------------------------------------------------------|---------------|
-| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | Defines the option ID of a class.|
+| [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | Option ID of a class.|
 | void* ptr   | void* type.     |
-| int num      | int type.       |
-| bool boolean   | bool type.           |
+| int num      | Integer type.       |
+| bool boolean   | Boolean type.           |

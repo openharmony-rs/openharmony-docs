@@ -8,7 +8,7 @@
 
 ## Overview
 
-Saves statistics about JavaScript heap memory usage.
+Stores statistics about JavaScript heap memory usage.
 
 **Since**: 12
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Reference to the JavaScript value.
+Defines the reference to the JavaScript value.
 
 **Since**: 11
 

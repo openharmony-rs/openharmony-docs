@@ -8,7 +8,7 @@
 
 ## Overview
 
-Contains the function pointer of the callback function triggered when a class is called as a function, and the function pointer set of the callback function triggered when an instance object attribute is accessed.
+Defines the pointer to the callback function triggered when a class is called as a function, and the pointer collection of the callback function triggered when an instance object property is accessed.
 
 **Since**: 18
 
@@ -23,4 +23,4 @@ Contains the function pointer of the callback function triggered when a class is
 | Name                                                                                                 | Description|
 |-----------------------------------------------------------------------------------------------------| -- |
 | [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) propertyHandlerCfg | Callback triggered when an instance object property is accessed.|
-| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) callAsFunctionCallback                                                            | This callback is triggered when an instance object is called as a function.|
+| [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) callAsFunctionCallback                                                            | Callback triggered when an instance object is called as a function.|

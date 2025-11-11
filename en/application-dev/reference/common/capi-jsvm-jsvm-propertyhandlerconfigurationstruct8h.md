@@ -8,7 +8,7 @@
 
 ## Overview
 
-Pointer type of the struct that contains the property listening callback.
+Defines the pointer type of the struct that contains the property handler.
 
 **Since**: 12
 
