@@ -67,7 +67,7 @@ ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和�
 请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ### 互动卡片
-互动卡片提供溢出动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。
+从API version 20开始支持互动卡片，互动卡片提供溢出动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。
 
 ## 约束与限制
 ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加丰富的能力，但也增加了使用卡片进行恶意行为的风险。因为承载ArkTS卡片UI部分的widget.abc代码运行在系统公共的FRS进程内，并最终显示在卡片使用方应用中（一般为桌面应用），为确保系统渲染进程的稳定性、各卡片之间的隔离安全性，以及内存功耗等资源考虑，对ArkTS卡片UI可使用的能力做了以下约束：
