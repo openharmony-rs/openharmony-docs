@@ -6038,7 +6038,13 @@ on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 
 开启窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowHighlightChange](#onWindowHighlightChange22)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6072,13 +6078,63 @@ try {
 }
 ```
 
+## onWindowHighlightChange<sup>15+</sup>
+
+onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
+
+开启窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Sta起始版本：** 22
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。当本窗口的激活态发生变化时的回调。回调函数返回boolean类型参数。当返回参数为true表示激活态；false表示非激活态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowHighlightChange((data: boolean) => {
+    console.info(`Window highlight Change: ${data}`);
+  });
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('windowHighlightChange')<sup>15+</sup>
 
 off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offWindowHighlightChange22)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6113,6 +6169,56 @@ try {
   windowClass.off('windowHighlightChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.off('windowHighlightChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowHighlightChange<sup>15+</sup>
+
+offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowHighlightChange22)。
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Sta起始版本：** 22
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。当本窗口的激活态发生变化时的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口激活态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowHighlightChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowHighlightChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowHighlightChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -6977,6 +7083,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6992,6 +7100,27 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocusable: boolean = true;
+try {
+  windowClass.setWindowFocusable(isFocusable, (err: BusinessError) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the window to be focusable. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the window to be focusable.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -7033,6 +7162,8 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7046,6 +7177,25 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocusable: boolean = true;
+try {
+  let promise = windowClass.setWindowFocusable(isFocusable);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be focusable.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -8863,6 +9013,8 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -8891,6 +9043,42 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    // 创建子窗
+    try {
+      let subWindow = windowStage.createSubWindow("testSubWindow");
+      subWindow.then((data: window.Window) => {
+        if (data == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        windowClass = data;
+        let promise = windowClass.setSubWindowModal(true);
+        promise.then(() => {
+          console.info('Succeeded in setting subwindow modal');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -8945,6 +9133,8 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -8974,6 +9164,43 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    // 创建子窗
+    try {
+      let subWindow = windowStage.createSubWindow("testSubWindow");
+      subWindow.then((data: window.Window) => {
+        if (!data) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        windowClass = data;
+        let promise = windowClass.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
+        promise.then(() => {
+          console.info('Succeeded in setting subwindow modal');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -9310,12 +9537,26 @@ isFocused(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   let focus = windowClass.isFocused();
   console.info(`Succeeded in checking whether the window is focused. Data: JSON.stringify(focus)`);
 } catch (exception) {
   console.error(`Failed to check whether the window is focused. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let focus: boolean = windowClass.isFocused();
+  console.info(`Succeeded in checking whether the window is focused. Data: ${JSON.stringify(focus)}`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to check whether the window is focused. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -9594,6 +9835,8 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // ets/pages/Index.ets
 import { window } from '@kit.ArkUI';
@@ -9625,6 +9868,64 @@ struct Index {
             });
           } catch (exception) {
             console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .onKeyEvent((event) => {
+      if(event) {
+        if(event.type === KeyType.Down) {
+          keyUpEventAry = [];
+        }
+        if(event.type === KeyType.Up) {
+          keyUpEventAry.push(event.keyText);
+          // 自定义快捷键 ctrl+T 执行主窗口置顶、取消置顶的操作
+          if(windowClass && keyUpEventAry.includes('KEYCODE_CTRL_LEFT') && keyUpEventAry.includes('KEYCODE_T')) {
+            let isWindowTopmost: boolean = false;
+            windowClass.setWindowTopmost(isWindowTopmost);
+          }
+        }
+      }
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// ets/pages/Index.ets
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let windowClass: window.Window | undefined;
+let keyUpEventAry: string[] = [];
+
+@Entry
+@Component
+struct Index {
+  private context = (this.getUIContext()?.getHostContext() as common.UIAbilityContext);
+  private windowStage = this.context.windowStage;
+
+  build() {
+    RelativeContainer() {
+      Button("窗口置顶")
+        .onClick(() => {
+          try {
+            windowClass = this.windowStage.getMainWindowSync();
+            //  true:窗口置顶，false:取消窗口置顶
+            let isWindowTopmost: boolean = true;
+            let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
+            promiseTopmost.then(() => {
+              console.info('Succeeded in setting the main window to be topmost.');
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set the main window to be topmost. Cause code: ${err.code}, message: ${err.message}`);
+            });
+          } catch (exception) {
+            let err = exception as BusinessError;
+            console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
           }
         })
     }
@@ -9682,6 +9983,8 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
@@ -9694,6 +9997,36 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     // 创建子窗
     windowStage.createSubWindow('testSubWindow').then((subWindow) => {
+      if (subWindow == null) {
+        console.error('Failed to create the subWindow. Cause: The data is empty');
+        return;
+      }
+      subWindow.showWindow().then(() => {
+        subWindow.raiseToAppTop().then(() => {
+          console.info('Succeeded in raising window to app top');
+        }).catch((err: BusinessError)=>{
+          console.error(`Failed to raise window to app top. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
       if (subWindow == null) {
         console.error('Failed to create the subWindow. Cause: The data is empty');
         return;
@@ -9753,6 +10086,8 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
@@ -9778,6 +10113,42 @@ export default class EntryAbility extends UIAbility {
             console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
           });
         } catch (err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      });
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    // 创建子窗
+    windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window) => {
+      if (subWindow == null) {
+        console.error('Failed to create the subWindow. Cause: The data is empty');
+        return;
+      }
+      subWindow.showWindow().then(() => {
+        try {
+          let enabled = false;
+          subWindow.setRaiseByClickEnabled(enabled).then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
           console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
         }
       });
@@ -10867,6 +11238,7 @@ try {
 }
 ```
 
+<<<<<<< HEAD
 ArkTS-Sta示例：
 ```ts
 try {
@@ -10877,6 +11249,9 @@ try {
 ```
 
 ## setExclusivelyHighlighted<sup>15+<sup>
+=======
+## setExclusivelyHighlighted<sup>15+</sup>
+>>>>>>> 4b6d7042caa (overload doc focus)
 
 setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
@@ -10918,6 +11293,8 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10934,7 +11311,26 @@ try {
 }
 ```
 
-## isWindowHighlighted<sup>18+<sup>
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let exclusivelyHighlighted: boolean = true;
+try {
+  let promise = windowClass.setExclusivelyHighlighted(exclusivelyHighlighted);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be exclusively highlight.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## isWindowHighlighted<sup>18+</sup>
 
 isWindowHighlighted(): boolean
 
@@ -10967,6 +11363,8 @@ isWindowHighlighted(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -10975,6 +11373,20 @@ try {
   console.info(`Succeeded in getting the window highlight status: ${isHighlighted}`);
 } catch (exception) {
   console.error(`Failed to get the window highlight status.. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isHighlighted: boolean = windowClass.isWindowHighlighted();
+  console.info(`Succeeded in getting the window highlight status: ${isHighlighted}`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to get the window highlight status. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -11396,6 +11808,8 @@ ArkTS-Sta: setSubWindowZLevel(zLevel: int): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
@@ -11421,6 +11835,40 @@ export default class EntryAbility extends UIAbility {
         });
       });
     } catch (err) {
+      console.error(`Failed to create the sub window or set zLevel. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let zLevel: number = 1;
+    // 创建子窗
+    try {
+      windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error('Failed to create the sub window. Cause: The sub window is null');
+          return;
+        }
+        subWindow.setSubWindowZLevel(zLevel).then(() => {
+          console.info('Succeeded in setting sub window zLevel.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set sub window zLevel. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
       console.error(`Failed to create the sub window or set zLevel. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
@@ -11461,6 +11909,8 @@ ArkTS-Sta: getSubWindowZLevel(): int
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
@@ -11481,6 +11931,36 @@ export default class EntryAbility extends UIAbility {
         subWindowZLevel = subWindow.getSubWindowZLevel();
         console.info(`Succeeded in obtaining sub window zLevel: ${subWindowZLevel}`);
       } catch (err) {
+        console.error(`Failed to obtain the sub window zLevel. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let subWindowZLevel: int = -1;
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+      if (subWindow == null) {
+        console.error('Failed to create the sub window. Cause: The sub window is null');
+        return;
+      }
+      try {
+        subWindowZLevel = subWindow.getSubWindowZLevel();
+        console.info(`Succeeded in obtaining sub window zLevel: ${subWindowZLevel}`);
+      } catch (exception) {
+        let err = exception as BusinessError;
         console.error(`Failed to obtain the sub window zLevel. Cause code: ${err.code}, message: ${err.message}`);
       }
     });
