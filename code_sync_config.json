@@ -1608,6 +1608,16 @@
 						"end_line":66,
 						"name":"get_local_cap_ability",
 						"start_line":16
+					},
+					{
+						"end_line":152,
+						"name":"session_backup",
+						"start_line":17
+					},
+					{
+						"end_line":251,
+						"name":"session_restore",
+						"start_line":18
 					}
 				]
 			}
@@ -25125,6 +25135,26 @@
 						"end_line":74,
 						"name":"prop_fifteen_start",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/file-management/app-file-backup-extension.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"on_backup_restore",
+						"start_line":16
+					},
+					{
+						"end_line":88,
+						"name":"on_release",
+						"start_line":17
 					}
 				]
 			}
