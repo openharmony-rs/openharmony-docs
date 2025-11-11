@@ -279,8 +279,6 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   const TAG: string = '[MyAppServiceExtAbility]';
   // ···
   
-  // ···
-  
   export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
     onCreate(want: Want): void {
       // ···
