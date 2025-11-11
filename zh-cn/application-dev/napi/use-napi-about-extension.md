@@ -237,10 +237,12 @@ export const createObjectWithNameProperties: (data: string) => undefined | { nam
 ArkTS侧示例代码
 
 <!-- @[ark_node_api_module_create_object_name_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-let value = testNapi.createObjectWithNameProperties('ls');
+
+``` TypeScript
+// ArkTS Object相关 napi_create_object_with_named_properties
+let value2 = testNapi.createObjectWithNameProperties('ls');
 try {
-  hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value));
+  hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value2));
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'TNode-API napi_create_object_with_named_properties: %{public}s', error.message);
 }
