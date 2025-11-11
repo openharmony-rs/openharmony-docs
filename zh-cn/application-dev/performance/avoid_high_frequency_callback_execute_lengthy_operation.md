@@ -505,7 +505,7 @@ struct Index {
 使用任务池taskpool处理耗时操作后返回结果给Row的高度rowHeight作为正例。
 
 ```ts
-import taskpool from '@ohos.taskpool'; // 任务池
+import { taskpool } from '@kit.ArkTS'; // 任务池
 
 @Concurrent
 function getHeight(): number {
