@@ -1461,7 +1461,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
    import { UIContext } from '@ohos.arkui.UIContext'
    import { webview } from '@kit.ArkWeb';
    import { cameraPicker, camera } from '@kit.CameraKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@ohos.base';
    import { common } from '@kit.AbilityKit';
 
    async function openCamera(callback: Callback<string>, uiContext: UIContext) {
@@ -1482,7 +1482,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
    @Entry
    @Component
    struct Index {
-     controller: webview.WebviewController = new webview.WebviewController();
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
      build() {
        Column() {
@@ -2471,7 +2471,7 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
     private result: WebContextMenuResult | undefined = undefined;
     @State linkUrl: string = '';
     @State offsetX: number = 0;

@@ -3181,12 +3181,12 @@ import { State } from '@ohos.arkui.stateManagement'
 import hilog from '@ohos.hilog'
 
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -8731,12 +8731,12 @@ import { State } from '@ohos.arkui.stateManagement'
 import hilog from '@ohos.hilog'
 
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
