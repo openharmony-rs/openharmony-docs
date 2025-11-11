@@ -140,6 +140,8 @@ Allows an application to obtain Wi-Fi information.
 
 The Wi-Fi information includes whether Wi-Fi is enabled, scan results, connection information, connection state, device capability, and peer-to-peer (P2P) state.
 
+ Allows an application using Wi-Fi P2P capabilities.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
