@@ -271,7 +271,7 @@ import {eap} from '@kit.NetworkKit';
 let netId = 100;    
 try{
   eap.logOffEthEap(netId);
-  console.info("logOffEthEap succes");
+  console.info("logOffEthEap success");
 } catch (err) {
   console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
