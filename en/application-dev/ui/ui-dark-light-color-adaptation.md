@@ -1,4 +1,4 @@
-# Application Dark and Light Mode Adaptation
+# Implementing Dark and Light Mode Adaptation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lushi871202-->
