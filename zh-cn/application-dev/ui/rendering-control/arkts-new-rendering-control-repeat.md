@@ -1366,7 +1366,7 @@ struct EntryCompSucc {
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
       .onScrollIndex((start, end) => {
-        console.log('onScrollIndex', start, end);
+        console.info('onScrollIndex', start, end);
         // 数据懒加载
         if (this.vehicleItems.length < 50) {
           for (let i = 0; i < 10; i++) {
