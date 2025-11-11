@@ -1153,6 +1153,8 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 <!--code_no_check-->
 ```ts
 import { window } from '@kit.ArkUI';
