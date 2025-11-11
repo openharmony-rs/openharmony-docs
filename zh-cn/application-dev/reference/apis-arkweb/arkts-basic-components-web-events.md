@@ -1453,10 +1453,7 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
    'use static'
 
    // xxx.ets
-   import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
-   import { State } from '@ohos.arkui.stateManagement'
-   import hilog from '@ohos.hilog'
-
+   import { Entry, Column, Component } from '@ohos.arkui.component'
    import { $rawfile, Callback, Web } from '@ohos.arkui.component'
    import { UIContext } from '@ohos.arkui.UIContext'
    import { webview } from '@kit.ArkWeb';
@@ -1490,11 +1487,11 @@ onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
            .onShowFileSelector((event) => {
              openCamera((result) => {
                if (event) {
-                 console.log('Title is ' + event.fileSelector.getTitle());
-                 console.log('Mode is ' + event.fileSelector.getMode());
-                 console.log('Accept types are ' + event.fileSelector.getAcceptType());
-                 console.log('Capture is ' + event.fileSelector.isCapture());
-                 console.log('Mime types are ' + event.fileSelector.getMimeTypes());
+                 console.info('Title is ' + event.fileSelector.getTitle());
+                 console.info('Mode is ' + event.fileSelector.getMode());
+                 console.info('Accept types are ' + event.fileSelector.getAcceptType());
+                 console.info('Capture is ' + event.fileSelector.isCapture());
+                 console.info('Mime types are ' + event.fileSelector.getMimeTypes());
                  event.result.handleFileList([result]);
                }
              }, this.getUIContext())
@@ -2456,10 +2453,8 @@ ArkTS-Sta示例：
   'use static'
 
   // xxx.ets
-  import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
+  import { Entry, Column, Component } from '@ohos.arkui.component'
   import { State } from '@ohos.arkui.stateManagement'
-  import hilog from '@ohos.hilog'
-
   import { $rawfile, Web, Builder, Menu, MenuItem, Placement, WebContextMenuResult } from '@ohos.arkui.component'
   import { MenuItemOptions, CustomPopupOptions, PopupStateChangeParam } from '@ohos.arkui.component'
   import { UIContext } from '@ohos.arkui.UIContext'

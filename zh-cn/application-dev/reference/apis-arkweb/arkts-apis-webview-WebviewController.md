@@ -3176,10 +3176,7 @@ ArkTS-Sta示例：
 'use static'
 
 // xxx.ets
-import { Entry, Text, Column, Component, Button, ClickEvent, Web } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
-
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
 
@@ -8718,10 +8715,7 @@ ArkTS-Sta示例：
 'use static'
 
 // xxx.ets
-import { Entry, Text, Column, Component, Button, ClickEvent, Web } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
-import hilog from '@ohos.hilog'
-
+import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
 
@@ -8736,7 +8730,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let scrollEnabled = this.controller.getScrollable();
-            console.log("scrollEnabled: " + scrollEnabled);
+            console.info("scrollEnabled: " + scrollEnabled);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
