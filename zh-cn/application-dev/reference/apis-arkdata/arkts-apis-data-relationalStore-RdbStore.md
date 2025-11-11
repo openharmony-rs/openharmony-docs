@@ -54,6 +54,8 @@ import { relationalStore } from '@kit.ArkData';
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 ```ts
 // 设置数据库版本
 import { UIAbility } from '@kit.AbilityKit';
@@ -5907,6 +5909,8 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 | 14800029     | SQLite: The database is full.                                          |
 
 **示例：**
+
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
