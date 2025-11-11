@@ -165,7 +165,8 @@
 4. 根据需要删除提醒任务。
    
    <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
-   ```ts
+
+   ``` TypeScript
    Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
    await reminderAgent.cancelReminder(this.calendarReminders[index].reminderId);
    ```
