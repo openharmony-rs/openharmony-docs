@@ -22,7 +22,7 @@ WebContextMenuParam的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -36,7 +36,7 @@ ArkTS-Sta: x(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -56,7 +56,7 @@ ArkTS-Sta: y(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -74,7 +74,7 @@ getLinkUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -92,7 +92,7 @@ getUnfilteredLinkUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -110,7 +110,7 @@ getSourceUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -128,7 +128,7 @@ existsImageContents(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -146,7 +146,7 @@ getMediaType(): ContextMenuMediaType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -164,7 +164,7 @@ getSelectionText(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -182,7 +182,7 @@ getSourceType(): ContextMenuSourceType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -200,7 +200,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -218,7 +218,7 @@ isEditable(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -238,7 +238,7 @@ ArkTS-Sta: getEditStateFlags(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 

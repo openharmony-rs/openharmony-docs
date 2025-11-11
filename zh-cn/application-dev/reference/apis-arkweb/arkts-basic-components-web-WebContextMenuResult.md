@@ -22,7 +22,7 @@ WebContextMenuResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -34,7 +34,7 @@ closeContextMenu(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -46,7 +46,7 @@ WebContextMenuParam有图片内容则复制图片。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -58,7 +58,7 @@ copy(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -74,7 +74,7 @@ paste(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -86,7 +86,7 @@ cut(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -98,7 +98,7 @@ selectAll(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 

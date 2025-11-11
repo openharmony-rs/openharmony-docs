@@ -22,7 +22,7 @@ FileSelectorParam的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -34,7 +34,7 @@ getTitle(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -52,7 +52,7 @@ getMode(): FileSelectorMode
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -70,7 +70,7 @@ getAcceptType(): Array\<string\>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -88,7 +88,7 @@ isCapture(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 

@@ -2413,7 +2413,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -4111,7 +4111,7 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 20
 
@@ -4119,8 +4119,8 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
-| y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
+| y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 | duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 
 **错误码：**
@@ -4239,7 +4239,7 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 20
 
@@ -4247,8 +4247,8 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
-| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 | duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 20 |
 
 **错误码：**
