@@ -14,10 +14,29 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcSwiperAttribute是用于配置ArcSwiper组件属性的关键接口。API version 21及之前版本，导入ArcSwiper组件后需要开发者手动导入ArcSwiperAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcSwiper组件后，会自动导入ArcSwiperAttribute，无需开发者手动导入ArcSwiperAttribute。
+>
+> - 如果开发者手动导入ArcSwiperAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+API version 21及之前版本：
+
 ```ts
 import {
   ArcSwiper,
   ArcSwiperAttribute,
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { 
+  ArcSwiper, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
@@ -606,11 +625,12 @@ finishTransition(): void
 import {
   CircleShape,
   ArcSwiper,
-  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcSwiperAttribute, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// 从API Version 22开始，无需手动导入ArcSwiperAttribute。具体请参考ArcSwiper的导入模块说明。
 
 class MyDataSource implements IDataSource {
   private list: Color[] = [];
