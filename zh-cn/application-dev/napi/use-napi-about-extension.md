@@ -291,9 +291,9 @@ static napi_value RunScriptPath(napi_env env, napi_callback_info info)
 接口声明
 
 <!-- @[node_api_module_run_script_path_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const runScriptPath: () => boolean;
+
+``` TypeScript
+export const runScriptPath: () => boolean; // 运行指定abc文件 napi_run_script_path
 ```
 
 
