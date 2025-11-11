@@ -39,7 +39,7 @@
   @Entry(storageUpdateByStatus)
   @Component
   struct WidgetUpdateByStatusCard {
-    // $r('app.string.to_be_refreshed')和$r('app.string.to_be_refreshed')需要替换为开发者所需的资源文件
+    // $r('app.string.to_be_refreshed')需要替换为开发者所需的资源文件
     @LocalStorageProp('textA') textA: Resource = $r('app.string.to_be_refreshed');
     @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
     @State selectA: boolean = false;
