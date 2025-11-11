@@ -46,3 +46,5 @@ The hotkey has been subscribed to by another.
 **处理步骤**
 
 1. 在cmd命令窗口执行(hidumper -s 3101 -a -s)查询已经被注册的快捷键，注册未被三方占用的快捷键。
+
+## 4200003 快捷键已经被三方注册

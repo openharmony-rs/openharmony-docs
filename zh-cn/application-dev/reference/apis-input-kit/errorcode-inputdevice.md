@@ -67,3 +67,5 @@ It is prohibited for non-input applications.
 **处理步骤**
 
 请使用输入法应用调用该接口。
+
+## 3900002 键盘设备没有连接
