@@ -70,7 +70,7 @@ struct Index {
 
   build() {
     Column() {
-      // ParallelOption参数未传入，默认值为undefined，默认开启并行创建。并行创建Row组件和Image组件。
+      // ParallelOption参数传入undefined，默认开启并行创建。并行创建Row组件和Image组件。
       ParallelizeUI(undefined) {
         Row() {
           Image($r('app.media.startIcon'))
@@ -169,7 +169,7 @@ struct Index {
 ## ParallelizeUI\<T\>
 ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_: (param: T) => void)
 
-声明式的并行化UI创建接口。该方法支持在并行化环境中安全地使用外部定义的状态变量。options参数为undefined时，默认开启并行化创建。
+声明式UI并行化创建接口。该方法支持在并行化环境中安全地使用外部定义的状态变量。options参数为undefined时，默认开启并行化创建。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,7 +257,7 @@ ParallelizeUI<V, T>(
   content_: (param: T) => void
 ): void
 
-声明式的并行化UI循环创建接口。在普通容器中使用时，将并行创建数组中定义的所有UI节点。在List或Grid容器中使用时，仅按需并行创建当前可见的节点。options参数为undefined时，默认开启并行化创建。
+声明式UI并行化循环创建接口。在非List和Grid中使用时，并行创建数组中定义的所有UI节点。在List或Grid容器中使用时，仅按需并行创建当前可见的节点。options参数为undefined时，默认开启并行化创建。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
