@@ -300,12 +300,17 @@ export const runScriptPath: () => boolean; // 运行指定abc文件 napi_run_scr
 ArkTS侧示例代码
 
 <!-- @[ark_node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/ets/pages/Index.ets) -->     
-```ts
-try {
-  // 在此处执行错误返回false，成功就返回true
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_run_script_path: %{public}s', testNapi.runScriptPath());
+
+``` TypeScript
+// 运行指定abc文件 napi_run_script_path
+try { // 在此处执行错误返回false，成功就返回true
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_run_script_path: %{public}s',
+    testNapi.runScriptPath());
+  // ···
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_run_script_path errorMessage: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_run_script_path errorMessage: %{public}s',
+    error.message);
+  // ···
 }
 ```
 
