@@ -1449,7 +1449,7 @@ Marquee初始化参数。
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true                                                  |
 | delay              | number                                          | 否  | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒                                                             |
 | fadeout            | boolean                                         | 否  | 是 | 设置文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。<br/>当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。若两端均有文字未完全显示，则两端同时应用渐隐效果。在渐隐效果开启状态下，clip属性将自动锁定为true，不允许设置为false。<br/>默认值：false  |
-| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18枚举说明) | 否  | 是 | 设置跑马灯启动策略。<br/>默认值：MarqueeStartPolicy.DEFAULT                                       |
+| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18枚举说明) | 否  | 是 | 设置跑马灯启动策略，该属性值生效需将start设置为true。<br/>默认值：MarqueeStartPolicy.DEFAULT                                       |
 
 ## MarqueeStartPolicy<sup>18+</sup>枚举说明
 
@@ -1568,7 +1568,7 @@ struct TextExample1 {
 // xxx.ets
 @Extend(Text)
 function style() {
-  .font({ size: 12 })
+  .font({ size: 12 }, { enableVariableFontWeight: true })
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -1895,7 +1895,7 @@ struct TextExample5 {
   }
 }
 ```
-![](figures/textExample5.png)
+![](figures/setTextSelection.png)
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 
@@ -2173,18 +2173,18 @@ struct TextExample9 {
 
       Text('fontFeature').fontSize(9).fontColor(0xCCCCCC)
       // 设置文本特性
-      Text('This is ss01 on : 0123456789')
-        .fontFeature("\"ss01\" on")
+      Text('This is frac on : 1/2 2/3 3/4')
+        .fontFeature("\"frac\" on")
         .style()
-      Text('This is ss01 off: 0123456789')
-        .fontFeature("\"ss01\" off")
+      Text('This is frac off: 1/2 2/3 3/4')
+        .fontFeature("\"frac\" off")
         .style()
     }.height(300).width(350).padding({ left: 35, right: 35, top: 35 })
   }
 }
 ```
 
-![](figures/TextExample8.PNG)
+![](figures/fontFeature.png)
 
 ### 示例10（获取文本信息）
 
@@ -2327,6 +2327,14 @@ struct TextExample12 {
     };
     menuItems.push(item1);
     menuItems.unshift(item2);
+    let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.askAI));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1); // 从目标索引删除1个元素
+    }
+    targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.TRANSLATE));
+    if (targetIndex !== -1) {
+      menuItems.splice(targetIndex, 1);
+    }
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {

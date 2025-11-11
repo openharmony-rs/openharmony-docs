@@ -584,10 +584,10 @@
 | Top         | 从下向上。 |
 | Right       | 从左向右。 |
 | Bottom      | 从上向下。 |
-| LeftTop     | 左上。   |
-| LeftBottom  | 左下。   |
-| RightTop    | 右上。   |
-| RightBottom | 右下。   |
+| LeftTop     | 从左上向右下。   |
+| LeftBottom  | 从左下向右上。   |
+| RightTop    | 从右上向左下。   |
+| RightBottom | 从右下向左上。   |
 | None        | 无。    |
 
 ## SharedTransitionEffectType
