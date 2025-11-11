@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Create and run an animation shortcut on the component. For details, see [Universal Methods](../reference/apis-arkui/arkui-js/js-components-common-methods.md).
 

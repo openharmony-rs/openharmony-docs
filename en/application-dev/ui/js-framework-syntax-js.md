@@ -4,8 +4,7 @@
 <!--Owner: @sunfei2021-->
 <!--Designer: @sunfei2021-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
-
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use a .js file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
 
@@ -34,8 +33,8 @@ The ES6 syntax is supported.
 ## Objects
 
 - Application objects
-  | Name | Type | Description |
-  | -------- | -------- | -------- |
+  | Name| Type  | Description                                                        |
+  | ---- | ------ | ------------------------------------------------------------ |
   | $def | Object | Object that is exposed in the **app.js** file and obtained by **this.$app.$def**.<br>**NOTE**<br>Application objects do not support data binding. Data update should be triggered on the UI. |
 
   Example
@@ -60,6 +59,7 @@ The ES6 syntax is supported.
   };
   ```
 
+  
   ```js
   // index.js
   export default {
@@ -151,11 +151,10 @@ The ES6 syntax is supported.
 
   Example
 
-  
   ```js
   this.$rootElement().scrollTo({ position: 0 });
   this.$rootElement().scrollTo({ id: 'id', duration: 200, timingFunction: 'ease-in', complete: () => {
-      console.info('Scroll completed');
+      console.info('Scrolling completed.');
   } });
   ```
 
@@ -163,7 +162,6 @@ The ES6 syntax is supported.
 ## Obtaining a DOM Element
 
 1. Use **$refs** to obtain a DOM element.
-  
    ```html
    <!-- index.hml -->
    <div class="container">
@@ -182,7 +180,7 @@ The ES6 syntax is supported.
        ]
      },
      handleClick() {
-       const animator = this.$refs.animator; // Obtain the DOM element whose $refs attribute is animator.
+           const animator = this.$refs.animator; // Obtain the DOM element whose $refs attribute is animator.
        const state = animator.getState();
        if (state === 'Paused') {
          animator.resume();
@@ -196,7 +194,6 @@ The ES6 syntax is supported.
    ```
 
 2. Call **$element** to obtain a DOM element.
-  
    ```html
    <!-- index.hml -->
    <div class="container" style="width:500px;height: 700px; margin: 100px;">
@@ -215,7 +212,7 @@ The ES6 syntax is supported.
        ]
      },
      handleClick() {
-       const animator = this.$element('animator'); // Obtain the DOM element whose ID is animator.
+           const animator = this.$element('animator'); // Obtain the DOM element whose ID is animator.
        const state = animator.getState();
        if (state === 'Paused') {
          animator.resume();
@@ -249,7 +246,7 @@ The following shows files of the root page:
 // root.js
 export default {
   data: {
-    text: 'I am a root!',
+    text: 'I am root!',
   },
 }
 ```
@@ -279,7 +276,7 @@ export default {
     this.showValue = !this.showValue;
     console.info('parent component get parent text');
     console.info(`${this.$parent().text}`);
-    console.info("The parent component gets the child function.");
+    console.info("parent component get child function");
     console.info(`${this.$child('selfDefineChild').childClicked()}`);
   },
 }
@@ -300,7 +297,7 @@ Customize the child component.
 export default {
   data: {
     isShow: false,
-    text: 'I am the child component!',
+    text: 'I am child component!',
   },
   childClicked () {
     this.isShow = !this.isShow;
@@ -313,4 +310,3 @@ export default {
 ```
 
 ![en-us_image_0000001118642009](figures/en-us_image_0000001118642009.gif)
-<!--no_check-->
