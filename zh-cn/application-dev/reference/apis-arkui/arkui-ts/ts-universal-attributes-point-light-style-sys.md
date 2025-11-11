@@ -64,7 +64,12 @@ struct Index {
 
       Flex()
         .pointLight({
-          lightSource: { intensity: this.lightIntensity, positionX: "50%", positionY: "50%", positionZ: 80 },
+          lightSource: {
+            intensity: this.lightIntensity,
+            positionX: "50%",
+            positionY: "50%",
+            positionZ: 80
+          },
           bloom: this.bloomValue
         })
         .animation({ duration: 333 })

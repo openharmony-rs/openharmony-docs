@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
-> 从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 可以通过gesture、priorityGesture和parallelGesture给组件绑定手势识别，手势识别成功后可以通过事件回调通知组件。可以通过[触摸热区](ts-universal-attributes-touch-target.md)指定可识别手势的区域。gesture、priorityGesture和parallelGesture当前不支持使用三目运算符（条件? 表达式1 : 表达式2）切换手势绑定。
+> - 可以通过gesture、priorityGesture和parallelGesture给组件绑定手势识别，手势识别成功后可以通过事件回调通知组件。可以通过[触摸热区](ts-universal-attributes-touch-target.md)指定可识别手势的区域。gesture、priorityGesture和parallelGesture当前不支持使用三目运算符（条件? 表达式1 : 表达式2）切换手势绑定。
 
 ## gesture
 
@@ -174,20 +174,18 @@ struct GestureSettingsExample {
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 
-该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量
+该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-
 struct PanGestureWithFingerCount {
   @State offsetX: number = 0
   @State offsetY: number = 0
   @State positionX: number = 0
   @State positionY: number = 0
-  @State fingerCount: number = 0  //用于记录参与手势的触点数量
-
+  @State fingerCount: number = 0 //用于记录参与手势的触点数量
   private panOption: PanGestureOptions = new PanGestureOptions({
     direction: PanDirection.All,
     fingers: 1
@@ -213,24 +211,24 @@ struct PanGestureWithFingerCount {
         PanGesture(this.panOption)
           .onActionStart((event: GestureEvent) => {
             console.info('Pan start')
-            this.fingerCount = event.fingerInfos?.length || 0  // 记录触点数量
+            this.fingerCount = event.fingerInfos?.length || 0 // 记录触点数量
           })
           .onActionUpdate((event: GestureEvent) => {
             if (event) {
-              console.info('fingerInfos',JSON.stringify(event.fingerInfos))
+              console.info('fingerInfos', JSON.stringify(event.fingerInfos))
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0  // 更新触点数量,记录下参与当前手势的有效触点的数量
+              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量,记录下参与当前手势的有效触点的数量
             }
           })
           .onActionEnd((event: GestureEvent) => {
             this.positionX = this.offsetX
             this.positionY = this.offsetY
-            this.fingerCount = 0  // 触点离开触摸区域后归零
+            this.fingerCount = 0 // 触点离开触摸区域后归零
             console.info('Pan end')
           })
           .onActionCancel(() => {
-            this.fingerCount = 0  // 手势取消后归零
+            this.fingerCount = 0 // 手势取消后归零
           })
       )
 
@@ -242,3 +240,5 @@ struct PanGestureWithFingerCount {
   }
 }
 ```
+
+![zh-cn_image_0000001210195017](figures/zh-cn_image_0000001210195017.gif)
