@@ -113,11 +113,13 @@ struct ImageExample {
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -136,14 +138,14 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // 绑定当前js对象
     let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
-    this.listener.on('layout', funcLayout);
-    this.listener.on('draw', funcDraw);
-    this.listener.on('drawChildren', funcDrawChildren);
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
   }
 }
 ```
