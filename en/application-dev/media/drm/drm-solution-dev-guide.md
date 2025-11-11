@@ -68,7 +68,7 @@ static int HdfMediaKeySystemFactoryDriverBind(struct HdfDeviceObject *deviceObje
 {
     auto *hdfMediaKeySystemFactoryHost = new (std::nothrow) HdfMediaKeySystemFactoryHost;
     if (hdfMediaKeySystemFactoryHost == nullptr) {
-        HDF_LOGE("%{public}s: failed to create create HdfMediaKeySystemFactoryHost object", __func__);
+        HDF_LOGE("%{public}s: failed to create HdfMediaKeySystemFactoryHost object", __func__);
         return HDF_FAILURE;
     }
     int ret = HdfDeviceObjectSetInterfaceDesc(deviceObject, "ohos.hdi.drm.v1_0.IMediaKeySystemFactory"); // 2. Bind the service interface descriptor. This allows the DRM framework to access the HDI service of the DRM solution via the descriptor. Adjust according to the specific HDI API version number.
@@ -424,14 +424,14 @@ In **base/startup/init/services/etc/group**, each line indicates a user group. T
 
 Group name: Password: gid: List of users in the user group
 
-**NOTE**
-
-- **clearplay_host** in **passwd** corresponds to **uid** in **device_info.hcs**. If **uid** in **device_info.hcs** is not specified, the default value **hostName** is used.
-- **clearplay_host** in **group** corresponds to **gid** in **device_info.hcs**. If **gid** in **device_info.hcs** is not specified, the default value **hostName** is used.
+> **NOTE**
+> 
+> - **clearplay_host** in **passwd** corresponds to **uid** in **device_info.hcs**. If **uid** in **device_info.hcs** is not specified, the default value **hostName** is used.
+> - **clearplay_host** in **group** corresponds to **gid** in **device_info.hcs**. If **gid** in **device_info.hcs** is not specified, the default value **hostName** is used.
 
 ### Dynamic Loading
 
-To reduce RAM memory usage, the DRM framework supports dynamic loading of DRM plugins. After the DRM framework calls the plugin, it should promptly unload the plugin to release the occupied RAM memory. The plugin must modify its service startup properties to configure itself as a lazy loading service and add itself to the lazy loading list configuration file for the DRM framework on the device. The HDI service provides dynamic loading capabilities, which are not loaded by default during system startup but can be loaded dynamically. Here is an example:
+To reduce Random Access Memory (RAM) usage, the DRM framework supports dynamic loading of DRM plugins. After the DRM framework calls the plugin, it should promptly unload the plugin to release the occupied RAM. The plugin must modify its service startup properties to configure itself as a lazy loading service and add itself to the lazy loading list configuration file for the DRM framework on the device. The HDI service provides dynamic loading capabilities, which are not loaded by default during system startup but can be loaded dynamically. Here is an example:
 
 Set **preload** to **2** in **device_info.hcs**.
 
