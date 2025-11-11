@@ -764,7 +764,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapabilit
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 视频编解码能力指针。 |
 | const [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format) **nativeBufferFormats | 输出参数。指向OH_NativeBuffer_Format数组的指针。 |
-| uint32_t *nativeBufferFormatNum | 输出参数。OH_NativeBuffer_Format数组的元素数目。 |
+| uint32_t *nativeBufferFormatNum | 输出参数。[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)数组的元素数目。 |
 
 **返回：**
 
