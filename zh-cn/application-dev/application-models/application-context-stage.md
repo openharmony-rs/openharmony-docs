@@ -133,10 +133,10 @@ struct CreateModuleContext {
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
   <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
-
+  
   ``` TypeScript
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-
+  
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // 获取UIAbility实例的上下文
@@ -148,23 +148,23 @@ struct CreateModuleContext {
 - 在页面中获取UIAbility实例的上下文信息。
 
   <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
-
+  
   @Entry
   @Component
   struct EventHub {
     // 定义context变量
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     startAbilityTest(): void {
       let want: Want = {
         // Want参数信息
       };
       this.context.startAbility(want);
     }
-
+  
     // 页面展示
     build() {
       // ···
@@ -177,10 +177,10 @@ struct CreateModuleContext {
 
 
   <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct UIAbilityComponentsBasicUsage {
@@ -191,7 +191,7 @@ struct CreateModuleContext {
       };
       context.startAbility(want);
     }
-
+  
     // 页面展示
     build() {
       // ···
@@ -203,12 +203,12 @@ struct CreateModuleContext {
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
   <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   const TAG = '[UIAbilityComponentsUsage]';
   const DOMAIN = 0xF811;
   @Entry
@@ -375,22 +375,22 @@ export default class EntryAbility extends UIAbility {
 - **获取应用文件目录**
 
   <!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { buffer } from '@kit.ArkTS';
   import { fileIo, ReadOptions } from '@kit.CoreFileKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   const TAG: string = '[ApplicationContextFile]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   @Entry
   @Component
   struct ApplicationContextFile {
     @State message: string = 'Hello World';
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     build() {
       Row() {
         Column() {
@@ -398,7 +398,7 @@ export default class EntryAbility extends UIAbility {
           // ···
           Button() {
             Text('create file')
-        		// ···
+              // ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // 获取应用文件路径
@@ -548,7 +548,7 @@ struct AreaContext {
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
 const TAG = '[LifecycleAbility]';
 const DOMAIN = 0xF811;
 

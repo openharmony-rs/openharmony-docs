@@ -126,7 +126,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
     <!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     {
       "module": {
@@ -159,15 +159,15 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 在应用中启动一个新的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
   <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[StartAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   @Entry
   @Component
   struct StartAppServiceExt {
@@ -199,12 +199,12 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
               });
             })
           }
-
+  
           // ···
         }
       // ···
       }
-
+  
       // ···
     }
   }
@@ -214,15 +214,15 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 在应用中停止一个已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。
 
   <!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[StopAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   @Entry
   @Component
   struct StopAppServiceExt {
@@ -253,13 +253,13 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
               });
             })
           }
-
+  
           // ···
         }
-
+  
       // ···
       }
-
+  
       // ···
     }
   }
@@ -277,6 +277,8 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
   const TAG: string = '[MyAppServiceExtAbility]';
+  // ···
+  
   // ···
   
   export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
@@ -305,22 +307,22 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 使用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)建立与后台服务的连接。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
   <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   const TAG: string = '[ConnectAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   let connectionId: number;
   let want: Want = {
     deviceId: '',
     bundleName: 'com.samples.appserviceextensionability',
     abilityName: 'MyAppServiceExtAbility'
   };
-
+  
   let options: common.ConnectOptions = {
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
@@ -337,7 +339,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
       hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
-
+  
   @Entry
   @Component
   struct ConnectAppServiceExt {
@@ -361,13 +363,13 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
               hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
             })
           }
-
+  
           // ···
         }
-
+  
       // ···
       }
-
+  
       // ···
     }
   }
@@ -377,17 +379,17 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 使用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)断开与后台服务的连接。
 
   <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[DisConnectAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   let connectionId: number;
-
+  
   @Entry
   @Component
   struct DisConnectAppServiceExt {
@@ -414,13 +416,13 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
               });
             })
           }
-
+  
           // ···
         }
-
+  
       // ···
       }
-
+  
       // ···
     }
   }
