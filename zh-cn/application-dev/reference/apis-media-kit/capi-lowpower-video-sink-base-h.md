@@ -99,7 +99,7 @@ LowPowerVideoSink到达目标点时调用该方法，包含在[OH_LowPowerVideoS
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 | const int64_t targetPts | 目标点的pts。 |
-| const bool isTimeout | 如果等待目标点超时，则为true；如果等待目标点没有超时，则为false。 |
+| const bool isTimeout | 如果等待目标点超时，则为true；如果等待目标点未超时，则为false。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnRenderStarted()
