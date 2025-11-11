@@ -136,7 +136,7 @@
 
     - 构造NativeCrash类型崩溃
 
-      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，增加如下代码：
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，并将TestNullptr注册为ArkTS接口，增加如下代码：
 
       <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
@@ -146,6 +146,21 @@
           int *p = nullptr;
           int a = *p; // 空指针解引用，程序会在此处崩溃
           return {};
+      }
+      ```
+
+      <!-- @[Sys_Native_Nullptr_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static napi_value Init(napi_env env, napi_value exports)
+      {
+          napi_property_descriptor desc[] = {
+              // ···
+              { "testNullptr", nullptr, TestNullptr, nullptr, nullptr, nullptr, napi_default, nullptr },
+              // ···
+          };
+          napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+          return exports;
       }
       ```
 
