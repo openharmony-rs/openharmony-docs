@@ -173,9 +173,9 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
 接口声明
 
 <!-- @[node_api_module_create_object_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const createObjectWithProperties: (data: string) => {name:string};
+
+``` TypeScript
+export const createObjectWithProperties: (data: string) => {name:string}; // ArkTS Object相关 napi_create_object_with_properties
 ```
 
 
