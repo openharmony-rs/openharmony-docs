@@ -46,7 +46,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
       {
         "launchType": "singleton",
         // ···
-      }
+      },
     // ···
     ]
   }
@@ -73,7 +73,7 @@ multiton启动模式的开发使用，在[module.json5配置文件](../quick-sta
       {
         "launchType": "multiton",
         // ···
-      }
+      },
     // ···
     ]
   }
@@ -110,7 +110,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
           {
             "launchType": "specified",
             // ···
-          }
+          },
         // ···
         ]
       }
@@ -202,10 +202,10 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 3. 开发者根据业务在SpecifiedAbility所对应AbilityStage的[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
 
     <!-- @[MyAbilityStage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/abilitystage/MyAbilityStage.ets) -->
-
+    
     ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
-
+    
     export default class MyAbilityStage extends AbilityStage {
       onAcceptWant(want: Want): string {
         // 在被调用方的AbilityStage中，针对启动模式为specified的UIAbility返回一个UIAbility实例对应的一个Key值

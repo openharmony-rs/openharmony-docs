@@ -56,15 +56,15 @@
 2. 在UI中通过[eventHub.emit()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubemit)方法触发该事件，在触发事件的同时，根据需要传入参数信息。
 
     <!-- @[EventHubPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/pages/EventHubPage.ets) -->
-
+    
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
-
+    
     @Entry
     @Component
     struct EventHubPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       eventHubFunc(): void {
         // 不带参数触发自定义“event1”事件
         this.context.eventHub.emit('event1');
@@ -74,7 +74,7 @@
         this.context.eventHub.emit('event1', 2, 'test');
         // 开发者可以根据实际的业务场景设计事件传递的参数
       }
-
+    
       build() {
         Column() {
           List({ initialIndex: 0 }) {
@@ -90,7 +90,7 @@
               })
             // ···
             }
-
+    
             ListItem() {
               Row() {
                 // ···
@@ -125,7 +125,7 @@
     
     ``` TypeScript
     // ···
-    import { UIAbility } from '@kit.AbilityKit';
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     // ···
     
     export default class EntryAbility extends UIAbility {

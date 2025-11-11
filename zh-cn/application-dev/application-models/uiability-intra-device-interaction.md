@@ -31,23 +31,24 @@
 1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-
+    
     ``` TypeScript
-    import { common, Want } from '@kit.AbilityKit';
+    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       build() {
         Column() {
           List({ initialIndex: 0, space: 8 }) {
+    
             ListItem() {
               Row() {
                 // ···
@@ -63,7 +64,7 @@
                   parameters: {
                     // 自定义信息
                     // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
-                   info: $r('app.string.main_page_return_info')
+                    info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -74,6 +75,7 @@
                 });
               })
             }
+    
             // ···
           }
         // ···
@@ -86,11 +88,11 @@
 2. 在FuncAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调文件中接收EntryAbility传递过来的参数。
 
     <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
-
+    
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     // ···
-
+    
     export default class FuncAbilityA extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 接收调用方UIAbility传过来的参数
@@ -98,7 +100,7 @@
         let info = funcAbilityWant?.parameters?.info;
         // ···
       }
-
+    
     // ···
     }
     ```
@@ -159,7 +161,7 @@
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
-    import { common, Want } from '@kit.AbilityKit';
+    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
@@ -282,7 +284,7 @@
     <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
     
     ``` TypeScript
-    import { common, Want } from '@kit.AbilityKit';
+    import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     
@@ -368,7 +370,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 <!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
+import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -482,7 +484,7 @@ export default class ColdStartAbility extends UIAbility {
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, UIAbility } from '@kit.AbilityKit';
+    import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
     const DOMAIN_NUMBER: number = 0xFF00;
     const TAG: string = '[HotStartAbility]';
@@ -490,8 +492,8 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-     // ···
-     
+    // ···
+    
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
@@ -544,14 +546,14 @@ export default class ColdStartAbility extends UIAbility {
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
-
+        
         ``` TypeScript
         @Entry
         @Component
         struct Index {
           @State message: string = 'Index';
           pathStack: NavPathStack = new NavPathStack();
-
+        
           onPageShow(): void {
             let somePage = AppStorage.get<string>('nameForNavi')
             if (somePage) {
@@ -559,7 +561,7 @@ export default class ColdStartAbility extends UIAbility {
               AppStorage.delete('nameForNavi');
             }
           }
-
+        
           build() {
             Navigation(this.pathStack) {
               Text(this.message)
@@ -582,18 +584,18 @@ export default class ColdStartAbility extends UIAbility {
     3. 实现Navigation子页面。
 
         <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
-
+        
         ``` TypeScript
         @Builder
         export function PageOneBuilder() {
           PageOne();
         }
-
+        
         @Component
         export struct PageOne {
           @State message: string = 'PageOne';
           pathStack: NavPathStack = new NavPathStack();
-
+        
           build() {
             NavDestination() {
               Text(this.message)
@@ -826,31 +828,31 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 
     <!-- @[MyParcelable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
-
+    
     ``` TypeScript
     import { rpc } from '@kit.IPCKit';
     // ···
-
+    
     class MyParcelable {
       public num: number = 0;
       public str: string = '';
-
+    
       constructor(num: number, string: string) {
         this.num = num;
         this.str = string;
       }
-
+    
       mySequenceable(num: number, string: string): void {
         this.num = num;
         this.str = string;
       }
-
+    
       marshalling(messageSequence: rpc.MessageSequence): boolean {
         messageSequence.writeInt(this.num);
         messageSequence.writeString(this.str);
         return true;
       }
-
+    
       unmarshalling(messageSequence: rpc.MessageSequence): boolean {
         this.num = messageSequence.readInt();
         this.str = messageSequence.readString();
@@ -865,60 +867,59 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 
     <!-- @[CalleeAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
-
+    
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { rpc } from '@kit.IPCKit';
-
     const MSG_SEND_METHOD: string = 'CallSendMsg';
     const DOMAIN_NUMBER: number = 0xFF00;
     const TAG: string = '[CalleeAbility]';
-
+    
     class MyParcelable {
       public num: number = 0;
       public str: string = '';
-
+    
       constructor(num: number, string: string) {
         this.num = num;
         this.str = string;
       }
-
+    
       mySequenceable(num: number, string: string): void {
         this.num = num;
         this.str = string;
       }
-
+    
       marshalling(messageSequence: rpc.MessageSequence): boolean {
         messageSequence.writeInt(this.num);
         messageSequence.writeString(this.str);
         return true;
       }
-
+    
       unmarshalling(messageSequence: rpc.MessageSequence): boolean {
         this.num = messageSequence.readInt();
         this.str = messageSequence.readString();
         return true;
       }
     }
-
+    
     function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
-
+    
       // 获取Caller发送的序列化数据
       let receivedData: MyParcelable = new MyParcelable(0, '');
       data.readParcelable(receivedData);
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `receiveData[${receivedData.num}, ${receivedData.str}]`);
       let num: number = receivedData.num;
-
+    
       // 作相应处理
       // 返回序列化数据result给Caller
       return new MyParcelable(num + 1, `send ${receivedData.str} succeed`) as rpc.Parcelable;
     }
-
+    
     export default class CalleeAbility extends UIAbility {
       private caller: Caller | undefined;
-
+    
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
           this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
@@ -926,7 +927,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
           hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
         }
       }
-
+    
       releaseCall(): void {
         try {
           if (this.caller) {
@@ -938,7 +939,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
           hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `caller release failed with ${error}`);
         }
       }
-
+    
       onDestroy(): void {
         try {
           this.callee.off(MSG_SEND_METHOD);
@@ -967,20 +968,20 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)属性实现了[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件的Caller通信接口。如下示例通过this.context获取UIAbility实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)监听。应用开发者根据实际需要做相应处理。
 
     <!-- @[startAbilityByCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartUIAbilityByCaller/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     import { common, Want, Caller } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[Index]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct Index {
       caller: Caller | undefined = undefined;
-
+    
       // 注册caller的release监听
       private regOnRelease(caller: Caller): void {
         hilog.info(DOMAIN_NUMBER, TAG, `caller is ${caller}`);
@@ -995,7 +996,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to caller register on release. Code is ${code}, message is ${message}`);
         }
       };
-
+    
       build() {
         Column() {
           List({ initialIndex: 0 }) {

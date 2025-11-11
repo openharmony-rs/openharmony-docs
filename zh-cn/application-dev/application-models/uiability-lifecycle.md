@@ -51,11 +51,13 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
-  // ···
+// ···
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 执行UIAbility整个生命周期中仅发生一次的业务逻辑
   }
-  // ···
+
+// ···
 }
 ```
 
@@ -74,7 +76,7 @@ export default class EntryAbility extends UIAbility {
   <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
   
   ``` TypeScript
-  import { UIAbility } from '@kit.AbilityKit';
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   // ···
@@ -82,10 +84,11 @@ export default class EntryAbility extends UIAbility {
   const DOMAIN = 0x0000;
   
   export default class EntryAbility extends UIAbility {
-  
-    // ···
+  // ···
   
     onWindowStageCreate(windowStage: window.WindowStage): void {
+      // ···
+  
       // ···
       // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
       try {
@@ -121,7 +124,7 @@ export default class EntryAbility extends UIAbility {
       hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
       // 设置UI加载
       windowStage.loadContent('pages/Index', (err) => {
-        // ···
+      // ···
       });
     }
   
@@ -138,7 +141,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
@@ -162,7 +165,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onBackground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
@@ -183,7 +186,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -197,6 +200,7 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 加载UI资源
+
     this.windowStage = windowStage;
     // ···
   }
@@ -225,7 +229,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 // ···
 
@@ -234,6 +238,7 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 加载UI资源
+
     // ···
   }
 
@@ -242,7 +247,8 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy(): void {
     // 释放UI资源
   }
-  // ···
+
+// ···
 }
 ```
 
@@ -256,7 +262,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
