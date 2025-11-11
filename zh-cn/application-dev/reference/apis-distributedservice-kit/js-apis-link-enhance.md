@@ -55,6 +55,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -108,6 +109,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -151,6 +153,7 @@ start():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -187,6 +190,7 @@ stop():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -225,6 +229,7 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -269,6 +274,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -320,6 +326,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -372,6 +379,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -424,6 +432,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -488,6 +497,7 @@ connect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -531,6 +541,7 @@ disconnect():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -575,6 +586,7 @@ close():&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -625,6 +637,7 @@ getPeerDeviceId():&nbsp;string
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -672,6 +685,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -727,6 +741,7 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -778,6 +793,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -829,6 +845,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -877,6 +894,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -928,6 +946,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -975,6 +994,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
