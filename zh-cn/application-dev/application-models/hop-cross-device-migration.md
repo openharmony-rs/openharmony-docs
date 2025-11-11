@@ -1,10 +1,10 @@
 # 跨端迁移
-<!--Kit: -->
-<!--Subsystem: -->
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: -->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
