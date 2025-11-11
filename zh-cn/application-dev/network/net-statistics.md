@@ -155,7 +155,6 @@ tcp.getSocketFd().then((sockfd: number) => {
 
 ```ts
 import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 class IfaceInfo {
   iface: string = "wlan0"
@@ -164,19 +163,19 @@ class IfaceInfo {
 }
 // 获取指定网卡历史流量信息。
 statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.log(
+  console.info(
     "getTrafficStatsByIface bytes of received = " +
     JSON.stringify(statsInfo.rxBytes)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface bytes of sent = " +
     JSON.stringify(statsInfo.txBytes)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface packets of received = " +
     JSON.stringify(statsInfo.rxPackets)
   );
-  console.log(
+  console.info(
     "getTrafficStatsByIface packets of sent = " +
     JSON.stringify(statsInfo.txPackets)
   );
@@ -191,10 +190,10 @@ let uidInfo = new UidInfo()
 
 // 获取指定应用历史流量信息。
 statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.log("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.log("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.log("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.log("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
 })
 ```
 
