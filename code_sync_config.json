@@ -2195,6 +2195,56 @@
 						"start_line":290
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"HTTP_interceptor_case_import",
+						"start_line":16
+					},
+					{
+						"end_line":134,
+						"name":"HTTP_interceptor_case_creat_request",
+						"start_line":131
+					},
+					{
+						"end_line":139,
+						"name":"HTTP_interceptor_case_chain",
+						"start_line":136
+					},
+					{
+						"end_line":127,
+						"name":"HTTP_interceptor_case_creat_http_interceptor",
+						"start_line":32
+					},
+					{
+						"end_line":148,
+						"name":"HTTP_interceptor_case_addChain",
+						"start_line":141
+					},
+					{
+						"end_line":153,
+						"name":"HTTP_interceptor_case_apply",
+						"start_line":150
+					},
+					{
+						"end_line":162,
+						"name":"HTTP_interceptor_case_options",
+						"start_line":155
+					},
+					{
+						"end_line":193,
+						"name":"HTTP_interceptor_case_request",
+						"start_line":164
+					},
+					{
+						"end_line":190,
+						"name":"HTTP_interceptor_case_request_destroy",
+						"start_line":187
+					}
+				]
 			}
 		]
 	},
