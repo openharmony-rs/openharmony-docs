@@ -56,7 +56,7 @@ Slider(options?: SliderOptions)
 
 ## SliderStyle枚举说明
 
-滑动条滑块在滑轨上显示的样式。
+滑动条滑块在滑轨上显示的样式，具体样式请参考[Slider组件滑块与滑轨是如何对齐的](../../../ui/arkts-select-component-faq.md#slider组件滑块与滑轨是如何对齐的)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,4 +1,10 @@
 # Animation Curve Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The animation curve, defined by a timing function, is a speed curve that controls the time consumed by an animation on attribute changes. The slope of the animation curve at a certain moment indicates the animation velocity and corresponds to the attribute change speed. A well-designed animation curve should be continuously smooth, in line with the user's intent, and consistent with the real world. When designing animation curves for your animations and transitions, take into account use cases and user intents.
 

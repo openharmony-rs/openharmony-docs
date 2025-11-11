@@ -23,5 +23,5 @@ A struct that encapsulates the display name of the sync root path.
 | Name| Description|
 | -- | -- |
 | uint32_t displayNameResId | Static resource ID corresponding to the display name of the application's sync root path.|
-| char *customAlias | Pointer to the custom alias, which cannot contain the following characters: [\/:*?<>\|"]. Additionally, the full name cannot be composed solely of spaces, a single dot (.), or two consecutive dots (..).| |
+| char *customAlias | Pointer to the custom alias, which cannot contain the following characters: \\\/\*\?\<\>\\:\". Additionally, the full name cannot be composed solely of spaces, a single dot (.), or two consecutive dots (..).| |
 | size_t customAliasLength | Length of the custom alias. Value range: [0, 255].|

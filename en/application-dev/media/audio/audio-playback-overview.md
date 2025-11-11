@@ -26,16 +26,14 @@ In addition to the preceding classes, you can also use **AVPlayer** and **SoundP
 
 - [SoundPool](../media/using-soundpool-for-playback.md): provides ArkTS and JS APIs to implement short sound playback in low latency mode. It can be used to play short sound effects, such as camera shutter sound effect, key press sound effect, and game shooting sound effect.
 
-## Development Precautions for Background Playback or Screen-Off Playback
+## Development Precautions for Background Playback
 
-To enable your application to play a video in the background or when the screen is off, the application must meet the following conditions:
+If you want the application to continue playing in the background, you must develop the audio playback functionality and choose either [accessing AVSession](../avsession/avsession-access-scene.md) or [requesting a continuous task](../../task-management/continuous-task.md) based on your service scenario. The specific rules are as follows:
 
-1. The application is registered with the system for unified management through the AVSession APIs. For details, see [AVSession Kit Development](../avsession/avsession-overview.md).
+- When an application needs to play media types (stream types **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, and **STREAM_USAGE_AUDIOBOOK**) and game types (stream type **STREAM_USAGE_GAME**) in the background, it must access AVSession and request continuous tasks.
 
-    Note: If the application has not registered an AVSession, the system will forcibly control its audio playback behavior in the background, including:
-    - When the application is running in the background, its audio stream being played will be forcibly stopped or muted.
-    - When the application attempts to start an audio stream in the background, the audio stream will be prevented from launching or forcibly muted.
+- In addition to the aforementioned playback types, when an application needs to run other user-perceptible tasks in the background for a long time, it must request continuous tasks of the [AUDIO_PLAYBACK](./../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) type.
 
-2. The application requests a continuous task to prevent from being suspended. For details, see [Continuous Task](../../task-management/continuous-task.md).
+If an application does not meet the above access standards, playback in the background will be muted and frozen by the system, preventing normal background playback. Playback will only resume and unmute when the application is brought back to the foreground.
 
-If the playback is interrupted when the application switches to the background, you can view the log to see whether the application has requested a continuous task. If the application has requested a continuous task, there is no log recording **pause id**; otherwise, there is a log recording **pause id**.
+For details, see [Background Playback](../avsession/avsession-background-scene.md).

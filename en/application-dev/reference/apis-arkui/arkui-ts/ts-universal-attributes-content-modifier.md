@@ -1,13 +1,10 @@
 # Content Modifier
-<<<<<<< HEAD
-=======
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309; @liyujie43-->
 <!--Designer: @liyi0309; @weixin_52725220-->
 <!--Tester: @lxl007; @xiong0104-->
-<!--Adviser: @Brilliantry_Rui-->
->>>>>>> 9f04030... update adviser
+<!--Adviser: @HelloCrease-->
 
 You can apply a content modifier to a component to customize its content area using a style builder.
 

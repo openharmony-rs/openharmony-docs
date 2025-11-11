@@ -6,17 +6,17 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI provides the \@Builder decorator that is a lightweight UI element reuse mechanism. This decorator has a fixed internal UI structure and passes the data only to the user. You can abstract reusable UI elements into functions and call the functions in the build function.
+ArkUI provides the \@Builder decorator as a lightweight mechanism for reusing UI elements. It encapsulates a fixed internal UI structure and only passes data to the caller. You can abstract reusable UI elements into functions and invoke these functions within the build method.
 
-Functions decorated with \@Builder are also called custom builder functions.
+Functions decorated with \@Builder are referred to as custom builder functions.
 
-Before reading this topic, you are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md).
+Before reading this topic, it is recommended to review [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md).
 
-The main differences between the @Builder decorator and the @Component decorator in terms of functions and usage are as follows:
+The main differences between the @Builder decorator and the @Component decorator in terms of functionality and usage are as follows:
 
-1. The @Builder decorator is used to encapsulate reusable UI structures and improve development efficiency by extracting repeated layout code. This decorator strictly prohibits the definition of state variables or the use of lifecycle functions. Data interaction must be implemented through parameter transfer or access to the state variables of the component to which the decorator belongs.
+1. The @Builder decorator is used to encapsulate reusable UI structures, improving development efficiency by extracting repeated layout code. It strictly prohibits the definition of state variables or the use of lifecycle functions. Data interaction must be implemented through parameter passing or by accessing the state variables of the component to which the decorator belongs.
 
-2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It allows you to build reusable composite UIs by combining multiple basic components. This decorator not only supports the definition of internal state variables, but also manages the lifecycle of components.
+2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It enables the construction of reusable composite UIs by combining multiple basic components. This decorator supports the definition of internal state variables and manages the component lifecycle.
 
 > **NOTE**
 >
@@ -27,7 +27,7 @@ The main differences between the @Builder decorator and the @Component decorator
 
 ## How to Use
 
-The \@Builder decorator can be used in two ways: private custom builder function defined in a custom component (#Private Custom Builder Function) and global custom builder function defined globally (#Global Custom Builder Function).
+The \@Builder decorator can be used in two ways: as a private custom builder function defined within a custom component (#Private Custom Builder Function) and as a global custom builder function defined globally (#Global Custom Builder Function).
 
 ### Private Custom Builder Function
 
@@ -39,7 +39,7 @@ Example:
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder decorates this function so that it can configure and build the Text component in chain calling mode.
+    // The @Builder decorator enables this function to configure and build the Text component using a chain call syntax.
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
@@ -54,7 +54,7 @@ struct BuilderDemo {
 
   build() {
     Column() {
-      // Without parameter.
+      // Without parameters.
       this.showTextBuilder()
       // With a parameter.
       this.showTextValueBuilder('Hello @Builder')

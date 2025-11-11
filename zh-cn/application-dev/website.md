@@ -729,6 +729,9 @@
         - [UI预览](ui/ui-ide-previewer.md)
         - [UI调优](ui/ui-inspector-profiler.md)
         - [UI高性能开发](ui/ui-performance-overview.md)
+        - UI开发常见问题<!--ui-development-faq-->
+          - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
+          - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -1604,8 +1607,7 @@
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频时延管理](media/audio/audio-latency.md)
         - [音频工作组管理](media/audio/audio-workgroup.md)
-        - [音效管理](media/audio/audio-effect-management.md)
-        - [空间音频管理](media/audio/public-audio-spatialization-management.md)
+        - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
@@ -3575,7 +3577,6 @@
           - [ArkUI_RoundRectShapeOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
           - [ArkUI_Vector2AnimatablePropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
-          - [ArkUI_ContentTransitionEffect](reference/apis-arkui/capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)

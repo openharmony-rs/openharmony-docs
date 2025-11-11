@@ -8,6 +8,4 @@
 
 - 数据防泄漏服务<!--dlp-->
   - [数据防泄漏服务简介](dlp-overview.md)
-  <!--Del-->
-  - [数据防泄漏服务开发指导](dlp-guidelines.md)
-  <!--DelEnd-->
+  - [数据防泄漏服务开发指导](dlp-guidelines.md)<!--RP1--><!--RP1End-->

@@ -1,10 +1,15 @@
 # FAQs
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - [Full SDK Compilation](full-sdk-compile-guide.md)
 - [Switching to Full SDK](full-sdk-switch-guide.md)
-- [Using NDK in a CMake Project](cmake-with-ndk.md)
 - [Application Model Development](faqs-ability.md)
-- ArkUI Development (ArkTS)
+- ArkUI Framework Development (ArkTS)<!--arkui-faqs-arkts-->
   - [ArkTS Syntax Usage](faqs-arkui-arkts.md)
   - [ArkUI Component Development (ArkTS)](faqs-arkui-component.md)
   - [ArkUI Layout Development (ArkTS)](faqs-arkui-layout.md)
@@ -12,6 +17,7 @@
   - [ArkUI Animation/Interaction Event Development (ArkTS)](faqs-arkui-animation-interactive-event.md)
 - [ArkUI Development (JS)](faqs-arkui-js.md)
 - [ArkTS Common Library Development](faqs-arkts-utils.md)
+- [ArkTS Modular Loading](faqs-arkts-module.md)
 - [Web Development](faqs-arkui-web.md)
 - [Bundle Management Development](faqs-bundle-management.md)
 - [Resource Manager Development](faqs-globalization.md)
@@ -27,7 +33,6 @@
 - [DFX Development](faqs-dfx.md)
 - [Pan-Sensor Development](faqs-sensor.md)
 - [Startup Development](faqs-startup.md)
-- [Distributed Device Development](faqs-distributed-device-profile.md)
 - [SDK Usage](faqs-sdk.md)
 - [NDK Usage](faqs-ndk.md)
 - [Compiler and Runtime](faqs-compiler-runtime.md)

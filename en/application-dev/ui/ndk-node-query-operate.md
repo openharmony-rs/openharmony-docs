@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The NDK provides comprehensive capabilities for node query, traversal, and operations. You can use the following APIs to efficiently access and manipulate nodes.
 
@@ -339,7 +339,7 @@ Use the [OH_ArkUI_NodeUtils_MoveTo](../reference/apis-arkui/capi-native-node-h.m
         nodeAPI->setAttribute(row2, NODE_HEIGHT, &text_item1);
         nodeAPI->setAttribute(row2, NODE_MARGIN, &item_margin);
         
-        //Create a Stack node.
+        // Create a Stack node.
         ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
         ArkUI_NumberValue stack_value[] = {{.f32=50}};
         ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};

@@ -1,10 +1,10 @@
 # Gesture Conflict Handling
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Gesture conflicts occur when multiple gesture recognizers compete for recognition on the same component or overlapping areas, resulting in unexpected behavior. Common conflict scenarios include:
 - Multiple gestures on the same component (for example, both tap and long-press gestures on a button)
@@ -98,7 +98,7 @@ In the following example, the **Image** and **Stack** components are located in 
                Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
              }.width('200vp').height('200vp')
-             // The lower half of the Stack component is the image area bound to the drag gesture.
+             // The lower half area of the stack is an image area bound to the pan gesture.
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
                .onDragStart(()=>{
@@ -151,7 +151,7 @@ Parallel gesture dynamic control is based on the successful recognition of a ges
 
 3. Parallel gesture configuration: This step is optional. A typical use case is to set the scroll gesture of an outer component to be parallel with the scroll gesture of an inner component during nested scrolling.
 
-4. Dynamic gesture control: This involves controlling whether gestures respond to user callbacks by using the **setEnable** API of gesture recognizers.
+4. Dynamic gesture control: This involves controlling whether gestures respond to user callbacks by using the **setEnabled** API of gesture recognizers.
 
 Parallel gesture dynamic control involves the following APIs.
 
@@ -391,11 +391,9 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
 
 ## Gesture Recognition Prevention
 
-Gesture recognition is based on the response chain results of [hit testing](./arkts-interaction-basic-principles.md#hit-testing). Therefore, it is efficient to dynamically intervene in gesture processing by controlling the participation status of gesture recognizers in the response chain when the user presses down.
+Gesture recognition is based on the response chain results of [hit testing](./arkts-interaction-basic-principles.md#hit-testing). By controlling gesture recognizer participation states within the response chain during user press-down events, you can efficiently implement dynamic intervention in gesture processing.
 
-This is achieved using the [onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20) API:
-
-After hit testing is completed, the system returns all gesture recognizer objects through this API. Applications can filter recognizers by type, component ID, or associated component, and proactively disable specific recognizers by calling the [preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#preventbegin20) API.
+Since API version 20, you can use the [onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20) API to prevent gesture recognition. After hit testing is completed, the system returns all gesture recognizer objects through this API. Applications can filter recognizers by type, component ID, or associated component, and proactively disable specific recognizers by calling the [preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20) API.
 
 Disabling by gesture type:
 
@@ -433,7 +431,7 @@ Disabling system built-in gestures:
   .onTouchTestDone((event, recognizers) => {
     for (let i = 0; i < recognizers.length; i++) {
       let recognizer = recognizers[i];
-      //  Disable all system built-in gestures.
+      // Disable all system built-in gestures.
       if (recognizer.isBuiltIn()) {
         recognizer.preventBegin();
       }
@@ -571,10 +569,10 @@ struct Index {
       return
     }
     let offsetY = newY - this.currentPosY;
-    if (offsetY > 10) {
+    if (Math.abs(offsetY) > 10) {
       this.showMessage((offsetY > 0) ? 'Decrease brightness' : 'Increase brightness')
+      this.currentPosY = newY
     }
-    this.currentPosY = newY
   }
 
   updateProgress(start: boolean, event: BaseGestureEvent): void {
@@ -681,4 +679,3 @@ struct Index {
   }
 }
 ```
-<!--no_check-->

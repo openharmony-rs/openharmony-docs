@@ -82,7 +82,7 @@ export default {
 
 ## 设置时间显示格式
 
-picker的hours属性定义时间的显示格式，可选类型有12小时制和24小时制。
+picker组件的hours属性用于设置时间显示格式，支持12小时制和24小时制两种模式。
 
 ```html
 <!-- xxx.hml -->
@@ -119,7 +119,7 @@ picker的hours属性定义时间的显示格式，可选类型有12小时制和2
 
 ## 添加响应事件
 
-对picker添加change和cancel事件，来对选择的内容进行确定和取消。
+为picker组件添加change和cancel事件，可以处理用户的选择确定和取消操作。
 
 ```html
 <!-- xxx.hml -->

@@ -93,7 +93,7 @@ disableHotspot(): void
 
 getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
-获取支持的功率模式，使用Promise异步回调。
+获取支持的功率模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -131,7 +131,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): void
 
-获取支持的功率模式，使用callback异步回调。
+获取支持的功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -213,7 +213,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
-获取功率模式，使用callback异步回调。
+获取功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
