@@ -964,6 +964,13 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
 
   <!-- @[Model_TaskModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskModel.ets) -->
   
+  ``` TypeScript
+  export default class TaskModel {
+    public taskName: string = 'Todo';
+    public isFinish: boolean = false;
+  }
+  ```
+  
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
   <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->
