@@ -44,7 +44,7 @@ struct Index {
 
 开发者可以使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量构造出并行构造UI的参数。
 
-如下示例演示了如何使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行数据传递。
+如下示例演示了如何使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行参数构造。
 
 ```ts
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
