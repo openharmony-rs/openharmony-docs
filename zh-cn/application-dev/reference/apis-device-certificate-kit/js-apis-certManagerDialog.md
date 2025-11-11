@@ -482,6 +482,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
+| 29700007 | No Available certificate for authorization            |
 
 **示例**：
 ```ts
@@ -513,7 +514,7 @@ try {
 ```
 ## certificateManagerDialog.openUkeyAuthDialog<sup>22+</sup>
 
-openAuthorizeDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
+openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
 
 打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。使用Promise方式异步返回结果。
 
