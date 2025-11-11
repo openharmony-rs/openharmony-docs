@@ -1043,7 +1043,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import { image } from '@ohos.media.image';
+import { image } from '@ohos.multimedia.image';
 
 try {
   // 此处仅示意，请使用getWindowProperties获取对应窗口ID再进行使用
@@ -1053,10 +1053,11 @@ try {
     console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
     pixelMap.release();
   }).catch((err: Error) =>{
-    console.error(`Failed to get snapshot. Cause code: ${err?.code}, message: ${err?.message}`);
+    console.error(`Failed to get snapshot. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch (exception: Error) {
-  console.error(`Failed to get snapshot. Cause code: ${exception?.code}, message: ${exception?.message}`);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get snapshot. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3240,15 +3241,17 @@ export default class EntryAbility extends UIAbility {
       let shouldHide = true;
       try {
         // 调用带callback参数的hideNonSystemFloatingWindows接口
-        mainWindow.hideNonSystemFloatingWindows(shouldHide, (err) => {
-          if (err: Error) {
+        mainWindow.hideNonSystemFloatingWindows(shouldHide, (err: BusinessError | null) => {
+          const errCode = err?.code;
+          if (errCode) {
             console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in hiding the non-system floating windows.');
         });
-      } catch (exception: Error) {
-        console.error(`Failed to hide the non-system floating windows. Cause code: ${exception?.code}, message: ${exception?.message}`);
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }

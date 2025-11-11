@@ -1707,8 +1707,9 @@ ArkTS-Sta示例：
 ```ts
 try {
   let isEnabled = windowClass.getImmersiveModeEnabledState();
-} catch (exception: Error) {
-  console.error(`Failed to get the window immersive mode enabled status. Cause code: ${exception?.code}, message: ${exception?.message}`);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(Failed to get the window immersive mode enabled status. Cause code: ${error.code}, message: ${error.message});
 }
 ```
 
