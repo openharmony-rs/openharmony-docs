@@ -7,35 +7,33 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onKeyEvent
 
-ArkTS-Dyn: onKeyEvent(event: (event: KeyEvent) => void): T
-
-ArkTS-Sta: onKeyEvent(event: Callback\<KeyEvent, boolean> | undefined): this
+onKeyEvent(event: (event: KeyEvent) => void): T
 
 绑定该方法的组件获焦后，按键动作触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | ArkTS-Dyn: [KeyEvent](#keyevent对象说明) <br/>ArkTS-Sta: [KeyEvent](#keyevent对象说明) \|&nbsp;undefined | 是   | 获得KeyEvent对象。 |
+| event  | [KeyEvent](#keyevent对象说明)  | 是   | 获得KeyEvent对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+|    T     | 返回当前组件。 |
 
 ## onKeyEvent<sup>15+</sup>
 ArkTS-Dyn: onKeyEvent(event: Callback\<KeyEvent, boolean>): T
@@ -56,7 +54,7 @@ ArkTS-Sta: onKeyEvent(event: Callback\<KeyEvent, boolean> | undefined): this
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean><br/> ArkTS-Sta: [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> \| undefined | 是   | 按键事件的回调。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean><br/> ArkTS-Sta: [Callback](./ts-types.md#callback12)<[KeyEvent](#keyevent对象说明), boolean> \| undefined | 是   | 按键事件的回调。<br/>**说明：** <br/>在ArkTS-Sta中调用本接口时，如果传入回调函数，此回调必须有返回值。 |
 
 **返回值：**
 
@@ -92,7 +90,7 @@ ArkTS-Sta: onKeyPreIme(event: Callback\<KeyEvent, boolean> | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onKeyEventDispatch<sup>15+</sup>
 
@@ -122,7 +120,7 @@ ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 
 ## KeyEvent对象说明
