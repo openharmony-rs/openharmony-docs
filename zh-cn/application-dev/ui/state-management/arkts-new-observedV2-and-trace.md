@@ -1008,7 +1008,9 @@ let isInfo: boolean = (wrapperHandled.info) instanceof Info; // true
 
 在UI中使用的完整示例如下。
 
-```ts
+<!-- @[Serialization_And_Deserialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/SerializationAndDeserialization.ets) -->
+
+``` TypeScript
 import { plainToInstance, Type as TypeFromLibrary } from 'class-transformer'; // 导入三方库
 import 'reflect-metadata'; // 三方库的@Type装饰器需要使用
 
@@ -1033,24 +1035,24 @@ let testJSON: Record<string, ESObject> = {
 
 @ObservedV2
 class Info {
-  @Trace name?: string;
-  @Trace age?: number;
+  @Trace public name?: string;
+  @Trace public age?: number;
 }
 
 @ObservedV2
 class Person {
-  id?: number;
+  public id?: number;
   // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
   @TypeFromLibrary(() => Info)
-  @Trace info?: Info;
+  @Trace public info?: Info;
   // 使用三方库的@Type装饰器（重命名为TypeFromLibrary）标记内层属性的类型
   @TypeFromLibrary(() => Info)
-  @Trace friends?: Info[];
+  @Trace public friends?: Info[];
 }
 
 @Entry
 @ComponentV2
-struct Index {
+struct SerializationAndDeserialization {
   @Local person: Person | undefined = undefined;
   aboutToAppear(): void {
     this.person = plainToInstance(Person, testJSON); // 直接将对象通过plainToInstance转为Person实例
@@ -1146,7 +1148,9 @@ struct RouterIndex {
     }
   }
 }
+```
 
+```ts
 // 文件pages/faqs/ChildPage.ets内容
 
 import { RouterModel } from './RouterIndex';
@@ -1169,11 +1173,50 @@ struct Detail {
 
 【正例】
 
+<!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) -->
+
 ```ts
-// 文件pages/faqs/RouterIndex.ets继承上方反例pages/faqs/RouterIndex.ets的内容
+@ObservedV2
+export class RouterModel {
+  @Trace public id: number = -1;
+  @Trace public info: string = 'default';
+}
 
-// 文件pages/faqs/ChildPage.ets内容
+@Entry
+@ComponentV2
+struct RouterIndex {
+  @Local paramsInfo: RouterModel = new RouterModel();
+  onJumpClick(): void {
+    this.paramsInfo.id = 0;
+    this.paramsInfo.info = 'RouterModel';
+    this.getUIContext().getRouter().pushUrl({
+      url: 'pages/faqs/ChildPage',
+      params: this.paramsInfo // 传递@ObservedV2实例到子页面
+    }, (err) => {
+      if (err) {
+        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('Invoke pushUrl succeeded.');
+    })
+  }
 
+  build() {
+    Column() {
+      Text('Parent page')
+      Button('Jump')
+        .onClick(() => {
+          this.onJumpClick();
+        })
+    }
+  }
+}
+
+```
+
+<!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) -->
+
+```ts
 import { RouterModel } from './RouterIndex';
 import { plainToInstance } from 'class-transformer'; // 导入三方库
 
