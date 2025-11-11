@@ -28,7 +28,7 @@
 
 ## 后台播放开发须知
 
-应用如果需要实现在后台播放音频，除了开发音频播放功能之外，还需要根据自身业务场景，选择[接入AVSession](../avsession/avsession-access-scene.md)或[申请长时任务](../../task-management/continuous-task.md)，具体规则为：
+应用如果需要实现在后台播放音频（包含熄屏播放音频），除了开发音频播放功能之外，还需要根据自身业务场景，选择[接入AVSession](../avsession/avsession-access-scene.md)或[申请长时任务](../../task-management/continuous-task.md)，具体规则为：
 
 - 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。
 
