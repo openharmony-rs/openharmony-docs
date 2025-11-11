@@ -27,10 +27,15 @@
 
 状态管理V1中\@State等装饰器默认支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，下面的例子就展示了这一限制：
 
-```ts
+<!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateTrack]';
 class Info {
-  name: string = 'Jack';
-  age: number = 12;
+  public name: string = 'Jack';
+  public age: number = 12;
 }
 
 @Entry
@@ -40,7 +45,7 @@ struct Index {
 
   // 借助getFontSize的日志打印，可以分辨哪个组件触发了渲染
   getFontSize(id: number): number {
-    console.info(`Component ${id} render`);
+    hilog.info(DOMAIN_NUMBER, TAG, `Component ${id} render`);
     return 30;
   }
 
@@ -71,25 +76,26 @@ struct Index {
 }
 ```
 
+
 > **说明：**
 >
 > 当UI刷新时，会执行组件的属性设置方法，利用这一机制可以通过观察`getFontSize`方法是否被调用来判断当前组件是否刷新。
 
 - UI首次渲染完成，观察到输出如下日志：
-```
-Component 1 render
-Component 2 render
-```
+  ```
+  Component 1 render
+  Component 2 render
+  ```
 - 当点击`Button('change name')`时，即使只修改了`info.name`，观察日志发现两个Text组件仍会重新渲染。组件```Text(`age: ${this.info.age}`)```并未使用`name`属性，但仍因为`info.name`的改变而刷新，因此这次刷新是冗余的。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
--  同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
+  ```
+  Component 1 render
+  Component 2 render
+  ```
+- 同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
+  ```
+  Component 1 render
+  Component 2 render
+  ```
 
 造成上述冗余刷新的根本原因是：状态管理V1中\@State等装饰器无法精准观察类属性的访问与变更。为了实现类对象属性的精准观察，引入\@Track装饰器。
 
@@ -113,10 +119,16 @@ Component 2 render
 
 使用\@Track装饰器可以避免冗余刷新。
 
-```ts
+<!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateTrack]';
+
 class LogTrack {
-  @Track str1: string;
-  @Track str2: string;
+  @Track public str1: string;
+  @Track public str2: string;
 
   constructor(str1: string) {
     this.str1 = str1;
@@ -125,12 +137,12 @@ class LogTrack {
 }
 
 class LogNotTrack {
-  str1: string;
-  str2: string;
+  public str1: string;
+  public str2: string;
 
   constructor(str1: string) {
     this.str1 = str1;
-    this.str2 = '世界';
+    this.str2 = 'World';
   }
 }
 
@@ -138,10 +150,10 @@ class LogNotTrack {
 @Component
 struct AddLog {
   @State logTrack: LogTrack = new LogTrack('Hello');
-  @State logNotTrack: LogNotTrack = new LogNotTrack('你好');
+  @State logNotTrack: LogNotTrack = new LogNotTrack('Hello');
 
   isRender(index: number) {
-    console.info(`Text ${index} is rendered`);
+    hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
     return 50;
   }
 
@@ -149,12 +161,14 @@ struct AddLog {
     Row() {
       Column() {
         Text(this.logTrack.str1) // Text1
+          .id('str1')
           .fontSize(this.isRender(1))
           .fontWeight(FontWeight.Bold)
         Text(this.logTrack.str2) // Text2
           .fontSize(this.isRender(2))
           .fontWeight(FontWeight.Bold)
         Button('change logTrack.str1')
+          .id('str2')
           .onClick(() => {
             this.logTrack.str1 = 'Bye';
           })
@@ -166,7 +180,7 @@ struct AddLog {
           .fontWeight(FontWeight.Bold)
         Button('change logNotTrack.str1')
           .onClick(() => {
-            this.logNotTrack.str1 = '再见';
+            this.logNotTrack.str1 = 'Bye';
           })
       }
       .width('100%')
@@ -175,6 +189,9 @@ struct AddLog {
   }
 }
 ```
+
+
+
 
 在上面的示例中：
 
@@ -205,14 +222,19 @@ struct AddLog {
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track装饰的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
 
-```ts
+<!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN_NUMBER: number = 0XFF00;
+const TAG: string = '[Sample_StateTrack]';
 class Log {
-  @Track logInfo: string;
-  owner: string;
-  id: number;
-  time: Date;
-  location: string;
-  reason: string;
+  @Track public logInfo: string;
+  public owner: string;
+  public id: number;
+  public time: Date;
+  public location: string;
+  public reason: string;
 
   constructor(logInfo: string) {
     this.logInfo = logInfo;
@@ -237,14 +259,13 @@ struct AddLog {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             // 没有被@Track装饰的属性可以在点击事件中使用。
-            console.info('owner: ' + this.log.owner +
+            hilog.info(DOMAIN_NUMBER, TAG, 'owner: ' + this.log.owner +
               ' id: ' + this.log.id +
               ' time: ' + this.log.time +
               ' location: ' + this.log.location +
               ' reason: ' + this.log.reason);
             this.log.time = new Date();
             this.log.id++;
-
             this.log.logInfo += ' info.';
           })
       }
@@ -254,6 +275,8 @@ struct AddLog {
   }
 }
 ```
+
+
 
 处理步骤：
 
