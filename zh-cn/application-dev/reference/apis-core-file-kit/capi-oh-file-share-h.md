@@ -224,7 +224,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 | -- | -- |
 | [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | 一个指向FileShare_PolicyInfo实例的指针。 |
 | unsigned int policyNum | FileShare_PolicyInfo实例数组的大小。 |
-| bool **result | 授权校验结果指针。请引用头文件malloc.h并使用free()进行资源释放。 |
+| bool **result | 授权校验结果指针。true表示有持久化授权；false表示不具有持久化授权。请引用头文件malloc.h并使用free()进行资源释放。 |
 | unsigned int *resultNum | 校验结果数组的大小。 |
 
 **返回：**
