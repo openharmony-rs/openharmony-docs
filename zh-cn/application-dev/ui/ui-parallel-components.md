@@ -42,7 +42,7 @@ struct Index {
 ```
 ![ui_parallel002](figures/ui_parallel002.png)
 
-开发者可以使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行数据传递。
+开发者可以使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)传入外部状态变量。
 
 如下示例演示了如何使用[ParallelizeUI<T>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行数据传递。
 
