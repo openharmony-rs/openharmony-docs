@@ -56,6 +56,32 @@ struct TodoList {
 
 <!-- @[Main_Local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/LocalPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/LocalPage.ets
+@Entry
+@ComponentV2
+struct TodoList {
+  @Local isFinish: boolean = false;
+
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Row() {
+        // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+        Image(this.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+          .width(28)
+          .height(28)
+        Text('task1')
+          .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+      }
+      .onClick(() => this.isFinish = !this.isFinish)
+    }
+  }
+}
+```
+
 ### 添加\@Param，实现组件接受外部输入
 实现任务本地状态切换后，为增强待办事项列表的灵活性，需要能够动态设置每个任务的名称，而不是固定在代码中。引入\@Param装饰器后，子组件被装饰的变量可以接收父组件传入的值，实现单向数据同步。\@Param默认只读，使用\@Param \@Once可在子组件中对传入的值进行本地更新。
 
