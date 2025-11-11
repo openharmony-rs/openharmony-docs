@@ -124,6 +124,8 @@ audioSessionManager.deactivateAudioSession().then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioSessionManager.deactivateAudioSession().then(() => {
   console.info('deactivateAudioSession SUCCESS');
 }).catch(async(err: BusinessError) => {

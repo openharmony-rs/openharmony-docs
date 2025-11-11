@@ -7,7 +7,7 @@
 
 ## AudioVolumeType
 
-表示音频流类型的枚举。
+表示音频音量类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -306,7 +306,7 @@
 
 ## StreamUsage
 
-表示音频流使用类型的枚举。
+表示播放音频流类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -541,7 +541,7 @@
 
 ## SourceType<sup>8+</sup>
 
-表示音源类型的枚举。
+表示录制音频流类型的枚举。
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |

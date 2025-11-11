@@ -37,7 +37,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback\<int>\
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音频流音量类型。                                                 |
 | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的音量成功，err为null，data为获取到的指定流的音量；否则为错误对象。<br>指定流的音量等级范围可通过[getMinVolume](#getminvolume9)和[getMaxVolume](#getmaxvolume9)获取。 |
 
 **示例：**
@@ -92,7 +92,7 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -140,7 +140,7 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -209,7 +209,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音频流音量类型。                                                 |
 | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最小音量成功，err为null，data为获取到的指定流的最小音量；否则为错误对象。 |
 
 **示例：**
@@ -264,7 +264,7 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -312,7 +312,7 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -381,7 +381,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音量流类型。                                                 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype)     | 是   | 音频流音量类型。                                                 |
 | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。<br>ArkTS-Sta：当获取指定流的最大音量成功，err为null，data为获取到的指定流的最大音量；否则为错误对象。 |
 
 **示例：**
@@ -436,7 +436,7 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -484,7 +484,7 @@ ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -551,7 +551,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 
 | 参数名     | 类型                                | 必填 | 说明                                            |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                    |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。                                    |
 | callback   | AsyncCallback&lt;boolean&gt;        | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定音量流静音状态成功，err为undefined，data为true表示静音，false表示非静音；否则为错误对象。<br>ArkTS-Sta：当获取指定音量流静音状态成功，err为null，data为true表示静音，false表示非静音；否则为错误对象。 |
 
 **示例：**
@@ -604,7 +604,7 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -640,7 +640,7 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 | 参数名     | 类型                                | 必填 | 说明         |
 | ---------- | ----------------------------------- | ---- | ------------ |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。 |
 
 **返回值：**
 
@@ -1261,7 +1261,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。                                             |
 | volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                               |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
 | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取音量增益dB值成功，err为undefined，data为获取到的音量增益dB值；否则为错误对象。<br>ArkTS-Sta：当获取音量增益dB值成功，err为null，data为获取到的音量增益dB值；否则为错误对象。 |
@@ -1328,7 +1328,7 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。                                             |
 | volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                             |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
 
@@ -1396,7 +1396,7 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频流音量类型。                                             |
 | volumeLevel | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音量等级。                                             |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)           | 是   | 设备类型。                                               |
 

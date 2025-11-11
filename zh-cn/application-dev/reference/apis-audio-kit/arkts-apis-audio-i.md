@@ -238,7 +238,7 @@ audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_D
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                        |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音量流类型。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                                    |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频流音量类型。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20                                    |
 | volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20  |
 | updateUi   | boolean                             | 否 | 否 |  是否在UI中显示音量变化。true表示显示，false表示不显示。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20             |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 20|
