@@ -12,7 +12,9 @@
 
 ## onAlert
 
-onAlert(callback: Callback\<OnAlertEvent, boolean\>)
+ArkTS-Dyn: onAlert(callback: Callback\<OnAlertEvent, boolean\>)
+
+ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined): this
 
 网页触发alert()告警弹窗时触发回调。
 
@@ -26,7 +28,7 @@ onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 | 参数名     | 类型                   | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\>                | 是    | 网页触发alert()告警弹窗时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\>  <br/>ArkTS-Sta: Callback\<[OnAlertEvent](./arkts-basic-components-web-i.md#onalertevent12), boolean\> \|  undefined| 是    | 网页触发alert()告警弹窗时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
@@ -269,7 +271,9 @@ ArkTS-Sta示例：
 
 ## onConfirm
 
-onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
+ArkTS-Dyn: onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
+
+ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined): this
 
 网页调用confirm()告警时触发此回调。
 
@@ -283,7 +287,7 @@ onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\>                | 是    | 网页调用confirm()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnConfirmEvent](./arkts-basic-components-web-i.md#onconfirmevent12), boolean\> \|  undefined| 是    | 网页调用confirm()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终确认结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
@@ -411,7 +415,9 @@ ArkTS-Sta示例：
 
 ## onPrompt<sup>9+</sup>
 
-onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
+ArkTS-Dyn: onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
+
+ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined): this
 
 网页调用prompt()告警时触发此回调。
 
@@ -425,7 +431,7 @@ onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\>                | 是    | 网页调用prompt()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认、取消和输入），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终处理结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
+| callback     | ArkTS-Dyn: Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnPromptEvent](./arkts-basic-components-web-i.md#onpromptevent12), boolean\> \|  undefined| 是    | 网页调用prompt()告警时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认、取消和输入），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终处理结果。当回调返回false时，弹窗的处理结果会被视为取消。 |
 
 **示例：**
 
@@ -795,7 +801,9 @@ ArkTS-Sta示例：
 
 ## onErrorReceive
 
-onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
+ArkTS-Dyn: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
+
+ArkTS-Sta: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\> | undefined): this
 
 网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
 
@@ -809,7 +817,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
 
 | 参数名     | 类型                                     | 必填   | 说明            |
 | ------- | ---------------------------------------- | ---- | --------------- |
-| callback | Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> | 是    | 网页收到 Web 资源加载错误时触发。      |
+| callback | ArkTS-Dyn: Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnErrorReceiveEvent](./arkts-basic-components-web-i.md#onerrorreceiveevent12)\> \|  undefined| 是    | 网页收到 Web 资源加载错误时触发。      |
 
 **示例：**
 
@@ -1256,7 +1264,9 @@ ArkTS-Sta示例：
 
 ## onProgressChange
 
-onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
+ArkTS-Dyn: onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
+
+ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefined): this
 
 网页加载进度变化时触发该回调。
 
@@ -1270,7 +1280,7 @@ onProgressChange(callback: Callback\<OnProgressChangeEvent\>)
 
 | 参数名         | 类型   | 必填   | 说明                  |
 | ----------- | ------ | ---- | --------------------- |
-| callback | Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> | 是    | 页面加载进度变化时触发的回调。 |
+| callback | ArkTS-Dyn: Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnProgressChangeEvent](./arkts-basic-components-web-i.md#onprogresschangeevent12)\> \|  undefined| 是    | 页面加载进度变化时触发的回调。 |
 
 **示例：**
 
@@ -1462,7 +1472,9 @@ ArkTS-Sta示例：
 
 ## onRenderExited<sup>9+</sup>
 
-onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
+ArkTS-Dyn: onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
+
+ArkTS-Sta: onRenderExited(callback: Callback<OnRenderExitedEvent> | undefined): this
 
 应用渲染进程异常退出时触发该回调。
 
@@ -1482,7 +1494,7 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 | 参数名              | 类型                                     | 必填   | 说明             |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
-| callback | Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> | 是    | 渲染过程退出时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> <br/>ArkTS-Sta: Callback\<[OnRenderExitedEvent](./arkts-basic-components-web-i.md#onrenderexitedevent12)\> \|  undefined| 是    | 渲染过程退出时触发。 |
 
 **示例：**
 
@@ -1535,7 +1547,9 @@ onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
 ## onRenderProcessNotResponding<sup>12+</sup>
 
-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
+ArkTS-Dyn: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
+
+ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback | undefined): this
 
 渲染进程无响应时触发该回调函数。如果Web组件无法处理输入事件，或者无法在合理的时间范围内导航到新的URL，则认为网页进程无响应，并将触发该回调。
 
@@ -1553,7 +1567,7 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) | 是    | 渲染进程无响应时触发的回调。 |
+| callback | ArkTS-Dyn: [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) <br/>ArkTS-Sta: [OnRenderProcessNotRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessnotrespondingcallback12) \|  undefined| 是    | 渲染进程无响应时触发的回调。 |
 
 **示例：**
 
@@ -1604,7 +1618,9 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 ## onRenderProcessResponding<sup>12+</sup>
 
-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
+ArkTS-Dyn: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
+
+ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback | undefined): this
 
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
@@ -1618,7 +1634,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 | 参数名   | 类型                                                         | 必填   | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12) | 是    | 渲染进程由无响应状态变回正常运行状态时触发的回调。 |
+| callback | ArkTS-Dyn: [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12)<br/>ArkTS-Sta: [OnRenderProcessRespondingCallback](./arkts-basic-components-web-t.md#onrenderprocessrespondingcallback12) \|  undefined | 是    | 渲染进程由无响应状态变回正常运行状态时触发的回调。 |
 
 **示例：**
 
@@ -1944,7 +1960,9 @@ ArkTS-Sta示例：
 
 ## onScaleChange<sup>9+</sup>
 
-onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
+ArkTS-Dyn: onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
+
+ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): this
 
 当前页面显示比例的变化时触发该回调。
 
@@ -1958,7 +1976,7 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> | 是 | 当前页面显示比例的变化时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当前页面显示比例的变化时触发。 |
 
 **示例：**
 
@@ -2986,7 +3004,9 @@ ArkTS-Sta示例：
 
 ## onContextMenuHide<sup>11+</sup>
 
-onContextMenuHide(callback: OnContextMenuHideCallback)
+ArkTS-Dyn: onContextMenuHide(callback: OnContextMenuHideCallback)
+
+ArkTS-Sta: onContextMenuHide(callback: OnContextMenuHideCallback | undefined): this
 
 长按特定元素（例如图片，链接）或鼠标右键，隐藏菜单。
 
@@ -3000,7 +3020,7 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) | 是 | 菜单相关回调。     |
+| callback  | ArkTS-Dyn: [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11)<br/>ArkTS-Sta: [OnContextMenuHideCallback](./arkts-basic-components-web-t.md#oncontextmenuhidecallback11) \|  undefined | 是 | 菜单相关回调。     |
 
 **示例：**
 
@@ -3049,7 +3069,9 @@ ArkTS-Sta示例：
 
 ## onScroll<sup>9+</sup>
 
-onScroll(callback: Callback\<OnScrollEvent\>)
+ArkTS-Dyn: onScroll(callback: Callback\<OnScrollEvent\>)
+
+ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
 
 通知网页全局滚动位置。
 
@@ -3071,7 +3093,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当滚动条滑动到指定位置时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当滚动条滑动到指定位置时触发。 |
 
 **示例：**
 
@@ -3389,7 +3411,9 @@ ArkTS-Sta示例：
 
 ## onWindowNew<sup>9+</sup>
 
-onWindowNew(callback: Callback\<OnWindowNewEvent\>)
+ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
+
+ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined): this
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
@@ -3408,7 +3432,7 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\>           | 是 | 网页要求用户创建窗口时触发的回调。    |
+| callback       | ArkTS-Dyn: Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\> <br/>ArkTS-Sta: Callback\<[OnWindowNewEvent](./arkts-basic-components-web-i.md#onwindownewevent12)\> \|  undefined| 是 | 网页要求用户创建窗口时触发的回调。    |
 
 **示例：**
 
@@ -3720,7 +3744,9 @@ ArkTS-Dyn示例：
 
 ## onWindowExit<sup>9+</sup>
 
-onWindowExit(callback: () => void)
+ArkTS-Dyn: onWindowExit(callback: () => void)
+
+ArkTS-Sta: onWindowExit(callback: (() => void) | undefined): this
 
 通知用户窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度讲，应用应该确保用户可以知道他们交互的页面已关闭。
 
@@ -3734,7 +3760,7 @@ onWindowExit(callback: () => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 窗口请求关闭的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: () => void \|  undefined| 是 | 窗口请求关闭的回调函数。 |
 
 **示例：**
 
@@ -4017,7 +4043,9 @@ ArkTS-Sta示例：
 
 ## onInterceptKeyEvent<sup>9+</sup>
 
-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
+ArkTS-Dyn: onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
+
+ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefined): this
 
 设置键盘事件的回调函数，该回调在被Webview使用前触发。
 
@@ -4031,7 +4059,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean | 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入ArkWeb内核。 |
+| callback | ArkTS-Dyn: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean <br/>ArkTS-Sta: (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)) => boolean \|  undefined| 是 | 触发的KeyEvent事件。<br>返回值为boolean类型，true表示将该KeyEvent传入Webview内核，false表示不将该KeyEvent传入ArkWeb内核。 |
 
 **示例：**
 
@@ -4197,7 +4225,7 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例
+ArkTS-Sta示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -4295,7 +4323,9 @@ ArkTS-Sta示例：
 
 ## onFirstContentfulPaint<sup>10+</sup>
 
- onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
+ ArkTS-Dyn: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
+
+ ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined): this
 
 设置网页首次内容绘制回调函数。
 
@@ -4309,7 +4339,7 @@ ArkTS-Sta示例：
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制回调函数。          |
+| callback    | ArkTS-Dyn: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\><br/>ArkTS-Sta: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> \|  undefined | 是 | 网页首次内容绘制回调函数。          |
 
 **示例：**
 
@@ -4366,7 +4396,9 @@ ArkTS-Sta示例：
 
 ## onFirstMeaningfulPaint<sup>12+</sup>
 
-onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
+ArkTS-Dyn: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12))
+
+ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | undefined): this
 
 设置网页绘制页面主要内容回调函数。
 
@@ -4380,7 +4412,7 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) | 是 | 网页绘制页面主要内容度量信息的回调。 |
+| callback | ArkTS-Dyn: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) <br/>ArkTS-Sta: [OnFirstMeaningfulPaintCallback](./arkts-basic-components-web-t.md#onfirstmeaningfulpaintcallback12) \|  undefined| 是 | 网页绘制页面主要内容度量信息的回调。 |
 
 **示例：**
 
@@ -4433,7 +4465,9 @@ onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./arkts-basic-
 
 ## onLargestContentfulPaint<sup>12+</sup>
 
-onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
+ArkTS-Dyn: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12))
+
+ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | undefined): this
 
 设置网页绘制页面最大内容回调函数。
 
@@ -4447,7 +4481,7 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) | 是 | 网页绘制页面最大内容度量信息的回调。 |
+| callback | ArkTS-Dyn: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) <br/>ArkTS-Sta: [OnLargestContentfulPaintCallback](./arkts-basic-components-web-t.md#onlargestcontentfulpaintcallback12) \|  undefined| 是 | 网页绘制页面最大内容度量信息的回调。 |
 
 **示例：**
 
@@ -4581,7 +4615,9 @@ ArkTS-Sta示例：
 
 ## onRequestSelected
 
-onRequestSelected(callback: () => void)
+ArkTS-Dyn: onRequestSelected(callback: () => void)
+
+ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 当Web组件获得焦点时触发该回调。
 
@@ -4595,7 +4631,7 @@ onRequestSelected(callback: () => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 当网页获得焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获得焦点时触发的回调。 |
 
 **示例：**
 
@@ -4756,7 +4792,9 @@ ArkTS-Sta示例：
 
 ## onOverScroll<sup>10+</sup>
 
-onOverScroll(callback: Callback\<OnOverScrollEvent\>)
+ArkTS-Dyn: onOverScroll(callback: Callback\<OnOverScrollEvent\>)
+
+ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined): this
 
 该接口在网页过度滚动时触发，用于通知网页过度滚动的偏移量。
 
@@ -4770,7 +4808,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> | 是 | 网页过度滚动时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnOverScrollEvent](./arkts-basic-components-web-i.md#onoverscrollevent12)\> \|  undefined| 是 | 网页过度滚动时触发。 |
 
 **示例：**
 
@@ -4822,7 +4860,9 @@ ArkTS-Sta示例：
 
 ## onControllerAttached<sup>10+</sup>
 
-onControllerAttached(callback: () => void)
+ArkTS-Dyn: onControllerAttached(callback: () => void)
+
+onControllerAttached(callback: (() => void) | undefined): this
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
@@ -4839,7 +4879,7 @@ onControllerAttached(callback: () => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
+| callback | ArkTS-Dyn: () => void | 是 | 当ArkWeb控制器初始化成功时触发的回调。 |
 
 **示例：**
 
@@ -5182,7 +5222,9 @@ struct WebComponent {
 
 ## onNativeEmbedLifecycleChange<sup>11+</sup>
 
-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
+ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
+
+ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined): this
 
 当同层标签生命周期变化时触发该回调。
 
@@ -5196,7 +5238,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void | 是 | 同层标签生命周期变化时触发该回调。 |
+| callback       | ArkTS-Dyn: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void <br/>ArkTS-Sta: (event: [NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)) => void \|  undefined| 是 | 同层标签生命周期变化时触发该回调。 |
 
 **示例：**
 
@@ -5508,20 +5550,27 @@ ArkTS-Sta示例：
 
 ## onNativeEmbedGestureEvent<sup>11+</sup>
 
-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
+ArkTS-Dyn: onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
+
+ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) => void) | undefined): this
 
 当手指触摸到同层标签时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void | 是 | 手指触摸到同层标签时触发该回调。 |
+| callback       | ArkTS-Dyn: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void <br/>ArkTS-Sta: (event: [NativeEmbedTouchInfo](./arkts-basic-components-web-i.md#nativeembedtouchinfo11)) => void \|  undefined| 是 | 手指触摸到同层标签时触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -5647,6 +5696,136 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BuilderNode, NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
+import { NodeRenderType, Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+
+export class Params {
+  text: string = '';
+  width: double = 1;
+  height: double = 1;
+}
+
+export class NodeControllerParams {
+  surfaceId: string = '';
+  renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  width: double = 0;
+  height: double = 0;
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<Params> | undefined | null = null;
+  private surfaceId_: string = "";
+  private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  private width_: double = 0;
+  private height_: double = 0;
+
+  setRenderOption(params: NodeControllerParams) {
+    this.surfaceId_ = params.surfaceId;
+    this.renderType_ = params.renderType;
+    this.width_ = params.width;
+    this.height_ = params.height;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+    this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+    return this.rootNode?.getFrameNode() ?? null;
+  }
+
+  postInputEvent(event: TouchEvent): boolean {
+    return this.rootNode?.postInputEvent(event) ?? false;
+  }
+}
+
+@Component
+struct ButtonComponent {
+  @Prop params: Params = {} as Params;
+  @State bkColor: Color = Color.Red;
+
+  build() {
+    Column() {
+      Button(this.params.text)
+        .height(50)
+        .width(200)
+        .border({ width: 2, color: Color.Red })
+        .backgroundColor(this.bkColor)
+
+    }
+    .width(this.params.width)
+    .height(this.params.height)
+    .backgroundColor(Color.Green)
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  ButtonComponent({ params: params })
+}
+
+@Entry
+@Component
+struct WebComponent {
+  @State eventType: string = '';
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private nodeController: MyNodeController = new MyNodeController();
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Stack() {
+        NodeContainer(this.nodeController)
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((embed) => {
+            if (embed.status == NativeEmbedStatus.CREATE) {
+              this.nodeController.setRenderOption({
+                surfaceId: embed.surfaceId as string,
+                renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+              });
+              this.nodeController.rebuild();
+            }
+          })
+          .onNativeEmbedGestureEvent((event: NativeEmbedTouchInfo) => {
+            if (event && event.touchEvent) {
+              if (event.touchEvent?.type == TouchType.Down) {
+                this.eventType = 'Down'
+              }
+              if (event.touchEvent?.type == TouchType.Up) {
+                this.eventType = 'Up'
+              }
+              if (event.touchEvent?.type == TouchType.Move) {
+                this.eventType = 'Move'
+              }
+              if (event.touchEvent?.type == TouchType.Cancel) {
+                this.eventType = 'Cancel'
+              }
+              let touchEvent = event.touchEvent as TouchEvent;
+              let ret = this.nodeController.postInputEvent(touchEvent)
+              if (event.result) {
+                event.result?.setGestureEventResult(ret, true);
+              }
+              console.info("embedId = " + event.embedId);
+              console.info("touchType = " + this.eventType);
+              console.info("x = " + event.touchEvent?.touches[0].x);
+              console.info("y = " + event.touchEvent?.touches[0].y);
+              console.info("Component globalPos:(" + event.touchEvent?.target.area.globalPosition.x + "," +
+              event.touchEvent?.target.area.globalPosition.y + ")");
+              console.info("width = " + event.touchEvent?.target.area.width);
+              console.info("height = " + event.touchEvent?.target.area.height);
+            }
+          })
+      }
+    }
+  }
+}
+```
 
 加载的html文件
   ```html
@@ -5849,7 +6028,9 @@ ArkTS-Sta示例：
 
 ## onViewportFitChanged<sup>12+</sup>
 
-onViewportFitChanged(callback: OnViewportFitChangedCallback)
+ArkTS-Dyn: onViewportFitChanged(callback: OnViewportFitChangedCallback)
+
+ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefined): this
 
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
@@ -5863,7 +6044,7 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) | 是 | 网页meta中viewport-fit配置项更改时触发的回调。 |
+| callback | ArkTS-Dyn: [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) <br/>ArkTS-Sta: [OnViewportFitChangedCallback](./arkts-basic-components-web-t.md#onviewportfitchangedcallback12) \|  undefined| 是 | 网页meta中viewport-fit配置项更改时触发的回调。 |
 
 **示例：**
 
@@ -5943,7 +6124,9 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 ## onInterceptKeyboardAttach<sup>12+</sup>
 
-onInterceptKeyboardAttach(callback: WebKeyboardCallback)
+ArkTS-Dyn: onInterceptKeyboardAttach(callback: WebKeyboardCallback)
+
+ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined): this
 
 网页中可编辑元素（如input标签）拉起软键盘之前会回调该接口，应用可以使用该接口拦截系统软键盘的弹出，配置应用定制的软键盘（应用根据该接口可以决定使用系统默认软键盘/定制enter键的系统软键盘/全部由应用自定义的软键盘）。
 
@@ -5957,7 +6140,7 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) | 是 | 拦截网页拉起软键盘回调。 |
+| callback | ArkTS-Dyn: [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) <br/>ArkTS-Sta: [WebKeyboardCallback](./arkts-basic-components-web-t.md#webkeyboardcallback12) \|  undefined| 是 | 拦截网页拉起软键盘回调。 |
 
 **示例：**
 
@@ -6236,20 +6419,27 @@ ArkTS-Sta示例：
 
 ## onNativeEmbedVisibilityChange<sup>12+</sup>
 
-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
+ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
+
+ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined): this
 
 当网页中同层标签（例如Embed标签或Object标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) | 是 | 同层标签可见性变化时触发该回调。 |
+| callback       | ArkTS-Dyn: [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) <br/>ArkTS-Sta: [OnNativeEmbedVisibilityChangeCallback](./arkts-basic-components-web-t.md#onnativeembedvisibilitychangecallback12) \|  undefined| 是 | 同层标签可见性变化时触发该回调。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -6357,6 +6547,116 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
     }
   }
   ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo, NodeRenderType } from '@kit.ArkUI';
+import { NodeController, BuilderNode, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+
+export class Params {
+  text: string = '';
+  width: double = 1;
+  height: double = 1;
+}
+
+export class NodeControllerParams {
+  surfaceId: string = '';
+  renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  width: double = 0;
+  height: double = 0;
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<Params> | undefined | null = null;
+  private surfaceId_: string = "";
+  private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+  private width_: double = 0;
+  private height_: double = 0;
+
+  setRenderOption(params: NodeControllerParams) {
+    this.surfaceId_ = params.surfaceId;
+    this.renderType_ = params.renderType;
+    this.width_ = params.width;
+    this.height_ = params.height;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ } );
+    this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ } as Params);
+    return this.rootNode?.getFrameNode() ?? null;
+  }
+
+  postInputEvent(event: TouchEvent): boolean {
+    return this.rootNode?.postInputEvent(event) ?? false;
+  }
+}
+
+@Component
+struct ButtonComponent {
+  @Prop params: Params = {} as Params;
+  @State bkColor: Color = Color.Red;
+
+  build() {
+    Column() {
+      Button(this.params.text)
+        .height(50)
+        .width(200)
+        .border({ width: 2, color: Color.Red })
+        .backgroundColor(this.bkColor)
+
+    }
+    .width(this.params.width)
+    .height(this.params.height)
+    .backgroundColor(Color.Green)
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  ButtonComponent({ params: params })
+}
+
+@Entry
+@Component
+struct WebComponent {
+  @State embedVisibility: string = '';
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  private nodeController: MyNodeController = new MyNodeController();
+  uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Stack() {
+        NodeContainer(this.nodeController)
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableNativeEmbedMode(true)
+          .onNativeEmbedLifecycleChange((embed) => {
+            if (embed.status == NativeEmbedStatus.CREATE) {
+              this.nodeController.setRenderOption({
+                surfaceId: embed.surfaceId as string,
+                renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                height: this.uiContext!.px2vp(embed.info?.height ?? 0)
+              });
+              this.nodeController.rebuild();
+            }
+          })
+          .onNativeEmbedVisibilityChange((embed) => {
+            if (embed.visibility) {
+              this.embedVisibility = 'Visible';
+            } else {
+              this.embedVisibility = 'Hidden';
+            }
+            console.info("embedId = " + embed.embedId);
+            console.info("visibility = " + embed.visibility);
+          })
+      }
+    }
+  }
+}
+```
 
   加载的html文件
   ```html
