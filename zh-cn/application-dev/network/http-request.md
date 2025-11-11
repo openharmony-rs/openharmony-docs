@@ -530,7 +530,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 | 重定向拦截点（REDIRECTION）       | 收到重定向响应并准备发送新请求之前。允许修改重定向的目标URL或请求信息。 | 当出参为ture时，此时入参中的request值为原始值，可以修改URL，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 | 最终响应拦截点（FINAL_RESPONSE）    | 获得最终响应之后。最后一个拦截点，适合对响应进行统一解密、解析、日志记录、错误处理。 | 当出参为ture时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 
-**顺序执行**：拦截器严格按照INITIAL_REQUEST->CACHE_CHECKED->NETWORK_CONNECT->(REDIRECTION)->FINAL_RESPONSE的顺序被触发调用。
+**顺序执行**：拦截器严格按照INITIAL_REQUEST->CACHE_CHECKED->NETWORK_CONNECT->(REDIRECTION)->FINAL_RESPONSE的顺序被触发调用。（括号中表示如果请求涉及重定向，则会走重定向拦截器）
 
 **重定向循环**：这是流程中最关键的一个循环。当REDIRECTION拦截器被触发后，流程会跳回到NETWORK_CONNECT阶段，重新开始一个新的“请求周期”，直到不再发生重定向为止。这确保了重定向后的新请求也能被所有必要的拦截器（如认证头添加、日志记录等）正确处理。
 
@@ -710,7 +710,7 @@ let options: http.HttpRequestOptions = {
 // 发起请求
 httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
-    hilog.info(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+   hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
     // ···
   } else {
     hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
