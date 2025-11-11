@@ -69,7 +69,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let aliasStr = "certName";
@@ -128,7 +128,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 // Initialize the context variable in the onCreate callback function of the MainAbility.
@@ -196,7 +196,7 @@ import { common, Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 let accountId: number = 100;
@@ -258,7 +258,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let accountId: number = 100;
@@ -315,7 +315,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -343,7 +343,7 @@ Sets the device password policy.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.                 |
-| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device password policy to set.|
+| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device password policy.|
 
 **Error codes**
 
@@ -365,7 +365,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let policy: securityManager.PasswordPolicy = {
@@ -425,7 +425,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -476,7 +476,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let tokenId: number = 586874394;
@@ -533,7 +533,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let tokenId: number = 586874394;
@@ -585,7 +585,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
@@ -643,7 +643,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
@@ -663,7 +663,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 Sets a watermark policy for a specified application of a specified user. Currently, a maximum of 100 policies can be saved.
 > **NOTE**
 >
-> This API is applicable to setting watermarks for third-party applications in enterprise scenarios to reduce the risk of enterprise information leakage. You are not advised to set watermarks for system applications (such as the home screen application), because unknown exceptions may occur.
+> This API is applicable to setting watermarks for third-party applications in enterprise scenarios to reduce the risk of enterprise information leakage. You are not advised to set watermarks for system applications (such as the home screen application), as unknown exceptions may occur.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -700,7 +700,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
@@ -754,7 +754,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
@@ -809,7 +809,7 @@ import { securityManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
       // Replace with actual values.
@@ -872,7 +872,7 @@ import { securityManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
       // Replace with actual values.
@@ -886,6 +886,121 @@ try {
     console.info(`Succeeded in getting permission managed state, result : ${result}`);
 } catch(err) {
     console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setExternalSourceExtensionsPolicy<sup>22+</sup>
+
+setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
+
+Sets the management policy for extensions from external sources.
+- DEFAULT:
+Default policy with no restrictions applied. Users can enable or disable **Run extensions from external sources** in **Settings** > **Privacy & security** > **Advanced option**.
+- DISALLOW:
+Policy that disallows extensions from external sources to run. With this policy, currently running extensions can continue, but cannot be started after being closed. Users cannot enable **Run extensions from external sources**.
+ 
+- FORCE_OPEN:
+Policy that forcibly enables extensions from external sources to run. Users cannot disable **Run extensions from external sources**.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type                                                     | Mandatory | Description                                                                                                                                                       |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes  | EnterpriseAdminExtensionAbility.                                                                                                                                         |
+| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy)                     | Yes  | Management policy.                                                                                                                                                   |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message                                                                                                                                           |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 9200010 | A conflict policy has been configured.                                          |
+| 9200012 | Parameter verification failed.                                          |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**Example**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+    console.info(`Succeeded in setting managed policy.`);
+} catch(err) {
+    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
+
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
+
+Obtains the management policy for extensions from external sources.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type                                                     | Mandatory | Description                                                                                                                                                       |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes  | EnterpriseAdminExtensionAbility.     |                                                                               
+
+**Return value**
+
+| Type                                 | Description      |
+| ----------------------------------- | -------- |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | Management policy obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message                                                                                                                                           |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**Example**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+    console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch(err) {
+    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

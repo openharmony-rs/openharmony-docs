@@ -69,7 +69,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -84,7 +84,7 @@ try {
 
 addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
-Adds Bluetooth devices to the trustlist. After adding devices to this list, the current device will only be allowed to connect to Bluetooth devices in the list. The MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
+Adds Bluetooth devices to the trustlist. After adding devices to this list, the current device will only be allowed to connect to Bluetooth devices in the list. Since API version 22, the MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
@@ -126,7 +126,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -178,7 +178,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -235,7 +235,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
@@ -249,7 +249,7 @@ try {
 
 addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
-Adds Bluetooth devices to the blocklist. The current device cannot connect to the disallowed Bluetooth devices. The MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
+Adds Bluetooth devices to the blocklist. The current device cannot connect to the disallowed Bluetooth devices. Since API version 22, the MAC addresses in the array must comply with the Bluetooth MAC address specifications (for example, 00:1A:2B:3C:4D:5E). Invalid MAC addresses will be removed and only valid MAC addresses will be added.
 
 A policy conflict is reported when this API is called in the following scenarios:
 
@@ -289,7 +289,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -339,7 +339,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
@@ -394,7 +394,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
@@ -457,7 +457,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     bluetoothManager.turnOnBluetooth(wantTemp);
@@ -506,7 +506,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
     bluetoothManager.turnOffBluetooth(wantTemp);
@@ -555,7 +555,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let accountId: number = 100;
@@ -607,7 +607,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let accountId: number = 100;
@@ -664,7 +664,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace it as required.
 let accountId: number = 100;

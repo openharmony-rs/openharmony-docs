@@ -32,42 +32,52 @@ Create an **ExtensionAbility** of the **EnterpriseAdmin** type, that is, an **En
 
 Open the **EnterpriseAdminAbility.ets** file, import the **EnterpriseAdminExtensionAbility** module, enable it to inherit from the **EnterpriseAdminExtensionAbility** module, and define callbacks, such as **onAdminEnabled()** and **onAdminDisabled()**. When the device administrator application is enabled or disabled, the callback will be invoked to receive notifications.
 
-```ts
+<!-- @[enterprise_admin_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+
+``` TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+// ···
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+// ···
+
   // Callback to be invoked when the device administrator application is enabled. Initialization policy can be set in this callback.
   onAdminEnabled() {
-    console.info("onAdminEnabled");
+    console.info('onAdminEnabled');
+    // ···
   }
 
   // Callback to be invoked when the device administrator application is disabled. This callback can be used to notify the enterprise administrator application that the device is no longer under management.
   onAdminDisabled() {
-    console.info("onAdminDisabled");
+    console.info('onAdminDisabled');
+    // ···
   }
-  
+
   // Callback to be invoked when an application is installed. This callback can be used to report events.
   onBundleAdded(bundleName: string) {
-    console.info("EnterpriseAdminAbility onBundleAdded bundleName:" + bundleName);
+    console.info('EnterpriseAdminAbility onBundleAdded bundleName:' + bundleName);
   }
 
   // Callback to be invoked when an application is uninstalled. This callback can be used to report events.
   onBundleRemoved(bundleName: string) {
-    console.info("EnterpriseAdminAbility onBundleRemoved bundleName" + bundleName);
+    console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
   }
 };
 ```
 
+
 In the [module.json5](../quick-start/module-configuration-file.md) file of the project module, register **EnterpriseAdminAbility** as **ExtensionAbility**, and set **type** to **enterpriseAdmin** and **srcEntry** to the code path of the **ExtensionAbility** component.
 
-```ts
+<!-- @[extension_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
+
+``` JSON5
 "extensionAbilities": [
   {
-	"name": "EnterpriseAdminAbility",
-	"type": "enterpriseAdmin",
-	"exported": true,
-	"srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
+    "name": "EnterpriseAdminAbility",
+    "type": "enterpriseAdmin",
+    "exported": true,
+    "srcEntry": "./ets/enterpriseadminability/EnterpriseAdminAbility.ets"
   }
-]
+],
 ```
 
