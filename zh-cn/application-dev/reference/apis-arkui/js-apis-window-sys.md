@@ -2589,6 +2589,10 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -2795,7 +2799,9 @@ try {
 
 ### raiseAboveTarget<sup>10+</sup>
 
-raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: raiseAboveTarget(windowId: int, callback: AsyncCallback&lt;void&gt;): void
 
 将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
 
@@ -2805,11 +2811,15 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -2870,7 +2880,9 @@ export default class EntryAbility extends UIAbility {
 
 ### raiseAboveTarget<sup>10+</sup>
 
-raiseAboveTarget(windowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: raiseAboveTarget(windowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: raiseAboveTarget(windowId: int): Promise&lt;void&gt;
 
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
@@ -2880,11 +2892,15 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -3124,6 +3140,10 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3601,6 +3621,10 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中调用返回801错误码。
 
 **参数：**
@@ -3867,6 +3891,10 @@ requestFocus(isFocused: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -3970,6 +3998,10 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
