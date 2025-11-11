@@ -41,10 +41,7 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **可能原因**
 
-1. 内存分配失败。
-2. 线程繁忙。
-3. 服务异常退出。
-等预期之外的错误。
+内存分配失败，线程繁忙，服务异常退出等非预期错误。
 
 **处理步骤**
 
