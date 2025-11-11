@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -357,7 +357,7 @@ async function CreatePixelMapFromParcel() {
     data.readParcelable(ret);
 
     // Obtain the PixelMap object.
-    let unmarshPixelmap = ret.pixel_map;
+    let newPixelmap = ret.pixel_map;
   }
 }
 ```

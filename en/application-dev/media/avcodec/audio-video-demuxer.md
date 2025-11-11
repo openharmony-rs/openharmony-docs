@@ -345,7 +345,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    The **OH_AVDemuxer_ReadSampleBuffer** function can be time-consuming, particularly due to file I/O operations. You are advised to call this function in asynchronous mode.
    ```c++
    // Define a processing function for each thread.
-   void ReadTrackSamples(OH_AVFormatDemuxer *demuxer, uint32_t trackIndex, int buffer_size, 
+   void ReadTrackSamples(OH_AVDemuxer *demuxer, uint32_t trackIndex, int32_t buffer_size, 
                          std::atomic<bool>& isEnd, std::atomic<bool>& threadFinished)
    {
       // Create a buffer.
@@ -380,8 +380,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    // Calculate the buffer size based on your requirements.
-   int audioBufferSize = 4096; // Typical audio buffer size.
-   int videoBufferSize = w * h * 3 >> 1; // Raw video buffer size.
+   int32_t audioBufferSize = 4096;  // Typical audio buffer size.
+   int32_t videoBufferSize = w * h * 3 >> 1;  // Raw video buffer size.
 
    // Create atomic variables for thread communication.
    std::atomic<bool> audioIsEnd{false}, videoIsEnd{false}; // Specify whether the stream ends.

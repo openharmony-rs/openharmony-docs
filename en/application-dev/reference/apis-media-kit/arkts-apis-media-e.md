@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -108,8 +108,6 @@ Enumerates the media description keys.
 | MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
 ## PlaybackInfoKey<sup>12+</sup>
 
