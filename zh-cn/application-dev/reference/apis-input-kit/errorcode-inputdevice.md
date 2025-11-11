@@ -68,4 +68,23 @@ It is prohibited for non-input applications.
 
 请使用输入法应用调用该接口。
 
-## 3900002 键盘设备没有连接
+## 3800001 多模输入服务内部错误
+
+**错误信息**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**错误描述**
+
+多模输入服务内部错误。
+
+**可能原因**
+
+1. 内存分配失败。
+2. 线程繁忙。
+3. 服务异常退出。
+等预期之外的错误。
+
+**处理步骤**
+
+建议稍后重试。
