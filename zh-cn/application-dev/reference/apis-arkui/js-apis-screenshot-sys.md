@@ -10,8 +10,11 @@
 
 >  **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.screenshot](./js-apis-screenshot.md)。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.screenshot](./js-apis-screenshot.md)。
 
 ## 导入模块
 
@@ -73,6 +76,10 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
@@ -94,6 +101,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 | 1400001 | Invalid display or screen. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,6 +132,37 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import  { image } from '@kit.ImageKit';
+
+let screenshotOptions: screenshot.ScreenshotOptions = {
+  "screenRect": {
+    "left": 200,
+    "top": 100,
+    "width": 200,
+    "height": 200 },
+  "imageSize": {
+    "width": 300,
+    "height": 300 },
+  "rotation": 0,
+  "displayId": 0,
+  "isNotificationNeeded": true,
+  "isCaptureFullOfScreen": true
+};
+screenshot.save(screenshotOptions, (err: BusinessError | null, pixelMap: image.PixelMap | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to save screenshot. Code: ${err?.code} , messgae : ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap?.getPixelBytesNumber() as string);
+  pixelMap?.release(); // PixelMap使用完后及时释放内存
+});
+```
+
 ## screenshot.save
 
 save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
@@ -132,6 +172,10 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -153,6 +197,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -167,6 +213,25 @@ screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
 });
 ```
 
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+screenshot.save((err: BusinessError | null, pixelMap: image.PixelMap | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to save screenshot. Code: ${err?.code} , message : ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap?.getPixelBytesNumber() as string);
+  pixelMap?.release(); // PixelMap使用完后及时释放内存
+});
+```
+
 ## screenshot.save
 
 save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
@@ -176,6 +241,10 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -203,6 +272,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -236,6 +307,41 @@ try {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let screenshotOptions: screenshot.ScreenshotOptions = {
+  "screenRect": {
+    "left": 200,
+    "top": 100,
+    "width": 200,
+    "height": 200 },
+  "imageSize": {
+    "width": 300,
+    "height": 300 },
+  "rotation": 0,
+  "displayId": 0,
+  "isNotificationNeeded": true,
+  "isCaptureFullOfScreen": true
+};
+try {
+  let promise = screenshot.save(screenshotOptions);
+  promise.then((pixelMap: image.PixelMap) => {
+    let pixelNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
+    pixelMap.release(); // PixelMap使用完后及时释放内存
+  }).catch((err: Error) => {
+    console.error(`Failed to save screenshot. Code: ${err?.code} , messgae : ${err?.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to save screenshot. Code: ${error.code} , message : ${error.message}`);
+};
+```
+
 ## screenshot.saveHdrPicture<sup>20+</sup>
 
 saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelMap&gt;&gt;
@@ -248,6 +354,10 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -278,6 +388,8 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -300,5 +412,33 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code} , message : ${exception.message}`);
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
+  "displayId": 0,
+  "isNotificationNeeded": true,
+  "isCaptureFullOfScreen": true
+};
+try {
+  let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);
+  promise.then((pixelMapArray: Array<image.PixelMap>) => {
+    for (let i = 0; i < pixelMapArray.length; i++) {
+      const pixelMap = pixelMapArray[i];
+      console.info('succeeded in saving screenshot ${i}. Pixel bytes number' + pixelMap.getPixelBytesNumber());
+      pixelMap.release();
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to save SDR and HDR screenshot. Code: ${err?.code} , message : ${err?.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to save SDR and HDR screenshot. Code: ${error.code} , message : ${error.message}`);
 };
 ```
