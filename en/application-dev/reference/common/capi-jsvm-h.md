@@ -29,7 +29,7 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | **JSVM_VERSION_EXPERIMENTAL** 2147483647           | Defines the experimental JSVM version number.                                                                                                                                      |
 | **JSVM_VERSION** 8                                 | Defines the JSVM version number.                                                                                                                                         |
 | **JSVM_EXTERN  attribute**(visibility("default")))  | Defines the symbol that is externally visible.                                                                                                                                        |
-| **JSVM_AUTO_LENGTH**   SIZE_MAX | fDefines the automatic length.                                                                                                                                             |
+| **JSVM_AUTO_LENGTH**   SIZE_MAX | Defines the automatic length.                                                                                                                                             |
 | **EXTERN_C_START**                                 | Defines the segment start identifier for a compiler to compile the following code segment as C code.<br>When **__cplusplus** detects that a C++ compiler is being used, the value **"extern "C" {"** is assigned to **EXTERN_C_START**, indicating that the subsequent code is C code. If a C++ compiler is not being used, no tag is required.|
 | **EXTERN_C_END**                                   | Defines the segment end identifier for a compiler to compile the following code segment as C code.<br>When **__cplusplus** detects that a C++ compiler is being used, the value **"}"** is assigned to **EXTERN_C_START**, indicating that the C code ends here. If a C++ compiler is not being used, no tag is required.                                                                                                                  |
 
@@ -5852,7 +5852,7 @@ Removes the handler for GC from the VM.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty, the handler has been removed,单语中调整格式<br> or the handler has never been added.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty, the handler has been removed, or the handler has never been added.|
 
 ### OH_JSVM_SetHandlerForOOMError()
 
