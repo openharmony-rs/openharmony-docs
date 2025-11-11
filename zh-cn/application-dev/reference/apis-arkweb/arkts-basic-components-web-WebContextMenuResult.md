@@ -22,9 +22,9 @@ WebContextMenuResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## closeContextMenu<sup>9+</sup>
 
@@ -34,9 +34,9 @@ closeContextMenu(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## copyImage<sup>9+</sup>
 
@@ -46,9 +46,9 @@ WebContextMenuParam有图片内容则复制图片。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## copy<sup>9+</sup>
 
@@ -58,9 +58,9 @@ copy(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## paste<sup>9+</sup>
 
@@ -74,9 +74,9 @@ paste(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## cut<sup>9+</sup>
 
@@ -86,9 +86,9 @@ cut(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## selectAll<sup>9+</sup>
 
@@ -98,9 +98,9 @@ selectAll(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ## undo<sup>20+</sup>
 
@@ -110,6 +110,10 @@ undo(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 ## redo<sup>20+</sup>
 
 redo(): void
@@ -117,6 +121,10 @@ redo(): void
 执行与此上下文菜单相关的重做操作，即取消用户上一次的撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 ## pasteAndMatchStyle<sup>20+</sup>
 
@@ -129,6 +137,10 @@ pasteAndMatchStyle(): void
 > 需要配置权限：ohos.permission.READ_PASTEBOARD。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 ## 使用@ohos.transfer进行WebContextMenuResult类型转换
 

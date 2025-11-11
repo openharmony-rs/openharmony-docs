@@ -2287,9 +2287,9 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
