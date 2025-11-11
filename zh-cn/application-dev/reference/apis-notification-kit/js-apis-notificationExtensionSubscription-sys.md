@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态、获取通知信息。
+本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态。
 
 > **说明：**
 >
@@ -18,6 +18,7 @@
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## notificationExtensionSubscription.getAllSubscriptionBundles
@@ -52,9 +53,6 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -101,9 +99,6 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
@@ -116,7 +111,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`getUserSubscriptionBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedState fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -160,9 +155,6 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
@@ -214,9 +206,6 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
   // 应改为开发者需要查询的目标应用信息
@@ -270,9 +259,6 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 **示例：**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let targetBundle: notificationExtensionSubscription.BundleOption =
   {
     // 应改为开发者需要设置的目标应用信息
@@ -280,9 +266,9 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
   };
 let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
   // 应改为开发者需要授权的实际应用
-  {bundle: 'com.example.xxx',uid:11111111},
-  {bundle: 'com.example.xxxx',uid:11111111},
-  {bundle: 'com.example.xxxxx'},
+  { bundle: 'com.example.xxx', uid: 11111111 },
+  { bundle: 'com.example.xxxx', uid: 11111111 },
+  { bundle: 'com.example.xxxxx' },
 ];
 notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
   console.info(`setUserGrantedBundleState successfully.`);

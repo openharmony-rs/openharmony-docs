@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态、获取通知信息。
+本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态。
 
 > **说明：**
 >
@@ -15,13 +15,15 @@
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## notificationExtensionSubscription.openSubscriptionSettings
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-打开应用的通知扩展订阅者设置页面，以半模态弹窗显示。用户可在该页面设置通知的启用状态及模式。使用Promise异步回调。
+实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，打开应用的通知扩展订阅设置页面，以半模态弹窗显示。用户可在该页面设置通知的启用状态及模式。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -53,20 +55,21 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 **示例：**
 
 ```ts
-import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription'
 import { common } from '@kit.AbilityKit';
+
+const DOMAIN = 0x0000;
 
 try {
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
-  }).catch((err) => {
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(err)}`)
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
   hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
 }
-hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
 ```
 
 ## notificationExtensionSubscription.subscribe
@@ -105,8 +108,6 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
@@ -150,8 +151,6 @@ unsubscribe(): Promise\<void\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
@@ -188,8 +187,6 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -226,8 +223,6 @@ isUserGranted(): Promise\<boolean\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
     console.info('isUserGranted true');
@@ -268,8 +263,6 @@ getUserGrantedEnabledBundles(): Promise\<String[]\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -294,8 +287,6 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 表示通知扩展订阅的类型。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**类型**：
 
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
