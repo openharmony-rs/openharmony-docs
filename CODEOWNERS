@@ -524,8 +524,8 @@ zh-cn/application-dev/web/web_full_screen.md @qiu-gongkai @glzt2l @HelloShuo @d0
 zh-cn/application-dev/web/web_menu.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 
 [开发-Background Tasks Kit]
-zh-cn/application-dev/task-management/ @Brilliantry_Rui @zhouben25  @fenglili18
-zh-cn/application-dev/device-usage-statistics/  @Brilliantry_Rui @zhouben25 @fenglili18  
+zh-cn/application-dev/task-management/ @Brilliantry_Rui @zhouben25  @leetestnady
+zh-cn/application-dev/device-usage-statistics/  @Brilliantry_Rui @zhouben25 @leetestnady  
 
 [开发-Basic Services Kit-帐号]
 zh-cn/application-dev/account/ @zengyawen
@@ -1858,8 +1858,8 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md
 
 
 [API参考-Background Tasks Kit]
-zh-cn/application-dev/reference/apis-backgroundtasks-kit  @Brilliantry_Rui @zhouben25 @fenglili18 
-zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceStandby-sys.md  @Brilliantry_Rui @zhouben25 @fenglili18  @geng_wd  @wzzqishi  
+zh-cn/application-dev/reference/apis-backgroundtasks-kit  @Brilliantry_Rui @zhouben25 @leetestnady 
+zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceStandby-sys.md  @Brilliantry_Rui @zhouben25 @leetestnady  @geng_wd  @wzzqishi  
 
 [API参考-Basic Services Kit-配置策略]
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-configPolicy-sys.md @fang-jinxu  @liubingbing  @lpw_work  
