@@ -173,7 +173,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
-应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。
+应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -245,7 +245,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流。
+应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
