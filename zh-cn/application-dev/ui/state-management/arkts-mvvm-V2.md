@@ -364,6 +364,100 @@ struct TodoList {
 
 <!-- @[Main_MonitorComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/MonitorComputedPage.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class Task {
+  public taskName: string = '';
+  @Trace public isFinish: boolean = false;
+
+  constructor (taskName: string, isFinish: boolean) {
+    this.taskName = taskName;
+    this.isFinish = isFinish;
+  }
+}
+
+@ComponentV2
+struct TaskItem {
+  @Param task: Task = new Task('', false);
+  @Event deleteTask: () => void = () => {};
+  @Monitor('task.isFinish')
+  onTaskFinished(mon: IMonitor) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+  }
+
+  build() {
+    Row() {
+      // 请开发者自行在src/main/resources/base/media路径下添加finished.png和unfinished.png两张图片，否则运行时会因资源缺失而报错。
+      Image(this.task.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
+        .width(28)
+        .height(28)
+      Text(this.task.taskName)
+        .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+      Button('Delete')
+        .onClick(() => this.deleteTask())
+    }
+    .onClick(() => this.task.isFinish = !this.task.isFinish)
+  }
+}
+
+@Entry
+@ComponentV2
+struct TodoList {
+  @Local tasks: Task[] = [
+    new Task('task1', false),
+    new Task('task2', false),
+    new Task('task3', false),
+  ];
+  @Local newTaskName: string = '';
+
+  finishAll(ifFinish: boolean) {
+    for (let task of this.tasks) {
+      task.isFinish = ifFinish;
+    }
+  }
+
+  @Computed
+  get tasksUnfinished(): number {
+    return this.tasks.filter(task => !task.isFinish).length;
+  }
+
+  build() {
+    Column() {
+      Text('To do')
+        .fontSize(40)
+        .margin({ bottom: 10 })
+      Text('Unfinished task' + `：${this.tasksUnfinished}`)
+      Repeat<Task>(this.tasks)
+        .each((obj: RepeatItem<Task>) => {
+          TaskItem({
+            task: obj.item,
+            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+          })
+        })
+      Row() {
+        Button('All Completed')
+          .onClick(() => this.finishAll(true))
+        Button('All Not Completed')
+          .onClick(() => this.finishAll(false))
+      }
+      Row() {
+        TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
+          .onChange((value) => this.newTaskName = value)
+          .width('70%')
+        Button('+')
+          .onClick(() => {
+            this.tasks.push(new Task(this.newTaskName, false));
+            this.newTaskName = '';
+          })
+      }
+    }
+  }
+}
+```
+
 ### 添加AppStorageV2，实现应用全局UI状态存储
 
 随着待办事项功能的增强，应用涉及多个页面或功能模块时，需要在这些页面之间共享全局状态。例如：在待办事项应用中，新增一个设置页面与主界面联动。为实现跨页面的状态共享，引入AppStorageV2，用于在多个UIAbility实例之间存储和共享应用的全局状态。
