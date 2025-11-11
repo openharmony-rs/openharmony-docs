@@ -10456,6 +10456,11 @@
 						"end_line":445,
 						"name":"Sys_Native_Nullptr_Event_C++",
 						"start_line":438
+					},
+					{
+						"end_line":1278,
+						"name":"Sys_Native_Nullptr_Event_C++_Init",
+						"start_line":1209
 					}
 				]
 			},
