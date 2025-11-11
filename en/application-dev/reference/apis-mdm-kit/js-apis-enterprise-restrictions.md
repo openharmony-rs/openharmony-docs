@@ -48,7 +48,7 @@ Disallows a feature.
 |bluetooth|Bluetooth capability of the device. If a Bluetooth device blocklist or trustlist has been set via the [addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20) API or [addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices) API, disabling the device's Bluetooth capability through this API will take priority. The blocklist or trustlist will only take effect after the device's Bluetooth capability is re-enabled.|
 |modifyDateTime|Device capability to modify system time.|
 |printer|Device printing capability, currently only supported on PC/2-in-1 devices. If printing is disabled via this API, it remains disabled for specific users even if the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API is used to enable it for those users.|
-|hdc|OpenHarmony Device Connector (HDC) capability.|
+|hdc|OpenHarmony Device Connector (HDC).|
 |microphone|Microphone capability of the device.|
 |fingerprint|Fingerprint authentication capability of the device. If this capability has been disabled for a user using [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14), a policy conflict will be reported when **setDisallowedPolicy** is invoked.|
 |usb|USB capability of the device. After this capability is disabled, the external USB device cannot be used. This means that the current device in host mode cannot connect to other external devices.<br>A policy conflict will be reported if **setDisallowedPolicy** is called in the following three scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API.|
@@ -96,7 +96,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -133,7 +133,7 @@ Queries whether a feature is disabled.
 |bluetooth|Bluetooth capability of the device.|
 |modifyDateTime|Device capability to modify system time.|
 |printer|Device printing capability, currently only supported on PC/2-in-1 devices.|
-|hdc|OpenHarmony Device Connector (HDC) capability.|
+|hdc|OpenHarmony Device Connector (HDC).|
 |microphone|Microphone capability of the device.|
 |fingerprint|Fingerprint authentication capability of the device.|
 |usb|USB capability of the device. After this capability is disabled, the external USB device cannot be used. This means that the current device in host mode cannot connect to other external devices.|
@@ -186,7 +186,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -239,7 +239,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -296,7 +296,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -349,7 +349,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -403,7 +403,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace with actual values.
 let valueList:Array<string> = ["com.xx.aa.", "com.xx.bb"];
@@ -462,7 +462,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -513,7 +513,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -569,7 +569,7 @@ import { restrictions } from '@kit.MDMKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
