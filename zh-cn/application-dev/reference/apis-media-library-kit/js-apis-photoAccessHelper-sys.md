@@ -6864,8 +6864,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<vo
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-
-async function example(asset: photoAccessHelper.PhotoAsset) {
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('setCompositeDisplayModeDemo');
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
@@ -6873,7 +6872,7 @@ async function example(asset: photoAccessHelper.PhotoAsset) {
       predicates: predicates
     };
     try {
-      let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+      let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
       let asset = await fetchResult.getFirstObject();
       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
       assetChangeRequest.setCompositeDisplayMode(photoAccessHelper.CompositeDisplayMode.DEFAULT);
