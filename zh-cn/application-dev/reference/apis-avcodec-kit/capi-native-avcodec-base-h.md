@@ -817,6 +817,13 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 
 当OH_AVCodec实例运行出错时，会调用来上报具体的错误信息的函数指针。
 
+| 使用场景| 错误码 |
+| -------- | -------- |
+| 音频编解码 | AV_ERR_DRM_DECRYPT_FAILED：DRM解密失败。  |
+| 视频编解码 | AV_ERROR_NO_MEMORY：系统资源不足。<br>AV_ERROR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。  |
+| 视频解码 | AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION：当前输入不支持色彩空间转换功能。  |
+<!--RP1--><!--RP1End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -825,7 +832,7 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCodec *codec | OH_AVCodec实例。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  int32_t errorCode | 特定错误代码。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
@@ -847,8 +854,8 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVCodec *codec | OH_AVCodec实例。 |
-|  OH_AVFormat *format | 新输出流描述信息。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
+| [OH_AVFormat](capi-core-oh-avformat.md) *format | 新输出流描述信息。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNeedInputData()
@@ -873,9 +880,9 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVCodec *codec | OH_AVCodec实例。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  uint32_t index | 与新可用的输入缓冲区相对应的索引。 |
-|  OH_AVMemory *data | 新的可用输入缓冲区。 |
+|  [OH_AVMemory](capi-core-oh-avmemory.md) *data | 新的可用输入缓冲区。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNewOutputData()
@@ -900,10 +907,10 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVCodec *codec | OH_AVCodec实例。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  uint32_t index | 与新输出缓冲区对应的索引。 |
-|  OH_AVMemory *data | 包含新输出数据的缓冲区。 |
-|  OH_AVCodecBufferAttr *attr | 新输出缓冲区的说明。 |
+| [OH_AVMemory](capi-core-oh-avmemory.md) *data | 包含新输出数据的缓冲区。 |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) *attr | 新输出缓冲区的说明。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNeedInputBuffer()
@@ -924,9 +931,9 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCodec *codec | OH_AVCodec实例。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  uint32_t index | 与新可用的输入缓冲区相对应的索引。 |
-|  OH_AVBuffer *buffer | 新的可用输入缓冲区。 |
+|  [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 新的可用输入缓冲区。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVCodecOnNewOutputBuffer()
@@ -947,9 +954,9 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCodec *codec | OH_AVCodec实例。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | OH_AVCodec实例。 |
 |  uint32_t index | 与新输出缓冲区对应的索引。 |
-|  OH_AVBuffer *buffer | 包含新输出数据的缓冲区。 |
+|  [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | 包含新输出数据的缓冲区。 |
 |  void *userData | 开发者执行回调所依赖的数据。 |
 
 ### OH_AVDataSourceReadAt()
@@ -970,7 +977,7 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVBuffer *data | 要填充的缓冲区。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) *data | 要填充的缓冲区。 |
 |  int32_t length | 要读取的数据长度。 |
 |  int64_t pos | 从偏移量位置读取。 |
 
@@ -998,7 +1005,7 @@ typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, i
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVBuffer *data | 要填充的缓冲区。 |
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) *data | 要填充的缓冲区。 |
 |  int32_t length | 要读取的数据长度。 |
 |  int64_t pos | 从偏移量位置读取。 |
 |  void *userData | 用户自定义数据。 |
