@@ -26,9 +26,16 @@
     @Component
     struct WidgetEventCall {
       @LocalStorageProp('formId') formId: string = '12400633174999288';
+<<<<<<< HEAD
       private funA: string = '按钮A';
       private funB: string = '按钮B';
 
+=======
+      // $r('app.string.ButtonA_label')和$r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
+      private funA: Resource = $r('app.string.ButtonA_label');
+      private funB: Resource = $r('app.string.ButtonB_label');
+    
+>>>>>>> be0e69dd12c... 优化文档描述
       build() {
         RelativeContainer() {
           Button(this.funA)
