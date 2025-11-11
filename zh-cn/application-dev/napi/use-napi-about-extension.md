@@ -714,7 +714,9 @@ test01();
 cpp部分代码
 
 <!-- @[napi_serialize_deserialize_delete_serialization_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
+
+``` C++
+// 序列化和反序列化
 static napi_value AboutSerialize(napi_env env, napi_callback_info info)
 {
     // 获取传入的ts的一个对象作为参数
@@ -727,7 +729,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     void *data = nullptr;
     // 调用napi_serialize方法将ts对象转化为native数据
     napi_status status = napi_serialize(env, args[0], undefined, undefined, &data);
-    if (status != napi_ok ||data == nullptr) {
+    if (status != napi_ok || data == nullptr) {
         napi_throw_error(env, nullptr, "Node-API napi_serialize fail");
         return nullptr;
     }
@@ -741,7 +743,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     napi_valuetype valuetype;
     napi_typeof(env, number, &valuetype);
     if (valuetype != napi_number) {
-        napi_throw_error(env, nullptr, "Node-API Wrong type of argument. Expects a number.");
+        napi_throw_error(env, nullptr, "Node-API Wrong type of argment. Expects a number.");
         return nullptr;
     }
     // 调用napi_delete_serialization_data方法删除序列化数据
