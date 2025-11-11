@@ -4232,13 +4232,6 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<<<<<<< HEAD
-=======
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 22
-
->>>>>>> 0d2a0ed610ab3968730be13e1f47def669f9fabf
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
