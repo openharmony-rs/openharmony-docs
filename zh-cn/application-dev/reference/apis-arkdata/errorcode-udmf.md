@@ -28,6 +28,7 @@ Settings already exist. To reconfigure, remove the existing sharing options.
 
 先调用[removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14)清除当前拖拽通道数据可使用的范围后，再调用[setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14)重新设置。
 
+<!--Del-->
 ## 20400002 标准化数据类型描述符格式错误
 
 **错误信息**
@@ -40,25 +41,25 @@ The format of one or more type descriptors are invalid.
 
 **可能原因**
 
-调用[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
+调用[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
 
 1. 标准化数据类型描述符列表为空、其中元素个数超过50，或当前应用注册的标准化数据类型描述符数量总计超过200。
 
 2. 任意一个标准化数据类型描述符格式错误，具体可能原因包括：
 
-    2.1 typeId为空字符串、长度超过127，或包含非字母、数字、中划线（-）、点号（.）字符。
+    - typeId为空字符串、长度超过127，或包含非字母、数字、中划线（-）、点号（.）字符。
     
-    2.2 belongingToTypes为空列表、其中元素个数超过50，或其中包含空字符串、或任意元素长度超过127。
+    - belongingToTypes为空列表、其中元素个数超过50，或其中包含空字符串、或任意元素长度超过127。
 
-    2.3 description、referenceURL或iconFile长度超过255。
+    - description、referenceURL或iconFile长度超过255。
 
-    2.4 filenameExtensions的元素个数超过50，或包含空字符串，或任意元素长度超过127，或任意元素首字符不是点号。
+    - filenameExtensions的元素个数超过50，或包含空字符串，或任意元素长度超过127，或任意元素首字符不是点号。
 
-    2.5 mimeTypes的元素个数超过50，或包含空字符串，或任意元素长度超过127。
+    - mimeTypes的元素个数超过50，或包含空字符串，或任意元素长度超过127。
 
 **处理步骤**
 
-请检查传入的标准化数据类型描述符列表，确保格式正确，参考规格约束排查可能的原因。
+请检查传入的标准化数据类型描述符列表，确保格式正确，参考上文可能原因里对应的规格约束进行排查修改。
 
 ## 20400003 标准化数据类型描述符内容错误
 
@@ -72,7 +73,7 @@ The content of one or more type descriptors are invalid.
 
 **可能原因**
 
-[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)传入的标准化数据类型描述符内容错误，可能原因有：
+[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)传入的标准化数据类型描述符内容错误，可能原因有：
 
 1. 任意一个标准化数据类型描述符中，typeId与已注册的类型ID重复。
 
@@ -84,7 +85,7 @@ The content of one or more type descriptors are invalid.
 
 **处理步骤**
 
-请检查传入的标准化数据类型描述符列表，确保内容正确，参考规格约束排查可能的原因。
+请检查传入的标准化数据类型描述符列表，确保内容正确，参考上文可能原因里对应的规格约束进行排查修改。
 
 ## 20400004 标准化数据类型ID列表错误
 
@@ -98,18 +99,19 @@ One or more typeIds are invalid or do not exist.
 
 **可能原因**
 
-调用[unregisterTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorunregistertypedescriptors)时，传入的标准化数据类型ID列表错误，具体可能原因有：
+调用[unregisterTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorunregistertypedescriptors22)时，传入的标准化数据类型ID列表错误，具体可能原因有：
 
 1. 标准化数据类型ID列表为空、或其中元素个数超过50。
 
 2. 任意一个标准化数据类型ID无效，具体可能原因包括：
 
-    2.1 标准化数据类型ID对应的标准化数据类型在系统中未注册。
+    - 标准化数据类型ID对应的标准化数据类型在系统中未注册。
 
-    2.2 标准化数据类型ID不是以当前应用的包名开头。
+    - 标准化数据类型ID不是以当前应用的包名开头。
 
-    2.3 标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors)注册。
+    - 标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)注册。
 
 **处理步骤**
 
-请检查传入的标准化数据类型ID列表，参考规格约束排查可能的原因。
+请检查传入的标准化数据类型ID列表，参考上文可能原因里对应的规格约束进行排查修改。
+<!--DelEnd-->

@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口为系统接口。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](js-apis-data-uniformTypeDescriptor.md)。
 
 ## 导入模块
 
@@ -20,7 +20,7 @@
 import { uniformTypeDescriptor } from '@kit.ArkData';
 ```
 
-## uniformTypeDescriptor.registerTypeDescriptors
+## uniformTypeDescriptor.registerTypeDescriptors<sup>22+</sup>
 
 registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
@@ -77,7 +77,7 @@ try {
 }
 ```
 
-## uniformTypeDescriptor.unregisterTypeDescriptors
+## uniformTypeDescriptor.unregisterTypeDescriptors<sup>22+</sup>
 
 unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
@@ -95,7 +95,7 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 | 参数名  | 类型 | 必填  | 说明 |
 | -------- | ------ | ---- | ---- |
-| typeIds | Array\<string> | 是 | 待注销的typeId列表。列表不可为空，其中元素个数不超过50。<br>**typeId约束限制：**<br>1.typeId对应的标准化数据类型必须在系统中已注册；<br>2.typeId必须以当前应用的包名开头；<br>3.typeId对应的标准化数据类型必须已通过[registerTypeDescriptors](#uniformtypedescriptorregistertypedescriptors)接口注册。 |
+| typeIds | Array\<string> | 是 | 待注销的typeId列表。列表不可为空，其中元素个数不超过50。<br>**typeId约束限制：**<br>1.typeId对应的标准化数据类型必须在系统中已注册；<br>2.typeId必须以当前应用的包名开头；<br>3.typeId对应的标准化数据类型必须已通过[registerTypeDescriptors](#uniformtypedescriptorregistertypedescriptors22)接口注册。 |
 
 **返回值：**
 
