@@ -146,7 +146,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API 2 + 3 = %{public}d', testNapi.add(2
 cpp部分代码
 
 <!-- @[node_api_module_create_object_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
-```cpp
+
+``` C++
+// ArkTS Object相关 napi_create_object_with_properties
 static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
