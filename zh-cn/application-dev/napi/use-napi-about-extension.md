@@ -114,9 +114,9 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 接口声明
 
 <!-- @[node_api_module_add_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-```ts
-// index.d.ts
-export const add: (a: number, b: number) => number;
+
+``` TypeScript
+export const add: (a: number, b: number) => number; // 模块加载
 ```
 
 
