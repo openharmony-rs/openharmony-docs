@@ -2630,25 +2630,21 @@ try {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
-
 **系统接口：** 此接口为系统接口。
 
-| 名称                        | 类型                           |  只读  |  可选  | 说明               |
-| ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
-| installFlag                    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。 |
-| isKeepData                     | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。 |
-| hashParams        | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。         |
-| crowdtestDeadline | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。 |
-| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
-| specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
-| additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
-| verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。         |
-| pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。         |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。|
+| 名称                      | 类型                           |  只读  |  可选  | 说明               |
+| ------------------------- | ------------------------------ | ------------------| ------------------ | ------------------ |
+| userId                    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| installFlag               | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| isKeepData                | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| hashParams                | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| crowdtestDeadline         | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
+| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
+| pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
 ## UninstallParam<sup>10+</sup>
 
 共享包卸载需指定的参数信息。

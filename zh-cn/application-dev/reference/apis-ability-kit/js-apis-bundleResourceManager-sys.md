@@ -28,24 +28,25 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
-| 名称                                                     | 值         | 说明                                                         |
-| -------------------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_RESOURCE_INFO_ALL                                    | 0x00000001 | 用于同时获取icon和label信息。                                |
-| GET_RESOURCE_INFO_WITH_LABEL                             | 0x00000002 | 用于获取仅包含label信息，icon信息为空。                      |
-| GET_RESOURCE_INFO_WITH_ICON                              | 0x00000004 | 用于获取仅包含icon信息，label信息为空。                      |
-| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL                   | 0x00000008 | 用于获取根据label排序后的信息。它不能单独使用需要与GET_RESOURCE_INFO_ALL 或 GET_RESOURCE_INFO_WITH_LABEL一起使用。 |
-| GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR<sup>12+</sup> | 0x00000010 | 用于获取应用图标的[drawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)对象。 |
-| GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | 用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo)和[getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo)接口中生效。 |
+| 名称                                       | 值         | 说明                                                         |
+| ------------------------------------------ | ---------- | ------------------------------------------------------------ |
+| GET_RESOURCE_INFO_ALL                      | 0x00000001 | 用于同时获取icon和label信息。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| GET_RESOURCE_INFO_WITH_LABEL               | 0x00000002 | 用于获取仅包含label信息，icon信息为空。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| GET_RESOURCE_INFO_WITH_ICON                | 0x00000004 | 用于获取仅包含icon信息，label信息为空。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL     | 0x00000008 | 用于获取根据label排序后的信息。它不能单独使用需要与GET_RESOURCE_INFO_ALL 或 GET_RESOURCE_INFO_WITH_LABEL一起使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR<sup>12+</sup> | 0x00000010 | 用于获取应用图标的[drawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)对象。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | 用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo)和[getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo)接口中生效。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 
 
 ## 接口
 
 ### bundleResourceManager.getBundleResourceInfo
 
-ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo<br>
-ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int): BundleResourceInfo
+getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统接口：** 此接口为系统接口。
 
@@ -54,8 +55,6 @@ ArkTS-Sta: getBundleResourceInfo(bundleName: string, resourceFlags?: int): Bundl
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -102,10 +101,11 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<LauncherAbilityResourceInfo><br>
-ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int): Array<LauncherAbilityResourceInfo>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<LauncherAbilityResourceInfo>
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统接口：** 此接口为系统接口。
 
@@ -114,8 +114,6 @@ ArkTS-Sta: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: in
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
