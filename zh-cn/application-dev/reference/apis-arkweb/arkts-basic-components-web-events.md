@@ -5699,6 +5699,10 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -5706,6 +5710,8 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 | callback       | [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) | 是 | 当鼠标/触摸板点击到同层标签时触发该回调。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -5813,6 +5819,136 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
     }
   }
   ```
+加载的html文件
+  ```html
+  <!-- index.html -->
+  <!Document>
+  <html>
+  <head>
+      <title>同层渲染测试</title>
+      <meta name="viewport">
+  </head>
+  <body>
+  <div>
+      <div id="bodyId">
+          <embed id="nativeButton" type = "native/button" width="800" height="800" style = "background-color:red"/>
+      </div>
+  </div>
+  </body>
+  </html>
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@ohos.arkui.component';
+  import webview from '@ohos.web.webview';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { NodeController, FrameNode, UIContext, TouchEvent, MouseEvent, Prop, Color, Button, Stack, NodeContainer, NativeEmbedStatus, wrapBuilder } from '@kit.ArkUI';
+  import { BuilderNode, NodeRenderType } from '@ohos.arkui.node';
+
+  export class Params {
+    text: string = '';
+    width: double = 1;
+    height: double = 1;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params> | null = null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: MouseEvent): boolean {
+      return this.rootNode?.postInputEvent(event) ?? false;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @Prop params: Params = {} as Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: 'resource://rawfile/index.html', controller: this.controller })
+            .enableNativeEmbedMode(true)
+            .onNativeEmbedLifecycleChange((embed) => {
+              if (embed.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: embed.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(embed.info?.width ?? 0),
+                  height: this.uiContext!.px2vp(embed.info?.height ?? 0),
+                });
+                this.nodeController.rebuild();
+              }
+            })
+            .onNativeEmbedMouseEvent((event) => {
+              if (event && event.mouseEvent) {
+                const mouseEvent = event.mouseEvent as MouseEvent;
+                let ret = this.nodeController.postInputEvent(mouseEvent)
+                if (event.result) {
+                  event.result?.setMouseEventResult(ret, true);
+                }
+              }
+            })
+        }
+      }
+    }
+  }
+  ```
+
 加载的html文件
   ```html
   <!-- index.html -->
