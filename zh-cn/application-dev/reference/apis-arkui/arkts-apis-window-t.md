@@ -80,7 +80,6 @@ type WindowAnimationCurveParam = Array&lt;number&gt;
 
 开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
 
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
