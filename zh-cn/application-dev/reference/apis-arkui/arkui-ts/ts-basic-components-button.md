@@ -241,6 +241,10 @@ buttonStyle(value: ButtonStyleMode)
 
 设置Button组件的样式和重要程度。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -258,6 +262,10 @@ buttonStyle(value: ButtonStyleMode)
 controlSize(value: ControlSize)
 
 设置Button组件的尺寸。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
