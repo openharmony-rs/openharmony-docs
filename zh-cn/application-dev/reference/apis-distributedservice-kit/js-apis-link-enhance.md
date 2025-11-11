@@ -59,7 +59,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
+  let name: string = "demo";
   hilog.info(0x0000, TAG, 'start sever name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
@@ -285,7 +285,7 @@ try {
 
   // 订阅服务接收事件
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // 启动服务
   server.start();
@@ -556,7 +556,7 @@ try {
   });
   connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -750,7 +750,7 @@ try {
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // 发起连接
@@ -853,8 +853,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅断连通知
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -901,12 +901,12 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // 取消订阅断连通知
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -954,8 +954,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -1001,11 +1001,11 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
