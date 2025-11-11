@@ -18,7 +18,7 @@
    有多个API接口可以创建PixelMap，下文以createPixelMapSync()为例。更多创建方式和接口请见[@ohos.multimedia.image (图片处理)](../reference/apis-image-kit/arkts-apis-image.md)模块。
 
    <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
-
+   
    ``` TypeScript
    // 图片宽高
    let width = 600;
@@ -28,23 +28,23 @@
    const color: ArrayBuffer = new ArrayBuffer(byteLength);
    let bufferArr = new Uint8Array(color);
    for (let i = 0; i < bufferArr.length; i += 4) {
-   // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
-   bufferArr[i] = 0x00;
-   bufferArr[i+1] = 0x00;
-   bufferArr[i+2] = 0x00;
-   bufferArr[i+3] = 0xFF;
-   let n = Math.floor(i / 80) % 3;
-   if (n == 0) {
-      bufferArr[i] = 0xFF;
-   } else if (n == 1) {
-      bufferArr[i+1] = 0xFF;
-   } else {
-      bufferArr[i+2] = 0xFF;
-   }
+     // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
+     bufferArr[i] = 0x00;
+     bufferArr[i+1] = 0x00;
+     bufferArr[i+2] = 0x00;
+     bufferArr[i+3] = 0xFF;
+     let n = Math.floor(i / 80) % 3;
+     if (n == 0) {
+       bufferArr[i] = 0xFF;
+     } else if (n == 1) {
+       bufferArr[i+1] = 0xFF;
+     } else {
+       bufferArr[i+2] = 0xFF;
+     }
    }
    // 设置像素属性
    let opts: image.InitializationOptions =
-   { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
+     { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
    // 创建PixelMap
    pixelMap = image.createPixelMapSync(color, opts);
    ```
