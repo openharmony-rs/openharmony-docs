@@ -4,13 +4,13 @@
 
 ## 概述
 
-\@Local装饰器用于\@ComponentV2装饰的自定义组件中，定义组件内部状态。\@Local装饰的变量为状态变量，具有观察变化的能力，当变量变化时，会触发绑定的UI组件刷新。\@Local装饰的变量仅能在组件内部初始化，不支持从父组件传入初始化。
+\@Local装饰器用于[\@ComponentV2](./arkts-static-componentv2.md#componentv2)装饰的自定义组件中，定义组件内部状态。\@Local装饰的变量为状态变量，具有观察变化的能力，当变量变化时，会触发绑定的UI组件刷新。\@Local装饰的变量仅能在组件内部初始化，不支持从父组件传入初始化。
 
 \@Local装饰器具有以下能力：
 
 - \@Local装饰的变量变化时，会刷新使用该变量的组件。
-- \@Local支持观察Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内置类型。
-- \@Local支持null、undefined以及联合类型。
+- \@Local支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
+- \@Local支持null、undefined以及[联合类型](#联合类型)。
 
 在静态语言上下文中使用时，需要导入装饰器：
 
@@ -235,8 +235,6 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```
 
 ## \@Local与\@State对比
-
-\@Local与\@State能力对比：
 
 |                | \@State                                          | \@Local                                           |
 | -------------- | ------------------------------------------------ | ------------------------------------------------- |

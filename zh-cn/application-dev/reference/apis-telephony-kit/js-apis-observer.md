@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -21,6 +23,10 @@ type NetworkState = radio.NetworkState
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [radio.NetworkState](js-apis-radio.md#networkstate) | 网络注册状态。 |
@@ -32,6 +38,10 @@ type SignalInformation = radio.SignalInformation
 网络信号强度信息对象。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -46,6 +56,10 @@ type DataConnectState = data.DataConnectState
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [data.DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 描述蜂窝数据链路连接状态。 |
@@ -58,6 +72,10 @@ type RatType = radio.RadioTechnology
 无线接入技术。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -72,6 +90,10 @@ type DataFlowType = data.DataFlowType
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [data.DataFlowType](js-apis-telephony-data.md#dataflowtype) | 描述蜂窝数据流类型。 |
@@ -84,6 +106,10 @@ type CallState = call.CallState
 通话状态码。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -98,6 +124,10 @@ type CardType = sim.CardType
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [sim.CardType](js-apis-sim.md#cardtype7) | 卡类型。 |
@@ -110,6 +140,10 @@ type SimState = sim.SimState
 SIM卡状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -125,6 +159,10 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -150,7 +188,7 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 
 ```ts
 observer.on('networkStateChange', (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -164,6 +202,10 @@ on\(type: \'networkStateChange\', options: ObserverOptions, callback: Callback\<
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -193,7 +235,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('networkStateChange', options, (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -209,6 +251,10 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -233,7 +279,7 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.log("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("on networkStateChange, data:" + JSON.stringify(data));
 }
 observer.on('networkStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -248,6 +294,10 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 订阅信号状态变化事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -274,7 +324,7 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -286,6 +336,10 @@ on\(type: \'signalInfoChange\', options: ObserverOptions, callback: Callback\<Ar
 订阅指定卡槽位的信号状态变化事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -316,7 +370,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -332,6 +386,10 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -358,7 +416,7 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.log("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -378,6 +436,10 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 > 获取电话号码时需要ohos.permission.READ_CALL_LOG权限，该权限为系统权限。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -402,7 +464,7 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 
 ```ts
 observer.on('callStateChange', (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -418,6 +480,10 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 > 获取电话号码时需要ohos.permission.READ_CALL_LOG权限，该权限为系统权限。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -446,7 +512,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -462,6 +528,10 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -486,7 +556,7 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 
 ```ts
 let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 }
 observer.on('callStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -502,6 +572,10 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 订阅蜂窝数据链路连接状态，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -526,7 +600,7 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 
 ```ts
 observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -538,6 +612,10 @@ on\(type: 'cellularDataConnectionStateChange', options: ObserverOptions, callbac
 订阅指定卡槽位的蜂窝数据链路连接状态，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -566,7 +644,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -582,6 +660,10 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -606,7 +688,7 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
-    console.log("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataConnectionStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -622,6 +704,10 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 订阅蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -648,7 +734,7 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 import { data } from '@kit.TelephonyKit';
 
 observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -660,6 +746,10 @@ on\(type: 'cellularDataFlowChange', options: ObserverOptions,  callback: Callbac
 订阅指定卡槽位的蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -690,7 +780,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -706,6 +796,10 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -732,7 +826,7 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 import { data } from '@kit.TelephonyKit';
 
 let callback: (data: data.DataFlowType) => void = (data: data.DataFlowType) => {
-    console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 }
 observer.on('cellularDataFlowChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -748,6 +842,10 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 订阅sim状态更改事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -772,7 +870,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 ```ts
 observer.on('simStateChange', (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -784,6 +882,10 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -812,7 +914,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('simStateChange', options, (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -828,6 +930,10 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -852,7 +958,7 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 
 ```ts
 let callback: (data: observer.SimStateData) => void = (data: observer.SimStateData) => {
-    console.log("on simStateChange, data:" + JSON.stringify(data));
+    console.info("on simStateChange, data:" + JSON.stringify(data));
 }
 observer.on('simStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -867,6 +973,10 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 订阅卡帐户变化事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -891,7 +1001,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
 ```ts
 observer.on('iccAccountInfoChange', () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 });
 ```
 
@@ -907,6 +1017,10 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -931,7 +1045,7 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 
 ```ts
 let callback: () => void = () => {
-    console.log("on iccAccountInfoChange success");
+    console.info("on iccAccountInfoChange success");
 }
 observer.on('iccAccountInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -945,6 +1059,10 @@ observer.off('iccAccountInfoChange');
 SIM卡锁类型。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值   | 说明              |
 | ----------- | ---- | ----------------- |
@@ -969,11 +1087,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                | 必填 | 说明                                                      |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | 是   | SIM卡类型。 |
-| state               | [SimState](js-apis-sim.md#simstate) | 是   | SIM卡状态。 |
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 是   | SIM卡锁类型。                                             |
+|     名称            |                 类型                | 只读|可选 | 说明   |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | 否  |否 | SIM卡类型。<br />**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22 |
+| state               | [SimState](js-apis-sim.md#simstate) | 否 |  否| SIM卡状态。<br />**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22 |
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | 否  | 否| SIM卡锁类型。<br />**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
 
 
 ## CallStateInfo<sup>11+</sup>
@@ -982,10 +1100,14 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                    | 必填 | 说明     |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 是   | 通话类型。 |
-| number              | string                                 | 是   | 电话号码。 |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: teleNumber | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
@@ -993,6 +1115,10 @@ SIM卡类型和状态。
 数据连接状态相关信息。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 |     名称            |                 类型                                            | 必填 | 说明         |
 | ------------------- | ---------------------------------------------------------------| ---- | ------------ |
@@ -1006,7 +1132,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 |     名称            |         类型      | 必填  | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| slotId              | number            | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| slotId              | rkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
 

@@ -2383,9 +2383,9 @@ export function frameNodeTrans(frameNode:Object) {
 
 ```
  
-### convertPoint<sup>22+</sup>
+### convertPosition<sup>22+</sup>
 
-convertPoint(position: NodePosition, targetNode: FrameNode): NodePosition
+convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
 
 将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
 
@@ -2399,8 +2399,8 @@ convertPoint(position: NodePosition, targetNode: FrameNode): NodePosition
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| position | [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点局部坐标系中的点坐标。 |
-| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点局部坐标系中的坐标。 |
+| position | [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点坐标系中的相对坐标。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
 
 **返回值：**
 
@@ -2438,7 +2438,7 @@ import { NodePosition } from '@ohos.arkui.node';
 
 @Entry
 @Component
-struct ConvertPointTest {
+struct ConvertPositionTest {
   private uiContext: UIContext = this.getUIContext();
   @State message: string = 'Hello World';
   @State nodeAOk: boolean = false;
@@ -2462,7 +2462,7 @@ struct ConvertPointTest {
 
       }
 
-      Button('运行convertPoint测试')
+      Button('运行convertPosition测试')
         .onClick(() => {
           this.runBasicTest();
         })
@@ -2490,9 +2490,9 @@ struct ConvertPointTest {
     }
 
     const testPoint: NodePosition = { x: 10, y: 10 } as NodePosition;
-    const result: NodePosition | undefined = nodeA.convertPoint({ x: 30, y: 10 }, nodeB);
+    const result: NodePosition | undefined = nodeA.convertPosition({ x: 30, y: 10 }, nodeB);
     if (result === undefined) {
-      console.info("convertPoint 转换失败");
+      console.info("convertPosition 转换失败");
       return;
     }
     console.info(`输出: (${result.x}, ${result.y})`);

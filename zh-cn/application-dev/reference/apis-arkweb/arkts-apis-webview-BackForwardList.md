@@ -22,7 +22,7 @@ import { webview } from '@kit.ArkWeb';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -41,7 +41,7 @@ ArkTS-Sta: getItemAtIndex(index: int): HistoryItem
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

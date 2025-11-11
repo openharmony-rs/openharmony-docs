@@ -18,6 +18,10 @@ ScreenCaptureHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 ## deny<sup>10+</sup>
 
 deny(): void
@@ -26,6 +30,10 @@ deny(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 ## getOrigin<sup>10+</sup>
 
 getOrigin(): string
@@ -33,6 +41,10 @@ getOrigin(): string
 获取网页来源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -51,6 +63,10 @@ grant(config: ScreenCaptureConfig): void
 > 需要配置权限：ohos.permission.MICROPHONE。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

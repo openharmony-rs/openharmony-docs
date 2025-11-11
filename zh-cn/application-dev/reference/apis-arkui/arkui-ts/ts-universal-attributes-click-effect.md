@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## clickEffect
 
-clickEffect(value: ClickEffect | null): T
+ArkTS-Dyn: clickEffect(value: ClickEffect | null): T
+
+ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
 
 设置当前组件的点击回弹效果。
 
@@ -16,11 +20,15 @@ clickEffect(value: ClickEffect | null): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null | 是   | 设置当前组件点击回弹效果。<br/>**说明：**<br/>可通过null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| value  | ArkTS-Dyn: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null <br/>ArkTS-Sta: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null&nbsp;\|&nbsp;undefined | 是   | 设置当前组件点击回弹效果。<br/>**说明：**<br/>可通过null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -36,7 +44,11 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 

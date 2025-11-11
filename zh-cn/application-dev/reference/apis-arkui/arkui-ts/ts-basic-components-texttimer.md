@@ -6,7 +6,9 @@
 
 >  **说明：**
 >
-> 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -125,7 +127,9 @@ fontStyle(value: FontStyle)
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | ResourceStr)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr)
 
 设置文本的字体粗细，设置过大可能会导致不同字体下的文字出现截断。
 
@@ -135,11 +139,15 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型  | 必填 | 说明      |
 | ------ | ---------- | ------ | ----------------- |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值范围为[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。number类型取值范围外的默认值为400。[ResourceStr](ts-types.md#resourcestr)类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，int类型取值范围为[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。int类型取值范围外的默认值为400。[ResourceStr](ts-types.md#resourcestr)类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
 
 ### fontFamily
 
@@ -195,7 +203,9 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 ### onTimer
 
-onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onTimer(event:&nbsp;(utc:&nbsp;long,&nbsp;elapsedTime:&nbsp;long)&nbsp;=&gt;&nbsp;void)
 
 时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
 设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
@@ -206,12 +216,16 @@ onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名      | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| utc         | number | 是   | Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。 |
-| elapsedTime | number | 是   | 计时器经过的时间，单位为设置格式的最小单位。                 |
+| utc         | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。 |
+| elapsedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 计时器经过的时间，单位为设置格式的最小单位。                 |
 
 ## TextTimerController
 
@@ -285,12 +299,16 @@ ContentModifier接口使用的TextTimer配置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型    |    必填      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |
-| count | number | 是 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
 | isCountDown | boolean| 是 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
 | started | boolean | 是 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
-| elapsedTime | number | 是 | 计时器经过的时间，单位为设置格式的最小单位。 |
+| elapsedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 计时器经过的时间，单位为设置格式的最小单位。 |
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）

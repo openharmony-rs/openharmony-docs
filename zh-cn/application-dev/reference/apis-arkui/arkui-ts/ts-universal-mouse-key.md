@@ -4,12 +4,16 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 目前仅支持通过外接鼠标触发。
 
 ## onMouse
 
-onMouse(event: (event: MouseEvent) => void)
+ArkTS-Dyn: onMouse(event: (event: MouseEvent) => void)
+
+ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
 
 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该回调。
 
@@ -17,11 +21,15 @@ onMouse(event: (event: MouseEvent) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [MouseEvent](#mouseevent对象说明) | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
+| event | ArkTS-Dyn: [MouseEvent](#mouseevent对象说明) <br/>ArkTS-Sta: [MouseEvent](#mouseevent对象说明) \|&nbsp;undefined | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
 
 
 ## MouseEvent对象说明

@@ -2,12 +2,17 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
 
 媒体资产管理类，管理媒体资源读取。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 ## 导入模块
 
@@ -22,6 +27,10 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 根据不同的策略模式，请求图片资源。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -100,6 +109,10 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker的方式调用该接口来请求图片资源数据，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
@@ -175,6 +188,10 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 根据不同的策略模式，请求动态照片对象。动态照片对象可用于请求动态照片的资源数据。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -256,6 +273,10 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker的方式调用该接口来请求视频资源数据到应用沙箱，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
@@ -330,6 +351,10 @@ static cancelRequest(context: Context, requestId: string): Promise\<void>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -381,6 +406,10 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

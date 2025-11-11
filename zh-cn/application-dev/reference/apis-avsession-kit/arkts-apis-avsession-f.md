@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -14,11 +15,15 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-创建会话对象，一个Ability只能存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
+创建会话对象，一个Ability只能存在一个会话，重复创建会失败。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -36,7 +41,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -44,6 +49,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -53,7 +60,7 @@ import { avSession } from '@kit.AVSessionKit';
 struct Index {
   @State message: string = 'hello world';
 
-  build() { 
+  build() {
     Column() {
         Text(this.message)
           .onClick(()=>{
@@ -77,13 +84,51 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // 供后续函数入参使用。
+
+            avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
+            currentAVSession = data;
+            sessionId = currentAVSession.sessionId;
+            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+            }).catch(async(err: BusinessError) => {
+            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## avSession.createAVSession<sup>10+</sup>
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-创建会话对象，一个Ability只能存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
+创建会话对象，一个Ability只能存在一个会话，重复创建会失败。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -96,7 +141,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -104,6 +149,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -128,6 +175,42 @@ struct Index {
             } else {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
+              console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+            }
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(()=>{
+          let currentAVSession: avSession.AVSession | undefined;
+          let tag = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let sessionId: string | undefined;  // 供后续函数入参使用。
+
+          avSession.createAVSession(context, tag, "audio", (err: BusinessError | null, data: avSession.AVSession | undefined) => {
+            if (err) {
+              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+              currentAVSession = data;
+              sessionId = currentAVSession?.sessionId;
               console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
             }
           });

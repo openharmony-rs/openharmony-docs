@@ -81,7 +81,7 @@ ArkUI互操作能力支持静态上下文使用动态模块的自定义组件，
 
 以下示例展示了如何在静态上下文中使用动态模块的自定义组件来显示“Hello World!”。
 
-- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`har1_1`，在`har1_1/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // har1_1/src/main/ets/components/ChildComponent.ets
@@ -117,7 +117,7 @@ export struct ChildComponentV2 {
 }
 ```
 
-- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](har-package.md)）说明。
+- 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```json
 // entry/oh-package.json5

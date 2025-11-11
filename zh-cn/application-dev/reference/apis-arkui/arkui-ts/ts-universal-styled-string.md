@@ -4,11 +4,13 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  属性字符串目前不支持在worker线程中使用。
+>  - 属性字符串目前不支持在worker线程中使用。
 >
->  属性字符串通过controller绑定时，需要等待布局完成后，绑定生效。当[measure](../js-apis-arkui-frameNode.md#measure12)和setStyledString同时使用，开发者需要通过[@ohos.arkui.inspector (布局回调)](../js-apis-arkui-inspector.md)判断布局完成，再绑定属性字符串。
+>  - 属性字符串通过controller绑定时，需要等待布局完成后，绑定生效。当[measure](../js-apis-arkui-frameNode.md#measure12)和setStyledString同时使用，开发者需要通过[@ohos.arkui.inspector (布局回调)](../js-apis-arkui-inspector.md)判断布局完成，再绑定属性字符串。
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 规则说明
 
@@ -86,7 +88,9 @@ equals(other: StyledString): boolean
 
 ### subStyledString
 
-subStyledString(start: number, length?: number): StyledString
+ArkTS-Dyn: subStyledString(start: number, length?: number): StyledString
+
+ArkTS-Sta: subStyledString(start: int, length?: int): StyledString | undefined
 
 获取属性字符串的子字符串。
 
@@ -94,18 +98,22 @@ subStyledString(start: number, length?: number): StyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 子属性字符串开始位置的下标。 |
-| length | number | 否   | 子属性字符串的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 子属性字符串开始位置的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 子属性字符串的长度。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- | 
-| [StyledString](#styledstring) | 子属性字符串。<br/>**说明：** <br/>当start为合法入参时，length的默认值是被查询属性字符串对象的长度与start的值的差。<br/>当start和length越界或者必填传入undefined时，会抛出异常。|
+| ArkTS-Dyn: [StyledString](#styledstring) <br/> ArkTS-Sta: [StyledString](#styledstring) \| undefined | 子属性字符串。<br/>**说明：** <br/>当start为合法入参时，length的默认值是被查询属性字符串对象的长度与start的值的差。<br/>当start和length越界或者必填传入undefined时，会抛出异常。|
 
 **错误码**：
 
@@ -117,7 +125,9 @@ subStyledString(start: number, length?: number): StyledString
 
 ### getStyles
 
-getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
+ArkTS-Dyn: getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<SpanStyle>
+
+ArkTS-Sta: getStyles(start: int, length: int, styledKey?: StyledStringKey): Array\<SpanStyle> | undefined;
 
 获取指定范围属性字符串的样式集合。
 
@@ -125,19 +135,23 @@ getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围属性字符串的下标。 |
-| length | number | 是   | 指定范围属性字符串的长度。 |
+| start | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 指定范围属性字符串的下标。 |
+| length | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 指定范围属性字符串的长度。 |
 | styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。 |
 
 **返回值：**
 
 | 类型              |       说明       |
 | ------- | --------------------------------- | 
-| Array<[SpanStyle](#spanstyle对象说明)> | 各样式对象的数组。<br/>**说明：** <br/>当指定范围属性字符串未设置任何样式，则返回空数组。<br/>当start和length越界或者必填传入undefined时，会抛出异常；<br/>当styledKey传入异常值或undefined时，会抛出异常。<br/>当styledKey为CustomSpan时，返回的是创建CustomSpan时传入的样式对象，即修改该样式对象也会影响实际的显示效果。 |
+| ArkTS-Dyn: Array<[SpanStyle](#spanstyle对象说明)> <br/>ArkTS-Sta: Array<[SpanStyle](#spanstyle对象说明)> \| undefined | 各样式对象的数组。<br/>**说明：** <br/>当指定范围属性字符串未设置任何样式，则返回空数组。<br/>当start和length越界或者必填传入undefined时，会抛出异常；<br/>当styledKey传入异常值或undefined时，会抛出异常。<br/>当styledKey为CustomSpan时，返回的是创建CustomSpan时传入的样式对象，即修改该样式对象也会影响实际的显示效果。 |
 
 **错误码**：
 
@@ -149,7 +163,9 @@ getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<
 
 ### fromHtml
 
-static fromHtml(html: string): Promise\<StyledString>
+ArkTS-Dyn: static fromHtml(html: string): Promise\<StyledString>
+
+ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined>
 
 将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>。支持将标签中的style属性样式转换成对应的属性字符串样式。
 
@@ -176,6 +192,10 @@ static fromHtml(html: string): Promise\<StyledString>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
@@ -186,7 +206,7 @@ static fromHtml(html: string): Promise\<StyledString>
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| [StyledString](#styledstring) | 属性字符串。 |
+| ArkTS-Dyn: [StyledString](#styledstring) <br/> ArkTS-Sta: [StyledString](#styledstring) \| undefined | 属性字符串。 |
 
 **错误码**：
 

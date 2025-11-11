@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
-> 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -38,10 +40,14 @@ DataPanel(options: DataPanelOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 7
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称            | 类型   | 必填  | 说明 |
 | ----------------- | -------- | ----- | -------- |
-| values            | number[]   | 是    | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | number     | 否    |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100 |
+| values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 是    | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
+| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否    |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100 |
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle |
 
 
@@ -216,10 +222,14 @@ constructor(colorStops: ColorStop[])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称  | 类型    |    必填      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |
-| values | number[] | 是 | 当前DataPanel的数据值。<br>取值范围：[0, 9]，若数据值小于0，则置为0。 |
-| maxValue | number | 是 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
+| values | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[] | 是 | 当前DataPanel的数据值。<br>取值范围：[0, 9]，若数据值小于0，则置为0。 |
+| maxValue | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
 
 ## 示例
 

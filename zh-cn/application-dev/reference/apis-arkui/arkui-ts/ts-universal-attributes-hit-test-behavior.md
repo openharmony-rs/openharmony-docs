@@ -3,12 +3,15 @@
 设置组件的触摸测试类型。在ArkUI开发框架中，处理触屏事件时，会在触屏事件触发前进行按压点与组件区域的触摸测试，以收集需响应触屏事件的组件。基于测试结果，框架会分发相应的触屏事件。hitTestBehavior属性用于设置不同的触摸测试响应模式，影响触摸测试收集结果及后续触屏事件分发。具体影响参考[HitTestMode](#hittestmode枚举说明)枚举说明。
 
 >  **说明：**
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >  - 从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 当Stack组件中有多个节点触摸区域重叠时，如两个节点，默认只会对显示在最上层的节点做触摸测试，若需要显示在下层的节点触发触摸测试，请给显示在上层的节点设置hitTestBehavior为HitTestMode.Transparent。
 
 ## hitTestBehavior
 
-hitTestBehavior(value: HitTestMode): T
+ArkTS-Dyn: hitTestBehavior(value: HitTestMode): T
+
+ArkTS-Sta: hitTestBehavior(value: HitTestMode | undefined): this
 
 设置组件的触摸测试类型。
 
@@ -16,17 +19,21 @@ hitTestBehavior(value: HitTestMode): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名            | 类型     | 必填                             | 说明                               |
 | -------------------- | -------- | ---------------------------------------- | ---------------------------------------- |
-| value | [HitTestMode](#hittestmode枚举说明) | 是 | 设置当前组件的触摸测试类型。<br>默认值： HitTestMode.Default |
+| value | ArkTS-Dyn: [HitTestMode](#hittestmode枚举说明) <br/>ArkTS-Sta: [HitTestMode](#hittestmode枚举说明) \|&nbsp;undefined | 是 | 设置当前组件的触摸测试类型。<br>默认值： HitTestMode.Default |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## HitTestMode枚举说明
 

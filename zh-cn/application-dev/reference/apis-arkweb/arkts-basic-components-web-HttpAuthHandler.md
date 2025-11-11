@@ -18,6 +18,10 @@ HttpAuthHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -26,6 +30,10 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## confirm<sup>9+</sup>
 
 confirm(userName: string, password: string): boolean
@@ -33,6 +41,10 @@ confirm(userName: string, password: string): boolean
 使用用户名和密码进行HTTP认证操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -54,6 +66,10 @@ isHttpAuthInfoSaved(): boolean
 通知Web组件用户使用服务器缓存的账号密码认证。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 

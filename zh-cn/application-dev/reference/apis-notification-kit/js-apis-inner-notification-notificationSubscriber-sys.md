@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -24,6 +25,10 @@ onConsume?: (data: SubscribeCallbackData) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -32,10 +37,36 @@ onConsume?: (data: SubscribeCallbackData) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info('===> onConsume in test');
+  let req = data.request;
+  console.info('===> onConsume callback req.id:' + req.id);
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -66,6 +97,10 @@ onCancel?: (data: SubscribeCallbackData) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -74,10 +109,37 @@ onCancel?: (data: SubscribeCallbackData) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onCancelCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info('===> onCancel in test');
+  let req = data.request;
+  console.info('===> onCancel callback req.id:' + req.id);
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onCancel: onCancelCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { NotificationSortingMap } from 'notification.notificationSortingMap';
+
+let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -108,6 +170,10 @@ onUpdate?: (data: NotificationSortingMap) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -116,6 +182,7 @@ onUpdate?: (data: NotificationSortingMap) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -129,7 +196,29 @@ let subscribeCallback = (err: BusinessError) => {
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onUpdate: (map) => {
-    console.info('===> onUpdateCallback map:' + JSON.stringify(map));
+    console.info(`===> onUpdateCallback map: ${JSON.stringify(map)}`);
+  }
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { NotificationSortingMap } from 'notification.notificationSortingMap';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onUpdate: (map : NotificationSortingMap) => {
+    console.info(`===> onUpdateCallback map: ${JSON.stringify(map)}`);
   }
 };
 
@@ -146,6 +235,10 @@ onConnect?: () => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -154,10 +247,34 @@ onConnect?: () => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onConnectCallback = () => {
+  console.info('===> onConnect in test');
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConnect: onConnectCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -186,6 +303,10 @@ onDisconnect?: () => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -194,6 +315,7 @@ onDisconnect?: () => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -230,6 +352,43 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+let unsubscribeCallback = (err: BusinessError | null ) => {
+  if (err) {
+    console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("unsubscribeCallback");
+  }
+};
+
+let onConnectCallback = () => {
+  console.info('===> onConnect in test');
+}
+let onDisconnectCallback = () => {
+  console.info('===> onDisconnect in test');
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConnect: onConnectCallback,
+  onDisconnect: onDisconnectCallback
+};
+
+// 订阅通知后会收到onConnect回调
+notificationSubscribe.subscribe(subscriber, subscribeCallback)
+// 取消订阅后会收到onDisconnect回调
+notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
+```
+
 ## onDestroy
 
 onDestroy?: () => void
@@ -240,6 +399,10 @@ onDestroy?: () => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -248,10 +411,34 @@ onDestroy?: () => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onDestroyCallback = () => {
+  console.info('===> onDestroy in test');
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDestroy: onDestroyCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -325,6 +512,10 @@ onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -333,6 +524,7 @@ onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
@@ -346,7 +538,31 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let onDoNotDisturbChangedCallback = (mode: notificationManager.DoNotDisturbDate) => {
-  console.info('===> onDoNotDisturbChanged:' + JSON.stringify(mode));
+  console.info(`===> onDoNotDisturbChanged: ${JSON.stringify(mode)}`);
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDoNotDisturbChanged: onDoNotDisturbChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onDoNotDisturbChangedCallback = (mode: notificationManager.DoNotDisturbDate) => {
+  console.info(`===> onDoNotDisturbChanged: ${JSON.stringify(mode)}`);
 }
 
 let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -366,6 +582,10 @@ onEnabledNotificationChanged?: (callbackData: EnabledNotificationCallbackData) =
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型                                                                                                           | 必填 | 说明 |
@@ -374,10 +594,36 @@ onEnabledNotificationChanged?: (callbackData: EnabledNotificationCallbackData) =
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onEnabledNotificationChangedCallback = (callbackData: notificationSubscribe.EnabledNotificationCallbackData) => {
+  console.info("bundle: ", callbackData.bundle);
+  console.info("uid: ", callbackData.uid);
+  console.info("enable: ", callbackData.enable);
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledNotificationChanged: onEnabledNotificationChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -408,6 +654,10 @@ onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
@@ -416,6 +666,7 @@ onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -438,6 +689,29 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onBadgeChanged: (data : notificationSubscribe.BadgeNumberCallbackData) => {
+    console.info("bundle: ", data.bundle);
+    console.info("uid: ", data.uid);
+    console.info("badgeNumber: ", data.badgeNumber);
+  }
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
 ## onBadgeEnabledChanged<sup>12+</sup>
 
 onBadgeEnabledChanged?: BadgeEnabledChangedCallback
@@ -448,6 +722,10 @@ onBadgeEnabledChanged?: BadgeEnabledChangedCallback
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
@@ -456,6 +734,7 @@ onBadgeEnabledChanged?: BadgeEnabledChangedCallback
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -468,7 +747,29 @@ let subscribeCallback = (err: BusinessError) => {
 };
 
 let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info('onBadgeEnabledChanged, badge enabled state change to: ', JSON.stringify(data));
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
+};
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onBadgeEnabledChanged: BadgeEnabledChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('subscribeCallback');
+  }
+};
+
+let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
 };
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeEnabledChanged: BadgeEnabledChangedCallback
@@ -488,6 +789,10 @@ onBatchCancel?: (data: Array<SubscribeCallbackData\>) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
@@ -496,6 +801,7 @@ onBatchCancel?: (data: Array<SubscribeCallbackData\>) => void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -519,19 +825,49 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onBatchCancelCallBack = (data: Array<notificationSubscribe.SubscribeCallbackData>) => {
+  console.info('===> onBatchCancel in test');
+  let req = data[0].request;
+  console.info('===> onBatchCancel callback req.id:' + req.id);
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onBatchCancel: onBatchCancelCallBack
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+
+```
 ## SubscribeCallbackData
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 | 名称            | 类型                                                                 | 只读 | 可选 | 说明     |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是  | 否  | 通知内容。 |
 | sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | 通知排序信息。 |
-| reason          | number                                                             | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
+| reason          | ArkTS-Dyn:number <br/>ArkTS-Sta:int                                | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
-| vibrationValues | Array\<number\>                                                    | 是  | 是  | 通知震动。 |
+| vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>               | 是  | 是  | 通知震动。 |
 
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
@@ -540,10 +876,14 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：20
+
 | 名称   | 类型    | 只读 | 可选 | 说明             |
 | ------ | ------- | ---- | --- | ---------------- |
 | bundle | string  | 是  | 否  | 应用的包名。       |
-| uid    | number  | 是  | 否  | 应用的uid。        |
+| uid    | ArkTS-Dyn:number <br/>ArkTS-Sta:int  | 是  | 否  | 应用的uid。        |
 | enable | boolean | 是  | 否  | 应用通知使能状态。<br> - true：允许。<br> - false：禁止。 |
 
 
@@ -555,11 +895,11 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 | 名称        | 类型   | 只读 | 可选 | 说明         |
 | ----------- | ------ | ---- | ---- | ------------ |
-| bundle      | string | 是   | 否   | 应用的包名。 |
-| uid         | number | 是   | 否   | 应用的uid。  |
-| badgeNumber | number | 是   | 否   | 角标个数。   |
+| bundle      | string | 是   | 否   | 应用的包名。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
+| uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
+| badgeNumber | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
 | instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。   |
-| appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。   |
+| appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。 <br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：20 |
 
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>

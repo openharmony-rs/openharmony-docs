@@ -5,6 +5,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - 本模块系统接口。
@@ -75,7 +77,9 @@ PluginComponent(options: PluginComponentOptions)
 
 ### onComplete
 
-onComplete(callback:&nbsp;VoidCallback)
+ArkTS-Dyn: onComplete(callback:&nbsp;VoidCallback)
+
+ArkTS-Sta: onComplete(callback:&nbsp;VoidCallback | undefined)
 
 组件加载完成时触发回调。
 
@@ -83,15 +87,21 @@ onComplete(callback:&nbsp;VoidCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，组件加载完成时触发的回调。 |
+| callback | ArkTS-Dyn: [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback)<br/>ArkTS-Sta: [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback)\| undefined | 是   | 回调函数，组件加载完成时触发的回调。 |
 
 ### onError
 
-onError(callback:&nbsp;PluginErrorCallback)
+ArkTS-Dyn: onError(callback:&nbsp;PluginErrorCallback)
+
+ArkTS-Sta: onError(callback:&nbsp;PluginErrorCallback | undefined)
 
 组件加载错误时触发回调。
 
@@ -99,11 +109,15 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                                            |
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| callback  | [PluginErrorCallback](#pluginerrorcallback18类型说明)          | 是   | 发生错误时调用回调。 |
+| callback  | ArkTS-Dyn: [PluginErrorCallback](#pluginerrorcallback18类型说明)<br/>ArkTS-Sta: [PluginErrorCallback](#pluginerrorcallback18类型说明)\| undefined          | 是   | 发生错误时调用回调。 |
 
 ## PluginErrorCallback<sup>18+</sup>类型说明
 

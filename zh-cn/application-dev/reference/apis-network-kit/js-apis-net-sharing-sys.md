@@ -4,8 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>
+> - 本模块首批接口从 API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块为系统接口。
 
 ## 导入模块
 
@@ -109,6 +112,10 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                 |
@@ -127,6 +134,8 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,7 +146,19 @@ sharing.isSharing((error: BusinessError, data: boolean) => {
 });
 ```
 
-## sharing.isSharing
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+sharing.isSharing((error: BusinessError | null, data: boolean) => {
+  console.error(JSON.stringify(error));
+  console.log(JSON.stringify(data));
+});
+```
+
+## sharingisSharing
 
 isSharing(): Promise\<boolean>
 
@@ -148,6 +169,10 @@ isSharing(): Promise\<boolean>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -193,6 +218,10 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
@@ -218,12 +247,26 @@ startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing.startSharing(SHARING_WIFI, (error: BusinessError | null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -239,6 +282,10 @@ startSharing(type: SharingIfaceType): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -297,6 +344,10 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                     |
@@ -321,12 +372,26 @@ stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```js
 import { sharing } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let SHARING_WIFI = 0;
 sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+
+```js
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing.stopSharing(SHARING_WIFI, (error: BusinessError | null) => {
   console.error(JSON.stringify(error));
 });
 ```
@@ -342,6 +407,10 @@ stopSharing(type: SharingIfaceType): Promise\<void>
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -936,6 +1005,10 @@ on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                         |
@@ -972,6 +1045,10 @@ off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1010,6 +1087,10 @@ on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStat
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                                   | 必填 | 说明                                  |
@@ -1046,6 +1127,10 @@ off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingSt
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1084,6 +1169,10 @@ on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                           |
@@ -1120,6 +1209,10 @@ off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1181,6 +1274,10 @@ sharing.off('sharingUpstreamChange', (data: object) => {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetSharing
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 值  | 说明                 |
 | ----------------- | --- | -------------------- |

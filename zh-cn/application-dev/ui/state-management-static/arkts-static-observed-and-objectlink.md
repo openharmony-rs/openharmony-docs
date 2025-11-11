@@ -188,7 +188,7 @@ this.parent.child.num = 5;
     }
     ```
 
-5. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示`Cannot assign to this property because it is readonly`。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
+5. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有编译时报错提示`Cannot assign to this property because it is readonly`。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
 
     【反例】
   

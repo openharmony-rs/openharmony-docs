@@ -4,7 +4,7 @@
 
 ## 概述
 
-makeObserved接口可以将Array、Map、Set、Date以及interface字面量类型的变量转变为可观察数据。
+makeObserved接口可以将[Array](#makeobserved与array配合使用)、[Map](#makeobserved与map配合使用)、[Set](#makeobserved与set配合使用)、[Date](#makeobserved与date配合使用)以及[interface字面量类型](#makeobserved与interface字面量配合使用)的变量转变为可观察数据。
 
 由makeObserved转换的数据，即使不使用状态变量装饰器，也能观察其内部属性变化。
 

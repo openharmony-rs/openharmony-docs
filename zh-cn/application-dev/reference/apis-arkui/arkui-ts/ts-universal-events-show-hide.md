@@ -4,11 +4,15 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## onAttach<sup>12+</sup>
 
-onAttach(callback: Callback\<void>): T
+ArkTS-Dyn: onAttach(callback: Callback\<void>): T
+
+ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 组件挂载至组件树时触发此回调。
 
@@ -22,22 +26,27 @@ onAttach(callback: Callback\<void>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void>   | 是   | onAttach事件的回调函数，表示组件已经挂载至组件树。|
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#VoidCallback12) | 是   | onAttach事件的回调函数，表示组件已经挂载至组件树。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
-
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onDetach<sup>12+</sup>
 
-onDetach(callback: Callback\<void>): T
+ArkTS-Dyn: onDetach(callback: Callback\<void>): T
+
+ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
 组件从组件树卸载时触发此回调。
 
@@ -45,21 +54,27 @@ onDetach(callback: Callback\<void>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> | 是   | onDetach事件的回调函数，表示组件已经从组件树卸载。|
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) \| undefined| 是   | onDetach事件的回调函数，表示组件已经从组件树卸载。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## onAppear
 
-onAppear(event: () => void): T
+ArkTS-Dyn: onAppear(event: () => void): T
+
+ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 组件挂载显示后触发此回调。
 
@@ -73,22 +88,28 @@ onAppear(event: () => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | () => void| 是   | onAppear事件的回调函数，表示组件已挂载显示。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: () => void | undefined| 是   | onAppear事件的回调函数，表示组件已挂载显示。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 
 ## onDisAppear
 
-onDisAppear(event: () => void): T
+ArkTS-Dyn: onDisAppear(event: () => void): T
+
+ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 组件卸载消失时触发此回调。
 
@@ -98,17 +119,23 @@ onDisAppear(event: () => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | () => void| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: () => void | undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。 |
+
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 
 ## 示例

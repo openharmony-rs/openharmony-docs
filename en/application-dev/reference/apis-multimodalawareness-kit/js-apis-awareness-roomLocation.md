@@ -27,9 +27,9 @@ Defines the room result.
 
 
 
-## roomLocation.on('onRoomLocated')
+## roomLocation.on('roomLocate')
 
- on(type: 'onRoomLocated', callback: Callback&lt;RoomLocateResponse&gt;): void;
+ on(type: 'roomLocate', callback: Callback&lt;RoomLocateResponse&gt;): void;
 
 Subscribe to room location events.
 
@@ -56,16 +56,16 @@ For details about the error codes, see [Room Location Error Codes](errorcode-roo
 **Example**
 
 ```ts
-roomLocation.on('onRoomLocated', (data:roomLocation.RoomLocateResponse) => {
+roomLocation.on('roomLocate', (data:roomLocation.RoomLocateResponse) => {
     console.info('on success' + data);
 })
 ```
 
 
 
-## roomLocation.off('onRoomLocated')
+## roomLocation.off('roomLocate')
 
-off(type: 'onRoomLocated', callback?: Callback&lt;RoomLocateResponse&gt;): void;
+off(type: 'roomLocate', callback?: Callback&lt;RoomLocateResponse&gt;): void;
 
 Unsubscribes from room location events.
 
@@ -94,7 +94,7 @@ For details about the error codes, see [Room Location Error Codes](errorcode-roo
 **Example**
 
 ```ts
-roomLocation.off('onRoomLocated', (data:roomLocation.RoomLocateResponse) => {
+roomLocation.off('roomLocate', (data:roomLocation.RoomLocateResponse) => {
     console.info('off success' + data);
 })
 ```

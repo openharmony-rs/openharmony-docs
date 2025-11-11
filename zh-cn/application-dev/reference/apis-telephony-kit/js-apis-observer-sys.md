@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.observer (observer)](js-apis-observer.md)。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.observer (observer)](js-apis-observer.md)。
 
 ## 导入模块
 
@@ -26,6 +28,10 @@ on\(type: \'cellInfoChange\', callback: Callback\<Array\<CellInformation\>\>\): 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -70,6 +76,10 @@ on\(type: \'cellInfoChange\', options: ObserverOptions, callback: Callback\<Arra
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -121,6 +131,10 @@ off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\)
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
@@ -154,4 +168,20 @@ observer.on('cellInfoChange', callback);
 observer.off('cellInfoChange', callback);
 observer.off('cellInfoChange');
 ```
+
+## CellInformation
+
+type CellInformation = radio.CellInformation
+
+描述当前单元格信息。
+
+**系统能力：** SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [radio.CellInformation](js-apis-radio-sys.md#cellInformation7) | 描述当前单元格信息。 |
 

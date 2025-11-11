@@ -18,11 +18,15 @@
 
 表示用户已完成引导并加载系统。
 
-在设备上指定用户已完成引导并加载系统，将会触发事件通知服务发布该系统公共事件。
+在设备上指定用户已完成引导并加载系统时，将会触发事件通知服务发布该系统公共事件。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
@@ -41,6 +45,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_INSTALLATION_STARTED"
@@ -55,6 +63,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -71,6 +83,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.CHANGE_DEFAULT_APPLICATION
 
 **取值：** "usual.event.DEFAULT_APPLICATION_CHANGED"
@@ -86,6 +102,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.MANAGE_SHORTCUTS
 
 **取值：** "usual.event.SHORTCUT_CHANGED"
@@ -98,6 +118,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -112,6 +136,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.KIOSK_MODE_OFF
@@ -119,7 +147,7 @@
 
 ## Background Tasks Kit 
 
-### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+<sup>
+### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
 
 表示待机状态下解除资源使用限制的豁免名单出现变化，触发公共事件发布动作。
 
@@ -129,6 +157,10 @@
 系统应用可以调用JS API接口申请解除资源使用限制。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -148,6 +180,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
@@ -162,13 +198,17 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CUSTOM_ROAMING_REGION_UPDATED"
 
 ## Basic Services Kit-电源
 
-### COMMON_EVENT_CHARGE_TYPE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CHARGE_TYPE_CHANGED<sup>10+</sup>
 
 表示系统充电类型改变的公共事件的动作。
 
@@ -177,6 +217,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -195,6 +239,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.USER_ADDED"
@@ -211,6 +259,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -229,6 +281,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
@@ -246,6 +302,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.USER_SWITCHED"
@@ -253,7 +313,7 @@
 
 ## Core File Kit
 
-文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[接口文档](../js-apis-commonEventManager.md)。
+文件管理子系统面向应用发布以下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[接口文档](../js-apis-commonEventManager.md)。
 
 
 ### COMMON_EVENT_VOLUME_REMOVED
@@ -265,6 +325,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -282,6 +346,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_UNMOUNTED"
@@ -296,6 +364,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -312,6 +384,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_BAD_REMOVAL"
@@ -327,12 +403,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_EJECT"
 
 
-### COMMON_EVENT_RESTORE_START<sup>13+<sup>
+### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
 表示某个应用开始恢复的公共事件。
 
@@ -342,6 +422,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：13
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.START_RESTORE_NOTIFICATION
 
 **取值：** "usual.event.RESTORE_START"
@@ -349,7 +433,7 @@
 
 ## Telephony Kit
 
-### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示短信接收完成。
 
@@ -359,18 +443,26 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** usual.event.SMS_RECEIVED_COMPLETED
 
 
-### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示紧急小区广播短信接收完成。
 
 在设备接收到紧急小区广播短信时，将会触发事件通知服务发布该系统公共事件。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -379,7 +471,7 @@
 **取值：** usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED
 
 
-### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示小区广播短信接收完成。
 
@@ -389,6 +481,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** usual.event.SMS_CB_RECEIVE_COMPLETED
@@ -397,7 +493,7 @@
 
 
 
-### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+<sup>
+### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
 
 提示运营商配置已更新。
 
@@ -407,12 +503,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.OPERATOR_CONFIG_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认短信主卡已更新。
 
@@ -422,12 +522,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**: 10
+
+**ArkTS-Sta起始版本**: 20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认数据主卡已更新。
 
@@ -437,12 +541,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认主卡已更新。
 
@@ -452,14 +560,18 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+<sup>
+### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+</sup>
 
-提示设置SIM卡默认主卡的动作，其状态更新为执行中或已完成。
+提示设置SIM卡默认主卡的动作，其状态更新为正在执行或已完成设置。
 
 在设备上设置SIM卡默认主卡时，当执行状态发生变化（比如状态更新到执行中或已完成），将会触发事件通知服务发布该系统公共事件。
 
@@ -467,12 +579,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.SET_PRIMARY_SLOT_STATUS
 
 
-### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+<sup>
+### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+</sup>
 
 提示SIM卡默认主卡的漫游状态已更新。
 
@@ -482,12 +598,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.PRIMARY_SLOT_ROAMING
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认语音主卡已更新。
 
@@ -497,12 +617,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
 
 提示蜂窝数据状态更新。
 
@@ -512,12 +636,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.CELLULAR_DATA_STATE_CHANGED
 
 
-### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+<sup>
+### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+</sup>
 
 提示未接来电。
 
@@ -527,12 +655,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
 **取值：** usual.event.INCOMING_CALL_MISSED
 
 
-### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+<sup>
+### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+</sup>
 
 提示设备modem上下电状态变化。
 
@@ -542,12 +674,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.RADIO_STATE_CHANGE
 
 
-### COMMON_EVENT_SPECIAL_CODE<sup>10+<sup>
+### COMMON_EVENT_SPECIAL_CODE<sup>10+</sup>
 
 提示暗码发送成功。
 
@@ -557,20 +693,28 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.DIALER_SPECIAL_CODE
 
 
-### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
 
 提示音频质量发生变化。
 
-在设备音频质量发送变化时，将会触发事件通知服务发布该系统公共事件。
+在设备音频质量发生变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **订阅者所需权限：** 无
 
@@ -581,7 +725,7 @@
 
 以下事件为预留公共事件，暂未支持。
 
-### COMMON_EVENT_STK_COMMAND<sup>10+<sup>
+### COMMON_EVENT_STK_COMMAND<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK命令。
 
@@ -591,12 +735,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.STK_COMMAND
 
 
-### COMMON_EVENT_STK_SESSION_END<sup>10+<sup>
+### COMMON_EVENT_STK_SESSION_END<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK会话结束。
 
@@ -606,12 +754,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.STK_SESSION_END
 
 
-### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK卡状态已更新。
 
@@ -621,12 +773,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 
 **取值：** usual.event.STK_CARD_STATE_CHANGED
 
-### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+<sup>
+### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK ALPHA标识符。
 
@@ -636,12 +792,16 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** 无
 
 **取值：** usual.event.STK_ALPHA_IDENTIFIER
 
 
-### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 
 （预留事件，暂未支持）提示服务信息短信接收完成。
 
@@ -651,6 +811,91 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
+
+
+### COMMON_EVENT_DYNAMIC_ICON_CHANGED
+
+这个常见事件意味着一个应用程序包能够启用或禁用一个动态图标
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
+**订阅者所需权限：** 无
+
+**取值：** usual.event.DYNAMIC_ICON_CHANGED
+
+### COMMON_EVENT_DATA_SHARE_READY
+
+这个常见事件意味着数据分享已经准备就绪
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
+**订阅者所需权限：** 无
+
+**取值：** usual.event.DATA_SHARE_READY
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED
+
+这个常见事件意味着VPN连接状态已发生变化
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
+**订阅者所需权限：** 无
+
+**取值：** usual.event.VPN_CONNECTION_STATUS_CHANGED
+
+### COMMON_EVENT_USER_LOCKING
+
+表示目标用户(即操作系统账户)将被锁定。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
+**订阅者所需权限：** 无
+
+**取值：** usual.event.USER_LOCKING
+
+### COMMON_EVENT_USER_LOCKED
+
+表示目标用户(即操作系统账户)已被锁定
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
+
+**订阅者所需权限：** 无
+
+**取值：** usual.event.USER_LOCKED

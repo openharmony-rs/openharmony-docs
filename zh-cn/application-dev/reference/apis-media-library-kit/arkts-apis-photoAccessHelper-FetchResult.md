@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 文件检索结果集。
 
@@ -14,7 +15,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 ## getCount
 
-getCount(): number
+ArkTS-Dyn: getCount(): number
+
+ArkTS-Sta: getCount(): int
 
 获取文件检索结果中的文件总数。
 
@@ -22,11 +25,15 @@ getCount(): number
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明       |
 | ------ | -------- |
-| number | 检索到的文件总数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 检索到的文件总数。 |
 
 **错误码：**
 
@@ -66,6 +73,10 @@ isAfterLast(): boolean
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -117,6 +128,10 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -159,6 +174,10 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -210,6 +229,10 @@ getFirstObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明                       |
@@ -255,6 +278,10 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -310,6 +337,10 @@ getNextObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
@@ -357,6 +388,10 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -408,6 +443,10 @@ getLastObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
@@ -445,7 +484,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getObjectByPosition
 
-getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
+ArkTS-Dyn: getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
+
+ArkTS-Sta: getObjectByPosition(index: int, callback: AsyncCallback&lt;T&gt;): void
 
 获取文件检索结果中具有指定索引的文件资产。此方法使用callback来返回。
 
@@ -453,11 +494,15 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 要获取的文件的索引，从0开始。     |
+| index    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 是    | 要获取的文件的索引，从0开始。     |
 | callback | AsyncCallback&lt;T&gt; | 是    | 异步返回指定索引的文件资产的回调。 |
 
 **错误码：**
@@ -496,7 +541,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## getObjectByPosition
 
-getObjectByPosition(index: number): Promise&lt;T&gt;
+ArkTS-Dyn: getObjectByPosition(index: number): Promise&lt;T&gt;
+
+ArkTS-Sta: getObjectByPosition(index: int): Promise&lt;T&gt;
 
 获取文件检索结果中指定索引的文件资产。此方法返回Promise形式的文件Asset。
 
@@ -504,11 +551,15 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明             |
 | ----- | ------ | ---- | -------------- |
-| index | number | 是    | 要获取的文件的索引，从0开始。 |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 要获取的文件的索引，从0开始。 |
 
 **返回值：**
 
@@ -554,6 +605,10 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -604,6 +659,10 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

@@ -16,7 +16,7 @@ import { Track } from '@ohos.arkui.stateManagement';
 
 ## class属性级更新说明
 
-状态管理V1中\@State结合\@Observed使用支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，如下面例子展示了这一限制：
+状态管理V1中[\@State](./arkts-static-state.md)结合[\@Observed](./arkts-static-observed-and-objectlink.md)使用支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，如下面例子展示了这一限制：
 
 ```ts
 'use static'

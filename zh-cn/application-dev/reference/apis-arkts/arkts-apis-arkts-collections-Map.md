@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -30,7 +32,7 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,11 +42,12 @@ import { collections } from '@kit.ArkTS';
 
 
 ## constructor
+
 constructor(entries?: readonly (readonly [K, V])[] | null)
 
 构造函数，用于创建ArkTS Map对象。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -100,7 +103,7 @@ constructor(iterable: Iterable\<readonly \[K, V]>)
 
 创建ArkTS Map对象的构造函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -133,11 +136,12 @@ console.info(newMap.get('2')); // 预期输出： b
 
 
 ## entries
+
 entries(): IterableIterator<[K, V]>
 
 返回一个Map迭代器对象，该对象包含了此Map中的每个元素的[key, value]对。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -191,11 +195,12 @@ console.info("size:" + myMap.size);
 ```
 
 ## keys
+
 keys(): IterableIterator\<K>
 
 返回一个Map迭代器对象，该对象包含了此Map中每个元素的键。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -230,11 +235,12 @@ console.info(iterator.next().value);
 ```
 
 ## values
+
 values(): IterableIterator\<V>
 
 返回一个Map迭代器对象，该对象包含此Map中每个元素的值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -269,11 +275,12 @@ console.info(iterator.next().value);
 ```
 
 ## clear
+
 clear(): void
 
 删除该Map中的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -301,11 +308,12 @@ console.info("size:" + myMap.size);
 ```
 
 ## delete
+
 delete(key: K): boolean
 
 删除该Map中指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -347,11 +355,12 @@ console.info("result:" + myMap.delete("hello"));
 ```
 
 ## forEach
+
 forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
 按插入顺序对该Map中的每个键/值对执行一次回调函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -405,11 +414,12 @@ new collections.Map<string, number>([
 ```
 
 ## get
+
 get(key: K): V | undefined
 
 返回该Map中的指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -448,11 +458,12 @@ console.info(myMap.get("hel"));
 ```
 
 ## has
+
 has(key: K): boolean
 
 判断该Map中是否存在指定元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -491,11 +502,12 @@ console.info("result:" + myMap.has("world"));
 ```
 
 ## set
+
 set(key: K, value: V): Map<K, V>
 
 向该Map添加或更新一个指定的键值对。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -554,6 +566,7 @@ myMap.set("foo", obj);
 **系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
+
 | 类型 | 说明 |
 | -------- | -------- |
 | IterableIterator<[K, V]> | 返回一个迭代器。 |

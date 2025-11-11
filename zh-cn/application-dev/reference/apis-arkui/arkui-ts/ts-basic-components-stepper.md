@@ -5,7 +5,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -38,7 +40,9 @@ Stepper(value?: { index?: number })
 
 ### onFinish
 
-onFinish(callback: () => void)
+ArkTS-Dyn: onFinish(callback: () => void)
+
+ArkTS-Sta: onFinish(callback: (() => void) | undefined)
 
 步骤导航器最后一个StepperItem的nextLabel被点击时，并且ItemState属性为Normal时，触发该回调。
 
@@ -46,9 +50,21 @@ onFinish(callback: () => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                       |
+| --------- | ------ | ---- | ------------------------------------------ |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \| undefined | 是   | 步骤导航器最后一个StepperItem的nextLabel被点击时，并且ItemState属性为Normal时，触发该回调。 |
+
 ### onSkip
 
-onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onSkip(callback:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 当前显示的StepperItem状态为ItemState.Skip时，nextLabel被点击时触发该回调。
 
@@ -56,9 +72,21 @@ onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                       |
+| --------- | ------ | ---- | ------------------------------------------ |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \| undefined | 是   | 当前显示的StepperItem状态为ItemState.Skip时，nextLabel被点击时触发该回调。 |
+
 ### onChange
 
-onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onChange(callback:&nbsp;((prevIndex:&nbsp;int,&nbsp;index:&nbsp;int)&nbsp;=&gt;&nbsp;void) | undefined)
 
 点击当前StepperItem的prevLabel进行步骤切换时触发该回调；或点击当前StepperItem的nextLabel，当前页面不为步骤导航器最后一个StepperItem且ItemState属性为Normal时，触发该回调。
 
@@ -66,16 +94,22 @@ onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型   | 必填 | 说明                                       |
 | --------- | ------ | ---- | ------------------------------------------ |
-| prevIndex | number | 是   | 切换前的步骤页索引值。<br/>取值范围：[0, +∞) |
-| index     | number | 是   | 切换后的步骤页（前一页或者下一页）索引值。<br/>取值范围：[0, +∞) |
+| prevIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 切换前的步骤页索引值。<br/>取值范围：[0, +∞) |
+| index     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 切换后的步骤页（前一页或者下一页）索引值。<br/>取值范围：[0, +∞) |
 
 ### onNext
 
-onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onNext(callback:&nbsp;((index:&nbsp;int,&nbsp;pendingIndex:&nbsp;int)&nbsp;=&gt;&nbsp;void) | undefined)
 
 点击StepperItem的nextLabel切换下一步骤时，当前页面不为步骤导航器最后一个StepperItem且ItemState属性为Normal时，触发该回调。
 
@@ -83,16 +117,22 @@ onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名       | 类型   | 必填 | 说明               |
 | ------------ | ------ | ---- | ------------------ |
-| index        | number | 是   | 当前步骤页索引值。 |
-| pendingIndex | number | 是   | 下一步骤页索引值。 |
+| index        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前步骤页索引值。 |
+| pendingIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 下一步骤页索引值。 |
 
 ### onPrevious
 
-onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+ArkTS-Dyn: onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
+
+ArkTS-Sta: onPrevious(callback:&nbsp;((index:&nbsp;int,&nbsp;pendingIndex:&nbsp;int)&nbsp;=&gt;&nbsp;void) | undefined)
 
 点击StepperItem的prevLabel切换上一步骤时触发该回调。
 
@@ -100,12 +140,16 @@ onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&n
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名       | 类型   | 必填 | 说明               |
 | ------------ | ------ | ---- | ------------------ |
-| index        | number | 是   | 当前步骤页索引值。 |
-| pendingIndex | number | 是   | 上一步骤页索引值。 |
+| index        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前步骤页索引值。 |
+| pendingIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 上一步骤页索引值。 |
 
 
 ## 示例

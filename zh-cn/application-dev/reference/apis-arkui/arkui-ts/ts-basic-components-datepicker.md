@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件不建议开发者在动效过程中修改属性数据。
@@ -356,11 +358,15 @@ onDateChange(callback: Optional\<Callback\<Date>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| year  | number | 否   | 否   | 选中日期的年。<br/>取值范围：与start、end有关，如果没有设置start、end，则取start、end默认值[1970， 2100]。                             |
-| month | number | 否   | 否   | 选中日期的月的索引值，索引从0开始，0表示1月，11表示12月。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[0， 11]。 |
-| day   | number | 否   | 否   | 选中日期的日。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[1， 31]。                             |
+| year  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的年。<br/>取值范围：与start、end有关，如果没有设置start、end，则取start、end默认值[1970， 2100]。                             |
+| month | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的月的索引值，索引从0开始，0表示1月，11表示12月。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[0， 11]。 |
+| day   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 选中日期的日。<br/>取值范围：与start、end有关，如果没有设置start、end，取值范围为[1， 31]。                             |
 
 ## 示例
 

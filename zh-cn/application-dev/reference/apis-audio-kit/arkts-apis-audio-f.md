@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -18,6 +19,10 @@ getAudioManager(): AudioManager
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                          | 说明         |
@@ -25,6 +30,7 @@ getAudioManager(): AudioManager
 | [AudioManager](arkts-apis-audio-AudioManager.md) | 音频管理器对象。 |
 
 **示例：**
+
 ```ts
 import { audio } from '@kit.AudioKit';
 
@@ -39,12 +45,16 @@ createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback\<Audi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                            | 必填 | 说明             |
 | -------- | ----------------------------------------------- | ---- | ---------------- |
 | options  | [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8)  | 是   | 配置渲染器。     |
-| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | 是   | 回调函数。当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。 |
+| callback | AsyncCallback<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器成功，err为null，data为获取到的音频渲染器对象；否则为错误对象。 |
 
 **示例：**
 
@@ -86,6 +96,10 @@ createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                           | 必填 | 说明         |
@@ -99,6 +113,8 @@ createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer\>
 | Promise<[AudioRenderer](arkts-apis-audio-AudioRenderer.md)> | Promise对象，返回音频渲染器对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -131,6 +147,38 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let audioRenderer: audio.AudioRenderer;
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  audioRenderer = data;
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+}).catch(async(err: BusinessError) => {
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```
+
 ## audio.createAudioCapturer<sup>8+</sup>
 
 createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<AudioCapturer\>): void
@@ -138,6 +186,10 @@ createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<Audio
 获取音频采集器。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -148,7 +200,7 @@ createAudioCapturer(options: AudioCapturerOptions, callback: AsyncCallback<Audio
 | 参数名   | 类型                                            | 必填 | 说明             |
 | :------- | :---------------------------------------------- | :--- | :--------------- |
 | options  | [AudioCapturerOptions](arkts-apis-audio-i.md#audiocaptureroptions8)  | 是   | 配置音频采集器。 |
-| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | 是   | 回调函数。当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
+| callback | AsyncCallback<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器成功，err为undefined，data为获取到的音频采集器对象；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器成功，err为null，data为获取到的音频采集器对象；否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
 
 **示例：**
 
@@ -190,6 +242,10 @@ createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限：** ohos.permission.MICROPHONE
 
 当设置Mic音频源（即[SourceType](arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_CAMCORDER）时需要该权限。
@@ -207,6 +263,8 @@ createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCapturer\>
 | Promise<[AudioCapturer](arkts-apis-audio-AudioCapturer.md)> | Promise对象，成功将返回音频采集器对象，异常将返回error对象：<br>错误码6800301：表示参数校验异常、权限校验异常或系统处理异常（具体错误查看系统日志）。<br>错误码6800101：表示必选参数为空或参数类型错误。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -239,6 +297,38 @@ audio.createAudioCapturer(audioCapturerOptions).then((data) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioCapturerOptions:audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioCapturer: audio.AudioCapturer;
+
+audio.createAudioCapturer(audioCapturerOptions).then((data) => {
+  audioCapturer = data;
+  console.info('AudioCapturer Created : SUCCESS');
+}).catch(async(err: BusinessError) => {
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
+});
+```
+
 ## audio.createAudioLoopback<sup>20+</sup>
 
 createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
@@ -247,8 +337,11 @@ createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback\>
 
 在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20)查询系统返听能力。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
 
 **需要权限：** ohos.permission.MICROPHONE
 

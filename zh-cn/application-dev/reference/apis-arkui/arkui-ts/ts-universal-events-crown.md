@@ -3,6 +3,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - 手动旋转表冠存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
@@ -15,7 +17,9 @@
 
 ## onDigitalCrown
 
-onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
+ArkTS-Dyn: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
+
+ArkTS-Sta: onDigitalCrown(handler: Callback\<CrownEvent> | undefined): this
 
 组件获焦以后扭动表冠时触发该回调。
 
@@ -23,17 +27,20 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 | 参数名      | 类型                             | 必填     | 描述                                      |
 | ---------- | -------------------------------- | ------- | ----------------------------------------- |
-| handler      | Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; | 是       | 获得[CrownEvent](#crownevent对象说明)对象。   |
+| handler      | ArkTS-Dyn: Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; <br/>ArkTS-Sta: Callback&lt;[CrownEvent](#crownevent对象说明)&gt; \|&nbsp;undefined | 是       | 获得[CrownEvent](#crownevent对象说明)对象。   |
 
 
 **返回值：**
 | 类型      | 描述           |
 | --------- | ---------------|
-| T         | 返回当前组件。   |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this         | 返回当前组件。   |
 
 ## CrownEvent对象说明
 
