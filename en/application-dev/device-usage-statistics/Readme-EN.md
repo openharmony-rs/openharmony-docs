@@ -3,7 +3,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 - [Device Usage Statistics Overview (for System Applications Only)](device-usage-statistics-overview-sys.md)
