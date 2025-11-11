@@ -1,4 +1,11 @@
-# Device Certificate Kit (Device Certificate Kit)
+# Device Certificate Kit
+
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3--; @chaceli-->
+<!--Designer: @lanming--; @chande-->
+<!--Tester: @PAFT--; @zhangzhi1995-->
+<!--Adviser: @zengyawen-->
 
 - [Introduction to Device Certificate Kit](device-certificate-kit-intro.md)
 - Certificate Framework<!--certificate-framework-->
@@ -12,6 +19,7 @@
   - [Certificate Chain Development](create-verify-certchain-object.md)
   - [Using the Prebuilt CA Certificate to Validate a Certificate Chain](verify-certchain-by-systemca.md)
   - [Certificate Signing with PKCS #7](create-pkcs7-sign-object.md)
+  - [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
 - Certificate Management<!--certmanager-->
   - [Certificate Management Overview](certManager-overview.md)
   - [Application Certificate Development](certManager-private-credential-guidelines.md)
