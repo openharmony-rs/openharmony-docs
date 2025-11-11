@@ -2599,7 +2599,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
-该接口处于录屏场景时才允许三方应用调用，否则调用该接口不生效。
+该接口处于录屏场景时才允许调用，否则调用该接口不生效。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
