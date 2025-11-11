@@ -347,7 +347,6 @@ From API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avs
 
 **Since**: 10
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -370,7 +369,6 @@ From API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailabl
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -396,7 +394,6 @@ From API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailabl
 
 **Since**: 10
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -417,7 +414,6 @@ Called when the state changes during the running of an OH_AVScreenCapture instan
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -441,7 +437,6 @@ Called when an error occurs during the running of an OH_AVScreenCapture instance
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -464,13 +459,12 @@ Called when an audio buffer or a video buffer is available during the running of
 
 **Since**: 12
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-|  [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *buffer | Pointer to the OH_AVBuffer instance. After the callback is triggered, the buffer is no longer valid.|
+| [OH_AVBuffer](../apis-avcodec-kit/capi-core-oh-avbuffer.md) *buffer | Pointer to the OH_AVBuffer instance. After the callback is triggered, the buffer is no longer valid.|
 | [OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | Type of the buffer.|
 |  int64_t timestamp | Timestamp, in nanoseconds.|
 |  void *userData | Pointer to the user-defined data carried in the function.|
@@ -488,7 +482,6 @@ Called when screen capture starts.
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -512,7 +505,6 @@ Called when the screen capture content changes during the running of an OH_AVScr
 
 **Since**: 20
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -533,7 +525,6 @@ typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture,OH
 Called to return the parameters selected by the user on the authorization UI to the application.
 
 **Since**: 20
-
 
 **Parameters**
 

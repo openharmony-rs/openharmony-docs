@@ -7,6 +7,8 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+The capabilities for encoding and decoding audio and video, as well as for multiplexing and demultiplexing file formats, vary across different platforms in terms of functionality and specifications. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
+
 ## Media Codec
 
 ### Video Decoding
@@ -60,7 +62,7 @@ For details about the development guide, see [Audio Decoding](audio-decoding.md)
 
 Currently, the following encoding capabilities are supported:
 
-AAC, FLAC, MP3, G711mu<!--RP3--><!--RP3End-->
+AAC, FLAC, MPEG (MP3), G711mu<!--RP3--><!--RP3End-->
 
 For details about the development guide, see [Audio Encoding](audio-encoding.md).
 
@@ -126,7 +128,7 @@ The keys defined for file-level data are as follows:
 >
 > Custom keys must start with **com.openharmony.**. The value type can be int32_t, float, or string. The value type uint8_t* is supported since API version 20.
 
-Key values of configuration options are described as follows: 
+Key values of configuration options are described as follows:
 
 mp4 container format:
    |                key                 |         Description        |   aac  |   mp3  |  H.264  |  H.265  |  jpg   |  png   |  bmp   |

@@ -66,7 +66,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. Create an encoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the encoder instance created.
+2. Create an encoder instance. In the code snippet below, OH_AVCodec * is the pointer to the encoder instance created.
 
    You can create an encoder by MIME type or codec name.
 
@@ -359,7 +359,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
    | Value| Description| 
    | -------- | -------- |
