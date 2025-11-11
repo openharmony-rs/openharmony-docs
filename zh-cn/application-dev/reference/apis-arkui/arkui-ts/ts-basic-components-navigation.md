@@ -444,19 +444,25 @@ ArkTS-Sta: hideNavBar(value: boolean | undefined)
 
 ### navDestination<sup>10+</sup>
 
-navDestination(builder: (name: string, param: unknown) => void)
+ArkTS-Dyn: navDestination(builder: (name: string, param: unknown) => void)
 
-创建NavDestination组件。使用builder函数，基于name和param构造NavDestination组件。builder下只能有一个根节点。builder中允许在NavDestination组件外包含一层自定义组件， 但自定义组件不允许设置属性和事件，否则仅显示空白。
+ArkTS-Sta: navDestination(builder: PageMapBuilder | undefined)
+
+创建NavDestination组件。使用builder函数，基于name和param构造NavDestination组件。builder下只能有一个根节点。builder中允许在NavDestination组件外包含一层自定义组件，但自定义组件不允许设置属性和事件，否则显示空白。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                   | 必填 | 说明                     |
 | ------- | -------------------------------------- | ---- | ------------------------ |
-| builder | (name: string, param: unknown) => void | 是   | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unkown可以是用户自定义的类型。 |
+| builder | ArkTS-Dyn: (name: string, param: unknown) => void <br/>ArkTS-Sta: [PageMapBuilder](ts-types.md#pagemapbuilder22)&nbsp;\|&nbsp;undefined | 是   | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unkown可以是用户自定义的类型。 |
 
 ### navBarWidthRange<sup>10+</sup>
 

@@ -736,6 +736,25 @@ ArkTS-Sta中使用ArkTS-Dyn的ColorFilter对象。
   ```
   ![image](figures/colorFilterTransferSta.png)
 
+## PageMapBuilder<sup>22+</sup>
+
+type PageMapBuilder = @Builder ((name: string, param: Object | null | undefined) => void)
+
+Navigation路由的构造方式类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名         | 类型    | 必填 | 说明  |
+| ------------- | ------- | ---- | -------- |
+| name | string | 是 | NavDestination页面名称。|
+| param | Object&nbsp;\|&nbsp;null&nbsp;\|&nbsp;undefined  | 是 | NavDestination页面详细参数。 |
+
 ## CustomBuilder<sup>8+</sup>
 
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
