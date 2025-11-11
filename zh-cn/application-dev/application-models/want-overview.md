@@ -25,35 +25,43 @@
     > **说明：**
     >
     > 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用，推荐通过指定[应用链接](app-startup-overview.md#应用链接)的方式来实现。
-  
-  ```ts
-  import { Want } from '@kit.AbilityKit';
 
+  <!-- @[explicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ExplicitPage.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+  
   let wantInfo: Want = {
     deviceId: '', // deviceId为空表示本设备
-    bundleName: 'com.example.myapplication',
-    abilityName: 'FuncAbility',
-  }
+    bundleName: 'com.samples.wantoverview',
+    abilityName: 'ExplicitAbility',
+  };
   ```
+
   
 - **隐式Want**：在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中未指定abilityName，称为隐式Want。
   
   当需要处理的对象不明确时，可以使用隐式Want，在当前应用中使用其他应用提供的某个能力，而不关心提供该能力的具体应用。隐式Want使用[skills标签](../quick-start/module-configuration-file.md#skills标签)来定义需要使用的能力，并由系统匹配声明支持该请求的所有应用来处理请求。例如，需要打开一个链接的请求，系统将匹配所有声明支持该请求的应用，然后让用户选择使用哪个应用打开链接。
-  
-  
-  ```ts
-  import { Want } from '@kit.AbilityKit';
 
+
+  <!-- @[implicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ImplicitPage.ets) -->
+  
+  ``` TypeScript
+  import { common, Want } from '@kit.AbilityKit';
+  // ···
+  
   let wantInfo: Want = {
     // uncomment line below if wish to implicitly query only in the specific bundle.
     // bundleName: 'com.example.myapplication',
     action: 'ohos.want.action.search',
     // entities can be omitted
-    entities: [ 'entity.system.browsable' ],
+    entities: ['entity.system.browsable'],
     uri: 'https://www.test.com:8080/query/student',
     type: 'text/plain',
   };
   ```
+
   
   > **说明：**
   > - 根据系统中待匹配应用组件的匹配情况不同，使用隐式Want启动应用组件时会出现以下三种情况。
