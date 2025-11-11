@@ -4,11 +4,13 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 > **说明：**
 >
-> 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
+> - 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
+> - 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
+>
+> - MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
 ## 导入模块
 
@@ -488,13 +490,19 @@ getParamByIndex(index: number): Object | undefined
 
 ### getParamByName
 
-getParamByName(name: string): Array<Object\>
+ArkTS-Dyn: getParamByName(name: string): Array<Object\>
+
+ArkTS-Sta: getParamByName(name: string): Array<Object | null | undefined>
 
 获取全部名为name的NavDestination页面的参数信息。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -506,7 +514,7 @@ getParamByName(name: string): Array<Object\>
 
 | 类型              | 说明                                |
 | --------------- | --------------------------------- |
-| Array<Object\> | 返回全部名为name的NavDestination页面的参数信息。 |
+| ArkTS-Dyn: Array<Object\><br/>ArkTS-Sta: Array<Object\> \| null \| undefined\> | 返回全部名为name的NavDestination页面的参数信息。 |
 
 ### getIndexByName
 

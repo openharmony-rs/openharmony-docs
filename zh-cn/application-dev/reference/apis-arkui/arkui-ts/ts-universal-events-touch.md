@@ -4,15 +4,19 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 如需绑定手势事件可参考[绑定手势方法](./ts-gesture-settings.md)。
+> - 事件分发可参考[事件交互流程](../../../ui/arkts-interaction-basic-principles.md#事件交互流程)，手势事件处理流程可参考[多层级手势事件](../../../ui/arkts-gesture-events-multi-level-gesture.md)。
+>
+> - 如需绑定手势事件可参考[绑定手势方法](./ts-gesture-settings.md)。
 
 ## onTouch
 
-onTouch(event: (event: TouchEvent) => void): T
+ArkTS-Dyn: onTouch(event: (event: TouchEvent) => void): T
+
+ArkTS-Sta: onTouch(event: ((event: TouchEvent) => void) | undefined): this
 
 手指触摸动作触发该回调。触摸事件默认冒泡，事件会被多个组件消费，如果要阻止冒泡，参考[TouchEvent](#touchevent对象说明)的stopPropagation方法。鼠标左键按下时对应的事件也会转化成触摸事件并触发该回调。
 
@@ -20,17 +24,21 @@ onTouch(event: (event: TouchEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [TouchEvent](#touchevent对象说明) | 是   | 获得TouchEvent对象。 |
+| event  | ArkTS-Dyn: [TouchEvent](#touchevent对象说明) <br/>ArkTS-Sta: [TouchEvent](#touchevent对象说明) \|&nbsp;undefined | 是   | 获得TouchEvent对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## TouchEvent对象说明
 

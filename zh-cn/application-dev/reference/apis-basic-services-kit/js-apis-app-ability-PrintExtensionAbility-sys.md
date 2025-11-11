@@ -3,6 +3,7 @@
 该模块为打印扩展能力的操作API，提供调用打印扩展能力的接口。
 
 > **说明：**  
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](./js-apis-app-ability-PrintExtensionAbility.md)。
 > 本模块接口仅可在Stage模型下使用。
@@ -21,10 +22,14 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务的信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
 **错误码：**
 
@@ -56,10 +61,14 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务的信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务的信息。 |
 
 **错误码：**
 
@@ -85,21 +94,27 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 
 ## PrintExtensionAbility.onRequestPrinterCapability
 
-onRequestPrinterCapability(printerId: number): print.PrinterCapability
+ArkTS-Dyn: onRequestPrinterCapability(printerId: number): print.PrinterCapability
+
+ArkTS-Sta: onRequestPrinterCapability(printerId: int): print.PrinterCapability
 
 请求打印机能力时调用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
-| print.PrinterCapability | 表示打印能力 |
+| print.PrinterCapability | 表示打印能力。 |
 
 **错误码：**
 
@@ -111,12 +126,32 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 import { print } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+        console.log('onRequestPrinterCapability enter');
+        // ...
+        let tmp : print.PrinterCapability = {
+            colorMode : 1,
+            duplexMode : 1,
+            pageSize : []
+        };
+        return tmp;
+    }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { PrintExtensionAbility } from '@kit.BasicServicesKit';
+import { print } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onRequestPrinterCapability(printerId: int): print.PrinterCapability {
         console.log('onRequestPrinterCapability enter');
         // ...
         let tmp : print.PrinterCapability = {
@@ -137,15 +172,19 @@ onRequestPreview(jobInfo: print.PrintJob): string
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | 是 | 表示打印任务信息 |
+| jobInfo | print.PrintJob | 是 | 表示打印任务信息。 |
 
 **返回值：**
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
-| string | 返回的预览结果 |
+| string | 返回的预览结果。 |
 
 **错误码：**
 

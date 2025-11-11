@@ -1,6 +1,15 @@
 # Class (PathIterator)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -43,24 +52,30 @@ let iter: drawing.PathIterator = new drawing.PathIterator(path);
 
 ## next<sup>18+</sup>
 
-next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
+ArkTS-Dyn: next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
+
+ArkTS-Sta: next(points: Array<common2D.Point>, offset?: int): PathIteratorVerb | undefined
 
 返回当前路径的下一个操作，并将迭代器置于该操作。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | points | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>   | 是   | 坐标点数组，长度必须至少为偏移量加4，以确保能容纳所有类型的路径数据。操作执行后，该数组会被覆盖。填入的坐标点数量取决于操作类型，其中，MOVE填入1个坐标点，LINE填入2个坐标点，QUAD填入3个坐标点，CONIC填入3个坐标点 + 1个权重值（共3.5组），CUBIC填入4个坐标点，CLOSE和DONE不填入任何点。 |
-| offset | number   | 否   | 数组中写入位置相对起始点的偏移量，默认为0，取值范围为[0, size-4]，size是指坐标点数组长度。 |
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | ArkTS-Dyn: 数组中写入位置相对起始点的偏移量。当offset传入undefined时，该方法将抛错误码。不传该参数时，默认为0，取值范围为[0, size-4]，size是指坐标点数组长度。<br/>ArkTS-Sta: 数组中写入位置相对起始点的偏移量。当不传该参数，或者offset传入undefined时，默认为0，取值范围为[0, size-4]，size是指坐标点数组长度。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | 迭代器包含的路径操作类型。 |
+| ArkTS-Dyn: [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18)<br/>ArkTS-Sta: [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) \| undefined | 迭代器包含的路径操作类型。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -72,6 +87,7 @@ next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
@@ -89,6 +105,28 @@ for (let j = 0; j < pointCount[verb] + offset; j++) {
   outputMessage += "[" + points[j].x + ", " + points[j].y + "]";
 }
 console.info(outputMessage);
+```
+
+ArkTS-Sta示例：
+```ts
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(10.0, 20.0);
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
+let pointCount: Array<int> = [1,2,3,4,4,0,0]; //1,2,3,4,4,0,0
+let points: Array<common2D.Point> = [{x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}];
+let offset = 0;
+let verb = iter.next(points, offset);
+if (verb != undefined) {
+  let outputMessage: string = "pathIteratorNext: ";
+  outputMessage += "verb =" + verbStr[verb!] + "; has " + pointCount[verb!] + " pairs: ";
+  for (let j = 0; j < pointCount[verb!] + offset; j++) {
+    outputMessage += "[" + points[j].x + ", " + points[j].y + "]";
+  }
+  console.info(outputMessage);
+}
 ```
 
 ## peek<sup>18+</sup>

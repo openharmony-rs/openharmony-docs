@@ -1,6 +1,15 @@
 # Class (Font)
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -21,6 +30,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 isSubpixel(): boolean
 
 获取字型是否使用次像素渲染。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -46,6 +57,8 @@ isLinearMetrics(): boolean
 
 获取字型是否可以线性缩放。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -69,6 +82,8 @@ console.info("values=" + font.isLinearMetrics());
 getSkewX(): number
 
 获取字型在x轴方向上的倾斜度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -94,6 +109,8 @@ isEmbolden(): boolean
 
 获取字型是否设置了粗体效果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -117,6 +134,8 @@ console.info("values=" + font.isEmbolden());
 getScaleX(): number
 
 获取字型在x轴方向上的缩放比例。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -142,6 +161,8 @@ getHinting(): FontHinting
 
 获取字型轮廓效果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -165,6 +186,8 @@ getEdging(): FontEdging
 
 获取字型边缘效果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -187,6 +210,8 @@ console.info("values=" + font.getEdging());
 enableSubpixel(isSubpixel: boolean): void
 
 使能字型亚像素级别的文字绘制，显示效果平滑。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -219,6 +244,8 @@ enableEmbolden(isEmbolden: boolean): void
 
 使能字型粗体。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -249,6 +276,8 @@ font.enableEmbolden(true);
 enableLinearMetrics(isLinearMetrics: boolean): void
 
 使能字型的线性缩放。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -281,6 +310,8 @@ setSize(textSize: number): void
 
 设置字型大小。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -312,6 +343,8 @@ getSize(): number
 
 获取字型大小。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -335,6 +368,8 @@ let fontSize = font.getSize();
 setTypeface(typeface: Typeface): void
 
 为字型设置字体样式（包括字体名称、粗细、斜体等属性）。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -367,6 +402,8 @@ getTypeface(): Typeface
 
 获取字体。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -389,6 +426,8 @@ let typeface = font.getTypeface();
 getMetrics(): FontMetrics
 
 获取与字体关联的FontMetrics属性。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -415,7 +454,9 @@ measureText(text: string, encoding: TextEncoding): number
 
 > **说明：**
 >
-> 此接口用于测量原始字符串的文本宽度，若想测量排版后的文本宽度，建议使用[measure.measureText](../apis-arkui/js-apis-arkui-UIContext.md#measuretext12)替代。
+> 此接口用于测量原始字符串的文本宽度，若想测量排版后的文本宽度，建议使用[measure.measureText](../apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12)替代。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -455,6 +496,8 @@ measureSingleCharacter(text: string): number
 
 测量单个字符的宽度。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数**
@@ -493,11 +536,61 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## measureSingleCharacterWithFeatures<sup>20+</sup>
+
+measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): number
+
+测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名 | 类型                | 必填 | 说明        |
+| ------ | ------------------- | ---- | ----------- |
+| text | string | 是 | 待测量的单个字符。字符串长度必须为1。 |
+| features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
+
+**返回值：**
+
+| 类型   | 说明             |
+| ------ | ---------------- |
+| number | 字符的宽度，浮点数，单位为px。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const font = new drawing.Font();
+    font.setSize(20);
+    let fontFeatures : Array<drawing.FontFeature> = [];
+    fontFeatures.push({name: 'calt', value: 0});
+    let width = font.measureSingleCharacterWithFeatures("你", fontFeatures);
+  }
+}
+```
+
 ## setScaleX<sup>12+</sup>
 
 setScaleX(scaleX: number): void
 
 设置字型对象在x轴上的缩放比例。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -543,6 +636,8 @@ setSkewX(skewX: number): void
 
 设置字型对象在x轴上的倾斜比例。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -587,6 +682,8 @@ setEdging(edging: FontEdging): void
 
 设置字型边缘效果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -618,6 +715,8 @@ setHinting(hinting: FontHinting): void
 
 设置字型轮廓效果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -648,6 +747,8 @@ font.setHinting(drawing.FontHinting.FULL);
 countText(text: string): number
 
 获取文本所表示的字符数量。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -687,6 +788,8 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 当前画布矩阵轴对齐时，设置字型基线是否与像素对齐。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -719,6 +822,8 @@ isBaselineSnap(): boolean
 
 当前画布矩阵轴对齐时，获取字型基线是否与像素对齐的结果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -743,6 +848,8 @@ console.info("drawing font isBaselineSnap: " + font.isBaselineSnap());
 setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 设置字型是否转换成位图处理。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -777,6 +884,8 @@ isEmbeddedBitmaps(): boolean
 
 获取字型是否转换成位图处理的结果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -801,6 +910,8 @@ console.info("draw isEmbeddedBitmaps: " + font.isEmbeddedBitmaps());
 setForceAutoHinting(isForceAutoHinting: boolean): void
 
 设置是否自动调整字型轮廓。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -835,6 +946,8 @@ isForceAutoHinting(): boolean
 
 获取字型轮廓是否自动调整的结果。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -859,6 +972,8 @@ console.info("drawing isForceAutoHinting:  " + font.isForceAutoHinting());
 getWidths(glyphs: Array\<number>): Array\<number>
 
 获取字形数组中每个字形对应的宽度。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -898,24 +1013,32 @@ for (let index = 0; index < fontWidths.length; index++) {
 
 ## textToGlyphs<sup>12+</sup>
 
-textToGlyphs(text: string, glyphCount?: number): Array\<number>
+ArkTS-Dyn: textToGlyphs(text: string, glyphCount?: number): Array\<number>
+
+ArkTS-Sta: textToGlyphs(text: string, glyphCount?: int): Array\<int> | undefined
 
 将文本转换为字形索引。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
 | text     | string                        | 是   | 文本字符串。 |
-| glyphCount | number | 否   | 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等，默认为text的字符数量，该参数为整数。 |
+| glyphCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | ArkTS-Dyn: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当glyphCount传入undefined时，该方法将抛错误码。不传该参数时，默认为text的字符数量，该参数为整数。<br/>ArkTS-Sta: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当不传该参数，或者glyphCount传入undefined时，默认为text的字符数量，该参数为整数。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回转换得到的字形索引数组。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> \| undefined | 返回转换得到的字形索引数组。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -927,6 +1050,7 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -936,11 +1060,25 @@ let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
 ```
 
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font : drawing.Font = new drawing.Font();
+let text : string = 'hello world';
+let glyphs : int[] | undefined = font.textToGlyphs(text);
+if (glyphs != undefined) {
+  console.info("drawing text toglyphs OnTestFunction num =  " + glyphs!.length );
+}
+```
+
 ## getBounds<sup>18+</sup>
 
 getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 获取字形数组中每个字形的边界矩形。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -976,6 +1114,8 @@ for (let index = 0; index < fontBounds.length; index++) {
 getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 获取文字的轮廓路径。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1013,11 +1153,11 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let font = new drawing.Font();
-    font.setSize(50)
+    font.setSize(50);
     let myString: string = "你好, HarmonyOS";
-    let length = buffer.from(myString).length;
-    let path = font.getTextPath(myString, length, 0, 100)
-    canvas.drawPath(path)
+    let length: number = myString.length;
+    let path = font.getTextPath(myString, length, 0, 100);
+    canvas.drawPath(path);
   }
 }
 ```
@@ -1027,6 +1167,8 @@ class DrawingRenderNode extends RenderNode {
 createPathForGlyph(index: number): Path
 
 获取指定字形的路径轮廓。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1069,6 +1211,8 @@ setThemeFontFollowed(followed: boolean): void
 
 设置字型中的字体是否跟随主题字体。设置跟随主题字体后，若系统启用主题字体并且字型未被设置字体，字型会使用该主题字体。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -1100,6 +1244,8 @@ console.info("font is theme font followed: " + font.isThemeFontFollowed());
 isThemeFontFollowed(): boolean
 
 获取字型中的字体是否跟随主题字体。默认不跟随。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 子组件
 
@@ -36,7 +38,9 @@ SymbolGlyph(value?: Resource)
 
 ### fontColor
 
-fontColor(value: Array&lt;ResourceColor&gt;)
+ArkTS-Dyn: fontColor(value: Array&lt;ResourceColor&gt;)
+
+ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 设置SymbolGlyph组件颜色。
 
@@ -46,15 +50,21 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolGlyph组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
+| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br/>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolGlyph组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
 
 ### fontSize
 
-fontSize(value: number | string | Resource)
+ArkTS-Dyn: fontSize(value: number | string | Resource)
+
+ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 设置SymbolGlyph组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -66,15 +76,21 @@ fontSize(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md)<br/>不支持设置百分比字符串。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md)<br/>不支持设置百分比字符串。|
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | string)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 设置SymbolGlyph组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
 
@@ -86,15 +102,21 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal |
 
 ### renderingStrategy
 
-renderingStrategy(value: SymbolRenderingStrategy)
+ArkTS-Dyn: renderingStrategy(value: SymbolRenderingStrategy)
+
+ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 设置SymbolGlyph组件渲染策略。
 
@@ -104,11 +126,15 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明) | 是   | SymbolGlyph组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE |
+| value  | ArkTS-Dyn: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明)<br>ArkTS-Sta: [SymbolRenderingStrategy](#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -116,7 +142,9 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 ### effectStrategy
 
-effectStrategy(value: SymbolEffectStrategy)
+ArkTS-Dyn: effectStrategy(value: SymbolEffectStrategy)
+
+ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 设置SymbolGlyph组件动效策略。
 
@@ -126,15 +154,21 @@ effectStrategy(value: SymbolEffectStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE |
+| value  | ArkTS-Dyn: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE |
 
 ### symbolEffect<sup>12+</sup>
 
-symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
+ArkTS-Dyn: symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
+
+ArkTS-Sta: symbolEffect(symbolEffect: SymbolEffect | undefined, isActive: boolean | undefined)
 
 设置SymbolGlyph组件动效策略及播放状态。
 
@@ -144,16 +178,22 @@ symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| symbolEffect  | [SymbolEffect](#symboleffect12对象说明) | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
-| isActive  | boolean | 否   | SymbolGlyph组件动效播放状态。<br/>true表示播放，false表示不播放。<br/>默认值：false |
+| symbolEffect  | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br/>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
+| isActive  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放状态。[SymbolEffect](#symboleffect12对象说明)<br/>true表示播放，false表示不播放。<br/>默认值：false |
 
 ### symbolEffect<sup>12+</sup>
 
-symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
+ArkTS-Dyn: symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
+
+ArkTS-Sta: symbolEffect(symbolEffect: SymbolEffect | undefined, triggerValue: int | undefined)
 
 设置SymbolGlyph组件动效策略及播放触发器。
 
@@ -163,12 +203,16 @@ symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| symbolEffect | [SymbolEffect](#symboleffect12对象说明) | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
-| triggerValue | number | 否   | SymbolGlyph组件动效播放触发器，在数值变更时触发动效。<br/>如果首次不希望触发动效，设置-1。 |
+| symbolEffect | ArkTS-Dyn: [SymbolEffect](#symboleffect12对象说明)<br>ArkTS-Sta: [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明) |
+| triggerValue | ArkTS-Dyn: number<br>ArkTS-Sta: int \| undefined | ArkTS-Dyn: 否<br/>ArkTS-Sta: 是   | SymbolGlyph组件动效播放触发器，在数值变更时触发动效。<br/>如果首次不希望触发动效，设置-1。 |
 
 >  **说明：**
 >
@@ -176,7 +220,9 @@ symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 
 ### minFontScale<sup>18+</sup>
 
-minFontScale(scale: Optional\<number | Resource>)
+ArkTS-Dyn: minFontScale(scale: Optional\<number | Resource>)
+
+ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 设置SymbolGlyph组件最小的字体缩放倍数。
 
@@ -184,15 +230,21 @@ minFontScale(scale: Optional\<number | Resource>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。   |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最小的字体缩放倍数。<br/>取值范围：[0, 1] <br/>设置为0，缩放最小。<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。 |
 
 ### maxFontScale<sup>18+</sup>
 
-maxFontScale(scale: Optional\<number | Resource>)
+ArkTS-Dyn: maxFontScale(scale: Optional\<number | Resource>)
+
+ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 设置SymbolGlyph组件最大的字体缩放倍数。
 
@@ -200,11 +252,15 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
+| scale  |ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)><br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
 
 ## ScaleSymbolEffect<sup>12+</sup>
 

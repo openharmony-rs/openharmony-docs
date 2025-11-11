@@ -7,6 +7,8 @@
 <!--Adviser: @ge-yafang-->
 > **说明：**
 >
+> 本Class仅适用于ArkTS-Dyn。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
@@ -38,6 +40,8 @@ import { collections } from '@kit.ArkTS';
 readonly &#91;index: number&#93;: T
 
 返回ConcatArray指定索引位置的元素。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -117,6 +121,7 @@ slice(start?: number, end?: number): ConcatArray\<T>
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
+
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | start  | number | 否   | 开始索引。如果`start < 0`，则会从`start + array.length`位置开始。默认值为0。   |

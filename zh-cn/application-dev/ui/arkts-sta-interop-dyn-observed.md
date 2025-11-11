@@ -22,20 +22,28 @@ project/
 
 ```
 
-ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和@Observed数据的变化。
+ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和@Observed装饰的数据的变化。
 
-以下代码示例展示了如何在ArkTS-Sta组件中使用动态数据和@Observed数据。
+以下代码示例展示了如何在ArkTS-Sta组件中使用动态数据和@Observed装饰的数据。
 
-- 创建ArkTS-Dyn子模块`dynamic`，在`src/main/ets/MainPage.ets`目录创建并导出动态@Observed数据。
+- 创建ArkTS-Dyn子模块`dynamic`，在`src/main/ets/components/MainPage.ets`目录创建并导出动态@Observed装饰的数据。
 
   ```TypeScript
-  // dynamic/src/main/ets/MainPage.ets
+  // dynamic/src/main/ets/components/MainPage.ets
 
   @Observed
   export class MyClassA {
     @Track name: string = 'text: x';
     message: string = 'text: x';
   }
+  ```
+
+- 在ArkTS-Dyn子模块`dynamic`的`Index.ets`文件中导出动态@Observed装饰的数据。
+
+   ```TypeScript
+  // dynamic/Index.ets
+
+  export { MyClassA } from './src/main/ets/components/MainPage.ets';
   ```
 
 - 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。

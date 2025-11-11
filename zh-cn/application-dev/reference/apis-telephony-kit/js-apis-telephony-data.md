@@ -4,7 +4,10 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 
 
 ## 导入模块
 
@@ -70,17 +73,23 @@ data.getDefaultCellularDataSlotId().then((contextData: number) => {
 
 ## data.getDefaultCellularDataSlotIdSync<sup>9+</sup>
 
-getDefaultCellularDataSlotIdSync(): number
+ArkTS-Dyn: getDefaultCellularDataSlotIdSync(): number
+
+ArkTS-Sta: getDefaultCellularDataSlotIdSync(): int
 
 获取默认移动数据的SIM卡。
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型              | 说明                                                         |
 | ------ | -------------------------------------------------- |
-| number | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 获取默认移动数据的SIM卡。<br />- 0：卡槽1。 <br />- 1：卡槽2。 |
 
 **示例：**
 
@@ -155,6 +164,10 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                   | 必填 | 说明       |
@@ -162,6 +175,8 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | 是   | 以callback形式异步返回结果。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { data } from '@kit.TelephonyKit';
@@ -176,6 +191,21 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataState((err: BusinessError | null, contextData: data.DataConnectState) => {
+    if(err?.code){
+        console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
+    }else{
+        console.log(`getCellularDataState success`);
+    }
+});
+```
+
 ## data.getCellularDataState
 
 getCellularDataState(): Promise\<DataConnectState\>
@@ -183,6 +213,10 @@ getCellularDataState(): Promise\<DataConnectState\>
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -213,6 +247,10 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
@@ -234,12 +272,29 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled((err: BusinessError, contextData: boolean) => {
     if(err){
+        console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
+    }else{
+        console.log(`isCellularDataEnabled success`);
+    }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.isCellularDataEnabled((err: BusinessError | null, contextData: boolean) => {
+    if(err?.code){
         console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
     }else{
         console.log(`isCellularDataEnabled success`);
@@ -256,6 +311,10 @@ isCellularDataEnabled(): Promise\<boolean\>
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -670,6 +729,10 @@ data.getActiveApnName().then((data: string) => {
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                   | 值   | 说明                                       |
 | ---------------------- | ---- | ------------------------------------------ |
 | DATA_FLOW_TYPE_NONE    | 0    | 表示没有上行或下行数据。                   |
@@ -683,6 +746,10 @@ data.getActiveApnName().then((data: string) => {
 描述蜂窝数据链路连接状态。 
 
 **系统能力**：SystemCapability.Telephony.CellularData
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 值   | 说明                       |
 | ----------------------- | ---- | -------------------------- |

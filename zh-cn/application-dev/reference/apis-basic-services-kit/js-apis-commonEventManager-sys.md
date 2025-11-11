@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[CommonEventManager](./js-apis-commonEventManager.md)。
@@ -20,9 +21,11 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 全部系统公共事件枚举定义请参见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。
 
-## commonEventManager.publishAsUser<sup>
+## commonEventManager.publishAsUser
 
-publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<void>): void
 
 以回调的形式向指定用户发布公共事件。
 
@@ -30,12 +33,16 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：21
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                               |
 | -------- | -------------------- | ---- | ---------------------------------- |
 | event    | string               | 是   | 表示要发送的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。             |
-| userId   | number               | 是   | 表示指定向该用户ID发送此公共事件。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示指定向该用户ID发送此公共事件。 |
 | callback | AsyncCallback\<void> | 是   | 表示被指定的回调方法。             |
 
 **错误码：**
@@ -52,6 +59,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -73,9 +81,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+//指定发送的用户
+let userId = 100;
+
+//发布公共事件
+try {
+    commonEventManager.publishAsUser('event', userId, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`publishAsUser failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('publishAsUser');
+    });
+} catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`publishAsUser failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.publishAsUser
 
-publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
 以回调形式向指定用户发布公共事件并指定发布信息。
 
@@ -83,12 +115,16 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：21
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | 是   | 表示要发布的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。  |
-| userId   | number | 是 | 表示指定向该用户ID发送此公共事件。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 表示指定向该用户ID发送此公共事件。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 表示被指定的回调方法。  |
 
@@ -106,6 +142,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -132,6 +169,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 公共事件相关信息
+let options:commonEventManager.CommonEventPublishData = {
+  code: 0,			 // 公共事件的初始代码
+  data: 'initial data',// 公共事件的初始数据
+}
+
+// 指定发送的用户
+let userId = 100;
+// 发布公共事件
+try {
+  commonEventManager.publishAsUser('event', userId, options, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`publishAsUser failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info('publishAsUser');
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`publishAsUser failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.removeStickyCommonEvent<sup>10+</sup>
 
 removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
@@ -143,6 +207,10 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 **需要权限**:  ohos.permission.COMMONEVENT_STICKY
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -166,10 +234,24 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) => {
+  if (err) {
+    console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
+    return;
+  }
+  console.info(`removeStickyCommonEvent success`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError | null) => {
   if (err) {
     console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
     return;
@@ -190,6 +272,10 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -208,7 +294,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application dose not have permission to call the interface.     |  
+| 201      | The application does not have permission to call the interface.     |  
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500004  | A third-party application cannot send system common events.                |
@@ -217,12 +303,24 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
   console.info(`removeStickyCommonEvent success`);
 }).catch ((err: BusinessError) => {
+  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
+  console.info(`removeStickyCommonEvent success`);
+}).catch ((err: BusinessError) : void => {
   console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
 });
 ```
@@ -239,6 +337,10 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -253,17 +355,31 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
   if (err.code != 0) {
+    console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+    return;
+  }
+  console.info(`setStaticSubscriberState success`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+commonEventManager.setStaticSubscriberState(true, (err: BusinessError | null) => {
+  if (err != null) {
     console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
     return;
   }
@@ -282,6 +398,10 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -308,7 +428,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **示例：**
 
-
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -319,9 +439,22 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+commonEventManager.setStaticSubscriberState(false).then(() => {
+  console.info(`setStaticSubscriberState success`);
+}).catch ((err: BusinessError) : void => {
+  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+});
+```
+
 ## commonEventManager.setStaticSubscriberState<sup>12+</sup>
 
-setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
+ArkTS-Dyn: setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
+
+ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void>
 
 为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。
 
@@ -330,6 +463,10 @@ setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<voi
 **系统能力**：SystemCapability.Notification.CommonEvent
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 12
+
+**ArkTS-Sta起始版本**: 22
 
 **参数：**
 
@@ -357,6 +494,7 @@ setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -364,6 +502,18 @@ let evenName: string[] = ['usual.event.SEND_DATA'];
 commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
   console.info(`setStaticSubscriberState success, state is ${true}`);
 }).catch((err: BusinessError) => {
+  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let evenName: string[] = ['usual.event.SEND_DATA'];
+commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
+  console.info(`setStaticSubscriberState success, state is ${true}`);
+}).catch((err: BusinessError) : void => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
 });
 ```

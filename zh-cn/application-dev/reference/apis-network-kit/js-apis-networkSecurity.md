@@ -4,7 +4,10 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -48,6 +51,10 @@ networkSecurity.certVerification(cert, caCert)
 
 **系统能力**: SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称          | 值    |      说明     |
 | ------------- | ----- | ------------- |
 | CERT_TYPE_PEM | 0     | PEM格式证书。 |
@@ -60,6 +67,10 @@ networkSecurity.certVerification(cert, caCert)
 
 **系统能力**: SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称  | 类型                   | 必填      | 说明           |
 | ----- | --------------------- | --------- | -------------- |
 | type  | CertType              | 是      | 证书编码类型。  |
@@ -68,11 +79,17 @@ networkSecurity.certVerification(cert, caCert)
 
 ## networkSecurity.certVerification
 
-certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
+ArkTS-Dyn: certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
+
+ArkTS-Sta: certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<int\>
 
 从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
 
 **系统能力**: SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数**
 
@@ -85,7 +102,7 @@ certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| ArkTS-Dyn: Promise\<number\><br />ArkTS-Sta: Promise\<int\> | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
 
 **错误码：**
 
@@ -150,11 +167,17 @@ networkSecurity.certVerification(cert, caCert)
 
 ## networkSecurity.certVerificationSync
 
-certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
+ArkTS-Dyn: certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
+
+ArkTS-Sta: certVerificationSync(cert: CertBlob, caCert?: CertBlob): int
 
 从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -165,9 +188,9 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 **返回值：**
 
-| 类型   | 说明                                                         |
-| ------ | ------------------------------------------------------------ |
-| number | 表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| 类型                                 | 说明                                                         |
+| ------------------------------------ | ------------------------------------------------------------ |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
 
 **错误码：**
 
@@ -200,6 +223,8 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,6 +254,37 @@ let resultSync: number = networkSecurity.certVerificationSync(cert, caCert);
 console.info('Synchronous Verification Result:', resultSync);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Create certificate blobs
+const cert: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n...'
+};
+
+const caCert: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n...'
+};
+
+// Asynchronous verification
+networkSecurity.certVerification(cert, caCert)
+  .then((result) => {
+    console.info('Verification Result:', result);
+  })
+  .catch((error: BusinessError) => {
+    console.error('Verification Error:', error);
+  });
+
+// Synchronous verification
+let resultSync: int = networkSecurity.certVerificationSync(cert, caCert);
+console.info('Synchronous Verification Result:', resultSync);
+```
+
 > **注意**：
 >
 > 请务必将示例中的证书数据替换为实际的证书内容。
@@ -242,6 +298,10 @@ isCleartextPermitted(): boolean
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -280,6 +340,10 @@ isCleartextPermittedByHostName(hostName: string): boolean
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 

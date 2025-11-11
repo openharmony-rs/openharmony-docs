@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件不支持在Wearable设备上使用。
@@ -158,9 +160,13 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 10
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称      | 类型       | 必填        | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- |
-| hintRadius | number \| [Resource](ts-types.md#resource) | 否    | 描述日期选中态底板样式。<br />取值范围：[0, 16]<br />单位：vp<br/>默认值：底板样式为圆形。<br />**说明：**<br />当hintRadius为0时，底板样式为直角矩形。当hintRadius的值在0到16之间时，底板样式为圆角矩形。当hintRadius大于或等于16时，底板样式为圆形。 |
+| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否    | 描述日期选中态底板样式。<br />取值范围：[0, 16]<br />单位：vp<br/>默认值：底板样式为圆形。<br />**说明：**<br />当hintRadius为0时，底板样式为直角矩形。当hintRadius的值在0到16之间时，底板样式为圆角矩形。当hintRadius大于或等于16时，底板样式为圆形。 |
 | selected | Date | 否    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。 |
 | start<sup>18+</sup> | Date | 否    | 设置开始日期。 |
 | end<sup>18+</sup> | Date | 否    | 设置结束日期。 |

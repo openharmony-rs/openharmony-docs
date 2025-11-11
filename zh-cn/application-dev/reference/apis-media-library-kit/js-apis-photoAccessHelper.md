@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -76,6 +77,10 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
  通过picker的方式调用该接口来查询指定uri对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
@@ -136,6 +141,10 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 获取图片和视频资源，使用Promise方式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -202,6 +211,10 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 获取连拍照片资源，使用Promise方式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -272,6 +285,10 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **参数：**
@@ -331,6 +348,10 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **参数：**
@@ -385,6 +406,10 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -446,6 +471,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 获取相册前，确保相册已存在。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -513,6 +542,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -569,6 +602,10 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 在获取相册之前，确保相册已存在。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -638,6 +675,10 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                                        | 必填 | 说明                                                         |
@@ -701,6 +742,10 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 取消指定uri的监听，一个uri可以注册多个监听，存在多个callback监听时，可以取消指定注册的callback的监听；不指定callback时取消该uri的所有监听。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -906,6 +951,10 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                      |
@@ -940,6 +989,10 @@ release(callback: AsyncCallback&lt;void&gt;): void
 当后续不需要使用PhotoAccessHelper实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -982,6 +1035,10 @@ release(): Promise&lt;void&gt;
 当后续不需要使用PhotoAccessHelper 实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1032,7 +1089,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频uri。<br>- 不支持手动拼接的uri，需调用接口获取，获取方式参考[媒体文件uri获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：** <br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频uri。<br>- 不支持手动拼接的uri，需调用接口获取，获取方式参考[媒体文件uri获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
 | photoCreationConfigs | Array&lt;[PhotoCreationConfig](#photocreationconfig12)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris保持一一对应。 |
 
 **返回值：**
@@ -1218,6 +1275,10 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&g
 接口提供给应用调用，获取媒体库支持的图片或者视频后缀列表。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1555,6 +1616,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                      | 类型                     | 可读 | 可写 | 说明                                                   |
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | 是   | 否   | 媒体文件资源uri（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件uri介绍中的[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
@@ -1568,6 +1633,10 @@ get(member: string): MemberType
 获取PhotoAsset成员参数的值。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1625,6 +1694,10 @@ set(member: string, value: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明    |
@@ -1678,6 +1751,10 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1743,6 +1820,10 @@ commitModify(): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2053,6 +2134,10 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                                  | 必填   | 说明               |
@@ -2108,6 +2193,10 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2167,6 +2256,10 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2231,6 +2324,10 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -2286,6 +2383,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 
@@ -2457,17 +2558,23 @@ async function example03(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getCount
 
-getCount(): number
+ArkTS-Dyn: getCount(): number
+
+ArkTS-Sta: getCount(): int
 
 获取文件检索结果中的文件总数。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明       |
 | ------ | -------- |
-| number | 检索到的文件总数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 检索到的文件总数。 |
 
 **错误码：**
 
@@ -2506,6 +2613,10 @@ isAfterLast(): boolean
 检查结果集是否指向最后一行。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2556,6 +2667,10 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -2597,6 +2712,10 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 获取文件检索结果中的第一个文件资产。此方法使用callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2647,6 +2766,10 @@ getFirstObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明                       |
@@ -2691,6 +2814,10 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2745,6 +2872,10 @@ getNextObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
@@ -2791,6 +2922,10 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 获取文件检索结果中的最后一个文件资产。此方法使用callback方式来返回。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2841,6 +2976,10 @@ getLastObject(): Promise&lt;T&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
@@ -2879,17 +3018,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getObjectByPosition
 
-getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
+ArkTS-Dyn: getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
+
+ArkTS-Sta: getObjectByPosition(index: int, callback: AsyncCallback&lt;T&gt;): void
 
 获取文件检索结果中具有指定索引的文件资产。此方法使用callback来返回。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 要获取的文件的索引，从0开始。     |
+| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是    | 要获取的文件的索引，从0开始。     |
 | callback | AsyncCallback&lt;T&gt; | 是    | 异步返回指定索引的文件资产的回调。 |
 
 **错误码：**
@@ -2929,17 +3074,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getObjectByPosition
 
-getObjectByPosition(index: number): Promise&lt;T&gt;
+ArkTS-Dyn: getObjectByPosition(index: number): Promise&lt;T&gt;
+
+ArkTS-Sta: getObjectByPosition(index: int): Promise&lt;T&gt;
 
 获取文件检索结果中指定索引的文件资产。此方法返回Promise形式的文件Asset。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明             |
 | ----- | ------ | ---- | -------------- |
-| index | number | 是    | 要获取的文件的索引，从0开始。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 要获取的文件的索引，从0开始。 |
 
 **返回值：**
 
@@ -2984,6 +3135,10 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 获取文件检索结果中的所有文件资产。此方法使用callback形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3034,6 +3189,10 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明                       |
@@ -3080,14 +3239,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称           | 类型    | 可读   | 可写  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumType | [AlbumType](#albumtype) | 是    | 否    | 相册类型。    |
-| albumSubtype | [AlbumSubtype](#albumsubtype) | 是    | 否   | 相册子类型。    |
-| albumName | string | 是    | 预置相册不可写，用户相册可写   | 相册名称。    |
-| albumUri | string | 是    | 否    | 相册uri。   |
-| count | number | 是    | 否    |  相册中文件数量。 |
-| coverUri | string | 是    | 否    | 封面文件uri。 |
-| imageCount<sup>11+</sup> | number | 是   | 否   | 相册中图片数量。|
-| videoCount<sup>11+</sup> | number | 是   | 否   | 相册中视频数量。|
+| albumType | [AlbumType](#albumtype) | 是    | 否    | 相册类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| albumSubtype | [AlbumSubtype](#albumsubtype) | 是    | 否   | 相册子类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| albumName | string | 是    | 预置相册不可写，用户相册可写   | 相册名称。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| albumUri | string | 是    | 否    | 相册uri。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20   |
+| count | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| coverUri | string | 是    | 否    | 封面文件uri。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| imageCount<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 相册中图片数量。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20|
+| videoCount<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 相册中视频数量。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20|
 
 ### getAssets
 
@@ -3098,6 +3257,10 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3158,6 +3321,10 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3223,6 +3390,10 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -3277,6 +3448,10 @@ commitModify(): Promise&lt;void&gt;
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3596,6 +3771,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ### constructor<sup>11+</sup>
 
 constructor(asset: PhotoAsset)
@@ -3605,6 +3784,10 @@ constructor(asset: PhotoAsset)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3816,6 +3999,10 @@ static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -3980,6 +4167,10 @@ setTitle(title: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -4030,7 +4221,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getWriteCacheHandler<sup>11+</sup>
 
-getWriteCacheHandler(): Promise&lt;number&gt;
+ArkTS-Dyn: getWriteCacheHandler(): Promise&lt;number&gt;
+
+ArkTS-Sta: getWriteCacheHandler(): Promise&lt;int&gt;
 
 获取临时文件写句柄。
 
@@ -4040,11 +4233,15 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，返回临时文件写句柄。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回临时文件写句柄。 |
 
 **错误码：**
 
@@ -4092,6 +4289,10 @@ addResource(type: ResourceType, fileUri: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4145,6 +4346,10 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -4191,6 +4396,10 @@ saveCameraPhoto(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -4225,6 +4434,10 @@ saveCameraPhoto(imageFileType: ImageFileType): void
 保存相机拍摄的照片。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4271,6 +4484,10 @@ discardCameraPhoto(): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
@@ -4300,17 +4517,23 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 ### setOrientation<sup>15+</sup>
 
-setOrientation(orientation: number): void
+ArkTS-Dyn: setOrientation(orientation: number): void
+
+ArkTS-Sta: setOrientation(orientation: int): void
 
 修改图片的旋转角度。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
+| orientation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
 
 **错误码：**
 
@@ -4354,6 +4577,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ### constructor<sup>11+</sup>
 
 constructor(album: Album)
@@ -4361,6 +4588,10 @@ constructor(album: Album)
 构造函数用于初始化新创建的对象。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4456,6 +4687,10 @@ setAlbumName(name: string): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -4499,6 +4734,10 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): void
 向相册中添加资产。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4554,6 +4793,10 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
@@ -4606,6 +4849,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ### requestImage<sup>11+</sup>
 
 static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
@@ -4613,6 +4860,10 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 根据不同的策略模式，请求图片资源。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -4691,6 +4942,10 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker的方式调用该接口来请求图片资源数据，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
@@ -4766,6 +5021,10 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 根据不同的策略模式，请求动态照片对象。动态照片对象可用于请求动态照片的资源数据。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -4847,6 +5106,10 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker的方式调用该接口来请求视频资源数据到应用沙箱，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
@@ -4921,6 +5184,10 @@ static cancelRequest(context: Context, requestId: string): Promise\<void>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 **参数：**
@@ -4972,6 +5239,10 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -5089,6 +5360,10 @@ async function example(context: Context) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ### onDataPrepared<sup>11+</sup>
 
 onDataPrepared(data: T, map?: Map<string, string>): void
@@ -5102,6 +5377,10 @@ map支持返回的信息：
 | 'quality'  | 图片质量。高质量为'high'，低质量为'low'。 |
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5154,6 +5433,10 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 ### onDataPrepared<sup>13+</sup>
 
 onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>): void
@@ -5166,6 +5449,10 @@ map支持返回的信息：
 | 'quality'  | 图片质量。高质量为'high'，低质量为'low'。 |
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5193,6 +5480,10 @@ class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Pict
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 ### getUri<sup>12+</sup>
 
@@ -5268,6 +5559,10 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -5355,6 +5650,10 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 通过picker调用接口请求动态照片对象并读取内容，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-movingphoto.md)。
@@ -5440,6 +5739,10 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 - 使用picker调用该接口请求动态照片对象并读取内容时，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-movingphoto.md)。
@@ -5514,7 +5817,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ## MemberType
 
-type MemberType = number | string | boolean
+ArkTS-Dyn: type MemberType = number | string | boolean
+
+ArkTS-Dyn: type MemberType = int | long | double | string | boolean
 
 PhotoAsset的成员类型。
 
@@ -5522,9 +5827,13 @@ PhotoAsset的成员类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型 | 说明 |
 | ---- | ---- |
-| number | 表示值类型为数字，可取任意值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int \| long \| double | 表示值类型为数字，可取任意值。 |
 | string | 表示值类型为字符，可取任意值。|
 | boolean | 表示值类型为布尔类型。 |
 
@@ -5535,6 +5844,10 @@ PhotoAsset的成员类型。
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -5549,6 +5862,10 @@ PhotoSubtype是不同[PhotoAsset](#photoasset)类型的枚举。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认照片类型。 |
@@ -5561,6 +5878,10 @@ PhotoSubtype是不同[PhotoAsset](#photoasset)类型的枚举。
 
 **系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SDR |  0 |  标准动态范围类型。|
@@ -5571,6 +5892,10 @@ PhotoSubtype是不同[PhotoAsset](#photoasset)类型的枚举。
 枚举，相册类型，表示是用户相册还是系统预置相册。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                  | 值    | 说明                        |
 | ------------------- | ---- | ------------------------- |
@@ -5585,17 +5910,21 @@ PhotoSubtype是不同[PhotoAsset](#photoasset)类型的枚举。
 
 | 名称                                | 值          | 说明                              |
 | --------------------------------- | ---------- | ------------------------------- |
-| USER\_GENERIC                     | 1          | 用户相册。                           |
-| FAVORITE                          | 1025       | 收藏夹。                            |
-| VIDEO                             | 1026       | 视频相册。                           |
-| IMAGE<sup>12+</sup>               | 1031       | 图片相册。                           |
-| ANY                               | 2147483647 | 任意相册。                           |
+| USER\_GENERIC                     | 1          | 用户相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                           |
+| FAVORITE                          | 1025       | 收藏夹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                            |
+| VIDEO                             | 1026       | 视频相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                           |
+| IMAGE<sup>12+</sup>               | 1031       | 图片相册。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20                           |
+| ANY                               | 2147483647 | 任意相册。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                           |
 
 ## PositionType<sup>16+</sup>
 
 枚举，文件位置，表示文件在本地或云端。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -5611,37 +5940,41 @@ PhotoSubtype是不同[PhotoAsset](#photoasset)类型的枚举。
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 文件uri。<br>注意：查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。            |
-| PHOTO_TYPE    | 'media_type'           | 媒体文件类型。                                              |
-| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符。<br>- 不允许出现非法字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。                 |
-| SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。    |
-| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。             |
-| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。 |
-| DURATION      | 'duration'            | 持续时间（单位：毫秒）。                                    |
-| WIDTH         | 'width'               | 图片宽度（单位：像素）。                                    |
-| HEIGHT        | 'height'              | 图片高度（单位：像素）。                                      |
-| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳（单位：秒）。                |
-| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。                                             |
-| FAVORITE      | 'is_favorite'            | 收藏。                                                    |
-| TITLE         | 'title'               | 文件标题。                                                   |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>注意：查询照片时，不支持基于该字段排序。  |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>注意：查询照片时，不支持基于该字段排序。 |
-| PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。                                                   |
-| DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。                                                  |
-| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。 |
-| BURST_KEY<sup>12+</sup>   | 'burst_key'               | 一组连拍照片的唯一标识：uuid。 |
-| LCD_SIZE<sup>12+</sup>  | 'lcd_size'  | LCD图片的宽高，值为width:height拼接而成的字符串。|
-| THM_SIZE<sup>12+</sup>  | 'thm_size'  | THUMB图片的宽高，值为width:height拼接而成的字符串。|
-| DETAIL_TIME<sup>13+</sup>  | 'detail_time'  | 大图浏览时间，值为拍摄时对应时区的时间的字符串，不会跟随时区变化。|
-| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。 |
-| POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。                               |
-| MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
+| URI           | 'uri'                 | 文件uri。<br>注意：查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20            |
+| PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                              |
+| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符。<br>- 不允许出现非法字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                 |
+| SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20             |
+| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| DURATION      | 'duration'            | 持续时间（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                    |
+| WIDTH         | 'width'               | 图片宽度（单位：像素）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                    |
+| HEIGHT        | 'height'              | 图片高度（单位：像素）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                      |
+| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳（单位：秒）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                |
+| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                             |
+| FAVORITE      | 'is_favorite'            | 收藏。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                                    |
+| TITLE         | 'title'               | 文件标题。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20                                                   |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>注意：查询照片时，不支持基于该字段排序。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20  |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>注意：查询照片时，不支持基于该字段排序。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20                                                   |
+| DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20                                                  |
+| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| BURST_KEY<sup>12+</sup>   | 'burst_key'               | 一组连拍照片的唯一标识：uuid。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| LCD_SIZE<sup>12+</sup>  | 'lcd_size'  | LCD图片的宽高，值为width:height拼接而成的字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| THM_SIZE<sup>12+</sup>  | 'thm_size'  | THUMB图片的宽高，值为width:height拼接而成的字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20|
+| DETAIL_TIME<sup>13+</sup>  | 'detail_time'  | 大图浏览时间，值为拍摄时对应时区的时间的字符串，不会跟随时区变化。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20|
+| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20 |
+| POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br/>**ArkTS-Dyn起始版本：** 16<br/>**ArkTS-Sta起始版本：** 20                               |
+| MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 20                               |
 
 ## AlbumKeys
 
 枚举，相册关键信息。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
@@ -5661,6 +5994,10 @@ title参数的规格如下：
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
 | title                  | string                          | 否  | 图片或者视频的标题。  |
@@ -5673,6 +6010,10 @@ title参数的规格如下：
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                   | 类型                | 可读 | 可写 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
 | fetchColumns           | Array&lt;string&gt; | 是   | 是   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#get)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。 |
@@ -5683,6 +6024,10 @@ title参数的规格如下：
 请求策略。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                   | 类型                        | 只读 | 可选 | 说明                                         |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
@@ -5698,6 +6043,10 @@ title参数的规格如下：
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 ## ResourceType<sup>11+</sup>
 
 枚举，写入资源的类型。
@@ -5705,6 +6054,10 @@ title参数的规格如下：
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -5717,6 +6070,10 @@ title参数的规格如下：
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | JPEG  |  1 |  表示jpeg图片类型。 |
@@ -5727,6 +6084,10 @@ title参数的规格如下：
 监听器回调函数的返回值。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称    | 类型                        | 可读 | 可写 | 说明                                                         |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -5739,6 +6100,10 @@ title参数的规格如下：
 枚举，通知事件的类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
@@ -5753,6 +6118,10 @@ title参数的规格如下：
 枚举，DefaultChangeUri子类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称              | 值                      | 说明                                                         |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
@@ -5769,10 +6138,10 @@ title参数的规格如下：
 
 | 名称                                    |  值 | 说明       |
 |---------------------------------------|  ---- |----------|
-| IMAGE_TYPE                            |  'image/*' | 图片类型。    |
-| VIDEO_TYPE                            |  'video/*' | 视频类型。    |
-| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。 |
-| MOVING_PHOTO_IMAGE_TYPE<sup>12+</sup> |  'image/movingPhoto' | 动态照片类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| IMAGE_TYPE                            |  'image/*' | 图片类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| VIDEO_TYPE                            |  'video/*' | 视频类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20    |
+| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| MOVING_PHOTO_IMAGE_TYPE<sup>12+</sup> |  'image/movingPhoto' | 动态照片类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20  |
 
 ## RecommendationType<sup>11+</sup>
 
@@ -5784,16 +6153,16 @@ title参数的规格如下：
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| QR_OR_BAR_CODE  |  1 | 二维码或条码。 |
-| QR_CODE |  2 | 二维码。 |
-| BAR_CODE |  3 | 条码。 |
-| ID_CARD |  4 | 身份证。 |
-| PROFILE_PICTURE |  5 | 头像。 |
-| PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| QR_OR_BAR_CODE  |  1 | 二维码或条码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| QR_CODE |  2 | 二维码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| BAR_CODE |  3 | 条码。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| ID_CARD |  4 | 身份证。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| PROFILE_PICTURE |  5 | 头像。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
+| PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| DRIVING_LICENSE<sup>12+</sup> |  9 | 行驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| FEATURED_SINGLE_PORTRAIT<sup>12+</sup> |  10 | 推荐人像。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
 
 **示例：**
 
@@ -5829,6 +6198,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
@@ -5872,6 +6245,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | recommendationType | [RecommendationType](#recommendationtype11)   | 否   | 如果需要根据枚举值推荐相应的图片，则配置此参数。 |
@@ -5897,10 +6274,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | MIMEType<sup>10+</sup>    | [PhotoViewMIMETypes](#photoviewmimetypes)   | 否   | 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| maxSelectNumber<sup>10+</sup>      | number | 否   | 选择媒体文件数量的最大值(最大可设置的值为500，若不设置则默认为50)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| maxSelectNumber<sup>10+</sup>      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 选择媒体文件数量的最大值(最大可设置的值为500，若不设置则默认为50)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | isPhotoTakingSupported<sup>11+</sup> | boolean  | 否   | 是否支持拍照，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isSearchSupported<sup>11+</sup> | boolean  | 否   | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 图片推荐相关配置参数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -5919,6 +6300,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                    | 类型                | 必填 | 说明                          |
 | ----------------------- | ------------------- | ---- | -------------------------------- |
 | isEditSupported<sup>11+</sup>       | boolean | 否   | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。     |
@@ -5933,6 +6318,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                    | 类型                | 可读 | 可写 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
@@ -6003,6 +6392,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | FAST_MODE |  0 |  快速模式。 |
@@ -6017,6 +6410,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                   | 类型                | 必填 | 说明                                              |
 | ---------------------- | ------------------- | ---- | ------------------------------------------------ |
 | title | string | 否  | 图片或者视频的标题，不传入时由系统生成。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现非法字符，包括：. \ / : * ? " ' ` < > \| { } [ ]|
@@ -6030,6 +6427,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
 | ORIGINAL_FORMAT_MODE |  0 |  原视频资源内容模式。  |
@@ -6040,6 +6441,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 配置完成按钮显示内容。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
@@ -6053,19 +6458,29 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 ### onProgress<sup>15+</sup>
 
-onProgress(progress: number): void
+ArkTS-Dyn: onProgress(progress: number): void
+
+ArkTS-Sta: onProgress(progress: int): void
 
 当所请求的视频资源返回进度时系统会回调此方法。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| progress | number | 是   | 返回的进度百分比，范围为0~100。 |
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 返回的进度百分比，范围为0~100。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -6128,9 +6543,9 @@ onProgress(progress: number): void
 | albumSubtype  | [AlbumSubtype](#albumsubtype) | 否 | 否  | 相册子类型。 |
 | albumName  | string  |否 |否 | 相册名。  |
 | albumUri  | string  |否 |否 | 相册uri。  |
-| imageCount  | number  |否 |否 | 相册中的图片数量。  |
-| videoCount  | number  |否 |否 | 相册中的视频数量。  |
-| count       | number  |否 |否 | 相册中的资产总数，包括图片和视频。  |
+| imageCount  | ArkTS-Dyn: number<br>ArkTS-Sta: int  |否 |否 | 相册中的图片数量。  |
+| videoCount  | ArkTS-Dyn: number<br>ArkTS-Sta: int  |否 |否 | 相册中的视频数量。  |
+| count       | ArkTS-Dyn: number<br>ArkTS-Sta: int  |否 |否 | 相册中的资产总数，包括图片和视频。  |
 | coverUri  | string  |否 |否 | 相册封面资产的uri。  |
 
 ## AlbumChangeData<sup>20+</sup>

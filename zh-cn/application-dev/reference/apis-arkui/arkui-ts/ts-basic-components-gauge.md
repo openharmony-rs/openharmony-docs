@@ -5,7 +5,9 @@
 
 >  **说明：**
 >
->  该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> - 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -47,11 +49,15 @@ Gauge(options: GaugeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 18
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | number | 是 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。 |
-| min<sup>8+</sup> | number | 否 | 当前数据段最小值。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| max<sup>8+</sup> | number | 否 | 当前数据段最大值。<br/>默认值：100<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>max小于min时使用默认值0和100。<br/>max和min支持负数。 |
+| value<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。 |
+| min<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最小值。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| max<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最大值。<br/>默认值：100<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>max小于min时使用默认值0和100。<br/>max和min支持负数。 |
 
 ## 属性
 
@@ -59,7 +65,9 @@ Gauge(options: GaugeOptions)
 
 ### value
 
-value(value: number)
+ArkTS-Dyn: value(value: number)
+
+ArkTS-Sta: value(value: double | undefined)
 
 设置量规图的数据值。
 
@@ -69,15 +77,21 @@ value(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br/>默认值：0 |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 量规图的数据值，可用于动态修改量规图的数据值。<br/>默认值：0 |
 
 ### startAngle
 
-startAngle(angle: number)
+ArkTS-Dyn: startAngle(angle: number)
+
+ArkTS-Sta: startAngle(angle: double)
 
 设置起始角度位置。
 
@@ -89,13 +103,19 @@ startAngle(angle: number)
 
 **参数：** 
 
+**ArkTs-Dyn起始版本：** 8
+
+**ArkTs-Sta起始版本：** 22
+
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | 是   | 起始角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：0 |
+| angle  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 起始角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：0 |
 
 ### endAngle
 
-endAngle(angle: number)
+ArkTS-Dyn: endAngle(angle: number)
+
+ArkTS-Sta: endAngle(angle: double)
 
 设置终止角度位置。起始角度位置和终止角度位置差过小时，会绘制出异常图像，请取合理的起始角度位置和终止角度位置。建议使用单色环改变Gauge的value参数实现数据值的调节，可通过定时器setTimeout进行数值的延迟加载。
 
@@ -109,11 +129,13 @@ endAngle(angle: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | 是   | 终止角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：360 |
+| angle  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 终止角度位置，时钟0点为0度，顺时针方向为正角度。<br/>默认值：360 |
 
 ### colors
 
-colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>)
+ArkTS-Dyn: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>)
+
+ArkTS-Sta: colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, double]>)
 
 设置量规图的颜色。
 
@@ -137,7 +159,7 @@ colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGra
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; | 是   | 量规图的颜色，支持分段颜色设置。<br/>API version 9 默认值：Color.Black<br/>API version 11默认值：<br/>若不传颜色，或者数组为空，无法确定圆环类型及颜色，则圆环颜色为"0xFF64BB5C"、"0xFFF7CE00"、"0xFFE84026"的渐变环。<br/>若传入颜色，但颜色值有误，则该颜色为"0xFFE84026"。<br/>若对应颜色的比重为0，则该颜色在圆环中不显示。若所有颜色比重均为0，圆环不显示。 |
+| colors | ArkTS-Dyn: [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; <br> ArkTS-Sta: [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;double]&gt; | 是   | 量规图的颜色，支持分段颜色设置。<br/>API version 9 默认值：Color.Black<br/>API version 11默认值：<br/>若不传颜色，或者数组为空，无法确定圆环类型及颜色，则圆环颜色为"0xFF64BB5C"、"0xFFF7CE00"、"0xFFE84026"的渐变环。<br/>若传入颜色，但颜色值有误，则该颜色为"0xFFE84026"。<br/>若对应颜色的比重为0，则该颜色在圆环中不显示。若所有颜色比重均为0，圆环不显示。 |
 
 ### strokeWidth
 
@@ -266,11 +288,15 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-types.md#multishadowoptions10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTs-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 | 名称  | 类型    | 必填 | 说明              |
 | ------ | ------ | ----| ---------------- |
-| value | number | 是 | 当前数据值。 |
-| min | number | 是 | 当前数据段最小值。 |
-| max | number | 是 | 当前数据段最大值。 |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 当前数据值。 |
+| min | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 当前数据段最小值。 |
+| max | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 当前数据段最大值。 |
 
 
 ## 示例

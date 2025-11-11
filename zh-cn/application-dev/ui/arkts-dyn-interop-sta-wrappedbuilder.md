@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Dyn中使用ArkTS-Sta的WrappedBuilder对象。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局\@Builder的场景。使用时需要遵守语言互操作[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)，以及ArkTS-Sta wrapBuilder方法[限制条件](./state-management/arkts-wrapBuilder.md#限制条件)。
+从API version 22开始，支持在ArkTS-Dyn中使用ArkTS-Sta的WrappedBuilder对象。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局\@Builder的场景。使用时需要遵守语言互操作[交互基本原则](../quick-start/arkts-interop-overview.md#交互基本原则)，以及ArkTS-Sta wrapBuilder方法[限制条件](./state-management/arkts-v1.2-wrapBuilder.md#限制条件)。
 
 \@Builder的参数传递包括[按值传递](#按值传递)与[按引用传递](#按引用传递)，详见[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
@@ -205,4 +205,21 @@ struct Parent {
 "dependencies": {
   "sta_library": "file:../sta_library"
 }
+```
+
+## 常见问题
+
+### 声明文件编译报错
+由于[ArkTS-Sta wrapBuilder](./state-management/arkts-v1.2-wrapBuilder.md#接口说明)与[ArkTS-Dyn wrapBuilder](./state-management/arkts-wrapBuilder.md#接口说明)的接口规格不一致，在部分复杂的WrappedBuilder场景下，编译时生成的ArkTS-Dyn声明文件可能报错，需要开发者手动修改声明文件报错位置后增量编译，以符合ArkTS-Dyn WrappedBuilder的语法规格。
+
+以上文[按值传递](#按值传递)示例为例，定义WrappedBuilder的ArkTS-Sta源文件为`library/src/main/ets/components/MainPage.ets`，对应生成的ArkTS-Dyn声明文件位于`library/build/default/intermediates/declgen/default/declgenV1/library/src/main/ets/components/MainPage.d.ets`。正确的声明文件示例如下。
+
+```TypeScript
+import type { Record } from "../../../../../static.Record";
+
+// ArkTS-Sta源码中使用：WrappedBuilder<@Builder (input: string) => void>
+// ArkTS-Dyn声明文件修改为：WrappedBuilder<[string]>
+// 如遇编译报错，参考本示例将生成写法替换为符合ArkTS-Dyn语法的形式
+@Builder
+export declare const globalBuilder: WrappedBuilder<[string]>;
 ```
