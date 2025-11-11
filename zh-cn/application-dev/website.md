@@ -4683,7 +4683,7 @@
           <!--DelEnd-->
         - 错误码<!--mdm-arkts-errcode-->
           - [企业设备管理错误码](reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md)
-      - Kernel Enhance Kit（内核增强）<!--kernel-api-->
+      - Kernel Enhance Kit（内核增强能力）<!--kernel-api-->
         - C API<!--kernel-c-->
           - 模块<!--kernel-moudle-->
             - [QoS](reference/apis-kernel-enhance-kit/capi-qos.md)
