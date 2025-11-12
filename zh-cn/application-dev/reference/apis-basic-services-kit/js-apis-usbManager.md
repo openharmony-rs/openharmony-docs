@@ -45,7 +45,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 if (devicesList) {
-  console.log(`devicesList = ${devicesList}`);
+  console.log(`devicesList = ${JSON.stringify(devicesList)}`);
 }
 /*
 devicesList 返回的数据结构,此处提供一个简单的示例，如下
