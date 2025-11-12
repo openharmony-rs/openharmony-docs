@@ -325,7 +325,7 @@ struct BindSheetDemo {
           }
           .alignItems(HorizontalAlign.Start)
 
-          Blank();
+          Blank()
 
           Row()
             .width(12)
@@ -650,7 +650,7 @@ struct ModalTransitionWithIf {
                 }
                 .alignItems(HorizontalAlign.Start)
 
-                Blank();
+                Blank()
 
                 Row()
                   .width(12)

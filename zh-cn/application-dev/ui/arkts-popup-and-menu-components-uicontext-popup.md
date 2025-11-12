@@ -19,10 +19,10 @@
    enableArrow: true
  })
    .then(() => {
-     hilog.info(DOMAIN, 'popupBuildText', 'openPopup success');
+     hilog.info(0xFF00, 'popupBuildText', 'openPopup success');
    })
    .catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'popupBuildText', 'openPopup error: ' + err.code + ' ' + err.message);
+     hilog.error(0xFF00, 'popupBuildText', 'openPopup error: ' + err.code + ' ' + err.message);
    });
  ```
 
@@ -71,7 +71,7 @@
       buttons: [{
         text: 'confirm',
         action: () => {
-          hilog.info(DOMAIN, 'popupBuildText', 'confirm button click');
+          hilog.info(0xFF00, 'popupBuildText', 'confirm button click');
         },
         fontSize: 15,
         fontColor: Color.Black,
@@ -79,7 +79,7 @@
         {
           text: 'cancel',
           action: () => {
-            hilog.info(DOMAIN, 'popupBuildText', 'cancel button click');
+            hilog.info(0xFF00, 'popupBuildText', 'cancel button click');
           },
           fontSize: 15,
           fontColor: Color.Black
@@ -124,10 +124,10 @@
     enableArrow: false
   }, true)
     .then(() => {
-      hilog.info(DOMAIN, 'popupBuildText', 'updatePopup success');
+      hilog.info(0xFF00, 'popupBuildText', 'updatePopup success');
     })
     .catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
+      hilog.error(0xFF00, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
     });
   ```
   
@@ -141,10 +141,10 @@
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
     .then(() => {
-      hilog.info(DOMAIN, 'popupBuildText', 'closePopup success');
+      hilog.info(0xFF00, 'popupBuildText', 'closePopup success');
     })
     .catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
+      hilog.error(0xFF00, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
     });
   ```
   
@@ -158,15 +158,12 @@
 
 以下示例通过[HAR](../quick-start/har-package.md)包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
 
-  <!-- [main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
+  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
   ``` TypeScript
-  // entry/src/main/ets/components/MainPage.ets
   import { BusinessError } from '@kit.BasicServicesKit';
   import { ComponentContent, TargetInfo, PromptAction } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const DOMAIN = 0x0000;
   
   export class PromptActionClass {
     private promptAction: PromptAction | null = null;
@@ -199,34 +196,34 @@
       if (this.promptAction != null) {
         this.promptAction.openPopup(this.contentNode, this.target, this.options)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'openPopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'openPopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'openPopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'openPopup error: ' + err.code + ' ' + err.message);
           });
       }
     }
-
+  
     public closePopup() {
       if (this.promptAction != null) {
         this.promptAction.closePopup(this.contentNode)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'closePopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'closePopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'closePopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'closePopup error: ' + err.code + ' ' + err.message);
           });
       }
     }
-
+  
     public updatePopup(options: PopupCommonOptions) {
       if (this.promptAction != null) {
         this.promptAction.updatePopup(this.contentNode, options, this.isPartialUpdate)
           .then(() => {
-            hilog.info(DOMAIN, 'popupMainPage', 'updatePopup success');
+            hilog.info(0xFF00, 'popupMainPage', 'updatePopup success');
           })
           .catch((err: BusinessError) => {
-            hilog.error(DOMAIN, 'popupMainPage', 'updatePopup error: ' + err.code + ' ' + err.message);
+            hilog.error(0xFF00, 'popupMainPage', 'updatePopup error: ' + err.code + ' ' + err.message);
           });
       }
     }
@@ -237,7 +234,6 @@
   <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
   ``` TypeScript
-  // entry/src/main/ets/pages/OpenPopup.ets
   import { PromptActionClass } from './PopupMainPage';
   import { ComponentContent, PromptAction } from '@kit.ArkUI';
   

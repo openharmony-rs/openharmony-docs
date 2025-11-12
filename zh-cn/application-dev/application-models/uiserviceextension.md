@@ -33,13 +33,15 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 
 如下示例通过startUIServiceExtensionAbility方法启动一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-```ts
+<!-- @[service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Start.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct Start {
   build() {
     Column() {
       Row() {
@@ -49,7 +51,7 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             let startWant: Want = {
-              bundleName: 'com.acts.uiserviceextensionability', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件的包名。
+              bundleName: 'com.samples.uiserviceextensionability', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件的包名。
               abilityName: 'UiServiceExtAbility', // 仅作为示例代码，需要替换为实际的UIServiceExtensionAbility组件名称。
             };
             try {
@@ -71,19 +73,22 @@ struct Index {
 }
 ```
 
+
 ## 客户端连接服务端
 
   客户端通过[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)连接服务端，获取并保存[UIServiceProxy](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md)对象。通过该proxy对象的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md#uiserviceproxysenddata)方法发送数据给服务端。服务端通过UIServiceExtensionAbility类onData()（系统接口）方法接收客户端数据。
 
 如下示例通过connectUIServiceExtensionAbility方法连接一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)
 
-```ts
+<!-- @[connect_service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Connect.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct Connect {
   comProxy: common.UIServiceProxy | null = null;
   connectCallback: common.UIServiceExtensionConnectCallback = {
     onData: (data: Record<string, Object>) => {

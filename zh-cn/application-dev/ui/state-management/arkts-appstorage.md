@@ -160,9 +160,9 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
-    1. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
+    a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
-    2. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+    b. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
 
 4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用emitter方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
@@ -198,15 +198,20 @@ link2.get() // == 49
 prop.get() // == 49
 ```
 
-
 ### 从UI内部使用AppStorage
 
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
-```ts
+<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+
 class Data {
-  code: number;
+  public code: number;
 
   constructor(code: number) {
     this.code = code;
@@ -221,7 +226,7 @@ storage.setOrCreate('linkB', new Data(100));
 
 @Entry(storage)
 @Component
-struct Index {
+struct TestStorageProp {
   @StorageLink('propA') storageLink: number = 1;
   @StorageProp('propA') storageProp: number = 1;
   @StorageLink('propB') storageLinkObject: Data = new Data(1);
@@ -246,7 +251,7 @@ struct Index {
       // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
       Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
         .onClick(() => {
-          console.info(`Appstorage.get: ${AppStorage.get<number>('propA')}`);
+          hilog.info(DOMAIN, TAG, `Appstorage.get: ${AppStorage.get<number>('propA')}`);
           AppStorage.set<number>('propA', 100);
         })
 
@@ -268,7 +273,9 @@ struct Index {
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-```ts
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
+
+``` TypeScript
 @Component
 struct StorageLinkComponent {
   @StorageLink('linkA') linkA: number | null = null;
@@ -309,7 +316,7 @@ struct StoragePropComponent {
 
 @Entry
 @Component
-struct Index {
+struct TestPageStorageLink {
   build() {
     Row() {
       Column() {
@@ -331,7 +338,9 @@ struct Index {
 
 在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct DateSample {
@@ -377,7 +386,9 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct MapSample {
@@ -414,6 +425,7 @@ struct MapSample {
 }
 ```
 
+
 ### 装饰Set类型变量
 
 > **说明：**
@@ -422,7 +434,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-```ts
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct SetSample {
@@ -470,12 +484,17 @@ struct SetSample {
 
 使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制[@Watch](./arkts-watch.md)函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-```ts
-// xxx.ets
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
+
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
@@ -486,8 +505,8 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
 
   build() {
@@ -525,10 +544,10 @@ export struct TapImage {
   // 判断是否被选中
   onTapIndexChange() {
     if (this.tapIndex >= 0 && this.index === this.tapIndex) {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, red`);
+      hilog.info(DOMAIN, TAG, `tapindex: ${this.tapIndex}, index: ${this.index}, red`);
       this.tapColor = Color.Red;
     } else {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, black`);
+      hilog.info(DOMAIN, TAG, `tapindex: ${this.tapIndex}, index: ${this.index}, black`);
       this.tapColor = Color.Black;
     }
   }
@@ -553,18 +572,21 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
 
 let nextId: number = 0;
 
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
-  id: number;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
+  public id: number;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
@@ -576,8 +598,8 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
   private preIndex: number = -1;
 
@@ -605,7 +627,7 @@ struct Gallery {
             emitter.emit(innerEvent, eventData);
 
             if (this.preIndex != -1) {
-              console.info(`preIndex: ${this.preIndex}, index: ${item.id}, black`);
+              hilog.info(DOMAIN, TAG, `preIndex: ${this.preIndex}, index: ${item.id}, black`);
               let innerEvent: emitter.InnerEvent = { eventId: this.preIndex };
               // 取消选中态：红变黑
               let eventData: emitter.EventData = {
@@ -659,14 +681,17 @@ export struct TapImage {
 }
 ```
 
+
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-```ts
-// xxx.ets
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->
+
+``` TypeScript
+
 class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
+  public title: string;
+  public uri: Resource;
+  public color: Color = Color.Black;
 
   constructor(title: string, uri: Resource) {
     this.title = title;
@@ -677,8 +702,8 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
+  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon'))];
   scroller: Scroller = new Scroller();
 
   build() {
@@ -729,22 +754,26 @@ export struct TapImage {
 }
 ```
 
-
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
 使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 示例如下。
 
-```ts
+<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleAppStorage]';
 AppStorage.setOrCreate('propA', false);
 
 @Entry
 @Component
-struct Index {
+struct PageStorageProp {
   @StorageProp('propA') @Watch('onChange') propA: boolean = false;
 
   onChange() {
-    console.info(`propA change`);
+    hilog.info(DOMAIN, TAG, `propA change`);
   }
 
   aboutToAppear(): void {
@@ -757,7 +786,7 @@ struct Index {
       Button('change')
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
-          console.info(`propA: ${this.propA}`);
+          hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }
   }

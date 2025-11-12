@@ -40,23 +40,25 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
 
 为使应用能够正常使用UIAbility，需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中声明UIAbility的名称、入口、标签等相关信息。
 
+<!-- @[module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5) -->  
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
       {
         "name": "EntryAbility", // UIAbility组件的名称
         "srcEntry": "./ets/entryability/EntryAbility.ets", // UIAbility组件的代码路径
         "description": "$string:EntryAbility_desc", // UIAbility组件的描述信息
-        "icon": "$media:icon", // UIAbility组件的图标
+        "icon": "$media:layered_image", // UIAbility组件的图标
         "label": "$string:EntryAbility_label", // UIAbility组件的标签
-        "startWindowIcon": "$media:icon", // UIAbility组件启动页面图标资源文件的索引
+        "startWindowIcon": "$media:startIcon", // UIAbility组件启动页面图标资源文件的索引
         "startWindowBackground": "$color:start_window_background", // UIAbility组件启动页面背景颜色资源文件的索引
-        // ...
+        // ···
       }
     ]
+    // ···
   }
 }
 ```

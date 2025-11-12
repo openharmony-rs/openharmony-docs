@@ -135,14 +135,14 @@ struct ChildItem4 {
 ``` TypeScript
 @Entry
 @Component
-struct Parent5 {
+struct ForEachSameKey {
   @State simpleList: Array<string> = ['one', 'two', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
         ForEach(this.simpleList, (item: string) => {
-          ChildItem5({ item: item })
+          SameKeyChildItem({ item: item })
         }, (item: string) => item)
       }
       .width('100%')
@@ -154,7 +154,7 @@ struct Parent5 {
 }
 
 @Component
-struct ChildItem5 {
+struct SameKeyChildItem {
   @Prop item: string;
 
   build() {
@@ -180,7 +180,7 @@ struct ChildItem5 {
 ``` TypeScript
 @Entry
 @Component
-struct Parent6 {
+struct ForEachNotFirstRender {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
@@ -194,7 +194,7 @@ struct Parent6 {
           })
 
         ForEach(this.simpleList, (item: string) => {
-          ChildItem6({ item: item })
+          NotFirstRenderChildItem({ item: item })
             .margin({ top: 20 })
         }, (item: string) => item)
       }
@@ -208,7 +208,7 @@ struct Parent6 {
 }
 
 @Component
-struct ChildItem6 {
+struct NotFirstRenderChildItem {
   @Prop item: string;
 
   build() {
@@ -307,7 +307,7 @@ struct ArticleSkeletonView {
 <!-- @[article_list_view_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView.ets) -->
 
 ``` TypeScript
-class Article1 {
+class ArticleChangeSource {
   public id: string;
   public title: string;
   public brief: string;
@@ -321,30 +321,30 @@ class Article1 {
 
 @Entry
 @Component
-struct ArticleListView1 {
+struct ArticleListViewChangeSource {
   @State isListReachEnd: boolean = false;
-  @State articleList: Array<Article1> = [
-    new Article1('001', 'Article 1', 'Abstract'),
-    new Article1('002', 'Article 2', 'Abstract'),
-    new Article1('003', 'Article 3', 'Abstract'),
-    new Article1('004', 'Article 4', 'Abstract'),
-    new Article1('005', 'Article 5', 'Abstract'),
-    new Article1('006', 'Article 6', 'Abstract')
+  @State articleList: Array<ArticleChangeSource> = [
+    new ArticleChangeSource('001', 'Article 1', 'Abstract'),
+    new ArticleChangeSource('002', 'Article 2', 'Abstract'),
+    new ArticleChangeSource('003', 'Article 3', 'Abstract'),
+    new ArticleChangeSource('004', 'Article 4', 'Abstract'),
+    new ArticleChangeSource('005', 'Article 5', 'Abstract'),
+    new ArticleChangeSource('006', 'Article 6', 'Abstract')
   ];
 
   loadMoreArticles() {
-    this.articleList.push(new Article1('007', 'New Article', 'Abstract'));
+    this.articleList.push(new ArticleChangeSource('007', 'New Article', 'Abstract'));
   }
 
   build() {
     Column({ space: 5 }) {
       List() {
-        ForEach(this.articleList, (item: Article1) => {
+        ForEach(this.articleList, (item: ArticleChangeSource) => {
           ListItem() {
-            ArticleCard1({ article: item })
+            ArticleCardChangeSource({ article: item })
               .margin({ top: 20 })
           }
-        }, (item: Article1) => item.id)
+        }, (item: ArticleChangeSource) => item.id)
       }
       .onReachEnd(() => {
         this.isListReachEnd = true;
@@ -368,8 +368,8 @@ struct ArticleListView1 {
 }
 
 @Component
-struct ArticleCard1 {
-  @Prop article: Article1;
+struct ArticleCardChangeSource {
+  @Prop article: ArticleChangeSource;
 
   build() {
     Row() {
@@ -420,7 +420,7 @@ struct ArticleCard1 {
 
 ``` TypeScript
 @Observed
-class Article2 {
+class ArticleChangeChild {
   public id: string;
   public title: string;
   public brief: string;
@@ -438,26 +438,26 @@ class Article2 {
 
 @Entry
 @Component
-struct ArticleListView2 {
-  @State articleList: Array<Article2> = [
-    new Article2('001', 'Article 0', 'Abstract', false, 100),
-    new Article2('002', 'Article 1', 'Abstract', false, 100),
-    new Article2('003', 'Article 2', 'Abstract', false, 100),
-    new Article2('004', 'Article 4', 'Abstract', false, 100),
-    new Article2('005', 'Article 5', 'Abstract', false, 100),
-    new Article2('006', 'Article 6', 'Abstract', false, 100),
+struct ArticleListChangeView {
+  @State articleList: Array<ArticleChangeChild> = [
+    new ArticleChangeChild('001', 'Article 0', 'Abstract', false, 100),
+    new ArticleChangeChild('002', 'Article 1', 'Abstract', false, 100),
+    new ArticleChangeChild('003', 'Article 2', 'Abstract', false, 100),
+    new ArticleChangeChild('004', 'Article 4', 'Abstract', false, 100),
+    new ArticleChangeChild('005', 'Article 5', 'Abstract', false, 100),
+    new ArticleChangeChild('006', 'Article 6', 'Abstract', false, 100),
   ];
 
   build() {
     List() {
-      ForEach(this.articleList, (item: Article2) => {
+      ForEach(this.articleList, (item: ArticleChangeChild) => {
         ListItem() {
-          ArticleCard2({
+          ArticleCardChangeChild({
             article: item
           })
             .margin({ top: 20 })
         }
-      }, (item: Article2) => item.id)
+      }, (item: ArticleChangeChild) => item.id)
     }
     .padding(20)
     .scrollBar(BarState.Off)
@@ -466,8 +466,8 @@ struct ArticleListView2 {
 }
 
 @Component
-struct ArticleCard2 {
-  @ObjectLink article: Article2;
+struct ArticleCardChangeChild {
+  @ObjectLink article: ArticleChangeChild;
 
   handleLiked() {
     this.article.isLiked = !this.article.isLiked;
@@ -611,7 +611,7 @@ struct ForEachSort {
 ``` TypeScript
 @Entry
 @Component
-struct Parent1 {
+struct ForEachAbnormal {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
@@ -624,7 +624,7 @@ struct Parent1 {
       })
 
       ForEach(this.simpleList, (item: string) => {
-        ChildItem1({ item: item })
+        ForEachAbnormalChildItem({ item: item })
       }, (item: string, index: number) => index.toString())
     }
     .justifyContent(FlexAlign.Center)
@@ -635,7 +635,7 @@ struct Parent1 {
 }
 
 @Component
-struct ChildItem1 {
+struct ForEachAbnormalChildItem {
   @Prop item: string;
 
   build() {
@@ -665,9 +665,13 @@ struct ChildItem1 {
 <!-- @[bad_performance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/BadPerformance.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 @Entry
 @Component
-struct Parent2 {
+struct ReducedRenderingPerformance {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
@@ -677,10 +681,11 @@ struct Parent2 {
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
+        hilog.info(DOMAIN, 'testTag', '[onClick]: simpleList is [${this.simpleList.join(', ')}]');
       })
 
       ForEach(this.simpleList, (item: string) => {
-        ChildItem2({ item: item })
+        ReducedChildItem({ item: item })
       })
     }
     .justifyContent(FlexAlign.Center)
@@ -691,10 +696,11 @@ struct Parent2 {
 }
 
 @Component
-struct ChildItem2 {
+struct ReducedChildItem {
   @Prop item: string;
 
   aboutToAppear() {
+    hilog.info(DOMAIN, TAG, '[aboutToAppear]: item is ${this.item}');
   }
 
   build() {
@@ -728,7 +734,7 @@ struct ChildItem2 {
 
 ``` TypeScript
 ForEach(this.simpleList, (item: string) => {
-  ChildItem4({ item: item })
+  ForEachChildItem({ item: item })
 }, (item: string) => item) // 需要保证key唯一
 ```
 
@@ -741,7 +747,7 @@ ForEach(this.simpleList, (item: string) => {
 
 ``` TypeScript
 @Observed
-class Article3 {
+class ArticleChangeData {
   public id: string;
   public title: string;
   public brief: string;
@@ -759,21 +765,21 @@ class Article3 {
 
 @Entry
 @Component
-struct ArticleListView3 {
-  @State articleList: Array<Article3> = [
-    new Article3('001', 'Article 0', 'Abstract', false, 100),
-    new Article3('002', 'Article 1', 'Abstract', false, 100),
-    new Article3('003', 'Article 2', 'Abstract', false, 100),
-    new Article3('004', 'Article 4', 'Abstract', false, 100),
-    new Article3('005', 'Article 5', 'Abstract', false, 100),
-    new Article3('006', 'Article 6', 'Abstract', false, 100),
+struct ArticleListChangeData {
+  @State articleList: Array<ArticleChangeData> = [
+    new ArticleChangeData('001', 'Article 0', 'Abstract', false, 100),
+    new ArticleChangeData('002', 'Article 1', 'Abstract', false, 100),
+    new ArticleChangeData('003', 'Article 2', 'Abstract', false, 100),
+    new ArticleChangeData('004', 'Article 4', 'Abstract', false, 100),
+    new ArticleChangeData('005', 'Article 5', 'Abstract', false, 100),
+    new ArticleChangeData('006', 'Article 6', 'Abstract', false, 100),
   ];
 
   build() {
     Column() {
       Button('Replace first article')
         .onClick(() => {
-          this.articleList[0] = new Article3('001', 'Article 0', 'Abstract', false, 100);
+          this.articleList[0] = new ArticleChangeData('001', 'Article 0', 'Abstract', false, 100);
         })
         .width(300)
         .margin(10)
@@ -788,14 +794,14 @@ struct ArticleListView3 {
         .margin(10)
 
       List() {
-        ForEach(this.articleList, (item: Article3) => {
+        ForEach(this.articleList, (item: ArticleChangeData) => {
           ListItem() {
-            ArticleCard3({
+            ArticleCardChangeData({
               article: item
             })
               .margin({ top: 20 })
           }
-        }, (item: Article3) => item.id)
+        }, (item: ArticleChangeData) => item.id)
       }
       .padding(20)
       .scrollBar(BarState.Off)
@@ -805,8 +811,8 @@ struct ArticleListView3 {
 }
 
 @Component
-struct ArticleCard3 {
-  @ObjectLink article: Article3;
+struct ArticleCardChangeData {
+  @ObjectLink article: ArticleChangeData;
 
   handleLiked() {
     this.article.isLiked = !this.article.isLiked;
@@ -865,7 +871,7 @@ struct ArticleCard3 {
 <!-- @[non_necessary_mem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/NonNecessaryMem.ets) -->
 
 ``` TypeScript
-class Data3 {
+class MemoryData {
   public longStr: string;
   public key: string;
 
@@ -877,8 +883,8 @@ class Data3 {
 
 @Entry
 @Component
-struct Parent7 {
-  @State simpleList: Array<Data3> = [];
+struct NonNecessaryMemory {
+  @State simpleList: Array<MemoryData> = [];
 
   aboutToAppear(): void {
     let longStr = '';
@@ -886,20 +892,20 @@ struct Parent7 {
       longStr += i.toString();
     }
     for (let index = 0; index < 3000; index++) {
-      let data: Data3 = new Data3(longStr, 'a' + index.toString());
+      let data: MemoryData = new MemoryData(longStr, 'a' + index.toString());
       this.simpleList.push(data);
     }
   }
 
   build() {
     List() {
-      ForEach(this.simpleList, (item: Data3) => {
+      ForEach(this.simpleList, (item: MemoryData) => {
         ListItem() {
           Text(item.key)
         }
       }
         // 如果不定义下面的keyGenerator函数，则ArkUI框架会使用默认的键值生成函数
-        , (item: Data3) => {
+        , (item: MemoryData) => {
           return item.key;
         }
       )
@@ -923,7 +929,7 @@ struct Parent7 {
 <!-- @[crash_normal_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/CrashNormalExample.ets) -->
 
 ``` TypeScript
-class Data1 {
+class KeyData {
   public content: bigint;
 
   constructor(content: bigint) {
@@ -933,18 +939,18 @@ class Data1 {
 
 @Entry
 @Component
-struct Parent3 {
-  @State simpleList: Array<Data1> = [new Data1(1234567890123456789n), new Data1(2345678910987654321n)];
+struct GenerationKeyExample {
+  @State simpleList: Array<KeyData> = [new KeyData(1234567890123456789n), new KeyData(2345678910987654321n)];
 
   build() {
     Row() {
       Column() {
-        ForEach(this.simpleList, (item: Data1) => {
-          ChildItem3({ item: item.content.toString() })
+        ForEach(this.simpleList, (item: KeyData) => {
+          GenerationKeyChildItem({ item: item.content.toString() })
         }
           // 如果不定义下面的keyGenerator函数，则ArkUI框架会使用默认的键值生成函数
-          // Data中的content: bigint在JSON序列化时失败
-          , (item: Data1) => item.content.toString()
+          // KeyData中的content: bigint在JSON序列化时失败
+          , (item: KeyData) => item.content.toString()
         )
       }
       .width('100%')
@@ -956,7 +962,7 @@ struct Parent3 {
 }
 
 @Component
-struct ChildItem3 {
+struct GenerationKeyChildItem {
   @Prop item: string;
 
   build() {

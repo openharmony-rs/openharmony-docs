@@ -93,25 +93,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    Key values of configuration options are described as follows:
 
    <!--RP1-->
-   |             Key              |       Description      |  AAC  |  FLAC| MPEG (MP3) | G711mu |
-   | ----------------------------- | :--------------: | :---: | :---: | :------: | :---: |
-   | OH_MD_KEY_AUD_SAMPLE_RATE     |      Sample rate.     |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_AUD_CHANNEL_COUNT   |      Audio channel count.     |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_AUDIO_SAMPLE_FORMAT |  Output audio stream format.  |  Mandatory |  Mandatory|   Mandatory  |  Mandatory |
-   | OH_MD_KEY_BITRATE             |       Bit rate.      |  Optional |  Mandatory|   Mandatory  |   -   |
-   | OH_MD_KEY_CHANNEL_LAYOUT      |     Audio channel layout.    |  Optional |  Mandatory|    -     |   -   |
-   | OH_MD_KEY_MAX_INPUT_SIZE      |   Maximum input size.   |  Optional |  Optional|   Optional  |  Optional |
-   | OH_MD_KEY_COMPLIANCE_LEVEL    |    Compatibility level.    |  -    |  Optional|    -     |   -    |
+   ![Audio encoder key configuration](figures/encoder_key.png)
    <!--RP1End-->
 
    The sample below lists the value range of each audio encoding type.
-   | Audio Encoding Type| Sample Rate (Hz)                                                                      |       Audio Channel Count      |
-   | ----------- | ------------------------------------------------------------------------------- | :----------------: |
-   | <!--DelRow-->AAC         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000| 1, 2, 3, 4, 5, 6, and 8|
-   | FLAC       | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000|        1–8        |
-   | MP3         | 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000                    |        1–2        |
-   | G711mu      | 8000                                                                            |         1          |
-   <!--RP2--><!--RP2End-->
+
+   <!--RP2-->
+   ![Audio encoder format range description](figures/encoder_format.png)
+   <!--RP2End-->
 
    The code snippet below shows the API call process, where AAC encoding at the bit rate of 32000 bit/s is carried out on the PCM audio with the 44100 Hz sample rate, 2-channel stereo, and SAMPLE_S16LE sample format.
     <!--RP3-->
@@ -310,7 +299,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    In the preceding example, **attr.flags** indicates the type of the buffer flag.
 
-   To indicate the End of Stream (EOS), pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
+   When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
    | Value| Description| 
    | -------- | -------- |

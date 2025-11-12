@@ -745,6 +745,7 @@
         - [UI高性能开发](ui/ui-performance-overview.md)
         - UI开发常见问题<!--ui-development-faq-->
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
+          - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -1630,14 +1631,14 @@
         - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
         - [使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
+        - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
         - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频时延管理](media/audio/audio-latency.md)
         - [音频工作组管理](media/audio/audio-workgroup.md)
-        - [音效管理](media/audio/audio-effect-management.md)
-        - [空间音频管理](media/audio/public-audio-spatialization-management.md)
+        - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
@@ -1649,6 +1650,7 @@
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
         - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
         - [使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
+        - [低时延音频录制(C/C++)](media/audio/audio-fast-recording.md)
         - [管理麦克风](media/audio/mic-management.md)
         - [音频录制流管理](media/audio/audio-recording-stream-management.md)
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
@@ -3635,6 +3637,7 @@
           - [图像AI分析错误码](reference/apis-arkui/arkui-ts/errorcode-image-analyzer.md)
           - [焦点错误码](reference/apis-arkui/errorcode-focus.md)
           - [系统资源错误码](reference/apis-arkui/errorcode-system-resource.md)
+          - [收养节点错误码](reference/apis-arkui/errorcode-adopt.md)
           - [半模态错误码](reference/apis-arkui/errorcode-bindSheet.md)
           - [滚动类组件错误码](reference/apis-arkui/errorcode-scroll.md)
           - [截图错误码](reference/apis-arkui/errorcode-snapshot.md)
@@ -4683,6 +4686,15 @@
           <!--DelEnd-->
         - 错误码<!--mdm-arkts-errcode-->
           - [企业设备管理错误码](reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md)
+      - Kernel Enhance Kit（内核增强能力）<!--kernel-api-->
+        - C API<!--kernel-c-->
+          - 模块<!--kernel-moudle-->
+            - [QoS](reference/apis-kernel-enhance-kit/capi-qos.md)
+          - 头文件<!--kernel-headerfile-->
+            - [qos.h](reference/apis-kernel-enhance-kit/capi-qos-h.md)
+          - 结构体<!--kernel-struct-->
+            - [OH_QoS_GewuCreateSessionResult](reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewucreatesessionresult.md)
+            - [OH_QoS_GewuSubmitRequestResult](reference/apis-kernel-enhance-kit/capi-qos-oh-qos-gewusubmitrequestresult.md)  
     - 硬件<!--system-hardware-api-->
       - Driver Development Kit（驱动开发服务）<!--driver-development-api-->
         - ArkTS API<!--driver-development-arkts-->

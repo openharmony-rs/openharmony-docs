@@ -158,6 +158,37 @@ scan(): void
 	}
 ```
 
+## wifiManager.startScan<sup>21+</sup>
+
+startScan(): void
+
+启动WLAN扫描。应用程序在前台运行时，两分钟内最多可扫描四次。在后台运行时，三十分钟内最多可扫描一次。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+```
 
 ## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
 
@@ -1009,7 +1040,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
@@ -1063,7 +1094,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
@@ -1241,7 +1272,7 @@ getSignalLevel(rssi: number, band: number): number
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-获取WLAN连接信息，使用Promise异步回调。
+获取WLAN连接信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1272,7 +1303,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-获取WLAN连接信息，使用callback异步回调。
+获取WLAN连接信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1881,7 +1912,7 @@ isHotspotActive(): boolean
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
-获取P2P连接信息，使用Promise异步回调。
+获取P2P连接信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1910,7 +1941,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
-获取P2P连接信息，使用callback异步回调。
+获取P2P连接信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1981,7 +2012,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
-获取P2P当前组信息，使用Promise异步回调。
+获取P2P当前组信息。使用Promise异步回调。
 
 **需要权限：**
 
@@ -2009,7 +2040,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
-获取P2P当前组信息，使用callback异步回调。
+获取P2P当前组信息。使用callback异步回调。
 
 **需要权限：**
 
@@ -2054,7 +2085,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-获取P2P对端设备列表信息，使用Promise异步回调。
+获取P2P对端设备列表信息。使用Promise异步回调。
 
 **需要权限：**
 
@@ -2082,7 +2113,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
-获取P2P对端设备列表信息，使用callback异步回调。
+获取P2P对端设备列表信息。使用callback异步回调。
 
 **需要权限：**
 
@@ -3435,36 +3466,4 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
-```
-
-## wifiManager.startScan<sup>21+</sup>
-
-startScan(): void
-
-启动WLAN扫描。
-
-**需要权限：** ohos.permission.SET_WIFI_INFO
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
-
-| **错误码ID** | **错误信息** |
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**示例：**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.startScan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
 ```

@@ -53,15 +53,20 @@
 ![freezeInPage](./figures/freezeInPage.png)
 
 页面1：
+<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Entry
 @Component({ freezeWhenInactive: true })
-struct Page1 {
+struct PageOne {
   @StorageLink('PropA') @Watch('first') storageLink: number = 47;
 
   first() {
-    console.info('first page ' + `${this.storageLink}`);
+    hilog.info(DOMAIN, TAG, 'first page ' + `${this.storageLink}`);
   }
 
   build() {
@@ -73,7 +78,7 @@ struct Page1 {
         })
       Button('go to next page').fontSize(30)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
+          this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' });
         })
     }
   }
@@ -81,31 +86,33 @@ struct Page1 {
 ```
 
 页面2：
+<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Entry
 @Component({ freezeWhenInactive: true })
-struct Page2 {
-  @StorageLink('PropA') @Watch('second') storageLink2: number = 1;
+struct PageTwo {
+  @StorageLink('PropA') @Watch('second') storageLink: number = 1;
 
   second() {
-    console.info('second page: ' + `${this.storageLink2}`);
+    hilog.info(DOMAIN, TAG, 'second page: ' + `${this.storageLink}`);
   }
 
   build() {
     Column() {
-
-      Text(`second Page ${this.storageLink2}`).fontSize(50)
+      Text(`second Page ${this.storageLink}`).fontSize(50)
       Button('back')
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
-
-      Button('second page storageLink2 + 2').fontSize(30)
+      Button('second page storageLink + 2').fontSize(30)
         .onClick(() => {
-          this.storageLink2 += 2;
+          this.storageLink += 2;
         })
-
     }
   }
 }
@@ -130,8 +137,13 @@ struct Page2 {
 
 图示如下：
 ![freezeWithTab](./figures/freezewithTabs.png)
+<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Entry
 @Component
 struct TabContentTest {
@@ -139,7 +151,7 @@ struct TabContentTest {
   private data: number[] = [0, 1];
 
   onMessageUpdated() {
-    console.info(`TabContent message callback func ${this.message}`);
+    hilog.info(DOMAIN, TAG, `TabContent message callback func ${this.message}`);
   }
 
   build() {
@@ -148,7 +160,6 @@ struct TabContentTest {
         Button('change message').onClick(() => {
           this.message++;
         })
-
         Tabs() {
           ForEach(this.data, (item: number) => {
             TabContent() {
@@ -169,7 +180,7 @@ struct FreezeChild {
   index: number = 0;
 
   onMessageUpdated() {
-    console.info(`FreezeChild message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
@@ -194,8 +205,13 @@ struct FreezeChild {
 ### LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
+<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 // 用于处理数据监听的IDataSource的基本实现
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -212,7 +228,7 @@ class BasicDataSource implements IDataSource {
   // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -221,7 +237,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -284,7 +300,7 @@ struct LazyforEachTest {
   @State @Watch('onMessageUpdated') message: number = 0;
 
   onMessageUpdated() {
-    console.info(`LazyforEach message callback func ${this.message}`);
+    hilog.info(DOMAIN, TAG, `LazyforEach message callback func ${this.message}`);
   }
 
   aboutToAppear() {
@@ -306,7 +322,6 @@ struct LazyforEachTest {
         }, (item: string) => item)
       }.cachedCount(5).height(500)
     }
-
   }
 }
 
@@ -316,11 +331,11 @@ struct FreezeChild {
   index: string = '';
 
   aboutToAppear() {
-    console.info(`FreezeChild aboutToAppear index: ${this.index}`);
+    hilog.info(DOMAIN, TAG, `FreezeChild aboutToAppear index: ${this.index}`);
   }
 
   onMessageUpdated() {
-    console.info(`FreezeChild message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, TAG, `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
@@ -350,8 +365,13 @@ struct FreezeChild {
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Watch回调进行刷新。
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
+<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Entry
 @Component
 struct MyNavigationTestStack {
@@ -360,7 +380,7 @@ struct MyNavigationTestStack {
   @State logNumber: number = 0;
 
   info() {
-    console.info(`freeze-test MyNavigation message callback ${this.message}`);
+    hilog.info(DOMAIN, TAG, `freeze-test MyNavigation message callback ${this.message}`);
   }
 
   @Builder
@@ -515,8 +535,8 @@ struct NavigationContentMsgStack {
   @Link logNumber: number;
 
   info() {
-    console.info(`freeze-test NavigationContent message callback ${this.message}`);
-    console.info(`freeze-test ---- called by content ${this.index}`);
+    hilog.info(DOMAIN, TAG, `freeze-test NavigationContent message callback ${this.message}`);
+    hilog.info(DOMAIN, TAG, `freeze-test ---- called by content ${this.index}`);
     this.logNumber++;
   }
 
@@ -532,6 +552,7 @@ struct NavigationContentMsgStack {
   }
 }
 ```
+
 
 在上面的示例中：
 
@@ -564,8 +585,13 @@ struct NavigationContentMsgStack {
 **组件复用、if和组件冻结混用场景**
 
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
+<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
 
-```ts
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Reusable
 @Component({ freezeWhenInactive: true })
 struct ChildComponent {
@@ -573,7 +599,7 @@ struct ChildComponent {
   @State count: number = 0;
 
   descChange() {
-    console.info(`ChildComponent messageChange ${this.desc}`);
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
   }
 
   aboutToReuse(params: Record<string, ESObject>): void {
@@ -581,7 +607,7 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info(`ChildComponent has been recycled`);
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
 
   build() {
@@ -635,9 +661,13 @@ struct Page {
 **LazyForEach、组件复用和组件冻结混用场景**
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
+<!-- @[arkts_custom_components_freeze7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets) -->
 
-```ts
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 // 用于处理数据监听的IDataSource的基本实现
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -654,7 +684,7 @@ class BasicDataSource implements IDataSource {
   // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -663,7 +693,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -732,8 +762,9 @@ struct ChildComponent {
   @Link @Watch('descChange') desc: string;
   @State item: string = '';
   @State index: number = 0;
+
   descChange() {
-    console.info(`ChildComponent messageChange ${this.desc}`);
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
   }
 
   aboutToReuse(params: Record<string, ESObject>): void {
@@ -742,8 +773,9 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info(`ChildComponent has been recycled`);
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
+
   build() {
     Column() {
       Text(`ChildComponent index: ${this.index} item: ${this.item}`)
@@ -807,9 +839,13 @@ struct Page {
 下面的场景中展示了LazyForEach、if、组件复用和组件冻结混用场景。在同一个父自定义组件下，可复用的节点可能通过不同的方式进入复用池，比如：
 - 通过滑动从LazyForEach的缓存区域下树，进入复用池。
 - if条件切换通知子节点下树，进入复用池。
+<!-- @[arkts_custom_components_freeze8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse2.ets) -->
 
-```ts
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
@@ -825,7 +861,7 @@ class BasicDataSource implements IDataSource {
   // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -834,7 +870,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -898,13 +934,14 @@ class MyDataSource extends BasicDataSource {
 }
 
 @Reusable
-@Component({freezeWhenInactive: true})
+@Component({ freezeWhenInactive: true })
 struct ChildComponent {
   @Link @Watch('descChange') desc: string;
   @State item: string = '';
   @State index: number = 0;
+
   descChange() {
-    console.info(`ChildComponent messageChange ${this.desc}`);
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.desc}`);
   }
 
   aboutToReuse(params: Record<string, ESObject>): void {
@@ -913,15 +950,16 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info(`ChildComponent has been recycled`);
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
+
   build() {
     Column() {
       Text(`ChildComponent index: ${this.index} item: ${this.item}`)
         .fontSize(20)
       Text(`desc: ${this.desc}`)
         .fontSize(20)
-    }.border({width: 2, color: Color.Pink})
+    }.border({ width: 2, color: Color.Pink })
   }
 }
 
@@ -945,31 +983,29 @@ struct Page {
         this.desc += '!';
         hiTraceMeter.finishTrace('change desc', 1);
       })
-
       Button(`change flag`).onClick(() => {
         hiTraceMeter.startTrace('change flag', 1);
         this.flag = !this.flag;
         hiTraceMeter.finishTrace('change flag', 1);
       })
-
       List({ space: 3 }) {
         LazyForEach(this.data, (item: string, index: number) => {
           ListItem() {
-            ChildComponent({index: index, item: item, desc: this.desc}).reuseId(index % 10 < 5 ? '1': '0')
+            ChildComponent({ index: index, item: item, desc: this.desc }).reuseId(index % 10 < 5 ? '1' : '0')
           }
         }, (item: string) => item)
       }
       .cachedCount(5)
       .height('60%')
-
       if (this.flag) {
-        ChildComponent({index: -1, item: 'Hello', desc: this.desc}).reuseId( '1')
+        ChildComponent({ index: -1, item: 'Hello', desc: this.desc }).reuseId('1')
       }
     }
     .height('100%')
   }
 }
 ```
+
 
 在上面的示例中：
 
@@ -995,20 +1031,25 @@ struct Page {
 **Navigation和TabContent的混用**
 
 代码示例如下：
+<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->
 
-```ts
+``` TypeScript
 // index.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 @Component
 struct ChildOfParamComponent {
-  @Prop @Watch('onChange') child_val: number;
+  @Prop @Watch('onChange') childVal: number;
 
   onChange() {
-    console.info(`Appmonitor ChildOfParamComponent: child_val changed:${this.child_val}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor ChildOfParamComponent: childVal changed:${this.childVal}`);
   }
 
   build() {
     Column() {
-      Text(`Child Param： ${this.child_val}`);
+      Text(`Child Param: ${this.childVal}`)
     }
   }
 }
@@ -1018,30 +1059,28 @@ struct ParamComponent {
   @Prop @Watch('onChange') paramVal: number;
 
   onChange() {
-    console.info(`Appmonitor ParamComponent: paramVal changed:${this.paramVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: paramVal changed:${this.paramVal}`);
   }
 
   build() {
     Column() {
-      Text(`val： ${this.paramVal}`)
-      ChildOfParamComponent({ child_val: this.paramVal });
+      Text(`val: ${this.paramVal}`)
+      ChildOfParamComponent({ childVal: this.paramVal })
     }
   }
 }
-
-
 
 @Component
 struct DelayComponent {
   @Prop @Watch('onChange') delayVal: number;
 
   onChange() {
-    console.info(`Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
   }
 
   build() {
     Column() {
-      Text(`Delay Param： ${this.delayVal}`);
+      Text(`Delay Param: ${this.delayVal}`)
     }
   }
 }
@@ -1052,7 +1091,7 @@ struct TabsComponent {
   @State @Watch('onChange') tabState: number = 47;
 
   onChange() {
-    console.info(`Appmonitor TabsComponent: tabState changed:${this.tabState}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor TabsComponent: tabState changed:${this.tabState}`);
   }
 
   build() {
@@ -1060,17 +1099,15 @@ struct TabsComponent {
       Button(`Incr state ${this.tabState}`)
         .fontSize(25)
         .onClick(() => {
-          console.info('Button increment state value');
+          hilog.info(DOMAIN, TAG, 'Button increment state value');
           this.tabState = this.tabState + 1;
         })
-
       Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller }) {
         TabContent() {
-          ParamComponent({ paramVal: this.tabState });
+          ParamComponent({ paramVal: this.tabState })
         }.tabBar('Update')
-
         TabContent() {
-          DelayComponent({ delayVal: this.tabState });
+          DelayComponent({ delayVal: this.tabState })
         }.tabBar('DelayUpdate')
       }
       .vertical(false)
@@ -1126,8 +1163,7 @@ struct PageOneStack {
   build() {
     NavDestination() {
       Column() {
-        TabsComponent();
-
+        TabsComponent()
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -1168,6 +1204,7 @@ struct PageTwoStack {
 }
 ```
 
+
 代码运行结果图如下：
 
 ![freeze](figures/freeze_tabcontent.gif)
@@ -1197,9 +1234,13 @@ struct PageTwoStack {
 **页面和LazyForEach**
 
 Navigation和TabContent混用时，之所以会解锁TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
+<!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) -->
 
-```ts
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+``` TypeScript
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
 // 用于处理数据监听的IDataSource的基本实现
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -1216,7 +1257,7 @@ class BasicDataSource implements IDataSource {
   // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(DOMAIN, TAG, 'add listener');
       this.listeners.push(listener);
     }
   }
@@ -1225,7 +1266,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(DOMAIN, TAG, 'remove listener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -1289,13 +1330,13 @@ class MyDataSource extends BasicDataSource {
 }
 
 @Reusable
-@Component({freezeWhenInactive: true})
+@Component({ freezeWhenInactive: true })
 struct ChildComponent {
   @State desc: string = '';
   @Link @Watch('sumChange') sum: number;
 
   sumChange() {
-    console.info(`sum: Change ${this.sum}`);
+    hilog.info(DOMAIN, TAG, `sum: Change ${this.sum}`);
   }
 
   aboutToReuse(params: Record<string, Object>): void {
@@ -1304,13 +1345,14 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info(`ChildComponent has been recycled`);
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
+
   build() {
     Column() {
       Divider()
         .color('#ff11acb8')
-      Text(`子组件: ${this.desc}`)
+      Text(`subcomponent: ${this.desc}`)
         .fontSize(30)
         .fontWeight(30)
       Text(`${this.sum}`)
@@ -1321,7 +1363,7 @@ struct ChildComponent {
 }
 
 @Entry
-@Component ({freezeWhenInactive: true})
+@Component({ freezeWhenInactive: true })
 struct Page {
   private data: MyDataSource = new MyDataSource();
   @State sum: number = 0;
@@ -1343,7 +1385,7 @@ struct Page {
       List() {
         LazyForEach(this.data, (item: string) => {
           ListItem() {
-            ChildComponent({desc: item, sum: this.sum});
+            ChildComponent({ desc: item, sum: this.sum })
           }
           .width('100%')
           .height(100)
@@ -1355,6 +1397,7 @@ struct Page {
   }
 }
 ```
+
 
 在组件复用场景中，已经对LazyForEach的节点进行了详细说明，分为屏上节点和cachedCount节点。
 
@@ -1383,13 +1426,17 @@ struct Page {
 在API version 20之前，BuilderNode无法继承父组件冻结。如下面的例子所示，FreezeBuildNode中使用了自定义节点[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
 
 在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。具体示例见[BuilderNode对象继承组件冻结](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)。
+<!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
 
-```ts
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
 
 // 定义一个Params类，用于传递参数
 class Params {
-  index: number = 0;
+  public index: number = 0;
 
   constructor(index: number) {
     this.index = index;
@@ -1404,7 +1451,7 @@ struct BuildNodeChild {
 
   // 当message更新时，调用此方法
   onMessageUpdated() {
-    console.info(`FreezeBuildNode builderNodeChild message callback func ${this.message},index：${this.index}`);
+    hilog.info(DOMAIN, TAG, `FreezeBuildNode builderNodeChild message callback func ${this.message},index:${this.index}`);
   }
 
   build() {
@@ -1453,7 +1500,6 @@ struct Index {
           .onClick(() => {
             this.message += 'a';
           })
-
         Tabs() {
           ForEach(this.data, (item: number) => {
             TabContent() {
@@ -1476,7 +1522,7 @@ struct FreezeBuildNode {
 
   // 当message更新时，调用此方法
   onMessageUpdated() {
-    console.info(`FreezeBuildNode message callback func ${this.message}, index: ${this.index}`);
+    hilog.info(DOMAIN, TAG, `FreezeBuildNode message callback func ${this.message}, index: ${this.index}`);
   }
 
   build() {
@@ -1488,9 +1534,9 @@ struct FreezeBuildNode {
 }
 ```
 
+
 在上面的示例中：
 
 点击`change`，改变message的值，当前正在显示的TabContent组件中@Watch注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
 
 ![builderNode.gif](figures/builderNode.gif)
-

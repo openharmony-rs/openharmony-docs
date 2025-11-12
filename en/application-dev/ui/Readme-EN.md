@@ -308,7 +308,7 @@
       - [swiper Development](ui-js-components-swiper.md)
     - Basic Component Development<!--ui-js-basic-components-->
       - [text Development](ui-js-components-text.md)
-      - [Input Development](ui-js-components-input.md)
+      - [input Development](ui-js-components-input.md)
       - [button Development](ui-js-components-button.md)
       - [picker Development](ui-js-components-picker.md)
       - [image Development](ui-js-components-images.md)
@@ -321,7 +321,7 @@
       - [menu Development](ui-js-components-menu.md)
       - [marquee Development](ui-js-components-marquee.md)
       - [qrcode Development](ui-js-components-qrcode.md)
-      - [Search Development](ui-js-components-search.md)
+      - [search Development](ui-js-components-search.md)
     - Canvas Development<!--ui-js-canvas-->
       - [Canvas](ui-js-components-canvas.md)
       - [CanvasRenderingContext2D](ui-js-components-canvasrenderingcontext2d.md)

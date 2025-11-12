@@ -29,13 +29,16 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-```json
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
@@ -60,8 +63,10 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
             ]
           } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
@@ -70,12 +75,16 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
 
-```ts
-// 以EntryAbility.ets为例
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+
+``` TypeScript
+// 以DeepAbility.ets为例
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+const DOMAIN = 0x0000;
+
+export default class DeepAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 从want中获取传入的链接信息。
     // 如传入的url为：link://www.example.com/programs?action=showall
@@ -85,11 +94,12 @@ export default class EntryAbility extends UIAbility {
       let urlObject = url.URL.parseURL(want?.uri);
       let action = urlObject.params.get('action');
       // 例如，当action为showall时，展示所有的节目。
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ···
       }
     }
   }
+// ···
 }
 ```
 
@@ -104,7 +114,9 @@ export default class EntryAbility extends UIAbility {
 
 示例代码如下：
 
-```ts
+<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
+
+``` TypeScript
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -114,7 +126,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepOpenLinkIndex {
   build() {
     Button('start link', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -122,7 +134,7 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "link://www.example.com";
+        let link: string = 'link://www.example.com'; // 此处为实际应用链接
         let openLinkOptions: OpenLinkOptions = {
           appLinkingOnly: false
         };
@@ -132,8 +144,8 @@ struct Index {
             .then(() => {
               hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
             }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
-            });
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
+          });
         } catch (paramError) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
         }
@@ -149,7 +161,9 @@ struct Index {
 
 示例代码如下：
 
-```ts
+<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -159,7 +173,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepStartIndex {
   build() {
     Button('start ability', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -168,7 +182,7 @@ struct Index {
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let want: Want = {
-          uri: "link://www.example.com"
+          uri: 'link://www.example.com' // 此处为实际应用链接
         };
 
         try {
@@ -191,15 +205,21 @@ Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-compone
 
 示例代码如下：
 
-```ts
-// index.ets
+<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
+
+``` TypeScript
+// DeepWebIndex.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_PullLinking]';
 
 @Entry
 @Component
-struct WebComponent {
+struct DeepWebIndex {
   controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
@@ -210,10 +230,10 @@ struct WebComponent {
           if (url === 'link://www.example.com') {
             (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
               .then(() => {
-                console.info('openLink success.');
+                hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
               }).catch((err: BusinessError) => {
-                console.error(`openLink failed, err: ${JSON.stringify(err)}.`);
-              });
+              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed, err: ${JSON.stringify(err)}.`);
+            });
             return true;
           }
           // 返回true表示阻止此次加载，否则允许此次加载

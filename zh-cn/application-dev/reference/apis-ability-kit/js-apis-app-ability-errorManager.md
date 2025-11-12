@@ -822,7 +822,7 @@ type GlobalObserver = (reason: GlobalError) => void
 
 | 名称  | 类型  | 只读  | 可选  | 说明  |
 | ---- | ----- | ---- | ----- | ------ |
-| instanceName | string | 否 | 否 | 表示虚拟机实例名称。 |
+| instanceName | string | 否 | 否 | 表示虚拟机实例名称。<br>**说明**：<br>TaskPool线程中异常的instanceName标识规则：<br> - globalErrorOccurred：标识为“TaskPool Thread + 方法名”；<br> - globalUnhandledRejectionDetected：标识为“TaskPool Thread + 任务名”；<br> - 若仅标识为“TaskPool Thread”，则表明异常源于异步回调内部。|
 | instanceType | [InstanceType](#instancetype18) | 否 | 否 | 表示虚拟机的实例类型。 |
 
 ## InstanceType<sup>18+</sup>

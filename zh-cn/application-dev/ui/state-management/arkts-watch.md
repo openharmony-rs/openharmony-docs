@@ -252,7 +252,6 @@ class Task {
   }
 }
 const DOMAIN = 0x0000;
-
 @Entry
 @Component
 struct ParentComponent {

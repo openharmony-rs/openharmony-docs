@@ -34,6 +34,10 @@ textBackgroundStyle(style: TextBackgroundStyle)
 
 设置文本背景样式。子组件在不设置该属性时，将继承此属性值。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -84,7 +88,16 @@ struct Index {
             .height('40vp')
             .verticalAlign(ImageSpanAlignment.CENTER)
           Span('   Hello World !   ').fontSize('16fp').fontColor(Color.White)
-        }.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" })
+        }
+        .textBackgroundStyle({
+          color: "#7F007DFF",
+          radius: {
+            topLeft: 12,
+            topRight: 12,
+            bottomLeft: 12,
+            bottomRight: 12
+          }
+        })
       }
     }.width('100%').alignItems(HorizontalAlign.Center)
   }

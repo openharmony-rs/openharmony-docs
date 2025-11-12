@@ -25,7 +25,7 @@ Currently, the following decryption capabilities are supported:
 
 Before creating DRM, obtain the DRM information. For details, see step 4 in [Media Data Demultiplexing](../avcodec/audio-video-demuxer.md#how-to-develop).
 
-## How to Develop
+## Development Guidelines
 
 Read [DRM](../../reference/apis-drm-kit/capi-drm.md) for the API reference.
 

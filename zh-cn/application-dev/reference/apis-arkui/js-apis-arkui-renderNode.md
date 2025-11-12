@@ -87,6 +87,14 @@ appendChild(node: RenderNode): void
 | ------ | ------------------------- | ---- | ---------------------- |
 | node   | [RenderNode](#rendernode-1) | 是   | 需要添加的RenderNode。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+
 **示例：**
 
 ```ts
@@ -146,6 +154,14 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | ------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [RenderNode](#rendernode-1)                   | 是   | 需要添加的子节点。                                                           |
 | sibling | [RenderNode](#rendernode-1)&nbsp;\|&nbsp;null | 是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
 
 **示例：**
 

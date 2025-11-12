@@ -257,6 +257,7 @@
     // src/main/resources/zh_CN/element/string.json
     {
       "string": [
+        // ...
         {
           "name": "ButtonA_label",
           "value": "FunA页面"

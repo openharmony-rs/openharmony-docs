@@ -35,6 +35,7 @@
     
     ``` TypeScript
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    import { deviceInfo } from '@kit.BasicServicesKit';
     ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和[崩溃日志规格自定义参数](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)，示例代码如下：
@@ -54,19 +55,20 @@
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
     
-    // 构建崩溃日志规格自定义参数
-    let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
-      "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
-      "log_file_cutoff_sz_bytes": 102400, // 截断崩溃日志到100KB
-      "simplify_vma_printing": true // 使能精简打印maps
-    };
-    
-    // 开发者可以设置崩溃日志配置参数
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
+    if (deviceInfo.sdkApiVersion >= 20) {  // API Version 20及以后版本，支持设置崩溃日志配置参数
+      // 构建崩溃日志规格自定义参数
+      let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
+        "extend_pc_lr_printing": true, // 使能扩展打印pc和lr寄存器附近的内存值
+        "log_file_cutoff_sz_bytes": 1024000, // 截断崩溃日志到1000KB
+        "simplify_vma_printing": true // 使能精简打印maps
+      };
+      // 开发者可以设置崩溃日志配置参数
+      hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
     ```
 
 3. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在 `onCreate` 函数中订阅系统事件。示例代码如下：
@@ -134,7 +136,7 @@
 
     - 构造NativeCrash类型崩溃
 
-      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，增加如下代码：
+      编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，并将TestNullptr注册为ArkTS接口，增加如下代码：
 
       <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
@@ -144,6 +146,21 @@
           int *p = nullptr;
           int a = *p; // 空指针解引用，程序会在此处崩溃
           return {};
+      }
+      ```
+
+      <!-- @[Sys_Native_Nullptr_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static napi_value Init(napi_env env, napi_value exports)
+      {
+          napi_property_descriptor desc[] = {
+              // ···
+              { "testNullptr", nullptr, TestNullptr, nullptr, nullptr, nullptr, napi_default, nullptr },
+              // ···
+          };
+          napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+          return exports;
       }
       ```
 

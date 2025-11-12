@@ -75,3 +75,30 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 | 名称   | 类型   | 只读  |  可选       |说明       |
 | ------ | ---- | ---------- |---------- |---------- |
 |  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |否  |  否       |手势事件对象。 |
+
+## SwiperContentInfo<sup>23+</sup>
+
+Swiper组件的内容区信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型 | 只读  | 可选 | 说明                    |
+| --------- | ---- | ----- | ---- | ----------------------- |
+| id        | string  | 否 | 否 | Swiper组件的id。 |
+| uniqueId  | number  | 否 | 否 | Swiper组件的唯一标识符。 |
+| swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo23)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
+
+## SwiperItemInfo<sup>23+</sup>
+
+Swiper子组件的信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型 | 只读  | 可选 | 说明                    |
+| --------- | ---- | ----- | ---- | -----------------------|
+| uniqueId  | number | 否 | 否 | Swiper子组件的唯一标识符。   |
+| index     | number | 否 | 否 | Swiper子组件在Swiper中的索引。 |

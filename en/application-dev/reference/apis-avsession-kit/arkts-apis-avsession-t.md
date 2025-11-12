@@ -26,8 +26,8 @@ You can use the strings listed in the following table.
 | -----  | ---- |
 | 'audio' | Audio session.|
 | 'video' | Video session.|
-| 'voice_call'<sup>11+<sup> | Voice call.|
-| 'video_call'<sup>12+<sup> | Video call.|
+| 'voice_call'<sup>11+</sup> | Voice call.|
+| 'video_call'<sup>12+</sup> | Video call.|
 
 ## AVCastControlCommandType<sup>10+</sup>
 

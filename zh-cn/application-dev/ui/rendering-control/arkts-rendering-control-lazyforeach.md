@@ -66,8 +66,13 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 <!-- @[initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/InitialRendering.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource7 extends BasicDataSource7 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class InitialDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -87,7 +92,7 @@ class MyDataSource7 extends BasicDataSource7 {
 @Entry
 @Component
 struct InitialRendering {
-  private data: MyDataSource7 = new MyDataSource7();
+  private data: InitialDataSource = new InitialDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -102,6 +107,7 @@ struct InitialRendering {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -185,6 +191,7 @@ LazyForEach(this.data, (item: string) => {
     Row() {
       Text(item).fontSize(50)
         .onAppear(() => {
+          hilog.info(DOMAIN, TAG, 'appear: ${item}');
         })
     }.margin({ left: 10, right: 10 })
   }
@@ -205,8 +212,10 @@ LazyForEach(this.data, (item: string) => {
 <!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource1 extends BasicDataSource1 {
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+
+class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -226,7 +235,7 @@ class MyDataSource1 extends BasicDataSource1 {
 @Entry
 @Component
 struct AddingData {
-  private data: MyDataSource1 = new MyDataSource1();
+  private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -269,8 +278,13 @@ struct AddingData {
 <!-- @[delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DataDeletion.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource4 extends BasicDataSource4 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class DataDeletionSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -298,7 +312,7 @@ class MyDataSource4 extends BasicDataSource4 {
 @Entry
 @Component
 struct DataDeletion {
-  private data: MyDataSource4 = new MyDataSource4();
+  private data: DataDeletionSource = new DataDeletionSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -313,6 +327,7 @@ struct DataDeletion {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -339,8 +354,13 @@ struct DataDeletion {
 <!-- @[swap_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/SwappingData.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource18 extends BasicDataSource18 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class SwappingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -371,7 +391,7 @@ class MyDataSource18 extends BasicDataSource18 {
 @Component
 struct SwappingData {
   private moved: number[] = [];
-  private data: MyDataSource18 = new MyDataSource18();
+  private data: SwappingDataSource = new SwappingDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -386,6 +406,7 @@ struct SwappingData {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -416,8 +437,13 @@ struct SwappingData {
 <!-- @[change_individual_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingIndividualDataItems.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource10 extends BasicDataSource10 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class ModifyingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -441,7 +467,7 @@ class MyDataSource10 extends BasicDataSource10 {
 @Entry
 @Component
 struct ModifyingIndividualDataItems {
-  private data: MyDataSource10 = new MyDataSource10();
+  private data: ModifyingDataSource = new ModifyingDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -456,6 +482,7 @@ struct ModifyingIndividualDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -481,8 +508,13 @@ struct ModifyingIndividualDataItems {
 <!-- @[change_multiple_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingMultipleDataItems.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource11 extends BasicDataSource11 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class ModifyingMultiSourceEleven extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -511,7 +543,7 @@ class MyDataSource11 extends BasicDataSource11 {
 @Entry
 @Component
 struct ModifyingMultipleDataItems {
-  private data: MyDataSource11 = new MyDataSource11();
+  private data: ModifyingMultiSourceEleven = new ModifyingMultiSourceEleven();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -526,6 +558,7 @@ struct ModifyingMultipleDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -552,8 +585,13 @@ struct ModifyingMultipleDataItems {
 <!-- @[precisely_modifying_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource14 extends BasicDataSource14 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class PreciseModifyingDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -588,7 +626,7 @@ class MyDataSource14 extends BasicDataSource14 {
 @Entry
 @Component
 struct PreciselyModifyingData {
-  private data: MyDataSource14 = new MyDataSource14();
+  private data: PreciseModifyingDataSource = new PreciseModifyingDataSource();
 
   aboutToAppear() {
     this.data.init();
@@ -611,6 +649,7 @@ struct PreciselyModifyingData {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
+                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -633,9 +672,13 @@ onDatasetChange接口允许开发者一次性通知LazyForEach进行数据添加
 <!-- @[precisely_modifying_data_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData2.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
 
-class MyDataSource15 extends BasicDataSource15 {
+class PreciselyModifyingSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -663,8 +706,8 @@ class MyDataSource15 extends BasicDataSource15 {
 
 @Entry
 @Component
-struct PreciselyModifyingData2 {
-  private data: MyDataSource15 = new MyDataSource15();
+struct PreciselyModifyingDataTwo {
+  private data: PreciselyModifyingSource = new PreciselyModifyingSource();
 
   aboutToAppear() {
     this.data.init();
@@ -687,10 +730,10 @@ struct PreciselyModifyingData2 {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
+                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
                 })
             }.margin({ left: 10, right: 10 })
           }
-
         }, (item: string) => item + new Date().getTime())
       }
       .cachedCount(5)
@@ -733,26 +776,87 @@ struct PreciselyModifyingData2 {
 <!-- @[changing_data_sub_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource2 extends BasicDataSource2 {
-  private dataArray: StringData2[] = [];
+class SubBasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: SubStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): SubStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+class MySubDataSource extends SubBasicDataSource {
+  private dataArray: SubStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData2 {
+  public getData(index: number): SubStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData2): void {
+  public pushData(data: SubStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
 @Observed
-class StringData2 {
+class SubStringData {
   public message: string;
 
   constructor(message: string) {
@@ -763,32 +867,32 @@ class StringData2 {
 @Entry
 @Component
 struct ChangingDataSubproperties {
-  private data: MyDataSource2 = new MyDataSource2();
+  private data: MySubDataSource = new MySubDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new StringData2(`Hello ${i}`));
+      this.data.pushData(new SubStringData(`Hello ${i}`));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData2, index: number) => {
+      LazyForEach(this.data, (item: SubStringData, index: number) => {
         ListItem() {
-          ChangingDataSubproperties_ChildComponent({ data: item })
+          ChangingDataSubpropertiesChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: StringData2, index: number) => index.toString())
+      }, (item: SubStringData, index: number) => index.toString())
     }
     .cachedCount(5)
   }
 }
 
 @Component
-struct ChangingDataSubproperties_ChildComponent {
-  @ObjectLink data: StringData2;
+struct ChangingDataSubpropertiesChildComponent {
+  @ObjectLink data: SubStringData;
 
   build() {
     Row() {
@@ -814,25 +918,88 @@ struct ChangingDataSubproperties_ChildComponent {
 <!-- @[observing_nested_class_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingNestedClassProperties.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource13 extends BasicDataSource13 {
-  private dataArray: StringData13[] = [];
+class ClassPropertiesDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: ClassPropertiesStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): ClassPropertiesStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
+其中BasicDataSource、StringData等名称需要开发者自行修改。**/
+class PropertiesDataSource extends ClassPropertiesDataSource {
+  private dataArray: ClassPropertiesStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData13 {
+  public getData(index: number): ClassPropertiesStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData13): void {
+  public pushData(data: ClassPropertiesStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
-class StringData13 {
+class ClassPropertiesStringData {
   public firstLayer: FirstLayer;
 
   constructor(firstLayer: FirstLayer) {
@@ -868,24 +1035,24 @@ class ThirdLayer {
 @Entry
 @ComponentV2
 struct ObservingNestedClassProperties {
-  private data: MyDataSource13 = new MyDataSource13();
+  private data: PropertiesDataSource = new PropertiesDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new StringData13(new FirstLayer(new SecondLayer(new ThirdLayer(`Hello ${i}`)))));
+      this.data.pushData(new ClassPropertiesStringData(new FirstLayer(new SecondLayer(new ThirdLayer(`Hello ${i}`)))));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData13, index: number) => {
+      LazyForEach(this.data, (item: ClassPropertiesStringData, index: number) => {
         ListItem() {
           Text(item.firstLayer.secondLayer.thirdLayer.fourthLayer).fontSize(50)
             .onClick(() => {
               item.firstLayer.secondLayer.thirdLayer.fourthLayer += '!';
             })
         }
-      }, (item: StringData13, index: number) => index.toString())
+      }, (item: ClassPropertiesStringData, index: number) => index.toString())
     }
     .cachedCount(5)
   }
@@ -899,26 +1066,89 @@ struct ObservingNestedClassProperties {
 <!-- @[observing_component_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingComponentInternalState.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource12 extends BasicDataSource12 {
-  private dataArray: StringData12[] = [];
+class StateBasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: StateStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): StateStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
+其中BasicDataSource、StringData等名称需要开发者自行修改。**/
+class MyStateDataSource extends StateBasicDataSource {
+  private dataArray: StateStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData12 {
+  public getData(index: number): StateStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData12): void {
+  public pushData(data: StateStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
 @ObservedV2
-class StringData12 {
+class StateStringData {
   @Trace public message: string;
 
   constructor(message: string) {
@@ -929,20 +1159,19 @@ class StringData12 {
 @Entry
 @ComponentV2
 struct ObservingComponentInternalState {
-  data: MyDataSource12 = new MyDataSource12();
+  data: MyStateDataSource = new MyStateDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new StringData12(`Hello ${i}`));
+      this.data.pushData(new StateStringData(`Hello ${i}`));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData12, index: number) => {
+      LazyForEach(this.data, (item: StateStringData, index: number) => {
         ListItem() {
           Row() {
-
             Text(item.message).fontSize(50)
               .onClick(() => {
                 // 修改@ObservedV2装饰类中@Trace装饰的变量，触发刷新此处Text组件
@@ -951,7 +1180,7 @@ struct ObservingComponentInternalState {
             ObservingComponentChildComponent()
           }
         }
-      }, (item: StringData12, index: number) => index.toString())
+      }, (item: StateStringData, index: number) => index.toString())
     }
     .cachedCount(5)
   }
@@ -980,26 +1209,89 @@ struct ObservingComponentChildComponent {
 <!-- @[receiving_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ReceivingExternalInput.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource16 extends BasicDataSource16 {
-  private dataArray: StringData16[] = [];
+class InputDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: InputStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): InputStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
+其中BasicDataSource、StringData等名称需要开发者自行修改。**/
+class MyInputDataSource extends InputDataSource {
+  private dataArray: InputStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData16 {
+  public getData(index: number): InputStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData16): void {
+  public pushData(data: InputStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
 @ObservedV2
-class StringData16 {
+class InputStringData {
   @Trace public message: string;
 
   constructor(message: string) {
@@ -1010,24 +1302,24 @@ class StringData16 {
 @Entry
 @ComponentV2
 struct ReceivingExternalInput {
-  data: MyDataSource16 = new MyDataSource16();
+  data: MyInputDataSource = new MyInputDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new StringData16(`Hello ${i}`));
+      this.data.pushData(new InputStringData(`Hello ${i}`));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData16, index: number) => {
+      LazyForEach(this.data, (item: InputStringData, index: number) => {
         ListItem() {
           ReceivingExternalInputChildComponent({ data: item.message })
             .onClick(() => {
               item.message += '!';
             })
         }
-      }, (item: StringData16, index: number) => index.toString())
+      }, (item: InputStringData, index: number) => index.toString())
     }
     .cachedCount(5)
   }
@@ -1053,8 +1345,10 @@ struct ReceivingExternalInputChildComponent {
 <!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource5 extends BasicDataSource5 {
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+
+class DragAndDropDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1079,7 +1373,7 @@ class MyDataSource5 extends BasicDataSource5 {
 @Entry
 @Component
 struct DragandDropSorting {
-  private data: MyDataSource5 = new MyDataSource5();
+  private data: DragAndDropDataSource = new DragAndDropDataSource();
 
   aboutToAppear(): void {
     for (let i = 0; i < 100; i++) {
@@ -1186,8 +1480,13 @@ struct MyComponent {
 <!-- @[unexpected_rendering_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UnexpectedRenderingResults.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource20 extends BasicDataSource20 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class UnexpectedDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1216,7 +1515,7 @@ class MyDataSource20 extends BasicDataSource20 {
 @Entry
 @Component
 struct UnexpectedRenderingResults {
-  private data: MyDataSource20 = new MyDataSource20();
+  private data: UnexpectedDataSource = new UnexpectedDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
@@ -1231,6 +1530,7 @@ struct UnexpectedRenderingResults {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1335,19 +1635,86 @@ struct MyComponent {
 <!-- @[image_flickering_during_rerenders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ImageFlickeringDuringRerenders.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource6 extends BasicDataSource6 {
-  private dataArray: StringData6[] = [];
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class ImageFliceringDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: ImageFliceringStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): ImageFliceringStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
+其中BasicDataSource、StringData等名称需要开发者自行修改。**/
+class FliceringDataSource extends ImageFliceringDataSource {
+  private dataArray: ImageFliceringStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData6 {
+  public getData(index: number): ImageFliceringStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData6): void {
+  public pushData(data: ImageFliceringStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
@@ -1355,7 +1722,7 @@ class MyDataSource6 extends BasicDataSource6 {
 
 // @Observed类装饰器 和 @ObjectLink 用于在涉及嵌套对象或数组的场景中进行双向数据同步
 @Observed
-class StringData6 {
+class ImageFliceringStringData {
   public message: string;
   public imgSrc: Resource;
 
@@ -1368,25 +1735,25 @@ class StringData6 {
 @Entry
 @Component
 struct ImageFlickeringDuringRerenders {
-  private data: MyDataSource6 = new MyDataSource6();
+  private data: FliceringDataSource = new FliceringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
       // 此处'app.media.img'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      this.data.pushData(new StringData6(`Hello ${i}`, $r('app.media.img')));
+      this.data.pushData(new ImageFliceringStringData(`Hello ${i}`, $r('app.media.img')));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData6, index: number) => {
+      LazyForEach(this.data, (item: ImageFliceringStringData, index: number) => {
         ListItem() {
           ImageFlickeringChildComponent({ data: item })
         }
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: StringData6, index: number) => index.toString()) // 键值不受message属性影响
+      }, (item: ImageFliceringStringData, index: number) => index.toString()) // 键值不受message属性影响
     }
     .cachedCount(5)
   }
@@ -1395,12 +1762,13 @@ struct ImageFlickeringDuringRerenders {
 @Component
 struct ImageFlickeringChildComponent {
   // 用状态变量来驱动UI刷新，而不是通过Lazyforeach的api来驱动UI刷新
-  @ObjectLink data: StringData6;
+  @ObjectLink data: ImageFliceringStringData;
 
   build() {
     Column() {
       Text(this.data.message).fontSize(50)
         .onAppear(() => {
+          hilog.info(DOMAIN, TAG, 'appear: ${this.data.message}');
         })
       Image(this.data.imgSrc)
         .width(500)
@@ -1504,26 +1872,89 @@ struct ChildComponent {
 <!-- @[ui_not_rerendered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UINotRerenderedWhenObjectLinkIsChanged.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
-class MyDataSource19 extends BasicDataSource19 {
-  private dataArray: StringData19[] = [];
+class UINoteRenderingDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: UINoteRenderingStringData[] = [];
+
+  public totalCount(): number {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: number): UINoteRenderingStringData {
+    return this.originDataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    });
+  }
+
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    });
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    });
+  }
+}
+
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码。
+其中BasicDataSource、StringData等名称需要开发者自行修改。**/
+class UINoteRenderingSource extends UINoteRenderingDataSource {
+  private dataArray: UINoteRenderingStringData[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
   }
 
-  public getData(index: number): StringData19 {
+  public getData(index: number): UINoteRenderingStringData {
     return this.dataArray[index];
   }
 
-  public pushData(data: StringData19): void {
+  public pushData(data: UINoteRenderingStringData): void {
     this.dataArray.push(data);
     this.notifyDataAdd(this.dataArray.length - 1);
   }
 }
 
 @Observed
-class StringData19 {
+class UINoteRenderingStringData {
   public message: NestedString;
 
   constructor(message: NestedString) {
@@ -1544,17 +1975,17 @@ class NestedString {
 @Component
 struct UINotRerenderedWhenObjectLinkIsChanged {
   private moved: number[] = [];
-  private data: MyDataSource19 = new MyDataSource19();
+  private data: UINoteRenderingSource = new UINoteRenderingSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 20; i++) {
-      this.data.pushData(new StringData19(new NestedString(`Hello ${i}`)));
+      this.data.pushData(new UINoteRenderingStringData(new NestedString(`Hello ${i}`)));
     }
   }
 
   build() {
     List({ space: 3 }) {
-      LazyForEach(this.data, (item: StringData19, index: number) => {
+      LazyForEach(this.data, (item: UINoteRenderingStringData, index: number) => {
         ListItem() {
           UINotRerenderedChildComponent({ data: item })
         }
@@ -1562,7 +1993,7 @@ struct UINotRerenderedWhenObjectLinkIsChanged {
           // @ObjectLink装饰的成员变量仅能监听到其子属性的变化，再深入嵌套的属性便无法观测到
           item.message = new NestedString(item.message.message + '0');
         })
-      }, (item: StringData19, index: number) => item.message.message + index.toString())
+      }, (item: UINoteRenderingStringData, index: number) => item.message.message + index.toString())
     }
     .cachedCount(5)
   }
@@ -1570,7 +2001,7 @@ struct UINotRerenderedWhenObjectLinkIsChanged {
 
 @Component
 struct UINotRerenderedChildComponent {
-  @ObjectLink data: StringData19;
+  @ObjectLink data: UINoteRenderingStringData;
 
   build() {
     Row() {
@@ -1661,8 +2092,13 @@ struct MyComponent {
 <!-- @[screen_flickering_in_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ScreenFlickeringInList.ets) -->
 
 ``` TypeScript
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-class MyDataSource17 extends BasicDataSource17 {
+import { hilog } from '@kit.PerformanceAnalysisKit';
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。**/
+import { BasicDataSource } from './BasicDataSource';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
+class ScreenFliceringDataSource extends BasicDataSource {
   private dataArray: string[] = [];
 
   public totalCount(): number {
@@ -1693,7 +2129,7 @@ class MyDataSource17 extends BasicDataSource17 {
 @Component
 struct ScreenFlickeringInList {
   private moved: number[] = [];
-  private data: MyDataSource17 = new MyDataSource17();
+  private data: ScreenFliceringDataSource = new ScreenFliceringDataSource();
 
   aboutToAppear() {
     for (let i = 0; i <= 10; i++) {
@@ -1711,6 +2147,7 @@ struct ScreenFlickeringInList {
               .height(80)
               .backgroundColor(Color.Gray)
               .onAppear(() => {
+                hilog.info(DOMAIN, TAG, 'appear: ${item}');
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -2058,15 +2495,15 @@ class BasicDataSource1 implements IDataSource {
 <!-- @[basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-class BasicDataSource2 implements IDataSource {
+class SubBasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
-  private originDataArray: StringData2[] = [];
+  private originDataArray: SubStringData[] = [];
 
   public totalCount(): number {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): StringData2 {
+  public getData(index: number): SubStringData {
     return this.originDataArray[index];
   }
 

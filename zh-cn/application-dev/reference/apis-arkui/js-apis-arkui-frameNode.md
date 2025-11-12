@@ -217,9 +217,12 @@ appendChild(node: FrameNode): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
 
 **示例：**
 
@@ -244,9 +247,12 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
 
 **示例：**
 
@@ -517,9 +523,12 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
+| 100027   | The current node has been adopted. |
 
 **示例：**
 
@@ -1535,7 +1544,6 @@ get commonAttribute(): CommonAttribute
 >
 > FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
 >
-> FrameNode的属性支持范围参考[CommonModifier](./arkui-ts/ts-universal-attributes-attribute-modifier.md#attribute支持范围)。
 
 **示例：**
 
@@ -2345,8 +2353,68 @@ struct ListNodeTest {
   }
 }
  ```
- 
- ### convertPosition<sup>22+</sup>
+
+### adoptChild<sup>23+</sup>
+
+adoptChild(child: FrameNode): void
+
+当前节点收养目标子节点。被收养的节点不能已有父节点。此操作实际上不会将其添加为子节点，而仅是允许其接收生命周期回调，就像它是子节点一样。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| child | [FrameNode](#framenode-1) | 是   | 将要被收养的节点。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
+| 100026   | The current FrameNode has been disposed. |
+
+**示例：**
+
+完整示例请参考[收养节点示例](#收养节点示例)。
+
+### removeAdoptedChild<sup>23+</sup>
+
+removeAdoptedChild(child: FrameNode): void
+
+移除目标被收养的子节点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| child | [FrameNode](#framenode-1) | 是   | 正在被收养的节点 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100021   | The FrameNode is not modifiable. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
+| 100026   | The current FrameNode has been disposed. |
+
+**示例：**
+
+完整示例请参考[收养节点示例](#收养节点示例)。
+ 	
+### convertPosition<sup>22+</sup>
 
 convertPosition(position: Position, targetNode: FrameNode): Position
 
@@ -2443,6 +2511,89 @@ struct ConvertPositionTestOnly {
 
   }
 }
+```
+
+ ### isInRenderState<sup>23+</sup>
+
+ isInRenderState(): boolean
+
+ 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明                                 |
+| ----------------- | ------------------------------------- |
+|    boolean          |   节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。|
+
+**示例：**
+
+```ts
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印节点是否处于渲染状态
+  change() {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      console.log('is on render tree')
+    } else {
+      console.log('is not no render tree')
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin({ top: 20 }).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
 ```
 
 ## TypedFrameNode<sup>12+</sup>
@@ -9890,6 +10041,85 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+## 收养节点示例
+
+从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild23)和[removeAdoptedChild](#removeadoptedchild23)接口进行节点收养相关操作。
+
+```ts
+import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';
+const TEST_TAG: string = "FrameNode "
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  public frameNode: FrameNode | null = null;
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.frameNode = new FrameNode(uiContext);
+    this.addCommonEvent(this.frameNode);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    frameNode.commonEvent.setOnClick((event: ClickEvent) => {
+      console.info(`${TEST_TAG} Click FrameNode: ${JSON.stringify(event)}`);
+    })
+  }
+
+  adoptChild() {
+    try {
+      this.rootNode?.adoptChild(this.frameNode);
+      console.info(`${TEST_TAG} adoptChild success`);
+    } catch (e) {
+      console.info(`${TEST_TAG} adoptChild fail: ${JSON.stringify(e)}`);
+    }
+  }
+
+  removeAdoptedChild() {
+    try {
+      this.rootNode?.removeAdoptedChild(this.frameNode);
+      console.info(`${TEST_TAG} removeAdoptedChild success`);
+    } catch (e) {
+      console.info(`${TEST_TAG} removeAdoptedChild fail: ${JSON.stringify(e)}`);
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  
+  build() {
+    Column({ space: 8 }) {
+      Column() {
+        Text(`This is a NodeContainer.`)
+          .textAlign(TextAlign.Center)
+          .borderRadius(10)
+          .backgroundColor(0xFFFFFF)
+          .width(`100%`)
+          .fontSize(16)
+        NodeContainer(this.myNodeController)
+          .borderWidth(1)
+          .width(300)
+          .height(100)
+      }
+      Button(`adoptChild`)
+        .width(300)
+        .onClick(() => {
+          this.myNodeController.adoptChild();
+        })
+      Button(`removeAdoptedChild`)
+        .width(300)
+        .onClick(() => {
+          this.myNodeController.removeAdoptedChild();
+        })
+    }
   }
 }
 ```

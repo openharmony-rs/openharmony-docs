@@ -855,7 +855,7 @@ Native侧
     ```
 
     <!-- @[plugin_manager_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     // plugin_manager.cpp
     std::unordered_map<std::string, ArkUI_NodeHandle> PluginManager::nodeHandleMap_;
@@ -910,7 +910,7 @@ Native侧
          * **/
         return nullptr;
     }
-
+    
     napi_value PluginManager::UnbindNode(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -939,7 +939,7 @@ Native侧
         nodeHandleMap_.erase(nodeId);
         return nullptr;
     }
-
+    
     napi_value PluginManager::SetFrameRate(napi_env env, napi_callback_info info)
     {
         size_t argc = 4;
@@ -947,20 +947,20 @@ Native侧
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         std::string nodeId = value2String(env, args[0]);
         auto node = nodeHandleMap_[nodeId];
-
+    
         int32_t min = 0;
         napi_get_value_int32(env, args[FIRST_ARG], &min);
-
+    
         int32_t max = 0;
         napi_get_value_int32(env, args[SECOND_ARG], &max);
-
+    
         int32_t expected = 0;
         napi_get_value_int32(env, args[THIRD_ARG], &expected);
         OH_NativeXComponent_ExpectedRateRange range = {.min = min, .max = max, .expected = expected};
         OH_ArkUI_XComponent_SetExpectedFrameRateRange(node, range); // 设置期望帧率
         return nullptr;
     }
-
+    
     napi_value PluginManager::SetNeedSoftKeyboard(napi_env env, napi_callback_info info)
     {
         size_t argc = 2;
@@ -973,7 +973,7 @@ Native侧
             return nullptr;
         }
         node = nodeHandleMap_[nodeId];
-
+    
         bool needSoftKeyboard = false;
         napi_get_value_bool(env, args[1], &needSoftKeyboard);
         OH_ArkUI_XComponent_SetNeedSoftKeyboard(node, needSoftKeyboard); // 设置是否需要软键盘
@@ -984,7 +984,7 @@ Native侧
     (2) 定义Surface创建成功，发生改变，销毁和事件，可变帧率回调接口。
 
     <!-- @[surface_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
+    
     ``` C++
     void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
     {
@@ -992,31 +992,31 @@ Native侧
         auto render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->SetUpEGLContext(window); // 初始化egl环境
     }
-
+    
     void OnSurfaceChangedNative(OH_ArkUI_SurfaceHolder *holder, uint64_t width, uint64_t height)
     {
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->SetEGLWindowSize(width, height); // 设置绘制区域大小
         render->DrawStar(true);                  // 绘制五角星
     }
-
+    
     void OnSurfaceDestroyedNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "onBind", "on destroyed");
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->DestroySurface();  // 销毁eglSurface相关资源
     }
-
+    
     void OnSurfaceShowNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface show");
     }
-
+    
     void OnSurfaceHideNative(OH_ArkUI_SurfaceHolder *holder)
     {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
     }
-
+    
     void OnFrameCallbackNative(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)
     {
         if (!PluginManager::surfaceHolderMap_.count(node)) {
@@ -1024,11 +1024,12 @@ Native侧
         }
         static uint64_t count = 0;
         count++;
+        // 在头文件plugin_manager.h中定义，FRAME_COUNT的值为50
         if (count % FRAME_COUNT == 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
         }
     }
-
+    
     void onEvent(ArkUI_NodeEvent *event)
     {
         auto eventType = OH_ArkUI_NodeEvent_GetEventType(event); // 获取组件事件类型
@@ -1211,7 +1212,7 @@ Native侧
     ```
 
     <!-- @[egl_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.cpp) -->
-
+    
     ``` C++
     // EGLRender.cpp
     #include "EGLRender.h"
@@ -1224,7 +1225,7 @@ Native侧
     #include <algorithm>
     #include <hilog/log.h>
     #include <iostream>
-
+    
     namespace {
     void Rotate2d(GLfloat centerX, GLfloat centerY, GLfloat *rotateX, GLfloat *rotateY, GLfloat theta)
     {
@@ -1233,37 +1234,37 @@ Native侧
         *rotateX = tempX + centerX;
         *rotateY = tempY + centerY;
     }
-
+    
     GLuint LoadShader(GLenum type, const char *shaderSrc)
     {
         if ((type <= 0) || (shaderSrc == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "glCreateShader type or shaderSrc error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint shader = glCreateShader(type);
         if (shader == 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "glCreateShader unable to load shader");
             return PROGRAM_ERROR;
         }
-
+    
         // The gl function has no return value.
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
-
+    
         GLint compiled;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
         if (compiled != 0) {
             return shader;
         }
-
+    
         GLint infoLen = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
         if (infoLen <= 1) {
             glDeleteShader(shader);
             return PROGRAM_ERROR;
         }
-
+    
         char *infoLog = (char *)malloc(sizeof(char) * (infoLen + 1));
         if (infoLog != nullptr) {
             memset(infoLog, 0, infoLen + 1);
@@ -1275,28 +1276,28 @@ Native侧
         glDeleteShader(shader);
         return PROGRAM_ERROR;
     }
-
+    
     // 创建program
     GLuint CreateProgram(const char *vertexShader, const char *fragShader)
     {
         if ((vertexShader == nullptr) || (fragShader == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "createProgram: vertexShader or fragShader is null");
+                         "createProgram: vertexShader or fragShader is null");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint vertex = LoadShader(GL_VERTEX_SHADER, vertexShader);
         if (vertex == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram vertex error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint fragment = LoadShader(GL_FRAGMENT_SHADER, fragShader);
         if (fragment == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram fragment error");
             return PROGRAM_ERROR;
         }
-
+    
         GLuint program = glCreateProgram();
         if (program == PROGRAM_ERROR) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram program error");
@@ -1304,12 +1305,12 @@ Native侧
             glDeleteShader(fragment);
             return PROGRAM_ERROR;
         }
-
+    
         //  该gl函数没有返回值。
         glAttachShader(program, vertex);
         glAttachShader(program, fragment);
         glLinkProgram(program);
-
+    
         GLint linked;
         glGetProgramiv(program, GL_LINK_STATUS, &linked);
         if (linked != 0) {
@@ -1317,7 +1318,7 @@ Native侧
             glDeleteShader(fragment);
             return program;
         }
-
+    
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "createProgram linked error");
         GLint infoLen = 0;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
@@ -1335,7 +1336,7 @@ Native侧
         return PROGRAM_ERROR;
     }
     } // namespace
-
+    
     bool EGLRender::SetUpEGLContext(void *window)
     {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "EGLRender", "EglContextInit execute");
@@ -1350,7 +1351,7 @@ Native侧
         EGLint minorVersion;
         if (!eglInitialize(eglDisplay_, &majorVersion, &minorVersion)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglInitialize: unable to get initialize EGL display");
+                         "eglInitialize: unable to get initialize EGL display");
             return false;
         };
         // 选择配置。
@@ -1365,12 +1366,12 @@ Native侧
         eglSurface_ = eglCreateWindowSurface(eglDisplay_, eglConfig_, eglWindow_, NULL);
         if (eglSurface_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglCreateWindowSurface: unable to create surface");
+                         "eglCreateWindowSurface: unable to create surface");
             return false;
         }
         if (eglSurface_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender",
-                        "eglCreateWindowSurface: unable to create surface");
+                         "eglCreateWindowSurface: unable to create surface");
             return false;
         }
         // 创建上下文。
@@ -1387,7 +1388,7 @@ Native侧
         }
         return true;
     }
-
+    
     GLint EGLRender::PrepareDraw()
     {
         if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (eglContext_ == nullptr) ||
@@ -1395,16 +1396,16 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "PrepareDraw: param error");
             return POSITION_ERROR;
         }
-
+    
         // 该gl函数没有返回值。
         glViewport(DEFAULT_X_POSITION, DEFAULT_Y_POSITION, width_, height_);
         glClearColor(GL_RED_DEFAULT, GL_GREEN_DEFAULT, GL_BLUE_DEFAULT, GL_ALPHA_DEFAULT);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(program_);
-
+    
         return glGetAttribLocation(program_, POSITION_NAME);
     }
-
+    
     // 绘制五角星
     void EGLRender::DrawStar(bool drawColor)
     {
@@ -1414,13 +1415,13 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR, BACKGROUND_RECTANGLE_VERTICES)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw background failed");
             return;
         }
-
+    
         // 将其划分为五个四边形，并计算其中一个四边形的顶点
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -1433,29 +1434,30 @@ Native侧
         // 将角度 18° 转换为弧度
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = {centerX / width_, centerY / height_, leftX / width_,  leftY / height_,
-                                        rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
+                                         rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
         auto color = drawColor ? DRAW_COLOR : CHANGE_COLOR;
         if (!ExecuteDraw(position, color, shapeVertices)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw shape failed");
             return;
         }
-
+    
         // 将角度 72° 转换为弧度
         GLfloat rad = M_PI / 180 * 72;
         // 旋转四次。
+        // 在头文件EGLConst.h中定义，NUM_0的值为0，NUM_4的值为4
         for (int i = NUM_0; i < NUM_4; ++i) {
             // 旋转得其他四个四边形的顶点
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
             Rotate2d(centerX, centerY, &leftX, &leftY, rad);
             Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-
+    
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = {centerX / width_, centerY / height_, leftX / width_,  leftY / height_,
-                                            rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
-
+                                             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_};
+    
             // 绘制图形
             if (!ExecuteDraw(position, color, shapeVertices)) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "Draw execute draw shape failed");
@@ -1470,43 +1472,43 @@ Native侧
             return;
         }
     }
-
+    
     // ···
-
+    
     bool EGLRender::ExecuteDraw(GLint position, const GLfloat *color, const GLfloat shapeVertices[])
     {
         if ((position > 0) || (color == nullptr)) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLRender", "ExecuteDraw: param error");
             return false;
         }
-
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-
+    
         return true;
     }
-
+    
     void EGLRender::SetEGLWindowSize(int width, int height)
     {
         width_ = width;
         height_ = height;
     }
-
+    
     // 释放相关资源
     void EGLRender::DestroySurface()
     {
         if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (!eglDestroySurface(eglDisplay_, eglSurface_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
-
+    
         if ((eglDisplay_ == nullptr) || (eglContext_ == nullptr) || (!eglDestroyContext(eglDisplay_, eglContext_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
-
+    
         if ((eglDisplay_ == nullptr) || (!eglTerminate(eglDisplay_))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLRender", "Release eglDestroySurface failed");
         }
@@ -1581,9 +1583,9 @@ Native侧
     target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-<!--RP3-->上述用例具体实现可参考[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)。<!--RP3End-->
+    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)<!--RP3End-->。
 
-![示意图](./figures/drawStar.jpeg)
+    ![示意图](./figures/drawStar.jpeg)
 
 ## 使用NativeXComponent管理Surface生命周期
 
@@ -2352,7 +2354,7 @@ Native侧
    (2) 绘制图形。
 
     <!-- @[native_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::Draw(int& hasDraw)
     {
@@ -2363,14 +2365,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw background failed");
             return;
         }
-
+    
         // 将五角星分为五个四边形，计算其中一个四边形的四个顶点
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -2383,43 +2385,44 @@ Native侧
         // Convert DEG(18°) to RAD
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
         if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
             return;
         }
-
+    
         // Convert DEG(72°) to RAD
         GLfloat rad = M_PI / 180 * 72;
         // Rotate four times
+        // 在文件egl_core.cpp中定义，NUM_4的值为4
         for (int i = 0; i < NUM_4; ++i) {
             // 旋转得其他四个四边形的顶点
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
             Rotate2d(centerX, centerY, &leftX, &leftY, rad);
             Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-
+    
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
                 rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
             // 绘制图形
             if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
                 return;
             }
         }
-
+    
         // 结束绘制
         if (!FinishDraw()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw FinishDraw failed");
             return;
         }
         hasDraw = 1;
-
+    
         flag_ = true;
     }
     ```
@@ -2427,7 +2430,7 @@ Native侧
    (3) 改变颜色，重新画一个大小相同颜色不同的图形，与原图形替换，达到改变颜色的效果。
 
     <!-- @[native_change_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
+    
     ``` C++
     void EGLCore::ChangeColor(int& hasChangeColor)
     {
@@ -2440,14 +2443,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor get position failed");
             return;
         }
-
+    
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor execute draw background failed");
             return;
         }
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
@@ -2460,20 +2463,21 @@ Native侧
         // Convert DEG(18°) to RAD
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
-
+    
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
         const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
             rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
         // 使用新的颜色绘制
         if (!ExecuteDrawNewStar(0, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
             return;
         }
-
+    
         // Convert DEG(72°) to RAD
         GLfloat rad = M_PI / 180 * 72;
         // Rotate four times
+        // 在文件egl_core.cpp中定义，NUM_4的值为4
         for (int i = 0; i < NUM_4; ++i) {
             // 旋转得其他四个四边形的顶点
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
@@ -2482,14 +2486,14 @@ Native侧
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
             const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
                 rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-
+    
             // 使用新的颜色绘制
             if (!ExecuteDrawNewStar(position, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
                 OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
                 return;
             }
         }
-
+    
         // 结束绘制
         if (!FinishDraw()) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor FinishDraw failed");
@@ -2504,14 +2508,14 @@ Native侧
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
             return false;
         }
-
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-
+    
         return true;
     }
     ```

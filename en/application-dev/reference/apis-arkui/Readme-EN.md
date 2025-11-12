@@ -739,6 +739,7 @@
     - [State Management Error Codes](errorcode-stateManagement.md)
     - [Render Node Error Codes](errorcode-node-render.md)
     - [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md)
+    - [Color Inversion Error Codes](errorcode-force-dark.md)
   - Graphics<!--arkui-graphics-images-arkts-errcode-->
     - [Display Error Codes](errorcode-display.md)
     - [Window Error Codes](errorcode-window.md)

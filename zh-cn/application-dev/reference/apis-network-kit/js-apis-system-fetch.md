@@ -1,4 +1,4 @@
-# @system.fetch (数据请求)（已废弃）
+# @system.fetch (数据请求)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

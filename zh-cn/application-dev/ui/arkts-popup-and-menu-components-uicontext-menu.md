@@ -20,10 +20,10 @@
      enableArrow: true
    })
    .then(() => {
-     hilog.info(DOMAIN, 'globalOpenMenu', 'openMenu success');
+     hilog.info(0xFF00, 'globalOpenMenu', 'openMenu success');
    })
    .catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
+     hilog.error(0xFF00, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
    });
  ```
  
@@ -73,7 +73,7 @@
      buttons: [{
        text: 'confirm',
        action: () => {
-         hilog.info(DOMAIN, 'globalOpenMenu', 'confirm button click');
+         hilog.info(0xFF00, 'globalOpenMenu', 'confirm button click');
        },
        fontSize: 15,
        fontColor: Color.Black,
@@ -81,7 +81,7 @@
        {
          text: 'cancel',
          action: () => {
-           hilog.info(DOMAIN, 'globalOpenMenu', 'cancel button click');
+           hilog.info(0xFF00, 'globalOpenMenu', 'cancel button click');
          },
          fontSize: 15,
          fontColor: Color.Black
@@ -130,10 +130,10 @@
        enableArrow: false
      }, true)
      .then(() => {
-       hilog.info(DOMAIN, 'globalOpenMenu', 'updateMenu success');
+       hilog.info(0xFF00, 'globalOpenMenu', 'updateMenu success');
      })
      .catch((err: BusinessError) => {
-       hilog.error(DOMAIN, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
+       hilog.error(0xFF00, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
      });
    ```
    
@@ -148,10 +148,10 @@
    this.getUIContext().getPromptAction()
      .closeMenu(this.contentNode)
      .then(() => {
-       hilog.info(DOMAIN, 'globalOpenMenu', 'closeMenu success');
+       hilog.info(0xFF00, 'globalOpenMenu', 'closeMenu success');
      })
      .catch((err: BusinessError) => {
-       hilog.error(DOMAIN, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
+       hilog.error(0xFF00, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
      });
    ```
    

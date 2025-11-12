@@ -57,23 +57,27 @@
 
 4. 在module目录 > src > main > ets > insightintents目录下生成入口代码文件。开发者在意图执行函数中实现意图的功能代码。
 
-    ```ts
-    // 本示例对应意图配置中的"srcEntry"字段对应的文件
+    <!-- @[playmusic_executor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/PlayMusicExecutor.ets) -->
+
+    ``` TypeScript
+    // 本示例对应意图配置中的'srcEntry'字段对应的文件
     import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
-
+    // ···
+    
     export default class PlayMusicExecutor extends InsightIntentExecutor {
-      // 由于意图配置中"executeMode"配置了"foreground"前台模式执行，故需要实现该接口
+      // 由于意图配置中'executeMode'配置了'foreground'前台模式执行，故需要实现该接口
       async onExecuteInUIAbilityForegroundMode(intentName: string, params: Record<string, Object>,
         windowStage: window.WindowStage): Promise<insightIntent.ExecuteResult> {
         // 实现播放逻辑
+        // ···
         const result: insightIntent.ExecuteResult = {
           code: 0
         };
         return Promise.resolve(result);
       }
-
-      // 由于意图配置中"executeMode"配置了"background"后台模式执行，故需要实现该接口
+    
+      // 由于意图配置中'executeMode'配置了'background'后台模式执行，故需要实现该接口
       async onExecuteInUIAbilityBackgroundMode(intentName: string,
         params: Record<string, Object>): Promise<insightIntent.ExecuteResult> {
         // 后台控制逻辑
@@ -84,7 +88,7 @@
       }
     }
     ```
-
+   
 > **说明：**
 >
 > 配置文件范式仅提供基础执行能力，参数格式需开发者与系统入口协商。
@@ -119,10 +123,12 @@
 
 意图执行器实现：
 
-```ts
+<!-- @[playmusic_extension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/ExtensionExecutor.ets) -->
+
+``` TypeScript
 import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
 
-export default class IntentExecutorImpl extends InsightIntentExecutor {
+export default class ExtensionExecutor extends InsightIntentExecutor {
   // 由于意图配置了uiExtension，故需要实现该接口
   async onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
     pageLoader: UIExtensionContentSession): Promise<insightIntent.ExecuteResult> {
@@ -161,10 +167,12 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 
 意图执行器实现：
 
-```ts
+<!-- @[playmusic_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/DownloadExecutor.ets) -->
+
+``` TypeScript
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
 
-export default class IntentExecutorImpl extends InsightIntentExecutor {
+export default class DownloadExecutor extends InsightIntentExecutor {
   // 由于意图配置了serviceExtension，故需要实现该接口
   async onExecuteInServiceExtensionAbility(name: string,
     param: Record<string, Object>): Promise<insightIntent.ExecuteResult> {

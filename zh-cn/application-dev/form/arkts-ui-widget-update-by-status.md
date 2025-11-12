@@ -46,6 +46,7 @@
   @Entry(storageUpdateByStatus)
   @Component
   struct WidgetUpdateByStatusCard {
+    // $r('app.string.to_be_refreshed')需要替换为开发者所需的资源文件
     @LocalStorageProp('textA') textA: Resource = $r('app.string.to_be_refreshed');
     @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
     @State selectA: boolean = false;
@@ -68,6 +69,7 @@
                   }
                 });
               })
+            // $r('app.string.status_a')需要替换为开发者所需的资源文件
             Text($r('app.string.status_a'))
               .fontColor('#000000')
               .opacity(0.9)
@@ -92,6 +94,7 @@
                   }
                 });
               })
+            // $r('app.string.status_b')需要替换为开发者所需的资源文件
             Text($r('app.string.status_b'))
               .fontColor('#000000')
               .opacity(0.9)
@@ -134,6 +137,7 @@
         .width('100%')
         .alignItems(HorizontalAlign.Start)
       }.width('100%').height('100%')
+      // $r('app.media.CardUpdateByStatus')需要替换为开发者所需的资源文件
       .backgroundImage($r('app.media.CardUpdateByStatus'))
       .backgroundImageSize(ImageSize.Cover)
     }

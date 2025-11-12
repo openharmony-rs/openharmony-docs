@@ -22,6 +22,7 @@
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
+      // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
 
