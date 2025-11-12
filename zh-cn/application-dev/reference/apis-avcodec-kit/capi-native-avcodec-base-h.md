@@ -86,7 +86,7 @@
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_VORBIS | VORBIS音频解码器的MIME类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_MPEG | MP3音频编解码器的MIME类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_HEVC | HEVC(H.265)视频编解码器的MIME类型。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MPEG4视频编码的MIME类型，仅用于封装MPEG4视频码流使用。<br>**起始版本：** 10<br>**废弃版本：** 11<br>**替代接口：** {@link OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2}<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MPEG4视频编码的MIME类型，仅用于封装MPEG4视频码流使用。<br>**起始版本：** 10<br>**废弃版本：** 11<br>**替代接口：** OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | 视频MPEG4 Part2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_H263 | H.263视频编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -104,7 +104,7 @@
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | WMA（Windows Media Audio）V1音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | WMA（Windows Media Audio）V2音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。<br>**起始版本：** 22 |
-| const char * OH_MD_KEY_BLOCK_ALIGN | 划分音频数据块大小的键，单位为字节，值类型为int32_t。该键仅用于WMA（V1、V2、PRO）解码器。<br> 允许的MIME类型包括{@link OH_AVCODEC_MIMETYPE_AUDIO_WMAV1}，{@link OH_AVCODEC_MIMETYPE_AUDIO_WMAV2}和{@link OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO}。<br>**起始版本：** 22 |
+| const char * OH_MD_KEY_BLOCK_ALIGN | 划分音频数据块大小的键，单位为字节，值类型为int32_t。该键仅用于WMA（V1、V2、PRO）解码器。<br> 允许的MIME类型包括[OH_AVCODEC_MIMETYPE_AUDIO_WMAV1](#变量)，[OH_AVCODEC_MIMETYPE_AUDIO_WMAV2](#变量)和[OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO](#变量)。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM | GSM音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | GSM MS音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_VVC | VVC(H.266)视频编解码器的MIME类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -208,7 +208,7 @@
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选。<br>如果使能，需要注意：<br> 1. 编解码器不可设置回调函数。<br> 2. 必须使用缓冲区查询接口替代回调。<br> 3. 只能在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，视频解码器在停止或释放时将输出空白帧（通常为黑色），以确保显示设备平滑过渡到无信号状态。该机制可避免因解码器突然终止导致的显示残留或画面闪烁问题。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见{@link OH_NativeBuffer_Format}中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用{@link OH_VideoDecoder_GetOutputDescription}接口或[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用{@link OH_VideoEncoder_GetInputDescription}接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
