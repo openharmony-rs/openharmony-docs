@@ -845,7 +845,8 @@ ArkTS-Sta示例：
 try {
   let densityInfo = windowClass.getWindowDensityInfo();
 } catch (exception) {
-  console.error(`Failed to obtain the window densityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
+  let error = exception as BusinessError;
+  console.error(`Failed to obtain the window densityInfo. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1760,17 +1761,18 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass: window.Window) => {
-      const errCode: number = err?.code;
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass: window.Window | undefined) => {
+      const errCode = err?.code;
       if (errCode) {
         console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       try {
-        let statusBarProperty = windowClass.getStatusBarProperty();
+        let statusBarProperty = windowClass!.getStatusBarProperty();
         console.info('Succeeded in obtaining system bar properties. Property: ' + JSON.stringify(statusBarProperty));
-      } catch (err) {
-        console.error(`Failed to get system bar properties. Code: ${err.code}, message: ${err.message}`);
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to get system bar properties. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
