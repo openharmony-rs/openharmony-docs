@@ -1,5 +1,9 @@
 # OH_NativeVSync
 
+```
+typedef struct OH_NativeVSync OH_NativeVSync
+```
+
 ## 概述
 
 提供OH_NativeVSync结构体声明。
