@@ -79,6 +79,8 @@
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 使用ICU_TOKENIZER分词器时，创建表的示例：
 
 ```ts
