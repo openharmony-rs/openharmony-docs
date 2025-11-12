@@ -5206,7 +5206,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## notificationManager.setRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
@@ -5223,7 +5223,7 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| ringtoneInfo | [RingtoneInfo](#ringtoneinfo22) | 是   | 自定义铃声信息。 |
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | 是   | 自定义铃声信息。 |
 
 **返回值：**
 
@@ -5276,7 +5276,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## notificationManager.getRingtoneInfoByBundle<sup>22+</sup>
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
@@ -5298,7 +5298,7 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<[RingtoneInfo](#ringtoneinfo22)\> | Promise对象，返回应用自定义铃声信息。 |
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise对象，返回应用自定义铃声信息。 |
 
 **错误码**：
 
@@ -5767,7 +5767,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | uid          | number | 否 | 否 | 应用程序的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
-## RingtoneType<sup>22+</sup>
+## RingtoneType<sup>21+</sup>
 
 描述自定义铃声类型。
 
@@ -5782,7 +5782,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | RINGTONE_TYPE_ONLINE  | 2   | 表示在线自定义铃声。            |
 | RINGTONE_TYPE_NONE   | 3   | 表示非自定义铃声。                 |
 
-## RingtoneInfo<sup>22+</sup>
+## RingtoneInfo<sup>21+</sup>
 
 描述自定义铃声信息。
 
@@ -5792,7 +5792,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype22)  |  否  | 否   | 铃声的类型。|
+| ringtoneType | [ringtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
 | ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
 | ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
 | ringtoneUri | string  |  否  | 是   | 铃声的URI。  |
