@@ -2415,7 +2415,7 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ``` TypeScript
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
-class BasicDataSource1 implements IDataSource {
+export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
 
