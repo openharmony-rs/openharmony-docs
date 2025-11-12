@@ -1112,7 +1112,7 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码 | 错误信息 |
 | -------- | ---------------------------- |
@@ -2864,7 +2864,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码 | 错误信息 |
 | -------- | -------- |
@@ -3036,7 +3036,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 | 0 | 未激活。 |
 | 1 | 已激活。 |
 | 2 | 激活中。 |
-| 3 | 取消激活中。 |
+| 3 | 去激活中。 |
 
 ## wifiManager.offWifiStateChange<sup>22+</sup>
 
@@ -3270,7 +3270,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiScanStateChange')<sup>12+</sup>
+## wifiManager.off('wifiScanStateChange')<sup>9+</sup>
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -3390,7 +3390,7 @@ offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.on('wifiRssiChange')<sup>22+</sup>
+## wifiManager.on('wifiRssiChange')<sup>9+</sup>
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
@@ -3832,7 +3832,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息。|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。返回P2P连接的相关信息 |
 
 **错误码：**
 
