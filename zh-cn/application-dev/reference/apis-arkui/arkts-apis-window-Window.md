@@ -1851,6 +1851,10 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **设备行为差异：** 
 
 API version 14之前，该接口在所有设备中可正常调用。
@@ -1876,12 +1880,26 @@ API version 14之前，该接口在所有设备中可正常调用。
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   let enabled = false;
   windowClass.setImmersiveModeEnabledState(enabled);
 } catch (exception) {
   console.error(`Failed to set the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enabled = false;
+  windowClass!.setImmersiveModeEnabledState(enabled);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the window immersive mode enabled status, cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
