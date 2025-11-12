@@ -133,6 +133,8 @@ Web屏幕捕获模式。
 | THREAT_FRAUD    | 1 | 欺诈网站。              |
 | THREAT_RISK     | 2 | 存在安全风险的网站。      |
 | THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 |
+| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 |
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 |
 
 ## RenderExitReason<sup>9+</sup>
 
