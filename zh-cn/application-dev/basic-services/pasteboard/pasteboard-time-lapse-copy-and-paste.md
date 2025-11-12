@@ -117,34 +117,34 @@ void SyncCallback(int errorCode)
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
    <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
-
-``` C++
-    // 4. 创建OH_UdmfRecord对象。
-    OH_UdmfRecord* record = OH_UdmfRecord_Create();
-    // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
-    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-    OH_UdmfRecordProvider_SetData(provider, (void*)record, GetDataCallback, ProviderFinalizeCallback);
-
-    // 6. 将provider绑定到record，并设置支持的数据类型。
-    #define TYPE_COUNT 2
-    const char* types[TYPE_COUNT] = { UDMF_META_PLAIN_TEXT, UDMF_META_HTML };
-    OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-
-    // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
-    OH_UdmfData* setData = OH_UdmfData_Create();
-    if (setData != nullptr) {
-        OH_UdmfData_AddRecord(setData, record);
-    }
-
-    // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
-    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-    if (setData != nullptr) {
-        OH_Pasteboard_SetData(pasteboard, setData);
-    }
-    OH_UdmfRecordProvider_Destroy(provider);
-    OH_UdmfRecord_Destroy(record);
-    OH_UdmfData_Destroy(setData);
-```
+   
+   ``` C++
+   // 4. 创建OH_UdmfRecord对象。
+   OH_UdmfRecord* record = OH_UdmfRecord_Create();
+   // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
+   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+   
+   // 6. 将provider绑定到record，并设置支持的数据类型。
+   #define TYPE_COUNT 2
+   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+   
+   // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+   OH_UdmfData* setData = OH_UdmfData_Create();
+   if (setData != nullptr) {
+       OH_UdmfData_AddRecord(setData, record);
+   }
+   
+   // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
+   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+   if (setData != nullptr) {
+       OH_Pasteboard_SetData(pasteboard, setData);
+   }
+   OH_UdmfRecordProvider_Destroy(provider);
+   OH_UdmfRecord_Destroy(record);
+   OH_UdmfData_Destroy(setData);
+   ```
 
 
 5. 从剪贴板获取延迟复制数据。
