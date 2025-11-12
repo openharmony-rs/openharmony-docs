@@ -3190,13 +3190,6 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-**状态改变事件的枚举：**
-
-| 枚举值 | 说明 |
-| -------- | -------- |
-| 0 | 断开连接。 |
-| 1 | 已连接。 |
-
 ## wifiManager.offWifiConnectionChange<sup>22+</sup>
 
 offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
