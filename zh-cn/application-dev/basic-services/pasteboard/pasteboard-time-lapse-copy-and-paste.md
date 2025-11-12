@@ -358,13 +358,13 @@ void ProcessRecord(OH_UdmfRecord* record)
 6. 应用删除本应用设置的剪贴板数据可粘贴范围配置。
 
    <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-
-``` TypeScript
-    try {
-      systemPasteboard.removeAppShareOptions();
-      console.info('Remove app share options success.');
-    } catch (err) {
-      console.error('Failed to Remove app share options. Cause: ' + err.message);
-      //处理异常场景
-    }
-```
+   
+   ``` TypeScript
+   try {
+     systemPasteboard.removeAppShareOptions();
+     hilog.info(0xFF00, '[Sample_pasteboard]', 'Remove app share options success.');
+   } catch (err) {
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Remove app share options. Cause: ' + err.message);
+     //处理异常场景
+   }
+   ```
