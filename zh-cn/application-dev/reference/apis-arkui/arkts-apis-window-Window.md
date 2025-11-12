@@ -1219,6 +1219,8 @@ try {
 
 ArkTS-Sta示例：
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let densityInfo = windowClass.getWindowDensityInfo();
 } catch (exception) {
