@@ -74,6 +74,11 @@ TSan（Thread Sanitizer）是一个检测数据竞争的工具。
 
 UBSan（Undefined Behavior Sanitizer）可以检测代码中出现的未定义行为，帮助用户清除未定义行为引起运行时的错误。
 
+### 调用栈
+
+记录线程执行到当前现场（如崩溃、冻屏等）的函数调用顺序。具体说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)和[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
+
+
 ## 性能
 
 ### 丢帧

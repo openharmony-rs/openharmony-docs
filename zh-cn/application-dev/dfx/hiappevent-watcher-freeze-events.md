@@ -67,17 +67,19 @@
 
 ### frame字段说明
 
-Native帧frame字段说明
+**Native帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | symbol | string | 函数名称。**名称长度超过256字节时将被删除，防止超长字符串引起未知问题。** |
 | file | string | 文件名。 |
-| buildId | string | 文件唯一标识。**文件可能没有buildId，请参考[日志规格](cppcrash-guidelines.md#一般故障场景日志规格)**。 |
+| buildId | string | 文件唯一标识。**文件可能没有buildId**。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
-Js帧frame字段说明
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
+
+**Js帧frame字段说明**
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
@@ -86,6 +88,8 @@ Js帧frame字段说明
 | symbol | string | 函数名称 |
 | line | number | 代码行号 |
 | column | number | 代码列号 |
+
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 
