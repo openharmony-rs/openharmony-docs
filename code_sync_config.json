@@ -26117,12 +26117,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":82,
 						"name":"ability_app_service_one",
 						"start_line":16
 					},
 					{
-						"end_line":83,
+						"end_line":81,
 						"name":"ability_app_service_two",
 						"start_line":17
 					}
