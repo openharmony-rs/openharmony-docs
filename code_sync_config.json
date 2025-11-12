@@ -13931,9 +13931,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":47,
 						"name":"entry_ability_window_stage_created_after_specified_page_loaded",
-						"start_line":31
+						"start_line":16
 					}
 				]
 			},
@@ -13943,7 +13943,7 @@
 					{
 						"end_line":37,
 						"name":"nodeContainer_bind_controller_to_show_dynamic_pages",
-						"start_line":18
+						"start_line":17
 					}
 				]
 			},
