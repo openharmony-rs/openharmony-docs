@@ -1,5 +1,9 @@
 # ColorSpacePrimaries
 
+```
+typedef struct {...} ColorSpacePrimaries
+```
+
 ## 概述
 
 提供色彩原色结构体声明。

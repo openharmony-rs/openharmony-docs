@@ -1,5 +1,9 @@
 # WhitePointArray
 
+```
+struct WhitePointArray {...}
+```
+
 ## 概述
 
 提供白点数组结构体，白点是指在当前色域中表示白色的坐标。
