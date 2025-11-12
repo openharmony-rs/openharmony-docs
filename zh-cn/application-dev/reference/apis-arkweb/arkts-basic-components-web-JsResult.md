@@ -6,6 +6,8 @@ Web组件返回的弹窗确认或弹窗取消功能对象。示例代码参考[o
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -20,6 +22,10 @@ JsResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ## handleCancel
 
 handleCancel(): void
@@ -27,6 +33,10 @@ handleCancel(): void
 通知Web组件用户取消弹窗操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 ## handleConfirm
 
@@ -36,6 +46,10 @@ handleConfirm(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 ## handlePromptConfirm<sup>9+</sup>
 
 handlePromptConfirm(result: string): void
@@ -43,6 +57,10 @@ handlePromptConfirm(result: string): void
 通知Web组件用户确认弹窗操作及对话框内容。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

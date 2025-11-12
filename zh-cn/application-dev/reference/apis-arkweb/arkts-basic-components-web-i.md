@@ -256,6 +256,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | result       | [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md) | 是 | 用于通知Web组件文件选择的结果。 |
@@ -333,6 +337,10 @@ Web同层渲染的配置。
 定义调用时触发的回调，以允许自定义显示上下文菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |

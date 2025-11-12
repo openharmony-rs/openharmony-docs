@@ -175,6 +175,10 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                   | 值 | 说明         |
 | -------------------- | -- | ---------- |
 | FileOpenMode         | 0 | 打开上传单个文件。  |
@@ -219,6 +223,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称       | 值 | 说明         |
 | --------- | -- |------------ |
 | None      | 0 | 其他事件来源。 |
@@ -228,6 +236,10 @@ Web布局模式的配置。
 ## ContextMenuMediaType<sup>9+</sup>
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
@@ -239,6 +251,10 @@ Web布局模式的配置。
 输入框类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
@@ -268,6 +284,10 @@ Web布局模式的配置。
 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | CAN_COPY | CAN_SELECT_ALL或11。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 值 | 说明     |
 | -------------- | -- | -------- |

@@ -6,6 +6,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 9开始支持。
@@ -20,6 +22,10 @@ WebContextMenuResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## closeContextMenu<sup>9+</sup>
 
 closeContextMenu(): void
@@ -27,6 +33,10 @@ closeContextMenu(): void
 不执行WebContextMenuResult其他接口操作时，需要调用此接口关闭菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 ## copyImage<sup>9+</sup>
 
@@ -36,6 +46,10 @@ WebContextMenuParam有图片内容则复制图片。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## copy<sup>9+</sup>
 
 copy(): void
@@ -43,6 +57,10 @@ copy(): void
 执行与此上下文菜单相关的拷贝文本操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 ## paste<sup>9+</sup>
 
@@ -68,6 +86,10 @@ cut(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 ## selectAll<sup>9+</sup>
 
 selectAll(): void
@@ -75,6 +97,10 @@ selectAll(): void
 执行与此上下文菜单相关的全选操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 ## undo<sup>20+</sup>
 
@@ -84,6 +110,10 @@ undo(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 ## redo<sup>20+</sup>
 
 redo(): void
@@ -91,6 +121,10 @@ redo(): void
 执行与此上下文菜单相关的重做操作，即取消用户上一次的撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 ## pasteAndMatchStyle<sup>20+</sup>
 
@@ -103,6 +137,10 @@ pasteAndMatchStyle(): void
 > 需要配置权限：ohos.permission.READ_PASTEBOARD。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 ## 使用@ohos.transfer进行WebContextMenuResult类型转换
 
