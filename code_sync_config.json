@@ -26453,5 +26453,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/pasteboard/pasteboard-time-lapse-copy-and-paste.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":296,
+						"name":"pasteboard_timelapse_Record7",
+						"start_line":291
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"pasteboard_timelaps_PasteData1",
+						"start_line":16
+					},
+					{
+						"end_line":106,
+						"name":"pasteboard_timelaps_PasteData2",
+						"start_line":93
+					},
+					{
+						"end_line":120,
+						"name":"pasteboard_timelaps_PasteData3",
+						"start_line":107
+					},
+					{
+						"end_line":138,
+						"name":"pasteboard_timelaps_PasteData4",
+						"start_line":121
+					},
+					{
+						"end_line":147,
+						"name":"pasteboard_timelaps_PasteData5",
+						"start_line":139
+					},
+					{
+						"end_line":156,
+						"name":"pasteboard_timelaps_PasteData6",
+						"start_line":148
+					}
+				]
+			}
+		]
 	}
 ]
